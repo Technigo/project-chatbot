@@ -17,6 +17,10 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
+    /* console.log(message); */
+    /* console.log(showMessage); */
+    /* console.log(greeting); */
+
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -44,4 +48,7 @@ const greeting = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
+
+/* setTimeout(greeting, 500 */
 setTimeout(greeting, 1000)
+/* setTimeout(greeting, 3000)*/
