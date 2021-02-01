@@ -120,7 +120,7 @@ const movieGenre = (length) => {
 const movieMenu = (type) => {
   questionNumber++ 
   showMessage(`Excellent choice - ${type} it is! Here is a list of movies that I think will suit you:`, 'bot')
-//Add if else statements, add extra condition here for length of movie?
+//Add if else statements, add extra condition here for length of movie?g
   if (type === 'drama'){
     inputWrapper.innerHTML = `
       <select id="select"> 
@@ -140,7 +140,7 @@ const movieMenu = (type) => {
       </select>
       `
   } else if (type === 'comedy') {
-    `
+    inputWrapper.innerHTML = `
       <select id="select">
         <option value="" selected disabled>Top 3 comedy movies</option>
         <option value="comedymovienr1">movie nr1</option>
@@ -149,7 +149,7 @@ const movieMenu = (type) => {
       </select>
       `
   } else {
-    `
+    inputWrapper.innerHTML = `
       <select id="select">
         <option value="" selected disabled>Top 3 documentary movies</option>
         <option value="documentarymovienr1">movie nr1</option>
