@@ -1,0 +1,38 @@
+/* Set default font family */
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Font size and styles for the general text elements */
+.input__text,
+.input__button,
+.message__text {
+  font-size: 1em;
+  line-height: 1.5em;
+  font-weight: 600;
+  color: #0026ff;
+}
+
+/* Font size and styles for the larger text elements */
+.title,
+.subtitle {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Specific font styles and sizes */
+.title {
+  font-size: 3em;
+}
+
+.subtitle {
+  font-size: 1.5em;
+  margin-bottom: 2em;
+}
+
+.input__button {
+  color: white;
+  font-weight: 400;
+  text-transform: uppercase;
+}

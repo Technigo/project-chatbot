@@ -11,20 +11,20 @@ const showMessage = (message, sender) => {
   if (sender === "user") {
     console.log("user sent a message");
     chat.innerHTML += `
-    <section class="user-msg">
-    <div class="bubble user-bubble">
-    <p>${message}</p>
-    </div>
-    <img src="assets/user.png" alt="User" />  
+    <section class="message__user">
+      <div class="bubble bubble__user">
+        <p class="message__text">${message}</p>
+      </div>
+      <img src="assets/user.png" alt="User" />  
     </section>
     `;
   } else if (sender === "bot") {
     console.log("user sent a message");
     chat.innerHTML += `
-      <section class="bot-msg">
+      <section class="message__bot">
         <img src="assets/bot.png" alt="Bot" />
-        <div class="bubble bot-bubble">
-          <p>${message}</p>
+        <div class="bubble bubble__bot">
+          <p class="message__text">${message}</p>
         </div>
       </section>
     `;

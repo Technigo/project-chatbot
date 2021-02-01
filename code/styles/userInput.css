@@ -1,0 +1,35 @@
+/* Layout, colors and size for elements in user input block */
+
+.input__text {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  background: #e5e9ff;
+  padding: 16px;
+  flex: 1;
+}
+
+.input-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.input {
+  width: 100%;
+  display: flex;
+}
+
+.input__button {
+  background-color: #0026ff;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 40px;
+  margin-right: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.input__button:hover {
+  opacity: 0.9;
+  transition: all 0.2s ease;
+}

@@ -1,0 +1,33 @@
+/* Layout, colors and size for main content blocks */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #0026ff;
+}
+
+main {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 700px;
+  height: 600px;
+  border-radius: 30px;
+  background: #fff;
+  padding: 20px 24px;
+  padding-top: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  overflow: scroll;
+  flex-direction: column;
+  padding-bottom: 16px;
+}
