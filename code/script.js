@@ -36,6 +36,10 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+const
+
+
+
 // Set up your eventlisteners here
 
 // When website loaded, chatbot asks first question.
@@ -45,3 +49,14 @@ const greeting = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
+
+
+
+
+
+
+
+
+
+
+  
