@@ -49,56 +49,120 @@ const nextQuestion = (message) => {
   if (questionNumber === 1) {
     userReply(message)
     input.value=''
-    setTimeout(() => typeOfFood(message), 1000)
+    setTimeout(() => movieTips(message), 1000)
   } else if (questionNumber === 2) {
     userReply(message)
-    setTimeout(() => showOptions(message), 1000)
+    setTimeout(() => movieLength(message), 1000)
+  } else if (questionNumber === 3) {
+    userReply(message)
+    setTimeout(() => movieGenre(message), 1000)
+  } else if (questionNumber === 4) {
+    userReply(message)
+    setTimeout(() => movieMenu(message), 1000)
   }
 };
 
-// Starts here
+// Starts here - OBS make sure it is possible to type in text in input box!
 const greeting = () => {
   questionNumber = 1
   showMessage(`Hello there, What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-const typeOfFood = (msg) => {
+const movieTips = (msg) => {
   questionNumber++
-  showMessage(`Nice to meet you ${msg}. What would you like to order?`, 'bot')
+  showMessage(`Nice to meet you ${msg}. As you might know, I'm quite the movie expert. 
+  Would you like some tips for tonight?`, 'bot')
 inputWrapper.innerHTML = 
   `<div>
-    <button id="pizzaBtn">Pizza</button>
-    <button id="sushiBtn">Sushi</button>
-    <button id="soupBtn">Soup</button>
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
   </div>`
 
-  document.getElementById('pizzaBtn').addEventListener('click', () => nextQuestion('pizza'))
-  document.getElementById('sushiBtn').addEventListener('click', () => nextQuestion('sushi'))
-  document.getElementById('soupBtn').addEventListener('click', () => nextQuestion('soup'))
+  document.getElementById('yesBtn').addEventListener('click', () => nextQuestion('Yes'))
+  document.getElementById('noBtn').addEventListener('click', () => 
+    showMessage('Too bad, let me know if you change your mind!', 'bot')) 
+    // Change this to a closing comment and that the bot restarts from the beginning. 
   
 } 
 
-const showOptions = (type) => {
+const movieLength = (yes) => {
+  questionNumber++ 
+  showMessage(`${yes} Great! How much time do you have to watch the movie?`, 'bot')
+  inputWrapper.innerHTML = 
+  `<div>
+    <button id="underBtn">Under 2h</button>
+    <button id="overBtn">Over 2h</button>
+  </div>`
+
+  document.getElementById('underBtn').addEventListener('click', () => nextQuestion('Under 2h'))
+  document.getElementById('overBtn').addEventListener('click', () => nextQuestion('Over 2h'))
+}
+
+const movieGenre = (length) => {
   questionNumber++
 
-  showMessage(`What kind of ${type} would you like to order? `)
-    if (type === 'pizza') {
-        inputWrapper.innerHTML = 
-        `<input type="checkbox" id="pizza" name="pizza" value="pizza">
-        <label for="pizza">Pizza</label>
-    `
-    } else if (type === 'sushi') {
-      inputWrapper.innerHTML =
-      `<input type="checkbox" id="sushi" name="sushi" value="sushi">
-      <label for="sushi">Sushi</label>`
-    } 
-      else {
-        inputWrapper.innerHTML = 
-      `<input type="checkbox" id="soup" name="soup" value="soup">
-        <label for="soup">Soup</label>`
-      }
+  showMessage(`${length} - got it! What genre are you in the mood for?`, 'bot')
+  inputWrapper.innerHTML = 
+  `<div>
+    <button id="dramaBtn">Drama</button>
+    <button id="thrillerBtn">Thriller</button>
+    <button id="comedyBtn">Comedy</button>
+    <button id="documentaryBtn">Documentary</button>
+  </div>`
+
+  document.getElementById('dramaBtn').addEventListener('click', () => nextQuestion('Drama'))
+  document.getElementById('thrillerBtn').addEventListener('click', () => nextQuestion('Thriller'))
+  document.getElementById('comedyBtn').addEventListener('click', () => nextQuestion('Comedy'))
+  document.getElementById('documentaryBtn').addEventListener('click', () => nextQuestion('Documentary'))
 }
+
+const movieMenu = (type) => {
+  questionNumber++ 
+  showMessage(`Excellent choice - ${type} it is! Here is a list of movies that I think will suit you:`, 'bot')
+//Add if else statements, add extra condition here for length of movie?
+  if (type === 'drama'){
+    inputWrapper.innerHTML = `
+      <select id="select"> 
+        <option value="" selected disabled>Top 3 drama movies</option>
+        <option value="dramamovienr1">movie nr1</option>
+        <option value="dramamovienr2">movie nr2</option>
+        <option value="dramamovienr3">Movie nr 3</option>
+      </select>
+    `
+  } else if (type === 'thriller') {
+    inputWrapper.innerHTML = `
+      <select id="select">
+        <option value="" selected disabled>Top 3  thriller movies</option>
+        <option value="thrillermovienr1">movie nr1</option>
+        <option value="thrillermovienr2">movie nr2</option>
+        <option value="thrillermovienr3">Movie nr 3</option>
+      </select>
+      `
+  } else if (type === 'comedy') {
+    `
+      <select id="select">
+        <option value="" selected disabled>Top 3 comedy movies</option>
+        <option value="comedymovienr1">movie nr1</option>
+        <option value="comedymovienr2">movie nr2</option>
+        <option value="comedymovienr3">Movie nr 3</option>
+      </select>
+      `
+  } else {
+    `
+      <select id="select">
+        <option value="" selected disabled>Top 3 documentary movies</option>
+        <option value="documentarymovienr1">movie nr1</option>
+        <option value="documentarymovienr2">movie nr2</option>
+        <option value="documentarymovienr3">Movie nr 3</option>
+      </select>
+      `
+  }
+  
+
+const select = document.getElementById('select')
+  select.addEventListener('change', () => nextQuestion(select.value))
+};
 
 
 
