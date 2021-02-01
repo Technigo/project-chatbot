@@ -1,6 +1,6 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
-
+const nameInput = document.getElementById('name-input')
 // Global variables, if you need any, declared here
 
 // Functions declared here
@@ -28,6 +28,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
+  
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
@@ -39,6 +40,19 @@ const greeting = () => {
 }
 
 // Set up your eventlisteners here
+/*const handleNameInput = submit => {
+  submit.preventDefault()
+
+}*/
+
+const handleNameInput = document.getElementById("submit").addEventListener("click", function(submit){
+  submit.preventDefault()
+  const name = nameInput.value
+  showMessage(name, 'user')
+  nameInput.value = ''
+  
+  showMessage(`Hey ${name}, what would you like to eat?`, 'bot')
+});
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
