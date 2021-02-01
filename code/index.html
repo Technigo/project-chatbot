@@ -16,12 +16,15 @@
     <h2>Ask me about very important financial decisions!</h2>
     <h3>(You can trust me. I promise!)</h3>
     <main>
-      <section class="chat" id="chat"></section>
+      <section class="chat" id="chat">
+
+
+      </section>
 
       <div class="input-wrapper" id="input-wrapper">
-        <form id="name-form">
-          <input id="name-input" type="text" />
-          <button class="send-btn" type="submit">
+        <form id="name-form" onsubmit="return false;">
+          <input id="form-input" type="text" />
+          <button id="send-btn" class="send-btn" type="submit">
             Send
           </button>
         </form>
