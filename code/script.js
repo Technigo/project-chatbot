@@ -54,7 +54,7 @@ const greeting = () => {
 
 const nextQuestion = (message) => {
   if (questionNumber === 1){
-    
+
     userReply(message);
     formMessageBox.value = "";
     setTimeout(() => question2(message), chatDelay)
@@ -62,15 +62,13 @@ const nextQuestion = (message) => {
   }else if (questionNumber === 2){
     userReply(message);
     if (message === "stocks"){
-      console.log("stocks");
+      console.log(message);
     
     }else if (message === "funds") {
-      console.log("funds");
+      
     }else {
       botReply('You have to type either "stocks" or "funds".');
     }
-  }else if (questionNumber === 3) {
-
   };
 };
 
