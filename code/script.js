@@ -1,11 +1,20 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat');
 const form = document.getElementById('name-form');
-const name = document.getElementById('input-value');
+let name = document.getElementById('input-value');
 
 // Global variables, if you need any, declared here
 
 // Functions declared here
+
+/*this is suppose to make the button and enter with same result 
+name.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.getElementById('button').click ();
+  }
+}); */
+
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -42,15 +51,17 @@ const greeting = () => {
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  
-  form.addEventListener('click', () => {     
-    showMessage('Good!', 'user')   
-  })
-
-  const value = document.getElementById('input-value').value;
-  
-  chat.innerHTML += '<div>' + value + '</div>';
+  /* Matilda */ 
+form.addEventListener('Click', () => {     
+  showMessage('Good!', 'user')   
 });
+
+const value = document.getElementById('input-value').value;
+  
+chat.innerHTML += 
+  `<section class="user-msg"><div class="bubble user-bubble">${value}</div></section>`;
+});
+
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
