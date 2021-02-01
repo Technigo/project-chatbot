@@ -38,12 +38,24 @@ const greeting = () => {
         // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+setTimeout(greeting, 1000);
+
 // Set up your eventlisteners here
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000)
+form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const wine = document.getElementById('wine-input').wine;
+
+            if ('white') {
+                showMessage(wine, 'user');
+            }
+        }
+
+
+        // When website loaded, chatbot asks first question.
+        // normally we would invoke a function like this:
+        // greeting()
+        // But if we want to add a little delay to it, we can wrap it in a setTimeout:
+        // setTimeout(functionName, timeToWaitInMilliSeconds)
+        // This means the greeting function will be called one second after the website is loaded.
