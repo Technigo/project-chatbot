@@ -8,6 +8,8 @@ const chat = document.getElementById('chat')
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
+    console.log('test');
+
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -32,7 +34,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Hello there, What's your name?`, 'user')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
