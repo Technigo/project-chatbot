@@ -7,6 +7,9 @@ const formMessageBox = document.getElementById("form-input");
 let questionNumber = 1;
 let chatDelay = 100;
 
+// Set up your eventlisteners here
+formSubmitButton.addEventListener('click', () => nextQuestion(formMessageBox.value));
+
 // Functions declared here
 const botReply = (msg) => {
   showMessage(msg, "bot");
@@ -44,12 +47,12 @@ const showMessage = (message, sender) => {
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
+
+
 // Starts here
 const greeting = () => {
   showMessage(`Hi! What name did your parents give you?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
-
-  formSubmitButton.addEventListener('click', () => nextQuestion(formMessageBox.value));
 }
 
 const nextQuestion = (message) => {
@@ -61,13 +64,16 @@ const nextQuestion = (message) => {
 
   }else if (questionNumber === 2){
     userReply(message);
+    formMessageBox.value = "";
     if (message === "stocks"){
-      console.log(message);
+      botReply("Perfect. Stocks");
     
     }else if (message === "funds") {
-      
+      botReply("Perfect. funds");
+      formMessageBox.value = "";
     }else {
       botReply('You have to type either "stocks" or "funds".');
+      formMessageBox.value = "";
     }
   };
 };
@@ -76,7 +82,7 @@ const question2 = (message) => {
   questionNumber++;
   botReply(`Hello ${message}. Would you like to know more about "stocks" or "funds"?`)
 
-  formSubmitButton.addEventListener('click', () => nextQuestion(formMessageBox.value));
+  /* formSubmitButton.addEventListener('click', () => nextQuestion(formMessageBox.value)); */
 };
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
