@@ -54,14 +54,17 @@ const greeting = () => {
 
 const nextQuestion = (message) => {
   if (questionNumber === 1){
+    
     userReply(message);
     formMessageBox.value = "";
     setTimeout(() => question2(message), chatDelay)
+
   }else if (questionNumber === 2){
-    if (formMessageBox.value === "stocks"){
+    userReply(message);
+    if (message === "stocks"){
       console.log("stocks");
     
-    }else if (formMessageBox.value === "funds") {
+    }else if (message === "funds") {
       console.log("funds");
     }else {
       botReply('You have to type either "stocks" or "funds".');
