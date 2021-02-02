@@ -2,34 +2,109 @@
 const chat = document.getElementById('chat');
 const form = document.getElementById('name-form');
 let value = document.getElementById('input-value'); /*is thsi correct*/
+const inputWrapper = document.getElementById("input-wrapper")
 
 let userName = "" /* when do we call this variable?*/
+/*
+
+/*
+const drink = 
+  <select id= "select">
+  <option value= "" selected disabled>Dont forget to make your choice</option>
+  <option value="nature">Nature</option>
+  <option value="mountain">Mountain</option>
+  <option value="city">City</option>
+  <option value="beach">Beach</option>
+  </select>
+*/
 
 //Question 1 -warm or cold 
 const askForWarmOrCold = () => {
-  showMessage (`Hello ${value} My name is Vacation Bot I am here to help you chose your next holiday detsination. What do you prefer?`, "bot")
-  inputWrapper.innerHTML= `
+  showMessage (`I am here to help you chose your next holiday destination. What do you prefer?`, "bot")
+  inputWrapper.innerHTML=`
   <button id="warmButton">Warm</button>
   <button id="coldButton">Cold</button>
   `
 document
   .getElementById("warmButton")
   .addEventListener("click", () => {
-  showMessage("I prefer to be hot as the sun", "user")
-  setTimeout(()=> natureOrCity("warm"), 1000)
+  showMessage ("I prefer to be hot as the sun", "user")
+  setTimeout (() => askForLocation(), 1000)
   })
 document
   .getElementById("coldButton")
   .addEventListener("click", () =>{
-  showMessage("I prefer to be cold as an icebear", "user")
-  setTimeout(()=> natureOrCity ("cold"), 1000)
+  showMessage ("I prefer to be cold as an icebear", "user")
+  setTimeout (() => askForLocation (), 1000)
   })
 }
 
-
-const natureOrCity = cathegoryChoice => {
-  showMessage(`Oh so are a warm person?`)
+// the user choice to question 1 
+const askForLocation = locationChoice => {
+  showMessage(`Is that so.. then let me know what view you prefer, `, "bot")
+  inputWrapper.innerHTML=`
+  <select id= "select">
+  <option id= "" selected disabled> Chose from this list</option>
+  <option id="mountainOption">Mountain</option>
+  <option id="cityOption">City</option>
+  <option id="beachOption">Beach</option>
+  </select>
+  `
 }
+/*
+   if (locationChoice === "mountainOption" || "Mountain") {
+    showMessage ("I wanna go all the way up", "user")
+    setTimeout (() => askForDrink (), 1000) 
+   } else if (locationChoice === "cityOption") {
+    showMessage ("I wanna spend money", "user")
+    setTimeout(()=> askForDrink(), 1000)
+   } else {
+    showMessage ("I don't wanna do anything", "user")
+    setTimeout(() => askForDrink (), 1000)
+   } */
+
+   /*
+  if (document.getElementById("mountainOption").locationChoice ===True){
+    showMessage ("I wanna go all the way up", "user")
+    setTimeout (() => askForDrink (), 1000) 
+  } else if (document.getElementById("cityOption").selected === True) {
+      showMessage ("I wanna spend money", "user")
+      setTimeout(()=> askForDrink(), 1000)
+    } else {
+      showMessage ("I don't wanna do anything", "user")
+    setTimeout(() => askForDrink (), 1000)
+    }
+   
+  */
+ 
+  /*document
+  .getElementById("mountainOption")
+  .addEventListener("click", () => {
+    showMessage ("I wanna go all the way up", "user")
+    setTimeout  
+  })
+  document
+  .getElementById("cityOption")
+  .addEventListener("click", () => {
+    showMessage ("I wanna spend money", "user")
+    setTimeout
+  })
+  document
+  .getElementById("beachOption")
+  .addEventListener("click", () => {
+    showMessage ("I don't wanna do anything", "user")
+    setTimeout
+  })
+
+*/
+
+/*
+ const selectedLocation = document.getElementById("select")
+    selectedLocation.addEventListener("change", () => {
+    showMessage
+    })
+ */   
+
 
 
 
@@ -89,8 +164,8 @@ chat.innerHTML += `
      <img src="assets/user.png" alt="User" />
   </section>
   `
-  setTimeout (() => showMessage(`Nice to meet you ${value}!`, "bot"), 1000)
-  setTimeout(()=> askForWarmOrCold (), 1000);
+  setTimeout (() => showMessage(`Nice to meet you ${value}! My name is Vacation Bot`, "bot"), 1000)
+  setTimeout(()=> askForWarmOrCold (), 3000);
 });
 
 
@@ -116,3 +191,4 @@ const handleNameInput = (event) => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
+
