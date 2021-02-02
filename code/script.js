@@ -52,8 +52,21 @@ const showMovieOptions = (name) => {
   showMessage(`Hi ${name}, what kind of movie would you like to watch?`, "bot")
   movieOptions.classList.remove('hide')
   nameForm.classList.add('hide')
-
 }
+
+const comedyBtn = document.querySelector("#comedy-btn")
+const actionBtn = document.querySelector("#action-btn")
+const horrorBtn = document.querySelector("#horror-btn")
+const romanticBtn = document.querySelector("#romantic-btn")
+
+// When the user clicks button, trigger event 
+const comedy = () => {
+  showMessage(`You chose Comedy!`, 'bot')
+  movieOptions.classList.add('hide')
+  showMessage(`Here are four comedy movie options:`, 'bot')
+}
+comedyBtn.addEventListener("click", comedy)
+
 
 // Starts here
 const greeting = () => {
