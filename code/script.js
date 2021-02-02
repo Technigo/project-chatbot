@@ -3,6 +3,38 @@ const chat = document.getElementById('chat');
 const form = document.getElementById('name-form');
 let name = document.getElementById('input-value');
 
+let userName = ""
+
+//Question 1 -warm or cold 
+const askForWarmOrCold = () => {
+  showMessage (`My name is Vacation Bot I am here to help you chose your next holiday detsination. What do you prefer?`, "bot")
+  inputWrapper.innerHTML= `
+  <button id="warmButton">Warm</button>
+  <button id="coldButton">Cold</button>
+  `
+
+document
+  .getElementById("warmButton")
+  .addEventListener("click", () => {
+  showMessage("I prefer to be hot as the sun", "user")
+  setTimeout(()=> natureOrCity("warm"), 1000)
+  })
+
+document
+  .getElementById("coldButton")
+  .addEventListener("click", () =>{
+  showMessage("I prefer to be cold as an icebear", "user")
+  setTimeout(()=> natureOrCity ("cold"), 1000)
+  })
+}
+
+
+const askForCathegory = cathegoryChoice => {
+  showMessage(`Oh so `)
+}
+
+
+
 // Global variables, if you need any, declared here
 
 // Functions declared here
@@ -56,11 +88,30 @@ form.addEventListener('Click', () => {
   showMessage('Good!', 'user')   
 });
 
-const value = document.getElementById('input-value').value;
-  
-chat.innerHTML += 
-  `<section class="user-msg"><div class="bubble user-bubble">${value}</div></section>`;
+const value = document.getElementById('input-value').value; 
+chat.innerHTML += `
+  <section class="user-msg">
+    <div class="bubble user-bubble">${value}</div>
+     <img src="assets/user.png" alt="User" />
+  </section>
+  `;
 });
+
+
+/*
+const handleNameInput = (event) => {
+  event.preventDefault()
+  const userName = nameInput.value
+  name.value = ""
+  showMessage(userName, "user")
+  setTimeout (() => showMessage(`Nice to meet you ${value}!`, "bot"), 1000)
+} */
+
+/*const firstResponse = () => {
+  showMessage (`My name is Vacation Bot`, 'bot')
+  inputWrapper.innerHTML=``
+  <button></Button> 
+}*/
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
