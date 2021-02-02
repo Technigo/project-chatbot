@@ -1,5 +1,6 @@
 // All the DOM selectors stored as short variables
-const chat = document.getElementById('chat')
+const chat = document.getElementById('chat');
+const form = document.getElementById('name-form');
 
 // Global variables, if you need any, declared here
 
@@ -8,6 +9,7 @@ const chat = document.getElementById('chat')
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
+    console.log('hello');
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
