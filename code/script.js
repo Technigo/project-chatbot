@@ -22,7 +22,7 @@ const showMessage = (message, sender) => {
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
-          <p>message</p>
+          <p>${message}</p>
         </div>
       </section>
     `
@@ -33,7 +33,8 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Hello there, I'm your Life Coach! I will be happy to help you to reach your goals to become your best self. What’s your name?
+  `, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -45,4 +46,4 @@ const greeting = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000)
+setTimeout(greeting, 500)
