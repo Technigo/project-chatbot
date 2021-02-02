@@ -4,9 +4,17 @@ const chat = document.getElementById('chat')
 // Global variables, if you need any, declared here
 
 // Functions declared here
+const postAnswer = (value) => {
+  console.log(value);
+  if (value != "") {
+    showMessage(value, 'user');
+    showMessage('Hi', 'bot');
+  }
+}
+
 
 // This function will add a chat bubble in the correct place based on who the sender is
-const showMessage = (message, sender) => {
+const showMessage = (message, sender) => { 
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
@@ -37,6 +45,15 @@ const greeting = () => {
 }
 
 // Set up your eventlisteners here
+document.getElementById("button").addEventListener("click", (event) => {
+  event.preventDefault();
+  const value = document.getElementById(`name-input`).value;
+  document.getElementById(`name-input`).value = "";
+  console.log(value);
+  postAnswer(value);
+});
+  
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
