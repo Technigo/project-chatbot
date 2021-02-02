@@ -114,7 +114,7 @@ main {
   justify-content: center;
 }
 
-.input-wrapper form {
+form {
   width: 100%;
   display: flex;
 }
@@ -137,4 +137,8 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+.hide {
+  display: none;
 }

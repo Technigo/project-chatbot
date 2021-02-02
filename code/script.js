@@ -31,14 +31,35 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
+const nameForm = document.querySelector("#name-form")
+let nameUser = "none";
+
+nameForm.addEventListener("submit", (event) => {
+  event.preventDefault()
+  nameUser = document.querySelector("#name-input").value
+  showMessage(nameUser, "user")
+  setTimeout(showMovieOptions(nameUser), 9000)
+})
+
+// nameForm.addEventListener("submit", (event) => {
+//   event.preventDefault()
+//   showMessage(`Hi ${nameUser}`, "bot")
+// })
+
+const movieOptions = document.querySelector("#movie-options")
+
+const showMovieOptions = (name) => {
+  showMessage(`Hi ${name}, what kind of movie would you like to watch?`, "bot")
+  movieOptions.classList.remove('hide')
+  nameForm.classList.add('hide')
+
+}
 
 // Starts here
 const greeting = () => {
   showMessage(`Hello there, what is your name ?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
-
-
 
 // Set up your eventlisteners here
 
@@ -49,4 +70,3 @@ const greeting = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
-showMessage('Hello', 'user');
