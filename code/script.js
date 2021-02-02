@@ -51,12 +51,13 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Hello, where's the party at?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 } 
 
 const foodoption = () => {
   showMessage(`Do you want pizza or pasta?`, 'bot')
+
 }
 
 // Set up your eventlisteners here
