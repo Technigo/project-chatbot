@@ -1,8 +1,10 @@
 # Project Name
 
-Replace this readme with your own information about your project.
+Team:
+Ati Takrami
+Maria Bergman
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+We are building a Halloween-bot to decide what costume you should wear for Halloween.
 
 ## The problem
 
