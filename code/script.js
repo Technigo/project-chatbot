@@ -1,5 +1,6 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+const form = document.getElementById('form')
 
 // Global variables, if you need any, declared here
 
@@ -37,7 +38,22 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+const handleNameInput = (event) => {
+  event.preventDefault()
+  // Store the value in a variable so we can access it after we 
+	// clear it from the input
+  const name = nameInput.value
+  showMessage(name, 'user')
+  nameInput.value = ''
+
+  // After 1 second, show the next question by invoking the next function.
+	// passing the name into it to have access to the user's name if we want
+	// to use it in the next question from the bot.
+  setTimeout(() => showFoodOptions(name), 1000)
+}
+
 // Set up your eventlisteners here 
+form.addEventListener('submit', handleNameInput)
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
