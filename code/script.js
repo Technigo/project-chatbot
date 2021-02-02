@@ -1,9 +1,11 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
-
+let userAnswer = document.getElementById('name-input')
+const nameForm = document.getElementById('name-form')
 // Global variables, if you need any, declared here
 
 // Functions declared here
+
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -34,12 +36,37 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'user')
+  showMessage(`Hello there, what do you fancy today? Beer, Wine or Bubbles?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+
+
+// 1. Fånga upp det användaren säger
+// 2. Jämföra inputen med botens svar (if/else)
+// 3. Svara användaren
+
 // Set up your eventlisteners here
 
+nameForm.addEventListener("submit", (event)=> {
+  event.preventDefault();
+  
+   // Assign input value to variable
+   const value = document.getElementById('name-input').value;
+    if (value === "beer") {
+      showMessage(value, 'user')
+      showMessage('What do you prefer: IPA, Lager or Stout?', "bot") 
+    } else if (value === "wine") {
+      showMessage(value, 'user')
+      showMessage('What are goin to eat: meat, fish or vegetarian?', 'bot')
+    } else if (value === "bubbles") {
+      showMessage(value, 'user')
+      showMessage('What do you prefer: Cava, Prosecco or Champagne?', 'bot')
+    } else {
+      showMessage(value, 'user')
+      showMessage("We don't sell that!", 'bot')
+    }
+  });
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
