@@ -31,11 +31,14 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
+
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Hello there, what is your name ?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
+
+
 
 // Set up your eventlisteners here
 
