@@ -56,33 +56,46 @@ const greeting = () => {
 }
 
 const nextQuestion = (message) => {
-  if (questionNumber === 1){
+  if (questionNumber === 1) {
 
-    userReply(message);
+    userReply(message); // Speech bubble name
     formMessageBox.value = "";
-    setTimeout(() => question2(message), chatDelay)
+    setTimeout(() => question2(message), chatDelay) // Move to question2
 
-  }else if (questionNumber === 2){
-    userReply(message);
+  } else if (questionNumber === 2) {
+    userReply(message); // Speech bubble STOCKS or FUNDS
     formMessageBox.value = "";
-    if (message === "stocks"){
-      botReply("Perfect. Stocks");
-    
-    }else if (message === "funds") {
-      botReply("Perfect. funds");
-      formMessageBox.value = "";
-    }else {
+
+    if (message === "stocks") {
+      botReply("Perfect. Would you like high risk or low risk stocks?");
+      questionNumber++; // Add 1 to questionNumber. questionNumber is now 3
+    } else if (message === "funds") {
+      botReply("funds");
+      questionNumber++; // Add 1 to questionNumber. questionNumber is now 3
+    } else {
       botReply('You have to type either "stocks" or "funds".');
-      formMessageBox.value = "";
-    }
-  };
+    };
+  } else if (questionNumber === 3) {
+    question3(message);
+  }
 };
 
 const question2 = (message) => {
-  questionNumber++;
-  botReply(`Hello ${message}. Would you like to know more about "stocks" or "funds"?`)
+  questionNumber++; // Add 1 to questionNumber. questionNumber is now 2
+  botReply(`Hello ${message}. Would you like to know more about "stocks" or "funds"?`) // Speech bubble question
+  // Jump to nextQuestion function because we clicked the button
+};
 
-  /* formSubmitButton.addEventListener('click', () => nextQuestion(formMessageBox.value)); */
+const question3 = (message) => {
+  userReply(message); // Speechbubble high
+  formMessageBox.value = "";
+  if (message === "high" || message === "high risk") {
+    botReply("oh, so you want high risk!");
+  } else if (message === "low" || message === "low risk") {
+    botReply("You want low risk");
+  } else {
+    botReply("You have to type either low risk or high risk.");
+  };
 };
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
