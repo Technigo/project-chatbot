@@ -138,3 +138,23 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    outline: none;
+    text-align-last: center;
+}
+
+.mountain {
+  background-image: url("https://static.toiimg.com/photo/64560386.cms");
+  background-size: cover;
+  background-size: 100%;
+  background-position: 1%;
+}
