@@ -11,3 +11,8 @@ export const classSelect = `
     <button class="input__button" type="submit" value="Rogue">Rogue</button>    
     <button class="input__button" type="submit" value="wizard">Wizard</button>    
 `;
+export const actionSelect = `
+    <button class="input__button" type="submit" value="Attack">Attack</button>
+    <button class="input__button" type="submit" value="Defend">Defend</button>    
+    <button class="input__button" type="submit" value="Special">Special</button>    
+`;
