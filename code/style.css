@@ -2,11 +2,14 @@
   box-sizing: border-box;
 }
 
+/* Added background image and backup background color */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url("./assets/cinema2.jpg");
+  background-size: cover;
+  background-color: black;
 }
 
 h1 {
@@ -33,12 +36,13 @@ p {
   margin: 0;
 }
 
+/* Changed background color for input*/
 input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #e9e3e3;
+  color: black;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -46,6 +50,12 @@ input {
   line-height: 26px;
   flex: 1;
 }
+
+/* Changed background color and border when pressed on*/
+input[type=text]:focus {
+  background: #e9e3e3;
+  outline: 1px solid black;
+} 
 
 main {
   margin: 0 auto;
@@ -89,13 +99,14 @@ main {
   height: 60px;
 }
 
+/*Changed background color and text color for bubble */
 .bubble {
-  background: #e5e9ff;
+  background: #e9e3e3;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: black;
   max-width: 40%;
 }
 
@@ -119,8 +130,9 @@ main {
   display: flex;
 }
 
+/* Changed button color*/
 button {
-  background-color: #0026ff;
+  background-color: black;
   color: white;
   border: none;
   border-radius: 4px;

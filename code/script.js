@@ -60,6 +60,10 @@ const nextQuestion = (message) => {
     userReply(message)
     setTimeout(() => movieMenu(message), 1000)
   }
+  else if (questionNumber === 5) {
+    userReply(message)
+    setTimeout(() => chosenMovie(message), 1000)
+  }
 };
 
 // Starts here - OBS make sure it is possible to type in text in input box!
@@ -111,16 +115,16 @@ const movieGenre = (length) => {
     <button id="documentaryBtn">Documentary</button>
   </div>`
 
-  document.getElementById('dramaBtn').addEventListener('click', () => nextQuestion('Drama'))
-  document.getElementById('thrillerBtn').addEventListener('click', () => nextQuestion('Thriller'))
-  document.getElementById('comedyBtn').addEventListener('click', () => nextQuestion('Comedy'))
-  document.getElementById('documentaryBtn').addEventListener('click', () => nextQuestion('Documentary'))
+  document.getElementById('dramaBtn').addEventListener('click', () => nextQuestion('drama'))
+  document.getElementById('thrillerBtn').addEventListener('click', () => nextQuestion('thriller'))
+  document.getElementById('comedyBtn').addEventListener('click', () => nextQuestion('comedy'))
+  document.getElementById('documentaryBtn').addEventListener('click', () => nextQuestion('documentary'))
 }
 
 const movieMenu = (type) => {
   questionNumber++ 
-  showMessage(`Excellent choice - ${type} it is! Here is a list of movies that I think will suit you:`, 'bot')
-//Add if else statements, add extra condition here for length of movie?g
+  showMessage(`Excellent choice - ${type} it is. Here is a list of movies that I think will suit you:`, 'bot')
+//Add if else statements, add extra condition here for length of movie?
   if (type === 'drama'){
     inputWrapper.innerHTML = `
       <select id="select"> 
@@ -159,11 +163,24 @@ const movieMenu = (type) => {
       `
   }
   
-
 const select = document.getElementById('select')
   select.addEventListener('change', () => nextQuestion(select.value))
 };
 
+const chosenMovie = (select) => {
+  questionNumber++ 
+  showMessage(`Get the popcorn ready and enjoy watching ${select}!`, 'bot')
+  showMessage(`Press restart if you want to start over 👇`, 'bot')
+  inputWrapper.innerHTML = 
+  `<div>
+    <button id="restartBtn">Restart</button>
+  </div>`
+
+  document.getElementById('restartBtn').addEventListener('click', () => {
+    location.reload()
+  })
+
+};
 
 
 // Set up your eventlisteners here
