@@ -25,7 +25,7 @@ const botReply = (msg) => {
 
   
   
-sendBtn.addEventListener('click', () => nextQuestion(input.value)) // Denna är SUPERVIKTIG, det ÄR DENNA SOM SÄTTER IGÅNG FRÅGORNA
+sendBtn.addEventListener('click', () => nextQuestion(input.value))
 input.addEventListener('keypress', (event) => {
     if (event.key === 'Enter' && input.value) nextQuestion(input.value)
 })
