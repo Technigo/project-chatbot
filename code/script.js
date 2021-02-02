@@ -7,6 +7,7 @@ const chat = document.getElementById('chat')
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
+  console.log(sender);
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
@@ -26,6 +27,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
+  
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
