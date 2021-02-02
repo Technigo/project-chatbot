@@ -1,13 +1,11 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 
+const inputWrapper = document.getElementById('input-wrapper')
+
 // Global variables, if you need any, declared here
-
-// Functions declared here
-
-// This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  console.log(sender);
+  
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
@@ -27,10 +25,41 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
-  
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
+// Functions declared here
+const handleFoodInput = (event) => {
+  event.preventDefault()
+  inputWrapper.innerHTML = `
+  <button id="Pizza-button">Pizza</button>
+  <button id="Pasta-button">Pasta</button>
+  <button id="Salad-button">Salad</button>
+  `
+  document
+  .getElementById('Pizza-button')
+  .addEventListener('click',() => {
+   showMessage('I want pizza', 'user') 
+  })
+
+  document
+  .getElementById('pasta-button')
+  .addEventListener('click',() => {
+   showMessage('I want pasta', 'user') 
+  })
+
+  document
+  .getElementById('Salad-button')
+  .addEventListener('click',() => {
+   showMessage('I want Salad', 'user') 
+  })
+}
+
+// This function will add a chat bubble in the correct place based on who the sender is
+
+  
+  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+ 
+
 
 // Starts here
 const greeting = () => {
