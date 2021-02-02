@@ -1,25 +1,23 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat');
 const form = document.getElementById('name-form');
-let name = document.getElementById('input-value');
+let value = document.getElementById('input-value'); /*is thsi correct*/
 
-let userName = ""
+let userName = "" /* when do we call this variable?*/
 
 //Question 1 -warm or cold 
 const askForWarmOrCold = () => {
-  showMessage (`My name is Vacation Bot I am here to help you chose your next holiday detsination. What do you prefer?`, "bot")
+  showMessage (`Hello ${value} My name is Vacation Bot I am here to help you chose your next holiday detsination. What do you prefer?`, "bot")
   inputWrapper.innerHTML= `
   <button id="warmButton">Warm</button>
   <button id="coldButton">Cold</button>
   `
-
 document
   .getElementById("warmButton")
   .addEventListener("click", () => {
   showMessage("I prefer to be hot as the sun", "user")
   setTimeout(()=> natureOrCity("warm"), 1000)
   })
-
 document
   .getElementById("coldButton")
   .addEventListener("click", () =>{
@@ -29,8 +27,8 @@ document
 }
 
 
-const askForCathegory = cathegoryChoice => {
-  showMessage(`Oh so `)
+const natureOrCity = cathegoryChoice => {
+  showMessage(`Oh so are a warm person?`)
 }
 
 
@@ -83,10 +81,6 @@ const greeting = () => {
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  /* Matilda */ 
-form.addEventListener('Click', () => {     
-  showMessage('Good!', 'user')   
-});
 
 const value = document.getElementById('input-value').value; 
 chat.innerHTML += `
@@ -94,7 +88,9 @@ chat.innerHTML += `
     <div class="bubble user-bubble">${value}</div>
      <img src="assets/user.png" alt="User" />
   </section>
-  `;
+  `
+  setTimeout (() => showMessage(`Nice to meet you ${value}!`, "bot"), 1000)
+  setTimeout(()=> askForWarmOrCold (), 1000);
 });
 
 
