@@ -138,3 +138,9 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+.choice-btn-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+}

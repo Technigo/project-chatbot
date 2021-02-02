@@ -1,16 +1,90 @@
 // All the DOM selectors stored as short variables
-const chat = document.getElementById('chat')
+const chat = document.getElementById('chat');
+// const input = document.getElementById('input-wrapper');
 
 // Global variables, if you need any, declared here
+let step = 1;
 
 // Functions declared here
 const postAnswer = (value) => {
-  console.log(value);
   if (value != "") {
     showMessage(value, 'user');
-    showMessage('Hi', 'bot');
+    showMessage(`Welcome ${value}, what style are you looking for? Funny, scary or cute?`, 'bot');
+  } else {
+    step -= 1;
   }
 }
+
+const threeWayQuestion = (value) => {
+
+  showMessage(value, 'user');
+
+  let normalizeValue = value.toLowerCase();
+
+  if (normalizeValue.includes('funny')) {
+    showMessage(`What's you favorite Disney movie?`, 'bot');
+    chat.innerHTML += `
+      <div class="choice-btn-container">
+        <button id='a' class="choice-btn">a</button>
+        <button id='b' class="choice-btn">b</button>
+        <button id='c' class="choice-btn">c</button>
+      </div>
+    `
+    document.getElementById('a').addEventListener("click", () => {
+      console.log("a")
+    });
+    document.getElementById('b').addEventListener("click", () => {
+      console.log("b")
+    });
+    document.getElementById('c').addEventListener("click", () => {
+      console.log("c")
+    });
+      
+  } else if (normalizeValue.includes('scary')) {
+    showMessage(`What's you favorite Disney movie?`, 'bot');
+    chat.innerHTML += `
+      <div class="choice-btn-container">
+        <button id='a' class="choice-btn">a</button>
+        <button id='b' class="choice-btn">b</button>
+        <button id='c' class="choice-btn">c</button>
+      </div>
+    `
+    document.getElementById('a').addEventListener("click", () => {
+      console.log("a")
+    });
+    document.getElementById('b').addEventListener("click", () => {
+      console.log("b")
+    });
+    document.getElementById('c').addEventListener("click", () => {
+      console.log("c")
+    });
+
+  } else if (normalizeValue.includes('cute')) {
+    showMessage(`What's you favorite Disney movie?`, 'bot');
+    chat.innerHTML += `
+      <div class="choice-btn-container">
+        <button id='a' class="choice-btn">a</button>
+        <button id='b' class="choice-btn">b</button>
+        <button id='c' class="choice-btn">c</button>
+      </div>
+    `
+    document.getElementById('a').addEventListener("click", () => {
+      console.log("a")
+    });
+    document.getElementById('b').addEventListener("click", () => {
+      console.log("b")
+    });
+    document.getElementById('c').addEventListener("click", () => {
+      console.log("c")
+    });
+
+  } else {
+    showMessage(`Please answer the question, What style are you looking for? Funny, scary or cute?`, 'bot');
+    step -= 1;
+  }
+}
+
+
 
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -49,10 +123,15 @@ document.getElementById("button").addEventListener("click", (event) => {
   event.preventDefault();
   const value = document.getElementById(`name-input`).value;
   document.getElementById(`name-input`).value = "";
-  console.log(value);
-  postAnswer(value);
+  // console.log(value);
+  if(step === 1) {
+    postAnswer(value);
+    step += 1;
+  } else if (step === 2) {
+    threeWayQuestion(value);
+    step += 1;  
+  }
 });
-  
 
 
 // When website loaded, chatbot asks first question.
