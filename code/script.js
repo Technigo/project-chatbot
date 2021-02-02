@@ -158,6 +158,7 @@ const handleClassSelectInput = (event) => {
 const encRoundStart = () => {
   // instantiate Encounter
   encounter = new Encounter(_name, _type, _difficulty);
+  console.log(encounter);
   showMessage("Excellent! Let's begin...", "bot");
   setTimeout(() => {
     showMessage(

@@ -8,8 +8,8 @@ export const boolSelect = `
     `;
 export const classSelect = `
     <button class="input__button" type="submit" value="Fighter">Fighter</button>
-    <button class="input__button" type="submit" value="Rogue">Rogue</button>    
-    <button class="input__button" type="submit" value="wizard">Wizard</button>    
+    <button class="input__button" type="submit" value="Ranger">Ranger</button>    
+    <button class="input__button" type="submit" value="Sorcerer">Sorcerer</button>    
 `;
 export const actionSelect = `
     <button class="input__button" type="submit" value="Attack">Attack</button>

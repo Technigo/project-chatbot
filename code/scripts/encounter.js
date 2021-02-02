@@ -1,19 +1,24 @@
+import { d20 } from "./helperFunctions.js";
+import { Fighter, Ranger, Sorcerer, Enemy } from "./combatant.js";
+
 export default class Encounter {
   constructor(name, type, isEasy) {
     this.isEasy = isEasy;
     this.location = this.setLocation();
-    this.enemy = {
-      type: "goblin",
-      hp: this.isEasy ? 5 : 15,
-      actions: ["Attack", "Defend", "Special"],
-    };
-    this.hero = {
-      name: name,
-      type: type,
-      hp: this.isEasy ? 20 : 11,
-      actions: ["Attack", "Defend", "Special"],
-    };
+    this.enemy = new Enemy(isEasy, this.location);
+    this.hero = this.setHero(name, type);
     this.counter = 0;
+  }
+
+  setHero(name, type) {
+    switch (type) {
+      case "Fighter":
+        return new Fighter(name);
+      case "Ranger":
+        return new Ranger(name);
+      case "Sorcerer":
+        return new Sorcerer(name);
+    }
   }
 
   setLocation() {
