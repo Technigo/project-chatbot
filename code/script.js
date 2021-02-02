@@ -9,20 +9,26 @@ const userInput = document.getElementById("userInput");
 
 // Global variables, if you need any, declared here
 let currentInput = "none";
-// Instantiate encounter and hero with default values to be filled by user settings
-let encounter = new Encounter(true);
-let player = new Hero(encounter);
+let hero, encounter;
+
+// Temp variables to use for instantiation
+let _name, _type, _difficulty;
 
 // Functions declared here
-// This function replaces the userInput with a new element
+// This function replaces the userInput with a new element and sets the currentInput variable
 const changeInput = (type) => {
   switch (type) {
     case "name":
       userInput.innerHTML = input.name;
       currentInput = "name";
       break;
-    case "btnGroup":
-      userInput.innerHTML = input.btnGroup;
+    case "boolSelect":
+      userInput.innerHTML = input.boolSelect;
+      currentInput = "boolSelect";
+      break;
+    case "classSelect":
+      userInput.innerHTML = input.classSelect;
+      currentInput = "classSelect";
       break;
     default:
       userInput.innerHTML = ``;
@@ -34,7 +40,6 @@ const changeInput = (type) => {
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === "user") {
-    console.log("user sent a message");
     chat.innerHTML += `
     <section class="message__user">
       <div class="bubble bubble__user">
@@ -44,7 +49,6 @@ const showMessage = (message, sender) => {
     </section>
     `;
   } else if (sender === "bot") {
-    console.log("bot sent a message");
     chat.innerHTML += `
       <section class="message__bot">
         <img src="assets/bot.png" alt="Bot" />
@@ -72,7 +76,7 @@ const handleNameInput = (event) => {
   // Show the name as user message
   showMessage(name, "user");
   // store the name
-  player.name = name;
+  _name = name;
   //trigger askExperience
   setTimeout(() => {
     askExperience();
@@ -80,18 +84,76 @@ const handleNameInput = (event) => {
 };
 
 const askExperience = () => {
-  console.log("ask experience");
-  console.log(player);
+  showMessage("Alright...", "bot");
+  setTimeout(() => {
+    showMessage(`Looks like you’re in for a challenge ${_name}`, "bot");
+    setTimeout(() => {
+      showMessage("Would you like to make it a bit easier?", "bot");
+      // show the yes and no inputs
+      changeInput("boolSelect");
+    }, 1000);
+  }, 1000);
+};
+
+const handleBoolInput = (event) => {
+  const difficulty = event.value === "true";
+  const response = difficulty ? "Take it easy on me" : "I like a challenge";
+  // show answer as a response
+  showMessage(response, "user");
+  // store as encounter isEasy
+  _difficulty = difficulty;
+  // trigger ask class
+  setTimeout(() => {
+    askClass();
+  }, 1000);
+};
+
+const askClass = () => {
+  showMessage("Great! I will adapt the experience based on that.", "bot");
+  setTimeout(() => {
+    showMessage("One last thing before we begin....", "bot");
+    setTimeout(() => {
+      showMessage("What class would you like to play as?", "bot");
+      // show class input options
+      changeInput("classSelect");
+    }, 1000);
+  }, 1000);
+};
+
+const handleClassSelectInput = (event) => {
+  const type = event.value;
+  // show user response
+  showMessage(`I am a ${type}`, "user");
+  // store class
+  _type = type;
+  // trigger encRoundStart()
+  setTimeout(() => {
+    encRoundStart();
+  }, 1000);
+};
+
+const encRoundStart = () => {
+  // instantiate Hero and Encounter
+  encounter = new Encounter(_difficulty);
+  hero = new Hero(_name, _type, encounter);
+  console.log(encounter);
+  console.log(hero);
 };
 
 // Set up your eventlisteners here
+// Listens for any submit events in the user input form. Then triggers a handler funct for that input type (based on the currentinput variable)
 userInput.addEventListener("submit", (event) => {
   event.preventDefault();
   switch (currentInput) {
     case "name":
       handleNameInput(event);
       break;
-
+    case "boolSelect":
+      handleBoolInput(event.submitter);
+      break;
+    case "classSelect":
+      handleClassSelectInput(event.submitter);
+      break;
     default:
       break;
   }
