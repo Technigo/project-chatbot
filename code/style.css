@@ -150,3 +150,21 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+/* Added styling to dropdown list */
+#select {
+  width: 100%;
+  cursor: pointer;
+  color: black;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  padding: 16px 20px;
+  border-radius: 4px;
+  border: none;
+  font-size: 16px;
+  background: #e9e3e3;
+}
+
+select:focus {
+  border: 1px solid black;
+}
