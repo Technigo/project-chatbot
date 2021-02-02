@@ -3,15 +3,15 @@
     - 2 Floor
     - 3 Floor
 2) (Form - Rullgardin (Accordion)) Select a room
-    - Room 111 (211) (311)
-    - Room 112 (212) (312)
-    - Room 113 (213) (313)
-    - Room 114 (214) (314)
-    - Room 115 (215) (315)
+    - Room 1              Room 111 (211) (311)
+    - Room 2              Room 112 (212) (312)
+    - Room 3              Room 113 (213) (313)
+    -               Room 114 (214) (314)
+    -               Room 115 (215) (315)
 3) (Form - Button) Select duration select
-    - 1 h
-    - 2 h
-    - 3 h
+    - 30 m
+    - 60 m
+    - 90 m
 4) Message: Your booking is complete!
 
 
