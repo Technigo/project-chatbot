@@ -1,26 +1,32 @@
+// Import scripts
+import * as input from "./scripts/elementInputs.js";
+import Hero from "./scripts/hero.js";
+import Encounter from "./scripts/encounter.js";
+
 // All the DOM selectors stored as short variables
 const chat = document.getElementById("chat");
 const userInput = document.getElementById("userInput");
 
 // Global variables, if you need any, declared here
-const inputHTMLName = `
-  <input class="input__text" id="inputText" type="text" />
-  <button class="input__button" type="submit">Send</button>
-`;
-const inputHTMLBtnGroup = `
-  <button class="input__button" type="submit">Yes</button>
-  <button class="input__button" type="submit">No</button>
-`;
+let currentInput = "none";
+// Instantiate encounter and hero with default values to be filled by user settings
+let encounter = new Encounter(true);
+let player = new Hero(encounter);
 
 // Functions declared here
+// This function replaces the userInput with a new element
 const changeInput = (type) => {
   switch (type) {
     case "name":
-      userInput.innerHTML = inputHTMLName;
+      userInput.innerHTML = input.name;
+      currentInput = "name";
       break;
-
+    case "btnGroup":
+      userInput.innerHTML = input.btnGroup;
+      break;
     default:
       userInput.innerHTML = ``;
+      currentInput = "none";
       break;
   }
 };
@@ -61,14 +67,36 @@ const greeting = () => {
   }, 1500);
 };
 
+const handleNameInput = (event) => {
+  const name = event.target.children.namedItem("inputName").value;
+  // Show the name as user message
+  showMessage(name, "user");
+  // store the name
+  player.name = name;
+  //trigger askExperience
+  setTimeout(() => {
+    askExperience();
+  }, 1000);
+};
+
+const askExperience = () => {
+  console.log("ask experience");
+  console.log(player);
+};
+
 // Set up your eventlisteners here
 userInput.addEventListener("submit", (event) => {
   event.preventDefault();
+  switch (currentInput) {
+    case "name":
+      handleNameInput(event);
+      break;
 
+    default:
+      break;
+  }
   // This clears the user input wrapper from any actions
   changeInput();
-
-  console.log(event);
 });
 
 // When website loaded, chatbot asks first question.
