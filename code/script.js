@@ -2,31 +2,38 @@
 const chat = document.getElementById('chat')
 const form = document.getElementById('name-form')
 const inputWrapper = document.getElementById('input-wrapper')
-const mountain = document.getElementById('mountain')
-const beach = document.getElementById('beach')
-const city = document.getElementById('city')
-const input = document.getElementById("user-input").value
 let questionNumber = 0;
+
 // Global variables, if you need any, declared here
 
 // Functions declared here
 
-form.addEventListener("submit", (event) => {
+// Action when submitting form
+form.addEventListener('submit', (event) => {
   event.preventDefault()
-  const nxtQuestion = (message) => {
-    usrInput()
-    if (questionNumber === 1) {
-      persons()
-      input.value = ""
-    } else if (questionNumber === 2) {
-      where()
-    } else if (questionNumber === 3) {
-      place(message)
-    } else {
-      fail()
+  const input = document.getElementById('user-input').value;
+  nxtQuestion(input)
+})
+
+// function nxtQuestion takes usrInput and checks for questionNumber
+// based on number it 
+
+const nxtQuestion = (message) => {
+  usrInput()
+  if (questionNumber === 1) {
+    persons(message)
+    input = ""
+  } else if (questionNumber === 2) {
+    where(message)
+    input = ""
+  } else if (questionNumber === 3) {
+    place(message)
+    input =""
+  } else {
+    fail(message)
     }
   }
-})
+
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -41,6 +48,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
+    //??ska console.log(greeting) vara här??
     console.log(greeting);
     chat.innerHTML += `
       <section class="bot-msg">
@@ -52,46 +60,78 @@ const showMessage = (message, sender) => {
     `
   }
 
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-  chat.scrollTop = chat.scrollHeight
+// This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+chat.scrollTop = chat.scrollHeight
 }
 
+// Bot chat messages
+// .1
+const greeting = () => {
+  questionNumber = 1;
+  showMessage(`Hi, how many nights do you want to book?`, 'bot');
+}
+// .2
+const persons = () => {
+  questionNumber++
+  showMessage(`How many are going to travel?`, 'bot');
+}
 
+// fail
+const fail = () => {
+  showMessage(`Try input again`, 'bot');
+}
+
+// usrInput has input as parameter
+//??sen fattar jag inte varför input finns som parameter på båda ställena?? 
+const usrInput = (input) => {
+  showMessage(input, 'user');
+}
+
+// Eventlisteners
+
+// .3 with buttons instead of text input
+//??varför behöver vi getElementById i funktionen??
 const where = () => {
   questionNumber++
-  showMessage(`Where do you want to go?`, 'bot');
+  showMessage(`What settings are you looking for?`, 'bot');
 
   inputWrapper.innerHTML = `
   <button id="mountain">Mountain</button>
   <button id="beach">Beach</button>
-  <button id="city">City</button>`
+  <button id="city">City</button>
+  `
+  const mountain = document.getElementById('mountain')
+  const beach = document.getElementById('beach')
+  const city = document.getElementById('city')
 
   mountain.addEventListener('click', () => {
-    nxtQuestion("mountain")
+    nxtQuestion('mountain')
   })
   beach.addEventListener('click', () => {
-    nxtQuestion("beach")
+    nxtQuestion('beach')
   })
   city.addEventListener('click', () => {
-    nxtQuestion("city")
+    nxtQuestion('city')
   })
 }
 
+// .4 after choosing mountain/beach/city - a list to select 
+//??när/vart använder vi plc??
 const place = (plc) => {
-  if (plc === "mountain") {
+  if (plc === 'mountain') {
     inputWrapper.innerHTML = `
     <select id="select">
       <option value="Schweiz">Schweiz</option>
       <option value="Chile">Chile</option>
       <option value="Tibet">Tibet</option>`
-  } else if (plc === "beach") {
+  } else if (plc === 'beach') {
     inputWrapper.innerHTML = `
     <select id="select">
       <option value="Miami">Miami</option>
       <option value="Bali">Bali</option>
       <option value="Las Palmas">Las Palmas</option>
       `
-  } else if (plc === "city") {
+  } else if (plc === 'city') {
     inputWrapper.innerHTML = `
     <select id="select">
       <option value="NewYork">New York</option>
@@ -100,30 +140,12 @@ const place = (plc) => {
   }
 }
 
-
-// Starts here
-const greeting = () => {
-  questionNumber = 1;
-  showMessage(`Hi, how many nights do you want to book?`, 'bot');
-}
-const persons = () => {
-  questionNumber++
-  showMessage(`How many are going to travel?`, 'bot');
-}
-
-const fail = () => {
-  showMessage(`Tryinput again`, 'bot');
-}
-
-const usrInput = (input) => {
-  showMessage(input, "user");
-}
-
-
-// Set up your eventlisteners here
-
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1500)
+
+
+
+
 
 
 
