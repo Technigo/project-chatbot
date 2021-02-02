@@ -8,6 +8,7 @@ const chat = document.getElementById('chat')
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
+    console.log('user');
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -45,3 +46,4 @@ const greeting = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
+showMessage('Hello', 'user');
