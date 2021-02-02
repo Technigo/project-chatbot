@@ -3,8 +3,27 @@ const chat = document.getElementById("chat");
 const userInput = document.getElementById("userInput");
 
 // Global variables, if you need any, declared here
+const inputHTMLName = `
+  <input class="input__text" id="inputText" type="text" />
+  <button class="input__button" type="submit">Send</button>
+`;
+const inputHTMLBtnGroup = `
+  <button class="input__button" type="submit">Yes</button>
+  <button class="input__button" type="submit">No</button>
+`;
 
 // Functions declared here
+const changeInput = (type) => {
+  switch (type) {
+    case "name":
+      userInput.innerHTML = inputHTMLName;
+      break;
+
+    default:
+      userInput.innerHTML = ``;
+      break;
+  }
+};
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -19,7 +38,7 @@ const showMessage = (message, sender) => {
     </section>
     `;
   } else if (sender === "bot") {
-    console.log("user sent a message");
+    console.log("bot sent a message");
     chat.innerHTML += `
       <section class="message__bot">
         <img src="assets/bot.png" alt="Bot" />
@@ -35,13 +54,21 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, "bot");
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage(`Hello adventurer! Welcome to the dungeon…`, "bot");
+  setTimeout(() => {
+    showMessage("Prey tell, what is your name?", "bot");
+    changeInput("name");
+  }, 1500);
 };
 
 // Set up your eventlisteners here
 userInput.addEventListener("submit", (event) => {
   event.preventDefault();
+
+  // This clears the user input wrapper from any actions
+  changeInput();
+
+  console.log(event);
 });
 
 // When website loaded, chatbot asks first question.
