@@ -355,10 +355,10 @@ submit.addEventListener('click', (event) => {
   event.preventDefault();
   nextQuestion(input.value)
 })
-input.addEventListener('keypress', (event) => {
-  event.preventDefault();
-  if (event.key === 'Enter' && input.value) nextQuestion(input.value)
-})
+// input.addEventListener('keypress', (event) => {
+//   event.preventDefault();
+//   if (event.key === 'Enter' && input.value) nextQuestion(input.value)
+// })
 
 
 // When website loaded, chatbot asks first question.
