@@ -19,9 +19,9 @@
       <section class="chat" id="chat"></section>
 
       <div class="input-wrapper" id="input-wrapper">
-        <form id="name-form">
+        <form id="name-form" onsubmit="return false;">
           <input id="name-input" type="text" />
-          <button class="send-btn" type="submit">
+          <button id="send-btn" class="send-btn" type="submit">
             Send
           </button>
         </form>
