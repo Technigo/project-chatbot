@@ -44,92 +44,149 @@ const greeting = () => {
 setTimeout(greeting, 1000); //Fundera på placering
 
 //Question 1
-const handleWineInput = (event) => {      
-  event.preventDefault(); 
-  const wineChoice = wineInput.value;
-  showMessage(wineChoice, 'user');
-  wineInput.value = '';
-  setTimeout(() => validateResponse(wineChoice), 1000);
+const handleWineInput = (event) => {
+    event.preventDefault();
+    const wineChoice = wineInput.value;
+    showMessage(wineChoice, 'user');
+    wineInput.value = '';
+    setTimeout(() => validateResponse(wineChoice), 1000);
 };
 
 //Question 2
-const validateResponse = wineChoice => {     
+const validateResponse = wineChoice => {
 
-  if (wineChoice.toLowerCase() === 'red') {
-    showMessage(`${wineChoice} is it?`, 'bot');
-    setTimeout(() => questionRed(), 2000);
-  } else if (wineChoice.toLowerCase() === 'white') {
-    showMessage(`${wineChoice}... Are you sure?`, 'bot');
-    setTimeout(() => questionWhite(), 2000);
-  } else {
-    showMessage(`Please answer if you prefer red or white.`, 'bot');
-  }
+    if (wineChoice.toLowerCase() === 'red') {
+        showMessage(`${wineChoice} is it?`, 'bot');
+        setTimeout(() => questionRed(), 2000);
+    } else if (wineChoice.toLowerCase() === 'white') {
+        showMessage(`${wineChoice}... Are you sure?`, 'bot');
+        setTimeout(() => questionWhite(), 2000);
+    } else {
+        showMessage(`Please answer if you prefer red or white.`, 'bot');
+    }
 };
 
+//RED CONVERSATION
 //Question 3 - Red wine (questionRed) 
 
 const questionRed = wineCountry => {
- showMessage(`Great choice! Which of the following countries would you say that you prefer when it comes to red wine?`, 'bot');
+    showMessage(`Great choice! Which of the following countries would you say that you prefer when it comes to red wine?`, 'bot');
+
+    inputWrapper.innerHTML = `
+    <button id="italy">Italy</button>
+    <button id="spain">Spain</button>
+    <button id="australia">Australia</button>
+    `
+
+    document.getElementById('italy').addEventListener('click', () => {
+        showMessage('Italy', 'user');
+        setTimeout(() => questionGrape(), 2000);
+    })
 };
 
+//Question 4 - Italy
+
+const questionGrape = italyGrape => {
+    showMessage(`Perfect! Might as well! Which of the following grapes to you prefer?`, 'bot');
+
+    inputWrapper.innerHTML = `
+  <button id="neroDavola">Nero d'Avola</button>
+  <button id="barbera">Barbera</button>
+  <button id="amarone">Amarone</button>
+  `
+    document.getElementById('neroDavola').addEventListener('click', () => {
+        showMessage("Nero d'Avola", 'user');
+        setTimeout(() => wineRecoNero(), 2000);
+    })
+
+    document.getElementById('barbera').addEventListener('click', () => {
+        showMessage("Barbera", 'user');
+        setTimeout(() => wineRecoBarbera(), 2000);
+    })
+
+    document.getElementById('amarone').addEventListener('click', () => {
+        showMessage("Amarone", 'user');
+        setTimeout(() => wineRecoAmarone(), 2000);
+    })
+
+
+};
+
+//Question 5 - Italy
+
+const wineRecoNero = neroDavola => {
+    showMessage(`Fantastic choice! The finest Nero d'Avola can be found on Sicily! Enjoy!`, 'bot');
+}
+
+const wineRecoBarbera = barbera => {
+    showMessage(`An amazing grape! It's the most planted grape in all of Italy! Enjoy!`, 'bot');
+}
+
+const wineRecoAmarone = amarone => {
+    showMessage(`Exclusive taste, eh? It's worth every penny! Enjoy!`, 'bot');
+}
+
+
+
+//WHITE CONVERSATION
 //Question 3 - White wine (questionWhite) 
 
 const questionWhite = badPreference => {
-  showMessage(`I mean, are you really sure about it? Red is pretty popular and the taste is absolutely fantastic. I'll ask again; red or white?`, 'bot');
+    showMessage(`I mean, are you really sure about it? Red is pretty popular and the taste is absolutely fantastic. I'll ask again; red or white?`, 'bot');
 
-  inputWrapper.innerHTML = `
+    inputWrapper.innerHTML = `
   <button id="continue">Red</button>
   <button id="theEnd">White</button>
   `
 
-  document.getElementById('continue').addEventListener('click', () => {
-    showMessage('red', 'user');
-    setTimeout(() => questionRed(), 2000);
-  })
+    document.getElementById('continue').addEventListener('click', () => {
+        showMessage('red', 'user');
+        setTimeout(() => questionRed(), 2000);
+    })
 
-  document.getElementById('theEnd').addEventListener('click', () => {
-    showMessage('white', 'user');
-    setTimeout(() => oneChance(), 2000);
-  })
- };
- 
+    document.getElementById('theEnd').addEventListener('click', () => {
+        showMessage('white', 'user');
+        setTimeout(() => oneChance(), 2000);
+    })
+};
 
- //Question 4 - White wine (oneChance)
 
- const oneChance = oneChance => {
-  showMessage(`I hope you realize what you're missing out on...`, 'bot');
-  setTimeout(() => lastChance(), 2000);
- };
- 
+//Question 4 - White wine (oneChance)
 
- //Question 5 - White wine (lastChance)
+const oneChance = oneChance => {
+    showMessage(`I hope you realize what you're missing out on...`, 'bot');
+    setTimeout(() => lastChance(), 2000);
+};
 
- const lastChance = nowOrNever => {
-  showMessage(`Last chance. What's your final answer?`, 'bot');
 
-  inputWrapper.innerHTML = `
+//Question 5 - White wine (lastChance)
+
+const lastChance = nowOrNever => {
+    showMessage(`Last chance. What's your final answer?`, 'bot');
+
+    inputWrapper.innerHTML = `
   <button id="regretChoice">I've changed my mind. Red it is!</button>
   <button id="itsFinal">White, it's final!</button>
   `
 
-  document.getElementById('regretChoice').addEventListener('click', () => {
-    showMessage('regretChoice', 'user');
-    setTimeout(() => questionRed(), 2000);
-  })
+    document.getElementById('regretChoice').addEventListener('click', () => {
+        showMessage('regretChoice', 'user');
+        setTimeout(() => questionRed(), 2000);
+    })
 
-  document.getElementById('itsFinal').addEventListener('click', () => {
-    showMessage('White is my final answer.', 'user');
-    setTimeout(() => endOfConvo(), 2000);
-  })
- };
+    document.getElementById('itsFinal').addEventListener('click', () => {
+        showMessage('White is my final answer.', 'user');
+        setTimeout(() => endOfConvo(), 2000);
+    })
+};
 
- //Question 6 - White wine (endOfConvo)
+//Question 6 - White wine (endOfConvo)
 
- const endOfConvo = goodBye => {
-  showMessage(`OK. Then our conversation ends here.`, 'bot');
-  const removeElement = document.getElementById('regretChoice');
-  const removeElementAgain = document.getElementById('itsFinal');
-  setTimeout(() => removeElement.remove(), removeElementAgain.remove(), 1000);
+const endOfConvo = goodBye => {
+    showMessage(`OK. Then our conversation ends here.`, 'bot');
+    const removeElement = document.getElementById('regretChoice');
+    const removeElementAgain = document.getElementById('itsFinal');
+    setTimeout(() => removeElement.remove(), removeElementAgain.remove(), 1000);
 };
 
 
