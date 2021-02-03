@@ -2,6 +2,11 @@
 const chat = document.getElementById('chat')
 const formSubmitButton = document.getElementById("send-btn");
 const formMessageBox = document.getElementById("form-input");
+const formInputWrapper = document.getElementById("input-wrapper");
+const selectMenuOptions = document.getElementById("selectMenuOptions");
+const selectOptionButton = document.getElementById("selectOptionButton");
+const selectOptionDiv = document.getElementById("selectOptionDiv");
+const mainTag = document.getElementById("mainTag");
 
 // Global variables, if you need any, declared here
 let questionNumber = 1;
@@ -71,12 +76,14 @@ const nextQuestion = (message) => {
       questionNumber++; // Add 1 to questionNumber. questionNumber is now 3
     } else if (message === "funds") {
       botReply("Perfect. Would you like high risk or low risk funds?");
-      questionNumber = 50; // Add 1 to questionNumber. questionNumber is now 3
+      questionNumber++; // Add 1 to questionNumber. questionNumber is now 3
     } else {
       botReply('You have to type either "stocks" or "funds".');
     };
   } else if (questionNumber === 3) {
     highRiskOrLowRiskQuestion(message);
+  } else if (questionNumber === 4) {
+    console.log(message);
   } else {
     botReply("questionNumber invalid value!");
   }
@@ -84,15 +91,42 @@ const nextQuestion = (message) => {
 
 const stockOrFundsQuestion = (message) => {
   questionNumber++; // Add 1 to questionNumber. questionNumber is now 2
-  botReply(`Hello ${message}. Would you like to know more about "stocks" or "funds"?`) // Speech bubble question
+  botReply(`Hello ${message}. Would you like to buy "stocks" or "funds"?`) // Speech bubble question
   // Jump to nextQuestion function because we clicked the button
 };
 
 const highRiskOrLowRiskQuestion = (message) => {
+  questionNumber++
   userReply(message); // Speechbubble high
   formMessageBox.value = "";
   if (message === "high" || message === "high risk") {
     botReply("oh, so you want high risk!");
+    setTimeout(chatDelay)
+    botReply("Here you go!");
+
+    formInputWrapper.innerHTML = `<div class="input-wrapper input-wrapper-hidden" id="input-wrapper">
+    <form id="name-form" onsubmit="return false;">
+      <input id="form-input" type="text" />
+      <button id="send-btn" class="send-btn" type="button">
+        Send
+      </button>
+    </form>
+  </div>`;
+
+    mainTag.innerHTML += `<div class="selectOptionDiv" id="selectOptionDiv">
+    <select id="selectMenuOptions">
+    <option value="" selected disabled>Select a stock</option>
+    <option value="investor">Investor</option>
+    <option value="latour">Latour</option>
+    <option value="kinnevik">Kinnevik</option>
+    <option value="castellum">Castellum</option>
+    </select>
+    <button id="selectOptionButton" class="send-btn" type="button">Send</button>
+    </div>`;
+    selectOptionButton.addEventListener('click', () => nextQuestion(selectMenuOptions.value));
+
+
+
   } else if (message === "low" || message === "low risk") {
     botReply("You want low risk");
   } else if (message === "high" && questionNumber === 50) {
@@ -110,5 +144,5 @@ const highRiskOrLowRiskQuestion = (message) => {
 /*  */
 
 /* setTimeout(greeting, 500 */
-setTimeout(greeting, 1000)
+setTimeout(greeting, chatDelay)
 /* setTimeout(greeting, 3000)*/

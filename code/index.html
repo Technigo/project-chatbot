@@ -15,29 +15,18 @@
   <h1>Welcome to investbot.</h1>
   <h2>Ask me about very important financial decisions!</h2>
   <h3>(You can trust me. I promise!)</h3>
-  <main>
+  <main id="mainTag">
     <section class="chat" id="chat">
 
 
     </section>
-
-    <div class="input-wrapper input-wrapper-hidden" id="input-wrapper">
+    <!-- onsubmit="return false;" -->
+    <div class="input-wrapper" id="input-wrapper">
       <form id="name-form" onsubmit="return false;">
-        <input id="form-input" class="formInputHidden" type="text" />
-        <button id="send-btn" class="send-btn SendButtonHidden" type="submit">
+        <input id="form-input" type="text" />
+        <button id="send-btn" class="send-btn" type="button">
           Send
         </button>
-        <!-- <div class="selectOptionDiv selectOptionDivHidden">
-            <select id="selectMenuOptions">
-              <option value="" selected disabled>Select a stock</option>
-              <option value="Investor">Investor</option>
-              <option value="Latour">Latour</option>
-              <option value="Kinnevik">Kinnevik</option>
-              <option value="Castellum">Castellum</option>
-            </select>
-            <button id="selectOptionButton" class="send-btn" type="submit">Send</button>
-        </div> -->
-
       </form>
     </div>
   </main>
