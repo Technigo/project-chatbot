@@ -1,6 +1,7 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
-const flowerForm = document.getElementById('flower-form')
+const docBotForm = document.getElementById('doc-bot-form')
+const userInput = document.getElementById('name-input');
 
 // Global variables, if you need any, declared here
 
@@ -32,31 +33,54 @@ const showMessage = (message, sender) => {
 }
 
 // Starts here
-const Greeting = () => {
-    showMessage(`Hello there, What's your name?`, 'bot')
-        // Just to check it out, change 'bot' to 'user' here 👆
+const greeting = () => {
+    showMessage('Enter your name to start your appointment with Doc.Bot', 'bot');
 }
 
-
+let questionCounter = 0;
 
 // Set up your eventlisteners here
+docBotForm.addEventListener('submit', event => {
+    event.preventDefault()
+
+    if (questionCounter === 0) {
+
+        const userReply = () => {
+            showMessage(userInput.value, 'user')
+        }
+        userReply();
 
 
+        const botReply = (message) => {
+            showMessage(message, 'bot')
+        }
+        botReply(`Welcome ${userInput.value}! How are you feeling today?`, 'bot');
+    } else if (questionCounter === 1) {
+        const userReply = () => {
+            showMessage(userInput.value, 'user');
+        }
+        userReply();
 
-flowerForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const value = document.getElementById('name-input').value;
+        // if (userReply2.length < 6) {
+        //     const botReply = (message) => {
+        //         showMessage(message, 'bot')
+        //     }
+        //     botReply(`Can you explain more about that?`);
+        //     else(userReply2.length > 6) {
+        //         const botReply = (message) => {
+        //             showMessage(message, 'bot')
+        //         }
+        //         botReply(`Why do you think you feel like that today?`);
+        //}
 
-    const userReply = () => {
-        showMessage(value, 'user')
     }
-    userReply()
+    userInput.value = '';
+    questionCounter = questionCounter + 1;
 });
-
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(Greeting, 1000)
+// This means the greeting function will be called one second after the website is loaded.*/
+setTimeout(greeting, 1000)
