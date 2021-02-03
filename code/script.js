@@ -1,11 +1,14 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById('input-wrapper')
-const input = document.getElementById('user-input')
+const input = document.getElementById('user-input')/*.value;*/
+/* MAKS version Monday --> const value = document.getElementById('input-value').value; */
 const submit = document.getElementById('send-btn')
+/*const nameForm = document.getElementById('name-form')*/
 
 // Global variables, if you need any, declared here
 let questionNumber = 1
+console.log(questionNumber);
 
 const botReply = (msg) => {
   showMessage(msg, 'bot')
@@ -17,6 +20,10 @@ const userReply = (msg) => {
 
 // Functions declared here
 
+/* TEST Deklarera en funktion som hämtar ('user-input').value="" */ 
+/*function userName() {
+  document.getElementById('user-input').value ='';
+} */
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -26,13 +33,13 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user3.png" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bot2.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -48,19 +55,23 @@ const nextQuestion = (message) => {
 
   if (questionNumber === 1) {
     userReply(message)
-    input.value=''
+    input.value /*try change to value='message', 'msg', 'user-input', text*/
     setTimeout(() => movieTips(message), 1000)
   } else if (questionNumber === 2) {
     userReply(message)
     setTimeout(() => movieLength(message), 1000)
   } else if (questionNumber === 3) {
     userReply(message)
-    setTimeout(() => movieGenre(message), 1000)
+    setTimeout(() => gender(message), 1000)
   } else if (questionNumber === 4) {
+    userReply(message)
+    setTimeout(() => movieGenre(message), 1000)
+  }
+  else if (questionNumber === 5) {
     userReply(message)
     setTimeout(() => movieMenu(message), 1000)
   }
-  else if (questionNumber === 5) {
+  else if (questionNumber === 6) {
     userReply(message)
     setTimeout(() => chosenMovie(message), 1000)
   }
@@ -85,9 +96,8 @@ inputWrapper.innerHTML =
 
   document.getElementById('yesBtn').addEventListener('click', () => nextQuestion('Yes'))
   document.getElementById('noBtn').addEventListener('click', () => 
-    showMessage('Too bad, let me know if you change your mind!', 'bot')) 
+    showMessage('Too bad, let me know if you change your mind!', location.reload(), 'bot')) 
     // Change this to a closing comment and that the bot restarts from the beginning. 
-  
 } 
 
 const movieLength = (yes) => {
@@ -102,6 +112,21 @@ const movieLength = (yes) => {
   document.getElementById('underBtn').addEventListener('click', () => nextQuestion('Under 2h'))
   document.getElementById('overBtn').addEventListener('click', () => nextQuestion('Over 2h'))
 }
+
+const gender = (great) => {
+  questionNumber++
+  showMessage(`${great}, So male or female director ?`, 'bot')
+  
+  inputWrapper.innerHTML = 
+    `<div>
+      <button id="fBtn">Female</button>
+      <button id="mBtn">Male</button>
+    </div>`
+  document.getElementById('fBtn').addEventListener('click', () => nextQuestion('Female director'))
+  document.getElementById('mBtn').addEventListener('click', () => nextQuestion ('Male director'))
+//showMessage(`Great to know your preferences! Now let's move further into the movie djungle...`, 'bot')
+} //can I have one more showMessage here??
+  //add extra time here as a suspension, before the next Question? 
 
 const movieGenre = (length) => {
   questionNumber++
@@ -185,17 +210,19 @@ const chosenMovie = (select) => {
 
 // Set up your eventlisteners here
 submit.addEventListener('click', (event) => {
-  event.preventDefault()
+  event.preventDefault();
   nextQuestion(input.value)
 })
 input.addEventListener('keypress', (event) => {
   event.preventDefault();
   if (event.key === 'Enter' && input.value) nextQuestion(input.value)
 })
+
+
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
+// This means the greeting function will be called one second after the website is loadedname.
 setTimeout(greeting, 1000)
