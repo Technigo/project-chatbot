@@ -73,7 +73,7 @@ const nextQuestion = (message) => {
 
 const question2 = (message) => {
   questionNumber++;
-  botReply(`Nice to meet you ${message}. What would you like to order?`);
+  botReply(`Nice to meet you, ${message}. What would you like to order?`);
 
 
   inputWrapper.innerHTML = `
