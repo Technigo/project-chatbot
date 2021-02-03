@@ -4,6 +4,7 @@ const formSubmitButton = document.getElementById("send-btn");
 const formMessageBox = document.getElementById("name-input");
 const inputWrapper = document.getElementById("input-wrapper");
 
+
 // Global variables, if you need any, declared here
 let questionNumber = 1;
 let chatDelay = 800;
@@ -33,7 +34,7 @@ const showMessage = (message, sender) => {
 
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bot.jpg" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -46,7 +47,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hi there! Welcome to Bootstrap Bakery. What's your name?`, 'bot')
+  showMessage(`Hi there!👩‍🍳 Welcome to Bootstrap Bakery. What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -66,7 +67,7 @@ const nextQuestion = (message) => {
     formMessageBox.value = "";
     setTimeout(() => question4(message), chatDelay);
   }else {
-    botReply("Don't forget to pick up your order!");
+    //botReply("Don't forget to pick up your order!"); Lägga till igen?
   }
 };
 
@@ -130,7 +131,7 @@ const question3 = (type) => {
   }
 
   const select = document.getElementById('select')
-  select.addEventListener('change', () => nextQuestion(select.value))
+  select.addEventListener('change', () => nextQuestion(select.value));
 
   };
 
@@ -138,8 +139,13 @@ const question3 = (type) => {
 const question4 = (message) => {
   questionNumber++;
   botReply (`${message}, that's a really nice choice! Thanks for ordering, see you soon!`)
-  
-};
+  inputWrapper.innerHTML = `
+  <form id="name-form" onsubmit="return false;">
+  <input id="name-input" type="text" />
+  </form>`// Vi hade glömt att ta bort menyn med innerHTML
+  };
+
+
 
 
 // Eventlisteners
