@@ -26,13 +26,13 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img class="profile-pic" src="assets/user.png" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img class="profile-pic" src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -60,7 +60,7 @@ const nextStep = (message) => {
 
 
 // Starts here
-const showPlace = (place) => {
+const showPlace = () => {
   answerNumber = 1
   botAnswer(`Hello, where's the party at?`)
 
@@ -77,7 +77,7 @@ const showPlace = (place) => {
 const showVibe = (place) => {
   answerNumber++
 
-  if (place === 'nightclub') {
+  if (place === 'Nightclub') {
     botAnswer(`Are we talking Berghain or Studio54?`)
 
     inputWrapper.innerHTML = `
@@ -104,6 +104,46 @@ const showVibe = (place) => {
 
 }
 
+const showOutfit = (outfit) => {
+  answerNumber++
+
+  botAnswer(`I got the perfect outfit for you! Party on!`)
+
+  const showFinalMessage = () => {
+    chat.innerHTML += `
+      <section class="bot-msg">
+      <img class="profile-pic" src="assets/bot.png" alt="Bot" /> 
+        <div class="bubble bot-bubble final">
+          <img class="outfit-gif" id="outfitGif" src=""/>
+        </div> 
+      </section>
+    `
+    chat.scrollTop = chat.scrollHeight
+}
+
+  if (outfit === 'Berghain') {
+    showFinalMessage()
+    document.getElementById("outfitGif").src = "assets/partytest.gif"
+  }
+
+  else if (outfit === "Studio 54") {
+    showFinalMessage()
+    document.getElementById("outfitGif").src = "assets/studio54.gif"
+  }
+
+  else if (outfit === "Cosmopolitan") {
+    showFinalMessage()
+    document.getElementById("outfitGif").src = "assets/cocktail.gif"
+  }
+
+  else if (outfit === "Old fashioned") {
+    showFinalMessage()
+    document.getElementById("outfitGif").src = "assets/oldfashioned.gif"
+  }
+
+  inputWrapper.innerHTML = ""
+
+}
 
 
 // Set up your eventlisteners here

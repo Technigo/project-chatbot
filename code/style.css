@@ -83,10 +83,17 @@ main {
   flex-shrink: 0;
 }
 
-.bot-msg img,
-.user-msg img {
+.profile-pic {
   width: 60px;
   height: 60px;
+}
+
+.outfit-gif {
+  width: 300px;
+ }
+
+.bubble.final {
+  max-width: 60%;
 }
 
 .bubble {
