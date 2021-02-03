@@ -48,7 +48,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello, what's your name?`, 'bot')
+  showMessage(`Hi there! Welcome to Bootstrap Bakery. What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -60,31 +60,31 @@ const nextQuestion = (message) => {
     formMessageBox.value = "";
     setTimeout(() => question2(message), chatDelay);
   }else if (questionNumber === 2){
-    userReply(message)
+    userReply(message);
     formMessageBox.value = "";
     setTimeout(() => question3(message), chatDelay);
   }else if(questionNumber === 3){
-    userReply("sdjfhskdjfh");
+    userReply(message);
     formMessageBox.value = "";
-    question4
+    setTimeout(() => question4(message), chatDelay);
   }else {
-    botReply("Thank you, Bye bye!");
+    botReply("Don't forget to pick up your order!");
   }
 };
 
 const question2 = (message) => {
   questionNumber++;
-  botReply(`Hello! ${message}. How old are you?`);
+  botReply(`Nice to meet you ${message}. What would you like to order?`);
 };
 
 const question3 = (message) => {
   questionNumber++;
-  botReply(`Oh, so you are ${message}. Another question`);
+  botReply(`A ${message}, yum! Pick a flavor.`);
 };
 
 const question4 = (message) => {
   questionNumber++;
-
+  botReply (`${message}, that's a really nice choice! Thanks for ordering, see you soon!`)
 };
 
 
