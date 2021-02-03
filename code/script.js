@@ -85,17 +85,27 @@ const yourDestination = () => {
   setTimeout(() => showMessage("3", "bot"), 2000)
   setTimeout(() => showMessage("2", "bot"), 3000)
   setTimeout(() => showMessage("1", "bot"), 4000)
-  setTimeout (() => result (), 3000)
+  if (askForLocation === "beach" && select.valuez){
+    showMessage ("India", "bot")
+   } else if (askForLocation === "mountain" ){
+   showMessage ("Canada", "bot")
+  } else  {setTimeout(() => showMessage ("Aruba", "bot"), 5000) 
+  }
+}
 
-const result = () =>{
- if (select.value === "warm" && button.value === "beach" && button.value === "sweet"){
+
+  //setTimeout (() => result (), 3000)}
+
+//const result = () =>{
+/* if (select.value === "beach"){
   showMessage ("India", "bot")
- } else if (select.value === "cold" && button.value === "mountain" && button.value === "hot"){  
+ } else if (select.value === "mountain" ){  
  showMessage ("Canada", "bot")
-} else  showMessage ("Aruba")
-}
-}
+} else  {showMessage ("Aruba", "bot")
 
+  }
+}
+*/
 // form.innerHTML = ""; to add last - it will clear the html 
 
 
@@ -160,4 +170,5 @@ chat.innerHTML += `
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
+
 setTimeout(greeting, 1000)
