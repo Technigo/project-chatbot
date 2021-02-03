@@ -22,64 +22,264 @@ const threeWayQuestion = (value) => {
   let normalizeValue = value.toLowerCase();
 
   if (normalizeValue.includes('funny')) {
-    showMessage(`What's you favorite Disney movie?`, 'bot');
+    showMessage(`Pick a theme:`, 'bot');
     chat.innerHTML += `
       <div class="choice-btn-container">
-        <button id='a' class="choice-btn">a</button>
-        <button id='b' class="choice-btn">b</button>
-        <button id='c' class="choice-btn">c</button>
+        <button id='tv' class="choice-btn">TV</button>
+        <button id='movies' class="choice-btn">Movies</button>
+        <button id='pop-culture' class="choice-btn">Pop culture</button>
       </div>
     `
-    document.getElementById('a').addEventListener("click", () => {
-      console.log("a")
+    document.getElementById('tv').addEventListener("click", () => {
+      console.log("tv")
+      showMessage("TV", 'user');
+      showMessage(`Do you want your costume to be...?`, 'bot');
+      chat.innerHTML += `
+        <div class="choice-btn-container">
+          <button id='diy' class="choice-btn">DIY</button>
+          <button id='store-bought' class="choice-btn">Store-bought</button>
+          <button id='a-combo' class="choice-btn">A combo</button>
+        </div>
+      `
+      document.getElementById('diy').addEventListener("click", () => {
+        showMessage("DIY", 'user');
+        showMessage(`Tina Belcher,'Bob's Burgers' or David Rose,'Schitt's Creek'`, 'bot');
+        });
+      document.getElementById('store-bought').addEventListener("click", () => {
+        showMessage("Store-bought", 'user');
+        showMessage(`Mr. Rogers or Flo, Progressive`, 'bot');
+      });
+      document.getElementById('a-combo').addEventListener("click", () => {
+        showMessage("A combo", 'user');
+        showMessage(`Moira,'Schitt's Creek' or Dwight Schrute,'The Office'`, 'bot');
+      });
     });
-    document.getElementById('b').addEventListener("click", () => {
-      console.log("b")
+
+
+    document.getElementById('movies').addEventListener("click", () => {
+      console.log("movies")
+      showMessage("Movies", 'user');
+      showMessage(`Do you want your costume to be...?`, 'bot');
+      chat.innerHTML += `
+        <div class="choice-btn-container">
+          <button id='diy' class="choice-btn">DIY</button>
+          <button id='store-bought' class="choice-btn">Store-bought</button>
+          <button id='a-combo' class="choice-btn">A combo</button>
+        </div>
+      `
+      document.getElementById('diy').addEventListener("click", () => {
+        showMessage("DIY", 'user');
+        showMessage(`Regina George,'Mean Girls' or Bill Lumbergh,'Office Space'`, 'bot');
+      });
+      document.getElementById('store-bought').addEventListener("click", () => {
+        showMessage("Store-bought", 'user');
+        showMessage(`Holtzmann,'Ghost Busters' Or Olaf,'Frozen'`, 'bot');
+      });
+      document.getElementById('a-combo').addEventListener("click", () => {
+        showMessage("A combo", 'user');
+        showMessage(`Elle Woods,'Legally Blonde' or Derek Zoolander,'Zoolander'`, 'bot');
+      });
+
     });
-    document.getElementById('c').addEventListener("click", () => {
-      console.log("c")
+    document.getElementById('pop-culture').addEventListener("click", () => {
+      console.log("pop-culture")
+      showMessage("Pop culture", 'user');
+      showMessage(`Do you want your costume to be...?`, 'bot');
+      chat.innerHTML += `
+        <div class="choice-btn-container">
+          <button id='diy' class="choice-btn">DIY</button>
+          <button id='store-bought' class="choice-btn">Store-bought</button>
+          <button id='a-combo' class="choice-btn">A combo</button>
+        </div>
+      `
+      document.getElementById('diy').addEventListener("click", () => {
+        showMessage("DIY", 'user');
+        showMessage(`Carole Baskin,'Tiger King' or Johnny Lawrence,'Cobra Kai'`, 'bot');
+      });
+      document.getElementById('store-bought').addEventListener("click", () => {
+        showMessage("Store-bought", 'user');
+        showMessage(`Zoom potato Filter or Baby yoda`, 'bot');
+      });
+      document.getElementById('a-combo').addEventListener("click", () => {
+        showMessage("A combo", 'user');
+        showMessage(`The Dolly Parton Challenge or Sigrit,'Eurovision'`, 'bot');
+      });
+
     });
       
   } else if (normalizeValue.includes('scary')) {
-    showMessage(`What's you favorite Disney movie?`, 'bot');
+    showMessage(`Pick a theme:`, 'bot');
     chat.innerHTML += `
       <div class="choice-btn-container">
-        <button id='a' class="choice-btn">a</button>
-        <button id='b' class="choice-btn">b</button>
-        <button id='c' class="choice-btn">c</button>
+        <button id='gory' class="choice-btn">Gory</button>
+        <button id='creepy' class="choice-btn">Creepy</button>
+        <button id='existential' class="choice-btn">Existential</button>
       </div>
     `
-    document.getElementById('a').addEventListener("click", () => {
-      console.log("a")
+    document.getElementById('gory').addEventListener("click", () => {
+      console.log("gory")
+      showMessage("Gory", 'user');
+      showMessage(`Do you want your costume to be...?`, 'bot');
+      chat.innerHTML += `
+        <div class="choice-btn-container">
+          <button id='diy' class="choice-btn">DIY</button>
+          <button id='store-bought' class="choice-btn">Store-bought</button>
+          <button id='a-combo' class="choice-btn">A combo</button>
+        </div>
+      `
+      document.getElementById('diy').addEventListener("click", () => {
+        showMessage("DIY", 'user');
+        showMessage(`Zombie`, 'bot');
+      });
+      document.getElementById('store-bought').addEventListener("click", () => {
+        showMessage("Store-bought", 'user');
+        showMessage(`Headless horseman`, 'bot');
+      });
+      document.getElementById('a-combo').addEventListener("click", () => {
+        showMessage("A combo", 'user');
+        showMessage(`Dead person with a knife in your head`, 'bot');
+      });
+
     });
-    document.getElementById('b').addEventListener("click", () => {
-      console.log("b")
+    document.getElementById('creepy').addEventListener("click", () => {
+      console.log("creepy")
+      showMessage("Creepy", 'user');
+      showMessage(`Do you want your costume to be...?`, 'bot');
+      chat.innerHTML += `
+        <div class="choice-btn-container">
+          <button id='diy' class="choice-btn">DIY</button>
+          <button id='store-bought' class="choice-btn">Store-bought</button>
+          <button id='a-combo' class="choice-btn">A combo</button>
+        </div>
+      `
+      document.getElementById('diy').addEventListener("click", () => {
+        showMessage("DIY", 'user');
+        showMessage(`Skeleton`, 'bot');
+      });
+      document.getElementById('store-bought').addEventListener("click", () => {
+        showMessage("Store-bought", 'user');
+        showMessage(`Pennywise,'It' or Chucky,'Child's Play'`, 'bot');
+      });
+      document.getElementById('a-combo').addEventListener("click", () => {
+        showMessage("A combo", 'user');
+        showMessage(`Creepy clown`, 'bot');
+      });
+
     });
-    document.getElementById('c').addEventListener("click", () => {
-      console.log("c")
+    document.getElementById('existential').addEventListener("click", () => {
+      console.log("existential")
+      showMessage("Existential", 'user');
+      showMessage(`Do you want your costume to be...?`, 'bot');
+      chat.innerHTML += `
+        <div class="choice-btn-container">
+          <button id='diy' class="choice-btn">DIY</button>
+          <button id='store-bought' class="choice-btn">Store-bought</button>
+          <button id='a-combo' class="choice-btn">A combo</button>
+        </div>
+      `
+      document.getElementById('diy').addEventListener("click", () => {
+        showMessage("DIY", 'user');
+        showMessage(`Schrodinger's cat`, 'bot');
+      });
+      document.getElementById('store-bought').addEventListener("click", () => {
+        showMessage("Store-bought", 'user');
+        showMessage(`Existential dread`, 'bot');
+      });
+      document.getElementById('a-combo').addEventListener("click", () => {
+        showMessage("A combo", 'user');
+        showMessage(`Global warming`, 'bot');
+      });
+
     });
 
   } else if (normalizeValue.includes('cute')) {
-    showMessage(`What's you favorite Disney movie?`, 'bot');
+    showMessage(`Pick a theme:`, 'bot');
     chat.innerHTML += `
       <div class="choice-btn-container">
-        <button id='a' class="choice-btn">a</button>
-        <button id='b' class="choice-btn">b</button>
-        <button id='c' class="choice-btn">c</button>
+        <button id='sexy' class="choice-btn">Sexy</button>
+        <button id='classic' class="choice-btn">Classic</button>
+        <button id='adorable' class="choice-btn">Adorable</button>
       </div>
     `
-    document.getElementById('a').addEventListener("click", () => {
-      console.log("a")
+    document.getElementById('sexy').addEventListener("click", () => {
+      console.log("sexy")
+      showMessage("Sexy", 'user');
+      showMessage(`Do you want your costume to be...?`, 'bot');
+      chat.innerHTML += `
+        <div class="choice-btn-container">
+          <button id='diy' class="choice-btn">DIY</button>
+          <button id='store-bought' class="choice-btn">Store-bought</button>
+          <button id='a-combo' class="choice-btn">A combo</button>
+        </div>
+      `
+      document.getElementById('diy').addEventListener("click", () => {
+        showMessage("DIY", 'user');
+        showMessage(`Sexy cheetah or Sexy nerd`, 'bot');
+      });
+      document.getElementById('store-bought').addEventListener("click", () => {
+        showMessage("Store-bought", 'user');
+        showMessage(`Sexy referee or Hugh Hefner`, 'bot');
+      });
+      document.getElementById('a-combo').addEventListener("click", () => {
+        showMessage("A combo", 'user');
+        showMessage(`Lifeguard or Playboy bunny`, 'bot');
+      });      
+      
     });
-    document.getElementById('b').addEventListener("click", () => {
-      console.log("b")
+    document.getElementById('classic').addEventListener("click", () => {
+      console.log("classic")
+      showMessage("Classic", 'user');
+      showMessage(`Do you want your costume to be...?`, 'bot');
+      chat.innerHTML += `
+        <div class="choice-btn-container">
+          <button id='diy' class="choice-btn">DIY</button>
+          <button id='store-bought' class="choice-btn">Store-bought</button>
+          <button id='a-combo' class="choice-btn">A combo</button>
+        </div>
+      `
+      document.getElementById('diy').addEventListener("click", () => {
+        showMessage("DIY", 'user');
+        showMessage(`Rosie the Riveter or Joel Goodsen,'Risky Business'`, 'bot');
+      });
+      document.getElementById('store-bought').addEventListener("click", () => {
+        showMessage("Store-bought", 'user');
+        showMessage(`Pirate`, 'bot');
+      });
+      document.getElementById('a-combo').addEventListener("click", () => {
+        showMessage("A combo", 'user');
+        showMessage(`Witch or wizard`, 'bot');
+      });      
+
     });
-    document.getElementById('c').addEventListener("click", () => {
-      console.log("c")
+    document.getElementById('adorable').addEventListener("click", () => {
+      console.log("adorable")
+      showMessage("Adorable", 'user');
+      showMessage(`Do you want your costume to be...?`, 'bot');
+      chat.innerHTML += `
+        <div class="choice-btn-container">
+          <button id='diy' class="choice-btn">DIY</button>
+          <button id='store-bought' class="choice-btn">Store-bought</button>
+          <button id='a-combo' class="choice-btn">A combo</button>
+        </div>
+      `
+      document.getElementById('diy').addEventListener("click", () => {
+        showMessage("DIY", 'user');
+        showMessage(`Scarecrow`, 'bot');
+      });
+      document.getElementById('store-bought').addEventListener("click", () => {
+        showMessage("Store-bought", 'user');
+        showMessage(`Ladybug or monkey`, 'bot');
+      });
+      document.getElementById('a-combo').addEventListener("click", () => {
+        showMessage("A combo", 'user');
+        showMessage(`Beanie baby`, 'bot');
+      });      
+
+
     });
 
   } else {
-    showMessage(`Please answer the question, What style are you looking for? Funny, scary or cute?`, 'bot');
+    showMessage(`Please answer the question, what style are you looking for? Funny, scary or cute?`, 'bot');
     step -= 1;
   }
 }
