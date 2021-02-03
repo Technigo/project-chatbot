@@ -1,7 +1,7 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat');
 const form = document.getElementById('name-form');
-let value = document.getElementById('input-value'); /*is thsi correct*/
+let value = document.getElementById('input-value').value; // added .value to the end
 const inputWrapper = document.getElementById("input-wrapper")
 
 let userName = "" /* when do we call this variable?*/
@@ -28,29 +28,32 @@ document
 }
 
 // the user choice to question 1 
-const askForLocation = locationChoice => {
-  showMessage(`Is that so.. then let me know what view you prefer, `, "bot")
+const askForLocation = () => {
+  showMessage(`Is that so.. then let me know what view you prefer... `, "bot")
   inputWrapper.innerHTML= `
   <select id= "select">
-  <option id= "" selected disabled> Chose from this list</option>
-  <option value="1" id="mountainOption">Mountain</option>
-  <option value ="2" id="cityOption">City</option>
-  <option value="3" id="beachOption">Beach</option>
+    <option id= "" selected disabled> Chose from this list</option>
+    <option value="1" id="mountainOption">Mountain</option>
+    <option value="2" id="cityOption">City</option>
+    <option value="3" id="beachOption">Beach</option>
   </select>
   `
-
- // this if statment does not yet work. locationChoice does not exist ? 
-   if (locationChoice === "1") {
+const select = document.getElementById("select")
+    select.addEventListener("change", () => {
+    if (select.value === "1") {
     showMessage ("I wanna go all the way up", "user")
-    setTimeout (() => askForDrink (), 1000) 
-   } else if (locationChoice === "2") {
+    setTimeout (() => askForDrink (), 3000) 
+   } else if (select.value === "2") {
     showMessage ("I wanna spend money", "user")
-    setTimeout(()=> askForDrink(), 1000)
+    setTimeout(()=> askForDrink(), 3000)
    } else {
     showMessage ("I don't wanna do anything", "user")
-    setTimeout(() => askForDrink (), 1000)
+    setTimeout(() => askForDrink (), 3000)
    } 
-  } 
+  })
+}
+  
+
  // question number 2 
   const askForDrink = (drinkChoice) => {
     showMessage(`What kind of drinker are you`, "bot")
@@ -78,6 +81,10 @@ const askForLocation = locationChoice => {
     setTimeout (() => yourDestination (), 1000)
   })
 }
+
+
+// form.innerHTML = ""; to add last - it will clear the html 
+
 
   /*
   if (document.getElementById('mountainOption').selected === True){
@@ -152,6 +159,8 @@ chat.innerHTML += `
   `
   setTimeout (() => showMessage(`Nice to meet you ${value}! My name is Vacation Bot`, "bot"), 1000)
   setTimeout(()=> askForWarmOrCold (), 3000);
+
+  document.getElementById('input-value').value = "";  // !!! added this line 
 
 });
 
