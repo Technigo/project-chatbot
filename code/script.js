@@ -2,9 +2,7 @@
 const chat = document.getElementById('chat');
 const formSubmitButton = document.getElementById("send-btn");
 const formMessageBox = document.getElementById("name-input");
-
-// Eventlisteners
-formSubmitButton.addEventListener('click', () => nextQuestion(formMessageBox.value));
+const inputWrapper = document.getElementById("input-wrapper");
 
 // Global variables, if you need any, declared here
 let questionNumber = 1;
@@ -75,20 +73,77 @@ const nextQuestion = (message) => {
 const question2 = (message) => {
   questionNumber++;
   botReply(`Nice to meet you ${message}. What would you like to order?`);
+
+
+  inputWrapper.innerHTML = `
+  <button id="cakeBtn">Cake</button> 
+  <button id="cupcakeBtn">Cupcake</button> 
+  <button id="pieBtn">Pie</button> 
+  `
+
+  document
+    .getElementById("cakeBtn")
+    .addEventListener("click", () =>nextQuestion("cake"))
+    document
+    .getElementById("cupcakeBtn")
+    .addEventListener("click", () =>nextQuestion("cupcake"))
+    document
+    .getElementById("pieBtn")
+    .addEventListener("click", () =>nextQuestion("pie"))
 };
 
-const question3 = (message) => {
+const question3 = (type) => {
   questionNumber++;
-  botReply(`A ${message}, yum! Pick a flavor.`);
-};
+  botReply(`A ${type}, yum! Pick a flavour.`);
+
+  if (type === "cake") {
+    inputWrapper.innerHTML = `
+    <select id="select">
+      <option value="" selected disabled>Flavour</option>
+      <option value="vanilla">Vanilla</option>
+      <option value="chocolate">Chocolate</option>
+      <option value="strawberry">Strawberry</option>
+    </select>
+    `
+  }
+
+  else if (type === "cupcake") {
+    inputWrapper.innerHTML = `
+    <select id="select">
+      <option value="" selected disabled>Flavour</option>
+      <option value="vanilla">Vanilla</option>
+      <option value="chocolate">Chocolate</option>
+      <option value="strawberry">Strawberry</option>
+    </select>
+    `
+  }
+
+  else {
+    inputWrapper.innerHTML = `
+    <select id="select">
+      <option value="" selected disabled>Flavour</option>
+      <option value="vanilla">Vanilla</option>
+      <option value="chocolate">Chocolate</option>
+      <option value="strawberry">Strawberry</option>
+    </select>
+    `
+  }
+
+  const select = document.getElementById('select')
+  select.addEventListener('change', () => nextQuestion(select.value))
+
+  };
+
 
 const question4 = (message) => {
   questionNumber++;
   botReply (`${message}, that's a really nice choice! Thanks for ordering, see you soon!`)
+  
 };
 
 
-
+// Eventlisteners
+formSubmitButton.addEventListener('click', () => nextQuestion(formMessageBox.value));
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
