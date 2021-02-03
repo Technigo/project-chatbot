@@ -134,7 +134,24 @@ button {
   transition: all 0.3s ease;
 }
 
+.selectOptionDiv{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.selectOptionDivHidden{
+  display: none;
+}
+
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+
+.input-wrapper-hidden{
+  display: block;
+}
+

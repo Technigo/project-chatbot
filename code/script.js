@@ -60,7 +60,7 @@ const nextQuestion = (message) => {
 
     userReply(message); // Speech bubble name
     formMessageBox.value = "";
-    setTimeout(() => question2(message), chatDelay) // Move to question2
+    setTimeout(() => stockOrFundsQuestion(message), chatDelay) // Move to question2
 
   } else if (questionNumber === 2) {
     userReply(message); // Speech bubble STOCKS or FUNDS
@@ -70,29 +70,33 @@ const nextQuestion = (message) => {
       botReply("Perfect. Would you like high risk or low risk stocks?");
       questionNumber++; // Add 1 to questionNumber. questionNumber is now 3
     } else if (message === "funds") {
-      botReply("funds");
-      questionNumber++; // Add 1 to questionNumber. questionNumber is now 3
+      botReply("Perfect. Would you like high risk or low risk funds?");
+      questionNumber = 50; // Add 1 to questionNumber. questionNumber is now 3
     } else {
       botReply('You have to type either "stocks" or "funds".');
     };
   } else if (questionNumber === 3) {
-    question3(message);
+    highRiskOrLowRiskQuestion(message);
+  } else {
+    botReply("questionNumber invalid value!");
   }
 };
 
-const question2 = (message) => {
+const stockOrFundsQuestion = (message) => {
   questionNumber++; // Add 1 to questionNumber. questionNumber is now 2
   botReply(`Hello ${message}. Would you like to know more about "stocks" or "funds"?`) // Speech bubble question
   // Jump to nextQuestion function because we clicked the button
 };
 
-const question3 = (message) => {
+const highRiskOrLowRiskQuestion = (message) => {
   userReply(message); // Speechbubble high
   formMessageBox.value = "";
   if (message === "high" || message === "high risk") {
     botReply("oh, so you want high risk!");
   } else if (message === "low" || message === "low risk") {
     botReply("You want low risk");
+  } else if (message === "high" && questionNumber === 50) {
+    botReply("High Risk Funds");
   } else {
     botReply("You have to type either low risk or high risk.");
   };
