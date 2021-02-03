@@ -27,7 +27,7 @@ document
   })
 }
 
-// the user choice to question 1 
+// Question 2 - m
 const askForLocation = () => {
   showMessage(`Is that so.. then let me know what view you prefer... `, "bot")
   inputWrapper.innerHTML= `
@@ -82,6 +82,9 @@ const select = document.getElementById("select")
   })
 }
 
+const yourDestination = () => {
+  showMessage (`so let me think for a second.. you seem to be a special case.. `)
+}
 
 // form.innerHTML = ""; to add last - it will clear the html 
 
