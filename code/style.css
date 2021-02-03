@@ -8,7 +8,7 @@ body {
   margin: 0;
   padding: 0;
   /* font-family: 'Montserrat', sans-serif; */
-  background: url("/code/assets/sky.png") no-repeat;
+  background: url("./assets/sky.png") no-repeat;
   background-size: cover;
   font-family: 'Yusei Magic', sans-serif;
 }

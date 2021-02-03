@@ -9,6 +9,8 @@ const inputWrapper = document.getElementById('input-wrapper');
 //declare that dish "exists"
 var dish;
 var fill;
+var side;
+var drink;
 
 
 // Functions declared here
@@ -83,12 +85,12 @@ form.addEventListener('submit', (event)=>{
     
  //Set time, 4 second and food options 4
   const messageThree = () => {
-  showMessage(`What would you like to order <br> <video loop autoplay>
+   showMessage(`What would you like to order <br> <video loop autoplay>
   <source src="assets/wizard.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>`, "bot")}
-  setTimeout(messageThree, 3000)
-  setTimeout(() => showFoodOptions(), 4000)
+   setTimeout(messageThree, 3000)
+   setTimeout(() => showFoodOptions(), 4000)
 
 
 })
@@ -128,14 +130,52 @@ const showMenu = (dish) => {
     </select>
     `
     //event change enable to choice between the options
-    const select = document.getElementById('select')
-    select.addEventListener('change', () => sideDish (select.value).fill) 
+    const fill = document.getElementById('select')
+    select.addEventListener('change', () => sideDish (fill.value)) 
   }
     
 const sideDish = (fill) => {
   botReply(`you have ordered ${dish} with ${fill} please chose your favorite side dish`)
   window.fill=`${fill}`
+  inputWrapper.innerHTML = `
+   <button id="fries-btn">Fries</button>
+   <button id="sallad-btn">Sallad</button>
+   <button id="dragon-btn">Dragon egg</button>
+   ` 
+   document
+   .getElementById("fries-btn")
+   .addEventListener("click",() => botReply("You have added fires, Please choose your drink",
+    setTimeout(() => showDrinkOptions(), 2000)))
+   document
+   .getElementById("sallad-btn")
+   .addEventListener("click",() => botReply("You have added Sallad, Please choose your drink",
+    setTimeout(() => showDrinkOptions(), 2000)))
+   document
+   .getElementById("dragon-btn")
+   .addEventListener("click",() => botReply("You have added Dragon egg, Please choose your drink",
+    setTimeout(() => showDrinkOptions(), 2000)))
 }
+const showDrinkOptions = () => {
+  inputWrapper.innerHTML=`
+    <select id="choose_drink">
+      <option value="" selected disabled>Your drink</option>
+      <option value="cola">cola</option>
+      <option value="magic-juice">Magic Juice</option>
+      <option value="brandy">Dragon Brandy</option>
+      <option value="beer">Beer</option>
+      <option value="freak">Freaky shake</option>
+    </select>
+    `
+
+  const drink =document.getElementById("choose_drink")
+  choose_drink.addEventListener("change",() => summaryOfOrder(drink.value))
+  window.drink=`${drink}` 
+}
+const summaryOfOrder = () => {
+  botReply(`You have ordered ${dish} with ${fill} with ${side} and ${drink}`)
+}
+
+
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
