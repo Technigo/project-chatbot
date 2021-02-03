@@ -31,55 +31,75 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
+// welcome message, ask for user's name
+const greeting = () => {
+  showMessage(`Hello there, what is your name ?`, 'bot')
+}
+
+setTimeout(greeting, 1000)
 const nameForm = document.querySelector("#name-form")
-let nameUser = "none";
+let nameUser = null;
 
 nameForm.addEventListener("submit", (event) => {
   event.preventDefault()
   nameUser = document.querySelector("#name-input").value
-  showMessage(nameUser, "user")
-  setTimeout(showMovieOptions(nameUser), 9000)
+  if (nameUser.length === 0 || nameUser === null) {
+    showMessage('Please tell me your name', 'bot')
+  }
+  else {
+    showMessage(nameUser, "user")
+    setTimeout(showGenre, 1000)
+  }
+
 })
 
-// nameForm.addEventListener("submit", (event) => {
-//   event.preventDefault()
-//   showMessage(`Hi ${nameUser}`, "bot")
-// })
+// show genre (show buttons)
 
 const movieOptions = document.querySelector("#movie-options")
 
-const showMovieOptions = (name) => {
-  showMessage(`Hi ${name}, what kind of movie would you like to watch?`, "bot")
+const showGenre = () => {
+  showMessage(`Hi ${nameUser}, what kind of movie would you like to watch?`, "bot")
   movieOptions.classList.remove('hide')
   nameForm.classList.add('hide')
 }
+// user interaction: click button
 
 const comedyBtn = document.querySelector("#comedy-btn")
 const actionBtn = document.querySelector("#action-btn")
 const horrorBtn = document.querySelector("#horror-btn")
 const romanticBtn = document.querySelector("#romantic-btn")
 
-// When the user clicks button, trigger event 
-const comedy = () => {
-  showMessage(`You chose Comedy!`, 'bot')
+// show random movie title generator button & go back button
+
+const chooseMovieOptions = (type) => {
   movieOptions.classList.add('hide')
-  showMessage(`Here are four comedy movie options:`, 'bot')
-}
-comedyBtn.addEventListener("click", comedy)
-
-
-// Starts here
-const greeting = () => {
-  showMessage(`Hello there, what is your name ?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage(type, "user")
+  showMessage(`You chose ${type}!`, 'bot')
+  showMessage(`Here are four ${type} movie options:`, 'bot')
 }
 
-// Set up your eventlisteners here
+comedyBtn.addEventListener("click", (type) => {
+  chooseMovieOptions("comedy")
+})
+actionBtn.addEventListener("click", (type) => {
+  chooseMovieOptions("action")
+})
+horrorBtn.addEventListener("click", (type) => {
+  chooseMovieOptions("horror")
+})
+romanticBtn.addEventListener("click", (type) => {
+  chooseMovieOptions("romantic")
+})
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000)
+// show random movie title generator button & go back button
+
+const showButtons = () => {
+  nameForm.innerHTML = ` 
+  <div class="" id="bu">
+    <button id="random-movie-btn">Random</button>
+    <button id="go-back-btn">Go Back</button>
+  </div>
+ `
+}
+// generate random movie title
+// go back to show genre
