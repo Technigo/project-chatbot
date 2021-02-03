@@ -75,18 +75,23 @@ const questionRed = wineCountry => {
     inputWrapper.innerHTML = `
     <button id="italy">Italy</button>
     <button id="spain">Spain</button>
-    <button id="australia">Australia</button>
     `
 
     document.getElementById('italy').addEventListener('click', () => {
         showMessage('Italy', 'user');
-        setTimeout(() => questionGrape(), 2000);
+        setTimeout(() => questionGrapeItaly(), 2000);
+    })
+
+
+    document.getElementById('spain').addEventListener('click', () => {
+        showMessage('Spain', 'user');
+        setTimeout(() => questionGrapeSpain(), 2000);
     })
 };
 
 //Question 4 - Italy
 
-const questionGrape = italyGrape => {
+const questionGrapeItaly = italyGrape => {
     showMessage(`Perfect! Might as well! Which of the following grapes to you prefer?`, 'bot');
 
     inputWrapper.innerHTML = `
@@ -100,15 +105,14 @@ const questionGrape = italyGrape => {
     })
 
     document.getElementById('barbera').addEventListener('click', () => {
-        showMessage("Barbera", 'user');
+        showMessage('Barbera', 'user');
         setTimeout(() => wineRecoBarbera(), 2000);
     })
 
     document.getElementById('amarone').addEventListener('click', () => {
-        showMessage("Amarone", 'user');
+        showMessage('Amarone', 'user');
         setTimeout(() => wineRecoAmarone(), 2000);
     })
-
 
 };
 
@@ -116,16 +120,64 @@ const questionGrape = italyGrape => {
 
 const wineRecoNero = neroDavola => {
     showMessage(`Fantastic choice! The finest Nero d'Avola can be found on Sicily! Enjoy!`, 'bot');
+    inputWrapper.innerHTML = ``;
 }
 
 const wineRecoBarbera = barbera => {
     showMessage(`An amazing grape! It's the most planted grape in all of Italy! Enjoy!`, 'bot');
+    inputWrapper.innerHTML = ``;
 }
 
 const wineRecoAmarone = amarone => {
     showMessage(`Exclusive taste, eh? It's worth every penny! Enjoy!`, 'bot');
+    inputWrapper.innerHTML = ``;
 }
 
+
+
+//Question 4 - Spain
+
+const questionGrapeSpain = spainGrape => {
+    showMessage(`Perfect! Might as well! Which of the following grapes to you prefer?`, 'bot');
+
+    inputWrapper.innerHTML = `
+<button id="tempranillo">Tempranillo</button>
+<button id="granache">Granache</button>
+<button id="syrah">Syrah</button>
+`
+    document.getElementById('tempranillo').addEventListener('click', () => {
+        showMessage('Tempranillo', 'user');
+        setTimeout(() => wineRecoTemp(), 2000);
+    })
+
+    document.getElementById('granache').addEventListener('click', () => {
+        showMessage('Granache', 'user');
+        setTimeout(() => wineRecoGran(), 2000);
+    })
+
+    document.getElementById('syrah').addEventListener('click', () => {
+        showMessage('Syrah', 'user');
+        setTimeout(() => wineRecoSyrah(), 2000);
+    })
+
+};
+
+//Question 5 - Spain
+
+const wineRecoTemp = tempranillo => {
+    showMessage(`Woho! It´s the best known quality red wine grape in Spain. Enjoy!`, 'bot');
+    inputWrapper.innerHTML = ``;
+}
+
+const wineRecoGran = granache => {
+    showMessage(`Yummie! A very fruity wine with lots of raspberry aromas. Enjoy!`, 'bot');
+    inputWrapper.innerHTML = ``;
+}
+
+const wineRecoSyrah = syrah => {
+    showMessage(`You´re in for a treat! A full bodied wine from Galicia. Enjoy!`, 'bot');
+    inputWrapper.innerHTML = ``;
+}
 
 
 //WHITE CONVERSATION
@@ -170,7 +222,7 @@ const lastChance = nowOrNever => {
   `
 
     document.getElementById('regretChoice').addEventListener('click', () => {
-        showMessage('regretChoice', 'user');
+        showMessage("Wait! I've changed my mind! I want red!", 'user');
         setTimeout(() => questionRed(), 2000);
     })
 
@@ -182,11 +234,9 @@ const lastChance = nowOrNever => {
 
 //Question 6 - White wine (endOfConvo)
 
-const endOfConvo = goodBye => {
+const endOfConvo = () => {
     showMessage(`OK. Then our conversation ends here.`, 'bot');
-    const removeElement = document.getElementById('regretChoice');
-    const removeElementAgain = document.getElementById('itsFinal');
-    setTimeout(() => removeElement.remove(), removeElementAgain.remove(), 1000);
+    inputWrapper.innerHTML = ``;
 };
 
 
