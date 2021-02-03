@@ -8,6 +8,13 @@ const input = document.getElementById('name-input');
 
 // Functions declared here
 
+const bot = (text) => {
+  showMessage(text, 'bot');
+}
+const userAnswer = (text) => {
+  showMessage(text, 'user');
+};
+
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -31,12 +38,13 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
+
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 };
 
   // First answer 
-  
+
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     const name = input.value;
@@ -48,12 +56,14 @@ const showMessage = (message, sender) => {
       }
   });
   
-
 // Starts here
+
 const greeting = () => {
   bot(`Hello sweet tooth, what's your name?`)
   // Just to check it out, change 'bot' to 'user' here 👆
 };
+
+
 
 
 
