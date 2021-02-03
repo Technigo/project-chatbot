@@ -39,23 +39,50 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+//Question 1
 
 const handleResponse = () => {
   let userName = document.getElementById('name-input').value;
-  showMessage(`Nice to meet you ${userName}! What is your mood today?`, 'bot')
+  showMessage(`Nice to meet you ${userName}!`, 'bot')
+   
+}
+
+const moodOptions = () => {
+  const options = document.getElementById('name-input').value;
+  showMessage(`How are you feeling today${userName}?`, 'bot')
   inputWraper.innerHTML = `
     <button id="option1">happy</button>
-    <button id="option2">sad</button> 
- 
-  `
+    <button id="option2">sad</button>
+    <button id="option3">angry</button>
+    `
+    document.getElementById("option1").addEventListener("click", () => {
+      showMessage("I see you are feeling happy!", "bot")
+      setTimeout (() => inputWrapper.innerHTML=`
+    <button id="Happy">Happy</button>
+    <button id="thesun">Here comes the sun</button>
+    <button id="shinypeople">Shiny happy people</button>
+    `, 1000)
+    })
+
+    document.getElementById("option2").addEventListener("click", () => {
+      showMessage("I see that you are sad today.", "bot")
+      setTimeout (() => inputWrapper.innerHTML=`
+    <button id="dontworry">Don't worry, be happy</button>
+    <button id="someone">Someone like you</button>
+    <button id="heyjude">Hey Jude</button>
+    `, 1000)
+    })
+
+    document.getElementById("option3").addEventListener("click", () => {
+      showMessage("I see that you are angry today", "bot")
+      setTimeout (() => inputWrapper.innerHTML=`
+    <button id="intheend">In the end</button>
+    <button id="basketcase">Basket case</button>
+    <button id="breakstuff">Break stuff</button>
+    `, 1000)
+    })
+    
 }
-
-const yourMoodToday = () => {
-  const options = document.getElementById('option1').value;
-  showMessage(`Ok ${userName} I see that you are happy today`, 'bot')
-}
-
-
 
 // Set up your eventlisteners here
 form.addEventListener('submit', (event) => {
@@ -73,6 +100,7 @@ form.addEventListener('submit', (event) => {
   event.preventDefault();
   const value = document.getElementById('name-input').value;
   setTimeout (() => handleResponse(value, 'bot'), 1000)
+  setTimeout (() => moodOptions(value, 'bot'), 2000)
 });
 
 
