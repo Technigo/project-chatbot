@@ -1,5 +1,6 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+const nameForm = document.getElementById('name-form')
 
 // Global variables, if you need any, declared here
 
@@ -34,13 +35,27 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
-  console.log('Greeting from bot');
+  showMessage(`Hello! Would you like to order coffee?`, 'bot')
+  console.log('Greeting from bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 
 }
 
 // Set up your eventlisteners here
+nameForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const value = document.getElementById("name-input").value;
+  
+  showMessage(value, "user")
+  
+  // chat.innerHTML += `
+  //   <div> 
+  //     <p>${value}</p>  
+  //   </div>
+  //   `;
+
+});
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
