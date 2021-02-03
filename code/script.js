@@ -2,6 +2,7 @@
 const chat = document.getElementById('chat')
 let userAnswer = document.getElementById('name-input')
 const nameForm = document.getElementById('name-form')
+const value = document.getElementById('name-input')
 // Global variables, if you need any, declared here
 
 // Functions declared here
@@ -41,6 +42,7 @@ const bubblesQuestion = () => {
   if (value === "cava") {
     showMessage(value, 'user')
     showMessage("I'll get you a bottle straight away!", "bot") 
+    console.log(value);
   } else if (value === "Prosecco") {
     showMessage (value, 'user')
     showMessage('Yumm italian!', "bot")
@@ -52,6 +54,12 @@ const bubblesQuestion = () => {
     showMessage ('Sorry, we are out of that', "bot")
   }
 }
+
+const clearInput = () => {
+  const clearText = document.getElementById("name-form");
+  clearText.reset();
+}
+
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
@@ -93,23 +101,25 @@ nameForm.addEventListener("submit", (event)=> {
    // Assign input value to variable
    const value = document.getElementById('name-input').value;
       if (value === "beer") {
+      clearInput()
       showMessage(value, 'user')
       showMessage('What do you prefer: IPA, Lager or Stout?', "bot")
       beerQuestion();
     } else if (value === "wine") {
+      clearInput()
       showMessage(value, 'user')
       showMessage('What are you eating: meat, fish or vegetarian?', 'bot')
       wineQuestion();
     } else if (value === "bubbles") {
+      clearInput()
       showMessage(value, 'user')
       showMessage('What do you prefer: Cava, Prosecco or Champagne?', 'bot')
       bubblesQuestion();
     } else {
+      clearInput()
       showMessage(value, 'user')
       showMessage("We don't sell that!", 'bot')
-    }
-
-    
+    }    
   });
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
