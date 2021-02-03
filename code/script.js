@@ -1,6 +1,7 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const nameForm = document.getElementById('name-form')
+let step = 1;
 
 // Global variables, if you need any, declared here
 
@@ -31,6 +32,9 @@ const showMessage = (message, sender) => {
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
+
+  // Let's clear user input value every time after sending message
+  document.getElementById('name-input').value = "";
 }
 
 // Starts here
@@ -49,12 +53,35 @@ nameForm.addEventListener("submit", (event) => {
   
   showMessage(value, "user")
 
-  if(value === 'yes') {
-    showMessage('Would you like a latte or cappuccino?', 'bot');
-  } else {
-    showMessage('Ok, see you another time!', 'bot');
-  }
+  if (step === 1) {
 
+    if(value === 'yes') {
+      showMessage('Would you like a latte or cappuccino?', 'bot');
+      step ++
+    } else {
+      showMessage('Ok, see you another time!', 'bot');
+    }
+  } else if (step === 2) {
+      if(value === 'latte' || value === 'cappuccino') {
+        showMessage('Great, short or tall?', 'bot');
+        step ++
+      } else {
+        showMessage('Sorry, I do not understand.', 'bot');
+      }
+  } else if (step === 3) {
+      if(value === 'short') {
+        showMessage('That will be 20 kronors', 'bot');
+        step ++
+      } else if (value === 'tall'){
+        showMessage('That will be 30 kronors', 'bot');
+        step ++
+      } else {
+        showMessage('Sorry, I can only prepare short or tall', 'bot');
+      } 
+  } else if (step === 4) {
+      showMessage('Thank you. Have a good day!', 'bot');
+  }
+  
 });
 
 
