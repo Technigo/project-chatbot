@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
 * {
   box-sizing: border-box;
 }
@@ -8,9 +8,9 @@ body {
   margin: 0;
   padding: 0;
   /* font-family: 'Montserrat', sans-serif; */
-  background: lightblue url("/code/assets/sky.png") no-repeat fixed center;
+  background: url("/code/assets/sky.png") no-repeat;
+  background-size: cover;
   font-family: 'Yusei Magic', sans-serif;
-
 }
 
 h1 {
@@ -19,6 +19,11 @@ h1 {
   line-height: 34px;
   color: #fff;
   text-align: center;
+  
+}
+
+h1 b{
+  font-family: 'Potta One', cursive;
 }
 
 h2 {
@@ -146,4 +151,24 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+#select{
+  background-color: #0026ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 40px;
+  margin-right: 4px;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  cursor: pointer;
+}
+
+video{
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }

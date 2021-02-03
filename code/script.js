@@ -81,16 +81,19 @@ form.addEventListener('submit', (event)=>{
   showMessage(`Hello ${name}`, "bot")}
   setTimeout(messageTwo, 2000)
     
- //Set time, 4 second 
+ //Set time, 4 second and food options 4
   const messageThree = () => {
-  showMessage(`What would you like to order`, "bot")}
+  showMessage(`What would you like to order <br> <video loop autoplay>
+  <source src="assets/wizard.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>`, "bot")}
   setTimeout(messageThree, 3000)
   setTimeout(() => showFoodOptions(), 4000)
 
 
 })
 
-
+// Showing menu options on click, invoking showMenu function
 const showFoodOptions = () => {
   inputWrapper.innerHTML =`
     <button id="hp-btn">Harry Potter Menu</button>
@@ -111,7 +114,7 @@ const showFoodOptions = () => {
 
  }
 
- 
+// showMenu function that catches the choice through value "dish"
 const showMenu = (dish) => {
     botReply(`${dish} burger is a great choice, please select your favorite filling`)
     window.dish=`${dish}` // this window method will tranform it from local variable to a global variable 
@@ -124,6 +127,7 @@ const showMenu = (dish) => {
       <option value="vegitarian"> Vegitarian </option>
     </select>
     `
+    //event change enable to choice between the options
     const select = document.getElementById('select')
     select.addEventListener('change', () => sideDish (select.value).fill) 
   }
