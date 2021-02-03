@@ -1,7 +1,7 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const form = document.getElementById('name-form')
-
+const inputWraper = document.getElementById('input-wrapper')
 let userName = ""
 
 // Global variables, if you need any, declared here
@@ -41,9 +41,20 @@ const greeting = () => {
 
 
 const handleResponse = () => {
-  showMessage(`Nice to meet you`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+  let userName = document.getElementById('name-input').value;
+  showMessage(`Nice to meet you ${userName}! What is your mood today?`, 'bot')
+  inputWraper.innerHTML = `
+    <button id="option1">happy</button>
+    <button id="option2">sad</button> 
+ 
+  `
 }
+
+const yourMoodToday = () => {
+  const options = document.getElementById('option1').value;
+  showMessage(`Ok ${userName} I see that you are happy today`, 'bot')
+}
+
 
 
 // Set up your eventlisteners here
@@ -63,6 +74,8 @@ form.addEventListener('submit', (event) => {
   const value = document.getElementById('name-input').value;
   setTimeout (() => handleResponse(value, 'bot'), 1000)
 });
+
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
