@@ -1,9 +1,15 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
-const nameInput = document.getElementById('name-input')
-// Global variables, if you need any, declared here
+const userInput = document.getElementById('user-input')
+const inputWrapper = document.getElementById('input-wrapper')
+const submitBtn = document.getElementById('submit')
+const chatForm = document.getElementById('chat-form')
 
-// Functions declared here
+// Global variables, if you need any, declared here
+let questionNumber = 1;
+/*let choiceFood*/
+// FUNCTIONS DECLARED HERE
+
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -26,7 +32,8 @@ const showMessage = (message, sender) => {
           <p>${message}</p>
         </div>
       </section>
-    `
+    `;
+    document.getElementById('user-input').value = "";
   }
   
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
@@ -35,24 +42,52 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello hungry fellow, What's your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage(`Hey there, what's your name? &hearts;`, 'bot')
+
 }
-
 // Set up your eventlisteners here
-/*const handleNameInput = submit => {
-  submit.preventDefault()
 
-}*/
-
-const handleNameInput = document.getElementById("submit").addEventListener("click", function(submit){
+/*const handleNameInput = document.getElementById("submit").addEventListener("click", function(submit){
   submit.preventDefault()
-  const name = nameInput.value
+  const name = userInput.value
   showMessage(name, 'user')
-  nameInput.value = ''
+  userInput.value = ''
   
-  showMessage(`Hey ${name}, what would you like to eat?`, 'bot')
+  showMessage(`Hey ${name}, would you like to eat pasta or salad?`, 'bot')§
+});*/
+
+
+chatForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const value = userInput.value;
+
+  showMessage(value, 'user');
+
+  if (questionNumber === 1) {
+    if (value === '') {
+      showMessage(`Hey, I did not catch your name, could you repeat that?`, 'bot')
+    } else {
+      showMessage(`Hey ${value}, would you like to eat pasta or salad?`, 'bot')
+      questionNumber++;
+      console.log(questionNumber);
+    }
+  } else if (questionNumber === 2) {
+    if (value === 'pasta') {
+      showMessage(`Happy to hear that! Would you like pasta bolognese or pasta arrabiata?`, `bot`)
+      questionNumber++;
+      /*choiceFood = 'pasta' */
+    } else if (value === 'salad') {
+      showMessage (`Happy to hear that! Here is our salad menu`, `bot`)
+      questionNumber++;
+      /*choiceFood = 'salad'*/
+    } else {
+      showMessage (`Hey, would you like to eat pasta or salad?`, 'bot')
+    }
+  } 
+  
 });
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
@@ -61,3 +96,4 @@ const handleNameInput = document.getElementById("submit").addEventListener("clic
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
+/*setTimeout(handleNameInput, 1000)*/
