@@ -48,14 +48,17 @@ nameForm.addEventListener("submit", (event) => {
   const value = document.getElementById("name-input").value;
   
   showMessage(value, "user")
-  
-  // chat.innerHTML += `
-  //   <div> 
-  //     <p>${value}</p>  
-  //   </div>
-  //   `;
+
+  if(value === 'yes') {
+    showMessage('Would you like a latte or cappuccino?', 'bot');
+  } else {
+    showMessage('Ok, see you another time!', 'bot');
+  }
 
 });
+
+
+// }
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
@@ -64,3 +67,4 @@ nameForm.addEventListener("submit", (event) => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 500)
+setTimeout(showMessage, 1000)
