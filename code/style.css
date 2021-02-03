@@ -6,7 +6,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  /* background: #fae8f6;  */
+  background-image: url ("https://images.unsplash.com/photo-1514517521153-1be72277b32f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80");
 }
 
 h1 {
@@ -37,7 +38,7 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
+  background: #fae8f6;
   color: #0026ff;
   padding: 16px;
   font-size: 16px;
@@ -90,28 +91,33 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+
   max-width: 40%;
 }
 
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  color: rgb(86, 35, 121);
+  background: #fae8f6;
 }
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  color: #fae8f6; 
+  background: rgb(86, 35, 121);
 }
 
 .input-wrapper {
   display: flex;
   justify-content: center;
+  padding: 10px;
 }
 
 .input-wrapper form {
@@ -120,7 +126,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: rgb(86, 35, 121);
   color: white;
   border: none;
   border-radius: 4px;
@@ -139,3 +145,32 @@ button:hover {
   transition: all 0.2s ease;
 }
 
+.sweet {
+  background-color: rgb(207, 125, 200);
+  font-size: 22px;
+}
+
+.sour {
+  background-color: rgb(177, 85, 128);
+  font-size: 22px;
+}
+
+.salty {
+  background-color: rgb(116, 38, 105);
+  font-size: 22px;
+}
+
+.hg {
+  background-color: rgb(207, 125, 200);
+  font-size: 22px;
+}
+
+.yes {
+  background-color: rgb(207, 125, 200);
+  font-size: 22px;
+}
+
+.no {
+  background-color:  rgb(116, 38, 105);
+  font-size: 22px;
+}
