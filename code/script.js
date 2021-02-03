@@ -5,8 +5,53 @@ const nameForm = document.getElementById('name-form')
 // Global variables, if you need any, declared here
 
 // Functions declared here
+const beerQuestion = () => {
+  if (value === "ipa") {
+    showMessage(value, 'user')
+    showMessage('Yummy', "bot") 
+  } else if (value === "lager") {
+    showMessage (value, 'user')
+    showMessage('Great choice!', "bot")
+  } else if (value === "stout") {
+    showMessage (value, 'user')
+    showMessage ('Coming right up', "bot")
+  } else { 
+    showMessage (value,'user')
+    showMessage ('Sorry, we are out of that', "bot")
+  }
+}
 
+const wineQuestion = () => {
+  if (value === "meat") {
+    showMessage(value, 'user')
+    showMessage('I suggest you get a bottle of red wine!', "bot") 
+  } else if (value === "fish") {
+    showMessage (value, 'user')
+    showMessage('Get some white wine!', "bot")
+  } else if (value === "vegetarian") {
+    showMessage (value, 'user')
+    showMessage ('Rose will go great with that!', "bot")
+  } else { 
+    showMessage (value,'user')
+    showMessage ('Sorry, we are out of that', "bot")
+  }
+}
 
+const bubblesQuestion = () => {
+  if (value === "cava") {
+    showMessage(value, 'user')
+    showMessage("I'll get you a bottle straight away!", "bot") 
+  } else if (value === "Prosecco") {
+    showMessage (value, 'user')
+    showMessage('Yumm italian!', "bot")
+  } else if (value === "champagne") {
+    showMessage (value, 'user')
+    showMessage ('What a celebration!', "bot")
+  } else { 
+    showMessage (value,'user')
+    showMessage ('Sorry, we are out of that', "bot")
+  }
+}
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
@@ -40,12 +85,6 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-
-
-// 1. Fånga upp det användaren säger
-// 2. Jämföra inputen med botens svar (if/else)
-// 3. Svara användaren
-
 // Set up your eventlisteners here
 
 nameForm.addEventListener("submit", (event)=> {
@@ -53,19 +92,24 @@ nameForm.addEventListener("submit", (event)=> {
   
    // Assign input value to variable
    const value = document.getElementById('name-input').value;
-    if (value === "beer") {
+      if (value === "beer") {
       showMessage(value, 'user')
-      showMessage('What do you prefer: IPA, Lager or Stout?', "bot") 
+      showMessage('What do you prefer: IPA, Lager or Stout?', "bot")
+      beerQuestion();
     } else if (value === "wine") {
       showMessage(value, 'user')
-      showMessage('What are goin to eat: meat, fish or vegetarian?', 'bot')
+      showMessage('What are you eating: meat, fish or vegetarian?', 'bot')
+      wineQuestion();
     } else if (value === "bubbles") {
       showMessage(value, 'user')
       showMessage('What do you prefer: Cava, Prosecco or Champagne?', 'bot')
+      bubblesQuestion();
     } else {
       showMessage(value, 'user')
       showMessage("We don't sell that!", 'bot')
     }
+
+    
   });
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
@@ -74,3 +118,6 @@ nameForm.addEventListener("submit", (event)=> {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 500)
+
+// delete input after sent
+// add more (nested?) questions
