@@ -14,7 +14,7 @@
   <body>
     <h1 class="title">Welcome to the Dungeon</h1>
     <h2 class="subtitle">The adventure begins...</h2>
-    <main>
+    <div class="content-wrapper">
       <section class="chat" id="chat"></section>
 
       <div class="input-wrapper">
@@ -22,7 +22,20 @@
           <!-- User input types will be loaded here based on game logic -->
         </form>
       </div>
-    </main>
+    </div>
+    <div class="info-wrapper">
+      <section class="info" id="info">
+        <div class="info__enemy" id="enemyInfo">
+          <p>Enemy Health: <span id="healthEnemy">0</span></p>
+        </div>
+        <div class="info__round">
+          <p>Rounds: <span id="rounds">0</span></p>
+        </div>
+        <div class="info__hero">
+          <p>Hero Health: <span id="healthHero">0</span></p>
+        </div>
+      </section>
+    </div>
 
     <script src="./script.js" type="module"></script>
   </body>

@@ -1,48 +1,34 @@
-export class Fighter {
-  constructor(name) {
-    this.name = name;
-    this.type = "Fighter";
-    this.hp = 20;
-    this.actions = ["Attack", "Defend", "Special"];
-  }
-}
-export class Ranger {
-  constructor(name) {
-    this.name = name;
-    this.type = "Ranger";
-    this.hp = 20;
-    this.actions = ["Attack", "Defend", "Special"];
-  }
-}
-export class Sorcerer {
-  constructor(name) {
-    this.name = name;
-    this.type = "Sorcerer";
-    this.hp = 14;
-    this.actions = ["Attack", "Defend", "Special"];
-  }
-}
-export class Enemy {
-  constructor(isEasy, location) {
-    this.type = this.setEnemyType(location);
-    this.hp = this.setHP(isEasy);
-    this.actions = ["Attack", "Defend", "Special"];
+import { d20, d8, d6 } from "./helperFunctions.js";
+
+export default class Combatant {
+  constructor(type, ac, isHero) {
+    this.type = type;
+    this.ac = ac;
+    this.isHero = isHero;
+    this.disadvantage = false;
+    this.buffLength = 0;
+    this.noAttack = false;
   }
 
-  setEnemyType(location) {
-    switch (location) {
-      case "forest":
-        return "goblin";
-      case "mountain":
-        return "gnoll";
-      case " swamp":
-        return "lizard";
-      case "desert":
-        return "imp";
+  attackDouble() {
+    const hit1 = d20() + this.attackMod;
+    const hit2 = d20() + this.attackMod;
+    return [hit1, hit2];
+  }
+
+  attackSingle() {
+    let hit = d20() + this.attackMod;
+    if (this.disadvantage) {
+      this.buffLength--;
+      // roll disadvantage
+      let hit2 = d20() + this.attackMod;
+      if (hit2 <= hit) {
+        return hit2;
+      }
+    } else if (this.noAttack) {
+      this.buffLength--;
+      return 0;
     }
-  }
-
-  setHP(isEasy) {
-    return isEasy ? 10 : 20;
+    return hit;
   }
 }

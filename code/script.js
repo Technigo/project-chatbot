@@ -5,14 +5,39 @@ import Encounter from "./scripts/encounter.js";
 /** DOM SELECTORS */
 const chat = document.getElementById("chat");
 const userInput = document.getElementById("userInput");
+const info = document.getElementById("info");
 
 /** GLOBALS */
-let currentInput, encounter;
+let currentInput,
+  encounter,
+  showingBuff = false;
 let endState = false;
 // Temp variables to use for instantiation
 let _name, _type, _difficulty;
 
 /** FUNCTIONS */
+// Update the info fields
+const updateInfo = () => {
+  const heroHealth = info.querySelector("#healthHero");
+  const enemyHealth = info.querySelector("#healthEnemy");
+  const rounds = info.querySelector("#rounds");
+  const enemyInfo = info.querySelector("#enemyInfo");
+  // Update rounds
+  rounds.innerHTML = encounter.rounds;
+  // update health info
+  heroHealth.innerHTML = encounter.hero.hp < 0 ? 0 : encounter.hero.hp;
+  enemyHealth.innerHTML = encounter.enemy.hp < 0 ? 0 : encounter.enemy.hp;
+  // any debuff info or buff info
+  if (encounter.enemy.disadvantage && !showingBuff) {
+    enemyInfo.innerHTML += `<p id="buffDisAd">Disadvantage</p>`;
+    showingBuff = true;
+  }
+  if (!encounter.enemy.disadvantage && showingBuff) {
+    enemyInfo.children.namedItem("buffDisAd").remove();
+    showingBuff = false;
+  }
+};
+
 // This function replaces the userInput with a new element and sets the currentInput variable
 const changeInput = (type) => {
   switch (type) {
@@ -25,11 +50,11 @@ const changeInput = (type) => {
       currentInput = "boolSelect";
       break;
     case "classSelect":
-      userInput.innerHTML = input.classSelect;
+      userInput.innerHTML = input.classSelect(_difficulty);
       currentInput = "classSelect";
       break;
     case "actionSelect":
-      userInput.innerHTML = input.actionSelect;
+      userInput.innerHTML = input.setActionsSelect(encounter.hero);
       currentInput = "actionSelect";
       break;
     default:
@@ -159,6 +184,7 @@ const encRoundStart = () => {
   // instantiate Encounter
   encounter = new Encounter(_name, _type, _difficulty);
   console.log(encounter);
+  updateInfo();
   showMessage("Excellent! Let's begin...", "bot");
   setTimeout(() => {
     showMessage(
@@ -174,15 +200,7 @@ const encRoundStart = () => {
           );
           break;
         case "mountain":
-          showMessage(`from mountain jump a ${encounter.enemy.type}. What do you?`);
-          break;
-        case "swamp":
-          showMessage(`from swamp jump a ${encounter.enemy.type}. What do you?`);
-          break;
-        case "desert":
-          showMessage(`from desert jump a ${encounter.enemy.type}. What do you?`);
-          break;
-        default:
+          showMessage(`from mountain jump a ${encounter.enemy.type}. What do you?`, "bot");
           break;
       }
       // show hero actions
@@ -191,40 +209,66 @@ const encRoundStart = () => {
   }, 2000);
 };
 
-const runEndGame = () => {
+const runEndGame = (winner) => {
   changeInput();
-  showMessage("end of game, retry?", "bot");
+  updateInfo();
+  if (winner === "hero") {
+    showMessage(`You defeated the ${encounter.enemy.type}! Would you like to play again?`, "bot");
+  } else if (winner === "enemy") {
+    showMessage(
+      `The ${encounter.enemy.type} has killed you... Would you like to try again?`,
+      "bot"
+    );
+  }
   endState = true;
   changeInput("boolSelect");
 };
 
-/** EVENT LISTENERS */
-
-// This function listens for an action select by user.
-// It then goes on to trigger the gameloop:
+// This function handles action select by user.
+// It triggers the gameloop:
 // (hero action->enemy action->hero action->etc....)
 // until an end state is reached
-const handleActionSelectInput = (event) => {
-  const action = event.value;
+const handleActionSelectInput = (action) => {
+  // const action = event.value;
   // show user response
-  showMessage(`I will ${action}!`, "user");
+  showMessage(action.dataset.msg, "user");
+  // updateInfo();
   // Start the game loop
   setTimeout(() => {
-    let msg = encounter.execHeroAction(action);
+    let msg = encounter.execHeroAction(action.value);
+    // console.log(encounter);
     if (msg === null) {
       // the msg is null so an end state was achieved
-      runEndGame();
+      runEndGame("hero");
       return;
     }
     // the loop continues, no end state yet
     showMessage(msg, "bot");
+    updateInfo();
     setTimeout(() => {
       msg = encounter.execEnemyAction();
-      showMessage(msg, "bot");
-      changeInput("actionSelect");
+
+      if (msg === null) {
+        // the msg is null so an end state was achieved
+        runEndGame("enemy");
+        return;
+      }
+      showMessage(msg[0], "bot");
+      updateInfo();
+      setTimeout(() => {
+        showMessage(msg[1], "bot");
+        setTimeout(() => {
+          // new round
+          encounter.newRound();
+          changeInput("actionSelect");
+          updateInfo();
+        }, 2000);
+      }, 2000);
     }, 2000);
   }, 1000);
 };
+
+/** EVENT LISTENERS */
 
 // Listens for any submit events in the user input form. Then triggers a handler funct for that input type (based on the currentinput variable)
 userInput.addEventListener("submit", (event) => {

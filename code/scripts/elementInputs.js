@@ -6,13 +6,31 @@ export const boolSelect = `
     <button class="input__button" type="submit" value="true">Yes</button>
     <button class="input__button" type="submit" value="false">No</button>
     `;
-export const classSelect = `
-    <button class="input__button" type="submit" value="Fighter">Fighter</button>
-    <button class="input__button" type="submit" value="Ranger">Ranger</button>    
-    <button class="input__button" type="submit" value="Sorcerer">Sorcerer</button>    
-`;
-export const actionSelect = `
-    <button class="input__button" type="submit" value="Attack">Attack</button>
-    <button class="input__button" type="submit" value="Defend">Defend</button>    
-    <button class="input__button" type="submit" value="Special">Special</button>    
-`;
+
+// Function to set the available class options based on difficulty
+export const classSelect = (isEasy) => {
+  let html = "";
+  if (isEasy) {
+    html += `
+        <button class="input__button" type="submit" value="Fighter">Fighter</button>
+        <button class="input__button" type="submit" value="Ranger">Ranger</button> 
+        `;
+  } else {
+    html += `
+        <button class="input__button" type="submit" value="Fighter">Fighter</button>
+        <button class="input__button" type="submit" value="Ranger">Ranger</button>    
+        <button class="input__button" type="submit" value="Sorcerer">Sorcerer</button>  
+        `;
+  }
+  return html;
+};
+
+// Function to set the appropriate actions based on the hero type
+export const setActionsSelect = (hero) => {
+  let html = "";
+  for (let i = 0; i < hero.actions.length; i++) {
+    const action = hero.actions[i];
+    html += `<button class="input__button" type="submit" value="${action.type}" data-msg="${action.msg}">${action.name}</button>`;
+  }
+  return html;
+};

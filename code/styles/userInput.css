@@ -12,7 +12,8 @@
 .input-wrapper {
   display: flex;
   justify-content: center;
-  min-height: 56px;
+  min-height: 80px;
+  padding-top: 24px;
 }
 
 .input {
