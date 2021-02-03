@@ -1,11 +1,39 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat');
-const formAnswer = document.getElementById('name-form');
+const theWholeForm = document.getElementById('form-wrapper');
+const inputFromForm = document.getElementById('input-ID')
+const submitFormButton = document.getElementById('send-btn')
+
 // Global variables, if you need any, declared here
+// let questionNumber = 1;
+const FLOWER_CHOICE = 1
+const TYPE_OF_ARRANGEMENT = 2
+const FLOWER_SELECTOR = 3
+const FINAL_CONFIRMATION = 4
 
-// Functions declared here
+const questionHandler = (message, questionNumber) => {
+  showMessage(message, 'user');
+  if (questionNumber === 1) {
+    showFlowerChoice(message);
 
-// This function will add a chat bubble in the correct place based on who the sender is
+  } else if (questionNumber === 2) {
+    // showMessage(message,'user');
+    showTypeOfArrangement(message) ;
+  }
+  else if(questionNumber === 3) {
+    // showMessage(message, 'user');
+    showFlowerSelector (message);
+  }
+  else if (questionNumber === 4) {
+    // showMessage(message, 'user');
+    showFinalConfirmation (message);
+
+  } else {
+    // showMessage(message, 'user');
+    thankYou()
+  }
+};
+
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     chat.innerHTML += `
@@ -26,77 +54,127 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+  // questionNumber = 1;
+  showMessage(`Hello there, What's your name?`, 'bot');
+  theWholeForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const name = inputFromForm.value;
+    questionHandler (name, 1);
+  });
 }
-const showFlowerChoice = () =>{
-  formAnswer.innerHTML = `
-  <button class="arrangement-button" id="bouquet">Bouquet</button>
-  <button class="arrangement-button" id="busket">Busket</button>
-  <button class="arrangement-button" id="box">Box</button>
+
+
+const showFlowerChoice = (message) =>{
+  // questionNumber++; 
+  showMessage (`Hello, ${message}, What flower arrangement would you like today?`,'bot'); 
+  theWholeForm.innerHTML = `
+    <button class="arrangement-button" id="bouquet">Bouquet</button>
+    <button class="arrangement-button" id="basket">Basket</button>
+    <button class="arrangement-button" id="box">Box</button>
   `
-  const optionOne = document.getElementById("bouquet")
-  optionOne.addEventListener('click', () => {
-    showMessage(`Bouquet`, 'user')
-    setTimeout (() => showMessage(`Thank you, what flowers do you want in your bouquet?`, 'bot'), 1000)
+  const questionNumber = 2
+  document.getElementById("bouquet").addEventListener('click', () => {
+    questionHandler('bouquet', questionNumber);
   });
-  const optionTwo = document.getElementById("busket") 
-  optionTwo.addEventListener('click', () => {
-    showMessage(`Busket`, 'user')
-    showMessage(`Thank you, what flowers do you want in your busket?`, 'bot');
+  document.getElementById("basket").addEventListener('click', () => {
+    questionHandler('basket', questionNumber);
   });
-  const optionThree = document.getElementById("box")
-  optionThree.addEventListener('click', () => {
-    showMessage (`Box`, 'user')  
-    showMessage(`Thank you, what flowers do you want in your box?`, 'bot');
+  document.getElementById("box").addEventListener('click', () => {
+    questionHandler('box', questionNumber);;
   }); 
 };
 
-const showFlowerSelector = () => {
-  formAnswer.innerHTML = `
-  <select id="flowerselector"> 
-    <option value="" selected disabled>Choose flowers</option> 
-    <option value="roses">Roses</option>
-    <option value="tulips">Tulips</option>
-    <option value="lilies">Lilies</option>
-    <option value="sunflowers">Sunflowers</option>
-  </select>`
+const showTypeOfArrangement = (type) => {
+  // questionNumber++;
+  showMessage (`Wonderful! I always loved flowes in a ${type}. We have the following options for the ${type}`, 'bot');
+  if (type === 'bouquet'){
+    theWholeForm.innerHTML = `
+      <select id="selector" class="general-selector">
+        <option value="Cascade bouquet">Cascade bouquet</option>
+        <option value="Round bouquet">Round bouquet</option>
+        <option value="Hand-Tied bouquet">Hand-Tied bouquet</option>
+      </select>  `
+  } else if (type === 'basket') {
+    theWholeForm.innerHTML = `
+      <select id="selector" class="general-selector">
+        <option value="Classic">Classic basket</option>
+        <option value="Vintage basket">Vintage basket</option>
+        <option value="Village basket">Village basket</option>
+      </select>  `
+  } else {
+    theWholeForm.innerHTML = `
+      <select id="selector" class="general-selector">
+        <option value="Round-shaped box">Round-shaped box</option>
+        <option value="Heart-haped box">Heart-haped box</option>
+        <option value="Square-shaped box">Square-shaped box</option>
+      </select>  `
+  }
+  const selectorChoice = document.getElementById('selector');
+  selectorChoice.addEventListener('change', () => questionHandler(selectorChoice.value, 3))
+};
+
+const showFlowerSelector = (arrangement) => {
+  // questionNumber++;
+  showMessage (`What flowers would you like in you ${arrangement}? We have the following options`, 'bot');
+  theWholeForm.innerHTML = `
+    <select id="flower-selector"> 
+      <option value="" selected disabled>Choose flowers</option> 
+      <option value="roses">Roses</option>
+      <option value="tulips">Tulips</option>
+      <option value="lilies">Lilies</option>
+      <option value="sunflowers">Sunflowers</option>
+    </select>
+    `
+  const selectorChoiceTwo = document.getElementById('flower-selector');
+  selectorChoiceTwo.addEventListener('change', () => questionHandler(selectorChoiceTwo.value, 4))
 }; 
 
-const showSize = () => {
-  formAnswer.innerHTML = `
-  <button class="size-button" id="size-small">Small</button>
-  <button class="size-button" id="size-medium">Medium</button>
-  <button class="size-button" id="size-large">Large</button>
+const showFinalConfirmation = (flowers) => {
+  // questionNumber++;
+  showMessage (`Oh, aren't ${flowers} beautiful!!!. I will prepare your order shortly`, 'bot');
+  let price 
+  const showPrice = (flowers_) => {
+      if (flowers_ === 'roses'){
+        price = 'SEK500';
+      } else if(flowers_ === 'tulips') {
+        price = 'SEK200';
+      } else if(flowers_ === 'lilies') {
+        price = 'SEK700';
+      } else {
+        price = 'SEK900';
+      }
+    }
+    showPrice(flowers)
+  showMessage (`Great! The price for your ${flowers} will be ${price}`, 'bot')
+  theWholeForm.innerHTML = `
+    <button class="confirmation-button" id="yes-button">Yes</button>
+    <button class="confirmation-button" id="no-button" type="reset">No</button>
   `
-};
-
-const finalConfirmation = () => {
-  formAnswer.innerHTML =`
-  <button class="confirmation-button" id="yes-button">Yes</button>
-  <button class="confirmation-button" id="no-button" type="reset">No</button>
-  `
-};
+  document.getElementById("yes-button").addEventListener('click', () => { 
+    questionHandler ('Yes', 5)
+  });
+  };
 
 
-// Starts here
+
+// Starts here with the greeting function on timeout
+
 setTimeout(greeting, 1000);
 // Set up your eventlisteners here
-formAnswer.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const formInputMessage = document.getElementById('name-input').value;
-  showMessage (formInputMessage, 'user');
-  setTimeout (() => showMessage(`Hello, ${formInputMessage}, what flower arrangement would you like today?`, 'bot'), 1000);
-  setTimeout (() => showFlowerChoice(), 2000);
-  formAnswer.addEventListener('submit', () => {
-    showFlowerSelector();})
-});
+
+
+
+// showMessage (formInputMessage, 'user');
+//   setTimeout (() => showMessage(`Hello, ${formInputMessage}, what flower arrangement would you like today?`, 'bot'), 1000);
+//   setTimeout (() => showFlowerChoice(), 2000);
+//   formAnswer.addEventListener('submit', () => {
+//     showFlowerSelector();})
+// });
 
 
 // When website loaded, chatbot asks first question.
@@ -105,4 +183,3 @@ formAnswer.addEventListener('submit', (event) => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-
