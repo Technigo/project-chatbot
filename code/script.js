@@ -2,6 +2,8 @@
 const chat = document.getElementById('chat')
 const form = document.getElementById('name-form')
 
+let userName = ""
+
 // Global variables, if you need any, declared here
 
 // Functions declared here
@@ -59,7 +61,7 @@ form.addEventListener('submit', (event) => {
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   const value = document.getElementById('name-input').value;
-  handleResponse(value, 'bot')
+  setTimeout (() => handleResponse(value, 'bot'), 1000)
 });
 
 // When website loaded, chatbot asks first question.
