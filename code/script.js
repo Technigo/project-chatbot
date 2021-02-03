@@ -4,14 +4,12 @@ const form = document.getElementById('name-form');
 let value = document.getElementById('input-value').value; // added .value to the end
 const inputWrapper = document.getElementById("input-wrapper")
 
-let userName = "" /* when do we call this variable?*/
-
 //Question 1 -warm or cold 
 const askForWarmOrCold = () => {
   showMessage (`I am here to help you chose your next holiday destination. What do you prefer?`, "bot")
   inputWrapper.innerHTML=`
-  <button id="warmButton">Warm</button>
-  <button id="coldButton">Cold</button>
+  <button value= "warm" id="warmButton">Warm</button>
+  <button value= "cold" id="coldButton">Cold</button>
   `
 document
   .getElementById("warmButton")
@@ -27,40 +25,39 @@ document
   })
 }
 
-// Question 2 - m
+// Question 2 - favourite view 
 const askForLocation = () => {
   showMessage(`Is that so.. then let me know what view you prefer... `, "bot")
   inputWrapper.innerHTML= `
   <select id= "select">
     <option id= "" selected disabled> Chose from this list</option>
-    <option value="1" id="mountainOption">Mountain</option>
-    <option value="2" id="cityOption">City</option>
-    <option value="3" id="beachOption">Beach</option>
+    <option value="mountain" id="mountainOption">Mountain</option>
+    <option value="city" id="cityOption">City</option>
+    <option value="beach" id="beachOption">Beach</option>
   </select>
   `
 const select = document.getElementById("select")
     select.addEventListener("change", () => {
-    if (select.value === "1") {
+    if (select.value === "mountain") {
     showMessage ("I wanna go all the way up", "user")
-    setTimeout (() => askForDrink (), 3000) 
-   } else if (select.value === "2") {
+    setTimeout (() => askForDrink (), 2000) 
+   } else if (select.value === "city") {
     showMessage ("I wanna spend money", "user")
-    setTimeout(()=> askForDrink(), 3000)
+    setTimeout(()=> askForDrink(), 2000)
    } else {
     showMessage ("I don't wanna do anything", "user")
-    setTimeout(() => askForDrink (), 3000)
+    setTimeout(() => askForDrink (), 2000)
    } 
   })
 }
   
-
- // question number 2 
+ // question number 3 - drink choices  
   const askForDrink = (drinkChoice) => {
     showMessage(`What kind of drinker are you`, "bot")
     inputWrapper.innerHTML=`
-    <button id="drinkButton1">umbrella</button>
-    <button id="drinkButton2">make it hot</button>
-    <button id="drinkButton3">sweet</button>
+    <button value="umbrella" id="drinkButton1">umbrella</button>
+    <button value="hot" id="drinkButton2">make it hot</button>
+    <button value="sweet" id="drinkButton3">sweet</button>
     `
   document
     .getElementById("drinkButton1")
@@ -79,43 +76,33 @@ const select = document.getElementById("select")
     .addEventListener("click", () =>{
     showMessage ("I like it sweet", "user")
     setTimeout (() => yourDestination (), 1000)
+
   })
 }
 
 const yourDestination = () => {
-  showMessage (`so let me think for a second.. you seem to be a special case.. `)
+  showMessage (`so let me think for a second.. you seem to be a special case.. `, 'bot')
+  setTimeout(() => showMessage("3", "bot"), 2000)
+  setTimeout(() => showMessage("2", "bot"), 3000)
+  setTimeout(() => showMessage("1", "bot"), 4000)
+  setTimeout (() => result (), 3000)
+
+const result = () =>{
+ if (select.value === "warm" && button.value === "beach" && button.value === "sweet"){
+  showMessage ("India", "bot")
+ } else if (select.value === "cold" && button.value === "mountain" && button.value === "hot"){  
+ showMessage ("Canada", "bot")
+} else  showMessage ("Aruba")
+}
 }
 
 // form.innerHTML = ""; to add last - it will clear the html 
 
 
-  /*
-  if (document.getElementById('mountainOption').selected === True){
-    showMessage ("I wanna go all the way up", "user")
-    setTimeout (() => askForDrink (), 1000) 
-  } else if (document.getElementById("cityOption").selected === True) {
-      showMessage ("I wanna spend money", "user")
-      setTimeout(()=> askForDrink(), 1000)
-    } else {
-      showMessage ("I don't wanna do anything", "user")
-    setTimeout(() => askForDrink (), 1000)
-    }
-  }// dont leave this bracket in the wrong place, should be after IF statement. 
-  */
-
 
 // Global variables, if you need any, declared here
 
 // Functions declared here
-
-/*this is suppose to make the button and enter with same result 
-name.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-    event.preventDefault();
-    document.getElementById('button').click ();
-  }
-}); */
-
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
