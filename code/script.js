@@ -35,7 +35,19 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 };
 
-
+  // First answer 
+  
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const name = input.value;
+    userAnswer(name);
+  
+    if (name) {
+      input.value = '';
+      setTimeout(() => candyTypes(name), 1000);
+      }
+  });
+  
 
 // Starts here
 const greeting = () => {
