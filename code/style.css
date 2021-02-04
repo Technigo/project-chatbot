@@ -5,26 +5,30 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  /* background: #fae8f6;  */
-  background-image: url ("https://images.unsplash.com/photo-1514517521153-1be72277b32f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80");
+  font-family: 'yusei magic', sans-serif;
+  background: #fae8f6; 
+}
+
+.header {
+  background-color: rgb(86, 35, 121);
+  width: 700px;
+  margin: 0px 0px 10px -24px;
+  border-radius: 24px 24px 0px 0px;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
-  line-height: 34px;
+  font-size: 40px;
   color: #fff;
   text-align: center;
 }
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
-  line-height: 34px;
+  font-size: 20px;
   color: #fff;
   text-align: center;
-  margin-bottom: 36px;
+  margin: -20px 0px 20px 0px;
 }
 
 p {
@@ -39,20 +43,21 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #fae8f6;
-  color: #0026ff;
+  color: rgb(86, 35, 121);
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Yusei Magic', sans-serif;
   font-weight: 600;
   line-height: 26px;
   flex: 1;
+  outline: none;
 }
 
 main {
-  margin: 0 auto;
+  margin: 50px auto;
   width: 100%;
   max-width: 700px;
-  height: 600px;
+  height: 700px;
   border-radius: 30px;
   background: #fff;
   padding: 20px 24px;
@@ -91,12 +96,10 @@ main {
 }
 
 .bubble {
-
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-
   max-width: 40%;
 }
 
@@ -134,7 +137,7 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: 'Yusei Magic', sans-serif;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -173,4 +176,8 @@ button:hover {
 .no {
   background-color:  rgb(116, 38, 105);
   font-size: 22px;
+}
+
+.fa-kiss-wink-heart, .fa-sad-tear {
+  font-size: 200px;
 }
