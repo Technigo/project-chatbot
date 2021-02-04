@@ -1,8 +1,7 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This is the third project made in the Technigo Bootcamp. It was a pair programming project that consisted in building a ChatBot by using JavaScript. 
+We have created a HelpMeChooseBot that gives the user movie options after answering a few questions.
 
 ## The problem
 
@@ -10,4 +9,4 @@ Describe how you approached to problem, and what tools and techniques you used t
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Watch it live at Netlify - https://quirky-murdock-c00a99.netlify.app

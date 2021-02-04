@@ -187,18 +187,18 @@ const movieMenu = (type) => {
            inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 shorter Thrillers with Female directors</option>
-              <option value="dramamovienr1">movie nr1</option>
-              <option value="dramamovienr2">movie nr2</option>
-              <option value="dramamovienr3">Movie nr3</option>
+              <option value="thrillermovienr1">movie nr1</option>
+              <option value="thrillermovienr2">movie nr2</option>
+              <option value="thrillermovienr3">Movie nr3</option>
             </select>
           `
       }  else /*if (genderDir === 'Male director')*/ {
            inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 shorter Thrillers with Male directors</option>
-              <option value="dramamovienr1">movie nr1</option>
-              <option value="dramamovienr2">movie nr2</option>
-              <option value="dramamovienr3">Movie nr3</option>
+              <option value="thrillermovienr1">movie nr1</option>
+              <option value="thrillermovienr2">movie nr2</option>
+              <option value="thrillermovienr3">Movie nr3</option>
             </select>
           `
       }
@@ -207,18 +207,18 @@ const movieMenu = (type) => {
            inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 shorter Comedies with Female directors</option>
-              <option value="dramamovienr1">movie nr1</option>
-              <option value="dramamovienr2">movie nr2</option>
-              <option value="dramamovienr3">Movie nr 3</option>
+              <option value="comedymovienr1">movie nr1</option>
+              <option value="comedymovienr2">movie nr2</option>
+              <option value="comedymovienr3">Movie nr 3</option>
             </select>
           `
       } else /*if (genderDir === 'Male director') */{
           inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 shorter Comedies with Male directors</option>
-              <option value="dramamovienr1">movie nr1</option>
-              <option value="dramamovienr2">movie nr2</option>
-              <option value="dramamovienr3">Movie nr 3</option>
+              <option value="comedymovienr1">movie nr1</option>
+              <option value="comedymovienr2">movie nr2</option>
+              <option value="comedymovienr3">Movie nr 3</option>
             </select>
           `
       }
@@ -269,18 +269,18 @@ const movieMenu = (type) => {
           inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 longer Thrillers with Female directors</option>
-              <option value="dramamovienr1">movie nr1</option>
-              <option value="dramamovienr2">movie nr2</option>
-              <option value="dramamovienr3">Movie nr 3</option>
+              <option value="thrillermovienr1">movie nr1</option>
+              <option value="thrillermovienr2">movie nr2</option>
+              <option value="thrillermovienr3">Movie nr 3</option>
             </select>
           `
       } else /*if (genderDir === 'Male director')*/ {
           inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 longer Thrillers with Male directors</option>
-              <option value="dramamovienr1">movie nr1</option>
-              <option value="dramamovienr2">movie nr2</option>
-              <option value="dramamovienr3">Movie nr 3</option>
+              <option value="thrillermovienr1">movie nr1</option>
+              <option value="thrillermovienr2">movie nr2</option>
+              <option value="thrillermovienr3">Movie nr 3</option>
             </select>`
       }
    } else if (type === 'comedy') {
@@ -288,18 +288,18 @@ const movieMenu = (type) => {
           inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 longer comedies with Female directors</option>
-              <option value="dramamovienr1">movie nr1</option>
-              <option value="dramamovienr2">movie nr2</option>
-              <option value="dramamovienr3">Movie nr 3</option>
+              <option value="comedymovienr1">movie nr1</option>
+              <option value="comedymovienr2">movie nr2</option>
+              <option value="comedymovienr3">Movie nr 3</option>
             </select>
           `
       } else /*if (genderDir === 'Male director')*/ {
           inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 longer comedies with Male directors</option>
-              <option value="dramamovienr1">movie nr1</option>
-              <option value="dramamovienr2">movie nr2</option>
-              <option value="dramamovienr3">Movie nr 3</option>
+              <option value="comedymovienr1">movie nr1</option>
+              <option value="comedymovienr2">movie nr2</option>
+              <option value="comedymovienr3">Movie nr 3</option>
             </select>
           `
       }
@@ -339,7 +339,7 @@ const chosenMovie = (select) => {
         <button id="restartBtn">Restart</button>
       </div>
     `
-    
+
   document.getElementById('restartBtn').addEventListener('click', () => {
     location.reload()
   })
