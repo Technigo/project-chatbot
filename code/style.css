@@ -89,6 +89,11 @@ main {
   height: 60px;
 }
 
+.cutePuppyImg {
+  width: 240px;
+  height: auto;
+}
+
 .bubble {
   background: #e5e9ff;
   font-weight: 600;

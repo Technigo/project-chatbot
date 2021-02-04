@@ -7,7 +7,7 @@ const chatForm = document.getElementById('chat-form')
 
 // Global variables, if you need any, declared here
 let questionNumber = 1;
-/*let choiceFood*/
+let whichMood
 // FUNCTIONS DECLARED HERE
 
 
@@ -33,7 +33,7 @@ const showMessage = (message, sender) => {
         </div>
       </section>
     `;
-    document.getElementById('user-input').value = "";
+    /*document.getElementById('user-input').value = "";*/
   }
   
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
@@ -47,16 +47,6 @@ const greeting = () => {
 }
 // Set up your eventlisteners here
 
-/*const handleNameInput = document.getElementById("submit").addEventListener("click", function(submit){
-  submit.preventDefault()
-  const name = userInput.value
-  showMessage(name, 'user')
-  userInput.value = ''
-  
-  showMessage(`Hey ${name}, would you like to eat pasta or salad?`, 'bot')§
-});*/
-
-
 chatForm.addEventListener('submit', (event) => {
   event.preventDefault();
 
@@ -68,26 +58,39 @@ chatForm.addEventListener('submit', (event) => {
     if (value === '') {
       showMessage(`Hey, I did not catch your name, could you repeat that?`, 'bot')
     } else {
-      showMessage(`Hey ${value}, would you like to eat pasta or salad?`, 'bot')
+      showMessage(`Hey ${value}, how are you today on a scale of 1-10?`, 'bot')
       questionNumber++;
       console.log(questionNumber);
     }
   } else if (questionNumber === 2) {
-    if (value === 'pasta') {
-      showMessage(`Happy to hear that! Would you like pasta bolognese or pasta arrabiata?`, `bot`)
-      questionNumber++;
-      /*choiceFood = 'pasta' */
-    } else if (value === 'salad') {
-      showMessage (`Happy to hear that! Here is our salad menu`, `bot`)
-      questionNumber++;
-      /*choiceFood = 'salad'*/
-    } else {
-      showMessage (`Hey, would you like to eat pasta or salad?`, 'bot')
+      if (Number(value) <= 4) {
+        showMessage(`Oh, I'm sorry to hear that! Would you like to see a picture of a cute puppy or maybe you need a pep talk? Type 'cutepuppy' or 'peptalk'!`, `bot`)
+        questionNumber++;
+        whichMood = 'badMood'
+        inputWrapper.innerHTML=`<button id="cutePuppybtn">Cute puppy</button> <button id="pepTalk">Pep talk</button>`
+        document.getElementById("pepTalk").addEventListener('click', showMessage(`hej`, `bot`))
+      } else if (Number(value) >= 5, Number(value) <= 7) {
+        showMessage (`Maybe I can cheer you up a bit more with a joke or a funny gif?`, `bot`)
+        questionNumber++;
+        whichMood = 'okayMood'
+      } else if (Number(value) >= 8) {
+        showMessage (`Glad you feel so good! You're welcome back whenever you need me!`, `bot`)
+      } else {
+        showMessage (`Please answer on a scale from 1-10 with numbers :-)`, 'bot')
     }
-  } 
+  } else if (questionNumber === 3, whichMood === 'badMood') {
+    if (value === 'cutepuppy') {
+      showMessage(`placeholder puppy`, 'bot')
+    }
+  }
   
 });
 
+const badMood = (choice) => {
+  if (choice === 'cutePuppy') {
+    showMessage(`Picture of cute puppy`)
+  }
+}
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
