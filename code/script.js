@@ -28,7 +28,7 @@ const showMessage = (message, sender) => {
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/rut.png" alt="TeacherBot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -44,7 +44,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-showMessage(`Hej jag heter Rut och är en digital räknerobot, vad heter du?`, 'bot')
+showMessage(`Hej jag heter Rut och är en räknerobot, vad heter du?`, 'bot')
 }
 
 
@@ -66,80 +66,86 @@ form.addEventListener('submit', (event) => {
       if (userInput === '') {
          showMessage("Ursäkta jag uppfattade inte ditt namn kan du skriva det igen", "bot");
       } else {
-          showMessage(`Hej ${userInput}! jag tänkte att vi kunde börja med 2:ans tabell - vet du vad 2*1 är =?`, "bot");
+          showMessage(`Hej ${userInput}! Vi börjar med 2:ans tabell, vet du vad 2 x 1 är?`, "bot");
           step = 2;
       }
   } else if (step === 2) {
 
       if (Number(userInput) === 2) {
-          showMessage(`kul rätt svar, vad är 2*2?`, "bot");
+          showMessage(`Rätt svar! Vad är 2 x 2?`, "bot");
           step = 3;
       } else {
-          showMessage(`Aj då, det var tyvärr fel - prova igen!`, "bot");
+          showMessage(`Det var tyvärr fel, prova igen!`, "bot");
       }
   } else if (step === 3) {
       if (Number(userInput) === 4) {
-          showMessage(`tjohej va duktig du är! kan du den här då? 2*3?`, "bot");
+          showMessage(`Tjohej va duktig du är! Vad är 2 x 6?`, "bot");
           step = 4
       } else {
-          showMessage(`åh nej det var fel, testa igen`, "bot");
+          showMessage(`Åh nej det var tyvärr fel, testa igen`, "bot");
       }
   } else if (step === 4) {
-      if (Number(userInput) === 6) {
-          showMessage(`tjohej va duktig du är! kan du den här då? 2*4?`, "bot");
+      if (Number(userInput) === 12) {
+          showMessage(`Rätt igen! Kan du den här då? 2 x 4?`, "bot");
           step = 5
       } else {
-          showMessage(`åh nej det var fel, testa igen`, "bot");
+          showMessage(`Det var tyvärr fel, testa igen`, "bot");
   } 
   } else if (step === 5) {
       if (Number(userInput) === 8) {
-          showMessage(`Rena rama geniet! kan du den här då? 2*5?`, "bot");
+          showMessage(`Rena rama geniet! Vad är 2 x 8?`, "bot");
           step = 6
       } else {
-          showMessage(`åh nej det var fel, testa igen`, "bot");
+          showMessage(`Det var tyvärr fel, testa igen`, "bot");
   }
-     
   } else if (step === 6) {
-      if (Number(userInput) === 10) {
-          showMessage(`Korrekt! kan du den här då? 2*6?`, "bot");
+      if (Number(userInput) === 16) {
+          showMessage(`Korrekt! Vad är 2 x 3?`, "bot");
           step = 7
       } else {
-          showMessage(`åh nej det var fel, testa igen`, "bot");
+          showMessage(`Åh nej det var fel, prova igen`, "bot");
   }
   } else if (step === 7) {
-      if (Number(userInput) === 12) {
-          showMessage(`Korrekt! kan du den här då? 2*7?`, "bot`);
+      if (Number(userInput) === 6) {
+          showMessage(`Korrekt! kan du den här då? 2 x 7?`, "bot");
           step = 8
       } else {
           showMessage(`åh nej det var fel, testa igen`, "bot");
   } 
   } else if (step === 8) {
       if (Number(userInput) === 14) {
-          showMessage(`Korrekt! kan du den här då? 2*8?`, "bot");
+          showMessage(`Hurra, rätt svar! Vad är? 2 x 5?`, "bot");
           step = 9
       } else {
-          showMessage(`åh nej det var fel, testa igen`, "bot");
+          showMessage(`Det var tyvärr fel, testa igen`, "bot");
   }
   } else if (step === 9) {
-      if (Number(userInput) === 16) {
-          showMessage(`Korrekt! kan du den här då? 2*9?`, "bot");
+      if (Number(userInput) === 10) {
+          showMessage(`Helt rätt! Vad är 2 x 9?`, "bot");
           step = 10
       } else {
-          showMessage(`åh nej det var fel, testa igen`, "bot");
+          showMessage(`Det var tyvärr fel, testa igen`, "bot");
   }
   } else if (step === 10) {
       if (Number(userInput) === 18) {
-          showMessage(`Korrekt! kan du den här då? 2*10?`, "bot");
+          showMessage(`Korrekt! Kan du den här då? 2 x 10?`, "bot");
           step = 11
       } else {
-          showMessage(`åh nej det var fel, testa igen`, "bot");
+          showMessage(`Åh nej det var fel, testa igen`, "bot");
+}
+  } else if (step === 11) {
+      if (Number(userInput) === 20) {
+        showMessage(`Hipp hipp hurra va du va bra! Du klarade allt! För att köra igen behöver du ladda om sidan 👋🏼`, "bot");
+        form.innerHTML = "";
+      } else {
+        showMessage(`Det var tyvärr fel, prova igen`, "bot");
 }
 
-
-  // Since conversation with bot is finished, let's delete form from HTML
-      form.innerHTML = "";
+      
   }
 });
+
+// Since conversation with bot is finished, let's delete form from HTML
   // Check if value from user is correct.
   // If yes, return code between lines 15-19
   // Else, return code between lines 21-25
