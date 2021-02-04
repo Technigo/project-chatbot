@@ -3,8 +3,8 @@ const chat = document.getElementById('chat')
 const formSubmitButton = document.getElementById("send-btn");
 const formMessageBox = document.getElementById("form-input");
 const formInputWrapper = document.getElementById("input-wrapper");
-const selectMenuOptions = document.getElementById("selectMenuOptions");
-const selectOptionButton = document.getElementById("selectOptionButton");
+/* let selectMenuOptions = document.getElementById("selectMenuOptions"); */
+/* let selectOptionButton = document.getElementById("selectOptionButton"); */
 const selectOptionDiv = document.getElementById("selectOptionDiv");
 const mainTag = document.getElementById("mainTag");
 
@@ -123,7 +123,11 @@ const highRiskOrLowRiskQuestion = (message) => {
     </select>
     <button id="selectOptionButton" class="send-btn" type="button">Send</button>
     </div>`;
+    let selectOptionButton = document.getElementById("selectOptionButton");
+    let selectMenuOptions = document.getElementById("selectMenuOptions");
+
     selectOptionButton.addEventListener('click', () => nextQuestion(selectMenuOptions.value));
+    
 
 
 
