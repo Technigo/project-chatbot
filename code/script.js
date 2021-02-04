@@ -115,7 +115,7 @@ const movieLength = (yes) => {
   showMessage(`${yes} great! How much time do you have to watch the movie?`, 'bot')
   inputWrapper.innerHTML = `
       <div>
-       <button id="underBtn">Under 2h</button>
+        <button id="underBtn">Under 2h</button>
         <button id="overBtn">Over 2h</button>
       </div>
     `
@@ -163,8 +163,8 @@ const movieMenu = (type) => {
   showMessage(`Excellent choice - ${type} it is. Here is a list of movies that I think will suit you:`, 'bot')
   if (movLength === 'Under 2h') {
       if (type === 'drama') {
-         if (genderDir === 'Female director') {
-           inputWrapper.innerHTML = `
+        if (genderDir === 'Female director') {
+          inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 shorter Dramas with Female directors</option>
               <option value="American Psycho">American Psycho</option>
@@ -173,7 +173,7 @@ const movieMenu = (type) => {
             </select>
           `
       }  else /*if (genderDir === 'Male director')*/ {
-           inputWrapper.innerHTML = `
+          inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 shorter Dramas with Male directors</option>
               <option value="La vita è Bella">La vita è Bella</option>
@@ -182,49 +182,50 @@ const movieMenu = (type) => {
             </select>
           `
       }
-   }  else if (type === 'thriller') {
-         if (genderDir === 'Female director') {
-           inputWrapper.innerHTML = `
+  }  else if (type === 'thriller') {
+        if (genderDir === 'Female director') {
+          inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 shorter Thrillers with Female directors</option>
-              <option value="thrillermovienr1">movie nr1</option>
-              <option value="thrillermovienr2">movie nr2</option>
-              <option value="thrillermovienr3">Movie nr3</option>
+              <option value="The hitch-hiker">The hitch-hiker</option>
+              <option value="American psycho">American psycho</option>
+              <option value="In the cut">In the cut</option>
             </select>
           `
       }  else /*if (genderDir === 'Male director')*/ {
-           inputWrapper.innerHTML = `
+          inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 shorter Thrillers with Male directors</option>
-              <option value="thrillermovienr1">movie nr1</option>
-              <option value="thrillermovienr2">movie nr2</option>
-              <option value="thrillermovienr3">Movie nr3</option>
+              <option value="Taken">Taken</option>
+              <option value="Reservoir dogs">Reservoir dogs</option>
+              <option value="Escape room">Escape room</option>
             </select>
           `
       }
-   }  else if (type === 'comedy') {
-         if (genderDir === 'Female director') {
-           inputWrapper.innerHTML = `
+  }  else if (type === 'comedy') {
+        if (genderDir === 'Female director') {
+          inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 shorter Comedies with Female directors</option>
-              <option value="comedymovienr1">movie nr1</option>
-              <option value="comedymovienr2">movie nr2</option>
-              <option value="comedymovienr3">Movie nr 3</option>
+              <option value="Afterwork stories">Afterwork stories</option>
+              <option value="Clueless">Clueless</option>
+              <option value="Booksmart">Booksmart</option>
             </select>
+
           `
       } else /*if (genderDir === 'Male director') */{
           inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 shorter Comedies with Male directors</option>
-              <option value="comedymovienr1">movie nr1</option>
-              <option value="comedymovienr2">movie nr2</option>
-              <option value="comedymovienr3">Movie nr 3</option>
+              <option value="Borat">Borat</option>
+              <option value="Touchy feely">Touchy feely</option>
+              <option value="Death to 2020">Death to 2020</option>
             </select>
           `
       }
-   }  else {
-         if (genderDir === 'Female director') {
-           inputWrapper.innerHTML = `
+  }  else {
+        if (genderDir === 'Female director') {
+          inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 shorter documentaries with Female directors</option>
               <option value="Blackfish">Blackfish</option>
@@ -242,7 +243,7 @@ const movieMenu = (type) => {
             </select>
           `
       }
-   }
+  }
   } else if (movLength === 'Over 2h') {
       if (type === 'drama') {
         if (genderDir === 'Female director') {
@@ -264,46 +265,46 @@ const movieMenu = (type) => {
             </select>
           `
       }
-   } else if (type === 'thriller') {
+  } else if (type === 'thriller') {
         if (genderDir === 'Female director') {
           inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 longer Thrillers with Female directors</option>
-              <option value="thrillermovienr1">movie nr1</option>
-              <option value="thrillermovienr2">movie nr2</option>
-              <option value="thrillermovienr3">Movie nr 3</option>
+              <option value="Point break">Point break</option>
+              <option value="Fatto di sangue fra due uomini per causa di una vedova. Si sospettano moventi politici">Fatto di sangue fra due uomini per causa di una vedova. Si sospettano moventi politici</option>
+              <option value="Bastards">Bastards</option>
             </select>
           `
       } else /*if (genderDir === 'Male director')*/ {
           inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 longer Thrillers with Male directors</option>
-              <option value="thrillermovienr1">movie nr1</option>
-              <option value="thrillermovienr2">movie nr2</option>
-              <option value="thrillermovienr3">Movie nr 3</option>
+              <option value="The Killing of a Sacred Deer">The Killing of a Sacred Deer</option>
+              <option value="Sangue do Meu Sangue">Sangue do Meu Sangue</option>
+              <option value="Les Diaboliques">Les Diaboliques</option>
             </select>`
       }
-   } else if (type === 'comedy') {
+  } else if (type === 'comedy') {
         if (genderDir === 'Female director') {
           inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 longer comedies with Female directors</option>
-              <option value="comedymovienr1">movie nr1</option>
-              <option value="comedymovienr2">movie nr2</option>
-              <option value="comedymovienr3">Movie nr 3</option>
+              <option value="Slackwars">Slackwars</option>
+              <option value="The New the Bad and the Lazy">The New the Bad and the Lazy</option>
+              <option value="Heut ist mein Tag">Heut ist mein Tag</option>
             </select>
           `
       } else /*if (genderDir === 'Male director')*/ {
           inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 longer comedies with Male directors</option>
-              <option value="comedymovienr1">movie nr1</option>
-              <option value="comedymovienr2">movie nr2</option>
-              <option value="comedymovienr3">Movie nr 3</option>
+              <option value="The Big Lebowski">The Big Lebowski</option>
+              <option value="Miss Granny">Miss Granny</option>
+              <option value="Naui gyeolhon wonjeonggi">Naui gyeolhon wonjeonggi</option>
             </select>
           `
       }
-   } else {
+  } else {
         if (genderDir === 'Female director') {
           inputWrapper.innerHTML = `
             <select id="select"> 
@@ -323,7 +324,7 @@ const movieMenu = (type) => {
             </select>
           `
       }
-   }
+  }
   }
 
   const select = document.getElementById('select')
