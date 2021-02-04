@@ -16,7 +16,7 @@ const pizzaChoice = `
 
 const pastaChoice = `
   <select id='select'>
-    <option value='' selected disabled>Click here to choose pizza</option>
+    <option value='' selected disabled>Click here to choose Pasta</option>
     <option value='Carbonara'>Carbonara</option>
     <option value='Bolognese'>Bolognese</option>
     <option value='Frutti di mare'>Frutti Di Mare</option>
@@ -25,7 +25,7 @@ const pastaChoice = `
 
 const salladChoice = `
   <select id='select'>
-    <option value='' selected disabled>Click here to choose pizza</option>
+    <option value='' selected disabled>Click here to choose Salad</option>
     <option value='Cesar'>Cesar</option>
     <option value='Shrimp'>Shrimp</option>
     <option value='Tuna'>Tuna</option>
@@ -56,11 +56,24 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 // Functions declared here
+//Question 5
+const drinkChoice = () => {
+
+}
+//Question 4
+const askForAmount = (selectedFood) => {
+  showMessage(`How many ${selectedFood} do you want?`, 'bot')
+  const foodAmount = nameInput.value
+  showMessage(foodAmount, 'user')
+  nameForm.addEventListener('submit', drinkChoice)
+
+
+} 
 
 // Question 3
-const askFoodChoice = (foodChoice) => {
-  showMessage(`${foodChoice} sounds good! What kind ${foodChoice} do you want?`, 'bot')
-}
+const askFoodChoice = foodChoice => {
+  showMessage(`${foodChoice} sounds good! What kind of ${foodChoice} do you want?`, 'bot')
+
 
 if (foodChoice === 'pizza') {
   inputWrapper.innerHTML = pizzaChoice
@@ -69,7 +82,14 @@ if (foodChoice === 'pizza') {
 } else {
   inputWrapper.innerHTML = salladChoice
 }
+const selectedFood = document.getElementById('select')
+selectedFood.addEventListener('change', () => {
+showMessage(selectedFood.value, 'user')
+inputWrapper.innerHTML=''
+setTimeout(() => askForAmount(selectedFood.value), 1000)
+}) 
 
+}
 // Question 2
 const handleFoodInput = () => {
   inputWrapper.innerHTML = `
@@ -80,22 +100,25 @@ const handleFoodInput = () => {
   document
   .getElementById('Pizza-button')
   .addEventListener('click',() => {
-   showMessage('I want pizza', 'user') 
-   setTimeout(() => foodChoice('pizza'), 1000)
+   showMessage('I want pizza', 'user')
+   inputWrapper.innerHTML = '' 
+   setTimeout(() => askFoodChoice('pizza'), 1000)
   })
 
   document
   .getElementById('Pasta-button')
   .addEventListener('click',() => {
    showMessage('I want pasta', 'user')
-   setTimeout(() => foodChoice('pasta'), 1000) 
+   inputWrapper.innerHTML = '' 
+   setTimeout(() => askFoodChoice('pasta'), 1000) 
   })
 
   document
   .getElementById('Salad-button')
   .addEventListener('click',() => {
    showMessage('I want Salad', 'user') 
-   setTimeout(() => foodChoice('sallad'), 1000)
+   inputWrapper.innerHTML = '' 
+   setTimeout(() => askFoodChoice('sallad'), 1000)
   })
 } 
 
