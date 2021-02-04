@@ -6,39 +6,41 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('https://images.unsplash.com/photo-1583324113626-70df0f4deaab?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1778&q=80');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  color: #fff;
 }
 
 h1 {
-  font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
   text-align: center;
+  margin-top: 60px;
 }
 
 h2 {
-  font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
   text-align: center;
   margin-bottom: 36px;
 }
 
 p {
   font-size: 18px;
-  font-weight: 600;
   line-height: 28px;
   margin: 0;
 }
 
-input {
+input, 
+#select {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: rgba(193, 51, 77, 0.733);
+  color: #fff;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -51,7 +53,7 @@ main {
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
-  height: 600px;
+  height:600px;
   border-radius: 30px;
   background: #fff;
   padding: 20px 24px;
@@ -62,6 +64,7 @@ main {
 }
 
 .chat {
+  position: relative;
   flex: 1;
   display: flex;
   justify-content: flex-start;
@@ -90,12 +93,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #c2334d;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #fff;
   max-width: 40%;
 }
 
@@ -117,11 +120,12 @@ main {
 .input-wrapper form {
   width: 100%;
   display: flex;
+  justify-content: center;
 }
 
 button {
-  background-color: #0026ff;
-  color: white;
+  background-color: #c2334e;
+  color: #fff;
   border: none;
   border-radius: 4px;
   padding: 16px 40px;
@@ -137,4 +141,38 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+.loading-img{
+  margin: 15px 20px;
+  width: 70px;
+  position: fixed;
+  top: 580px;
+  overflow: scroll; 
+}
+
+.loading-img-off{
+  display: none;  
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 30px ;
+  }
+  h2 {
+    font-size: 18px;
+    line-height: 20px;
+  }
+  p {
+    font-size: 12px;
+    line-height: 20px;
+  }
+  .loading-img {
+    top: 550px;
+  }
+
+  button {
+    padding: 16px 25px;
+  }
+ 
 }

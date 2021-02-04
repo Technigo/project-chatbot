@@ -7,29 +7,29 @@ let buttonSelection = null
 // Global variables, if you need any, declared here
 const questions = [
   {
-    question: 'Welcome to Corona-Test booking. What is your name?',
+    question: 'Hi 👋🏼  I am your Corona Dr. I will help you with you corona test / vaccin booking. What is your name?',
   },
   {
     question: 'Do you want to take a corona test or book a vaccin appointment?',
   },
 
   {
-    question: 'Do you want to book a vaccin appointment or take a corona test?',
+    question: 'Do you want to take a corona test or book a vaccin appointment?',
   },
 
   {
-    question: 'Thank you, please choose your city',
+    question: 'So corona tets it is, please choose your city',
   },
 
   {
-    question: 'Choose the date from the calendar',
+    question: 'Great city your living in. Now choose a date from the calendar.',
   },
 
   {
-    question: 'Please enter your email',
+    question: 'Thank you so much. Please enter your email.',
   },
   {
-    question: 'You got a booking confirmation in your email. Take care!',
+    question: 'You got a booking confirmation in your email. Take care! 🤗',
   }
 ]
 
@@ -47,13 +47,13 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/userbot.png" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/drbot.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -70,8 +70,10 @@ const greeting = () => {
 
 // Set up your eventlisteners here
 form.addEventListener('submit', (event) => {
+  const loading =  document.getElementById('loading-img')
   event.preventDefault();
   questionNumber++
+  playSound()
 
   if (buttonSelection) {
     showMessage(buttonSelection, 'user')
@@ -92,17 +94,34 @@ form.addEventListener('submit', (event) => {
   if (selectInput) {
     showMessage(selectInput.value, 'user')
   }
+
+  setTimeout(() => {
+    console.log('text')
+    document.getElementById('loading-img').classList.remove('loading-img-off')
+    document.getElementById('loading-img').classList.add('loading-img')
+
+    
+  }, 300);
+
+  setTimeout(() => {
+    console.log('text-off')
+    document.getElementById('loading-img').classList.remove('loading-img')
+    document.getElementById('loading-img').classList.add('loading-img-off')
+
+  }, 1000);
 })
 
 const buttonValue = (valueButton) => {
   buttonSelection = valueButton
 }
 
+
+
 //Question #2
 const questionHealth = () => {
-  showMessage(`Great meeting you ${username}, are you sick today?`, 'bot')
+  showMessage(`Great meeting you ${username}! Do you feel sick?`, 'bot')
   form.innerHTML = `
-    <button id="continue" onclick='buttonValue("yes")'>Yes</button>
+    <button id="continue" onclick='buttonValue("Yes")'>Yes</button>
     <button id="quit" onclick='buttonValue("No")'>No</button> 
   `
   document
@@ -120,15 +139,16 @@ const questionHealth = () => {
 }
 
 const goodByeMsg = () => {
-  showMessage(`Okey than, have a good day ${username}!`, 'bot')
+  showMessage(`Happy to hear ${username}! Just a friendy reminder : 🧍↔️🧍+ 😷 `, 'bot')
+  form.innerHTML = ``
 }
 
 //Question #3
 const questionTypes = () => {
   showMessage(questions[questionNumber].question, 'bot')
   form.innerHTML = `
-      <button id="corona" onclick='buttonValue("corona")'>🦠</button>
-      <button id="vaccin" onclick='buttonValue("vaccin")'>💉</button>
+      <button id="corona" onclick='buttonValue("Corona test")'>Corona 🦠</button>
+      <button id="vaccin" onclick='buttonValue("Vaccin booking")'>Vaccin 💉</button>
     `
   document
     .getElementById('corona')
@@ -150,10 +170,11 @@ const questionCity = () => {
 
   form.innerHTML = `
     <select id="select" value="">
-      <option value="stockholm">Stockholm</option>
-      <option value="göteborg">Göteborg</option>
-      <option value="malmö">Malmö</option>
-      <option value="uppsala">Uppsala</option>
+    <option value="" selected disabled>🌆 Select your city</option>
+      <option value="Stockholm">Stockholm</option>
+      <option value="Göteborg">Göteborg</option>
+      <option value="Malmö">Malmö</option>
+      <option value="Uppsala">Uppsala</option>
       </select>
       <button id="send-btn" class="send-btn" type="submit">
      Send
@@ -203,9 +224,18 @@ const questionContact = () => {
 
 const goodbye = () => {
   showMessage(questions[questionNumber].question, 'bot')
-  console.log(questionNumber)
+  form.innerHTML = ``
 }
 
+const playSound = () => {
+  const sound = new Audio('sound.wav');
+  sound.play()
+}
 
-setTimeout(greeting, 1000) 
+const loadingBubble = () => {
+  const loading = document.getElementById('loading-img');
+  loading.play()
+}
+
+setTimeout(greeting, 1500)
 
