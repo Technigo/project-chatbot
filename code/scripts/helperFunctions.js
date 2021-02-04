@@ -13,3 +13,6 @@ export const d6 = () => {
 export const d4 = () => {
   return Math.floor(Math.random() * 4 + 1);
 };
+export const random = (maxNumber) => {
+  return Math.floor(Math.random() * maxNumber);
+};

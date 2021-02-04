@@ -8,9 +8,7 @@ const userInput = document.getElementById("userInput");
 const info = document.getElementById("info");
 
 /** GLOBALS */
-let currentInput,
-  encounter,
-  showingBuff = false;
+let currentInput, encounter;
 let endState = false;
 // Temp variables to use for instantiation
 let _name, _type, _difficulty;
@@ -21,20 +19,34 @@ const updateInfo = () => {
   const heroHealth = info.querySelector("#healthHero");
   const enemyHealth = info.querySelector("#healthEnemy");
   const rounds = info.querySelector("#rounds");
-  const enemyInfo = info.querySelector("#enemyInfo");
   // Update rounds
   rounds.innerHTML = encounter.rounds;
   // update health info
   heroHealth.innerHTML = encounter.hero.hp < 0 ? 0 : encounter.hero.hp;
   enemyHealth.innerHTML = encounter.enemy.hp < 0 ? 0 : encounter.enemy.hp;
-  // any debuff info or buff info
-  if (encounter.enemy.disadvantage && !showingBuff) {
-    enemyInfo.innerHTML += `<p id="buffDisAd">Disadvantage</p>`;
-    showingBuff = true;
+};
+// Update buffs info
+const updateBuffs = () => {
+  const enemyInfo = info.querySelector("#enemyInfo");
+  //check if enemy has buffs
+  const enemyBuffs = encounter.enemy.buffs;
+  if (enemyBuffs.length > 0) {
+    // enemy has buff, loop through and show them
+    for (let i = 0; i < enemyBuffs.length; i++) {
+      const buff = enemyBuffs[i];
+      enemyInfo.innerHTML += `<p id="${buff.type}">${buff.type}</p>`;
+      buff.display = true;
+    }
   }
-  if (!encounter.enemy.disadvantage && showingBuff) {
-    enemyInfo.children.namedItem("buffDisAd").remove();
-    showingBuff = false;
+  // check if we need to remove any buffs
+  const buffsToRemove = encounter.buffsRemove;
+  if (buffsToRemove.length > 0) {
+    for (let i = 0; i < buffsToRemove.length; i++) {
+      const buff = buffsToRemove[i];
+      enemyInfo.children.namedItem(buff.type).remove();
+      buffsToRemove.splice(i, 1);
+      i--;
+    }
   }
 };
 
@@ -245,6 +257,7 @@ const handleActionSelectInput = (action) => {
     // the loop continues, no end state yet
     showMessage(msg, "bot");
     updateInfo();
+    updateBuffs();
     setTimeout(() => {
       msg = encounter.execEnemyAction();
 
@@ -257,11 +270,12 @@ const handleActionSelectInput = (action) => {
       updateInfo();
       setTimeout(() => {
         showMessage(msg[1], "bot");
+        encounter.newRound();
         setTimeout(() => {
           // new round
-          encounter.newRound();
           changeInput("actionSelect");
           updateInfo();
+          updateBuffs();
         }, 2000);
       }, 2000);
     }, 2000);

@@ -5,9 +5,7 @@ export default class Combatant {
     this.type = type;
     this.ac = ac;
     this.isHero = isHero;
-    this.disadvantage = false;
-    this.buffLength = 0;
-    this.noAttack = false;
+    this.buffs = [];
   }
 
   attackDouble() {
@@ -18,8 +16,8 @@ export default class Combatant {
 
   attackSingle() {
     let hit = d20() + this.attackMod;
-    if (this.disadvantage) {
-      this.buffLength--;
+    if (this.checkDisadvantage()) {
+      // this.buffLength--;
       // roll disadvantage
       let hit2 = d20() + this.attackMod;
       if (hit2 <= hit) {
@@ -30,5 +28,20 @@ export default class Combatant {
       return 0;
     }
     return hit;
+  }
+
+  addBuff(type, length) {
+    return {
+      type: type,
+      buffLength: length,
+      display: false,
+    };
+  }
+
+  checkDisadvantage() {
+    const disBuff = this.buffs.filter((buff) => {
+      return buff.type === "disadvantage";
+    });
+    return disBuff !== null ? true : false;
   }
 }
