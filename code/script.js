@@ -182,7 +182,7 @@ const summaryOfOrder = (drink) => {
   botReply(`You have ordered ${order.dish} with ${order.fill} with ${order.side} and ${drink} <br>
   <img class="magic" src="./assets/magic.png" alt="magic"/>`)
   setTimeout(() => botReply(`
-  <p>Please choose your choice of delivery</p> <br> 
+  <p>How would you like your food to be delivered?</p> <br> 
   <video loop autoplay>
   <source src="assets/hat.mp4" type="video/mp4">
   Your browser does not support the video tag.
