@@ -161,7 +161,6 @@ const movieGenre = (gender) => {
 const movieMenu = (type) => {
   questionNumber++
   showMessage(`Excellent choice - ${type} it is. Here is some movies that I think will get the juices flowing in your taste buds:`, 'bot')
- 
   if (movLength === 'Under 2h') {
       if (type === 'drama') {
         if (genderDir === 'Female director') {
@@ -173,7 +172,7 @@ const movieMenu = (type) => {
               <option value="Monster">Monster</option>
             </select>
           `
-      }  else /*if (genderDir === 'Male director')*/ {
+      }  else {
           inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 shorter Dramas with Male directors</option>
@@ -193,7 +192,7 @@ const movieMenu = (type) => {
               <option value="In the cut">In the cut</option>
             </select>
           `
-      }  else /*if (genderDir === 'Male director')*/ {
+      }  else {
           inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 shorter Thrillers with Male directors</option>
@@ -214,7 +213,7 @@ const movieMenu = (type) => {
             </select>
 
           `
-      } else /*if (genderDir === 'Male director') */{
+      } else {
           inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 shorter Comedies with Male directors</option>
@@ -234,7 +233,7 @@ const movieMenu = (type) => {
               <option value="Mommy Dead and Dearest">Mommy Dead and Dearest</option>
             </select>
           `
-      } else /*if (genderDir === 'Male director') */{
+      } else {
           inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 shorter documentaries with Male directors</option>
@@ -256,7 +255,7 @@ const movieMenu = (type) => {
               <option value="Little Women">Little Women</option>
             </select>
           `
-      } else /*if (genderDir === 'Male director')*/ {
+      } else {
           inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 longer Dramas with Male directors</option>
@@ -276,7 +275,7 @@ const movieMenu = (type) => {
               <option value="Bastards">Bastards</option>
             </select>
           `
-      } else /*if (genderDir === 'Male director')*/ {
+      } else {
           inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 longer Thrillers with Male directors</option>
@@ -295,7 +294,7 @@ const movieMenu = (type) => {
               <option value="Heut ist mein Tag">Heut ist mein Tag</option>
             </select>
           `
-      } else /*if (genderDir === 'Male director')*/ {
+      } else {
           inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 longer comedies with Male directors</option>
@@ -315,7 +314,7 @@ const movieMenu = (type) => {
               <option value="Totally Under Control">Totally Under Control</option>
             </select>
           `
-      } else /*if (genderDir === 'Male director')*/ {
+      } else {
           inputWrapper.innerHTML = `
             <select id="select"> 
               <option value="" selected disabled>Top 3 longer documentaries with Male directors</option>
@@ -354,11 +353,6 @@ submit.addEventListener('click', (event) => {
   event.preventDefault();
   nextQuestion(input.value)
 })
-// input.addEventListener('keypress', (event) => {
-//   event.preventDefault();
-//   if (event.key === 'Enter' && input.value) nextQuestion(input.value)
-// })
-
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
