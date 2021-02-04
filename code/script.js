@@ -3,6 +3,8 @@ const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById('input-wrapper')
 const input = document.getElementById('input')
 const sendBtn = document.getElementById('send')
+const yesButton = document.getElementById('yes-btn')
+const noButton = document.getElementById('no-btn')
 
 // Global variables, if you need any, declared here
 
@@ -37,12 +39,21 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, are you ready to find your best friend?`, 'bot')
+  showMessage(`Hello there! Are you read to see some bestest doggos?!`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+const answerYes = () => {
+  showMessage('hell yes', 'user')
+}
 // Set up your eventlisteners here
+yesButton.addEventListener('click', answerYes) 
 
+const answerNo = () => {
+  showMessage('Fy fan nej', 'user')
+}
+// Set up your eventlisteners here
+noButton.addEventListener('click', answerNo) 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
