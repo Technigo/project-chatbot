@@ -72,9 +72,9 @@ nameForm.addEventListener("submit", (event) => {
 let isFirstTime = true
 
 const showGenre = () => {
-  genreOptions.classList.remove('hide')
   nameForm.classList.add('hide')
-  buttonOptions.classList.add("hide")
+  buttonOptions.classList.remove("active")
+  genreOptions.classList.add('active')
   if (isFirstTime) {
     showMessage(`Hi ${nameUser}, what kind of movie would you like to watch?`, "bot")
     isFirstTime = false
@@ -91,10 +91,11 @@ const showGenre = () => {
 
 const main = document.querySelector("main")
 
+
 let genreChoice = null
 const showButtons = (genre) => {
-  genreOptions.classList.add('hide')
-  buttonOptions.classList.remove('hide')
+  genreOptions.classList.remove('active')
+  buttonOptions.classList.add('active')
   main.classList.add(genre)
   showMessage(genre, "user")
   showMessage(`You chose ${genre}!`, 'bot')

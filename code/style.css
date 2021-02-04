@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Inconsolata', monospace;
   background: url("./assets/bg.jpg");
   background-size: 100%;
 }
@@ -41,7 +41,7 @@ input {
   background: #ececec;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Inconsolata';
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -130,7 +130,7 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: 'Inconsolata';
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -143,8 +143,14 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
-.genre-options {
-  
+
+.genre-options,
+.button-options {
+  display: none;
+}
+
+.active {
+  display: flex;
 }
 .hide {
   display: none;
