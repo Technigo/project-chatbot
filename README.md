@@ -1,13 +1,19 @@
 # Project Name
 
-Replace this readme with your own information about your project.
+The task was to create a simple chatbot that will respond and react to user’s input
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The chat should display questions from the bot and responses from the user.
+
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We have solved the task using the following methods:
+  a. Created a set of global DOM variables that fetch the html elements with getElementbyID()
+  b. Set up a questionHandler function that uses questionNumber variable to invoke different functions depending on the number of the question.
+  c. Set up a series of functions that modify html file’ form element with InnerHTML method to display various options for user’s input.
+  d. Within each function we have also set up eventListeners to fetch the user’s input and pass it to the next function
+
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+You can have a look at our chat live on Netlify: link will be here.

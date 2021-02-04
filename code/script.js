@@ -12,19 +12,19 @@ const questionHandler = (message) => {
   playSound ()
   switch (questionNumber) {
   case 1: 
-    showFlowerChoice(message); 
+    setTimeout(() => showFlowerChoice(message), 1000); 
     break;
   case 2: 
-    showTypeOfArrangement(message);
+    setTimeout(() => showTypeOfArrangement(message), 1000);
     break;
   case 3: 
-    showFlowerSelector (message);
+    setTimeout(() => showFlowerSelector (message), 2000);
     break;
   case 4: 
-    showFinalConfirmation (message);
+    setTimeout(() => showFinalConfirmation (message), 2000);
     break;
   default:
-    thankYou()
+    setTimeout(() => thankYou(), 1000);
     break;
   }
 };
@@ -42,13 +42,13 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/flowerbot.png" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/flowerbot.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -77,9 +77,9 @@ const showFlowerChoice = (message) =>{
   questionNumber++; 
   showMessage (`Hello, ${message}, What flower arrangement would you like today?`,'bot'); 
   theWholeForm.innerHTML = `
-    <button class="arrangement-button" id="bouquet">Bouquet</button>
-    <button class="arrangement-button" id="basket">Basket</button>
-    <button class="arrangement-button" id="box">Box</button>
+    <button class="arrangement-button" id="bouquet" type="button">Bouquet</button>
+    <button class="arrangement-button" id="basket" type="button">Basket</button>
+    <button class="arrangement-button" id="box" type="button">Box</button>
   `
   document.getElementById("bouquet").addEventListener('click', () => {
     questionHandler('bouquet');
@@ -145,7 +145,6 @@ const showFlowerSelector = (arrangement) => {
 //Function that shows the price and asks for final confirmation or restart of the order
 const showFinalConfirmation = (flowers) => {
   questionNumber++;
-  showMessage (`Oh, aren't ${flowers} beautiful!!!`, 'bot');
   let price 
   const showPrice = (flowers_) => {
       if (flowers_ === 'roses'){
@@ -158,12 +157,13 @@ const showFinalConfirmation = (flowers) => {
         price = 'SEK900';
       }
     }
-    showPrice(flowers)
-  showMessage (`The price for your ${flowers} will be ${price}. 
+  showPrice(flowers);
+  showMessage (`Oh, aren't ${flowers} beautiful!!!
+                The price for your ${flowers} will be ${price}. 
                 Do you want to place an order?`, 'bot')
   theWholeForm.innerHTML = `
-    <button class="confirmation-button" id="yes-button">Yes</button>
-    <button class="confirmation-button" id="no-button">No</button>
+    <button class="confirmation-button" id="yes-button" type="button">Yes</button>
+    <button class="confirmation-button" id="no-button" type="button" >No</button>
     `
               
   document.getElementById("yes-button").addEventListener('click', () => { 
@@ -171,7 +171,6 @@ const showFinalConfirmation = (flowers) => {
   });  
   document.getElementById("no-button").addEventListener('click', () => { 
     location.reload('No');
-    //added location.reload to reload page
   });
 };
 
@@ -179,8 +178,8 @@ const showFinalConfirmation = (flowers) => {
 //Function that shows the "thank you message and gif"
 const thankYou = () => {
   theWholeForm.innerHTML = `
-  <img class="final-flower" src = "./assets/4bXC.gif"> `;
-  //put picture instead. 
+    <img class="final-flower" src = "./assets/4bXC.gif"> 
+  `; 
   showMessage('Thank you for your order. Have a great day!', 'bot');
   //added this function - not sure if it's ok?
 }

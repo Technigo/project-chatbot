@@ -13,7 +13,7 @@ body {
 }
 
 .headline-wrapper {
-  background-color: rgba(255, 149, 198, 0.488);
+  background-color: rgba(255, 149, 198, 0.6);
   margin: 20px 20%;
   padding: 20px 10px;
   border-radius: 10px;
@@ -31,7 +31,7 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: rgb(240, 237, 237);
   text-align: center;
   margin-bottom: 36px;
 }
@@ -111,8 +111,8 @@ p {
 
 .bot-msg img,
 .user-msg img {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 70px;
 }
 
 .bubble {
