@@ -28,6 +28,11 @@ export default class Combatant {
     return hit;
   }
 
+  attackAutoHit(action) {
+    _.handleUsePool(action);
+    return 25;
+  }
+
   addBuff(type, length) {
     return {
       type: type,

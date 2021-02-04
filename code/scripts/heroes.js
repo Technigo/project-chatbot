@@ -105,13 +105,27 @@ export class Sorcerer extends Combatant {
         name: "Mage armor",
         type: "shield",
         msg: "An invisible barrier of magical force appears and protects me.",
-        buffLength: 2,
+        buffLength: 1,
+      },
+      {
+        name: "Magic Missile",
+        type: "autoAttack",
+        limited: true,
+        usePool: [false],
+        msg: "I create three glowing darts of magical force.",
+        used: false,
+        rollDmg: this.rollMissileDmg,
       },
     ];
   }
 
   rollFireDmg = () => {
     const dmg = d10() + d10();
+    return dmg;
+  };
+
+  rollMissileDmg = () => {
+    const dmg = d4() + d4() + d4() + this.dmgMod;
     return dmg;
   };
 }

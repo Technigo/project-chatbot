@@ -24,9 +24,12 @@
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #bdb6a4;
   padding: 16px 24px;
   max-width: 40%;
+  box-shadow: 0px 16px 12px -6px rgba(125, 110, 71, 0.69);
+  -webkit-box-shadow: 0px 16px 12px -6px rgba(125, 110, 71, 0.69);
+  -moz-box-shadow: 0px 16px 12px -6px rgba(125, 110, 71, 0.69);
 }
 
 .bubble__bot {

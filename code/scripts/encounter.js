@@ -105,6 +105,12 @@ export default class Encounter {
         msg = _.runSingleAttack(this, "hero", toHit, _action);
         break;
       //
+      case "autoAttack":
+        toHit = hero.attackAutoHit(_action);
+        console.log(toHit);
+        msg = _.runSingleAttack(this, "hero", toHit, _action);
+        break;
+      //
       case "shield":
         enemy.buffs.push(enemy.addBuff("disadvantage", _action.buffLength));
         msg = `The ${enemy.type} has disadvantage on its next attack.`;

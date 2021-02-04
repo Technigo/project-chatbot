@@ -4,9 +4,17 @@
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
+  /* background: #e5e9ff; */
   padding: 16px;
+  border: 2px solid #5e1919;
   flex: 1;
+}
+
+.input__text:focus {
+  color: #5e1919;
+  outline: none;
+  transition: all 0.3s ease;
+  border-bottom: 10px double #5e1919;
 }
 
 .input-wrapper {
@@ -23,13 +31,13 @@
 }
 
 .input__button {
-  background-color: #0026ff;
+  background-color: #5e1919;
   border: none;
   border-radius: 4px;
   padding: 16px 40px;
   margin-right: 4px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease-in-out;
 }
 
 .input__button:hover {
