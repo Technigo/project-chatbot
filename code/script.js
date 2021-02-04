@@ -44,11 +44,13 @@ const showMessage = (message, sender) => {
 
 const nextStep = (message) => {
   console.log( 'stepNumber', stepNumber)
-
   if (answerNumber === 1) {
     userAnswer (message)
-    setTimeout (() => showVibe(message),1000)
+    setTimeout (() => showPlace(message),1000)
   } else if (answerNumber === 2) {
+    userAnswer (message)
+    setTimeout (() => showVibe(message),1000)
+  } else if (answerNumber === 3) {
     userAnswer (message)
     setTimeout (() => showOutfit(message),1000)
   }
@@ -56,9 +58,32 @@ const nextStep = (message) => {
 
 
 // Starts here
-const showPlace = () => {
+
+const showMood = () => {
   answerNumber = 1
-  botAnswer(`Hello, where's the party at?`)
+  botAnswer(`Welcome! How's the party mood?`)
+
+  inputWrapper.innerHTML = `
+  <div class="slider-container">
+  <div class="emoji-container">
+  <p class="emoji">&#127866;</p> 
+  <p class="emoji">&#127867;</p> 
+  <p class="emoji">&#127865;</p> 
+  <p class="emoji">&#127864;</p> 
+  <p class="emoji">&#127863;</p>
+  <p class="emoji">&#127870;</p>
+  </div>
+  <input id="sliderinput" type="range" min="1" max="100" value="50" class="slider">
+  </div>
+  `
+  document.getElementById('sliderinput')
+  .addEventListener('mouseup', () => nextStep ('This is my mood!'))
+}
+
+
+const showPlace = () => {
+  answerNumber++
+  botAnswer(`Good to know! But where's the party at?`)
 
   inputWrapper.innerHTML = `
     <button id="nightclubBtn">Nightclub</button>
@@ -140,14 +165,4 @@ const showOutfit = (outfit) => {
   inputWrapper.innerHTML = ""
 }
 
-
-// Set up your eventlisteners here
-
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(showPlace, 1000)
+setTimeout(showMood, 1000)

@@ -142,6 +142,44 @@ main {
   display: flex;
 }
 
+.emoji-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.emoji {
+  font-size: 26px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  width: 350px;
+  height: 2px;
+  margin-top: 7px;
+  background: #F264B9;
+  padding: 0;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; 
+  appearance: none;
+  width: 15px; 
+  height: 15px;
+  border-radius: 50%;
+  background: #F264B9; 
+  cursor: pointer; 
+}
+
+.slider::-moz-range-thumb {
+  width: 15px; 
+  height: 15px; 
+  background: #F264B9; 
+  cursor: pointer; 
+}
+
 button {
   background-color: #F264B9;
   color: white;
