@@ -84,8 +84,9 @@ const questionTwo = (floor) => {
     } else if (floor == 3) {
         questionNumber++;
             chat.innerHTML = `
-            <div>
+   /         <div>
                 <p> Thank you. You have selected 3rd Floor. Now please select what room </p>
+
                 <p> For Room in floor 3 Zebra Press: z</p>
                 <p> For Room in floor 3 Lions Press: l</p>
                 <p> For Room in floor 3 tiger Press: t</p>
