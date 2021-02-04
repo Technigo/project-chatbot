@@ -1,6 +1,7 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const nameForm = document.getElementById('name-form')
+const inputWrapper = document.getElementById('input-wrapper')
 let step = 1;
 
 // Global variables, if you need any, declared here
@@ -10,7 +11,6 @@ let step = 1;
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
-    console.log('I am a user')
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -20,7 +20,6 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
-    console.log('I am a robot')
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -39,10 +38,37 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
+  step = 1;
   showMessage(`Hello! Would you like to order coffee?`, 'bot')
-  console.log('Greeting from bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+}
 
+const coffeePicker = () => {
+  inputWrapper.innerHTML = `
+    <div id="buttons" class="buttons">
+      <button value="coffee" id="coffeeBtn">Coffee</button>
+      <button value="latte" id="latteBtn">Latte</button>
+      <button value="cappuccino" id="cappBtn">Cappuccino</button>
+    </div>
+    `
+  document.getElementById("coffeeBtn").addEventListener('click', () => 
+   chooseSize("coffee"))
+  document.getElementById("latteBtn").addEventListener('click', () => 
+   chooseSize("latte"))
+  document.getElementById("cappBtn").addEventListener('click', () => 
+   chooseSize("cappuccino"))
+}
+
+const chooseSize = () => {
+  inputWrapper.innerHTML = `
+  <div id="sizeButtons" class="buttons">
+    <button value="short" id="shortBtn> ☕ short </button>
+    <button value="tall" id="tallBtn> 🥛 large </button>
+  </div>
+  `
+document.getElementById("shortBtn").addEventListener('click', () => 
+  showPrize("short"))
+document.getElementById("tallBtn").addEventListener('click', () => 
+  showPrize("tall"))
 }
 
 // Set up your eventlisteners here
@@ -51,12 +77,13 @@ nameForm.addEventListener("submit", (event) => {
 
   const value = document.getElementById("name-input").value;
   
-  showMessage(value, "user")
+  
 
   if (step === 1) {
-
+    showMessage(value, "user")
     if(value === 'yes') {
-      showMessage('Would you like a latte or cappuccino?', 'bot');
+      showMessage('Please select below', 'bot'); /// Choose coffee
+      coffeePicker();    
       step ++
     } else {
       showMessage('Ok, see you another time!', 'bot');
