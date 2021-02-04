@@ -75,6 +75,7 @@ const moodOptions = () => {
       </select>
     `
     const select = document.getElementById("select");
+    let userName = document.getElementById('user-input');
     select.addEventListener("change", () =>
     greatChoice(select.value))
       }
@@ -93,7 +94,7 @@ const moodOptions = () => {
     ` 
     const select = document.getElementById("select");
     select.addEventListener("change", () =>
-      greatChoice(select.value))
+    greatChoice(select.value))
       }
     })
 
@@ -126,12 +127,13 @@ const moodOptions = () => {
 
 //Question 3
 const greatChoice = () => {
-showMessage(`Great choice ${userName}! I love that song ❤`, 'bot')
+showMessage(`Great choice! I love that song ❤`, 'bot')
 setTimeout(() => greatChoice(value, 'bot'), 2000)
 }
 
 //Question 4
 const whoIsThesongFor = () => {
+document.getElementById('select');
 showMessage(`Is this song for you or for a friend? ❤`, 'bot')
 setTimeout(() => whoIsThesongFor(value, 'bot'), 2000)
 }
