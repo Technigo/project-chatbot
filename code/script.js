@@ -1,8 +1,11 @@
 //const
 const form = document.getElementById('form');
 const chat = document.getElementById('chat');
-//global variables/scope('bubble within bubble, biggest bubble')
+const inputWrapper = document.getElementById('input-wrapper')
+    //global variables/scope('bubble within bubble, biggest bubble')
 let step = 1;
+
+
 // Set up your eventlisteners here
 
 form.addEventListener('submit', (event) => {
@@ -12,9 +15,35 @@ form.addEventListener('submit', (event) => {
     //input
     const value = document.getElementById('input-value').value;
 
-    Step = 2;
-    chat.innerHTML += ` <div><p>Hi ${value}, Nice Name you got!</p></div>`;
 
+    chat.innerHTML += ` <div><p> ${value}, 
+   </p></div>`;
+
+
+    if (step === 1) {
+
+        if (value === value) {
+
+            chat.innerHTML += ` <div><p>  Hi ${value}, nice to meet you! 
+            Let's make you a kitten! Should it be a girl or boy?
+                    </p></div>`;
+            step = 2;
+
+        } else {
+            chat.innerHTML += ` <div><p>no numbers input</p></div>`;
+        }
+
+    } else if (step === 2) {
+
+        if (value === "girl") {
+
+            chat.innerHTML += ` <div><p>super cool!!!</p></div>`;
+
+        } else {
+
+            chat.innerHTML += ` <div><p>super amazing!!!</p></div>`;
+        }
+    }
 });
 
 
