@@ -6,7 +6,15 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+}
+
+video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 h1 {
@@ -15,6 +23,7 @@ h1 {
   line-height: 34px;
   color: #fff;
   text-align: center;
+  position: relative;
 }
 
 h2 {
@@ -24,6 +33,7 @@ h2 {
   color: #fff;
   text-align: center;
   margin-bottom: 36px;
+  position: relative;
 }
 
 p {
@@ -49,13 +59,16 @@ input {
 
 main {
   margin: 0 auto;
+  position: relative;
   width: 100%;
   max-width: 700px;
-  height: 600px;
+  height: 700px;
   border-radius: 30px;
   background: #fff;
-  padding: 20px 24px;
-  padding-top: 0;
+  padding-bottom: 20px;
+  padding-top: 15px;
+  padding-left: 24px;
+  padding-right: 10px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -68,6 +81,7 @@ main {
   overflow: scroll;
   flex-direction: column;
   padding-bottom: 16px;
+  padding-right: 15px;
 }
 
 .bot-msg {
@@ -84,8 +98,10 @@ main {
 }
 
 .profile-pic {
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: 3px solid #DFBBDB;
 }
 
 .outfit-gif {
@@ -97,12 +113,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #DFBBDB;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #3F1D20;
   max-width: 40%;
 }
 
@@ -127,7 +143,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #F264B9;
   color: white;
   border: none;
   border-radius: 4px;

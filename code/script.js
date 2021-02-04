@@ -15,8 +15,6 @@ const userAnswer = (message) => {
   showMessage (message, 'user') 
 }
 
-
-
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   console.log(sender)
@@ -26,13 +24,13 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img class="profile-pic" src="assets/user.png" alt="User" />  
+        <img class="profile-pic" src="assets/user-img.jpeg" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img class="profile-pic" src="assets/bot.png" alt="Bot" />
+        <img class="profile-pic" src="assets/bot-img.jpeg" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -55,8 +53,6 @@ const nextStep = (message) => {
     setTimeout (() => showOutfit(message),1000)
   }
 }
-
-
 
 
 // Starts here
@@ -87,7 +83,7 @@ const showVibe = (place) => {
   document.getElementById('berghainBtn')
   .addEventListener('click', () => nextStep('Berghain'))
   document.getElementById('studio54Btn')
-  .addEventListener('click', () => nextStep('Studio54'))
+  .addEventListener('click', () => nextStep('Studio 54'))
 
   } else {
     botAnswer(`In the mood for Cosmopolitan or Old Fashioned?`)
@@ -112,7 +108,7 @@ const showOutfit = (outfit) => {
   const showFinalMessage = () => {
     chat.innerHTML += `
       <section class="bot-msg">
-      <img class="profile-pic" src="assets/bot.png" alt="Bot" /> 
+      <img class="profile-pic" src="assets/bot-img.jpeg" alt="Bot" /> 
         <div class="bubble bot-bubble final">
           <img class="outfit-gif" id="outfitGif" src=""/>
         </div> 
@@ -142,7 +138,6 @@ const showOutfit = (outfit) => {
   }
 
   inputWrapper.innerHTML = ""
-
 }
 
 
