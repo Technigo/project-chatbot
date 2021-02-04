@@ -1,19 +1,26 @@
 * {
   box-sizing: border-box;
 }
-
+img{
+  max-height: 100%;
+}
 body {
   margin: 0;
   padding: 0;
+  height: 100vh;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url(./assets/background_img.jpg);
+  background-repeat: no-repeat;
+  background-size: 100vw;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
-  line-height: 34px;
-  color: #fff;
+  font-size: 60px;
+  line-height: 70px;
+  padding-right: 70px;
+  padding-left: 70px;
+  color: #F7941F;
   text-align: center;
 }
 
@@ -37,8 +44,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #D1D5D2;
+  color: ##004C50;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -90,12 +97,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background:#D1D5D2;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #004C50;
   max-width: 40%;
 }
 
@@ -107,6 +114,7 @@ main {
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  background: #649595; 
 }
 
 .input-wrapper {
@@ -120,7 +128,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color:#004C50;
   color: white;
   border: none;
   border-radius: 4px;
@@ -164,6 +172,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   background: gold;
+
 }
 
 .warm-button:hover {

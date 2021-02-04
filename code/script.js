@@ -86,7 +86,7 @@ const showResultMountainWarm  = () => {
     setTimeout(() => showMessage("wait for it...", "bot"), 3000)
     setTimeout(() => showMessage("wait for it...", "bot"), 4000)
     setTimeout(() => showMessage("Your next destination will be...", "bot"), 5500)
-    setTimeout(()=> showMessage ("The vesuv!!", "bot" ), 7000)
+    setTimeout(()=> showMessage ("The Kilimanjaro!!", "bot" ), 7000)
     setTimeout(()=> satisfaction (), 8000)
 } 
 
@@ -106,7 +106,7 @@ const showResultCityWarm = () => {
   setTimeout(() => showMessage("wait for it...", "bot"), 3000)
   setTimeout(() => showMessage("wait for it...", "bot"), 4000)
   setTimeout(() => showMessage("Your next destination will be...", "bot"), 5500)
-  setTimeout(()=> showMessage ("Well you will climb the vesuv.", "bot" ), 7000)
+  setTimeout(()=> showMessage ("Mexico City!", "bot" ), 7000)
   setTimeout(()=> satisfaction (), 8000)
 } 
 const showResultCityCold = () => {
@@ -136,28 +136,25 @@ const showResultBeachCold= () => {
   setTimeout(() => showMessage("wait for it...", "bot"), 4000)
   setTimeout(() => showMessage("Your next destination will be...", "bot"), 5500)
   setTimeout(()=> showMessage ("Iceland!!", "bot"), 7000)
-  setTimeout(()=> satisfaction (), 8000)
+  setTimeout(()=> satisfaction (), 9000)
 } 
 //Question 3 - Result
 const satisfaction = () => {
-  showMessage ("Are you happy with your destination?", "bot")
-
-const value = document.getElementById('input-value'); 
-chat.innerHTML += `
-  <section class="user-msg">
-    <div class="bubble user-bubble">${value}</div>
-     <img src="assets/user.png" alt="User" />
-  </section>
+  showMessage ("Are you ready to pack?", "bot")
+  inputWrapper.innerHTML=`
+  <button value= "yes" class="yes" id="yes-button">Yes</button>
+  <button value= "no" class="no" id="no-button">No</button>
   `
+document.getElementById("yes-button").addEventListener("click", () => {
+  setTimeout (() => showMessage("Happy Holidays, we did our best!.", "bot"),1000)
+  inputWrapper.innerHTML = "";
+  })
+document.getElementById("no-button").addEventListener("click", () =>{
+  setTimeout (() => askForLocation (), 1000)
+  })
+} 
 
-const handleResponse = (value) => {
-if (value === "Yes" || "yes") {
-  showMessage ("Happy Holidays!", "bot" )
-} else if (value === "No" || "no") {
-  showMessage("That's too bad :( ", )
-  }
-}
-}
+
 
 // form.innerHTML = ""; to add last - it will clear the html 
 
@@ -209,15 +206,10 @@ const value = document.getElementById('input-value').value;
       <img src="assets/user.png" alt="User" />
     </section>
   `
-  if (input-vale === ""){
-     showMessage("Enter a valid name", "bot")
-  } else {
- 
   setTimeout (() => showMessage(`Nice to meet you ${value}! My name is Vacation Bot`, "bot"), 1000)
   setTimeout(()=> askForLocation (), 3000);
   
-  document.getElementById('input-value').value = "";  // !!! added this line 
-}
+  document.getElementById('input-value').value = "";   
 });
 
 
