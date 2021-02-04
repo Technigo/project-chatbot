@@ -80,15 +80,22 @@ const showGenre = () => {
     isFirstTime = false
   } else {
     showMessage(`Choose another genre.`, "bot")
+    main.classList.remove("comedy")
+    main.classList.remove("action")
+    main.classList.remove("horror")
+    main.classList.remove("romantic")
   }
 }
 
 // show random movie title generator button & go back button
 
+const main = document.querySelector("main")
+
 let genreChoice = null
 const showButtons = (genre) => {
   genreOptions.classList.add('hide')
   buttonOptions.classList.remove('hide')
+  main.classList.add(genre)
   showMessage(genre, "user")
   showMessage(`You chose ${genre}!`, 'bot')
   genreChoice = genre
