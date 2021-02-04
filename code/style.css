@@ -139,7 +139,7 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-@keyframes freeze {
+@keyframes burnt {
   0% {
     color: rgba(255, 130, 110, 1);
     background: rgba(255, 230, 110, 1);
@@ -167,5 +167,36 @@ button:hover {
 }
 
 .warm-button:hover {
+  animation: burnt 1000ms ease-out forwards;
+}
+
+@keyframes freeze {
+  0% {
+    color: rgb(22, 96, 165);
+    background: rgb(95, 159, 189);
+    box-shadow:
+      0 0 5px 0 rgb(13, 26, 219),
+      0 0 5px 0 rgba(12, 166, 194, 0.8),
+      0 0 5px 0 rgba(10, 230, 212, 0.6);
+  }
+  
+  100% {
+    color: rgba(0, 0, 0, 1);
+    background: rgba(255, 255, 255, 1);
+    box-shadow:
+      0 -35px 40px 30px rgba(255, 130, 10, 0),
+      0 -30px 30px 10px rgba(230, 30, 10, 0),
+      0 -20px 10px 0 rgba(255, 255, 10, 0); 
+  }
+}
+.cold-button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: lightskyblue;
+}
+
+.cold-button:hover {
   animation: freeze 1000ms ease-out forwards;
 }
