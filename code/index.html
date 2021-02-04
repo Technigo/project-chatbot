@@ -12,24 +12,18 @@
   </head>
 
   <body>
-    <h1>Welcome to xxx.</h1>
-    <h2>Ask about xxxx.</h2>
-    <main>
-      <!-- This is where chat messages are rendered -->
-      <section class="chat" id="chat"></section>
-
-      <!-- This is where input elements are shown -->
-      <div class="input-wrapper" id="input-wrapper">
-        <form id="name-form">
-          <input id="user-input" type="text" />
-          <button id="send-btn" class="send-btn" type="submit">
-            Send
-          </button>
-        </form>
-      </div>
+    <header>
+      <h1></h1>
+    </header>
+    <main class="start-main">
+      <form class="start-form">
+        <label for="fname">First name:</label>
+        <input type="text" name="fname" id="fname">
+        <label for="lname">Last name:</label>
+        <input type="text" name="lname" id="lname">
+        <label for="email">E-mail:</label>
+        <input type="email" name="email" id="email">
+        <button type="submit" onsubmit="winow.open('./chatbot.html');">submit</button>
+      </form>
     </main>
-
-    <script src="./script.js"></script>
   </body>
-
-</html>
