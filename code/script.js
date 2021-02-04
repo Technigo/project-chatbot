@@ -4,30 +4,9 @@ const form = document.getElementById('name-form');
 let value = document.getElementById('input-value').value; // added .value to the end
 const inputWrapper = document.getElementById("input-wrapper")
 
-//Question 1 -warm or cold 
-const askForWarmOrCold = () => {
-  showMessage (`I am here to help you chose your next holiday destination. What do you prefer?`, "bot")
-  inputWrapper.innerHTML=`
-  <button value= "warm" id="warmButton">Warm</button>
-  <button value= "cold" id="coldButton">Cold</button>
-  `
-document
-  .getElementById("warmButton")
-  .addEventListener("click", () => {
-  showMessage ("I prefer to be hot as the sun", "user")
-  setTimeout (() => askForLocation(), 1000)
-  })
-document
-  .getElementById("coldButton")
-  .addEventListener("click", () =>{
-  showMessage ("I prefer to be cold as an icebear", "user")
-  setTimeout (() => askForLocation (), 1000)
-  })
-}
-
-// Question 2 - favourite view 
+//Question 1 - location
 const askForLocation = () => {
-  showMessage(`Is that so.. then let me know what view you prefer... `, "bot")
+  showMessage (`I am here to help you chose your next holiday destination. Let me know what view you prefer...`, "bot")
   inputWrapper.innerHTML= `
   <select id= "select">
     <option id= "" selected disabled> Chose from this list</option>
@@ -40,39 +19,112 @@ const select = document.getElementById("select")
     select.addEventListener("change", () => {
     if (select.value === "mountain") {
     showMessage ("I wanna go all the way up", "user")
-    setTimeout (() => askForDrink (), 2000) 
+    setTimeout (() => askForWarmOrColdMountain (), 2000) 
    } else if (select.value === "city") {
     showMessage ("I wanna spend money", "user")
-    setTimeout(()=> askForDrink(), 2000)
+    setTimeout(()=> askForWarmOrColdCity(), 2000)
    } else {
     showMessage ("I don't wanna do anything", "user")
-    setTimeout(() => askForDrink (), 2000)
-   } 
+    setTimeout(() => askForWarmOrColdBeach (), 2000)
+  } 
   })
 }
-  
+
+// Question 2 - warm or cold
+const askForWarmOrColdMountain = () => {
+  showMessage (`So you wanna go all the way to the top. We can do that.`, "bot")
+  inputWrapper.innerHTML=`
+  <button value= "warm" class="warm-button" id="warm-button">Warm</button>
+  <button value= "cold" class="cold-button" id="cold-button">Cold</button>
+  `
+document
+  .getElementById("warm-button")
+  .addEventListener("click", () => {
+  showMessage ("I prefer to be hot as the sun.", "user")
+  setTimeout (() => showResultMountainWarm(), 1000)
+  })
+document
+  .getElementById("cold-button")
+  .addEventListener("click", () =>{
+  showMessage ("I prefer to be cold as an icebear.", "user")
+  setTimeout (() => showResultMountainCold(), 1000)
+  })
+}
+const askForWarmOrColdCity = () => {
+  showMessage (`So i have an idea where to send you. But i do need to know a bit more.. Please choose`, "bot")
+  inputWrapper.innerHTML=`
+  <button value= "warm" class="warm-button" id="warm-button">Warm</button>
+  <button value= "cold" class="cold-button" id="cold-button">Cold</button>
+  `
+document
+  .getElementById("warm-button")
+  .addEventListener("click", () => {
+  showMessage ("I prefer to be hot as the sun.", "user")
+  setTimeout (() => showResultCityWarm(), 1000)
+  })
+document
+  .getElementById("cold-button")
+  .addEventListener("click", () =>{
+  showMessage ("I prefer to be cold as an icebear.", "user")
+  setTimeout (() => showResultCityCold (), 1000)
+  })
+}
+const askForWarmOrColdBeach = () => {
+  showMessage (`hmm you like to get those feet sandy.. but what should the water be like?`, "bot")
+  inputWrapper.innerHTML=`
+  <button value= "warm" class="warm-button" id="warm-button">Warm</button>
+  <button value= "cold" class="cold-button" id="cold-button">Cold</button>
+  `
+document
+  .getElementById("warm-button")
+  .addEventListener("click", () => {
+  showMessage ("I prefer to be hot as the sun.", "user")
+  setTimeout (() => showResultBeachWarm(), 1000)
+  })
+document
+  .getElementById("cold-button")
+  .addEventListener("click", () =>{
+  showMessage ("I prefer to be cold as an icebear.", "user")
+  setTimeout (() => showResultBeachCold (), 1000)
+  })
+} 
+
+
+
+/*const showResultMountainWarm  = () => {
+  showMessage ("")
+} 
+const showResultMountainCold
+
+const showResultCityWarm
+const showResultCityCold
+
+const showResultBeachWarm
+const showResultBeachCold
+*/
+
  // question number 3 - drink choices  
   const askForDrink = (drinkChoice) => {
     showMessage(`What kind of drinker are you`, "bot")
     inputWrapper.innerHTML=`
-    <button value="umbrella" id="drinkButton1">umbrella</button>
-    <button value="hot" id="drinkButton2">make it hot</button>
-    <button value="sweet" id="drinkButton3">sweet</button>
+    <button value="umbrella" class="umbrella-button" id="drink-button1">umbrella</button>
+    <button value="hot" class="hot-button" id="drink-button2">make it hot</button>
+    <button value="sweet" class="sweet-button" id="drink-button3">sweet</button>
     `
   document
-    .getElementById("drinkButton1")
+    .getElementById("drink-button1")
     .addEventListener("click", () => {
     showMessage ("I like those umbrella drinks", "user")
     setTimeout (() => yourDestination(), 1000)
     })
   document
-    .getElementById("drinkButton2")
+    .getElementById("drink-button2")
     .addEventListener("click", () =>{
     showMessage ("As long as its hot I am good", "user")
     setTimeout (() => yourDestination (), 1000)
   })
   document
-    .getElementById("drinkButton3")
+    .getElementById("drink-button3")
     .addEventListener("click", () =>{
     showMessage ("I like it sweet", "user")
     setTimeout (() => yourDestination (), 1000)
@@ -82,30 +134,21 @@ const select = document.getElementById("select")
 
 const yourDestination = () => {
   showMessage (`so let me think for a second.. you seem to be a special case.. `, 'bot')
-  setTimeout(() => showMessage("3", "bot"), 2000)
-  setTimeout(() => showMessage("2", "bot"), 3000)
-  setTimeout(() => showMessage("1", "bot"), 4000)
+  setTimeout(() => showMessage("wait for it...", "bot"), 2000)
+  setTimeout(() => showMessage("wait for it...", "bot"), 3000)
+  setTimeout(() => showMessage("wait for it...", "bot"), 4000)
+  setTimeout(() => showMessage("Your next destination will be...", "bot"), 5500)
   if (askForLocation === "beach" && select.valuez){
     showMessage ("India", "bot")
    } else if (askForLocation === "mountain" ){
    showMessage ("Canada", "bot")
-  } else  {setTimeout(() => showMessage ("Aruba", "bot"), 5000) 
+  } else  {setTimeout(() => showMessage ("Aruba", "bot"), 7000) 
   }
 }
 
 
-  //setTimeout (() => result (), 3000)}
 
-//const result = () =>{
-/* if (select.value === "beach"){
-  showMessage ("India", "bot")
- } else if (select.value === "mountain" ){  
- showMessage ("Canada", "bot")
-} else  {showMessage ("Aruba", "bot")
 
-  }
-}
-*/
 // form.innerHTML = ""; to add last - it will clear the html 
 
 
@@ -158,7 +201,7 @@ chat.innerHTML += `
   </section>
   `
   setTimeout (() => showMessage(`Nice to meet you ${value}! My name is Vacation Bot`, "bot"), 1000)
-  setTimeout(()=> askForWarmOrCold (), 3000);
+  setTimeout(()=> askForLocation (), 3000);
 
   document.getElementById('input-value').value = "";  // !!! added this line 
 
