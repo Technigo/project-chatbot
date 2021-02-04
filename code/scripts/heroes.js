@@ -1,25 +1,38 @@
 import Combatant from "./combatant.js";
-import { d20, d8, d6, d4 } from "./helperFunctions.js";
+import { d20, d8, d6, d4, d10 } from "./helperFunctions.js";
 
 export class Fighter extends Combatant {
-  constructor(name) {
+  constructor(name, isEasy) {
     super("Fighter", 18, true);
     this.name = name;
     this.hp = 44;
+    this.maxHp = this.hp;
     this.attackMod = 9;
     this.dmgMod = 6;
+    this.healMod = isEasy ? 5 : 6;
     this.actions = [
       {
         name: "Attack Longsword",
         type: "doubleAttack",
+        limited: false,
         msg: "I swing my longsword twice in an arc to slash at the enemy.",
         rollDmg: this.rollSwordDmg,
       },
       {
         name: "Raise Shield",
         type: "shield",
+        limited: false,
         msg: "I put up my shield and brace for an attack.",
         buffLength: 1,
+      },
+      {
+        name: "Heal",
+        type: "heal",
+        limited: true,
+        usePool: [false],
+        msg: "I draw from my limited well of stamina to protect myself from harm.",
+        used: false,
+        rollHeal: this.rollHeal,
       },
     ];
   }
@@ -30,12 +43,14 @@ export class Fighter extends Combatant {
 }
 
 export class Ranger extends Combatant {
-  constructor(name) {
+  constructor(name, isEasy) {
     super("Ranger", 14, true);
     this.name = name;
     this.hp = 44;
+    this.maxHp = this.hp;
     this.attackMod = 7;
     this.dmgMod = 3;
+    this.healMod = isEasy ? 4 : 8;
     this.actions = [
       {
         name: "Attack Longbow",
@@ -50,6 +65,15 @@ export class Ranger extends Combatant {
         rollDexSave: this.rollDexSave,
         buffLength: 1,
       },
+      {
+        name: "Drink Heal Potion",
+        type: "heal",
+        limited: true,
+        usePool: [false, false],
+        msg: "I take out one of my potions of healing and chug it!",
+        used: false,
+        rollHeal: this.rollHeal,
+      },
     ];
   }
   rollBowDmg = () => {
@@ -61,12 +85,14 @@ export class Ranger extends Combatant {
 }
 
 export class Sorcerer extends Combatant {
-  constructor(name) {
+  constructor(name, isEasy) {
     super("Sorcerer", 15, true);
     this.name = name;
     this.hp = 32;
+    this.maxHp = this.hp;
     this.attackMod = 6;
     this.dmgMod = 6;
+    this.healMod = isEasy ? 4 : 8;
     this.actions = [
       {
         name: "Shoot fire",

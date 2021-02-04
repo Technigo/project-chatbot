@@ -30,7 +30,20 @@ export const setActionsSelect = (hero) => {
   let html = "";
   for (let i = 0; i < hero.actions.length; i++) {
     const action = hero.actions[i];
-    html += `<button class="input__button" type="submit" value="${action.type}" data-msg="${action.msg}">${action.name}</button>`;
+    // Show limited actions if they are not used
+    if (action.limited) {
+      html += `<button class="input__button" type="submit" ${
+        action.used ? "disabled" : ""
+      } value="${action.type}" data-msg="${action.msg}">${action.name}</button>`;
+    }
+    // // Disable limited actions if they are used
+    // if (action.limited && action.used) {
+    //   html += `<button class="input__button" type="submit" disabled value="${action.type}" data-msg="${action.msg}">${action.name}</button>`;
+    // }
+    // Show not limited actions
+    if (!action.limited) {
+      html += `<button class="input__button" type="submit" value="${action.type}" data-msg="${action.msg}">${action.name}</button>`;
+    }
   }
   return html;
 };

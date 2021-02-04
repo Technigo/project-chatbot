@@ -37,6 +37,12 @@
   transition: all 0.2s ease;
 }
 
+.input__button:disabled {
+  color: revert;
+  background-color: revert;
+  cursor: default;
+}
+
 .input__select {
   width: 100%;
 }

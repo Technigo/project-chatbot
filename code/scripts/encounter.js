@@ -17,11 +17,11 @@ export default class Encounter {
   setHero(name, type) {
     switch (type) {
       case "Fighter":
-        return new Fighter(name);
+        return new Fighter(name, this.isEasy);
       case "Ranger":
-        return new Ranger(name);
+        return new Ranger(name, this.isEasy);
       case "Sorcerer":
-        return new Sorcerer(name);
+        return new Sorcerer(name, this.isEasy);
     }
   }
 
@@ -101,12 +101,16 @@ export default class Encounter {
           msg = `You fumble a bit and fail your dodge.`;
         }
         break;
+      case "heal":
+        msg = `You heal ${_action.rollHeal(_action)}`;
+        break;
     }
 
     // Check if player killed the enemy
     if (this.checkEnd()) {
       return null;
     }
+    console.log(this.hero);
     return msg;
   }
 

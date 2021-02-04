@@ -1,4 +1,4 @@
-import { d20, d8, d6 } from "./helperFunctions.js";
+import { d20, d8, d6, d10, d4 } from "./helperFunctions.js";
 
 export default class Combatant {
   constructor(type, ac, isHero) {
@@ -17,8 +17,6 @@ export default class Combatant {
   attackSingle() {
     let hit = d20() + this.attackMod;
     if (this.checkDisadvantage()) {
-      // this.buffLength--;
-      // roll disadvantage
       let hit2 = d20() + this.attackMod;
       if (hit2 <= hit) {
         return hit2;
@@ -44,4 +42,25 @@ export default class Combatant {
     });
     return disBuff !== null ? true : false;
   }
+
+  rollHeal = (action) => {
+    // decide what dice to roll for heal
+    let toHeal = this.type === "Fighter" ? d10() + this.healMod : d4() + this.healMod;
+    // apply the heal
+    this.hp += toHeal;
+    // make sure heal does not go over max health
+    if (this.hp > this.maxHp) {
+      this.hp = this.maxHp;
+    }
+    // handle the limited use pools
+    const usedPool = action.usePool.findIndex((usage) => {
+      return usage === false;
+    });
+    action.usePool[usedPool] = true;
+    // If usePool is full with only true then set used to true
+    action.used = action.usePool.every((usage) => {
+      return usage === true;
+    });
+    return toHeal;
+  };
 }
