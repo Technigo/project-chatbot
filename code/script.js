@@ -50,7 +50,7 @@ const answerYes = () => {
 yesButton.addEventListener('click', answerYes) 
 
 const answerNo = () => {
-  showMessage('Fy fan nej', 'user')
+  showMessage('Fy fan nej!', 'user')
 }
 // Set up your eventlisteners here
 noButton.addEventListener('click', answerNo) 
