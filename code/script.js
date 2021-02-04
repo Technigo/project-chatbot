@@ -24,7 +24,7 @@ const userReply = (msg) => {
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
-    console.log(sender); //added console.log
+    console.log(sender); 
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -34,7 +34,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
-    console.log(sender);//added console.log
+    console.log(sender);
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot2.png" alt="Bot" />
@@ -68,7 +68,7 @@ const nextQuestion = (message) => {
   if (questionNumber === 1) {
     userReply(message)
     input.value = ''
-    setTimeout(() => movieTips(message), 1000)
+    setTimeout(() => movieTips(message), 500)
   } else if (questionNumber === 2) {
     userReply(message)
     setTimeout(() => movieLength(message), 1000)
@@ -85,7 +85,7 @@ const nextQuestion = (message) => {
   }
   else if (questionNumber === 6) {
     userReply(message)
-    setTimeout(() => chosenMovie(message), 1000)
+    setTimeout(() => chosenMovie(message), 2000)
   }
 };
 
@@ -97,8 +97,8 @@ const greeting = () => {
 
 const movieTips = (msg) => {
   questionNumber++
-  showMessage(`Nice to meet you ${msg}. As you might know, I'm quite the movie expert. 
-  Would you like some tips for tonight?`, 'bot')
+  showMessage(`Nice to meet you ${msg}. As you might know, I'm quite a movie expert. 
+  Want some tips for tonight?`, 'bot')
   inputWrapper.innerHTML = `
       <div>
         <button id="yesBtn">Yes</button>
@@ -112,7 +112,7 @@ const movieTips = (msg) => {
 
 const movieLength = (yes) => {
   questionNumber++
-  showMessage(`${yes} great! How much time do you have to watch the movie?`, 'bot')
+  showMessage(`${yes} great! How much time do you have?`, 'bot')
   inputWrapper.innerHTML = `
       <div>
         <button id="underBtn">Under 2h</button>
@@ -126,7 +126,7 @@ const movieLength = (yes) => {
 const gender = (length) => {
   movLength = length;
   questionNumber++
-  showMessage(`${length}, right. Do you want to watch a movie made by a male or female director?`, 'bot')
+  showMessage(`${length} it is! I know gender is so 80's... but hey for the sake of statistics in the film industry, let's do the division. Male or female director?`, 'bot')
   inputWrapper.innerHTML = `
       <div>
         <button id="fBtn">Female</button>
@@ -135,14 +135,15 @@ const gender = (length) => {
     `
   document.getElementById('fBtn').addEventListener('click', () => nextQuestion('Female director'))
   document.getElementById('mBtn').addEventListener('click', () => nextQuestion('Male director'))
-  //showMessage(`Great to know your preferences! Now let's move further into the movie djungle...`, 'bot')
-} //can I have one more showMessage here??
-//add extra time here as a suspension, before the next Question? 
+} 
+
 
 const movieGenre = (gender) => {
   genderDir = gender;
   questionNumber++
-  showMessage(`${gender} - got it! What genre are you in the mood for?`, 'bot')
+  showMessage(`Great to know your preferences! Now let's move further into the movie djungle...`, 'bot')
+  showMessage(`${gender}. What genre are you in the mood for?`, 'bot')
+  
   inputWrapper.innerHTML = `
       <div>
         <button id="dramaBtn">Drama</button>
@@ -160,7 +161,8 @@ const movieGenre = (gender) => {
 
 const movieMenu = (type) => {
   questionNumber++
-  showMessage(`Excellent choice - ${type} it is. Here is a list of movies that I think will suit you:`, 'bot')
+  showMessage(`Excellent choice - ${type} it is. Here is some movies that I think will get the juices flowing in your taste buds:`, 'bot')
+ 
   if (movLength === 'Under 2h') {
       if (type === 'drama') {
         if (genderDir === 'Female director') {
@@ -333,11 +335,11 @@ const movieMenu = (type) => {
 
 const chosenMovie = (select) => {
   questionNumber++
-  showMessage(`Get the popcorn ready and enjoy watching the movie ${select}!`, 'bot')
+  showMessage(`Get the popcorn ready and enjoy watching ${select}!`, 'bot')
   showMessage(`Press restart if you want to start over 👇`, 'bot')
     inputWrapper.innerHTML =`
       <div>
-        <button id="restartBtn">Restart</button>
+        <button id="restartBtn">Yeah, you need to go refresh your taste levels!</button>
       </div>
     `
 
