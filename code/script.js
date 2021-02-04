@@ -114,21 +114,6 @@ const moodOptions = () => {
       }
     })
 
-    //ANNA: the code below was my attempt to continue to two buttons option but is not working
-    
-    /* document.getElementById("forme").addEventListener("click", () => {
-      showMessage(`Is this song for you or for a friend? ❤`, 'bot')
-      inpt = () => {
-        inputWrapper.innerHTML = `
-        <button id="forme">for me</button>
-        <button id="forafriend">for a friend</button>
-        `
-      const select = document.getElementById("forme");
-      select.addEventListener("change", () =>
-        whoIsThesongFor(select.value))
-      }
-    })*/
-
    
     setTimeout(() => {
       inpt();
@@ -136,9 +121,12 @@ const moodOptions = () => {
   
 }
 
+
+
+
 //Question 3
 const greatChoice = () => {
-showMessage(`Great choice! I love that song ❤`, 'bot')
+showMessage(`Great choice ${userName}! I love that song ❤`, 'bot')
 setTimeout(() => greatChoice(value, 'bot'), 2000)
 }
 
