@@ -2,32 +2,52 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: wineFont;
+  src: url(./assets/LSLeaves.ttf);
+}
+
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url(./assets/vinyard-house.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden; 
+  height: 100%;
 }
 
 h1 {
-  font-weight: bold;
-  font-size: 44px;
+font-size: 20px;
   line-height: 34px;
-  color: #fff;
+  color: rgb (14, 11, 11);
   text-align: center;
+  letter-spacing: 3px;
+  text-shadow: rgb(255, 255, 255) 0px 0px 40px;
+  margin-top: 25px;
 }
 
+
 h2 {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 34px;
-  color: #fff;
+  font-size: 65px;
+  letter-spacing: 3px;
+  line-height: 80px;
+  color: rgb(14, 11, 11);
   text-align: center;
-  margin-bottom: 36px;
+  margin-bottom: 70px;
+  margin-top: 50px;
+  text-shadow: rgb(255, 255, 255) 0px 0px 40px;
+  font-family: wineFont;
 }
 
 p {
-  font-size: 18px;
+  font-size: 16px;
+  letter-spacing: 1px;
   font-weight: 600;
   line-height: 28px;
   margin: 0;
@@ -35,25 +55,26 @@ p {
 
 input {
   box-sizing: border-box;
-  border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  border: 2px solid rgb(80, 69, 69);
+  border-radius: 8px;
+  background: #f3e9da;
+  
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
   flex: 1;
+  margin-left: 35px;
 }
 
 main {
   margin: 0 auto;
-  width: 100%;
-  max-width: 700px;
-  height: 600px;
+  max-width: 80%;
+  height: 55%;
   border-radius: 30px;
-  background: #fff;
+  border: 1px solid black;
+  background: rgba(230, 230, 196, 0.692);
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -65,9 +86,13 @@ main {
   flex: 1;
   display: flex;
   justify-content: flex-start;
-  overflow: scroll;
+  overflow: auto;
   flex-direction: column;
   padding-bottom: 16px;
+}
+
+body::-webkit-scrollbar {
+  background: red;
 }
 
 .bot-msg {
@@ -85,28 +110,32 @@ main {
 
 .bot-msg img,
 .user-msg img {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #95be6c3a;
   font-weight: 600;
   font-size: 16px;
-  line-height: 26px;
+  line-height: 24px;
   padding: 16px 24px;
-  color: #0026ff;
-  max-width: 40%;
+  color: #050504d8;
+  max-width: 80%;
+  border: 1px solid black;
 }
 
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  background-color: rgb(202, 214, 186);
 }
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  background-color: rgb(250, 250, 220);
+  color: rgb(124, 1, 1);
 }
 
 .input-wrapper {
@@ -117,24 +146,52 @@ main {
 .input-wrapper form {
   width: 100%;
   display: flex;
+  justify-content: center;
 }
 
 button {
-  background-color: #0026ff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 16px 40px;
-  margin-right: 4px;
+  background-color: #551313d5;
+  color: rgb(24, 19, 19);
+  border: 2px solid rgb(80, 69, 69);
+  border-radius: 8px;
+  padding: 10px 30px;
+  margin-right: 35px;
   font-size: 16px;
-  line-height: 26px;
   font-family: 'Montserrat';
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
 }
+
 
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+}
+
+
+/*** MEDIA QUERIES ***/
+
+
+/* Small desktop */
+@media (min-width: 992px) {
+  main {
+  height: 55%;
+  width: 60%;
+  }
+}
+
+/* Big desktop */
+@media (min-width: 1200px) {
+  main {
+  height: 60%;
+  width: 65%;
+  }
 }
