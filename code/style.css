@@ -47,7 +47,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #551A8B;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -109,7 +109,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #551A8B;
   max-width: 40%;
 }
 
@@ -134,7 +134,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #551A8B;
   color: white;
   border: none;
   border-radius: 4px;
@@ -154,7 +154,7 @@ button:hover {
 }
 
 #select{
-  background-color: #0026ff;
+  background-color: #551A8B;
   color: white;
   border: none;
   border-radius: 4px;
@@ -166,9 +166,25 @@ button:hover {
   font-weight: 500;
   cursor: pointer;
 }
-
+#choose_drink{
+  background-color: #551A8B;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 40px;
+  margin-right: 4px;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  cursor: pointer;
+}
 video{
   width: 100%;
   margin: 0;
   padding: 0;
+}
+
+audio { 
+  display:none;
 }

@@ -34,7 +34,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/rw.png" alt="User" />  
+        <img src="assets/rw.png" alt="User"/>  
       </section>
     `
   } else if (sender === 'bot') {
@@ -57,7 +57,7 @@ const showMessage = (message, sender) => {
 // Starts here
 
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Hello there muggler🙋‍♀️ What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -74,13 +74,13 @@ form.addEventListener('submit', (event)=>{
   
 //Set time, 3 second 
   const messageTwo = () => {
-  showMessage(`Hello ${name}`, "bot")}
+  showMessage(`Hello ${name}👋`, "bot")}
   setTimeout(messageTwo, 2000)
     
  //Set time, 4 second and food options 
   const messageThree = () => {
    showMessage(`
-    What would you like to order <br> <video loop autoplay>
+    What would you like to order?<br> <video loop autoplay>
     <source src="assets/wizard.mp4" type="video/mp4">
     Your browser does not support the video tag.
     </video>`, "bot")
@@ -113,7 +113,9 @@ const showFoodOptions = () => {
 
 // showMenu function that catches the choice through value "dish"
 const showMenu = (dish) => {
-    botReply(`${dish} burger is a great choice, please select your favorite filling`)
+    botReply(`${dish} burger is a great choice 🍔, please select your favorite filling👇<br>
+    
+    `)
     order.dish=dish // this window method will tranform it from local variable to a global variable 
     inputWrapper.innerHTML =`
     <select id="select"> 
@@ -130,7 +132,12 @@ const showMenu = (dish) => {
   }
     
 const sideDish = (fill) => {
-  botReply(`you have ordered ${order.dish} with ${fill} please chose your favorite side dish`)
+  botReply(`you have ordered ${order.dish} with ${fill}👌 please chose your favorite side dish <br>
+    <video loop autoplay>
+    <source src="assets/potion.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+    `)
   order.fill=fill
   inputWrapper.innerHTML = `
     <button id="fries-btn">Fries</button>
@@ -139,17 +146,17 @@ const sideDish = (fill) => {
     ` 
    document
       .getElementById("fries-btn")
-      .addEventListener("click", () => botReply("You have added fires, Please choose your drink",
+      .addEventListener("click", () => botReply("You have added fries🍟, Please choose your drink🍹",
      setTimeout(() => showDrinkOptions("fries"), 2000)))
     
     
    document
    .getElementById("sallad-btn")
-   .addEventListener("click",() => botReply("You have added Sallad, Please choose your drink",
+   .addEventListener("click",() => botReply("You have added Sallad🥬, Please choose your drink🍹",
     setTimeout(() => showDrinkOptions("sallad"), 2000)))
    document
    .getElementById("dragon-btn")
-   .addEventListener("click",() => botReply("You have added Dragon egg, Please choose your drink",
+   .addEventListener("click",() => botReply("You have added Dragon egg🥚, Please choose your drink🍹",
     setTimeout(() => showDrinkOptions("dragon egg"), 2000)))
 }
 
@@ -172,10 +179,17 @@ const showDrinkOptions = (side) => {
 }
 const summaryOfOrder = (drink) => {
   
-  botReply(`You have ordered ${order.dish} with ${order.fill} with ${order.side} and ${drink}`)
-  deliveryOption()
+  botReply(`You have ordered ${order.dish} with ${order.fill} with ${order.side} and ${drink} <br>
+  <img class="magic" src="./assets/magic.png" alt="magic"/>`)
+  setTimeout(() => botReply(`
+  <p>Please choose your choice of delivery</p> <br> 
+  <video loop autoplay>
+  <source src="assets/hat.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+  </video>`
+  ),2000)
+  setTimeout(() => deliveryOption(), 3000)
 }
-
 
 const deliveryOption=() => {
   inputWrapper.innerHTML =`
@@ -199,16 +213,30 @@ const deliveryOption=() => {
 
 const showFinal = (delivery) => {
   if (delivery === "eathere") {
-    botReply("welcome to HP burgers, your order will be ready in 20 min")
+    botReply("welcome to HP burgers, your order will be ready, faster than you can say <b>Wingardium Leviosa</b>")
+    setTimeout(() => botReply(`
+    <audio controls autoplay>
+    <source src="assets/Hermoine.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    <iframe src="https://giphy.com/embed/iIqcyjsrIhxK0" width="200" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/harry-potter-emma-watson-hermione-granger-iIqcyjsrIhxK0"></p>
+  `
+    ), 3000)
   }else if (delivery === "takeout") {
-    botReply("you can pick up your order in 20 min")
+    botReply("you order will be ready for pick up faster than you can say <b>Wingardium Leviosa</b>")
+    setTimeout(() => botReply(`
+    <audio controls autoplay>
+    <source src="assets/Hermoine.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    <iframe src="https://giphy.com/embed/iIqcyjsrIhxK0" width="200" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/harry-potter-emma-watson-hermione-granger-iIqcyjsrIhxK0"></p>
+    `
+    ), 3000)
   }else if (delivery === "homedel") {
     botReply("please write your adress for home delivery and press ENTER")
     inputWrapper.innerHTML=`
       <input class="info" type="text" id="adress"/>
     `
-      
-    //const submission = document.getElementById("btn")
 
     const adress = document.getElementById("adress") 
     adress.addEventListener("keypress", function (e) {
@@ -225,7 +253,14 @@ const showFinal = (delivery) => {
 const showDelivery = (adress) => {
   showMessage(`${adress}`, "user")  
   order.adress=adress
-  setTimeout(() => botReply(`We will deliver your order in 35 min to ${order.adress}`) , 2000)
+  setTimeout(() => botReply(`We deliver your order to ${order.adress} faster than you can say <b>Wingardium Leviosa</b>` ) , 2000)
+  setTimeout(() => botReply(`
+  <audio controls autoplay>
+  <source src="assets/Hermoine.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+  </audio>
+  <iframe src="https://giphy.com/embed/iIqcyjsrIhxK0" width="200" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/harry-potter-emma-watson-hermione-granger-iIqcyjsrIhxK0"></p>
+  `) , 4000)
 }
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
