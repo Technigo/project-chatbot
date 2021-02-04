@@ -146,3 +146,31 @@ button:hover {
   justify-content: center;
   padding-top: 16px;
 }
+
+.result-container {
+  display: flex;
+  gap: 16px;
+  padding-top: 16px;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+}
+
+.result-list {
+  display: grid;
+  flex: 1;
+}
+
+h3 {
+  margin-top: 0;
+}
+
+.none {
+  display: none;
+}
+
+.try-again {
+  padding-top: 16px;
+}

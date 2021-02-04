@@ -31,7 +31,6 @@ const threeWayQuestion = (value) => {
       </div>
     `
     document.getElementById('tv').addEventListener("click", () => {
-      console.log("tv")
       showMessage("TV", 'user');
       showMessage(`Do you want your costume to be...?`, 'bot');
       chat.innerHTML += `
@@ -44,6 +43,36 @@ const threeWayQuestion = (value) => {
       document.getElementById('diy').addEventListener("click", () => {
         showMessage("DIY", 'user');
         showMessage(`Tina Belcher,'Bob's Burgers' or David Rose,'Schitt's Creek'`, 'bot');
+        chat.innerHTML += `
+          <div class="result-container">
+            <div class="result-list">
+              <h3>Tina Belcher,'Bob's Burgers'</h3>
+              <ul>
+                What you need:
+                <li>Light blue t-shirt</li>
+                <li>Blue skirt</li>
+                <li>White socks with red stripes</li>
+                <li>Black high-top shoes</li>
+                <li>Black thick-rim glasses</li>
+                <li>Black bob wig with yellow hair clip</li>
+              </ul>
+              <img class="img" src="https://mcdn.wallpapersafari.com/medium/47/13/JIBSUO.jpg"/>
+            </div>
+            <div class="result-list">
+              <h3>David Rose,'Schitt's Creek'</h3>
+              <ul>
+                What you need:
+                <li>B&W over-the-top sweater</li>
+                <li>Black skirt</li>
+                <li>Black jeans</li>
+                <li>Black hig-top shoes</li>
+                <li>White oval sunglasses</li>
+              </ul>
+              <img class="img" src="https://i.pinimg.com/736x/a3/88/3e/a3883edbe81d000388588126048ff875.jpg"/>
+            </div>
+          </div>
+          <button class="try-again" onClick="window.location.reload();">Try again</button>
+        `
         });
       document.getElementById('store-bought').addEventListener("click", () => {
         showMessage("Store-bought", 'user');
@@ -57,7 +86,6 @@ const threeWayQuestion = (value) => {
 
 
     document.getElementById('movies').addEventListener("click", () => {
-      console.log("movies")
       showMessage("Movies", 'user');
       showMessage(`Do you want your costume to be...?`, 'bot');
       chat.innerHTML += `
@@ -82,7 +110,6 @@ const threeWayQuestion = (value) => {
 
     });
     document.getElementById('pop-culture').addEventListener("click", () => {
-      console.log("pop-culture")
       showMessage("Pop culture", 'user');
       showMessage(`Do you want your costume to be...?`, 'bot');
       chat.innerHTML += `
@@ -117,7 +144,6 @@ const threeWayQuestion = (value) => {
       </div>
     `
     document.getElementById('gory').addEventListener("click", () => {
-      console.log("gory")
       showMessage("Gory", 'user');
       showMessage(`Do you want your costume to be...?`, 'bot');
       chat.innerHTML += `
@@ -142,7 +168,6 @@ const threeWayQuestion = (value) => {
 
     });
     document.getElementById('creepy').addEventListener("click", () => {
-      console.log("creepy")
       showMessage("Creepy", 'user');
       showMessage(`Do you want your costume to be...?`, 'bot');
       chat.innerHTML += `
@@ -167,7 +192,6 @@ const threeWayQuestion = (value) => {
 
     });
     document.getElementById('existential').addEventListener("click", () => {
-      console.log("existential")
       showMessage("Existential", 'user');
       showMessage(`Do you want your costume to be...?`, 'bot');
       chat.innerHTML += `
@@ -196,14 +220,13 @@ const threeWayQuestion = (value) => {
     showMessage(`Pick a theme:`, 'bot');
     chat.innerHTML += `
       <div class="choice-btn-container">
-        <button id='sexy' class="choice-btn">Sexy</button>
+        <button id='cheeky' class="choice-btn">Cheeky</button>
         <button id='classic' class="choice-btn">Classic</button>
         <button id='adorable' class="choice-btn">Adorable</button>
       </div>
     `
-    document.getElementById('sexy').addEventListener("click", () => {
-      console.log("sexy")
-      showMessage("Sexy", 'user');
+    document.getElementById('cheeky').addEventListener("click", () => {
+      showMessage("Cheeky", 'user');
       showMessage(`Do you want your costume to be...?`, 'bot');
       chat.innerHTML += `
         <div class="choice-btn-container">
@@ -214,20 +237,19 @@ const threeWayQuestion = (value) => {
       `
       document.getElementById('diy').addEventListener("click", () => {
         showMessage("DIY", 'user');
-        showMessage(`Sexy cheetah or Sexy nerd`, 'bot');
+        showMessage(`Cheetah or Nerd`, 'bot');
       });
       document.getElementById('store-bought').addEventListener("click", () => {
         showMessage("Store-bought", 'user');
-        showMessage(`Sexy referee or Hugh Hefner`, 'bot');
+        showMessage(`Referee or Hugh Hefner`, 'bot');
       });
       document.getElementById('a-combo').addEventListener("click", () => {
         showMessage("A combo", 'user');
-        showMessage(`Lifeguard or Playboy bunny`, 'bot');
+        showMessage(`Lifeguard`, 'bot');
       });      
       
     });
     document.getElementById('classic').addEventListener("click", () => {
-      console.log("classic")
       showMessage("Classic", 'user');
       showMessage(`Do you want your costume to be...?`, 'bot');
       chat.innerHTML += `
@@ -252,7 +274,6 @@ const threeWayQuestion = (value) => {
 
     });
     document.getElementById('adorable').addEventListener("click", () => {
-      console.log("adorable")
       showMessage("Adorable", 'user');
       showMessage(`Do you want your costume to be...?`, 'bot');
       chat.innerHTML += `
