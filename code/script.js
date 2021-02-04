@@ -6,7 +6,6 @@ const submit = document.getElementById('send-btn')
 
 // Global variables, if you need any, declared here
 let questionNumber = 1
-console.log(questionNumber);
 
 let movLength;
 let genderDir;
