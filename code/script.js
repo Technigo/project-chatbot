@@ -142,7 +142,9 @@ const question4 = (message) => {
   inputWrapper.innerHTML = `
   <form id="name-form" onsubmit="return false;">
   <input id="name-input" type="text" />
-  </form>`// Vi hade glömt att ta bort menyn med innerHTML
+  </form>`/*Vi lade till rad 143-145 för att få flavour-menyn att försvinna. Det går 
+             att lägga till något annat också (istället för en inbut-box), det 
+             viktiga är att inputWrapper.innerHTML får ett annat värde än i question3*/
   };
 
 
