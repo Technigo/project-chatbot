@@ -57,10 +57,12 @@ const moodOptions = () => {
   let userName = document.getElementById('user-input');
   showMessage(`How are you feeling today?`, 'bot')
   inputWrapper.innerHTML = `
-    <button id="option1">happy</button>
-    <button id="option2">sad</button>
-    <button id="option3">angry</button>
-    `
+  <button id="option1">happy</button>
+  <button id="option2">sad</button>
+  <button id="option3">angry</button>
+  `
+  
+  
     document.getElementById("option1").addEventListener("click", () => {
       showMessage("I see you are feeling happy!😊 Here's a list that suits your mood. Go ahead and choose one! 👇", "bot")
       inpt = () => { 
@@ -112,17 +114,39 @@ const moodOptions = () => {
       }
     })
 
+    //ANNA: the code below was my attempt to continue to two buttons option but is not working
+    
+    /* document.getElementById("forme").addEventListener("click", () => {
+      showMessage(`Is this song for you or for a friend? ❤`, 'bot')
+      inpt = () => {
+        inputWrapper.innerHTML = `
+        <button id="forme">for me</button>
+        <button id="forafriend">for a friend</button>
+        `
+      const select = document.getElementById("forme");
+      select.addEventListener("change", () =>
+        whoIsThesongFor(select.value))
+      }
+    })*/
+
+   
     setTimeout(() => {
       inpt();
     }, 2000)
+  
 }
 
 //Question 3
 const greatChoice = () => {
-showMessage(`Great choice! I love that song`, 'bot')
-setTimeout(() => greatChoice(value, 'bot'), 1000)
+showMessage(`Great choice! I love that song ❤`, 'bot')
+setTimeout(() => greatChoice(value, 'bot'), 2000)
 }
 
+//Question 4
+const whoIsThesongFor = () => {
+showMessage(`Is this song for you or for a friend? ❤`, 'bot')
+setTimeout(() => whoIsThesongFor(value, 'bot'), 2000)
+}
 
 // Set up your eventlisteners here
 form.addEventListener('submit', (event) => {
