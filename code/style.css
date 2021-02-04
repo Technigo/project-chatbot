@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Yusei Magic', sans-serif;
 }
 
 video {
@@ -18,17 +18,20 @@ video {
 }
 
 h1 {
-  font-weight: bold;
-  font-size: 44px;
+  font-family: 'Londrina Solid', cursive;
+  font-weight: 900;
+  font-size: 100px;
   line-height: 34px;
   color: #fff;
   text-align: center;
   position: relative;
+  margin-top: 100px;
 }
 
 h2 {
-  font-weight: bold;
-  font-size: 24px;
+  font-family: 'Londrina Solid', cursive;
+  font-weight: 300;
+  font-size: 50px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -51,8 +54,8 @@ input {
   color: #0026ff;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 600;
+  font-family: 'Londrina Solid', cursive;
+  font-weight: 300;
   line-height: 26px;
   flex: 1;
 }
@@ -180,6 +183,22 @@ main {
   cursor: pointer; 
 }
 
+.dropdown {
+  -webkit-appearance: none; 
+  appearance: none;
+  outline: none;
+  background: #F264B9; 
+  border: none;
+  color: white;
+  border-radius: 4px;
+  padding: 16px 40px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  line-height: inherit;
+  font-size: 16px;
+}
+
 button {
   background-color: #F264B9;
   color: white;
@@ -187,10 +206,10 @@ button {
   border-radius: 4px;
   padding: 16px 40px;
   margin-right: 4px;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 26px;
-  font-family: 'Montserrat';
-  font-weight: 500;
+  font-family: 'Londrina Solid', cursive;
+  font-weight: 300;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -199,3 +218,5 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+

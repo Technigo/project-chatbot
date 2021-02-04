@@ -40,6 +40,8 @@ const showMessage = (message, sender) => {
 
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
+  console.log(chat.scrollTop, "scrollTop")
+  console.log(chat.scrollHeight, "scrollHeight")
 }
 
 const nextStep = (message) => {
@@ -99,29 +101,33 @@ const showVibe = (place) => {
   answerNumber++
 
   if (place === 'Nightclub') {
-    botAnswer(`Are we talking Berghain or Studio54?`)
+    botAnswer(`Which club?`)
 
     inputWrapper.innerHTML = `
-    <button id="berghainBtn">Berghain</button>
-    <button id="studio54Btn">Studio 54</button>
+    <select class="dropdown" id="select">
+      <option class="dropdown-item" value="" selected disabled>Pick your place! &#11015;</option>
+      <option class="dropdown-item" value="Berghain">Berghain</option>
+      <option class="dropdown-item" value="Studio 54">Studio 54</option>
+      <option class="dropdown-item" value="Nikki Beach">Nikki Beach</option>
+      <option class="dropdown-item" value="Cavalli Club">Cavalli Club</option>
+    </select>
   `
-  document.getElementById('berghainBtn')
-  .addEventListener('click', () => nextStep('Berghain'))
-  document.getElementById('studio54Btn')
-  .addEventListener('click', () => nextStep('Studio 54'))
-
-  } else {
-    botAnswer(`In the mood for Cosmopolitan or Old Fashioned?`)
+  } else if (place === "Cocktail bar") {
+    botAnswer(`What's your favourite cocktail?`)
 
     inputWrapper.innerHTML = `
-    <button id="cosmoBtn">Cosmopolitan</button>
-    <button id="oldfashionBtn">Old Fashioned</button>
+    <select class="dropdown" id="select">
+      <option value="" selected disabled>Choose your poision &#11015;</option>
+      <option value="Cosmopolitan">Cosmopolitan</option>
+      <option value="Old fashioned">Old fashioned</option>
+      <option value="Moscow Mule">Moscow Mule</option>
+      <option value="Mojito">Mojito</option>
+    </select>
   `
-  document.getElementById('cosmoBtn')
-  .addEventListener('click', () => nextStep('Cosmopolitan'))
-  document.getElementById('oldfashionBtn')
-  .addEventListener('click', () => nextStep('Old fashioned'))
   }
+
+  const outfit = document.getElementById('select')
+  outfit.addEventListener('change', () => nextStep(outfit.value))
 
 }
 
@@ -140,16 +146,27 @@ const showOutfit = (outfit) => {
       </section>
     `
     chat.scrollTop = chat.scrollHeight
+    console.log(chat.scrollTop)
 }
 
   if (outfit === 'Berghain') {
     showFinalMessage()
-    document.getElementById("outfitGif").src = "assets/partytest.gif"
+    document.getElementById("outfitGif").src = "assets/berghain.gif"
   }
 
   else if (outfit === "Studio 54") {
     showFinalMessage()
     document.getElementById("outfitGif").src = "assets/studio54.gif"
+  }
+
+  else if (outfit === "Nikki Beach") {
+    showFinalMessage()
+    document.getElementById("outfitGif").src = "assets/nikkibeach.gif"
+  }
+
+  else if (outfit === "Cavalli Club") {
+    showFinalMessage()
+    document.getElementById("outfitGif").src = "assets/cavalliclub.gif"
   }
 
   else if (outfit === "Cosmopolitan") {
@@ -160,6 +177,16 @@ const showOutfit = (outfit) => {
   else if (outfit === "Old fashioned") {
     showFinalMessage()
     document.getElementById("outfitGif").src = "assets/oldfashioned.gif"
+  }
+
+  else if (outfit === "Moscow Mule") {
+    showFinalMessage()
+    document.getElementById("outfitGif").src = "assets/mosow.gif"
+  }
+
+  else if (outfit === "Mojito") {
+    showFinalMessage()
+    document.getElementById("outfitGif").src = "assets/mojito.gif"
   }
 
   inputWrapper.innerHTML = ""
