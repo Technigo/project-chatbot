@@ -1,10 +1,8 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById('input-wrapper')
-const input = document.getElementById('user-input') /*value;*/
-/* MAKS version Monday --> const value = document.getElementById('input-value').value; */
+const input = document.getElementById('user-input')
 const submit = document.getElementById('send-btn')
-/*const nameForm = document.getElementById('name-form')*/
 
 // Global variables, if you need any, declared here
 let questionNumber = 1
@@ -23,14 +21,10 @@ const userReply = (msg) => {
 
 // Functions declared here
 
-/* KOmmer radera user input efter varje gång. TEST Deklarera en funktion som hämtar ('user-input').value="" */ 
-/*function userName() {
-  document.getElementById('user-input').value ='';
-} */
-
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
+    console.log(sender); //added console.log
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -40,6 +34,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
+    console.log(sender);//added console.log
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot2.png" alt="Bot" />
@@ -52,17 +47,19 @@ const showMessage = (message, sender) => {
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
+
+//This function will lead the user to a button where they can reload the bot after pressing no to the second question
 const reloadBot = () => {
   showMessage('Too bad, let me know if you change your mind!', 'bot')
-  inputWrapper.innerHTML = 
-  `<div>
-    <button id="reloadBtn">Restart</button>
-  </div>`
-
+  inputWrapper.innerHTML = `
+    <div>
+      <button id="reloadBtn">Restart</button>
+    </div>
+  `
   document.getElementById('reloadBtn').addEventListener('click', () => {
     location.reload()
 
-})
+  })
 }
 
 const nextQuestion = (message) => {
@@ -70,7 +67,7 @@ const nextQuestion = (message) => {
 
   if (questionNumber === 1) {
     userReply(message)
-    input.value = '' /*try change to value='message', 'msg', 'user-input', text*/
+    input.value = ''
     setTimeout(() => movieTips(message), 1000)
   } else if (questionNumber === 2) {
     userReply(message)
@@ -92,77 +89,68 @@ const nextQuestion = (message) => {
   }
 };
 
-// Starts here - OBS make sure it is possible to type in text in input box!
+// Starts here 
 const greeting = () => {
   questionNumber = 1
   showMessage(`Hello there, What's your name?`, 'bot')
-  // document.getElementById('user-input').addEventListener('click', () => nextQuestion(msg))
-
 }
 
 const movieTips = (msg) => {
   questionNumber++
   showMessage(`Nice to meet you ${msg}. As you might know, I'm quite the movie expert. 
   Would you like some tips for tonight?`, 'bot')
-inputWrapper.innerHTML = 
-  `<div>
-    <button id="yesBtn">Yes</button>
-    <button id="noBtn">No</button>
-  </div>`
-
+  inputWrapper.innerHTML = `
+      <div>
+        <button id="yesBtn">Yes</button>
+        <button id="noBtn">No</button>
+      </div>
+    `
   document.getElementById('yesBtn').addEventListener('click', () => nextQuestion('Yes'))
-  document.getElementById('noBtn').addEventListener('click', () => reloadBot ())
-    // showMessage('Too bad, let me know if you change your mind!', 'bot'))
-    
-      
-   // document.getElementById('noBtn').addEventListener('click', () => {location.reload()
-   // })
-    // Change this to a closing comment and that the bot restarts from the beginning. Add delay after clicking no.
+  document.getElementById('noBtn').addEventListener('click', () => reloadBot())
 }
 
 
 const movieLength = (yes) => {
-  questionNumber++ 
-  showMessage(`${yes} Great! How much time do you have to watch the movie?`, 'bot')
-  inputWrapper.innerHTML = 
-  `<div>
-    <button id="underBtn">Under 2h</button>
-    <button id="overBtn">Over 2h</button>
-  </div>`
-
+  questionNumber++
+  showMessage(`${yes} great! How much time do you have to watch the movie?`, 'bot')
+  inputWrapper.innerHTML = `
+      <div>
+       <button id="underBtn">Under 2h</button>
+        <button id="overBtn">Over 2h</button>
+      </div>
+    `
   document.getElementById('underBtn').addEventListener('click', () => nextQuestion('Under 2h'))
   document.getElementById('overBtn').addEventListener('click', () => nextQuestion('Over 2h'))
 }
 
 const gender = (length) => {
-  movLength=length;
+  movLength = length;
   questionNumber++
-  showMessage(`${length}, So male or female director ?`, 'bot')
-  
-  inputWrapper.innerHTML = 
-    `<div>
-      <button id="fBtn">Female</button>
-      <button id="mBtn">Male</button>
-    </div>`
+  showMessage(`${length}, right. Do you want to watch a movie made by a male or female director?`, 'bot')
+  inputWrapper.innerHTML = `
+      <div>
+        <button id="fBtn">Female</button>
+        <button id="mBtn">Male</button>
+      </div>
+    `
   document.getElementById('fBtn').addEventListener('click', () => nextQuestion('Female director'))
-  document.getElementById('mBtn').addEventListener('click', () => nextQuestion ('Male director'))
-//showMessage(`Great to know your preferences! Now let's move further into the movie djungle...`, 'bot')
+  document.getElementById('mBtn').addEventListener('click', () => nextQuestion('Male director'))
+  //showMessage(`Great to know your preferences! Now let's move further into the movie djungle...`, 'bot')
 } //can I have one more showMessage here??
-  //add extra time here as a suspension, before the next Question? 
+//add extra time here as a suspension, before the next Question? 
 
 const movieGenre = (gender) => {
-  genderDir=gender;
+  genderDir = gender;
   questionNumber++
-
   showMessage(`${gender} - got it! What genre are you in the mood for?`, 'bot')
-  inputWrapper.innerHTML = 
-  `<div>
-    <button id="dramaBtn">Drama</button>
-    <button id="thrillerBtn">Thriller</button>
-    <button id="comedyBtn">Comedy</button>
-    <button id="documentaryBtn">Documentary</button>
-  </div>`
-
+  inputWrapper.innerHTML = `
+      <div>
+        <button id="dramaBtn">Drama</button>
+        <button id="thrillerBtn">Thriller</button>
+        <button id="comedyBtn">Comedy</button>
+        <button id="documentaryBtn">Documentary</button>
+      </div>
+    `
   document.getElementById('dramaBtn').addEventListener('click', () => nextQuestion('drama'))
   document.getElementById('thrillerBtn').addEventListener('click', () => nextQuestion('thriller'))
   document.getElementById('comedyBtn').addEventListener('click', () => nextQuestion('comedy'))
@@ -171,178 +159,187 @@ const movieGenre = (gender) => {
 
 
 const movieMenu = (type) => {
-  questionNumber++ 
+  questionNumber++
   showMessage(`Excellent choice - ${type} it is. Here is a list of movies that I think will suit you:`, 'bot')
-  if (movLength ==='Under 2h'){
-    if (type === 'drama') {
-        if (genderDir==='Female director'){  
-        inputWrapper.innerHTML = `
-        <select id="select"> 
-        <option value="" selected disabled>Top 3 short female drama movies</option>
-        <option value="dramamovienr1">movie nr1</option>
-        <option value="dramamovienr2">movie nr2</option>
-        <option value="dramamovienr3">Movie nr 3</option>
-        </select>`
-      } else if (genderDir==='Male director') {
-        inputWrapper.innerHTML = `
-        <select id="select"> 
-        <option value="" selected disabled>Top 3 short male drama movies</option>
-        <option value="dramamovienr1">movie nr1</option>
-        <option value="dramamovienr2">movie nr2</option>
-        <option value="dramamovienr3">Movie nr 3</option>
-        </select>`
-    } else if (type === 'thriller') {  
-        if (genderDir==='Female director')  {
-        inputWrapper.innerHTML = `
-        <select id="select"> 
-          <option value="" selected disabled>Top 3 short female thriller movies</option>
-          <option value="dramamovienr1">movie nr1</option>
-          <option value="dramamovienr2">movie nr2</option>
-          <option value="dramamovienr3">Movie nr 3</option>
-        </select>`
-    } else if (genderDir==='Male director') {
-      inputWrapper.innerHTML = `
-      <select id="select"> 
-          <option value="" selected disabled>Top 3 short male thriller movies</option>
-          <option value="dramamovienr1">movie nr1</option>
-          <option value="dramamovienr2">movie nr2</option>
-          <option value="dramamovienr3">Movie nr 3</option>
-        </select>`
-    }
+  if (movLength === 'Under 2h') {
+      if (type === 'drama') {
+         if (genderDir === 'Female director') {
+           inputWrapper.innerHTML = `
+            <select id="select"> 
+              <option value="" selected disabled>Top 3 shorter Dramas with Female directors</option>
+              <option value="American Psycho">American Psycho</option>
+              <option value="Lost In Translation">Lost In Translation</option>
+              <option value="Monster">Monster</option>
+            </select>
+          `
+      }  else /*if (genderDir === 'Male director')*/ {
+           inputWrapper.innerHTML = `
+            <select id="select"> 
+              <option value="" selected disabled>Top 3 shorter Dramas with Male directors</option>
+              <option value="La vita è Bella">La vita è Bella</option>
+              <option value="Intouchables">Intouchables</option>
+              <option value="Eternal Sunshine of the spotless mind">Eternal Sunshine of the spotless mind</option>
+            </select>
+          `
+      }
+   }  else if (type === 'thriller') {
+         if (genderDir === 'Female director') {
+           inputWrapper.innerHTML = `
+            <select id="select"> 
+              <option value="" selected disabled>Top 3 shorter Thrillers with Female directors</option>
+              <option value="dramamovienr1">movie nr1</option>
+              <option value="dramamovienr2">movie nr2</option>
+              <option value="dramamovienr3">Movie nr3</option>
+            </select>
+          `
+      }  else /*if (genderDir === 'Male director')*/ {
+           inputWrapper.innerHTML = `
+            <select id="select"> 
+              <option value="" selected disabled>Top 3 shorter Thrillers with Male directors</option>
+              <option value="dramamovienr1">movie nr1</option>
+              <option value="dramamovienr2">movie nr2</option>
+              <option value="dramamovienr3">Movie nr3</option>
+            </select>
+          `
+      }
+   }  else if (type === 'comedy') {
+         if (genderDir === 'Female director') {
+           inputWrapper.innerHTML = `
+            <select id="select"> 
+              <option value="" selected disabled>Top 3 shorter Comedies with Female directors</option>
+              <option value="dramamovienr1">movie nr1</option>
+              <option value="dramamovienr2">movie nr2</option>
+              <option value="dramamovienr3">Movie nr 3</option>
+            </select>
+          `
+      } else /*if (genderDir === 'Male director') */{
+          inputWrapper.innerHTML = `
+            <select id="select"> 
+              <option value="" selected disabled>Top 3 shorter Comedies with Male directors</option>
+              <option value="dramamovienr1">movie nr1</option>
+              <option value="dramamovienr2">movie nr2</option>
+              <option value="dramamovienr3">Movie nr 3</option>
+            </select>
+          `
+      }
+   }  else {
+         if (genderDir === 'Female director') {
+           inputWrapper.innerHTML = `
+            <select id="select"> 
+              <option value="" selected disabled>Top 3 shorter documentaries with Female directors</option>
+              <option value="Blackfish">Blackfish</option>
+              <option value="The beginning of Life">The beginning of Life</option>
+              <option value="Mommy Dead and Dearest">Mommy Dead and Dearest</option>
+            </select>
+          `
+      } else /*if (genderDir === 'Male director') */{
+          inputWrapper.innerHTML = `
+            <select id="select"> 
+              <option value="" selected disabled>Top 3 shorter documentaries with Male directors</option>
+              <option value="David Attenborough: A Life on Our Planet">David Attenborough: A Life on Our Planet</option>
+              <option value="Man on Wire">Man on Wire</option>
+              <option value="The Social Dilemma">The Social Dilemma</option>
+            </select>
+          `
+      }
+   }
+  } else if (movLength === 'Over 2h') {
+      if (type === 'drama') {
+        if (genderDir === 'Female director') {
+          inputWrapper.innerHTML = `
+            <select id="select"> 
+              <option value="" selected disabled>Top 3 longer Dramas with Female directors</option>
+              <option value="The Hurt Locker">The Hurt Locker</option>
+              <option value="Fish Tank">Fish Tank</option>
+              <option value="Little Women">Little Women</option>
+            </select>
+          `
+      } else /*if (genderDir === 'Male director')*/ {
+          inputWrapper.innerHTML = `
+            <select id="select"> 
+              <option value="" selected disabled>Top 3 longer Dramas with Male directors</option>
+              <option value="The Shawshank Redemption">The Shawshank Redemption</option>
+              <option value="Forrest Gump">Forrest Gump</option>
+              <option value="Interstellar">Interstellar</option>
+            </select>
+          `
+      }
+   } else if (type === 'thriller') {
+        if (genderDir === 'Female director') {
+          inputWrapper.innerHTML = `
+            <select id="select"> 
+              <option value="" selected disabled>Top 3 longer Thrillers with Female directors</option>
+              <option value="dramamovienr1">movie nr1</option>
+              <option value="dramamovienr2">movie nr2</option>
+              <option value="dramamovienr3">Movie nr 3</option>
+            </select>
+          `
+      } else /*if (genderDir === 'Male director')*/ {
+          inputWrapper.innerHTML = `
+            <select id="select"> 
+              <option value="" selected disabled>Top 3 longer Thrillers with Male directors</option>
+              <option value="dramamovienr1">movie nr1</option>
+              <option value="dramamovienr2">movie nr2</option>
+              <option value="dramamovienr3">Movie nr 3</option>
+            </select>`
+      }
+   } else if (type === 'comedy') {
+        if (genderDir === 'Female director') {
+          inputWrapper.innerHTML = `
+            <select id="select"> 
+              <option value="" selected disabled>Top 3 longer comedies with Female directors</option>
+              <option value="dramamovienr1">movie nr1</option>
+              <option value="dramamovienr2">movie nr2</option>
+              <option value="dramamovienr3">Movie nr 3</option>
+            </select>
+          `
+      } else /*if (genderDir === 'Male director')*/ {
+          inputWrapper.innerHTML = `
+            <select id="select"> 
+              <option value="" selected disabled>Top 3 longer comedies with Male directors</option>
+              <option value="dramamovienr1">movie nr1</option>
+              <option value="dramamovienr2">movie nr2</option>
+              <option value="dramamovienr3">Movie nr 3</option>
+            </select>
+          `
+      }
+   } else {
+        if (genderDir === 'Female director') {
+          inputWrapper.innerHTML = `
+            <select id="select"> 
+              <option value="" selected disabled>Top 3 longer documentaries with Female directors</option>
+              <option value="Selma">Selma</option>
+              <option value="American Passages">American Passages</option>
+              <option value="Totally Under Control">Totally Under Control</option>
+            </select>
+          `
+      } else /*if (genderDir === 'Male director')*/ {
+          inputWrapper.innerHTML = `
+            <select id="select"> 
+              <option value="" selected disabled>Top 3 longer documentaries with Male directors</option>
+              <option value="Ikaros">Ikaros</option>
+              <option value="Paradise Lost">Paradise Lost</option>
+              <option value="Amy">Amy</option>
+            </select>
+          `
+      }
+   }
   }
-    } else if (type === 'comedy') { 
-      if (genderDir==='Female director') { 
-      inputWrapper.innerHTML = `
-        <select id="select"> 
-          <option value="" selected disabled>Top 3 short female comedy movies</option>
-          <option value="dramamovienr1">movie nr1</option>
-          <option value="dramamovienr2">movie nr2</option>
-          <option value="dramamovienr3">Movie nr 3</option>
-        </select>
-      `
-    } else if (genderDir==='Male director') {
-      inputWrapper.innerHTML = `
-      <select id="select"> 
-          <option value="" selected disabled>Top 3 short male comedy movies</option>
-          <option value="dramamovienr1">movie nr1</option>
-          <option value="dramamovienr2">movie nr2</option>
-          <option value="dramamovienr3">Movie nr 3</option>
-        </select>`
-    } 
-  }
-    else {  
-      if (genderDir==='Female director') { 
-      inputWrapper.innerHTML = `
-        <select id="select"> 
-          <option value="" selected disabled>Top 3 short female documentary movies</option>
-          <option value="dramamovienr1">movie nr1</option>
-          <option value="dramamovienr2">movie nr2</option>
-          <option value="dramamovienr3">Movie nr 3</option>
-        </select>
-      `
-  } else if (genderDir==='Male director') {
-    inputWrapper.innerHTML = `
-     <select id="select"> 
-        <option value="" selected disabled>Top 3 short male documentary movies</option>
-        <option value="dramamovienr1">movie nr1</option>
-        <option value="dramamovienr2">movie nr2</option>
-        <option value="dramamovienr3">Movie nr 3</option>
-      </select>`
-  } 
-}
-  }
-   else if (movLength ==='Over 2h'){
-    if (type === 'drama') {
-      if (genderDir==='Female director'){  
-      inputWrapper.innerHTML = `
-      <select id="select"> 
-      <option value="" selected disabled>Top 3 long female drama movies</option>
-      <option value="dramamovienr1">movie nr1</option>
-      <option value="dramamovienr2">movie nr2</option>
-      <option value="dramamovienr3">Movie nr 3</option>
-      </select>`
-    } else if (genderDir==='Male director') {
-      inputWrapper.innerHTML = `
-      <select id="select"> 
-      <option value="" selected disabled>Top 3 long male drama movies</option>
-      <option value="dramamovienr1">movie nr1</option>
-      <option value="dramamovienr2">movie nr2</option>
-      <option value="dramamovienr3">Movie nr 3</option>
-      </select>`
-  } else if (type === 'thriller') {  
-      if (genderDir==='Female director')  {
-      inputWrapper.innerHTML = `
-      <select id="select"> 
-        <option value="" selected disabled>Top 3 long female thriller movies</option>
-        <option value="dramamovienr1">movie nr1</option>
-        <option value="dramamovienr2">movie nr2</option>
-        <option value="dramamovienr3">Movie nr 3</option>
-      </select>`
-  } else if (genderDir==='Male director') {
-    inputWrapper.innerHTML = `
-    <select id="select"> 
-        <option value="" selected disabled>Top 3 long male thriller movies</option>
-        <option value="dramamovienr1">movie nr1</option>
-        <option value="dramamovienr2">movie nr2</option>
-        <option value="dramamovienr3">Movie nr 3</option>
-      </select>`
-  }
-}
-  } else if (type === 'comedy') { 
-    if (genderDir==='Female director') { 
-    inputWrapper.innerHTML = `
-      <select id="select"> 
-        <option value="" selected disabled>Top 3 long female comedy movies</option>
-        <option value="dramamovienr1">movie nr1</option>
-        <option value="dramamovienr2">movie nr2</option>
-        <option value="dramamovienr3">Movie nr 3</option>
-      </select>
-    `
-  } else if (genderDir==='Male director') {
-    inputWrapper.innerHTML = `
-    <select id="select"> 
-        <option value="" selected disabled>Top 3 long male comedy movies</option>
-        <option value="dramamovienr1">movie nr1</option>
-        <option value="dramamovienr2">movie nr2</option>
-        <option value="dramamovienr3">Movie nr 3</option>
-      </select>`
-  } 
-}
-  else {  
-    if (genderDir==='Female director') { 
-    inputWrapper.innerHTML = `
-      <select id="select"> 
-        <option value="" selected disabled>Top 3 long female documentary movies</option>
-        <option value="dramamovienr1">movie nr1</option>
-        <option value="dramamovienr2">movie nr2</option>
-        <option value="dramamovienr3">Movie nr 3</option>
-      </select>
-    `
-} else if (genderDir==='Male director') {
-  inputWrapper.innerHTML = `
-   <select id="select"> 
-      <option value="" selected disabled>Top 3 long male documentary movies</option>
-      <option value="dramamovienr1">movie nr1</option>
-      <option value="dramamovienr2">movie nr2</option>
-      <option value="dramamovienr3">Movie nr 3</option>
-    </select>`
-} 
-}
-}
-  
-const select = document.getElementById('select')
+
+  const select = document.getElementById('select')
   select.addEventListener('change', () => nextQuestion(select.value))
 };
 
 const chosenMovie = (select) => {
-  questionNumber++ 
-  showMessage(`Get the popcorn ready and enjoy watching ${select}!`, 'bot')
+  questionNumber++
+  showMessage(`Get the popcorn ready and enjoy watching the movie ${select}!`, 'bot')
   showMessage(`Press restart if you want to start over 👇`, 'bot')
-  inputWrapper.innerHTML = 
-  `<div>
-    <button id="restartBtn">Restart</button>
-  </div>`
-
+    inputWrapper.innerHTML =`
+      <div>
+        <button id="restartBtn">Restart</button>
+      </div>
+    `
+    
   document.getElementById('restartBtn').addEventListener('click', () => {
     location.reload()
   })
