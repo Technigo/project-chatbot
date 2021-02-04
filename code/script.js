@@ -1,5 +1,8 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+const inputWrapper = document.getElementById('input-wrapper')
+const input = document.getElementById('input')
+const sendBtn = document.getElementById('send')
 
 // Global variables, if you need any, declared here
 
