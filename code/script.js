@@ -1,45 +1,41 @@
 // All the DOM selectors stored as short variables
-const chat = document.getElementById('chat');
 const theWholeForm = document.getElementById('form-wrapper');
-const inputFromForm = document.getElementById('input-ID')
-const submitFormButton = document.getElementById('send-btn')
-const soundEffect = document.getElementById('message-sound')
+const submitButton = document.getElementById('submit-ID') 
 
+//global variable
 let questionNumber = 1;
-// const FlowerChoice = 1;
-// const typeOfArrangement = 2;
-// const flowerSelector = 3;
-// const finalConfirmation = 4;
 
+//questionHandler function, passes the input from the user, 
+//plays sound effect and calls the functiond depending on the question number 
 const questionHandler = (message) => {
   showMessage(message, 'user');
   playSound ()
-  if (questionNumber === 1) {
-    showFlowerChoice(message);
-
-  } else if (questionNumber === 2) {
-    // showMessage(message,'user');
-    showTypeOfArrangement(message) ;
-  }
-  else if(questionNumber === 3) {
-    // showMessage(message, 'user');
+  switch (questionNumber) {
+  case 1: 
+    showFlowerChoice(message); 
+    break;
+  case 2: 
+    showTypeOfArrangement(message);
+    break;
+  case 3: 
     showFlowerSelector (message);
-  }
-  else if (questionNumber === 4) {
-    // showMessage(message, 'user');
+    break;
+  case 4: 
     showFinalConfirmation (message);
-
-  } else {
-    // showMessage(message, 'user');
+    break;
+  default:
     thankYou()
+    break;
   }
 };
-
+//Function that plays sound effect
 const playSound = () => {
+  const soundEffect = document.getElementById('message-sound')
   soundEffect.play()
 }
-
+//Function that shows messages
 const showMessage = (message, sender) => {
+  const chat = document.getElementById('chat');
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
@@ -61,19 +57,22 @@ const showMessage = (message, sender) => {
   }
   chat.scrollTop = chat.scrollHeight
 }
-
-// Starts here
+//Greeting function
 const greeting = () => {
-  questionNumber = 1;
   showMessage(`Hello there, What's your name?`, 'bot');
+}
+// Function that takes adds event listener to the form submission
+const initFncn = () => {
+  const inputFromForm = document.getElementById('input-ID');
   theWholeForm.addEventListener('submit', (event) => {
     event.preventDefault();
+    questionNumber = 1;
     const name = inputFromForm.value;
     questionHandler (name);
-  });
+  })
 }
 
-
+// Function that shows flower arrangement choices
 const showFlowerChoice = (message) =>{
   questionNumber++; 
   showMessage (`Hello, ${message}, What flower arrangement would you like today?`,'bot'); 
@@ -93,13 +92,14 @@ const showFlowerChoice = (message) =>{
   }); 
 };
 
+//Function that shows different types of flower arrangements depending on the choice of bouquet/basket/box
 const showTypeOfArrangement = (type) => {
   questionNumber++;
   showMessage (`Wonderful! I always loved flowes in a ${type}. We have the following options for the ${type}`, 'bot');
   if (type === 'bouquet'){
     theWholeForm.innerHTML = `
       <select id="selector" class="general-selector">
-        <option value="" selected disabled>Choose bouquet</option>  
+        <option value="" selected disabled>&#8681 Choose bouquet</option>  
         <option value="Cascade bouquet">Cascade bouquet</option>
         <option value="Round bouquet">Round bouquet</option>
         <option value="Hand-Tied bouquet">Hand-Tied bouquet</option>
@@ -107,7 +107,7 @@ const showTypeOfArrangement = (type) => {
   } else if (type === 'basket') {
     theWholeForm.innerHTML = `
       <select id="selector" class="general-selector">
-        <option value="" selected disabled>Choose basket</option>
+        <option value="" selected disabled>&#8681 Choose basket</option>
         <option value="Classic basket">Classic basket</option>
         <option value="Vintage basket">Vintage basket</option>
         <option value="Village basket">Village basket</option>
@@ -115,9 +115,9 @@ const showTypeOfArrangement = (type) => {
   } else {
     theWholeForm.innerHTML = `
       <select id="selector" class="general-selector">
-        <option value="" selected disabled>Choose box</option>  
+        <option value="" selected disabled>&#8681 Choose box</option>  
         <option value="Round-shaped box">Round-shaped box</option>
-        <option value="Heart-haped box">Heart-haped box</option>
+        <option value="Heart-shaped box">Heart-shaped box</option>
         <option value="Square-shaped box">Square-shaped box</option>
       </select>  `
   }
@@ -125,12 +125,13 @@ const showTypeOfArrangement = (type) => {
   selectorChoice.addEventListener('change', () => questionHandler(selectorChoice.value))
 };
 
+//Function shows selection of flowers available
 const showFlowerSelector = (arrangement) => {
   questionNumber++;
   showMessage (`What flowers would you like in your ${arrangement}? We have the following options`, 'bot');
   theWholeForm.innerHTML = `
-    <select id="flower-selector"> 
-      <option value="" selected disabled>Choose flowers</option> 
+    <select id="flower-selector" class="general-selector"> 
+      <option value="" selected disabled>&#8681 Choose flowers</option> 
       <option value="roses">&#x1F339 Roses</option>
       <option value="tulips">&#x1F337 Tulips</option>
       <option value="lilies">&#x1F33ALilies</option>
@@ -141,6 +142,7 @@ const showFlowerSelector = (arrangement) => {
   selectorChoiceTwo.addEventListener('change', () => questionHandler(selectorChoiceTwo.value))
 }; 
 
+//Function that shows the price and asks for final confirmation or restart of the order
 const showFinalConfirmation = (flowers) => {
   questionNumber++;
   showMessage (`Oh, aren't ${flowers} beautiful!!!`, 'bot');
@@ -165,8 +167,6 @@ const showFinalConfirmation = (flowers) => {
     `
               
   document.getElementById("yes-button").addEventListener('click', () => { 
-    console.log('clickyes');
-    //another console log :----)
     questionHandler('Yes');
   });  
   document.getElementById("no-button").addEventListener('click', () => { 
@@ -175,34 +175,18 @@ const showFinalConfirmation = (flowers) => {
   });
 };
 
+
+//Function that shows the "thank you message and gif"
 const thankYou = () => {
   theWholeForm.innerHTML = `
-  <img class="final-flower" src = "./assets/6IQS.gif"> `;
-  //removed the buttons by changing the content to '' ie nothing. Not sure if that's
-  //the right approach. 
+  <img class="final-flower" src = "./assets/4bXC.gif"> `;
+  //put picture instead. 
   showMessage('Thank you for your order. Have a great day!', 'bot');
   //added this function - not sure if it's ok?
 }
 
 
 // Starts here with the greeting function on timeout
-
+initFncn();
 setTimeout(greeting, 1000);
-// Set up your eventlisteners here
 
-
-
-// showMessage (formInputMessage, 'user');
-//   setTimeout (() => showMessage(`Hello, ${formInputMessage}, what flower arrangement would you like today?`, 'bot'), 1000);
-//   setTimeout (() => showFlowerChoice(), 2000);
-//   formAnswer.addEventListener('submit', () => {
-//     showFlowerSelector();})
-// });
-
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
