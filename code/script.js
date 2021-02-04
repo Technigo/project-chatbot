@@ -6,10 +6,6 @@ const input = document.getElementById('user-input')
 let questionNumber = 0;
 let bookingSentence = "";
 
-
-let questionNumber = 0;
-// Global variables, if you need any, declared here
-
 const nxtQuestion = (answer) => {
   onInput(answer)
   if (ifEqual(questionNumber, 1)) {
@@ -52,34 +48,10 @@ const ifEqual = (qNumber, number) => {
   return qNumber === number;
 }
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault()
-  const input = document.getElementById("user-input").value;
-  nxtQuestion(input)
-})
-
-const nxtQuestion = (message) => {
-  usrInput(message)
-  if (questionNumber === 1) {
-    persons(message)
-    input = ""
-  } else if (questionNumber === 2) {
-    where(message)
-    input = ""
-  } else if (questionNumber === 3) {
-    place(message)
-    input = ""
-  } else {
-    fail(message)
-  }
-
-}
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
-
-    console.log();
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -89,7 +61,6 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
-    console.log(greeting);
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -255,7 +226,6 @@ const interest = (plc) => {
 }
 
 // .5
-
 const booking = (interest) => {
   questionNumber++
   bookingSentence += ` Enjoy a wonderful time with lots of ${interest}! Au revoir!`
@@ -273,12 +243,11 @@ const booking = (interest) => {
   bookingForm.addEventListener('submit', (event) => {
     event.preventDefault()
     nxtQuestion(bookingInput.value)
-    bookingInput.value=""
+    bookingInput.value = ""
   })
 }
 
 // .6
-
 const confirmation = (answer) => {
   if (answer.toLowerCase() === 'yes') {
     showMessage(bookingSentence, "bot")
@@ -302,76 +271,3 @@ form.addEventListener('submit', (event) => {
 
 // This means the nights function will be called one second after the website is loaded.
 setTimeout(nights, 1500)
-
-const where = () => {
-
-  questionNumber++
-  showMessage(`Where do you want to go?`, 'bot');
-
-  inputWrapper.innerHTML = `
-  <button id="mountain">Mountain</button>
-  <button id="beach">Beach</button>
-  <button id="city">City</button>`
-  const mountain = document.getElementById('mountain')
-  const beach = document.getElementById('beach')
-  const city = document.getElementById('city')
-
-  mountain.addEventListener('click', () => {
-    nxtQuestion("mountain")
-  })
-  beach.addEventListener('click', () => {
-    nxtQuestion("beach")
-  })
-  city.addEventListener('click', () => {
-    nxtQuestion("city")
-  })
-}
-
-
-const place = (plc) => {
-  if (plc === "mountain") {
-    inputWrapper.innerHTML = `
-    <select id="select">
-      <option value="Schweiz">Schweiz</option>
-      <option value="Chile">Chile</option>
-      <option value="Tibet">Tibet</option>`
-  } else if (plc === "beach") {
-    inputWrapper.innerHTML = `
-    <select id="select">
-      <option value="Miami">Miami</option>
-      <option value="Bali">Bali</option>
-      <option value="Las Palmas">Las Palmas</option>
-      `
-  } else if (plc === "city") {
-    inputWrapper.innerHTML = `
-    <select id="select">
-      <option value="NewYork">New York</option>
-      <option value="Barcelona">Barcelona</option>
-      <option value="Tokyo">Tokyo</option>`
-  }
-}
-
-
-// Starts here
-const greeting = () => {
-  questionNumber = 1;
-  showMessage(`Hi, how many nights do you want to book?`, 'bot');
-}
-const persons = () => {
-  questionNumber++
-  showMessage(`How many are going to travel?`, 'bot');
-}
-
-const fail = () => {
-  showMessage(`Tryinput again`, 'bot');
-}
-
-const usrInput = (input) => {
-  showMessage(input, "user");
-}
-
-
-// Set up your eventlisteners here
-
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1500)
