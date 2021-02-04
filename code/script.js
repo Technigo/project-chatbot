@@ -1,7 +1,7 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const form = document.getElementById('name-form')
-const inputWraper = document.getElementById('input-wrapper')
+const inputWrapper = document.getElementById('input-wrapper')
 let userName = ""
 
 // Global variables, if you need any, declared here
@@ -47,42 +47,111 @@ const handleResponse = () => {
    
 }
 
+//Question 2
+
 const moodOptions = () => {
-  const options = document.getElementById('name-input').value;
-  showMessage(`How are you feeling today${userName}?`, 'bot')
-  inputWraper.innerHTML = `
+  let userName = document.getElementById('name-input').value;
+  showMessage(`How are you feeling today ${userName}?`, 'bot')
+  inputWrapper.innerHTML = `
     <button id="option1">happy</button>
     <button id="option2">sad</button>
     <button id="option3">angry</button>
     `
     document.getElementById("option1").addEventListener("click", () => {
-      showMessage("I see you are feeling happy!", "bot")
+      showMessage("I see you are feeling happy!😊 Here's a list that suits your mood. Go ahead and choose one! 👇", "bot")
       setTimeout (() => inputWrapper.innerHTML=`
-    <button id="Happy">Happy</button>
-    <button id="thesun">Here comes the sun</button>
-    <button id="shinypeople">Shiny happy people</button>
-    `, 1000)
+      <select id="select" name="songs">
+      <option value selected disabled>Select a song</option>
+      <option value="1">Happy by William Farrel</option>
+      <option value="2">Here comes the sun by the Beatles</option>
+      <option value="3">Shiny happy people by REM</option>
+      </select>
+    `, 1500)
     })
 
     document.getElementById("option2").addEventListener("click", () => {
-      showMessage("I see that you are sad today.", "bot")
+      showMessage("I see that you are sad today😢. Here's a list that suits your mood. Go ahead and choose one! 👇" , "bot")
       setTimeout (() => inputWrapper.innerHTML=`
-    <button id="dontworry">Don't worry, be happy</button>
-    <button id="someone">Someone like you</button>
-    <button id="heyjude">Hey Jude</button>
+      <select id="select" name="songs">
+      <option value selected disabled>Select a song</option>
+      <option value="4">Don't worry, be happy by Bobby Mac Ferrin</option>
+      <option value="5">Someone like you by Adele</option>
+      <option value="6">Hey Jude by The Beatles</option>
+      </select>
     `, 1000)
     })
 
     document.getElementById("option3").addEventListener("click", () => {
-      showMessage("I see that you are angry today", "bot")
+      showMessage("I see that you are angry today😡. Here's a list that suits your mood. Go ahead and choose one! 👇", "bot")
       setTimeout (() => inputWrapper.innerHTML=`
-    <button id="intheend">In the end</button>
-    <button id="basketcase">Basket case</button>
-    <button id="breakstuff">Break stuff</button>
+      <select id="select" name="songs">
+      <option value selected disabled>Select a song</option>
+      <option value="7">In the end by Linkin Park</option>
+      <option value="8">Basket case by Green Day</option>
+      <option value="9">Break Stuff by Limp Bizkit</option>
+      </select>
     `, 1000)
+  
     })
-    
 }
+
+//Question 3
+const greatChoice = () => {
+  document.getElementById('select').addEventListener('change', () => {
+  showMessage(`Great choice ${userName}! I love that song`, 'bot')
+  setTimeout (() => greatChoice(value, 'bot'), 1000)
+ })
+}
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
 
 // Set up your eventlisteners here
 form.addEventListener('submit', (event) => {
@@ -101,6 +170,12 @@ form.addEventListener('submit', (event) => {
   const value = document.getElementById('name-input').value;
   setTimeout (() => handleResponse(value, 'bot'), 1000)
   setTimeout (() => moodOptions(value, 'bot'), 2000)
+});
+
+form.addEventListener('select', (event) => {
+  event.preventDefault();
+  showMessage(value, 'bot')
+  setTimeout (() => greatChoice(value, 'bot'), 1000)
 });
 
 
