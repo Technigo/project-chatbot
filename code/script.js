@@ -1,5 +1,19 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+const nameForm = document.querySelector("#name-form")
+const genreOptions = document.querySelector("#genre-options")
+const buttonOptions = document.querySelector("#button-options")
+const comedyBtn = document.querySelector("#comedy-btn")
+const actionBtn = document.querySelector("#action-btn")
+const horrorBtn = document.querySelector("#horror-btn")
+const romanticBtn = document.querySelector("#romantic-btn")
+const randomMovieBtn = document.querySelector("#random-movie-btn")
+const backToGenreBtn = document.querySelector("#back-to-genre-btn")
+
+const comedyMovies = ["movie1", "movie2", "movie3", "movie4", "movie5", "movie6", "movie7", "movie8", "movie9", "movie10"]
+const actionMovies = ["movie1", "movie2", "movie3", "movie4", "movie5", "movie6", "movie7", "movie8", "movie9", "movie10"]
+const horrorMovies = ["movie1", "movie2", "movie3", "movie4", "movie5", "movie6", "movie7", "movie8", "movie9", "movie10"]
+const romanticMovies = ["movie1", "movie2", "movie3", "movie4", "movie5", "movie6", "movie7", "movie8", "movie9", "movie10"]
 
 // Global variables, if you need any, declared here
 
@@ -37,7 +51,8 @@ const greeting = () => {
 }
 
 setTimeout(greeting, 1000)
-const nameForm = document.querySelector("#name-form")
+
+// Bot validate user name
 let nameUser = null;
 
 nameForm.addEventListener("submit", (event) => {
@@ -52,59 +67,49 @@ nameForm.addEventListener("submit", (event) => {
   }
 })
 
-// show genre (show buttons)
+// show genre (show buttons) bot ask user to pick a genre
 
-const genreOptions = document.querySelector("#genre-options")
-const buttonOptions = document.querySelector("#button-options")
+let isFirstTime = true
 
 const showGenre = () => {
-  showMessage(`Hi ${nameUser}, what kind of movie would you like to watch?`, "bot")
   genreOptions.classList.remove('hide')
   nameForm.classList.add('hide')
   buttonOptions.classList.add("hide")
+  if (isFirstTime) {
+    showMessage(`Hi ${nameUser}, what kind of movie would you like to watch?`, "bot")
+    isFirstTime = false
+  } else {
+    showMessage(`Choose another genre.`, "bot")
+  }
 }
-// user interaction: click button
-
-const comedyBtn = document.querySelector("#comedy-btn")
-const actionBtn = document.querySelector("#action-btn")
-const horrorBtn = document.querySelector("#horror-btn")
-const romanticBtn = document.querySelector("#romantic-btn")
 
 // show random movie title generator button & go back button
+
 let genreChoice = null
-const showButtons = (type) => {
+const showButtons = (genre) => {
   genreOptions.classList.add('hide')
   buttonOptions.classList.remove('hide')
-  showMessage(type, "user")
-  showMessage(`You chose ${type}!`, 'bot')
-  genreChoice = type
+  showMessage(genre, "user")
+  showMessage(`You chose ${genre}!`, 'bot')
+  genreChoice = genre
 }
 
-comedyBtn.addEventListener("click", (type) => {
-  showButtons("comedy"), genreChoice = "comedy"
+comedyBtn.addEventListener("click", (genre) => {
+  showButtons("comedy")
 })
-actionBtn.addEventListener("click", (type) => {
-  showButtons("action"), genreChoice = "action"
+actionBtn.addEventListener("click", (genre) => {
+  showButtons("action")
 })
-horrorBtn.addEventListener("click", (type) => {
-  showButtons("horror"), genreChoice = "horror"
+horrorBtn.addEventListener("click", (genre) => {
+  showButtons("horror")
 })
-romanticBtn.addEventListener("click", (type) => {
-  showButtons("romantic"), genreChoice = "romantic"
+romanticBtn.addEventListener("click", (genre) => {
+  showButtons("romantic")
 })
 
 // go back to show genre
 
-const randomMovieBtn = document.querySelector("#random-movie-btn")
-const backToGenreBtn = document.querySelector("#back-to-genre-btn")
-
-const backToGenre = () => {
-  showMessage(`Choose another genre.`, "bot")
-  genreOptions.classList.remove('hide')
-  buttonOptions.classList.add("hide")
-}
-
-backToGenreBtn.addEventListener("click", backToGenre)
+backToGenreBtn.addEventListener("click", showGenre)
 
 // generate random movie title
 
@@ -128,7 +133,3 @@ randomMovieBtn.addEventListener("click", (message) => {
 let getRandomNumber = () => {
   return Math.floor(Math.random() * 10);
 }
-const comedyMovies = ["movie1", "movie2", "movie3", "movie4", "movie5", "movie6", "movie7", "movie8", "movie9", "movie10"]
-const actionMovies = ["movie1", "movie2", "movie3", "movie4", "movie5", "movie6", "movie7", "movie8", "movie9", "movie10"]
-const horrorMovies = ["movie1", "movie2", "movie3", "movie4", "movie5", "movie6", "movie7", "movie8", "movie9", "movie10"]
-const romanticMovies = ["movie1", "movie2", "movie3", "movie4", "movie5", "movie6", "movie7", "movie8", "movie9", "movie10"]
