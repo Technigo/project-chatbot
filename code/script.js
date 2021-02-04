@@ -29,27 +29,31 @@ const updateInfo = () => {
 const updateBuffs = () => {
   const enemyInfo = info.querySelector("#enemyInfo");
   //check if enemy has buffs
-  const enemyBuffs = encounter.enemy.buffs;
-  if (enemyBuffs.length > 0) {
-    // enemy has buff, loop through and show them
-    for (let i = 0; i < enemyBuffs.length; i++) {
-      const buff = enemyBuffs[i];
-      enemyInfo.innerHTML += `<p id="${buff.type}">${buff.type}</p>`;
+  addBuffs(enemyInfo, encounter.enemy.buffs);
+  removeBuffs(enemyInfo, encounter.buffsRemove);
+};
+const addBuffs = (wrapper, buffs) => {
+  if (buffs.length > 0) {
+    for (let i = 0; i < buffs.length; i++) {
+      const buff = buffs[i];
+      if (!buff.display) {
+        wrapper.innerHTML += `<p id="${buff.type}">${buff.type}</p>`;
+      }
       buff.display = true;
-    }
-  }
-  // check if we need to remove any buffs
-  const buffsToRemove = encounter.buffsRemove;
-  if (buffsToRemove.length > 0) {
-    for (let i = 0; i < buffsToRemove.length; i++) {
-      const buff = buffsToRemove[i];
-      enemyInfo.children.namedItem(buff.type).remove();
-      buffsToRemove.splice(i, 1);
-      i--;
     }
   }
 };
 
+const removeBuffs = (wrapper, buffs) => {
+  if (buffs.length > 0) {
+    for (let i = 0; i < buffs.length; i++) {
+      const buff = buffs[i];
+      wrapper.children.namedItem(buff.type).remove();
+      buffs.splice(i, 1);
+      i--;
+    }
+  }
+};
 // This function replaces the userInput with a new element and sets the currentInput variable
 const changeInput = (type) => {
   switch (type) {

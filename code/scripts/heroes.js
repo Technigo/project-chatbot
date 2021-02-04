@@ -1,5 +1,5 @@
 import Combatant from "./combatant.js";
-import { d20, d8, d6, d4, d10 } from "./helperFunctions.js";
+import { d20, d8, d6, d4, d10 } from "./randomFunctions.js";
 
 export class Fighter extends Combatant {
   constructor(name, isEasy) {
@@ -96,15 +96,22 @@ export class Sorcerer extends Combatant {
     this.healMod = 8;
     this.actions = [
       {
-        name: "Shoot fire",
+        name: "Shoot firebolt",
         type: "singleAttack",
-        msg: "You swing your longsword twice in an arc to slash at the enemy.",
+        msg: "I hurl a mote of fire at the enemy.",
+        rollDmg: this.rollFireDmg,
       },
       {
         name: "Mage armor",
         type: "shield",
-        msg: "You swing your longsword twice in an arc to slash at the enemy.",
+        msg: "An invisible barrier of magical force appears and protects me.",
+        buffLength: 2,
       },
     ];
   }
+
+  rollFireDmg = () => {
+    const dmg = d10() + d10();
+    return dmg;
+  };
 }

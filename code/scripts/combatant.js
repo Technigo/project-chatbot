@@ -1,4 +1,5 @@
-import { d20, d8, d6, d10, d4 } from "./helperFunctions.js";
+import { d20, d8, d6, d10, d4 } from "./randomFunctions.js";
+import * as _ from "./helperFunctions.js";
 
 export default class Combatant {
   constructor(type, ac, isHero) {
@@ -22,7 +23,6 @@ export default class Combatant {
         return hit2;
       }
     } else if (this.noAttack) {
-      this.buffLength--;
       return 0;
     }
     return hit;
@@ -52,15 +52,7 @@ export default class Combatant {
     if (this.hp > this.maxHp) {
       this.hp = this.maxHp;
     }
-    // handle the limited use pools
-    const usedPool = action.usePool.findIndex((usage) => {
-      return usage === false;
-    });
-    action.usePool[usedPool] = true;
-    // If usePool is full with only true then set used to true
-    action.used = action.usePool.every((usage) => {
-      return usage === true;
-    });
+    _.handleUsePool(action);
     return toHeal;
   };
 }

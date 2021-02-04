@@ -1,5 +1,5 @@
 import Combatant from "./combatant.js";
-import { d20, d8, d6 } from "./helperFunctions.js";
+import { d20, d8, d6 } from "./randomFunctions.js";
 import { enemyDescription as description } from "./descriptions.js";
 
 export class Ogre extends Combatant {
