@@ -13,13 +13,11 @@ const nxtQuestion = (answer) => {
     setTimeout(function () {
       persons(answer)
     }, 1000)
-    bookingSentence += `You're booking a ${answer} day/s trip`
     input.value = ""
   } else if (ifEqual(questionNumber, 2)) {
     setTimeout(function () {
       where(answer)
     }, 1000)
-    bookingSentence += ` for ${answer} person/s`
     input.value = ""
   } else if (ifEqual(questionNumber, 3)) {
     setTimeout(function () {
@@ -29,12 +27,12 @@ const nxtQuestion = (answer) => {
   } else if (ifEqual(questionNumber, 4)) {
     setTimeout(function () {
       interest(answer)
-      bookingSentence += ` to ${answer}.`
     }, 1000)
     input.value = ""
   } else if (ifEqual(questionNumber, 5)) {
-    setTimeout(booking, 1000)
-    bookingSentence += ` Enjoy a wonderful time with lots of ${answer}! Au revoir!`
+    setTimeout(function () {
+      booking(answer)
+    }, 1000)
     input.value = ""
   } else if (ifEqual(questionNumber, 6)) {
     setTimeout(function () {
@@ -94,8 +92,9 @@ const nights = () => {
 // .1
 const persons = (nights) => {
   if (Number(nights) > 0 && Number(nights) <= 28) {
-    showMessage(`How many are going to travel?`, 'bot');
     questionNumber++
+    bookingSentence += `You're booking a ${nights} day/s trip`
+    showMessage(`How many are going to travel?`, 'bot');
   } else {
     showMessage(`That is not a valid number, try again.`, 'bot');
   }
@@ -105,12 +104,15 @@ const persons = (nights) => {
 const where = (persons) => {
   if (Number(persons) > 0 && Number(persons) <= 14) {
     questionNumber++
+    bookingSentence += ` for ${persons} person/s`
     showMessage(`What settings are you looking for?`, 'bot');
 
     inputWrapper.innerHTML = `
-    <button id="mountain">Mountain</button>
-    <button id="beach">Beach</button>
-    <button id="city">City</button>
+      <div class="where-btn-wrapper">
+        <div class="where-btn" id="mountain"><img src="./assets/mountains.png"></div>
+        <div class="where-btn" id="beach"><img src="./assets/beach.png"></div>
+        <div class="where-btn" id="city"><img src="./assets/city.png"></div>
+      </div>
     `
     const mountain = document.getElementById('mountain')
     const beach = document.getElementById('beach')
@@ -136,31 +138,31 @@ const place = (plc) => {
   showMessage(`Where do you want to go?`, 'bot');
   if (plc === 'mountain') {
     inputWrapper.innerHTML = `
-    <select class="mountain" id="select">
-      <option>Choose a destination</option>
-      <option value="Schweiz">Schweiz</option>
-      <option value="Chile">Chile</option>
-      <option value="Tibet">Tibet</option>
+      <select class="select-mountain" id="select">
+        <option selected disabled>Choose a destination</option>
+        <option value="Schweiz">Schweiz</option>
+        <option value="Chile">Chile</option>
+        <option value="Tibet">Tibet</option>
       </select>
-      `
+    `
   } else if (plc === 'beach') {
     inputWrapper.innerHTML = `
-    <select id="select">
-      <option>Choose a destination</option>
-      <option value="Miami">Miami</option>
-      <option value="Bali">Bali</option>
-      <option value="Las Palmas">Las Palmas</option>
+      <select class="select-beach" id="select">
+        <option selected disabled>Choose a destination</option>
+        <option value="Miami">Miami</option>
+        <option value="Bali">Bali</option>
+        <option value="Las Palmas">Las Palmas</option>
       </select>
-      `
+    `
   } else if (plc === 'city') {
     inputWrapper.innerHTML = `
-    <select id="select">
-      <option>Choose a destination</option>
-      <option value="New York">New York</option>
-      <option value="Barcelona">Barcelona</option>
-      <option value="Tokyo">Tokyo</option>
+      <select class="select-city" id="select">
+        <option selected disabled>Choose a destination</option>
+        <option value="New York">New York</option>
+        <option value="Barcelona">Barcelona</option>
+        <option value="Tokyo">Tokyo</option>
       </select>
-      `
+    `
   }
   const select = document.getElementById('select')
   select.addEventListener('change', () => nxtQuestion(select.value))
@@ -169,42 +171,43 @@ const place = (plc) => {
 
 // .4 
 const interest = (plc) => {
+  bookingSentence += ` to ${plc}.`
   questionNumber++
   showMessage(`What do you want to do during your vacation?`, 'bot');
   if (plc === 'New York' || plc === 'Barcelona' || plc === 'Tokyo') {
     inputWrapper.innerHTML = `
-    <form id="interest-form">
-    <input class="checkbox" type="checkbox" id="culture" name="culture">
-      <label for="culture">Culture</label>
-    <input class="checkbox" type="checkbox" id="food" name="food">
-      <label for="food">Food</label>
-    <input class="checkbox" type="checkbox" id="shopping" name="shopping">
-      <label for="shopping">Shopping</label>
-    <button type="submit" class="interest-btn">Choose</button>
-    </form>
+      <form id="interest-form">
+        <input class="checkbox" type="checkbox" id="culture" name="culture">
+        <label for="culture">Culture</label>
+        <input class="checkbox" type="checkbox" id="food" name="food">
+        <label for="food">Food</label>
+        <input class="checkbox" type="checkbox" id="shopping" name="shopping">
+        <label for="shopping">Shopping</label>
+        <button type="submit" class="interest-btn">Choose</button>
+      </form>
       `
   } else if (plc === 'Miami' || plc === 'Las Palmas' || plc === 'Bali') {
     inputWrapper.innerHTML = `
-      <form id="interest-form">
-      <input class="checkbox" type="checkbox" id="water-sports" name="water-sports">
-        <label for="water-sports">Water sports</label>
-      <input class="checkbox" type="checkbox" id="relax" name="relax">
-        <label for="relax">Relax in the sun</label>
-      <input class="checkbox" type="checkbox" id="party" name="party">
-        <label for="party">Party on the beach</label>
-        <button type="submit" class="interest-btn">Choose</button>
+        <form id="interest-form">
+          <input class="checkbox" type="checkbox" id="water-sports" name="water sports">
+          <label for="water-sports">Water sports</label>
+          <input class="checkbox" type="checkbox" id="relax" name="relax">
+          <label for="relax">Relax in the sun</label>
+          <input class="checkbox" type="checkbox" id="party" name="party">
+          <label for="party">Party on the beach</label>
+          <button type="submit" class="interest-btn">Choose</button>
         </form>
         `
   } else {
     inputWrapper.innerHTML = `
-      <form id="interest-form">
-      <input class="checkbox" type="checkbox" id="hiking" name="hiking">
-        <label for="hiking">Hiking</label>
-      <input class="checkbox" class="checkbox" type="checkbox" id="extreme" name="extreme sports">
-        <label for="extreme">Extreme sports</label>
-      <input class="checkbox" class="checkbox" type="checkbox" id="spiritual" name="spiritual journey">
-        <label for="spiritual">Spiritual journey</label>
-        <button type="submit" class="interest-btn">Choose</button>
+        <form id="interest-form">
+          <input class="checkbox" type="checkbox" id="hiking" name="hiking">
+          <label for="hiking">Hiking</label>
+          <input class="checkbox" class="checkbox" type="checkbox" id="extreme" name="extreme sports">
+          <label for="extreme">Extreme sports</label>
+          <input class="checkbox" class="checkbox" type="checkbox" id="spiritual" name="spiritual pursuits">
+          <label for="spiritual">Spiritual journey</label>
+          <button type="submit" class="interest-btn">Choose</button>
         </form>
         `
   }
@@ -227,21 +230,24 @@ const interest = (plc) => {
 
 // .5
 
-const booking = () => {
+const booking = (interest) => {
   questionNumber++
+  bookingSentence += ` Enjoy a wonderful time with lots of ${interest}! Au revoir!`
   showMessage(`Do you want to book this?`, 'bot')
-  inputWrapper.innerHTML = `<form id="name-form">
-  <input id="user-input" type="text" />
-  <button id="send-btn" class="send-btn" type="submit">
-    Send
-  </button>
-</form>`
+  inputWrapper.innerHTML = `
+  <form id="name-form">
+    <input id="user-input" type="text" />
+    <button id="send-btn" class="send-btn" type="submit">
+      Send
+    </button>
+  </form>`
 
-  const bookForm = document.getElementById("name-form")
-  const userForm = document.getElementById("user-input")
-  bookForm.addEventListener('submit', (event) => {
+  const bookingForm = document.getElementById("name-form")
+  const bookingInput = document.getElementById("user-input")
+  bookingForm.addEventListener('submit', (event) => {
     event.preventDefault()
-    nxtQuestion(userForm.value)
+    nxtQuestion(bookingInput.value)
+    bookingInput.value=""
   })
 }
 

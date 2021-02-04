@@ -139,22 +139,48 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none; 
-    width: 100%;
-    height: 40px;
-    border-radius: 10px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    outline: none;
-    text-align-last: center;
+.where-btn-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.where-btn {
+  position: relative;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
 }
 
-.mountain {
-  background-image: url("https://static.toiimg.com/photo/64560386.cms");
+.where-btn img {
+  position: absolute;
+  object-fit: cover;
+  width: 100%;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 80%;
+  height: 60px;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  outline: none;
+  text-align-last: center;
   background-size: cover;
   background-size: 100%;
-  background-position: 1%;
+  background-position: center;
+}
+
+.select-mountain {
+  background-image: url("./assets/mountain.jpg");
+}
+
+.select-beach {
+  background-image: url("./assets/beach.jpg");
+}
+
+.select-city {
+  background-image: url("./assets/city.jpg");
 }
