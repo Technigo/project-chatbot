@@ -114,7 +114,24 @@ const moodOptions = () => {
         greatChoice(select.value))
       }
     })
+   //trying to add the choice to listen to now/later in response to former question
 
+    /*document.getElementById("forme").addEventListener("click", () => {
+      showMessage("So, this song is for you.Do you want to listen to it now or later?", "bot")
+      inpt = () => {
+      inputWrapper.innerHTML = `
+      <button id="now">NOW</button>
+      <button id="later">LATER</button>
+      `
+      document.getElementById("forafriend").addEventListener("click", () => {
+        showMessage("So, this song is for a friend. Do you want to listen to it now or later?", "bot")
+        inpt = () => {
+        inputWrapper.innerHTML = `
+        <button id="now">NOW</button>
+        <button id="later">LATER</button>
+        `
+      }
+    })*/
    
     setTimeout(() => {
       inpt();
@@ -123,12 +140,14 @@ const moodOptions = () => {
 }
 
 
-
-
 //Question 3
 const greatChoice = () => {
-showMessage(`Great choice! I love that song ❤`, 'bot')
+showMessage(`Great choice! I love that song ❤ Is this for you or for a friend?`, 'bot')
 setTimeout(() => greatChoice(value, 'bot'), 2000)
+inputWrapper.innerHTML = `
+<button id="forme">For me</button>
+<button id="forafriend">For a friend</button>
+`
 }
 
 //Question 4
@@ -171,5 +190,5 @@ form.addEventListener('change', (event) => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000)
 
+setTimeout(greeting, 1000)
