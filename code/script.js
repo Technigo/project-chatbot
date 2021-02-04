@@ -12,7 +12,7 @@ const botAnswer = (message) => {
 }
 
 const userAnswer = (message) => {
-  showMessage (message, 'user') 
+  showMessage (message, 'user')
 }
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -38,7 +38,6 @@ const showMessage = (message, sender) => {
     `
   }
 
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
   console.log(chat.scrollTop, "scrollTop")
   console.log(chat.scrollHeight, "scrollHeight")
@@ -136,59 +135,58 @@ const showOutfit = (outfit) => {
 
   botAnswer(`I got the perfect outfit for you! Party on!`)
 
-  const showFinalMessage = () => {
+  const showFinalMessage = (gifSrc) => {
     chat.innerHTML += `
       <section class="bot-msg">
       <img class="profile-pic" src="assets/bot-img.jpeg" alt="Bot" /> 
         <div class="bubble bot-bubble final">
-          <img class="outfit-gif" id="outfitGif" src=""/>
+          <img class="outfit-gif" src="${gifSrc}"/>
         </div> 
       </section>
     `
     chat.scrollTop = chat.scrollHeight
-    console.log(chat.scrollTop)
+    console.log(chat.scrollTop, "scrollTop")
 }
 
   if (outfit === 'Berghain') {
-    showFinalMessage()
-    document.getElementById("outfitGif").src = "assets/berghain.gif"
+    showFinalMessage("assets/berghain.gif")
+    // document.getElementById("outfitGif").src = "assets/berghain.gif"
   }
 
   else if (outfit === "Studio 54") {
-    showFinalMessage()
-    document.getElementById("outfitGif").src = "assets/studio54.gif"
+    showFinalMessage("assets/studio54.gif")
+    // document.getElementById("outfitGif").src = "assets/studio54.gif"
   }
 
   else if (outfit === "Nikki Beach") {
-    showFinalMessage()
-    document.getElementById("outfitGif").src = "assets/nikkibeach.gif"
+    showFinalMessage("assets/nikkibeach.gif")
+    // document.getElementById("outfitGif").src = "assets/nikkibeach.gif"
   }
 
   else if (outfit === "Cavalli Club") {
-    showFinalMessage()
-    document.getElementById("outfitGif").src = "assets/cavalliclub.gif"
+    showFinalMessage("assets/cavalliclub.gif")
+    // document.getElementById("outfitGif").src = "assets/cavalliclub.gif"
   }
 
   else if (outfit === "Cosmopolitan") {
-    showFinalMessage()
-    document.getElementById("outfitGif").src = "assets/cocktail.gif"
+    showFinalMessage("assets/cocktail.gif")
+    // document.getElementById("outfitGif").src = "assets/cocktail.gif"
   }
 
   else if (outfit === "Old fashioned") {
-    showFinalMessage()
-    document.getElementById("outfitGif").src = "assets/oldfashioned.gif"
+    showFinalMessage("assets/oldfashioned.gif")
+    // document.getElementById("outfitGif").src = "assets/oldfashioned.gif"
   }
 
   else if (outfit === "Moscow Mule") {
-    showFinalMessage()
-    document.getElementById("outfitGif").src = "assets/mosow.gif"
+    showFinalMessage("assets/mosow.gif")
+    // document.getElementById("outfitGif").src = "assets/mosow.gif"
   }
 
   else if (outfit === "Mojito") {
-    showFinalMessage()
-    document.getElementById("outfitGif").src = "assets/mojito.gif"
+    showFinalMessage("assets/mojito.gif")
+    // document.getElementById("outfitGif").src = "assets/mojito.gif"
   }
-
   inputWrapper.innerHTML = ""
 }
 
