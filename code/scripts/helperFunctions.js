@@ -26,6 +26,29 @@ export const handleUsePool = (action) => {
   });
 };
 
+export const addBuffs = (wrapper, buffs) => {
+  if (buffs.length > 0) {
+    for (let i = 0; i < buffs.length; i++) {
+      const buff = buffs[i];
+      if (!buff.display) {
+        wrapper.innerHTML += `<p id="${buff.type}">${buff.type}</p>`;
+      }
+      buff.display = true;
+    }
+  }
+};
+
+export const removeBuffs = (wrapper, buffs) => {
+  if (buffs.length > 0) {
+    for (let i = 0; i < buffs.length; i++) {
+      const buff = buffs[i];
+      wrapper.children.namedItem(buff.type).remove();
+      buffs.splice(i, 1);
+      i--;
+    }
+  }
+};
+
 /** Attack Calculations
  * Based on DnD logic:
  * 1. toHit number (calculated on the combatant class) must be

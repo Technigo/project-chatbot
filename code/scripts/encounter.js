@@ -76,7 +76,6 @@ export default class Encounter {
     this.rounds++;
     // _.checkBuffs(this.hero, this.buffsRemove.hero);
     _.checkBuffs(this.enemy, this.buffsRemove);
-    console.log(this);
   }
 
   // Executes a hero action based on the selected action by user
@@ -107,7 +106,6 @@ export default class Encounter {
       //
       case "autoAttack":
         toHit = hero.attackAutoHit(_action);
-        console.log(toHit);
         msg = _.runSingleAttack(this, "hero", toHit, _action);
         break;
       //

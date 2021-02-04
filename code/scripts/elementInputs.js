@@ -1,11 +1,32 @@
 export const name = `
-    <input class="input__text" id="inputName" type="text" />
-    <button class="input__button" type="submit">Send</button>
+  <input class="input__text" id="inputName" type="text" />
+  <button class="input__button" type="submit">Send</button>
 `;
 export const boolSelect = `
-    <button class="input__button" type="submit" value="true">Yes</button>
-    <button class="input__button" type="submit" value="false">No</button>
-    `;
+  <button class="input__button" type="submit" value="true">Yes</button>
+  <button class="input__button" type="submit" value="false">No</button>
+`;
+
+export const userMessage = (msg) => {
+  return `
+  <section class="message__user">
+  <div class="bubble bubble__user">
+    <p class="message__text">${msg}</p>
+  </div>
+  <img src="assets/user.png" alt="User" />  
+  </section>
+`;
+};
+export const botMessage = (count) => {
+  return `
+    <section class="message__bot">
+    <img src="assets/bot.png" alt="Bot" />
+    <div class="bubble bubble__bot">
+      <p class="message__text" id="botMessage${count}">...</p>
+    </div>
+    </section>
+  `;
+};
 
 // Function to set the available class options based on difficulty
 export const classSelect = (isEasy) => {
@@ -36,10 +57,6 @@ export const setActionsSelect = (hero) => {
         action.used ? "disabled" : ""
       } value="${action.type}" data-msg="${action.msg}">${action.name}</button>`;
     }
-    // // Disable limited actions if they are used
-    // if (action.limited && action.used) {
-    //   html += `<button class="input__button" type="submit" disabled value="${action.type}" data-msg="${action.msg}">${action.name}</button>`;
-    // }
     // Show not limited actions
     if (!action.limited) {
       html += `<button class="input__button" type="submit" value="${action.type}" data-msg="${action.msg}">${action.name}</button>`;

@@ -1,5 +1,6 @@
 // Import scripts
 import * as input from "./scripts/elementInputs.js";
+import * as _ from "./scripts/helperFunctions.js";
 import Encounter from "./scripts/encounter.js";
 
 /** DOM SELECTORS */
@@ -10,6 +11,7 @@ const info = document.getElementById("info");
 /** GLOBALS */
 let currentInput, encounter;
 let endState = false;
+let counter = 0;
 // Temp variables to use for instantiation
 let _name, _type, _difficulty;
 
@@ -29,31 +31,10 @@ const updateInfo = () => {
 const updateBuffs = () => {
   const enemyInfo = info.querySelector("#enemyInfo");
   //check if enemy has buffs
-  addBuffs(enemyInfo, encounter.enemy.buffs);
-  removeBuffs(enemyInfo, encounter.buffsRemove);
-};
-const addBuffs = (wrapper, buffs) => {
-  if (buffs.length > 0) {
-    for (let i = 0; i < buffs.length; i++) {
-      const buff = buffs[i];
-      if (!buff.display) {
-        wrapper.innerHTML += `<p id="${buff.type}">${buff.type}</p>`;
-      }
-      buff.display = true;
-    }
-  }
+  _.addBuffs(enemyInfo, encounter.enemy.buffs);
+  _.removeBuffs(enemyInfo, encounter.buffsRemove);
 };
 
-const removeBuffs = (wrapper, buffs) => {
-  if (buffs.length > 0) {
-    for (let i = 0; i < buffs.length; i++) {
-      const buff = buffs[i];
-      wrapper.children.namedItem(buff.type).remove();
-      buffs.splice(i, 1);
-      i--;
-    }
-  }
-};
 // This function replaces the userInput with a new element and sets the currentInput variable
 const changeInput = (type) => {
   switch (type) {
@@ -80,50 +61,44 @@ const changeInput = (type) => {
   }
 };
 
-// This function will add a chat bubble in the correct place based on who the sender is
-const showMessage = (message, sender) => {
-  if (sender === "user") {
-    chat.innerHTML += `
-    <section class="message__user">
-      <div class="bubble bubble__user">
-        <p class="message__text">${message}</p>
-      </div>
-      <img src="assets/user.png" alt="User" />  
-    </section>
-    `;
-  } else if (sender === "bot") {
-    chat.innerHTML += `
-      <section class="message__bot">
-        <img src="assets/bot.png" alt="Bot" />
-        <div class="bubble bubble__bot">
-          <p class="message__text">${message}</p>
-        </div>
-      </section>
-    `;
-  }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+// These function will add a chat bubble in the correct place based on who the sender is
+const userMessage = (message) => {
+  chat.innerHTML += input.userMessage(message);
   chat.scrollTop = chat.scrollHeight;
+};
+
+const botMessage = (message) => {
+  counter++;
+  chat.innerHTML += input.botMessage(counter);
+  const chatmessage = chat.querySelector(`#botMessage${counter}`);
+  chat.scrollTop = chat.scrollHeight;
+  setTimeout(() => {
+    chatmessage.innerText = message;
+    chat.scrollTop = chat.scrollHeight;
+  }, 800);
 };
 
 /** CONTROL FLOW */
 const greeting = () => {
-  showMessage(`Hello adventurer! Welcome to the dungeon…`, "bot");
+  botMessage(`Hello adventurer! Welcome to the dungeon…`);
   setTimeout(() => {
-    showMessage("Prey tell, what is your name?", "bot");
-    changeInput("name");
-  }, 1500);
+    botMessage("Prey tell, what is your name?");
+    setTimeout(() => {
+      changeInput("name");
+    }, 1000);
+  }, 2000);
 };
 const greetingAgain = () => {
-  showMessage(`Welcome back ${_name}`, "bot");
+  botMessage(`Welcome back ${_name}`);
   setTimeout(() => {
     askExperience();
-  }, 1000);
+  }, 2000);
 };
 
 const handleNameInput = (event) => {
   const name = event.target.children.namedItem("inputName").value;
   // Show the name as user message
-  showMessage(name, "user");
+  userMessage(name);
   // store the name
   _name = name;
   //trigger askExperience
@@ -133,15 +108,17 @@ const handleNameInput = (event) => {
 };
 
 const askExperience = () => {
-  showMessage("Alright...", "bot");
+  botMessage("Alright...");
   setTimeout(() => {
-    showMessage(`Looks like you’re in for a challenge ${_name}`, "bot");
+    botMessage(`Looks like you’re in for a challenge ${_name}`);
     setTimeout(() => {
-      showMessage("Would you like to make it a bit easier?", "bot");
-      // show the yes and no inputs
-      changeInput("boolSelect");
-    }, 1000);
-  }, 1000);
+      botMessage("Would you like to make it a bit easier?");
+      setTimeout(() => {
+        // show the yes and no inputs
+        changeInput("boolSelect");
+      }, 1500);
+    }, 1500);
+  }, 1500);
 };
 
 const handleBoolInput = (event) => {
@@ -156,14 +133,14 @@ const handleBoolInput = (event) => {
         greetingAgain();
       }, 1000);
     } else {
-      showMessage("Okay... Your loss", "bot");
+      botMessage("Okay... Your loss");
       changeInput();
     }
     return;
   }
   const response = inputVal ? "Take it easy on me" : "I like a challenge";
   // show answer as a response
-  showMessage(response, "user");
+  userMessage(response);
   // store as encounter isEasy
   _difficulty = inputVal;
   // trigger ask class
@@ -173,24 +150,26 @@ const handleBoolInput = (event) => {
 };
 
 const askClass = () => {
-  showMessage("Great! I will adapt the experience based on that.", "bot");
+  botMessage("Great! I will adapt the experience based on that.");
   setTimeout(() => {
-    showMessage("One last thing before we begin....", "bot");
+    botMessage("One last thing before we begin....");
     setTimeout(() => {
-      showMessage("What class would you like to play as?", "bot");
+      botMessage("What class would you like to play as?");
       // show class input options
-      changeInput("classSelect");
-    }, 1000);
-  }, 1000);
+      setTimeout(() => {
+        changeInput("classSelect");
+      }, 1500);
+    }, 1500);
+  }, 2000);
 };
 
 const handleClassSelectInput = (event) => {
   const type = event.value;
   // show user response
-  showMessage(`I am a ${type}`, "user");
+  userMessage(`I am a ${type}`);
   // store class
   _type = type;
-  // trigger encRoundStart()
+  // start encounter
   setTimeout(() => {
     encRoundStart();
   }, 1000);
@@ -199,29 +178,30 @@ const handleClassSelectInput = (event) => {
 const encRoundStart = () => {
   // instantiate Encounter
   encounter = new Encounter(_name, _type, _difficulty);
-  console.log(encounter);
   updateInfo();
-  showMessage("Excellent! Let's begin...", "bot");
+  botMessage("Excellent! Let's begin...");
   setTimeout(() => {
-    showMessage(encounter.location.description, "bot");
+    botMessage(encounter.location.description);
     setTimeout(() => {
       switch (encounter.location.type) {
         case "forest":
-          showMessage(encounter.enemy.description, "bot");
+          botMessage(encounter.enemy.description);
           break;
         case "mountain":
-          showMessage(encounter.enemy.description, "bot");
+          botMessage(encounter.enemy.description);
           break;
         case "swamp":
-          showMessage(encounter.enemy.description, "bot");
+          botMessage(encounter.enemy.description);
           break;
         case "desert":
-          showMessage(encounter.enemy.description, "bot");
+          botMessage(encounter.enemy.description);
           break;
       }
       // show hero actions
-      changeInput("actionSelect");
-    }, 2000);
+      setTimeout(() => {
+        changeInput("actionSelect");
+      }, 1500);
+    }, 1500);
   }, 2000);
 };
 
@@ -229,12 +209,9 @@ const runEndGame = (winner) => {
   changeInput();
   updateInfo();
   if (winner === "hero") {
-    showMessage(`You defeated the ${encounter.enemy.type}! Would you like to play again?`, "bot");
+    botMessage(`You defeated the ${encounter.enemy.type}! Would you like to play again?`);
   } else if (winner === "enemy") {
-    showMessage(
-      `The ${encounter.enemy.type} has killed you... Would you like to try again?`,
-      "bot"
-    );
+    botMessage(`The ${encounter.enemy.type} has killed you... Would you like to try again?`, "bot");
   }
   endState = true;
   changeInput("boolSelect");
@@ -245,45 +222,41 @@ const runEndGame = (winner) => {
 // (hero action->enemy action->hero action->etc....)
 // until an end state is reached
 const handleActionSelectInput = (action) => {
-  // const action = event.value;
   // show user response
-  showMessage(action.dataset.msg, "user");
-  // updateInfo();
+  userMessage(action.dataset.msg);
   // Start the game loop
   setTimeout(() => {
     let msg = encounter.execHeroAction(action.value);
-    // console.log(encounter);
     if (msg === null) {
       // the msg is null so an end state was achieved
       runEndGame("hero");
       return;
     }
     // the loop continues, no end state yet
-    showMessage(msg, "bot");
+    botMessage(msg);
     updateInfo();
     updateBuffs();
     setTimeout(() => {
       msg = encounter.execEnemyAction();
-
       if (msg === null) {
         // the msg is null so an end state was achieved
         runEndGame("enemy");
         return;
       }
-      showMessage(msg[0], "bot");
+      botMessage(msg[0]);
       updateInfo();
       setTimeout(() => {
-        showMessage(msg[1], "bot");
+        botMessage(msg[1]);
         encounter.newRound();
         setTimeout(() => {
           // new round
           changeInput("actionSelect");
           updateInfo();
           updateBuffs();
-        }, 2000);
-      }, 2000);
-    }, 2000);
-  }, 1000);
+        }, 1500);
+      }, 1500);
+    }, 1500);
+  }, 2000);
 };
 
 /** EVENT LISTENERS */
