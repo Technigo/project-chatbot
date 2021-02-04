@@ -1,22 +1,11 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background-image: url("./assets/lake.jpg");
-  background-size: 100%;
-  background-repeat: none;
-}
-
-.chat-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background-image: url("./assets/background.jpg");
-  background-repeat: none;
-  background-position: center;
 }
 
 h1 {
@@ -57,7 +46,53 @@ input {
   flex: 1;
 }
 
-main {
+/*** INDEX STYLING ***/
+
+  .start-main {
+    background-image: url("./assets/lakeview.jpg");
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.start-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  
+}
+
+.start-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+.start-form button {
+  align-self: center;
+  margin-top: 15px;
+}
+
+
+/*** CHAT STYLING ***/
+
+.chat-body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-image: url("./assets/background.jpg");
+  background-repeat: none;
+  background-position: center;
+}
+
+.chat-main {
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
