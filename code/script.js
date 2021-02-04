@@ -4,14 +4,13 @@ const theWholeForm = document.getElementById('form-wrapper');
 const inputFromForm = document.getElementById('input-ID')
 const submitFormButton = document.getElementById('send-btn')
 
-// Global variables, if you need any, declared here
-// let questionNumber = 1;
-const FLOWER_CHOICE = 1
-const TYPE_OF_ARRANGEMENT = 2
-const FLOWER_SELECTOR = 3
-const FINAL_CONFIRMATION = 4
+let questionNumber = 1;
+// const FlowerChoice = 1;
+// const typeOfArrangement = 2;
+// const flowerSelector = 3;
+// const finalConfirmation = 4;
 
-const questionHandler = (message, questionNumber) => {
+const questionHandler = (message) => {
   showMessage(message, 'user');
   if (questionNumber === 1) {
     showFlowerChoice(message);
@@ -59,38 +58,37 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  // questionNumber = 1;
+  questionNumber = 1;
   showMessage(`Hello there, What's your name?`, 'bot');
   theWholeForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const name = inputFromForm.value;
-    questionHandler (name, 1);
+    questionHandler (name);
   });
 }
 
 
 const showFlowerChoice = (message) =>{
-  // questionNumber++; 
+  questionNumber++; 
   showMessage (`Hello, ${message}, What flower arrangement would you like today?`,'bot'); 
   theWholeForm.innerHTML = `
     <button class="arrangement-button" id="bouquet">Bouquet</button>
     <button class="arrangement-button" id="basket">Basket</button>
     <button class="arrangement-button" id="box">Box</button>
   `
-  const questionNumber = 2
   document.getElementById("bouquet").addEventListener('click', () => {
-    questionHandler('bouquet', questionNumber);
+    questionHandler('bouquet');
   });
   document.getElementById("basket").addEventListener('click', () => {
-    questionHandler('basket', questionNumber);
+    questionHandler('basket');
   });
   document.getElementById("box").addEventListener('click', () => {
-    questionHandler('box', questionNumber);;
+    questionHandler('box');;
   }); 
 };
 
 const showTypeOfArrangement = (type) => {
-  // questionNumber++;
+  questionNumber++;
   showMessage (`Wonderful! I always loved flowes in a ${type}. We have the following options for the ${type}`, 'bot');
   if (type === 'bouquet'){
     theWholeForm.innerHTML = `
@@ -115,11 +113,11 @@ const showTypeOfArrangement = (type) => {
       </select>  `
   }
   const selectorChoice = document.getElementById('selector');
-  selectorChoice.addEventListener('change', () => questionHandler(selectorChoice.value, 3))
+  selectorChoice.addEventListener('change', () => questionHandler(selectorChoice.value))
 };
 
 const showFlowerSelector = (arrangement) => {
-  // questionNumber++;
+  questionNumber++;
   showMessage (`What flowers would you like in you ${arrangement}? We have the following options`, 'bot');
   theWholeForm.innerHTML = `
     <select id="flower-selector"> 
@@ -131,12 +129,12 @@ const showFlowerSelector = (arrangement) => {
     </select>
     `
   const selectorChoiceTwo = document.getElementById('flower-selector');
-  selectorChoiceTwo.addEventListener('change', () => questionHandler(selectorChoiceTwo.value, 4))
+  selectorChoiceTwo.addEventListener('change', () => questionHandler(selectorChoiceTwo.value))
 }; 
 
 const showFinalConfirmation = (flowers) => {
-  // questionNumber++;
-  showMessage (`Oh, aren't ${flowers} beautiful!!!. I will prepare your order shortly`, 'bot');
+  questionNumber++;
+  showMessage (`Oh, aren't ${flowers} beautiful!!!`, 'bot');
   let price 
   const showPrice = (flowers_) => {
       if (flowers_ === 'roses'){
@@ -150,16 +148,31 @@ const showFinalConfirmation = (flowers) => {
       }
     }
     showPrice(flowers)
-  showMessage (`Great! The price for your ${flowers} will be ${price}`, 'bot')
+  showMessage (`The price for your ${flowers} will be ${price}. 
+                Do you want to place an order?`, 'bot')
   theWholeForm.innerHTML = `
     <button class="confirmation-button" id="yes-button">Yes</button>
-    <button class="confirmation-button" id="no-button" type="reset">No</button>
-  `
+    <button class="confirmation-button" id="no-button">No</button>
+    `
+              
   document.getElementById("yes-button").addEventListener('click', () => { 
-    questionHandler ('Yes', 5)
+    console.log('clickyes');
+    //another console log :----)
+    questionHandler('Yes');
+  });  
+  document.getElementById("no-button").addEventListener('click', () => { 
+    location.reload('No');
+    //added location.reload to reload page
   });
-  };
+};
 
+const thankYou = () => {
+  theWholeForm.innerHTML = '';
+  //removed the buttons by changing the content to '' ie nothing. Not sure if that's
+  //the right approach. 
+  showMessage('Thank you for your order. Have a great day!', 'bot');
+  //added this function - not sure if it's ok?
+}
 
 
 // Starts here with the greeting function on timeout
