@@ -199,20 +199,20 @@ const encRoundStart = () => {
   updateInfo();
   showMessage("Excellent! Let's begin...", "bot");
   setTimeout(() => {
-    showMessage(
-      `You are in a ${encounter.location}. It’s dark and the moon has taken over the sky. Almost covering up the stars above with its ominous light.`,
-      "bot"
-    );
+    showMessage(encounter.location.description, "bot");
     setTimeout(() => {
-      switch (encounter.location) {
+      switch (encounter.location.type) {
         case "forest":
-          showMessage(
-            `Out of the bushes a ${encounter.enemy.type} jumps out at you. It is clear they wish to fight to the death. What do you do?`,
-            "bot"
-          );
+          showMessage(encounter.enemy.description, "bot");
           break;
         case "mountain":
-          showMessage(`from mountain jump a ${encounter.enemy.type}. What do you?`, "bot");
+          showMessage(encounter.enemy.description, "bot");
+          break;
+        case "swamp":
+          showMessage(encounter.enemy.description, "bot");
+          break;
+        case "desert":
+          showMessage(encounter.enemy.description, "bot");
           break;
       }
       // show hero actions

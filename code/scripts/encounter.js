@@ -1,6 +1,7 @@
 import { Fighter, Ranger, Sorcerer } from "./heroes.js";
-import { Ogre, Troll } from "./enemies.js";
+import * as Enemy from "./enemies.js";
 import { random } from "./helperFunctions.js";
+import { locationDescription as localDesc } from "./descriptions.js";
 
 export default class Encounter {
   constructor(name, type, isEasy) {
@@ -21,30 +22,48 @@ export default class Encounter {
       case "Ranger":
         return new Ranger(name, this.isEasy);
       case "Sorcerer":
-        return new Sorcerer(name, this.isEasy);
+        return new Sorcerer(name);
     }
   }
 
   // Sets a random location on instantiation
   setLocation() {
-    const options = ["forest", "mountain"];
+    const options = [
+      { type: "forest", description: localDesc.forest },
+      { type: "mountain", description: localDesc.mountain },
+      { type: "swamp", description: localDesc.swamp },
+      { type: "desert", description: localDesc.desert },
+    ];
+
     return options[random(options.length)];
   }
 
   // Instantiate a new Enemy based on difficulty and location
   setEnemy() {
-    switch (this.location) {
+    switch (this.location.type) {
       case "forest":
         if (this.isEasy) {
-          return new Ogre();
+          return new Enemy.Ogre();
         } else {
-          return new Troll();
+          return new Enemy.Owlbear();
         }
       case "mountain":
         if (this.isEasy) {
-          return new Troll();
+          return new Enemy.SaberToothTiger();
         } else {
-          return new Ogre();
+          return new Enemy.Ettin();
+        }
+      case "swamp":
+        if (this.isEasy) {
+          return new Enemy.Ghast();
+        } else {
+          return new Enemy.Wight();
+        }
+      case "desert":
+        if (this.isEasy) {
+          return new Enemy.Bandit();
+        } else {
+          return new Enemy.Mummy();
         }
     }
   }

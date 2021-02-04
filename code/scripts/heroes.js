@@ -5,10 +5,10 @@ export class Fighter extends Combatant {
   constructor(name, isEasy) {
     super("Fighter", 18, true);
     this.name = name;
-    this.hp = 44;
+    this.hp = isEasy ? 44 : 58;
     this.maxHp = this.hp;
-    this.attackMod = 9;
-    this.dmgMod = 6;
+    this.attackMod = isEasy ? 9 : 10;
+    this.dmgMod = isEasy ? 6 : 7;
     this.healMod = isEasy ? 5 : 6;
     this.actions = [
       {
@@ -46,11 +46,12 @@ export class Ranger extends Combatant {
   constructor(name, isEasy) {
     super("Ranger", 14, true);
     this.name = name;
-    this.hp = 44;
+    this.hp = isEasy ? 44 : 52;
     this.maxHp = this.hp;
-    this.attackMod = 7;
-    this.dmgMod = 3;
+    this.attackMod = isEasy ? 7 : 8;
+    this.dmgMod = isEasy ? 3 : 4;
     this.healMod = isEasy ? 4 : 8;
+    this.dexMod = isEasy ? 5 : 6;
     this.actions = [
       {
         name: "Attack Longbow",
@@ -80,19 +81,19 @@ export class Ranger extends Combatant {
     return d8() + this.dmgMod;
   };
   rollDexSave = () => {
-    return d20() + 5;
+    return d20() + this.dexMod;
   };
 }
 
 export class Sorcerer extends Combatant {
-  constructor(name, isEasy) {
+  constructor(name) {
     super("Sorcerer", 15, true);
     this.name = name;
     this.hp = 32;
     this.maxHp = this.hp;
     this.attackMod = 6;
     this.dmgMod = 6;
-    this.healMod = isEasy ? 4 : 8;
+    this.healMod = 8;
     this.actions = [
       {
         name: "Shoot fire",
