@@ -3,6 +3,7 @@ const chat = document.getElementById('chat');
 const theWholeForm = document.getElementById('form-wrapper');
 const inputFromForm = document.getElementById('input-ID')
 const submitFormButton = document.getElementById('send-btn')
+const soundEffect = document.getElementById('message-sound')
 
 let questionNumber = 1;
 // const FlowerChoice = 1;
@@ -12,6 +13,7 @@ let questionNumber = 1;
 
 const questionHandler = (message) => {
   showMessage(message, 'user');
+  playSound ()
   if (questionNumber === 1) {
     showFlowerChoice(message);
 
@@ -32,6 +34,10 @@ const questionHandler = (message) => {
     thankYou()
   }
 };
+
+const playSound = () => {
+  soundEffect.play()
+}
 
 const showMessage = (message, sender) => {
   if (sender === 'user') {
@@ -93,6 +99,7 @@ const showTypeOfArrangement = (type) => {
   if (type === 'bouquet'){
     theWholeForm.innerHTML = `
       <select id="selector" class="general-selector">
+        <option value="" selected disabled>Choose bouquet</option>  
         <option value="Cascade bouquet">Cascade bouquet</option>
         <option value="Round bouquet">Round bouquet</option>
         <option value="Hand-Tied bouquet">Hand-Tied bouquet</option>
@@ -100,13 +107,15 @@ const showTypeOfArrangement = (type) => {
   } else if (type === 'basket') {
     theWholeForm.innerHTML = `
       <select id="selector" class="general-selector">
-        <option value="Classic">Classic basket</option>
+        <option value="" selected disabled>Choose basket</option>
+        <option value="Classic basket">Classic basket</option>
         <option value="Vintage basket">Vintage basket</option>
         <option value="Village basket">Village basket</option>
       </select>  `
   } else {
     theWholeForm.innerHTML = `
       <select id="selector" class="general-selector">
+        <option value="" selected disabled>Choose box</option>  
         <option value="Round-shaped box">Round-shaped box</option>
         <option value="Heart-haped box">Heart-haped box</option>
         <option value="Square-shaped box">Square-shaped box</option>
@@ -118,14 +127,14 @@ const showTypeOfArrangement = (type) => {
 
 const showFlowerSelector = (arrangement) => {
   questionNumber++;
-  showMessage (`What flowers would you like in you ${arrangement}? We have the following options`, 'bot');
+  showMessage (`What flowers would you like in your ${arrangement}? We have the following options`, 'bot');
   theWholeForm.innerHTML = `
     <select id="flower-selector"> 
       <option value="" selected disabled>Choose flowers</option> 
-      <option value="roses">Roses</option>
-      <option value="tulips">Tulips</option>
-      <option value="lilies">Lilies</option>
-      <option value="sunflowers">Sunflowers</option>
+      <option value="roses">&#x1F339 Roses</option>
+      <option value="tulips">&#x1F337 Tulips</option>
+      <option value="lilies">&#x1F33ALilies</option>
+      <option value="sunflowers">&#x1F33B Sunflowers</option>
     </select>
     `
   const selectorChoiceTwo = document.getElementById('flower-selector');
@@ -167,7 +176,8 @@ const showFinalConfirmation = (flowers) => {
 };
 
 const thankYou = () => {
-  theWholeForm.innerHTML = '';
+  theWholeForm.innerHTML = `
+  <img class="final-flower" src = "./assets/6IQS.gif"> `;
   //removed the buttons by changing the content to '' ie nothing. Not sure if that's
   //the right approach. 
   showMessage('Thank you for your order. Have a great day!', 'bot');
