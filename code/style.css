@@ -89,10 +89,16 @@ main {
   flex-shrink: 0;
 }
 
-.bot-msg img,
+.bot-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
 .user-msg img {
   width: 60px;
   height: 60px;
+  border-radius: 50%;
 }
 
 .bubble {
@@ -102,7 +108,7 @@ main {
   line-height: 26px;
   padding: 16px 24px;
   color: darkmagenta;
-  max-width: 40%;
+  max-width: 50%;
 }
 
 .bot-bubble {
@@ -115,14 +121,13 @@ main {
   margin-right: 8px;
 }
 
-/*.img-bubble {
+.img-bubble {
 width: 300px;
-height: 300px;
-}*/
+height: auto;
+}
 
-.joke-img img {
-  border: 2px solid black;
-  width: 300px;
+.img-answer {
+  width: 100%;
 }
 
 .input-wrapper {

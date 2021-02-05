@@ -27,13 +27,13 @@ const showMessage = (message, sender) => {
           <div class="bubble user-bubble">
             <p>${message}</p>
           </div>
-          <img src="assets/user.png" alt="User" />  
+          <img src="./assets/user-img-smiley.png" alt="User" />  
         </section>
       `
     } else if (sender === 'bot') {
       chat.innerHTML += `
         <section class="bot-msg">
-          <img src="assets/bot.png" alt="Bot" />
+          <img src="./assets/bot-img-smiley.png" alt="Bot" class="bot-img"/>
           <div class="bubble bot-bubble">
             <p>${message}</p>
           </div>
@@ -67,21 +67,21 @@ const nextQuestion = (message) => {
 // Starts here
 const greeting = () => {
     questionNumber = 1
-    botAnswer(`Hey there, what's your name? &hearts;`)
+    botAnswer(`Hey there, what's your name? 💜`)
 }
   
 const currentMood = (message) => {
     questionNumber++
-    botAnswer(`Hey ${message}, how are you today on a scale of 1-10?`)
+    botAnswer(`Hey ${message}, how are you today on a scale of 1-10? ✍ `)
 }
 
 const moodChangerChoice = (message) => {
     questionNumber++
     if (Number(message) >= 1, Number(message) <= 4) {
-        botAnswer(`Oh, I'm sorry to hear that! Would you like to see a picture of a cute puppy or maybe you need a pep talk?`)
+        botAnswer(`Oh, I'm sorry to hear that! Would you like to see a picture of a cute puppy or maybe you need a pep talk? &#127973;`)
         inputWrapper.innerHTML = `
-        <button id="cutePuppyBtn">Cute puppy</button>
-        <button id="pepTalkBtn">Pep talk</button>
+        <button id="cutePuppyBtn">Cute puppy 🐶</button>
+        <button id="pepTalkBtn">Pep talk 💪</button>
         `
         document.getElementById('cutePuppyBtn')
         .addEventListener('click', () => nextQuestion('Cute puppy'))
@@ -89,19 +89,19 @@ const moodChangerChoice = (message) => {
         .addEventListener('click', () => nextQuestion('Pep talk'))
         
       } else if (Number(message) >= 5, Number(message) <= 7) {
-        botAnswer (`Maybe I can cheer you up a bit more with a joke or a funny gif?`)
+        botAnswer (`Maybe I can cheer you up a bit more with a joke or a funny gif? &#127880;`)
         inputWrapper.innerHTML = `
-        <button id="jokeBtn">Joke!</button>
-        <button id="gifBtn">GIF</button>
+        <button id="jokeBtn">Joke! 🤡</button>
+        <button id="gifBtn">GIF &#127745;</button>
         `
         document.getElementById('jokeBtn')
         .addEventListener('click', () => nextQuestion('Joke!'))
         document.getElementById('gifBtn')
         .addEventListener('click', () => nextQuestion('GIF'))
       } else if (Number(message) >= 8, Number(message) <= 10) {
-        botAnswer (`Glad you feel so good! You're welcome back whenever you need me!`) 
+        botAnswer (`Glad you feel so good! You're welcome back whenever you need me! &#127775;`) 
       } else {
-        botAnswer (`Please answer on a scale from 1-10 with numbers :-)`)
+        botAnswer (`Please answer on a scale from 1-10 with numbers &#127752;`)
       }   
 }
 
@@ -110,29 +110,29 @@ const showmoodSwitcher = (message) => {
     if (message === 'Cute puppy') {
         chat.innerHTML += `
         <section class="bot-msg">
-        <img src="assets/bot.png" alt="bot" />
+        <img class="bot-img" src="./assets/bot-img-smiley.png" alt="bot" />
         <div class="bubble bot-bubble img-bubble" >
-          <img src="./assets/cute-puppy.jpg" class="joke-img" alt="Cute Puppy" />
+          <img class="img-answer" src="./assets/cute-puppy.jpg" alt="Cute Puppy" />
         </div>
       </section>
         `
     } else if (message === 'Pep talk') {
-        botAnswer('Hey you! Good news: No one knows what they doing. Better news: You get to make mistakes. Best news: You will succeed in the end!!')
+        botAnswer('Hey you! Good news: No one knows what they doing. Better news: You get to make mistakes. Best news: You will succeed in the end!! &#127774;')
     } else if (message === 'Joke!') {
       chat.innerHTML += `
         <section class="bot-msg">
-        <img src="assets/bot.png" alt="bot" />
+        <img class="bot-img" src="assets/bot.png" alt="bot" />
         <div class="bubble bot-bubble img-bubble">
-          <img class="joke-img" src="./assets/joke-img.jpg" alt="Joke image" />
+          <img class="img-answer" src="./assets/joke-img.jpg" alt="Joke image" />
         </div>
       </section>
         `
     } else if (message === 'GIF') {
       chat.innerHTML += `
         <section class="bot-msg">
-        <img src="assets/bot.png" alt="bot" />
+        <img class="bot-img" src="assets/bot.png" alt="bot" />
         <div class="bubble bot-bubble img-bubble">
-        <div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/3o7ZexFSShwaxOSY12" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/afv-funny-fail-lol-3o7ZexFSShwaxOSY12">via GIPHY</a></p>
+        <div class="img-answer" style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/3o7ZexFSShwaxOSY12" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/afv-funny-fail-lol-3o7ZexFSShwaxOSY12">via GIPHY</a></p>
         </div>
       </section>
         `
@@ -140,7 +140,7 @@ const showmoodSwitcher = (message) => {
 
     setTimeout(() => goodBye(), 5000)
     const goodBye = () => {
-    botAnswer(`Thank you for your visit! I hope this made you feel better, you're welcome back anytime!`)
+    botAnswer(`Thank you for your visit! I hope this made you feel better, you're welcome back anytime! &#127799; 💕`)
     }
     chat.scrollTop = chat.scrollHeight
 }
