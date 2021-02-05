@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   background: #0026ff;
 }
 
@@ -17,7 +17,8 @@ h1 {
   text-align: center;
 }
 
-h2 {
+h2,
+h3 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
@@ -41,7 +42,7 @@ input {
   color: #0026ff;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -128,13 +129,28 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
+.selectOptionDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.selectOptionDivHidden {
+  display: none;
+}
+
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+.input-wrapper-hidden {
+  display: none;
 }
