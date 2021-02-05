@@ -7,4 +7,7 @@ This project is made as a pair programming project. We took turns coding in Visu
 
 ## View it live
 
+Deployed at Netlify: 
+
+https://ecstatic-goldstine-8edb43.netlify.app
 
