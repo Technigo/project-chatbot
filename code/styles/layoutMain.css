@@ -22,6 +22,8 @@ body {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  border: 5px solid #5e1919;
+  border-bottom: none;
 }
 
 .chat {
@@ -35,18 +37,21 @@ body {
 }
 
 .info-wrapper {
+  position: relative;
   height: auto;
   padding-top: 20px;
   border-radius: 0 0 30px 30px;
   background: #5e1919;
   margin-bottom: 60px;
+  border: none;
 }
 
 .btn__play {
   position: absolute;
-  margin: 20px;
-  right: 0;
-  bottom: 0;
+  margin: 5px;
+  left: 0;
+  top: 0;
   z-index: 1;
-  font-size: 56px !important;
+  font-size: 40px !important;
+  color: white;
 }

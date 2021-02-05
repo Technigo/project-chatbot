@@ -17,7 +17,7 @@ let counter = 0;
 let _name,
   _type,
   _difficulty,
-  _tokenDefault = "tokenDM";
+  _tokenDefault = "tokenDefault";
 
 /** FUNCTIONS */
 // Update the info fields
