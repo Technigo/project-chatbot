@@ -1,4 +1,4 @@
-// All the DOM selectors stored as short variables
+// DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const wineForm = document.getElementById('wine-form');
 const wineInput = document.getElementById('wine-input');
@@ -36,15 +36,15 @@ const showMessage = (message, sender) => {
     chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
+// 1   Start - greeting and the bot asks a question about wine preference
 const greeting = () => {
     showMessage(`Hello there! Do you prefer white or red wine?`, 'bot')
 }
 
-setTimeout(greeting, 1000); //Fundera på placering
+setTimeout(greeting, 1000); 
 
 
-//Question 1
+// 2   The user chooses red or white wine
 const handleWineInput = (event) => {
     event.preventDefault();
     const wineChoice = wineInput.value;
@@ -54,7 +54,7 @@ const handleWineInput = (event) => {
 };
 
 
-//Question 2
+// 3   The user's wine choice is validated and bot responds based on user's input
 const validateResponse = (wineChoice) => {
 
     if (wineChoice.toLowerCase() === 'red') {
@@ -69,9 +69,8 @@ const validateResponse = (wineChoice) => {
 };
 
 
-//RED CONVERSATION
-//Question 3 - Red wine (questionRed) 
-
+// RED WINE CONVERSATION
+// 4   Red wine - user chooses the preferred wine country
 const questionRed = () => {
     showMessage(`Great choice! Which of the following countries would you say that you prefer when it comes to red wine?`, 'bot');
 
@@ -93,8 +92,7 @@ const questionRed = () => {
 };
 
 
-//Question 4 - Italy
-
+// 4.1    Italy - user chooses the preferred grape from Italy
 const questionGrapeItaly = () => {
     showMessage(`Perfect! Might as well! Which of the following grapes do you prefer?`, 'bot');
 
@@ -120,8 +118,8 @@ const questionGrapeItaly = () => {
     })
 };
 
-//Question 5 - Italy
 
+// 4.1.1    Italy - bot gives the last message based on user's choice on grape
 const wineRecoNero = () => {
     showMessage(`Fantastic choice! The finest Nero d'Avola can be found on Sicily! Enjoy!`, 'bot');
     sound.play();
@@ -141,9 +139,7 @@ const wineRecoAmarone = () => {
 }
 
 
-
-//Question 4 - Spain
-
+// 4.2    Spain - user chooses the preferred grape from Spain
 const questionGrapeSpain = () => {
     showMessage(`Perfect! Might as well! Which of the following grapes to you prefer?`, 'bot');
 
@@ -169,8 +165,8 @@ const questionGrapeSpain = () => {
     })
 };
 
-//Question 5 - Spain
 
+// 4.2.1    Spain - bot gives the last message based on user's choice on grape
 const wineRecoTemp = () => {
     showMessage(`Woho! It´s the best known quality red wine grape in Spain. Enjoy!`, 'bot');
     sound.play();
@@ -190,9 +186,8 @@ const wineRecoSyrah = () => {
 }
 
 
-//WHITE CONVERSATION
-//Question 3 - White wine (questionWhite) 
-
+// WHITE WINE CONVERSATION
+// 4    The bot asks the user if the user is sure about choosing white wine + the user gets a chance to choose again
 const questionWhite = () => {
     showMessage(`I mean, are you really sure about it? Red is pretty popular and the taste is absolutely fantastic. I'll ask again; red or white?`, 'bot');
 
@@ -213,16 +208,14 @@ const questionWhite = () => {
 };
 
 
-//Question 4 - White wine (oneChance)
-
+// 5    The bot sends a message to the user
 const oneChance = () => {
     showMessage(`I hope you realize what you're missing out on...`, 'bot');
     setTimeout(() => lastChance(), 2000);
 };
 
 
-//Question 5 - White wine (lastChance)
-
+// 6    The bot gives the user a last chance to change
 const lastChance = () => {
     showMessage(`Last chance. What's your final answer?`, 'bot');
 
@@ -242,8 +235,8 @@ const lastChance = () => {
     })
 };
 
-//Question 6 - White wine (endOfConvo)
 
+// 7    The bot ends the conversation
 const endOfConvo = () => {
     showMessage(`OK. Then our conversation ends here.`, 'bot');
     inputWrapper.innerHTML = ``;
@@ -251,5 +244,4 @@ const endOfConvo = () => {
 
 
 // Eventlisteners
-
 wineForm.addEventListener('submit', handleWineInput);
