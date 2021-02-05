@@ -57,9 +57,9 @@ const nextQuestion = (message) => {
         setTimeout(() => moodChangerChoice(message), 1000)
     } else if (questionNumber === 3) {
         userAnswer(message)
-        inputWrapper.value = ""
+        inputWrapper.innerHTML = ""
         setTimeout(() => showmoodSwitcher(message), 1000)
-    }
+    } 
 }
 
 
@@ -110,17 +110,38 @@ const showmoodSwitcher = (message) => {
     if (message === 'Cute puppy') {
         chat.innerHTML += `
         <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
-        <div class="bubble bot-bubble">
-          <img src="./assets/cutePuppy.jpg" class="cutePuppyImg" />
+        <img src="assets/bot.png" alt="bot" />
+        <div class="bubble bot-bubble img-bubble" >
+          <img src="./assets/cute-puppy.jpg" class="joke-img" alt="Cute Puppy" />
         </div>
       </section>
         `
     } else if (message === 'Pep talk') {
         botAnswer('Hey you! Good news: No one knows what they doing. Better news: You get to make mistakes. Best news: You will succeed in the end!!')
+    } else if (message === 'Joke!') {
+      chat.innerHTML += `
+        <section class="bot-msg">
+        <img src="assets/bot.png" alt="bot" />
+        <div class="bubble bot-bubble img-bubble">
+          <img class="joke-img" src="./assets/joke-img.jpg" alt="Joke image" />
+        </div>
+      </section>
+        `
+    } else if (message === 'GIF') {
+      chat.innerHTML += `
+        <section class="bot-msg">
+        <img src="assets/bot.png" alt="bot" />
+        <div class="bubble bot-bubble img-bubble">
+        <div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/3o7ZexFSShwaxOSY12" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/afv-funny-fail-lol-3o7ZexFSShwaxOSY12">via GIPHY</a></p>
+        </div>
+      </section>
+        `
     }
-    
-    
+
+    setTimeout(() => goodBye(), 5000)
+    const goodBye = () => {
+    botAnswer(`Thank you for your visit! I hope this made you feel better, you're welcome back anytime!`)
+    }
     chat.scrollTop = chat.scrollHeight
 }
 

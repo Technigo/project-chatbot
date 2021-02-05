@@ -15,6 +15,9 @@ h1 {
   line-height: 34px;
   color: darkmagenta;
   text-align: center;
+  background-color: rgba(252, 252, 252, 0.7);
+  padding: 35px 0px 0px 0px;
+  margin-bottom: 0px;
 }
 
 h2 {
@@ -24,6 +27,9 @@ h2 {
   color: darkmagenta;
   text-align: center;
   margin-bottom: 36px;
+  padding: 8px 0px 20px 0px;
+  background-color: rgba(252, 252, 252, 0.7);
+  margin-top: 0px;
 }
 
 p {
@@ -89,11 +95,6 @@ main {
   height: 60px;
 }
 
-.cutePuppyImg {
-  width: 240px;
-  height: auto;
-}
-
 .bubble {
   background: #e5e9ff;
   font-weight: 600;
@@ -112,6 +113,16 @@ main {
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+}
+
+/*.img-bubble {
+width: 300px;
+height: 300px;
+}*/
+
+.joke-img img {
+  border: 2px solid black;
+  width: 300px;
 }
 
 .input-wrapper {
