@@ -6,15 +6,17 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url(./assets/background.jpg);
+  background-size: cover;
 }
 
 h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: #fff; 
   text-align: center;
+  text-shadow: 2px 2px 4px #000000, 2px 2px 4px #000000, 2px 2px 4px #000000; 
 }
 
 h2 {
@@ -24,6 +26,8 @@ h2 {
   color: #fff;
   text-align: center;
   margin-bottom: 36px;
+  text-shadow: 2px 2px 4px #000000, 2px 2px 4px #000000, 2px 2px 4px #000000; 
+
 }
 
 p {
@@ -37,8 +41,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #E0d0B9;
+  color: #694127;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -90,12 +94,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #E0d0B9;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #23120B;
   max-width: 40%;
 }
 
@@ -120,7 +124,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #694127;
   color: white;
   border: none;
   border-radius: 4px;

@@ -1,16 +1,13 @@
-// All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const nameForm = document.getElementById('name-form')
 const inputWrapper = document.getElementById('input-wrapper')
 const value = document.getElementById("name-input").value;
-// const value = document.getElementById("name-input")
+
+let pickedCoffee 
+let pickedSize
 let step = 1;
 
-// Global variables, if you need any, declared here
 
-// Functions declared here
-
-// This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     chat.innerHTML += `
@@ -20,7 +17,7 @@ const showMessage = (message, sender) => {
         </div>
         <img src="assets/user.png" alt="User" />  
       </section>
-    `
+      `
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
@@ -31,18 +28,13 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+  
   chat.scrollTop = chat.scrollHeight
-
-  // Let's clear user input value every time after sending message
-  // document.getElementById('name-input').value = "";
 }
 
-// Starts here
 const greeting = () => {
   step = 1;
   showMessage(`Hello! Would you like to order coffee?`, 'bot')
-  console.log('Hello');
 }
 
 const coffeePicker = (event) => {
@@ -51,20 +43,20 @@ const coffeePicker = (event) => {
   const value = document.getElementById("name-input").value;
   showMessage(value, "user")
   if(value === 'yes') {
-    showMessage('Please select below', 'bot'); /// Choose coffee
-    // setTimeout(() => coffeePicker(), 1000);   
+    showMessage('Please select below', 'bot');   
     inputWrapper.innerHTML = `
-    <div id="buttons" class="buttons">
-      <button value="coffee" id="coffeeBtn">Coffee</button>
-      <button value="latte" id="latteBtn">Latte</button>
-      <button value="cappuccino" id="cappBtn">Cappuccino</button>
-    </div>
-    `
+      <div id="buttons" class="buttons">
+        <button value="coffee" id="coffeeBtn">Coffee</button>
+        <button value="latte" id="latteBtn">Latte</button>
+        <button value="cappuccino" id="cappBtn">Cappuccino</button>
+      </div>
+      `
     document
     .getElementById("coffeeBtn")
     .addEventListener('click', () => { 
       showMessage('Coffee', 'user')
-      showMessage('Ok, one coffee coming up for you', 'bot')  
+      showMessage('Ok, one coffee coming up for you', 'bot')
+      pickedCoffee = "coffee"
       inputWrapper.innerHTML = ""
       setTimeout(() => chooseSize("coffee"), 1000)
     })
@@ -74,6 +66,7 @@ const coffeePicker = (event) => {
     .addEventListener('click', () => {
       showMessage('Latte', 'user')
       showMessage('Ok, one latte coming up for you', 'bot')
+      pickedCoffee = "latte"
       inputWrapper.innerHTML = ""
       setTimeout(() => chooseSize("latte"), 1000)
     })
@@ -83,36 +76,31 @@ const coffeePicker = (event) => {
     .addEventListener('click', () => {
       showMessage('Cappuccino', 'user') 
       showMessage('Ok, one cappuccino coming up for you', 'bot')
+      pickedCoffee = "cappuccino"
       inputWrapper.innerHTML = ""
       setTimeout(() => chooseSize("cappuccino"), 1000)
-    })
+      })
   } else if(value === 'no'){
-    showMessage('Ok, see you another time!', 'bot');
+      showMessage('Ok, see you another time!', 'bot');
   } else {
-    showMessage("I'm sorry, I didn't understand your answer. Please answer 'yes' or 'no'.", 'bot');
+      showMessage("I'm sorry, I didn't understand your answer. Please answer 'yes' or 'no'.", 'bot');
   }
 }
  
 const chooseSize = () => {
   step ++
-  console.log('choose size')
   showMessage('What size do you want?', 'bot')
   inputWrapper.innerHTML = `
-  <div id="sizeButtons" class="buttons">
-    <button value="short" id="shortBtn">☕ short</button>
-    <button value="tall" id="tallBtn">🥛 tall</button>
-  </div>
-  `
-  // `
-  // <div id="sizeButtons" class="buttons">
-  //   <button value="short" id="shortBtn> ☕ short </button>
-  //   <button value="tall" id="tallBtn> 🥛 large </button>
-  // </div> 
-  // `
+    <div id="sizeButtons" class="buttons">
+      <button value="short" id="shortBtn">☕ short</button>
+      <button value="tall" id="tallBtn">🥛 tall</button>
+    </div>
+    `
   document
   .getElementById("shortBtn")
   .addEventListener('click', () => {
-    showMessage('Short', 'user')  //// OBS, ändra svaret!
+    showMessage('Short', 'user')
+    pickedSize = 'short'
     inputWrapper.innerHTML = ""
     setTimeout(() => showPrice("short"), 1000)  
   })
@@ -120,61 +108,30 @@ const chooseSize = () => {
   document
   .getElementById("tallBtn")
   .addEventListener('click', () => {
-    showMessage('Tall', 'user')   //// OBS, ändra svaret!
+    showMessage('Tall', 'user')
+    pickedSize = 'tall'
     inputWrapper.innerHTML = ""
     setTimeout(() => showPrice("tall)"), 1000)  
   })
 }
 
-const showPrice = (type) => {
-  if (type === "short") {
-    showMessage("That will be 20 kronors", 'bot')
-  } 
-  else if (type === "tall") {
-    showMessage("That will be 30 kronors", 'bot')
+const showPrice = () => {
+  step ++
+  if (pickedSize === 'short' && pickedCoffee === 'coffee') {
+    showMessage("One short coffee coming up, that will be 20 SEK", 'bot')
+  } else if (pickedSize === "tall" && pickedCoffee === 'coffee') {
+    showMessage("One tall coffee coming up, that will be 30 SEK", 'bot')
+  } else if (pickedSize === "short" && pickedCoffee === 'latte') {
+    showMessage("One short latte coming up, that will be 25 SEK", 'bot')
+  } else if (pickedSize === "tall" && pickedCoffee === 'latte') {
+    showMessage("One tall latte coming up, that will be 35 SEK", 'bot')
+  } else if (pickedSize === "short" && pickedCoffee === 'cappuccino') {
+    showMessage("One short cappuccino coming up, that will be 20 SEK", 'bot')
+  } else if (pickedSize === "tall" && pickedCoffee === 'cappuccino') {
+    showMessage("One tall cappuccino coming up, that will be 30 SEK", 'bot')
   }
 }
 
-// Set up your eventlisteners here
-// nameForm.addEventListener("submit", (event) => {
-//   event.preventDefault();
-// })
 nameForm.addEventListener("submit", coffeePicker)
 
-  // if (step === 1) {
-  //   showMessage(value, "user")
- 
-//   } else if (step === 2) {
-//       if(value === 'latte' || value === 'cappuccino') {
-//         showMessage('Great, short or tall?', 'bot');
-//         step ++
-//       } else {
-//         showMessage('Sorry, I do not understand.', 'bot');
-//       }
-//   } else if (step === 3) {
-//       if(value === 'short') {
-//         showMessage('That will be 20 kronors', 'bot');
-//         step ++
-//       } else if (value === 'tall'){
-//         showMessage('That will be 30 kronors', 'bot');
-//         step ++
-//       } else {
-//         showMessage('Sorry, I can only prepare short or tall', 'bot');
-//       } 
-//   } else if (step === 4) {
-//       showMessage('Thank you. Have a good day!', 'bot');
-//   }
-  
-// });
-
-
-// }
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 500)
-// setTimeout(showMessage, 1000)
+setTimeout(greeting, 1000)
