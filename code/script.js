@@ -42,7 +42,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/flowerbot.png" alt="User" />  
+        <img src="assets/flowerbotuser.png" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
