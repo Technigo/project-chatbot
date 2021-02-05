@@ -56,7 +56,7 @@ input {
     overflow: hidden;
     background-repeat: no-repeat;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .start-section {
@@ -64,7 +64,6 @@ input {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  
 }
 
 .start-form {
