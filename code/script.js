@@ -9,7 +9,7 @@ let questionNumber = 1;
 //plays sound effect and calls the functiond depending on the question number 
 const questionHandler = (message) => {
   showMessage(message, 'user');
-  playSound ()
+  playSoundUser ()
   switch (questionNumber) {
   case 1: 
     setTimeout(() => showFlowerChoice(message), 1000); 
@@ -18,7 +18,7 @@ const questionHandler = (message) => {
     setTimeout(() => showTypeOfArrangement(message), 1000);
     break;
   case 3: 
-    setTimeout(() => showFlowerSelector (message), 2000);
+    setTimeout(() => showFlowerSelector (message), 1500);
     break;
   case 4: 
     setTimeout(() => showFinalConfirmation (message), 2000);
@@ -28,10 +28,14 @@ const questionHandler = (message) => {
     break;
   }
 };
-//Function that plays sound effect
-const playSound = () => {
-  const soundEffect = document.getElementById('message-sound')
-  soundEffect.play()
+//Functions that plays sound effects
+const playSoundUser = () => {
+  const soundEffectUser = document.getElementById('message-sound')
+  soundEffectUser.play()
+}
+const playSoundBot = () => {
+  const soundEffectBot = document.getElementById('bot-sound')
+  soundEffectBot.play()
 }
 //Function that shows messages
 const showMessage = (message, sender) => {
@@ -81,6 +85,7 @@ const showFlowerChoice = (message) =>{
     <button class="arrangement-button" id="basket" type="button">Basket</button>
     <button class="arrangement-button" id="box" type="button">Box</button>
   `
+  playSoundBot();
   document.getElementById("bouquet").addEventListener('click', () => {
     questionHandler('bouquet');
   });
@@ -95,7 +100,8 @@ const showFlowerChoice = (message) =>{
 //Function that shows different types of flower arrangements depending on the choice of bouquet/basket/box
 const showTypeOfArrangement = (type) => {
   questionNumber++;
-  showMessage (`Wonderful! I always loved flowes in a ${type}. We have the following options for the ${type}`, 'bot');
+  showMessage (`Wonderful! I always loved flowers in a ${type}. We have the following options for the ${type}`, 'bot');
+  playSoundBot();
   if (type === 'bouquet'){
     theWholeForm.innerHTML = `
       <select id="selector" class="general-selector">
@@ -128,13 +134,14 @@ const showTypeOfArrangement = (type) => {
 //Function shows selection of flowers available
 const showFlowerSelector = (arrangement) => {
   questionNumber++;
+  playSoundBot();
   showMessage (`What flowers would you like in your ${arrangement}? We have the following options`, 'bot');
   theWholeForm.innerHTML = `
     <select id="flower-selector" class="general-selector"> 
       <option value="" selected disabled>&#8681 Choose flowers</option> 
       <option value="roses">&#x1F339 Roses</option>
       <option value="tulips">&#x1F337 Tulips</option>
-      <option value="lilies">&#x1F33ALilies</option>
+      <option value="lilies">&#x1F33A Lilies</option>
       <option value="sunflowers">&#x1F33B Sunflowers</option>
     </select>
     `
@@ -161,6 +168,7 @@ const showFinalConfirmation = (flowers) => {
   showMessage (`Oh, aren't ${flowers} beautiful!!!
                 The price for your ${flowers} will be ${price}. 
                 Do you want to place an order?`, 'bot')
+  playSoundBot();
   theWholeForm.innerHTML = `
     <button class="confirmation-button" id="yes-button" type="button">Yes</button>
     <button class="confirmation-button" id="no-button" type="button" >No</button>
@@ -181,6 +189,7 @@ const thankYou = () => {
     <img class="final-flower" src = "./assets/4bXC.gif"> 
   `; 
   showMessage('Thank you for your order. Have a great day!', 'bot');
+  playSoundBot();
   //added this function - not sure if it's ok?
 }
 
