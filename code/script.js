@@ -56,8 +56,7 @@ const reloadBot = () => {
     </div>
   `
   document.getElementById('reloadBtn').addEventListener('click', () => {
-    location.reload()
-
+    setTimeout(()=>{location.reload();},2000)
   })
 }
 
@@ -106,8 +105,20 @@ const movieTips = (msg) => {
     `
   document.getElementById('yesBtn').addEventListener('click', () => nextQuestion('Yes'))
   document.getElementById('noBtn').addEventListener('click', () => reloadBot())
+  
+  const reloadBot = () => {
+    showMessage('Too bad, let me know if you change your mind!', 'bot')
+    inputWrapper.innerHTML = `
+    <div>
+      <button id="reloadBtn">Restart</button>
+    </div>
+    `
+    document.getElementById('reloadBtn').addEventListener('click', () => { 
+      setTimeout(()=>{location.reload();},2000)
+        console.log(reloadBtn)
+    })
+  }
 }
-
 
 const movieLength = (yes) => {
   questionNumber++
