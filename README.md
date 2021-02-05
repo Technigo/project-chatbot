@@ -22,4 +22,4 @@ Tools: VS code, Live share, Jamboard, Google meets, Slack, Unsplash
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+project4-travelbot.netlify.app
