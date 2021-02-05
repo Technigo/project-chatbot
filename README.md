@@ -1,13 +1,13 @@
-# Project Name
+# Beauty studio chat bot
 
-Replace this readme with your own information about your project.
+This project of a Chat-bot, was made as a Week 4 project for Technigo bootcamp. Made by me and Camilla.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The aim of this project was to create a Chat-bot, work on it in pairs (pair-programming), learn how and where to use variables in JavaScript, different datatypes, use conditionals and functions.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+All the new knowlege about JavaScript that was learnt over week 4 was used for building this chat-bot.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+beauty-studio-chat-bot.netlify.app
