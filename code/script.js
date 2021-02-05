@@ -70,7 +70,7 @@ const askForYes = () => {
   document.getElementById("noButton").addEventListener('click', () => {
     showMessage(`No`, 'user')
     inputWrapper.innerHTML =""
-    setTimeout(() => askForFeeling("No"), 1000)
+    setTimeout(() => thanksBye("No"), 1000)
   })
 }
 
@@ -79,7 +79,7 @@ const askForFeeling = (answer) => {
 
   inputWrapper.innerHTML =`
   <button id="yeahButton">Heck Yeah</button>
-  <button id="notReallyButton">Not really</button> 
+  <button id="notButton">Not really</button> 
 `
 
   if (answer === "Yes"){
@@ -90,19 +90,17 @@ const askForFeeling = (answer) => {
     inputWrapper.innerHTML = ""
     setTimeout(() => askForPepp("Heck Yeah"), 1000)
   })
-  } if(answer === "No" ) {
+  } else //We deleted curlybracket or else it did not work(?)
     showMessage(`That was not the answer i expected`, 'bot')
 
-    document.getElementById("notReallyButton").addEventListener('click', () => {
+    document.getElementById("notButton").addEventListener('click', () => {
       showMessage(`Not really`, 'user')
       inputWrapper.innerHTML = ""
-      setTimeout(() => thanksBye("Not really"), 1000)
+      setTimeout(() => thanksBye(), 1000)
     })
-  }
 }
 
-const thanksBye = (bye) => {
-  showMessage(`So your answer is ${bye}`, 'bot')
+const thanksBye = () => {
   showMessage (`It was lovely to speak with you, bye`, 'bot') //avslutar programmet
   inputWrapper.innerHTML =``
 }
