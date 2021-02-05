@@ -2,6 +2,7 @@
 const chat = document.getElementById('chat');
 let userAnswer = document.getElementById('name-input');
 const nameForm = document.getElementById('name-form');
+const inputWrapper = document.getElementById('input-wrapper');
 
 // Global variables, if you need any, declared here
 let currentQuestion = 0;
@@ -15,6 +16,34 @@ const clearInput = () => {
 
 const increaseCounter = () => {
   currentQuestion = currentQuestion + 1
+}
+
+const yesNoButtons = () => {
+inputWrapper.innerHTML = `
+  <div class="input-wrapper" id="input-wrapper">
+    <form id="name-form">
+      <button class="send-btn" type="submit">
+        YES
+      </button>
+      <button class="send-btn" type="submit">
+        NO
+      </button>
+    </form>
+  </div> 
+`
+}
+
+const number = () => {
+  inputWrapper.innerHTML = `
+    <div class="input-wrapper" id="input-wrapper">
+        <form id="name-form">
+          <input id="name-input" type="number"/>
+          <button class="send-btn" type="submit">
+            Send
+          </button>
+        </form>
+      </div>
+    `
 }
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -56,6 +85,7 @@ nameForm.addEventListener("submit", (event)=> {
   
    // Assign input value to variable
    const value = document.getElementById('name-input').value;
+  //  const inputWrapper = document.getElementById('input-wrapper').value;
      if (currentQuestion === 0) {
      clearInput();
      showMessage(value, 'user');
@@ -74,10 +104,30 @@ nameForm.addEventListener("submit", (event)=> {
    } else if (currentQuestion === 3) {
      clearInput();
      showMessage(value, 'user');
-     showMessage(`${value} sounds delicious, and here's the bill!`, "bot");
+     showMessage(`${value} sounds delicious - can I get you the bill?`, "bot");
+    //  yesNoButtons();
      increaseCounter();
+   } else if (currentQuestion === 4) {
+     clearInput();
+     showMessage(value, 'user');
+     showMessage(`That'll be 800kr`, "bot");
+     showMessage(`If you would like to tip please write the amount!`, "bot");
+     number();
+     increaseCounter();
+   } else if (currentQuestion === 5) {
+     clearInput();
+     showMessage(value, 'user');
+     increaseCounter();
+   } else if (currentQuestion === 6) {
+     if (parseInt(value, 10) < 40) {
+      showMessage(`You're very cheap!`, "bot");
+     } else {
+      showMessage(`Thank you and see you soon!`, "bot");
+     }
    }
   });
+
+
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
@@ -85,3 +135,9 @@ nameForm.addEventListener("submit", (event)=> {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 500);
+
+// Ternary - error messages
+// Delay as if bot is thinking
+// Nested if/else
+// Buttons or similar?
+// Summary?
