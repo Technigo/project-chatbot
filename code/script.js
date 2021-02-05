@@ -18,19 +18,28 @@ const increaseCounter = () => {
   currentQuestion = currentQuestion + 1
 }
 
+const showInput = () => {
+  inputWrapper.innerHTML = `
+    <input id="name-input" type="text"/>
+      <button class="send-btn" type="submit">
+        Send
+      </button> 
+    `
+}
+
 const yesNoButtons = () => {
-inputWrapper.innerHTML = `
-  <div class="input-wrapper" id="input-wrapper">
-    <form id="name-form">
-      <button class="send-btn" type="submit">
-        YES
-      </button>
-      <button class="send-btn" type="submit">
-        NO
-      </button>
-    </form>
-  </div> 
-`
+  inputWrapper.innerHTML = `
+    <div class="input-wrapper" id="input-wrapper">
+      <form id="name-form">
+        <button id="btn-yes" class="send-btn" type="submit">
+          <i class="fas fa-thumbs-up"></i>
+        </button>
+        <button id="btn-no" class="send-btn" type="submit">
+          <i class="fas fa-thumbs-down"></i>
+        </button>
+      </form>
+    </div> 
+    `
 }
 
 const number = () => {
@@ -78,56 +87,52 @@ const greeting = () => {
   showMessage(`Hello there, what's your name?`, 'bot');
 }
 
-
 // Set up your eventlisteners here
 nameForm.addEventListener("submit", (event)=> {
   event.preventDefault();
   
+
    // Assign input value to variable
-   const value = document.getElementById('name-input').value;
+   const input = document.getElementById('name-input').value;
   //  const inputWrapper = document.getElementById('input-wrapper').value;
-     if (currentQuestion === 0) {
-     clearInput();
-     showMessage(value, 'user');
-     showMessage(`Hi ${value}, nice to meet you! I'm Bot and I'll be your waiter today. What do you feel like drinking?`, "bot");
-     increaseCounter();
+    if (currentQuestion === 0) {
+      clearInput();
+      showMessage(input, 'user');
+      showMessage(`Hi ${input}, nice to meet you! I'm Bot and I'll be your waiter today. What do you feel like drinking?`, "bot");
+      increaseCounter();
    } else if (currentQuestion === 1) {
      clearInput();
-     showMessage(value, 'user');
-     showMessage(`Nice! ${value} is a great choice! What do you feel like eating with that?`, "bot");
+     showMessage(input, 'user');
+     showMessage(`Nice! ${input} is a great choice! What do you feel like eating with that?`, "bot");
      increaseCounter();
    } else if (currentQuestion === 2) {
      clearInput();
-     showMessage(value, 'user');
+     showMessage(input, 'user');
      showMessage('Yummy! How about something sweet, what would you like for dessert?', "bot");
      increaseCounter();
    } else if (currentQuestion === 3) {
      clearInput();
-     showMessage(value, 'user');
-     showMessage(`${value} sounds delicious - can I get you the bill?`, "bot");
-    //  yesNoButtons();
+     showMessage(input, 'user');
+     showMessage(`${input} sounds delicious - We are closing soon so I'll bring you the bill`, "bot");
      increaseCounter();
    } else if (currentQuestion === 4) {
      clearInput();
-     showMessage(value, 'user');
+     showMessage(input, 'user');
      showMessage(`That'll be 800kr`, "bot");
      showMessage(`If you would like to tip please write the amount!`, "bot");
-     number();
+    //  number();
      increaseCounter();
    } else if (currentQuestion === 5) {
      clearInput();
-     showMessage(value, 'user');
+     showMessage(input, 'user');
+     yesNoButtons();
+     showMessage(`Thank you, and hope to see you soon! Please take a moment to rate your visit:`, "bot");
      increaseCounter();
-   } else if (currentQuestion === 6) {
-     if (parseInt(value, 10) < 40) {
-      showMessage(`You're very cheap!`, "bot");
-     } else {
-      showMessage(`Thank you and see you soon!`, "bot");
-     }
    }
-  });
+  }
+);
 
-
+ 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
@@ -135,9 +140,3 @@ nameForm.addEventListener("submit", (event)=> {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 500);
-
-// Ternary - error messages
-// Delay as if bot is thinking
-// Nested if/else
-// Buttons or similar?
-// Summary?
