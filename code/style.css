@@ -47,6 +47,16 @@ input {
   flex: 1;
 }
 
+a {
+  color: #2E2E2E;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+ul {
+  list-style-type: none;
+}
+
 main {
   margin: 0 auto;
   width: 100%;
@@ -173,4 +183,5 @@ h3 {
 
 .try-again {
   padding-top: 16px;
+  margin-top: 16px;
 }
