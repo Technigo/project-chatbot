@@ -58,11 +58,11 @@ const handleNameInput = (event) => {
 
 //Question 2 
 const askForYes = () => {
-  setTimeout (showMessage(`My name is Yes-bot. I beleive that there is no such thing as a no-answer. And I am here to see if you beleive the same. Do you agree?`, 'bot'), 1000)
+  setTimeout (showMessage(`Hello! My name is Yes-bot. I beleive that there is no such thing as a no-answer. And I am here to make you beleive the same. Are you up for that?`, 'bot'), 1000)
 
   inputWrapper.innerHTML = `
     <button id="yesButton">Yes</button>
-    <button id="noButton">No</button>
+    <button id="yeahButton">Yeah</button>
   `
   document.getElementById("yesButton").addEventListener('click', () => {
     showMessage(`Yes`, 'user')
@@ -70,38 +70,34 @@ const askForYes = () => {
     setTimeout(() => askForFeeling("Yes"), 2000)
   })
 
-  document.getElementById("noButton").addEventListener('click', () => {
-    showMessage(`No`, 'user')
+  document.getElementById("yeahButton").addEventListener('click', () => {
+    showMessage(`Yeah`, 'user')
     inputWrapper.innerHTML =""
-    setTimeout(() => thanksBye("No"), 2000)
+    setTimeout(() => askForFeeling("Yeah"), 2000)
   })
 }
 
 //Question 3
 const askForFeeling = (answer) => {
-  showMessage(`So your answer is ${answer}`, 'bot')
+  showMessage(`So your answer is ${answer}. Of course, I'm so happy you are up for that. You rock!🤘`, 'bot')
+  showMessage(`Are you feeling happy?`, 'bot')
 
   inputWrapper.innerHTML =`
-    <button id="yeahButton">Heck Yeah 🌺</button>
-    <button id="notButton">Not really</button> 
+    <button id="yasButton">Yas...</button>
+    <button id="ouiButton">Oui</button> 
   `
-
-  if (answer === "Yes"){
-    showMessage(`Thats what i wanted to hear. Do you feel like a winner today?`, 'bot')
-
-    document.getElementById("yeahButton").addEventListener('click', () => {
-      showMessage(`Heck Yeah`, 'user')
+  
+  document.getElementById("yasButton").addEventListener('click', () => {
+      showMessage(`Yas...`, 'user')
       inputWrapper.innerHTML = ""
-      setTimeout(() => askForPepp("Heck Yeah"), 1000)
-  })
-  } else //We deleted curlybracket or else it did not work(?)
-    showMessage(`That was not the answer i expected`, 'bot')
+      setTimeout(() => askForPepp("Yas..."), 1000)
+  })   
 
-    document.getElementById("notButton").addEventListener('click', () => {
-      showMessage(`Not really`, 'user')
-      inputWrapper.innerHTML = ""
-      setTimeout(() => thanksBye(), 1000)
-    })
+  document.getElementById("ouiButton").addEventListener('click', () => {
+     showMessage(`Oui`, 'user')
+     inputWrapper.innerHTML = ""
+     setTimeout(() => askForPepp("Oui"), 1000)
+    }) 
 }
 
 
