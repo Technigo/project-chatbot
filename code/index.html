@@ -1,33 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
+    <title>Dungeon Bot</title>
+    <link rel="icon" href="./assets/favicon.ico" />
+    <link rel="stylesheet" href="./main.css" type="text/css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet" />
-    <title>Chat Bot</title>
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link href="./assets/fonts/stylesheet.css" rel="stylesheet" />
   </head>
 
   <body>
-    <h1>Welcome to xxx.</h1>
-    <h2>Ask about xxxx.</h2>
-    <main>
+    <h1 class="title">Welcome to the Dungeon</h1>
+    <h2 class="subtitle">The adventure begins...</h2>
+    <div class="content-wrapper">
       <section class="chat" id="chat"></section>
 
-      <div class="input-wrapper" id="input-wrapper">
-        <form id="name-form">
-          <input id="name-input" type="text" />
-          <button class="send-btn" type="submit">
-            Send
-          </button>
+      <div class="input-wrapper">
+        <form class="input" id="userInput">
+          <!-- User input types will be loaded here based on game logic -->
         </form>
       </div>
-    </main>
+    </div>
+    <div class="info-wrapper">
+      <!-- Button for background music -->
+      <div class="btn__play fa fa-play-circle-o" id="btnAudio">
+        <audio loop="true">
+          <source src="./assets/musicBkg.mp3" type="audio/mp3" />
+          Your browser does not support playback of audio
+        </audio>
+      </div>
+      <!-- Section that shows relevant info about enemy and hero and rounds -->
+      <section class="info" id="info">
+        <div class="info__enemy" id="enemyInfo">
+          <p>Type: <span id="nameEnemy">--</span></p>
+          <div class="fa fa-heart info__icon">
+            <span id="healthEnemy">0</span>
+          </div>
+        </div>
+        <div class="info__round">
+          <p>Rounds: <span id="rounds">0</span></p>
+        </div>
+        <div class="info__hero">
+          <p>Name: <span id="nameHero">--</span></p>
+          <div class="fa fa-heart info__icon">
+            <span id="healthHero">0</span>
+          </div>
+        </div>
+      </section>
+    </div>
 
-    <script src="./script.js"></script>
+    <script src="./script.js" type="module"></script>
   </body>
-
 </html>

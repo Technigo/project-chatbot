@@ -1,0 +1,10 @@
+/* Load the default main layout of  the webpage */
+@import "./styles/layoutMain.css";
+
+/* Load the default typography styles for the webpage */
+@import "./styles/typography.css";
+
+/* Load styles for all the elements */
+@import "./styles/messages.css";
+@import "./styles/userInput.css";
+@import "./styles/encounterInfo.css";

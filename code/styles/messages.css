@@ -1,0 +1,43 @@
+/* Layout, colors and size for elements in message block */
+
+.message__bot {
+  display: flex;
+  margin: 16px 8px 0 0;
+  flex-shrink: 0;
+}
+
+.message__user {
+  display: flex;
+  justify-content: flex-end;
+  margin: 16px 0 0 8px;
+  flex-shrink: 0;
+}
+
+.message__bot img,
+.message__user img {
+  width: 60px;
+  height: 60px;
+}
+
+.message__text {
+  margin: 0;
+}
+
+.bubble {
+  background: #bdb6a4;
+  padding: 16px 24px;
+  max-width: 40%;
+  box-shadow: 0px 16px 12px -6px rgba(125, 110, 71, 0.69);
+  -webkit-box-shadow: 0px 16px 12px -6px rgba(125, 110, 71, 0.69);
+  -moz-box-shadow: 0px 16px 12px -6px rgba(125, 110, 71, 0.69);
+}
+
+.bubble__bot {
+  border-radius: 0px 26px 26px 26px;
+  margin-left: 8px;
+}
+
+.bubble__user {
+  border-radius: 26px 0 26px 26px;
+  margin-right: 8px;
+}
