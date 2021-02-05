@@ -5,6 +5,7 @@ const inputWrapper = document.getElementById('input-wrapper')
 const input = document.getElementById('user-input')
 let questionNumber = 0;
 let bookingSentence = "";
+let fname= document.getElementById("fname")
 
 
 const nxtQuestion = (response) => {
@@ -80,9 +81,9 @@ const handleResponse = (response) => {
 
 // Bot chat messages
 // .0
-const nights = () => {
+const nights = (fName) => {
   questionNumber = 1;
-  showMessage(`Hi, how many nights do you want to book?`, 'bot');
+  showMessage(`Hi ${fName}, how many nights do you want to book?`, 'bot');
 }
 
 // .1
@@ -294,7 +295,9 @@ const confirmation = (answer) => {
 // if the button has the id "start-btn" (index site) then open the chatbot on submit
 if (document.getElementById("start-btn")) {
   const startForm = document.getElementById("start-form")
+  const id = document.getElementById("fname")
   startForm.addEventListener('submit', (event) => {
+    sessionStorage.setItem("sent", id.value); 
     event.preventDefault()
     window.open("./chatbot.html")
   })
@@ -306,5 +309,5 @@ form.addEventListener('submit', (event) => {
   nxtQuestion(input.value)
 })
 
-// This means the nights function will be called one second after the website is loaded.
-setTimeout(nights, 1500)
+// This means the nights function will be called one second after the website is loaded and stores the name from the index page form
+setTimeout(()=>{nights(sessionStorage.getItem("sent"))}, 1500)
