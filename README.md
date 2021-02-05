@@ -1,19 +1,25 @@
-# Project Name
+# Project Name - Count with Ruth (räkna med Rut)
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Practice parts of JavaScript we've learnt so far by creating a chat bot!
 
 ## The problem
 
-Flow of chat
-1. Hello there, What's your name? (vårt meddelande till användare)
-    2. name (användare skriver in sitt namn, vi lyssnar efter input)
-3. Hi name! Är du redo för ditt första mattetal? Vad är 2 * 10? (återger namn + text i chatbubbla)
-    4. Användares svar (valideras rätt eller fel med hjälp if, else)
-5. Om rätt, gud vad duktig - nästa fråga / om fel, nej det var tyvärr fel prova igen
+The objectives were
+- Be comfortable using variables
+- Know some string methods to modify strings
+- Understand control flow and the use of conditionals statements
+- Be able to write basic functions which take arguments and return values
+- Connect the JavaScript to show visual feedback in the HTML
+
+Our approach
+We sourced a lot of information from code alongs, prerecorded materails, live bot example and perhaps most important, our team. Generally we all had our different struggles and ambitions with the project but I think only a scarce few of us would have made it through the week without the support and assistance of eachother.
+
+Our main obstacle was to set an conditional statement that allowed us to move from a-b considering the users input. We had a bisic idea/understanding but our initial approch tried to mix too much of the above named sources and only after some time and a team session were we able to put toghether a functional bot.
+
+We made minor changes to css in order to allow more space for content in each bubble since our convo was rather lenghty from bots part - it looked nicer in our opinion.
 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://rakna-med-rut.netlify.app/
+
