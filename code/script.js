@@ -39,12 +39,14 @@ const showMessage = (message, sender) => {
 
 
 // Starts here
+// Question 1
 function greeting() {
-  questionNumber = 1
   showMessage(`Hi! What is your name?`, 'bot')
+  
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+// Handle Name
 const handleNameInput = (event) => {
   event.preventDefault()
   const nameUser = nameInput.value //sparar namnet
@@ -54,8 +56,9 @@ const handleNameInput = (event) => {
   setTimeout(() => askForYes(nameUser), 2500)
 }
 
+//Question 2 
 const askForYes = () => {
-  showMessage(`My name is Yes-bot. I beleive that there is no such thing as a no-answer. And I am here to see if you beleive the same. Do you agree?`, 'bot')
+  setTimeout (showMessage(`My name is Yes-bot. I beleive that there is no such thing as a no-answer. And I am here to see if you beleive the same. Do you agree?`, 'bot'), 1000)
 
   inputWrapper.innerHTML = `
     <button id="yesButton">Yes</button>
@@ -64,16 +67,17 @@ const askForYes = () => {
   document.getElementById("yesButton").addEventListener('click', () => {
     showMessage(`Yes`, 'user')
     inputWrapper.innerHTML = ""
-    setTimeout(() => askForFeeling("Yes"), 1000)
+    setTimeout(() => askForFeeling("Yes"), 2000)
   })
 
   document.getElementById("noButton").addEventListener('click', () => {
     showMessage(`No`, 'user')
     inputWrapper.innerHTML =""
-    setTimeout(() => thanksBye("No"), 1000)
+    setTimeout(() => thanksBye("No"), 2000)
   })
 }
 
+//Question 3
 const askForFeeling = (answer) => {
   showMessage(`So your answer is ${answer}`, 'bot')
 
@@ -100,9 +104,19 @@ const askForFeeling = (answer) => {
     })
 }
 
+
+//Last thing the user see.
 const thanksBye = () => {
-  showMessage (`It was lovely to speak with you, bye`, 'bot') //avslutar programmet
-  inputWrapper.innerHTML =``
+  showMessage(`Its shame that you dont want to talk 😔... `, 'bot')
+  showMessage (`If you feel like talking again, press the restart button`, 'bot') //avslutar programmet
+  inputWrapper.innerHTML =`
+  <button id="restartButton">Actually i feel like talking again!</button>
+  `
+
+  document.getElementById("restartButton").addEventListener('click', () => {
+    location.reload()
+  })
+  
 }
 
 // Set up your eventlisteners here
