@@ -1,13 +1,14 @@
-# Project Name
+Chatbot project
 
-Replace this readme with your own information about your project.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The goal was to make a chatbot with a partner, in the pair-programming modality.
 
-## The problem
+the problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We struggled with the logical order of the function and the implementation of the schema that we had planned. our strategy was to stick to the code that we could understand and not try more advanced things that we didn't know how to make work. If we had more time, we would add more options using conditionals, try to fix the responses timing and the overall styling.
 
-## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+##View it live
+
+annak-estefania-project-chatbot.netlify.app
+
