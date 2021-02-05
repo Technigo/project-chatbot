@@ -78,17 +78,17 @@ const askForFeeling = (answer) => {
   showMessage(`So your answer is ${answer}`, 'bot')
 
   inputWrapper.innerHTML =`
-  <button id="yeahButton">Heck Yeah</button>
-  <button id="notButton">Not really</button> 
-`
+    <button id="yeahButton">Heck Yeah 🌺</button>
+    <button id="notButton">Not really</button> 
+  `
 
   if (answer === "Yes"){
-  showMessage(`Thats what i wanted to hear. Do you feel like a winner today?`, 'bot')
+    showMessage(`Thats what i wanted to hear. Do you feel like a winner today?`, 'bot')
 
-  document.getElementById("yeahButton").addEventListener('click', () => {
-    showMessage(`Heck Yeah`, 'user')
-    inputWrapper.innerHTML = ""
-    setTimeout(() => askForPepp("Heck Yeah"), 1000)
+    document.getElementById("yeahButton").addEventListener('click', () => {
+      showMessage(`Heck Yeah`, 'user')
+      inputWrapper.innerHTML = ""
+      setTimeout(() => askForPepp("Heck Yeah"), 1000)
   })
   } else //We deleted curlybracket or else it did not work(?)
     showMessage(`That was not the answer i expected`, 'bot')
@@ -105,10 +105,7 @@ const thanksBye = () => {
   inputWrapper.innerHTML =``
 }
 
-
-
 // Set up your eventlisteners here
-
 nameForm.addEventListener('submit', handleNameInput)
 
 
