@@ -36,10 +36,9 @@ const updateInfo = () => {
   heroHealth.innerHTML = encounter.hero.hp < 0 ? 0 : encounter.hero.hp;
   enemyHealth.innerHTML = encounter.enemy.hp < 0 ? 0 : encounter.enemy.hp;
 };
-// Update buffs info
+// Update buffs info for enemy
 const updateBuffs = () => {
   const enemyInfo = info.querySelector("#enemyInfo");
-  //check if enemy has buffs
   _.addBuffs(enemyInfo, encounter.enemy.buffs);
   _.removeBuffs(enemyInfo, encounter.buffsRemove);
 };
@@ -88,7 +87,8 @@ const botMessage = (message) => {
   }, 1000);
 };
 
-/** CONTROL FLOW */
+/** GAME SETUP FLOW */
+// Bot message 1 (triggers: user input name)
 const greeting = () => {
   botMessage(`Hello adventurer! Welcome to the dungeon…`);
   setTimeout(() => {
@@ -98,25 +98,14 @@ const greeting = () => {
     }, 2500);
   }, 2500);
 };
+// Bot message 1 (variation, triggers: bot message 2) - shows only if user replays
 const greetingAgain = () => {
   botMessage(`Welcome back ${_name}`);
   setTimeout(() => {
     askExperience();
   }, 2500);
 };
-
-const handleNameInput = (event) => {
-  const name = event.target.children.namedItem("inputName").value;
-  // Show the name as user message
-  userMessage(name, _tokenDefault);
-  // store the name
-  _name = name;
-  //trigger askExperience
-  setTimeout(() => {
-    askExperience();
-  }, 1000);
-};
-
+// Bot message 2 (triggers: user input bool select)
 const askExperience = () => {
   botMessage("Alright...");
   setTimeout(() => {
@@ -130,35 +119,7 @@ const askExperience = () => {
     }, 2500);
   }, 2500);
 };
-
-const handleBoolInput = (event) => {
-  const inputVal = event.value === "true";
-  if (endState) {
-    if (inputVal) {
-      //clear chat
-      chat.innerHTML = "";
-      endState = false;
-      // new greeting
-      setTimeout(() => {
-        greetingAgain();
-      }, 1000);
-    } else {
-      botMessage("Okay... Your loss");
-      changeInput();
-    }
-    return;
-  }
-  const response = inputVal ? "Take it easy on me" : "I like a challenge";
-  // show answer as a response
-  userMessage(response, encounter !== undefined ? encounter.hero.token : _tokenDefault);
-  // store as encounter isEasy
-  _difficulty = inputVal;
-  // trigger ask class
-  setTimeout(() => {
-    askClass();
-  }, 1000);
-};
-
+// Bot message 3 (triggers: user input class select)
 const askClass = () => {
   botMessage("Great! I will adapt the experience based on that.");
   setTimeout(() => {
@@ -172,19 +133,7 @@ const askClass = () => {
     }, 2500);
   }, 2500);
 };
-
-const handleClassSelectInput = (event) => {
-  const type = event.value;
-  // show user response
-  userMessage(`I am a ${type}`, encounter !== undefined ? encounter.hero.token : _tokenDefault);
-  // store class
-  _type = type;
-  // start encounter
-  setTimeout(() => {
-    encRoundStart();
-  }, 1000);
-};
-
+// Bot message 4 (triggers: user input action select; i.e. the main game loop)
 const encRoundStart = () => {
   // instantiate Encounter
   encounter = new Encounter(_name, _type, _difficulty);
@@ -209,7 +158,6 @@ const encRoundStart = () => {
       }
       setTimeout(() => {
         botMessage("What do you want to do?");
-        // show hero actions
         setTimeout(() => {
           changeInput("actionSelect");
         }, 2000);
@@ -217,7 +165,8 @@ const encRoundStart = () => {
     }, 4000);
   }, 3000);
 };
-
+// Bot message 5 (is called when a combatant is dead)
+// (triggers: user input bool select)
 const runEndGame = (winner) => {
   if (winner === "hero") {
     botMessage(`You defeated the ${encounter.enemy.type}! Would you like to play again?`);
@@ -238,8 +187,61 @@ const runEndGame = (winner) => {
   }
 };
 
+//** User Input Handlers */
+// Dynamic handler for bool select; based on endState
+// (triggers: game restart || game quit || bot message 3)
+const handleBoolInput = (event) => {
+  const inputVal = event.value === "true";
+  if (endState) {
+    if (inputVal) {
+      //clear chat
+      chat.innerHTML = "";
+      endState = false;
+      // new greeting (restart game)
+      setTimeout(() => {
+        greetingAgain();
+      }, 1000);
+    } else {
+      botMessage("Okay... Your loss");
+      // show no input (i.e. end of game)
+      changeInput();
+    }
+    return;
+  }
+  // Game is not in an end state (i.e. we handle difficulty selection)
+  const response = inputVal ? "Take it easy on me" : "I like a challenge";
+  userMessage(response, encounter !== undefined ? encounter.hero.token : _tokenDefault);
+  _difficulty = inputVal;
+  setTimeout(() => {
+    askClass();
+  }, 1000);
+};
+
+// Displays user name input
+// (triggers: Bot message 2)
+const handleNameInput = (event) => {
+  const name = event.target.children.namedItem("inputName").value;
+  userMessage(name, _tokenDefault);
+  _name = name;
+  setTimeout(() => {
+    askExperience();
+  }, 1000);
+};
+
+// Displays user selection of class
+// (triggers: bot message 4; i.e. encounter start)
+const handleClassSelectInput = (event) => {
+  const type = event.value;
+  userMessage(`I am a ${type}`, encounter !== undefined ? encounter.hero.token : _tokenDefault);
+  _type = type;
+  setTimeout(() => {
+    encRoundStart();
+  }, 1000);
+};
+
+/** GAME LOOP HANDLER */
 // This function handles action select by user.
-// It triggers the gameloop:
+// (triggers: gameloop)
 // (hero action->enemy action->hero action->etc....)
 // until an end state is reached
 const handleActionSelectInput = (action) => {
@@ -282,7 +284,8 @@ const handleActionSelectInput = (action) => {
 
 /** EVENT LISTENERS */
 
-// Listens for any submit events in the user input form. Then triggers a handler funct for that input type (based on the currentinput variable)
+// Listens for any submit events in the user input form.
+// (triggers: handler funct for that input type (based on the currentinput variable))
 userInput.addEventListener("submit", (event) => {
   event.preventDefault();
   switch (currentInput) {
@@ -305,6 +308,7 @@ userInput.addEventListener("submit", (event) => {
   changeInput();
 });
 
+// The play and pause audio button handler.
 btnAudio.addEventListener("click", (event) => {
   const element = event.target;
   if (element.classList.contains("fa-play-circle-o")) {

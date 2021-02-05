@@ -4,8 +4,6 @@
 /* Load the default typography styles for the webpage */
 @import "./styles/typography.css";
 
-/* Device specific styling */
-
 /* Load styles for all the elements */
 @import "./styles/messages.css";
 @import "./styles/userInput.css";

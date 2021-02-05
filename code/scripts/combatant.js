@@ -1,4 +1,4 @@
-import { d20, d8, d6, d10, d4 } from "./randomFunctions.js";
+import { d20, d10, d4 } from "./randomFunctions.js";
 import * as _ from "./helperFunctions.js";
 
 export default class Combatant {
@@ -15,6 +15,8 @@ export default class Combatant {
     return [hit1, hit2];
   }
 
+  // function to calculate a single attack to hit value
+  // also check if combatant has any specific buffs taht affect the results
   attackSingle() {
     let hit = d20() + this.attackMod;
     if (this.checkDisadvantage()) {
@@ -28,11 +30,13 @@ export default class Combatant {
     return hit;
   }
 
+  // function to trigegr a auto hit attack
   attackAutoHit(action) {
     _.handleUsePool(action);
     return 25;
   }
 
+  // function to add a buff object to the combatant
   addBuff(type, length, title) {
     return {
       type: type,
@@ -42,6 +46,7 @@ export default class Combatant {
     };
   }
 
+  // function to check if the combatant has any active buffs
   checkDisadvantage() {
     const disBuff = this.buffs.filter((buff) => {
       return buff.type === "disadvantage";
@@ -58,6 +63,7 @@ export default class Combatant {
     if (this.hp > this.maxHp) {
       this.hp = this.maxHp;
     }
+    // This is a limited action so we call the handle function for that
     _.handleUsePool(action);
     return toHeal;
   };

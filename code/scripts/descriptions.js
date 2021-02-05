@@ -1,3 +1,5 @@
+// Collection of descriptions used for bot messages
+
 export const locationDescription = {
   forest:
     "You enter a forest. The ancient trees are massive and a deep fog engulfs the path ahead.",

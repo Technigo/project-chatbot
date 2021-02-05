@@ -1,5 +1,5 @@
 import Combatant from "./combatant.js";
-import { d20, d8, d6, d4, d10 } from "./randomFunctions.js";
+import { d20, d8, d4, d10 } from "./randomFunctions.js";
 
 export class Fighter extends Combatant {
   constructor(name, isEasy) {

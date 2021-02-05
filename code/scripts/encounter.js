@@ -69,12 +69,11 @@ export default class Encounter {
     }
   }
 
-  /** GAME LOGIC FUNCTIONS (called by main app file) */
+  /** GAME LOGIC FUNCTIONS (called by main script file) */
 
   // Increase round and check any buffs
   newRound() {
     this.rounds++;
-    // _.checkBuffs(this.hero, this.buffsRemove.hero);
     _.checkBuffs(this.enemy, this.buffsRemove);
   }
 
@@ -84,7 +83,7 @@ export default class Encounter {
     const hero = this.hero;
     const enemy = this.enemy;
     let toHit;
-    let msg; // bot message to be returned
+    let msg;
 
     // retrieve the correct action from hero so we have access to its info/functions
     let _action = hero.actions.find((obj) => {
@@ -93,27 +92,26 @@ export default class Encounter {
 
     // Executes the selected action on the hero
     switch (action) {
-      //
       case "doubleAttack":
         toHit = hero.attackDouble();
         msg = _.runDoubleAttack(this, toHit, _action);
         break;
-      //
+
       case "singleAttack":
         toHit = hero.attackSingle();
         msg = _.runSingleAttack(this, "hero", toHit, _action);
         break;
-      //
+
       case "autoAttack":
         toHit = hero.attackAutoHit(_action);
         msg = _.runSingleAttack(this, "hero", toHit, _action);
         break;
-      //
+
       case "shield":
         enemy.buffs.push(enemy.addBuff("disadvantage", _action.buffLength, "Disadvantage"));
         msg = `The ${enemy.type} has disadvantage on its next attack.`;
         break;
-      //
+
       case "dodge":
         let toSucceed = this.isEasy ? 10 : 15;
         if (_action.rollDexSave() >= toSucceed) {
@@ -123,7 +121,7 @@ export default class Encounter {
           msg = `You fumble a bit and fail your dodge.`;
         }
         break;
-      //
+
       case "heal":
         msg = `You heal ${_action.rollHeal(_action)}`;
         break;
@@ -140,7 +138,8 @@ export default class Encounter {
   // returns a bot message
   execEnemyAction() {
     const enemy = this.enemy;
-    let msg = []; // the enemy attack will have two bot messages
+    // the enemy attack will have two bot messages
+    let msg = [];
     // get a random attack action from the enemy
     const action = enemy.actions[random(enemy.actions.length)];
     // Calls the appropriate action on the enemy
@@ -156,7 +155,6 @@ export default class Encounter {
   }
 
   // Function to check if someone is dead
-  // returns true if someone is dead
   checkEnd() {
     if (this.enemy.hp <= 0) {
       return true;

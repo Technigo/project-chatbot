@@ -4,7 +4,7 @@ import { enemyDescription as description } from "./descriptions.js";
 
 export class Ogre extends Combatant {
   constructor() {
-    super("", 13, false); // type, ac, isHero
+    super("", 13, false);
     this.type = "Ogre";
     this.description = description.ogre;
     this.hp = 59;
@@ -31,7 +31,7 @@ export class Ogre extends Combatant {
 
 export class Owlbear extends Combatant {
   constructor() {
-    super("", 13, false); // type, ac, isHero
+    super("", 13, false);
     this.type = "Owlbear";
     this.description = description.owlbear;
     this.hp = 59;
@@ -58,7 +58,7 @@ export class Owlbear extends Combatant {
 
 export class SaberToothTiger extends Combatant {
   constructor() {
-    super("", 12, false); // type, ac, isHero
+    super("", 12, false);
     this.type = "Saber Tooth Tiger";
     this.description = description.sabertiger;
     this.hp = 52;
@@ -85,7 +85,7 @@ export class SaberToothTiger extends Combatant {
 
 export class Ettin extends Combatant {
   constructor() {
-    super("", 12, false); // type, ac, isHero
+    super("", 12, false);
     this.type = "Ettin";
     this.description = description.ettin;
     this.hp = 85;
@@ -109,7 +109,7 @@ export class Ettin extends Combatant {
 
 export class Ghast extends Combatant {
   constructor() {
-    super("", 13, false); // type, ac, isHero
+    super("", 13, false);
     this.type = "Ghast";
     this.description = description.ghast;
     this.hp = 36;
@@ -136,7 +136,7 @@ export class Ghast extends Combatant {
 
 export class Wight extends Combatant {
   constructor() {
-    super("", 14, false); // type, ac, isHero
+    super("", 14, false);
     this.type = "Wight";
     this.description = description.wight;
     this.hp = 45;
@@ -170,7 +170,7 @@ export class Wight extends Combatant {
 
 export class Bandit extends Combatant {
   constructor() {
-    super("", 15, false); // type, ac, isHero
+    super("", 15, false);
     this.type = "Bandit";
     this.description = description.bandit;
     this.hp = 65;
@@ -197,7 +197,7 @@ export class Bandit extends Combatant {
 
 export class Mummy extends Combatant {
   constructor() {
-    super("", 11, false); // type, ac, isHero
+    super("", 11, false);
     this.type = "Mummy";
     this.description = description.mummy;
     this.hp = 58;

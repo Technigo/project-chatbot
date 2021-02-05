@@ -1,3 +1,5 @@
+// Collection of html elements variables (templates)
+
 export const name = `
   <input class="input__text" id="inputName" type="text" />
   <button class="input__button" type="submit">Send</button>
@@ -7,16 +9,19 @@ export const boolSelect = `
   <button class="input__button" type="submit" value="false">No</button>
 `;
 
+// Function to dynamically generate a user message
 export const userMessage = (msg, token) => {
   return `
   <section class="message__user">
   <div class="bubble bubble__user">
-    <p class="message__text">${msg}</p>
+  <p class="message__text">${msg}</p>
   </div>
   <img src="assets/${token}.png" alt="User" />  
   </section>
-`;
+  `;
 };
+
+// Function to dynamically generate a bot message
 export const botMessage = (count) => {
   return `
     <section class="message__bot">
