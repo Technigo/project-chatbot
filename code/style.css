@@ -55,6 +55,7 @@ input {
   font-weight: 600;
   line-height: 26px;
   flex: 1;
+
 }
 
 main {
@@ -115,7 +116,7 @@ main {
   line-height: 26px;
   padding: 16px 24px;
   color:#0a7e85;
-  max-width: 40%;
+  max-width: 60%;
 }
 
 .bot-bubble {

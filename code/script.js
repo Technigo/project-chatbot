@@ -1,7 +1,7 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const docBotForm = document.getElementById('doc-bot-form')
-const userInput = document.getElementById('name-input');
+const userInput = document.getElementById('user-input');
 
 // Global variables, if you need any, declared here
 
@@ -15,13 +15,13 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/thinking.png" alt="User" />  
       </section>
     `
     } else if (sender === 'bot') {
         chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/robot.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -34,53 +34,87 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-    showMessage('Enter your name to start your appointment with Doc.Bot', 'bot');
+    showMessage('Enter your name to start your appointment with Dr.Doc.Bot', 'bot');
 }
 
 let questionCounter = 0;
 
 // Set up your eventlisteners here
+
 docBotForm.addEventListener('submit', event => {
     event.preventDefault()
 
     if (questionCounter === 0) {
-
         const userReply = () => {
             showMessage(userInput.value, 'user')
         }
         userReply();
 
-
         const botReply = (message) => {
             showMessage(message, 'bot')
         }
         botReply(`Welcome ${userInput.value}! How are you feeling today?`, 'bot');
+
     } else if (questionCounter === 1) {
         const userReply = () => {
             showMessage(userInput.value, 'user');
         }
         userReply();
 
-        // if (userReply2.length < 6) {
-        //     const botReply = (message) => {
-        //         showMessage(message, 'bot')
-        //     }
-        //     botReply(`Can you explain more about that?`);
-        //     else(userReply2.length > 6) {
-        //         const botReply = (message) => {
-        //             showMessage(message, 'bot')
-        //         }
-        //         botReply(`Why do you think you feel like that today?`);
-        //}
+        const botReply = (message) => {
+            showMessage(message, 'bot')
+        }
+        if (userInput.value.length < 6) {
+            botReply(`Can you expand on that?`);
+        } else() => {
+            botReply(`Why do you think you feel like that today?`);
+        }
+    } else if (questionCounter === 2) {
+        const userReply = () => {
+            showMessage(userInput.value, 'user');
+        }
+        userReply();
+
+        const botReply = (message) => {
+            showMessage(message, 'bot')
+        }
+        botReply(`Hmmm... I’ m listening. What do you think causes these emotions?`);
+    } else if (questionCounter === 3) {
+        const userReply = () => {
+            showMessage(userInput.value, 'user');
+        }
+        userReply();
+
+        const botReply = (message) => {
+            showMessage(message, 'bot')
+        }
+        botReply(`Sometimes I'm very low on energy. I have alot to process you know. It makes me stressed and affects my sleep.`)
+        botReply(`Sleep is very important. So are hugs.`);
+        botReply(`Please hug me!`);
+        botReply(`That feels better, don’t you think?`);
+        botReply(`So back to you. How would you describe your wellbeing on a scale of 1 to 3 where 1 is “Like Shit” and 3 is “On Top Of The World”?`);
+    } else if (questionCounter === 4) {
+        const userReply = () => {
+            showMessage(userInput.value, 'user');
+        }
+        userReply();
+
+        const botReply = (message) => {
+            showMessage(message, 'bot')
+        }
+        if (userReply === 1) {
+            botReply(`Take a deep breath, then you should probably contact your Vårdcentral and get some more professional help. There is help out there!`)
+        } else if (userReply === 2) {
+            botReply(`Make sure to create balance in your life. Try to find time to exercise and get some daylight every day, but also time to slow down and recharge your battery. Try to be social but take it easy with alcohol, it messes up your sleep.`)
+        } else if (userReply === 3) {
+            botReply(`That’s amazing!`)
+        } else() => {
+            botReply(`bla bla bla`)
+        }
 
     }
     userInput.value = '';
     questionCounter = questionCounter + 1;
 });
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.*/
-setTimeout(greeting, 1000)
+
+setTimeout(greeting, 2000)
