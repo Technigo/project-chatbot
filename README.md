@@ -15,5 +15,5 @@ We're very proud of the end result! We had a concept in mind - a sunny mediterra
 
 ## View it live
 
-To view the site we've created, check it here:
+To view the site we've created, check it here: https://modest-brown-fa7f80.netlify.app/
 
