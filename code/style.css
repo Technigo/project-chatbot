@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-body {
+.body {
   margin: 0;
   padding: 0;
   background: #f3cbe7;
@@ -12,21 +12,21 @@ body {
   background: #fcedf7;
 }
 
-h1 {
+.h1 {
   font-weight: bold;
   font-size: 70px;
   line-height: 34px;
   font-family: 'Tangerine', cursive;
-  color: rgb(250, 250, 231);
+  color: #fafae7;
   text-shadow: 2px 2px #504e4e;
   text-align: center;
 }
 
-h2 {
+.h2 {
   font-weight: 300;
   font-size: 20px;
   line-height: 26px;
-  color: rgb(250, 250, 231);
+  color: #fafae7;
   font-family: 'Lato', sans-serif;
   text-align: center;
   margin-bottom: 36px;
@@ -53,7 +53,7 @@ input {
   flex: 1;
 }
 
-main {
+.main {
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
@@ -102,10 +102,9 @@ main {
   line-height: 26px;
   padding: 16px 24px;
   font-family: 'Lato', sans-serif;
-  color:  #504e4e;
+  color: #504e4e;
   max-width: 40%;
 }
-
 
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
@@ -125,6 +124,7 @@ main {
 .input-wrapper form {
   width: 100%;
   display: flex;
+  font-family: 'Lato', sans-serif;
 }
 
 button {
@@ -134,10 +134,10 @@ button {
   border-radius: 4px;
   padding: 16px 40px;
   margin-right: 4px;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 26px;
-  font-family: 'Montserrat';
-  font-weight: 500;
+  font-family: 'Lato', sans-serif;
+  font-weight: 550;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -147,37 +147,58 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-#select {
+.select {
   background-color: #f3b8df;
   color: white;
   border: none;
   border-radius: 4px;
   padding: 16px 40px;
-  
+
   font-size: 18px;
   line-height: 26px;
-  font-family: 'Montserrat';
-  font-weight: 500;
+  font-family: 'Lato', sans-serif;
+  font-weight: 550;
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
+/* TABLET */
+@media screen and (max-width: 1024px) {
+
+  .body {
+    overflow: hidden;
+  }
+
+  .main {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+  }
+}
+
 /* MOBILE */
 @media screen and (max-width: 767px) {
 
-  body {
+  .body {
     height: 100%;
-    width: auto;
+    width: 100%;
     object-fit: cover;
-    position: absolute;
+    overflow: hidden;
   }
-  
-  h1 {
+
+  .main {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+
+  .h1 {
     font-size: 60px;
     line-height: normal;
     margin: 15px 5px;
   }
 
-  h2{
+  .h2 {
     font-size: 18px;
     margin: 10px 0px;
   }
