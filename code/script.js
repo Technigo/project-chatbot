@@ -124,47 +124,65 @@ const moodOptions = () => {
       }   
    })
 
-   //trying to add the choice to listen to now/later in response to former question
-
-  /*document.getElementById("forme").addEventListener("click", () => {
-      showMessage("So, this song is for you.Do you want to listen to it now or later?", "bot")
-      inpt = () => {
-        inputWrapper.innerHTML = `
-          <button id="now">NOW</button>
-          <button id="later">LATER</button>
-        `
-      }
-  })
-
-  document.getElementById("forafriend").addEventListener("click", () => { 
-      showMessage("So, this song is for a friend. Do you want to listen to it now or later?", "bot")
-      inpt = () => {
-        inputWrapper.innerHTML = `
-          <button id="now">NOW</button>
-          <button id="later">LATER</button>
-        `
-      }
-  })*/
-
   setTimeout(() => {
     inpt();
   }, 2000)
   
 }
 
-
-
-
 //Question 3
+const greatChoice = () => {
+  showMessage(`Great choice! I love that song ❤ Do you want to play it now or later`, 'bot')
+  setTimeout(() => greatChoice(value, 'bot'), 2000)
+  inputWrapper.innerHTML = `
+  <button id="now">NOW</button>
+  <button id="later">LATER</button>
+  `
+   document.getElementById("now").addEventListener("click", () => {
+        showMessage("Ok, let's listen to it right away! Enjoy your song! Goodbye!", "bot")
+        inpt = () => {
+        }
+    })
+  
+    document.getElementById("later").addEventListener("click", () => { 
+        showMessage("Later it is! Enjoy your song! Goodbye!", "bot")
+        inpt = () => {
+          const select = document.getElementById("select");
+          select.addEventListener("change", () =>
+          greatChoice(select.value))
+        }
+    })
+      setTimeout(() => {
+      inpt();
+    }, 2000)
+  }
+   
+/*//Question 3
 const greatChoice = () => {
 showMessage(`Great choice! I love that song ❤ Do you want to play it now or later?`, 'bot')
 setTimeout(() => greatChoice(value, 'bot'), 2000)
   inputWrapper.innerHTML = `
-    <button id="forme">NOW</button>
-    <button id="forafriend">LATER</button>
+    <button id="now">NOW</button>
+    <button id="later">LATER</button>
 `
+
+
 }
 
+//adding a new function in case it works
+const whenToplaySong = () => {
+  inputWrapper.innerHTML = `
+  <button id="now">NOW</button>
+  <button id="later">LATER</button>
+`
+  document.getElementById("now");
+  showMessage("Ok, let's listen to it right away! Enjoy your song! Goodbye!", "bot")
+
+  document.getElementById("later");
+  showMessage("Later it is! Enjoy your song! Goodbye!", "bot")
+  } 
+
+*/
 
 // Set up your eventlisteners here
 form.addEventListener('submit', (event) => {
@@ -191,6 +209,11 @@ form.addEventListener('change', (event) => {
   setTimeout (() => greatChoice(value, 'bot'), 1000)
 });
 
+form.addEventListener('change', (event) => {
+  event.preventDefault();
+  showMessage(value, 'bot')
+  setTimeout (() => whenToplaySong(value, 'bot'), 1000)
+});
 
 
 // When website loaded, chatbot asks first question.
