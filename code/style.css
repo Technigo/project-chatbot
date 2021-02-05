@@ -96,8 +96,9 @@ main {
   line-height: 26px;
   padding: 16px 24px;
   color: #0026ff;
-  
 }
+
+/* In order to give more space to the massage replys we moved the bubbles max-width to bot and user bubble */
 
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;

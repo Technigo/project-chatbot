@@ -10,10 +10,6 @@ let step = 1;
 // Functions declared here
 
 
-
-
-
-
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
@@ -41,12 +37,10 @@ const showMessage = (message, sender) => {
 }
 
 
-
 // Starts here
 const greeting = () => {
 showMessage(`Hej jag heter Rut och är en räknerobot, vad heter du?`, 'bot')
 }
-
 
 
 // Set up your eventlisteners here
@@ -55,16 +49,17 @@ form.addEventListener('submit', (event) => {
   // Prevent default form behaviour after submit - refreshing page
   event.preventDefault();
 
+
   // Assign input value to variable
   const userInput = inputValue.value
-  
   showMessage(userInput, "user");
 
+  // Q&A with validation of user interaction
+
   if (step === 1) {
-      // Reuse validateResponse() function with value from input AND correct answer (4)
-    
-      if (userInput === '') {
-         showMessage("Ursäkta jag uppfattade inte ditt namn kan du skriva det igen", "bot");
+
+      if (userInput === '') {         
+          showMessage("Ursäkta jag uppfattade inte ditt namn kan du skriva det igen", "bot");
       } else {
           showMessage(`Hej ${userInput}! Vi börjar med 2:ans tabell, vet du vad 2 x 1 är?`, "bot");
           step = 2;
@@ -97,51 +92,49 @@ form.addEventListener('submit', (event) => {
           step = 6
       } else {
           showMessage(`Det var tyvärr fel, testa igen`, "bot");
-  }
+      }
   } else if (step === 6) {
       if (Number(userInput) === 16) {
           showMessage(`Korrekt! Vad är 2 x 3?`, "bot");
           step = 7
       } else {
           showMessage(`Åh nej det var fel, prova igen`, "bot");
-  }
+      }
   } else if (step === 7) {
       if (Number(userInput) === 6) {
           showMessage(`Korrekt! kan du den här då? 2 x 7?`, "bot");
           step = 8
       } else {
           showMessage(`åh nej det var fel, testa igen`, "bot");
-  } 
+      } 
   } else if (step === 8) {
       if (Number(userInput) === 14) {
           showMessage(`Hurra, rätt svar! Vad är? 2 x 5?`, "bot");
           step = 9
       } else {
           showMessage(`Det var tyvärr fel, testa igen`, "bot");
-  }
+      }
   } else if (step === 9) {
       if (Number(userInput) === 10) {
           showMessage(`Helt rätt! Vad är 2 x 9?`, "bot");
           step = 10
       } else {
           showMessage(`Det var tyvärr fel, testa igen`, "bot");
-  }
+      }
   } else if (step === 10) {
       if (Number(userInput) === 18) {
           showMessage(`Korrekt! Kan du den här då? 2 x 10?`, "bot");
           step = 11
       } else {
           showMessage(`Åh nej det var fel, testa igen`, "bot");
-}
+      }
   } else if (step === 11) {
       if (Number(userInput) === 20) {
         showMessage(`Hipp hipp hurra va du va bra! Du klarade allt! För att köra igen behöver du ladda om sidan 👋🏼`, "bot");
         form.innerHTML = "";
       } else {
         showMessage(`Det var tyvärr fel, prova igen`, "bot");
-}
-
-      
+      }  
   }
 });
 
