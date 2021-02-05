@@ -2,7 +2,8 @@
 const chat = document.getElementById('chat');
 const nameInput = document.getElementById('name-input');
 const sendButton = document.querySelector('.send-btn');
-const inputWrapper = document.getElementById('input-wrapper')
+const inputWrapper = document.getElementById('input-wrapper');
+const form = document.getElementById('name-form');
 
 
 // Global variables, if you need any, declared here
@@ -36,6 +37,9 @@ const showMessage = (message, sender) => {
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
+
+
+
 
 // Question 1
 const greeting = () => {
@@ -85,9 +89,16 @@ const appointment = () => {
         return inputWrapper;
   }
   
-
-
-
+  const textInput = () => {
+    inputWrapper.innerHTML = `
+    <form id="name-form">
+    <input id="name-input" type="text"/>
+    <button class="send-btn" type="submit">
+            Send
+    </button>
+    </form>
+    `;
+  }
 
 const showCoachAreas = (name) => {
   showMessage(`Hi ${name}, which area of your life do you want to focus on?`, 'bot');
@@ -98,6 +109,9 @@ const showCoachAreas = (name) => {
   <button id="healthBtn">Health</button>
   ` ;
   
+
+
+
   document.getElementById('workBtn').addEventListener('click', () => {
           
             showMessage('Work', 'user');
@@ -109,8 +123,10 @@ const showCoachAreas = (name) => {
           const select = document.getElementById('select');
           select.addEventListener('change', () => {
           showMessage(`${select.value}`, 'user')
-          showMessage('Excellent, the cost per appointment is 800 sek. Please, enter the address you want your invoice to be sent to.', 'bot')
-          select.remove();
+          showMessage('Excellent, the cost per appointment is 800 sek.', 'bot')
+          showMessage('Please, enter the address you want your invoice to be sent to.', 'bot')
+          textInput();
+      
           }); 
 
             
@@ -127,14 +143,13 @@ const showCoachAreas = (name) => {
           const select = document.getElementById('select');
           select.addEventListener('change', () => {
           showMessage(`${select.value}`, 'user')
-          showMessage('Excellent, the cost per appointment is 800 sek. Please, enter the address you want your invoice to be sent to.', 'bot')
-          select.remove();
+          showMessage('Excellent, the cost per appointment is 800 sek.', 'bot')
+          showMessage('Please, enter the address you want your invoice to be sent to.', 'bot')
+          textInput();
           }); 
 
           });
-
-           
-           
+         
            document.getElementById('lifeBtn').addEventListener('click', () => {
             showMessage('Life', 'user');
             showMessage('Great, you want to focus on the area of life. Please choose a time and day', 'bot');
@@ -145,8 +160,9 @@ const showCoachAreas = (name) => {
           const select = document.getElementById('select');
           select.addEventListener('change', () => {
           showMessage(`${select.value}`, 'user')
-          showMessage('Excellent, the cost per appointment is 800 sek. Please, enter the address you want your invoice to be sent to.', 'bot')
-          select.remove();
+          showMessage('Excellent, the cost per appointment is 800 sek.', 'bot')
+          showMessage('Please, enter the address you want your invoice to be sent to.', 'bot')
+          textInput();
           }); 
 
            });
@@ -161,8 +177,9 @@ const showCoachAreas = (name) => {
           const select = document.getElementById('select');
           select.addEventListener('change', () => {
           showMessage(`${select.value}`, 'user')
-          showMessage('Excellent, the cost per appointment is 800 sek. Please, enter the address you want your invoice to be sent to.', 'bot')
-          select.remove();
+          showMessage('Excellent, the cost per appointment is 800 sek.', 'bot')
+          showMessage('Please, enter the address you want your invoice to be sent to.', 'bot')
+          textInput();
           }); 
 
            });
