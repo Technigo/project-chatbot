@@ -166,7 +166,7 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
   margin: 5px;
-  width: 110px;
+  width: 25%;
   height: 60px;
   box-shadow: 0 0 10px grey;
 }
@@ -179,6 +179,8 @@ button:hover {
 .genre-options,
 .button-options {
   display: none;
+  width: 100%;
+  justify-content: center;
 }
 
 .active {
@@ -264,5 +266,8 @@ button:hover {
   }
   .bubble {
     max-width: 70%;
+  }
+  button {
+    width: 40%;
   }
 }
