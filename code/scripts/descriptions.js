@@ -14,8 +14,7 @@ export const enemyDescription = {
     "Out of the bushes, an Ogre jumps out. Ogres are hulking giants notorious for their quick tempers. When its rage is incited, an ogre lashes out in a frustrated tantrum until it runs out of objects or creatures to smash.",
   owlbear:
     "Out of the bushes, an Owlbear jumps out. A monstrous cross between giant owl and bear, an owlbear’s reputation for ferocity and aggression makes it one of the most feared predators of the wild.",
-  sabertiger:
-    "From atop a cliff edge a Saber Tooth Tiger jumps down. A monstrous cross between giant owl and bear, an owlbear’s reputation for ferocity and aggression makes it one of the most feared predators of the wild.",
+  sabertiger: "From atop a cliff edge a Saber Tooth Tiger jumps down.",
   ettin:
     "From atop a cliff edge an Ettin jumps down. An ettin is a foul, two-headed giant with the crude characteristics of an orc.",
   ghast: "From beneath the mud a Ghast lurks towards you.",

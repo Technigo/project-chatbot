@@ -219,15 +219,23 @@ const encRoundStart = () => {
 };
 
 const runEndGame = (winner) => {
-  changeInput();
-  updateInfo();
   if (winner === "hero") {
     botMessage(`You defeated the ${encounter.enemy.type}! Would you like to play again?`);
+    setTimeout(() => {
+      changeInput();
+      updateInfo();
+      endState = true;
+      changeInput("boolSelect");
+    }, 2000);
   } else if (winner === "enemy") {
     botMessage(`The ${encounter.enemy.type} has killed you... Would you like to try again?`, "bot");
+    setTimeout(() => {
+      changeInput();
+      updateInfo();
+      endState = true;
+      changeInput("boolSelect");
+    }, 2000);
   }
-  endState = true;
-  changeInput("boolSelect");
 };
 
 // This function handles action select by user.
