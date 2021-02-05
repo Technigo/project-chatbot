@@ -1,13 +1,11 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+We created a chatbot for corona testing and vaccin booking. For this project we worked with javascript with functions and conditionals. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+When we were creating the chat we had problems with changing the questions and making the user's answer show in the chat. We understood that we could send one question to the next with addEventListener with click and setTimeout so it moves smoothly, to get the human feeling for the user. The problem with the user's answer we solved by asking about it in StackOverflow and understood that we forgot to also add showMessenger(‘input’, ‘user’). When we did that our problem got solved. 
+
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://coronadr.netlify.app/

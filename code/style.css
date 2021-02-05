@@ -19,6 +19,7 @@ h1 {
   line-height: 34px;
   text-align: center;
   margin-top: 60px;
+  text-transform: uppercase;
 }
 
 h2 {
@@ -167,6 +168,7 @@ button:hover {
     font-size: 12px;
     line-height: 20px;
   }
+  
   .loading-img {
     top: 550px;
   }
