@@ -6,7 +6,6 @@ const input = document.getElementById('user-input')
 let questionNumber = 0;
 let bookingSentence = "";
 
-
 const nxtQuestion = (response) => {
   handleResponse(response)
   switch (questionNumber) {
@@ -66,7 +65,7 @@ const showMessage = (message, sender) => {
           <p>${message}</p>
         </div>
       </section>
-    `
+   `
   }
 
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
@@ -86,7 +85,6 @@ const nights = (fName) => {
 }
 
 // .1
-
 const persons = (nights) => {
   if (Number(nights) > 0 && Number(nights) <= 28) {
     showMessage(`How many are going to travel?`, 'bot');
@@ -107,13 +105,13 @@ const where = (persons) => {
     inputWrapper.innerHTML = `
       <div class="where-btn-wrapper">
         <div class="where-btn" id="mountain">
-          <img src="./assets/mountains.png" alt="mountains">
+          <img src="./assets/mountains.png" alt="mountains" />
         </div>
         <div class="where-btn" id="beach">
-          <img src="./assets/beach.png" alt="beach">
+          <img src="./assets/beach.png" alt="beach" />
         </div>
         <div class="where-btn" id="city">
-          <img src="./assets/city.png" alt="city">
+          <img src="./assets/city.png" alt="city" />
         </div>      
       </div>
     `
@@ -142,28 +140,52 @@ const place = (place) => {
   if (place === 'mountain') {
     inputWrapper.innerHTML = `
       <select class="select-mountain" id="select">
-        <option selected disabled>Choose a destination</option>
-        <option value="Schweiz">Schweiz</option>
-        <option value="Chile">Chile</option>
-        <option value="Tibet">Tibet</option>
+        <option selected disabled>
+          Choose a destination
+        </option>
+        <option value="Schweiz">
+          Schweiz
+        </option>
+        <option value="Chile">
+          Chile
+        </option>
+        <option value="Tibet">
+          Tibet
+        </option>
       </select>
     `
   } else if (place === 'beach') {
     inputWrapper.innerHTML = `
       <select class="select-beach" id="select">
-        <option selected disabled>Choose a destination</option>
-        <option value="Miami">Miami</option>
-        <option value="Bali">Bali</option>
-        <option value="Las Palmas">Las Palmas</option>
+        <option selected disabled>
+          Choose a destination
+        </option>
+        <option value="Miami">
+          Miami
+        </option>
+        <option value="Bali">
+          Bali
+        </option>
+        <option value="Las Palmas">
+          Las Palmas
+        </option>
       </select>
     `
   } else if (place === 'city') {
     inputWrapper.innerHTML = `
       <select class="select-city" id="select">
-        <option selected disabled>Choose a destination</option>
-        <option value="New York">New York</option>
-        <option value="Barcelona">Barcelona</option>
-        <option value="Tokyo">Tokyo</option>
+        <option selected disabled>
+          Choose a destination
+        </option>
+        <option value="New York">
+          New York
+        </option>
+        <option value="Barcelona">
+          Barcelona
+        </option>
+        <option value="Tokyo">
+          Tokyo
+        </option>
       </select>
     `
   }
@@ -181,39 +203,49 @@ const interest = (place) => {
     inputWrapper.innerHTML = `
       <form id="interest-form">
         <div class="interest-wrapper">
-          <label for="culture" class="interest-container">Culture
-            <input class="checkbox" type="checkbox"  id="culture" name="culture" value="culture">
+          <label for="culture" class="interest-container">
+            Culture
+            <input class="checkbox" type="checkbox" id="culture" name="culture" value="culture" />
             <span class="checkmark"></span>
           </label>
-          <label for="food" class="interest-container">Food
-            <input class="checkbox" type="checkbox"  id="food" name="food" value="food">
+          <label for="food" class="interest-container">
+            Food
+            <input class="checkbox" type="checkbox" id="food" name="food" value="food" />
             <span class="checkmark"></span>
           </label>
-          <label for="shopping" class="interest-container">Shopping
-            <input class="checkbox" type="checkbox"  id="shopping" name="shopping" value="shopping">
+          <label for="shopping" class="interest-container">
+            Shopping
+            <input class="checkbox" type="checkbox" id="shopping" name="shopping" value="shopping" />
             <span class="checkmark"></span>
           </label>
         <div>
-        <button type="submit" class="interest-btn">Choose</button>
+        <button type="submit" class="interest-btn">
+          Choose
+        </button>
       </form>
     `
   } else if (place === 'Miami' || place === 'Las Palmas' || place === 'Bali') {
     inputWrapper.innerHTML = `
       <form id="interest-form">
         <div class="interest-wrapper">
-          <label for="wsports" class="interest-container">Water sports
-            <input class="checkbox" type="checkbox"  id="wsports" name="wports" value="water sports">
+          <label for="wsports" class="interest-container">
+            Water sports
+            <input class="checkbox" type="checkbox" id="wsports" name="wports" value="water sports" />
             <span class="checkmark"></span>
           </label>
-          <label for="relax" class="interest-container">Relax in the sun
-            <input class="checkbox" type="checkbox"  id="relax" name="relax" value="relaxing">
+          <label for="relax" class="interest-container">
+            Relax in the sun
+            <input class="checkbox" type="checkbox" id="relax" name="relax" value="relaxing" />
             <span class="checkmark"></span>
           </label>
-          <label for="party" class="interest-container">Beachparty
-            <input class="checkbox" type="checkbox"  id="party" name="party" value="beach parties">
+          <label for="party" class="interest-container">
+            Beachparty
+            <input class="checkbox" type="checkbox" id="party" name="party" value="beach parties" />
             <span class="checkmark"></span>
           </label>
-          <button type="submit" class="interest-btn">Choose</button>
+          <button type="submit" class="interest-btn">
+            Choose
+          </button>
         <div>
       </form>
     `
@@ -221,20 +253,25 @@ const interest = (place) => {
     inputWrapper.innerHTML = `
       <form id="interest-form">
         <div class="interest-wrapper">
-          <label for="extreme" class="interest-container">Extreme sports
-            <input class="checkbox" type="checkbox" id="extreme" name="extreme" value="extreme sports">
+          <label for="extreme" class="interest-container">
+            Extreme sports
+            <input class="checkbox" type="checkbox" id="extreme" name="extreme" value="extreme sports" />
             <span class="checkmark"></span>
           </label>
-          <label for="hiking" class="interest-container">Hiking
-            <input class="checkbox" type="checkbox"  id="hiking" name="hiking" value="hiking">
+          <label for="hiking" class="interest-container">
+            Hiking
+            <input class="checkbox" type="checkbox" id="hiking" name="hiking" value="hiking" />
             <span class="checkmark"></span>
           </label>
-          <label for="spiritual" class="interest-container">Spiritual journey
-            <input class="checkbox" type="checkbox"  id="spiritual" name="spiritual" value="spiritual pursuits">
+          <label for="spiritual" class="interest-container">
+            Spiritual journey
+            <input class="checkbox" type="checkbox" id="spiritual" name="spiritual" value="spiritual pursuits" />
             <span class="checkmark"></span>
           </label>
         <div>
-        <button type="submit" class="interest-btn">Choose</button>
+        <button type="submit" class="interest-btn">
+          Choose
+        </button>
       </form>
     `
   }
