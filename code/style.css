@@ -182,6 +182,9 @@ button:hover {
 }
 
 @media (max-width: 767px) {
+  input {
+    max-width: 270px;
+  }
   button {
     padding: 10px 20px;
   }
