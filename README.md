@@ -12,4 +12,4 @@ If we had more time we would have created a background image and a footer. We ma
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+hannahylvadocbot.netlify.app
