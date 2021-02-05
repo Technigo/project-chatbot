@@ -76,6 +76,12 @@ main {
   flex-shrink: 0;
 }
 
+.bot-img {
+  display: flex;
+  margin: 16px 8px 0 0;
+  flex-shrink: 0;
+}
+
 .user-msg {
   display: flex;
   justify-content: flex-end;
@@ -102,6 +108,17 @@ main {
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+}
+
+.bubble.img {
+  padding: 0;
+  overflow: hidden;
+}
+
+.bot-bubble img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .user-bubble {
