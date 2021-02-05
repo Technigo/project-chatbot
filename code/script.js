@@ -6,12 +6,8 @@ const inputWrapper = document.getElementById('input-wrapper');
 const form = document.getElementById('name-form');
 
 
-// Global variables, if you need any, declared here
-// let userName = nameInput.value;
-// Functions declared here
-
-
 // This function will add a chat bubble in the correct place based on who the sender is
+
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     chat.innerHTML += `  
@@ -38,18 +34,13 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-
-
-
-// Question 1
+// Greeting from bot
 const greeting = () => {
   showMessage(`Hello there, I am your life coach and Im here to help you become the best version of yourself. What's your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
 
 
-
-// Set up your eventlisteners here
+// Event listener and validation of name input
 
 sendButton.addEventListener('click', (e) => {
   e.preventDefault();
@@ -64,18 +55,7 @@ sendButton.addEventListener('click', (e) => {
   }}
   )
     
-//Question 2
-
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-
-
-
+//Function for displaying available times
 
 const appointment = () => {
   inputWrapper.innerHTML = `
@@ -89,6 +69,9 @@ const appointment = () => {
         return inputWrapper;
   }
   
+
+  //Function that displays new input bar after user chooses a time
+
   const textInput = () => {
     inputWrapper.innerHTML = `
     <form id="name-form">
@@ -98,8 +81,25 @@ const appointment = () => {
     </button>
     </form>
     `;
+
+  document.querySelector('.send-btn').addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    let address = document.querySelector('#name-input').value;
+    showMessage(address, 'user')
+    document.querySelector('#name-input').value = '';
+
+
+    setTimeout(()=> {
+      showMessage('Thanks, See you next week!', 'bot');
+    }, 2000);
+    
+  });
+      
   }
 
+
+//Function that displays 4 buttons
 const showCoachAreas = (name) => {
   showMessage(`Hi ${name}, which area of your life do you want to focus on?`, 'bot');
   inputWrapper.innerHTML = `
@@ -110,118 +110,74 @@ const showCoachAreas = (name) => {
   ` ;
   
 
-
-
+  // Message from bot after click on work button 
   document.getElementById('workBtn').addEventListener('click', () => {
-          
-            showMessage('Work', 'user');
-            showMessage('Great, you want to focus on the area of work. Please choose a time and day', 'bot');
-            appointment();
+    showMessage('Work', 'user');
+    showMessage('Great, you want to focus on the area of work. Please choose a time and day', 'bot');
+    appointment();
 
-          //Question 4   
-          //When a day and time is selected 
-          const select = document.getElementById('select');
-          select.addEventListener('change', () => {
-          showMessage(`${select.value}`, 'user')
-          showMessage('Excellent, the cost per appointment is 800 sek.', 'bot')
-          showMessage('Please, enter the address you want your invoice to be sent to.', 'bot')
-          textInput();
+    const select = document.getElementById('select');
+    select.addEventListener('change', () => {
+     showMessage(`${select.value}`, 'user')
+     showMessage('Excellent, the cost per appointment is 800 sek.', 'bot')
+     showMessage('Please, enter the address you want your invoice to be sent to.', 'bot')
+     textInput();
       
-          }); 
-
+    }); 
             
-           });
+  });
 
-           
-           document.getElementById('familyBtn').addEventListener('click', () => {
-            showMessage('Family', 'user');
-            showMessage('Great, you want to focus on the area of family. Please choose a time and day', 'bot');
-            appointment();
+   // Message from bot after click on family button         
+  document.getElementById('familyBtn').addEventListener('click', () => {
+    showMessage('Family', 'user');
+    showMessage('Great, you want to focus on the area of family. Please choose a time and day', 'bot');
+    appointment();
+    
+    const select = document.getElementById('select');
+    select.addEventListener('change', () => {
+      showMessage(`${select.value}`, 'user')
+      showMessage('Excellent, the cost per appointment is 800 sek.', 'bot')
+      showMessage('Please, enter the address you want your invoice to be sent to.', 'bot')
+      textInput();
+    }); 
 
-          //Question 4   
-          //When a day and time is selected 
-          const select = document.getElementById('select');
-          select.addEventListener('change', () => {
-          showMessage(`${select.value}`, 'user')
-          showMessage('Excellent, the cost per appointment is 800 sek.', 'bot')
-          showMessage('Please, enter the address you want your invoice to be sent to.', 'bot')
-          textInput();
-          }); 
-
-          });
+  });
+       
+  // Message from bot after click on Life button  
+  document.getElementById('lifeBtn').addEventListener('click', () => {
+    showMessage('Life', 'user');
+    showMessage('Great, you want to focus on the area of life. Please choose a time and day', 'bot');
+    appointment();
          
-           document.getElementById('lifeBtn').addEventListener('click', () => {
-            showMessage('Life', 'user');
-            showMessage('Great, you want to focus on the area of life. Please choose a time and day', 'bot');
-            appointment();
+    const select = document.getElementById('select');
+    select.addEventListener('change', () => {
+      showMessage(`${select.value}`, 'user')
+      showMessage('Excellent, the cost per appointment is 800 sek.', 'bot')
+      showMessage('Please, enter the address you want your invoice to be sent to.', 'bot')
+      textInput();
+      }); 
 
-          //Question 4   
-          //When a day and time is selected 
-          const select = document.getElementById('select');
-          select.addEventListener('change', () => {
-          showMessage(`${select.value}`, 'user')
-          showMessage('Excellent, the cost per appointment is 800 sek.', 'bot')
-          showMessage('Please, enter the address you want your invoice to be sent to.', 'bot')
-          textInput();
-          }); 
+  });
 
-           });
-
-           document.getElementById('healthBtn').addEventListener('click', () => {
-            showMessage('Health', 'user');
-            showMessage('Great, you want to focus on the area of health. Please choose a time and day', 'bot');
-            appointment();
+  // Message from bot after click on Health button  
+  document.getElementById('healthBtn').addEventListener('click', () => {
+    showMessage('Health', 'user');
+    showMessage('Great, you want to focus on the area of health. Please choose a time and day', 'bot');
+    appointment();
             
-            //Question 4   
-          //When a day and time is selected 
-          const select = document.getElementById('select');
-          select.addEventListener('change', () => {
-          showMessage(`${select.value}`, 'user')
-          showMessage('Excellent, the cost per appointment is 800 sek.', 'bot')
-          showMessage('Please, enter the address you want your invoice to be sent to.', 'bot')
-          textInput();
-          }); 
+      const select = document.getElementById('select');
+      select.addEventListener('change', () => {
+        showMessage(`${select.value}`, 'user')
+        showMessage('Excellent, the cost per appointment is 800 sek.', 'bot')
+        showMessage('Please, enter the address you want your invoice to be sent to.', 'bot')
+        textInput();
+        }); 
 
-           });
+  });
 
 };
 
-setTimeout(greeting, 1000)
+
+setTimeout(greeting, 1000);
 
 
-  
-
- 
-
-
-/*
-document.getElementById('healthBtn').addEventListener('click', () => {
-    showMessage('Health', 'user')
-    showMessage('Great, you want to focus on the area of Health. Please choose a time and day', 'bot') 
-    
-    const inputWrapper = document.getElementById('input-wrapper')
-inputWrapper.innerHTML = `
-    <select id="select">
-      <option value="" selected disabled>Select time and day</option>
-      <option value="Wednesday 4pm">Wednesday 4pm</option>
-      <option value="Thursday 3pm">Thursday 3pm</option>
-      <option value="Friday 1pm">Friday 1pm</option>
-    </select>
-  `
-
-//Question 4   
-//When a day and time is selected 
-const select = document.getElementById('select') 
-select.addEventListener('change', () => {
-  showMessage(`${select.value}`, 'user')
-  showMessage('Excellent, the cost per appointment is 800 sek. Please, enter the address you want your invoice to be sent to.', 'bot')
-})              
-}) 
-
-   
-  setTimeout(showCoachAreas, 2000)
-  
-  // showMessage(`${userName} `,'user');
-
-
-*/
