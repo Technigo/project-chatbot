@@ -85,7 +85,7 @@ form.addEventListener('submit', (event) => {
           step = 5
       } else {
           showMessage(`Det var tyvärr fel, testa igen`, "bot");
-  } 
+      } 
   } else if (step === 5) {
       if (Number(userInput) === 8) {
           showMessage(`Rena rama geniet! Vad är 2 x 8?`, "bot");
