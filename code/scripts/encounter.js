@@ -11,6 +11,7 @@ export default class Encounter {
     this.enemy = this.setEnemy();
     this.hero = this.setHero(name, type);
     this.rounds = 1;
+
     this.buffsRemove = [];
   }
 

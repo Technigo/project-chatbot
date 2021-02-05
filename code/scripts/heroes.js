@@ -10,6 +10,7 @@ export class Fighter extends Combatant {
     this.attackMod = isEasy ? 9 : 10;
     this.dmgMod = isEasy ? 6 : 7;
     this.healMod = isEasy ? 5 : 6;
+    this.token = "tokenFighter";
     this.actions = [
       {
         name: "Attack Longsword",
@@ -52,6 +53,7 @@ export class Ranger extends Combatant {
     this.dmgMod = isEasy ? 3 : 4;
     this.healMod = isEasy ? 4 : 8;
     this.dexMod = isEasy ? 5 : 6;
+    this.token = "tokenRanger";
     this.actions = [
       {
         name: "Attack Longbow",
@@ -94,6 +96,7 @@ export class Sorcerer extends Combatant {
     this.attackMod = 6;
     this.dmgMod = 6;
     this.healMod = 8;
+    this.token = "tokenSorcerer";
     this.actions = [
       {
         name: "Shoot firebolt",

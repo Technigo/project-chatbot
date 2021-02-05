@@ -56,3 +56,11 @@ body {
   flex-flow: column wrap;
   flex-shrink: 0;
 }
+
+.btn__play {
+  position: absolute;
+  margin: 20px;
+  right: 0;
+  z-index: 1;
+  font-size: 56px !important;
+}

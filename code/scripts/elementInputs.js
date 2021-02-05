@@ -7,20 +7,20 @@ export const boolSelect = `
   <button class="input__button" type="submit" value="false">No</button>
 `;
 
-export const userMessage = (msg) => {
+export const userMessage = (msg, token) => {
   return `
   <section class="message__user">
   <div class="bubble bubble__user">
     <p class="message__text">${msg}</p>
   </div>
-  <img src="assets/user.png" alt="User" />  
+  <img src="assets/${token}.png" alt="User" />  
   </section>
 `;
 };
 export const botMessage = (count) => {
   return `
     <section class="message__bot">
-    <img src="assets/bot.png" alt="Bot" />
+    <img src="assets/tokenDM.png" alt="token dungeon master" />
     <div class="bubble bubble__bot">
       <p class="message__text" id="botMessage${count}">...</p>
     </div>

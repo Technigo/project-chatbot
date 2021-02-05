@@ -7,13 +7,17 @@ import Encounter from "./scripts/encounter.js";
 const chat = document.getElementById("chat");
 const userInput = document.getElementById("userInput");
 const info = document.getElementById("info");
+const btnAudio = document.getElementById("btnAudio");
 
 /** GLOBALS */
 let currentInput, encounter;
 let endState = false;
 let counter = 0;
 // Temp variables to use for instantiation
-let _name, _type, _difficulty;
+let _name,
+  _type,
+  _difficulty,
+  _tokenDefault = "tokenDM";
 
 /** FUNCTIONS */
 // Update the info fields
@@ -62,8 +66,8 @@ const changeInput = (type) => {
 };
 
 // These function will add a chat bubble in the correct place based on who the sender is
-const userMessage = (message) => {
-  chat.innerHTML += input.userMessage(message);
+const userMessage = (message, type) => {
+  chat.innerHTML += input.userMessage(message, type);
   chat.scrollTop = chat.scrollHeight;
 };
 
@@ -75,7 +79,7 @@ const botMessage = (message) => {
   setTimeout(() => {
     chatmessage.innerText = message;
     chat.scrollTop = chat.scrollHeight;
-  }, 800);
+  }, 1000);
 };
 
 /** CONTROL FLOW */
@@ -85,20 +89,20 @@ const greeting = () => {
     botMessage("Prey tell, what is your name?");
     setTimeout(() => {
       changeInput("name");
-    }, 1000);
-  }, 2000);
+    }, 2500);
+  }, 2500);
 };
 const greetingAgain = () => {
   botMessage(`Welcome back ${_name}`);
   setTimeout(() => {
     askExperience();
-  }, 2000);
+  }, 2500);
 };
 
 const handleNameInput = (event) => {
   const name = event.target.children.namedItem("inputName").value;
   // Show the name as user message
-  userMessage(name);
+  userMessage(name, _tokenDefault);
   // store the name
   _name = name;
   //trigger askExperience
@@ -116,9 +120,9 @@ const askExperience = () => {
       setTimeout(() => {
         // show the yes and no inputs
         changeInput("boolSelect");
-      }, 1500);
-    }, 1500);
-  }, 1500);
+      }, 2500);
+    }, 2500);
+  }, 2500);
 };
 
 const handleBoolInput = (event) => {
@@ -140,7 +144,7 @@ const handleBoolInput = (event) => {
   }
   const response = inputVal ? "Take it easy on me" : "I like a challenge";
   // show answer as a response
-  userMessage(response);
+  userMessage(response, encounter !== undefined ? encounter.hero.token : _tokenDefault);
   // store as encounter isEasy
   _difficulty = inputVal;
   // trigger ask class
@@ -158,15 +162,15 @@ const askClass = () => {
       // show class input options
       setTimeout(() => {
         changeInput("classSelect");
-      }, 1500);
-    }, 1500);
-  }, 2000);
+      }, 2500);
+    }, 2500);
+  }, 2500);
 };
 
 const handleClassSelectInput = (event) => {
   const type = event.value;
   // show user response
-  userMessage(`I am a ${type}`);
+  userMessage(`I am a ${type}`, encounter !== undefined ? encounter.hero.token : _tokenDefault);
   // store class
   _type = type;
   // start encounter
@@ -197,12 +201,15 @@ const encRoundStart = () => {
           botMessage(encounter.enemy.description);
           break;
       }
-      // show hero actions
       setTimeout(() => {
-        changeInput("actionSelect");
-      }, 1500);
-    }, 1500);
-  }, 2000);
+        botMessage("What do you want to do?");
+        // show hero actions
+        setTimeout(() => {
+          changeInput("actionSelect");
+        }, 2000);
+      }, 4000);
+    }, 4000);
+  }, 3000);
 };
 
 const runEndGame = (winner) => {
@@ -223,7 +230,7 @@ const runEndGame = (winner) => {
 // until an end state is reached
 const handleActionSelectInput = (action) => {
   // show user response
-  userMessage(action.dataset.msg);
+  userMessage(action.dataset.msg, encounter !== undefined ? encounter.hero.token : _tokenDefault);
   // Start the game loop
   setTimeout(() => {
     let msg = encounter.execHeroAction(action.value);
@@ -253,10 +260,10 @@ const handleActionSelectInput = (action) => {
           changeInput("actionSelect");
           updateInfo();
           updateBuffs();
-        }, 1500);
-      }, 1500);
-    }, 1500);
-  }, 2000);
+        }, 3000);
+      }, 3000);
+    }, 3000);
+  }, 1000);
 };
 
 /** EVENT LISTENERS */
@@ -282,6 +289,19 @@ userInput.addEventListener("submit", (event) => {
   }
   // This clears the user input wrapper from any actions
   changeInput();
+});
+
+btnAudio.addEventListener("click", (event) => {
+  const element = event.target;
+  if (element.classList.contains("fa-play-circle-o")) {
+    element.firstElementChild.play();
+    event.target.classList.add("fa-pause-circle-o");
+    event.target.classList.remove("fa-play-circle-o");
+  } else {
+    element.firstElementChild.pause();
+    event.target.classList.add("fa-play-circle-o");
+    event.target.classList.remove("fa-pause-circle-o");
+  }
 });
 
 /** BEGIN THE FLOW */

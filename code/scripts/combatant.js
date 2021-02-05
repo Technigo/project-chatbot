@@ -60,4 +60,16 @@ export default class Combatant {
     _.handleUsePool(action);
     return toHeal;
   };
+
+  rollDmg = (dice) => {
+    if (dice === 8) {
+      return d8() + this.dmgMod;
+    }
+    if (dice === 6) {
+      return d6() + this.dmgMod;
+    }
+    if (dice === 10) {
+      return d10() + this.dmgMod;
+    }
+  };
 }
