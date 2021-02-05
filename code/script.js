@@ -59,15 +59,35 @@ sendButton.addEventListener('click', (e) => {
     else {
       showMessage(`${name}`,'user');
     
-      setTimeout(function(){
-        showMessage (`Hi ${name} , which area of your life you wanna focus on today?`, 'bot');
-      }, 2000)
-      
-      
-      // showMessage(`${userName} `,'user');
-        }
-});
 
+      /* setTimeout(function(){
+        showMessage (`Hi ${name} , which area of your life you wanna focus on today?`, 'bot');
+      }, 2000) Daniela's code */
+
+      const showCoachAreas = () => {
+        showMessage(`Hi ${name}, which area of your life do you want to focus on?
+        `, 'bot')
+        
+        const inputWrapper = document.getElementById('input-wrapper')
+        inputWrapper.innerHTML = `
+        <button id="workBtn">Work</button>
+        <button id="familyBtn">Family</button>
+        <button id="lifeBtn">Life</button>
+        <button id="healthBtn">Health</button>
+      `  
+
+      let workBtn = document.getElementById('workBtn')
+      workBtn.addEventListener('click', () => {
+        showMessage(`Excellent, please choose a time`, 'bot')
+        })
+      }  
+      
+      setTimeout(showCoachAreas, 2000)
+      // showMessage(`${userName} `,'user');
+    }  
+})
+      
+      
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
