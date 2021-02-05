@@ -63,49 +63,77 @@ const coffeePicker = (event) => {
     document
     .getElementById("coffeeBtn")
     .addEventListener('click', () => { 
-    showMessage('Ok, one coffee coming up for you', 'bot')  
-    inputWrapper.innerHTML = ""
-    setTimeout(() => chooseSize("coffee"), 1000)
+      showMessage('Coffee', 'user')
+      showMessage('Ok, one coffee coming up for you', 'bot')  
+      inputWrapper.innerHTML = ""
+      setTimeout(() => chooseSize("coffee"), 1000)
     })
 
     document
     .getElementById("latteBtn")
     .addEventListener('click', () => {
-    showMessage('Ok, one latte coming up for you', 'bot')
-    inputWrapper.innerHTML = ""
-    setTimeout(() => chooseSize("latte"), 1000)
+      showMessage('Latte', 'user')
+      showMessage('Ok, one latte coming up for you', 'bot')
+      inputWrapper.innerHTML = ""
+      setTimeout(() => chooseSize("latte"), 1000)
     })
 
     document
     .getElementById("cappBtn")
     .addEventListener('click', () => {
-    showMessage('Ok, one cappuccino coming up for you', 'bot')
-    inputWrapper.innerHTML = ""
-    setTimeout(() => chooseSize("cappuccino"), 1000)
+      showMessage('Cappuccino', 'user') 
+      showMessage('Ok, one cappuccino coming up for you', 'bot')
+      inputWrapper.innerHTML = ""
+      setTimeout(() => chooseSize("cappuccino"), 1000)
     })
   } else if(value === 'no'){
     showMessage('Ok, see you another time!', 'bot');
   } else {
-    showMessage("I'm sorry, I didn't understand your answer. Please try again.", 'bot');
+    showMessage("I'm sorry, I didn't understand your answer. Please answer 'yes' or 'no'.", 'bot');
   }
 }
  
 const chooseSize = () => {
   step ++
   console.log('choose size')
-  // inputWrapper.innerHTML = ""
   showMessage('What size do you want?', 'bot')
   inputWrapper.innerHTML = `
   <div id="sizeButtons" class="buttons">
-    <button value="short" id="shortBtn> ☕ short </button>
-    <button value="tall" id="tallBtn> 🥛 large </button>
-  </div> 
+    <button value="short" id="shortBtn">☕ short</button>
+    <button value="tall" id="tallBtn">🥛 tall</button>
+  </div>
   `
-  document.getElementById("shortBtn").addEventListener('click', () => 
-    showPrize("short"))
-  document.getElementById("tallBtn").addEventListener('click', () => 
-    showPrize("tall"))
+  // `
+  // <div id="sizeButtons" class="buttons">
+  //   <button value="short" id="shortBtn> ☕ short </button>
+  //   <button value="tall" id="tallBtn> 🥛 large </button>
+  // </div> 
+  // `
+  document
+  .getElementById("shortBtn")
+  .addEventListener('click', () => {
+    showMessage('Short', 'user')  //// OBS, ändra svaret!
+    inputWrapper.innerHTML = ""
+    setTimeout(() => showPrice("short"), 1000)  
+  })
+
+  document
+  .getElementById("tallBtn")
+  .addEventListener('click', () => {
+    showMessage('Tall', 'user')   //// OBS, ändra svaret!
+    inputWrapper.innerHTML = ""
+    setTimeout(() => showPrice("tall)"), 1000)  
+  })
+}
+
+const showPrice = (type) => {
+  if (type === "short") {
+    showMessage("That will be 20 kronors", 'bot')
+  } 
+  else if (type === "tall") {
+    showMessage("That will be 30 kronors", 'bot')
   }
+}
 
 // Set up your eventlisteners here
 // nameForm.addEventListener("submit", (event) => {
