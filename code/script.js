@@ -93,7 +93,7 @@ docBotForm.addEventListener('submit', event => {
         setTimeout(botReply, 5000, [`Sleep is very important. So are hugs.`])
         setTimeout(botReply, 7000, [`Please hug me!`])
         setTimeout(botReply, 9000, [`That feels better, don’t you think?`])
-        setTimeout(botReply, 10000, [`So back to you. How would you describe your wellbeing on a scale of 1 to 3 where 1 is “Like Shit” and 3 is “On Top Of The World”?`])
+        setTimeout(botReply, 11000, [`So back to you. How would you describe your wellbeing on a scale of 1 to 3 where 1 is “Like Shit” and 3 is “On Top Of The World”?`])
     } else if (questionCounter === 4) {
         const userReply = () => {
             showMessage(userInput.value, 'user');
@@ -103,14 +103,14 @@ docBotForm.addEventListener('submit', event => {
         const botReply = (message) => {
             showMessage(message, 'bot')
         }
-        if (userInput === 1) {
+        if (userInput.value === `1`) {
             botReply(`Take a deep breath, then you should probably contact your Vårdcentral and get some more professional help. There is help out there!`)
-        } else if (userInput === 2) {
+        } else if (userInput.value === `2`) {
             botReply(`Make sure to create balance in your life. Try to find time to exercise and get some daylight every day, but also time to slow down and recharge your battery. Try to be social but take it easy with alcohol, it messes up your sleep.`)
-        } else if (userInput === 3) {
+        } else if (userInput.value === `3`) {
             botReply(`That’s amazing!`)
         } else {
-            botReply(`bla bla bla`)
+            botReply(`I am afraid I don't understand you answer, please try again and contact another health professional`)
         }
     } else {
         const userReply = () => {
