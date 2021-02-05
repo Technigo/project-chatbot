@@ -87,7 +87,7 @@ const nights = () => {
 // .1
 
 const persons = (nights) => {
-  if (Number(nights) > 0 && Number(nights) <= 28) {
+  if (Number(nights) > 0 && Number(nights) <= 28) {    
     showMessage(`How many are going to travel?`, 'bot');
     questionNumber++
     bookingSentence += `We're booking a ${nights} day/s trip`
@@ -104,14 +104,14 @@ const where = (persons) => {
     showMessage(`What settings are you looking for?`, 'bot');
 
     inputWrapper.innerHTML = `
-    <div class="where-btn-wrapper">
+      <div class="where-btn-wrapper">
       <div class="where-btn" id="mountain">
-        <img src="./assets/mountains.png" alt="mountains"></div>
-      <div class="where-btn" id="beach">
-        <img src="./assets/beach.png" alt="beach"></div>
-      <div class="where-btn" id="city">
-        <img src="./assets/city.png" alt="city"></div>
-    </div>
+      <img src="./assets/mountains.png" alt="mountains"></div>
+    <div class="where-btn" id="beach">
+      <img src="./assets/beach.png" alt="beach"></div>
+    <div class="where-btn" id="city">
+      <img src="./assets/city.png" alt="city"></div>      
+      </div>
     `
     const mountain = document.getElementById('mountain')
     const beach = document.getElementById('beach')
@@ -138,7 +138,7 @@ const place = (place) => {
   if (place === 'mountain') {
     inputWrapper.innerHTML = `
       <select class="select-mountain" id="select">
-        <option>Choose a destination</option>
+        <option selected disabled>Choose a destination</option>
         <option value="Schweiz">Schweiz</option>
         <option value="Chile">Chile</option>
         <option value="Tibet">Tibet</option>
@@ -147,7 +147,7 @@ const place = (place) => {
   } else if (place === 'beach') {
     inputWrapper.innerHTML = `
       <select class="select-beach" id="select">
-        <option>Choose a destination</option>
+        <option selected disabled>Choose a destination</option>
         <option value="Miami">Miami</option>
         <option value="Bali">Bali</option>
         <option value="Las Palmas">Las Palmas</option>
@@ -156,7 +156,7 @@ const place = (place) => {
   } else if (place === 'city') {
     inputWrapper.innerHTML = `
       <select class="select-city" id="select">
-        <option>Choose a destination</option>
+        <option selected disabled>Choose a destination</option>
         <option value="New York">New York</option>
         <option value="Barcelona">Barcelona</option>
         <option value="Tokyo">Tokyo</option>
@@ -170,30 +170,31 @@ const place = (place) => {
 
 // .4 checkboxes where you can choose interests
 const interest = (place) => {
+  bookingSentence += ` to ${place}.`
   questionNumber++
   bookingSentence += ` to ${place} for you.`
   showMessage(`What do you want to do during your vacation?`, 'bot');
   if (place === 'New York' || place === 'Barcelona' || place === 'Tokyo') {
     inputWrapper.innerHTML = `
       <form id="interest-form">
-        <label for="culture" class="container">Culture
-        <input class="checkbox" type="checkbox"  id="culture" name="culture" value="culture">
-        <span class="checkmark"></span>
-        </label>
-        <label for="food" class="container">Food
-        <input class="checkbox" type="checkbox"  id="food" name="food" value="food">
-        <span class="checkmark"></span>
-        </label>
-        <label for="shopping" class="container">Shopping
-        <input class="checkbox" type="checkbox"  id="shopping" name="shopping" value="shopping">
-        <span class="checkmark"></span>
-        </label>
-        <button type="submit" class="interest-btn">Choose</button>
+      <label for="culture" class="container">Culture
+      <input class="checkbox" type="checkbox"  id="culture" name="culture" value="culture">
+      <span class="checkmark"></span>
+      </label>
+      <label for="food" class="container">Food
+      <input class="checkbox" type="checkbox"  id="food" name="food" value="food">
+      <span class="checkmark"></span>
+      </label>
+      <label for="shopping" class="container">Shopping
+      <input class="checkbox" type="checkbox"  id="shopping" name="shopping" value="shopping">
+      <span class="checkmark"></span>
+      </label>
+              <button type="submit" class="interest-btn">Choose</button>
       </form>
-    `
+      `
   } else if (place === 'Miami' || place === 'Las Palmas' || place === 'Bali') {
     inputWrapper.innerHTML = `
-      <form id="interest-form">
+        <form id="interest-form">
         <label for="wsports" class="container">Water sports
         <input class="checkbox" type="checkbox"  id="wsports" name="wports" value="water sports">
         <span class="checkmark"></span>
@@ -207,11 +208,11 @@ const interest = (place) => {
         <span class="checkmark"></span>
         <button type="submit" class="interest-btn">Choose</button>
         </label>
-      </form>
-    `
+                </form>
+        `
   } else {
     inputWrapper.innerHTML = `
-      <form id="interest-form">
+        <form id="interest-form">
         <label for="extreme" class="container">Extreme sports
         <input class="checkbox" type="checkbox"  id="extreme" name="extreme" value="extreme sports>
         <span class="checkmark"></span>
@@ -224,9 +225,9 @@ const interest = (place) => {
         <input class="checkbox" type="checkbox"  id="spiritual" name="spiritual" value="spiritual pursuits">
         <span class="checkmark"></span>
         </label>
-        <button type="submit" class="interest-btn">Choose</button>
-      </form>
-    `
+                  <button type="submit" class="interest-btn">Choose</button>
+        </form>
+        `
   }
 
   const interestForm = document.getElementById("interest-form")
@@ -247,11 +248,15 @@ const interest = (place) => {
 }
 
 // .5
+<<<<<<< HEAD
 
+=======
+>>>>>>> 10a6932e2de11b1951a52a5eca1e4fa401875a05
 const booking = (interest) => {
   questionNumber++
   bookingSentence += ` Enjoy a wonderful time with lots of ${interest}! Au revoir!`
   showMessage(`Do you want to book this?`, 'bot')
+<<<<<<< HEAD
   textInput()
 }
 
@@ -263,16 +268,19 @@ const textInput = () => {
   </button>
 </form>`
 
-  const bookForm = document.getElementById("name-form")
-  const userForm = document.getElementById("user-input")
-  bookForm.addEventListener('submit', (event) => {
+  const bookingForm = document.getElementById("name-form")
+  const bookingInput = document.getElementById("user-input")
+  bookingForm.addEventListener('submit', (event) => {
     event.preventDefault()
+<<<<<<< HEAD
     nxtQuestion(userForm.value)
     userForm.value = ""
   })
 }
 
 // .6 Asks if user wants to book and if yes writes out a sentence with information about the trip
+
+>>>>>>> 10a6932e2de11b1951a52a5eca1e4fa401875a05
 const confirmation = (answer) => {
   if (answer.toLowerCase() === 'yes') {
     showMessage(bookingSentence, "bot")

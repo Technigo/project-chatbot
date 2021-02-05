@@ -184,6 +184,24 @@ button:hover {
   transition: all 0.2s ease;
 }
 
+.where-btn-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.where-btn {
+  position: relative;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+.where-btn img {
+  position: absolute;
+  object-fit: cover;
+  width: 100%;
+}
+
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -202,23 +220,14 @@ select {
 
 .select-mountain {
   background-image: url("./assets/mountain.jpg");
-  background-size: cover;
-  background-size: 100%;
-  background-position: 1%;
 }
 
 .select-beach {
-  background-image: url("./assets/beach2.jpg");
-  background-size: cover;
-  background-size: 100%;
-  background-position: 1%;
+  background-image: url("./assets/beach.jpg");
 }
 
 .select-city {
-  background-image: url("./assets/city2.jpg");
-  background-size: cover;
-  background-size: 100%;
-  background-position: 1%;
+  background-image: url("./assets/city.jpg");
 }
 
 option {
@@ -314,5 +323,4 @@ option {
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
+  transform: rotate(45deg);}
