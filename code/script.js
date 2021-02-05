@@ -106,12 +106,15 @@ const where = (persons) => {
 
     inputWrapper.innerHTML = `
       <div class="where-btn-wrapper">
-      <div class="where-btn" id="mountain">
-        <img src="./assets/mountains.png" alt="mountains"></div>
-      <div class="where-btn" id="beach">
-        <img src="./assets/beach.png" alt="beach"></div>
-      <div class="where-btn" id="city">
-        <img src="./assets/city.png" alt="city"></div>      
+        <div class="where-btn" id="mountain">
+          <img src="./assets/mountains.png" alt="mountains">
+        </div>
+        <div class="where-btn" id="beach">
+          <img src="./assets/beach.png" alt="beach">
+        </div>
+        <div class="where-btn" id="city">
+          <img src="./assets/city.png" alt="city">
+        </div>      
       </div>
     `
     const mountain = document.getElementById('mountain')
@@ -256,18 +259,19 @@ const interest = (place) => {
 // .5 
 const booking = (interest) => {
   questionNumber++
-  bookingSentence += ` Enjoy a wonderful time with lots of ${interest}! Info will be sent to ${sessionStorage.getItem("email")}. Au revoir!`
+  bookingSentence += ` Enjoy a wonderful time with lots of ${interest}! Info will be sent to <div class="email">${sessionStorage.getItem("email")}</div>. Au revoir!`
   showMessage(`Do you want to book this?`, 'bot')
   textInput()
 }
 
 const textInput = () => {
-  inputWrapper.innerHTML = `<form id="name-form">
-  <input id="user-input" type="text" />
-  <button id="send-btn" class="send-btn" type="submit">
-    Send
-  </button>
-</form>`
+  inputWrapper.innerHTML = `
+    <form id="name-form">
+      <input id="user-input" type="text" />
+      <button id="send-btn" class="send-btn" type="submit">
+        Send
+      </button>
+    </form>`
 
   const bookingForm = document.getElementById("name-form")
   const handleBooking = document.getElementById("user-input")
@@ -282,10 +286,14 @@ const textInput = () => {
 const confirmation = (answer) => {
   if (answer.toLowerCase() === 'yes') {
     showMessage(bookingSentence, "bot")
-    setTimeout(()=>{window.open("./index.html")}, 8000)
+    setTimeout(() => {
+      window.open("./index.html")
+    }, 8000)
   } else if (answer.toLowerCase() === 'no') {
     showMessage(`Thanks for your time and hope we'll meet again soon!`, 'bot')
-    setTimeout(()=>{window.open("./index.html")}, 3000)
+    setTimeout(() => {
+      window.open("./index.html")
+    }, 3000)
   } else {
     showMessage(`Please response yes or no.`, 'bot')
   }
@@ -297,8 +305,8 @@ if (document.getElementById("start-btn")) {
   const fName = document.getElementById("fname")
   const eMail = document.getElementById("email")
   startForm.addEventListener('submit', (event) => {
-    sessionStorage.setItem("name", fName.value); 
-    sessionStorage.setItem("email", eMail.value); 
+    sessionStorage.setItem("name", fName.value);
+    sessionStorage.setItem("email", eMail.value);
     event.preventDefault()
     window.open("./chatbot.html")
   })
@@ -311,4 +319,6 @@ form.addEventListener('submit', (event) => {
 })
 
 // This means the nights function will be called one second after the website is loaded 
-setTimeout(()=>{nights(sessionStorage.getItem("name"))}, 1500)
+setTimeout(() => {
+  nights(sessionStorage.getItem("name"))
+}, 1500)

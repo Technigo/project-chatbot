@@ -340,3 +340,10 @@ option {
 .interest-btn {
   margin-left: 5px;
 }
+
+.email {
+  color: orange;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
