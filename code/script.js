@@ -125,7 +125,7 @@ const movieLength = (yes) => {
 const gender = (length) => {
   movLength = length;
   questionNumber++
-  showMessage(`${length} it is! I know gender is so 80's... but hey for the sake of statistics in the film industry, let's do the division. Male or female director?`, 'bot')
+  showMessage(`${length} it is! I know, gender is so 80's... but hey for the sake of statistics in the film industry, let's do the division. Male or female director?`, 'bot')
   inputWrapper.innerHTML = `
       <div>
         <button id="fBtn">Female</button>
