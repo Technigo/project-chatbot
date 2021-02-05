@@ -4,19 +4,23 @@ let userAnswer = document.getElementById('name-input');
 const nameForm = document.getElementById('name-form');
 const inputWrapper = document.getElementById('input-wrapper');
 
-// Global variables, if you need any, declared here
+// Global variables:
+
 let currentQuestion = 0;
 
-// Functions declared here
+// Functions:
 
+// A function to clear the textfield after submit
 const clearInput = () => {
   const clearText = document.getElementById("name-form");
   clearText.reset();
 }
 
+// Increases the counter for the sake of knowing which answer belongs where
 const increaseCounter = () => {
   currentQuestion = currentQuestion + 1
 }
+
 
 const showInput = () => {
   inputWrapper.innerHTML = `
@@ -27,6 +31,7 @@ const showInput = () => {
     `
 }
 
+// The Y/N buttons
 const yesNoButtons = () => {
   inputWrapper.innerHTML = `
     <div class="input-wrapper" id="input-wrapper">
@@ -55,7 +60,7 @@ const number = () => {
     `
 }
 
-// This function will add a chat bubble in the correct place based on who the sender is
+// This function adds a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     console.log("Hej!")
@@ -78,59 +83,66 @@ const showMessage = (message, sender) => {
     `
     console.log(sender);
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+  // Makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
+// Greeting
 const greeting = () => {
   showMessage(`Hello there, what's your name?`, 'bot');
 }
 
-// Set up your eventlisteners here
+// Eventlisteners here
 nameForm.addEventListener("submit", (event)=> {
   event.preventDefault();
   
 
-   // Assign input value to variable
+   // Assigns input value to variable
    const input = document.getElementById('name-input').value;
-  //  const inputWrapper = document.getElementById('input-wrapper').value;
     if (currentQuestion === 0) {
       clearInput();
       showMessage(input, 'user');
       showMessage(`Hi ${input}, nice to meet you! I'm Bot and I'll be your waiter today. What do you feel like drinking?`, "bot");
       increaseCounter();
    } else if (currentQuestion === 1) {
-     clearInput();
-     showMessage(input, 'user');
-     showMessage(`Nice! ${input} is a great choice! What do you feel like eating with that?`, "bot");
-     increaseCounter();
+      clearInput();
+      showMessage(input, 'user');
+      showMessage(`Nice! ${input} is a great choice! What do you feel like eating with that?`, "bot");
+      increaseCounter();
    } else if (currentQuestion === 2) {
-     clearInput();
-     showMessage(input, 'user');
-     showMessage('Yummy! How about something sweet, what would you like for dessert?', "bot");
-     increaseCounter();
+      clearInput();
+      showMessage(input, 'user');
+      showMessage('Yummy! How about something sweet, what would you like for dessert?', "bot");
+      increaseCounter();
    } else if (currentQuestion === 3) {
-     clearInput();
-     showMessage(input, 'user');
-     showMessage(`${input} sounds delicious - We are closing soon so I'll bring you the bill`, "bot");
-     increaseCounter();
+      clearInput();
+      showMessage(input, 'user');
+      showMessage(`${input} sounds delicious - We are closing soon so I'll bring you the bill`, "bot");
+      setTimeout(() => showMessage(`That'll be 800kr`, "bot"), 1000);
+      setTimeout(() => {
+      showMessage(`If you would like to tip please write the amount!`, "bot");
+      increaseCounter();
+    }, 2000);
+     
    } else if (currentQuestion === 4) {
-     clearInput();
-     showMessage(input, 'user');
-     showMessage(`That'll be 800kr`, "bot");
-     showMessage(`If you would like to tip please write the amount!`, "bot");
-    //  number();
-     increaseCounter();
-   } else if (currentQuestion === 5) {
-     clearInput();
-     showMessage(input, 'user');
-     yesNoButtons();
-     showMessage(`Thank you, and hope to see you soon! Please take a moment to rate your visit:`, "bot");
-     increaseCounter();
-   }
-  }
-);
+      clearInput();
+      showMessage(input, 'user');
+
+     // isNaN = is not a number, checks if its not numerical.
+      if (isNaN(input)) {
+        showMessage('Please enter a valid number', 'bot');
+      } else if (+input < 50) {
+        setTimeout(() => showMessage(`You are very cheap!`, "bot"), 1000);
+        setTimeout(() => showMessage(`But hope to see you soon again!`, "bot"), 2000);
+        yesNoButtons();
+        setTimeout(() => showMessage(`Please take a moment to rate your visit:`, "bot"), 3000);
+        increaseCounter();
+      } else {
+        yesNoButtons();
+        showMessage(`Thank you, and hope to see you soon! Please take a moment to rate your visit:`, "bot");
+      }
+    }
+});
 
  
 // When website loaded, chatbot asks first question.
