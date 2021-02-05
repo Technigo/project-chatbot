@@ -10,10 +10,6 @@ let questionNumber = 1
 let movLength;
 let genderDir;
 
-const botReply = (msg) => {
-  showMessage(msg, 'bot')
-}
-
 const userReply = (msg) => {
   showMessage(msg, 'user')
 }
@@ -76,12 +72,10 @@ const nextQuestion = (message) => {
   } else if (questionNumber === 4) {
     userReply(message)
     setTimeout(() => movieGenre(message), 1000)
-  }
-  else if (questionNumber === 5) {
+  } else if (questionNumber === 5) {
     userReply(message)
     setTimeout(() => movieMenu(message), 1000)
-  }
-  else if (questionNumber === 6) {
+  } else if (questionNumber === 6) {
     userReply(message)
     setTimeout(() => chosenMovie(message), 2000)
   }
@@ -94,6 +88,7 @@ const greeting = () => {
 }
 
 const movieTips = (msg) => {
+  console.log('Username is:', msg);
   questionNumber++
   showMessage(`Nice to meet you ${msg}. As you might know, I'm quite a movie expert. 
   Want some tips for tonight?`, 'bot')
@@ -105,22 +100,10 @@ const movieTips = (msg) => {
     `
   document.getElementById('yesBtn').addEventListener('click', () => nextQuestion('Yes'))
   document.getElementById('noBtn').addEventListener('click', () => reloadBot())
-  
-  const reloadBot = () => {
-    showMessage('Too bad, let me know if you change your mind!', 'bot')
-    inputWrapper.innerHTML = `
-    <div>
-      <button id="reloadBtn">Restart</button>
-    </div>
-    `
-    document.getElementById('reloadBtn').addEventListener('click', () => { 
-      setTimeout(()=>{location.reload();},2000)
-        console.log(reloadBtn)
-    })
-  }
 }
 
 const movieLength = (yes) => {
+  console.log('User pressed:', yes);
   questionNumber++
   showMessage(`${yes} great! How much time do you have?`, 'bot')
   inputWrapper.innerHTML = `
@@ -134,21 +117,23 @@ const movieLength = (yes) => {
 }
 
 const gender = (length) => {
+  console.log('User chose:', length);
   movLength = length;
   questionNumber++
   showMessage(`${length} it is! I know, gender is so 80's... but hey for the sake of statistics in the film industry, let's do the division. Male or female director?`, 'bot')
   inputWrapper.innerHTML = `
       <div>
-        <button id="fBtn">Female</button>
-        <button id="mBtn">Male</button>
+        <button id="femaleBtn">Female</button>
+        <button id="maleBtn">Male</button>
       </div>
     `
-  document.getElementById('fBtn').addEventListener('click', () => nextQuestion('Female director'))
-  document.getElementById('mBtn').addEventListener('click', () => nextQuestion('Male director'))
+  document.getElementById('femaleBtn').addEventListener('click', () => nextQuestion('Female director'))
+  document.getElementById('maleBtn').addEventListener('click', () => nextQuestion('Male director'))
 } 
 
 
 const movieGenre = (gender) => {
+  console.log('User chose:', gender);
   genderDir = gender;
   questionNumber++
   showMessage(`Great to know your preferences! Now let's move further into the movie djungle...`, 'bot')
@@ -168,8 +153,8 @@ const movieGenre = (gender) => {
   document.getElementById('documentaryBtn').addEventListener('click', () => nextQuestion('documentary'))
 }
 
-
 const movieMenu = (type) => {
+  console.log('User chose:', type, movLength, genderDir);
   questionNumber++
   showMessage(`Excellent choice - ${type} it is. Here is some movies that I think will get the juices flowing in your taste buds:`, 'bot')
   if (movLength === 'Under 2h') {
@@ -252,7 +237,7 @@ const movieMenu = (type) => {
               <option value="Man on Wire">Man on Wire</option>
               <option value="The Social Dilemma">The Social Dilemma</option>
             </select>
-          `
+            `
       }
   }
   } else if (movLength === 'Over 2h') {
@@ -343,6 +328,7 @@ const movieMenu = (type) => {
 };
 
 const chosenMovie = (select) => {
+  console.log('User chose:', select);
   questionNumber++
   showMessage(`Get the popcorn ready and enjoy watching ${select}!`, 'bot')
   showMessage(`Press restart if you want to start over 👇`, 'bot')
@@ -351,11 +337,9 @@ const chosenMovie = (select) => {
         <button id="restartBtn">Yeah, you need to go refresh your taste levels!</button>
       </div>
     `
-
   document.getElementById('restartBtn').addEventListener('click', () => {
     location.reload()
   })
-
 };
 
 
@@ -365,10 +349,4 @@ submit.addEventListener('click', (event) => {
   nextQuestion(input.value)
 })
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loadedname.
 setTimeout(greeting, 1000)
