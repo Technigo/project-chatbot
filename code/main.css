@@ -9,3 +9,4 @@
 /* Load styles for all the elements */
 @import "./styles/messages.css";
 @import "./styles/userInput.css";
+@import "./styles/encounterInfo.css";

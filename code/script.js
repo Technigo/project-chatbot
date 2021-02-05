@@ -23,10 +23,15 @@ let _name,
 // Update the info fields
 const updateInfo = () => {
   const heroHealth = info.querySelector("#healthHero");
+  const heroName = info.querySelector("#nameHero");
   const enemyHealth = info.querySelector("#healthEnemy");
+  const enemyName = info.querySelector("#nameEnemy");
   const rounds = info.querySelector("#rounds");
   // Update rounds
   rounds.innerHTML = encounter.rounds;
+  // update info names
+  heroName.innerHTML = encounter.hero.name;
+  enemyName.innerHTML = encounter.enemy.type;
   // update health info
   heroHealth.innerHTML = encounter.hero.hp < 0 ? 0 : encounter.hero.hp;
   enemyHealth.innerHTML = encounter.enemy.hp < 0 ? 0 : encounter.enemy.hp;
@@ -63,6 +68,7 @@ const changeInput = (type) => {
       currentInput = "none";
       break;
   }
+  chat.scrollTop = chat.scrollHeight;
 };
 
 // These function will add a chat bubble in the correct place based on who the sender is
@@ -260,7 +266,7 @@ const handleActionSelectInput = (action) => {
           changeInput("actionSelect");
           updateInfo();
           updateBuffs();
-        }, 3000);
+        }, 1500);
       }, 3000);
     }, 3000);
   }, 1000);

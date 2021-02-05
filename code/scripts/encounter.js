@@ -11,7 +11,6 @@ export default class Encounter {
     this.enemy = this.setEnemy();
     this.hero = this.setHero(name, type);
     this.rounds = 1;
-
     this.buffsRemove = [];
   }
 
@@ -111,14 +110,14 @@ export default class Encounter {
         break;
       //
       case "shield":
-        enemy.buffs.push(enemy.addBuff("disadvantage", _action.buffLength));
+        enemy.buffs.push(enemy.addBuff("disadvantage", _action.buffLength, "Disadvantage"));
         msg = `The ${enemy.type} has disadvantage on its next attack.`;
         break;
       //
       case "dodge":
         let toSucceed = this.isEasy ? 10 : 15;
         if (_action.rollDexSave() >= toSucceed) {
-          enemy.buffs.push(enemy.addBuff("noAttack", _action.buffLength));
+          enemy.buffs.push(enemy.addBuff("noAttack", _action.buffLength, "Misses Next Attack"));
           msg = `The ${enemy.type} will miss its next attack.`;
         } else {
           msg = `You fumble a bit and fail your dodge.`;

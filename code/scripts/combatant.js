@@ -33,11 +33,12 @@ export default class Combatant {
     return 25;
   }
 
-  addBuff(type, length) {
+  addBuff(type, length, title) {
     return {
       type: type,
       buffLength: length,
       display: false,
+      title: title,
     };
   }
 
@@ -59,17 +60,5 @@ export default class Combatant {
     }
     _.handleUsePool(action);
     return toHeal;
-  };
-
-  rollDmg = (dice) => {
-    if (dice === 8) {
-      return d8() + this.dmgMod;
-    }
-    if (dice === 6) {
-      return d6() + this.dmgMod;
-    }
-    if (dice === 10) {
-      return d10() + this.dmgMod;
-    }
   };
 }

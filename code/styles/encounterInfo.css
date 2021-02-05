@@ -1,0 +1,23 @@
+.info {
+  flex: 1;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row wrap;
+}
+
+.info__hero,
+.info__enemy,
+.info__round {
+  display: flex;
+  flex-flow: column wrap;
+  flex-shrink: 0;
+}
+
+.info__icon {
+  margin: 10px 0;
+}
+
+.info__icon::before {
+  margin-right: 10px;
+}

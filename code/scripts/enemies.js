@@ -13,14 +13,17 @@ export class Ogre extends Combatant {
     this.actions = [
       {
         msg: `The ${this.type} swings its great club up in the air to knock you down.`,
-        rollDmg: this.rollDmg(8),
+        rollDmg: this.rollDmg,
       },
       {
         msg: `The ${this.type} takes out its javelin and tries to thrust it into your body.`,
-        rollDmg: this.rollDmg(6),
+        rollDmg: this.rollDmg,
       },
     ];
   }
+  rollDmg = () => {
+    return d8() + this.dmgMod;
+  };
 }
 
 export class Owlbear extends Combatant {
@@ -34,14 +37,17 @@ export class Owlbear extends Combatant {
     this.actions = [
       {
         msg: `The ${this.type} swings its great club up in the air to knock you down.`,
-        rollDmg: this.rollDmg(8),
+        rollDmg: this.rollDmg,
       },
       {
         msg: `The ${this.type} takes out its javelin and tries to thrust it into your body.`,
-        rollDmg: this.rollDmg(6),
+        rollDmg: this.rollDmg,
       },
     ];
   }
+  rollDmg = () => {
+    return d8() + this.dmgMod;
+  };
 }
 
 export class SaberToothTiger extends Combatant {
@@ -55,14 +61,17 @@ export class SaberToothTiger extends Combatant {
     this.actions = [
       {
         msg: `The ${this.type} swings its great club up in the air to knock you down.`,
-        rollDmg: this.rollDmg(8),
+        rollDmg: this.rollDmg,
       },
       {
         msg: `The ${this.type} takes out its javelin and tries to thrust it into your body.`,
-        rollDmg: this.rollDmg(6),
+        rollDmg: this.rollDmg,
       },
     ];
   }
+  rollDmg = () => {
+    return d8() + this.dmgMod;
+  };
 }
 
 export class Ettin extends Combatant {
@@ -76,14 +85,17 @@ export class Ettin extends Combatant {
     this.actions = [
       {
         msg: `The ${this.type} swings its great club up in the air to knock you down.`,
-        rollDmg: this.rollDmg(8),
+        rollDmg: this.rollDmg,
       },
       {
         msg: `The ${this.type} takes out its javelin and tries to thrust it into your body.`,
-        rollDmg: this.rollDmg(6),
+        rollDmg: this.rollDmg,
       },
     ];
   }
+  rollDmg = () => {
+    return d8() + this.dmgMod;
+  };
 }
 
 export class Ghast extends Combatant {
@@ -97,14 +109,17 @@ export class Ghast extends Combatant {
     this.actions = [
       {
         msg: `The ${this.type} swings its great club up in the air to knock you down.`,
-        rollDmg: this.rollDmg(8),
+        rollDmg: this.rollDmg,
       },
       {
         msg: `The ${this.type} takes out its javelin and tries to thrust it into your body.`,
-        rollDmg: this.rollDmg(6),
+        rollDmg: this.rollDmg,
       },
     ];
   }
+  rollDmg = () => {
+    return d8() + this.dmgMod;
+  };
 }
 
 export class Wight extends Combatant {
@@ -118,14 +133,17 @@ export class Wight extends Combatant {
     this.actions = [
       {
         msg: `The ${this.type} swings its great club up in the air to knock you down.`,
-        rollDmg: this.rollDmg(8),
+        rollDmg: this.rollDmg,
       },
       {
         msg: `The ${this.type} takes out its javelin and tries to thrust it into your body.`,
-        rollDmg: this.rollDmg(6),
+        rollDmg: this.rollDmg,
       },
     ];
   }
+  rollDmg = () => {
+    return d8() + this.dmgMod;
+  };
 }
 
 export class Bandit extends Combatant {
@@ -139,14 +157,17 @@ export class Bandit extends Combatant {
     this.actions = [
       {
         msg: `The ${this.type} swings its great club up in the air to knock you down.`,
-        rollDmg: this.rollDmg(8),
+        rollDmg: this.rollDmg,
       },
       {
         msg: `The ${this.type} takes out its javelin and tries to thrust it into your body.`,
-        rollDmg: this.rollDmg(6),
+        rollDmg: this.rollDmg,
       },
     ];
   }
+  rollDmg = () => {
+    return d8() + this.dmgMod;
+  };
 }
 
 export class Mummy extends Combatant {
@@ -160,12 +181,15 @@ export class Mummy extends Combatant {
     this.actions = [
       {
         msg: `The ${this.type} swings its great club up in the air to knock you down.`,
-        rollDmg: this.rollDmg(8),
+        rollDmg: this.rollDmg,
       },
       {
         msg: `The ${this.type} takes out its javelin and tries to thrust it into your body.`,
-        rollDmg: this.rollDmg(6),
+        rollDmg: this.rollDmg,
       },
     ];
   }
+  rollDmg = () => {
+    return d8() + this.dmgMod;
+  };
 }

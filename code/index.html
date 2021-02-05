@@ -17,13 +17,15 @@
   </head>
 
   <body>
-    <div class="btn__play fa fa-play-circle-o" id="btnAudio">
-      <audio loop="true">
-        <source src="./assets/musicBkg.mp3" type="audio/mp3" />
-        Your browser does not support playback of audio
-      </audio>
-      <!-- <img src="./assets/bot.png" alt="bot" /> -->
-    </div>
+    <header>
+      <div class="btn__play fa fa-play-circle-o" id="btnAudio">
+        <audio loop="true">
+          <source src="./assets/musicBkg.mp3" type="audio/mp3" />
+          Your browser does not support playback of audio
+        </audio>
+        <!-- <img src="./assets/bot.png" alt="bot" /> -->
+      </div>
+    </header>
     <h1 class="title">Welcome to the Dungeon</h1>
     <h2 class="subtitle">The adventure begins...</h2>
     <div class="content-wrapper">
@@ -38,13 +40,15 @@
     <div class="info-wrapper">
       <section class="info" id="info">
         <div class="info__enemy" id="enemyInfo">
-          <p>Enemy Health: <span id="healthEnemy">0</span></p>
+          <p>Type: <span id="nameEnemy">--</span></p>
+          <div class="fa fa-heart info__icon"><span id="healthEnemy">0</span></div>
         </div>
         <div class="info__round">
           <p>Rounds: <span id="rounds">0</span></p>
         </div>
         <div class="info__hero">
-          <p>Hero Health: <span id="healthHero">0</span></p>
+          <p>Name: <span id="nameHero">--</span></p>
+          <div class="fa fa-heart info__icon"><span id="healthHero">0</span></div>
         </div>
       </section>
     </div>

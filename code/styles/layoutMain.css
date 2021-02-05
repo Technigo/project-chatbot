@@ -39,28 +39,14 @@ body {
   padding-top: 20px;
   border-radius: 0 0 30px 30px;
   background: #5e1919;
-}
-
-.info {
-  flex: 1;
-  color: white;
-  display: flex;
-  justify-content: space-around;
-  flex-flow: row wrap;
-}
-
-.info__hero,
-.info__enemy,
-.info__round {
-  display: flex;
-  flex-flow: column wrap;
-  flex-shrink: 0;
+  margin-bottom: 20%;
 }
 
 .btn__play {
-  position: absolute;
-  margin: 20px;
-  right: 0;
-  z-index: 1;
+  /* position: absolute; */
+  /* margin: 20px; */
+  /* right: 0;
+  bottom: 0; */
+  /* z-index: 1; */
   font-size: 56px !important;
 }

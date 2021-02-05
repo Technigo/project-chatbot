@@ -31,7 +31,7 @@ export const addBuffs = (wrapper, buffs) => {
     for (let i = 0; i < buffs.length; i++) {
       const buff = buffs[i];
       if (!buff.display) {
-        wrapper.innerHTML += `<p id="${buff.type}">${buff.type}</p>`;
+        wrapper.innerHTML += `<div class="fa fa-times-circle info__icon" id="${buff.type}"><span>${buff.title}</span></div>`;
       }
       buff.display = true;
     }
