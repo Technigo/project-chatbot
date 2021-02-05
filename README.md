@@ -10,15 +10,15 @@ Describe how you approached to problem, and what tools and techniques you used t
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://affectionate-ritchie-cce98d.netlify.app/
 
 
 ## TODO
 <!-- - Add last questions -->
 <!-- - Save all kittendata to obj -->
 <!-- - Name by letter from list in obj -->
-- Add button inputs
 <!-- - Picture in last q -->
+- Add button inputs
 - update ui
 - thinking-dots
 - Avatar icon

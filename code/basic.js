@@ -198,7 +198,7 @@ const showImage = (imageRef) => {
 const handleError = () => {
   if (currentQuestion === 1) {
     console.log('handleError' + currentQuestion)
-    showMessage("I said anything BUT 'KittenBot Go!'... this will go a lot easier if you read my instructions... :face_with_raised_eyebrow: ", 'bot')
+    showMessage("I said anything BUT 'KittenBot Go!'... this will go a lot easier if you read my instructions... ", 'bot')
   } else if (currentQuestion === 3) {
     showMessage("You can only type 'boy' or 'girl'", 'bot')    
   } else if (currentQuestion === 5) {
@@ -214,7 +214,7 @@ const handleResponse = (receivedMessage) => {
     // 1
     if (currentQuestion === 1) {
       showMessage(receivedMessage, 'user')
-      if (receivedMessage.toLowerCase != 'kittenbot go!') {
+      if (receivedMessage.toLowerCase() != 'kittenbot go!') {
         currentQuestion++
         secondQuestion()
       } else {
@@ -330,7 +330,7 @@ const fifthQuestion = () => {
 const sixthQuestion = () => {
   console.log('sixthQuestion')
   showMessage(`Good choice! I'm actually kinda ${kitten.environmentPreference}y myself.`, 'bot')
-  setTimeout(showMessage, 1000, `Finally you have to decide if ${kitten.pronoun} should be furry or hairless?`, 'bot') // Thanks internet
+  setTimeout(showMessage, 2000, `Finally you have to decide if ${kitten.pronoun} should be furry or hairless?`, 'bot') // Thanks internet
 }
 
 const seventhQuestion = () => {
