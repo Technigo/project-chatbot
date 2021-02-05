@@ -139,7 +139,7 @@ const showResultBeachCold= () => {
   setTimeout(()=> showMessage ("Iceland!!", "bot"), 7000)
   setTimeout(()=> satisfaction (), 9000)
 } 
-//Question 3 - Result
+//Question 3 - Satisfaction button 
 const satisfaction = () => {
   showMessage ("Are you ready to pack?", "bot")
   inputWrapper.innerHTML=`
@@ -147,20 +147,13 @@ const satisfaction = () => {
     <button value= "no" class="no" id="no-button">No</button>
     `
   document.getElementById("yes-button").addEventListener("click", () => {
-    setTimeout (() => showMessage("HAPPY HOLIDAYS!!, we did our best!.", "bot"),1000)
+    setTimeout (() => showMessage("HAPPY HOLIDAYS!! We did our best!", "bot"),1000)
     inputWrapper.innerHTML = "";
   })
   document.getElementById("no-button").addEventListener("click", () =>{
     setTimeout (() => askForLocation (), 1000)
-
   })
 } 
-
-
-
-// Global variables, if you need any, declared here
-
-// Functions declared here
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -209,7 +202,6 @@ const value = document.getElementById('input-value').value;
   
   document.getElementById('input-value').value = "";   
 });
-
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:

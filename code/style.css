@@ -1,9 +1,11 @@
 * {
   box-sizing: border-box;
 }
+
 img{
   max-height: 100%;
 }
+
 body {
   margin: 0;
   padding: 0;
@@ -52,7 +54,6 @@ input {
   font-weight: 600;
   line-height: 26px;
   flex: 1;
-  
 }
 
 main {
@@ -187,8 +188,7 @@ select{
   display: flex;
   justify-content: center;
   align-items: center;
-  background: gold;
-
+  background: rgba(255, 230, 110, 1);
 }
 
 .warm-button:hover {
@@ -197,23 +197,24 @@ select{
 
 @keyframes freeze {
   0% {
-  color: rgb(22, 96, 165);
-  background: rgb(95, 159, 189);
-  box-shadow:
-  0 0 5px 0 rgb(13, 26, 219),
-  0 0 5px 0 rgba(12, 166, 194, 0.8),
-  0 0 5px 0 rgba(10, 230, 212, 0.6);
-}
+    color: rgb(22, 96, 165);
+    background: rgb(95, 159, 189);
+    box-shadow:
+    0 0 5px 0 rgb(13, 26, 219),
+    0 0 5px 0 rgba(12, 166, 194, 0.8),
+    0 0 5px 0 rgba(10, 230, 212, 0.6);
+  }
   
   100% {
-  color: rgba(0, 0, 0, 1);
-  background: rgba(255, 255, 255, 1);
-  box-shadow:
-    0 -35px 40px 30px rgba(255, 130, 10, 0),
-    0 -30px 30px 10px rgba(230, 30, 10, 0),
-    0 -20px 10px 0 rgba(255, 255, 10, 0); 
+    color: rgba(0, 0, 0, 1);
+    background: rgba(255, 255, 255, 1);
+    box-shadow:
+      0 -35px 40px 30px rgba(255, 130, 10, 0),
+      0 -30px 30px 10px rgba(230, 30, 10, 0),
+      0 -20px 10px 0 rgba(255, 255, 10, 0); 
   }
 }
+
 .cold-button {
   position: relative;
   display: flex;
@@ -231,25 +232,37 @@ select{
     display: flex; 
     align-content: center;
     justify-content: center;
-    font-size: 50px;
+    font-size: 35px;
   }
-  main{
+
+  h2{
+    font-size: 18px;
+  }
+
+  main {
     max-width: 80%;
   }
+
   body {
     background-repeat: repeat;
   }
-  
+
   .input-text {
     justify-content: center;
     width: 50%;
   }
+
   .bubble {
     width: 100%;
     justify-content: center; 
-  }
-  p {
-    font-size: 14px; 
+    padding: 8px 8px
   }
 
+  .user-bubble{
+    font-size: 10px;
+  }
+
+  p {
+    font-size: 10px; 
+  }
 }
