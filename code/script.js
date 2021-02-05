@@ -34,7 +34,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-    showMessage('Enter your name to start your appointment with Dr.Doc.Bot', 'bot')
+    showMessage('Enter your name to start your appointment with Dr Doc.Bot', 'bot')
 }
 
 let questionCounter = 0
@@ -127,4 +127,4 @@ docBotForm.addEventListener('submit', event => {
     questionCounter = questionCounter + 1;
 });
 
-setTimeout(greeting, 2000)
+setTimeout(greeting, 1000)
