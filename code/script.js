@@ -1,5 +1,5 @@
 // All the DOM selectors stored as short variables
-const chat = document.getElementById('chat')
+const chat = document.getElementById("chat");
 const formSubmitButton = document.getElementById("send-btn");
 const formMessageBox = document.getElementById("form-input");
 const formInputWrapper = document.getElementById("input-wrapper");
@@ -16,7 +16,9 @@ let chatDelay = 1000;
 // Set up your eventlisteners here
 
 /* This eventlistener will listen for a click on the From Submit Button */
-formSubmitButton.addEventListener('click', () => nextQuestion(formMessageBox.value));
+formSubmitButton.addEventListener("click", () =>
+  nextQuestion(formMessageBox.value)
+);
 
 // Functions declared here
 
@@ -32,7 +34,7 @@ const userReply = (msg) => {
 
 /* This function will add a chat bubble in the correct place based on who the sender is */
 const showMessage = (message, sender) => {
-  if (sender === 'user') {
+  if (sender === "user") {
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -40,8 +42,8 @@ const showMessage = (message, sender) => {
         </div>
         <img src="assets/user.png" alt="User" />  
       </section>
-    `
-  } else if (sender === 'bot') {
+    `;
+  } else if (sender === "bot") {
     /* console.log(message); */
     /* console.log(showMessage); */
     /* console.log(greeting); */
@@ -53,18 +55,17 @@ const showMessage = (message, sender) => {
           <p>${message}</p>
         </div>
       </section>
-    `
+    `;
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-  chat.scrollTop = chat.scrollHeight
-}
-
+  chat.scrollTop = chat.scrollHeight;
+};
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there! What's your name?`, 'bot')
+  showMessage(`Hello there! What's your name?`, "bot");
   // Just to check it out, change 'bot' to 'user' here 👆
-}
+};
 
 /* This functions is the core of the question. What ever questioNumber is equals to, that specific function will be called.  */
 const nextQuestion = (message) => {
@@ -93,19 +94,18 @@ const greentingAnswer = (message) => {
   userReply(message); // Speech bubble name
   formMessageBox.value = "";
   /* We add a timeout here and then we call the function. */
-  setTimeout(() => stockOrFundsQuestion(message), chatDelay)
+  setTimeout(() => stockOrFundsQuestion(message), chatDelay);
 };
 
 /* This functions will print the the chat bubble on screen that asks us if you want to buy stocks or funds */
 const stockOrFundsQuestion = (message) => {
   questionNumber = 2; // Set questionNumber to 2
-  botReply(`Hello ${message}. Would you like to buy "stocks" or "funds"?`) // Speech bubble question
+  botReply(`Hello ${message}. Would you like to buy "stocks" or "funds"?`); // Speech bubble question
   // Jumps to nextQuestion function because we clicked the button
 };
 
 /* This question will print the users answer speech bubble and check wheter or not the users answer is stocks or funds. Depending on what the answe is the code will push the user in the right direction. We also added a failsafe else if user user don't type the correct message. */
 const stockOrFundsQuestionAnswer = (message) => {
-
   userReply(message); // Speech bubble STOCKS or FUNDS
   formMessageBox.value = "";
 
@@ -117,7 +117,7 @@ const stockOrFundsQuestionAnswer = (message) => {
     questionNumber = 4; // Set questionNumber to 4
   } else {
     botReply('You have to type either "stocks" or "funds".');
-  };
+  }
 };
 
 /* This function will print a speech bubble on the screen with the users answer which should be either "high" or "low". It will then check whcih type of stock the user want. Then push the user in the right direction.*/
@@ -127,7 +127,7 @@ const highRiskOrLowRiskStockQuestion = (message) => {
   formMessageBox.value = "";
   if (message === "high" || message === "high risk") {
     botReply("oh, so you want high risk!");
-    setTimeout(chatDelay)
+    setTimeout(chatDelay);
     botReply("Here you go!");
 
     /*At this poin in the code we have coded a HTML slect option list that will be rendered on the screen and our previous textbox will be removed*/
@@ -149,12 +149,12 @@ const highRiskOrLowRiskStockQuestion = (message) => {
     let selectMenuOptions = document.getElementById("selectMenuOptions");
 
     /* We had to add a new event lsitener to our "buy" button we rendered above. */
-    selectOptionButton.addEventListener('click', () => nextQuestion(selectMenuOptions.value));
-
+    selectOptionButton.addEventListener("click", () =>
+      nextQuestion(selectMenuOptions.value)
+    );
   } else if (message === "low" || message === "low risk") {
-
     botReply("You want low risk");
-    setTimeout(chatDelay)
+    setTimeout(chatDelay);
     botReply("Here you go!");
 
     /* At this poin in the code we have coded a HTML slect option list that will be rendered on the screen and our previous textbox will be removed */
@@ -175,21 +175,21 @@ const highRiskOrLowRiskStockQuestion = (message) => {
     let selectMenuOptions = document.getElementById("selectMenuOptions");
 
     /* We had to add a new event lsitener to our "buy" button we rendered above. */
-    selectOptionButton.addEventListener('click', () => nextQuestion(selectMenuOptions.value));
-
+    selectOptionButton.addEventListener("click", () =>
+      nextQuestion(selectMenuOptions.value)
+    );
   } else {
     botReply("You have to type either low risk or high risk.");
-  };
+  }
 };
 
 const highRiskOrLowRiskFundQuestion = (message) => {
-
   questionNumber = 99;
   userReply(message); // Speechbubble high
   formMessageBox.value = "";
   if (message === "high" || message === "high risk") {
     botReply("oh, so you want high risk!");
-    setTimeout(chatDelay)
+    setTimeout(chatDelay);
     botReply("Here you go!");
 
     /* At this poin in the code we have coded a HTML slect option list that will be rendered on the screen and our previous textbox will be removed */
@@ -211,12 +211,12 @@ const highRiskOrLowRiskFundQuestion = (message) => {
     let selectMenuOptions = document.getElementById("selectMenuOptions");
 
     /* We had to add a new event lsitener to our "buy" button we rendered above. */
-    selectOptionButton.addEventListener('click', () => nextQuestion(selectMenuOptions.value));
-
+    selectOptionButton.addEventListener("click", () =>
+      nextQuestion(selectMenuOptions.value)
+    );
   } else if (message === "low" || message === "low risk") {
-
     botReply("You want low risk");
-    setTimeout(chatDelay)
+    setTimeout(chatDelay);
     botReply("Here you go!");
 
     /* At this poin in the code we have coded a HTML slect option list that will be rendered on the screen and our previous textbox will be removed */
@@ -237,11 +237,12 @@ const highRiskOrLowRiskFundQuestion = (message) => {
     let selectMenuOptions = document.getElementById("selectMenuOptions");
 
     /* We had to add a new event lsitener to our "buy" button we rendered above. */
-    selectOptionButton.addEventListener('click', () => nextQuestion(selectMenuOptions.value));
-
+    selectOptionButton.addEventListener("click", () =>
+      nextQuestion(selectMenuOptions.value)
+    );
   } else {
     botReply("You have to type either low risk or high risk.");
-  };
+  }
 };
 
 /* This function will handle the final part of the chat. It doens't matter if the user chose the stock route or the fund route. The function will take the value and tell us that we have successfully purchased our selected stock/fund. */
@@ -274,10 +275,8 @@ const finalQuestion = (message) => {
       </form>
   </div>
   `;
-
-
 };
 
 /* setTimeout(greeting, 500 */
-setTimeout(greeting, chatDelay)
+setTimeout(greeting, chatDelay);
 /* setTimeout(greeting, 3000)*/
