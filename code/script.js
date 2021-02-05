@@ -42,7 +42,7 @@ const showMessage = (message, sender) => {
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/popcorn.png" alt="Bot" />
+        <img src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -84,10 +84,10 @@ const showGenre = () => {
   buttonOptions.classList.remove("active")
   genreOptions.classList.add('active')
   if (isFirstTime) {
-    showMessage(`Hi ${nameUser}, what kind of movie would you like to watch?`, "bot")
+    showMessage(`Hi ${nameUser}! What kind of movie would you like to watch?`, "bot")
     isFirstTime = false
   } else {
-    showMessage(`Choose another genre.`, "bot")
+    showMessage(`Please choose another genre.`, "bot")
     for (genre of genres) {
       main.classList.remove(genre)
       randomMovieBtn.classList.remove(`${genre}-btn`)
@@ -106,7 +106,7 @@ const showButtons = (genre) => {
     showMessage(`${genre.slice(0, 1).toUpperCase()}${genre.slice(1)}`, "user")
   }, 500);
   setTimeout(() => {
-    showMessage(`You chose ${genre}!`, 'bot')
+    showMessage(`Nice choice! I can give you a recommendation for a great ${genre} movie!`, 'bot')
     genreChoice = genre
     genreOptions.classList.remove('active')
     buttonOptions.classList.add('active')
@@ -170,13 +170,10 @@ randomMovieBtn.addEventListener("click", (message) => {
     setTimeout(() => {
       showMessage(horrorMovies[getRandomNumber()], "bot")
     }, 300)
-  } else if
-    (genreChoice === "romantic") {
+  } else {
     setTimeout(() => {
       showMessage(romanticMovies[getRandomNumber()], "bot")
     }, 300)
-  } else {
-    console.log("not working")
   }
 }
 )
