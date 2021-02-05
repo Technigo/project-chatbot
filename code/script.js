@@ -69,31 +69,31 @@ const greeting = () => {
 /* This functions is the core of the question. What ever questioNumber is equals to, that specific function will be called.  */
 const nextQuestion = (message) => {
   if (questionNumber === 1) {
-      // Function call
-      greentingAnswer(message);
+    // Function call
+    greentingAnswer(message);
   } else if (questionNumber === 2) {
-      // Function call
-      stockOrFundsQuestionAnswer(message);
+    // Function call
+    stockOrFundsQuestionAnswer(message);
   } else if (questionNumber === 3) {
-      // Function call
-      highRiskOrLowRiskStockQuestion(message);
-  } else if (questionNumber === 4) { 
-      // Function call
-      highRiskOrLowRiskFundQuestion(message);
+    // Function call
+    highRiskOrLowRiskStockQuestion(message);
+  } else if (questionNumber === 4) {
+    // Function call
+    highRiskOrLowRiskFundQuestion(message);
   } else if (questionNumber === 99) {
-      // Function call
-      finalQuestion(message);
+    // Function call
+    finalQuestion(message);
   } else {
-      botReply("questionNumber invalid value!");
+    botReply("questionNumber invalid value!");
   }
 };
 
 /* This function will handle the what's your name response. */
 const greentingAnswer = (message) => {
-    userReply(message); // Speech bubble name
-    formMessageBox.value = "";
-    /* We add a timeout here and then we call the function. */
-    setTimeout(() => stockOrFundsQuestion(message), chatDelay)
+  userReply(message); // Speech bubble name
+  formMessageBox.value = "";
+  /* We add a timeout here and then we call the function. */
+  setTimeout(() => stockOrFundsQuestion(message), chatDelay)
 };
 
 /* This functions will print the the chat bubble on screen that asks us if you want to buy stocks or funds */
@@ -105,19 +105,19 @@ const stockOrFundsQuestion = (message) => {
 
 /* This question will print the users answer speech bubble and check wheter or not the users answer is stocks or funds. Depending on what the answe is the code will push the user in the right direction. We also added a failsafe else if user user don't type the correct message. */
 const stockOrFundsQuestionAnswer = (message) => {
-    
-    userReply(message); // Speech bubble STOCKS or FUNDS
-     formMessageBox.value = "";
 
-    if (message === "stocks") {
-      botReply("Perfect. Would you like high risk or low risk stocks?");
-      questionNumber = 3; // Set questionNumber to 3
-    } else if (message === "funds") {
-      botReply("Perfect. Would you like high risk or low risk funds?");
-      questionNumber = 4; // Set questionNumber to 4
-    } else {
-      botReply('You have to type either "stocks" or "funds".');
-    }; 
+  userReply(message); // Speech bubble STOCKS or FUNDS
+  formMessageBox.value = "";
+
+  if (message === "stocks") {
+    botReply("Perfect. Would you like high risk or low risk stocks?");
+    questionNumber = 3; // Set questionNumber to 3
+  } else if (message === "funds") {
+    botReply("Perfect. Would you like high risk or low risk funds?");
+    questionNumber = 4; // Set questionNumber to 4
+  } else {
+    botReply('You have to type either "stocks" or "funds".');
+  };
 };
 
 /* This function will print a speech bubble on the screen with the users answer which should be either "high" or "low". It will then check whcih type of stock the user want. Then push the user in the right direction.*/
@@ -157,7 +157,7 @@ const highRiskOrLowRiskStockQuestion = (message) => {
     setTimeout(chatDelay)
     botReply("Here you go!");
 
-     /* At this poin in the code we have coded a HTML slect option list that will be rendered on the screen and our previous textbox will be removed */
+    /* At this poin in the code we have coded a HTML slect option list that will be rendered on the screen and our previous textbox will be removed */
     formInputWrapper.innerHTML = `
     <div class="input-wrapper" id="input-wrapper">
     <div class="selectOptionDiv" id="selectOptionDiv">
@@ -242,9 +242,6 @@ const highRiskOrLowRiskFundQuestion = (message) => {
   } else {
     botReply("You have to type either low risk or high risk.");
   };
-
-
-
 };
 
 /* This function will handle the final part of the chat. It doens't matter if the user chose the stock route or the fund route. The function will take the value and tell us that we have successfully purchased our selected stock/fund. */
@@ -267,7 +264,7 @@ const finalQuestion = (message) => {
     `;
 
   /* At this point we render a textbox and submit button again. */
-    formInputWrapper.innerHTML = `
+  formInputWrapper.innerHTML = `
     <div class="input-wrapper" id="input-wrapper">
       <form id="name-form" onsubmit="return false;">
         <input id="form-input" type="text" />
