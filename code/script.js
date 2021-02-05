@@ -2,35 +2,37 @@
 const chat = document.getElementById('chat')
 const docBotForm = document.getElementById('doc-bot-form')
 const userInput = document.getElementById('user-input')
+let name = " "
 
 // Global variables, if you need any, declared here
+let questionCounter = 0
 
-// Functions declared here
+// Functions declared here.
 const userReply = () => {
     showMessage(userInput.value, 'user')
 }
 const botReply = (message) => {
-        showMessage(message, 'bot')
-    }
-    // This function will add a chat bubble in the correct place based on who the sender is
+    showMessage(message, 'bot')
+}
+
 const showMessage = (message, sender) => {
     if (sender === 'user') {
         chat.innerHTML += `
-      <section class="user-msg">
+    <section class="user-msg">
         <div class="bubble user-bubble">
-          <p>${message}</p>
+        <p class="text-message">${message}</p>
         </div>
         <img src="assets/thinking.png" alt="User" />  
-      </section>
+    </section>
     `
     } else if (sender === 'bot') {
         chat.innerHTML += `
-      <section class="bot-msg">
+    <section class="bot-msg">
         <img src="assets/robot.png" alt="Bot" />
         <div class="bubble bot-bubble">
-          <p>${message}</p>
+        <p class="text-message">${message}</p>
         </div>
-      </section>
+    </section>
     `
     }
     // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
@@ -42,17 +44,15 @@ const greeting = () => {
     showMessage('Enter your name to start your appointment with Dr Doc.Bot', 'bot')
 }
 
-let questionCounter = 0
-
 // Set up your eventlisteners here
 
 docBotForm.addEventListener('submit', event => {
     event.preventDefault()
-
     if (questionCounter === 0) {
         userReply();
 
         botReply(`Welcome ${userInput.value}! How are you feeling today?`, 'bot')
+        name = userInput.value
     } else if (questionCounter === 1) {
         userReply();
         if (userInput.value.length < 6) {
@@ -68,12 +68,12 @@ docBotForm.addEventListener('submit', event => {
         userReply();
 
         setTimeout(botReply, 1000, [`I see! No one really ever asks me how I feel...`])
-        setTimeout(botReply, 3000, [`Sometimes I'm very low on energy. I have alot to process you know. It makes me stressed and affects my mood.`])
+        setTimeout(botReply, 4000, [`Sometimes I'm very low on energy. I have alot to process you know. It makes me stressed and affects my mood.`])
         setTimeout(botReply, 5000, [`Sleep is very important. So are hugs.`])
-        setTimeout(botReply, 7000, [`Please hug me!`])
-        setTimeout(botReply, 9000, [`That feels better, don’t you think?`])
-        setTimeout(botReply, 11000, [`So back to you. How would you describe your wellbeing on a scale of 1 to 3 where 1 is “Like Shit” and 3 is “On Top Of The World”?`])
-    } else if (questionCounter === 4) {
+        setTimeout(botReply, 8000, [`Please hug me!`])
+        setTimeout(botReply, 11000, [`That feels better, don’t you think?`])
+        setTimeout(botReply, 13000, [`So back to you. How would you describe your wellbeing on a scale of 1 to 3 where 1 is “Like Shit” and 3 is “On Top Of The World”?`])
+    } else {
         userReply();
 
         if (userInput.value === `1`) {
@@ -83,13 +83,21 @@ docBotForm.addEventListener('submit', event => {
         } else if (userInput.value === `3`) {
             botReply(`That’s amazing!`)
         } else {
-            botReply(`I am afraid I don't understand you answer, please try again and contact another health professional`)
+            botReply(`I am afraid I don't understand you answer, please try again or contact another health professional`)
         }
-    } else {
-        userReply();
 
-        botReply(`I am afraid there is nothing more I can do for you, please contact 112`)
+        if (userInput.value === `1`) {
+            setTimeout(botReply, 1000, [`So ${name}, I see our time is up. Keep on breathing and I see you next week`])
+        } else if (userInput.value === `2`) {
+            setTimeout(botReply, 1000, [`So ${name}, I see our time is up. Hang in there and I see you next week`])
+        } else {
+            setTimeout(botReply, 1000, [`So ${name}, I see our time is up. Nice talking to you! Maybe we can go out parting some day!?`])
+        }
+
+        setTimeout(botReply, 3000, [`Oh, by the way. I’m sending you the bill to your IP address. Bye bye!`])
     }
+
+    console.log(userInput.value)
     userInput.value = '';
     questionCounter = questionCounter + 1;
 });
