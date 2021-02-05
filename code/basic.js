@@ -144,8 +144,6 @@ const getKittenPic = (color, envPref, furState) => {
 }
 
 
-
-
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     console.log('showMessage user ' + message)
@@ -154,51 +152,76 @@ const showMessage = (message, sender) => {
     <div class="bubble user-bubble">
     <p>${message}</p>
     </div>
-    <img src="assets/user.png" alt="User" />  
-    </section>
+    ${kitten._ownerName ? `
+      <div class="avatar"><p>${kitten.ownerName.charAt(0)}</p></div>
+    ` : ''
+    }
+      </section>
     `
     chat.scrollTop = chat.scrollHeight
   } else if (sender === 'bot') {
-
+    
 // show thinking-dots here?
 
-
-
       setTimeout(()=> {
-      console.log('showMessage bot ' + message)
-      chat.innerHTML += `
+        console.log('showMessage bot ' + message)
+        chat.innerHTML += `
         <section class="bot-msg">
-          <img src="assets/bot.png" alt="Bot" />
-          <div class="bubble bot-bubble">
-            <p>${message}</p>
-          </div>
+        <img src="assets/bot.svg" alt="Bot" />
+        <div class="bubble bot-bubble">
+        <p>${message}</p>
+        </div>
         </section>
         `
         chat.scrollTop = chat.scrollHeight
       }, 1000)
     }
-}
-
-const showImage = (imageRef) => {
-  setTimeout(()=> {
+  }
+  
+  const toKebabCase = (arr => {
+    console.log(arr)
+    return arr.forEach(item => {
+      item.match(/[0-9]{1,}(?=\b)|[A-Z]{2,}(?=[A-Z][a-z]+|[0-9]|\b|_)|[A-Z]?[a-z]+|[A-Z]|[0-9]+/g)
+      .map(x => x.toLowerCase())
+      .join('-')
+    })
+  })
+  
+  const showButtons = (values) => {
+    setTimeout(()=> {
+      const kebabValues = toKebabCase(values)
+      chat.innerHTML += `
+      <section class="button-container">
+      `
+      for (i = 0; i < values.length; i++) {
+        chat.innerHTML += `
+        <div class="button" id="${kebabValues[i]}">${values[i]}</div>
+        </section>
+        `
+      }
+    }, 2000)
+  }
+  
+  const showImage = (imageRef) => {
+    setTimeout(()=> {
     console.log('showImage' + imageRef)
     chat.innerHTML += `
-      <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
-        <div class="bubble bot-bubble img">
-          <img src="${kitten.pictureSrc}" />
-        </div>
-      </section>
-      `
-      chat.scrollTop = chat.scrollHeight
-    }, 1000)
-
+    <section class="bot-msg">
+    <img src="assets/bot.png" alt="Bot" />
+    <div class="bubble bot-bubble img">
+    <img src="${kitten.pictureSrc}" />
+    </div>
+    </section>
+    `
+    chat.scrollTop = chat.scrollHeight
+  }, 1000)
+  
 }
 
 const handleError = () => {
   if (currentQuestion === 1) {
     console.log('handleError' + currentQuestion)
-    showMessage("I said anything BUT 'KittenBot Go!'... this will go a lot easier if you read my instructions... ", 'bot')
+    showMessage("I said anything BUT <span>KittenBot Go!</span>... this will go a lot easier if you read my instructions... Want to try again?", 'bot')
   } else if (currentQuestion === 3) {
     showMessage("You can only type 'boy' or 'girl'", 'bot')    
   } else if (currentQuestion === 5) {
@@ -220,14 +243,14 @@ const handleResponse = (receivedMessage) => {
       } else {
         handleError()
       }
-    // 2  
+      // 2  
     } else if (currentQuestion === 2) {
-      showMessage(receivedMessage, 'user') 
       kitten.ownerName = receivedMessage; 
+      showMessage(receivedMessage, 'user') 
       showMessage(`Well hello ${kitten.ownerName} it is very nice to meet you!`)
       currentQuestion++
       thirdQuestion()
-    // 3
+      // 3
     } else if (currentQuestion === 3) {
       showMessage(receivedMessage, 'user')    
       if (receivedMessage.toLowerCase() === 'boy' || receivedMessage.toLowerCase() === 'girl') {
@@ -237,7 +260,7 @@ const handleResponse = (receivedMessage) => {
       } else {
         handleError()
       }
-    // 4
+      // 4
     } else if (currentQuestion === 4) {
       showMessage(receivedMessage, 'user')    
       if (receivedMessage.length === 1) {
@@ -256,19 +279,19 @@ const handleResponse = (receivedMessage) => {
         currentQuestion++
         fifthQuestion()
       }
-    // 5
+      // 5
     } else if (currentQuestion === 5) {
-        showMessage(receivedMessage, 'user')    
-        if (receivedMessage.toLowerCase() === 'indoors' || receivedMessage.toLowerCase() === 'indoor') {
-          kitten.environmentPreference = 'indoors'
-        } else if (receivedMessage.toLowerCase() === 'outdoors' || receivedMessage.toLowerCase() === 'outdoor') {
-          kitten.environmentPreference = 'outdoors'
-        } else {
-          handleError()
-        }
-        currentQuestion++
-        sixthQuestion()
-    // 6
+      showMessage(receivedMessage, 'user')    
+      if (receivedMessage.toLowerCase() === 'indoors' || receivedMessage.toLowerCase() === 'indoor') {
+        kitten.environmentPreference = 'indoors'
+      } else if (receivedMessage.toLowerCase() === 'outdoors' || receivedMessage.toLowerCase() === 'outdoor') {
+        kitten.environmentPreference = 'outdoors'
+      } else {
+        handleError()
+      }
+      currentQuestion++
+      sixthQuestion()
+      // 6
     } else if (currentQuestion === 6) {
       console.log('six!')
       showMessage(receivedMessage, 'user')
@@ -278,7 +301,7 @@ const handleResponse = (receivedMessage) => {
       }
       currentQuestion++
       seventhQuestion()
-    // 7
+      // 7
     } else if (currentQuestion === 7) {
       showMessage(receivedMessage, 'user')
       if (receivedMessage.toLowerCase() === 'white' ||
@@ -300,7 +323,7 @@ const handleResponse = (receivedMessage) => {
 const firstQuestion = () => {
   currentQuestion = 1
   console.log('startKittenBot')
-  showMessage("Welcome to KittenBot! Type anything but 'KittenBot Go!' to start!", 'bot')
+  showMessage("Welcome to KittenBot! Type anything but <span>KittenBot Go!</span> to start!", 'bot')
   sendBtn.addEventListener('click', (event) => {
     event.preventDefault()
     handleResponse(input.value) 
@@ -315,6 +338,7 @@ const secondQuestion = () => {
 const thirdQuestion = () => {
   console.log('thirdQuestion')
   showMessage(`Great to meet you ${kitten.ownerName}! Now let's build you a kitten! Should it be a boy or a girl?`, 'bot')
+  showButtons(['Boy', 'Girl', "Doesn't matter"])
 }
 
 const fourthQuestion = () => {

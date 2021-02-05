@@ -18,8 +18,11 @@ https://affectionate-ritchie-cce98d.netlify.app/
 <!-- - Save all kittendata to obj -->
 <!-- - Name by letter from list in obj -->
 <!-- - Picture in last q -->
+<!-- - Avatar icon -->
+- fix error handler for all errors
 - Add button inputs
 - update ui
 - thinking-dots
-- Avatar icon
 - Input animations
+- refactor question functions
+

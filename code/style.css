@@ -1,19 +1,32 @@
 * {
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* border: 1px solid pink; */
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #fafaf1;
+  background-image: url('./assets/background.svg');
+  background-position: center top;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 h1 {
+  transform: rotate(3deg);
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 300;
+  /* position: relative; */
   font-weight: bold;
+  letter-spacing: 1.2px;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  margin: 24px 0 0 0;
+  /* color: #fff; */
   text-align: center;
 }
 
@@ -33,6 +46,10 @@ p {
   margin: 0;
 }
 
+p span {
+  color: #074c85;
+}
+
 input {
   box-sizing: border-box;
   border: none;
@@ -47,14 +64,27 @@ input {
   flex: 1;
 }
 
+.kitten-container {
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+.kitten {
+  position: absolute;
+  top: -89px;
+  left: 50px;
+  width: 150px;
+}
+
 main {
-  margin: 0 auto;
+  margin: 5rem auto;
   width: 100%;
-  max-width: 700px;
+  max-width: 550px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
-  padding: 20px 24px;
+  background: #21E1BF;
+  padding: 20px 16px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
@@ -62,7 +92,9 @@ main {
 }
 
 .chat {
+  background: white;
   flex: 1;
+  margin: 16px 0 24px 0;
   display: flex;
   justify-content: flex-start;
   overflow: scroll;
@@ -94,18 +126,34 @@ main {
   width: 60px;
   height: 60px;
 }
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #21E1BF;
+}
+
+.avatar p {
+  font-size: 32px;
+  color: #FCEE75;
+  line-height: 1.8;
+  font-weight: 800;
+  text-align: center;
+  margin: auto 0;
+}
 
 .bubble {
-  background: #e5e9ff;
+  /* background: #e5e9ff; */
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
-  max-width: 40%;
+  color: #black;
+  max-width: 60%;
 }
 
 .bot-bubble {
+  background: #FCEE75;
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
 }
@@ -122,6 +170,7 @@ main {
 }
 
 .user-bubble {
+  background: #EB8EAF;
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
 }
