@@ -1,9 +1,9 @@
 // All the DOM selectors stored as short variables
-const chat = document.getElementById('chat');
-const nameInput = document.getElementById('name-input');
-const sendButton = document.querySelector('.send-btn');
-const inputWrapper = document.getElementById('input-wrapper');
-const form = document.getElementById('name-form');
+const chat = document.getElementById('chat')
+const nameInput = document.getElementById('name-input')
+const sendButton = document.querySelector('.send-btn')
+const inputWrapper = document.getElementById('input-wrapper')
+const form = document.getElementById('name-form')
 
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -36,22 +36,21 @@ const showMessage = (message, sender) => {
 
 // Greeting from bot
 const greeting = () => {
-  showMessage(`Hello there, I am your life coach and Im here to help you become the best version of yourself. What's your name?`, 'bot')
+  showMessage(`Hello there, I'm your life coach and I'm here to help you become the best version of yourself. What's your name?`, 'bot')
 }
 
 
 // Event listener and validation of name input
 
 sendButton.addEventListener('click', (e) => {
-  e.preventDefault();
+  e.preventDefault()
   const name = nameInput.value
     if(name === "") {
-      showMessage('Please enter your name','bot');
+      showMessage('Please enter your name','bot')
     }
     else {
-      showMessage(`${name}`,'user');
-
-      showCoachAreas(name);
+      showMessage(`${name}`,'user')
+      showCoachAreas(name)
   }}
   )
     
@@ -59,14 +58,14 @@ sendButton.addEventListener('click', (e) => {
 
 const appointment = () => {
   inputWrapper.innerHTML = `
-          <select id="select">
-            <option value="" selected disabled>Select time and day</option>
-            <option value="Wednesday 4pm">Wednesday 4pm</option>
-            <option value="Thursday 3pm">Thursday 3pm</option>
-            <option value="Friday 1pm">Friday 1pm</option>
+          <select id='select'>
+            <option value='' selected disabled>Select time and day</option>
+            <option value='Wednesday 4pm'>Wednesday 4pm</option>
+            <option value='Thursday 3pm'>Thursday 3pm</option>
+            <option value=-Friday 1pm'>Friday 1pm</option>
           </select>
-        `;
-        return inputWrapper;
+        `
+        return inputWrapper
   }
   
 
@@ -74,90 +73,96 @@ const appointment = () => {
 
   const textInput = () => {
     inputWrapper.innerHTML = `
-    <form id="name-form">
-    <input id="name-input" type="text"/>
-    <button class="send-btn" type="submit">
+    <form id='name-form'>
+    <input id='name-input' type='text'/>
+    <button class='send-btn' type='submit'>
             Send
     </button>
     </form>
     `;
 
   document.querySelector('.send-btn').addEventListener('click', (e) => {
-    e.preventDefault();
+    e.preventDefault()
     
-    let address = document.querySelector('#name-input').value;
+    let address = document.querySelector('#name-input').value
     showMessage(address, 'user')
-    document.querySelector('#name-input').value = '';
+    document.querySelector('#name-input').value = ''
 
 
     setTimeout(()=> {
-      showMessage('Thanks, See you next week!', 'bot');
-    }, 2000);
+      showMessage('Thanks, See you next week!', 'bot')
+    }, 2000)
     
-  });
+  })
       
   }
 
 
 //Function that displays 4 buttons
 const showCoachAreas = (name) => {
-  showMessage(`Hi ${name}, which area of your life do you want to focus on?`, 'bot');
+    showMessage(`Hi ${name}, which area of your life do you want to focus on?`, 'bot')
+
   inputWrapper.innerHTML = `
-  <button id="workBtn">Work</button>
-  <button id="familyBtn">Family</button>
-  <button id="lifeBtn">Life</button>
-  <button id="healthBtn">Health</button>
+  <button id='workBtn'>Work</button>
+  <button id='familyBtn'>Family</button>
+  <button id='lifeBtn'>Life</button>
+  <button id='healthBtn'>Health</button>
   ` ;
-  
 
-  // Message from bot after click on work button 
+  // Message from bot after click on button 
   document.getElementById('workBtn').addEventListener('click', () => {
-    showMessage('Work', 'user');
-    showMessage('Great, you want to focus on the area of work. Please choose a time and day', 'bot');
-    appointment();
+    showMessage('Work', 'user')
+    
+      showMessage('Great, you want to focus on the area of work. Please choose a time and day', 'bot')
+    
+    appointment()
 
-    const select = document.getElementById('select');
+    
+    const select = document.getElementById('select')
     select.addEventListener('change', () => {
-     showMessage(`${select.value}`, 'user')
-     showMessage('Excellent, the cost per appointment is 800 sek.', 'bot')
-     showMessage('Please, enter the address you want your invoice to be sent to.', 'bot')
-     textInput();
+      showMessage(`${select.value}`, 'user')
       
-    }); 
-            
-  });
+        showMessage('Excellent, the cost per appointment is 800 sek.', 'bot')
+      
+        showMessage('Please, enter the address you want your invoice to be sent to.', 'bot')
+      textInput()
+       
+    })
+         
+  })
+
 
    // Message from bot after click on family button         
   document.getElementById('familyBtn').addEventListener('click', () => {
-    showMessage('Family', 'user');
-    showMessage('Great, you want to focus on the area of family. Please choose a time and day', 'bot');
-    appointment();
+    showMessage('Family', 'user')
+    showMessage('Great, you want to focus on the area of family. Please choose a time and day', 'bot')
+    appointment()
     
-    const select = document.getElementById('select');
+    const select = document.getElementById('select')
     select.addEventListener('change', () => {
       showMessage(`${select.value}`, 'user')
       showMessage('Excellent, the cost per appointment is 800 sek.', 'bot')
       showMessage('Please, enter the address you want your invoice to be sent to.', 'bot')
-      textInput();
-    }); 
+      textInput()
+    })
 
-  });
+  })
        
   // Message from bot after click on Life button  
   document.getElementById('lifeBtn').addEventListener('click', () => {
-    showMessage('Life', 'user');
-    showMessage('Great, you want to focus on the area of life. Please choose a time and day', 'bot');
-    appointment();
+    showMessage('Life', 'user')
+    showMessage('Great, you want to focus on the area of life. Please choose a time and day', 'bot')
+    appointment()
          
-    const select = document.getElementById('select');
+    const select = document.getElementById('select')
     select.addEventListener('change', () => {
       showMessage(`${select.value}`, 'user')
       showMessage('Excellent, the cost per appointment is 800 sek.', 'bot')
       showMessage('Please, enter the address you want your invoice to be sent to.', 'bot')
-      textInput();
-      }); 
+      textInput()
+      }) 
 
-  });
+  })
 
   // Message from bot after click on Health button  
   document.getElementById('healthBtn').addEventListener('click', () => {
@@ -174,7 +179,7 @@ const showCoachAreas = (name) => {
         }); 
 
   });
-
+ 
 };
 
 
