@@ -97,7 +97,38 @@ const askForFeeling = (answer) => {
      showMessage(`Oui`, 'user')
      inputWrapper.innerHTML = ""
      setTimeout(() => askForPepp("Oui"), 1000)
-    }) 
+  }) 
+}
+
+const askForPepp = (feeling) => {
+  if (feeling === "Oui") {
+    showMessage(`Cool, you're confident! If you're happy than I'm happy`, 'bot')
+    showMessage(`Would you like a pep talk? Even though you don't seem to need it 😜`, 'bot')
+  } else {
+    showMessage(`That seems a bit modest, don't you think?🙊`, 'bot')
+    showMessage(`Maybe you need a pep talk?`, 'bot')
+  }
+
+  inputWrapper.innerHTML =`
+    <button id="pepButton">Yes Pep</button>
+    <button id="noButton">No because I'm boring</button> 
+  `
+  document.getElementById("pepButton").addEventListener('click', () => {
+    showMessage(`Yes Pep`, 'user')
+    inputWrapper.innerHTML =""
+    setTimeout(() => showPepp("Yes Pep"), 1000)
+  })
+
+  document.getElementById("noButton").addEventListener('click', () => {
+    showMessage(`No because I'm boring`, 'user')
+    inputWrapper.innerHTML =""
+    setTimeout(() => thanksBye("No because I'm boring"), 1000)
+  })
+
+}
+
+const showPepp = () => {
+  showMessage(`I knew you where up for some pep talk!`, 'bot')
 }
 
 
