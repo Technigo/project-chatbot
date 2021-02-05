@@ -1,13 +1,12 @@
-# Project Name
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+# Chat Bot
+This project, which was realized in a pair programming setup, was about the fundamental syntax and concepts fo JavaScript. The task was to build a Chat Bot, which in our case, tells the user where to go on vacation based on the users answers to questions.
 
 ## The problem
+The first step was about understanding the given code and how it functions. After being able to respond with the users name we started to inspect other chatbots and see how they are set up to understand the concept of JS better. 
+Then our first approach was to collect answers to three different questions and put all those answers in one if, else if, else statement, which we couldn't figure out how to make it work. So we took a step back and made the if, else if, else statements after each question. 
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+/*Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?*/
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://vacationbot.netlify.app/
