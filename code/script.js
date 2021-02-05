@@ -6,6 +6,21 @@ const inputWrapper = document.getElementById('input-wrapper')
 //global variables/scope('bubble within bubble, biggest bubble')
 let step = 1;
 
+// or onResponse (naming function)
+
+const handleResponse = (textToPrint) => {
+    chat.innerHTML += ` <section> <div><p>  ${textToPrint}
+        </p></div></section>`;
+
+}
+
+const validateResponse = (valueFromUser, correctAnswer) => {
+
+    return valueFromUser === correctAnswer;
+
+}
+
+
 // Set up your eventlisteners here
 
 form.addEventListener('submit', (event) => {
@@ -14,7 +29,7 @@ form.addEventListener('submit', (event) => {
 
     //INPUT!
 
-    const value = document.getElementById('input-value').value;
+    var value = document.getElementById('input-value').value;
 
 
     chat.innerHTML += ` <div><p> ${value} </p></div>`;
@@ -22,34 +37,34 @@ form.addEventListener('submit', (event) => {
 
     if (step === 1) {
 
-        if (value === value) {
+        if (validateResponse(value, value)) {
 
-            chat.innerHTML += ` <div><p>  Hi ${value}, nice to meet you! 
-            Let's make you a kitten! Should it be a girl or boy?
-                    </p></div>`;
+            handleResponse('hi, nice name! Lets make you a kitten! Should it be a girl or boy or does not matter?');
+
             step = 2;
         } else {
-            chat.innerHTML += ` <div><p>${value} !!!!</p></div>`;
+            handleResponse('${value} !!!');
+
         }
     } else if (step === 2) {
 
         if (value === value) {
 
-            chat.innerHTML += ` <div><p>super ${value}! What do you want to name your kitten? </p></div>`;
+            handleResponse('Alright! What do you want to name your kitten ? ');
 
-
+            step = 3;
         } else {
 
-            chat.innerHTML += ` <div><p>super boy! What do you want to name your kitten? </p></div>`;
+            handleResponse('Cool! What do you want to name your kitten?');
         }
+    } else if (step === 3) {
+
+        if (value === value) {
+            handleResponse('Here is ! There you go, Have a nice day!');
+        }
+
+
     }
+
+
 });
-
-
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
