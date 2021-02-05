@@ -1,6 +1,6 @@
 /* Set default font family */
 * {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Verdana", "sans-serif";
 }
 
 /* Font size and styles for the general text elements */
@@ -9,15 +9,14 @@
 .message__text {
   font-size: 1em;
   line-height: 1.5em;
-  font-weight: 600;
   color: white;
 }
 
 /* Font size and styles for the larger text elements */
 .title,
 .subtitle {
-  color: white;
-  font-weight: bold;
+  font-family: "UnZialish";
+  color: #5e1919;
   text-align: center;
 }
 
