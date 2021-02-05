@@ -1,12 +1,11 @@
-// All the DOM selectors stored as short variables
+// DOM selectors
 const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById('input-wrapper')
 
-// Global variables, if you need any, declared here
-let stepNumber = 1
+// Global variables
+let answerNumber = 1
 
 // Functions declared here
-
 const botAnswer = (message) => {
   showMessage (message, 'bot')
 }
@@ -43,8 +42,9 @@ const showMessage = (message, sender) => {
   console.log(chat.scrollHeight, "scrollHeight")
 }
 
+// This function direct each answer to the next question in the conversation
 const nextStep = (message) => {
-  console.log( 'stepNumber', stepNumber)
+  console.log( 'answerNumber', answerNumber)
   if (answerNumber === 1) {
     userAnswer (message)
     setTimeout (() => showPlace(message),1000)
@@ -57,30 +57,27 @@ const nextStep = (message) => {
   }
 }
 
-
-// Starts here
-
+// Conversation starts here
 const showMood = () => {
   answerNumber = 1
   botAnswer(`Welcome! How's the party mood?`)
 
   inputWrapper.innerHTML = `
   <div class="slider-container">
-  <div class="emoji-container">
-  <p class="emoji">&#127866;</p> 
-  <p class="emoji">&#127867;</p> 
-  <p class="emoji">&#127865;</p> 
-  <p class="emoji">&#127864;</p> 
-  <p class="emoji">&#127863;</p>
-  <p class="emoji">&#127870;</p>
-  </div>
-  <input id="sliderinput" type="range" min="1" max="100" value="50" class="slider">
+    <div class="emoji-container">
+      <p class="emoji">&#127866;</p> 
+      <p class="emoji">&#127867;</p> 
+      <p class="emoji">&#127865;</p> 
+      <p class="emoji">&#127864;</p> 
+      <p class="emoji">&#127863;</p>
+      <p class="emoji">&#127870;</p>
+    </div>
+    <input id="sliderinput" type="range" min="1" max="100" value="50" class="slider">
   </div>
   `
   document.getElementById('sliderinput')
   .addEventListener('mouseup', () => nextStep ('This is my mood!'))
 }
-
 
 const showPlace = () => {
   answerNumber++
@@ -124,68 +121,59 @@ const showVibe = (place) => {
     </select>
   `
   }
-
   const outfit = document.getElementById('select')
   outfit.addEventListener('change', () => nextStep(outfit.value))
-
 }
 
 const showOutfit = (outfit) => {
   answerNumber++
-
   botAnswer(`I got the perfect outfit for you! Party on!`)
 
   const showFinalMessage = (gifSrc) => {
     chat.innerHTML += `
       <section class="bot-msg">
-      <img class="profile-pic" src="assets/bot-img.jpeg" alt="Bot" /> 
+        <img class="profile-pic" src="assets/bot-img.jpeg" alt="Bot" /> 
         <div class="bubble bot-bubble final">
           <img class="outfit-gif" src="${gifSrc}"/>
         </div> 
       </section>
     `
-    chat.scrollTop = chat.scrollHeight
-    console.log(chat.scrollTop, "scrollTop")
+    //Allows the gif to scroll chat to bottom after gif is loaded
+    document.getElementsByClassName("outfit-gif")[0].onload = () =>
+      (chat.scrollTop = chat.scrollHeight)
+      console.log(chat.scrollTop, "scrollTop")
 }
 
   if (outfit === 'Berghain') {
     showFinalMessage("assets/berghain.gif")
-    // document.getElementById("outfitGif").src = "assets/berghain.gif"
   }
 
   else if (outfit === "Studio 54") {
     showFinalMessage("assets/studio54.gif")
-    // document.getElementById("outfitGif").src = "assets/studio54.gif"
   }
 
   else if (outfit === "Nikki Beach") {
     showFinalMessage("assets/nikkibeach.gif")
-    // document.getElementById("outfitGif").src = "assets/nikkibeach.gif"
   }
 
   else if (outfit === "Cavalli Club") {
     showFinalMessage("assets/cavalliclub.gif")
-    // document.getElementById("outfitGif").src = "assets/cavalliclub.gif"
   }
 
   else if (outfit === "Cosmopolitan") {
     showFinalMessage("assets/cocktail.gif")
-    // document.getElementById("outfitGif").src = "assets/cocktail.gif"
   }
 
   else if (outfit === "Old fashioned") {
     showFinalMessage("assets/oldfashioned.gif")
-    // document.getElementById("outfitGif").src = "assets/oldfashioned.gif"
   }
 
   else if (outfit === "Moscow Mule") {
     showFinalMessage("assets/mosow.gif")
-    // document.getElementById("outfitGif").src = "assets/mosow.gif"
   }
 
   else if (outfit === "Mojito") {
     showFinalMessage("assets/mojito.gif")
-    // document.getElementById("outfitGif").src = "assets/mojito.gif"
   }
   inputWrapper.innerHTML = ""
 }
