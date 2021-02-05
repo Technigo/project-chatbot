@@ -8,8 +8,8 @@ We are building a Halloween-bot to decide what costume you should wear for Hallo
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+To trigger the next question after an user answer we added the step variable.We solved the problems along they way as they appeared. We found a similar test online to pick ideas from. We used functions, variables, event. If we hade more time we would mabye write new functions to not have to write the same html over and over again.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://boring-hamilton-b2521d.netlify.app/
