@@ -1,6 +1,7 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const nameForm = document.querySelector("#name-form")
+const main = document.querySelector("main")
 const genreOptions = document.querySelector("#genre-options")
 const buttonOptions = document.querySelector("#button-options")
 const comedyBtn = document.querySelector("#comedy-btn")
@@ -10,10 +11,17 @@ const romanticBtn = document.querySelector("#romantic-btn")
 const randomMovieBtn = document.querySelector("#random-movie-btn")
 const backToGenreBtn = document.querySelector("#back-to-genre-btn")
 
-const comedyMovies = ["movie1", "movie2", "movie3", "movie4", "movie5", "movie6", "movie7", "movie8", "movie9", "movie10"]
-const actionMovies = ["movie1", "movie2", "movie3", "movie4", "movie5", "movie6", "movie7", "movie8", "movie9", "movie10"]
-const horrorMovies = ["movie1", "movie2", "movie3", "movie4", "movie5", "movie6", "movie7", "movie8", "movie9", "movie10"]
-const romanticMovies = ["movie1", "movie2", "movie3", "movie4", "movie5", "movie6", "movie7", "movie8", "movie9", "movie10"]
+const genres = ["comedy", "action", "horror", "romantic"]
+const comedyMovies = ["The Intouchables", "Back to the Future", "Toy Story", "Up", "Monty Python and the Holy Grail", "Inside Out", "Mary and Max", "The Truman Show", "The Big Lebowski", "Zoomania"]
+const actionMovies = ["The Dark Knight", "The Lord of the Rings", "Inception", "Matrix", "Star Wars", "Gladiator", "Léon", "Terminator", "Spider-Man", "Avengers"]
+const horrorMovies = ["Psycho", "Shining", "Alien", "The Thing", "The Exorcist", "Rosemary's Baby", "Let the Right One In", "Halloween", "Saw", "28 Days Later"]
+const romanticMovies = ["Forrest Gump", "Titanic", "Casablanca", "Amélie", "La La Land", "The Perks of Being a Wallflower", "Slumdog Millionaire", "Groundhog Day", "Annie Hall", "The Graduate"]
+
+// Button Sounds 
+const comedySound = new Audio(" https://www.soundjay.com/human/sounds/laughter-2.mp3");
+const actionSound = new Audio(" https://www.soundjay.com/mechanical/sounds/explosion-02.mp3");
+const horrorSound = new Audio(" https://www.soundjay.com/human/sounds/woman-scream-01.mp3");
+const romanticSound = new Audio(" https://www.fesliyanstudios.com/play-mp3/4261");
 
 // Global variables, if you need any, declared here
 
@@ -80,16 +88,16 @@ const showGenre = () => {
     isFirstTime = false
   } else {
     showMessage(`Choose another genre.`, "bot")
-    main.classList.remove("comedy")
-    main.classList.remove("action")
-    main.classList.remove("horror")
-    main.classList.remove("romantic")
+    for (genre of genres) {
+      main.classList.remove(genre)
+      randomMovieBtn.classList.remove(`${genre}-btn`)
+    }
   }
 }
 
 // show random movie title generator button & go back button
 
-const main = document.querySelector("main")
+
 
 
 let genreChoice = null
@@ -97,23 +105,37 @@ const showButtons = (genre) => {
   genreOptions.classList.remove('active')
   buttonOptions.classList.add('active')
   main.classList.add(genre)
-  showMessage(genre, "user")
+  showMessage(`${genre.slice(0, 1).toUpperCase()}${genre.slice(1)}`, "user")
   showMessage(`You chose ${genre}!`, 'bot')
   genreChoice = genre
+  randomMovieBtn.classList.add(`${genre}-btn`)
 }
+
+
 
 comedyBtn.addEventListener("click", (genre) => {
   showButtons("comedy")
+  comedySound.play();
+  comedySound.volume = 0.1;
 })
 actionBtn.addEventListener("click", (genre) => {
   showButtons("action")
+  actionSound.play();
+  actionSound.volume = 0.1;
 })
 horrorBtn.addEventListener("click", (genre) => {
   showButtons("horror")
+  horrorSound.play();
+  horrorSound.volume = 0.1;
+
 })
 romanticBtn.addEventListener("click", (genre) => {
   showButtons("romantic")
+  romanticSound.play();
+  romanticSound.volume = 0.1;
+
 })
+
 
 // go back to show genre
 
