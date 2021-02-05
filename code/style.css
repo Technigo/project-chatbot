@@ -9,13 +9,6 @@ body {
   background: #fae8f6; 
 }
 
-.header {
-  background-color: rgb(86, 35, 121);
-  width: 700px;
-  margin: 0px 0px 10px -24px;
-  border-radius: 24px 24px 0px 0px;
-}
-
 h1 {
   font-weight: bold;
   font-size: 40px;
@@ -28,7 +21,9 @@ h2 {
   font-size: 20px;
   color: #fff;
   text-align: center;
-  margin: -20px 0px 20px 0px;
+  line-height: 50px;
+  margin: -30px 0px 20px 0px;
+  border-bottom: 1px solid rgb(255, 255, 255);
 }
 
 p {
@@ -53,13 +48,17 @@ input {
   outline: none;
 }
 
+input:focus {
+  opacity: 0.9;
+}
+
 main {
   margin: 50px auto;
   width: 100%;
   max-width: 700px;
   height: 700px;
   border-radius: 30px;
-  background: #fff;
+  background: rgb(86, 35, 121);
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -74,6 +73,7 @@ main {
   overflow: scroll;
   flex-direction: column;
   padding-bottom: 16px;
+  background: #fff;
 }
 
 .bot-msg {
@@ -129,10 +129,9 @@ main {
 }
 
 button {
-  background-color: rgb(86, 35, 121);
+  background-color: rgb(207, 125, 200);
   color: white;
   border: none;
-  border-radius: 4px;
   padding: 16px 40px;
   margin-right: 4px;
   font-size: 16px;
@@ -181,3 +180,14 @@ button:hover {
 .fa-kiss-wink-heart, .fa-sad-tear {
   font-size: 200px;
 }
+
+@media (max-width: 767px) {
+  button {
+    padding: 10px 20px;
+  }
+
+  .fa-kiss-wink-heart, .fa-sad-tear {
+    font-size: 80px;
+  }
+}
+
