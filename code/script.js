@@ -39,24 +39,29 @@ form.addEventListener('submit', (event) => {
 
         if (validateResponse(value, value)) {
 
-            handleResponse('hi, nice name! Lets make you a kitten! Should it be a girl or boy or does not matter?');
+            handleResponse(' nice name! Lets make you a kitten! Should it be a girl or boy or does not matter?');
 
             step = 2;
         } else {
             handleResponse('${value} !!!');
 
         }
+
     } else if (step === 2) {
 
-        if (value === value) {
+        if (value === "girl") {
 
-            handleResponse('Alright! What do you want to name your kitten ? ');
-
+            handleResponse('You go girl! What do you want to name your kitten ? ');
+        } else if (value === "boy") {
+            handleResponse('You go boy! What do you want to name your kitten ? ');
+        } else if (value === "does not matter") {
+            handleResponse('Cool! What do you want to name your kitten ? ');
             step = 3;
         } else {
 
-            handleResponse('Cool! What do you want to name your kitten?');
+            handleResponse('ERROR');
         }
+
     } else if (step === 3) {
 
         if (value === value) {
