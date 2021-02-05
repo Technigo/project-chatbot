@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
 * {
   box-sizing: border-box;
 }
@@ -5,8 +7,12 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  /* font-family: 'Montserrat', sans-serif; */
+  background: url("./assets/sky.png") center center fixed;
+  background-size: cover;
+  font-family: 'Yusei Magic', sans-serif;
+  height: 100%;
+  
 }
 
 h1 {
@@ -15,6 +21,11 @@ h1 {
   line-height: 34px;
   color: #fff;
   text-align: center;
+  
+}
+
+h1 b{
+  font-family: 'Potta One', cursive;
 }
 
 h2 {
@@ -38,7 +49,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #551A8B;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -89,13 +100,18 @@ main {
   height: 60px;
 }
 
+.magic{
+  width: 80px;
+  height: 60px;
+}
+
 .bubble {
   background: #e5e9ff;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #551A8B;
   max-width: 40%;
 }
 
@@ -120,7 +136,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #551A8B;
   color: white;
   border: none;
   border-radius: 4px;
@@ -137,4 +153,40 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+#select{
+  background-color: #551A8B;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 40px;
+  margin-right: 4px;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  cursor: pointer;
+}
+#choose_drink{
+  background-color: #551A8B;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 40px;
+  margin-right: 4px;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  cursor: pointer;
+}
+video{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+audio { 
+  display:none;
 }
