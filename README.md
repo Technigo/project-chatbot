@@ -1,3 +1,9 @@
+# Project members
+
+Johan Löfgren (https://github.com/johlofg)
+Shaun Newmark (https://github.com/petercreations)
+Katharina Liebig
+
 # Project Name
 
 This week's project is creating a chat bot, in our case a Movie bot who will give you suggestions on movies to watch. Presented as a random movie from a genre chosen by the user.  
