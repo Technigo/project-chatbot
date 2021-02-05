@@ -69,6 +69,7 @@ const handleNameInput = () => {
   setTimeout (() => showMessage(`Hi ${userName}!`, 'bot'), 1000)
   setTimeout (() => askMovieOptions (), 2000)
   };
+
 //Question 2
 const askMovieOptions = (question) => {
   questionNumber = 3
@@ -143,6 +144,7 @@ const askMovieOptions = (question) => {
         <button class="choice-btn" id="brahms">Brahms: The Boy 2</button>
         <button class="choice-btn" id="come-play">Come Play</button>
         `
+      //Looping through each button and checking when it is clicked
       const choiceBtn = document.querySelectorAll(".choice-btn")
       for (let i = 0; i < choiceBtn.length; i++) {
         choiceBtn[i].addEventListener("click", () => nxtQuestion(choiceBtn[i].textContent))
@@ -150,6 +152,7 @@ const askMovieOptions = (question) => {
     }
   })
 };
+
 //Question 4
 const askForTickets = (question) => {
   questionNumber = 4
@@ -170,8 +173,15 @@ const askForTickets = (question) => {
           inputWrapper.innerHTML = `
           <button id="yes">Yes</button>
           <button id="no">No</button> `
-      }})
-
+          //What happens when user clicks either yes or no
+          document.getElementById("yes").addEventListener("click", () => {
+              showMessage("Yay! Your ticket has been reserved for you. Welcome to Technigo Cinema!", "bot")
+          inputWrapper.innerHTML = ""})
+          document.getElementById("no").addEventListener("click", () => {
+              showMessage("OK! Hope to see you some other day at Technigo Cinema!", "bot")
+          inputWrapper.innerHTML = ""})
+      }
+  })
   document.getElementById("two").addEventListener("click", () => {
       showMessage("2 tickets, the price will be 200 SEK. Would you like proceed to checkout?", "bot")
       setTimeout(() => {
@@ -181,49 +191,72 @@ const askForTickets = (question) => {
           inputWrapper.innerHTML = `
           <button id="yes">Yes</button>
           <button id="no">No</button> `
-     }})
+          //What happens when user clicks either yes or no
+          document.getElementById("yes").addEventListener("click", () => {
+              showMessage("Yay! Your ticket has been reserved for you. Welcome to Technigo Cinema!", "bot")
+          inputWrapper.innerHTML = ""})
+          document.getElementById("no").addEventListener("click", () => {
+              showMessage("OK! Hope to see you some other day at Technigo Cinema!", "bot")
+          inputWrapper.innerHTML = ""})
+    }})
   document.getElementById("three").addEventListener("click", () => {
-      showMessage("3 tickets, the price will be 300 SEK. Would you like proceed to checkout?", "bot")
-      setTimeout(() => {
-        confirm()
-      }, 1000) 
-      let confirm = () => {
-          inputWrapper.innerHTML = `
-          <button id="yes">Yes</button>
-          <button id="no">No</button> `
-      }})
+        showMessage("3 tickets, the price will be 300 SEK. Would you like proceed to checkout?", "bot")
+        setTimeout(() => {
+          confirm()
+        }, 1000) 
+        let confirm = () => {
+            inputWrapper.innerHTML = `
+            <button id="yes">Yes</button>
+            <button id="no">No</button> `
+            //What happens when user clicks either yes or no
+            document.getElementById("yes").addEventListener("click", () => {
+                showMessage("Yay! Your ticket has been reserved for you. Welcome to Technigo Cinema!", "bot")
+            inputWrapper.innerHTML = ""})
+            document.getElementById("no").addEventListener("click", () => {
+                showMessage("OK! Hope to see you some other day at Technigo Cinema!", "bot")
+            inputWrapper.innerHTML = ""})
+    }})
   document.getElementById("four").addEventListener("click", () => {
-      showMessage("4 tickets, the price will be 400 SEK. Would you like proceed to checkout?", "bot")
-      setTimeout(() => {
-        confirm()
-      }, 1000) 
-      let confirm = () => {
-          inputWrapper.innerHTML = `
-          <button id="yes">Yes</button>
-          <button id="no">No</button> `
-      }})
+        showMessage("4 tickets, the price will be 400 SEK. Would you like proceed to checkout?", "bot")
+        setTimeout(() => {
+          confirm()
+        }, 1000) 
+        let confirm = () => {
+            inputWrapper.innerHTML = `
+            <button id="yes">Yes</button>
+            <button id="no">No</button> `
+              //What happens when user clicks either yes or no
+            document.getElementById("yes").addEventListener("click", () => {
+                showMessage("Yay! Your ticket has been reserved for you. Welcome to Technigo Cinema!", "bot")
+            inputWrapper.innerHTML = ""})
+            document.getElementById("no").addEventListener("click", () => {
+                showMessage("OK! Hope to see you some other day at Technigo Cinema!", "bot")
+            inputWrapper.innerHTML = ""})
+    }})
   document.getElementById("five").addEventListener("click", () => {
-      showMessage("5 tickets, the price will be 500 SEK. Would you like proceed to checkout?", "bot")
-      setTimeout(() => {
-        confirm()
-      }, 1000) 
-      let confirm = () => {
-          inputWrapper.innerHTML = `
-          <button id="yes">Yes</button>
-          <button id="no">No</button> `
-      }})
-  }
+        showMessage("5 tickets, the price will be 500 SEK. Would you like proceed to checkout?", "bot")
+        setTimeout(() => {
+          confirm()
+        }, 1000) 
+        let confirm = () => {
+            inputWrapper.innerHTML = `
+            <button id="yes">Yes</button>
+            <button id="no">No</button> `
+            //What happens when user clicks either yes or no
+            document.getElementById("yes").addEventListener("click", () => {
+                showMessage("Yay! Your ticket has been reserved for you. Welcome to Technigo Cinema!", "bot")
+            inputWrapper.innerHTML = ""})
+            document.getElementById("no").addEventListener("click", () => {
+                showMessage("OK! Hope to see you some other day at Technigo Cinema!", "bot")
+            inputWrapper.innerHTML = ""})
+    }})
+    }
 
+// Even listener to listen for submitt button
 form.addEventListener("submit", (event) => {
   event.preventDefault()
   const input = document.getElementById("name-input").value;
   nxtQuestion(input)})
 
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
 
  
