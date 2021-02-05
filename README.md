@@ -1,13 +1,13 @@
-# Project Name
+This is a project made during our fourth week at the Technigo bootcamp. The learning objective was to create a chatbot.
 
-Replace this readme with your own information about your project.
+# Chatbot
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Creating this chatbot was a group assignment so we have practiced JavaScript together this week. Mainly with the purpose of getting a better understanding of variables, string methods including modification of strings, control flow and conditional statements and how to write functions; taking arguments and returning values.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We approached the problem with VSCode Live share and began by exploring example code for different possible solutions to our problem in relation to the start code that was given to us. After that we tried out some coding by combining different solutions to widen our understanding. Eventually we felt ready to start with our actual problem and continued writing the code that was given to us in order to solve our problem. Probably needless to say, Devtools in chrome was of great importance to us. If we would have more time we would add a buffer icon and different input types.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+

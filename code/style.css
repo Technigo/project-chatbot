@@ -3,10 +3,13 @@
 }
 
 body {
+  background-image: url("https://images.unsplash.com/photo-1485809722779-439bb523521d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1500&q=80");
+  background-repeat: no-repeat;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+ /* font-family: 'Montserrat', sans-serif;*/
+ font-family: 'Lexend Mega', sans-serif;
+  /*background: #0026ff;*/
 }
 
 h1 {
@@ -14,6 +17,10 @@ h1 {
   font-size: 44px;
   line-height: 34px;
   color: #fff;
+  background-color: black;
+  padding-bottom: 20px;
+  padding-top: 15px;
+  margin-bottom: 0;
   text-align: center;
 }
 
@@ -22,7 +29,11 @@ h2 {
   font-size: 24px;
   line-height: 34px;
   color: #fff;
+  background-color: black;
   text-align: center;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  margin-top: 0;
   margin-bottom: 36px;
 }
 
@@ -37,8 +48,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background:/* #e5e9ff*/linen;
+  color:/* #0026ff*/black;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -90,23 +101,25 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: /*#e5e9ff*/linen;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color:/* #0026ff*/black;
   max-width: 40%;
 }
 
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  font-family: 'Indie Flower', cursive;
 }
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  font-family: 'Indie Flower', cursive;
 }
 
 .input-wrapper {
@@ -120,7 +133,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color:/* #0026ff*/black;
   color: white;
   border: none;
   border-radius: 4px;
