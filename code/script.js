@@ -2,10 +2,10 @@
 const theWholeForm = document.getElementById('form-wrapper');
 const submitButton = document.getElementById('submit-ID') 
 
-//global variable
-let questionNumber = 1;
+//Global variables
+let questionNumber = 1; //stores the question number
 
-let TypeOfArrangement = '';
+let TypeOfArrangement = ''; //stores type of arrangement to print in the order confirmation
 
 //questionHandler function, passes the input from the user, 
 //plays sound effect and calls the functiond depending on the question number 
@@ -30,15 +30,7 @@ const questionHandler = (userInput) => {
     break;
   }
 };
-//Functions that plays sound effects
-const playSoundUser = () => {
-  const soundEffectUser = document.getElementById('message-sound')
-  soundEffectUser.play()
-}
-const playSoundBot = () => {
-  const soundEffectBot = document.getElementById('bot-sound')
-  soundEffectBot.play()
-}
+
 //Function that shows messages
 const showMessage = (message, sender) => {
   const chat = document.getElementById('chat');
@@ -66,6 +58,7 @@ const showMessage = (message, sender) => {
 //Greeting function
 const greeting = () => {
   showMessage(`Hello there, What's your name?`, 'bot');
+  playSoundBot();
 }
 // Function that takes adds event listener to the form submission
 const initFncn = () => {
@@ -77,7 +70,15 @@ const initFncn = () => {
     questionHandler (name);
   })
 }
-
+//Functions that plays sound effects
+const playSoundUser = () => {
+  const soundEffectUser = document.getElementById('message-sound')
+  soundEffectUser.play()
+}
+const playSoundBot = () => {
+  const soundEffectBot = document.getElementById('bot-sound')
+  soundEffectBot.play()
+}
 // Function that shows flower arrangement choices
 const showFlowerArrangement = (name) =>{
   questionNumber++; 
@@ -193,7 +194,6 @@ const thankYou = () => {
   `; 
   showMessage('Thank you for your order. Have a great day!', 'bot');
   playSoundBot();
-  //added this function - not sure if it's ok?
 }
 
 
