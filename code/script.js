@@ -42,7 +42,7 @@ const showMessage = (message, sender) => {
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/popcorn.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -55,7 +55,7 @@ const showMessage = (message, sender) => {
 
 // welcome message, ask for user's name
 const greeting = () => {
-  showMessage(`Hello there, what is your name ?`, 'bot')
+  showMessage(`Hello there, what is your name?`, 'bot')
 }
 
 setTimeout(greeting, 1000)
@@ -71,7 +71,7 @@ nameForm.addEventListener("submit", (event) => {
   }
   else {
     showMessage(nameUser, "user")
-    setTimeout(showGenre, 1000)
+    setTimeout(showGenre, 500)
   }
 })
 
@@ -102,36 +102,48 @@ const showGenre = () => {
 
 let genreChoice = null
 const showButtons = (genre) => {
-  genreOptions.classList.remove('active')
-  buttonOptions.classList.add('active')
-  main.classList.add(genre)
-  showMessage(`${genre.slice(0, 1).toUpperCase()}${genre.slice(1)}`, "user")
-  showMessage(`You chose ${genre}!`, 'bot')
-  genreChoice = genre
-  randomMovieBtn.classList.add(`${genre}-btn`)
+  setTimeout(() => {
+    showMessage(`${genre.slice(0, 1).toUpperCase()}${genre.slice(1)}`, "user")
+  }, 500);
+  setTimeout(() => {
+    showMessage(`You chose ${genre}!`, 'bot')
+    genreChoice = genre
+    genreOptions.classList.remove('active')
+    buttonOptions.classList.add('active')
+    main.classList.add(genre)
+    randomMovieBtn.classList.add(`${genre}-btn`)
+  }, 1000);
 }
 
 
 
 comedyBtn.addEventListener("click", (genre) => {
   showButtons("comedy")
-  comedySound.play();
+  setTimeout(() => {
+    comedySound.play();
+  }, 1000);
   comedySound.volume = 0.1;
 })
 actionBtn.addEventListener("click", (genre) => {
   showButtons("action")
-  actionSound.play();
+  setTimeout(() => {
+    actionSound.play();
+  }, 1000);
   actionSound.volume = 0.1;
 })
 horrorBtn.addEventListener("click", (genre) => {
   showButtons("horror")
-  horrorSound.play();
+  setTimeout(() => {
+    horrorSound.play();
+  }, 1000);
   horrorSound.volume = 0.1;
 
 })
 romanticBtn.addEventListener("click", (genre) => {
   showButtons("romantic")
-  romanticSound.play();
+  setTimeout(() => {
+    romanticSound.play();
+  }, 1000);
   romanticSound.volume = 0.1;
 
 })
@@ -145,16 +157,24 @@ backToGenreBtn.addEventListener("click", showGenre)
 
 randomMovieBtn.addEventListener("click", (message) => {
   if (genreChoice === "comedy") {
-    showMessage(comedyMovies[getRandomNumber()], "bot")
+    setTimeout(() => {
+      showMessage(comedyMovies[getRandomNumber()], "bot")
+    }, 300)
   } else if
     (genreChoice === "action") {
-    showMessage(actionMovies[getRandomNumber()], "bot")
+    setTimeout(() => {
+      showMessage(actionMovies[getRandomNumber()], "bot")
+    }, 300)
   } else if
     (genreChoice === "horror") {
-    showMessage(horrorMovies[getRandomNumber()], "bot")
+    setTimeout(() => {
+      showMessage(horrorMovies[getRandomNumber()], "bot")
+    }, 300)
   } else if
     (genreChoice === "romantic") {
-    showMessage(romanticMovies[getRandomNumber()], "bot")
+    setTimeout(() => {
+      showMessage(romanticMovies[getRandomNumber()], "bot")
+    }, 300)
   } else {
     console.log("not working")
   }
