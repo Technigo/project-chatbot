@@ -57,7 +57,7 @@ const showMessage = (message, sender) => {
 // Starts here
 
 const greeting = () => {
-  showMessage(`Hello there muggler🙋‍♀️ What's your name?`, 'bot')
+  showMessage(`Hello there muggle🙋‍♀️ What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -259,7 +259,7 @@ const showDelivery = (adress) => {
   <source src="assets/Hermoine.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
   </audio>
-  <iframe src="https://giphy.com/embed/iIqcyjsrIhxK0" width="200" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/harry-potter-emma-watson-hermione-granger-iIqcyjsrIhxK0"></p>
+  <iframe src="https://giphy.com/embed/uUoKsbqleQAo0" width="200" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/harry-potter-and-the-philosophers-stone-uUoKsbqleQAo0"></p>
   `) , 4000)
 }
 // When website loaded, chatbot asks first question.
