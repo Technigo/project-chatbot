@@ -5,23 +5,25 @@ const submitButton = document.getElementById('submit-ID')
 //global variable
 let questionNumber = 1;
 
+let TypeOfArrangement = '';
+
 //questionHandler function, passes the input from the user, 
 //plays sound effect and calls the functiond depending on the question number 
-const questionHandler = (message) => {
-  showMessage(message, 'user');
+const questionHandler = (userInput) => {
+  showMessage(userInput, 'user');
   playSoundUser ()
   switch (questionNumber) {
   case 1: 
-    setTimeout(() => showFlowerChoice(message), 1000); 
+    setTimeout(() => showFlowerArrangement(userInput), 1000); 
     break;
   case 2: 
-    setTimeout(() => showTypeOfArrangement(message), 1000);
+    setTimeout(() => showTypeOfArrangement(userInput), 1000);
     break;
   case 3: 
-    setTimeout(() => showFlowerSelector (message), 1500);
+    setTimeout(() => showFlowerSelector (userInput), 1500);
     break;
   case 4: 
-    setTimeout(() => showFinalConfirmation (message), 2000);
+    setTimeout(() => showFinalConfirmation (userInput), 2000);
     break;
   default:
     setTimeout(() => thankYou(), 1000);
@@ -77,9 +79,9 @@ const initFncn = () => {
 }
 
 // Function that shows flower arrangement choices
-const showFlowerChoice = (message) =>{
+const showFlowerArrangement = (name) =>{
   questionNumber++; 
-  showMessage (`Hello, ${message}, What flower arrangement would you like today?`,'bot'); 
+  showMessage (`Hello, ${name}, What flower arrangement would you like today?`,'bot'); 
   theWholeForm.innerHTML = `
     <button class="arrangement-button" id="bouquet" type="button">Bouquet</button>
     <button class="arrangement-button" id="basket" type="button">Basket</button>
@@ -98,11 +100,11 @@ const showFlowerChoice = (message) =>{
 };
 
 //Function that shows different types of flower arrangements depending on the choice of bouquet/basket/box
-const showTypeOfArrangement = (type) => {
+const showTypeOfArrangement = (arrangement) => {
   questionNumber++;
-  showMessage (`Wonderful! I always loved flowers in a ${type}. We have the following options for the ${type}`, 'bot');
+  showMessage (`Wonderful! I always loved flowers in a ${arrangement}. We have the following options for the ${arrangement}`, 'bot');
   playSoundBot();
-  if (type === 'bouquet'){
+  if (arrangement === 'bouquet'){
     theWholeForm.innerHTML = `
       <select id="selector" class="general-selector">
         <option value="" selected disabled>&#8681 Choose bouquet</option>  
@@ -110,7 +112,7 @@ const showTypeOfArrangement = (type) => {
         <option value="Round bouquet">Round bouquet</option>
         <option value="Hand-Tied bouquet">Hand-Tied bouquet</option>
       </select>  `
-  } else if (type === 'basket') {
+  } else if (arrangement === 'basket') {
     theWholeForm.innerHTML = `
       <select id="selector" class="general-selector">
         <option value="" selected disabled>&#8681 Choose basket</option>
@@ -127,15 +129,16 @@ const showTypeOfArrangement = (type) => {
         <option value="Square-shaped box">Square-shaped box</option>
       </select>  `
   }
-  const selectorChoice = document.getElementById('selector');
-  selectorChoice.addEventListener('change', () => questionHandler(selectorChoice.value))
+  const selectorChoiceArrangement = document.getElementById('selector');
+  selectorChoiceArrangement.addEventListener('change', () => questionHandler(selectorChoiceArrangement.value))
+  selectorChoiceArrangement.addEventListener('change', () => TypeOfArrangement = selectorChoiceArrangement.value )
 };
 
 //Function shows selection of flowers available
-const showFlowerSelector = (arrangement) => {
+const showFlowerSelector = (type) => {
   questionNumber++;
   playSoundBot();
-  showMessage (`What flowers would you like in your ${arrangement}? We have the following options`, 'bot');
+  showMessage (`What flowers would you like in your ${type}? We have the following options`, 'bot');
   theWholeForm.innerHTML = `
     <select id="flower-selector" class="general-selector"> 
       <option value="" selected disabled>&#8681 Choose flowers</option> 
@@ -145,8 +148,8 @@ const showFlowerSelector = (arrangement) => {
       <option value="sunflowers">&#x1F33B Sunflowers</option>
     </select>
     `
-  const selectorChoiceTwo = document.getElementById('flower-selector');
-  selectorChoiceTwo.addEventListener('change', () => questionHandler(selectorChoiceTwo.value))
+  const selectorChoiceType = document.getElementById('flower-selector');
+  selectorChoiceType.addEventListener('change', () => questionHandler(selectorChoiceType.value))
 }; 
 
 //Function that shows the price and asks for final confirmation or restart of the order
@@ -166,7 +169,7 @@ const showFinalConfirmation = (flowers) => {
     }
   showPrice(flowers);
   showMessage (`Oh, aren't ${flowers} beautiful!!!
-                The price for your ${flowers} will be ${price}. 
+                The price for your ${TypeOfArrangement} of ${flowers} will be ${price}. 
                 Do you want to place an order?`, 'bot')
   playSoundBot();
   theWholeForm.innerHTML = `
