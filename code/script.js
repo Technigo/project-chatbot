@@ -5,6 +5,7 @@ const input = document.getElementById('input')
 const sendBtn = document.getElementById('send')
 const yesButton = document.getElementById('yes-btn')
 const noButton = document.getElementById('no-btn')
+const nameInput = document.getElementById('name-input')
 
 //Makes a function for showMessage 'user' (cleaner code)
 const userReply = (msg) => {
@@ -15,9 +16,10 @@ const botReply = (msg) => {
   showMessage(msg, 'bot');
 }
 
-// Global variables, if you need any, declared here
+// Global variables
 //Numerically labels questions so nextQuestion function can find them.
 let indexDoggos = 1
+
 // Functions declared here
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -70,9 +72,17 @@ const nextQuestion = (message) => {
    } else if (indexDoggos === 2) {
      userReply(message)
      setTimeout(() => typeOfDog(message), 1000);
-   }
- else {
-  setTimeout(() => greeting(message), 1000);
+   } else if (indexDoggos === 3) {
+     userReply(message)
+     setTimeout(() => giftWrapDog(message), 1000);
+   } else if (indexDoggos === 4) {
+     console.log()
+     userReply(message)
+     setTimeout(() => nameofDog(message), 1000);
+           
+} else {  
+    userReply(message)
+    setTimeout(() => goodbye(message), 1000);
 }
 }
  
@@ -88,8 +98,7 @@ const greeting = () => {
 const dogSize = (message) => {
     indexDoggos++
     botReply('What size doggo friend would you like?')
-  
-     
+       
       inputWrapper.innerHTML = ` 
         <button id="small-btn">Small</button>
         <button id="medium-btn">Medium</button>
@@ -109,44 +118,89 @@ const dogSize = (message) => {
 
   const typeOfDog = (type) => {
     indexDoggos++
-    botReply(`Excellent! A ${type} Based on that please choose a breed below!`)
+    botReply(`Excellent! A ${type} doggo! Based on that please choose a breed below!`)
 
     if (type === 'Small') {
       inputWrapper.innerHTML = `
         <select id='select'>
           <option value="">Select Here</option>
-          <option value="yorkshire-terrier">Yorkshire Terrier</option>
-          <option value="chihuahua">Chihauhua</option>
-          <option value="pomeranian">Pomeranian</option>
-          <option value="dachshund">Dachshund aka Sausage dog!</option>
+          <option value="Yorkshire Terrier">Yorkshire Terrier</option>
+          <option value="Chihuahua">Chihauhua</option>
+          <option value="Pomeranian">Pomeranian</option>
+          <option value="Dachshund the sausage doggo">Dachshund aka Sausage dog!</option>
         </select>`
     } else if (type === 'Medium'){
       inputWrapper.innerHTML = `
         <select id='select'>
           <option value="">Select Here</option>
-          <option value="welsh-cardigan-pembroke-corgi">Welsh Cardigan or Pembroke Corgi (Yes there 2 diff. breeds)</option>
-          <option value="beagle">Beagle</option>
-          <option value="poodle">Poodle</option>
-          <option value="american-pit-bull">American PitBull</option>
+          <option value="Welsh Cardigan/Pembroke Corgi">Welsh Cardigan or Pembroke Corgi (Yes there 2 diff. breeds)</option>
+          <option value="Beagle">Beagle</option>
+          <option value="Poodle">Poodle</option>
+          <option value="American Pit Bull">American PitBull</option>
         </select>`
     } else {
       inputWrapper.innerHTML = `
         <select id='select'>
           <option value="">Select Here</option>
-          <option value="great-dane">Great Dane</option>
-          <option value="st-bernard">St. Bernard</option>
-          <option value="goldie">"Goldie" Golden Retriever</option>
-          <option value="german-shepard">German Shepard</option>
+          <option value="Great Dane">Great Dane</option>
+          <option value="St. Bernard">St. Bernard</option>
+          <option value="Golden Retriever">"Goldie" Golden Retriever</option>
+          <option value="German Shepard">German Shepard</option>
         </select>`
     }
+
+    const select = 
+      document
+        .getElementById('select')
+      select
+        .addEventListener('change', () => nextQuestion(select.value))
   }
 
-  const giftWrapDog = () => {
-    botReply()
+
+  const giftWrapDog = (gift) => {
+    indexDoggos++
+    botReply(`Great choice! Would you like us to gift wrap your doggo?`)
+
+      inputWrapper.innerHTML = `
+        <button id="yes-pls-btn">Yes, please.</button>
+        <button id="wtf-btn">Wtf... no!!</button>
+      ` 
+    document
+      .getElementById('yes-pls-btn')
+      .addEventListener('click', () => nextQuestion('Yes, please.'))
+    document
+      .getElementById('wtf-btn')
+      .addEventListener('click', () => nextQuestion('Wtf... no!'))
+  }
+  
+  const nameofDog = (message) => {indexDoggos++
+    botReply(`We don't gift wrap doggos, we're not evil!
+    What would you like to name your doggo friend?`)
+
+      inputWrapper.innerHTML = `
+        <form id="name-form">
+           <input id="name-input" type="text" />
+           <button id="send-btn" type="submit"> 
+           Send 
+           </button>
+        </form> `
+
+    const userInput = 
+      document.getElementById("name-input")
+          
+    const form =      
+      document.getElementById("name-form")
+      form.addEventListener("submit", (event) => {event.preventDefault()
+      nextQuestion(userInput.value)
+      userInput.value=""})  
   }
 
 
-
+  const goodbye = (message) => {
+  
+    botReply(`${message}? Cute name! ${message} will be on the way to you shortly!
+    Thank you for using Doggo Bot! Here for all your Doggo and Best Boi/Gurl needs.`)
+}
 // Set up your eventlisteners here - user answer yes when click
 
 
