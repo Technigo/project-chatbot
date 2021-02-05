@@ -1,7 +1,7 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const form = document.getElementById('form') //Should be name-form?
-const value = document.getElementById('input-value').value;
+const inputText = document.getElementById('input-value');
 
 
 // Global variables, if you need any, declared here
@@ -35,6 +35,7 @@ let step = 0;
 const greeting = () => {
   showMessage(`Welcome to your first therapy session! What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
+  console.log(value);
 };
 
 setTimeout(greeting, 1000);
@@ -43,25 +44,38 @@ setTimeout(greeting, 1000);
 const validateResponse = (valueFromUser, correctAnswer) => {
   return valueFromUser === correctAnswer;
 } 
-  // Store the value in a variable so we can access it after we 
-	// clear it from the input
-  const name = nameInput.value
-  showMessage(name, 'user')
-  nameInput.value = ''
 
   const handleConversation = () => {
     event.preventDefault();
 
     // Reuse handleResponse() function with value from input
-    showMessage(value);
+    showMessage(inputText.value, 'user');
+    if (step === 0) {
+      showMessage(`Hello ${inputText.value}! What would you like to talk about today?`, "bot");
+      chat.innerHTML += `
+      <label>
+      <input type="radio" value="childhood" name="topic" id = "topic" required> Your childhood
+      </label>
+
+      <label>
+      <input type="radio" value="mother" name="topic" id = "topic" required> Your mother
+      </label>
+      
+      <label>
+      <input type="radio" value="partner" name="topic" id = "topic" required> Your partner
+      </label>` 
+      step = 1;
+
+    }
 
     if (step === 1) {
-        // Reuse validateResponse() function with value from input AND correct answer (4)
-        const isResponseValid = validateResponse(Number(value), 4);
-        if (isResponseValid) {
+        if (document.getElementById("topic").value) === "childhood" {
             // Reuse handleResponse() function with success step 1 text
-            showMessage('Great job! And what is the value of 5 * 3?');
+            showMessage('Great job! And what is the value of 5 * 3?', "bot");
             step = 2;
+        } else if {
+
+            
         } else {
             // Reuse handleResponse() function with failure step 1 text
             showMessage('Hey, that is not correct value, try again');
@@ -100,7 +114,7 @@ const validateResponse = (valueFromUser, correctAnswer) => {
   // After 1 second, show the next question by invoking the next function.
 	// passing the name into it to have access to the user's name if we want
 	// to use it in the next question from the bot.
-  setTimeout(() => showFoodOptions(name), 1000)
+
 
 // This function will add a chat bubble in the correct place based on who the sender is
 
