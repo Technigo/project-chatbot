@@ -177,54 +177,60 @@ const interest = (place) => {
   if (place === 'New York' || place === 'Barcelona' || place === 'Tokyo') {
     inputWrapper.innerHTML = `
       <form id="interest-form">
-        <label for="culture" class="container">Culture
-          <input class="checkbox" type="checkbox"  id="culture" name="culture" value="culture">
-          <span class="checkmark"></span>
-        </label>
-        <label for="food" class="container">Food
-          <input class="checkbox" type="checkbox"  id="food" name="food" value="food">
-          <span class="checkmark"></span>
-        </label>
-        <label for="shopping" class="container">Shopping
-          <input class="checkbox" type="checkbox"  id="shopping" name="shopping" value="shopping">
-          <span class="checkmark"></span>
-        </label>
+        <div class="interest-wrapper">
+          <label for="culture" class="interest-container">Culture
+            <input class="checkbox" type="checkbox"  id="culture" name="culture" value="culture">
+            <span class="checkmark"></span>
+          </label>
+          <label for="food" class="interest-container">Food
+            <input class="checkbox" type="checkbox"  id="food" name="food" value="food">
+            <span class="checkmark"></span>
+          </label>
+          <label for="shopping" class="interest-container">Shopping
+            <input class="checkbox" type="checkbox"  id="shopping" name="shopping" value="shopping">
+            <span class="checkmark"></span>
+          </label>
+        <div>
         <button type="submit" class="interest-btn">Choose</button>
       </form>
     `
   } else if (place === 'Miami' || place === 'Las Palmas' || place === 'Bali') {
     inputWrapper.innerHTML = `
       <form id="interest-form">
-        <label for="wsports" class="container">Water sports
-          <input class="checkbox" type="checkbox"  id="wsports" name="wports" value="water sports">
-          <span class="checkmark"></span>
-        </label>
-        <label for="relax" class="container">Relax in the sun
-          <input class="checkbox" type="checkbox"  id="relax" name="relax" value="relaxing">
-          <span class="checkmark"></span>
-        </label>
-        <label for="party" class="container">Beachparty
-          <input class="checkbox" type="checkbox"  id="party" name="party" value="beach parties">
-          <span class="checkmark"></span>
-        <button type="submit" class="interest-btn">Choose</button>
-        </label>
+        <div class="interest-wrapper">
+          <label for="wsports" class="interest-container">Water sports
+            <input class="checkbox" type="checkbox"  id="wsports" name="wports" value="water sports">
+            <span class="checkmark"></span>
+          </label>
+          <label for="relax" class="interest-container">Relax in the sun
+            <input class="checkbox" type="checkbox"  id="relax" name="relax" value="relaxing">
+            <span class="checkmark"></span>
+          </label>
+          <label for="party" class="interest-container">Beachparty
+            <input class="checkbox" type="checkbox"  id="party" name="party" value="beach parties">
+            <span class="checkmark"></span>
+          </label>
+          <button type="submit" class="interest-btn">Choose</button>
+        <div>
       </form>
     `
   } else {
     inputWrapper.innerHTML = `
       <form id="interest-form">
-        <label for="extreme" class="container">Extreme sports
-          <input class="checkbox" type="checkbox" id="extreme" name="extreme" value="extreme sports">
-          <span class="checkmark"></span>
-        </label>
-        <label for="hiking" class="container">Hiking
-          <input class="checkbox" type="checkbox"  id="hiking" name="hiking" value="hiking">
-          <span class="checkmark"></span>
-        </label>
-        <label for="spiritual" class="container">Spiritual journey
-          <input class="checkbox" type="checkbox"  id="spiritual" name="spiritual" value="spiritual pursuits">
-          <span class="checkmark"></span>
-        </label>
+        <div class="interest-wrapper">
+          <label for="extreme" class="interest-container">Extreme sports
+            <input class="checkbox" type="checkbox" id="extreme" name="extreme" value="extreme sports">
+            <span class="checkmark"></span>
+          </label>
+          <label for="hiking" class="interest-container">Hiking
+            <input class="checkbox" type="checkbox"  id="hiking" name="hiking" value="hiking">
+            <span class="checkmark"></span>
+          </label>
+          <label for="spiritual" class="interest-container">Spiritual journey
+            <input class="checkbox" type="checkbox"  id="spiritual" name="spiritual" value="spiritual pursuits">
+            <span class="checkmark"></span>
+          </label>
+        <div>
         <button type="submit" class="interest-btn">Choose</button>
       </form>
     `
@@ -276,8 +282,10 @@ const textInput = () => {
 const confirmation = (answer) => {
   if (answer.toLowerCase() === 'yes') {
     showMessage(bookingSentence, "bot")
+    setTimeout(()=>{window.open("./index.html")}, 6000)
   } else if (answer.toLowerCase() === 'no') {
     showMessage(`Thanks for your time and hope we'll meet again soon!`, 'bot')
+    setTimeout(()=>{window.open("./index.html")}, 3000)
   } else {
     showMessage(`Please response yes or no.`, 'bot')
   }
