@@ -48,10 +48,11 @@ input {
   color: #004C50;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   line-height: 26px;
   flex: 1;
+  
 }
 
 main {
@@ -196,21 +197,21 @@ select{
 
 @keyframes freeze {
   0% {
-    color: rgb(22, 96, 165);
-    background: rgb(95, 159, 189);
-    box-shadow:
-      0 0 5px 0 rgb(13, 26, 219),
-      0 0 5px 0 rgba(12, 166, 194, 0.8),
-      0 0 5px 0 rgba(10, 230, 212, 0.6);
-  }
+  color: rgb(22, 96, 165);
+  background: rgb(95, 159, 189);
+  box-shadow:
+  0 0 5px 0 rgb(13, 26, 219),
+  0 0 5px 0 rgba(12, 166, 194, 0.8),
+  0 0 5px 0 rgba(10, 230, 212, 0.6);
+}
   
   100% {
-    color: rgba(0, 0, 0, 1);
-    background: rgba(255, 255, 255, 1);
-    box-shadow:
-      0 -35px 40px 30px rgba(255, 130, 10, 0),
-      0 -30px 30px 10px rgba(230, 30, 10, 0),
-      0 -20px 10px 0 rgba(255, 255, 10, 0); 
+  color: rgba(0, 0, 0, 1);
+  background: rgba(255, 255, 255, 1);
+  box-shadow:
+    0 -35px 40px 30px rgba(255, 130, 10, 0),
+    0 -30px 30px 10px rgba(230, 30, 10, 0),
+    0 -20px 10px 0 rgba(255, 255, 10, 0); 
   }
 }
 .cold-button {
