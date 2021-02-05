@@ -48,15 +48,16 @@ input {
 
 /*** INDEX STYLING ***/
 
-  .start-main {
-    background-image: url("./assets/lakeview.jpg");
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    overflow: hidden;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: flex-end;
+.start-main {
+  background-image: url("./assets/lakeview.jpg");
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .start-section {
