@@ -19,6 +19,7 @@ const botReply = (msg) => {
 // Global variables
 //Numerically labels questions so nextQuestion function can find them.
 let indexDoggos = 1
+let chatDelayOneSecond = 1000 //1 second delay
 
 // Functions declared here
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -49,9 +50,11 @@ const showMessage = (message, sender) => {
 }
 
 const reloadBot = () => {
+  console.log(userReply)
   showMessage('Fy fan nej!', 'user')
-  
-  botReply(`see ya`)
+  setTimeout(() => botReply('No Doggos is a sad doggo-less day for us... but maybe you\'ve changed your mind?')      //your code to be executed after 1 second
+  , 1000);
+
   
   inputWrapper.innerHTML = 
   `<div>
@@ -81,7 +84,7 @@ const nextQuestion = (message) => {
      setTimeout(() => nameofDog(message), 1000);
            
 } else {  
-    userReply(message)
+    userReply(message);
     setTimeout(() => goodbye(message), 1000);
 }
 }
@@ -92,9 +95,10 @@ const greeting = () => {
   botReply('Hello there! Are you here for a doggo friend?')
 
   yesButton.addEventListener('click', () => nextQuestion('Hells yes!')) 
-  noButton.addEventListener('click', () => reloadBot())
-  }
+  noButton.addEventListener('click', () =>  reloadBot())
+  } 
 
+ 
 const dogSize = (message) => {
     indexDoggos++
     botReply('What size doggo friend would you like?')
