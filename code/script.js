@@ -7,6 +7,7 @@ const nameInput = document.getElementById('name-input'); //User input sektion
 // Global variables, if you need any, declared here
 let nameUser =''
 
+
 // Functions declared here
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -116,7 +117,7 @@ const askForPepp = (feeling) => {
   document.getElementById("pepButton").addEventListener('click', () => {
     showMessage(`Yes Pep`, 'user')
     inputWrapper.innerHTML =""
-    setTimeout(() => showPepp("Yes Pep"), 1000)
+    setTimeout(() => getRandomPepp("Yes Pep"), 1000)
   })
 
   document.getElementById("noButton").addEventListener('click', () => {
@@ -127,40 +128,38 @@ const askForPepp = (feeling) => {
 
 }
 
-
 const getRandomPepp = () => {
-  const random = Math.floor(Math.random() * 8);
+  let random = Math.floor(Math.random() * 8);
+  let pepp =''
+
   if (random === 0) {
-    return "You rock!";
+    pepp = 'You rock! 🥇';
 
   } else if (random === 1) {
-    return "You smell amazing";
+    pepp = 'You smell amazing 😻';
 
   } else if (random === 2) {
-    return "You have beautiful eyes";
+    pepp = 'You have beautiful eyes 😘';
 
   } else if (random === 3) {
-    return "You're a very good chatter";
+    pepp = 'You are a very good chatter 🙋';
 
   } else if (random === 4) {
-    return "You're a great listener";
+    pepp = 'You are a great listener 🥇';
 
   } else if (random === 5) {
-    return "You got this!";
+    pepp = 'You got this! 🧡';
 
   } else if (random === 6) {
-    return "I believe in you!";
+    pepp = 'I believe in you! 🙋';
 
   } else if (random === 7) {
-    return "You can do whatever you put you min to!";
+    pepp = 'You can do whatever you put your mind to! 🦄';
   }
+  
+  showMessage(pepp, 'bot')
 }
-
-const showPepp = () => {
-  showMessage(`I knew you where up for some pep talk!`, 'bot')
-}
-
-
+ 
 //Last thing the user see.
 const thanksBye = () => {
   showMessage(`Its shame that you dont want to talk 😔... `, 'bot')
