@@ -55,10 +55,10 @@ const showMessage = (message, sender) => {
   }
   chat.scrollTop = chat.scrollHeight
 }
+
 //Greeting function
 const greeting = () => {
   showMessage(`Hello there, What's your name?`, 'bot');
-  playSoundBot();
 }
 // Function that takes adds event listener to the form submission
 const initFncn = () => {
