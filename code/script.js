@@ -129,26 +129,32 @@ const dogSize = (message) => {
           <option value="">Select Here</option>
           <option value="Yorkshire Terrier">Yorkshire Terrier</option>
           <option value="Chihuahua">Chihauhua</option>
+          <option value="Beagle">Beagle</option>
           <option value="Pomeranian">Pomeranian</option>
+          <option value="Welsh Cardigan/Pembroke Corgi">Welsh Cardigan or Pembroke Corgi (Yes there 2 diff. breeds)</option>
           <option value="Dachshund the sausage doggo">Dachshund aka Sausage dog!</option>
         </select>`
     } else if (type === 'Medium'){
       inputWrapper.innerHTML = `
         <select id='select'>
           <option value="">Select Here</option>
-          <option value="Welsh Cardigan/Pembroke Corgi">Welsh Cardigan or Pembroke Corgi (Yes there 2 diff. breeds)</option>
-          <option value="Beagle">Beagle</option>
+          <option value="Soft-Coated Wheaton Terrier">Soft-Coated Wheaton Terrier</option>
+          <option value="Siberian Husky">Siberian husky</option>
+          <option value="Basset Hound">Basset Hound</option>
           <option value="Poodle">Poodle</option>
-          <option value="American Pit Bull">American PitBull</option>
+          <option value="Golden Retriever">Golden Retriever</option>
+          <option value="Bull Terrier">Bull Terrier</option>
         </select>`
     } else {
       inputWrapper.innerHTML = `
         <select id='select'>
           <option value="">Select Here</option>
           <option value="Great Dane">Great Dane</option>
-          <option value="St. Bernard">St. Bernard</option>
-          <option value="Golden Retriever">"Goldie" Golden Retriever</option>
+          <option value="Saint Bernard">Saint Bernard</option>
+          <option value="American PitBull">American PitBull</option>
           <option value="German Shepard">German Shepard</option>
+          <option value="Mastiff">Mastiff</option>
+          <option value="Irish Wolfhound">Irish Wolfhound</option>
         </select>`
     }
     /*Defining 'select here, the EventListner 'change' is specific for <select> options
