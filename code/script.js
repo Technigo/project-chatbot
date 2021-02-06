@@ -15,7 +15,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user-two.png" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
@@ -52,7 +52,7 @@ const handleNameInput = (event) => {
 
 //Question 2 
 const askForYes = () => {
-  setTimeout (() => showMessage(`My name is Yes-bot. I beleive that there is no such thing as a no-answer. And I am here to make you beleive the same. Are you up for that?`, 'bot'), 1000)
+  showMessage(`My name is Yes-bot. I beleive that there is no such thing as a no-answer. And I am here to make you beleive the same. Are you up for that?`, 'bot')
 
   inputWrapper.innerHTML = `
     <button id="yesButton">Yes</button>
@@ -75,7 +75,7 @@ const askForYes = () => {
 //Question 3
 const askForFeeling = (answer) => {
   showMessage(`So your answer is ${answer}. Of course, I'm so happy you are up for that. You rock!🤘`, 'bot')
-  setTimeout(() => showMessage(`Are you feeling happy?`, 'bot'), 1500) 
+  showMessage(`Are you feeling happy?`, 'bot')
 
   inputWrapper.innerHTML =`
     <button id="yasButton">Yas...</button>
@@ -99,10 +99,10 @@ const askForFeeling = (answer) => {
 const askForPepp = (feeling) => {
   if (feeling === "Oui") {
     showMessage(`Cool, you're confident! If you're happy than I'm happy`, 'bot')
-    setTimeout(() => showMessage(`Would you like a pep talk? Even though you don't seem to need it 😜`, 'bot'), 1500)
+    showMessage(`Would you like a pep talk? Even though you don't seem to need it 😜`, 'bot')
   } else {
     showMessage(`That seems a bit modest, don't you think?🙊`, 'bot')
-    setTimeout(() => showMessage(`Maybe you need a pep talk?`, 'bot'), 1500) 
+    showMessage(`Maybe you need a pep talk?`, 'bot')
   }
 
   inputWrapper.innerHTML =`
