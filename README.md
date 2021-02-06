@@ -14,8 +14,8 @@ Overall we are very satisfied with what we achieve with this project.
 
 ## View it live
 
-Our project is deployed at Netlify:
+Deployed at Netlify: 
 
-https://ecstatic-goldstine-8edb43.netlify.app/
+https://ecstatic-goldstine-8edb43.netlify.app
 
 
