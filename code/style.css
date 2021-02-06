@@ -64,21 +64,29 @@ input {
   flex: 1;
 }
 
+.button-container {
+  margin: 10px 10px 10px 67px;
+  /* background: chartreuse; */
+  display: flex;
+}
+
+
 .kitten-container {
   position: relative;
   width: 0;
   height: 0;
 }
 
+
 .kitten {
   position: absolute;
-  top: -89px;
+  top: -88px;
   left: 50px;
   width: 150px;
 }
 
 main {
-  margin: 5rem auto;
+  margin: 7rem auto;
   width: 100%;
   max-width: 550px;
   height: 600px;
@@ -203,4 +211,20 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+button.in-chat {
+  min-width: 50px;
+  /* height: 30px; */
+  margin: 0 5px;
+  padding: 0 10px;
+  border-radius: 4px;
+  flex: 1;
+}
+
+button.in-chat p {
+  font-weight: 600;
+  font-size: 14px;
+  margin: auto;
+
 }

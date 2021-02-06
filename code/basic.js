@@ -2,16 +2,30 @@ const formElement = document.getElementById('form')
 const chat = document.getElementById('chat')
 const sendBtn = document.getElementById('send-btn')
 const input = document.getElementById('input')
+const chatButtons = document.getElementsByClassName('in-chat')
 
-let userName = ''
-let kittenGender = ''
-let kittenName = ''
-let kittenEnvironmentPreference = ''
+
+// let userName = ''
+// let kittenGender = ''
+// let kittenName = ''
+// let kittenEnvironmentPreference = ''
 let currentQuestion = ''
 let setRandomNameSuccess
+
+sendBtn.addEventListener('click', (event) => {
+  event.preventDefault()
+  handleResponse(input.value) 
+})
+
+
+
+
+
+
+
 const kittenLibrary = { 
   girlNames: ['Bella', 'Kitty', 'Lily', 'Lilly', 'Lucy', 'Chloe', 'Sadie', 'Princess', 'Sophie', 'Cleo', 'Daisy', 'Missy', 'Lulu', 'Jasmine', 'Fiona', 'Millie', 'Abby', 'Minnie', 'Olivia', 'Lola', 'Athena', 'Ruby', 'Penny', 'Emma', 'Belle', 'Binx', 'Boo', 'Rosie', 'Ella', 'Hazel', 'Maggie', 'Mimi', 'Annie', 'Layla', 'Leila', 'Kiki', 'Pippa', 'Dottie', 'Blanche', 'Daisy', 'Dahlia', 'Daffodil', 'Iris', 'Marigold', 'Clover', 'Poppy', 'Primrose', 'Protea', 'Thistle', 'Apple', 'Blossom', 'Magnolia', 'Buttercup', 'Rose', 'Lily', 'Petunia', 'Polly'],
-  boyNames: ['Charlie', 'Leo', 'Milo', 'Jack', 'Sam', 'Ziggy', 'Tucker', 'Murphy', 'Jax', 'Frank', 'Romeo', 'Teddy', 'Oscar', 'Theo', 'Bob', 'Clyde', 'Joey', 'Ollie', 'Toby', 'George', 'Bagheera', 'Calvin', 'Thor', 'Gus', 'Walter', 'Archie', 'Gus', 'Gus', 'Jack', 'Koosh Ball'],
+  boyNames: ['Charlie', 'Leo', 'Milo', 'Jack', 'Sam', 'Ziggy', 'Tucker', 'Murphy', 'Jax', 'Frank', 'Romeo', 'Teddy', 'Oscar', 'Theo', 'Bob', 'Clyde', 'Joey', 'Ollie','Bobo', 'Toby', 'George', 'Sigge', 'Bagheera', 'Calvin', 'Thor', 'Gus', 'Walter', 'Archie', 'Gus', 'Gus', 'Jack', 'Koosh Ball'],
   neutralNames: ['Nala', 'Simba', 'Baby', 'Salem', 'Shadow', 'Izzy', 'Boots', 'Loki', 'Cooper', 'Oreo', 'Tiger', 'Jackson', 'Pepper', 'Bear', 'Moose', 'Pumpkin', 'Willow', 'Mittens', 'Coco', 'Sammy', 'Sammie', 'Kali', 'Tigger', 'Buddy', 'Marley', 'Ash', 'Scout', 'Gizmo', 'Louie', 'Ginger', 'Midnight', 'Mochi', 'Blue', 'Blu', 'Frankie', 'Lucky', 'Piper', 'Harley', 'Rocky', 'Peanut', 'Remy', 'Remi', 'Sunny', 'Riley', 'Frankie', 'Lucky', 'Mittens', 'Fluffy', 'Pip', 'Cricket', 'Pixie', 'Bubbles', 'Sunshine', 'Totoro', 'PeeWee', 'Marshmallow', 'Brownie', 'Pickles', 'Lemon', 'Biscuit', 'Lollipop', 'Kit', 'Kat', 'Shortcake', 'Peanut', 'Butter', 'Turnip', 'Merengue', 'Paw', 'Paw', 'Cantaloupe', 'Cataloupe', 'Fluffer', 'Nutter', 'Pop', 'Tart', 'Tartlet', 'Macaron', 'Tiger', 'Fritillary', 'Snap', 'Dragon', 'Monchichi', 'Popple', 'Hot Wheels', 'Ducky', 'Puffalump', 'Bear', 'Teddy', 'Ruxpin', 'Gudetama', 'Koopa', 'Luigi', 'Pusheen', 'Toothless', 'Sonic', 'Tamagotchi', 'Apple', 'Pocket'],
   pictures: [
     {
@@ -178,29 +192,39 @@ const showMessage = (message, sender) => {
     }
   }
   
-  const toKebabCase = (arr => {
-    console.log(arr)
-    return arr.forEach(item => {
-      item.match(/[0-9]{1,}(?=\b)|[A-Z]{2,}(?=[A-Z][a-z]+|[0-9]|\b|_)|[A-Z]?[a-z]+|[A-Z]|[0-9]+/g)
-      .map(x => x.toLowerCase())
-      .join('-')
-    })
-  })
-  
+
+  const toKebabCase = (str) => {
+    return str.match(/[0-9]{1,}(?=\b)|[A-Z]{2,}(?=[A-Z][a-z]+|[0-9]|\b|_)|[A-Z]?[a-z]+|[A-Z]|[0-9]+/g)
+    .map(x => x.toLowerCase())
+    .join('-')
+  }
+    
   const showButtons = (values) => {
     setTimeout(()=> {
-      const kebabValues = toKebabCase(values)
-      chat.innerHTML += `
-      <section class="button-container">
-      `
-      for (i = 0; i < values.length; i++) {
-        chat.innerHTML += `
-        <div class="button" id="${kebabValues[i]}">${values[i]}</div>
-        </section>
-        `
+      // let id = ''
+      let buttons = ''
+      for (i = 0; i < values.length; i++) { 
+        let id = toKebabCase(values[i])
+        const value = values[i]
+        buttons += `<button class="in-chat" id="`
+        + id + `" value="` + value + `">` + value + `</button>`
       }
+      chat.innerHTML += `
+        <section id="button-container" class="button-container">
+        </section>
+      `
+      const buttonContainer = document.getElementById('button-container')
+      buttonContainer.innerHTML += buttons
+      buttonContainer.addEventListener('click', (event) => {
+        handleResponse(event.target.value)
+      })
+      chat.scrollTop = chat.scrollHeight
     }, 2000)
   }
+
+// for (i = 0; i < values.length; i++) {
+//   chat.innerHTML += `
+//   <button class="in-chat" id="${toKebabCase(values[i])}"><p>${values[i]}</p></button>`
   
   const showImage = (imageRef) => {
     setTimeout(()=> {
@@ -236,7 +260,7 @@ const handleResponse = (receivedMessage) => {
     input.value = ''
     // 1
     if (currentQuestion === 1) {
-      showMessage(receivedMessage, 'user')
+      // showMessage(receivedMessage, 'user')
       if (receivedMessage.toLowerCase() != 'kittenbot go!') {
         currentQuestion++
         secondQuestion()
@@ -324,10 +348,6 @@ const firstQuestion = () => {
   currentQuestion = 1
   console.log('startKittenBot')
   showMessage("Welcome to KittenBot! Type anything but <span>KittenBot Go!</span> to start!", 'bot')
-  sendBtn.addEventListener('click', (event) => {
-    event.preventDefault()
-    handleResponse(input.value) 
-  })
 }  
 
 const secondQuestion = () => {
