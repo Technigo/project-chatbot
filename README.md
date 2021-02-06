@@ -1,9 +1,6 @@
 # Project Name
 
-TEST
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Our project for this week was to work with pair programming and build a chatbot by using the basics of Javascript, which has been the focus during the lectures this week.
 
 ## The problem
 

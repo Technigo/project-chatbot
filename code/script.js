@@ -211,7 +211,7 @@ const askForTickets = (question) => {
           inputWrapper.innerHTML = ""
         })
         document.getElementById("no").addEventListener("click", () => {
-          howMessage("Not today, thank you.", "user")
+          showMessage("Not today, thank you.", "user")
           setTimeout (() => showMessage("OK! Hope to see you some other day at Technigo Cinema!", "bot"), 1000)
           inputWrapper.innerHTML = ""
         })
@@ -234,7 +234,7 @@ const askForTickets = (question) => {
           inputWrapper.innerHTML = ""
         })
         document.getElementById("no").addEventListener("click", () => {
-          howMessage("Not today, thank you.", "user")
+          showMessage("Not today, thank you.", "user")
           setTimeout (() => showMessage("OK! Hope to see you some other day at Technigo Cinema!", "bot"), 1000)
           inputWrapper.innerHTML = ""
         })
@@ -280,7 +280,7 @@ const askForTickets = (question) => {
           inputWrapper.innerHTML = ""
         })
         document.getElementById("no").addEventListener("click", () => {
-          howMessage("Not today, thank you.", "user")
+          showMessage("Not today, thank you.", "user")
           setTimeout (() => showMessage("OK! Hope to see you some other day at Technigo Cinema!", "bot"), 1000)
           inputWrapper.innerHTML = ""
         })
