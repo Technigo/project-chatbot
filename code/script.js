@@ -127,6 +127,35 @@ const askForPepp = (feeling) => {
 
 }
 
+
+const getRandomPepp = () => {
+  const random = Math.floor(Math.random() * 8);
+  if (random === 0) {
+    return "You rock!";
+
+  } else if (random === 1) {
+    return "You smell amazing";
+
+  } else if (random === 2) {
+    return "You have beautiful eyes";
+
+  } else if (random === 3) {
+    return "You're a very good chatter";
+
+  } else if (random === 4) {
+    return "You're a great listener";
+
+  } else if (random === 5) {
+    return "You got this!";
+
+  } else if (random === 6) {
+    return "I believe in you!";
+
+  } else if (random === 7) {
+    return "You can do whatever you put you min to!";
+  }
+}
+
 const showPepp = () => {
   showMessage(`I knew you where up for some pep talk!`, 'bot')
 }
