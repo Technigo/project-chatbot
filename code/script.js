@@ -69,27 +69,27 @@ const nextQuestion = (message) => {
   console.log(indexDoggos);
   if (indexDoggos === 1){
     userReply(message)
-    setTimeout(() => dogSize(message), 1000);
+    setTimeout(() => dogSize(message), 2000);
    } else if (indexDoggos === 2) {
      userReply(message)
-     setTimeout(() => typeOfDog(message), 1000);
+     setTimeout(() => typeOfDog(message), 2000);
    } else if (indexDoggos === 3) {
      userReply(message)
      setTimeout(() => giftWrapDog(message), 1000);
    } else if (indexDoggos === 4) {
      console.log()
      userReply(message)
-     setTimeout(() => nameofDog(message), 1000);           
+     setTimeout(() => nameofDog(message), 2000);           
 } else {  
     userReply(message);
-    setTimeout(() => goodbye(message), 1000);
+    setTimeout(() => goodbye(message), 2000);
 }
 }
  
 // Starts here
 const greeting = () => {
   indexDoggos = 1;
-  botReply('Hello there! Are you here for a doggo friend?')
+  botReply('Hello there! Are you here for a doggo friend?🐶')
   //the yes/no buttons here are in the index.html file (we decided not to start with a form)
   yesButton
     .addEventListener('click', () => nextQuestion('Hells yes!')) 
@@ -100,7 +100,7 @@ const greeting = () => {
 //This is the 2nd Question Asked after greeting
 const dogSize = (message) => {
     indexDoggos++
-    botReply('What size doggo friend would you like?');
+    botReply('🐾PAW-some!🐾 What size doggo friend would you like?');
        
       inputWrapper.innerHTML = ` 
         <button id="small-btn">Small</button>
@@ -164,13 +164,13 @@ const dogSize = (message) => {
   //This is Question 4
   const giftWrapDog = () => {
     indexDoggos++
-    botReply(`Ooo an ${select.value}? Great choice!`);
+    botReply(`Ooo a ${select.value}? Great choice!`);
     setTimeout(() => //This adds a 1 second delay before the bots chat appears.
-    botReply(`Would you like us to gift wrap your doggo?`), 1000);
+    botReply(`Would you like us to gift wrap your doggo?`), 2500);
     
     //we want the bot to remember the breed chosen before
       inputWrapper.innerHTML = `
-        <button id="yes-pls-btn">Yes, please.</button>
+        <button id="yes-pls-btn">🎁Yes, please.</button>
         <button id="wtf-btn">Wtf... no!!</button>
       ` 
       document
@@ -184,9 +184,9 @@ const dogSize = (message) => {
   //This is Question 5
   const nameofDog = (message) => {
     indexDoggos++
-    botReply(`We don't gift wrap doggos, that's evil!`)
+    botReply(`We don't gift wrap doggos! We're not monsters!`)
     setTimeout(() => //This adds a 1 second delay before the bots chat appears.
-    botReply(`What would you like to name your doggo friend?`), 1000);
+    botReply(`How about a name for your new doggo friend?`), 3000);
 
       inputWrapper.innerHTML = `
         <form id="name-form">
@@ -210,9 +210,9 @@ const dogSize = (message) => {
   const goodbye = (message) => {  
     botReply(`${message}?`) //Repeats userInput.value from Question 5
     setTimeout(() => //This adds a 1 second delay before the bots chat appears.
-    botReply(`Cute name! ${message} will be on the way to you shortly!`), 1000);
+    botReply(`Cute name! A quick brush and ${message} will be on the way to you shortly!🚚`), 3000);
     setTimeout(() => //This adds a 1 second delay before the bots chat appears.
-    botReply(`Thank you for using Doggo Bot! Here for all your Doggo and Best Boi/Gurl needs.`), 2000);    
+    botReply(`Thank you for using Doggo Bot! Here for all your Doggo Bestest Boi(or Gurl) needs!`), 8000);    
 }
 
 
