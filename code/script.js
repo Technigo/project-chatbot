@@ -22,7 +22,7 @@ const showMessage = (message, sender) => {
   
      chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bot-two.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>

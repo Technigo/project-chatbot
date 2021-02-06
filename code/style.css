@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #a3377f;
+  background: #e4990f;
 }
 
 h1 {
@@ -37,8 +37,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #c6e4d2;
+  color: #0e7536;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -90,12 +90,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #070707;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #f8f8fa;
   max-width: 40%;
 }
 
@@ -105,6 +105,7 @@ main {
 }
 
 .user-bubble {
+  background: grey;
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
 }
