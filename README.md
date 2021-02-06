@@ -1,13 +1,15 @@
-# Project Name
+# Project-chatbot Sari-Anne Peltola & Ulysses Veghelyi
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The project is about practicing the Javascript we learned by creating a chatbot. The project was a pair programming project. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The biggest problem was to figure out how to procced from one question to the other. We solved it by with functions. 
 
-## View it live
+## View it live.
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+
+
+
+
+
