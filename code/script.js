@@ -111,20 +111,16 @@ const showCoachAreas = (name) => {
 
   // Message from bot after click on button 
   document.getElementById('workBtn').addEventListener('click', () => {
-    showMessage('Work', 'user')
-    
-      showMessage('Great, you want to focus on the area of work. Please choose a time and day', 'bot')
-    
+    showMessage('Work', 'user')  
+    showMessage('Great, you want to focus on the area of work. Please choose a time and day', 'bot')
     appointment()
 
     
     const select = document.getElementById('select')
     select.addEventListener('change', () => {
       showMessage(`${select.value}`, 'user')
-      
-        showMessage('Excellent, the cost per appointment is 800 sek.', 'bot')
-      
-        showMessage('Please, enter the address you want your invoice to be sent to.', 'bot')
+      showMessage('Excellent, the cost per appointment is 800 sek.', 'bot')
+      showMessage('Please, enter the address you want your invoice to be sent to.', 'bot')
       textInput()
        
     })

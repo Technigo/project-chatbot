@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 * {
   box-sizing: border-box;
 }
@@ -5,23 +6,25 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: "Montserrat", sans-serif;
+  background: #98ded9;
 }
 
 h1 {
+  font-family: "Pacifico", cursive;
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: #0026ff;
   text-align: center;
 }
 
 h2 {
+  font-family: "Montserrat", sans-serif;
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: #f6f6f6;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -37,11 +40,11 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #eba059;
+  color: #f6f6f6;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -55,12 +58,12 @@ select:focus {
 select {
   border: none;
   border-radius: 4px;
-  color: #0026ff;
+  color: #f6f6f6;
   font-size: 20px;
   font-weight: 600;
   height: 60px;
-  font-family: 'Montserrat';
-  background: #e5e9ff;
+  font-family: "Montserrat";
+  background: #eba059;
   width: 100%;
   padding: 0 20px;
   cursor: pointer;
@@ -75,8 +78,10 @@ main {
   width: 100%;
   max-width: 700px;
   height: 600px;
+  border: solid 3px;
+  border-color: #0026ff;
   border-radius: 30px;
-  background: #fff;
+  background: #f6f6f6;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -113,12 +118,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #98ded9;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #f6f6f6;
   max-width: 40%;
 }
 
@@ -144,14 +149,14 @@ main {
 
 button {
   background-color: #0026ff;
-  color: white;
+  color: #f6f6f6;
   border: none;
   border-radius: 4px;
   padding: 16px 40px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
