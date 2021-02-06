@@ -9,4 +9,4 @@ We started with the labs and went through the material for this project. After t
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://foodex.netlify.app/
