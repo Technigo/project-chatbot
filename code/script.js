@@ -90,9 +90,11 @@ const nextQuestion = (message) => {
 const greeting = () => {
   indexDoggos = 1
   botReply('Hello there! Are you here for a doggo friend?')
-
-  yesButton.addEventListener('click', () => nextQuestion('Hells yes!')) 
-  noButton.addEventListener('click', () =>  reloadBot())
+  //the yes/no buttons here are in the index.html file (we decided not to start with a form)
+  yesButton
+    .addEventListener('click', () => nextQuestion('Hells yes!')) 
+  noButton
+    .addEventListener('click', () => reloadBot())
   } 
  
 //This is the 2nd Question Asked after greeting
@@ -104,8 +106,7 @@ const dogSize = (message) => {
         <button id="small-btn">Small</button>
         <button id="medium-btn">Medium</button>
         <button id="large-btn">Large</button> 
-      `
-  
+      `  
     document
       .getElementById('small-btn')
       .addEventListener('click', () => nextQuestion('Small'))
@@ -160,16 +161,16 @@ const dogSize = (message) => {
         .addEventListener('change', () => nextQuestion(select.value))
   }
 
-
+  //This is Question 4
   const giftWrapDog = () => {
     indexDoggos++
-    botReply(`Great choice! Would you like us to gift wrap your doggo?`)
-
+    botReply(`Ooo a ${select.value}? Great choice! Would you like us to gift wrap your doggo?`)
+    //we want the bot to remember the breed chosen before
       inputWrapper.innerHTML = `
         <button id="yes-pls-btn">Yes, please.</button>
         <button id="wtf-btn">Wtf... no!!</button>
       ` 
-    document
+      document
       .getElementById('yes-pls-btn')
       .addEventListener('click', () => nextQuestion('Yes, please.'))
     document
