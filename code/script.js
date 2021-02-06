@@ -19,7 +19,7 @@ const botReply = (msg) => {
 // Global variables
 //Numerically labels questions so nextQuestion function can find them.
 let indexDoggos = 1
-let chatDelayOneSecond = 1000 //1 second delay
+
 
 // Functions declared here
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -50,21 +50,19 @@ const showMessage = (message, sender) => {
 }
 
 const reloadBot = () => {
-  console.log(userReply)
-  showMessage('Fy fan nej!', 'user')
-  setTimeout(() => botReply('No Doggos is a sad doggo-less day for us... but maybe you\'ve changed your mind?')      //your code to be executed after 1 second
+  //This allows the user to restart the chatbot
+  userReply('Fy fan nej!')
+  setTimeout(() => //This adds a 1 second delay before the bots chat appears.
+  botReply('No Doggos is a sad doggo-less day for us... but maybe you\'ve changed your mind?')      
   , 1000);
-
   
-  inputWrapper.innerHTML = 
-  `<div>
-    <button id="reloadBtn">Restart</button>
-  </div>`
+    inputWrapper.innerHTML = 
+      `<div>
+      <button id="reloadBtn">Restart</button>
+      </div>`
 
-  document.getElementById('reloadBtn').addEventListener('click', () => {
-    location.reload()
-
-})
+    document.getElementById('reloadBtn').addEventListener('click', () => {
+    location.reload()})
 }
 
 const nextQuestion = (message) => {
@@ -81,8 +79,7 @@ const nextQuestion = (message) => {
    } else if (indexDoggos === 4) {
      console.log()
      userReply(message)
-     setTimeout(() => nameofDog(message), 1000);
-           
+     setTimeout(() => nameofDog(message), 1000);           
 } else {  
     userReply(message);
     setTimeout(() => goodbye(message), 1000);
@@ -97,8 +94,8 @@ const greeting = () => {
   yesButton.addEventListener('click', () => nextQuestion('Hells yes!')) 
   noButton.addEventListener('click', () =>  reloadBot())
   } 
-
  
+//This is the 2nd Question Asked after greeting
 const dogSize = (message) => {
     indexDoggos++
     botReply('What size doggo friend would you like?')
@@ -106,8 +103,8 @@ const dogSize = (message) => {
       inputWrapper.innerHTML = ` 
         <button id="small-btn">Small</button>
         <button id="medium-btn">Medium</button>
-        <button id="large-btn">Large</button>  
-    `
+        <button id="large-btn">Large</button> 
+      `
   
     document
       .getElementById('small-btn')
@@ -120,10 +117,11 @@ const dogSize = (message) => {
       .addEventListener('click', () => nextQuestion('Large'))
   }
 
+  //This is Question 3
   const typeOfDog = (type) => {
     indexDoggos++
     botReply(`Excellent! A ${type} doggo! Based on that please choose a breed below!`)
-
+    //Here the user can select a breed from a dropdown menu based on their answer from Question 2
     if (type === 'Small') {
       inputWrapper.innerHTML = `
         <select id='select'>
@@ -152,7 +150,9 @@ const dogSize = (message) => {
           <option value="German Shepard">German Shepard</option>
         </select>`
     }
-
+    /*Defining 'select here, the EventListner 'change' is specific for <select> options
+    It tells the bot "Hey, we are changing because we've selected THIS option", similar to how
+    'click' means when something is clicked we change. */
     const select = 
       document
         .getElementById('select')
@@ -161,7 +161,7 @@ const dogSize = (message) => {
   }
 
 
-  const giftWrapDog = (gift) => {
+  const giftWrapDog = () => {
     indexDoggos++
     botReply(`Great choice! Would you like us to gift wrap your doggo?`)
 
