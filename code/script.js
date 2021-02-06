@@ -18,7 +18,7 @@ const botReply = (msg) => {
 
 // Global variables
 //Numerically labels questions so nextQuestion function can find them.
-let indexDoggos = 1
+let indexDoggos = 1;
 
 
 // Functions declared here
@@ -51,7 +51,7 @@ const showMessage = (message, sender) => {
 
 const reloadBot = () => {
   //This allows the user to restart the chatbot
-  userReply('Fy fan nej!')
+  userReply('Fy fan nej!');
   setTimeout(() => //This adds a 1 second delay before the bots chat appears.
   botReply('No Doggos is a sad doggo-less day for us... but maybe you\'ve changed your mind?')      
   , 1000);
@@ -88,7 +88,7 @@ const nextQuestion = (message) => {
  
 // Starts here
 const greeting = () => {
-  indexDoggos = 1
+  indexDoggos = 1;
   botReply('Hello there! Are you here for a doggo friend?')
   //the yes/no buttons here are in the index.html file (we decided not to start with a form)
   yesButton
@@ -100,7 +100,7 @@ const greeting = () => {
 //This is the 2nd Question Asked after greeting
 const dogSize = (message) => {
     indexDoggos++
-    botReply('What size doggo friend would you like?')
+    botReply('What size doggo friend would you like?');
        
       inputWrapper.innerHTML = ` 
         <button id="small-btn">Small</button>
@@ -121,7 +121,7 @@ const dogSize = (message) => {
   //This is Question 3
   const typeOfDog = (type) => {
     indexDoggos++
-    botReply(`Excellent! A ${type} doggo! Based on that please choose a breed below!`)
+    botReply(`Excellent! A ${type} doggo! Based on that please choose a breed below!`);
     //Here the user can select a breed from a dropdown menu based on their answer from Question 2
     if (type === 'Small') {
       inputWrapper.innerHTML = `
@@ -156,31 +156,37 @@ const dogSize = (message) => {
     'click' means when something is clicked we change. */
     const select = 
       document
-        .getElementById('select')
+        .getElementById('select');
       select
-        .addEventListener('change', () => nextQuestion(select.value))
+        .addEventListener('change', () => nextQuestion(select.value));
   }
 
   //This is Question 4
   const giftWrapDog = () => {
     indexDoggos++
-    botReply(`Ooo a ${select.value}? Great choice! Would you like us to gift wrap your doggo?`)
+    botReply(`Ooo an ${select.value}? Great choice!`);
+    setTimeout(() => //This adds a 1 second delay before the bots chat appears.
+    botReply(`Would you like us to gift wrap your doggo?`), 1000);
+    
     //we want the bot to remember the breed chosen before
       inputWrapper.innerHTML = `
         <button id="yes-pls-btn">Yes, please.</button>
         <button id="wtf-btn">Wtf... no!!</button>
       ` 
       document
-      .getElementById('yes-pls-btn')
-      .addEventListener('click', () => nextQuestion('Yes, please.'))
-    document
-      .getElementById('wtf-btn')
-      .addEventListener('click', () => nextQuestion('Wtf... no!'))
+        .getElementById('yes-pls-btn')
+        .addEventListener('click', () => nextQuestion('Yes, please.'))
+      document
+        .getElementById('wtf-btn')
+        .addEventListener('click', () => nextQuestion('Wtf... no!'))
   }
   
-  const nameofDog = (message) => {indexDoggos++
-    botReply(`We don't gift wrap doggos, we're not evil!
-    What would you like to name your doggo friend?`)
+  //This is Question 5
+  const nameofDog = (message) => {
+    indexDoggos++
+    botReply(`We don't gift wrap doggos, that's evil!`)
+    setTimeout(() => //This adds a 1 second delay before the bots chat appears.
+    botReply(`What would you like to name your doggo friend?`), 1000);
 
       inputWrapper.innerHTML = `
         <form id="name-form">
@@ -189,10 +195,10 @@ const dogSize = (message) => {
            Send 
            </button>
         </form> `
-
+    //declares userInput function
     const userInput = 
       document.getElementById("name-input")
-          
+    //Prevents refresh of bot from hitting submit, sends userInput value      
     const form =      
       document.getElementById("name-form")
       form.addEventListener("submit", (event) => {event.preventDefault()
@@ -200,28 +206,14 @@ const dogSize = (message) => {
       userInput.value=""})  
   }
 
-
-  const goodbye = (message) => {
-  
-    botReply(`${message}? Cute name! ${message} will be on the way to you shortly!
-    Thank you for using Doggo Bot! Here for all your Doggo and Best Boi/Gurl needs.`)
+//Final Bot Message
+  const goodbye = (message) => {  
+    botReply(`${message}?`) //Repeats userInput.value from Question 5
+    setTimeout(() => //This adds a 1 second delay before the bots chat appears.
+    botReply(`Cute name! ${message} will be on the way to you shortly!`), 1000);
+    setTimeout(() => //This adds a 1 second delay before the bots chat appears.
+    botReply(`Thank you for using Doggo Bot! Here for all your Doggo and Best Boi/Gurl needs.`), 2000);    
 }
-// Set up your eventlisteners here - user answer yes when click
 
 
-
-
-// Set up your eventlisteners here - user answer no when clicked
-
-
-
-
-
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
