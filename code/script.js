@@ -58,7 +58,7 @@ const number = () => {
         </form>
       </div>
     `
-}
+} 
 
 // This function adds a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -139,7 +139,7 @@ nameForm.addEventListener("submit", (event)=> {
         increaseCounter();
       } else {
         yesNoButtons();
-        showMessage(`Thank you, and hope to see you soon! Please take a moment to rate your visit:`, "bot");
+        setTimeout(() => showMessage(`Thank you, and hope to see you soon! Please take a moment to rate your visit:`, "bot"), 1000);
       }
     }
 });
