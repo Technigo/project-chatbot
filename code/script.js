@@ -2,7 +2,8 @@
 const chat = document.getElementById('chat')
 const form = document.getElementById('form') //Should be name-form?
 const inputText = document.getElementById('input-value');
-
+const inputWrapper = document.getElementById('input-wrapper')
+const selectedTopic = document.getElementById('select')
 
 // Global variables, if you need any, declared here
 
@@ -44,36 +45,40 @@ setTimeout(greeting, 1000);
 const validateResponse = (valueFromUser, correctAnswer) => {
   return valueFromUser === correctAnswer;
 } 
+const handleTopic = () => {
+  showMessage(selectedTopic.value, 'user')
+  inputWrapper.innerHTML=''
+  setTimeout(() => askForAmount(selectedTopic.value), 1000)
+  }
 
-  const handleConversation = () => {
+const handleConversation = () => {
     event.preventDefault();
 
     // Reuse handleResponse() function with value from input
     showMessage(inputText.value, 'user');
     if (step === 0) {
       showMessage(`Hello ${inputText.value}! What would you like to talk about today?`, "bot");
-      chat.innerHTML += `
-      <label>
-      <input type="radio" value="childhood" name="topic" id = "topic" required> Your childhood
-      </label>
-
-      <label>
-      <input type="radio" value="mother" name="topic" id = "topic" required> Your mother
-      </label>
-      
-      <label>
-      <input type="radio" value="partner" name="topic" id = "topic" required> Your partner
-      </label>` 
+      inputWrapper.innerHTML = `
+      <form class="topic-form" id="topic-form">
+        <select id="select">
+          <option value = "" selected disabled> Click here to chose subject</option>
+          <option value = "Childhood">My Childhood</option>
+          <option value = "Mother">My Mother</option>
+          <option value = "Partner">My Partner</option>
+        </select>
+      </form>
+      ` 
+      //eventlistener? or a button? onclick submit chosen value// 
       step = 1;
 
     }
 
     if (step === 1) {
-        if (document.getElementById("topic").value) === "childhood" {
+        if (document.getElementById("topic").value === "childhood") {
             // Reuse handleResponse() function with success step 1 text
             showMessage('Great job! And what is the value of 5 * 3?', "bot");
             step = 2;
-        } else if {
+        /*} else if {*/
 
             
         } else {
@@ -124,6 +129,7 @@ const validateResponse = (valueFromUser, correctAnswer) => {
 
 // Set up your eventlisteners here 
 form.addEventListener('submit', handleConversation)
+selectedTopic.addEventListener("change", handleTopic)
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
