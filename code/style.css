@@ -12,14 +12,14 @@ body {
   background-size: cover;
 }
 
-h1 {
+.heading {
   font-size: 20px;
   line-height: 25px;
   color: rgb(67, 31, 64);
   text-align: center;
 }
 
-h2 {
+.subheading {
   font-size: 16px;
   line-height: 24px;
   color: rgb(67, 31, 64);
@@ -27,7 +27,7 @@ h2 {
   text-align: center;
 }
 
-p {
+.message {
   font-size: 14px;
   font-weight: 600;
   line-height: 18px;
@@ -62,9 +62,11 @@ p {
   line-height: 26px;
   flex: 1;
 }
+
 .input-class:focus {
   outline-color: rgb(67, 31, 64);
 }
+
 .main-section {
   margin: 0 auto;
   margin-bottom: 10%;
@@ -198,17 +200,17 @@ button:hover {
 
 @media (min-width: 668px) and (max-width: 1024px) {
   
-  h1 {
+  .heading {
     font-size: 24px;
     line-height: 30px;
   }
   
-  h2 {
+  .subheading {
     font-size: 18px;
     line-height: 28px;   
   }
   
-  p {
+  .message {
     font-size: 16px;
     line-height: 24px;
   }
@@ -237,17 +239,17 @@ button:hover {
 
 @media(min-width: 1025px) {
 
-  h1 {
+  .heading {
     font-size: 40px;
     line-height: 34px;
   }
   
-  h2 {
+  .subheading {
     font-size: 24px;
     line-height: 34px;
   }
   
-  p {
+  .message {
     font-size: 18px;
     font-weight: 600;
     line-height: 28px;

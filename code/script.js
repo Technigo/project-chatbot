@@ -4,7 +4,6 @@ const submitButton = document.getElementById('submit-ID')
 
 //Global variables
 let questionNumber = 1; //stores the question number
-
 let TypeOfArrangement = ''; //stores type of arrangement to print in the order confirmation
 
 //questionHandler function, passes the input from the user, 
@@ -13,21 +12,21 @@ const questionHandler = (userInput) => {
   showMessage(userInput, 'user');
   playSoundUser ()
   switch (questionNumber) {
-  case 1: 
-    setTimeout(() => showFlowerArrangement(userInput), 1000); 
-    break;
-  case 2: 
-    setTimeout(() => showTypeOfArrangement(userInput), 1000);
-    break;
-  case 3: 
-    setTimeout(() => showFlowerSelector (userInput), 1500);
-    break;
-  case 4: 
-    setTimeout(() => showFinalConfirmation (userInput), 2000);
-    break;
-  default:
-    setTimeout(() => thankYou(), 1000);
-    break;
+    case 1: 
+      setTimeout(() => showFlowerArrangement(userInput), 1000); 
+      break;
+    case 2: 
+      setTimeout(() => showTypeOfArrangement(userInput), 1000);
+      break;
+    case 3: 
+      setTimeout(() => showFlowerSelector (userInput), 1500);
+      break;
+    case 4: 
+      setTimeout(() => showFinalConfirmation (userInput), 2000);
+      break;
+    default:
+      setTimeout(() => thankYou(), 1000);
+      break;
   }
 };
 
@@ -38,7 +37,7 @@ const showMessage = (message, sender) => {
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
-          <p>${message}</p>
+          <p class="message">${message}</p>
         </div>
         <img src="assets/flowerbotuser.png" alt="User" />  
       </section>
@@ -48,10 +47,10 @@ const showMessage = (message, sender) => {
       <section class="bot-msg">
         <img src="assets/flowerbot.png" alt="Bot" />
         <div class="bubble bot-bubble">
-          <p>${message}</p>
+          <p class="message">${message}</p>
         </div>
       </section>
-    `
+     `
   }
   chat.scrollTop = chat.scrollHeight
 }
@@ -59,6 +58,7 @@ const showMessage = (message, sender) => {
 //Greeting function
 const greeting = () => {
   showMessage(`Hello there, What's your name?`, 'bot');
+  
 }
 // Function that takes adds event listener to the form submission
 const initFncn = () => {
@@ -96,7 +96,7 @@ const showFlowerArrangement = (name) =>{
     questionHandler('basket');
   });
   document.getElementById("box").addEventListener('click', () => {
-    questionHandler('box');;
+    questionHandler('box');
   }); 
 };
 
@@ -131,8 +131,10 @@ const showTypeOfArrangement = (arrangement) => {
       </select>  `
   }
   const selectorChoiceArrangement = document.getElementById('selector');
-  selectorChoiceArrangement.addEventListener('change', () => questionHandler(selectorChoiceArrangement.value))
-  selectorChoiceArrangement.addEventListener('change', () => TypeOfArrangement = selectorChoiceArrangement.value )
+  selectorChoiceArrangement.addEventListener('change', () => {
+    questionHandler(selectorChoiceArrangement.value)
+    TypeOfArrangement = selectorChoiceArrangement.value
+  });
 };
 
 //Function shows selection of flowers available
@@ -158,16 +160,16 @@ const showFinalConfirmation = (flowers) => {
   questionNumber++;
   let price 
   const showPrice = (flowers_) => {
-      if (flowers_ === 'roses'){
-        price = 'SEK500';
-      } else if(flowers_ === 'tulips') {
-        price = 'SEK200';
-      } else if(flowers_ === 'lilies') {
-        price = 'SEK700';
-      } else {
-        price = 'SEK900';
-      }
+    if (flowers_ === 'roses'){
+      price = 'SEK500';
+    } else if(flowers_ === 'tulips') {
+      price = 'SEK200';
+    } else if(flowers_ === 'lilies') {
+      price = 'SEK700';
+    } else {
+      price = 'SEK900';
     }
+  }
   showPrice(flowers);
   showMessage (`Oh, aren't ${flowers} beautiful!!!
                 The price for your ${TypeOfArrangement} of ${flowers} will be ${price}. 
@@ -197,7 +199,7 @@ const thankYou = () => {
 }
 
 
-// Starts here with the greeting function on timeout
+// Starts here with the initialization function and greeting function on timeout
 initFncn();
 setTimeout(greeting, 1000);
 
