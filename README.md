@@ -16,4 +16,4 @@ We have solved the task using the following methods:
 
 ## View it live
 
-You can have a look at our chat live on Netlify: link will be here.
+You can have a look at our chat live on Netlify: https://blissful-villani-8a009f.netlify.app/.
