@@ -1,13 +1,18 @@
 # Project Name
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Building a chatbot to practise some parts of JavaScript.
+Week 4 project in Technigo Bootcamp
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We went back to basics of JavaScript to understand this weeks task and the code that we where provided with. 
+
+We struggled with where to start in the project and how to continue with the functions from the Greeting. Whe asked for alot of help in the group adn received help to start with the functions. 
+
+We are most proud of the randomPepp function where we tried out different solutions, but nothing worked. Then we finally got it and it was with the help from eachother and just trying and putting ourselfs out there. We managed to solve it with the math random method and if conditions. 
+
+If we would have more time, we would have tried to understand the set time methods to make the questions appear slower and the buttons too. We understand how to make the questions to appear slower, but not the buttons. Therefore we removed that function for this time to make it more user-friendly.
+
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://hardcore-bell-ae148b.netlify.app/
