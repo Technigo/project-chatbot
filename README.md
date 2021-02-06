@@ -10,7 +10,7 @@ The chat should display questions from the bot and responses from the user.
 We have solved the task using the following methods:
   a. Created a set of global DOM variables that fetch the html elements with getElementbyID()
   b. Set up a questionHandler function that uses questionNumber variable to invoke different functions depending on the number of the question.
-  c. Set up a series of functions that modify html file’ form element with InnerHTML method to display various options for user’s input.
+  c. Set up a series of functions that modify the html file’s form element with InnerHTML method to display various options for user’s input.
   d. Within each function we have also set up eventListeners to fetch the user’s input and pass it to the next function
 
 
