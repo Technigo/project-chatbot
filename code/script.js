@@ -82,7 +82,7 @@ const playSoundBot = () => {
 // Function that shows flower arrangement choices
 const showFlowerArrangement = (name) =>{
   questionNumber++; 
-  showMessage (`Hello, ${name}, What flower arrangement would you like today?`,'bot'); 
+  showMessage (`Hello ${name}, What flower arrangement would you like today?`,'bot'); 
   theWholeForm.innerHTML = `
     <button class="arrangement-button" id="bouquet" type="button">Bouquet</button>
     <button class="arrangement-button" id="basket" type="button">Basket</button>

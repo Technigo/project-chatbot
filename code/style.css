@@ -47,11 +47,6 @@ p {
   align-items: center;
 }
 
-.headline-wrapper img {
-  width: 70px;
-  height: 70px; 
-}
-
 /* CHAT */
 
 .input-class {
@@ -260,11 +255,6 @@ button:hover {
 
   .headline-wrapper {
     margin: 20px 20%;
-  }
-
-  .headline-wrapper img {
-    width: 100px;
-    height: 100px; 
   }
 
   .main-section {
