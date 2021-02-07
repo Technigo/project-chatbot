@@ -1,13 +1,11 @@
 // All the DOM selectors stored as short variables
-const chat = document.getElementById('chat')
-const form = document.getElementById('form') //Should be name-form?
-//const inputText = document.getElementById('input-value');
-const nameInput = document.getElementById('input-value')
-const inputWrapper = document.getElementById('input-wrapper')
+const chat = document.getElementById ('chat')
+const form = document.getElementById ('form')
+const nameInput = document.getElementById ('input-value')
+const inputWrapper = document.getElementById ('input-wrapper')
 
 
 // Global variables, if you need any, declared here
-chat.scrollTop = chat.scrollHeight
 
 const topicChoice = `
 <form class='topic-form' id='topic-form'>
@@ -18,12 +16,12 @@ const topicChoice = `
     <option id='topicOption' value = 'My partner'>My Partner</option>
   </select>
 </form>
-` ;
+` 
 
 const newTextInput = `
 <form id='partner-form'>
   <input id='input-value' type='text' />
-    <button class="send-btn" type='submit'>
+    <button class='send-btn' type='submit'>
         Send
    </button>
 </form>`
@@ -48,37 +46,32 @@ const showMessage = (message, sender) => {
       </div>
     </section>
   `
-  }
+  } chat.scrollTop = chat.scrollHeight
 }
 
-
-
-//let step = 0;Steps
-// Question 1 - Starts here with greeting an ask for name
+// Question 1 - Start here with greeting and ask for name
 const greeting = () => {
-  showMessage(`Welcome to your first therapy session! What's your name?`, 'bot');
-  form.addEventListener('submit', (event) => { 
-    event.preventDefault();
-    handleNameInput();
+  showMessage (`Welcome to your first therapy session! What's your name?`, 'bot')
+  form.addEventListener ('submit', (event) => { 
+    event.preventDefault ()
+    handleNameInput ()
   })
-};
+}
 
-setTimeout(greeting, 1000);
+setTimeout (greeting, 1000)
 
 
 //Question 2 - Choose topic of session
 const handleNameInput = (event) => {
-  
-  const userName = nameInput.value;
-  showMessage(userName, 'user');
-  nameInput.value = '';
-  showMessage(`Hello ${userName}! What would you like to talk about today?`, "bot");
+  const userName = nameInput.value
+  showMessage (userName, 'user')
+  nameInput.value = ''
+  showMessage (`Hello ${userName}! What would you like to talk about today?`, 'bot')
   inputWrapper.innerHTML = topicChoice; 
-  const selectedTopic = document.getElementById('select')
- 
-  selectedTopic.addEventListener('change', () => {
-  showMessage(selectedTopic.value, 'user');
-  tellMeMore(selectedTopic.value);
+  const selectedTopic = document.getElementById ('select')
+  selectedTopic.addEventListener ('change', () => {
+  showMessage (selectedTopic.value, 'user')
+  tellMeMore (selectedTopic)
 })}
 
 
@@ -87,19 +80,19 @@ const tellMeMore = (selectedTopic) => {
   if (selectedTopic.value === 'My childhood') {
   showMessage('Could you tell me about your childhood?', 'bot')
 } else if (selectedTopic.value === 'My mother') {
-  showMessage('Could you tell me about your mother?', 'bot')
+  showMessage ('Could you tell me about your mother?', 'bot')
 } else {
-  showMessage('Could you tell me about your partner?', 'bot')
-};
+  showMessage ('Could you tell me about your partner?', 'bot')
+}
 
 inputWrapper.innerHTML = newTextInput; 
-const partnerForm = document.getElementById('partner-form');
-partnerForm.addEventListener('submit', (event) => { 
-event.preventDefault();
-const nameInput = document.getElementById('input-value');
-const partnerInfo = nameInput.value;
-  showMessage(partnerInfo, 'user');
-showMessage("That's interesting. You should go home and think more about it... See you next week!", 'bot');
+const partnerForm = document.getElementById ('partner-form')
+partnerForm.addEventListener ('submit', (event) => { 
+event.preventDefault ()
+const nameInput = document.getElementById ('input-value')
+const partnerInfo = nameInput.value
+  showMessage (partnerInfo, 'user')
+showMessage ("That's interesting. You should go home and think more about it... See you next week!", 'bot')
 })}
 
 
@@ -107,7 +100,4 @@ showMessage("That's interesting. You should go home and think more about it... S
 
 
 
-
-
-// Set up your eventlisteners here 
 
