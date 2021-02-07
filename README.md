@@ -19,10 +19,11 @@ https://affectionate-ritchie-cce98d.netlify.app/
 <!-- - Name by letter from list in obj -->
 <!-- - Picture in last q -->
 <!-- - Avatar icon -->
+<!-- - Add button inputs -->
+<!-- - update ui -->
 - fix error handler for all errors
-- Add button inputs
-- update ui
 - thinking-dots
 - Input animations
 - refactor question functions
-
+- new randon name
+- name completely random
