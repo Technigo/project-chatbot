@@ -6,24 +6,30 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url(./assets/background-img.jpg);
 }
 
 h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: darkmagenta;
   text-align: center;
+  background-color: rgba(252, 252, 252, 0.7);
+  padding: 35px 0px 0px 0px;
+  margin-bottom: 0px;
 }
 
 h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: darkmagenta;
   text-align: center;
   margin-bottom: 36px;
+  padding: 8px 0px 20px 0px;
+  background-color: rgba(252, 252, 252, 0.7);
+  margin-top: 0px;
 }
 
 p {
@@ -38,7 +44,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: darkmagenta;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -83,10 +89,16 @@ main {
   flex-shrink: 0;
 }
 
-.bot-msg img,
+.bot-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
 .user-msg img {
   width: 60px;
   height: 60px;
+  border-radius: 50%;
 }
 
 .bubble {
@@ -95,8 +107,8 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
-  max-width: 40%;
+  color: darkmagenta;
+  max-width: 50%;
 }
 
 .bot-bubble {
@@ -107,6 +119,15 @@ main {
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+}
+
+.img-bubble {
+width: 300px;
+height: auto;
+}
+
+.img-answer {
+  width: 100%;
 }
 
 .input-wrapper {
@@ -120,7 +141,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: darkmagenta;
   color: white;
   border: none;
   border-radius: 4px;
