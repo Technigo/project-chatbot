@@ -39,7 +39,7 @@ form.addEventListener('submit', (event) => {
 
         if (validateResponse(value, value)) {
 
-            handleResponse(' nice name! Lets make you a kitten! Should it be a girl or boy or does not matter?');
+            handleResponse(' hi nice name! Lets make you a kitten! Should it be a girl or boy or does not matter?');
 
             step = 2;
         } else {
