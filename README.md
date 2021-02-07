@@ -1,13 +1,11 @@
-# Project Name
+# Shrink bot
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment was to create a working chatbot from HTML and CSS starter pack that we where provided with. We should include conditionals and basic functions. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This was a pair programming project and our first real attempt on Javascript. We approached the problem by asking for help a lot in StackOverflow. During the process we learned to use the Chrome DevTools to identify where the faulty code was. We had some difficulties to find time for working together due to busy partners and sick kids. But we tried to squeeze in sessions where we could. If  we had had more time we would put more emphasis on planning the project and on prestudies in Javascript. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Here is our live project: https://shrink-bot.netlify.app/ 

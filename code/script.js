@@ -1,47 +1,103 @@
 // All the DOM selectors stored as short variables
-const chat = document.getElementById('chat')
+const chat = document.getElementById ('chat')
+const form = document.getElementById ('form')
+const nameInput = document.getElementById ('input-value')
+const inputWrapper = document.getElementById ('input-wrapper')
+
 
 // Global variables, if you need any, declared here
 
+const topicChoice = `
+<form class='topic-form' id='topic-form'>
+  <select id='select'>
+    <option value = '' selected disabled> Click here to chose subject</option>
+    <option id='topicOption' value = 'My childhood'>My Childhood</option>
+    <option id='topicOption' value = 'My mother'>My Mother</option>
+    <option id='topicOption' value = 'My partner'>My Partner</option>
+  </select>
+</form>
+` 
+
+const newTextInput = `
+<form id='partner-form'>
+  <input id='input-value' type='text' />
+    <button class='send-btn' type='submit'>
+        Send
+   </button>
+</form>`
+
 // Functions declared here
-
-// This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  if (sender === 'user') {
-    chat.innerHTML += `
-      <section class="user-msg">
-        <div class="bubble user-bubble">
-          <p>${message}</p>
-        </div>
-        <img src="assets/user.png" alt="User" />  
-      </section>
-    `
+  if (sender === 'user') {  
+  chat.innerHTML += `
+    <section class='user-msg'>
+      <div class='bubble user-bubble'>
+        <p>${message}</p>
+      </div>
+      <img src='assets/user2.png' alt='User' />  
+    </section>
+  `
   } else if (sender === 'bot') {
-    chat.innerHTML += `
-      <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
-        <div class="bubble bot-bubble">
-          <p>${message}</p>
-        </div>
-      </section>
-    `
-  }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-  chat.scrollTop = chat.scrollHeight
+   chat.innerHTML += `
+    <section class='bot-msg'>
+      <img src='assets/bot2.png' alt='Bot' />
+      <div class='bubble bot-bubble'>
+        <p>${message}</p>
+      </div>
+    </section>
+  `
+  } chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
+// Question 1 - Start here with greeting and ask for name
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage (`Welcome to your first therapy session! What's your name?`, 'bot')
+  form.addEventListener ('submit', (event) => { 
+    event.preventDefault ()
+    handleNameInput ()
+  })
 }
 
-// Set up your eventlisteners here
+setTimeout (greeting, 1000)
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000)
+
+//Question 2 - Choose topic of session
+const handleNameInput = (event) => {
+  const userName = nameInput.value
+  showMessage (userName, 'user')
+  nameInput.value = ''
+  showMessage (`Hello ${userName}! What would you like to talk about today?`, 'bot')
+  inputWrapper.innerHTML = topicChoice; 
+  const selectedTopic = document.getElementById ('select')
+  selectedTopic.addEventListener ('change', () => {
+  showMessage (selectedTopic.value, 'user')
+  tellMeMore (selectedTopic)
+})}
+
+
+//Question 3 - Tell me more
+const tellMeMore = (selectedTopic) => {
+  if (selectedTopic.value === 'My childhood') {
+  showMessage('Could you tell me about your childhood?', 'bot')
+} else if (selectedTopic.value === 'My mother') {
+  showMessage ('Could you tell me about your mother?', 'bot')
+} else {
+  showMessage ('Could you tell me about your partner?', 'bot')
+}
+
+inputWrapper.innerHTML = newTextInput; 
+const partnerForm = document.getElementById ('partner-form')
+partnerForm.addEventListener ('submit', (event) => { 
+event.preventDefault ()
+const nameInput = document.getElementById ('input-value')
+const partnerInfo = nameInput.value
+  showMessage (partnerInfo, 'user')
+showMessage ("That's interesting. You should go home and think more about it... See you next week!", 'bot')
+})}
+
+
+
+
+
+
+
