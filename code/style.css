@@ -6,7 +6,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
 }
 
 h1 {
@@ -23,7 +22,7 @@ h2 {
   line-height: 34px;
   color: #fff;
   text-align: center;
-  margin-bottom: 36px;
+  margin-bottom: 15px;
 }
 
 p {
@@ -38,7 +37,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #0c0d0e94;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -47,7 +46,53 @@ input {
   flex: 1;
 }
 
-main {
+/*** INDEX STYLING ***/
+
+.start-main {
+  background-image: url("./assets/lakeview.jpg");
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.start-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+.start-form button {
+  align-self: center;
+  margin-top: 15px;
+}
+
+
+/*** CHAT STYLING ***/
+
+.chat-body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-image: url("./assets/background.jpg");
+  background-repeat: none;
+  background-position: center;
+}
+
+.chat-main {
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
@@ -83,28 +128,28 @@ main {
   flex-shrink: 0;
 }
 
-.bot-msg img,
-.user-msg img {
-  width: 60px;
-  height: 60px;
+.bot-msg img {
+  width: 50px;
+  height: 50px;
 }
 
 .bubble {
-  background: #e5e9ff;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #0c0d0e94;
   max-width: 40%;
 }
 
 .bot-bubble {
+  background: #e6e7e9;
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
 }
 
 .user-bubble {
+  background: #f1e4dd;
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
 }
@@ -120,7 +165,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #303135;
   color: white;
   border: none;
   border-radius: 4px;
@@ -137,4 +182,170 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+.where-btn-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.where-btn {
+  position: relative;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.where-btn img {
+  position: absolute;
+  object-fit: cover;
+  width: 100%;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  outline: none;
+  text-align-last: center;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  color: rgb(241, 234, 234);
+  font-weight: 600;
+}
+
+.select-mountain {
+  background-image: url("./assets/mountain.jpg");
+  width: 100%;
+  background-position: center;
+}
+
+.select-beach {
+  background-image: url("./assets/beach.jpg");
+  width: 100%;
+  background-position: center;
+}
+
+.select-city {
+  background-image: url("./assets/city.jpg");
+  width: 100%;
+  background-position: center;
+}
+
+option {
+  color: #0c0d0e94;
+}
+
+.where-btn-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.where-btn {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  border-radius: 50%;
+  margin: 10px;
+  display: flex;
+  box-shadow: 1px 1px 4px 3px rgba(34, 33, 33, 0.678);
+}
+
+.where-btn img {
+  position: absolute;
+  width: 100%;
+  object-fit: contain;
+}
+
+.interest-wrapper {
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+}
+
+/* Customize the label (the container) */
+.interest-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 16px;
+}
+
+/* Hide the browser's default checkbox */
+.interest-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.interest-container:hover input~.checkmark {
+  background-color: rgb(204, 204, 204);
+}
+
+/* When the checkbox is checked, add a blue background */
+.interest-container input:checked~.checkmark {
+  background-color: rgb(255, 132, 50);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.interest-container input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.interest-container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.interest-btn {
+  margin-left: 5px;
+}
+
+.email {
+  color: orange;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
