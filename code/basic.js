@@ -4,10 +4,11 @@ const sendBtn = document.getElementById('send-btn')
 let currentQuestion = ''
 let setRandomNameSuccess
 
+// Contains content
 const kittenLibrary = { 
   girlNames: ['Bella', 'Kitty', 'Lily', 'Lilly', 'Lucy', 'Chloe', 'Sadie', 'Princess', 'Sophie', 'Cleo', 'Daisy', 'Missy', 'Lulu', 'Jasmine', 'Fiona', 'Millie', 'Abby', 'Minnie', 'Olivia', 'Lola', 'Athena', 'Ruby', 'Penny', 'Emma', 'Belle', 'Binx', 'Boo', 'Rosie', 'Ella', 'Hazel', 'Maggie', 'Mimi', 'Annie', 'Layla', 'Leila', 'Kiki', 'Pippa', 'Dottie', 'Blanche', 'Daisy', 'Dahlia', 'Daffodil', 'Iris', 'Marigold', 'Clover', 'Poppy', 'Primrose', 'Protea', 'Thistle', 'Apple', 'Blossom', 'Magnolia', 'Buttercup', 'Rose', 'Lily', 'Petunia', 'Polly'],
-  boyNames: ['Charlie', 'Leo', 'Milo', 'Jack', 'Sam', 'Ziggy', 'Tucker', 'Murphy', 'Jax', 'Frank', 'Romeo', 'Teddy', 'Oscar', 'Theo', 'Bob', 'Clyde', 'Joey', 'Ollie','Bobo', 'Toby', 'George', 'Sigge', 'Bagheera', 'Calvin', 'Thor', 'Gus', 'Walter', 'Archie', 'Gus', 'Gus', 'Jack', 'Koosh Ball'],
-  neutralNames: ['Nala', 'Simba', 'Baby', 'Salem', 'Shadow', 'Izzy', 'Boots', 'Loki', 'Cooper', 'Oreo', 'Tiger', 'Jackson', 'Pepper', 'Bear', 'Moose', 'Pumpkin', 'Willow', 'Mittens', 'Coco', 'Sammy', 'Sammie', 'Kali', 'Tigger', 'Buddy', 'Marley', 'Ash', 'Scout', 'Gizmo', 'Louie', 'Ginger', 'Midnight', 'Mochi', 'Blue', 'Blu', 'Frankie', 'Lucky', 'Piper', 'Harley', 'Rocky', 'Peanut', 'Remy', 'Remi', 'Sunny', 'Riley', 'Frankie', 'Lucky', 'Mittens', 'Fluffy', 'Pip', 'Cricket', 'Pixie', 'Bubbles', 'Sunshine', 'Totoro', 'PeeWee', 'Marshmallow', 'Brownie', 'Pickles', 'Lemon', 'Biscuit', 'Lollipop', 'Kit', 'Kat', 'Shortcake', 'Peanut', 'Butter', 'Turnip', 'Merengue', 'Paw', 'Paw', 'Cantaloupe', 'Cataloupe', 'Fluffer', 'Nutter', 'Pop', 'Tart', 'Tartlet', 'Macaron', 'Tiger', 'Fritillary', 'Snap', 'Dragon', 'Monchichi', 'Popple', 'Hot Wheels', 'Ducky', 'Puffalump', 'Bear', 'Teddy', 'Ruxpin', 'Gudetama', 'Koopa', 'Luigi', 'Pusheen', 'Toothless', 'Sonic', 'Tamagotchi', 'Apple', 'Pocket'],
+  boyNames: ['Charlie', 'Leo', 'Milo', 'Jack', 'Sam', 'Ziggy', 'Tucker', 'Murphy', 'Jax', 'Frank', 'Romeo', 'Teddy', 'Oscar', 'Theo', 'Bob', 'Clyde', 'Joey', 'Ollie','Bobo', 'Toby', 'George', 'Sigge', 'Bagheera', 'Calvin', 'Thor', 'Gus', 'Walter', 'Luigi', 'Archie', 'Gus', 'Gus', 'Jack', 'Koosh Ball'],
+  neutralNames: ['Nala', 'Simba', 'Baby', 'Salem', 'Shadow', 'Izzy', 'Boots', 'Loki', 'Cooper', 'Oreo', 'Tiger', 'Jackson', 'Pepper', 'Bear', 'Moose', 'Pumpkin', 'Willow', 'Mittens', 'Coco', 'Sammy', 'Sammie', 'Kali', 'Tigger', 'Buddy', 'Marley', 'Ash', 'Scout', 'Gizmo', 'Louie', 'Ginger', 'Midnight', 'Mochi', 'Blue', 'Blu', 'Frankie', 'Lucky', 'Piper', 'Harley', 'Rocky', 'Peanut', 'Remy', 'Remi', 'Sunny', 'Riley', 'Frankie', 'Lucky', 'Mittens', 'Fluffy', 'Pip', 'Cricket', 'Pixie', 'Bubbles', 'Sunshine', 'Totoro', 'PeeWee', 'Marshmallow', 'Brownie', 'Pickles', 'Lemon', 'Biscuit', 'Lollipop', 'Kit', 'Kat', 'Shortcake', 'Peanut', 'Butter', 'Turnip', 'Merengue', 'Paw', 'Paw', 'Cantaloupe', 'Cataloupe', 'Fluffer', 'Nutter', 'Pop', 'Tart', 'Tartlet', 'Macaron', 'Tiger', 'Fritillary', 'Snap', 'Dragon', 'Monchichi', 'Popple', 'Hot Wheels', 'Ducky', 'Puffalump', 'Bear', 'Teddy', 'Ruxpin', 'Gudetama', 'Koopa', 'Pusheen', 'Toothless', 'Sonic', 'Tamagotchi', 'Apple', 'Pocket'],
   pictures: [
     {
       imageSrc: './assets/kittenpics/christina-yang-MJWxBOVjuUI-unsplash.jpg',
@@ -42,6 +43,7 @@ const kittenLibrary = {
   ]
 }
 
+// Contains info about the created kitten
 const kitten = {
   _name: '',
   _gender: '',
@@ -102,7 +104,6 @@ const kitten = {
 }
 
 const playTypingAnimation = (time) => {
-// console.log('play')
   chat.innerHTML +=
     `
     <div id="lottie-animation">
@@ -116,7 +117,7 @@ const playTypingAnimation = (time) => {
   }
   , time)
 }
-
+// This actually gets a name suggestion, but does not set it, should probably rename it
 const setRandomName = (startLetter) => {
   let shortList = kittenLibrary.neutralNames
   if (kitten.gender === 'girl') {
@@ -134,11 +135,11 @@ const setRandomName = (startLetter) => {
   } else {
     setRandomNameSuccess = true
   }
-  // kitten.name = getRandom(matchList)
   let name = matchList[Math.floor(Math.random() * matchList.length)]
   return name
 }
 
+// This actually sets, not gets
 const getKittenPic = (color, envPref, furState) => {
   console.log('getKittenPic ' + color, envPref, furState)
   let shortList = kittenLibrary.pictures
@@ -153,18 +154,19 @@ const getKittenPic = (color, envPref, furState) => {
     matchList = shortList
   }
   let kittenPic = matchList[Math.floor(Math.random() * matchList.length)].imageSrc
-  console.log('kittenPic ' + kittenPic)
   kitten.pictureSrc = kittenPic
+  // kitten.pictureSrc = getRandom(matchList) // <-- Why don't you work?
 }
   
 const getRandom = (arr) => {
   arr[Math.floor(Math.random() * arr.length)]
 }
 
+// This is part of a bad idea of automating button id:s
 const toKebabCase = (str) => {
-  return str.match(/[0-9]{1,}(?=\b)|[A-Z]{2,}(?=[A-Z][a-z]+|[0-9]|\b|_)|[A-Z]?[a-z]+|[A-Z]|[0-9]+/g)
+  return str.match(/[0-9]{1,}(?=\b)|[A-Z]{2,}(?=[A-Z][a-z]+|[0-9]|\b|_)|[A-Z]?[a-z]+|[A-Z]|[0-9]+/g) //<-- Regex courtesy of The Internet
   .map(x => x.toLowerCase())
-  .join('-')
+  .join('-') 
 }
 
 const showMessage = (message, sender) => {
@@ -183,11 +185,9 @@ const showMessage = (message, sender) => {
     ` 
   } else if (sender === 'bot') {
     
-// show thinking-dots here?
     setTimeout(()=>{
       playTypingAnimation(1500)
       setTimeout(()=> {
-        // console.log('showMessage bot ' + message)
         chat.innerHTML += `
         <section class="bot-msg">
         <img src="assets/bot.svg" alt="Bot" />
@@ -257,13 +257,14 @@ const handleError = (receivedMessage) => {
     showMessage("I said anything BUT <span>KittenBot Go!</span>... this will go a lot easier if you read my instructions... Want to try again?", 'bot')
   
   } else if (currentQuestion === 3) {
-    showMessage("You can only type <span>Boy</span>, <span>Girl</span> or <span>Doesn't matter</span>", 'bot') 
+    showMessage("You can only type Boy, Girl or Doesn't matter", 'bot') 
     removeButtons()   
     showButtons(['Boy', 'Girl', "Doesn't matter"])
   } else if (currentQuestion === 5) {
     showMessage("Uh, you can only type 'indoors' or 'outdoors'... - i know, terrible UX but the guy who coded me doesn't really know what he is doing", 'bot')    
   }
 }
+
 const setName = (name) => {
   console.log('')
   kitten.name = name
@@ -272,6 +273,7 @@ const setName = (name) => {
   fifthQuestion()
 }
 
+// This one is doin way too much work, need to be refactored?
 const handleResponse = (receivedMessage) => {
   if (receivedMessage != '' && receivedMessage != ' ') {
     console.log(kitten)
@@ -285,14 +287,14 @@ const handleResponse = (receivedMessage) => {
       } else {
         handleError()
       }
-      // 2  
+    // 2  
     } else if (currentQuestion === 2) {
       kitten.ownerName = receivedMessage; 
       showMessage(receivedMessage, 'user') 
       showMessage(`Well hello ${kitten.ownerName} it is very nice to meet you!`)
       currentQuestion++
       thirdQuestion()
-      // 3
+    // 3
     } else if (currentQuestion === 3) {
       showMessage(receivedMessage, 'user')    
       if (receivedMessage.toLowerCase() === 'boy' || receivedMessage.toLowerCase() === 'girl' || receivedMessage.toLowerCase() === "doesn't matter") {
@@ -303,7 +305,7 @@ const handleResponse = (receivedMessage) => {
         handleError()
       }
 
-      // 4
+    // 4
     } else if (currentQuestion === 4) {
       showMessage(receivedMessage, 'user')  
       
@@ -318,12 +320,12 @@ const handleResponse = (receivedMessage) => {
         kitten.nameFirstLetter = receivedMessage
         kitten.nameSuggestion = setRandomName(kitten.nameFirstLetter)
       
-        // console.log(kitten.nameSuggestion)
         // Bot found name starting with requested letter
         if (setRandomNameSuccess) {
           console.log('')
           showMessage(`Hmm... something beginning with ${receivedMessage.toUpperCase()}... Ok how about we call ${kitten.personalPronoun} ${kitten.nameSuggestion}?`, 'bot')
           userConfirmName()
+
           // Bot could not find name starting with requested letter
         } else {
           console.log('')
@@ -333,7 +335,7 @@ const handleResponse = (receivedMessage) => {
       } else if (receivedMessage.toLowerCase() === 'ok' && kitten.nameConfirmation) {
         console.log('')
         setName(kitten.nameSuggestion)
-      } else if (receivedMessage === 'Hmm... do you have anything else?' && kitten.nameConfirmation) {
+      } else if (receivedMessage === 'Hmm... not loving it' && kitten.nameConfirmation) {
         console.log('')
         kitten.nameSuggestion = setRandomName(kitten.nameFirstLetter)
         showMessage(`How about ${kitten.nameSuggestion}?`, 'bot')
@@ -341,7 +343,7 @@ const handleResponse = (receivedMessage) => {
       }
     
       
-      // 5
+    // 5
     } else if (currentQuestion === 5) {
       console.log(receivedMessage)
       showMessage(receivedMessage, 'user')    
@@ -354,17 +356,16 @@ const handleResponse = (receivedMessage) => {
       }
       currentQuestion++
       sixthQuestion()
-      // 6
+    // 6
     } else if (currentQuestion === 6) {
       console.log('six!')
       showMessage(receivedMessage, 'user')
       if (receivedMessage.toLowerCase() === 'furry' || receivedMessage.toLowerCase() === 'hairless') {
-        // console.log('six in if!')
         kitten.furState = receivedMessage
       }
       currentQuestion++
       seventhQuestion()
-      // 7
+    // 7
     } else if (currentQuestion === 7) {
       showMessage(receivedMessage, 'user')
       if (receivedMessage.toLowerCase() === 'white' ||
@@ -383,12 +384,13 @@ const handleResponse = (receivedMessage) => {
 const userConfirmName = () => {
   console.log('userConfirmName')
   kitten.nameConfirmation = true
-  showButtons(['Ok', 'Hmm... do you have anything else?'])
+  showButtons(['Ok', 'Hmm... not loving it'])
 }
 
 const firstQuestion = () => {
   currentQuestion = 1
   showMessage("Welcome to KittenBot! Type anything but <span>KittenBot Go!</span> to start!", 'bot')
+  // This is where the primary event listener is being added (there is one more for the buttons) Maybe could have just had it at the top of the code instead?
   sendBtn.addEventListener('click', (event) => {
     event.preventDefault()
     handleResponse(input.value) 

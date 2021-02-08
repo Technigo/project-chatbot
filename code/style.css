@@ -78,10 +78,11 @@ input {
 }
 
 main {
-  margin: 7rem auto;
-  width: 100%;
+  margin: 10vh auto;
+  width: 50vw;
+  min-width: 400px;
   max-width: 550px;
-  height: 600px;
+  height: 80vh;
   border-radius: 30px;
   background: #21E1BF;
   padding: 20px 16px;
@@ -143,7 +144,6 @@ main {
 }
 
 .bubble {
-  /* background: #e5e9ff; */
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
@@ -227,10 +227,11 @@ button:hover {
 button.in-chat {
   min-width: 50px;
   margin-right: 8px;
-  padding: 0 16px;
+  padding: 4px 16px;
   border-radius: 4px;
   font-weight: 600;
   font-size: 14px;
+  line-height: 1.2;
 }
 
 .hidden {
