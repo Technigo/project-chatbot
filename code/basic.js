@@ -1,4 +1,3 @@
-// const formElement = document.getElementById('form')
 const chat = document.getElementById('chat')
 const sendBtn = document.getElementById('send-btn')
 
@@ -171,18 +170,17 @@ const toKebabCase = (str) => {
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     console.log('showMessage user ' + message)
-    chat.innerHTML += `
-    <section class="user-msg">
-    <div class="bubble user-bubble">
-    <p>${message}</p>
-    </div>
-    ${kitten._ownerName ? `
-      <div class="avatar"><p>${kitten.ownerName.charAt(0)}</p></div>
-    ` : ''
-    }
-      </section>
+    chat.innerHTML += 
     `
-  
+      <section class="user-msg">
+        <div class="bubble user-bubble">
+          <p>${message}</p>
+        </div>
+        <div class="avatar"><p>
+          ${kitten.ownerName.charAt(0)}
+        </p></div>
+      </section>
+    ` 
   } else if (sender === 'bot') {
     
 // show thinking-dots here?
@@ -242,11 +240,15 @@ const showImage = (imageRef) => {
     <section class="bot-msg">
     <img src="assets/bot.svg" alt="Bot" />
     <div class="bubble bot-bubble img">
-    <img src="${kitten.pictureSrc}" />
+    <img id="kitten-img" src="${kitten.pictureSrc}" />
     <p>${kitten.name}</p>
     </div>
     </section>
     `
+
+    document.getElementById("kitten-img").onload = () => {
+      (chat.scrollTop = chat.scrollHeight)
+    }
   }, 1000)
 }
 
@@ -258,10 +260,16 @@ const handleError = (receivedMessage) => {
     showMessage("You can only type <span>Boy</span>, <span>Girl</span> or <span>Doesn't matter</span>", 'bot') 
     removeButtons()   
     showButtons(['Boy', 'Girl', "Doesn't matter"])
-    
   } else if (currentQuestion === 5) {
     showMessage("Uh, you can only type 'indoors' or 'outdoors'... - i know, terrible UX but the guy who coded me doesn't really know what he is doing", 'bot')    
   }
+}
+const setName = (name) => {
+  console.log('')
+  kitten.name = name
+  showMessage(`Oh wow! ${kitten.name}, that is a splendid name!`, 'bot')
+  currentQuestion++
+  fifthQuestion()
 }
 
 const handleResponse = (receivedMessage) => {
@@ -299,24 +307,17 @@ const handleResponse = (receivedMessage) => {
     } else if (currentQuestion === 4) {
       showMessage(receivedMessage, 'user')  
       
-      const setName = (name) => {
-        kitten.name = name
-        showMessage(`Oh wow! ${kitten.name}, that is a splendid name!`, 'bot')
-        currentQuestion++
-        fifthQuestion()
-      }
-
       //Success!
-      if (receivedMessage.length > 1 && !kitten.nameConfirmation) {
+      if (receivedMessage.length > 1 && kitten.nameConfirmation === false) {
         console.log('')
         setName(receivedMessage)
-      }
+      
       // User asks for name suggestion
       } else if (receivedMessage.length === 1) {
         console.log('')
-        // kitten.nameGonnaNeedConfirmation = true
         kitten.nameFirstLetter = receivedMessage
         kitten.nameSuggestion = setRandomName(kitten.nameFirstLetter)
+      
         // console.log(kitten.nameSuggestion)
         // Bot found name starting with requested letter
         if (setRandomNameSuccess) {
@@ -324,14 +325,12 @@ const handleResponse = (receivedMessage) => {
           showMessage(`Hmm... something beginning with ${receivedMessage.toUpperCase()}... Ok how about we call ${kitten.personalPronoun} ${kitten.nameSuggestion}?`, 'bot')
           userConfirmName()
           // Bot could not find name starting with requested letter
-        } else if (!setRandomNameSuccess) {
+        } else {
           console.log('')
           showMessage(`Sorry, i don't know any names beginning with ${receivedMessage.toUpperCase()} :( ... is it ok if we just call ${kitten.personalPronoun} ${kitten.nameSuggestion}?`, 'bot')
           userConfirmName()
         } 
-      }
-
-      if (receivedMessage.toLowerCase() === 'ok' && kitten.nameConfirmation) {
+      } else if (receivedMessage.toLowerCase() === 'ok' && kitten.nameConfirmation) {
         console.log('')
         setName(kitten.nameSuggestion)
       } else if (receivedMessage === 'Hmm... do you have anything else?' && kitten.nameConfirmation) {
@@ -340,14 +339,7 @@ const handleResponse = (receivedMessage) => {
         showMessage(`How about ${kitten.nameSuggestion}?`, 'bot')
         userConfirmName()
       }
-      
-      // } else if (kitten.nameSuggestionToUserLiking) {
-      //   console.log('')
-      //   // kitten.name = kitten.nameSuggestion  
-      //   showMessage(`Awesome! ${kitten.name} is going to be a great name!`, 'bot')
-      //   currentQuestion++
-      //   fifthQuestion()
-      
+    
       
       // 5
     } else if (currentQuestion === 5) {
@@ -386,11 +378,10 @@ const handleResponse = (receivedMessage) => {
       eighthQuestion()
     }
   }
-  
+} 
 
 const userConfirmName = () => {
   console.log('userConfirmName')
-
   kitten.nameConfirmation = true
   showButtons(['Ok', 'Hmm... do you have anything else?'])
 }
@@ -418,14 +409,16 @@ const fourthQuestion = () => {
 }
 
 const fifthQuestion = () => {
-  showMessage(`And would you like  ${kitten.personalPronoun} to prefer hanging out mostly indoors, or outdoors?`, 'bot')
-  showButtons(['Indoors', 'Outdoors'])
+  setTimeout(()=> {
+    showMessage(`And would you like ${kitten.personalPronoun} to prefer hanging out mostly indoors, or outdoors?`, 'bot')
+    showButtons(['Indoors', 'Outdoors'])
+  }, 1000)
 }
 
 const sixthQuestion = () => {
   showMessage(`Good choice! I'm actually kinda ${kitten.environmentPreference}y myself.`, 'bot')
   setTimeout(()=> {
-    showMessage (`Finally you have to decide if ${kitten.pronoun} should be furry or hairless?`, 'bot') 
+    showMessage (`Now you have to decide if ${kitten.pronoun} should be furry or hairless?`, 'bot') 
     showButtons(['Furry', 'Hairless']) 
   }, 2000)
 }
