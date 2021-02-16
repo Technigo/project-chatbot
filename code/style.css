@@ -101,6 +101,7 @@ main {
   padding: 16px 24px;
   color: #fff;
   max-width: 40%;
+  word-wrap: break-word;
 }
 
 .bot-bubble {
