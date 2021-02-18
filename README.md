@@ -1,7 +1,20 @@
 <h1>Pizza bot 👾</h1>
 
 
-The goal was to make a chatbot with a partner, in the pair-programming modality.
+The goal was to make a text-based chatbot with a partner, in the pair-programming modality. This project was done with @honkoan.
+
+<h2>Learning objectives</h2> 🔍
+<ul>
+<li>Using variables in JavaScript.</li>
+
+<li>Know how to use string methods to modify strings.</li>
+
+<li>Understand control flow & the use of conditionals statements.</li>
+
+<li>Be able to write basic functions which take arguments and return values.</li>
+
+<li>Connect the JavaScript to show visual feedback in the HTML.</li>
+</ul>
 
 <h2>The problem☕</h2>
 
