@@ -7,6 +7,11 @@ body {
   padding: 0;
   font-family: 'Lobster', cursive, sans-serif;
   background: orange;
+  background-image: url("./assets/background.jpg");
+}
+
+.background-image {
+  filter: brightness(30%);
 }
 
 h1 {
@@ -38,7 +43,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: black;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -95,7 +100,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: black;
   max-width: 40%;
 }
 
