@@ -11,8 +11,5 @@ If we had more time we would play around with the styling and add some sound eff
 /Andrea & Caroline
 
 
-<<<<<<< HEAD
 https://bootstrap-bakery.netlify.app/
-=======
-https://bootstrap-bakery.netlify.app/
->>>>>>> 2d0ad0e5e631c0aa1355ede4f950b441b26f3d45
+
