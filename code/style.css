@@ -2,26 +2,32 @@
   box-sizing: border-box;
 }
 
-body {
+.body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #f3cbe7;
 }
 
-h1 {
+.name-input {
+  background: #fcedf7;
+}
+
+.h1 {
   font-weight: bold;
-  font-size: 44px;
+  font-size: 70px;
   line-height: 34px;
-  color: #fff;
+  font-family: 'Tangerine', cursive;
+  color: #fafae7;
+  text-shadow: 2px 2px #504e4e;
   text-align: center;
 }
 
-h2 {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 34px;
-  color: #fff;
+.h2 {
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 26px;
+  color: #fafae7;
+  font-family: 'Lato', sans-serif;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -37,17 +43,17 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #f3cbe7;
+  color: #0d0d0e;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Lato', sans-serif;
   font-weight: 600;
   line-height: 26px;
   flex: 1;
 }
 
-main {
+.main {
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
@@ -85,17 +91,18 @@ main {
 
 .bot-msg img,
 .user-msg img {
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
 }
 
 .bubble {
-  background: #e5e9ff;
-  font-weight: 600;
+  background: #fcedf7;
+  font-weight: 400;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  font-family: 'Lato', sans-serif;
+  color: #504e4e;
   max-width: 40%;
 }
 
@@ -117,19 +124,20 @@ main {
 .input-wrapper form {
   width: 100%;
   display: flex;
+  font-family: 'Lato', sans-serif;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #f3b8df;
   color: white;
   border: none;
   border-radius: 4px;
   padding: 16px 40px;
   margin-right: 4px;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 26px;
-  font-family: 'Montserrat';
-  font-weight: 500;
+  font-family: 'Lato', sans-serif;
+  font-weight: 550;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -137,4 +145,61 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+.select {
+  background-color: #f3b8df;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 40px;
+
+  font-size: 18px;
+  line-height: 26px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 550;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* TABLET */
+@media screen and (max-width: 1024px) {
+
+  .body {
+    overflow: hidden;
+  }
+
+  .main {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+  }
+}
+
+/* MOBILE */
+@media screen and (max-width: 767px) {
+
+  .body {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+  }
+
+  .main {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+
+  .h1 {
+    font-size: 60px;
+    line-height: normal;
+    margin: 15px 5px;
+  }
+
+  .h2 {
+    font-size: 18px;
+    margin: 10px 0px;
+  }
 }
