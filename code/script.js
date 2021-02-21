@@ -5,11 +5,11 @@ const formMessageBox = document.getElementById("name-input");
 const inputWrapper = document.getElementById("input-wrapper");
 
 
-// Global variables, if you need any, declared here
+// Global variables
 let questionNumber = 1;
-let chatDelay = 800;
+const chatDelay = 800;
 
-// Functions declared here
+// Functions 
 const botReply = (msg) => {
   showMessage(msg, "bot");
 };
@@ -23,7 +23,7 @@ const firstToUpperCase = (msg) => {
 }
 
 
-// This function will add a chat bubble in the correct place based on who the sender is
+// This function adds a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     chat.innerHTML += `
@@ -49,10 +49,9 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
+// Bot and user conversation starts here
 const greeting = () => {
   showMessage(`Hi there!👩‍🍳 Welcome to Bootstrap Bakery. What's your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
 
 const nextQuestion = (message) => {
@@ -84,13 +83,13 @@ const question2 = (message) => {
 
   document
     .getElementById("cakeBtn")
-    .addEventListener("click", () => nextQuestion("cake"))
+    .addEventListener("click", () => nextQuestion("cake"));
   document
     .getElementById("cupcakeBtn")
-    .addEventListener("click", () => nextQuestion("cupcake"))
+    .addEventListener("click", () => nextQuestion("cupcake"));
   document
     .getElementById("pieBtn")
-    .addEventListener("click", () => nextQuestion("pie"))
+    .addEventListener("click", () => nextQuestion("pie"));
 };
 
 const question3 = (type) => {
@@ -144,5 +143,5 @@ const question4 = (message) => {
 // Eventlisteners
 formSubmitButton.addEventListener('click', () => nextQuestion(formMessageBox.value));
 
-// This means the greeting function will be called one second after the website is loaded.
+// This means the greeting function will be called 0,5 seconds after the website is loaded
 setTimeout(greeting, 500)
