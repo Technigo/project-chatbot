@@ -1,4 +1,4 @@
-# Project Name
+# Technigo cinema chatbot
 
 Our project for this week was to work with pair programming and build a chatbot by using the basics of Javascript, which has been the focus during the lectures this week.
 
