@@ -11,7 +11,7 @@ body {
 .background-image{
   position: relative;
   width: 100vw;
-  height: 1000px;
+  height: 100vh;
   object-fit: cover;
 }
 
@@ -55,7 +55,7 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
+  background: #797c91;
   color: #0a1031;
   padding: 16px;
   font-size: 16px;
@@ -71,7 +71,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: #cacbd4;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
