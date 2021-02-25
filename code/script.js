@@ -157,17 +157,14 @@ const greatChoice = () => {
     }, 2000)
   }
    
-/*//Question 3
+//Question 3
 const greatChoice = () => {
 showMessage(`Great choice! I love that song ❤ Do you want to play it now or later?`, 'bot')
 setTimeout(() => greatChoice(value, 'bot'), 2000)
   inputWrapper.innerHTML = `
     <button id="now">NOW</button>
     <button id="later">LATER</button>
-`
-
-
-}
+`}
 
 //adding a new function in case it works
 const whenToplaySong = () => {
@@ -182,7 +179,6 @@ const whenToplaySong = () => {
   showMessage("Later it is! Enjoy your song! Goodbye!", "bot")
   } 
 
-*/
 
 // Set up your eventlisteners here
 form.addEventListener('submit', (event) => {
