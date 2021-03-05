@@ -1,4 +1,4 @@
-https://affectionate-ritchie-cce98d.netlify.app/
+https://kitten-bot.netlify.app/
 
 # KittenBot
 
@@ -18,4 +18,4 @@ If i'd had more time i would have added more pictures and correct info to each i
 
 ## View it live
 
-https://affectionate-ritchie-cce98d.netlify.app/
+https://kitten-bot.netlify.app/
