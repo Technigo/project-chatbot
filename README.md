@@ -1,6 +1,7 @@
+# https://affectionate-ritchie-cce98d.netlify.app/
+
 # KittenBot
 
-https://affectionate-ritchie-cce98d.netlify.app/
 Let's build a kitten!
 
 ## The problem
