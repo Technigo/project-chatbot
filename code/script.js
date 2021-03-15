@@ -157,14 +157,6 @@ const greatChoice = () => {
     }, 2000)
   }
    
-//Question 3
-const greatChoice = () => {
-showMessage(`Great choice! I love that song ❤ Do you want to play it now or later?`, 'bot')
-setTimeout(() => greatChoice(value, 'bot'), 2000)
-  inputWrapper.innerHTML = `
-    <button id="now">NOW</button>
-    <button id="later">LATER</button>
-`}
 
 //adding a new function in case it works
 const whenToplaySong = () => {
@@ -218,5 +210,4 @@ form.addEventListener('change', (event) => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-
 setTimeout(greeting, 1000)
