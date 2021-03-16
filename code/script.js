@@ -152,9 +152,7 @@ const greatChoice = () => {
           greatChoice(select.value))
         }
     })
-      setTimeout(() => {
-      inpt();
-    }, 2000)
+     
   }
    
 
@@ -177,12 +175,16 @@ form.addEventListener('submit', (event) => {
   event.preventDefault();
   const value = document.getElementById('name-input').value;
   showMessage(value, 'user')
+  form.addEventListener('submit')
 });
+
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   showMessage(value, 'bot')
+  form.addEventListener('submit')
 });
+
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -191,17 +193,8 @@ form.addEventListener('submit', (event) => {
   setTimeout (() => moodOptions(value, 'bot'), 2000)
 });
 
-form.addEventListener('change', (event) => {
-  event.preventDefault();
-  showMessage(value, 'bot')
-  setTimeout (() => greatChoice(value, 'bot'), 1000)
-});
 
-form.addEventListener('change', (event) => {
-  event.preventDefault();
-  showMessage(value, 'bot')
-  setTimeout (() => whenToplaySong(value, 'bot'), 1000)
-});
+
 
 
 // When website loaded, chatbot asks first question.
