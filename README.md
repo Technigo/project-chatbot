@@ -1,13 +1,27 @@
-# Project Name
+<h1>Pizza bot 👾</h1>
 
-Replace this readme with your own information about your project.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The goal was to make a text-based chatbot with a partner, in the pair-programming modality. This project was done with @honkoan.
 
-## The problem
+<h2>Learning objectives</h2> 🔍
+<ul>
+<li>Using variables in JavaScript.</li>
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+<li>Know how to use string methods to modify strings.</li>
 
-## View it live
+<li>Understand control flow & the use of conditionals statements.</li>
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+<li>Be able to write basic functions which take arguments and return values.</li>
+
+<li>Connect the JavaScript to show visual feedback in the HTML.</li>
+</ul>
+
+<h2>The problem☕</h2>
+
+We struggled with the logical order of the function and the implementation of the schema that we had planned. our strategy was to stick to the code that we could understand and not try more advanced things that we didn't know how to make work. If we had more time, we would add more options using conditionals, try to fix the responses timing and the overall styling.
+
+
+<h2>##View it live😎</h2>
+
+https://annak-estefania-project-chatbot.netlify.app/
+

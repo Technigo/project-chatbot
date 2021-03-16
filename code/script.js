@@ -1,7 +1,15 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+const form = document.getElementById('name-form')
+const inputWrapper = document.getElementById('input-wrapper')
+const sendBtn = document.getElementById('send')
+
+let userName = ""
+
 
 // Global variables, if you need any, declared here
+
+
 
 // Functions declared here
 
@@ -36,7 +44,158 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+//Question 1
+
+const handleResponse = () => {
+  let userName = document.getElementById('name-input').value;
+  showMessage(`Nice to meet you ${userName}!`, 'bot')
+   
+}
+
+//Question 2
+
+const moodOptions = () => {
+  let userName = document.getElementById('user-input');
+  showMessage(`How are you feeling today?`, 'bot')
+  inputWrapper.innerHTML = `
+    <button id="option1">happy</button>
+    <button id="option2">sad</button>
+    <button id="option3">angry</button>
+  `
+  document.getElementById("option1").addEventListener("click", () => {
+    showMessage("I'm happy", "user")
+  })
+  document.getElementById("option2").addEventListener("click", () => {
+    showMessage("I'm sad", "user")
+  })
+  document.getElementById("option3").addEventListener("click", () => {
+    showMessage("I'm angry", "user")
+  })
+  
+  document.getElementById("option1").addEventListener("click", () => {
+    showMessage("I see you are feeling happy!😊 Here's a list that suits your mood. Go ahead and choose one! 👇", "bot")
+    inpt = () => { 
+      inputWrapper.innerHTML= `
+        <select id="select" name="songs">
+          <option value selected disabled>Select a song</option>
+          <option id="select">Happy by William Farrel</option>
+          <option id="select">Here comes the sun by the Beatles</option>
+          <option id="select">Shiny happy people by REM</option>
+        </select>
+      `
+      const select = document.getElementById("select");
+      let userName = document.getElementById('user-input');
+      select.addEventListener("change", () =>
+      greatChoice(select.value))
+    }
+  })
+
+  document.getElementById("option2").addEventListener("click", () => {
+    showMessage("I see that you are sad today😢. Here's a list that suits your mood. Go ahead and choose one! 👇" , "bot")
+    inpt = () => {
+      inputWrapper.innerHTML= `
+        <select id="select" name="songs">
+          <option value selected disabled>Select a song</option>
+          <option id="select">Don't worry, be happy by Bobby Mac Ferrin</option>
+          <option id="select">Someone like you by Adele</option>
+          <option id="select">Hey Jude by The Beatles</option>
+        </select>
+      ` 
+      const select = document.getElementById("select");
+      select.addEventListener("change", () =>
+      greatChoice(select.value))
+    }
+  })
+
+  document.getElementById("option3").addEventListener("click", () => {
+      showMessage("I see that you are angry today😡. Here's a list that suits your mood. Go ahead and choose one! 👇", "bot")
+      inpt = () => {
+        inputWrapper.innerHTML=`
+          <select id="select" name="songs">
+            <option value selected disabled>Select a song</option>
+            <option id="">In the end by Linkin Park</option>
+            <option id="">Basket case by Green Day</option>
+            <option id="">Break Stuff by Limp Bizkit</option>
+         </select>
+        `
+        const select = document.getElementById("select");
+        select.addEventListener("change", () =>
+        greatChoice(select.value))
+      }   
+   })
+
+  setTimeout(() => {
+    inpt();
+  }, 2000)
+  
+}
+
+//Question 3
+const greatChoice = () => {
+  showMessage(`Great choice! I love that song ❤ Do you want to play it now or later`, 'bot')
+  setTimeout(() => greatChoice(value, 'bot'), 2000)
+  inputWrapper.innerHTML = `
+  <button id="now">NOW</button>
+  <button id="later">LATER</button>
+  `
+   document.getElementById("now").addEventListener("click", () => {
+        showMessage("Ok, let's listen to it right away! Enjoy your song! Goodbye!", "bot")
+        inpt = () => {
+        }
+    })
+  
+    document.getElementById("later").addEventListener("click", () => { 
+        showMessage("Later it is! Enjoy your song! Goodbye!", "bot")
+        inpt = () => {
+          const select = document.getElementById("select");
+          select.addEventListener("change", () =>
+          greatChoice(select.value))
+        }
+    })
+     
+  }
+   
+
+//adding a new function in case it works
+const whenToplaySong = () => {
+  inputWrapper.innerHTML = `
+  <button id="now">NOW</button>
+  <button id="later">LATER</button>
+`
+  document.getElementById("now");
+  showMessage("Ok, let's listen to it right away! Enjoy your song! Goodbye!", "bot")
+
+  document.getElementById("later");
+  showMessage("Later it is! Enjoy your song! Goodbye!", "bot")
+  } 
+
+
 // Set up your eventlisteners here
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const value = document.getElementById('name-input').value;
+  showMessage(value, 'user')
+  form.addEventListener('submit')
+});
+
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  showMessage(value, 'bot')
+  form.addEventListener('submit')
+});
+
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const value = document.getElementById('name-input').value;
+  setTimeout (() => handleResponse(value, 'bot'), 1000)
+  setTimeout (() => moodOptions(value, 'bot'), 2000)
+});
+
+
+
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
