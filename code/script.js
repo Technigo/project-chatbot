@@ -4,7 +4,6 @@ const formSubmitButton = document.getElementById("send-btn");
 const formMessageBox = document.getElementById("name-input");
 const inputWrapper = document.getElementById("input-wrapper");
 
-
 // Global variables
 let questionNumber = 1;
 const chatDelay = 800;
@@ -22,7 +21,6 @@ const firstToUpperCase = (msg) => {
   return msg.substr(0, 1).toUpperCase() + msg.substr(1);
 }
 
-
 // This function adds a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
@@ -35,15 +33,14 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
-
-    chat.innerHTML += `
-      <section class="bot-msg">
-        <img src="images/bot.jpg" alt="Bot" />
-        <div class="bubble bot-bubble">
-          <p>${message}</p>
-        </div>
-      </section>
-    `
+      chat.innerHTML += `
+        <section class="bot-msg">
+          <img src="images/bot.jpg" alt="Bot" />
+          <div class="bubble bot-bubble">
+            <p>${message}</p>
+          </div>
+        </section>
+      `
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
@@ -51,7 +48,7 @@ const showMessage = (message, sender) => {
 
 // Bot and user conversation starts here
 const greeting = () => {
-  showMessage(`Hi there!👩‍🍳 Welcome to Bootstrap Bakery. What's your name?`, 'bot')
+  botReply(`Hi there!👩‍🍳 Welcome to Bootstrap Bakery. What's your name?`)
 }
 
 const nextQuestion = (message) => {
@@ -80,7 +77,6 @@ const question2 = (message) => {
     <button id="cupcakeBtn">Cupcake 🧁</button> 
     <button id="pieBtn">Pie 🥧</button> 
   `
-
   document
     .getElementById("cakeBtn")
     .addEventListener("click", () => nextQuestion("cake"));
@@ -95,8 +91,7 @@ const question2 = (message) => {
 const question3 = (type) => {
   questionNumber++;
   botReply(`A ${type}, yum! Pick a flavour.`);
-
-  if (type === "cake") {
+  
     inputWrapper.innerHTML = `
     <select class="select" id="select">
       <option value="" selected disabled>🤍 🍫 🍓</option>
@@ -105,25 +100,6 @@ const question3 = (type) => {
       <option value="strawberry">Strawberry</option>
     </select>
     `
-  } else if (type === "cupcake") {
-    inputWrapper.innerHTML = `
-    <select class="select" id="select">
-      <option value="" selected disabled>🤍 🍫 🍓</option>
-      <option value="vanilla">Vanilla</option>
-      <option value="chocolate">Chocolate</option>
-      <option value="strawberry">Strawberry</option>
-    </select>
-    `
-  } else {
-    inputWrapper.innerHTML = `
-    <select class="select" id="select">
-      <option value="" selected disabled>🤍 🍫 🍓</option>
-      <option value="vanilla">Vanilla</option>
-      <option value="chocolate">Chocolate</option>
-      <option value="strawberry">Strawberry</option>
-    </select>
-    `
-  }
 
   const select = document.getElementById('select')
   select.addEventListener('change', () => nextQuestion(select.value));
@@ -145,3 +121,4 @@ formSubmitButton.addEventListener('click', () => nextQuestion(formMessageBox.val
 
 // This means the greeting function will be called 0,5 seconds after the website is loaded
 setTimeout(greeting, 500)
+
