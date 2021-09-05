@@ -119,30 +119,9 @@ main {
   display: flex;
 }
 
-
-.question-name {
-  display: none;
-}
-
-.question-time {
+/* ----togleclass---- */
+.invisible{
  display: none;
-}
-
-.question-payment{
-  display: none;
-}
-
-.question-order{
- display: none;
-}
-
-.visible{
- display: flex;
- width: 100%;
- justify-content: center;
- flex-shrink: 1;
- gap: 10px;
-
 }
 
 button {

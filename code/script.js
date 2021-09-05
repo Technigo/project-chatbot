@@ -39,6 +39,7 @@ const greeting = () => {
 setTimeout(greeting, 500);
 // Set up your eventlisteners here
 
+
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
@@ -47,11 +48,9 @@ setTimeout(greeting, 500);
 // This means the greeting function will be called one second after the website is loaded.
 
 const handleNameInput = (event) => {
-  event.preventDefault()
-  // Store the value in a variable so we can access it after we 
-  // clear it from the input
+  event.preventDefault();
+  //read the input 
   const nameInput = document.getElementById("name-input");
-  console.log(nameInput);
   const name = nameInput.value;
   showMessage(name, 'user');  //print the name in screen 
   nameInput.value = ''
@@ -59,22 +58,31 @@ const handleNameInput = (event) => {
   // After 1 second, show the next question by invoking the next function.
   // passing the name into it to have access to the user's name if we want
   // to use it in the next question from the bot.
-  setTimeout(() => showTimeOptions(name), 500);
+  setTimeout(() => showTimeOptions(name), 1000);
 }
 
-document.getElementById("sendName").addEventListener("click", handleNameInput);
+let sendButton = document.getElementById("sendName");
+sendButton.addEventListener("click", handleNameInput);
 
 
-
+function toggleVisible(className) {
+  document.querySelector(`.${className}`).classList.toggle("invisible");
+}
 
 const showTimeOptions = (name) => {
-  showMessage(`Hello ${name}! I'm happy you have found your way to the Time Bank, welcome! How much time do you need? 1 hour, 1 day or 1 week?`, 'bot')
-
-  function toggle() {
-    this.classList.toggle("visible");
-    // document.querySelectorAll(".question").forEach(element => element.onclick = toggle);
-  }
-
-  document.getElementsById("question-name").addEventListener("click", toggle);
-  document.getElementsById("question-time").addEventListener("click", toggle);
+  showMessage(`Hello ${name}! I'm happy you have found your way to the Time Bank, welcome! How much time do you need? 1 hour, 1 day or 1 week?`, 'bot');
+  toggleVisible("question-name");
+  toggleVisible("question-time");
 }
+
+
+// document
+//   .getElementById('1h-Btn')
+//   .addEventListener('click', () => nextQuestion('1h-payment'))
+// document
+//   .getElementById('1d-Btn')
+//   .addEventListener('click', () => nextQuestion('1d-payment'))
+// document
+//   .getElementById('1d-Btn')
+//   .addEventListener('click', () => nextQuestion('1w-payment'))
+// }
