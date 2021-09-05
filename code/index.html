@@ -13,17 +13,41 @@
 
 <body>
   <h1>Welcome to the Time Bank</h1>
-  <h2>Do you need more time in your life? Buy it here!.</h2>
+  <h2>Do you need more time in your life? Buy it here!</h2>
   <main>
     <section class="chat" id="chat"></section>
 
     <div class="input-wrapper" id="input-wrapper">
-      <form id="name-form">
-        <input id="name-input" type="text" />
-        <button class="send-btn" type="submit">
-          Send
-        </button>
-      </form>
+
+      <!-- form 1-->
+      <div class="question-name visible">
+        <form id="name-form">
+          <input id="name-input" type="text" />
+          <button class="send-btn" id="sendName" type="submit">
+            Send
+          </button>
+        </form>
+      </div>
+
+      <!-- buttons question 2-->
+      <div class="question-time">
+        <button id="1h-btn">1 hour</button>
+        <button id="1d-btn">1 day</button>
+        <button id="1w-btn">1 week</button>
+      </div>
+
+      <!-- buttons question 3-->
+      <div class="question-payment">
+        <button id="cash-btn">Cash</button>
+        <button id="credit-btn">Credit Card</button>
+        <button id="payLater-btn">Pay Later</button>
+      </div>
+      <!-- buttons question 4-->
+      <div class="question-order ">
+        <button id="yes-btn">Yes</button>
+        <button id="no-btn">No</button>
+      </div>
+
     </div>
   </main>
 
@@ -31,3 +55,15 @@
 </body>
 
 </html>
+
+
+document
+.getElementById('1h-Btn')
+.addEventListener('click', () => nextQuestion('1h-payment'))
+document
+.getElementById('1d-Btn')
+.addEventListener('click', () => nextQuestion('1d-payment'))
+document
+.getElementById('1d-Btn')
+.addEventListener('click', () => nextQuestion('1w-payment'))
+}
