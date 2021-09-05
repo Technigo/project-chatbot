@@ -34,11 +34,11 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Welcome to the Time Bank, What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-setTimeout(greeting, 5000);
+setTimeout(greeting, 500);
 
 
 // Set up your eventlisteners here
