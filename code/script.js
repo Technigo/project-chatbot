@@ -1,17 +1,40 @@
 "use strict";
 // All the DOM selectors stored as short variables
 const chat = document.getElementById("chat");
-const submit = document.getElementById("submit");
-const input = document.getElementById("name-input");
-console.log(input)
+const nameInput = document.getElementById("name-input");
+const inputWrapper = document.getElementById("input-wrapper")
 // Global variables, if you need any, declared here
 
 // Functions declared here
 
+// This function gets information from the input-field with id name-input
+// It then stops the browser from duing its default behavior (which is reloading the page)
+// We create a variable called name and get the value from the input field
+// Then we run the function showMessage() and put in the value from the input-field
+const handleNameInput = (event) => {
+  event.preventDefault()
+    const name = nameInput.value
+    console.log(name);
+    showMessage(name, 'user');
+    nameInput.value = ''
+
+    setTimeout(() => showPlantOptions (name), 1000)
+}
+
+const showPlantOptions = (userName) => {
+  showMessage(`Nice to meet you ${userName}! What kind of plants to you want help with?`, 'bot')
+
+  inputWrapper.innerHTML = `
+  <select id="dropdown">
+    <option value="Monstera">Monstera</option>
+    <option value="Monstera">Monstera</option>
+    <option value="Monstera">Monstera</option>
+  `
+}
+
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === "user") {
-    console.log(showMessage)
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -43,7 +66,9 @@ const greeting = () => {
 // Set up your eventlisteners here
 
 // element.addEventListener(event, function, useCapture);
-submit.addEventListener("click", showMessage());
+// document.getElementById('name-form').addEventListener("click", showMessage);
+document.getElementById('submit').addEventListener("click", handleNameInput);
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
