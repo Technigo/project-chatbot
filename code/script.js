@@ -1,5 +1,5 @@
 // All the DOM selectors stored as short variables
-const chat = document.getElementById('chat')
+const chat = document.getElementById('chat');
 
 // Global variables, if you need any, declared here
 
@@ -30,11 +30,16 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
+
+// Starts here (starter code)
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Hi, my name is Pizzatone! What's your name?`, 'bot');
+  showMessage(`Hi, my name is Pizzatone! What's your name?`, 'user');
+  
+
   // Just to check it out, change 'bot' to 'user' here 👆
 }
+
 
 // Set up your eventlisteners here
 
