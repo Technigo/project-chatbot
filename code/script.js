@@ -33,7 +33,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Hello stranger! Do you want to listen music?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -45,4 +45,12 @@ const greeting = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 5000)
+// setTimeout(greeting, 1000)
+
+
+const startButton = document.getElementById ('startButton')
+const startPage = document.getElementById ('startPage')
+startButton.onclick = () => { 
+startPage.style.display="none"
+greeting.call()
+}
