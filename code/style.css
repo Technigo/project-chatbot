@@ -70,26 +70,26 @@ main {
   padding-bottom: 16px;
 }
 
-.bot-msg {
+.chat__bot-msg {
   display: flex;
   margin: 16px 8px 0 0;
   flex-shrink: 0;
 }
 
-.user-msg {
+.chat__user-msg {
   display: flex;
   justify-content: flex-end;
   margin: 16px 0 0 8px;
   flex-shrink: 0;
 }
 
-.bot-msg img,
-.user-msg img {
+.chat__bot-msg img,
+.chat__user-msg img {
   width: 60px;
   height: 60px;
 }
 
-.bubble {
+.chat__bubble {
   background: #e5e9ff;
   font-weight: 600;
   font-size: 16px;
@@ -99,22 +99,22 @@ main {
   max-width: 40%;
 }
 
-.bot-bubble {
+.chat__bot-msg__bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
 }
 
-.user-bubble {
+.chat__user-msg__user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
 }
 
-.chat__input-wrapper {
+.input-wrapper {
   display: flex;
   justify-content: center;
 }
 
-.chat__input-wrapper form {
+.input-wrapper form {
   width: 100%;
   display: flex;
 }
@@ -139,7 +139,11 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-.chat__input-wrapper__foodbtns {
+.input-wrapper__submit-times-cleaning-container {
+  display: none;
+}
+
+.input-wrapper__cleaning-btns {
   display: none;
 }
 
@@ -173,6 +177,6 @@ select {
   appearance: none;
 }
 
-.chat__input-wrapper__fooddropdown {
+.input-wrapper__clean-dropdown {
   width: 100%;
 }

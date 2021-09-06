@@ -8,21 +8,20 @@ const chat = document.getElementById("chat");
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === "user") {
-    console.log("hej hej det här är användaren");
     chat.innerHTML += `
-      <section class="user-msg">
-        <div class="bubble user-bubble">
+      <section class="chat__user-msg">
+        <div class="chat__bubble chat__user-msg__user-bubble">
           <p>${message}</p>
         </div>
         <img src="assets/user.png" alt="User" />  
       </section>
     `;
   } else if (sender === "bot") {
-    console.log("hej hej det här är boten");
+    console.log(chat.innerHTML);
     chat.innerHTML += `
-      <section class="bot-msg">
+      <section class="chat__bot-msg">
         <img src="assets/bot.png" alt="Bot" />
-        <div class="bubble bot-bubble">
+        <div class="chat__bubble chat__bot-msg__bot-bubble">
           <p>${message}</p>
         </div>
       </section>
@@ -34,15 +33,84 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const sendBotMessage = (message) => {
-  showMessage(message, "bot");
-  // Just to check it out, change 'bot' to 'user' here 👆
+  setTimeout(showMessage(message, "bot"), 1000);
 };
 
-// // Set up your eventlisteners here
-// // When website loaded, chatbot asks first question.
-// // normally we would invoke a function like this:
-// // greeting()
-// // But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// // setTimeout(functionName, timeToWaitInMilliSeconds)
-// // This means the greeting function will be called one second after the website is loaded.
-setTimeout(sendBotMessage("Hey, very nice to meet you"), 1000);
+form.addEventListener(`submit`, (event) => {
+  event.preventDefault();
+});
+
+const sendUserMessageName = () => {
+  const message = document.getElementById("textInput"); //visar på id, inte värdet
+  showMessage(message.value, `user`);
+
+  sendBotMessage(
+    `Hi ${message.value}, what cleaning service do you want us to provide for you?`
+  );
+  message.value = "";
+
+  const submitContainer = document.getElementById("submitNameContainer");
+  submitContainer.classList.add("hidden");
+
+  const cleanBtnsContainer = document.getElementById("cleanBtnsContainer");
+  cleanBtnsContainer.classList.add("active");
+};
+
+const submitNameBtn = document.getElementById("submitNameBtn");
+submitNameBtn.addEventListener("click", sendUserMessageName);
+
+document.getElementById("textInput").addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    sendUserMessageName();
+  }
+});
+
+sendBotMessage("Hi, my name is Bob. What's your name?");
+
+// -------------------WEEKLY CLEANING BUTTON------------------------------
+
+const weeklyCleaningBtn = document.getElementById("weeklyCleaning");
+weeklyCleaningBtn.addEventListener(`click`, () => {
+  showMessage(`Weekly cleaning`, `user`);
+  sendBotMessage(
+    `Excellent! How many times a month do you want us to clean your home?`
+  );
+
+  const cleanBtnsContainer = document.getElementById("cleanBtnsContainer");
+  cleanBtnsContainer.classList.remove("active");
+
+  const submitTimesCleaningContainer = document.getElementById(
+    "submitTimesCleaningContainer"
+  );
+  submitTimesCleaningContainer.classList.add("active");
+});
+
+const sendUserMessageTimesMonthBtn = () => {
+  const message = document.getElementById("submitTimesCleaningInput");
+  showMessage(message.value, `user`);
+
+  sendBotMessage(
+    `Perfect, we will clean ${
+      message.value
+    } times a month. That will cost approximately ${
+      100 * message.value
+    } dollars a month.`
+  );
+
+  message.value = "";
+};
+
+const submitTimesCleaningBtn = document.getElementById(
+  "submitTimesCleaningBtn"
+);
+submitTimesCleaningBtn.addEventListener("click", sendUserMessageTimesMonthBtn);
+
+document
+  .getElementById("submitTimesCleaningInput")
+  .addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      sendUserMessageTimesMonthBtn();
+    }
+  });
+
+// -------------------MOVE OUT CLEANING------------------------------

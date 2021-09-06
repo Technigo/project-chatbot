@@ -8,40 +8,47 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <title>Chat Bot</title>
+    <title>Bob's cleaning service</title>
   </head>
 
   <body>
-    <h1>Welcome to xxx.</h1>
-    <h2>Ask about xxxx.</h2>
+    <h1>Welcome to Bob's cleaning service.</h1>
+    <h2>How can we help you ease your everyday life?</h2>
     <main>
       <section class="chat" id="chat"></section>
 
-      <div class="chat__input-wrapper" id="input-wrapper">
-        <!-- <form id="text-form"> -->
-        <div class="chat__input-wrapper__text-messages" id="submitContainer">
-          <input id="textInput" type="text" />
-          <button
-            class="chat__send-btn__text-messages"
-            type="submit"
-            id="submitBtn"
-          >
-            Send
-          </button>
-        </div>
-        <div class="chat__input-wrapper__foodbtns" id="foodBtnsContainer">
-          <button id="pizza">Pizza</button>
-          <button id="pasta">Pasta</button>
-          <button id="sushi">Sushi</button>
-        </div>
+      <div class="input-wrapper" id="input-wrapper">
+        <form id="form">
+          <div id="submitNameContainer">
+            <input id="textInput" type="text" />
+            <button type="submit" id="submitNameBtn">Send</button>
+          </div>
 
-        <div class="chat__input-wrapper__food-dropdown hidden" id="dropdownContainer" >
-          <select name="dropdown" id="dropdown">
-            <option value="food1">pizza1</option>
-            <option value="food2">pizza2</option>
-            <option value="food3">pizza3</option>
-          </select>
-  
+          <div
+            class="input-wrapper__submit-times-cleaning-container"
+            id="submitTimesCleaningContainer"
+          >
+            <input id="submitTimesCleaningInput" type="text" />
+            <button type="submit" id="submitTimesCleaningBtn">Send</button>
+          </div>
+
+          <div class="input-wrapper__cleaning-btns" id="cleanBtnsContainer">
+            <button id="weeklyCleaning">Weekly cleaning</button>
+            <button id="moveOutCleaning">Move-out cleaning</button>
+            <button id="windowCleaning">Window cleaning</button>
+          </div>
+
+          <div
+            class="input-wrapper__clean-dropdown hidden"
+            id="dropdownContainer"
+          >
+            <select name="dropdown" id="dropdown">
+              <option value="food1">pizza1</option>
+              <option value="food2">pizza2</option>
+              <option value="food3">pizza3</option>
+            </select>
+          </div>
+        </form>
       </div>
     </main>
 
