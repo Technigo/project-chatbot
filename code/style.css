@@ -147,6 +147,10 @@ button:hover {
   display: none;
 }
 
+.input-wrapper__submit-square-meters-container {
+  display: none;
+}
+
 #text-form {
   display: flex;
   justify-content: center;
