@@ -2,8 +2,22 @@
 const chat = document.getElementById("chat");
 
 // Global variables, if you need any, declared here
+let username = "";
+let emailAdress = "";
+let telephoneNumber = "";
+let service = "";
 
-// Functions declared here
+// // Functions declared here
+
+const hideElement = (elementName) => {
+  const element = document.getElementById(elementName);
+  element.classList.remove("active");
+};
+
+const showElement = (elementName) => {
+  const element = document.getElementById(elementName);
+  element.classList.add("active");
+};
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -43,14 +57,15 @@ form.addEventListener(`submit`, (event) => {
 const sendUserMessageName = () => {
   const message = document.getElementById("textInput"); //visar på id, inte värdet
   showMessage(message.value, `user`);
+  username = message.value;
 
   sendBotMessage(
     `Hi ${message.value}, what cleaning service do you want us to provide for you?`
   );
   // message.value = "";
 
-  const submitContainer = document.getElementById("submitNameContainer");
-  submitContainer.classList.add("hidden");
+  const submitNameContainer = document.getElementById("submitNameContainer");
+  submitNameContainer.classList.add("hidden");
 
   const cleanBtnsContainer = document.getElementById("cleanBtnsContainer");
   cleanBtnsContainer.classList.add("active");
@@ -72,6 +87,7 @@ sendBotMessage("Hi, my name is Bob. What's your name?");
 const weeklyCleaningBtn = document.getElementById("weeklyCleaning");
 weeklyCleaningBtn.addEventListener(`click`, () => {
   showMessage(`Weekly cleaning`, `user`);
+  service = `Weekly cleaning`;
   sendBotMessage(
     `Excellent! How many times a month do you want us to clean your home?`
   );
@@ -96,7 +112,7 @@ const sendUserMessageTimesMonthBtn = () => {
       100 * message.value
     } dollars a month.`
   );
-
+  askForEmail();
   message.value = "";
 };
 
@@ -113,11 +129,12 @@ document
     }
   });
 
-// -------------------MOVE OUT CLEANING------------------------------
+// ---------------------------MOVE OUT CLEANING------------------------------
 
 const moveOutCleaningBtn = document.getElementById("moveOutCleaning");
 moveOutCleaningBtn.addEventListener(`click`, () => {
   showMessage(`Move-out cleaning`, `user`);
+  service = `Move-out cleaning`;
   sendBotMessage(`How many square meters is your home?`);
 
   const cleanBtnsContainer = document.getElementById("cleanBtnsContainer");
@@ -139,9 +156,9 @@ const sendUserMessageSquareMetersBtn = () => {
   showMessage(message.value, `user`);
 
   sendBotMessage(
-    `Super, we have registered that your home is ${message.value} square meters. We will contact you with an offer you can't refuse!`
+    `Super, we have registered that your home is ${message.value} square meters. `
   );
-
+  askForEmail();
   message.value = "";
 };
 
@@ -156,90 +173,111 @@ document
     }
   });
 
-// ----------------------------------------Window Cleaning --------------------------------------------
+// ---------------------------WINDOW CLEANING-----------------------------
 
-// const weeklyCleaningBtn = document.getElementById("weeklyCleaning");
-// weeklyCleaningBtn.addEventListener(`click`, () => {
-//   showMessage(`Weekly cleaning`, `user`);
-//   sendBotMessage(
-//     `Excellent! How many times a month do you want us to clean your home?`
-//   );
+const windowCleaningBtn = document.getElementById("windowCleaning");
+windowCleaningBtn.addEventListener(`click`, () => {
+  showMessage(`Window cleaning`, `user`);
+  service = `Window cleaning`;
+  sendBotMessage(`Fantastic! How many windows do you have?`);
 
-//   const cleanBtnsContainer = document.getElementById("cleanBtnsContainer");
-//   cleanBtnsContainer.classList.remove("active");
+  const cleanBtnsContainer = document.getElementById("cleanBtnsContainer");
+  cleanBtnsContainer.classList.remove("active");
 
-//   const submitTimesCleaningContainer = document.getElementById(
-//     "submitTimesCleaningContainer"
-//   );
-//   submitTimesCleaningContainer.classList.add("active");
-// });
+  const submitSquareMetersContainer = document.getElementById(
+    "submitSquareMetersContainer"
+  );
+  submitSquareMetersContainer.classList.remove("active");
 
-// const sendUserMessageTimesMonthBtn = () => {
-//   const message = document.getElementById("submitTimesCleaningInput");
-//   showMessage(message.value, `user`);
+  const submitAmountOfWindowsContainer = document.getElementById(
+    "submitAmountOfWindowsContainer"
+  );
+  submitAmountOfWindowsContainer.classList.add("active");
+});
 
-//   sendBotMessage(
-//     `Perfect, we will clean ${
-//       message.value
-//     } times a month. That will cost approximately ${
-//       100 * message.value
-//     } dollars a month.`
-//   );
+const sendUserMessageAmountsWindowsBtn = () => {
+  const message = document.getElementById("submitAmountOfWindowsInput");
+  showMessage(message.value, `user`);
 
-//   message.value = "";
-// };
+  sendBotMessage(
+    `Perfect ${username}, we will clean your ${
+      message.value
+    } windows. That will cost approximately ${20 * message.value} dollars.`
+  );
+  askForEmail();
 
-// const submitTimesCleaningBtn = document.getElementById(
-//   "submitTimesCleaningBtn"
-// );
-// submitTimesCleaningBtn.addEventListener("click", sendUserMessageTimesMonthBtn);
+  message.value = "";
+};
 
-// document
-//   .getElementById("submitTimesCleaningInput")
-//   .addEventListener("keypress", function (e) {
-//     if (e.key === "Enter") {
-//       sendUserMessageTimesMonthBtn();
-//     }
-//   });
+const submitAmountsWindowsBtn = document.getElementById(
+  "submitAmountOfWindowsBtn"
+);
+submitAmountsWindowsBtn.addEventListener(
+  "click",
+  sendUserMessageAmountsWindowsBtn
+);
 
-// v;
-// const moveOutCleaningBtn = document.getElementById("moveOutCleaning");
-// moveOutCleaningBtn.addEventListener(`click`, () => {
-//   showMessage(`Move-out cleaning`, `user`);
-//   sendBotMessage(`How many square meters is your home?`);
+document
+  .getElementById("submitAmountOfWindowsContainer")
+  .addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      sendUserMessageAmountsWindowsBtn;
+    }
+  });
 
-//   const cleanBtnsContainer = document.getElementById("cleanBtnsContainer");
-//   cleanBtnsContainer.classList.remove("active");
+// ------------------------------- MUTUAL FUNCTIONS ---------------------------------
 
-//   const submitTimesCleaningContainer = document.getElementById(
-//     "submitTimesCleaningContainer"
-//   );
-//   submitTimesCleaningContainer.classList.remove("active");
+const askForEmail = () => {
+  sendBotMessage(`What is your e-mail adress so that we can send you a offer?`);
+  hideElement("submitAmountOfWindowsContainer");
+  hideElement("submitTimesCleaningContainer");
+  hideElement("submitSquareMetersContainer");
+  showElement("submitEmailContainer");
+};
 
-//   const submitSquareMetersContainer = document.getElementById(
-//     "submitSquareMetersContainer"
-//   );
-//   submitSquareMetersContainer.classList.add("active");
-// });
+const sendUserMessageEmailBtn = () => {
+  const message = document.getElementById("submitEmailInput");
+  showMessage(message.value, `user`);
+  emailAdress = message.value;
 
-// const sendUserMessageSquareMetersBtn = () => {
-//   const message = document.getElementById("submitSquareMetersInput");
-//   showMessage(message.value, `user`);
+  askForNumber();
+  message.value = "";
+};
 
-//   sendBotMessage(
-//     `Super, we have registered that your home is ${message.value} square meters. We will contact you with an offer you can't refuse!`
-//   );
+const submitEmailBtn = document.getElementById("submitEmailBtn");
+submitEmailBtn.addEventListener("click", sendUserMessageEmailBtn);
 
-//   message.value = "";
-// };
+document
+  .getElementById("submitEmailContainer")
+  .addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      sendUserMessageEmailBtn;
+    }
+  });
 
-// const submitSquareMetersBtn = document.getElementById("submitSquareMetersBtn");
-// submitSquareMetersBtn.addEventListener("click", sendUserMessageSquareMetersBtn);
+const askForNumber = () => {
+  sendBotMessage(`What is your number?`);
+  hideElement("submitEmailContainer");
+  showElement("submitNumberContainer");
+};
 
-// document
-//   .getElementById("submitSquareMetersInput")
-//   .addEventListener("keypress", function (e) {
-//     if (e.key === "Enter") {
-//       sendUserMessageSquareMetersBtn();
-//     }
-//   });
+const sendUserMessageNumberBtn = () => {
+  const message = document.getElementById("submitNumberInput");
+  showMessage(message.value, `user`);
+  telephoneNumber = message.value;
+
+  sendBotMessage(
+    `Thank you ${username} for your interest in our service: ${service}. We will return with a offer to the emailadress: ${emailAdress} and with a textmessage to the number ${telephoneNumber}`
+  );
+};
+
+const submitNumberBtn = document.getElementById("submitNumberBtn");
+submitNumberBtn.addEventListener("click", sendUserMessageNumberBtn);
+
+document
+  .getElementById("submitNumberContainer")
+  .addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      sendUserMessageNumberBtn;
+    }
+  });

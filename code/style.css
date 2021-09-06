@@ -1,3 +1,10 @@
+/* 
+  #7FA0A7 
+  #527976 
+  #5E805B 
+  #8AAA8F 
+  #9CB4A6 
+  */
 * {
   box-sizing: border-box;
 }
@@ -6,7 +13,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
-  background: #0026ff;
+  background: #7fa0a7;
 }
 
 h1 {
@@ -151,7 +158,19 @@ button:hover {
   display: none;
 }
 
-#text-form {
+.input-wrapper__submit-amount-of-windows-container {
+  display: none;
+}
+
+.input-wrapper__submit-email {
+  display: none;
+}
+
+.input-wrapper__submit-number {
+  display: none;
+}
+
+#form {
   display: flex;
   justify-content: center;
 }
@@ -179,8 +198,4 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-}
-
-.input-wrapper__clean-dropdown {
-  width: 100%;
 }
