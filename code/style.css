@@ -6,14 +6,15 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #8ba66d;
+  background-image: url(dtuctf.jpeg);
 }
+
 
 h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #eef2ea;
+  color: #79927a;
   text-align: center;
 }
 
@@ -119,7 +120,9 @@ main {
   width: 100%;
   display: flex;
 }
-
+.paw {
+  border-radius: 30px;
+}
 input {
   background: #eef2ea;
 }
@@ -142,4 +145,8 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+#name-input {
+  color: black;
 }

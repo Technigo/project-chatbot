@@ -1,9 +1,20 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+const inputWrapper = document.getElementById('input-wrapper')
+const nameInput = document.getElementById('name-input')
+const form = document.getElementById('name-form')
 
 // Global variables, if you need any, declared here
 
 // Functions declared here
+
+const botAnswer = (inputMessage) => {
+  showMessage(inputMessage, 'bot')
+}
+
+const userAnswer = (inputMessage) => {
+  showMessage(inputMessage, 'user')
+}
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -15,7 +26,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/paw-green.png" class="paw" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
@@ -32,15 +43,24 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
+
 // Starts here
 const greeting = () => {
-  showMessage(`Hey and welcome to PetCare!`, 'bot')
-  showMessage(`What's your name?`, 'bot')
-
+  botAnswer(`Welcome to our salon! <br> What's your name?`)
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
 // Set up your eventlisteners here
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault()
+  const name = nameInput.value
+  userAnswer(name)
+  nameInput.value = ''
+  setTimeout(() => showPetTypes(name), 1000)
+})
+
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
