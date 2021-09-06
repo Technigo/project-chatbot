@@ -1,5 +1,6 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat');
+const form = document.getElementById('name-form')
 
 // Global variables, if you need any, declared here
 
@@ -32,9 +33,14 @@ const showMessage = (message, sender) => {
 
 
 // Starts here (starter code)
+
 const greeting = () => {
   showMessage(`Hi, my name is Pizzatone! What's your name?`, 'bot');
   showMessage(`Hi, my name is Pizzatone! What's your name?`, 'user');
+  showMessage(`Hi, my name is Pizzatone! What's your name?`, 'bot');
+
+ 
+  // showMessage(`Hi, my name is Pizzatone! What's your name?`, 'user');
   
 
   // Just to check it out, change 'bot' to 'user' here 👆
@@ -42,11 +48,13 @@ const greeting = () => {
 
 
 // Set up your eventlisteners here
-
+form.addEventListener('click', () => {
+  setTimeout(greeting, 2000)
+})
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000)
+// setTimeout(greeting, 1000)
