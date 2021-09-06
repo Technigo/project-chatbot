@@ -8,7 +8,20 @@ const chat = document.getElementById('chat')
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
-    chat.innerHTML += `
+
+    // Isabel's console.log
+
+    console.log(message)
+    console.log(sender)
+
+    // Nina's console.log
+    console.log('kind of getting this')
+    console.log(`This is my message: ${message}`)
+
+
+    chat.innerHTML +=
+
+      `
       <section class="user-msg">
         <div class="bubble user-bubble">
           <p>${message}</p>
@@ -30,9 +43,9 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
+// The dialogue starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Lovely weather we're having, don't you think?`, 'user')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -45,3 +58,4 @@ const greeting = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
+
