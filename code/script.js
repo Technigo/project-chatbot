@@ -8,6 +8,7 @@ const chat = document.getElementById('chat')
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
+    console.log(showMessage);
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -32,11 +33,31 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Howdy there, what's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
 // Set up your eventlisteners here
+const handleNameInput = (event) => {
+  event.preventDefault();
+
+  const name = nameInput.value
+  showMessage(name, 'user')
+  nameInput.value =''
+
+}
+
+// from Maks lession
+const form = document.addEventListener('submit', (event) => {
+  
+  event.preventDefault();
+  console.log(event)
+  
+  
+});
+//
+
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
