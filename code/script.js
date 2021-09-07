@@ -1,9 +1,24 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+const form = document.getElementById('name-form')
+const input = document.getElementById('user-input')
+const inputWrapper = document.getElementById('input-wrapper')
 
 // Global variables, if you need any, declared here
 
+const questionNumber = 1
+
 // Functions declared here
+
+let nextQuestion = (message) => {
+  if (questionNumber === 1) {
+    handleNameInput(message)
+    input.value = ''
+  }
+  else if (questionNumber === 2){
+    pizzaOption (message)
+  }
+}
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -36,7 +51,36 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+const handleNameInput = () => {
+const name = input.value
+  console.log(name)
+  showMessage(name, 'user')
+  input.value = ''
+  showMessage (`Hello, ${name}!`, 'bot')
+}
+
+
+
+// const pizzaOptions = () => {
+//   questionNumber++
+//   showMessage (`Which pizza would you like?`, 'bot')
+//   inputWrapper.innerHTML =
+
+//   const whatPizza = () => {
+//     <button id="peperoni">peperoni</button>
+//     <button id="funghi">funghi</button>
+//     <button id="margharita">margharita</button>
+//   }
+// }
+
+
+
 // Set up your eventlisteners here
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault()
+  handleNameInput()
+})
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
