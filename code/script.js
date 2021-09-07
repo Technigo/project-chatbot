@@ -19,7 +19,7 @@ const showMessage = (message, sender) => {
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/yoda-small.gif" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -32,17 +32,27 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Your name traveler, what is, hmm?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-// Set up your eventlisteners here
-// let answer= document.getElementById('name-input');
-document.getElementById('name-form').addEventListener('submit', (event) =>{
+// // Set up your eventlisteners here
+let answer= document.getElementById('name-form');
+
+// Adding event listnener and displaying the answer in the chat
+  answer.addEventListener('submit', (event) =>{
   event.preventDefault();
-  console.log(event);
+  showMessage(`You are: ${event.target[0].value}`, 'user');
+  const respond = () =>{
+    showMessage(`Hello ${event.target[0].value}`, 'bot')
+  }
+  setTimeout(respond, 2000);
+  // setTimeout(whichPlanetYouAreFrom, 2000);
 });
-// .target[0].value
+// // .target[0].value
+
+
+
 
 
 // When website loaded, chatbot asks first question.
