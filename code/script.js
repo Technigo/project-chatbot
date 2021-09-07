@@ -33,6 +33,7 @@ const showMessage = (message, sender) => {
 }
 
 // Starts here
+// Question 1
 const greeting = () => {
   showMessage(`You wanna go to Space? Cool! What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
@@ -59,7 +60,7 @@ const handleNameInput = document.getElementById('name-form').addEventListener('s
 }
 )
 
-// Question 1
+// Question 2
 // Hi ...! Time goes slower in space. Depending on how far you wanna go you will be older when you get back. 
 // 1 year 10 years 1000 years
 
@@ -85,7 +86,7 @@ document
   .addEventListener('click', () => setTimeout(() => destination ('1000 years'), 1000))
 }  
 
-// Question 2
+// Question 3
 // Alright ..., check your alternatives!
 // 1year: mars, moon, jupiter
 // 10years: pluto, sun, saturnnus
@@ -129,20 +130,28 @@ console.log(type)
       </select>
     `
   }
-  // const select = document.getElementById('select')
-  // select.addEventListener('change', () => nextQuestion(select.value))
+  const select = document.getElementById('select')
+  select.addEventListener('change', () => setTimeout(() => spaceFood(select.value), 1000))
 }
 
-// Question 3
-
-// Can you see this??????
-// CAN YOU SEEE THIIIIIIS WHAAAAAA?????? second try
-// cloned version test
+// Question 4
 
 
+const spaceFood = (select) => {
 
 
+console.log(select)
 
+setTimeout(() => showMessage (
+  `Great! So what do you wanna eat during the trip to ...?`, 'bot'
+) , 1000)
+
+// You picked "${select}"!
+  showMessage (
+    `My choice is "${select}"!`, 'user'
+  )
+
+}
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
@@ -151,4 +160,3 @@ setTimeout(greeting, 1000)
 
 
 
-// This is my test comment Maria
