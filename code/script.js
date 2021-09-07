@@ -1,8 +1,11 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById('input-wrapper')
-const input = document.getElementById('input')
 const sendButton = document.getElementById('button')
+const form = document.getElementById('name-form')
+const userInput = document.getElementById('name-input')
+
+
 
 // Global variables, if you need any, declared here
 let questionNumber = 1 
@@ -10,6 +13,12 @@ let questionNumber = 1
 const botReply = (msg) => {
   showMessage(msg, 'bot')
 }
+
+const userReply= (msg) => {
+  showMessage(msg, 'user')
+}
+
+
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
@@ -43,6 +52,32 @@ const greeting = () => {
   showMessage(`Hello Hobbit, I'm Sarouman! What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault()
+  const name = userInput.value
+  showMessage (name, 'user')
+  userInput.value = ''
+  setTimeout(() => saroumanAsk(name), 1000)
+});
+
+ const saroumanAsk = (message) => {
+   questionNumber++
+  showMessage (`Nice to meet you ${message}. How can I help you?`, 'bot')
+  userInput.value=''
+  setTimeout(() => howAreYou (name), 1000)
+ };
+
+ const howAreYou = (message) => {
+  questionNumber++
+  showMessage(`Nice answer`, 'bot')
+}
+
+// form.addEventListener('submit', (event) => {
+//   showMessage(name, 'user')
+//   userInput.value = ''
+//   setTimeout(() => howAreYou(name), 1000)
+// });
 
 
 
