@@ -23,7 +23,7 @@ const wantToPlay = (user) => {
   yesBtn.addEventListener('click', (e) => {
     showMessage(`Yes!`, 'user')
     e.preventDefault();
-
+    sundayAfternoon();
   })
   noBtn.addEventListener('click', (e) => {
     showMessage(`No!`, 'user')
@@ -42,6 +42,36 @@ const shrek = () => {
     // const restartBtn = document.getElementById('restart');
 
     // restartBtn.addEventListener('click', ())
+}
+
+const sundayAfternoon = () => {
+  showMessage(`What do you do on a sunday afternoon?`, 'bot');
+  inputWrapper.innerHTML = `
+  <select id="select">
+    <option value="" selected disabled> Select an answer </option>
+    <option id="movie" value="movie">I like to Netflix and chill.</option>
+    <option id="music" value="music">I like to shake my booty.</option>
+    <option id="books" value="books">I bury my head in a book.</option>
+  </select>
+  `
+
+  const select = document.getElementById('select')
+  const movie = document.getElementById('movie')
+  const music = document.getElementById('music')
+  const books = document.getElementById('books')
+
+  select.addEventListener('change', (e) => {
+    if (select.value === 'movie') {
+      console.log('yes this works')
+    } else if (select.value === 'music') {
+      
+    } else if (select === 'books') {
+
+    } else {
+      
+    }
+  })
+
 }
 
 console.log(wantToPlay);
