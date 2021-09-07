@@ -47,10 +47,15 @@ const greeting = () => {
 // This means the greeting function will be called one second after the website is loaded.
 // setTimeout(greeting, 1000)
 
+const nameForm = document.getElementById ('name-form')
+nameForm.addEventListener('submit',(event) => {
+  event.preventDefault()
+})
 
 const startButton = document.getElementById ('startButton')
 const startPage = document.getElementById ('startPage')
 startButton.onclick = () => { 
-startPage.style.display="none"
-greeting.call()
+  startPage.style.display="none"
+  setTimeout(greeting, 1000)
 }
+
