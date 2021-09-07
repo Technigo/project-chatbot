@@ -2,6 +2,8 @@
 const chat = document.getElementById('chat')
 const userInput = document.getElementById('name-input')
 const form = document.getElementById('name-form')
+const sendBtn = document.getElementById('send')
+
 
 // Global variables, if you need any, declared here
 
@@ -10,6 +12,7 @@ const form = document.getElementById('name-form')
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
+    console.log(message)
      chat.innerHTML += `
        <section class="user-msg">
          <div class="bubble user-bubble">
@@ -32,24 +35,65 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
-const greeting = () => {
-  showMessage(`Hello and welcome to the cake factory &#x1F370 What's your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+//To jump to the next question
+const nextQuestion = (message) => {
+  console.log('questionNumber', questionNumber)
+
+  if (questionNumber === 1) {
+    userReply(message)
+    input.value = ''
+    setTimeout(() => showFoodTypes(message), 1000)
+  } else if (questionNumber === 2) {
+    userReply(message)
+    setTimeout(() => showMenu(message), 1000)
+  } else if (questionNumber === 3) {
+    userReply(message)
+    setTimeout(() => showDishSize(message), 1000)
+  } else if (questionNumber === 4) {
+    userReply(message)
+    setTimeout(() => showPrice(message), 1000)
+  } else {
+    userReply(message)
+    setTimeout(thankYou, 1000)
+  }
 }
 
-  form.addEventListener('submit', (event) => {
-   event.preventDefault()
-   const name = userInput.value 
-   console.log(name)  
-  showMessage(name, 'user')
-  userInput.value = ''
-  setTimeout(() => showFoodOptions(name), 1000)
-  });
 
-  const showFoodOptions = (name) => {
-    showMessage(`Wish cake are you upp to mode for today ${name}`, 'bot')
-  }
+// Starts here
+const greeting = () => {
+ showMessage(`Hello and welcome to the cake factory &#x1F370 What's your name?`, 'bot')
+  // Just to check it out, change 'bot' to 'user' here 👆
+}
+form.addEventListener('submit', (event) => {
+  event.preventDefault()
+  const name = userInput.value 
+  console.log(name)  
+ showMessage(name, 'user')
+ userInput.value = ''
+ setTimeout(() => showFoodOptions(name), 1000)
+ });
+
+ const showFoodOptions = (name) => {
+   showMessage(`Wish cake are you upp to mode for today ${name}`, 'bot')
+   form.innerHTML = `
+   <button id="princessBtn">Princess Cake</button>
+   <button id="pancakeBtn">Pancake Cake</button>
+   <button id="strawberryBtn">Strawberry Cake</button>
+ `
+
+ document
+   .getElementById('princessBtn')
+   .addEventListener('click', () => nextQuestion('princess'))
+ document
+   .getElementById('pancakeBtn')
+   .addEventListener('click', () => nextQuestion('pancake'))
+ document
+   .getElementById('strawberryBtn')
+   .addEventListener('click', () => nextQuestion('strawberry'))
+}
+ 
+
+  
 
 // Set up your eventlisteners here
 
@@ -59,5 +103,10 @@ const greeting = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000);
+setTimeout(greeting, 900);
 
+
+           
+
+
+  
