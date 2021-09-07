@@ -11,3 +11,9 @@ Describe how you approached to problem, and what tools and techniques you used t
 ## View it live
 
 Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+
+Questions:
+we dont understand the instructions.a
+what were we supposed to console log?
+Before we start with iterations, how far along should we have gotten.
+Do you have to "prevent" the default behaviour and add a action, or is it enough with just giving an action?

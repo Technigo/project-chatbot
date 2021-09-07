@@ -1,9 +1,12 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+const inputWrapper = document.getElementById('input-wrapper') 
 
 // Global variables, if you need any, declared here
 
 // Functions declared here
+
+
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -26,15 +29,34 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
+ 
+const form = document.getElementById('name-form')
+  
+ form.addEventListener('submit', (event) => {
+   event.preventDefault();
+
+ });
+ 
+ 
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Welcome to the Travelbot! What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
+
+// const continent = () => {
+//   showMessage(`Where would you like to go?`, 'user')
+// }
+
+// const activity = () => {
+//     showMessage(`What activity would you like to do?`, 'bot')  
+// }
+
+
 
 // Set up your eventlisteners here
 
