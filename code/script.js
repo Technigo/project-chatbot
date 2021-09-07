@@ -14,14 +14,23 @@ const handleNameInput = () => {
   console.log(name)
   showMessage(name, 'user')
   nameInput.value = '';
+  setTimeout(() => showFlowerOptions(name), 500)
+  const showFlowerOptions = () => {
+    console.log('showFlowerOptions')
+    showMessage(`Hi ${name} ,what kind of event do you need flowers for?`, 'bot')
 
+  }
 };
+
+
+
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
+
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
