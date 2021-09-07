@@ -3,10 +3,21 @@ const chat = document.getElementById('chat')
 const sendBtn = document.getElementById('send-btn')
 // const formSumbit = document.getElementById('name-form')
 const userName = document.getElementById('name-input')
+const inputWrapper = document.getElementById('input-wrapper')
 
 // Global variables, if you need any, declared here
 
 // Functions declared here
+const wantToPlay = (user) => {
+  console.log(user);
+  showMessage(`Hi, ${user}, do you want to know who your celebrity soulmate is?`, 'bot')
+  
+  // inputWrapper.innerHTML = `
+  // <button id="yes">Yes</button>
+  // <button id="no">No</button>
+  // `
+}
+console.log(wantToPlay);
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -44,7 +55,10 @@ const greeting = () => {
 // Set up your eventlisteners here
 sendBtn.addEventListener('click', (event) => {
   event.preventDefault()
-  showMessage(userName.value, 'user')})
+  const name = userName.value;
+  showMessage(name, 'user');
+  wantToPlay(name);
+})
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
