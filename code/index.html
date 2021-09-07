@@ -1,33 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet" />
-    <title>Chat Bot</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <title>Flower Chat Bot</title>
+</head>
 
-  <body>
-    <h1>Welcome to xxx.</h1>
-    <h2>Ask about xxxx.</h2>
-    <main>
-      <section class="chat" id="chat"></section>
+<body>
+  <h1>Welcome to Flower shop.</h1>
+  <h2>Ask about flowers.</h2>
+  <main>
+    <section class="chat" id="chat"></section>
 
-      <div class="input-wrapper" id="input-wrapper">
-        <form id="name-form">
-          <input id="name-input" type="text" />
-          <button class="send-btn" type="submit">
-            Send
-          </button>
-        </form>
-      </div>
-    </main>
+    <div class="input-wrapper" id="input-wrapper">
+      <form id="name-form">
+        <input id="name-input" type="text" />
+        <button id="send-btn" class="send-btn" type="submit">
+          Send
+        </button>
+      </form>
+    </div>
+  </main>
 
-    <script src="./script.js"></script>
-  </body>
+  <script src="./script.js"></script>
+</body>
+<!-- Structure of work ----
+  ITERATION 3
+1. Listen if somebody hits the button- we want to know
+2. Read in the text that you write in the input-box = our new message 
+3. Send both message and sender to the loop
+4. The loop will send it to chat-history
+------------------------------------------
+Iteration 4
+5. Bot should answer question "Hello NAME, what kind of event are u going to?"
+6. Make a "selctor/dropdown window/buttons" to chose from
+7. Listen to the choice
+8. Read in text from the input-box
+9. send message and sender to loop
+10. x3
+
+Define var
+konst var
+
+Create a machine/function
+konst varX = () => {}
+
+Trigger the masine
+varX()
+
+-->
+
+
 
 </html>
