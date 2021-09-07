@@ -1,29 +1,56 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: "Montserrat", sans-serif;
+  background-image: url(https://images.unsplash.com/photo-1496660818001-d4f9b64f68f2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=780&q=80);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100%;
+  
 }
 
-h1 {
-  font-weight: bold;
-  font-size: 44px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
+/* HEADER */
+.header {
+  background-color: rgb(241, 247, 231);
+  height: 200px;
+  margin: 0 0 90px 0;
+  width: 100%;
+  margin-top:-15px; /*To make the header stay at the very top of the page*/
 }
 
-h2 {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
-  margin-bottom: 36px;
+.heading-1 {
+  color: rgb(191, 216, 184);
+  margin: 0px auto;
+  width: 200px;
+  padding-top:30px;
+  font-family: "Great Vibes", cursive;
+  font-size: 60px;
+}
+
+.nav-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 80px;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(226, 194, 185);
+  font-size: 1.1rem;
+  padding:0 10px;
+}
+
+a:hover {
+  transform: scale(1.2,1.2);
+  color:  rgb(191, 216, 184);
+  
 }
 
 p {
@@ -33,15 +60,16 @@ p {
   margin: 0;
 }
 
+/* MAIN CONTENT */
 input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: rgb(241, 247, 231);
+  color: rgb(226, 194, 185);
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -49,7 +77,7 @@ input {
 
 main {
   margin: 0 auto;
-  width: 100%;
+  width: 90%;
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
@@ -59,6 +87,7 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  background-color: rgb(191, 216, 184);
 }
 
 .chat {
@@ -90,12 +119,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: rgb(241, 247, 231);
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: rgb(226, 194, 185);
   max-width: 40%;
 }
 
@@ -120,7 +149,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color:rgb(226, 194, 185);
   color: white;
   border: none;
   border-radius: 4px;
@@ -128,7 +157,7 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -137,4 +166,25 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+/* FOOTER */
+.footer {
+  
+  position: fixed;
+  bottom:0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(226, 194, 185);
+  height: 100px;
+  margin-top:10px; 
+}
+.nav-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.fab, .fas { 
+  color:#fff;
+  padding:20px 10px;
+  font-size: 20px;
 }
