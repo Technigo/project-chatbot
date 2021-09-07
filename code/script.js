@@ -11,7 +11,7 @@ const inputWrapper = document.getElementById('input-wrapper')
 // Functions declared here
 const wantToPlay = (user) => {
   console.log(user);
-  showMessage(`Hi, ${user}, do you want to know who your celebrity soulmate is?`, 'bot')
+  showMessage(`Hi, ${user} do you want to know who your celebrity soulmate is?`, 'bot')
   
   inputWrapper.innerHTML = `
   <button type="submit" id="yes">Yes</button>
@@ -28,8 +28,22 @@ const wantToPlay = (user) => {
   noBtn.addEventListener('click', (e) => {
     showMessage(`No!`, 'user')
     e.preventDefault();
+    shrek()
   })
 }
+
+const shrek = () => {
+    showMessage(`Then, go back to your swamp!`, 'bot');
+    inputWrapper.innerHTML = `
+    <form>
+        <button type="submit" class="restart">Start again</button>
+    </form>
+    `
+    // const restartBtn = document.getElementById('restart');
+
+    // restartBtn.addEventListener('click', ())
+}
+
 console.log(wantToPlay);
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -66,8 +80,8 @@ const greeting = () => {
 }
 
 // Set up your eventlisteners here
-sendBtn.addEventListener('click', (event) => {
-  event.preventDefault()
+sendBtn.addEventListener('click', (e) => {
+  e.preventDefault()
   const name = userName.value;
   showMessage(name, 'user');
   wantToPlay(name);
