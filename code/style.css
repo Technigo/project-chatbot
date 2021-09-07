@@ -138,3 +138,10 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+.buttons {
+  display: flex;
+  width: 100%;
+  margin-left: 50px;
+  display: none;
+}

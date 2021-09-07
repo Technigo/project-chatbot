@@ -33,10 +33,75 @@ const showMessage = (message, sender) => {
 }
 
 // Starts here
+const confirmation = (btnType) => {
+  
+  if (btnType === 1) {
+    showMessage ('Awesome, Pad Thai it is!', 'bot')
+  } else if (btnType === 2) {
+    showMessage ('Yay, we love Paneng too!', 'bot')
+  } else  {
+    showMessage('Good Choice, you will love it!', 'bot')
+  }
+}
+
 const greeting = () => {
-  showMessage(`Hello there, What are you craving?`, 'bot')
+  showMessage(`Hello there, What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
+
+const userName = document.getElementById("name-input")
+const sendButton=document.getElementById("send-btn")
+
+sendButton.addEventListener("click", (event) => { 
+  event.preventDefault();
+  const name = userName.value
+  showMessage(name, 'user')
+  userName.value = ""
+   
+  setTimeout(() =>{
+    showMessage('${name}! What are you craving?', 'bot')
+    },1000) //delay is in milliseconds 
+})
+  
+const foodOption=document.getElementById("phadThaiBtn")
+foodOption.addEventListener("click", (event) => {
+  event.preventDefault();
+  showMessage ('1 Pad Thai, please', 'user')
+  document.getElementById("buttons").style.display = "none";
+  setTimeout(() =>{
+    showMessage('Awesome, Pad thai it is!', 'bot')
+    },1000) //delay is in milliseconds 
+  
+ 
+})
+
+const foodOption2=document.getElementById("panengBtn")
+foodOption2.addEventListener("click", (event) => {
+  event.preventDefault();
+  showMessage('1 Paneng, please', 'user')
+  document.getElementById("buttons").style.display = "none";
+  setTimeout(() =>{
+    showMessage ('Yay, we love Paneng!', 'bot')
+    },1000) //delay is in milliseconds 
+  
+})
+
+const foodOption3=document.getElementById("tomKhaGaiBtn")
+foodOption3.addEventListener("click", (event) => {
+  event.preventDefault();
+  showMessage ('1 Tom Kha Gai, please', 'user')
+  document.getElementById("buttons").style.display = "none";
+  setTimeout(() =>{
+    showMessage('Good Choice, you will love it!', 'bot')
+    },1000) //delay is in milliseconds 
+  
+ 
+  
+})
+
+
+
+
 
 // Set up your eventlisteners here
 
