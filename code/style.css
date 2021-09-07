@@ -5,6 +5,9 @@
   #8AAA8F 
   #9CB4A6 
   */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 * {
   box-sizing: border-box;
 }
@@ -12,13 +15,14 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", sans-serif;
   background: #7fa0a7;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
+  font-size: 40px;
+  font-weight: 300;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -26,7 +30,8 @@ h1 {
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 25px;
+  font-weight: 100;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -35,7 +40,7 @@ h2 {
 
 p {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 300;
   line-height: 28px;
   margin: 0;
 }
@@ -45,7 +50,6 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
   padding: 16px;
   font-size: 16px;
   font-family: "Montserrat";
@@ -72,7 +76,9 @@ main {
   flex: 1;
   display: flex;
   justify-content: flex-start;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: none;
+  scroll-behavior: smooth;
   flex-direction: column;
   padding-bottom: 16px;
 }
@@ -90,30 +96,29 @@ main {
   flex-shrink: 0;
 }
 
-.chat__bot-msg img,
-.chat__user-msg img {
-  width: 60px;
-  height: 60px;
-}
-
 .chat__bubble {
   background: #e5e9ff;
-  font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
   max-width: 40%;
 }
 
 .chat__bot-msg__bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  background-color: #def5f3;
 }
 
 .chat__user-msg__user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  background-color: #e8ffeb;
+}
+
+.icon {
+  font-size: 35px;
+  color: #000000;
 }
 
 .input-wrapper {
@@ -127,7 +132,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #9cb4a6;
   color: white;
   border: none;
   border-radius: 4px;
@@ -139,63 +144,16 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: #000000 2px 2px;
 }
 
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
-}
-
-.input-wrapper__submit-times-cleaning-container {
-  display: none;
-}
-
-.input-wrapper__cleaning-btns {
-  display: none;
-}
-
-.input-wrapper__submit-square-meters-container {
-  display: none;
-}
-
-.input-wrapper__submit-amount-of-windows-container {
-  display: none;
-}
-
-.input-wrapper__submit-email {
-  display: none;
-}
-
-.input-wrapper__submit-number {
-  display: none;
+  box-shadow: none;
 }
 
 #form {
   display: flex;
   justify-content: center;
-}
-
-.hidden {
-  display: none;
-}
-
-.active {
-  display: flex;
-}
-
-select {
-  border: none;
-  border-radius: 4px;
-  color: #0026ff;
-  font-size: 20px;
-  font-weight: 600;
-  height: 60px;
-  font-family: "Montserrat";
-  background: #e5e9ff;
-  width: 100%;
-  padding: 10px 20px;
-  cursor: pointer;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
 }

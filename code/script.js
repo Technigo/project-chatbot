@@ -7,16 +7,19 @@ let emailAdress = "";
 let telephoneNumber = "";
 let service = "";
 
-// // Functions declared here
+let currentQuestion = "name";
 
-const hideElement = (elementName) => {
-  const element = document.getElementById(elementName);
-  element.classList.remove("active");
-};
+// Functions declared here
 
-const showElement = (elementName) => {
-  const element = document.getElementById(elementName);
-  element.classList.add("active");
+//Function that shows the initial greeting from the bot through the "showMessage" function.
+//Fuction also activates another function called AddEventListeners
+
+const greeting = () => {
+  showMessage(
+    `"Hi, my name is Bob and I will be guiding you through Bob's cleaning service. What's your name?"`,
+    "bot"
+  );
+  addEventListeners();
 };
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -24,19 +27,18 @@ const showMessage = (message, sender) => {
   if (sender === "user") {
     chat.innerHTML += `
       <section class="chat__user-msg">
-        <div class="chat__bubble chat__user-msg__user-bubble">
-          <p>${message}</p>
-        </div>
-        <img src="assets/user.png" alt="User" />  
+       <div class="chat__bubble chat__user-msg__user-bubble">
+        <p>${message}</p>
+       </div>
+       <i class="far fa-smile icon"></i>
       </section>
     `;
   } else if (sender === "bot") {
-    console.log(chat.innerHTML);
     chat.innerHTML += `
       <section class="chat__bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <i class="far fa-smile-beam icon"></i>
         <div class="chat__bubble chat__bot-msg__bot-bubble">
-          <p>${message}</p>
+         <p>${message}</p>
         </div>
       </section>
     `;
@@ -44,240 +46,212 @@ const showMessage = (message, sender) => {
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
 };
-
-// Starts here
-const sendBotMessage = (message) => {
-  setTimeout(showMessage(message, "bot"), 1000);
-};
-
+// Function that prevent default mode on form
 form.addEventListener(`submit`, (event) => {
   event.preventDefault();
 });
 
-const sendUserMessageName = () => {
-  const message = document.getElementById("textInput"); //visar på id, inte värdet
-  showMessage(message.value, `user`);
-  username = message.value;
-
-  sendBotMessage(
-    `Hi ${message.value}, what cleaning service do you want us to provide for you?`
-  );
-  // message.value = "";
-
-  const submitNameContainer = document.getElementById("submitNameContainer");
-  submitNameContainer.classList.add("hidden");
-
-  const cleanBtnsContainer = document.getElementById("cleanBtnsContainer");
-  cleanBtnsContainer.classList.add("active");
+// Function that sends a bot message with 1 seconds delay
+const sendBotMessage = (message) => {
+  setTimeout(() => showMessage(message, "bot"), 1000);
 };
 
-const submitNameBtn = document.getElementById("submitNameBtn");
-submitNameBtn.addEventListener("click", sendUserMessageName);
+// Function that adds a clickevent to the button submitBtn and then activates the function sendUserMessage
 
-document.getElementById("textInput").addEventListener("keypress", function (e) {
-  if (e.key === "Enter") {
-    sendUserMessageName();
-  }
-});
+const addEventListeners = () => {
+  const submitBtn = document.getElementById("submitBtn");
+  submitBtn.addEventListener("click", sendUserMessage);
+};
 
-sendBotMessage("Hi, my name is Bob. What's your name?");
+// Function that activates another function called "show message" which shows a user message
+// of weekly cleaning. Furthermor it saves service as "weekly cleaning" and currentQuestion as "times a month"
+// It sends out a message through the sendBotMessage function
+// It also adds new html inbetween the <form>....</form>
+// And it activates the function addEventListeners
 
-// -------------------WEEKLY CLEANING BUTTON------------------------------
-
-const weeklyCleaningBtn = document.getElementById("weeklyCleaning");
-weeklyCleaningBtn.addEventListener(`click`, () => {
+const weeklyCleaning = () => {
   showMessage(`Weekly cleaning`, `user`);
   service = `Weekly cleaning`;
+  currentQuestion = `times a month`;
   sendBotMessage(
     `Excellent! How many times a month do you want us to clean your home?`
   );
 
-  const cleanBtnsContainer = document.getElementById("cleanBtnsContainer");
-  cleanBtnsContainer.classList.remove("active");
+  form.innerHTML = `
+  <div id="submitContainer">
+  <label for="textInput"></label>
+  <input id="textInput" type="text" />
+  <button id="submitBtn" type="submit">Send</button>
+  </div>`;
 
-  const submitTimesCleaningContainer = document.getElementById(
-    "submitTimesCleaningContainer"
-  );
-  submitTimesCleaningContainer.classList.add("active");
-});
-
-const sendUserMessageTimesMonthBtn = () => {
-  const message = document.getElementById("submitTimesCleaningInput");
-  showMessage(message.value, `user`);
-
-  sendBotMessage(
-    `Perfect, we will clean ${
-      message.value
-    } times a month. That will cost approximately ${
-      100 * message.value
-    } dollars a month.`
-  );
-  askForEmail();
-  message.value = "";
+  addEventListeners();
 };
 
-const submitTimesCleaningBtn = document.getElementById(
-  "submitTimesCleaningBtn"
-);
-submitTimesCleaningBtn.addEventListener("click", sendUserMessageTimesMonthBtn);
+// Function that activates another function called "show message" which shows a user message
+// of Move-out cleaning. Furthermore it saves service as "Move-out cleaning" and currentQuestion as "square meter"
+// It sends out a message through the sendBotMessage function
+// It also adds new html inbetween the <form>....</form>
+// And it activates the function addEventListeners
 
-document
-  .getElementById("submitTimesCleaningInput")
-  .addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      sendUserMessageTimesMonthBtn();
-    }
-  });
-
-// ---------------------------MOVE OUT CLEANING------------------------------
-
-const moveOutCleaningBtn = document.getElementById("moveOutCleaning");
-moveOutCleaningBtn.addEventListener(`click`, () => {
+const moveOutCleaning = () => {
   showMessage(`Move-out cleaning`, `user`);
   service = `Move-out cleaning`;
+  currentQuestion = `square meter`;
   sendBotMessage(`How many square meters is your home?`);
 
-  const cleanBtnsContainer = document.getElementById("cleanBtnsContainer");
-  cleanBtnsContainer.classList.remove("active");
+  form.innerHTML = `
+  <div id="submitContainer">
+   <label for="textInput"></label>
+   <input id="textInput" type="text" />
+   <button id="submitBtn" type="submit">Send</button>
+  </div>`;
 
-  const submitTimesCleaningContainer = document.getElementById(
-    "submitTimesCleaningContainer"
-  );
-  submitTimesCleaningContainer.classList.remove("active");
-
-  const submitSquareMetersContainer = document.getElementById(
-    "submitSquareMetersContainer"
-  );
-  submitSquareMetersContainer.classList.add("active");
-});
-
-const sendUserMessageSquareMetersBtn = () => {
-  const message = document.getElementById("submitSquareMetersInput");
-  showMessage(message.value, `user`);
-
-  sendBotMessage(
-    `Super, we have registered that your home is ${message.value} square meters. `
-  );
-  askForEmail();
-  message.value = "";
+  addEventListeners();
 };
 
-const submitSquareMetersBtn = document.getElementById("submitSquareMetersBtn");
-submitSquareMetersBtn.addEventListener("click", sendUserMessageSquareMetersBtn);
+// Function that activates another function called "show message" which shows a user message
+// of window cleaning. Furthermore it saves service as "Move-out cleaning" and currentQuestion as "windows"
+// It sends out a message through the sendBotMessage function
+// It also adds new html inbetween the <form>....</form>
+// And it activates the function addEventListeners
 
-document
-  .getElementById("submitSquareMetersInput")
-  .addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      sendUserMessageSquareMetersBtn();
-    }
-  });
-
-// ---------------------------WINDOW CLEANING-----------------------------
-
-const windowCleaningBtn = document.getElementById("windowCleaning");
-windowCleaningBtn.addEventListener(`click`, () => {
+const windowCleaning = () => {
   showMessage(`Window cleaning`, `user`);
   service = `Window cleaning`;
+  currentQuestion = `windows`;
   sendBotMessage(`Fantastic! How many windows do you have?`);
 
-  const cleanBtnsContainer = document.getElementById("cleanBtnsContainer");
-  cleanBtnsContainer.classList.remove("active");
+  form.innerHTML = `
+  <div id="submitContainer">
+   <label for="textInput"></label>
+   <input id="textInput" type="text" />
+   <button id="submitBtn" type="submit">Send</button>
+  </div>`;
 
-  const submitSquareMetersContainer = document.getElementById(
-    "submitSquareMetersContainer"
-  );
-  submitSquareMetersContainer.classList.remove("active");
-
-  const submitAmountOfWindowsContainer = document.getElementById(
-    "submitAmountOfWindowsContainer"
-  );
-  submitAmountOfWindowsContainer.classList.add("active");
-});
-
-const sendUserMessageAmountsWindowsBtn = () => {
-  const message = document.getElementById("submitAmountOfWindowsInput");
-  showMessage(message.value, `user`);
-
-  sendBotMessage(
-    `Perfect ${username}, we will clean your ${
-      message.value
-    } windows. That will cost approximately ${20 * message.value} dollars.`
-  );
-  askForEmail();
-
-  message.value = "";
+  addEventListeners();
 };
 
-const submitAmountsWindowsBtn = document.getElementById(
-  "submitAmountOfWindowsBtn"
-);
-submitAmountsWindowsBtn.addEventListener(
-  "click",
-  sendUserMessageAmountsWindowsBtn
-);
-
-document
-  .getElementById("submitAmountOfWindowsContainer")
-  .addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      sendUserMessageAmountsWindowsBtn;
-    }
-  });
-
-// ------------------------------- MUTUAL FUNCTIONS ---------------------------------
+//A function in which the bot asks for the users email and also changes the current question to email.
+// It also adds new information to form.innerhtml since we want to change the type to email.
+//Hence we also need to add new eventlisteners.
 
 const askForEmail = () => {
-  sendBotMessage(`What is your e-mail adress so that we can send you a offer?`);
-  hideElement("submitAmountOfWindowsContainer");
-  hideElement("submitTimesCleaningContainer");
-  hideElement("submitSquareMetersContainer");
-  showElement("submitEmailContainer");
+  sendBotMessage(
+    `What is your e-mail adress so that we can send you an offer?`
+  );
+  currentQuestion = `email`;
+
+  form.innerHTML = `
+  <div id="submitContainer">
+   <label for="textInput"></label>
+   <input id="textInput" type="email" />
+   <button id="submitBtn" type="submit">Send</button>
+  </div>`;
+
+  addEventListeners();
 };
 
-const sendUserMessageEmailBtn = () => {
-  const message = document.getElementById("submitEmailInput");
-  showMessage(message.value, `user`);
-  emailAdress = message.value;
+//A function in which the bot asks for the users number and also changes the current question to number.
+// It also adds new information to form.innerhtml since we want to change the type to tel.
+//Hence we also need to add new eventlisteners.
 
-  askForNumber();
+const askForNumber = () => {
+  sendBotMessage(`What is your telephone number?`);
+  currentQuestion = `number`;
+
+  form.innerHTML = `
+  <div id="submitContainer">
+  <label for="textInput"></label>
+  <input id="textInput" type="tel" />
+  <button id="submitBtn" type="submit">Send</button>
+  </div>`;
+
+  addEventListeners();
+};
+
+// Function that takes the message input by the user and then actvates the function "showMessage" as a user message.
+// If currentQuestion is name it tells the username to be = message.value. It activates a sendBotMessage
+// It also adds new html inbetween the <form>....</form>
+// It adds a clickevent on the weeklyCleaningBtn and if it is clicked it starts the function weekly cleaning.
+// It also sets the message.value = ""
+
+const sendUserMessage = () => {
+  const message = document.getElementById("textInput");
+  showMessage(message.value, `user`);
+
+  if (currentQuestion === `name`) {
+    username = message.value;
+    sendBotMessage(
+      `Hi ${username}, what cleaning service do you want us to provide for you?`
+    );
+
+    form.innerHTML = `<button id="weeklyCleaning">Weekly cleaning</button>
+    <button id="moveOutCleaning">Move-out cleaning</button>
+    <button id="windowCleaning">Window cleaning</button>`;
+
+    const weeklyCleaningBtn = document.getElementById("weeklyCleaning");
+    weeklyCleaningBtn.addEventListener(`click`, weeklyCleaning);
+
+    const moveOutCleaningBtn = document.getElementById("moveOutCleaning");
+    moveOutCleaningBtn.addEventListener(`click`, moveOutCleaning);
+
+    const windowCleaningBtn = document.getElementById("windowCleaning");
+    windowCleaningBtn.addEventListener(`click`, windowCleaning);
+  }
+  //If currentQuestion is equal to times a month the sendBotMessage activates with a message to the user.
+  // it also calls the function ask for email.
+  else if (currentQuestion === `times a month`) {
+    sendBotMessage(
+      `Perfect, we will clean ${
+        message.value
+      } times a month. That will cost approximately ${
+        100 * message.value
+      } dollars a month.`
+    );
+    askForEmail();
+
+    ////If currentQuestion is equal to square meter the sendBotMessage activates with a message to the user.
+    // it also calls the function ask for email.
+  } else if (currentQuestion === `square meter`) {
+    sendBotMessage(
+      `Super, we have registered that your home is ${message.value} square meters. `
+    );
+    askForEmail();
+
+    //If currentQuestion is equal to windows the sendBotMessage activates with a message to the user.
+    // it also calls the function ask for email.
+  } else if (currentQuestion === `windows`) {
+    sendBotMessage(
+      `Perfect ${username}, we will clean your ${
+        message.value
+      } windows. That will cost approximately ${20 * message.value} dollars.`
+    );
+    askForEmail();
+
+    //if current question === email it stores the message.value as the emailAdress and calls the fucnction ask for number.
+  } else if (currentQuestion === `email`) {
+    emailAdress = message.value;
+    askForNumber();
+
+    //if current question === number it stores the message.value as the telephoneNumber and calls for the function sendBotMessage
+  } else if (currentQuestion === `number`) {
+    telephoneNumber = message.value;
+    sendBotMessage(
+      `Thank you ${username} for your interest in our service: ${service}. We will return with a offer to the emailadress: ${emailAdress} and call you within a week to your number: ${telephoneNumber} to decide a time for the cleaning. Have a lovley day!`
+    );
+  }
   message.value = "";
 };
 
-const submitEmailBtn = document.getElementById("submitEmailBtn");
-submitEmailBtn.addEventListener("click", sendUserMessageEmailBtn);
+// Starts here
 
-document
-  .getElementById("submitEmailContainer")
-  .addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      sendUserMessageEmailBtn;
-    }
-  });
+greeting();
 
-const askForNumber = () => {
-  sendBotMessage(`What is your number?`);
-  hideElement("submitEmailContainer");
-  showElement("submitNumberContainer");
-};
+// Set up your eventlisteners here
 
-const sendUserMessageNumberBtn = () => {
-  const message = document.getElementById("submitNumberInput");
-  showMessage(message.value, `user`);
-  telephoneNumber = message.value;
-
-  sendBotMessage(
-    `Thank you ${username} for your interest in our service: ${service}. We will return with a offer to the emailadress: ${emailAdress} and with a textmessage to the number ${telephoneNumber}`
-  );
-};
-
-const submitNumberBtn = document.getElementById("submitNumberBtn");
-submitNumberBtn.addEventListener("click", sendUserMessageNumberBtn);
-
-document
-  .getElementById("submitNumberContainer")
-  .addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      sendUserMessageNumberBtn;
-    }
-  });
+// When website loaded, chatbot asks first question.
+// normally we would invoke a function like this:
+//
+// But if we want to add a little delay to it, we can wrap it in a setTimeout:
+// setTimeout(functionName, timeToWaitInMilliSeconds)
+// This means the greeting function will be called one second after the website is loaded.
