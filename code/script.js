@@ -5,6 +5,7 @@ const sendBtn = document.getElementById('send-btn')
 const userName = document.getElementById('name-input')
 const inputWrapper = document.getElementById('input-wrapper')
 
+
 // Global variables, if you need any, declared here
 
 // Functions declared here
@@ -12,10 +13,22 @@ const wantToPlay = (user) => {
   console.log(user);
   showMessage(`Hi, ${user}, do you want to know who your celebrity soulmate is?`, 'bot')
   
-  // inputWrapper.innerHTML = `
-  // <button id="yes">Yes</button>
-  // <button id="no">No</button>
-  // `
+  inputWrapper.innerHTML = `
+  <button type="submit" id="yes">Yes</button>
+  <button type="submit" id="no">No</button>
+  `
+  const yesBtn = document.getElementById('yes')
+  const noBtn = document.getElementById('no')
+
+  yesBtn.addEventListener('click', (e) => {
+    showMessage(`Yes!`, 'user')
+    e.preventDefault();
+
+  })
+  noBtn.addEventListener('click', (e) => {
+    showMessage(`No!`, 'user')
+    e.preventDefault();
+  })
 }
 console.log(wantToPlay);
 
