@@ -36,7 +36,7 @@ const showMessage = (message, sender) => {
 
 // 2. Function greeting: This function invokes ('calls') the first function, so when the function greeting is invokes, invokes the first function.
 const greeting = () => {
-showMessage(`What's your name?`, 'bot')
+showMessage(`Welcome to Flowerland! What's your name?`, 'bot')
 }
 
 setTimeout(greeting,1000);

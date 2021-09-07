@@ -73,6 +73,10 @@ input {
   font-weight: 600;
   line-height: 26px;
   flex: 1;
+  border-radius: 10px;
+}
+input:focus {
+ outline: none;
 }
 
 main {
@@ -163,6 +167,7 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  border-radius: 10px;
 }
 
 button:hover {
