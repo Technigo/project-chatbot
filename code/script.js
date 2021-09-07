@@ -3,6 +3,9 @@ const chat = document.getElementById('chat')
 const handleNameInput = document.getElementById('name-input')
 const sendBtn = document.getElementById('send-btn')
 const nameForm = document.getElementById('name-form')
+const inputWrapper = document.getElementById('input-wrapper')
+
+let questionNumber = 1
 
 // Global variables, if you need any, declared here
 
@@ -34,8 +37,26 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
+const nextQuestion = (message) => {
+  console.log('questionNumber', questionNumber)
+
 // Starts here
+//const conversation = () => {
+ // if (questionNumber === 1) {
+   // greeting();
+  //} else if  
+    //(questionNumber === 2) {
+    // drinks(); 
+  //} else if 
+    //(questionNumber === 3) {
+  //} else {
+    //console.log('error');
+ // }
+//}
+
+
 const greeting = () => {
+  questionNumber = 1
   showMessage(`Hello, welcome to the café! What's your name?`, 'bot')
 }
 
@@ -50,12 +71,35 @@ nameForm.addEventListener('submit', (event) => {
   showMessage(inputedName, 'user');
   handleNameInput.value ='';
 
-  const food = () => {
-    showMessage(`Hello ${inputedName}! What would you like to order?`, 'bot');
+  const drinks = () => {
+    questionNumber++
+    showMessage(`Hello ${inputedName}! What would you like to drink?`, 'bot');
+    inputWrapper.innerHTML = `
+    <button id="coffeeBtn">Coffee</button>
+    <button id="teaBtn">Tea</button>
+    <button id="juiceBtn">Juice</button>
+  `
+    document
+      .getElementById('coffeeBtn')
+      .addEventListener('click', () => conversation('coffee'))
+    document
+      .getElementById('teaBtn')
+      .addEventListener('click', () => conversation('tea'))
+    document
+      .getElementById('juiceBtn')
+      .addEventListener('click', () => conversation('juice'))
   }
+  setTimeout(drinks, 500);
 
-  setTimeout(food, 500);
+  const drinkChoices = () => {
+    questionNumber++
+
+    // lyssna på knapparna
+    // knappval i show message
+    // olia dryckesval 
+  }
 });
+
 
 
 
