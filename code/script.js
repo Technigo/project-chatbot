@@ -40,6 +40,11 @@ const greeting = () => {
 	showMessage(`Hello there, are you ready to place your order?`, 'bot');
 	// Just to check it out, change 'bot' to 'user' here 👆
 };
+
+const clearInput = () => {
+	inputWrapper.innerHTML = ``;
+};
+
 const selectTheme = () => {
 	showMessage(`Sure!`, 'user');
 	showMessage(`That's awesome!`, 'bot');
@@ -96,23 +101,51 @@ const evaluateThemeSelection = (selectedTheme) => {
 	showMessage(selectedTheme, 'user');
 	if (selectedTheme === 'Star Wars™') {
 		showMessage(`Awesome! You picked the only valid choice!`, 'bot');
+		starWarsItems();
 	} else {
 		showMessage(`Shoot! ${selectedTheme} is out of stock. How about Star Wars lego?`, 'bot');
 		inputWrapper.innerHTML = `
     <button id="yes-btn">Sure! Show me what you got!</button>
     <button id="no-btn">Not, not interested.</button>
     `;
-		const yesBtn = document.getElementById('yes-btn');
-		const noBtn = document.getElementById('no-btn');
-
-		yesBtn.addEventListener('click', () => starWarsItems());
-		noBtn.addEventListener('click', () => {
+		document.getElementById('yes-btn').addEventListener('click', () => starWarsItems());
+		document.getElementById('no-btn').addEventListener('click', () => {
 			showMessage('No, not interested.', 'user');
 			showMessage('Ok. Good bye.', 'bot');
-			inputWrapper.innerHTML = `
-    `;
+			clearInput();
 		});
 	}
+};
+
+const starWarsItems = () => {
+	showMessage(`Choose one of our top picks:`, 'bot');
+	inputWrapper.innerHTML = `
+  <button id="btn-1">Millenium Falcon</button>
+  <button id="btn-2">R2D2</button>
+  <button id="btn-3">Death Star</button>
+    `;
+	document.getElementById('btn-1').addEventListener('click', () => confirmOrder('Millenium Falcon'));
+	document.getElementById('btn-2').addEventListener('click', () => confirmOrder('R2D2'));
+	document.getElementById('btn-3').addEventListener('click', () => confirmOrder('Death Star'));
+};
+
+const confirmOrder = (item) => {
+	showMessage(item, 'user');
+	showMessage(`One ${item} added to you cart are you happy with order`, 'bot');
+	inputWrapper.innerHTML = `
+  <button id="yes-btn">Yes!</button>
+  <button id="no-btn">No!</button>
+  `;
+	document.getElementById('yes-btn').addEventListener('click', () => {
+		showMessage('Yes', 'user');
+		showMessage(`One ${item} will be sent to you from a galaxy far far away, May the force be with you!`, 'bot');
+		clearInput();
+	});
+	document.getElementById('no-btn').addEventListener('click', () => {
+		showMessage('No.', 'user');
+		showMessage('Ok. Good bye.', 'bot');
+		clearInput();
+	});
 };
 
 // Set up your eventlisteners here
