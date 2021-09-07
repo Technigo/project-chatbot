@@ -108,7 +108,10 @@ const evaluateThemeSelection = (selectedTheme) => {
     <button id="yes-btn">Sure! Show me what you got!</button>
     <button id="no-btn">Not, not interested.</button>
     `;
-		document.getElementById('yes-btn').addEventListener('click', () => starWarsItems());
+		document.getElementById('yes-btn').addEventListener('click', () => {
+			showMessage('Sure! Show me what you got!', 'user');
+			starWarsItems();
+		});
 		document.getElementById('no-btn').addEventListener('click', () => {
 			showMessage('No, not interested.', 'user');
 			showMessage('Ok. Good bye.', 'bot');
@@ -118,7 +121,7 @@ const evaluateThemeSelection = (selectedTheme) => {
 };
 
 const starWarsItems = () => {
-	showMessage(`Choose one of our top picks:`, 'bot');
+	showMessage(`May the force be with you! Choose one of our top picks:`, 'bot');
 	inputWrapper.innerHTML = `
   <button id="btn-1">Millenium Falcon</button>
   <button id="btn-2">R2D2</button>
@@ -131,14 +134,14 @@ const starWarsItems = () => {
 
 const confirmOrder = (item) => {
 	showMessage(item, 'user');
-	showMessage(`One ${item} added to you cart are you happy with order`, 'bot');
+	showMessage(`One ${item} added to you cart. Are you happy with order?`, 'bot');
 	inputWrapper.innerHTML = `
   <button id="yes-btn">Yes!</button>
   <button id="no-btn">No!</button>
   `;
 	document.getElementById('yes-btn').addEventListener('click', () => {
 		showMessage('Yes', 'user');
-		showMessage(`One ${item} will be sent to you from a galaxy far far away, May the force be with you!`, 'bot');
+		showMessage(`Awesome! One ${item} will be sent to you from a galaxy far far away.`, 'bot');
 		clearInput();
 	});
 	document.getElementById('no-btn').addEventListener('click', () => {
