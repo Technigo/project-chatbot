@@ -1,5 +1,6 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+inputWrapper = document.getElementById('input-wrapper')
 
 // Global variables, if you need any, declared here
 
@@ -38,9 +39,16 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage(`- Hello there, welcome to the Java place. What kind of coffee are you up for?`, 'bot')
+  inputWrapper.innerHTML = `
+    <button id="hotBtn">Hot</button>
+    <button id="coldBtn">Cold</button>
+  `
+  document.getElementById('hotBtn').addEventListener('click', () => handleCoffeeKindInput('Hot'));
+  document.getElementById('coldBtn').addEventListener('click', () => handleCoffeeKindInput('Cold'));
+
 }
+
 
 // Set up your eventlisteners here
 
