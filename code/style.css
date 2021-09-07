@@ -83,8 +83,7 @@ main {
   flex-shrink: 0;
 }
 
-.bot-msg img,
-.user-msg img {
+.bot-msg img, .user-msg img {
   width: 60px;
   height: 60px;
 }
