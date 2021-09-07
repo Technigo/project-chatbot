@@ -74,6 +74,11 @@ main {
   display: flex;
   margin: 16px 8px 0 0;
   flex-shrink: 0;
+  /* visibility: hidden; */
+}
+
+.reveal {
+  visibility: visible;
 }
 
 .user-msg {

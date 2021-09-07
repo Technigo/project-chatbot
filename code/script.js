@@ -1,5 +1,6 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+const start = document.getElementsByClassName('start')
 
 // Global variables, if you need any, declared here
 
@@ -45,7 +46,7 @@ const showMessage = (message, sender) => {
 
 // The dialogue starts here
 const greeting = () => {
-  showMessage(`Lovely weather we're having, don't you think?`, 'user')
+  showMessage(`Lovely weather we're having, don't you think?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -57,5 +58,31 @@ const greeting = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000)
+
+// setTimeout(greeting, 1000)
+
+const onFormSubmit = (event) => {
+  event.preventDefault();
+  const message = document.getElementById('name-input').value;
+  showMessage(message, 'user');
+};
+
+const startButton = document.getElementById('start');
+startButton.addEventListener('click', () => {
+  showMessage('Hello I\'m a bot', 'bot');
+});
+
+const form = document.getElementById('name-form');
+form.addEventListener('submit', onFormSubmit);
+
+
+// 0. Create "Start" button
+// 1. Click on button
+// 2. Get bot phrase
+// 3. Output bot phrase
+
+/* start.onClick = function() {
+  setTimeout(greeting, 1000)
+}
+ */
 
