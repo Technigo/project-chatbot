@@ -97,7 +97,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  max-width: 40%;
+  max-width: 50%;
 }
 
 .bot-bubble {
@@ -150,3 +150,7 @@ button:hover {
 #name-input {
   color: black;
 }
+
+@media (min-width: 768px) {
+  
+  }
