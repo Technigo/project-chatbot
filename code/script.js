@@ -89,10 +89,31 @@ const selectTheme = () => {
   </select>
 `;
 	const select = document.getElementById('select-theme');
-	select.addEventListener('change', () => console.log(select.value));
+	select.addEventListener('change', () => evaluateThemeSelection(select.value));
 };
 
-const evaluateThemeSelection = () => {};
+const evaluateThemeSelection = (selectedTheme) => {
+	showMessage(selectedTheme, 'user');
+	if (selectedTheme === 'Star Wars™') {
+		showMessage(`Awesome! You picked the only valid choice!`, 'bot');
+	} else {
+		showMessage(`Shoot! ${selectedTheme} is out of stock. How about Star Wars lego?`, 'bot');
+		inputWrapper.innerHTML = `
+    <button id="yes-btn">Sure! Show me what you got!</button>
+    <button id="no-btn">Not, not interested.</button>
+    `;
+		const yesBtn = document.getElementById('yes-btn');
+		const noBtn = document.getElementById('no-btn');
+
+		yesBtn.addEventListener('click', () => starWarsItems());
+		noBtn.addEventListener('click', () => {
+			showMessage('No, not interested.', 'user');
+			showMessage('Ok. Good bye.', 'bot');
+			inputWrapper.innerHTML = `
+    `;
+		});
+	}
+};
 
 // Set up your eventlisteners here
 yesBtn.addEventListener('click', () => selectTheme());
