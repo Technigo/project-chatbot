@@ -1,11 +1,19 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+const welcomeButton = document.getElementById('welcomeBtn')
 
 // Global variables, if you need any, declared here
 
 // Functions declared here
 
 // This function will add a chat bubble in the correct place based on who the sender is
+
+
+  //welcomeButton.addEventListener('click', (greeting) => {
+    //button.style.display = 'none';
+  //})
+//}
+
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     console.log();
@@ -34,10 +42,17 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Hello there Beat Bot!`, 'user')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+welcomeButton.onclick = function () {
+  if (welcomeButton.style.display !== 'none') {
+    welcomeButton.style.display = 'none'; {
+      greeting(showMessage, 'bot')
+      }
+    };
+}
 // Set up your eventlisteners here
 
 // When website loaded, chatbot asks first question.
@@ -46,4 +61,4 @@ const greeting = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000)
+//setTimeout(greeting, 1000)
