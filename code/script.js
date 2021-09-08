@@ -8,7 +8,7 @@ const form = document.getElementById("name-form");
 
 
 // Global variables, if you need any, declared here
-
+//let nextQuestion = 0
 // Functions declared here
 
 let questionNumber = 1
@@ -49,7 +49,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
- questionNumber = 0
+ questionNumber = 1
   showMessage(`Hello there Beat Bot!`, 'user')
   setTimeout (() => botGreeting(), 1000)
 }
@@ -64,40 +64,71 @@ welcomeButton.onclick = function () {
 //
 const botGreeting = () => {
   showMessage(`Hello there human, what's your name?`, 'bot')
-  nextQuestion()
+  //handleNameInput()
 }
 
-
-const nextQuestion = ()=>{
-  console.log('questionNumber', questionNumber)
- if (questionNumber === 0){
-    showMessage(botGreeting)
-    input.value =''
-    
-    
-  }
-}
 
 const handleNameInput = (event) => {
   event.preventDefault()
   
   const name = input.value
-  showMessage(`My name is ${name}`, 'user')
+  questionNumber = 2
   input.value = ''
-  setTimeout(whatMood, 1000)
+  nextQuestion(name)
+
 }
 
-const whatMood = () => {
-  questionNumber = 1
-  showMessage(`Oh ${name} what mood are you in?`, 'bot')
+const whatMood = (name) => {
+  questionNumber = 3
+  showMessage(`Oh ${name} describe your mood in one word!`, 'bot')
+  console.log('whatMood() ', input.value)
+  nextQuestion()
 }
 
+const moodAnswer = (event) => {
+  console.log('moodAnswer() ', input.value)
+  event.sender('user')
+  const inputMood = input.value
+  questionNumber = 4
+  showMessage(`I am ${inputMood}`, 'user')
+  input.value = ''
+  nextQuestion()
+}
+
+
+const songSelection = () => {
+  questionNumber = 5
+  //showMessage(`So you are ${inputMood}, here are some song recommendations`, 'bot')
+  nextQuestion()
+}
+
+const nextQuestion = (message) => {
+  console.log();
+  if (questionNumber === 2){
+    showMessage(`My name is ${message}`, 'user')
+    input.value = ''
+   setTimeout(() => whatMood(message), 1000);
+   } else if (questionNumber === 3) {
+     input.value = ''
+     setTimeout(() => moodAnswer(message), 2000);
+   } else if (questionNumber === 4) {
+    input.value = ''
+     setTimeout(() => songSelection(message), 1000);
+   } } /*else if (indexDoggos === 4) {
+     console.log()
+     userReply(message)
+     setTimeout(() => nameofDog(message), 2000);           
+} else {  
+    userReply(message);
+    setTimeout(() => goodbye(message), 2000);
+}*/
 
 
 // Set up your eventlisteners here
 
 form.addEventListener('submit', handleNameInput)
-sendBtn.addEventListener('click', () => nextQuestion(input.value))
+
+/*sendBtn.addEventListener('click', () => nextQuestion(input.value))*/
 
 
 // When website loaded, chatbot asks first question.
@@ -107,5 +138,3 @@ sendBtn.addEventListener('click', () => nextQuestion(input.value))
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 //setTimeout(greeting, 1000)
-
-
