@@ -8,17 +8,17 @@ const chat = document.getElementById('chat')
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
-    console.log('this is the user talking') //this is shown because we changed to 'user' in const greeting.
+    console.log('this is the user talking') //this NOT is shown because we changed to 'user' in const greeting.
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
-          <p>message</p>
+          <p>${message}</p>
         </div>
         <img src="assets/user.png" alt="User" />  
       </section>
-    ` // at row 15 - when we removed the ${}/template literals the bot writes "message" since we no longer are calling the message-string.
+    ` 
   } else if (sender === 'bot') {
-    console.log('this is the bot talking')//this is NOT showing because we changed to 'user' in const greeting.
+    console.log('this is the bot talking')//this is showing because we changed to 'user' in const greeting.
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -32,24 +32,13 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
+// Starts here, introducing Plot the plant bot
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'user')
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage(`Hello there! I'm Plot, the plant bot. What's your name?`, 'bot')
 }
 
 // Set up your eventlisteners here
 
 // When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-  // setTimeout(greeting, 1000)
-
-// makes the greeting take 6 seconds to show after the page is loaded
-// setTimeout(greeting, 6000)
-
-// makes the greeting appear directly when the page is loaded
-setTimeout(greeting)
+// setTimeout makes the greeting take 0.5 seconds to show after the page is loaded
+setTimeout(greeting, 500)
