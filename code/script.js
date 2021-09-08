@@ -33,7 +33,7 @@ const showMessage = (message, sender) => {
 // The Bot starts here
 //The greeting function sends a message as the bot asking for your name.
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Hello and welcome to Pretty Pets, What's the name of your furry friend?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
