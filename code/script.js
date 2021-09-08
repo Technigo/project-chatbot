@@ -1,3 +1,8 @@
+
+// Creating an empty Object
+// const  userFormInputs = {};
+
+
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('input-wrapper');
@@ -62,6 +67,8 @@ const greeting = () => {
 //     setTimeout(() => spaceAgeQuestion(userName), 1000);
 //   })
 // };
+
+  // userFormInputs.name = nameInput.value;
 
 const handleNameInput = document.getElementById('name-form').addEventListener('submit', (event) => {
   event.preventDefault()
@@ -245,6 +252,7 @@ setTimeout(greeting, 1000);
 // // const arr = ['a', '383473874'];
 // // const userFormInputs = {key:value, key:value, key:value };
 
-// const  userFormInputs = {type:"Fiat", model:"500", color:"white"};
-// console.log(userFormInputs);
 
+
+
+// console.log(userFormInputs);
