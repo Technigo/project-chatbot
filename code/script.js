@@ -46,6 +46,7 @@ const showMessage = (message, sender) => {
 }
 
 const usersPet = (message) => {
+
   if (questionStep === 1) {
     userAnswer(message)
     setTimeout(() => petTypes(message), 1000)
@@ -79,22 +80,12 @@ form.addEventListener('submit', (event) => {
   userAnswer(`My name is ${name}`)
   nameInput.value = ''
   setTimeout(() => petTypes(name), 1000)
-  //   questionStep = 2
-  // } else if (questionStep === 2) {
-  //   userAnswer(form.pet.value)
-  // }
 })
 
 
-// 2nd question and answer
-// const usersPet = (type) => {
-//   userAnswer(type)
-//   setTimeout(() => petServices(type), 1000)
-// }
-
 const petTypes = (name) => {
   questionStep++
-  botAnswer(`Nice to meet you ${name} :) What type of pet do you have?`)
+  botAnswer(`Nice to meet you ${name} :) What kind of pet needs our care?`)
 
   inputWrapper.innerHTML = `
   <button id= 'dogButton'>dog 🐶</button>
@@ -105,26 +96,34 @@ const petTypes = (name) => {
 
 }
 
-// third question and answer
-// const usersService = (service) => {
-//   userAnswer(service)
-//   setTimeout(() => petPayment(service), 1000)
-// }
-
 const petServices = (type) => {
   questionStep++
-  botAnswer(`So you are a ${type} person :) Please select a procedure for your pet.`)
+  botAnswer(`So you are a ${type} person :) Please select a service for your pet.`)
 
   inputWrapper.innerHTML = `
-    <button id='firstService'>Bathing </button>
-    <button id='secondService'>Brushing</button>
-    <button id='thirdService'>Nail trimming</button>
-    <button id='forthService'>Haircut</button>
-  `
-  document.getElementById('firstService').addEventListener('click', () => usersPet('Bathing'))
-  document.getElementById('secondService').addEventListener('click', () => usersPet('Brushing'))
-  document.getElementById('thirdService').addEventListener('click', () => usersPet('Nail trimming'))
-  document.getElementById('forthService').addEventListener('click', () => usersPet('Haircut'))
+  <select id = 'select'>
+    <option value='' selected disabled> Choose service </option>
+    <option value='Bathing'>Bathing</option>
+    <option value='Brushing'>Brushing</option>
+    <option value='Nail trimming'>Nail trimming</option>
+    <option value='Haircut'>Haircut</option>
+    </select> 
+    `
+  const select = document.getElementById('select')
+  select.addEventListener('change', () => usersPet(select.value))
+
+  // inputWrapper.innerHTML = `
+  //   <button id='firstService'>Bathing </button>
+  //   <button id='secondService'>Brushing</button>
+  //   <button id='thirdService'>Nail trimming</button>
+  //   <button id='forthService'>Haircut</button>
+  // `
+
+
+  // document.getElementById('firstService').addEventListener('click', () => usersPet('Bathing'))
+  // document.getElementById('secondService').addEventListener('click', () => usersPet('Brushing'))
+  // document.getElementById('thirdService').addEventListener('click', () => usersPet('Nail trimming'))
+  // document.getElementById('forthService').addEventListener('click', () => usersPet('Haircut'))
 }
 
 const priceInformation = (choice) => {
@@ -157,11 +156,9 @@ const petPayment = () => {
 
 const petBye = () => {
   botAnswer(`Thank you for your booking! We are looking forward to meet you and your pet.`)
-  botAnswer(`Have a nice day!`)
+  botAnswer(`Have a nice day! 👋🏼`)
   inputWrapper.innerHTML = ``
 }
-
-
 
 
 // When website loaded, chatbot asks first question.

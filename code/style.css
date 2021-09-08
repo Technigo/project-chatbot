@@ -9,12 +9,17 @@ body {
   background-image: url(dtuctf.jpeg);
 }
 
+input::-webkit-input-placeholder {
+  font-size: 18px;
+  font-family: 'Raleway', sans-serif;
+  color: grey;
+}
 
 h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #79927a;
+  color: #1f4c1d;
   text-align: center;
 }
 
@@ -22,9 +27,24 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color:#eef2ea;
+  color: #386036;
   text-align: center;
   margin-bottom: 36px;
+}
+
+select {
+  border: none;
+  border-radius: 4px;
+  color: grey;
+  font-size: 20px;
+  font-weight: 600;
+  height: 60px;
+  font-family: 'Montserrat';
+  background: beige;
+  width: 100%;
+  padding: 0 20px;
+  cursor: pointer;
+
 }
 
 p {
@@ -152,5 +172,6 @@ button:hover {
 }
 
 @media (min-width: 768px) {
+  
   
   }
