@@ -85,17 +85,29 @@ const sundayAfternoon = () => {
 
 const showMovieOptions = () => {
   showMessage('Movies, great! What kind of movies do you like?','bot')
-
+    inputWrapper.innerHTML = `
+    <button type="submit" id="horror">Horror</button>
+    <button type="submit" id="drama">Drama</button>
+    <button type="submit" id="comedy">Comedy</button>
+    `
 };
 
 const showMusicOptions = () => {
   showMessage('Music, awesome! What would you like to shake your booty to?','bot')
-
+    inputWrapper.innerHTML = `
+    <button type="submit" id="rock">Rock</button>
+    <button type="submit" id="hiphop">HipHop</button>
+    <button type="submit" id="pop">Pop</button>
+    `
 };
 
 const showReadingOptions = () => {
   showMessage('Awesome, what would you like to read?', 'bot')
-
+    inputWrapper.innerHTML = `
+    <button type="submit" id="novels">Novels</button>
+    <button type="submit" id="magazines">Magazines</button>
+    <button type="submit" id="academic">Academic papers</button>
+    `
 };
 
 // This function will add a chat bubble in the correct place based on who the sender is
