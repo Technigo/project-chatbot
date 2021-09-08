@@ -7,7 +7,7 @@ body {
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   background-image:url(assets/hero.jpg);
-  background-size: 100%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -40,8 +40,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #E2ECE9;
+  color: #006D77;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -55,7 +55,7 @@ main {
   width: 100%;
   max-width: 700px;
   height: 600px;
-  border-radius: 30px;
+  border-radius: 5px;
   background: #fff;
   padding: 20px 24px;
   padding-top: 0;
@@ -93,12 +93,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #E2ECE9;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #006D77;
   max-width: 40%;
 }
 
@@ -122,8 +122,24 @@ main {
   display: flex;
 }
 
+select {
+  width:100%;
+  font-size: 28px;
+  padding:5px 30px;
+}
+
+footer {
+color:white;
+position:fixed;
+bottom:0;
+text-align: center;
+padding:20px;
+width:100%;
+}
+
+
 button {
-  background-color: #0026ff;
+  background-color: #006D77;
   color: white;
   border: none;
   border-radius: 4px;
