@@ -1,6 +1,6 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
-inputWrapper = document.getElementById('input-wrapper')
+const inputWrapper = document.getElementById('input-wrapper')
 
 // Global variables, if you need any, declared here
 
@@ -49,6 +49,18 @@ const greeting = () => {
 
 }
 
+const handleCoffeeKindInput = (coffeeKind) => {
+  // Store the value in a variable so we can access it after we 
+  // clear it from the input
+  showMessage(coffeeKind, 'user')
+
+  // After 1 second, show the next question by invoking the next function.
+  // passing the name into it to have access to the user's name if we want
+  // to use it in the next question from the bot.
+  setTimeout(() => showCoffeeOptions(coffeeKind), 1000)
+
+
+}
 
 // Set up your eventlisteners here
 
