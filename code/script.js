@@ -1,23 +1,9 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById('input-wrapper')
-const sendButton = document.getElementById('button')
 const form = document.getElementById('name-form')
-const userInput = document.getElementById('name-input')
-
-
-
-// Global variables, if you need any, declared here
-let questionNumber = 1 
-// Functions declared here
-const botReply = (msg) => {
-  showMessage(msg, 'bot')
-}
-
-const userReply= (msg) => {
-  showMessage(msg, 'user')
-}
-
+const inputUser = document.getElementById('name-input')
+const btn = document.getElementById('button')
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -55,29 +41,25 @@ const greeting = () => {
 
 form.addEventListener('submit', (event) => {
   event.preventDefault()
-  const name = userInput.value
+  const name = inputUser.value
   showMessage (name, 'user')
-  userInput.value = ''
-  setTimeout(() => saroumanAsk(name), 1000)
+  inputUser.value = ''
+  setTimeout(() => helpOptions(name), 1000)
+    
 });
 
- const saroumanAsk = (message) => {
-   questionNumber++
-  showMessage (`Nice to meet you ${message}. How can I help you?`, 'bot')
-  userInput.value=''
-  setTimeout(() => howAreYou (name), 1000)
- };
-
- const howAreYou = (message) => {
-  questionNumber++
-  showMessage(`Nice answer`, 'bot')
+const helpOptions = (message) => {
+  showMessage(`Hi ${message}! Do you need help?`, 'bot')
+  inputWrapper.innerHTML = `
+  <section class="input-wrapper">
+  <button id="yes">Yes</button>
+  <button id="no">No</button>
+  </section>
+  `
+  const yesbtn = document.getElementById('yes').addEventListener('submit')
+  console.log('The click', yesbtn)
 }
 
-// form.addEventListener('submit', (event) => {
-//   showMessage(name, 'user')
-//   userInput.value = ''
-//   setTimeout(() => howAreYou(name), 1000)
-// });
 
 
 
@@ -89,4 +71,4 @@ form.addEventListener('submit', (event) => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 500)
+setTimeout(greeting, 900)
