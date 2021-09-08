@@ -94,12 +94,14 @@ const answer= (event)=>{
     question=3
   }
   else if (question===3){
-    showMessage(`${event.target[0].value}`, "user");
-      if (event.target[0].value === 'lost') {
+      if (event.submitter.id === 'lost-btn') {
+        showMessage("I am lost", "user");
         setTimeout(() => showMessage(`Patience you must have! To find to seek is. To seek to find is. I sense a question that ask you wish!`, 'bot'), 1000);
-      } else if (event.target[1].value === 'answer') {
+      } else if (event.submitter.id === 'answer-btn') {
+        showMessage("Looking for an answer", "user");
         setTimeout(() => showMessage(`Ah, to the right place you come? I was expecting you and I sense a question that ask you wish!`, 'bot'), 1000);
       } else {
+        showMessage("I am good", "user");
         setTimeout(() => showMessage(`Powerful you have become, the dark side I sense in you. Found themselves there, many people have. Yesss. I sense a question that ask you wish!`, 'bot'), 1000);
       }
     setTimeout(finalQuestion, 1500)
