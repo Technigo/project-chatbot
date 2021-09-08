@@ -2,7 +2,7 @@
 // This gets the html-element with id chat and stores it in a variable called chat
 const chat = document.getElementById("chat");
 // This gets the html-element with id name-input and stores it in the nameInput variable
-const nameInput = document.getElementById("name-input");
+let nameInput = document.getElementById("name-input");
 // This gets the html-element with id input-wrapper and stores it in the inputWrapper variable
 const inputWrapper = document.getElementById("input-wrapper");
 
@@ -13,10 +13,7 @@ const inputWrapper = document.getElementById("input-wrapper");
 const handleNameInput = (event) => {
   event.preventDefault();
   let name = nameInput.value;
-  console.log(name);
   showMessage(name, "user");
-  //nameInput.value = ''
-
   setTimeout(() => showPlantOptions(name), 1000); // This then runs our function which creates the dropdown
 };
 
@@ -27,13 +24,13 @@ const showPlantOptions = (userName) => {
     `Nice to meet you ${userName}! What kind of plants to you want help with?`,
     "bot"
   );
-
   inputWrapper.innerHTML = `
   <select id="dropdown">
     <option value="Monstera">Monstera</option>
     <option value="Pilea">Pilea</option>
     <option value="Calathea">Calathea</option>
-  </select>`;
+  </select>
+  <button class="restart-button" onClick="resetChat()">Take me back to the start</button>`;
 };
 
 // This is a function which listens for a change in the dropdown
@@ -47,17 +44,38 @@ const dropDownChoice = () => {
 
 const botReply = (chosenPlant) => {
   let name = nameInput.value;
-  showMessage(`Good choice, ${name}! You have choosen ${chosenPlant}.`, 'bot')
+  showMessage(`Good choice, ${name}! You have choosen ${chosenPlant}.`, "bot");
 
   if (chosenPlant === "Monstera") {
-    showMessage(`Bla bla bla`, "bot")
+    showMessage(`Bla bla bla`, "bot");
   } else if (chosenPlant === "Pilea") {
-    showMessage(`bla bla bla 2`, "bot")
+    showMessage(`bla bla bla 2`, "bot");
   } else {
-    showMessage(`bla bla bla 3`, "bot")
+    showMessage(`bla bla bla 3`, "bot");
   }
-  // plantChoice = '';
+  // inputWrapper.innerHTML =`
+  // <form id="name-form">
+  //   <input id="name-input" type="text" />
+  //     <button class="send-btn" type="submit" id="submit">
+  //         Send
+  //     </button>
+  // </form>
+  // `
+  showMessage(`${name}, would you like more information about another flower?`, 'bot')
 };
+
+const resetChat = () => {
+  inputWrapper.innerHTML =`
+  <form id="name-form">
+    <input id="name-input" type="text" />
+      <button class="send-btn" type="submit" id="submit">
+          Send
+      </button>
+  </form>
+  `
+  nameInput.value = document.getElementById("submit").addEventListener("click", handleNameInput);
+  setTimeout(greeting, 1000);
+}
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -97,6 +115,7 @@ const greeting = () => {
 // element.addEventListener(event, function, useCapture);
 // document.getElementById('name-form').addEventListener("click", showMessage);
 document.getElementById("submit").addEventListener("click", handleNameInput);
+
 // !!!! Add another eventlistener for the dropdown !!!!
 document
   .getElementById("input-wrapper")
