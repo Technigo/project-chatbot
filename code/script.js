@@ -1,12 +1,12 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById("chat");
+const form = document.getElementById("form");
 
 // Global variables, if you need any, declared here
 let username = "";
 let emailAdress = "";
 let telephoneNumber = "";
 let service = "";
-
 let currentQuestion = "name";
 
 // Functions declared here
@@ -43,6 +43,7 @@ const showMessage = (message, sender) => {
       </section>
     `;
   }
+
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
 };
@@ -175,6 +176,13 @@ const resetForm = () => {
   location.reload();
 };
 
+// a Function that checks if the message is not a number and returns true if the number is not a number, and returns false if the number is a number.
+// in the function we also check if the message from the user is empty. If any of these two are true the bot is gonna ask for the user to put in a number.
+const isValueNotNumber = (message) => {
+  let isNotANumber = isNaN(message) || message === "";
+  return isNotANumber;
+};
+
 // Function that takes the message input by the user and then actvates the function "showMessage" as a user message.
 // If currentQuestion is name it tells the username to be = message.value. It activates a sendBotMessage
 // It also adds new html inbetween the <form>....</form>
@@ -205,32 +213,44 @@ const sendUserMessage = () => {
   //If currentQuestion is equal to times a month the sendBotMessage activates with a message to the user.
   // it also calls the function ask for email.
   else if (currentQuestion === `times a month`) {
-    sendBotMessage(
-      `Perfect, we will clean ${
-        message.value
-      } times a month. That will cost approximately ${
-        100 * message.value
-      } dollars a month.`
-    );
-    askForEmail();
+    if (isValueNotNumber(message.value) === true) {
+      sendBotMessage(`I dont understand you. You need to put in a number`);
+    } else {
+      sendBotMessage(
+        `Perfect, we will clean ${
+          message.value
+        } times a month. That will cost approximately ${
+          100 * message.value
+        } dollars a month.`
+      );
+      askForEmail();
+    }
 
     ////If currentQuestion is equal to square meter the sendBotMessage activates with a message to the user.
     // it also calls the function ask for email.
   } else if (currentQuestion === `square meter`) {
-    sendBotMessage(
-      `Super, we have registered that your home is ${message.value} square meters. `
-    );
-    askForEmail();
+    if (isValueNotNumber(message.value) === true) {
+      sendBotMessage(`I dont understand you. You need to put in a number`);
+    } else {
+      sendBotMessage(
+        `Super, we have registered that your home is ${message.value} square meters.`
+      );
+      askForEmail();
+    }
 
     //If currentQuestion is equal to windows the sendBotMessage activates with a message to the user.
     // it also calls the function ask for email.
   } else if (currentQuestion === `windows`) {
-    sendBotMessage(
-      `Perfect ${username}, we will clean your ${
-        message.value
-      } windows. That will cost approximately ${20 * message.value} dollars.`
-    );
-    askForEmail();
+    if (isValueNotNumber(message.value) === true) {
+      sendBotMessage(`I dont understand you. You need to put in a number`);
+    } else {
+      sendBotMessage(
+        `Perfect ${username}, we will clean your ${
+          message.value
+        } windows. That will cost approximately ${20 * message.value} dollars.`
+      );
+      askForEmail();
+    }
 
     //if current question === email it stores the message.value as the emailAdress and calls the fucnction ask for number.
   } else if (currentQuestion === `email`) {
@@ -266,7 +286,6 @@ const sendUserMessage = () => {
       resetFormBtn.addEventListener(`click`, resetForm);
     });
   }
-
   message.value = "";
 };
 
