@@ -6,7 +6,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  /* background: #0026ff; */
+  background-image: url("./assets/galaxies.jpeg");
 }
 
 h1 {
@@ -37,14 +38,25 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: rgb(236, 198, 236);
+  color: #fff;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
   flex: 1;
+}
+input::focus {
+  background: rgb(245, 236, 245);
+}
+
+input:after{
+  background: rgb(245, 236, 245);
+}
+
+input:autofill{
+  background: rgb(245, 236, 245);
 }
 
 main {
@@ -53,12 +65,32 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
-  padding: 20px 24px;
+  background: black;
+  padding: 16px 24px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+}
+ /* main.scroll{
+  background: black; */
+.dropdown {
+  width: 100%;
+  line-height: 32px;
+  background-color: black;
+  color: white;
+  font-size: 24px;
+}
+.dropdown select{
+  display: none;
+}
+.dropdown-selected{
+  background-color: black;
+}
+form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .chat {
@@ -66,12 +98,18 @@ main {
   display: flex;
   justify-content: flex-start;
   overflow: scroll;
+  scrollbar-color: black;
   flex-direction: column;
   padding-bottom: 16px;
+  background: black;
 }
-
+.chat::-webkit-scrollbar, .chat::-webkit-scrollbar-corner{
+  background-color: black;;
+}
 .bot-msg {
   display: flex;
+  background-color: (245, 236, 245);
+  color: purple;
   margin: 16px 8px 0 0;
   flex-shrink: 0;
 }
@@ -79,6 +117,8 @@ main {
 .user-msg {
   display: flex;
   justify-content: flex-end;
+  background-color: (245, 236, 245);
+  color:purple;
   margin: 16px 0 0 8px;
   flex-shrink: 0;
 }
@@ -120,7 +160,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: purple;
   color: white;
   border: none;
   border-radius: 4px;
