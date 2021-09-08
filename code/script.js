@@ -48,19 +48,13 @@ const handleNameQuestion = () => {
     console.log(name)
     showMessage(name, 'user')
     input.value = ''
-    showMessage (`Hello, ${name}! We're ready to take your order`, 'bot')
-    setTimeout(pizzaOption, 1000)
+    showMessage (`Hello, ${name}! Lets talk.`, 'bot')
+    setTimeout(moodOption, 1000)
     }
 
-const pizzaOption =() => {
+const moodOption =() => {
   currentQuestion = 2
-  showMessage (`Which pizza would you like?`, 'bot')
-  // const whatPizza = () => {
-  //     <button id="peperoni">peperoni</button>
-  //     <button id="funghi">funghi</button>
-  //     <button id="margharita">margharita</button>
-  //     }
-    // }
+  showMessage (`How are you feeling today?`, 'bot')
 
 }
 
@@ -71,7 +65,7 @@ const handleInput = () => {     //this is where we add new questions
   if(currentQuestion === 1){
     handleNameQuestion()
   } else if(currentQuestion === 2){
-    pizzaOption()
+    moodOption()
   }
 
 }
