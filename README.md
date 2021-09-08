@@ -12,9 +12,4 @@ Thats a learing project targeted on practicing DOM, Conditionals and EventHandle
 ## View it live
 
 
-## Limitations 
-It is a learning project with a clear goal of practicing an essensials of DOM, Conditionals and EventHandlers manipulations. It is: 
-- not scalable 
-- innerHTML related possible security issue, if used in "real prod"
-
 ## Resources

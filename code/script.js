@@ -1,6 +1,6 @@
 
 // Creating an empty Object
-// const  userFormInputs = {};
+const  userFormInputs = {};
 
 
 // All the DOM selectors stored as short variables
@@ -74,6 +74,8 @@ const handleNameInput = document.getElementById('name-form').addEventListener('s
   event.preventDefault()
   const nameInput = document.getElementById('name-input');
   const userName = nameInput.value;
+  userFormInputs.name = userName;
+  
   if (!isNaN(nameInput.value)) {
     nameInput.value = '' ;
     prompt("You can't have numbers in you Space-name"); 
@@ -247,12 +249,3 @@ const niceTrip = (wish) => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000);
-
-
-// // const arr = ['a', '383473874'];
-// // const userFormInputs = {key:value, key:value, key:value };
-
-
-
-
-// console.log(userFormInputs);
