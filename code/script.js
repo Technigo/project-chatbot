@@ -57,8 +57,6 @@ const handleCoffeeKindInput = (coffeeKind) => {
   // After 1 second, show the next question by invoking the next function.
   // passing the name into it to have access to the user's name if we want
   // to use it in the next question from the bot.
-  setTimeout(() => showCoffeeOptions(coffeeKind), 1000)
-
 
 }
 
@@ -70,4 +68,4 @@ const handleCoffeeKindInput = (coffeeKind) => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 500)
+setTimeout(greeting, 1000)
