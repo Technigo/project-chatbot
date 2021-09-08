@@ -1,6 +1,6 @@
 // All the DOM selectors stored as short variables
-const chat = document.getElementById('chat')
-const inputWrapper = document.getElementById('input-wrapper')
+const chat = document.getElementById('chat');
+const inputWrapper = document.getElementById('input-wrapper');
 
 // Global variables, if you need any, declared here
 
@@ -29,13 +29,13 @@ const showMessage = (message, sender) => {
     `
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-  chat.scrollTop = chat.scrollHeight
+  chat.scrollTop = chat.scrollHeight;
 }
 
 // Starts here
 // Question 1
 const greeting = () => {
-  showMessage(`You wanna go to Space? Cool! What's your name?`, 'bot')
+  showMessage(`You wanna go to Space? Cool! What's your name?`, 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -47,8 +47,8 @@ const greeting = () => {
 
 const handleNameInput = document.getElementById('name-form').addEventListener('submit', (event) => {
   event.preventDefault()
-  const nameInput = document.getElementById('name-input')
-  const userName = nameInput.value
+  const nameInput = document.getElementById('name-input');
+  const userName = nameInput.value;
   // if (Number.isNaN(nameInput.value)) {
   //   prompt("You can't have numbers in you Space-name")
   // }
@@ -56,7 +56,7 @@ const handleNameInput = document.getElementById('name-form').addEventListener('s
   // }
   showMessage (userName, 'user')
   nameInput.value = '' 
-  setTimeout(() => spaceAgeQuestion(userName), 1000) 
+  setTimeout(() => spaceAgeQuestion(userName), 1000);
 }
 )
 
@@ -74,17 +74,12 @@ const spaceAgeQuestion = (userName) => {
   <button id="thousandYears">1000 years</button>
 `
 
+document.getElementById('oneYear').addEventListener('click', () => setTimeout(() => destination('1 year'), 1000));
+document.getElementById('tenYears').addEventListener('click', () => setTimeout(() => destination('10 years'), 1000));
+document.getElementById('thousandYears').addEventListener('click', () => setTimeout(() => destination('1000 years'), 1000));
 
-document
-  .getElementById('oneYear')
-  .addEventListener('click', () =>  setTimeout(() => destination ('1 year'), 1000))
-document
-  .getElementById('tenYears')
-  .addEventListener('click', () => setTimeout(() => destination ('10 years'), 1000))
-document
-  .getElementById('thousandYears')
-  .addEventListener('click', () => setTimeout(() => destination ('1000 years'), 1000))
 }  
+
 
 // Question 3
 // Alright ..., check your alternatives!
@@ -93,11 +88,13 @@ document
 // 1000 years: trhourgh a black hole, another galaxy, surprise me
 
 const destination = (type) => {
+  showMessage (`I'm fine with ${type}`, 'user');
+
 // we shoudld style select id in css - it looks like shit
 console.log(type)
-  showMessage (
-    `Alright ${type}, check your alternatives!`, 'bot'
-  )
+  
+setTimeout(() => showMessage (`Alright ${type}, check your alternatives!`, 'bot'), 1000);
+
  
   if (type === '1 year') {
     inputWrapper.innerHTML = `
@@ -131,39 +128,26 @@ console.log(type)
     `
   }
   const select = document.getElementById('select')
-  select.addEventListener('change', () => setTimeout(() => spaceFood(select.value), 1000))
+  setTimeout(() => select.addEventListener('change', () =>  spaceFood(select.value), 1000));
 }
 
 // Question 4
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 22abd03e6ac539a3d158c23c44cd84a24fb16970
-
 const spaceFood = (select) => {
 
-
-console.log(select)
+console.log(select);
 
 setTimeout(() => showMessage (
   `Great! So what do you wanna eat during the trip to ...?`, 'bot'
-) , 1000)
+) , 1000);
 
 // You picked "${select}"!
   showMessage (
     `My choice is "${select}"!`, 'user'
-  )
+  );
 
 }
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000)
-
-
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 22abd03e6ac539a3d158c23c44cd84a24fb16970
+setTimeout(greeting, 1000);
