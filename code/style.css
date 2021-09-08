@@ -138,3 +138,8 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+.start-button {
+  align-items: center;
+  margin-left: 45%;
+}
