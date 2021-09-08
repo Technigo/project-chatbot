@@ -1,5 +1,8 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat');
+const timeHourInput = document.getElementById("1h-btn");
+const timeDayInput = document.getElementById("1d-btn");
+const timeWeekInput = document.getElementById("1w-btn");
 
 
 // Global variables, if you need any, declared here
@@ -76,6 +79,54 @@ const showTimeOptions = (name) => {
 }
 
 
+
+
+const handleTimeInput = (event) => {
+  event.preventDefault();
+  console.log("Im in handleTimeInput")
+
+  const hour = timeHourInput.value;
+  const day = timeDayInput.value;
+  const week = timeWeekInput.value;
+  //read the input 
+  if (hour) {
+    showMessage(hour, 'user');
+    showCostOptions(hour, 10);
+  } else if (day) {
+    showMessage(day, 'user');
+
+    showCostOptions(day, 100);
+  } else {
+    showMessage(week, 'user');
+
+    showCostOptions(week, 1000);
+  }
+
+  // const name = nameInput.value;
+  // showMessage(name, 'user');  //print the option/button clicked in screen 
+  // nameInput.value = ''
+
+  // setTimeout(() => showTimeOptions(name), 1000);
+  // /*if 1h-Btn> read the value-print next msg-change footer
+
+
+  // */
+
+}
+
+
+timeHourInput.addEventListener("click", handleTimeInput);
+timeDayInput.addEventListener("click", handleTimeInput);
+timeWeekInput.addEventListener("click", handleTimeInput);
+
+
+const showCostOptions = (value, cost) => {
+  console.log("showCostOptions", value, cost)
+  showMessage(`Ok great you only need ${value}, That'll be €${cost}!`, 'bot');
+  toggleVisible("question-payment");
+  toggleVisible("question-time");
+}
+
 // document
 //   .getElementById('1h-Btn')
 //   .addEventListener('click', () => nextQuestion('1h-payment'))
@@ -86,3 +137,10 @@ const showTimeOptions = (name) => {
 //   .getElementById('1d-Btn')
 //   .addEventListener('click', () => nextQuestion('1w-payment'))
 // }
+
+
+/*Ok great you only need 1 "hour", That'll be 10€
+1 "day", that's tough. Hope it can help you. That'll be 100€
+1"week", wow you are really in need of some extra time :). That'll be 1000 €
+How would you like to pay? In cash, credit card or pay later?
+Cash  Credit card   Pay later (buttons)  */
