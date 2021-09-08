@@ -4,10 +4,16 @@ const sendButton = document.getElementById('send-btn')
 console.log(sendButton)
 const nameInput = document.getElementById('name-input')
 console.log(nameInput)
+const form = document.getElementById('name-form')
+
 
 // Global variables, if you need any, declared here
 
+let currentQuestionNumber = 1
+console.log(currentQuestionNumber)
+
 // Functions declared here
+
 const handleNameInput = () => {
   // event.preventDefault()
   const name = nameInput.value;
@@ -20,8 +26,39 @@ const handleNameInput = () => {
     showMessage(`Hi ${name} ,what kind of event do you need flowers for?`, 'bot')
 
   }
+
 };
 
+const eventQuestion = () => {
+  const event = nameInput.value;
+  showMessage(event, 'user')
+  nameInput.value = '';
+
+  form.innerHTML =
+    `<input id="name-input" type="text" />
+  <button id="send-btn" class="send-btn" type="submit">
+    NY button
+  </button>`
+  console.log(form.innerHTML)
+}
+
+const currentQuestion = () => {
+  console.log('number1')
+  if (currentQuestionNumber === 1) {
+    handleNameInput();
+    console.log('number1')
+    currentQuestionNumber = 2
+
+  }
+  else if (currentQuestionNumber === 2) {
+    console.log('number2')
+    eventQuestion();
+  }
+  else {
+    console.log('doesntWork')
+  }
+
+}
 
 
 
@@ -55,6 +92,8 @@ const showMessage = (message, sender) => {
 const greeting = () => {
   showMessage(`Hello there, Isn't it a flowery day today? What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
+
+
 }
 
 // Set up your eventlisteners here
@@ -62,7 +101,8 @@ sendButton.addEventListener('click', (Event) => {
   event.preventDefault();
 
   console.log('eventlistener works')
-  handleNameInput();
+  currentQuestion();
+
 
 
 });
