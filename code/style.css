@@ -9,6 +9,8 @@ body {
   background: #0026ff;
 }
 
+/* hero video header  */
+
 .hero-wrapper-container {
   display: flex;
   justify-content: center;
@@ -18,7 +20,7 @@ body {
 
 .hero-styling {
   width: 100%;
-  height: 100%;
+  height: 50%;
   position: relative;
   object-fit: cover;
   overflow: hidden;
@@ -39,6 +41,7 @@ body {
   flex: 1;
 }
 
+/* opacity can be changed as well as greyscale can be implemented*/
 .hero-video {
   opacity: 0.8;
 }
@@ -81,7 +84,7 @@ body {
   font-weight: 500;
 }
 
-/* paragrah styles for mobile version */
+/* Title h2 styles for mobile version */
 
 @media only screen and (max-width: 767px) {
   .title h2 {
@@ -104,8 +107,8 @@ body {
 }
 
 .btn:hover {
-  cursor: url('pointer.png'), pointer;
-  /* we can add themed space related pointer here */
+    /* we can add themed space related pointer here */
+  cursor: url(''), pointer;
   transform: scale(1.2);
   transition: 0.1s;
   background-color: rgba(255, 255, 255, 0.336);
@@ -120,15 +123,7 @@ body {
   }
 }
 
-.info-section-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: center;
-  margin-top: 50px;
-}
-
-/* h1 {
+h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
@@ -143,8 +138,7 @@ h2 {
   color: #fff;
   text-align: center;
   margin-bottom: 36px;
-} */
-
+} 
 p {
   font-size: 18px;
   font-weight: 600;
