@@ -136,10 +136,6 @@ console.log(type)
 
 // Question 4
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 22abd03e6ac539a3d158c23c44cd84a24fb16970
 
 const spaceFood = (select) => {
 
@@ -163,7 +159,3 @@ setTimeout(greeting, 1000)
 
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 22abd03e6ac539a3d158c23c44cd84a24fb16970
