@@ -90,6 +90,28 @@ const showMovieOptions = () => {
     <button type="submit" id="drama">Drama</button>
     <button type="submit" id="comedy">Comedy</button>
     `
+    const horrorBtn = document.getElementById('horror')
+    const dramaBtn = document.getElementById('drama')
+    const comedyBtn = document.getElementById('comedy')
+
+    horrorBtn.addEventListener('click', (e) => {
+      showMessage(`Horror`, 'user')
+      e.preventDefault();
+      showSocialMedia();
+    })
+
+    dramaBtn.addEventListener('click', (e) => {
+      showMessage(`Drama`, 'user')
+      e.preventDefault();
+      showSocialMedia();
+    })
+
+    comedyBtn.addEventListener('click', (e) => {
+      showMessage(`Comedy`, 'user')
+      e.preventDefault();
+      showSocialMedia();
+    })
+
 };
 
 const showMusicOptions = () => {
@@ -99,6 +121,29 @@ const showMusicOptions = () => {
     <button type="submit" id="hiphop">HipHop</button>
     <button type="submit" id="pop">Pop</button>
     `
+    const rockBtn = document.getElementById('rock')
+    const hiphopBtn = document.getElementById('hiphop')
+    const popBtn = document.getElementById('pop')
+
+    rockBtn.addEventListener('click', (e) => {
+      showMessage(`Rock`, 'user')
+      e.preventDefault();
+      showSocialMedia();
+    })
+
+    hiphopBtn.addEventListener('click', (e) => {
+      showMessage(`Hiphop`, 'user')
+      e.preventDefault();
+      showSocialMedia();
+    })
+
+    popBtn.addEventListener('click', (e) => {
+      showMessage(`Pop`, 'user')
+      e.preventDefault();
+      showSocialMedia();
+    })
+
+
 };
 
 const showReadingOptions = () => {
@@ -108,7 +153,33 @@ const showReadingOptions = () => {
     <button type="submit" id="magazines">Magazines</button>
     <button type="submit" id="academic">Academic papers</button>
     `
+    const novelsBtn = document.getElementById('novels')
+    const magazinesBtn = document.getElementById('magazines')
+    const academicBtn = document.getElementById('academic')
+
+    novelsBtn.addEventListener('click', (e) => {
+      showMessage(`Novels`, 'user')
+      e.preventDefault();
+      showSocialMedia();
+    })
+
+    magazinesBtn.addEventListener('click', (e) => {
+      showMessage(`Magazines`, 'user')
+      e.preventDefault();
+      showSocialMedia();
+    })
+
+    academicBtn.addEventListener('click', (e) => {
+      showMessage(`Academic Papers`, 'user')
+      e.preventDefault();
+      showSocialMedia();
+    })
+
 };
+
+showSocialMedia = () => {
+  console.log("Go us")
+}
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
