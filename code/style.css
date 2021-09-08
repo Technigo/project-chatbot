@@ -2,16 +2,18 @@
   box-sizing: border-box;
 }
 
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #9AC99B;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
+  /*font-size: 44px;*/
+  font-size: 30px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -19,7 +21,8 @@ h1 {
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
+  /* font-size: 24px; */
+  font-size: 18px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -37,28 +40,36 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #ffdbbf;
+  color: #a0a0a0;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
   flex: 1;
+  width: 60%;
+}
+
+input:focus {
+  outline-color: #EC8E44;
 }
 
 main {
   margin: 0 auto;
-  width: 100%;
+  width: 80%;
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: #fff0cc;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  box-shadow:0 2px 16px #EC8E44;
+  margin-bottom: 30px;
+  margin-top: 50px;
 }
 
 .chat {
@@ -68,6 +79,7 @@ main {
   overflow: scroll;
   flex-direction: column;
   padding-bottom: 16px;
+  
 }
 
 .bot-msg {
@@ -112,6 +124,7 @@ main {
 .input-wrapper {
   display: flex;
   justify-content: center;
+
 }
 
 .input-wrapper form {
@@ -120,11 +133,11 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #EC8E44;
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 16px 40px;
+  padding: 10px 30px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
@@ -132,16 +145,34 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  width: 40%;
+  max-width: 100px;
 }
 
 button:hover {
+  background-color: #DBCC83;
   opacity: 0.9;
   transition: all 0.2s ease;
 }
 
 .buttons {
   display: flex;
-  width: 100%;
+  /* width: 100%; */
   margin-left: 50px;
-  display: none;
+  /* display: none; */
+}
+
+
+/* Media Queries */
+
+@media (min-width: 768px) {
+
+h1 {
+  font-size: 50px;
+}
+
+h2 {
+  font-size: 27px;
+}
+
 }
