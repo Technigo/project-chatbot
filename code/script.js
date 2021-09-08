@@ -7,6 +7,7 @@ const form = document.getElementById('name-form')
 
 // Global variables, if you need any, declared here
 let questionStep = 1
+//This was for the more generic approach of using one function for handling all the questions and the flow
 
 // Functions declared here
 // this is made not to type showMessage every time
@@ -46,7 +47,6 @@ const showMessage = (message, sender) => {
 }
 
 const usersPet = (message) => {
-
   if (questionStep === 1) {
     userAnswer(message)
     setTimeout(() => petTypes(message), 1000)
@@ -68,11 +68,12 @@ const usersPet = (message) => {
 // Starts here
 const greeting = () => {
   questionStep = 1
-  botAnswer(`Welcome to our salon! What's your name?`)
+  botAnswer(`Welcome to our pet salon! What's your name?`)
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
 // Set up your eventlisteners here
+
 // 1st user answer
 form.addEventListener('submit', (event) => {
   event.preventDefault()
@@ -91,14 +92,29 @@ const petTypes = (name) => {
   <button id= 'dogButton'>dog 🐶</button>
   <button id= 'catButton'>cat 🐱</button>
   `
-  document.getElementById('dogButton').addEventListener('click', () => usersPet('dog'))
-  document.getElementById('catButton').addEventListener('click', () => usersPet('cat'))
-
+  document.getElementById('dogButton').addEventListener('click', () => usersPet('dog 🐶'))
+  document.getElementById('catButton').addEventListener('click', () => usersPet('cat 🐱'))
 }
 
 const petServices = (type) => {
   questionStep++
   botAnswer(`So you are a ${type} person :) Please select a service for your pet.`)
+
+  if (type === 'dog 🐶') {
+    botAnswer(`
+  <video class="dog" loop autoplay playsinline>
+  <source src="assets/pets.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+  </video>
+  `)
+  } else {
+    botAnswer(`
+  <video class="cat" loop autoplay playsinline>
+  <source src="assets/cat-pretty.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+  </video>
+  `)
+  }
 
   inputWrapper.innerHTML = `
   <select id = 'select'>
@@ -112,18 +128,6 @@ const petServices = (type) => {
   const select = document.getElementById('select')
   select.addEventListener('change', () => usersPet(select.value))
 
-  // inputWrapper.innerHTML = `
-  //   <button id='firstService'>Bathing </button>
-  //   <button id='secondService'>Brushing</button>
-  //   <button id='thirdService'>Nail trimming</button>
-  //   <button id='forthService'>Haircut</button>
-  // `
-
-
-  // document.getElementById('firstService').addEventListener('click', () => usersPet('Bathing'))
-  // document.getElementById('secondService').addEventListener('click', () => usersPet('Brushing'))
-  // document.getElementById('thirdService').addEventListener('click', () => usersPet('Nail trimming'))
-  // document.getElementById('forthService').addEventListener('click', () => usersPet('Haircut'))
 }
 
 const priceInformation = (choice) => {
@@ -147,11 +151,11 @@ const petPayment = () => {
   questionStep++
   botAnswer(`Would you like to pay by cash or by card ? `);
   inputWrapper.innerHTML = `
-      <button id = 'cashButton'>Cash</button >
-      <button id='cardButton'>Card</button>`
+      <button id ='cashButton'>Cash 💸</button >
+      <button id ='cardButton'>Card 💳</button>`
 
-  document.getElementById('cashButton').addEventListener('click', () => usersPet('Cash'))
-  document.getElementById('cardButton').addEventListener('click', () => usersPet('Card'))
+  document.getElementById('cashButton').addEventListener('click', () => usersPet('Cash 💸'))
+  document.getElementById('cardButton').addEventListener('click', () => usersPet('Card 💳'))
 }
 
 const petBye = () => {

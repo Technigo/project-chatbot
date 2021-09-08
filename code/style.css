@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background-image: url(dtuctf.jpeg);
+  background-image: url(dTuctf.jpeg);
 }
 
 input::-webkit-input-placeholder {
@@ -17,7 +17,7 @@ input::-webkit-input-placeholder {
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
+  font-size: 40px;
   line-height: 34px;
   color: #1f4c1d;
   text-align: center;
@@ -25,7 +25,7 @@ h1 {
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 34px;
   color: #386036;
   text-align: center;
@@ -83,6 +83,15 @@ main {
   flex-direction: column;
 }
 
+.dog {
+  width: 240px;
+  height: 320px;
+}
+
+.cat {
+  width: 220px;
+  height: 300px;
+}
 .chat {
   flex: 1;
   display: flex;
@@ -172,6 +181,5 @@ button:hover {
 }
 
 @media (min-width: 768px) {
-  
   
   }
