@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Comfortaa', cursive;
   background-image: url(dTuctf.jpeg);
 }
 
@@ -84,13 +84,13 @@ main {
 }
 
 .dog {
-  width: 240px;
-  height: 320px;
+  width: 120px;
+  height: 200px;
 }
 
 .cat {
-  width: 220px;
-  height: 300px;
+  width: 120px;
+  height: 220px;
 }
 .chat {
   flex: 1;
@@ -181,5 +181,13 @@ button:hover {
 }
 
 @media (min-width: 768px) {
+  .dog {
+    width: 240px;
+    height: 320px;
+  }
   
+  .cat {
+    width: 220px;
+    height: 300px;
+  }
   }

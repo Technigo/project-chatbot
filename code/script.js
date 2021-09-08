@@ -119,8 +119,8 @@ const petServices = (type) => {
   inputWrapper.innerHTML = `
   <select id = 'select'>
     <option value='' selected disabled> Choose service </option>
-    <option value='Bathing'>Bathing</option>
-    <option value='Brushing'>Brushing</option>
+    <option value='bathing'>Bathing</option>
+    <option value='brushing'>Brushing</option>
     <option value='Nail trimming'>Nail trimming</option>
     <option value='Haircut'>Haircut</option>
     </select> 
@@ -133,13 +133,13 @@ const petServices = (type) => {
 const priceInformation = (choice) => {
   questionStep++
   if (choice === 'bathing') {
-    botAnswer(`So ${choice} is a great choice! That will cost 20$`);
+    botAnswer(`So ${choice} is a great choice! We are ready to take care of your pet. That will cost 20$`);
   } else if (choice === 'brushing') {
-    botAnswer(`Great, so you want ${choice}! That will cost 15$`);
+    botAnswer(`Great, so you chose ${choice} service! We definitely can help with that! That will cost 15$`);
   } else if (choice === 'nail trimming') {
-    botAnswer(`Wow, luxirous choice! ${choice} will cost 13$`);
+    botAnswer(`Wow, luxirous choice! ${choice} service will cost 13$`);
   } else {
-    botAnswer(`Great choice! ${choice} will cost 25$`)
+    botAnswer(`Great choice! We are the best in this! ⭐️ ${choice} service will cost 25$`)
   }
   inputWrapper.innerHTML = `
   <button id='okButton'>OK</button>`
