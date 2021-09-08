@@ -102,7 +102,7 @@ const moveOutCleaning = () => {
   form.innerHTML = `
   <div id="submitContainer">
    <label for="textInput"></label>
-   <input id="textInput" type="text" />
+   <input id="textInput" type="text" placeholder="100" />
    <button id="submitBtn" type="submit">Send</button>
   </div>`;
 
@@ -124,7 +124,7 @@ const windowCleaning = () => {
   form.innerHTML = `
   <div id="submitContainer">
    <label for="textInput"></label>
-   <input id="textInput" type="text" />
+   <input id="textInput" type="text" placeholder="10"/>
    <button id="submitBtn" type="submit">Send</button>
   </div>`;
 
@@ -144,7 +144,7 @@ const askForEmail = () => {
   form.innerHTML = `
   <div id="submitContainer">
    <label for="textInput"></label>
-   <input id="textInput" type="email" />
+   <input id="textInput" type="email" placeholder="user@gmail.com" />
    <button id="submitBtn" type="submit">Send</button>
   </div>`;
 
@@ -169,6 +169,12 @@ const askForNumber = () => {
   addEventListeners();
 };
 
+// A button which restarts the form with the help of the function location.reload.
+
+const resetForm = () => {
+  location.reload();
+};
+
 // Function that takes the message input by the user and then actvates the function "showMessage" as a user message.
 // If currentQuestion is name it tells the username to be = message.value. It activates a sendBotMessage
 // It also adds new html inbetween the <form>....</form>
@@ -191,12 +197,10 @@ const sendUserMessage = () => {
 
     const weeklyCleaningBtn = document.getElementById("weeklyCleaning");
     weeklyCleaningBtn.addEventListener(`click`, weeklyCleaning);
-
-    const moveOutCleaningBtn = document.getElementById("moveOutCleaning");
-    moveOutCleaningBtn.addEventListener(`click`, moveOutCleaning);
-
     const windowCleaningBtn = document.getElementById("windowCleaning");
     windowCleaningBtn.addEventListener(`click`, windowCleaning);
+    const moveOutCleaningBtn = document.getElementById("moveOutCleaning");
+    moveOutCleaningBtn.addEventListener(`click`, moveOutCleaning);
   }
   //If currentQuestion is equal to times a month the sendBotMessage activates with a message to the user.
   // it also calls the function ask for email.
@@ -234,12 +238,35 @@ const sendUserMessage = () => {
     askForNumber();
 
     //if current question === number it stores the message.value as the telephoneNumber and calls for the function sendBotMessage
+    // change the inner html to show a dropdown with customer satisfaction.
+    // and then after choicing satisfaction level you get at button in which you can reset the form.
   } else if (currentQuestion === `number`) {
     telephoneNumber = message.value;
     sendBotMessage(
       `Thank you ${username} for your interest in our service: ${service}. We will return with a offer to the emailadress: ${emailAdress} and call you within a week to your number: ${telephoneNumber} to decide a time for the cleaning. Have a lovley day!`
     );
+    form.innerHTML = `
+    <div class="customer-happiness__container">
+    <label for="customerHappiness"></label>
+    <select name="customerHappiness" id="customerHappiness">
+    <option value="">Choice your mood</option>
+    <option value="😊">😊 Happy</option>
+    <option value="😐">😐 Neutral</option>
+    <option value="😠">😠 Angry</option>
+    </select></div>`;
+
+    const customerHappinessSelector =
+      document.getElementById("customerHappiness");
+    customerHappinessSelector.addEventListener(`change`, (event) => {
+      showMessage(event.target.value, `user`);
+
+      form.innerHTML = `<button id="resetForm">I changed my mind</button>`;
+
+      const resetFormBtn = document.getElementById(`resetForm`);
+      resetFormBtn.addEventListener(`click`, resetForm);
+    });
   }
+
   message.value = "";
 };
 

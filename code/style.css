@@ -132,7 +132,7 @@ main {
 }
 
 button {
-  background-color: #9cb4a6;
+  background-color: #b6ddc6;
   color: white;
   border: none;
   border-radius: 4px;
@@ -144,7 +144,7 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: #000000 2px 2px;
+  box-shadow: #aaaaaa 2px 2px;
 }
 
 button:hover {
@@ -156,4 +156,36 @@ button:hover {
 #form {
   display: flex;
   justify-content: center;
+}
+
+:placeholder-shown {
+  background-color: #e2ebff;
+}
+
+input:focus::placeholder {
+  color: #e2ebff;
+  transition: all 1s ease-in;
+}
+
+select {
+  border: none;
+  border-radius: 4px;
+  color: #000000;
+  height: 60px;
+  width: 200px;
+  font-family: "Montserrat";
+  background: #e5e9ff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-align: center;
+}
+
+.customer-happiness__container {
+  display: flex;
+  justify-content: center;
+
+  font-size: 15px;
+  width: 100%;
 }
