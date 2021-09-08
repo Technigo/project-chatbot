@@ -124,8 +124,11 @@ main {
 
 select {
   width:100%;
-  font-size: 28px;
-  padding:5px 30px;
+  font-size: 20px;
+  height:100%;
+  padding:0px 30px;
+  border:none;
+  background:#E2ECE9;
 }
 
 footer {

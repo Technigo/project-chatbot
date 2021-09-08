@@ -30,7 +30,7 @@ const showPlantOptions = (userName) => {
     <option value="Pilea">Pilea</option>
     <option value="Calathea">Calathea</option>
   </select>
-  <button class="restart-button" onClick="resetChat()">Take me back to the start</button>`;
+  <button class="restart-button" onClick="resetChat()">Restart</button>`;
 };
 
 // This is a function which listens for a change in the dropdown
@@ -53,29 +53,27 @@ const botReply = (chosenPlant) => {
   } else {
     showMessage(`bla bla bla 3`, "bot");
   }
-  // inputWrapper.innerHTML =`
-  // <form id="name-form">
-  //   <input id="name-input" type="text" />
-  //     <button class="send-btn" type="submit" id="submit">
-  //         Send
-  //     </button>
-  // </form>
-  // `
-  showMessage(`${name}, would you like more information about another flower?`, 'bot')
+
+  showMessage(
+    `${name}, would you like more information about another flower?`,
+    "bot"
+  );
 };
 
-const resetChat = () => {
-  inputWrapper.innerHTML =`
+const resetChat = (name) => {
+  inputWrapper.innerHTML = `
   <form id="name-form">
     <input id="name-input" type="text" />
       <button class="send-btn" type="submit" id="submit">
           Send
       </button>
   </form>
-  `
-  nameInput.value = document.getElementById("submit").addEventListener("click", handleNameInput);
+  `;
   setTimeout(greeting, 1000);
-}
+  document.getElementById("submit").addEventListener("click", handleNameInput);
+  name = nameInput.value;
+  console.log(name)
+};
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
