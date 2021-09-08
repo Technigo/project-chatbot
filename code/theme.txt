@@ -1,0 +1,15 @@
+Katt-tema
+
+Welcome to cat Facts bot! What is your name?
+***
+
+Hello ***! Nice to meet you. What type of cat fact do you want today?
+
+*three buttons* xxx yyy zzz and you can click on one of them to get a promptema
+
+Activates one of the buttons
+
+Great choice *INSERT CAT FACT HERE*
+
+
+BONUS:: Slumpa fakta! :D 

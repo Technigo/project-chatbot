@@ -1,6 +1,8 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const userMessage = document.getElementById('name-input')
+//hon använder inputValue ist för userMessage på ovan för att få den klickbar utan att ladda om. 
+//homn gör en till för forms här också
 
 // Global variables, if you need any, declared here
 
@@ -42,8 +44,13 @@ const greeting = () => {
 const response = () => {
   showMessage(`Sofia`, 'user')
 }
+//här kan man sätta en console log så vi ser att form är submittet aka att vi vill det ska skickas iväg men vi måste prevent default
+//const handleNameInput = (event) => {
+//event.preventDefault()
+//console.log('The form is submitted!')}
 
-// Set up your eventlisteners here
+// Set up your eventlisteners here ex onClick
+// för att det inte ska laddas om: form.selector.addEventlistener('submit',functionName)
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
@@ -53,3 +60,19 @@ const response = () => {
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
 setTimeout(response, 2000)
+
+//javascript reads through. Sets a variable, builds the "machine" but never exectue it. 
+//Javascript reads the code from top to bottom so some things you need to do in chronological order. like creating the machine
+//Our main goal is to understand when stuff will happen and when they will not happen. and WHY 😁
+
+
+//Lägger en listener på formuläret för att registrera när det sumbitas. När det submitas vill 
+//vi hämta vad vi har skrivit. Behöver inte vara en global variabel. MEN eventlistener for form 
+//kommer ju reagera varje gång man trycker på knappen! Hur hanterar man det? 
+
+// Enklare att skapa flera funktioner för de olika meddelanden, så att funktioner för att chatta inte ändras utan endast tar 
+// emot nya meddelandet från andra funktioner. I varje ny funktion kan svarsmeddelandet skapas.
+
+// SKapa en funktion som läser av inkommet meddelande, och skickar respons baserat på vilken fråga man svarat på. Global variabel 
+// som tickar uppåt efter varje fråga, så att den globala variabeln styr vart man är.
+
