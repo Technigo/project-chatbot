@@ -1,11 +1,16 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+const userInput = document.getElementById ('user-input')
+const sendBtn = document.getElementById ('send-btn')
+const nameForm = document.getElementById ('name-form')
+const startButton = document.getElementById ('startButton')
+const startPage = document.getElementById ('startPage')
+
 
 // Global variables, if you need any, declared here
-
 // Functions declared here
-
 // This function will add a chat bubble in the correct place based on who the sender is
+
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     console.log("Hello!")
@@ -33,9 +38,57 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello stranger! Do you want to listen music?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage(`Hello stranger! What's your name?`, 'bot')
+
 }
+const userReply = (input) => { 
+  showMessage(input, 'user')
+}
+
+const pickMusicStyle = () => {
+  showMessage(`Nice color! Now choose your favorite music style for today.`, 'bot')
+}
+
+
+sendBtn.addEventListener('click',()  => {
+userReply (userInput.value)
+setTimeout (pickColor, 1000) 
+})
+
+const inputWrapper = document.getElementById ('input-wrapper')
+const pickColor = () => {
+  showMessage (`Nice to meet you ${userInput.value}. What is your favorite color?`, 'bot')
+  inputWrapper.innerHTML = `
+  <button id= "pinkBtn"> Pink </button>    
+  <button id= "greenBtn"> Green </button>
+  <button id= "blackBtn"> Black </button>
+  `
+  const pinkBtn = document.getElementById('pinkBtn')
+  const greenBtn = document.getElementById('greenBtn')
+  const blackBtn = document.getElementById('blackBtn')
+  pinkBtn.onclick = () => {                                   
+     //when user click on the Pink button, it's going to change background color to Pink. After 1s invoke function pickMusicStyle
+  document.body.style.backgroundColor = "pink";
+  userReply(`Pink`)                 //invoke userReply function with the input "Pink"
+  setTimeout(pickMusicStyle, 1000)
+  }
+  greenBtn.onclick = () => {
+  document.body.style.backgroundColor = "green";
+  userReply(`Green`)
+  setTimeout(pickMusicStyle, 1000)
+  }
+  blackBtn.onclick = () => {
+  document.body.style.backgroundColor = "black";
+  userReply(`Black`)
+  setTimeout(pickMusicStyle, 1000)
+  }
+}
+
+
+
+
+//nameInput.innerHTML = ""
+
 
 // Set up your eventlisteners here
 
@@ -47,13 +100,11 @@ const greeting = () => {
 // This means the greeting function will be called one second after the website is loaded.
 // setTimeout(greeting, 1000)
 
-const nameForm = document.getElementById ('name-form')
+
 nameForm.addEventListener('submit',(event) => {
   event.preventDefault()
 })
 
-const startButton = document.getElementById ('startButton')
-const startPage = document.getElementById ('startPage')
 startButton.onclick = () => { 
   startPage.style.display="none"
   setTimeout(greeting, 1000)
