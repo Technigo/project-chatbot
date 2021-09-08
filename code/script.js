@@ -6,12 +6,10 @@ const form = document.getElementById('name-form')
 // const sendButton = document.getElementById('send')
 
 // Global variables, if you need any, declared here
-// let questionStep = 1
-
-
+let questionStep = 1
 
 // Functions declared here
-
+// this is made not to type showMessage every time
 const botAnswer = (inputMessage) => {
   showMessage(inputMessage, 'bot')
 }
@@ -47,9 +45,28 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
+const usersPet = (message) => {
+  if (questionStep === 1) {
+    userAnswer(message)
+    setTimeout(() => petTypes(message), 1000)
+  } else if (questionStep === 2) {
+    userAnswer(message)
+    setTimeout(() => petServices(message), 2000)
+  } else if (questionStep === 3) {
+    userAnswer(message)
+    setTimeout(() => priceInformation(message), 1000)
+  } else if (questionStep === 4) {
+    userAnswer(message)
+    setTimeout(() => petPayment(message), 1000)
+  } else {
+    userAnswer(message)
+    setTimeout(petBye, 1000)
+  }
+}
 
 // Starts here
 const greeting = () => {
+  questionStep = 1
   botAnswer(`Welcome to our salon! What's your name?`)
   // Just to check it out, change 'bot' to 'user' here 👆
 }
@@ -59,7 +76,7 @@ const greeting = () => {
 form.addEventListener('submit', (event) => {
   event.preventDefault()
   const name = nameInput.value
-  userAnswer(name)
+  userAnswer(`My name is ${name}`)
   nameInput.value = ''
   setTimeout(() => petTypes(name), 1000)
   //   questionStep = 2
@@ -69,60 +86,83 @@ form.addEventListener('submit', (event) => {
 })
 
 
-
 // 2nd question and answer
-const usersPet = (type) => {
-  userAnswer(type)
-  setTimeout(() => petServices(type), 1000)
-}
-
+// const usersPet = (type) => {
+//   userAnswer(type)
+//   setTimeout(() => petServices(type), 1000)
+// }
 
 const petTypes = (name) => {
+  questionStep++
   botAnswer(`Nice to meet you ${name} :) What type of pet do you have?`)
 
   inputWrapper.innerHTML = `
-  <button id= 'dogButton'>Dog</button>
-  <button id= 'catButton'>Cat</button>
+  <button id= 'dogButton'>dog 🐶</button>
+  <button id= 'catButton'>cat 🐱</button>
   `
   document.getElementById('dogButton').addEventListener('click', () => usersPet('dog'))
   document.getElementById('catButton').addEventListener('click', () => usersPet('cat'))
 
 }
 
-
-// form.innerHTML = `  
-//   <label> Dog
-//   <input type='radio' value='dog' name='pet' />
-//   </label>
-//   <label> Cat
-//   <input type='radio' value='cat' name='pet' />
-//   </label>
-//   <button type='submit'>Submit</button>
-// `
-
-
 // third question and answer
-const usersService = (service) => {
-  userAnswer(service)
-  setTimeout(() => petPayment(service), 1000)
-}
-
+// const usersService = (service) => {
+//   userAnswer(service)
+//   setTimeout(() => petPayment(service), 1000)
+// }
 
 const petServices = (type) => {
-  botAnswer(`So you are the ${type} person :) Please select a procedure for your pet.`)
+  questionStep++
+  botAnswer(`So you are a ${type} person :) Please select a procedure for your pet.`)
 
   inputWrapper.innerHTML = `
-    <button id='firstService'>Bathing</button>
+    <button id='firstService'>Bathing </button>
     <button id='secondService'>Brushing</button>
     <button id='thirdService'>Nail trimming</button>
     <button id='forthService'>Haircut</button>
   `
-  document.getElementById('firstService').addEventListener('click', () => usersService('Bathing'))
-  document.getElementById('secondService').addEventListener('click', () => usersService('Brushing'))
-  document.getElementById('thirdService').addEventListener('click', () => usersService('Nail trimming'))
-  document.getElementById('forthService').addEventListener('click', () => usersService('Hair cut'))
-
+  document.getElementById('firstService').addEventListener('click', () => usersPet('Bathing'))
+  document.getElementById('secondService').addEventListener('click', () => usersPet('Brushing'))
+  document.getElementById('thirdService').addEventListener('click', () => usersPet('Nail trimming'))
+  document.getElementById('forthService').addEventListener('click', () => usersPet('Haircut'))
 }
+
+const priceInformation = (choice) => {
+  questionStep++
+  if (choice === 'bathing') {
+    botAnswer(`So ${choice} is a great choice! That will cost 20$`);
+  } else if (choice === 'brushing') {
+    botAnswer(`Great, so you want ${choice}! That will cost 15$`);
+  } else if (choice === 'nail trimming') {
+    botAnswer(`Wow, luxirous choice! ${choice} will cost 13$`);
+  } else {
+    botAnswer(`Great choice! ${choice} will cost 25$`)
+  }
+  inputWrapper.innerHTML = `
+  <button id='okButton'>OK</button>`
+
+  document.getElementById('okButton').addEventListener('click', () => usersPet('OK'))
+}
+
+const petPayment = () => {
+  questionStep++
+  botAnswer(`Would you like to pay by cash or by card ? `);
+  inputWrapper.innerHTML = `
+      <button id = 'cashButton'>Cash</button >
+      <button id='cardButton'>Card</button>`
+
+  document.getElementById('cashButton').addEventListener('click', () => usersPet('Cash'))
+  document.getElementById('cardButton').addEventListener('click', () => usersPet('Card'))
+}
+
+const petBye = () => {
+  botAnswer(`Thank you for your booking! We are looking forward to meet you and your pet.`)
+  botAnswer(`Have a nice day!`)
+  inputWrapper.innerHTML = ``
+}
+
+
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
