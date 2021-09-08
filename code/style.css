@@ -141,4 +141,6 @@ button:hover {
 
 #fact-btn {
   display: none;
+  flex-direction: row;
+  justify-content: center;
 }

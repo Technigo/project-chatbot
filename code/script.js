@@ -4,8 +4,8 @@ const form = document.getElementById('name-form')
 const factButtons = document.getElementById('fact-btn')
 
 
-
 // Global variables, if you need any, declared here
+let currentQuestion = 1
 
 // Functions declared here
 
@@ -47,37 +47,45 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+
 const handleInput = (event) => {
   event.preventDefault()
   const inputValue = document.getElementById('name-input').value
   showMessage(inputValue, 'user')
-  inputValue.value = ''
+  //inputValue.value = ''
 
-  //google-svar på denna funktion 
+  //google-svar på denna funktion - förstår inte ritkigt hur
 
 setTimeout(function() {
   showMessage(`Hello ${inputValue}, nice name.`, 'bot')
-  form.style.display='none'}, 1000)
+  }, 1000)
+
+
+
+setTimeout(function() {
+   //showMessage(`What do you want?`, 'bot')
+   form.style.display='none'}, 2000)
 
 setTimeout(function() {
 showMessage(`What do you want?`, 'bot')
 factButtons.style.display='flex'}, 2000)
 }
 
-const factOne = () => {
-  showMessage(`Fact 1`, 'user')
-  showMessage(`Cat whiskers are the same width as their body`, 'bot')
+const dance = () => {
+  showMessage(`Dance`, 'user')
+  showMessage(`Perfect, do the macarena!`, 'bot')
 }
 
-const factTwo = () => {
-  showMessage(`Fact 2`, 'user')
-  showMessage(`While us humans have 206 bones, cats on average have 244. It ranges between 230-250 depending on how long a cat’s tail is and how many toes the cat has`, 'bot')
+const eat = () => {
+  showMessage(`Eat`, 'user')
+  showMessage(`Cake?`, 'bot')
 }
 
-const factThree = () => {
-  showMessage(`Fact 3`, 'user')
-  showMessage(`Hello there, What's your name?`, 'bot')
+const nothing = () => {
+  showMessage(`Nothing?`, 'user')
+  showMessage(`...`, 'bot')
 }
+
 
 
 //console.log('The form is submitted!')}
@@ -85,9 +93,9 @@ const factThree = () => {
 // Set up your eventlisteners here ex onClick
 
 form.addEventListener('submit',handleInput)
-document.getElementById('cat-fact1').addEventListener('click', factOne)
-document.getElementById('cat-fact2').addEventListener('click', factTwo)
-document.getElementById('cat-fact3').addEventListener('click', factThree)
+document.getElementById('dance').addEventListener('click', dance)
+document.getElementById('eat').addEventListener('click', eat)
+document.getElementById('nothing').addEventListener('click', nothing)
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
