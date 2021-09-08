@@ -9,7 +9,19 @@ Hello ***! Nice to meet you. What type of cat fact do you want today?
 
 Activates one of the buttons
 
+User answer bubble prints the choosen buttons
+
 Great choice *INSERT CAT FACT HERE*
+
+Add button to be able to continue from facts
+
+Add if-statements
+
+
 
 
 BONUS:: Slumpa fakta! :D 
+
+Add styling
+
+Add sound when chatting

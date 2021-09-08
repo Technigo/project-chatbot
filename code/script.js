@@ -2,6 +2,7 @@
 const chat = document.getElementById('chat')
 const inputValue = document.getElementById('name-input')
 const form = document.getElementById('name-form')
+const factButtons = document.getElementById('fact-btn')
 //hon använder inputValue ist för userMessage på ovan för att få den klickbar utan att ladda om. 
 //hon gör en till för forms här också
 
@@ -47,10 +48,30 @@ const handleInput = (event) => {
   const inputValue = document.getElementById('name-input').value
   showMessage(inputValue, 'user')
 
-  //Varför behöver man lägga till den anonyma funktionen för att kalla på showMessage()??
+  //Varför behöver man lägga till den anonyma funktionen för att kalla på showMessage(), alltså att ha parenteser??
   setTimeout(function() {
     showMessage(`Hello ${inputValue}, nice name 🌞`, 'bot')
-  }, 1000)
+    form.style.display="none"}, 1000)
+  
+
+setTimeout(function() {
+  showMessage(`What cat fact do you want today?`, 'bot')
+ factButtons.style.display="flex"}, 2000)
+}
+
+const factOne = () => {
+  showMessage(`Fact 1`, 'user')
+  showMessage(`Cat whiskers are the same width as their body`, 'bot')
+}
+
+const factTwo = () => {
+  showMessage(`Fact 2`, 'user')
+  showMessage(`While us humans have 206 bones, cats on average have 244. It ranges between 230-250 depending on how long a cat’s tail is and how many toes the cat has`, 'bot')
+}
+
+const factThree = () => {
+  showMessage(`Fact 3`, 'user')
+  showMessage(`Cats sleep 12-16 hours per day, and spend 1/3 of their awake hours grooming`, 'bot')
 }
 
 //här kan man sätta en console log så vi ser att form är submittet aka att vi vill det ska skickas iväg men vi måste prevent default
@@ -61,7 +82,9 @@ const handleInput = (event) => {
 // Set up your eventlisteners here ex onClick
 // för att det inte ska laddas om: form.selector.addEventlistener('submit',functionName)
 form.addEventListener('submit',handleInput)
-
+document.getElementById('cat-fact1').addEventListener('click', factOne)
+document.getElementById('cat-fact2').addEventListener('click', factTwo)
+document.getElementById('cat-fact3').addEventListener('click', factThree)
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
