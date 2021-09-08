@@ -2,6 +2,8 @@
 const chat = document.getElementById('chat');
 const ourForm = document.getElementById("name-form");
 
+// let userInput= document.getElementById("name-input");
+
 // Global variables, if you need any, declared here
 let question=1;
 
@@ -9,7 +11,7 @@ let question=1;
 // Functions declared here
 const whichPlanet = () =>{
   ourForm.innerHTML= `
-  <select class='dropdown'>
+  <select class='dropdown' id="name-input">
     <option name="planet" value="Technigo" id="technigo">Technigo</option>
     <option name="planet" value="Tatooine" id="tatooine">Tatooine</option>
     <option name="planet" value="Abafar" id="abafar">Abafar</option>
@@ -24,14 +26,14 @@ const threeButtons = () =>{
   <button class="send-btn" type="submit" id="answer-btn" value="answer">Looking for an answer</button>
   <button class="send-btn" type="submit" id="good-btn" value="good">I´m good</button>
   `
-  document.getElementById('answer-btn').addEventListener('click', answer);
-  document.getElementById('lost-btn').addEventListener('click', answer);
-  document.getElementById('good-btn').addEventListener('click', answer);
+  document.getElementById('answer-btn').addEventListener('submit', answer);
+  document.getElementById('lost-btn').addEventListener('submit', answer);
+  document.getElementById('good-btn').addEventListener('submit', answer);
 }
 
 const finalQuestion = () =>{
   ourForm.innerHTML=`
-  <button class="send-btn" type="submit" id="final-btn" value="yes!">Is the force within me?</button>
+  <button class="send-btn" type="submit" id="final-btn" value="yes!">Is the JS force within me?</button>
   `
   document.getElementById('final-btn').addEventListener('click',answer);
 
@@ -71,41 +73,41 @@ const greeting = () => {
 
 const answer= (event)=>{
   event.preventDefault();
+  // userInput.value vs. event.target[0].value
   if(question=== 1){
     if(event.target[0].value === ""){
       setTimeout(() => showMessage(`Insist for you to tell me your name, I must.  Only void, anonymous is.  Herh herh herh. ${event.target[0].value}?`, 'bot'), 1000);
-      showMessage(`${event.target[0].value}`, "user");
+      showMessage(event.target[0].value, "user");
     }
     else{
-    showMessage(`${event.target[0].value}`, "user");
-    setTimeout(() => showMessage(`Where do you come from ${event.target[0].value}?`, 'bot'), 1000);
+    showMessage(event.target[0].value, "user");
+    setTimeout(() => showMessage(`Where come from do you, ${event.target[0].value}?`, 'bot'), 1000);
     setTimeout(whichPlanet, 1500);
     question=2
     }
   }
   else if (question===2){
     
-    showMessage(`${event.target[0].value}`, "user");
-    setTimeout(() => showMessage(`${event.target[0].value}, a great school of jedi. What are you looking for?`, 'bot'), 1000);
+    showMessage(event.target[0].value, "user");
+    setTimeout(() => showMessage(`A great jedi masters in ${event.target[0].value} you have. What it is, you seek that? Hmm?` , 'bot'), 1000);
     setTimeout(threeButtons, 1500);
     question=3
   }
   else if (question===3){
-    showMessage(`${event.path[0].value}`, "user");
-      if (event.path[0].value === 'lost') {
-        setTimeout(() => showMessage(`To find, to seek is, to seek, to find is. I know your question!`, 'bot'), 1000);
-      } else if (event.path[0].value === 'answer') {
-        setTimeout(() => showMessage(`Ah, to the right place you come? I was expecting you and I know your question!`, 'bot'), 1000);
+    showMessage(`${event.target[0].value}`, "user");
+      if (event.target[0].value === 'lost') {
+        setTimeout(() => showMessage(`Patience you must have! To find to seek is. To seek to find is. I sense a question that ask you wish!`, 'bot'), 1000);
+      } else if (event.target[1].value === 'answer') {
+        setTimeout(() => showMessage(`Ah, to the right place you come? I was expecting you and I sense a question that ask you wish!`, 'bot'), 1000);
       } else {
-        setTimeout(() => showMessage(`Of the dark side be aware. Found themselves there, many people have. Yesss. I know your question!`, 'bot'), 1000);
+        setTimeout(() => showMessage(`Powerful you have become, the dark side I sense in you. Found themselves there, many people have. Yesss. I sense a question that ask you wish!`, 'bot'), 1000);
       }
     setTimeout(finalQuestion, 1500)
     question=4
   }
   else {
-    console.log(event.path[0].value)
-    showMessage(`${event.path[0].value}`, "user")
-    setTimeout(() => showMessage(`Young jedi, a tickling of the force I sense. A long way you have traveled and longer journey awaits you. Good luck!`, 'bot'), 1000);
+    showMessage("Is the JS force within me?", "user")
+    setTimeout(() => showMessage(`Young jedi, a strong force I sense. You will find only what you bring in. A long way you have traveled and longer journey awaits you. Feel the force!`, 'bot'), 1000);
   }
 }
 // // Set up your eventlisteners here
@@ -113,3 +115,4 @@ document.getElementById('name-form').addEventListener('submit', answer);
 
 
 setTimeout(greeting, 500)
+
