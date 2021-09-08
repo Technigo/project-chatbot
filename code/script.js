@@ -24,7 +24,7 @@ const showMessage = (message, sender) => {
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
-          <p>message</p>
+          <p>${message}</p>
         </div>
       </section>
     `
@@ -37,7 +37,7 @@ const showMessage = (message, sender) => {
 
 // setTimeout(greeting, 1000)
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Welcome! We have sushi, pokebowls and noodles. What is your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
