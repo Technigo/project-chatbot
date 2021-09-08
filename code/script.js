@@ -5,7 +5,7 @@ const chat = document.getElementById('chat')
 
 // Functions declared here
 
-// This function will add a chat bubble in the correct place based on who the sender is
+// The showMessage function will add a chat bubble in the correct place based on who the sender is. The showMessage function takes two arguments - the message, and the sender. You can pass any text as the message and either 'user' or 'bot' as the sender. Depending on which sender you choose, it'll build up some HTML and append it to the 'chat' div with a different image and class name.
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     chat.innerHTML += `
@@ -30,7 +30,8 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
+// The Bot starts here
+//The greeting function sends a message as the bot asking for your name.
 const greeting = () => {
   showMessage(`Hello there, What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
@@ -44,4 +45,4 @@ const greeting = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000)
+setTimeout(greeting, 1000) 

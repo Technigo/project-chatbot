@@ -15,11 +15,13 @@
     <h1>Welcome to xxx.</h1>
     <h2>Ask about xxxx.</h2>
     <main>
-      <section class="chat" id="chat"></section>
 
-      <div class="input-wrapper" id="input-wrapper">
-        <form id="name-form">
-          <input id="name-input" type="text" />
+      <!-- <section class="chat" id="chat"></section> is where the chat messages will be rendered when you add a message as either the bot or the user. -->
+      <section class="chat" id="chat"></section>     
+      <!-- <div class="input-wrapper" id="input-wrapper"> is where you can show input elements to the user - text inputs, buttons, selects, etc. We have started with a form with an input and a button so that the user can write their name as the answer to the first question of our bot, but as you present new questions, you'll need to select this `.input-wrapper` div and replace its content with your new inputs. -->
+      <div class="input-wrapper" id="input-wrapper">   
+        <form id="input-form">
+          <input id="text-input" type="text" />
           <button class="send-btn" type="submit">
             Send
           </button>
