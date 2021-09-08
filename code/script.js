@@ -4,13 +4,10 @@ const welcomeButton = document.getElementById('welcomeBtn')
 const sendBtn = document.getElementsByClassName('send-btn')
 const input = document.getElementById('input')
 const inputWrapper = document.getElementById('input-wrapper')
-const form = document.getElementById("name-form");
-
-
+const form = document.getElementById('name-form');
 // Global variables, if you need any, declared here
 //let nextQuestion = 0
 // Functions declared here
-
 let questionNumber = 1
 //botReply to show message at bot side
 const botReply = (message) => {
@@ -20,7 +17,6 @@ const botReply = (message) => {
 const userReply = (message) => {
   showMessage(message, 'user')
 }
-
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
@@ -29,11 +25,10 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user.png" alt="User" />
       </section>
     `
   } else if (sender === 'bot') {
-    
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -46,91 +41,151 @@ const showMessage = (message, sender) => {
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
-
 // Starts here
 const greeting = () => {
- questionNumber = 1
+  questionNumber = 1
   showMessage(`Hello there Beat Bot!`, 'user')
-  setTimeout (() => botGreeting(), 1000)
+  setTimeout(() => botGreeting(), 1000)
 }
 //starts conversation with button
 welcomeButton.onclick = function () {
   if (welcomeButton.style.display !== 'none') {
     welcomeButton.style.display = 'none'; {
       greeting(showMessage, 'user')
-      }
-    };
+    }
+  };
 }
 //
 const botGreeting = () => {
   showMessage(`Hello there human, what's your name?`, 'bot')
-  //handleNameInput()
+  questionNumber = 1
 }
-
-
-const handleNameInput = (event) => {
-  event.preventDefault()
-  
-  const name = input.value
-  questionNumber = 2
-  input.value = ''
-  nextQuestion(name)
-
+const handleNameInput = () => {
+  console.log('handleNameInput')
+  showMessage(`My name is ${input.value}`, 'user');
+  // questionNumber = 2
+  setTimeout(() => whatMood(), 500);
 }
-
-const whatMood = (name) => {
+const whatMood = () => {
+  console.log('whatMood')
+  showMessage(`Oh ${input.value} describe your mood in one word!`, 'bot')
   questionNumber = 3
-  showMessage(`Oh ${name} describe your mood in one word!`, 'bot')
-  console.log('whatMood() ', input.value)
-  nextQuestion()
 }
+const moodAnswer = () => {
+  console.log('moodAnswer');
 
-const moodAnswer = (event) => {
   console.log('moodAnswer() ', input.value)
-  event.sender('user')
+  //event.sender('user')
   const inputMood = input.value
   questionNumber = 4
   showMessage(`I am ${inputMood}`, 'user')
-  input.value = ''
-  nextQuestion()
+  songSelection(input.value)
 }
-
-
-const songSelection = () => {
+const songSelection = (input) => {
   questionNumber = 5
-  //showMessage(`So you are ${inputMood}, here are some song recommendations`, 'bot')
-  nextQuestion()
-}
+  
 
-const nextQuestion = (message) => {
-  console.log();
-  if (questionNumber === 2){
-    showMessage(`My name is ${message}`, 'user')
-    input.value = ''
-   setTimeout(() => whatMood(message), 1000);
-   } else if (questionNumber === 3) {
-     input.value = ''
-     setTimeout(() => moodAnswer(message), 2000);
-   } else if (questionNumber === 4) {
-    input.value = ''
-     setTimeout(() => songSelection(message), 1000);
-   } } /*else if (indexDoggos === 4) {
+  if(input ==='sad'|| input === 'depressed'|| input === 'blue') {
+    showMessage(`So you are ${input}, here are some song recommendations`, 'bot')
+    inputWrapper.innerHTML = `
+    <select id="select1">
+     <option value="" selected disabled> Select a beat..</option>
+     <option value="Hassle">Erik Hassle - Hurtful</option>
+     <option value="TheFray">The Fray - How to save a life</option>
+     <option value="Coldplay">Coldplay - Fix you</option>
+   </select>
+   `
+   } else if (input === 'happy'|| input === 'glad'|| input === 'excited') {
+     showMessage(`So you are ${input}, here are some song recommendations`, 'bot')
+     inputWrapper.innerHTML = `
+    <select id="select2">
+     <option value="" selected disabled> Select a beat..</option>
+     <option value="Pharell">Pharell Williams - Happy</option>
+     <option value="Timberlake">Justin Timberlake - Can't stop the feeling</option>
+     <option value="Beyonce">Beyonce - Single ladies</option>
+   </select>
+   `
+   } else if (input === 'angry'|| input === 'mad'|| input === 'frustrated'|| input === 'irritated') {
+    showMessage(`So you are ${input}, here are some song recommendations`, 'bot')
+     inputWrapper.innerHTML = `
+    <select id="select3">
+     <option value="" selected disabled> Select a beat..</option>
+     <option value="Pink">Pink - So what</option>
+     <option value="Swift">Taylor Swift - I knew you were trouble</option>
+     <option value="CudiWest">Kid Cudi, Kanye West - Erase Me</option>
+   </select>
+   `
+  } else if (input === 'in love'|| input === 'love'|| input === 'romantic') {
+    showMessage(`So you are ${input}, here are some song recommendations`, 'bot')
+   inputWrapper.innerHTML = `
+  <select id="select4">
+   <option value="" selected disabled> Select a beat..</option>
+   <option value="Legend">John Legend - All of me</option>
+   <option value="Houston">Whitney Houston - I will always love you</option>
+   <option value="Carey">Mariah Carey - We Belong Together</option>
+ </select>
+ `
+  } else {
+    console.log('im here')
+    showMessage(`I don't recognize that mood..`,'bot')
+    inputWrapper.innerHTML = `
+    <select id="select5">
+     <option value="" selected disabled> Select a mood..</option>
+     <option value="happy">happy</option>
+     <option value="glad">glad</option>
+     <option value="excited">excited</option>
+     <option value="angry">angry</option>
+     <option value="mad">mad</option>
+     <option value="frustrated">fustrated</option>
+     <option value="irritated">irritated</option>
+     <option value="sad">sad</option>
+     <option value="depressed">depressed</option>
+     <option value="blue">blue</option>
+     <option value="in-love">in love</option>
+     <option value="love">love</option>
+     <option value="romantic">romantic</option>
+   </select>
+   <button id="rerun"> Go </button>
+   `
+  // const selectedValue = document.getElementById('select5').value
+   document.getElementById('rerun').onclick = function() {
+     //songSelection(document.getElementById('select5').value)
+     console.log('now I have clicked', document.getElementById('select5').value);
+     songSelection(document.getElementById('select5').value)
+   }
+  // songSelection(selectedValue)
+  }
+  //handleInput()
+}
+const handleInput = (event) => {
+  event.preventDefault()
+  console.log(questionNumber)
+  if (questionNumber === 1) {
+    handleNameInput()
+  }
+  else if (questionNumber === 2) {
+    console.log(2)
+    setTimeout(() => whatMood(event), 500);
+  } else if (questionNumber === 3) {
+    //input.value = ''
+    console.log(3);
+    //moodAnswer(event)
+    setTimeout(() => moodAnswer(event), 500);
+  } else if (questionNumber === 4) {
+    //input.value = ''
+    setTimeout(() => songSelection(event), 500);
+  }
+} /*else if (indexDoggos === 4) {
      console.log()
      userReply(message)
-     setTimeout(() => nameofDog(message), 2000);           
-} else {  
+     setTimeout(() => nameofDog(message), 2000);
+} else {
     userReply(message);
     setTimeout(() => goodbye(message), 2000);
 }*/
-
-
 // Set up your eventlisteners here
-
-form.addEventListener('submit', handleNameInput)
-
+form.addEventListener('submit', handleInput)
 /*sendBtn.addEventListener('click', () => nextQuestion(input.value))*/
-
-
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
