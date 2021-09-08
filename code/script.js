@@ -3,6 +3,7 @@ const chat = document.getElementById('chat')
 const startButton = document.getElementById('start-btn') 
 const form = document.getElementById('name-form')
 const inputValue = document.getElementById('name-input')
+const inputbuttons = document.getElementById('input-wrapper')
 
 // Global variables, if you need any, declared here
 let currentQuestion = 1 
@@ -39,22 +40,22 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Waddup party peeps! What's yo name?`, 'bot')           // Beer bot
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
 const ageQuestion = () => {
-  showMessage('How old are you?', 'bot')
+  showMessage('How old are you?', 'bot')     //something about beer
 }
 
 const petQuestion = () => {
-  showMessage('Do you have pets?', 'bot')
+  showMessage('Do you have pets?', 'bot')     //something even more about beer
 }
 
 const handleInput = (event) => {
   event.preventDefault()
   
-  console.log('our currentQuestion variable is:', currentQuestion)
+  
 
   if (currentQuestion === 1) {
     handleNameQuestion()
@@ -65,7 +66,6 @@ const handleInput = (event) => {
   }
   
   currentQuestion++
-  console.log('handing over to the bot with a new currentQuestion value', currentQuestion)
 }
 
 const handleNameQuestion = () => {
@@ -75,7 +75,7 @@ const handleNameQuestion = () => {
   inputValue.value = ''
 
   setTimeout(ageQuestion, 1000) 
-
+  setTimeout(inputbuttons, 2000)
 }
 
 const handleAgeQuestion = () => {
@@ -85,6 +85,25 @@ const handleAgeQuestion = () => {
   inputValue.value = ''
 
   setTimeout(petQuestion, 1000)
+  
+  inputbuttons.innerHTML = `
+  <button id="Yes">Hell yea</button>
+  <button id="No">No I'm a looser..</button>
+  `
+  
+  document
+  .getElementById('Yes')
+  .addEventListener('click', () => currentQuestion('personality'))
+  document
+  .getElementById('No')
+  .addEventListener('click', () => currentQuestion('looks'))
+}
+
+const handlePetQuestion = () => {
+
+  //showMessage()
+  
+  
 }
 
 // Set up your eventlisteners here
@@ -98,4 +117,5 @@ form.addEventListener('submit', handleInput)
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
+
 
