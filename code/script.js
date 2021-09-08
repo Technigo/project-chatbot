@@ -62,19 +62,41 @@ const sundayAfternoon = () => {
 
   select.addEventListener('change', (e) => {
     if (select.value === 'movie') {
+        showMessage(movie.innerHTML,'user');
+        showMovieOptions()
+
       console.log('yes this works')
     } else if (select.value === 'music') {
+      showMessage(music.innerHTML,'user');
+      showMusicOptions()
+
       
-    } else if (select === 'books') {
+    } else if (select.value === 'books') {
+      showMessage(books.innerHTML,'user');
+      showReadingOptions()
+
 
     } else {
-      
+
     }
   })
 
-}
+};
 
-console.log(wantToPlay);
+const showMovieOptions = () => {
+  showMessage('Movies, great! What kind of movies do you like?','bot')
+
+};
+
+const showMusicOptions = () => {
+  showMessage('Music, awesome! What would you like to shake your booty to?','bot')
+
+};
+
+const showReadingOptions = () => {
+  showMessage('Awesome, what would you like to read?', 'bot')
+
+};
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
