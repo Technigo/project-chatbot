@@ -112,7 +112,7 @@ main {
 .input-wrapper {
   display: flex;
   justify-content: center;
-  border: 2px solid red;
+
 }
 
 .input-wrapper form {
