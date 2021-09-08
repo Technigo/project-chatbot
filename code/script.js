@@ -135,7 +135,7 @@ console.log(type)
 
 // Question 3
 
-// Can you see this??????
+
 
 
 
@@ -149,5 +149,3 @@ setTimeout(greeting, 1000)
 
 
 
-
-// This is my test comment Maria

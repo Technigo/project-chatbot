@@ -9,7 +9,126 @@ body {
   background: #0026ff;
 }
 
-h1 {
+.hero-wrapper-container {
+  display: flex;
+  justify-content: center;
+  justify-self: stretch;
+  align-items: flex-start;
+}
+
+.hero-styling {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  object-fit: cover;
+  overflow: hidden;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+  background: black;
+}
+
+.hero-inner-container {
+  display: flex;
+  flex: 1;
+}
+
+.video {
+  flex: 1;
+}
+
+.hero-video {
+  opacity: 0.8;
+}
+
+.title-container {
+  position: absolute;
+}
+
+.title h1 {
+  display: flex;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-top: 9rem;
+  color: #fff;
+  letter-spacing: 0.2rem;
+  margin-bottom: 0;
+}
+
+/* Title styles for mobile and tablets */
+
+@media only screen and (max-width: 767px) {
+  .title h1 {
+    margin: 7rem 1rem 0 1rem;
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+  .title h1 {
+    font-size: 2.5rem;
+  }
+}
+
+.title h2 {
+  width: 400px;
+  padding: 2rem;
+  margin: auto;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+/* paragrah styles for mobile version */
+
+@media only screen and (max-width: 767px) {
+  .title h2 {
+    font-size: 1.5rem;
+    margin: 0 1rem 0 1rem;
+  }
+}
+
+/* Hero button */
+
+.btn {
+  width: 200px;
+  border: 3px solid white;
+  padding: 1.2rem;
+  margin: 20px auto 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  background-color: rgba(255, 255, 255, 0.158);
+  color: #fff;
+}
+
+.btn:hover {
+  cursor: url('pointer.png'), pointer;
+  /* we can add themed space related pointer here */
+  transform: scale(1.2);
+  transition: 0.1s;
+  background-color: rgba(255, 255, 255, 0.336);
+}
+
+@media only screen and (max-width: 767px) {
+  .btn {
+    font-size: 1rem;
+    padding: 0.5rem;
+    margin: 10px auto 0;
+    width: 150px;
+  }
+}
+
+.info-section-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+/* h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
@@ -24,13 +143,29 @@ h2 {
   color: #fff;
   text-align: center;
   margin-bottom: 36px;
-}
+} */
 
 p {
   font-size: 18px;
   font-weight: 600;
   line-height: 28px;
   margin: 0;
+}
+
+/* Paragraph styles for mobile and tablets */
+
+@media only screen and (max-width: 767px) {
+  p {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+  p {
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 
 input {
@@ -44,11 +179,26 @@ input {
   font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
+  max-width: 500px;
+  align-self: center;
   flex: 1;
 }
 
+/* input styles for mobile  */
+
+@media only screen and (max-width: 767px) {
+  input {
+    max-width: 300px;
+    font-weight: 400;
+    line-height: 18px;
+    padding: 10px;
+    font-size: 12px;
+    height: 40px;
+  }
+}
+
 main {
-  margin: 0 auto;
+  margin: 50px auto;
   width: 100%;
   max-width: 700px;
   height: 600px;
@@ -59,6 +209,22 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+}
+
+/* Main bot body styles for mobile and tablets */
+
+@media only screen and (max-width: 767px) {
+  main {
+    max-width: 320px;
+    height: 400px;
+  }
+}
+
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+  main {
+    max-width: 500px;
+    height: 600px;
+  }
 }
 
 .chat {
@@ -91,11 +257,29 @@ main {
 .bubble {
   background: #e5e9ff;
   font-weight: 600;
-  font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
   color: #0026ff;
   max-width: 40%;
+  display: flex;
+  flex-flow: wrap;
+  align-content: center;
+}
+
+/* Bubble styles for mobile and tablets  */
+
+@media only screen and (max-width: 767px) {
+  .bubble {
+    font-weight: 400;
+    padding: 14px 14px;
+  }
+}
+
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+  .bubble {
+    font-weight: 500;
+    padding: 22px 22px;
+  }
 }
 
 .bot-bubble {
@@ -116,6 +300,9 @@ main {
 .input-wrapper form {
   width: 100%;
   display: flex;
+  margin-left: 10px;
+  padding: 0;
+  align-self: center;
 }
 
 button {
@@ -136,4 +323,18 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+/* Send button styles for mobile  */
+
+@media only screen and (max-width: 767px) {
+  button {
+    padding: 10px 20px;
+    margin-right: 4px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    font-size: 12px;
+    height: 40px;
+  }
 }

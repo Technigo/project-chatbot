@@ -1,13 +1,20 @@
-# Project Name
+# Project Space-Bot
 
-Replace this readme with your own information about your project.
+This is the space themed fancy submition form. It is able to intertain the user while collecting and storing user preferences and selections. 
+Thats a learing project targeted on practicing DOM, Conditionals and EventHandlers.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+## Cool Features
 
-## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+
+## Tech Stack: JS , CSS (Flexbox approach) & HTML
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+
+## Limitations 
+It is a learning project with a clear goal of practicing an essensials of DOM, Conditionals and EventHandlers manipulations. It is: 
+- not scalable 
+- innerHTML related possible security issue, if used in "real prod"
+
+## Resources
