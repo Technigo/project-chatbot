@@ -1,9 +1,7 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const sendButton = document.getElementById('send-btn')
-console.log(sendButton)
 const nameInput = document.getElementById('name-input')
-console.log(nameInput)
 const form = document.getElementById('name-form')
 
 
@@ -11,39 +9,19 @@ const form = document.getElementById('name-form')
 
 let currentQuestionNumber = 1
 console.log(currentQuestionNumber)
+let saveSize = ""
+let saveEvent = ""
+
+// Set up your eventlisteners here
+sendButton.addEventListener('click', (Event) => {
+  event.preventDefault();
+  console.log('eventlistener works')
+  currentQuestion();
+});
 
 // Functions declared here
-
-const handleNameInput = () => {
-  // event.preventDefault()
-  const name = nameInput.value;
-  console.log(name)
-  showMessage(name, 'user')
-  nameInput.value = '';
-  setTimeout(() => showFlowerOptions(name), 500)
-  const showFlowerOptions = () => {
-    console.log('showFlowerOptions')
-    showMessage(`Hi ${name} ,what kind of event do you need flowers for?`, 'bot')
-
-  }
-
-};
-
-const eventQuestion = () => {
-  const event = nameInput.value;
-  showMessage(event, 'user')
-  nameInput.value = '';
-
-  form.innerHTML =
-    `<input id="name-input" type="text" />
-  <button id="send-btn" class="send-btn" type="submit">
-    NY button
-  </button>`
-  console.log(form.innerHTML)
-}
-
+// DECIDES WHICH QUESTION WE ARE HANDLING
 const currentQuestion = () => {
-  console.log('number1')
   if (currentQuestionNumber === 1) {
     handleNameInput();
     console.log('number1')
@@ -52,12 +30,120 @@ const currentQuestion = () => {
   }
   else if (currentQuestionNumber === 2) {
     console.log('number2')
-    eventQuestion();
+    sizeQuestion();
+    currentQuestionNumber = 3
+
+  }
+  else if (currentQuestionNumber === 3) {
+    console.log('number3');
+    currentQuestionNumber = 4
+    resetWindow()
   }
   else {
     console.log('doesntWork')
   }
 
+}
+
+const handleNameInput = () => {
+  const name = nameInput.value;
+  showMessage(name, 'user')
+  nameInput.value = '';
+  setTimeout(() => showFlowerOptions(name), 500)
+
+  // Function that changes layout to three buttons
+  const showFlowerOptions = () => {
+    console.log('showFlowerOptions')
+    showMessage(`Hi ${name} ,what kind of event do you need flowers for?`, 'bot')
+    form.innerHTML =
+      `<div class="btn-wrapper">
+      <button id="wedding-btn" name="Wedding">WEDDING</button>
+      <button id="funeral-btn" name="Funeral">FUNERAL</button>
+      <button id="romantic-btn" name="Romantic" >ROMANTIC</button>
+      </div>`
+    console.log(form.innerHTML)
+
+    const weddingBth = document.getElementById('wedding-btn')
+    weddingBth.addEventListener('click', (event) => {
+      event.preventDefault();
+      const chosenEvent = weddingBth.name;
+      saveEvent = weddingBth.name;
+      console.log("This is", weddingBth.name)
+      showMessage(chosenEvent, 'user')
+      currentQuestion()
+      setTimeout(() => showMessage(`So you chosen ${chosenEvent} event. What size do you need on the bouquet?`, 'bot'), 500)
+
+    })
+
+    const funeralBth = document.getElementById('funeral-btn')
+    funeralBth.addEventListener('click', (event) => {
+      event.preventDefault();
+      const chosenEvent = funeralBth.name;
+      saveEvent = funeralBth.name;
+      console.log("This is", funeralBth.name)
+      showMessage(chosenEvent, 'user')
+      currentQuestion()
+      setTimeout(() => showMessage(`So you chosen ${chosenEvent} event. What size do you need on the bouquet?`, 'bot'), 500)
+    })
+    const romanticBth = document.getElementById('romantic-btn')
+    romanticBth.addEventListener('click', (event) => {
+      event.preventDefault();
+      const chosenEvent = romanticBth.name;
+      saveEvent = romanticBth.name;
+      console.log("This is", romanticBth.name)
+      showMessage(chosenEvent, 'user')
+      currentQuestion()
+      setTimeout(() => showMessage(`So you chosen ${chosenEvent} event. What size do you need on the bouquet?`, 'bot'), 500)
+    })
+
+  }
+
+};
+
+const sizeQuestion = () => {
+
+  form.innerHTML =
+    `<div class="btn-wrapper">
+  <button id="medium-btn" class="size-btn" name="medium">MEDIUM</button>
+  <button id="large-btn" class="size-btn"  name="large">LARGE</button>
+  </div>`
+  console.log(form.innerHTML)
+
+  const mediumBtn = document.getElementById('medium-btn')
+  console.log("This is the", mediumBtn)
+  mediumBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    const chosenSize = mediumBtn.name;
+    showMessage(chosenSize, 'user')
+    currentQuestion()
+    setTimeout(() => showMessage(`So you chosen ${chosenSize} size. Thank you for your order`, 'bot'), 500)
+  })
+
+  const largeBtn = document.getElementById('large-btn')
+  console.log("This is the", largeBtn)
+  largeBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    const chosenSize = largeBtn.name;
+    console.log("This is", largeBtn.name)
+    showMessage(chosenSize, 'user')
+    currentQuestion()
+    setTimeout(() => showMessage(`So you chosen ${chosenSize} size. Thank you for your order`, 'bot'), 500)
+  })
+}
+
+const resetWindow = () => {
+  if (saveEvent === "Wedding") {
+    form.innerHTML = `<div>
+  <img class="bouquet-img" src="./assets/wedding.png" alt="">
+  </div>`}
+  else if (saveEvent === "Funeral") {
+    form.innerHTML = `<div>
+    <img class="bouquet-img" src="./assets/funeral.png" alt="">
+    </div>`}
+  else {
+    form.innerHTML = `<div>
+    <img class="bouquet-img" src="./assets/romantic.png" alt="">
+    </div>`}
 }
 
 
@@ -71,13 +157,13 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user2.png" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bot1.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -96,16 +182,7 @@ const greeting = () => {
 
 }
 
-// Set up your eventlisteners here
-sendButton.addEventListener('click', (Event) => {
-  event.preventDefault();
 
-  console.log('eventlistener works')
-  currentQuestion();
-
-
-
-});
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:

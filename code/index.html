@@ -12,22 +12,30 @@
 </head>
 
 <body>
-  <h1>Welcome to Flower shop.</h1>
-  <h2>Ask about flowers.</h2>
-  <main>
-    <section class="chat" id="chat"></section>
-
-    <div class="input-wrapper" id="input-wrapper">
-      <form id="name-form">
-        <input id="name-input" type="text" type="submit" />
-        <button id="send-btn" class="send-btn" type="submit">
-          Send
-        </button>
-
-      </form>
+  <div class="video">
+    <video autoplay loop muted preload="auto">
+      <source src="./assets/poppy1.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="container-on-video">
+    <div class="header">
+      <h1>Welcome to the Flower shop</h1>
+      <h2>Buy your bouquet today</h2>
     </div>
-  </main>
+    <main>
+      <section class="chat" id="chat"></section>
 
+      <div class="input-wrapper" id="input-wrapper">
+        <form id="name-form">
+          <input id="name-input" type="text" type="submit" />
+          <button id="send-btn" class="send-btn" type="submit">
+            Send
+          </button>
+
+        </form>
+      </div>
+    </main>
+  </div>
   <script src="./script.js"></script>
 </body>
 <!-- Structure of work ----
@@ -39,11 +47,21 @@
 ------------------------------------------
 Iteration 4
 5. Bot should answer question "Hello NAME, what kind of event are u going to?"
-6. Make a "selctor/dropdown window/buttons" to chose from
+6. Make a "3 buttons" to chose from
 7. Listen to the choice
-8. Read in text from the input-box
-9. send message and sender to loop
-10. x3
+8. Read in anser from buttons
+9. send message and sender to loop "WEDDING"
+9b. Bot should answer
+
+
+10. Make a 2 buttons" to chose from - medium and big
+11 Listen to the choice
+12 Read in text from the input-box
+13 send message and sender to loop "Thank you for your order"
+14. Picture of what they ordered
+
+
+
 
 Define var
 konst var

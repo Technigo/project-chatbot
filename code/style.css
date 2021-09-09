@@ -6,7 +6,30 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-color: white);
+}
+.video {
+  object-fit: cover;
+  width: 100vp;
+  /* height: 100vh; */
+  position: relative;
+  overflow: hidden;
+
+
+}
+
+.container-on-video {
+  position: absolute;
+  top: 10vh;
+  margin: auto;
+  padding: 5vh;
+
+}
+
+.header{
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 3vh;
+  border-radius: 20px;
 }
 
 h1 {
@@ -48,13 +71,13 @@ input {
 }
 
 main {
-  margin: 0 auto;
+  margin-top: 5vh;
   width: 100%;
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
-  padding: 20px 24px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 3vh 3vh;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
@@ -137,4 +160,14 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+.btn-wrapper{
+  display: flex;
+  margin: auto;
+
+}
+.bouquet-img {
+  width: 20vh;
+  
 }
