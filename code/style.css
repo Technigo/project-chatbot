@@ -7,6 +7,8 @@ body {
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   background: #0026ff;
+  background-color: red;
+  background-image: linear-gradient(#6f69ac, #95dac1, #ffeba1, #fd6f96);
 }
 
 h1 {
@@ -137,4 +139,17 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #6f69ac;
+  color: white;
+  text-align: center;
+  font-family: 'Kranky', cursive;
+  padding-top: 25px;
 }

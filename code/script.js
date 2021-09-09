@@ -10,27 +10,31 @@ const form = document.getElementById ('name')
 // Functions declared here
 
 
-
-
-
-
 const welcomeMessage = (userName) => {
 //userName.preventDefault()
-showMessage(`Hello ${userName}, welcome to color picker!`, 'bot')
 
+if (userName == "") {
+showMessage(`Name must be filled out, please enter your name!` ,'bot');
+  return false;
+}
+
+else {
+showMessage(`Hello ${userName}, welcome to color picker!`, 'bot')
+}
 setTimeout(() => colorOptions(userName), 1000)
 }
 
 
 const colorOptions = (userName) => {
 
-showMessage(`${userName}, what color is your favorite?`, 'bot' )
+showMessage(`${userName}, what is your favorite color ?`, 'bot' )
 
 
 inputWrapper.innerHTML = `
-    <button id="redBtn">Red</button>
-    <button id="greenBtn">Green</button>
-    <button id="blueBtn">Blue</button>
+    <button id="redBtn">🔴</button>
+    <button id="greenBtn">🟢</button>
+    <button id="blueBtn">🔵</button>
+    <button id="yellowBtn">🟡</button>
   `
 
   document
@@ -40,86 +44,105 @@ inputWrapper.innerHTML = `
     .getElementById('greenBtn')
     .addEventListener('click', greenAnswer)
   document
+    .getElementById('yellowBtn')
+    .addEventListener('click', yellowAnswer)
+  document
     .getElementById('blueBtn')
     .addEventListener('click', blueAnswer)
+    
 }
 
 
 const redAnswer= () => {
  
-  showMessage(`Red is a nice color`, 'bot' )
-   setTimeout(()=>birthSeason (), 1000)
+  showMessage(`Red is a Gryffindor color 🦁`, 'bot' )
+   setTimeout(()=>pickSpell (), 2000)
+   
   }
    
    
   const greenAnswer= () =>{
-    showMessage(`green is a ok color`, 'bot' )
-    setTimeout(()=>birthSeason (), 1000)
+    showMessage(`green is a Slytherin color 🐍`, 'bot' )
+    setTimeout(()=>pickSpell (), 2000)
+ 
+    
    
   }
-   
-   
-  const blueAnswer=() =>{
-    showMessage(`blue is a very pretty color`, 'bot' )
-    setTimeout(()=>birthSeason (), 1000)
-   
-  }
-  
-const birthSeason = () => {
-showMessage (`What season are you born in?`, `bot`)
 
+  const yellowAnswer=() =>{
+    showMessage(`yellow is a Hufflepuff color 🦡`, 'bot' )
+    setTimeout(()=>pickSpell (), 2000)
+   
+}
+  
+  const blueAnswer=() =>{
+    showMessage(`blue is a Ravenclaw color 🦅`, 'bot' )
+    setTimeout(()=>pickSpell (), 2000)
+    
+    
+
+  }
+
+  
+  
+const pickSpell = () => {
+showMessage (`Pick your spell 🧙!`, `bot`)
 
 inputWrapper.innerHTML = `
-    <button id="springBtn">Spring</button>
-    <button id="summerBtn">Summer</button>
-    <button id="autumnBtn">Autumn</button>
-    <button id="winterBtn">Winter</button>
+    <button id="lumosBtn">Light up</button>
+    <button id="disarmBtn">Disarm </button>
+    <button id="accioBtn">Summoning</button>
+    <button id="avadakedavraBtn">The unforgivable curse</button>
   `
 
   document
-    .getElementById('springBtn')
-    .addEventListener('click', springAnswer)
+    .getElementById('lumosBtn')
+    .addEventListener('click', lumosAnswer)
   document
-    .getElementById('summerBtn')
-    .addEventListener('click', summerAnswer)
+    .getElementById('disarmBtn')
+    .addEventListener('click', expelliarAnswer)
   document
-    .getElementById('autumnBtn')
-    .addEventListener('click', autumnAnswer)
+    .getElementById('accioBtn')
+    .addEventListener('click', accioAnswer)
     document
-    .getElementById('winterBtn')
-    .addEventListener('click', winterAnswer)
+    .getElementById('avadakedavraBtn')
+    .addEventListener('click', avadakedavraAnswer)
 
 }
 
 
-const springAnswer= () => {
+const lumosAnswer= () => {
  
-  showMessage(`Spring is a green season 🌳`, 'bot' )
-   setTimeout(()=>birthSeason (), 1000)
+  showMessage(`You have picked Lumos 💡 `, 'bot' )
+   setTimeout(()=>thankYou (), 3000)
+  
   }
    
+  const expelliarAnswer= () =>{
+    showMessage(`You have picked Expelliarmus 💥`, 'bot' )
+    setTimeout(()=>thankYou (), 2000)
    
-  const summerAnswer= () =>{
-    showMessage(`Summer is a blue season 🌊`, 'bot' )
-    setTimeout(()=>birthSeason (), 1000)
    
   }
    
+  const accioAnswer=() =>{
+    showMessage(`You have picked accio 🧹`, 'bot' )
+    setTimeout(()=>thankYou (), 2000)
    
-  const autumnAnswer=() =>{
-    showMessage(`autumn is a red season 🍂`, 'bot' )
-    setTimeout(()=>birthSeason (), 1000)
   }
-
 
      
-  const winterAnswer=() =>{
-    showMessage(`winter is a white season ❄ `, 'bot' )
-    setTimeout(()=>birthSeason (), 1000)
+  const avadakedavraAnswer=() =>{
+    showMessage(`You have picked Avada Kedavra 💀 `, 'bot' )
+    setTimeout(()=>thankYou (), 2000)
+    
   }
 
 
-
+const thankYou = () => {
+  showMessage (`Thank you for engaging in our bot-chat, Have a good day wizard! 🧙👋🏼`, 'bot' )
+  inputWrapper.innerHTML = ``
+}
 
 const handleNameInput = (event) => {
 event.preventDefault()
@@ -168,7 +191,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => { 
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Hello there wizard, what's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
