@@ -13,7 +13,7 @@ body {
 h1 {
   font-weight: 700;
   font-size: 64px;
-  line-height: 34px;
+    line-height: 34px;
   color: #eee;
   text-align: center;
 }
@@ -46,6 +46,7 @@ input {
   font-weight: 600;
   line-height: 26px;
   flex: 1;
+  font-family: 'Comfortaa', cursive;
 }
 
 main {
@@ -98,6 +99,7 @@ main {
   padding: 16px 24px;
   color: #415269;
   max-width: 40%;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .bot-bubble {
@@ -123,7 +125,7 @@ main {
 select {
   border: none;
   border-radius: 4px;
-  color: #415269;
+  color: #eee;
   font-size: 20px;
   font-weight: Bold 700;
   height: 60px;
@@ -138,6 +140,7 @@ select {
 button {
   background-color: #749ea1;
   color: white;
+  font-family: 'Comfortaa', cursive;
   border: none;
   border-radius: 4px;
   padding: 16px 40px;
@@ -153,3 +156,5 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+

@@ -1,10 +1,9 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById('input-wrapper')
-let option = '';
+let option = '';  // Global variable with no value. Keep option open. Row 104
 
 
-// Global variables, if you need any, declared here
 
 
 
@@ -45,7 +44,7 @@ const greeting = () => {
     <button id="coldBtn">Cold</button>
   `
 
-// Bot gives 2 alternatives via buttons - hot or cold coffee
+  // Bot gives 2 alternatives via buttons - hot or cold coffee
   document.getElementById('hotBtn').addEventListener('click', () => handleCoffeeKindInput('Hot'));
   document.getElementById('coldBtn').addEventListener('click', () => handleCoffeeKindInput('Cold'));
 
@@ -53,10 +52,10 @@ const greeting = () => {
 
 // User answer after click on button - hot or cold coffee
 const handleCoffeeKindInput = (coffeeKind) => {
-showMessage(coffeeKind, 'user')
+  showMessage(coffeeKind, 'user')
 
 
-setTimeout(() => showCoffeeOptions(coffeeKind), 1000)
+  setTimeout(() => showCoffeeOptions(coffeeKind), 1000)
 
 }
 
@@ -73,8 +72,8 @@ const showCoffeeOptions = (coffeeKind) => {
     <option value="Americano">Americano</option>
   </select>
 `
-// Bot shows list of cold alternatives. I named the value and name the same way to make the answer from bot match the list answer. 
-//Used else if condition - if user chose COLD the showMessage will be differenT from HOT. 
+    // Bot shows list of cold alternatives. I named the value and name the same way to make the answer from bot match the list answer. 
+    //Used else if condition - if user chose COLD the showMessage will be differenT from HOT. 
   }
   else if (coffeeKind === 'Cold') {
     showMessage('Hot out there? Chose your cold beverage down below!', 'bot');
@@ -87,12 +86,12 @@ const showCoffeeOptions = (coffeeKind) => {
   </select>
 `
 
-// User makes selection
+    // User makes selection
   }
   const coffeeKindSelect = document.getElementById('select');
-  coffeeKindSelect.addEventListener('change', () => {
+  coffeeKindSelect.addEventListener('change', () => {   //EventListener added to drop-down menu. Reacts when the drop-down option changes.
     showMessage(coffeeKindSelect.value, 'user');
-    
+
     setTimeout(() => handleCoffeeOptionInput(coffeeKindSelect.value), 1000)
   });
 }
@@ -109,25 +108,25 @@ const handleCoffeeOptionInput = (coffeeOption) => {
     <button id="mediumBtn">Medium</button>
     <button id="largeBtn">Large</button>
   `
-   //When user click on size button it triggers answer from user: small, medium or large
+  //When user click on size button it triggers answer from user to bot: small, medium or large
   document.getElementById('smallBtn').addEventListener('click', () => {
     showMessage('Small', 'user');
-    setTimeout(() => handleCoffeeSizeInput ('Small'), 1000);
+    setTimeout(() => handleCoffeeSizeInput('Small'), 1000);
   });
-  
+
   document.getElementById('mediumBtn').addEventListener('click', () => {
     showMessage('Medium', 'user');
-    setTimeout(() => handleCoffeeSizeInput ('Medium'), 1000);
+    setTimeout(() => handleCoffeeSizeInput('Medium'), 1000);
   });
- 
-  document.getElementById('largeBtn').addEventListener('click', () =>{
+
+  document.getElementById('largeBtn').addEventListener('click', () => {
     showMessage('Large', 'user');
-    setTimeout(() => handleCoffeeSizeInput ('Large'), 1000);
-  }); 
+    setTimeout(() => handleCoffeeSizeInput('Large'), 1000);
+  });
 }
 
-   //When user click on size button it triggers answer from user: small, medium or large
-const handleCoffeeSizeInput = (coffeeSize) => {  
+//When user 
+const handleCoffeeSizeInput = (coffeeSize) => {
   showMessage(`A ${coffeeSize} ${option} coming up. Are you satisfied with your order?`, 'bot');
   inputWrapper.innerHTML =
     `<input id="confirm-input" type="text" />
@@ -135,16 +134,35 @@ const handleCoffeeSizeInput = (coffeeSize) => {
     Send
   </button>`
 
-  // document.getElementById('send').addEventListener('click', () => nextQuestion(input.value))
+  const inPutField = document.getElementById('confirm-input');
 
-  // document.getElementById('confirm-input').addEventListener('keypress', (event) => {
-  //   if (event.key === 'Enter') nextQuestion(input.value)
-  // })
+
+  document.getElementById('send').addEventListener('click', () => handleConfirmInput(inPutField.value)) //Added eventhandler call-back
+  document.getElementById('confirm-input').addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') handleConfirmInput(inPutField.value)
+  })
 
 }
 
+const handleConfirmInput = (confirmText) => {
+   showMessage(confirmText, 'user');
 
+  if (confirmText.toLowerCase() === 'yes') { //Added toLowerCase due to user and device compatibility
+    setTimeout(() => { //Anonymus function
+      showMessage(`Great! Thank you for your order. Your ${option} will be right up! `, 'bot');
+      inputWrapper.innerHTML = ''; //InputWrapper is cleared
+    }, 1000);
+  }
+  else if (confirmText.toLowerCase() === 'no') { //Added toLowerCase due to user and device compatability
+    setTimeout(() => {
+      showMessage(`Ok. Your order will be canceled.`, 'bot');
+    },1000);
+    setTimeout(() => window.location.reload(), 4000); //When user answers no. Page will reload. User will start new order
+  }
+  else {
+    showMessage(`Sorry but ${confirmText} is not a valid answer`, 'bot');
+  }
 
-
+}
 
 setTimeout(greeting, 1000)
