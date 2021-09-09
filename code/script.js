@@ -32,7 +32,7 @@ const showMessage = (message, sender) => {
   const section = document.createElement('section');
   section.classList.add("user-msg");
   chat.appendChild(section);
-  section.innerHTML = 
+  section.innerHTML += 
   `<div class="bubble user-bubble">
   <p></p>
   </div>
@@ -247,22 +247,23 @@ const payment = (preference) => {
       price = '20';
     }
 
-  console.log(price);
   setTimeout(() => showMessage (
-    `Super, that will cost you ${price} Space Tokens. Please confirm your order:`, 'bot') , 2000);
+    `Super, that will cost you ${price} Space Tokens. Please confirm your order:`, 'bot') , 2500);
 
-    inputWrapper.innerHTML = `
-    <button id="confirm">Yes</button>
-    <button id="reload">No</button> `
 
+    setTimeout(() => {
+      inputWrapper.innerHTML = `
+      <button id="confirm">Yes</button>
+      <button id="reload">No</button> `
+  
+      document.getElementById('confirm').addEventListener('click', () => {
+      inputWrapper.innerHTML = "";
+      setTimeout(() => niceTrip ('Yes'), 1000);
+    });
     document.getElementById('reload').addEventListener('click', () => {
       location.reload();
-    })
-
-    document.getElementById('confirm').addEventListener('click', () => {
-    inputWrapper.innerHTML = "";
-    setTimeout(() => niceTrip ('Yes'), 1000);
   });
+    }, 2500);
 }
 
 const niceTrip = (wish) => {
