@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background-color: white);
+  background-color: white;
 }
 .video {
   object-fit: cover;
@@ -20,7 +20,7 @@ body {
 
 .container-on-video {
   position: absolute;
-  top: 10vh;
+  top: 6vh;
   margin: auto;
   padding: 5vh;
 
@@ -28,7 +28,7 @@ body {
 
 .header{
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 3vh;
+  padding: 1vh 3vh;
   border-radius: 20px;
 }
 
@@ -38,6 +38,7 @@ h1 {
   line-height: 34px;
   color: #fff;
   text-align: center;
+  line-height: 1.6;
 }
 
 h2 {
@@ -61,7 +62,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: black;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -71,13 +72,13 @@ input {
 }
 
 main {
-  margin-top: 5vh;
+  margin-top: 2vh;
   width: 100%;
-  max-width: 700px;
-  height: 600px;
+  max-width: 650px;
+  height: 570px;
   border-radius: 30px;
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 3vh 3vh;
+  padding: 2vh 3vh;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
@@ -118,7 +119,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: black;
   max-width: 40%;
 }
 
@@ -143,7 +144,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color:#e35235b7;
   color: white;
   border: none;
   border-radius: 4px;
