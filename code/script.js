@@ -63,21 +63,24 @@ const helpOptions = (event) => {
 }
 
 const threePotions = (answer) => {
+
+  showMessage(`${answer}`, 'user')
+
   if (answer === 'yes') {
-    showMessage(`${answer}`, 'user')
+    
     showMessage('Always happy to help! Two of the potions below will strengthen you, but one is poisonus to Hobbits. I cant remember which one. Shame!', 'bot')
     
     inputWrapper.innerHTML =`
-      <select id="selectPotion">
-          <option value="" selected disabled>Select a potion 🧪</option>
-          <option id="blue" value="blue">The blue potion 💙</option>
-          <option id="green" value="green">The green potion 💚</option>
-          <option id="purple" value="purple">The purple potion 💜</option>
-      </select>
+      <section class="input-wrapper">
+          <button id="blue">The blue potion 💙</button>
+          <button id="green">The green potion 💚</button>
+          <button id="purple">The purple potion 💜</button>
+      </section>
     `
     
-    document.getElementById('selectPotion').addEventListener('change', (ev) => potionResult(ev.target.value))
-
+    document.getElementById('blue').addEventListener('click', () => potionResult('blue'))
+    document.getElementById('green').addEventListener('click', () => potionResult('green'))
+    document.getElementById('purple').addEventListener('click', () => potionResult('purple'))
     //answer.preventDefault()
 
   } else {
@@ -88,8 +91,7 @@ const threePotions = (answer) => {
 
     //Push button to start over
     document.getElementById('restart').addEventListener('click', () => {
-      chat.innerHTML = '';
-      greeting();
+      location.reload()
     })
   }
 }
@@ -98,21 +100,93 @@ const potionResult = (potion) => {
   console.log('Potion result', potion);
 
   inputWrapper.innerHTML = '';
+  showMessage(`${potion}`, 'user')
 
   if (potion === 'blue') {
+    
     showMessage(`You are poisoned!`, 'bot')
-
-  } else if (potion === 'green') {
+    inputWrapper.innerHTML =`
+    <section class='input-wrapper'>
+    <button id="revive">Revive</button>
+    </section>
+    `
+    //Push button to start over
+    document.getElementById('revive').addEventListener('click', () => {
+      location.reload()
+    })
+    
+  } 
+  
+  else if (potion === 'green') {
+  
   showMessage(`You are now strong as a giant!`, 'bot')
+  inputWrapper.innerHTML =`
+  <section class='input-wrapper'>
+  <button id="ring">destroy the ring</button>
+  <button id="orks">defeat orks</button>
+  </section>
+  `
+
+  document.getElementById('ring').addEventListener('click', () => afterPotionResult('ringPhoto'))
+  document.getElementById('orks').addEventListener('click', () => afterPotionResult('orksPhoto'))
+
 
   } else if (potion === 'purple') {
   showMessage(`You have defeated The Ring!`, 'bot')
+    inputWrapper.innerHTML =`
+    <select id=purplechoice class="input-wrapper">
+    <option value"" selected disabled> Go to sleep </option>
+    <option value="sleep" id="sleep">Go to sleep</option>
+    <option value="nosleep" id="sleep">Go to party</option>
+    </select>
+    `
+    document.getElementById('purplechoice').addEventListener('change', (ev) => purplePotion(ev.target.value))
 
   } else {
 
   }
+
+  
 }
 
+const afterPotionResult = (antitode) => {
+  showMessage(`${antitode}`, 'user')
+
+  if (antitode === 'ringPhoto') {
+    inputWrapper.innerHTML =`
+    <div>
+    <img src="assets/ring.jpeg">
+    </div>`
+  
+  }
+  else {
+    inputWrapper.innerHTML = `
+    <div>
+    <img src="assets/ring.jpeg">
+    </div>`
+}
+
+}
+
+const purplePotion = (party) => {
+
+
+  if (party === 'sleep' ) {
+    showMessage(`ZZZZ`, 'bot')
+    
+  }
+
+  else if (party === 'nosleep') {
+    showMessage(`Woo Hoo`, 'bot')
+    inputWrapper.value = ''
+  }
+
+  else {
+    
+  }
+  inputWrapper.innerHTML = ''
+ 
+}
 //event.preventDefault()
 
 setTimeout(greeting, 1000)
