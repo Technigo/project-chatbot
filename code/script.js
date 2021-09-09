@@ -1,8 +1,12 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
-const start = document.getElementsByClassName('start')
+const startButton = document.getElementsByClassName('start-btn')
+const form = document.getElementById('name-form')
+const inputValue = document.getElementById('name-input')
 
 // Global variables, if you need any, declared here
+
+let currentQuestion = 1;
 
 // Functions declared here
 
@@ -46,9 +50,42 @@ const showMessage = (message, sender) => {
 
 // The dialogue starts here
 const greeting = () => {
-  showMessage(`Lovely weather we're having, don't you think?`, 'bot')
+  showMessage(`Hi there! What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
+const moodQuestion = () => {
+  showMessage('How are feeling today?', 'bot')
+}
+
+const secondQuestion = () => {
+  showMessage('Question number 2?', 'bot')
+}
+
+const handleInput = (event) => {
+  event.preventDefault()
+  
+  console.log('our currentQuestion variable is:', currentQuestion)
+
+  if (currentQuestion === 1) {
+    handleMoodQuestion()
+  } 
+  else if (currentQuestion === 2){
+    handleSecondQuestion()
+  }
+  
+  currentQuestion++
+  /* console.log('handing over to the bot with a new currentQuestion value', currentQuestion) */
+}
+
+const handleMoodQuestion = () => {
+  const moodOption = inputValue.value
+
+  showMessage(`My mood is ${moodOption}`, 'user')
+  inputValue.value = ''
+
+  setTimeout(secondQuestion, 1000) //Here we passing the next bot question. This could also be setup more generic, for example with a botQuestion function.
+}
+
 
 // Set up your eventlisteners here
 
@@ -61,28 +98,39 @@ const greeting = () => {
 
 // setTimeout(greeting, 1000)
 
+form.addEventListener('submit', handleInput)
+
+/* 
+This was a previous solution:
+
 const onFormSubmit = (event) => {
   event.preventDefault();
   const message = document.getElementById('name-input').value;
   showMessage(message, 'user');
+  message.value = '';
 };
-
+ 
 const startButton = document.getElementById('start');
 startButton.addEventListener('click', () => {
-  showMessage('Hello I\'m a bot', 'bot');
+  showMessage(`Hi there! How are feeling today? Write '1' for sad, '2' for neutral, '3' for worried and '4' for happy`, 'bot');
 });
 
 const form = document.getElementById('name-form');
 form.addEventListener('submit', onFormSubmit);
-
+*/
 
 // 0. Create "Start" button
 // 1. Click on button
 // 2. Get bot phrase
 // 3. Output bot phrase
 
-/* start.onClick = function() {
-  setTimeout(greeting, 1000)
-}
- */
+/* LIST OF BOT QUESTIONS
+
+1. Hi there! How are feeling today? (Multiple choice)
+2. If 1 (sad) = pepp; else if 2 (neutral) = do you want some cute animal pics to lighten up your day?;
+else if 3 (worried) = do you want to follow along to a meditation with me?
+else if 4 (happy) = cool! Let's play some happy music.
+
+
+*/
 
