@@ -3,7 +3,6 @@ const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById('input-wrapper')
 const nameInput = document.getElementById('name-input')
 const form = document.getElementById('name-form')
-// const sendButton = document.getElementById('send')
 
 // Global variables, if you need any, declared here
 let questionStep = 1
@@ -73,7 +72,6 @@ const greeting = () => {
 }
 
 // Set up your eventlisteners here
-
 // 1st user answer
 form.addEventListener('submit', (event) => {
   event.preventDefault()
@@ -83,7 +81,7 @@ form.addEventListener('submit', (event) => {
   setTimeout(() => petTypes(name), 1000)
 })
 
-
+// second question
 const petTypes = (name) => {
   questionStep++
   botAnswer(`Nice to meet you ${name} :) What kind of pet needs our care?`)
@@ -96,6 +94,7 @@ const petTypes = (name) => {
   document.getElementById('catButton').addEventListener('click', () => usersPet('cat 🐱'))
 }
 
+// third question
 const petServices = (type) => {
   questionStep++
   botAnswer(`So you are a ${type} person :) Please select a service for your pet.`)
@@ -130,6 +129,7 @@ const petServices = (type) => {
 
 }
 
+// forth question/confirmation from user
 const priceInformation = (choice) => {
   questionStep++
   if (choice === 'bathing') {
@@ -147,6 +147,7 @@ const priceInformation = (choice) => {
   document.getElementById('okButton').addEventListener('click', () => usersPet('OK'))
 }
 
+// firth question
 const petPayment = () => {
   questionStep++
   botAnswer(`Would you like to pay by cash or by card ? `);
@@ -158,6 +159,7 @@ const petPayment = () => {
   document.getElementById('cardButton').addEventListener('click', () => usersPet('Card 💳'))
 }
 
+// goodbye from bot
 const petBye = () => {
   botAnswer(`Thank you for your booking! We are looking forward to meet you and your pet.`)
   botAnswer(`Have a nice day! 👋🏼`)

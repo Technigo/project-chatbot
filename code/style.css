@@ -9,6 +9,7 @@ body {
   background-image: url(dTuctf.jpeg);
 }
 
+/* this is used to add and change the styling of the placeholder */
 input::-webkit-input-placeholder {
   font-size: 18px;
   font-family: 'Raleway', sans-serif;
@@ -180,6 +181,7 @@ button:hover {
   color: black;
 }
 
+/* this is for videos to make them responsive on tablet and desktop */
 @media (min-width: 768px) {
   .dog {
     width: 240px;

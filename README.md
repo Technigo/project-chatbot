@@ -1,13 +1,14 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This project was made on forth week for Technigo bootcamp as pair programming project 
+(Mamite Andersson & me). 
+The project's aim was to practice some parts of JavaScript we've learnt so far by creating a chat bot! We got more familiar with variables, conditionals statements, event listeners and understanding the flow.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We found this project pretty challenging for the first week with fully dive in into Javascript. We got an inspiration from Technigo's example of Pizza bot, knowledge from weekly materials that we got from school and some help from live sessions. 
+Pair programming was a good idea for this type of project. We learned a lot by doing it and even if it may seem like we simplified the code for us to understand, the bot works and lets the user to interact with it. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://chat-bot-pets.netlify.app 
