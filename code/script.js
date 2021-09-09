@@ -2,10 +2,12 @@
 const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById('input-wrapper')
 const form = document.getElementById('name-form')
-const inputUser = document.getElementById('name-input')
-const btn = document.getElementById('button')
+const input = document.getElementById('name-input')
+const sendBtn = document.getElementById('button')
 
 // This function will add a chat bubble in the correct place based on who the sender is
+
+
 const showMessage = (message, sender) => {
   if (sender === 'user') {
    console.log(message, 'user')
@@ -27,7 +29,6 @@ const showMessage = (message, sender) => {
         </div>
       </section>
     `
-  
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
@@ -36,39 +37,83 @@ const showMessage = (message, sender) => {
 // Starts here
 const greeting = () => {
   showMessage(`Hello Hobbit, I'm Sarouman! What's your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+  form.addEventListener ('submit', (event) => {
+    event.preventDefault()
+    helpOptions()
+  })
 }
 
-form.addEventListener('submit', (event) => {
-  event.preventDefault()
-  const name = inputUser.value
-  showMessage (name, 'user')
-  inputUser.value = ''
-  setTimeout(() => helpOptions(name), 1000)
-    
-});
+const helpOptions = (event) => {
+  const userName = input.value
+  showMessage(userName, 'user')
+  input.value = ''
+  showMessage(`Nice to meet you ${userName}! Do you need some help today?`, 'bot')
 
-const helpOptions = (message) => {
-  showMessage(`Hi ${message}! Do you need help?`, 'bot')
   inputWrapper.innerHTML = `
-  <section class="input-wrapper">
-  <button id="yes">Yes</button>
-  <button id="no">No</button>
-  </section>
+    <section class="input-wrapper">
+      <button id="yesbtn">Yes</button>
+      <button id="nobtn">No</button>
+    </section>
   `
-  const yesbtn = document.getElementById('yes').addEventListener('submit')
-  console.log('The click', yesbtn)
+  
+  document.getElementById('yesbtn').addEventListener('click', () => threePotions('yes'))
+  document.getElementById('nobtn').addEventListener('click', () => threePotions('no'))
+
+  input.value = ''
 }
 
+const threePotions = (answer) => {
+  if (answer === 'yes') {
+    showMessage(`${answer}`, 'user')
+    showMessage('Always happy to help! Two of the potions below will strengthen you, but one is poisonus to Hobbits. I cant remember which one. Shame!', 'bot')
+    
+    inputWrapper.innerHTML =`
+      <select id="selectPotion">
+          <option value="" selected disabled>Select a potion 🧪</option>
+          <option id="blue" value="blue">The blue potion 💙</option>
+          <option id="green" value="green">The green potion 💚</option>
+          <option id="purple" value="purple">The purple potion 💜</option>
+      </select>
+    `
+    
+    document.getElementById('selectPotion').addEventListener('change', (ev) => potionResult(ev.target.value))
 
+    //answer.preventDefault()
 
+  } else {
+    showMessage(`You fool! Never show your hairy feet here again! *door slam*`, 'bot')
+    inputWrapper.innerHTML =`
+    <button id="restart">Restart</button> 
+    `
 
-// Set up your eventlisteners here
+    //Push button to start over
+    document.getElementById('restart').addEventListener('click', () => {
+      chat.innerHTML = '';
+      greeting();
+    })
+  }
+}
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 900)
+const potionResult = (potion) => {
+  console.log('Potion result', potion);
+
+  inputWrapper.innerHTML = '';
+
+  if (potion === 'blue') {
+    showMessage(`You are poisoned!`, 'bot')
+
+  } else if (potion === 'green') {
+  showMessage(`You are now strong as a giant!`, 'bot')
+
+  } else if (potion === 'purple') {
+  showMessage(`You have defeated The Ring!`, 'bot')
+
+  } else {
+
+  }
+}
+
+//event.preventDefault()
+
+setTimeout(greeting, 1000)
+
