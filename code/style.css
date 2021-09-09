@@ -154,12 +154,48 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+/* added for new dynamic controls */
 
-.buttons {
-  display: flex;
-  /* width: 100%; */
-  margin-left: 50px;
-  /* display: none; */
+.food-options{
+  display:flex
+
+}
+.serving-size {
+  width: 300px;
+  height: 40px;
+  background: teal;
+  text-align: center;
+  cursor: pointer;
+}
+
+.select-serving {
+  line-height: 40px;
+  color: white;
+}
+
+.drink-choice {
+  width: 300px;
+  height: 40px;
+  background: teal;
+  text-align: center;
+  cursor: pointer;
+}
+
+ul {
+  margin: 0;
+  width: 160px;
+  background: #ccc;
+  list-style: none;
+  display:none;
+  cursor: pointer;
+}
+
+.open {
+  background: blue; 
+}
+
+.open + ul{
+  display:block;
 }
 
 
