@@ -64,7 +64,7 @@ const handleNameInput = () => {
   console.log('handleNameInput')
   showMessage(`My name is ${input.value}`, 'user');
   // questionNumber = 2
-  setTimeout(() => whatMood(), 500);
+  setTimeout(() => whatMood(), 1000);
 }
 const whatMood = () => {
   console.log('whatMood')
@@ -75,7 +75,6 @@ const moodAnswer = () => {
   console.log('moodAnswer');
 
   console.log('moodAnswer() ', input.value)
-  //event.sender('user')
   const inputMood = input.value
   questionNumber = 4
   showMessage(`I am ${inputMood}`, 'user')
@@ -88,11 +87,16 @@ const songSelection = (input) => {
   if(input ==='sad'|| input === 'depressed'|| input === 'blue') {
     showMessage(`So you are ${input}, here are some song recommendations`, 'bot')
     inputWrapper.innerHTML = `
+
+<audio id="myAudio">
+  <source src="code/Coldplay_-_Fix_You_Official_Video_1.mp3" type="audio/mp3">
+</audio>
+
     <select id="select1">
      <option value="" selected disabled> Select a beat..</option>
      <option value="Hassle">Erik Hassle - Hurtful</option>
      <option value="TheFray">The Fray - How to save a life</option>
-     <option value="Coldplay">Coldplay - Fix you</option>
+     <option onclick="playAudio() value="Coldplay">Coldplay - Fix you</option>
    </select>
    `
    } else if (input === 'happy'|| input === 'glad'|| input === 'excited') {
@@ -153,10 +157,21 @@ const songSelection = (input) => {
      console.log('now I have clicked', document.getElementById('select5').value);
      songSelection(document.getElementById('select5').value)
    }
-  // songSelection(selectedValue)
+ 
   }
-  //handleInput()
+
+const x = document.getElementById("myAudio"); 
+
+function playAudio() { 
+  x.play(); 
+} 
+
+function pauseAudio() { 
+  x.pause(); 
+} 
+
 }
+
 const handleInput = (event) => {
   event.preventDefault()
   console.log(questionNumber)
@@ -165,15 +180,15 @@ const handleInput = (event) => {
   }
   else if (questionNumber === 2) {
     console.log(2)
-    setTimeout(() => whatMood(event), 500);
+    setTimeout(() => whatMood(event), 1000);
   } else if (questionNumber === 3) {
     //input.value = ''
     console.log(3);
     //moodAnswer(event)
-    setTimeout(() => moodAnswer(event), 500);
+    setTimeout(() => moodAnswer(event), 1000);
   } else if (questionNumber === 4) {
     //input.value = ''
-    setTimeout(() => songSelection(event), 500);
+    setTimeout(() => songSelection(event), 1000);
   }
 } /*else if (indexDoggos === 4) {
      console.log()

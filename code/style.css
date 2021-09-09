@@ -6,7 +6,19 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image:url(https://images.unsplash.com/photo-1525362081669-2b476bb628c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1234&q=80);
+}
+.overlay::before{
+content: "";
+position: absolute;
+top: 0; left: 0;
+width: 100%; height: 100%;
+opacity: 30%;
+background-color: rgb(94, 15, 84);
+}
+
+.overlay-inside {
+  position: relative;
 }
 
 h1 {
@@ -15,6 +27,7 @@ h1 {
   line-height: 34px;
   color: #fff;
   text-align: center;
+  font-family: 'Monoton';
 }
 
 h2 {
@@ -36,9 +49,9 @@ p {
 input {
   box-sizing: border-box;
   border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  border-radius: 20px;
+  background: #2FAEAF;
+  color: #fff;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -59,6 +72,8 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  z-index: 100;
+  opacity:2;
 }
 
 .chat {
@@ -79,7 +94,7 @@ main {
 .user-msg {
   display: flex;
   justify-content: flex-end;
-  margin: 16px 0 0 8px;
+  margin: 16px 20px 0 8px;
   flex-shrink: 0;
 }
 
@@ -87,16 +102,20 @@ main {
 .user-msg img {
   width: 60px;
   height: 60px;
+  background-color:#cb77c4;
+  border-radius: 50%;
+  box-shadow: 3px  5px #C716B7 ;
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #9fdfe3;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: black;
   max-width: 40%;
+  box-shadow: 3px  5px #2FAEAF ;
 }
 
 .bot-bubble {
@@ -120,10 +139,10 @@ main {
 }
 
 .send-btn {
-  background-color: #0026ff;
-  color: white;
-  border: none;
-  border-radius: 4px;
+  background-color:#C716B7;
+  color: #fff;
+  border: solid #C716B7;
+  border-radius: 20px;
   padding: 16px 40px;
   margin-right: 4px;
   font-size: 16px;
@@ -135,17 +154,73 @@ main {
 }
 
 .send-btn:hover {
+  background-color: #fff;
+  color: #C716B7;
+  border: solid #C716B7;
   opacity: 0.9;
   transition: all 0.2s ease;
 }
 .Welcome{
   width: 50%;
   height: 50px;
-  background-color: plum;
+  background-color: #C716B7;
   align-self: center;
   border: none;
-  border-radius: 4px;
+  border-radius: 20px;
   margin-top: auto;
   font-size: 30px;
   color: white;
+}
+#select1, #select2, #select3, #select4, #select5{
+  background: #2FAEAF;
+  width: 50%;
+  height: 40px;
+  border-radius: 20px;
+  margin: 20px;
+}
+.spinner {
+  margin: 20px auto;
+  width: 50px;
+  height: 40px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.spinner > div {
+  background-color: #fff;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+  
+  animation: stretch 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+  animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+  animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+  animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+  animation-delay: -0.8s;
+}
+
+@keyframes stretch {
+  0% { 
+    transform: scaleY(0.4) 
+  } 
+
+  20% { 
+    transform: scaleY(1.0) 
+  }
+
+  40%, 100% { 
+    transform: scaleY(0.4) 
+  } 
 }
