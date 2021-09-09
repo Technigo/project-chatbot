@@ -1,5 +1,6 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+const startButton = document.getElementById('start-btn') //for Bot greet start button
 
 // Global variables, if you need any, declared here
 
@@ -17,12 +18,11 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
-    console.log("TEST!") //TEST, shows up when bot sends greeting msg, or any msg.
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
-          <p>message</p>
+          <p>${message}</p>
         </div>
       </section>
     `
@@ -34,11 +34,12 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Hey! I'm your virtual bartender. What's your name?`, 'bot') //changed msg
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
 // Set up your eventlisteners here
+startButton.addEventListener('click', greeting) //calls greeting on button click Start
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
@@ -47,4 +48,4 @@ const greeting = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 
-setTimeout(greeting, 2000) //Changed to 2000 = 2 sec for test
+//setTimeout(greeting, 1000)
