@@ -41,51 +41,19 @@ const showMessage = (message, sender) => {
 // Starts here
 const greeting = () => {
   showMessage(`Waddup party peeps! What's yo name?`, 'bot')           // Beer bot
+    currentQuestion = 1
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
 const ageQuestion = () => {
   showMessage('How old are you?', 'bot')     //something about beer
+  handleInput ()
 }
 
 const petQuestion = () => {
   showMessage('Do you have pets?', 'bot')     //something even more about beer
-}
+  handleInput ()
 
-const handleInput = (event) => {
-  event.preventDefault()
-  
-  
-
-  if (currentQuestion === 1) {
-    handleNameQuestion()
-  } else if (currentQuestion === 2) {
-    handleAgeQuestion()
-  } else if (currentQuestion === 3) {
-    handlePetQuestion()
-  }
-  
-  currentQuestion++
-}
-
-const handleNameQuestion = () => {
-  const name = inputValue.value
-
-  showMessage(`My name is ${name}`, 'user')
-  inputValue.value = ''
-
-  setTimeout(ageQuestion, 1000) 
-  setTimeout(inputbuttons, 2000)
-}
-
-const handleAgeQuestion = () => {
-  const age = inputValue.value
-
-  showMessage(`I am ${age} years young`, 'user')
-  inputValue.value = ''
-
-  setTimeout(petQuestion, 1000)
-  
   inputbuttons.innerHTML = `
   <button id="Yes">Hell yea</button>
   <button id="No">No I'm a looser..</button>
@@ -99,7 +67,43 @@ const handleAgeQuestion = () => {
   .addEventListener('click', () => currentQuestion('looks'))
 }
 
-const handlePetQuestion = () => {
+const handleInput = (event) => {
+  event.preventDefault()
+  
+  
+
+  if (currentQuestion === 1) {
+    NameQuestion()
+  } else if (currentQuestion === 2) {
+    AgeQuestion()
+  } else if (currentQuestion === 3) {
+    PetQuestion()
+  } else 
+  
+  currentQuestion++
+}
+
+const NameQuestion = () => {
+  const name = inputValue.value
+
+  showMessage(`My name is ${name}`, 'user')
+  inputValue.value = ''
+
+  setTimeout(ageQuestion, 1000) 
+  setTimeout(inputbuttons, 2000)
+}
+
+const AgeQuestion = () => {
+  const age = inputValue.value
+
+  showMessage(`I am ${age} years young`, 'user')
+  //inputValue.value = ''
+
+  setTimeout(petQuestion, 1000)
+  
+}
+
+const PetQuestion = () => {
 
   //showMessage()
   
