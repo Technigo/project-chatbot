@@ -36,6 +36,18 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
+const handleInput = () => {     
+  event.preventDefault()
+
+  console.log(currentQuestion)
+  if(currentQuestion === 1){
+    handleNameQuestion()
+  } else if(currentQuestion === 2){
+    moodOption()
+  }
+}
+
+
 // Starts here
 const greeting = () => {
   showMessage(`Hello there! What's your name?`, 'bot')
@@ -55,27 +67,43 @@ const handleNameQuestion = () => {
 const moodOption =() => {
   currentQuestion = 2
   showMessage (`How are you feeling today?`, 'bot')
+  // setTimeout(moodOption, 1000)
+  
+form.innerHTML = `
+        <button id="happyBtn">Happy</button>
+        <button id="anxiousBtn">Anxious</button>
+        <button id="sadBtn">Sad</button>
+  `
 
+// document.getElementById('happyBtn')
+// .addEventListener('click',() => handleInput('happy')
+
+const happy = () => {
+  showMessage(`I'm feeling happy!`, 'user')
+  showMessage(`Glad to hear you are feeling happy`, 'bot')
 }
 
-const handleInput = () => {     //this is where we add new questions
-  event.preventDefault()
 
-  console.log(currentQuestion)
-  if(currentQuestion === 1){
-    handleNameQuestion()
-  } else if(currentQuestion === 2){
-    moodOption()
-  }
+const anxious = () => {
+  showMessage(`I'm feeling anxious`, 'user')
+  showMessage(`Sorry to hear you are anxious`, 'bot')
+}
 
+const sad = () => {
+  showMessage(`I'm feeling sad`, 'user')
+  showMessage(`Sorry to hear you are feeling sad`, 'bot')
+}
 }
 
 
 // Set up your eventlisteners here
 
 startButton.addEventListener('click', () => setTimeout (greeting, 500))
-
 form.addEventListener('submit', handleInput)
+
+// document.getElementById('happy').addEventListener('click', happy)
+// document.getElementById('anxious').addEventListener('click', anxious)
+// document.getElementById('sad').addEventListener('click', sad)
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
