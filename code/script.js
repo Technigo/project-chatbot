@@ -7,6 +7,8 @@ const sendBtn = document.getElementById('send-btn')
 const nameForm = document.getElementById('name-form')
 const inputWrapper = document.getElementById('input-wrapper')
 let questionNumber = 1
+
+
 // Global variables, if you need any, declared here
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -33,34 +35,60 @@ const showMessage = (message, sender) => {
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
+
+
 const conversation = (message) => {
-  console.log('questionNumber', questionNumber)
   if (questionNumber === 1) {
-    showMessage(message)
-    handleNameInput.value = ''
-    setTimeout(() => drinks(message), 1000)
+    setTimeout(() => greeting(message, 'bot'), 1000)
+    console.log('nr:1');
+
   } else if (questionNumber === 2) {
+    console.log('nr:2')
+    showMessage(message, 'user')
+    handleNameInput.value = ''
+    setTimeout(() => drinks(message, 'user'), 1000)
+
+  } else if (questionNumber === 3) {
+    console.log('nr:3')
     showMessage(message, 'user')
     setTimeout(() => drinkChoices(message), 1000)
-  } else (questionNumber === 3)
+
+  } else (questionNumber === 4)
+  console.log('nr:4')
     //showMessage(message)
     //setTimeout(() => fika(message), 1000)
-  }
+}
+
+
 // Starts here
 const greeting = () => {
   questionNumber = 1
-  showMessage(`Hello, welcome to the café! What's your name?`, 'bot')
+  showMessage(`Welcome to the café! What's your name?`, 'bot')
 }
-const drinks = (event) => {
+
+const drinks = () => {
   questionNumber = 2
   let inputedName = handleNameInput.value;
   handleNameInput.value ='';
-  showMessage(`Hello ${inputedName}! What would you like to drink?`, 'bot');
+  showMessage(`${inputedName}`, 'user');
+
+  setTimeout(function() {
+    showMessage(`Hello ${inputedName}! What would you like to drink?`, 'bot');
+  }, 500);
+
+
   drinkButtons();
-};
-// Set up your eventlisteners here
-nameForm.addEventListener('submit', conversation);
+}
+
+
+nameForm.addEventListener('submit', drinks);
+
+
+
+
 const drinkButtons = () => {
+  questionNumber = 3
+
   inputWrapper.innerHTML = `
   <button id="coffeeBtn">Coffee</button>
   <button id="teaBtn">Tea</button>
@@ -72,54 +100,55 @@ const drinkButtons = () => {
     .addEventListener('click', () => conversation('tea'))
   document.getElementById('juiceBtn')
     .addEventListener('click', () => conversation('juice'))
-setTimeout(drinks, 1000);
+//setTimeout(drinks, 1000);
 }
+
+
 const drinkChoices = (type) => {
   questionNumber = 3
   showMessage(`Great choice! You selected ${type}, please choose your preference`, 'bot')
   if (type === 'coffee') {
     inputWrapper.innerHTML = `
       <select id="coffeeChoices">
-        <option value="" selected disabled>:point_down: Select your coffee...</option>
-        <option value="black">Black</option>
-        <option value="white">With milk</option>
-        <option value="chaiLatte">chai latte</option>
+        <option value="" selected disabled>👇 Select your coffee...</option>
+        <option value="Black">Black</option>
+        <option value="With milk">With milk</option>
+        <option value="Chai latte">Chai latte</option>
       </select>
     `
     const coffee = document.getElementById('coffeeChoices')
-    coffee.addEventListener('change', () => theEnd('coffee'));
+    coffee.addEventListener('change', () => theEnd(coffee.value));
   } else if (type === 'tea') {
     inputWrapper.innerHTML = `
       <select id="teaChoices">
-        <option value="" selected disabled>:point_down: Select your tea...</option>
-        <option value="blackTea">Black Tea</option>
-        <option value="redTea">Red Tea</option>
-        <option value="whiteTea">white Tea</option>
+        <option value="" selected disabled>👇 Select your tea...</option>
+        <option value="Black Tea">Black Tea</option>
+        <option value="Red Tea">Red Tea</option>
+        <option value="White Tea">white Tea</option>
       </select>
     `
     const tea = document.getElementById('teaChoices')
-    tea.addEventListener('change', () => theEnd('tea'));
+    tea.addEventListener('change', () => theEnd(tea.value));
   } else {
     inputWrapper.innerHTML = `
       <select id="juiceChoices">
-        <option value="" selected disabled>:point_down: Select juice...</option>
-        <option value="orange">Orange Juice</option>
-        <option value="apple">Apple Juice</option>
-        <option value="carrot">Carrot Juice</option>
+        <option value="" selected disabled>👇 Select juice...</option>
+        <option value="Orange Juice">Orange Juice</option>
+        <option value="Apple Juice">Apple Juice</option>
+        <option value="Carrot Juice">Carrot Juice</option>
       </select>
     `
     const juice = document.getElementById('juiceChoices')
-    juice.addEventListener('change', () => theEnd('juice'));
+    juice.addEventListener('change', () => theEnd(juice.value));
   }
 }
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 500)
 
+const theEnd = (message) => {
+  questionNumber = 4
+  showMessage(message, 'user')
+  showMessage(`Thank you for your order: ${message}!`, 'bot')
+  inputWrapper.innerHTML = ``
 
+}
 
-
+setTimeout(conversation, 500);
