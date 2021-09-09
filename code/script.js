@@ -132,7 +132,7 @@ const showMenu = (type) => {
 const showHairdresser = (treatment) => {
   questionNumber++
 
-  botReply(`Awesome! You wish to book ${treatment}! Which hairdresser would you like to book?`)
+  botReply(`You wish to book a ${treatment}. Which hairdresser would you like to book?`)
 
   inputWrapper.innerHTML = `
   <button id="bookAnna">Anna</button>
@@ -175,7 +175,7 @@ const showDate = (hairdresser) => {
 //Question6 (choose time)
 const showTime = (date) => {
   questionNumber++
-  botReply(`These are the available times on ${date}.`)
+  botReply(`These are the available times on the ${date}.`)
 
   inputWrapper.innerHTML = `
   <button id="time1" value="10.30">10.30</button>
@@ -203,7 +203,7 @@ const showTime = (date) => {
 //Question7 (confirm booking)
 const showConfirmation = (time) => {
   questionNumber++
-  botReply(`Are you sure you want to book this ${time}?`)
+  botReply(`Are you sure you want to book an appointment at ${time}?`)
 
   inputWrapper.innerHTML = `
   <button id="confirm">Yes</button>
@@ -213,10 +213,11 @@ const showConfirmation = (time) => {
     .getElementById('confirm')
     .addEventListener('click', () => nextQuestion('Yes'))
 
-  document.getElementById('restart').addEventListener('click', () => {
-    location.reload()
-    return false
-  })
+  document
+    .getElementById('restart')
+    .addEventListener('click', () => {
+      location.reload()
+    })
 }
 
 const thankYou = () => {
