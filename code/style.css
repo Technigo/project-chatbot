@@ -5,25 +5,27 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: 'Comfortaa', cursive;
+  background-image: url('assets/lukasz-rawa-fmc-tFMMiBs-unsplash.jpg');
+  background-size: cover;
 }
 
 h1 {
-  font-weight: bold;
-  font-size: 44px;
+  font-weight: 700;
+  font-size: 64px;
   line-height: 34px;
-  color: #fff;
+  color: #eee;
   text-align: center;
 }
 
 h2 {
-  font-weight: bold;
+  font-weight: 500;
   font-size: 24px;
   line-height: 34px;
   color: #fff;
   text-align: center;
-  margin-bottom: 36px;
+  margin-bottom: 38px;
+
 }
 
 p {
@@ -38,10 +40,9 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #415269;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -90,12 +91,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #b0c1d7;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #415269;
   max-width: 40%;
 }
 
@@ -119,8 +120,23 @@ main {
   display: flex;
 }
 
+select {
+  border: none;
+  border-radius: 4px;
+  color: #415269;
+  font-size: 20px;
+  font-weight: Bold 700;
+  height: 60px;
+  font-family: 'Comfortaa', cursive;
+  background: #749ea1;
+  width: 100%;
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+
 button {
-  background-color: #0026ff;
+  background-color: #749ea1;
   color: white;
   border: none;
   border-radius: 4px;
@@ -128,7 +144,6 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
