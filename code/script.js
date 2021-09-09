@@ -152,22 +152,16 @@ const showDate = (hairdresser) => {
   questionNumber++
   botReply(`${hairdresser} is available for booking! Which date do you want to come?`)
 
-  if (hairdresser === 'Anna') {
-    inputWrapper.innerHTML = `
-    <form id="input">
-      <label for="date"></label>
-      <input type="date" id="date" name="date">
-    </form>
-    `
-  } else {
-    inputWrapper.innerHTML = `
-    <form id="input">
-      <label for="date"></label>
-      <input type="date" id="date" name="date">
-    </form>
-    `
-  }
+  //Variables to prevent choosing past dates.
+  const currentDate = new Date()
+  const formattedDate = currentDate.toISOString().split('T')[0]
 
+  inputWrapper.innerHTML = `
+    <form id="input">
+      <label for="date"></label>
+      <input type="date" id="date" name="date" min=${formattedDate}>
+    </form>
+    `
   const input = document.getElementById('date')
   input.addEventListener('change', () => nextQuestion(input.value))
 }
