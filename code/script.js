@@ -1,5 +1,5 @@
 
-// Creating an empty Object
+// Creating an empty Object to store user inputs
 const  userFormInputs = {};
 
 
@@ -36,7 +36,7 @@ const showMessage = (message, sender) => {
   `<div class="bubble user-bubble">
   <p></p>
   </div>
-  <img src="assets/user.png" alt="User" />   `
+  <img src="assets/user.png" alt="User" />   `;
   textAnimationContainer = section.querySelectorAll('p')[0];
   txt = message;
   i=0;
@@ -50,24 +50,20 @@ const showMessage = (message, sender) => {
         <p>${message}</p>
       </div>
     </section>
-  `
+  `;
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-  chat.scrollTop = chat.scrollHeight;
+chat.scrollTop = chat.scrollHeight;
 }
-
-
-
 
 // Starts here
 // Question 1
 const greeting = () => {
   showMessage(`You wanna go to Space? Cool! What's your name?`, 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
 
 
-  handleNameInput.addEventListener('submit', (event) => {
+handleNameInput.addEventListener('submit', (event) => {
   event.preventDefault();
   const nameInput = document.getElementById('name-input');
   const userName = nameInput.value;
@@ -79,7 +75,6 @@ const greeting = () => {
   }
   else {
     showMessage (userName, 'user');
-    console.log(userName);
     nameInput.value = '' ;
     setTimeout(() => spaceAgeQuestion(userName), 1000);
     
@@ -93,25 +88,25 @@ const greeting = () => {
 
 
 const spaceAgeQuestion = (userName) => {
-  showMessage (`Hi ${userName}! Time goes slower in space. How many Earth years do you want to spend in Space?`, 'bot')
+  showMessage (`Hi ${userName}! Time goes slower in space. How many Earth years do you want to spend in Space?`, 'bot');
   
     inputWrapper.innerHTML = `
     <button id="oneYear">1 year</button>
     <button id="tenYears">10 years</button>
     <button id="thousandYears">1000 years</button>
-  `  
-document.getElementById('oneYear').addEventListener('click', () => {
-  inputWrapper.innerHTML = "";
-  setTimeout(() => destination('1 year'), 500);
-})
-document.getElementById('tenYears').addEventListener('click', () => {
-  inputWrapper.innerHTML = "";
-  setTimeout(() => destination('10 years'), 500); 
-})
-document.getElementById('thousandYears').addEventListener('click', () => {
-  inputWrapper.innerHTML = "";
-  setTimeout(() => destination('1000 years'), 500);
-})
+  ` ;
+  document.getElementById('oneYear').addEventListener('click', () => {
+    inputWrapper.innerHTML = "";
+    setTimeout(() => destinationPoint('1 year'), 500);
+  });
+  document.getElementById('tenYears').addEventListener('click', () => {
+    inputWrapper.innerHTML = "";
+    setTimeout(() => destinationPoint('10 years'), 500); 
+  });
+  document.getElementById('thousandYears').addEventListener('click', () => {
+    inputWrapper.innerHTML = "";
+    setTimeout(() => destinationPoint('1000 years'), 500);
+  });
 }  
 
 
@@ -121,13 +116,14 @@ document.getElementById('thousandYears').addEventListener('click', () => {
 // 10years: pluto, sun, saturnnus
 // 1000 years: trhourgh a black hole, another galaxy, surprise me
 
-const destination = (type) => {
+const destinationPoint = (type) => {
+  userFormInputs.duration = type;
   showMessage (`I'm fine with ${type}`, 'user');
 
 // we shoudld style select id in css - it looks like shit  
-setTimeout(() => showMessage (`Alright ${type}, check your alternatives!`, 'bot'), 2000);
+  setTimeout(() => showMessage (`Alright ${type}, check your alternatives!`, 'bot'), 2000);
 
- setTimeout(() => {
+  setTimeout(() => {
   if (type === '1 year') {
     inputWrapper.innerHTML = `
       <select id="select">
@@ -137,7 +133,7 @@ setTimeout(() => showMessage (`Alright ${type}, check your alternatives!`, 'bot'
         <option value="Moon">Moon</option>
         <option value="Jupiter">Jupiter</option>
       </select>
-    `
+    `;
   } else if (type === '10 years') {
     inputWrapper.innerHTML = `
       <select id="select">
@@ -147,7 +143,7 @@ setTimeout(() => showMessage (`Alright ${type}, check your alternatives!`, 'bot'
         <option value="Sun">Sun</option>
         <option value="Saturnus">Saturnus</option>
       </select>
-    `
+    `;
   } else {
     inputWrapper.innerHTML = `
       <select id="select">
@@ -157,13 +153,13 @@ setTimeout(() => showMessage (`Alright ${type}, check your alternatives!`, 'bot'
         <option value="Another Galaxy">Another Galaxy</option>
         <option value="Surprise me!">Surprise me!</option>
       </select>
-    `
+    `;
   }
   const select = document.getElementById('select');
-  select.addEventListener('change', () => {
-    inputWrapper.innerHTML = "";
-    setTimeout(() => spaceFood(select.value), 1000);
-  }); 
+    select.addEventListener('change', () => {
+      inputWrapper.innerHTML = "";
+      setTimeout(() => spaceFood(select.value), 1000);
+    }); 
 }, 2000);
 }
 
@@ -171,55 +167,53 @@ setTimeout(() => showMessage (`Alright ${type}, check your alternatives!`, 'bot'
 // Question 4
 
 const spaceFood = (select) => {
+  userFormInputs.destination = select;
 
-console.log(select);
-
-// You picked "${select}"!
-showMessage (
+  showMessage (
   `My choice is "${select}"!`, 'user');
 
-setTimeout(() => showMessage (
+  setTimeout(() => showMessage (
   `Great! So what do you wanna eat during the trip to ${select}?`, 'bot') , 2500);
 
-setTimeout(() => {
- inputWrapper.innerHTML = `
-  <button id="tacos">	
-  &#127790; Tacos</button>
-  <button id="sushi">	
-  &#127843; Sushi</button>
-  <button id="tuna">	
-  &#128031; Tuna</button>
-`
+  setTimeout(() => {
+  inputWrapper.innerHTML = `
+    <button id="tacos">	
+    &#127790; Tacos</button>
+    <button id="sushi">	
+    &#127843; Sushi</button>
+    <button id="tuna">	
+    &#128031; Tuna</button>
+    `;
 
-document.getElementById('tacos').addEventListener('click', () => {
-inputWrapper.innerHTML="";  
-setTimeout(() => spacePet('Tacos'), 1000);
-});
-document.getElementById('sushi').addEventListener('click', () => {
-inputWrapper.innerHTML=""; 
-setTimeout(() => spacePet('Sushi'), 1000);
-});
-document.getElementById('tuna').addEventListener('click', () => {
-inputWrapper.innerHTML=""; 
-setTimeout(() => spacePet('Tuna'), 1000);
-});
+  document.getElementById('tacos').addEventListener('click', () => {
+    inputWrapper.innerHTML="";  
+    setTimeout(() => spacePet('Tacos'), 1000);
+  });
+  document.getElementById('sushi').addEventListener('click', () => {
+    inputWrapper.innerHTML=""; 
+    setTimeout(() => spacePet('Sushi'), 1000);
+  });
+  document.getElementById('tuna').addEventListener('click', () => {
+    inputWrapper.innerHTML=""; 
+    setTimeout(() => spacePet('Tuna'), 1000);
+  });
 }, 2500);
 } 
 
 // Question 5
 
 const spacePet = (dish) => {
-  showMessage (
-    `I want "${dish}"`, 'user');
+  userFormInputs.dish = dish;
+  showMessage (`I want "${dish}"`, 'user');
   
   setTimeout(() => showMessage (
     'Yummy! You wanna go alone or bring a Space pet?', 'bot') , 2000);
 
-    setTimeout(() => {
-      inputWrapper.innerHTML = `
-      <button id="alone">&#128117;</button>
-      <button id="withPet">&#43;&#128054;</button>
-    `
+  setTimeout(() => {
+    inputWrapper.innerHTML = `
+    <button id="alone">&#128117;</button>
+    <button id="withPet">&#43;&#128054;</button>
+    `;
   
     document.getElementById('alone').addEventListener('click', () => {
       inputWrapper.innerHTML = "";
@@ -227,7 +221,7 @@ const spacePet = (dish) => {
     });
     document.getElementById('withPet').addEventListener('click', () => {
       inputWrapper.innerHTML = "";
-      setTimeout(() => payment('with Space pet'), 1000);
+      setTimeout(() => payment('with a Space pet'), 1000);
     });
   
     }, 2000);
@@ -237,6 +231,7 @@ const spacePet = (dish) => {
 // Question 6
 
 const payment = (preference) => {
+  userFormInputs.preference = preference;
   showMessage (
     `I prefer to travel ${preference}.`, 'user');
 
@@ -248,36 +243,40 @@ const payment = (preference) => {
     }
 
   setTimeout(() => showMessage (
-    `Super, that will cost you ${price} Space Tokens. Please confirm your order:`, 'bot') , 2500);
+    // This is an explanation of how to access and display object value: https://www.w3schools.com/js/js_object_display.asp
+    `Super, that will cost you ${price} Space Tokens. Please confirm your Trip details: 
+    Space name : ${userFormInputs.name}, Duration : ${userFormInputs.duration}, Destination : "${userFormInputs.destination}",
+    Meal : "${userFormInputs.dish}" and I will travel ${userFormInputs.preference}`, 'bot') , 2500);
 
 
     setTimeout(() => {
       inputWrapper.innerHTML = `
       <button id="confirm">Yes</button>
-      <button id="reload">No</button> `
+      <button id="reload">No</button> `;
   
       document.getElementById('confirm').addEventListener('click', () => {
-      inputWrapper.innerHTML = "";
-      setTimeout(() => niceTrip ('Yes'), 1000);
+        inputWrapper.innerHTML = "";
+        setTimeout(() => niceTrip ('Yes'), 1000);
     });
-    document.getElementById('reload').addEventListener('click', () => {
-      location.reload();
+      document.getElementById('reload').addEventListener('click', () => {
+        location.reload();
   });
     }, 2500);
 }
 
 const niceTrip = (wish) => {
-  
+  userFormInputs.confirmation = wish;
   showMessage(`${wish}`, 'user');
 
   setTimeout(() => showMessage (
   'Have a nice trip! Cya in another life &#128125;', 'bot') , 1000);
 
   inputWrapper.innerHTML=''; 
-
-
 }
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
+
 setTimeout(greeting, 1000);
+
+//Do on Friday:
+// Pausing video on click
+
+// Toggling class to pop up the chat-bot
