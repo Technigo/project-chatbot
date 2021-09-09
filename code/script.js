@@ -79,6 +79,7 @@ const sendBotMessage = (message) => {
     playSoundEffect(`./assets/sound.mp3`);
     removeOverlayActive();
     removeInputContainerHidden();
+    chat.scrollTop = chat.scrollHeight;
   }, 1000);
 };
 
