@@ -12,18 +12,35 @@ const inputWrapper = document.getElementById('input-wrapper');
 
 // Functions declared here
 
+let i = 0;
+let txt = "";
+let textAnimationContainer;
+const speed = 50; 
+
+const typeReply = () => {
+  if (i < txt.length) {
+    chat.innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
-  
-    chat.innerHTML += `
-      <section class="user-msg">
-        <div class="bubble user-bubble">
-          <p>${message}</p>
-        </div>
-        <img src="assets/user.png" alt="User" />  
-      </section>
-    `
+   const section = document.createElement('section');
+   section.classList.add("user-msg");
+   section.innerHTML = ` 
+   <div class="bubble user-bubble">
+   <p>${message}</p>
+   </div>
+  <img src="assets/user.png" alt="User" /> `
+   textAnimationContainer = section.querySelectorAll('p')[0];
+   chat.appendChild(section);
+   txt = message;
+   i=0;
+   typeReply();
+   
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
