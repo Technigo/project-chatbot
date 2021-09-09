@@ -134,25 +134,25 @@ const wantToPlay = (user) => {
   yesBtn.addEventListener('click', (e) => {
     showMessage(`Yes!`, 'user')
     e.preventDefault();
-    sundayAfternoon();
+    setTimeout(sundayAfternoon, 200);
   })
   noBtn.addEventListener('click', (e) => {
     showMessage(`No!`, 'user')
     e.preventDefault();
-    shrek()
+    setTimeout(shrek, 200);
   })
 }
 
 const shrek = () => {
-  showMessage(`Then, go back to your swamp!`, 'bot');
   showCelebImg(shrekImg)
+  showMessage(`Then, go back to your swamp!`, 'bot');
   // const restartBtn = document.getElementById('restart');
 
   // restartBtn.addEventListener('click', ())
 }
 
 const sundayAfternoon = () => {
-  showMessage(`What do you do on a sunday afternoon?`, 'bot');
+  showMessage(`OK, what do you do on a sunday afternoon?`, 'bot');
   inputWrapper.innerHTML = `
   <select id="select">
     <option value="" selected disabled> Select an answer </option>
@@ -191,7 +191,7 @@ const sundayAfternoon = () => {
 };
 
 const showMovieOptions = () => {
-  showMessage('Movies, great! What kind of movies do you like?', 'bot')
+  showMessage('Movies, great! What kind of movies do you like?', 'bot');
   inputWrapper.innerHTML = `
     <button type="submit" id="horror">Horror</button>
     <button type="submit" id="drama">Drama</button>
@@ -222,7 +222,7 @@ const showMovieOptions = () => {
 };
 
 const showMusicOptions = () => {
-  showMessage('Music, awesome! What would you like to shake your booty to?', 'bot')
+  showMessage('Music, awesome! What would you like to shake your booty to?', 'bot');
   inputWrapper.innerHTML = `
     <button type="submit" id="rock">Rock</button>
     <button type="submit" id="hiphop">HipHop</button>
@@ -254,7 +254,7 @@ const showMusicOptions = () => {
 };
 
 const showReadingOptions = () => {
-  showMessage('Awesome, what would you like to read?', 'bot')
+  showMessage('Awesome, what would you like to read?', 'bot');
   inputWrapper.innerHTML = `
     <button type="submit" id="novels">Novels</button>
     <button type="submit" id="magazines">Magazines</button>
@@ -433,11 +433,11 @@ const showCelebImg = (celeb) => {
     </div>
   </section>
 `}, 1300);
-  inputWrapper.innerHTML = `
+setTimeout(()=> {inputWrapper.innerHTML = `
   <form>
       <button type="submit" class="restart">Not happy? Then start again</button>
   </form>
-  `
+  `}, 1600);
 setTimeout(() => {chat.scrollTop = chat.scrollHeight}, 1500)
 
 }

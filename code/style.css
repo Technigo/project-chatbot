@@ -88,7 +88,10 @@ main {
 .user-msg img {
   width: 60px;
   height: 60px;
+  border: 1px dashed #757575;
+  border-radius: 50%;
 }
+
 
 .bubble {
   background: #DFEFED;
@@ -150,4 +153,5 @@ button:hover {
   height: 200px !important;
   width: 200px !important;
   object-fit: cover;
+  border-radius: 0;
 }
