@@ -3,6 +3,7 @@ const input = document.getElementById('user-input')
 const form = document.getElementById('name-form')
 const factButtons = document.getElementById('fact-btn')
 const yesNoButtons = document.getElementById('yes-no-btn')
+const timeOutTime = 1500
 
 // Global variables, if you need any, declared here
 let questionNumber = 0;
@@ -10,8 +11,12 @@ let questionNumber = 0;
 
 // Functions declared here
 
+//We wrapped this if/else with at setTimeout - not entierly sure how, 
+//we got som help but it wotked.
+
 const nextQuestion = (answer) => {
   usrInput(answer)
+  setTimeout(() =>{
     if (questionNumber === 1) {
       question1(answer)
       input.value = ''
@@ -24,10 +29,10 @@ const nextQuestion = (answer) => {
       question3(answer)
       input.value =''
     } 
+  
+  }, timeOutTime)
+    
   }
-
-
-
 
 // This function will add a chat bubble in the correct place based on who the sender is
 
@@ -58,11 +63,13 @@ const showMessage = (message, sender, video) => {
       </section>
     `
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-  chat.scrollTop = chat.scrollHeight
+  
+// This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+ 
+chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
+// Chat starts here
 
 const greeting = () => {
   questionNumber = 1;
@@ -89,7 +96,7 @@ const question2 = (question) => {
 const dance = () => {
   showMessage(`Dance`, 'user')
   showMessage(`Perfect, do the macarena!`, 'bot')
-  form.style.display='inline'
+  form.style.display='flex'
   factButtons.style.display='none'
 }
 
@@ -128,7 +135,7 @@ const no = () => {
   yesNoButtons.style.display='none'
 }
 
-// Set up your eventlisteners here ex onClick
+// Eventlisteners 
   
 form.addEventListener('submit', (event) => {
   event.preventDefault()
@@ -144,7 +151,8 @@ document.getElementById('no').addEventListener('click', no)
 
 
 
-setTimeout(greeting, 1500)
+setTimeout(greeting, timeOutTime)
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
