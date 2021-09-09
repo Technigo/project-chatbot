@@ -54,6 +54,26 @@ const handleNameInput = (event) => {
   }
 }
 
+const drinkMenu = () => {
+  showMessage(`Whats your poison?`, 'bot')
+  //Create buttons for drinkMenu
+  inputWrapper.innerHTML = `
+  <button id='whiskeyButton'>Whiskey</button>
+  <button id='rumButton'>Rum</button>
+  `
+  //Whiskey button pressed = user says "Whiskey"
+  document.getElementById('whiskeyButton').addEventListener('click', () =>  {
+    showMessage('Whiskey', 'user')
+    setTimeout(() => showMessage(`Ah, Whiskey... good choice!`, 'bot'), 1000)
+    })
+
+  //Rum button pressed = user says "Rum"
+  document.getElementById('rumButton').addEventListener('click', () =>  {
+    showMessage('Rum', 'user')
+    setTimeout(() => showMessage(`Aye! Rum coming up matey.`, 'bot'), 1000)
+    })
+}
+
 
 // Set up your eventlisteners here
 
