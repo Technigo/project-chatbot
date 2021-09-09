@@ -8,6 +8,7 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="./style.css" />
+    <link rel="shortcut icon" href="#" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
@@ -16,22 +17,30 @@
   </head>
 
   <body>
-    <h1>Bob's cleaning service</h1>
-    <h2>How can we help you ease your everyday life?</h2>
+    <header>
+      <h1>Bob's cleaning service</h1>
+      <h2>How can we help you ease your everyday life?</h2>
+    </header>
     <main>
       <section class="chat" id="chat"></section>
-
       <div class="input-wrapper" id="input-wrapper">
-        <form id="form">
+        <form class="form" id="form">
           <div id="submitContainer">
-            <label for="textInput"></label>
-            <input id="textInput" type="text" placeholder="Emma Andersson" />
-            <button id="submitBtn" type="submit">Send</button>
+            <div class="form__overlay" id="overlay"></div>
+            <div class="form__input-container hidden" id="inputContainer">
+              <label for="textInput"></label>
+              <input
+                id="textInput"
+                type="text"
+                placeholder="Emma Andersson"
+                required
+              />
+              <button id="submitBtn" type="submit">Send</button>
+            </div>
           </div>
         </form>
       </div>
     </main>
-
     <script src="./script.js"></script>
   </body>
 </html>

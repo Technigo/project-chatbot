@@ -1,13 +1,13 @@
-# Project Name
+# Week 4 - Chat Bot
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The mission was to build a chat bot using javascript. It was a pair programming project built by Sabrina Zancotti and Ida Aspen.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The first phases with getting the bot to start a conversation, “listening” to the user and then progress to the next question was fun and quite manageable. The main struggle was when we started with exception handling and adding on extra features (as the sound effect and spinner showing the user that the bot was loading). It was also challenging finding the right built-in objects to use, like isNaN. Some properties we tried out just ended up in the trash can a long with several rows of code (for example the “style.display” property).
+
+If we have had more time we probably would have zoom out more to get a bird’s-eye view, of what to do and what the whole project should look like. Just to be able to get a more “controlled” flow.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://zancottiaspenchatbot.netlify.app/
