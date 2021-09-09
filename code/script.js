@@ -426,7 +426,7 @@ const showCelebImg = (celeb) => {
   showMessage('...Computing...', 'bot')
   setTimeout(()=> {chat.innerHTML += `
   <section class="bot-msg">
-  <img src="assets/bot.png" alt="Bot" /> 
+  <img class="bot-img" src="assets/bot.png" alt="Bot" /> 
    <div class="bubble bot-bubble ">
       <p>${celeb.alt}!</p>
       <img class="celeb-img" src="${celeb.src}" alt="${celeb.alt}" />  
@@ -450,14 +450,14 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="./assets/user.png" alt="User" />  
+        <img class="user-img"src="./assets/user.png" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     console.log(message, sender);
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="./assets/bot.png" alt="Bot" />
+        <img class="bot-img" src="./assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>

@@ -84,14 +84,19 @@ main {
   flex-shrink: 0;
 }
 
-.bot-msg img,
-.user-msg img {
+.bot-img,
+.user-img {
   width: 60px;
   height: 60px;
   border: 1px dashed #757575;
   border-radius: 50%;
 }
 
+.celeb-img {
+  height: 200px !important;
+  width: 200px !important;
+  object-fit: cover;
+}
 
 .bubble {
   background: #DFEFED;
@@ -149,9 +154,4 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-.celeb-img {
-  height: 200px !important;
-  width: 200px !important;
-  object-fit: cover;
-  border-radius: 0;
-}
+
