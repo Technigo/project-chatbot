@@ -1,13 +1,10 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat');
+const sendButton = document.getElementById("sendName");
 const timeHourInput = document.getElementById("1h-btn");
 const timeDayInput = document.getElementById("1d-btn");
 const timeWeekInput = document.getElementById("1w-btn");
 
-
-// Global variables, if you need any, declared here
-
-// Functions declared here
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -34,22 +31,19 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
+function toggleVisible(className) {
+  document.querySelector(`.${className}`).classList.toggle("invisible");
+}
+
+
+// 1. Starts here question 1
 const greeting = () => {
   showMessage(`Welcome to the Time Bank, What's your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
 setTimeout(greeting, 500);
-// Set up your eventlisteners here
 
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-
+// 2. Read the input, show the input, show question 2, change the options
 const handleNameInput = (event) => {
   event.preventDefault();
   //read the input 
@@ -58,18 +52,7 @@ const handleNameInput = (event) => {
   showMessage(name, 'user');  //print the name in screen 
   nameInput.value = ''
 
-  // After 1 second, show the next question by invoking the next function.
-  // passing the name into it to have access to the user's name if we want
-  // to use it in the next question from the bot.
   setTimeout(() => showTimeOptions(name), 1000);
-}
-
-let sendButton = document.getElementById("sendName");
-sendButton.addEventListener("click", handleNameInput);
-
-
-function toggleVisible(className) {
-  document.querySelector(`.${className}`).classList.toggle("invisible");
 }
 
 const showTimeOptions = (name) => {
@@ -80,67 +63,35 @@ const showTimeOptions = (name) => {
 
 
 
-
+// 2. Read the value in button clicked, show the value, show question 3, change the options
 const handleTimeInput = (event) => {
   event.preventDefault();
-  console.log("Im in handleTimeInput")
 
-  const hour = timeHourInput.value;
-  const day = timeDayInput.value;
-  const week = timeWeekInput.value;
   //read the input 
-  if (hour) {
-    showMessage(hour, 'user');
-    showCostOptions(hour, 10);
-  } else if (day) {
-    showMessage(day, 'user');
+  const time = event.target.value;
 
-    showCostOptions(day, 100);
+  //choices depending on the input 
+  if (time === "hour") {
+    showMessage("1 hour", 'user');
+    setTimeout(() => showCostOptions("hour", 10), 2000);
+  } else if (time === "day") {
+    showMessage("1 day", 'user');
+    setTimeout(() => showCostOptions("day", 100), 2000);
   } else {
-    showMessage(week, 'user');
-
-    showCostOptions(week, 1000);
+    showMessage("1 week", 'user');
+    setTimeout(() => showCostOptions("week", 1000), 2000);
   }
-
-  // const name = nameInput.value;
-  // showMessage(name, 'user');  //print the option/button clicked in screen 
-  // nameInput.value = ''
-
-  // setTimeout(() => showTimeOptions(name), 1000);
-  // /*if 1h-Btn> read the value-print next msg-change footer
-
-
-  // */
-
 }
 
-
-timeHourInput.addEventListener("click", handleTimeInput);
-timeDayInput.addEventListener("click", handleTimeInput);
-timeWeekInput.addEventListener("click", handleTimeInput);
-
-
 const showCostOptions = (value, cost) => {
-  console.log("showCostOptions", value, cost)
-  showMessage(`Ok great you only need ${value}, That'll be €${cost}!`, 'bot');
+  showMessage(`Ok great you only need 1 ${value}, That'll be €${cost}! How would you like to pay? In cash, credit card or pay later?`, 'bot');
   toggleVisible("question-payment");
   toggleVisible("question-time");
 }
 
-// document
-//   .getElementById('1h-Btn')
-//   .addEventListener('click', () => nextQuestion('1h-payment'))
-// document
-//   .getElementById('1d-Btn')
-//   .addEventListener('click', () => nextQuestion('1d-payment'))
-// document
-//   .getElementById('1d-Btn')
-//   .addEventListener('click', () => nextQuestion('1w-payment'))
-// }
 
-
-/*Ok great you only need 1 "hour", That'll be 10€
-1 "day", that's tough. Hope it can help you. That'll be 100€
-1"week", wow you are really in need of some extra time :). That'll be 1000 €
-How would you like to pay? In cash, credit card or pay later?
-Cash  Credit card   Pay later (buttons)  */
+// Set up your eventlisteners here
+sendButton.addEventListener("click", handleNameInput);
+timeHourInput.addEventListener("click", handleTimeInput);
+timeDayInput.addEventListener("click", handleTimeInput);
+timeWeekInput.addEventListener("click", handleTimeInput);
