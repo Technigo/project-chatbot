@@ -1,6 +1,9 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById('input-wrapper') 
+const form = document.getElementById('name-form')
+const startButton = document.getElementById('start-btn')
+const inputValue = document.getElementById('input-name')
 
 // Global variables, if you need any, declared here
 
@@ -37,9 +40,18 @@ const showMessage = (message, sender) => {
 // Starts here
 const greeting = () => {
   showMessage(`Welcome to the Travelbot! What's your name?`, 'bot')
-
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
+
+const handleInputName = (event) => {
+  event.preventDefault()
+
+  const name = inputValue.value
+  console.log('the name is:', name)
+  showMessage(name, 'user' )
+
+  
+}
+
 
 // const continent = () => {
 //   showMessage(`Where would you like to go?`, 'user')
@@ -52,16 +64,11 @@ const greeting = () => {
 
 
 // Set up your eventlisteners here
-const form = document.getElementById('name-form')
-
-form.addEventListener('submit', (noRefresh) => {
-  noRefresh.preventDefault()
-});
-
-
-const startButton = document.getElementById('start-btn')
-
 startButton.addEventListener('click', greeting)
+
+form.addEventListener('submit', handleInputName)
+
+
 
 
 
@@ -73,3 +80,4 @@ startButton.addEventListener('click', greeting)
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 // setTimeout(greeting, 1000)
+// 
