@@ -95,6 +95,7 @@ input {
   line-height: 26px;
   flex: 1;
   border-radius: 10px;
+  margin-bottom: 10px;
 }
 input:focus {
  outline: none;
@@ -111,6 +112,7 @@ input:focus {
 
 .bot-msg {
   display: flex;
+  flex-direction: column;
   margin: 16px 8px 0 0;
   flex-shrink: 0;
 }
@@ -136,7 +138,6 @@ input:focus {
   line-height: 26px;
   padding: 16px 24px;
   color: rgb(226, 194, 185);
-  max-width: 40%;
 }
 
 .bot-bubble {
@@ -193,13 +194,14 @@ button:hover {
    width: 100%;  */
   background-color: rgb(226, 194, 185);
   height: 100px;
-  margin-top:10px; 
+  margin-top:30px; 
 }
 
 .nav-footer {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  align-items: center;
+  padding-top: 25px;
 }
 
 .fab, .fas { 
@@ -209,6 +211,21 @@ button:hover {
 }
 
 /* MEDIA QUERIES */
+@media(min-width:550px) {
+  .input-wrapper form {
+    flex-direction: row;
+  }
+  input {
+    margin-bottom: 0;
+  }
+  .bubble {
+    max-width: 50%;
+  }
+  .bot-msg {
+    flex-direction: row;
+  }
+}
+
 @media (min-width:1156px) {
   main {
     margin-right: 100px;
