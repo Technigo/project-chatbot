@@ -48,7 +48,7 @@ const handleInputName = (event) => {
   const name = inputValue.value
   console.log('the name is:', name)
   showMessage(name, 'user' )
-
+  inputValue.value = ''
   
 }
 
