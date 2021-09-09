@@ -42,6 +42,10 @@ const greeting = () => {
   showMessage(`Welcome to the Travelbot! What's your name?`, 'bot')
 }
 
+const continentQuestion = () => {
+  showMessage('Which continent do you prefer?', 'bot')
+}
+
 const handleInputName = (event) => {
   event.preventDefault()
 
@@ -50,6 +54,7 @@ const handleInputName = (event) => {
   showMessage(name, 'user' )
   inputValue.value = ''
   
+  setTimeout(continentQuestion, 1000)
 }
 
 
