@@ -95,7 +95,6 @@ const greeting = () => {
 const spaceAgeQuestion = (userName) => {
   showMessage (`Hi ${userName}! Time goes slower in space. How many Earth years do you want to spend in Space?`, 'bot')
   
-setTimeout(() => {
     inputWrapper.innerHTML = `
     <button id="oneYear">1 year</button>
     <button id="tenYears">10 years</button>
@@ -103,17 +102,16 @@ setTimeout(() => {
   `  
 document.getElementById('oneYear').addEventListener('click', () => {
   inputWrapper.innerHTML = "";
-  setTimeout(() => destination('1 year'), 1000);
+  setTimeout(() => destination('1 year'), 500);
 })
 document.getElementById('tenYears').addEventListener('click', () => {
   inputWrapper.innerHTML = "";
-  setTimeout(() => destination('10 years'), 1000); 
+  setTimeout(() => destination('10 years'), 500); 
 })
 document.getElementById('thousandYears').addEventListener('click', () => {
   inputWrapper.innerHTML = "";
-  setTimeout(() => destination('1000 years'), 1000);
+  setTimeout(() => destination('1000 years'), 500);
 })
-}, 1000);  
 }  
 
 
@@ -166,7 +164,7 @@ setTimeout(() => showMessage (`Alright ${type}, check your alternatives!`, 'bot'
     inputWrapper.innerHTML = "";
     setTimeout(() => spaceFood(select.value), 1000);
   }); 
-}, 1000);
+}, 2000);
 }
 
 
@@ -181,7 +179,7 @@ showMessage (
   `My choice is "${select}"!`, 'user');
 
 setTimeout(() => showMessage (
-  `Great! So what do you wanna eat during the trip to ${select}?`, 'bot') , 2000);
+  `Great! So what do you wanna eat during the trip to ${select}?`, 'bot') , 2500);
 
 setTimeout(() => {
  inputWrapper.innerHTML = `
@@ -205,14 +203,14 @@ document.getElementById('tuna').addEventListener('click', () => {
 inputWrapper.innerHTML=""; 
 setTimeout(() => spacePet('Tuna'), 1000);
 });
-}, 1000);
+}, 2500);
 } 
 
 // Question 5
 
 const spacePet = (dish) => {
   showMessage (
-    `I want "${dish}".`, 'user');
+    `I want "${dish}"`, 'user');
   
   setTimeout(() => showMessage (
     'Yummy! You wanna go alone or bring a Space pet?', 'bot') , 2000);
@@ -232,7 +230,7 @@ const spacePet = (dish) => {
       setTimeout(() => payment('with Space pet'), 1000);
     });
   
-    }, 1000);
+    }, 2000);
   
 }
 
@@ -272,7 +270,7 @@ const niceTrip = (wish) => {
   showMessage(`${wish}`, 'user');
 
   setTimeout(() => showMessage (
-  'Have a nice trip! Cya in another life &#128125;', 'bot') , 2000);
+  'Have a nice trip! Cya in another life &#128125;', 'bot') , 1000);
 
   inputWrapper.innerHTML=''; 
 
