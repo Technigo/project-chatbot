@@ -3,6 +3,9 @@
   margin: 0;
   padding: 0;
 }
+html {
+  height: 100%;
+}
 
 body {
   font-family: "Montserrat", sans-serif;
@@ -10,8 +13,9 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  height: 100vh;
+  min-height: 100vh; 
   width: 100%; 
+  border:2px solid red;
 }
 
 /* HEADER */
@@ -71,7 +75,7 @@ main {
   background: #fff;
   padding: 20px 24px;
   padding-top: 0;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   display: flex;
   flex-direction: column;
   background-color: rgb(191, 216, 184);
@@ -143,6 +147,8 @@ input:focus {
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  background-color:rgb(3, 122, 120);
+
 }
 
 .input-wrapper {
@@ -153,6 +159,7 @@ input:focus {
 .input-wrapper form {
   width: 100%;
   display: flex;
+  flex-direction: column;
 }
 
 button {
@@ -169,18 +176,21 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 10px;
+  border:1px solid #fff;
 }
 
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+  transform: scale(1.1,1.1);
+
 }
 /* FOOTER */
 .footer {
-  position: fixed;
+  /* position: fixed;
   bottom:0;
-  left: 0;
-  width: 100%;
+  left: 0; 
+   width: 100%;  */
   background-color: rgb(226, 194, 185);
   height: 100px;
   margin-top:10px; 

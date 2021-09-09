@@ -2,14 +2,15 @@
 const chat = document.getElementById('chat');
 const button = document.getElementById('btn')
 const nameInput = document.getElementById('name-input');
+const inputWrapper = document.getElementById('input-wrapper')
+// let selectBtn = document.getElementById('select');
 
+// GLOBAL VARIABLES
 let currentQuestion = 1;
-
-//EVENTS LISTENER
 
 // FUNCTIONS:
 
-// 1.Function showMessage: This function will add a chat bubble in the correct place based on who the sender is
+// First Function showMessage: This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => { 
 
   if (sender === 'user') {
@@ -34,36 +35,62 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight// This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
 }
 
-// 2. Function greeting: This function invokes ('calls') the first function, so when the function greeting is invokes, invokes the first function.
+// Secind Function greeting: This function invokes ('calls') the first function, so when the function greeting is invoked, it invokes the first function.
 const greeting = () => {
-showMessage(`Welcome to Flowerland! What's your name?`, 'bot')
+showMessage(`Welcome to Flowerland! What's your name?`, 'bot');
 }
-
 setTimeout(greeting,1000);
 
-// 3. Function HandleNameInput
- const handleNameInput = (event) => {
-  event.preventDefault()
+// Third Function questions
+ const questions = (event) => {
+  event.preventDefault();
 
   if (currentQuestion === 1) {
-    let name = nameInput.value
-    showMessage(name, 'user')
-    nameInput.value = ''
-  
-    setTimeout(() => showFoodOptions(name), 1000)
+    //user answer
+    let name = nameInput.value;
+    showMessage(name, 'user');
+    nameInput.value = '';
+   //bot answer after 2 seconds
     setTimeout(() => {
-      showMessage(`What type of flowers do you need, roses,tulips,sunflowers? ${name}?`, 'bot')
-    }, 2000);
+      showMessage(`What type of flowers would you like to order ${name}?`, 'bot'), 2000;
+    })
+  //   inputWrapper.innerHTML = 
+  //   `
+  //   <select id="select">
+  //     <option value = "" selected disabled> Click here to chose:</option>
+  //     <option value = "roses">Roses</option>
+  //     <option value = "tulips">Tulips</option>
+  //     <option value = "sunflowers">Sunflowers</option>
+  //     <option value = "lilies">Lilies</option>
+  //   </select>  
+  // `
+  
     currentQuestion = 2;
 
   } else if (currentQuestion === 2){
-  console.log('Question2')
-  }
+
+  //   inputWrapper.innerHTML = 
+  //   `
+  //   <select id="select">
+  //     <option value = "" selected disabled> Click here to chose:</option>
+  //     <option value = "roses">Roses</option>
+  //     <option value = "tulips">Tulips</option>
+  //     <option value = "sunflowers">Sunflowers</option>
+  //     <option value = "lilies">Lilies</option>
+  //   </select>
+   
+  // `
+    
+    
+    currentQuestion = 3;
+
   
+
+  }
+  button.addEventListener('click',questions);
+
 }
-
-button.addEventListener('click',handleNameInput);
-
+ 
 
 
 
@@ -75,3 +102,9 @@ button.addEventListener('click',handleNameInput);
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
+
+//   inputWrapper.innerHTML = `
+  //   <button id="rosesBtn">Roses</button>
+  //   <button id="tulipsBtn">Tulips</button>
+  //   <button id="sunflowersBtn">Sunflowers</button>
+  // `
