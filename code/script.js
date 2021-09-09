@@ -35,11 +35,10 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here, create functions here
+// Questions
 const greeting = () => {
   currentQuestion = 1
     showMessage(`Hello there, What's your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
 const dogQuestion = () => {
   currentQuestion++
@@ -50,24 +49,63 @@ const dogQuestion = () => {
   `
  document.getElementById('yes').addEventListener('click', () => {
     console.log('Yes-knapp')
-    showMessage('Yes I like dogs!', 'user')
+    showMessage('Yes', 'user')
+    showMessage('That´s what I thought! I mean who doesn’t?!', 'bot')
     handleInput()
   }
   )
   document.getElementById('no').addEventListener('click', () => {
     console.log('no-knapp')
-    showMessage('No I dont like dogs!', 'user')
-    showMessage('to bad', 'bot')
+    showMessage('No', 'user')
+    showMessage('Wrong answer! Who are you?! A cat person?', 'bot')
+    showMessage('Try another Bot! Bye bye! 👋🏼', 'bot')
   }
   )
 } 
 
   const breedQuestion = () => {
     currentQuestion++
-  showMessage(`What breed do you like`, 'bot')
-  handleInput()
-} 
+    showMessage(`What breed do you like?`, 'bot')
+    inputWrapper.innerHTML =  `
+    <button id="kaffe">German Shepard</button>
+    <button id="svante">Labrador</button>
+    `
 
+    document.getElementById('kaffe').addEventListener('click', () => {
+      console.log('kaffe')
+      showMessage('German Shepard', 'user')
+      showMessage('Yay! That makes us two!', 'bot')
+      handleInput()
+    }
+    )
+    document.getElementById('svante').addEventListener('click', () => {
+      console.log('svante')
+      showMessage('Labrador', 'user')
+      showMessage('Yay! That makes us two!', 'bot')
+      handleInput()
+  })
+}
+
+  
+  const byeBye = () => {
+    currentQuestion++
+    console.log('BYE')
+      showMessage('Bye for now 👋🏼', 'bot')
+      inputWrapper.innerHTML =  `
+      <button id="bye">Bye bye!</button>
+      `
+    document.getElementById('bye').addEventListener('click'), (refreshPage) => {
+        const refreshPage = () => {
+        location.reload();
+      }
+      
+      // byeBye.addEventListener('click'), (refreshPage) {
+      // const refreshPage = () => {
+      //   location.reload();
+      // }
+
+    }
+}
 //Here we handle all the user input answers. 
 nameForm.addEventListener('submit', (event) => {
     event.preventDefault ()
@@ -79,7 +117,7 @@ nameForm.addEventListener('submit', (event) => {
     showMessage(name, 'user')
     nameInput.value = ''
 
-    const answerOne = (`Hi ${name}`) 
+    const answerOne = (`Hi ${name}! Welcome!`) 
     showMessage(answerOne, 'bot')
     setTimeout(dogQuestion, 1000)
     console.log('Answer')
@@ -97,8 +135,9 @@ const handleInput = (event) => {
     else if (currentQuestion === 2){
     dogQuestion()
   } else if (currentQuestion === 3) {
-    console.log ('nu fungerar det!')
     breedQuestion()
+  } else if (currentQuestion === 4) {
+    byeBye()
   }
   
   currentQuestion++
