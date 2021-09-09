@@ -1,8 +1,8 @@
 // DOM SELECTORS 
 const chat = document.getElementById('chat');
-const button = document.getElementById('btn')
+const button = document.getElementById('btn');
 const nameInput = document.getElementById('name-input');
-const inputWrapper = document.getElementById('input-wrapper')
+const inputWrapper = document.getElementById('input-wrapper');
 // let selectBtn = document.getElementById('select');
 
 // GLOBAL VARIABLES
@@ -41,9 +41,10 @@ showMessage(`Welcome to Flowerland! What's your name?`, 'bot');
 }
 setTimeout(greeting,1000);
 
+
 // Third Function questions
- const questions = (event) => {
-  event.preventDefault();
+ const questions = (e) => {
+  e.preventDefault();
 
   if (currentQuestion === 1) {
     //user answer
@@ -51,9 +52,8 @@ setTimeout(greeting,1000);
     showMessage(name, 'user');
     nameInput.value = '';
    //bot answer after 2 seconds
-    setTimeout(() => {
-      showMessage(`What type of flowers would you like to order ${name}?`, 'bot'), 2000;
-    })
+    setTimeout(() => 
+      showMessage(`What type of flowers would you like to order ${name}?`, 'bot'), 2000);
   //   inputWrapper.innerHTML = 
   //   `
   //   <select id="select">
@@ -64,32 +64,21 @@ setTimeout(greeting,1000);
   //     <option value = "lilies">Lilies</option>
   //   </select>  
   // `
-  
-    currentQuestion = 2;
+  currentQuestion = 2;
 
-  } else if (currentQuestion === 2){
-
-  //   inputWrapper.innerHTML = 
-  //   `
-  //   <select id="select">
-  //     <option value = "" selected disabled> Click here to chose:</option>
-  //     <option value = "roses">Roses</option>
-  //     <option value = "tulips">Tulips</option>
-  //     <option value = "sunflowers">Sunflowers</option>
-  //     <option value = "lilies">Lilies</option>
-  //   </select>
-   
-  // `
-    
-    
+  } else if (currentQuestion === 2) {
+    let flower = nameInput.value;
+    showMessage(flower,'user');
+    nameInput.value = '';
+    setTimeout(() => 
+      showMessage(`You have chosen ${flower}! Great choice!`, 'bot'), 2000);
     currentQuestion = 3;
-
-  
-
   }
+}
+  
   button.addEventListener('click',questions);
 
-}
+
  
 
 
@@ -107,4 +96,15 @@ setTimeout(greeting,1000);
   //   <button id="rosesBtn">Roses</button>
   //   <button id="tulipsBtn">Tulips</button>
   //   <button id="sunflowersBtn">Sunflowers</button>
+  // `
+//   inputWrapper.innerHTML = 
+  //   `
+  //   <select id="select">
+  //     <option value = "" selected disabled> Click here to chose:</option>
+  //     <option value = "roses">Roses</option>
+  //     <option value = "tulips">Tulips</option>
+  //     <option value = "sunflowers">Sunflowers</option>
+  //     <option value = "lilies">Lilies</option>
+  //   </select>
+   
   // `
