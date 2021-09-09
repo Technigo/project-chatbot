@@ -17,14 +17,16 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
+    console.log("TEST!") //TEST, shows up when bot sends greeting msg, or any msg.
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
-          <p>${message}</p>
+          <p>message</p>
         </div>
       </section>
     `
+    //Removed ${} up above for test. Bot then just writes out "message" wont get the variable message.
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
@@ -44,4 +46,5 @@ const greeting = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000)
+
+setTimeout(greeting, 2000) //Changed to 2000 = 2 sec for test
