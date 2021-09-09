@@ -15,9 +15,8 @@ let currentQuestion = "name";
 //Fuction also activates another function called AddEventListeners
 
 const greeting = () => {
-  showMessage(
-    `"Hi, my name is Bob and I will be guiding you through Bob's cleaning service. What's your name?"`,
-    "bot"
+  sendBotMessage(
+    `"Hi, my name is Bob and I will be guiding you through Bob's cleaning service. What's your name?"`
   );
   addEventListeners();
 };
@@ -52,16 +51,24 @@ form.addEventListener(`submit`, (event) => {
   event.preventDefault();
 });
 
-// Function that sends a bot message with 1 seconds delay
+// Function that sends a bot message with 1 seconds delay and add a sound effect.
 const sendBotMessage = (message) => {
-  setTimeout(() => showMessage(message, "bot"), 1000);
+  setTimeout(() => {
+    showMessage(message, "bot");
+    playMusic();
+  }, 1000);
 };
 
 // Function that adds a clickevent to the button submitBtn and then activates the function sendUserMessage
-
 const addEventListeners = () => {
   const submitBtn = document.getElementById("submitBtn");
   submitBtn.addEventListener("click", sendUserMessage);
+};
+
+//Function that play sound
+const playMusic = () => {
+  const audio = new Audio(`./assets/sound.mp3`);
+  audio.play();
 };
 
 // Function that activates another function called "show message" which shows a user message
@@ -223,7 +230,9 @@ const sendUserMessage = () => {
           100 * message.value
         } dollars a month.`
       );
-      askForEmail();
+      setTimeout(() => {
+        askForEmail();
+      }, 1000);
     }
 
     ////If currentQuestion is equal to square meter the sendBotMessage activates with a message to the user.
@@ -235,11 +244,14 @@ const sendUserMessage = () => {
       sendBotMessage(
         `Super, we have registered that your home is ${message.value} square meters.`
       );
-      askForEmail();
+      setTimeout(() => {
+        askForEmail();
+      }, 1000);
     }
 
     //If currentQuestion is equal to windows the sendBotMessage activates with a message to the user.
     // it also calls the function ask for email.
+    // we have also added setTimeout to delay the next message
   } else if (currentQuestion === `windows`) {
     if (isValueNotNumber(message.value) === true) {
       sendBotMessage(`I dont understand you. You need to put in a number`);
@@ -249,7 +261,9 @@ const sendUserMessage = () => {
           message.value
         } windows. That will cost approximately ${20 * message.value} dollars.`
       );
-      askForEmail();
+      setTimeout(() => {
+        askForEmail();
+      }, 1000);
     }
 
     //if current question === email it stores the message.value as the emailAdress and calls the fucnction ask for number.
