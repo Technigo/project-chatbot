@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #6AC1B7;
 }
 
 h1 {
@@ -37,8 +37,8 @@ input, #select {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #DFEFED;
+  color: #757575;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -52,7 +52,8 @@ main {
   width: 100%;
   max-width: 700px;
   height: 600px;
-  border-radius: 30px;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   background: #fff;
   padding: 20px 24px;
   padding-top: 0;
@@ -90,23 +91,25 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #DFEFED;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #757575;
   max-width: 40%;
 }
 
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .input-wrapper {
@@ -120,7 +123,7 @@ main {
 }
 
 button, .restart {
-  background-color: #0026ff;
+  background-color: #517D99;
   color: white;
   border: none;
   border-radius: 4px;
@@ -132,6 +135,10 @@ button, .restart {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+.restart {
+  margin: 0 auto;  
 }
 
 button:hover {
