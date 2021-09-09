@@ -36,14 +36,15 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-const handleInput = () => {     
+const handleInput = (event) => {     
   event.preventDefault()
-
   console.log(currentQuestion)
   if(currentQuestion === 1){
     handleNameQuestion()
   } else if(currentQuestion === 2){
     moodOption()
+  } else if(currentQuestion === 3) {
+    userMood()
   }
 }
 
@@ -67,7 +68,8 @@ const handleNameQuestion = () => {
 const moodOption =() => {
   currentQuestion = 2
   showMessage (`How are you feeling today?`, 'bot')
-  // setTimeout(moodOption, 1000)
+  setTimeout(userMood, 1000)
+
   
 form.innerHTML = `
         <button id="happyBtn">Happy</button>
@@ -75,25 +77,31 @@ form.innerHTML = `
         <button id="sadBtn">Sad</button>
   `
 
-// document.getElementById('happyBtn')
-// .addEventListener('click',() => handleInput('happy')
+  document.getElementById('happyBtn')
+  .addEventListener('click', () => userMood ('happy'))
 
-const happy = () => {
+  document.getElementById('anxiousBtn')
+  .addEventListener('click', () => userMood ('anxious'))
+
+  document.getElementById('sadBtn')
+  .addEventListener('click', () => userMood ('sad'))
+}
+
+ const userMood = (option) => {
+   currentQuestion = 3
+
+if (option === 'happy') {
   showMessage(`I'm feeling happy!`, 'user')
   showMessage(`Glad to hear you are feeling happy`, 'bot')
-}
-
-
-const anxious = () => {
+} else if (option === 'anxious') {
   showMessage(`I'm feeling anxious`, 'user')
   showMessage(`Sorry to hear you are anxious`, 'bot')
-}
-
-const sad = () => {
+} else if(option === 'sad') {
   showMessage(`I'm feeling sad`, 'user')
   showMessage(`Sorry to hear you are feeling sad`, 'bot')
 }
 }
+
 
 
 // Set up your eventlisteners here
@@ -101,9 +109,6 @@ const sad = () => {
 startButton.addEventListener('click', () => setTimeout (greeting, 500))
 form.addEventListener('submit', handleInput)
 
-// document.getElementById('happy').addEventListener('click', happy)
-// document.getElementById('anxious').addEventListener('click', anxious)
-// document.getElementById('sad').addEventListener('click', sad)
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
