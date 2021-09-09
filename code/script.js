@@ -42,44 +42,49 @@ const greeting = () => {
 }
 const dogQuestion = () => {
   currentQuestion++
-  showMessage(`Do you like dogs`, 'bot')
-  inputWrapper.innerHTML =  `
-  <button id="yes">YES</button>
-  <button id="no">NO</button>
-  `
+    showMessage(`Do you like dogs`, 'bot')
+    setTimeout(1000)
+    inputWrapper.innerHTML =  `
+    <button id="yes">YES</button>
+    <button id="no">NO</button>
+    `
  document.getElementById('yes').addEventListener('click', () => {
-    console.log('Yes-knapp')
     showMessage('Yes', 'user')
     showMessage('That´s what I thought! I mean who doesn’t?!', 'bot')
     handleInput()
-  }
-  )
+  })
   document.getElementById('no').addEventListener('click', () => {
-    console.log('no-knapp')
     showMessage('No', 'user')
     showMessage('Wrong answer! Who are you?! A cat person?', 'bot')
     showMessage('Try another Bot! Bye bye! 👋🏼', 'bot')
-  }
-  )
+    wrongAnswer()
+  })
 } 
 
+const wrongAnswer = () => {
+  currentQuestion++
+    inputWrapper.innerHTML =  `
+    <button id="bye">Bye!</button>
+    ` 
+    document.getElementById('bye').addEventListener('click', () => {
+    location.reload ()    
+})
+}
   const breedQuestion = () => {
     currentQuestion++
     showMessage(`What breed do you like?`, 'bot')
-    inputWrapper.innerHTML =  `
-    <button id="kaffe">German Shepard</button>
-    <button id="svante">Labrador</button>
-    `
+      inputWrapper.innerHTML =  `
+      <button id="kaffe">German Shepard</button>
+      <button id="svante">Labrador</button>
+      `
 
     document.getElementById('kaffe').addEventListener('click', () => {
-      console.log('kaffe')
       showMessage('German Shepard', 'user')
       showMessage('Yay! That makes us two!', 'bot')
       handleInput()
     }
     )
     document.getElementById('svante').addEventListener('click', () => {
-      console.log('svante')
       showMessage('Labrador', 'user')
       showMessage('Yay! That makes us two!', 'bot')
       handleInput()
@@ -94,22 +99,17 @@ const dogQuestion = () => {
       inputWrapper.innerHTML =  `
       <button id="bye">Bye bye!</button>
       `
-    document.getElementById('bye').addEventListener('click'), (refreshPage) => {
-        const refreshPage = () => {
-        location.reload();
-      }
-      
-      // byeBye.addEventListener('click'), (refreshPage) {
-      // const refreshPage = () => {
-      //   location.reload();
-      // }
+      document.getElementById('bye').addEventListener('click', () => {
+        
+      location.reload () 
 
-    }
 }
+)
+  }
 //Here we handle all the user input answers. 
 nameForm.addEventListener('submit', (event) => {
     event.preventDefault ()
-    handleInput ()
+    handleInput()
     })
 
   const handleName = () => {
@@ -120,7 +120,6 @@ nameForm.addEventListener('submit', (event) => {
     const answerOne = (`Hi ${name}! Welcome!`) 
     showMessage(answerOne, 'bot')
     setTimeout(dogQuestion, 1000)
-    console.log('Answer')
   }
 
 
@@ -128,36 +127,22 @@ nameForm.addEventListener('submit', (event) => {
 const handleInput = (event) => {
   // event.preventDefault()
   
-  console.log('our currentQuestion variable is:', currentQuestion)
-
   if (currentQuestion === 1) {
     handleName() }
     else if (currentQuestion === 2){
     dogQuestion()
   } else if (currentQuestion === 3) {
     breedQuestion()
-  } else if (currentQuestion === 4) {
+  } else {
     byeBye()
   }
-  
   currentQuestion++
-  console.log('handing over to the bot with a new currentQuestion value', currentQuestion)
 }
 
-   //Here we passing the next bot question. This could also be setup more generic, for example with a botQuestion function.
+//Here we passing the next bot question.
 
 
 // Set up your eventlisteners here
-
-
-
-
-  
-    
-
-  // nameForm.addEventListener('submit', handleInput)
-
-
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
@@ -165,4 +150,5 @@ const handleInput = (event) => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 500)
+setTimeout(greeting, 1000)
+
