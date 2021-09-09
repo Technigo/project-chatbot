@@ -29,15 +29,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
- 
-const form = document.getElementById('name-form')
-  
- form.addEventListener('submit', (event) => {
-   event.preventDefault();
 
- });
- 
- 
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
@@ -45,6 +37,7 @@ const form = document.getElementById('name-form')
 // Starts here
 const greeting = () => {
   showMessage(`Welcome to the Travelbot! What's your name?`, 'bot')
+
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -59,6 +52,19 @@ const greeting = () => {
 
 
 // Set up your eventlisteners here
+const form = document.getElementById('name-form')
+
+form.addEventListener('submit', (noRefresh) => {
+  noRefresh.preventDefault()
+});
+
+
+const startButton = document.getElementById('start-btn')
+
+startButton.addEventListener('click', greeting)
+
+
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
@@ -66,4 +72,4 @@ const greeting = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000)
+// setTimeout(greeting, 1000)
