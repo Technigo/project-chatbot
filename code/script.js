@@ -19,13 +19,13 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
-      </section>
+        <img src="./friend.png" />
+        </section>
     `
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src= ./chatbot.png />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
