@@ -122,7 +122,7 @@ shrekImg.alt = "Shrek"
 // Functions declared here
 const wantToPlay = (user) => {
   console.log(user);
-  showMessage(`Hi, ${user} do you want to know who your celebrity soulmate is?`, 'bot')
+  showMessage(`Hi, ${user}, do you want to know who your celebrity soulmate is?`, 'bot')
 
   inputWrapper.innerHTML = `
   <button type="submit" id="yes">Yes</button>
@@ -135,12 +135,12 @@ const wantToPlay = (user) => {
     showMessage(`Yes!`, 'user')
     e.preventDefault();
     setTimeout(sundayAfternoon, 200);
-  })
+  },{once : true})
   noBtn.addEventListener('click', (e) => {
     showMessage(`No!`, 'user')
     e.preventDefault();
     setTimeout(shrek, 200);
-  })
+  },{once : true})
 }
 
 const shrek = () => {
@@ -205,19 +205,19 @@ const showMovieOptions = () => {
     showMessage(`Horror`, 'user')
     e.preventDefault();
     showSocialMedia('horror', 'movie');
-  })
+  },{once : true})
 
   dramaBtn.addEventListener('click', (e) => {
     showMessage(`Drama`, 'user')
     e.preventDefault();
     showSocialMedia('drama', 'movie');
-  })
+  },{once : true})
 
   comedyBtn.addEventListener('click', (e) => {
     showMessage(`Comedy`, 'user')
     e.preventDefault();
     showSocialMedia('comedy', 'movie');
-  })
+  },{once : true})
 
 };
 
@@ -236,19 +236,19 @@ const showMusicOptions = () => {
     showMessage(`Rock`, 'user')
     e.preventDefault();
     showSocialMedia('rock', 'music');
-  })
+  },{once : true})
 
   hiphopBtn.addEventListener('click', (e) => {
     showMessage(`Hiphop`, 'user')
     e.preventDefault();
     showSocialMedia('hiphop', 'music');
-  })
+  },{once : true})
 
   popBtn.addEventListener('click', (e) => {
     showMessage(`Pop`, 'user')
     e.preventDefault();
     showSocialMedia('pop', 'music');
-  })
+  },{once : true})
 
 
 };
@@ -268,19 +268,19 @@ const showReadingOptions = () => {
     showMessage(`Novels`, 'user')
     e.preventDefault();
     showSocialMedia('novels', 'books');
-  })
+  },{once : true})
 
   magazinesBtn.addEventListener('click', (e) => {
     showMessage(`Magazines`, 'user')
     e.preventDefault();
     showSocialMedia('magazines', 'books');
-  })
+  },{once : true})
 
   academicBtn.addEventListener('click', (e) => {
     showMessage(`Academic Papers`, 'user')
     e.preventDefault();
     showSocialMedia('academic', 'books');
-  })
+  },{once : true})
 
 };
 
@@ -300,19 +300,19 @@ const showSocialMedia = (genre, hobby) => {
     showMessage(`Some`, 'user')
     e.preventDefault();
     showMyAnswer('Some', genre, hobby)
-  })
+  },{once : true})
 
   lotsBtn.addEventListener('click', (e) => {
     showMessage(`Lots`, 'user')
     e.preventDefault();
     showMyAnswer('Lots', genre, hobby)
-  })
+  },{once : true})
 
   grandmaBtn.addEventListener('click', (e) => {
     showMessage(`My grandma`, 'user')
     e.preventDefault();
     showMyAnswer('My grandma', genre, hobby)
-  })
+  },{once : true})
 
 }
 
@@ -423,7 +423,7 @@ const showMyAnswer = (media, genre, hobby) => {
 
 const showCelebImg = (celeb) => {
   setTimeout(() => showMessage('Your celebrity soulmate is...', 'bot'), 1000)
-  showMessage('...Computing...', 'bot')
+  showMessage('... computing...', 'bot')
   setTimeout(()=> {chat.innerHTML += `
   <section class="bot-msg">
   <img class="bot-img" src="assets/bot.png" alt="Bot" /> 
@@ -470,7 +470,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your instagram username?`, 'bot')
+  showMessage(`Hello there, what's your instagram username?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -480,7 +480,7 @@ sendBtn.addEventListener('click', (e) => {
   const name = userName.value;
   showMessage(name, 'user');
   wantToPlay(name);
-})
+},{once : true})
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
