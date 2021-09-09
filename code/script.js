@@ -1,21 +1,13 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
-// const inputWrapper = document.getElementById('input-wrapper')
-// const input = document.getElementById('input')
-// const sendBtn = document.getElementById('send')
+const inputWrapper = document.getElementById('input-wrapper')
 const nameInput = document.getElementById('name-input')
 const nameForm = document.getElementById('name-form')
 
 // Global variables, if you need any, declared here
 let currentQuestion = 1
+console.log('HEJ')
 
-// // Functions declared here
-// // const botReply = (msg) => {
-// //   showMessage(msg, 'bot')
-// // }
-// // const userReply = (msg) => {
-// //   showMessage(msg, 'user')
-// }
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
@@ -45,28 +37,68 @@ const showMessage = (message, sender) => {
 
 // Starts here, create functions here
 const greeting = () => {
+  currentQuestion = 1
     showMessage(`Hello there, What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
-const questionOne = () => {
+const dogQuestion = () => {
+  currentQuestion++
   showMessage(`Do you like dogs`, 'bot')
+  inputWrapper.innerHTML =  `
+  <button id="yes">YES</button>
+  <button id="no">NO</button>
+  `
+ document.getElementById('yes').addEventListener('click', () => {
+    console.log('Yes-knapp')
+    showMessage('Yes I like dogs!', 'user')
+    handleInput()
+  }
+  )
+  document.getElementById('no').addEventListener('click', () => {
+    console.log('no-knapp')
+    showMessage('No I dont like dogs!', 'user')
+    showMessage('to bad', 'bot')
+  }
+  )
 } 
 
-  const questionTwo = () => {
-  showMessage(`fråga2`, 'bot')
+  const breedQuestion = () => {
+    currentQuestion++
+  showMessage(`What breed do you like`, 'bot')
+  handleInput()
 } 
 
 //Here we handle all the user input answers. 
+nameForm.addEventListener('submit', (event) => {
+    event.preventDefault ()
+    handleInput ()
+    })
+
+  const handleName = () => {
+  const name = nameInput.value
+    showMessage(name, 'user')
+    nameInput.value = ''
+
+    const answerOne = (`Hi ${name}`) 
+    showMessage(answerOne, 'bot')
+    setTimeout(dogQuestion, 1000)
+    console.log('Answer')
+  }
+
+
 //We change the currentQuestion varible. I moved it to the end as it's more logic to change to next question AFTER you've answered it.
 const handleInput = (event) => {
-  event.preventDefault()
+  // event.preventDefault()
   
   console.log('our currentQuestion variable is:', currentQuestion)
 
-  if (currentQuestion === 2) {
-    handleQuestionOne()
+  if (currentQuestion === 1) {
+    handleName() }
+    else if (currentQuestion === 2){
+    dogQuestion()
   } else if (currentQuestion === 3) {
-    handleQuestionTwo()
+    console.log ('nu fungerar det!')
+    breedQuestion()
   }
   
   currentQuestion++
@@ -78,18 +110,13 @@ const handleInput = (event) => {
 
 // Set up your eventlisteners here
 
-nameForm.addEventListener('submit', (event) => {
-    event.preventDefault ()
-    const name = nameInput.value
-    showMessage(name, 'user')
-    nameInput.value = ''
 
-    const answerOne = (`Hi ${name}`) 
-    showMessage(answerOne, 'bot')
-    setTimeout(questionOne, 1000)
-    })
 
-  nameForm.addEventListener('submit', handleInput)
+
+  
+    
+
+  // nameForm.addEventListener('submit', handleInput)
 
 
 
