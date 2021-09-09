@@ -1,14 +1,18 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+const form = document.getElementById('name-form')
+const inputValue = document.getElementById('name-input')
 
 // Global variables, if you need any, declared here
 
 // Functions declared here
 
+
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
-    console.log(showMessage);
+    console.log('user is sending')
+
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -18,6 +22,8 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
+    console.log('bot is sending')
+
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -27,6 +33,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
+
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
@@ -37,25 +44,48 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-// Set up your eventlisteners here
-const handleNameInput = (event) => {
-  event.preventDefault();
+const genreQuestion = () => {
+  showMessage('Which is your favourite genre?', 'bot')
+  
 
-  const name = nameInput.value
+}
+// Tänkte lägga till en fråga men blev lite konstigt då den skickade frågan samtidigt som den tidigare frågan
+// const answerQuestion = () => {
+//   showMessage('Cool! my favourite genre is action!', 'bot')
+// } 
+
+// tänkte skriva något liknande som
+// if(Horror) {
+// showMessage('ooh spooky :(', 'bot')
+// } else {
+//   showMessage('That is my favorite too!', 'bot')
+// }
+
+// fick dock inte ihop om jag behöver skriva en ny "handleinputname" för user när jag föskte det funkade inte chatten
+
+const handleNameInput = (event) => {
+  event.preventDefault()
+  
+  const name = inputValue.value
+
+  console.log(name)
   showMessage(name, 'user')
-  nameInput.value =''
+  inputValue.value = '' //får fältet att bli tomt efter att vi skrivit vårt namn
+
+
+
+
+
+  //här börjar nästa fråga från boten
+  // genreQuestion() Nej, vi wrappar den istället med tidsfördröjningen.
+  setTimeout(genreQuestion, 1000)
+  
 
 }
 
-// from Maks lession
-const form = document.addEventListener('submit', (event) => {
-  
-  event.preventDefault();
-  console.log(event)
-  
-  
-});
-//
+
+// Set up your eventlisteners here
+form.addEventListener('submit', handleNameInput)
 
 
 
@@ -66,3 +96,4 @@ const form = document.addEventListener('submit', (event) => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
+
