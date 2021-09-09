@@ -422,7 +422,7 @@ const showMyAnswer = (media, genre, hobby) => {
 }
 
 const showCelebImg = (celeb) => {
-  setTimeout(() => showMessage('Your celebrity soulmate is...', 'bot'), 1000)
+  setTimeout(() => showMessage('Your celebrity soulmate is...', 'bot'), 500)
   showMessage('... computing...', 'bot')
   setTimeout(()=> {chat.innerHTML += `
   <section class="bot-msg">
@@ -432,13 +432,13 @@ const showCelebImg = (celeb) => {
       <img class="celeb-img" src="${celeb.src}" alt="${celeb.alt}" />  
     </div>
   </section>
-`}, 1300);
+`}, 700);
 setTimeout(()=> {inputWrapper.innerHTML = `
   <form>
       <button type="submit" class="restart">Not happy? Then start again</button>
   </form>
-  `}, 1600);
-setTimeout(() => {chat.scrollTop = chat.scrollHeight}, 1500)
+  `}, 900);
+setTimeout(() => {chat.scrollTop = chat.scrollHeight}, 1000)
 
 }
 // This function will add a chat bubble in the correct place based on who the sender is
