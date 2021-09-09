@@ -144,3 +144,9 @@ button:hover {
   flex-direction: row;
   justify-content: center;
 }
+
+#yes-no-btn {
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+}
