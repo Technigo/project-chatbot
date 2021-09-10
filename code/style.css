@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #FED4D8;
 }
 
 h1 {
@@ -37,8 +37,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: whitesmoke;
+  color: #FE010F;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -59,6 +59,10 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+}
+
+img {
+  width: 100%
 }
 
 .chat {
@@ -90,12 +94,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: whitesmoke;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #FE010F;
   max-width: 40%;
 }
 
@@ -120,7 +124,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #FE010F;
   color: white;
   border: none;
   border-radius: 4px;
@@ -138,3 +142,9 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+#select{
+  width:400px;  
+  height:50px; 
+  font-size:18px;
+ }

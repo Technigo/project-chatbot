@@ -36,7 +36,7 @@ const showMessage = (message, sender) => {
 // The Bot starts here
 //The greeting function sends a message as the bot asking for your name.
 const greeting = () => {
-  showMessage(`Hello and welcome to Pretty Pets! What's the name of your furry friend?`, 'bot')
+  showMessage(`Hello and welcome to Pretty Pets! <br> <br>What's the name of your furry friend?`, 'bot')
 }
 
 // The user enters dog name in the handleInput function
@@ -107,6 +107,11 @@ const lebowskiTreatment = () => {
   document
     .getElementById('bookTreatmentBtn')
     .addEventListener('click', () => bookTreatment())
+
+
+  document
+    .getElementById('otherOptionsBtn')
+    .addEventListener('click', () => pfeifferTreatment())
 }
 
 // User choose Michelle Pfieffer and two new buttons gets displayed (Book treatment and Other treatment option)
@@ -122,6 +127,10 @@ const pfeifferTreatment = () => {
   document
     .getElementById('bookTreatmentBtn')
     .addEventListener('click', () => bookTreatment())
+
+  document
+    .getElementById('otherOptionsBtn')
+    .addEventListener('click', () => lebowskiTreatment()) 
 }
 
 // User gets booking options
