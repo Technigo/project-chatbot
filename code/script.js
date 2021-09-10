@@ -64,7 +64,7 @@ const helpOptions = (event) => {
 
 const threePotions = (answer) => {
 
-  showMessage(`${answer}`, 'user')
+  showMessage(`${answer} please`, 'user')
 
   if (answer === 'yes') {
     
@@ -97,10 +97,10 @@ const threePotions = (answer) => {
 }
 
 const potionResult = (potion) => {
-  console.log('Potion result', potion);
+
 
   inputWrapper.innerHTML = '';
-  showMessage(`${potion}`, 'user')
+  showMessage(`I would like the ${potion} one` , 'user')
 
   if (potion === 'blue') {
     
@@ -119,11 +119,11 @@ const potionResult = (potion) => {
   
   else if (potion === 'green') {
   
-  showMessage(`You are now strong as a giant!`, 'bot')
+  showMessage(`You are now strong as a giant!What would you like to do?`, 'bot')
   inputWrapper.innerHTML =`
   <section class='input-wrapper'>
-  <button id="ring">destroy the ring</button>
-  <button id="orks">defeat orks</button>
+  <button id="ring">Destroy the ring</button>
+  <button id="orks">Defeat orks</button>
   </section>
   `
 
@@ -150,20 +150,44 @@ const potionResult = (potion) => {
 }
 
 const afterPotionResult = (antitode) => {
-  showMessage(`${antitode}`, 'user')
-
+  
   if (antitode === 'ringPhoto') {
+    showMessage(`<img src="assets/giphy.webp" class="after-potion"></img>`, 'user')
+    //showMessage(`<iframe src="https://giphy.com/embed/zF1zz0K53ZDC8" class="after-potion"></iframe>`, 'user')
+    //showMessage(`<img src="assets/ring.jpeg" class=" after-potion"></img>`, 'user')
+    showMessage(`Good job! you can go home or you can restart. Have a nice day`, 'bot')
     inputWrapper.innerHTML =`
-    <div>
-    <img src="assets/ring.jpeg">
-    </div>`
+    <section class='input-wrapper'>
+    <button id="restart">Restart</button>
+    </section>
+    `
+    //Push button to start over
+    document.getElementById('restart').addEventListener('click', () => {
+      location.reload()
+    })
+    // inputWrapper.innerHTML =`
+    // <section class='input-wrapper'>
+    // <img src="assets/ring.jpeg" class=" after-potion">
+    // </section>`
   
   }
   else {
-    inputWrapper.innerHTML = `
-    <div>
-    <img src="assets/ring.jpeg">
-    </div>`
+    showMessage(`<img src="assets/orcs_dead.jpeg" class=" after-potion">`, 'user')
+    //showMessage(`<img src="assets/ring.jpeg" class=" after-potion"></img>`, 'user')
+    showMessage(`Good job! you can go home or you can restart. Have a nice day`, 'bot')
+    inputWrapper.innerHTML =`
+    <section class='input-wrapper'>
+    <button id="restart">Restart</button>
+    </section>
+    `
+    //Push button to start over
+    document.getElementById('restart').addEventListener('click', () => {
+      location.reload()
+    })
+    // inputWrapper.innerHTML = `
+    // <section class='input-wrapper'>
+    // <img src="assets/orcs_dead.jpeg" class=" after-potion">
+    // </section>`
 }
 
 }
