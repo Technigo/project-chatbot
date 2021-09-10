@@ -1,12 +1,12 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Pair programming project creating a chat bot using HTML, CSS and JavaScript.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+In order to create this chat bot we tried to use the functional programing approach. We created two functions to handel user input and the questions asked by the bot respectively.
+
+If we had more time we would have tried to have more logical conversation between the bot and the user, a better ending and adding more functions instead of repeating code and last but not least some more styling through CSS.
 
 ## View it live
 

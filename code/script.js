@@ -15,9 +15,7 @@ let selectedDrink
  
 // Functions declared here
 //changes color of drop down menu and displays options
-function toggleMenu() {
-  this.classList.toggle('open')
-}
+
 //handles all the user inputs
 const handelInput = (event) => {
   event.preventDefault()
@@ -64,9 +62,9 @@ const nextQuestion = () => {  //this function creates the bot questions and the 
     form.innerHTML += ` 
 
    <div class="food-options" id="food-options">
-    <button class="phad-thai" id="phad-thai">Phad Thai</button>
+    <button class="pad-thai" id="pad-thai">Pad Thai</button>
     <button class="paneng-curry" id="paneng-curry">Paneng Curry</button>
-    <button class="paneng-curry" id="tom-kha-gai">Tom Kha Gai</button>
+    <button class="tom-kha-gai" id="tom-kha-gai">Tom Kha Gai</button>
     </div>
    `
     foodSelected = document.getElementById('food-options') //dom selector for the element div above
@@ -88,12 +86,11 @@ const nextQuestion = () => {  //this function creates the bot questions and the 
         
     `
 
-    //document.getElementById("serving-size").onclick = toggleMenu //call to toggleMenu function
     serving = document.getElementById('askServing') //dom selector for the ul element above
     serving.addEventListener('change', handelInput) //calls handelInput function on click
 
   } else if (currentQuestion === 3) { //thirs question
-    showMessage(`Wonderful, ${userInput} serving is 100kr. Would you like to add drinks?`, 'bot')
+    showMessage(`Wonderful, ${userInput} serving is 100kr. Would you like to a drink?`, 'bot')
     serving.style.display = "none" //hides all of drop-down menu
 
     //creating new elements on run time, in this case two buttons
@@ -123,17 +120,16 @@ const nextQuestion = () => {  //this function creates the bot questions and the 
       <option value="Sprite"> Sprite </option>
     </select>
       `
-      // document.getElementById("drink-choice").onclick = toggleMenu  //call to toggleMenu function
       selectedDrink = document.getElementById('drink-menu') //dom selector for the ul element above
       selectedDrink.addEventListener('change', handelInput) //calls handelInput on click
 
     } else {
-      showMessage('Okay, your order is on your way', 'bot')  //if answer is no, this message shows
+      showMessage('Okay, your meal is now complete! Have a delicious day 🍛 ', 'bot')  //if answer is no, this message shows
     }
   
   } else if (currentQuestion === 5) {
     selectedDrink.style.display = "none" //hides all of drop-down menu
-    showMessage('Okay, your order is on your way', 'bot')  //if answer is no, this message shows
+    showMessage('Okay, your meal is now complete! Have a delicious day 🍛 ', 'bot')  //if answer is no, this message shows
   }
 
     currentQuestion++  //updating the question number automatically
@@ -151,13 +147,13 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/userimg2.jpeg" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="./assets/botimg.jpeg" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>

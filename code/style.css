@@ -6,7 +6,6 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Kaushan Script', cursive;
   background:url("./assets/lettuce.jpeg");
   background-position:center;
   background-repeat: none;
@@ -14,27 +13,27 @@ body {
 
 h1 {
   font-weight: bold;
-  /*font-size: 44px;*/
-  font-size: 30px;
+  font-size: 40px;
   line-height: 34px;
   color: #fff;
   text-align: center;
+  font-family: 'Kaushan Script', cursive;
 }
 
 h2 {
   font-weight: bold;
-  /* font-size: 24px; */
-  font-size: 18px;
+  font-size: 20px;
   line-height: 34px;
   color: #fff;
   text-align: center;
   margin-bottom: 36px;
+  font-family: 'Kaushan Script', cursive;
 }
 
 p {
-  font-size: 18px;
+  font-size: 13px;
   font-weight: 600;
-  line-height: 28px;
+  line-height: 18px;
   margin: 0;
 }
 
@@ -42,11 +41,10 @@ input, select {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #ffdbbf;
-  color: #a0a0a0;
+  background: #77905b;
+  color: white;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -63,13 +61,13 @@ main {
   max-width: 600px;
   height: 500px;
   border-radius: 30px;
-  background: #437e06;
+  background: #dce775;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  box-shadow:0 2px 16px #EC8E44;
+  box-shadow:0 2px 16px #388e3c;
   margin-bottom: 30px;
   margin-top: 50px;
 }
@@ -104,23 +102,30 @@ main {
 }
 
 .bubble {
-  background: #DBCC83;
+  background: white;
   font-weight: 600;
   font-size: 16px;
-  line-height: 26px;
-  padding: 16px 24px;
-  color: white;
+  line-height: 28px;
+  padding: 10px 10px;
+  color: #388e3c;
   max-width: 40%;
 }
 
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  margin-top: 30px;
 }
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  margin-top: 30px;
+}
+
+img {
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .input-wrapper {
@@ -134,15 +139,12 @@ main {
 }
 
 button {
-  background-color: #EC8E44;
+  background-color: #388e3c;
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 10px 30px;
-  margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -151,85 +153,40 @@ button {
 }
 
 button:hover {
-  background-color: #DBCC83;
+  background-color: #f0d003;
   opacity: 0.9;
   transition: all 0.2s ease;
 }
 
-.askDrink {
+.askDrink, .food-options{
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: space-between;
   width: 100%;
 }
-
-
-/* added for new dynamic controls */
-
-.food-options{
-  display:flex
-  align-items: center;
-  justify-content: center;
-}
-
-/* .askServing, .drink-menu {
-  box-sizing: border-box;
-  border: none;
-  border-radius: 4px 0 0 4px;
-  background: #ffdbbf;
-  color: #a0a0a0;
-  padding: 16px;
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 600;
-  line-height: 26px;
-  flex: 1;
-  width: 400px;
-  cursor: pointer;
-} */
-
-
-/* .select-serving {
-  line-height: 40px;
-  color: white;
-} */
-
-/* .drink-choice {
-  width: 300px;
-  height: 40px;
-  background: teal;
-  text-align: center;
-  cursor: pointer;
-} */
-
-/* ul {
-  margin: 0;
-  width: 160px;
-  background: #ccc;
-  list-style: none;
-  display:none;
-  cursor: pointer;
-} */
-
-/* .open {
-  background: blue; 
-}
-
-.open + ul{
-  display:block;
-} */
 
 
 /* Media Queries */
 
 @media (min-width: 768px) {
 
+  p {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 28px;
+    
+  }
+
 h1 {
-  font-size: 50px;
+  font-size: 70px;
 }
 
 h2 {
-  font-size: 27px;
+  font-size: 37px;
 }
+
+.bubble {
+  line-height: 28px;
+  padding: 20px 24px;
 
 }
