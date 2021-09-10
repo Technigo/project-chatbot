@@ -83,8 +83,6 @@ handleNameInput.addEventListener('submit', (event) => {
 )
 
 // Question 2
-// Hi ...! Time goes slower in space. Depending on how far you wanna go you will be older when you get back. 
-// 1 year 10 years 1000 years
 
 
 const spaceAgeQuestion = (userName) => {
