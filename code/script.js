@@ -3,6 +3,8 @@ const input = document.getElementById('user-input')
 const form = document.getElementById('name-form')
 const factButtons = document.getElementById('fact-btn')
 const yesNoButtons = document.getElementById('yes-no-btn')
+const yesButton = document.getElementById('yes')
+const noButton = document.getElementById('no')
 const timeOutTime = 1500
 //this makes the setTimeout a constant so we don't have to change the time for each bot response
 //instead we can just change up here and all of them will be changed.
@@ -11,9 +13,7 @@ const timeOutTime = 1500
 // Global variables, if you need any, declared here
 let questionNumber = 0;
 
-
 // Functions declared here
-
 
 
 //This fuction sets the order of the questions with a conditonal.
@@ -50,8 +50,7 @@ const nextQuestion = (answer) => {
 //We got help with getting a link in the bot reply by adding the video and used the ternarys -
 //which is a quicker way of conditionals, insted of if/else it's ?/:
 
-const showMessage = (message, sender, video) => {
-  const link = video ? `<a href=${video}>video</a>` : undefined
+const showMessage = (message, sender) => {
   if (sender === 'user') {
    
     console.log("hello from the user")
@@ -72,7 +71,7 @@ const showMessage = (message, sender, video) => {
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
-          <p>${message} ${link ? link : ''}</p>
+          <p>${message}</p>
         </div>
       </section>
     `
@@ -98,36 +97,33 @@ const usrInput = (answer) => {
 const question1 = (question) => {
   const input = document.getElementById('user-input').value
   questionNumber++
-  showMessage(`Okay, ${input}, what do you want?`, 'bot')
+  showMessage(`Okay, ${input}, what do you want!?`, 'bot')
 }
   
 const question2 = (question) => {
   questionNumber++
-  showMessage('Hm, no lets do this instead', 'bot')
+  showMessage(`I don't care, you get these three options to choose from.`, 'bot')
   form.style.display='none'
   factButtons.style.display='flex'
 }
 
-//put in setTimeout for the buttons
-const dance = () => {
-  setTimeout(function() {
-    showMessage(`Dance`, 'user')}, 1000)
-    setTimeout(function() {
-    showMessage(`Perfect, do the macarena!`, 'bot')}, 2000)
+const mother = () => {
+    setTimeout (() => showMessage(`Mother in law`, 'user'), 1000)
+    setTimeout (() => showMessage(`🔪+💣+💊=🪦 Anything else?`, 'bot'), 2000)
   form.style.display='flex'
   factButtons.style.display='none'
 }
 
-const eat = () => {
-  showMessage(`Eat`, 'user')
-  showMessage(`Cake?`, 'bot')
+const trauma = () => {
+  setTimeout(() => showMessage(`Past trauma?`, 'user'), 1000)
+  setTimeout(() => showMessage(`Have some cake! Anything else?`, 'bot'), 2000)
   form.style.display='flex'
   factButtons.style.display='none'
 }
 
-const nothing = () => {
-  showMessage(`Nothing?`, 'user')
-  showMessage(`...`, 'bot')
+const friends = () => {
+  setTimeout(() => showMessage(`Making friends`, 'user'), 1000)
+  setTimeout (() => showMessage(`<a href="https://www.youtube.com/watch?v=WCSQwPv6Z-k">Watch me.</a><br>Anything else?`, 'bot'), 2000)
   form.style.display='flex'
   factButtons.style.display='none'
 }
@@ -139,21 +135,22 @@ const question3 = (question) => {
   yesNoButtons.style.display='flex'
 }
 
-const yes = () => {
-  showMessage(`Okay..`, 'user')
-  showMessage(`Great, brb!`, 'bot')
-  showMessage(`Watch this while you wait`, 'bot', 'https://www.youtube.com/watch?v=pnr3_h06kz8')
-  yesNoButtons.style.display='none'
-}
-
-//do a conditional here, if NO, pops up an answer from bot that says "Dude.. rude! choose again"
-//and then you can only choose YES
-const no = () => {
-  showMessage(`No..`, 'user')
-  showMessage(`Dude.. rude! Brb.`, 'bot')
-  showMessage(`Watch this while you wait`, 'bot', 'https://www.youtube.com/watch?v=pnr3_h06kz8')
-  yesNoButtons.style.display='none'
-}
+const yesNoAnswer = (type) => {
+  
+  if (type === 'yes') {
+   setTimeout (() => showMessage(`Yes.`, 'user'), 500)
+   setTimeout (() => showMessage(`Great, brb!`, 'bot'), 2000)
+   setTimeout (() => showMessage(`Watch <a href="https://www.youtube.com/watch?v=pnr3_h06kz8">this</a> while you wait.`, 'bot'), 3000)
+   setTimeout (() => yesNoButtons.style.display='none', 3000)
+   }
+ else {
+   setTimeout (() => showMessage(`No..`, 'user'), 500)
+   setTimeout (() => showMessage(`Dude.. rude! Try again.`, 'bot'), 2000)
+   setTimeout (() => yesButton.style.display='flex', 2000)
+   setTimeout (() => noButton.style.display='none', 2000)
+   }
+   
+ }
 
 // Eventlisteners 
   
@@ -162,21 +159,10 @@ form.addEventListener('submit', (event) => {
   nextQuestion(input.value)
 })
 
-document.getElementById('dance').addEventListener('click', dance)
-document.getElementById('eat').addEventListener('click', eat)
-document.getElementById('nothing').addEventListener('click', nothing)
-document.getElementById('yes').addEventListener('click', yes)
-document.getElementById('no').addEventListener('click', no)
-
-
-
+document.getElementById('mother').addEventListener('click', mother)
+document.getElementById('trauma').addEventListener('click', trauma)
+document.getElementById('friends').addEventListener('click', friends)
+document.getElementById('yes').addEventListener('click', () => yesNoAnswer ('yes'))
+document.getElementById('no').addEventListener('click', () => yesNoAnswer ('no'))
 
 setTimeout(greeting, timeOutTime)
-//Here is also the constant we set at the top of the page
-
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-//setTimeout(response, 2000)
