@@ -88,19 +88,29 @@ const songSelection = (input) => {
 
   if(input ==='sad'|| input === 'depressed'|| input === 'blue') {
     showMessage(`So you are ${input}, here are some song recommendations`, 'bot')
+
     inputWrapper.innerHTML = `
-
-<audio id="myAudio">
-  <source src="code/Coldplay_-_Fix_You_Official_Video_1.mp3" type="audio/mp3">
-</audio>
-
     <select id="select1">
      <option value="" selected disabled> Select a beat..</option>
      <option value="Hassle">Erik Hassle - Hurtful</option>
      <option value="TheFray">The Fray - How to save a life</option>
-     <option onchange()="playAudio()" value="Coldplay">Coldplay - Fix you</option>
+     <option value="Coldplay">Coldplay - Fix you</option>
    </select>
    `
+   const songDropDown = document.getElementById('select1')
+   songDropDown.addEventListener('change', (event) => {
+     showMessage(`Are you happy with the choice of ${event.target.value}?`, 'bot')
+      
+     if (event.target.value === 'Coldplay') {
+      inputWrapper.innerHTML += `
+        <audio autoplay> 
+          <source src="./assets/Coldplay_-_Fix_You_Official_Video_1.mp3" type="audio/mp3">
+        </audio>
+    `
+    console.log('hej');
+    }
+   })
+
    } else if (input === 'happy'|| input === 'glad'|| input === 'excited') {
      showMessage(`So you are ${input}, here are some song recommendations`, 'bot')
      inputWrapper.innerHTML = `
@@ -159,18 +169,15 @@ const songSelection = (input) => {
      console.log('now I have clicked', document.getElementById('select5').value);
      songSelection(document.getElementById('select5').value)
    }
- 
+   if (event.target.value === 'Coldplay') {
+    inputWrapper.innerHtml += `
+  <audio autoplay> 
+  <source src="./Coldplay_-_Fix_You_Official_Video_1.mp3" type="audio.mp3">
+  </audio>
+  `}
   }
 
-const x = document.getElementById("myAudio"); 
-
-function playAudio() { 
-  x.play(); 
-} 
-
-function pauseAudio() { 
-  x.pause(); 
-} 
+ 
 
 }
 
