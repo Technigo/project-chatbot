@@ -122,10 +122,10 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #95dac1;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 16px 40px;
   margin-right: 4px;
   font-size: 16px;
