@@ -4,6 +4,8 @@ const inputValue = document.getElementById('name-input')
 const form = document.getElementById('name-form')
 const factButtons = document.getElementById('fact-btn')
 const yesNoButton = document.getElementById('yes-no-button')
+const purrAudio = document.getElementById('purr')
+
 //hon använder inputValue ist för userMessage på ovan för att få den klickbar utan att ladda om. 
 //hon gör en till för forms här också
 
@@ -65,7 +67,8 @@ const factOne = () => {
   setTimeout(function() {
     showMessage(`Fact 1`, 'user')}, 1000)
   setTimeout(function() {
-    showMessage(`Cat whiskers are the same width as their body😸`, 'bot')}, 2000)
+    showMessage(`Cat whiskers are the same width as their body😸`, 'bot')
+    }, 2000)
   setTimeout(() => showMessage(`Do you want another epic cat fact?`, 'bot'), 3000)
   setTimeout(() => yesNoButton.style.display="flex", 4000) 
 }
@@ -103,7 +106,9 @@ const moreFacts = (answer) =>{
     setTimeout(function() {
       showMessage(`No`, 'user')}, 1000)
     setTimeout(function() {
-      showMessage(`Okay, thank you for today!`, 'bot')}, 1500)
+      showMessage(`Okay, thank you for today!😽`, 'bot')
+      chat.innerHTML += '<audio autoplay src="./assets/cat-purr.mp3"></audio>'}, 1500
+      )
   }
 }
 //här kan man sätta en console log så vi ser att form är submittet aka att vi vill det ska skickas iväg men vi måste prevent default
