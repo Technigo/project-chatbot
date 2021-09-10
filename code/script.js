@@ -121,7 +121,6 @@ shrekImg.alt = "Shrek"
 
 // Functions declared here
 const wantToPlay = (user) => {
-  console.log(user);
   showMessage(`Hi, ${user}, do you want to know who your celebrity soulmate is?`, 'bot')
 
   inputWrapper.innerHTML = `
@@ -146,9 +145,7 @@ const wantToPlay = (user) => {
 const shrek = () => {
   showCelebImg(shrekImg)
   showMessage(`Then, go back to your swamp!`, 'bot');
-  // const restartBtn = document.getElementById('restart');
 
-  // restartBtn.addEventListener('click', ())
 }
 
 const sundayAfternoon = () => {
@@ -172,16 +169,13 @@ const sundayAfternoon = () => {
       showMessage(movie.innerHTML, 'user');
       showMovieOptions()
 
-      console.log('yes this works')
     } else if (select.value === 'music') {
       showMessage(music.innerHTML, 'user');
       showMusicOptions()
 
-
     } else if (select.value === 'books') {
       showMessage(books.innerHTML, 'user');
       showReadingOptions()
-
 
     } else {
 
@@ -250,7 +244,6 @@ const showMusicOptions = () => {
     showSocialMedia('pop', 'music');
   },{once : true})
 
-
 };
 
 const showReadingOptions = () => {
@@ -285,7 +278,6 @@ const showReadingOptions = () => {
 };
 
 const showSocialMedia = (genre, hobby) => {
-  console.log("Go us")
   showMessage('How many social media followers do you have?', 'bot')
   inputWrapper.innerHTML = `
     <button type="submit" id="some">Some</button>
@@ -444,7 +436,6 @@ setTimeout(() => {chat.scrollTop = chat.scrollHeight}, 1000)
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
-    console.log(message, sender);
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -454,7 +445,6 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
-    console.log(message, sender);
     chat.innerHTML += `
       <section class="bot-msg">
         <img class="bot-img" src="./assets/bot.png" alt="Bot" />
