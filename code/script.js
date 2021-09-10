@@ -237,8 +237,7 @@ const songSelection = (input) => {
    `
    const songDropDown = document.getElementById('select2')
    songDropDown.addEventListener('change', (event) => {
-    setTimeout (() => showMessage(`Great choice, we're now listening to ${event.target.value}!`, 'bot'),5000);
-    setTimeout(() => ending(), 10000);
+    setTimeout (() => showMessage(`Great choice, we're now listening to ${event.target.value}! Do you like the song?`, 'bot'),1000);
     
 
       
@@ -371,8 +370,7 @@ const songSelection = (input) => {
    `
    const songDropDown = document.getElementById('select3')
    songDropDown.addEventListener('change', (event) => {
-    setTimeout (() => showMessage(`Are you happy with the choice of ${event.target.value}?`, 'bot'),5000);
-    setTimeout(() => ending(), 10000);
+    setTimeout (() => showMessage(`Great choice, we're now listening to ${event.target.value}! Do you like the song?`, 'bot'),1000);
       
      if (event.target.value === 'Pink') {
       inputWrapper.innerHTML += `
@@ -503,8 +501,7 @@ const songSelection = (input) => {
  `
  const songDropDown = document.getElementById('select4')
  songDropDown.addEventListener('change', (event) => {
-  setTimeout (() => showMessage(`Are you happy with the choice of ${event.target.value}?`, 'bot'),5000);
-  setTimeout(() => ending(), 10000);
+  setTimeout (() => showMessage(`Great choice, we're now listening to ${event.target.value}! Do you like the song?`, 'bot'),1000);
     
    if (event.target.value === 'Legend') {
     inputWrapper.innerHTML += `
