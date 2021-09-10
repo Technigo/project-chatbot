@@ -1,3 +1,13 @@
+/*
+Question 1: name;
+Question 2.1: times a month;
+Question 2.2: square meters;
+Question 2.3: windows;
+Question 3: email;
+Question 4: number;
+   
+*/
+
 // DOM selectors
 const chat = document.getElementById("chat");
 const form = document.getElementById("form");
