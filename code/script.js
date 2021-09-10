@@ -40,13 +40,19 @@ const greeting = () => {
 }
 
 // The user enters dog name in the handleInput function
+// There's a condition-check to make sure that the user enters a valid name
 const handleInput = (event) => {
   event.preventDefault()
   // Store the value in a variable so we can access it after we clear it from the input
   const userInput = textInput.value
   dogName = userInput;
   showMessage(userInput, 'user')
+  if (textInput.value === '') {
+    showMessage(`Please enter a valid name`, 'bot')
+    handleInput()
+  } 
   textInput.value = ''
+
 
   // After 1 second, show the next question by invoking the next function passing the name into it to have access to the user's name if we want to use it in the next question from the bot.
   setTimeout(() => nameOfPet(userInput), 1000)
@@ -125,19 +131,17 @@ const bookTreatment = () => {
   setTimeout(() => showMessage(`Please pick one of the available appointments`, 'bot'), 1000)
 
   inputWrapper.innerHTML = `
-  <button id="mondayBookBtn">Monday, 10:00 - 11:00</button>
-  <button id="tuesday1BookBtn">Tuesday, 13:00 - 14:00</button>
-  <button id="tuesday2BookBtn">Tuesday, 15:00 - 16:00</button>
-`
+  <select id = "select">
+   <option value="" selected disabled>👇 Select an appointment</option>
+   <option value = "booking">Monday, 10:00 - 11:00</option>
+   <option value = "booking">Tuesday, 13:00 - 14:00</option>
+   <option value = "booking">Tuesday, 15:00 - 16:00</option>
+  </select> 
+  `
   document
-    .getElementById('mondayBookBtn')
-    .addEventListener('click', () => checkOut())
-  document
-    .getElementById('tuesday1BookBtn')
-    .addEventListener('click', () => checkOut())
-  document
-    .getElementById('tuesday2BookBtn')
-    .addEventListener('click', () => checkOut())  
+  .getElementById('select')
+  .addEventListener('change', () => checkOut())
+
 }
 
 //Treatment is booked and bot sends checkout-message
