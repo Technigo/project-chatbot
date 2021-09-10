@@ -13,7 +13,7 @@ const inputWrapper = document.getElementById("input-wrapper");
 const handleNameInput = (event) => {
   event.preventDefault();
   let name = nameInput.value;
-  showMessage(name, "user");
+  setTimeout(() => showMessage(name, "user"), 1000);
   setTimeout(() => showPlantOptions(name), 1000); // This then runs our function which creates the dropdown
 };
 
@@ -21,10 +21,10 @@ const handleNameInput = (event) => {
 // It then switches out the input-field for a dropdown so that the user can pick a choice
 const showPlantOptions = (userName) => {
   // It first runs this message including the users first name
-  showMessage(
+  setTimeout(() => showMessage(
     `Nice to meet you ${userName}! What kind of plants to you want help with?`,
     "bot"
-  );
+  ), 1000);
   // It then switches out the input-field for a dropdown containing three different plant choises
   // It also creates a restart-button where you can reset the chat and start over if you want to
   inputWrapper.innerHTML = `
@@ -48,7 +48,7 @@ const dropDownChoice = () => {
   } else {
     const plantChoice = document.getElementById("dropdown").value;
     // It shows the users plantChoice
-    showMessage(plantChoice, "user");
+    setTimeout(() => showMessage(plantChoice, "user"), 1000);
 
     // and then it runs our botreply function
     setTimeout(() => botReply(plantChoice), 1000);
@@ -60,32 +60,32 @@ const botReply = (chosenPlant) => {
   // This lets the bot get the users name from the nameInput variable
   let name = nameInput.value;
   // Then it runs the showMessage with the users name and the name of the chosen plant which it gets from the dropdown function
-  showMessage(`Good choice, ${name}! You have choosen ${chosenPlant}.`, "bot");
+  setTimeout(() => showMessage(`Good choice, ${name}! You have choosen ${chosenPlant}.`, "bot"), 1000);
 
   // Here is our conditional.
   if (chosenPlant === "Monstera") { // If the users choose Monstera, show this
-    showMessage(
+    setTimeout(() => showMessage(
       `${chosenPlant} are really easy plants to look after and maintain, they like indirect sunlight and are hard to kill. For more info 
     I suggest you look at <a target="_blank" href='https://bloomscape.com/plant-care-guide/monstera-plant'/>This site </a>`,
       "bot"
-    );
+    ), 1500);
   } else if (chosenPlant === "Pilea") { // If the user choose Pilea, show this
-    showMessage(
+    setTimeout(() => showMessage(
       `${chosenPlant} are Instagram favourites, and for good reason,  
     I suggest you look at <a href="https://bloomscape.com/plant-care-guide/pilea"/> This site</a> for care advice`,
       "bot"
-    );
+    ), 1500);
   } else if(chosenPlant === "Calathea") { // If none of the other two are chosen, show this
-    showMessage(`${chosenPlant} can be tricky. They like to be misted and need moist soil. 
+    setTimeout(() => showMessage(`${chosenPlant} can be tricky. They like to be misted and need moist soil. 
     For more advice, <a target="_blank" href="https://bloomscape.com/plant-care-guide/calathea/">see here</a>`,
-      "bot");
+      "bot"), 1500);
   }
 
   // This prompts the user to pick another flower to know more about
-  showMessage(
+  setTimeout(() => showMessage(
     `${name}, would you like more information about another flower?`,
     "bot"
-  );
+  ), 2000);
 };
 
 // This is a function that resets the chat
@@ -142,15 +142,10 @@ const greeting = () => {
   showMessage(`Hello there, What's your name?`, "bot");
 };
 
-// Set up your eventlisteners here
-
 // element.addEventListener(event, function, useCapture);
 // document.getElementById('name-form').addEventListener("click", showMessage);
 document.getElementById("submit").addEventListener("click", handleNameInput);
+document.getElementById("input-wrapper").addEventListener("change", dropDownChoice);
 
-// !!!! Add another eventlistener for the dropdown !!!!
-document
-  .getElementById("input-wrapper")
-  .addEventListener("change", dropDownChoice);
 // this is what makes the function called greeting run at pageload, it will run with a delay of 1000ms
 setTimeout(greeting, 1000);

@@ -1,13 +1,16 @@
 # Project Name
+Chatbot from Linnea Isebrink and Kara Howes (Team Hippo)
 
-Replace this readme with your own information about your project.
+Our purpose for this project was to for us both to fully understand what we are doing and why. We kept the content basic with two different input types. We are most proud of the reset function, which was difficult to implement and was made from scratch.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We approached the problem by trying to fully understand exactly what we needed to do. Once we understood and coded we then started to fully understand what was the next step. After the first interactions between User and Bot, the flow started. Linnea's idea of the Reset function gave the user the option to restart at any point. The reset function was problematic (we had a problem with an undefined variable). A back-end developer Friend of Linnea's pointed us in the right direction, and from then on it functioned.
+
+If we had more time, it would've been nice to add more interactions between User and Bot, with different input types. But our focus was understanding and implementing the JavaScript.
+
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://alisebrink-project03-chatbot.netlify.app/
