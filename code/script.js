@@ -170,7 +170,7 @@ const spaceFood = (select) => {
   userFormInputs.destination = select;
 
   showMessage (
-  `My choice is "${select}"!`, 'user');
+  `My choice is ${select}!`, 'user');
 
   setTimeout(() => showMessage (
   `Great! So what do you wanna eat during the trip to ${select}?`, 'bot') , 2500);
@@ -204,7 +204,7 @@ const spaceFood = (select) => {
 
 const spacePet = (dish) => {
   userFormInputs.dish = dish;
-  showMessage (`I want "${dish}"`, 'user');
+  showMessage (`I want ${dish}.`, 'user');
   
   setTimeout(() => showMessage (
     'Yummy! You wanna go alone or bring a Space pet?', 'bot') , 2000);
@@ -242,11 +242,16 @@ const payment = (preference) => {
       price = '20';
     }
 
-  setTimeout(() => showMessage (
-    // This is an explanation of how to access and display object value: https://www.w3schools.com/js/js_object_display.asp
-    `Super, that will cost you ${price} Space Tokens. Please confirm your Trip details: 
-    Space name : ${userFormInputs.name}, Duration : ${userFormInputs.duration}, Destination : "${userFormInputs.destination}",
-    Meal : "${userFormInputs.dish}" and I will travel ${userFormInputs.preference}`, 'bot') , 2500);
+  setTimeout(() => {
+    showMessage (
+      // This is an explanation of how to access and display object value: https://www.w3schools.com/js/js_object_display.asp
+      `Super, that will cost you ${price} Space Tokens. Please confirm your Trip details: 
+     `, 'bot') 
+       
+     showMessage (`Space name : ${userFormInputs.name}<br> Duration : ${userFormInputs.duration}<br> Destination : "${userFormInputs.destination}"<br>
+     Meal : "${userFormInputs.dish}"<br> I will travel ${userFormInputs.preference}`, 'bot')
+    }
+  , 2500);
 
 
     setTimeout(() => {
