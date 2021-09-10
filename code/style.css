@@ -6,7 +6,7 @@ body {
   margin: 0 auto;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: orangered;
+  background: #0026ff;
 }
 
 h1 {
@@ -50,15 +50,18 @@ input {
 main {
   margin: 20px auto;
   width: 100%;
-  max-width:600px;
-  height: 600px;
+  max-width:700px;
+  height: 700px;
   border-radius: 30px;
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.7);
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  background-image: url(./discb.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 
 .chat {
@@ -68,9 +71,6 @@ main {
   overflow: scroll;
   flex-direction: column;
   padding-bottom: 16px;
-  background-image: url(./discb.png);
-  background-size: 100%;
-  background-repeat: no-repeat;
 }
 
 
