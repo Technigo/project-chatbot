@@ -39,6 +39,15 @@ h2 {
   margin-bottom: 36px;
 }
 
+h3 {
+  text-align: right;
+  margin-right: 270px;
+  color: #fff;
+  font-family: 'Covered By Your Grace';
+  font-size: 30px;
+  padding: 0px;
+}
+
 p {
   font-size: 18px;
   font-weight: 600;
@@ -142,6 +151,20 @@ main {
   background-color:#C716B7;
   color: #fff;
   border: solid #C716B7;
+  border-radius: 20px;
+  padding: 16px 40px;
+  margin-right: 4px;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#no, #yes {
+  background-color:#2FAEAF;
+  color: #fff;
+  border: solid #2FAEAF;
   border-radius: 20px;
   padding: 16px 40px;
   margin-right: 4px;

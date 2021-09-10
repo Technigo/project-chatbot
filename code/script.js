@@ -4,9 +4,10 @@ const welcomeButton = document.getElementById('welcomeBtn')
 const sendBtn = document.getElementsByClassName('send-btn')
 const input = document.getElementById('input')
 const inputWrapper = document.getElementById('input-wrapper')
-const form = document.getElementById('name-form');
+const form = document.getElementById('name-form')
+const select1 = document.getElementById('select1')
 // Global variables, if you need any, declared here
-//let nextQuestion = 0
+
 // Functions declared here
 let questionNumber = 1
 //botReply to show message at bot side
@@ -55,24 +56,27 @@ welcomeButton.onclick = function () {
     }
   };
 }
-//
+
+//Bot greets human
 const botGreeting = () => {
   showMessage(`Hello there human, what's your name?`, 'bot')
   questionNumber = 1
 }
+//gives the h
 const handleNameInput = () => {
   console.log('handleNameInput')
   showMessage(`My name is ${input.value}`, 'user');
-  // questionNumber = 2
-  
   setTimeout(() => whatMood(), 1000);
 }
+
+//Pick your mood
 const whatMood = () => {
   console.log('whatMood')
   showMessage(`Oh ${input.value} describe your mood in one word!`, 'bot')
   questionNumber = 3
   input.value=''
 }
+//User choose their mood
 const moodAnswer = () => {
   console.log('moodAnswer');
 
@@ -80,8 +84,10 @@ const moodAnswer = () => {
   const inputMood = input.value
   questionNumber = 4
   showMessage(`I am ${inputMood}`, 'user')
-  songSelection(input.value)
+  setTimeout(() => songSelection(input.value), 1000);
 }
+
+//Select a song from the list
 const songSelection = (input) => {
   questionNumber = 5
   
@@ -99,7 +105,8 @@ const songSelection = (input) => {
    `
    const songDropDown = document.getElementById('select1')
    songDropDown.addEventListener('change', (event) => {
-     showMessage(`Are you happy with the choice of ${event.target.value}?`, 'bot')
+     setTimeout (() => showMessage(`Great choice, we're now listening to ${event.target.value}! Do you like the song?`, 'bot'),1000);
+
       
      if (event.target.value === 'Coldplay') {
       inputWrapper.innerHTML += `
@@ -107,8 +114,115 @@ const songSelection = (input) => {
           <source src="./assets/Coldplay_-_Fix_You_Official_Video_1.mp3" type="audio/mp3">
         </audio>
     `
-    console.log('hej');
+
+  inputWrapper.innerHTML += `
+    <button type="submit" id="yes">Yes</button>
+    <button type="submit" id="no">No</button>
+    `
+
+    const yesBtn = document.getElementById('yes')
+    const noBtn = document.getElementById('no')
+  
+    yesBtn.addEventListener('click', () => {
+      showMessage(`Yes!`, 'user')
+      ending()
+    })
+
+    yesBtn.onclick = function () {
+      if (yesBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
     }
+    noBtn.onclick = function () {
+      if (noBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+
+    noBtn.addEventListener('click', () => {
+      input.value=''
+      setTimeout (() => showMessage(`Too bad! I will make you start over`, 'bot'),1000);
+      setTimeout(() => beginAgain(), 5000);
+    })
+
+    } else if (event.target.value === 'Hassle') {
+      inputWrapper.innerHTML += `
+        <audio autoplay> 
+          <source src="./assets/Erik Hassle - Hurtful.mp3" type="audio/mp3">
+        </audio>
+    `
+    inputWrapper.innerHTML += `
+    <button type="submit" id="yes">Yes</button>
+    <button type="submit" id="no">No</button>
+    `
+
+    const yesBtn = document.getElementById('yes')
+    const noBtn = document.getElementById('no')
+  
+    yesBtn.addEventListener('click', () => {
+      showMessage(`Yes!`, 'user')
+      ending()
+    })
+
+    yesBtn.onclick = function () {
+      if (yesBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+    noBtn.onclick = function () {
+      if (noBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+
+    noBtn.addEventListener('click', () => {
+      input.value=''
+      setTimeout (() => showMessage(`Too bad! I will make you start over`, 'bot'),1000);
+      setTimeout(() => beginAgain(), 5000);
+    })
+    } else if (event.target.value === 'TheFray') {
+      inputWrapper.innerHTML += `
+        <audio autoplay> 
+          <source src="./assets/The Fray - How to Save a Life.mp3" type="audio/mp3">
+        </audio>
+    `
+    inputWrapper.innerHTML += `
+    <button type="submit" id="yes">Yes</button>
+    <button type="submit" id="no">No</button>
+    `
+
+    const yesBtn = document.getElementById('yes')
+    const noBtn = document.getElementById('no')
+  
+    yesBtn.addEventListener('click', () => {
+      showMessage(`Yes!`, 'user')
+      ending()
+    })
+
+    yesBtn.onclick = function () {
+      if (yesBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+    noBtn.onclick = function () {
+      if (noBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+
+    noBtn.addEventListener('click', () => {
+      input.value=''
+      setTimeout (() => showMessage(`Too bad! I will make you start over`, 'bot'),1000);
+      setTimeout(() => beginAgain(), 5000);
+    })
+    }
+   
    })
 
    } else if (input === 'happy'|| input === 'glad'|| input === 'excited') {
@@ -121,8 +235,132 @@ const songSelection = (input) => {
      <option value="Beyonce">Beyonce - Single ladies</option>
    </select>
    `
+   const songDropDown = document.getElementById('select2')
+   songDropDown.addEventListener('change', (event) => {
+    setTimeout (() => showMessage(`Great choice, we're now listening to ${event.target.value}!`, 'bot'),5000);
+    setTimeout(() => ending(), 10000);
+    
+
+      
+     if (event.target.value === 'Pharell') {
+      inputWrapper.innerHTML += `
+        <audio autoplay> 
+          <source src="./assets/Pharrell Williams - Happy.mp3" type="audio/mp3">
+        </audio>
+    `
+    inputWrapper.innerHTML += `
+    <button type="submit" id="yes">Yes</button>
+    <button type="submit" id="no">No</button>
+    `
+
+    const yesBtn = document.getElementById('yes')
+    const noBtn = document.getElementById('no')
+  
+    yesBtn.addEventListener('click', () => {
+      showMessage(`Yes!`, 'user')
+      ending()
+    })
+
+    yesBtn.onclick = function () {
+      if (yesBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+    noBtn.onclick = function () {
+      if (noBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+
+    noBtn.addEventListener('click', () => {
+      input.value=''
+      setTimeout (() => showMessage(`Too bad! I will make you start over`, 'bot'),1000);
+      setTimeout(() => beginAgain(), 5000);
+    })
+    }
+    else if (event.target.value === 'Timberlake') {
+      inputWrapper.innerHTML += `
+        <audio autoplay> 
+          <source src="./assets/Justin Timberlake - Can't Stop The Feeling.mp3" type="audio/mp3">
+        </audio>
+    `
+    inputWrapper.innerHTML += `
+    <button type="submit" id="yes">Yes</button>
+    <button type="submit" id="no">No</button>
+    `
+
+    const yesBtn = document.getElementById('yes')
+    const noBtn = document.getElementById('no')
+  
+    yesBtn.addEventListener('click', () => {
+      showMessage(`Yes!`, 'user')
+      ending()
+    })
+
+    yesBtn.onclick = function () {
+      if (yesBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+    noBtn.onclick = function () {
+      if (noBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+
+    noBtn.addEventListener('click', () => {
+      input.value=''
+      setTimeout (() => showMessage(`Too bad! I will make you start over`, 'bot'),1000);
+      setTimeout(() => beginAgain(), 5000);
+    })
+    }
+    else if (event.target.value === 'Beyonce') {
+      inputWrapper.innerHTML += `
+        <audio autoplay> 
+          <source src="./assets/Beyoncé - Single Ladies (Put a Ring on It).mp3" type="audio/mp3">
+        </audio>
+    `
+    inputWrapper.innerHTML += `
+    <button type="submit" id="yes">Yes</button>
+    <button type="submit" id="no">No</button>
+    `
+
+    const yesBtn = document.getElementById('yes')
+    const noBtn = document.getElementById('no')
+  
+    yesBtn.addEventListener('click', () => {
+      showMessage(`Yes!`, 'user')
+      ending()
+    })
+
+    yesBtn.onclick = function () {
+      if (yesBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+    noBtn.onclick = function () {
+      if (noBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+
+    noBtn.addEventListener('click', () => {
+      input.value=''
+      setTimeout (() => showMessage(`Too bad! I will make you start over`, 'bot'),1000);
+      setTimeout(() => beginAgain(), 5000);
+    })
+    }
+   })
+  
    } else if (input === 'angry'|| input === 'mad'|| input === 'frustrated'|| input === 'irritated') {
     showMessage(`So you are ${input}, here are some song recommendations`, 'bot')
+
      inputWrapper.innerHTML = `
     <select id="select3">
      <option value="" selected disabled> Select a beat..</option>
@@ -131,8 +369,130 @@ const songSelection = (input) => {
      <option value="CudiWest">Kid Cudi, Kanye West - Erase Me</option>
    </select>
    `
+   const songDropDown = document.getElementById('select3')
+   songDropDown.addEventListener('change', (event) => {
+    setTimeout (() => showMessage(`Are you happy with the choice of ${event.target.value}?`, 'bot'),5000);
+    setTimeout(() => ending(), 10000);
+      
+     if (event.target.value === 'Pink') {
+      inputWrapper.innerHTML += `
+        <audio autoplay> 
+          <source src="./assets/P!nk - So What (Official Video).mp3" type="audio/mp3">
+        </audio>
+    `
+    inputWrapper.innerHTML += `
+    <button type="submit" id="yes">Yes</button>
+    <button type="submit" id="no">No</button>
+    `
+
+    const yesBtn = document.getElementById('yes')
+    const noBtn = document.getElementById('no')
+  
+    yesBtn.addEventListener('click', () => {
+      showMessage(`Yes!`, 'user')
+      ending()
+    })
+
+    yesBtn.onclick = function () {
+      if (yesBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+    noBtn.onclick = function () {
+      if (noBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+
+    noBtn.addEventListener('click', () => {
+      input.value=''
+      setTimeout (() => showMessage(`Too bad! I will make you start over`, 'bot'),1000);
+      setTimeout(() => beginAgain(), 5000);
+    })
+    }
+    else if (event.target.value === 'Swift') {
+      inputWrapper.innerHTML += `
+        <audio autoplay> 
+          <source src="./assets/Taylor Swift - I Knew You Were Trouble.mp3" type="audio/mp3">
+        </audio>
+    `
+    inputWrapper.innerHTML += `
+    <button type="submit" id="yes">Yes</button>
+    <button type="submit" id="no">No</button>
+    `
+
+    const yesBtn = document.getElementById('yes')
+    const noBtn = document.getElementById('no')
+  
+    yesBtn.addEventListener('click', () => {
+      showMessage(`Yes!`, 'user')
+      ending()
+    })
+
+    yesBtn.onclick = function () {
+      if (yesBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+    noBtn.onclick = function () {
+      if (noBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+
+    noBtn.addEventListener('click', () => {
+      input.value=''
+      setTimeout (() => showMessage(`Too bad! I will make you start over`, 'bot'),1000);
+      setTimeout(() => beginAgain(), 5000);
+    })
+    }
+    else if (event.target.value === 'CudiWest') {
+      inputWrapper.innerHTML += `
+        <audio autoplay> 
+          <source src="./assets/Kid Cudi - Erase Me ft Kanye West.mp3" type="audio/mp3">
+        </audio>
+    `
+    inputWrapper.innerHTML += `
+    <button type="submit" id="yes">Yes</button>
+    <button type="submit" id="no">No</button>
+    `
+
+    const yesBtn = document.getElementById('yes')
+    const noBtn = document.getElementById('no')
+  
+    yesBtn.addEventListener('click', () => {
+      showMessage(`Yes!`, 'user')
+      ending()
+    })
+
+    yesBtn.onclick = function () {
+      if (yesBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+    noBtn.onclick = function () {
+      if (noBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+
+    noBtn.addEventListener('click', () => {
+      input.value=''
+      setTimeout (() => showMessage(`Too bad! I will make you start over`, 'bot'),1000);
+      setTimeout(() => beginAgain(), 5000);
+    })
+    }
+   })
+
   } else if (input === 'in love'|| input === 'love'|| input === 'romantic') {
     showMessage(`So you are ${input}, here are some song recommendations`, 'bot')
+
    inputWrapper.innerHTML = `
   <select id="select4">
    <option value="" selected disabled> Select a beat..</option>
@@ -141,7 +501,128 @@ const songSelection = (input) => {
    <option value="Carey">Mariah Carey - We Belong Together</option>
  </select>
  `
-  } else {
+ const songDropDown = document.getElementById('select4')
+ songDropDown.addEventListener('change', (event) => {
+  setTimeout (() => showMessage(`Are you happy with the choice of ${event.target.value}?`, 'bot'),5000);
+  setTimeout(() => ending(), 10000);
+    
+   if (event.target.value === 'Legend') {
+    inputWrapper.innerHTML += `
+      <audio autoplay> 
+        <source src="./assets/John Legend - All of Me.mp3">
+      </audio>
+  `
+  inputWrapper.innerHTML += `
+    <button type="submit" id="yes">Yes</button>
+    <button type="submit" id="no">No</button>
+    `
+
+    const yesBtn = document.getElementById('yes')
+    const noBtn = document.getElementById('no')
+  
+    yesBtn.addEventListener('click', () => {
+      showMessage(`Yes!`, 'user')
+      ending()
+    })
+
+    yesBtn.onclick = function () {
+      if (yesBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+    noBtn.onclick = function () {
+      if (noBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+
+    noBtn.addEventListener('click', () => {
+      input.value=''
+      setTimeout (() => showMessage(`Too bad! I will make you start over`, 'bot'),1000);
+      setTimeout(() => beginAgain(), 5000);
+    })
+  }
+  else if (event.target.value === 'Houston') {
+    inputWrapper.innerHTML += `
+      <audio autoplay> 
+        <source src="./assets/Whitney Houston - I Will Always Love You.mp3" type="audio/mp3">
+      </audio>
+  `
+  inputWrapper.innerHTML += `
+    <button type="submit" id="yes">Yes</button>
+    <button type="submit" id="no">No</button>
+    `
+
+    const yesBtn = document.getElementById('yes')
+    const noBtn = document.getElementById('no')
+  
+    yesBtn.addEventListener('click', () => {
+      showMessage(`Yes!`, 'user')
+      ending()
+    })
+
+    yesBtn.onclick = function () {
+      if (yesBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+    noBtn.onclick = function () {
+      if (noBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+
+    noBtn.addEventListener('click', () => {
+      input.value=''
+      setTimeout (() => showMessage(`Too bad! I will make you start over`, 'bot'),1000);
+      setTimeout(() => beginAgain(), 5000);
+    })
+  }
+  else if (event.target.value === 'Carey') {
+    inputWrapper.innerHTML += `
+      <audio autoplay> 
+        <source src="./assets/Mariah Carey - We Belong Together.mp3" type="audio/mp3">
+      </audio>
+  `
+  inputWrapper.innerHTML += `
+    <button type="submit" id="yes">Yes</button>
+    <button type="submit" id="no">No</button>
+    `
+
+    const yesBtn = document.getElementById('yes')
+    const noBtn = document.getElementById('no')
+  
+    yesBtn.addEventListener('click', () => {
+      showMessage(`Yes!`, 'user')
+      ending()
+    })
+
+    yesBtn.onclick = function () {
+      if (yesBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+    noBtn.onclick = function () {
+      if (noBtn.style.display !== 'none') {
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+      };
+    }
+
+    noBtn.addEventListener('click', () => {
+      input.value=''
+      setTimeout (() => showMessage(`Too bad! I will make you start over`, 'bot'),1000);
+      setTimeout(() => beginAgain(), 5000);
+    })
+  }
+ })
+
+  } else { //if the bot does not recognize the mood
     console.log('im here')
     showMessage(`I don't recognize that mood..`,'bot')
     inputWrapper.innerHTML = `
@@ -169,17 +650,21 @@ const songSelection = (input) => {
      console.log('now I have clicked', document.getElementById('select5').value);
      songSelection(document.getElementById('select5').value)
    }
-   if (event.target.value === 'Coldplay') {
-    inputWrapper.innerHtml += `
-  <audio autoplay> 
-  <source src="./Coldplay_-_Fix_You_Official_Video_1.mp3" type="audio.mp3">
-  </audio>
-  `}
+  
   }
 
- 
-
 }
+
+    const ending = () => {
+      questionNumber = 6
+      showMessage(`Thank you for chatting with me!`, 'bot')
+    }
+
+    const beginAgain = () => {
+      questionNumber = 7
+      location.reload();
+    }
+    
 
 const handleInput = (event) => {
   event.preventDefault()
@@ -191,24 +676,20 @@ const handleInput = (event) => {
     console.log(2)
     setTimeout(() => whatMood(event), 1000);
   } else if (questionNumber === 3) {
-    //input.value = ''
     console.log(3);
-    //moodAnswer(event)
     setTimeout(() => moodAnswer(event), 1000);
   } else if (questionNumber === 4) {
-    //input.value = ''
     setTimeout(() => songSelection(event), 1000);
+  } else if (questionNumber === 6) {
+    setTimeout(() => ending(event), 5000);
+  } else { (questionNumber === 7) 
+    setTimeout (() => beginAgain(), 1000); 
   }
-} /*else if (indexDoggos === 4) {
-     console.log()
-     userReply(message)
-     setTimeout(() => nameofDog(message), 2000);
-} else {
-    userReply(message);
-    setTimeout(() => goodbye(message), 2000);
-}*/
+  }
+
 // Set up your eventlisteners here
 form.addEventListener('submit', handleInput)
+
 /*sendBtn.addEventListener('click', () => nextQuestion(input.value))*/
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
