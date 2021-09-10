@@ -18,6 +18,7 @@ h1 {
   line-height: 34px;
   color: #fff;
   text-align: center;
+  text-shadow:2px 2px black;
 }
 
 h2 {
@@ -27,6 +28,7 @@ h2 {
   color: #fff;
   text-align: center;
   margin-bottom: 36px;
+  text-shadow:2px 2px black;
 }
 
 p {

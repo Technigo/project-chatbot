@@ -20,10 +20,13 @@ const handleNameInput = (event) => {
 // This is a function which then greets the user with their first name
 // It then switches out the input-field for a dropdown so that the user can pick a choice
 const showPlantOptions = (userName) => {
+  // It first runs this message including the users first name
   showMessage(
     `Nice to meet you ${userName}! What kind of plants to you want help with?`,
     "bot"
   );
+  // It then switches out the input-field for a dropdown containing three different plant choises
+  // It also creates a restart-button where you can reset the chat and start over if you want to
   inputWrapper.innerHTML = `
   <select id="dropdown">
     <option value="Monstera">Monstera</option>
@@ -36,31 +39,58 @@ const showPlantOptions = (userName) => {
 // This is a function which listens for a change in the dropdown
 // and then uses the choice with a show message
 const dropDownChoice = () => {
-  const plantChoice = document.getElementById("dropdown").value;
-  showMessage(plantChoice, "user");
+  // We create a element that gets the dropdown
+  const dropdownElement = document.getElementById("dropdown");
+  // if its null nothing will happen
+  if (!dropdownElement) {
+    return;
+    // When the dropdown is generated this will happen
+  } else {
+    const plantChoice = document.getElementById("dropdown").value;
+    // It shows the users plantChoice
+    showMessage(plantChoice, "user");
 
-  setTimeout(() => botReply(plantChoice), 1000);
+    // and then it runs our botreply function
+    setTimeout(() => botReply(plantChoice), 1000);
+  }
 };
 
+// This is a function in which we let the bot answer the user after they have made a choice with the dropdown
 const botReply = (chosenPlant) => {
+  // This lets the bot get the users name from the nameInput variable
   let name = nameInput.value;
+  // Then it runs the showMessage with the users name and the name of the chosen plant which it gets from the dropdown function
   showMessage(`Good choice, ${name}! You have choosen ${chosenPlant}.`, "bot");
 
-  if (chosenPlant === "Monstera") {
-    showMessage(`Bla bla bla`, "bot");
-  } else if (chosenPlant === "Pilea") {
-    showMessage(`bla bla bla 2`, "bot");
-  } else {
-    showMessage(`bla bla bla 3`, "bot");
+  // Here is our conditional.
+  if (chosenPlant === "Monstera") { // If the users choose Monstera, show this
+    showMessage(
+      `${chosenPlant} are really easy plants to look after and maintain, they like indirect sunlight and are hard to kill. For more info 
+    I suggest you look at <a target="_blank" href='https://bloomscape.com/plant-care-guide/monstera-plant'/>This site </a>`,
+      "bot"
+    );
+  } else if (chosenPlant === "Pilea") { // If the user choose Pilea, show this
+    showMessage(
+      `${chosenPlant} are Instagram favourites, and for good reason,  
+    I suggest you look at <a href="https://bloomscape.com/plant-care-guide/pilea"/> This site</a> for care advice`,
+      "bot"
+    );
+  } else { // If none of the other two are chosen, show this
+    showMessage(`${chosenPlant} can be tricky. They like to be misted and need moist soil. 
+    For more advice, <a target="_blank" href="https://bloomscape.com/plant-care-guide/calathea/">see here</a>`),
+      "bot";
   }
 
+  // This prompts the user to pick another flower to know more about
   showMessage(
     `${name}, would you like more information about another flower?`,
     "bot"
   );
 };
 
+// This is a function that resets the chat
 const resetChat = (name) => {
+  // It replaces the dropdown with the regular input-field and button
   inputWrapper.innerHTML = `
   <form id="name-form">
     <input id="name-input" type="text" />
@@ -69,10 +99,14 @@ const resetChat = (name) => {
       </button>
   </form>
   `;
+  // This runs the greeting again
   setTimeout(greeting, 1000);
+  // This gets the new input name from the input-field
   document.getElementById("submit").addEventListener("click", handleNameInput);
+  // It puts it in the nameInput variable
+  nameInput = document.getElementById("name-input");
+  //This picks out the value of the innerHTML
   name = nameInput.value;
-  console.log(name)
 };
 
 // This function will add a chat bubble in the correct place based on who the sender is
