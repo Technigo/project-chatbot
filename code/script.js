@@ -8,10 +8,16 @@ const form = document.getElementById('name-form')
 // Global variables, if you need any, declared here
 
 let currentQuestionNumber = 1
-let saveEvent = ""
+let saveEvent = ""  // Saves a value outside the function
+
+// Starts here
+const greeting = () => {
+  showMessage(`Hello there, Isn't it a flowery day today? What's your name?`, 'bot')
+}
+setTimeout(greeting, 500)
 
 // Set up your eventlisteners here
-sendButton.addEventListener('click', (Event) => {
+sendButton.addEventListener('click', (event) => {
   event.preventDefault();
   currentQuestion();
 });
@@ -21,22 +27,18 @@ sendButton.addEventListener('click', (Event) => {
 const currentQuestion = () => {
   if (currentQuestionNumber === 1) {
     handleNameInput();
-    currentQuestionNumber = 2
-
   }
   else if (currentQuestionNumber === 2) {
     sizeQuestion();
-    currentQuestionNumber = 3
-
   }
   else if (currentQuestionNumber === 3) {
-    currentQuestionNumber = 4
     resetWindow()
   }
   else {
     console.log('doesntWork')
   }
-
+  // Adds a number att current question
+  currentQuestionNumber++
 }
 
 const handleNameInput = () => {
@@ -56,8 +58,7 @@ const handleNameInput = () => {
       </div>`
 
     const weddingBth = document.getElementById('wedding-btn')
-    weddingBth.addEventListener('click', (event) => {
-      event.preventDefault();
+    weddingBth.addEventListener('click', () => {
       const chosenEvent = weddingBth.name;
       saveEvent = weddingBth.name;
       showMessage(chosenEvent, 'user')
@@ -67,8 +68,7 @@ const handleNameInput = () => {
     })
 
     const funeralBth = document.getElementById('funeral-btn')
-    funeralBth.addEventListener('click', (event) => {
-      event.preventDefault();
+    funeralBth.addEventListener('click', () => {
       const chosenEvent = funeralBth.name;
       saveEvent = funeralBth.name;
 
@@ -77,8 +77,7 @@ const handleNameInput = () => {
       setTimeout(() => showMessage(`So you chosen ${chosenEvent} event. What size do you need on the bouquet?`, 'bot'), 500)
     })
     const romanticBth = document.getElementById('romantic-btn')
-    romanticBth.addEventListener('click', (event) => {
-      event.preventDefault();
+    romanticBth.addEventListener('click', () => {
       const chosenEvent = romanticBth.name;
       saveEvent = romanticBth.name;
       console.log("This is", romanticBth.name)
@@ -92,7 +91,7 @@ const handleNameInput = () => {
 };
 
 const sizeQuestion = () => {
-
+  // Function that changes layout to 2 buttons
   form.innerHTML =
     `<div class="btn-wrapper">
   <button id="medium-btn" class="size-btn" name="medium">MEDIUM</button>
@@ -121,7 +120,7 @@ const sizeQuestion = () => {
     setTimeout(() => showMessage(`So you chosen ${chosenSize} size. Thank you for your order`, 'bot'), 500)
   })
 }
-
+// Function that decides which picture to show the user
 const resetWindow = () => {
   if (saveEvent === "Wedding") {
     form.innerHTML = `<div>
@@ -165,13 +164,7 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
-const greeting = () => {
-  showMessage(`Hello there, Isn't it a flowery day today? What's your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
 
-
-}
 
 
 
@@ -181,4 +174,4 @@ const greeting = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 500)
+
