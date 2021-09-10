@@ -71,7 +71,7 @@ handleNameInput.addEventListener('submit', (event) => {
   
   if (!isNaN(nameInput.value)) {
     nameInput.value = '' ;
-    prompt("You can't have numbers in you Space-name"); 
+    alert("You can't have numbers in you Space-name"); 
   }
   else {
     showMessage (userName, 'user');
