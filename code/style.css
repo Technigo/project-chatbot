@@ -10,7 +10,7 @@ body {
 }
 .video {
   object-fit: cover;
-  width: 100vp;
+  width: 100%;
   /* height: 100vh; */
   position: relative;
   overflow: hidden;
@@ -30,6 +30,7 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 1vh 3vh;
   border-radius: 20px;
+  box-sizing: border-box;
 }
 
 h1 {
