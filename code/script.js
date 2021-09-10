@@ -150,7 +150,7 @@ const songSelection = (input) => {
     } else if (event.target.value === 'Hassle') {
       inputWrapper.innerHTML += `
         <audio autoplay> 
-          <source src="./assets/Erik Hassle - Hurtful.mp3" type="audio/mp3">
+          <source src="./assets/Hurtful.mp3" type="audio/mp3">
         </audio>
     `
     inputWrapper.innerHTML += `
@@ -187,7 +187,7 @@ const songSelection = (input) => {
     } else if (event.target.value === 'TheFray') {
       inputWrapper.innerHTML += `
         <audio autoplay> 
-          <source src="./assets/The Fray - How to Save a Life.mp3" type="audio/mp3">
+          <source src="./assets/fray.mp3" type="audio/mp3">
         </audio>
     `
     inputWrapper.innerHTML += `
@@ -244,7 +244,7 @@ const songSelection = (input) => {
      if (event.target.value === 'Pharell') {
       inputWrapper.innerHTML += `
         <audio autoplay> 
-          <source src="./assets/Pharrell Williams - Happy.mp3" type="audio/mp3">
+          <source src="./assets/Williams.mp3" type="audio/mp3">
         </audio>
     `
     inputWrapper.innerHTML += `
@@ -282,7 +282,7 @@ const songSelection = (input) => {
     else if (event.target.value === 'Timberlake') {
       inputWrapper.innerHTML += `
         <audio autoplay> 
-          <source src="./assets/Justin Timberlake - Can't Stop The Feeling.mp3" type="audio/mp3">
+          <source src="./assets/Timberlake.mp3" type="audio/mp3">
         </audio>
     `
     inputWrapper.innerHTML += `
@@ -320,7 +320,7 @@ const songSelection = (input) => {
     else if (event.target.value === 'Beyonce') {
       inputWrapper.innerHTML += `
         <audio autoplay> 
-          <source src="./assets/Beyoncé - Single Ladies (Put a Ring on It).mp3" type="audio/mp3">
+          <source src="./assets/singleLadies.mp3.mp3" type="audio/mp3">
         </audio>
     `
     inputWrapper.innerHTML += `
@@ -375,7 +375,7 @@ const songSelection = (input) => {
      if (event.target.value === 'Pink') {
       inputWrapper.innerHTML += `
         <audio autoplay> 
-          <source src="./assets/P!nk - So What (Official Video).mp3" type="audio/mp3">
+          <source src="./assets/P!nk.mp3" type="audio/mp3">
         </audio>
     `
     inputWrapper.innerHTML += `
@@ -413,7 +413,7 @@ const songSelection = (input) => {
     else if (event.target.value === 'Swift') {
       inputWrapper.innerHTML += `
         <audio autoplay> 
-          <source src="./assets/Taylor Swift - I Knew You Were Trouble.mp3" type="audio/mp3">
+          <source src="./assets/swift.mp3" type="audio/mp3">
         </audio>
     `
     inputWrapper.innerHTML += `
@@ -451,7 +451,7 @@ const songSelection = (input) => {
     else if (event.target.value === 'CudiWest') {
       inputWrapper.innerHTML += `
         <audio autoplay> 
-          <source src="./assets/Kid Cudi - Erase Me ft Kanye West.mp3" type="audio/mp3">
+          <source src="./assets/CudiWest.mp3" type="audio/mp3">
         </audio>
     `
     inputWrapper.innerHTML += `
@@ -506,7 +506,7 @@ const songSelection = (input) => {
    if (event.target.value === 'Legend') {
     inputWrapper.innerHTML += `
       <audio autoplay> 
-        <source src="./assets/John Legend - All of Me.mp3">
+        <source src="./assets/Ledgend.mp3">
       </audio>
   `
   inputWrapper.innerHTML += `
@@ -544,7 +544,7 @@ const songSelection = (input) => {
   else if (event.target.value === 'Houston') {
     inputWrapper.innerHTML += `
       <audio autoplay> 
-        <source src="./assets/Whitney Houston - I Will Always Love You.mp3" type="audio/mp3">
+        <source src="./assets/houston.mp3" type="audio/mp3">
       </audio>
   `
   inputWrapper.innerHTML += `
@@ -582,7 +582,7 @@ const songSelection = (input) => {
   else if (event.target.value === 'Carey') {
     inputWrapper.innerHTML += `
       <audio autoplay> 
-        <source src="./assets/Mariah Carey - We Belong Together.mp3" type="audio/mp3">
+        <source src="./assets/Carey.mp3" type="audio/mp3">
       </audio>
   `
   inputWrapper.innerHTML += `
