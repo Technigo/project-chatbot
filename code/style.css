@@ -148,3 +148,21 @@ button:hover {
   height:50px; 
   font-size:18px;
  }
+
+ @media only screen and (max-width: 667px) {
+  h1 {
+    font-size: 30px;
+    margin-bottom: 0;
+  }
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  .bubble {
+    font-size: 12px;
+    line-height: 10px;
+    max-width: 60%;
+  }
+
+} 
