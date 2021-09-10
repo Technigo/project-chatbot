@@ -7,119 +7,46 @@ const inputWrapper = document.getElementById('input-wrapper')
 
 
 // Global variables, if you need any, declared here
-const doug = document.createElement("img");
-doug.src = "./assets/celebs/Doug_Jones_2015.jpg"
-doug.alt = "Doug Jones"
+const createCelebImg = (url, alt) => {
+  let celeb = document.createElement("img")
+  celeb.src = url
+  celeb.alt = alt
+  return celeb
+};
 
-const christopher = document.createElement("img");
-christopher.src = "./assets/celebs/Christopher_Lee.jpeg"
-christopher.alt = "Christopher Lee"
-
-const anna = document.createElement("img");
-anna.src = "./assets/celebs/anna_wintour.jpg"
-anna.alt = "Anna Wintour"
-
-const carrot = document.createElement("img");
-carrot.src = "./assets/celebs/Carrot_top.jpeg"
-carrot.alt = "Carrot Top"
-
-const charles = document.createElement("img");
-charles.src = "./assets/celebs/Charles_Dickens.png"
-charles.alt = "Charles Dickens"
-
-const ed = document.createElement("img");
-ed.src = "./assets/celebs/Ed_Sheeran.jpg"
-ed.alt = "Ed Sheeran"
-
-const french = document.createElement("img");
-french.src = "./assets/celebs/french_and_saunders.jpg"
-french.alt = "French and Saunders"
-
-const halle = document.createElement("img");
-halle.src = "./assets/celebs/Halle_Berry.jpeg"
-halle.alt = "Halle Berry"
-
-const helena = document.createElement("img");
-helena.src = "./assets/celebs/Helena_Bonham_Carter.jpeg"
-helena.alt = "Helena Bonham Carter"
-
-const jamie = document.createElement("img");
-jamie.src = "./assets/celebs/Jamie_Lee_Curtis.jpeg"
-jamie.alt = "Jamie Lee Curtis"
-
-const jim = document.createElement("img");
-jim.src = "./assets/celebs/Jim_Carrey.jpeg"
-jim.alt = "Jim Carrey"
-
-const karl = document.createElement("img");
-karl.src = "./assets/celebs/Karl_Lagerfeld.jpg"
-karl.alt = "Karl Lagerfeld"
-
-const keira = document.createElement("img");
-keira.src = "./assets/celebs/Keira_Knightley.jpeg"
-keira.alt = "Keira Knightley"
-
-const kiss = document.createElement("img");
-kiss.src = "./assets/celebs/kiss.jpg"
-kiss.alt = "Kiss"
-
-const margaret = document.createElement("img");
-margaret.src = "./assets/celebs/MargaretAtwood.jpg"
-margaret.alt = "Margaret Atwood"
-
-const marilyn = document.createElement("img");
-marilyn.src = "./assets/celebs/Marilyn_Manson.jpg"
-marilyn.alt = "Marilyn Manson"
-
-const neil = document.createElement("img");
-neil.src = "./assets/celebs/neil-gaiman.jpeg"
-neil.alt = "Neil Gaiman"
-
-const prince = document.createElement("img");
-prince.src = "./assets/celebs/Prince.jpg"
-prince.alt = "Prince"
-
-const taylor = document.createElement("img");
-taylor.src = "./assets/celebs/Taylor_Swift.png"
-taylor.alt = "Taylor Swift"
-
-const tupac = document.createElement("img");
-tupac.src = "./assets/celebs/Tupac_Shakur.jpg"
-tupac.alt = "Tupac Shakur"
-
-const u2 = document.createElement("img");
-u2.src = "./assets/celebs/u2.jpg"
-u2.alt = "U2"
-
-const versace = document.createElement("img");
-versace.src = "./assets/celebs/versace.jpg"
-versace.alt = "Donatella Versace"
-
-const cent = document.createElement("img");
-cent.src = "./assets/celebs/50_Cent.jpg"
-cent.alt = "50cent"
-
-const jennifer = document.createElement("img");
-jennifer.src = "./assets/celebs/Jennifer_Lopez.jpg"
-jennifer.alt = "Jennifer Lopez"
-
-const elon = document.createElement("img");
-elon.src = "./assets/celebs/Elon_Musk.jpg"
-elon.alt = "Elon Musk"
-
-const ada = document.createElement("img");
-ada.src = "./assets/celebs/Ada_Lovelace.jpg"
-ada.alt = "Ada Lovelace"
-
-const stephen = document.createElement("img");
-stephen.src = "./assets/celebs/stephen.jpg"
-stephen.alt = "Stephen Hawking"
-
-const shrekImg = document.createElement("img");
-shrekImg.src = "./assets/celebs/shrekImg.jpeg"
-shrekImg.alt = "Shrek"
+const doug = createCelebImg("./assets/celebs/Doug_Jones_2015.jpg", "Doug Jones");
+const christopher = createCelebImg("./assets/celebs/Christopher_Lee.jpeg", "Christopher Lee");
+const anna = createCelebImg("./assets/celebs/anna_wintour.jpg","Anna Wintour");
+const carrot = createCelebImg("./assets/celebs/Carrot_top.jpeg","Carrot Top");
+const charles = createCelebImg("./assets/celebs/Charles_Dickens.png","Charles Dickens");
+const ed = createCelebImg("./assets/celebs/Ed_Sheeran.jpg","Ed Sheeran");
+const french = createCelebImg("./assets/celebs/french_and_saunders.jpg","French and Saunders");
+const halle = createCelebImg("./assets/celebs/Halle_Berry.jpeg","Halle Berry");
+const helena = createCelebImg("./assets/celebs/Helena_Bonham_Carter.jpeg","Helena Bonham Carter");
+const jamie = createCelebImg("./assets/celebs/Jamie_Lee_Curtis.jpeg","Jamie Lee Curtis");
+const jim = createCelebImg("./assets/celebs/Jim_Carrey.jpeg","Jim Carrey");
+const karl = createCelebImg("./assets/celebs/Karl_Lagerfeld.jpg","Karl Lagerfeld");
+const keira = createCelebImg("./assets/celebs/Keira_Knightley.jpeg","Keira Knightley");
+const kiss = createCelebImg("./assets/celebs/kiss.jpg","Kiss");
+const margaret = createCelebImg("./assets/celebs/MargaretAtwood.jpg","Margaret Atwood");
+const marilyn = createCelebImg("./assets/celebs/Marilyn_Manson.jpg","Marilyn Manson");
+const neil = createCelebImg("./assets/celebs/neil-gaiman.jpeg","Neil Gaiman");
+const prince = createCelebImg("./assets/celebs/Prince.jpg","Prince");
+const taylor = createCelebImg("./assets/celebs/Taylor_Swift.png","Taylor Swift");
+const tupac = createCelebImg("./assets/celebs/Tupac_Shakur.jpg","Tupac Shakur");
+const u2 = createCelebImg("./assets/celebs/u2.jpg","U2");
+const versace = createCelebImg("./assets/celebs/versace.jpg","Donatella Versace");
+const cent = createCelebImg("./assets/celebs/50_Cent.jpg","50cent");
+const jennifer = createCelebImg("./assets/celebs/Jennifer_Lopez.jpg","Jennifer Lopez");
+const elon = createCelebImg("./assets/celebs/Elon_Musk.jpg","Elon Musk");
+const ada = createCelebImg("./assets/celebs/Ada_Lovelace.jpg","Ada Lovelace");
+const stephen = createCelebImg("./assets/celebs/stephen.jpg", "Stephen Hawking");
+const shrekImg = createCelebImg("./assets/celebs/shrekImg.jpeg", "Shrek");
 
 // Functions declared here
+
+
+
 const wantToPlay = (user) => {
   showMessage(`Hi, ${user}, do you want to know who your celebrity soulmate is?`, 'bot')
 
@@ -135,14 +62,14 @@ const wantToPlay = (user) => {
     <button>Waiting for bot</button>
     `
     showMessage(`Yes!`, 'user')
-    setTimeout(sundayAfternoon, 200);
+    setTimeout(sundayAfternoon, 1000);
   })
   noBtn.addEventListener('click', () => {
     inputWrapper.innerHTML = `
     <button>Waiting for bot</button>
     `
     showMessage(`No!`, 'user')
-    setTimeout(shrek, 200);
+    setTimeout(shrek, 1000);
   })
 }
 
@@ -170,16 +97,19 @@ const sundayAfternoon = () => {
 
   select.addEventListener('change', () => {
     if (select.value === 'movie') {
+      inputWrapper.innerHTML = ``;
       showMessage(movie.innerHTML, 'user');
-      showMovieOptions()
+      setTimeout(showMovieOptions, 500);
 
     } else if (select.value === 'music') {
+      inputWrapper.innerHTML = ``;
       showMessage(music.innerHTML, 'user');
-      showMusicOptions()
+      setTimeout(showMusicOptions, 500);
 
     } else if (select.value === 'books') {
+      inputWrapper.innerHTML = ``;
       showMessage(books.innerHTML, 'user');
-      showReadingOptions()
+      setTimeout(showReadingOptions, 500);
 
     } else {
 
@@ -204,7 +134,7 @@ const showMovieOptions = () => {
     <button>Waiting for bot</button>
     `
     showMessage(`Horror`, 'user')
-    showSocialMedia('horror', 'movie');
+    setTimeout(() => showSocialMedia('horror', 'movie'), 1000);
   })
 
   dramaBtn.addEventListener('click', () => {
@@ -212,7 +142,7 @@ const showMovieOptions = () => {
     <button>Waiting for bot</button>
     `
     showMessage(`Drama`, 'user')
-    showSocialMedia('drama', 'movie');
+    setTimeout(() => showSocialMedia('drama', 'movie'), 1000);
   })
 
   comedyBtn.addEventListener('click', () => {
@@ -220,7 +150,7 @@ const showMovieOptions = () => {
     <button>Waiting for bot</button>
     `
     showMessage(`Comedy`, 'user')
-    showSocialMedia('comedy', 'movie');
+    setTimeout(() => showSocialMedia('comedy', 'movie'), 1000);
   })
 
 };
@@ -241,7 +171,7 @@ const showMusicOptions = () => {
     <button>Waiting for bot</button>
     `
     showMessage(`Rock`, 'user')
-    showSocialMedia('rock', 'music');
+    setTimeout(() => showSocialMedia('rock', 'music'), 1000);
   })
 
   hiphopBtn.addEventListener('click', () => {
@@ -249,7 +179,7 @@ const showMusicOptions = () => {
     <button>Waiting for bot</button>
     `
     showMessage(`Hiphop`, 'user')
-    showSocialMedia('hiphop', 'music');
+    setTimeout(() => showSocialMedia('hiphop', 'music'), 1000);
   })
 
   popBtn.addEventListener('click', () => {
@@ -257,7 +187,7 @@ const showMusicOptions = () => {
     <button>Waiting for bot</button>
     `
     showMessage(`Pop`, 'user')
-    showSocialMedia('pop', 'music');
+    setTimeout(() => showSocialMedia('pop', 'music'), 1000);
   })
 
 };
@@ -278,7 +208,7 @@ const showReadingOptions = () => {
     <button>Waiting for bot</button>
     `
     showMessage(`Novels`, 'user')
-    showSocialMedia('novels', 'books');
+    setTimeout(() => showSocialMedia('novels', 'books'), 1000);
   })
 
   magazinesBtn.addEventListener('click', () => {
@@ -286,7 +216,7 @@ const showReadingOptions = () => {
     <button>Waiting for bot</button>
     `
     showMessage(`Magazines`, 'user')
-    showSocialMedia('magazines', 'books');
+    setTimeout(() => showSocialMedia('magazines', 'books'), 1000);
   })
 
   academicBtn.addEventListener('click', () => {
@@ -294,7 +224,7 @@ const showReadingOptions = () => {
     <button>Waiting for bot</button>
     `
     showMessage(`Academic Papers`, 'user')
-    showSocialMedia('academic', 'books');
+    setTimeout(() => showSocialMedia('academic', 'books'), 1000);
   })
 
 };
