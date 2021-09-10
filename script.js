@@ -4,11 +4,12 @@ const userInput = document.getElementById('user-input')
 const form = document.getElementById('chat-form')
 const send = document.getElementById('send')
 const inputWrapper = document.getElementById('input-wrapper')
+// const timeOutTime = 1500
 
 // Global variables, if you need any, declared here
 
 let questionNumber = 0
-
+let inputFromUser = ''
 
 // Functions declared here
 
@@ -56,27 +57,27 @@ const greeting = () => {
 // }
 
 const whatPlant = () => {
-  showMessage(`Nice to meet you!`, 'bot') 
-  showMessage(`What kind of plants do you like?`, 'bot')
+  showMessage(`Nice to meet you ${inputFromUser}!`, 'bot') 
+  setTimeout (() => {showMessage(`What kind of plants do you like?`, 'bot')
 
     inputWrapper.innerHTML = `
     <button id="flowers">🌺</button>
     <button id="edibles">🌶</button>
     <button id="thorny">🌵</button>
   `
-
     document.getElementById('flowers')
     .addEventListener('click', () => plantSelection('flowers'))
     document.getElementById('edibles')
     .addEventListener('click', () => plantSelection('edibles'))
     document.getElementById('thorny')
     .addEventListener('click', () => plantSelection('thorny'))
-}
+  }, 1000)
+  }
 
 const plantSelection = (plantChoice) => {
   questionNumber++
-
-showMessage(`Aha... ${plantChoice} you say.. Let's find out more!`, 'bot')
+showMessage(`I prefer ${plantChoice}!`, 'user')
+setTimeout (() => {showMessage(`Aha... ${plantChoice} you say.. Let's find out more!`, 'bot')
 
   if (plantChoice === 'flowers') {
     inputWrapper.innerHTML = `
@@ -95,9 +96,27 @@ showMessage(`Aha... ${plantChoice} you say.. Let's find out more!`, 'bot')
       ` 
     }
   }
+  , 1000)
+
+  document.getElementById('oneBig')
+  .addEventListener('click', () => lastChoice('oneBig'))
+  document.getElementById('plentySmall')
+  .addEventListener('click', () => lastChoice('plentySmall'))
+  document.getElementById('sweet')
+  .addEventListener('click', () => lastChoice('sweet'))
+  document.getElementById('hot')
+  .addEventListener('click', () => lastChoice('hot'))
+  document.getElementById('cactus')
+  .addEventListener('click', () => lastChoice('cactus'))
+  document.getElementById('rose')
+  .addEventListener('click', () => lastChoice('rose'))
+  }
+
+
 
 const handleInput = (event) => {
   event.preventDefault()
+// setTimeout (() => 
   questionNumber++
     if (questionNumber === 1) {
       handleNameQuestion()
@@ -106,21 +125,27 @@ const handleInput = (event) => {
     } else if (questionNumber === 3) {
       handlePlantChoice()
     }
+  // }, timeOutTime)
 }
 
 const handleNameQuestion = () => {
-  const name = userInput.value
-  showMessage(`My name is ${name}!`, 'user')
+  inputFromUser = userInput.value
+  showMessage(`My name is ${inputFromUser}!`, 'user')
   userInput.value = ''
-  setTimeout(whatPlant, 1000)
+  setTimeout(whatPlant,1000)
 }
 
 const handlePlantQuestion = () => {
-  const plantChoice = userInput.value
-  showMessage(`I prefer ${plantChoice}!`, 'user')
+  inputFromUser = userInput.value  
+  showMessage(`I prefer ${inputFromUser}!`, 'user')
   userInput.value = ''
-  setTimeout(pantSelection, 1000)
+  setTimeout(plantSelection, 1500)
 }
+
+const lastChoice = () => {
+//fortsätt på if else för plantSelection/lastChoice
+} 
+
 
 // Set up your eventlisteners here
 
