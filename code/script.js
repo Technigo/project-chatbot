@@ -8,6 +8,9 @@ const startButton = document.getElementById ('start-btn')
 // Global variables, if you need any, declared here
 
 let currentQuestion = 1
+let userMoodSaved = ""
+
+// Functions declared here
 
 // Functions declared here
 
@@ -43,8 +46,12 @@ const handleInput = (event) => {
     handleNameQuestion()
   } else if(currentQuestion === 2){
     moodOption()
-  } else if(currentQuestion === 3) {
+  } else if(currentQuestion === 3){
     userMood()
+  } else if(currentQuestion === 4){
+    gif()
+  } else if(currentQuestion === 5){
+    moodGif()
   }
 }
 
@@ -72,9 +79,9 @@ const moodOption =() => {
 
   
 form.innerHTML = `
-        <button id="happyBtn">Happy</button>
-        <button id="anxiousBtn">Anxious</button>
-        <button id="sadBtn">Sad</button>
+        <button class="options" id="happyBtn">Happy</button>
+        <button class="options" id="anxiousBtn">Anxious</button>
+        <button class="options" id="sadBtn">Sad</button>
   `
 
   document.getElementById('happyBtn')
@@ -87,22 +94,73 @@ form.innerHTML = `
   .addEventListener('click', () => userMood ('sad'))
 }
 
- const userMood = (option) => {
-   currentQuestion = 3
+const userMood = (option) => {
+  currentQuestion = 3
+    setTimeout (moodGif, 1000)
 
-if (option === 'happy') {
-  showMessage(`I'm feeling happy!`, 'user')
-  showMessage(`Glad to hear you are feeling happy`, 'bot')
-} else if (option === 'anxious') {
-  showMessage(`I'm feeling anxious`, 'user')
-  showMessage(`Sorry to hear you are anxious`, 'bot')
-} else if(option === 'sad') {
-  showMessage(`I'm feeling sad`, 'user')
-  showMessage(`Sorry to hear you are feeling sad`, 'bot')
+
+    if (option === 'happy') {
+      showMessage(`I'm feeling happy!`, 'user')
+      showMessage(`Glad to hear you are feeling happy`, 'bot')
+      userMoodSaved=option;
+    } else if (option === 'anxious') {
+      showMessage(`I'm feeling anxious`, 'user')
+      showMessage(`Sorry to hear you are anxious`, 'bot')
+       userMoodSaved=option;
+    } else if(option === 'sad') {
+      showMessage(`I'm feeling sad`, 'user')
+      showMessage(`Sorry to hear you are feeling sad`, 'bot')
+       userMoodSaved=option;
+    }
+    currentQuestion = 4;
+   handleInput()
+}
+
+  const gif = () => {
+   if ( userMoodSaved === 'happy') {
+  showMessage(`You wanna see a gif?`, 'bot')
+      form.innerHTML = /*html*/
+      `<button class="options" id="yesHappyBtn">Yes</button>
+        <button class="options" id="noBtn">No</button>`
+} else if ( userMoodSaved === 'anxious') {
+    showMessage(`You wanna see a gif?`, 'bot')
+     form.innerHTML = /*html*/
+     `<button class="options"id="yesAnxiousBtn">Yes</button>
+        <button class="options"id="noBtn">No</button>`
+} else if( userMoodSaved === 'sad') {
+    showMessage(`You wanna see a gif?`, 'bot')
+  form.innerHTML = /*html*/
+     `<button class="options"id="yesSadBtn">Yes</button>
+        <button class="options"id="noBtn">No</button>`
+}
+
+document.getElementById('yesHappyBtn')
+.addEventListener('click',() => moodGif('happy'))
+document.getElementById('yesAnxiousBtn')
+.addEventListener('click', () => moodGif('anxious'))
+document.getElementById('yesSadBtn')
+.addEventListener('click', () => moodGif('sad'))
+document.getElementById('noBtn')
+.addEventListener('click', () => moodGif('no'))
+
+ }
+
+const moodGif = (option) => {
+  currentQuestion = 5
+
+  if (option === 'happy'){
+  showMessage(``, 'bot')
+  chat.innerHTML = `<iframe class="gifs" src="https://giphy.com/embed/dudcZA9e14HIY" width="455" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/dog-excited-joy-dudcZA9e14HIY">via GIPHY</a></p>`
+} else if (option === 'anxious'){
+  showMessage(``, 'bot')
+  chat.innerHTML = `<iframe src="https://giphy.com/embed/KsPGcR5sofbAR9Tbl2" width="384" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/we-are-hers-breathe-breathing-exercise-KsPGcR5sofbAR9Tbl2">via GIPHY</a></p>`
+} else if (option === 'sad'){
+  showMessage(``, 'bot')
+  chat.innerHTML = `<iframe src="https://giphy.com/embed/l0MYCDXGiwtgif24o" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/studiosoriginals-domitille-collardey-it-gets-better-l0MYCDXGiwtgif24o">via GIPHY</a></p>`
+} else if (option === 'no'){
+  showMessage(`That's ok! Hope you have a nice day!`)
 }
 }
-
-
 
 // Set up your eventlisteners here
 

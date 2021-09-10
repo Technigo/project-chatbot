@@ -147,3 +147,16 @@ button:hover {
   margin: 20px auto;
   font-family: 'Major Mono Display', monospace;
 }
+
+.options {
+  align-items: center;
+  padding: 20px 50px;
+  margin: auto;
+}
+
+.gifs {
+  height: 500px;
+  width: 500px;
+  margin-top: 20px;
+  margin-left: 70px;
+}
