@@ -281,7 +281,30 @@ const niceTrip = (wish) => {
 
 setTimeout(greeting, 1000);
 
-//Do on Friday:
 // Pausing video on click
+const video = document.getElementById('video');
 
-// Toggling class to pop up the chat-bot
+const videoPlayer = () => {
+  if (video.paused) {
+    video.play();
+  } else {
+    video.pause();
+  }
+}
+video.addEventListener('click', videoPlayer);
+
+
+const heading = document.getElementById('headings');
+const btn = document.getElementById('btn');
+const bot = document.getElementById('bot');
+
+
+// Bot pop-up-function:
+// hide headings + remove class form bot (show it)
+
+
+const botPopUp = () => {
+  heading.classList.add('headings');
+  bot.classList.remove('bot');
+}
+btn.addEventListener('click', botPopUp);

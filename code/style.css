@@ -12,13 +12,6 @@ body {
 }
 
 /* https://www.w3schools.com/howto/howto_css_fullscreen_video.asp */
-<<<<<<< HEAD
-.video {
-    height: 100%;
-    width: 177.77777778vh; /* 100 * 16 / 9 */
-    min-width: 100%;
-    min-height: 56.25vw;
-=======
 
 /* https://stackoverflow.com/questions/10797632/simulate-background-sizecover-on-video-or-img This will make it work*/
 
@@ -29,7 +22,6 @@ body {
   min-width: 100%;
   min-height: 100%;
   z-index: 1;
->>>>>>> 65780b86138a6edf2cb0bfd65f75557b40265b54
 }
 
 /* hero video header  */
@@ -165,6 +157,7 @@ h2 {
   margin-bottom: 36px;
 }
 
+
 p {
   font-size: 18px;
   font-weight: 600;
@@ -231,6 +224,10 @@ main {
   flex-direction: column;
   position: relative;
   z-index: 2;
+}
+
+.bot {
+  display: none;
 }
 
 /* Main bot body styles for mobile and tablets */
@@ -361,4 +358,9 @@ button:hover {
     font-size: 12px;
     height: 40px;
   }
+}
+
+/* js classes */
+.headings {
+  display: none;
 }
