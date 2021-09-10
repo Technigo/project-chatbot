@@ -35,18 +35,17 @@ const showMessage = (message, sender) => {
     `
   }
 
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
 
 // Starts here
 const greeting = () => {
-  showMessage(`Howdy there, what's your name?`, 'bot')
+  showMessage(`Hi there! Welcome to Movie-Bob, the friendly movie picking bot. What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
 const ageQuestion = () => {
-  showMessage('How old are you?', 'bot')
+  showMessage('Nice to meet you! How old are you?', 'bot')
   currentQuestion =`question2`
 }
 
@@ -66,48 +65,37 @@ const handleNameInput = () => {  //handle the nameinput
   else if (currentQuestion === "question2") {
     userAge = message;
     showMessage(message,`user`)
+    
 
     if (userAge<= 7){
-      showMessage('We recommend Frozen it is a great for the entire family!',`bot`)
-    } else if (userAge <=16){
-      showMessage('We recommend Titanic it is a classic!',`bot`)
+      showMessage('Ah, then I suggest Frozen. It is a great movie for the entire family. Let it go, let it gooo!',`bot`)
+    } else if (userAge <=18){
+      showMessage('In your age it is perfect with a coming of age movie. I recommend Breakfast Club.',`bot`)
     } else{
-      showMessage('We recommend Once upon a time in America it is one of my favorites!', `bot`)
+      showMessage('Great! I recommend Once upon a time in America. If you are in the mood for Leo DiCaprio, but not in the mood for blood - you could go with Titianic instead.', `bot`)
     }
-    nameForm.innerHTML = `<button id="reset">Reset</button>`
 
+
+
+
+    nameForm.innerHTML = `<button id="reset">Reset</button>`
     const reset = document.getElementById(`reset`);
     reset.addEventListener(`click`, resetForm);
+    
   }
 
-
-  
-
-
-
-  //här börjar nästa fråga från boten
-  //wrappar den med tidsfördröjningen. Settimeout for every question.
   
 
 }
 
 
-// Set up your eventlisteners here
+// The eventlisteners 
 form.addEventListener('submit', handleNameInput)
 form.addEventListener(`submit`, (event) => {
   event.preventDefault();
 });
 
 
-
-
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
 
 
