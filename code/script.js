@@ -96,27 +96,27 @@ const sundayAfternoon = () => {
   select.addEventListener('change', () => {
     if (select.value === 'movie') {
       inputWrapper.innerHTML = `
-  <button>...Waiting for bot...</button>
+  <button>Waiting for bot</button>
   `
       showMessage(movie.innerHTML, 'user');
-      setTimeout(showMovieOptions, 500);
-      setTimeout(() => { chat.scrollTop = chat.scrollHeight }, 700)
+      setTimeout(showMovieOptions, 1000);
+      setTimeout(() => { chat.scrollTop = chat.scrollHeight }, 1100)
       
     } else if (select.value === 'music') {
       inputWrapper.innerHTML = `
-  <button>...Waiting for bot...</button>
+  <button>Waiting for bot</button>
   `
       showMessage(music.innerHTML, 'user');
-      setTimeout(showMusicOptions, 500);
-      setTimeout(() => { chat.scrollTop = chat.scrollHeight }, 700)
+      setTimeout(showMusicOptions, 1000);
+      setTimeout(() => { chat.scrollTop = chat.scrollHeight }, 1100)
 
     } else if (select.value === 'books') {
       inputWrapper.innerHTML = `
-  <button>...Waiting for bot...</button>
+  <button>Waiting for bot</button>
   `
       showMessage(books.innerHTML, 'user');
-      setTimeout(showReadingOptions, 500);
-      setTimeout(() => { chat.scrollTop = chat.scrollHeight }, 700)
+      setTimeout(showReadingOptions, 1000);
+      setTimeout(() => { chat.scrollTop = chat.scrollHeight }, 1100)
 
     } else {
 
@@ -386,8 +386,8 @@ const showMyAnswer = (media, genre, hobby) => {
 
 // Adds the celebrity image to the chat HTML and adds a "try again" button to the input HTML
 const showCelebImg = (celeb) => {
-  setTimeout(() => showMessage('Your celebrity soulmate is...', 'bot'), 500)
-  showMessage('... computing...', 'bot')
+  setTimeout(() => showMessage('Your celebrity soulmate is...', 'bot'), 800)
+  setTimeout(() => showMessage('... computing...', 'bot'), 1600)
   setTimeout(() => {
     chat.innerHTML += `
   <section class="bot-msg">
@@ -397,14 +397,14 @@ const showCelebImg = (celeb) => {
       <img class="celeb-img" src="${celeb.src}" alt="${celeb.alt}" />  
     </div>
   </section>
-`}, 700);
+`}, 2400);
   setTimeout(() => {
     inputWrapper.innerHTML = `
   <form>
       <button type="submit" class="restart">Not happy? Then start again</button>
   </form>
-  `}, 900);
-  setTimeout(() => { chat.scrollTop = chat.scrollHeight }, 1000)
+  `}, 2500);
+  setTimeout(() => { chat.scrollTop = chat.scrollHeight }, 2600)
 
 }
 // This function will add a chat bubble in the correct place based on who the sender is

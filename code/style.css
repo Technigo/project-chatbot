@@ -130,6 +130,7 @@ main {
   display: flex;
 }
 
+
 button, .restart {
   background-color: #517D99;
   color: white;
@@ -145,13 +146,18 @@ button, .restart {
   transition: all 0.3s ease;
 }
 
-.restart {
-  margin: 0 auto;  
-}
-
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+.restart {
+  margin: 0 auto;  
+} 
+
+button:hover, .restart:hover {
+  background: rgb(34,193,195);
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(108,149,194,1) 73%, rgba(180,106,193,1) 100%);
 }
 
 
