@@ -1,13 +1,14 @@
 # Project Name
 
-This project was made on forth week for Technigo bootcamp as pair programming project 
-(Mamite Andersson & me). 
+This project was made on week 4 for Technigo bootcamp as pair programming project. 
+It was made by me and Mamite Andersson. 
 The project's aim was to practice some parts of JavaScript we've learnt so far by creating a chat bot! We got more familiar with variables, conditionals statements, event listeners and understanding the flow.
 
 ## The problem
 
-We found this project pretty challenging for the first week with fully dive in into Javascript. We got an inspiration from Technigo's example of Pizza bot, knowledge from weekly materials that we got from school and some help from live sessions. 
-Pair programming was a good idea for this type of project. We learned a lot by doing it and even if it may seem like we simplified the code for us to understand, the bot works and lets the user to interact with it. 
+We found this project pretty challenging for the real first week with Javascript, but we got an inspiration from Technigo's example of Pizza bot, knowledge from weekly materials and some help from live sessions with our school. 
+We learned a lot by doing this project and we are very proud of how it looks and how it interacts with the user. 
+If we had more time, we would also experiment with audio and not only videos and probably will play around with a date picker to let the user choose time and day for the procedure. 
 
 ## View it live
 

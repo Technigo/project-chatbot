@@ -45,6 +45,7 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
+// a generic function which keeps track of the current question and then invokes other functions based on what is next.
 const usersPet = (message) => {
   if (questionStep === 1) {
     userAnswer(message)
@@ -72,6 +73,7 @@ const greeting = () => {
 }
 
 // Set up your eventlisteners here
+
 // 1st user answer
 form.addEventListener('submit', (event) => {
   event.preventDefault()
