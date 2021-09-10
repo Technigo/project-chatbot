@@ -6,8 +6,10 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #9AC99B;
+  font-family: 'Kaushan Script', cursive;
+  background:url("./assets/lettuce.jpeg");
+  background-position:center;
+  background-repeat: none;
 }
 
 h1 {
@@ -36,7 +38,7 @@ p {
   margin: 0;
 }
 
-input {
+input, select {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
@@ -58,10 +60,10 @@ input:focus {
 main {
   margin: 0 auto;
   width: 80%;
-  max-width: 700px;
-  height: 600px;
+  max-width: 600px;
+  height: 500px;
   border-radius: 30px;
-  background: #fff0cc;
+  background: #437e06;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -102,12 +104,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #DBCC83;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: white;
   max-width: 40%;
 }
 
@@ -124,7 +126,6 @@ main {
 .input-wrapper {
   display: flex;
   justify-content: center;
-
 }
 
 .input-wrapper form {
@@ -154,49 +155,69 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+.askDrink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+
 /* added for new dynamic controls */
 
 .food-options{
   display:flex
-
+  align-items: center;
+  justify-content: center;
 }
-.serving-size {
-  width: 300px;
-  height: 40px;
-  background: teal;
-  text-align: center;
+
+/* .askServing, .drink-menu {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  background: #ffdbbf;
+  color: #a0a0a0;
+  padding: 16px;
+  font-size: 16px;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  line-height: 26px;
+  flex: 1;
+  width: 400px;
   cursor: pointer;
-}
+} */
 
-.select-serving {
+
+/* .select-serving {
   line-height: 40px;
   color: white;
-}
+} */
 
-.drink-choice {
+/* .drink-choice {
   width: 300px;
   height: 40px;
   background: teal;
   text-align: center;
   cursor: pointer;
-}
+} */
 
-ul {
+/* ul {
   margin: 0;
   width: 160px;
   background: #ccc;
   list-style: none;
   display:none;
   cursor: pointer;
-}
+} */
 
-.open {
+/* .open {
   background: blue; 
 }
 
 .open + ul{
   display:block;
-}
+} */
 
 
 /* Media Queries */

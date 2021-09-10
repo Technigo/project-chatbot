@@ -35,12 +35,17 @@ const handelInput = (event) => {
     setTimeout(nextQuestion, 500)
 
   } else if (currentQuestion === 3) {  //third question
-    userInput = event.target.textContent
+    userInput = event.target.value
     showMessage(userInput, 'user')
     setTimeout(nextQuestion, 500)
   
   } else if (currentQuestion === 4) { //fourth question
     userInput= event.target.textContent
+    showMessage(userInput, 'user')
+    setTimeout(nextQuestion, 500)
+  
+  } else if (currentQuestion === 5) {  //fifth question
+    userInput= event.target.value
     showMessage(userInput, 'user')
     setTimeout(nextQuestion, 500)
   }
@@ -72,25 +77,24 @@ const nextQuestion = () => {  //this function creates the bot questions and the 
     foodSelected.style.display = "none" //hides the food buttons
     
     // creating new elements on run time, in this case a drop down menu
+    
     form.innerHTML += `
-    <section class="askServing" id="askServing">
-    <div class="serving-size" id="serving-size">
-    <p class="select-serving" id="select-serving">Select serving </p>
-    </div>
-    <ul class="serving-menu" id="serving-menu">
-      <li>Single</li>
-      <li>Double</li>
-      <li>Family</li>
-    </ul>
-    </section>
+    <select class="askServing" id="askServing">
+    <option selected disabled>Please Select</option>
+      <option value="Single"> Single </option>
+      <option value="Double"> Double </option>
+      <option value="Family"> Family </option>
+    </select>
+        
     `
-    document.getElementById("serving-size").onclick = toggleMenu //call to toggleMenu function
-    serving = document.getElementById('serving-menu') //dom selector for the ul element above
-    serving.addEventListener('click', handelInput) //calls handelInput function on click
+
+    //document.getElementById("serving-size").onclick = toggleMenu //call to toggleMenu function
+    serving = document.getElementById('askServing') //dom selector for the ul element above
+    serving.addEventListener('change', handelInput) //calls handelInput function on click
 
   } else if (currentQuestion === 3) { //thirs question
-    showMessage(`wonderfull, ${userInput} serving is 100kr. Would you like to add drinks?`, 'bot')
-    document.getElementById("askServing").style.display = "none" //hides all of drop-down menu
+    showMessage(`Wonderful, ${userInput} serving is 100kr. Would you like to add drinks?`, 'bot')
+    serving.style.display = "none" //hides all of drop-down menu
 
     //creating new elements on run time, in this case two buttons
     form.innerHTML += `
@@ -100,6 +104,7 @@ const nextQuestion = () => {  //this function creates the bot questions and the 
     <button class="noDrink" id="noDrink">No</button>
     
     </div>
+  
    `
    drink = document.getElementById('askDrink') //dom selector for the buttons above
    drink.addEventListener('click', handelInput) //calls handelInput function on click
@@ -107,28 +112,28 @@ const nextQuestion = () => {  //this function creates the bot questions and the 
   } else if (currentQuestion === 4) { //fourth question
     drink.style.display = 'none'  //hides buttons
     if (userInput === 'Yes'){  //if answer is yes this message is shown
-      showMessage('ok......', 'bot')
+      showMessage('Great, please choose a beverage below', 'bot')
 
       //creates new elements on run tume, in this case a drop-down menu
       form.innerHTML += `
-      <section class="chooseDrink" id="chooseDrink">
-    <div class="drink-choice" id="drink-choice">
-    <p class="choose-drink" id="choose-drink">Select serving </p>
-    </div>
-    <ul class="drink-menu" id="drink-menu">
-      <li>Coca-Cola</li>
-      <li>Fanta</li>
-      <li>Sprite</li>
-    </ul>
-    </section>
+    <select class="drink-menu" id="drink-menu">
+    <option selected disabled>Please Select</option>
+      <option value="Coca-Cola"> Coca-Cola </option>
+      <option value="Fanta"> Fanta </option>
+      <option value="Sprite"> Sprite </option>
+    </select>
       `
-      document.getElementById("drink-choice").onclick = toggleMenu  //call to toggleMenu function
+      // document.getElementById("drink-choice").onclick = toggleMenu  //call to toggleMenu function
       selectedDrink = document.getElementById('drink-menu') //dom selector for the ul element above
-      selectedDrink.addEventListener('click', handelInput) //calls handelInput on click
+      selectedDrink.addEventListener('change', handelInput) //calls handelInput on click
 
     } else {
-      showMessage('Okay, confirm your order below', 'bot')  //if answer is no, this message shows
+      showMessage('Okay, your order is on your way', 'bot')  //if answer is no, this message shows
     }
+  
+  } else if (currentQuestion === 5) {
+    selectedDrink.style.display = "none" //hides all of drop-down menu
+    showMessage('Okay, your order is on your way', 'bot')  //if answer is no, this message shows
   }
 
     currentQuestion++  //updating the question number automatically
@@ -160,7 +165,7 @@ const showMessage = (message, sender) => {
     `
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-  chat.scrollTop = chat.scrollHeight
+  setTimeout(() => {chat.scrollTop = chat.scrollHeight}, 100) 
 }
 
 // Starts here
