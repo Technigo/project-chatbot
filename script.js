@@ -73,21 +73,22 @@ const whatPlant = () => {
     .addEventListener('click', () => plantSelection('thorny'))
 }
 
-const plantSelection = (choice) => {
+const plantSelection = (plantChoice) => {
   questionNumber++
 
+showMessage(`Aha... ${plantChoice} you say.. Let's find out more!`, 'bot')
 
-  if (choice === 'flowers') {
+  if (plantChoice === 'flowers') {
     inputWrapper.innerHTML = `
     <button id="oneBig">One BIG flower 🌸</button>
     <button id="plentySmall">A bouquet 💐</button>
     `
-  } else if (choice === 'edibles') {
+  } else if (plantChoice === 'edibles') {
       inputWrapper.innerHTML = `
       <button id="sweet">I have sweet tooth 🍓</button>
       <button id="hot">I like it HOT 🔥</button>
       `
-    } else if (choice === 'thorny') {
+    } else if (plantChoice === 'thorny') {
       inputWrapper.innerHTML = `
       <button id="cactus">Low maintenance 🌵</button>
       <button id="rose">Something deceivingly beautiful 🌹</button>
@@ -102,6 +103,8 @@ const handleInput = (event) => {
       handleNameQuestion()
     } else if (questionNumber === 2) {
       handlePlantQuestion()   
+    } else if (questionNumber === 3) {
+      handlePlantChoice()
     }
 }
 
@@ -113,10 +116,10 @@ const handleNameQuestion = () => {
 }
 
 const handlePlantQuestion = () => {
-  const color = userInput.value
-  showMessage(`My favourite color is ${color}!`, 'user')
+  const plantChoice = userInput.value
+  showMessage(`I prefer ${plantChoice}!`, 'user')
   userInput.value = ''
-  setTimeout(1000)
+  setTimeout(pantSelection, 1000)
 }
 
 // Set up your eventlisteners here
