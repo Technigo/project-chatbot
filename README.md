@@ -8,4 +8,4 @@ It is the very first javascript project and the focus has been to understand the
 
 ## View it live
 
-The website is deployed at:
+View the site at:https://spellfinder.netlify.app/
