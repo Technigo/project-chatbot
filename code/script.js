@@ -6,6 +6,7 @@ const handleNameInput = document.getElementById('name-input')
 const sendBtn = document.getElementById('send-btn')
 const nameForm = document.getElementById('name-form')
 const inputWrapper = document.getElementById('input-wrapper')
+const userSound = document.getElementById('clickUser')
 let questionNumber = 1
 
 
@@ -13,7 +14,6 @@ let questionNumber = 1
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
-    console.log(showMessage)
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -40,21 +40,17 @@ const showMessage = (message, sender) => {
 const conversation = (message) => {
   if (questionNumber === 1) {
     setTimeout(() => greeting(message, 'bot'), 1000)
-    console.log('nr:1');
 
   } else if (questionNumber === 2) {
-    console.log('nr:2')
-    showMessage(message, 'user')
+    showMessage(message, 'user') 
     handleNameInput.value = ''
     setTimeout(() => drinks(message, 'user'), 1000)
 
   } else if (questionNumber === 3) {
-    console.log('nr:3')
     showMessage(message, 'user')
     setTimeout(() => drinkChoices(message), 1000)
 
   } else (questionNumber === 4)
-  console.log('nr:4')
     //showMessage(message)
     //setTimeout(() => fika(message), 1000)
 }
@@ -150,5 +146,4 @@ const theEnd = (message) => {
   inputWrapper.innerHTML = ``
 
 }
-
 setTimeout(conversation, 500);

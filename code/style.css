@@ -6,25 +6,27 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background:#0026ff;
+  background: #FBDF95;
 
 }
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
+  font-size: 50px;
   line-height: 34px;
-  color: #fff;
+  color:  #F57D58;
   text-align: center;
+  font-family: 'Special Elite', cursive;
 }
 
 h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: #F57D58;
   text-align: center;
   margin-bottom: 36px;
+  font-family: 'Special Elite', cursive;
 }
 
 p {
@@ -38,8 +40,9 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: seashell;
+  color: chocolate;
+
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -91,23 +94,27 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: white;
   max-width: 40%;
 }
 
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  background-color: #F8AE76;
+  color: black
 }
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  background-color: #FDEEDB;
+  color: black;
 }
 
 .input-wrapper {
@@ -121,7 +128,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #F57D58;
   color: white;
   border: none;
   border-radius: 4px;
@@ -143,12 +150,12 @@ button:hover {
 select {
   border: none;
   border-radius: 4px;
-  color: lightskyblue;
+  color: #F57D58;
   font-size: 20px;
   font-weight: 600;
   height: 60px;
   font-family: 'Montserrat';
-  background: #E5E9FF;
+  background-color: #FDEEDB;
   width: 100%;
   padding: 0 20px;
   cursor: pointer;
