@@ -68,7 +68,7 @@ const nextQuestion = () => {  //this function creates the bot questions and the 
     foodSelected.addEventListener('click', handelInput) //calls handelInput function on click
     
   } else if(currentQuestion === 2){ //question 2
-    showMessage(`Yes, ${userInput} is the best! now select your serving size...`, 'bot')
+    showMessage(`Yes, ${userInput} is the best! Now select your serving size...`, 'bot')
     foodSelected.style.display = "none" //hides the food buttons
     
     // creating new elements on run time, in this case a drop down menu
@@ -89,7 +89,7 @@ const nextQuestion = () => {  //this function creates the bot questions and the 
     serving.addEventListener('click', handelInput) //calls handelInput function on click
 
   } else if (currentQuestion === 3) { //thirs question
-    showMessage(`wonderfull, ${userInput} serving is for 100kr. would you like to add drinks?`, 'bot')
+    showMessage(`wonderfull, ${userInput} serving is 100kr. Would you like to add drinks?`, 'bot')
     document.getElementById("askServing").style.display = "none" //hides all of drop-down menu
 
     //creating new elements on run time, in this case two buttons
@@ -165,7 +165,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there!, What's your name?`, 'bot')
+  showMessage(`Hello there! What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
