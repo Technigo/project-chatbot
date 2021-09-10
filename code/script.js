@@ -33,7 +33,7 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// Bot starts here - first interaction - asks question and give 2 alternatives.
+// Bot starts here - first interaction - greeting and asks question and give 2 alternatives.
 const greeting = () => {
   showMessage(`- Hello there! Welcome to the Java Place. What kind of coffee are you up for?`, 'bot')
   inputWrapper.innerHTML = `
@@ -41,13 +41,13 @@ const greeting = () => {
     <button id="coldBtn">Cold</button>
   `
 
-  // Bot gives 2 alternatives via buttons - hot or cold coffee
+  // Bot gives 2 alternatives via buttons - hot or cold coffee.
   document.getElementById('hotBtn').addEventListener('click', () => handleCoffeeKindInput('Hot'));
   document.getElementById('coldBtn').addEventListener('click', () => handleCoffeeKindInput('Cold'));
 
 }
 
-// User answer after click on button - hot or cold coffee
+// User answer after click on button - hot or cold coffee (coffeKind)
 const handleCoffeeKindInput = (coffeeKind) => {
   showMessage(coffeeKind, 'user')
 
@@ -57,7 +57,7 @@ const handleCoffeeKindInput = (coffeeKind) => {
 }
 
 // Bot shows list of hot alternatives. I named the value and name the same way to make the answer from bot match the list answer (row 66,67,68). 
-// Used if condition - if user chose HOT the showMessage will be different from COLD . 
+// Used if condition - if user chose HOT the showMessage will be different from COLD. 
 const showCoffeeOptions = (coffeeKind) => {
   if (coffeeKind === 'Hot') {
     showMessage('Cold out there? Chose your hot beverage down below!', 'bot');
@@ -87,7 +87,7 @@ const showCoffeeOptions = (coffeeKind) => {
   }
   const coffeeKindSelect = document.getElementById('select');
   coffeeKindSelect.addEventListener('change', () => {   //EventListener added to drop-down menu. Reacts when the drop-down option changes.
-    showMessage(coffeeKindSelect.value, 'user');
+    showMessage(coffeeKindSelect.value, 'user'); //User answer the selected coffeeKind
 
     setTimeout(() => handleCoffeeOptionInput(coffeeKindSelect.value), 1000) //setTimeout -arrow- Passing function (not invoke)
 
@@ -95,8 +95,8 @@ const showCoffeeOptions = (coffeeKind) => {
 }
 
 
-// Bot answer based up on selection I added template literal: `${coffeeOption} so the bot begin answer with the option that user choosed.
-// Added 3 buttons of size alternatives (108,109,110). Same code as for hot and cold button in the start.
+// Bot answer based up on selection. I added template literal: `${coffeeOption} so the bot begin answer with the option that user choosed.
+// Added 3 buttons of size alternatives (105,106,107). Same code as for hot and cold button in the start.
 const handleCoffeeOptionInput = (coffeeOption) => {
   option = coffeeOption;
   console.log(coffeeOption);
@@ -108,31 +108,31 @@ const handleCoffeeOptionInput = (coffeeOption) => {
   `
   //When user click on size button it triggers answer from user to bot: small, medium or large
   document.getElementById('smallBtn').addEventListener('click', () => {
-    showMessage('Small', 'user');
+    showMessage('Small', 'user'); //User answer "small"
     setTimeout(() => handleCoffeeSizeInput('Small'), 1000);
   });
 
   document.getElementById('mediumBtn').addEventListener('click', () => {
-    showMessage('Medium', 'user');
+    showMessage('Medium', 'user'); //User answer "medium"
     setTimeout(() => handleCoffeeSizeInput('Medium'), 1000);
   });
 
   document.getElementById('largeBtn').addEventListener('click', () => {
-    showMessage('Large', 'user');
+    showMessage('Large', 'user'); //User answer "large"
     setTimeout(() => handleCoffeeSizeInput('Large'), 1000);
   });
 }
 
-//Bot answer based up on selection I added two template literals: ${coffeeSie} and ${option}
+//Bot answer based up on selection. I added two template literals: ${coffeeSie} and ${option}
 const handleCoffeeSizeInput = (coffeeSize) => {
   showMessage(`A ${coffeeSize} ${option} coming up. Are you satisfied with your order?`, 'bot');
-  inputWrapper.innerHTML =
+  inputWrapper.innerHTML = 
     `<input id="confirm-input" type="text" />
   <button class="send-btn" id="send" type="submit">
     Send
   </button>`
 
-  //User gets input-field to write answer after choosing size.
+  //User gets input field to write answer after choosing size.
   const inPutField = document.getElementById('confirm-input');
 
 
@@ -143,22 +143,27 @@ const handleCoffeeSizeInput = (coffeeSize) => {
 
 }
 
-  //Function answer in input - when user do or don't give valid or invalid answer in input field there will be different outcomes. 
-const handleConfirmInput = (confirmText) => {
-   showMessage(confirmText, 'user');
+// This part of the code took me several hours to solve. My solution in the end was to take it row by row. What do I want to happend in the input-filed? 
 
+//Function answer in input - when user do or don't give valid answer in input field there will be different outcomes. 
+const handleConfirmInput = (confirmText) => {
+  showMessage(confirmText, 'user');
+
+  //First outcome - user answer with confirmText: yes
   if (confirmText.toLowerCase() === 'yes') { //Added toLowerCase due to user and device compatibility. In Iphone for example, phone automatically begin words with capital letter.
     setTimeout(() => { //Anonymous function. 
       showMessage(`Great! Thank you for your order. Your ${option} will be right up! `, 'bot');
       inputWrapper.innerHTML = ''; //InputWrapper is cleared = ''; When user has answered yes - input field is cleared and removed.
     }, 1000); // Anonymous function into the setTimeout() function. The setTimeout() function executes this anonymous function one second later.
   }
+  //Second outcome - user answer with confirmText: no
   else if (confirmText.toLowerCase() === 'no') { //Added toLowerCase due to user and device compatability.
     setTimeout(() => {
       showMessage(`Ok. Your order will be canceled.`, 'bot');
-    },1000);
+    }, 1000);
     setTimeout(() => window.location.reload(), 3500); //When user answers no. Page will reload after 3500 milliseconds. User will start new order.
   }
+  //Third outcome - user answer with confirmText: a non valid answer
   else {
     showMessage(`Sorry but ${confirmText} is not a valid answer`, 'bot');
   }
