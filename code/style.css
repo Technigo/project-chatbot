@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #222222;
 }
 
 h1 {
@@ -37,8 +37,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #555555;
+  color: #fff;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -53,7 +53,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: #333333;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -95,7 +95,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: black;
   max-width: 40%;
 }
 
@@ -120,7 +120,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #222222;
   color: white;
   border: none;
   border-radius: 4px;

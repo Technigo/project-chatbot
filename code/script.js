@@ -1,10 +1,11 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
-const form = document.getElementById('name-form')
-const inputValue = document.getElementById('name-input')
+const form = document.getElementById('nameForm')
+const inputValue = document.getElementById('nameInput')
 
 // Global variables, if you need any, declared here
 
+let currentQuestion = "question1";
 // Functions declared here
 
 
@@ -44,41 +45,48 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-const genreQuestion = () => {
-  showMessage('Which is your favourite genre?', 'bot')
-  
-
+const ageQuestion = () => {
+  showMessage('How old are you?', 'bot')
+  currentQuestion =`question2`
 }
-// Tänkte lägga till en fråga men blev lite konstigt då den skickade frågan samtidigt som den tidigare frågan
-// const answerQuestion = () => {
-//   showMessage('Cool! my favourite genre is action!', 'bot')
-// } 
 
-// tänkte skriva något liknande som
-// if(Horror) {
-// showMessage('ooh spooky :(', 'bot')
-// } else {
-//   showMessage('That is my favorite too!', 'bot')
-// }
+const resetForm = () => {
+  location.reload();
+};
 
-// fick dock inte ihop om jag behöver skriva en ny "handleinputname" för user när jag föskte det funkade inte chatten
+const handleNameInput = () => {  //handle the nameinput
+  let message = document.getElementById("nameInput").value;
 
-const handleNameInput = (event) => {
-  event.preventDefault()
+  if (currentQuestion === "question1") {
+    // const name = message;     //get the value from the user
+    showMessage(message, 'user')
+    inputValue.value = '' //får fältet att bli tomt efter att vi skrivit vårt namn
+    setTimeout(ageQuestion, 1000)
+  }
+  else if (currentQuestion === "question2") {
+    userAge = message;
+    showMessage(message,`user`)
+
+    if (userAge<= 7){
+      showMessage('We recommend Frozen it is a great for the entire family!',`bot`)
+    } else if (userAge <=16){
+      showMessage('We recommend Titanic it is a classic!',`bot`)
+    } else{
+      showMessage('We recommend Once upon a time in America it is one of my favorites!', `bot`)
+    }
+    nameForm.innerHTML = `<button id="reset">Reset</button>`
+
+    const reset = document.getElementById(`reset`);
+    reset.addEventListener(`click`, resetForm);
+  }
+
+
   
-  const name = inputValue.value
-
-  console.log(name)
-  showMessage(name, 'user')
-  inputValue.value = '' //får fältet att bli tomt efter att vi skrivit vårt namn
-
-
 
 
 
   //här börjar nästa fråga från boten
-  // genreQuestion() Nej, vi wrappar den istället med tidsfördröjningen.
-  setTimeout(genreQuestion, 1000)
+  //wrappar den med tidsfördröjningen. Settimeout for every question.
   
 
 }
@@ -86,6 +94,11 @@ const handleNameInput = (event) => {
 
 // Set up your eventlisteners here
 form.addEventListener('submit', handleNameInput)
+form.addEventListener(`submit`, (event) => {
+  event.preventDefault();
+});
+
+
 
 
 
@@ -96,4 +109,6 @@ form.addEventListener('submit', handleNameInput)
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
+
+
 
