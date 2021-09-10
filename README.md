@@ -1,13 +1,11 @@
-# Project Name
+# Project chatbot spell finder
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The aim of the project was to build a chatbot using javascript. We made a chatbot that helps the user to find their spell inspired by the Harry Potter books. In our project we learned how made use of functions, eventlistners, variables and a conditonal. This project was made by a pair programming.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+It is the very first javascript project and the focus has been to understand the basics. We did initally have problems to identify all the different concepts in javascript and how they are supposed to be implemented. If we had more time we would make more questions and perhaps a dropdown.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+The website is deployed at:
