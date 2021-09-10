@@ -161,3 +161,20 @@ button:hover {
   margin: auto;
   display: block;
 }
+
+
+
+#selectStudy, #selectParty{ 
+border: none;
+border-radius: 3px;
+color: #0026ff;
+font-size: 16px;
+height: 60px;
+font-weight: 500;
+font-family: 'Montserrat';
+background: #e5e9ff;
+width: 100%;
+padding: 0 10px;
+cursor: pointer;
+-webkit-appearance: none;
+} 
