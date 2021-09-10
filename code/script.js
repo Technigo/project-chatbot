@@ -130,16 +130,20 @@ const wantToPlay = (user) => {
   const yesBtn = document.getElementById('yes')
   const noBtn = document.getElementById('no')
 
-  yesBtn.addEventListener('click', (e) => {
+  yesBtn.addEventListener('click', () => {
+    inputWrapper.innerHTML = `
+    <button>Waiting for bot</button>
+    `
     showMessage(`Yes!`, 'user')
-    e.preventDefault();
     setTimeout(sundayAfternoon, 200);
-  },{once : true})
-  noBtn.addEventListener('click', (e) => {
+  })
+  noBtn.addEventListener('click', () => {
+    inputWrapper.innerHTML = `
+    <button>Waiting for bot</button>
+    `
     showMessage(`No!`, 'user')
-    e.preventDefault();
     setTimeout(shrek, 200);
-  },{once : true})
+  })
 }
 
 const shrek = () => {
@@ -195,23 +199,29 @@ const showMovieOptions = () => {
   const dramaBtn = document.getElementById('drama')
   const comedyBtn = document.getElementById('comedy')
 
-  horrorBtn.addEventListener('click', (e) => {
+  horrorBtn.addEventListener('click', () => {
+    inputWrapper.innerHTML = `
+    <button>Waiting for bot</button>
+    `
     showMessage(`Horror`, 'user')
-    e.preventDefault();
     showSocialMedia('horror', 'movie');
-  },{once : true})
+  })
 
-  dramaBtn.addEventListener('click', (e) => {
+  dramaBtn.addEventListener('click', () => {
+    inputWrapper.innerHTML = `
+    <button>Waiting for bot</button>
+    `
     showMessage(`Drama`, 'user')
-    e.preventDefault();
     showSocialMedia('drama', 'movie');
-  },{once : true})
+  })
 
-  comedyBtn.addEventListener('click', (e) => {
+  comedyBtn.addEventListener('click', () => {
+    inputWrapper.innerHTML = `
+    <button>Waiting for bot</button>
+    `
     showMessage(`Comedy`, 'user')
-    e.preventDefault();
     showSocialMedia('comedy', 'movie');
-  },{once : true})
+  })
 
 };
 
@@ -226,23 +236,29 @@ const showMusicOptions = () => {
   const hiphopBtn = document.getElementById('hiphop')
   const popBtn = document.getElementById('pop')
 
-  rockBtn.addEventListener('click', (e) => {
+  rockBtn.addEventListener('click', () => {
+    inputWrapper.innerHTML = `
+    <button>Waiting for bot</button>
+    `
     showMessage(`Rock`, 'user')
-    e.preventDefault();
     showSocialMedia('rock', 'music');
-  },{once : true})
+  })
 
-  hiphopBtn.addEventListener('click', (e) => {
+  hiphopBtn.addEventListener('click', () => {
+    inputWrapper.innerHTML = `
+    <button>Waiting for bot</button>
+    `
     showMessage(`Hiphop`, 'user')
-    e.preventDefault();
     showSocialMedia('hiphop', 'music');
-  },{once : true})
+  })
 
-  popBtn.addEventListener('click', (e) => {
+  popBtn.addEventListener('click', () => {
+    inputWrapper.innerHTML = `
+    <button>Waiting for bot</button>
+    `
     showMessage(`Pop`, 'user')
-    e.preventDefault();
     showSocialMedia('pop', 'music');
-  },{once : true})
+  })
 
 };
 
@@ -257,23 +273,29 @@ const showReadingOptions = () => {
   const magazinesBtn = document.getElementById('magazines')
   const academicBtn = document.getElementById('academic')
 
-  novelsBtn.addEventListener('click', (e) => {
+  novelsBtn.addEventListener('click', () => {
+    inputWrapper.innerHTML = `
+    <button>Waiting for bot</button>
+    `
     showMessage(`Novels`, 'user')
-    e.preventDefault();
     showSocialMedia('novels', 'books');
-  },{once : true})
+  })
 
-  magazinesBtn.addEventListener('click', (e) => {
+  magazinesBtn.addEventListener('click', () => {
+    inputWrapper.innerHTML = `
+    <button>Waiting for bot</button>
+    `
     showMessage(`Magazines`, 'user')
-    e.preventDefault();
     showSocialMedia('magazines', 'books');
-  },{once : true})
+  })
 
-  academicBtn.addEventListener('click', (e) => {
+  academicBtn.addEventListener('click', () => {
+    inputWrapper.innerHTML = `
+    <button>Waiting for bot</button>
+    `
     showMessage(`Academic Papers`, 'user')
-    e.preventDefault();
     showSocialMedia('academic', 'books');
-  },{once : true})
+  })
 
 };
 
@@ -288,23 +310,29 @@ const showSocialMedia = (genre, hobby) => {
   const lotsBtn = document.getElementById('lots')
   const grandmaBtn = document.getElementById('grandma')
 
-  someBtn.addEventListener('click', (e) => {
+  someBtn.addEventListener('click', () => {
+    inputWrapper.innerHTML = `
+    <button>Waiting for bot</button>
+    `
     showMessage(`Some`, 'user')
-    e.preventDefault();
     showMyAnswer('Some', genre, hobby)
-  },{once : true})
+  })
 
-  lotsBtn.addEventListener('click', (e) => {
+  lotsBtn.addEventListener('click', () => {
+    inputWrapper.innerHTML = `
+    <button>Waiting for bot</button>
+    `
     showMessage(`Lots`, 'user')
-    e.preventDefault();
     showMyAnswer('Lots', genre, hobby)
-  },{once : true})
+  })
 
-  grandmaBtn.addEventListener('click', (e) => {
+  grandmaBtn.addEventListener('click', () => {
+    inputWrapper.innerHTML = `
+    <button>Waiting for bot</button>
+    `
     showMessage(`My grandma`, 'user')
-    e.preventDefault();
     showMyAnswer('My grandma', genre, hobby)
-  },{once : true})
+  })
 
 }
 
