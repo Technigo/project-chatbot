@@ -2,17 +2,18 @@
 // Creating an empty Object to store user inputs
 const  userFormInputs = {};
 
-
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('input-wrapper');
 const handleNameInput = document.getElementById('name-form');
+const heading = document.getElementById('headings');
+const btn = document.getElementById('btn');
+const bot = document.getElementById('bot');
+const video = document.getElementById('video');
 
+// Space-Bot starts here
 
-// Global variables, if you need any, declared here
-
-// Functions declared here
-
+/*Typing effect  */
 let i = 0;
 let txt = "";
 let textAnimationContainer;
@@ -36,7 +37,7 @@ const showMessage = (message, sender) => {
   `<div class="bubble user-bubble">
   <p></p>
   </div>
-  <img src="assets/user.png" alt="User" />   `;
+  <img src="assets/avatar.png" alt="User" /> `;
   textAnimationContainer = section.querySelectorAll('p')[0];
   txt = message;
   i=0;
@@ -45,15 +46,15 @@ const showMessage = (message, sender) => {
   } else if (sender === 'bot') {
     chat.innerHTML += `
     <section class="bot-msg">
-      <img src="assets/spacebot.png" alt="Bot" />
+      <img src="assets/alien-img.png" alt="Bot" />
       <div class="bubble bot-bubble">
         <p>${message}</p>
       </div>
     </section>
   `;
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-setTimeout (()=> chat.scrollTop = chat.scrollHeight, 800);
+// This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+setTimeout (() => chat.scrollTop = chat.scrollHeight, 100);
 }
 
 // Starts here
@@ -61,7 +62,6 @@ setTimeout (()=> chat.scrollTop = chat.scrollHeight, 800);
 const greeting = () => {
   showMessage(`You wanna go to Space? Cool! What's your name?`, 'bot');
 }
-
 
 handleNameInput.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -83,15 +83,13 @@ handleNameInput.addEventListener('submit', (event) => {
 )
 
 // Question 2
-
-
 const spaceAgeQuestion = (userName) => {
   showMessage (`Hi ${userName}! Time goes slower in space. How many Earth years do you want to spend in Space?`, 'bot');
   
     inputWrapper.innerHTML = `
-    <button id="oneYear">1 year</button>
-    <button id="tenYears">10 years</button>
-    <button id="thousandYears">1000 years</button>
+    <button  class="bot-button" id="oneYear">1 year</button>
+    <button  class="bot-button" id="tenYears">10 years</button>
+    <button  class="bot-button" id="thousandYears">1000 years</button>
   ` ;
   document.getElementById('oneYear').addEventListener('click', () => {
     inputWrapper.innerHTML = "";
@@ -109,16 +107,10 @@ const spaceAgeQuestion = (userName) => {
 
 
 // Question 3
-// Alright ..., check your alternatives!
-// 1year: mars, moon, jupiter
-// 10years: pluto, sun, saturnnus
-// 1000 years: trhourgh a black hole, another galaxy, surprise me
-
 const destinationPoint = (type) => {
   userFormInputs.duration = type;
   showMessage (`I'm fine with ${type}`, 'user');
 
-// we shoudld style select id in css - it looks like shit  
   setTimeout(() => showMessage (`Alright ${type}, check your alternatives!`, 'bot'), 2000);
 
   setTimeout(() => {
@@ -163,7 +155,6 @@ const destinationPoint = (type) => {
 
 
 // Question 4
-
 const spaceFood = (select) => {
   userFormInputs.destination = select;
 
@@ -175,11 +166,11 @@ const spaceFood = (select) => {
 
   setTimeout(() => {
   inputWrapper.innerHTML = `
-    <button id="tacos">	
+    <button  class="bot-button" id="tacos">	
     &#127790; Tacos</button>
-    <button id="sushi">	
+    <button  class="bot-button" id="sushi">	
     &#127843; Sushi</button>
-    <button id="tuna">	
+    <button  class="bot-button" id="tuna">	
     &#128031; Tuna</button>
     `;
 
@@ -199,7 +190,6 @@ const spaceFood = (select) => {
 } 
 
 // Question 5
-
 const spacePet = (dish) => {
   userFormInputs.dish = dish;
   showMessage (`I want ${dish}.`, 'user');
@@ -209,8 +199,8 @@ const spacePet = (dish) => {
 
   setTimeout(() => {
     inputWrapper.innerHTML = `
-    <button id="alone">&#128117;</button>
-    <button id="withPet">&#43;&#128054;</button>
+    <button  class="bot-button" id="alone">&#128117;</button>
+    <button  class="bot-button" id="withPet">&#43;&#128054;</button>
     `;
   
     document.getElementById('alone').addEventListener('click', () => {
@@ -227,7 +217,6 @@ const spacePet = (dish) => {
 }
 
 // Question 6
-
 const payment = (preference) => {
   userFormInputs.preference = preference;
   showMessage (
@@ -254,8 +243,8 @@ const payment = (preference) => {
 
     setTimeout(() => {
       inputWrapper.innerHTML = `
-      <button id="confirm">Yes</button>
-      <button id="reload">No</button> `;
+      <button  class="bot-button" id="confirm">Yes</button>
+      <button  class="bot-button" id="reload">No</button> `;
   
       document.getElementById('confirm').addEventListener('click', () => {
         inputWrapper.innerHTML = "";
@@ -280,8 +269,6 @@ const niceTrip = (wish) => {
 setTimeout(greeting, 1000);
 
 // Pausing video on click
-const video = document.getElementById('video');
-
 const videoPlayer = () => {
   if (video.paused) {
     video.play();
@@ -291,15 +278,8 @@ const videoPlayer = () => {
 }
 video.addEventListener('click', videoPlayer);
 
-
-const heading = document.getElementById('headings');
-const btn = document.getElementById('btn');
-const bot = document.getElementById('bot');
-
-
 // Bot pop-up-function:
 // hide headings + remove class form bot (show it)
-
 
 const botPopUp = () => {
   heading.classList.add('headings');
