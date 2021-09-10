@@ -6,13 +6,8 @@ const factButtons = document.getElementById('fact-btn')
 const yesNoButton = document.getElementById('yes-no-button')
 const purrAudio = document.getElementById('purr')
 
-//hon använder inputValue ist för userMessage på ovan för att få den klickbar utan att ladda om. 
-//hon gör en till för forms här också
 
-// Global variables, if you need any, declared here
 
-// Functions declared here
-console.log("hello")
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
@@ -40,18 +35,19 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
+// Bot Starts talking here
 const greeting = () => {
   showMessage(`Hello there, What's your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+  
 }
+//This first setTimeout 
+setTimeout(greeting, 1000)
 
 const handleInput = (event) => {
   event.preventDefault()
   const inputValue = document.getElementById('name-input').value
   showMessage(inputValue, 'user')
 
-  //Why do we have to add the anonymous function to call showMessage, why can we not just call showMessage?
   setTimeout(function() {
     showMessage(`Hello ${inputValue}, nice name 🌞`, 'bot')
     form.style.display="none"}, 1000)
@@ -61,7 +57,7 @@ const handleInput = (event) => {
     showMessage(`What cat fact do you want today?`, 'bot')
     factButtons.style.display="flex"}, 2000)
 }
-
+//Here we have our facts buttons. After we are more comfortable with JS it would be fun putting these buttons all in one conditional statement!
 const factOne = () => {
   factButtons.style.display="none"
   setTimeout(function() {
@@ -92,7 +88,7 @@ const factThree = () => {
   setTimeout(() => showMessage(`Do you want another epic cat fact?`, 'bot'), 2000)
   setTimeout(() => yesNoButton.style.display="flex", 4000) 
 }
-
+//here we made conditional statements for when they either press yes or no
 const moreFacts = (answer) =>{
   yesNoButton.style.display="none"
   if(answer === 'yes') {
@@ -107,17 +103,13 @@ const moreFacts = (answer) =>{
       showMessage(`No`, 'user')}, 1000)
     setTimeout(function() {
       showMessage(`Okay, thank you for today!😽`, 'bot')
+      //here is our audio for when the user presses no and the last message shows up
       chat.innerHTML += '<audio autoplay src="./assets/cat-purr.mp3"></audio>'}, 1500
       )
   }
 }
-//här kan man sätta en console log så vi ser att form är submittet aka att vi vill det ska skickas iväg men vi måste prevent default
-//const handleNameInput = (event) => {
 
-//console.log('The form is submitted!')}
-
-// Set up your eventlisteners here ex onClick
-// för att det inte ska laddas om: form.selector.addEventlistener('submit',functionName)
+// here is our eventlisteners
 form.addEventListener('submit',handleInput)
 document.getElementById('cat-fact1').addEventListener('click', factOne)
 document.getElementById('cat-fact2').addEventListener('click', factTwo)
@@ -125,27 +117,4 @@ document.getElementById('cat-fact3').addEventListener('click', factThree)
 document.getElementById('yes-button').addEventListener('click', () => { moreFacts('yes')})
 document.getElementById('no-button').addEventListener('click', () => { moreFacts('no')})
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000)
-//setTimeout(response, 2000)
-
-//javascript reads through. Sets a variable, builds the "machine" but never exectue it. 
-//Javascript reads the code from top to bottom so some things you need to do in chronological order. like creating the machine
-//Our main goal is to understand when stuff will happen and when they will not happen. and WHY 😁
-
-
-//Lägger en listener på formuläret för att registrera när det sumbitas. När det submitas vill 
-//vi hämta vad vi har skrivit. Behöver inte vara en global variabel. MEN eventlistener for form 
-//kommer ju reagera varje gång man trycker på knappen! Hur hanterar man det? 
-
-// Enklare att skapa flera funktioner för de olika meddelanden, så att funktioner för att chatta inte ändras utan endast tar 
-// emot nya meddelandet från andra funktioner. I varje ny funktion kan svarsmeddelandet skapas.
-
-// SKapa en funktion som läser av inkommet meddelande, och skickar respons baserat på vilken fråga man svarat på. Global variabel 
-// som tickar uppåt efter varje fråga, så att den globala variabeln styr vart man är.
-
+//thank you for reading our code! 😁
