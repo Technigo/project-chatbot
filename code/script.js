@@ -57,7 +57,7 @@ const dogQuestion = () => {
   document.getElementById('no').addEventListener('click', () => {
     showMessage('No', 'user')
     setTimeout(() => showMessage('Wrong answer! Who are you?! A cat person?', 'bot'), 1000)
-    showMessage('Try another Bot! Bye bye! 👋🏼', 'bot')
+    setTimeout(() => showMessage('Try another Bot! Bye bye! 👋🏼', 'bot'), 1500)
     wrongAnswer()
   })
 } 
