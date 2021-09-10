@@ -5,16 +5,100 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  /* background-image: url(./assets/background.jpeg); */
+  background-color: #585858;
+  font-family: 'Palette Mosaic', cursive;
 }
 
 h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: rgb(243, 243, 243);
   text-align: center;
+}
+
+.title {
+  background-color: #585858;
+  padding:10px;
+
+
+}
+
+ul{
+  display:flex;
+  justify-content: center;
+}
+
+
+ul li{
+  list-style:none;
+  font-family: 'Palette Mosaic', cursive;
+  font-size:5em;
+  letter-spacing:15px;
+  text-shadow:none;
+  animation:animate 1s infinite linear;
+}
+
+@keyframes animate{
+  0%{
+    color:#484848;
+    text-shadow:none;
+  }
+  18%{
+    color:#484848;
+    text-shadow:none;
+  }
+  20%{
+    color:#ff0000;
+    text-shadow:0 0 7px #ff0000,0 0 20px #ff6c00;
+  }
+  30%{
+    color:#484848;
+    text-shadow:none;
+  }
+  35%{
+    color:#000000;
+    text-shadow:0 0 7px #ffffff,0 0 20px #f7f7f7;
+  }
+  70%{
+    color:#484848;
+    text-shadow:none;
+  }
+  85%{
+    color:#ffffff;
+    text-shadow:0 0 7px #ffffff,0 0 20px #b4b4b4;
+  }
+  90%{
+    color:#484848;
+    text-shadow:none;
+  }
+  100%{
+    color:#484848;
+    text-shadow:none;
+  }
+
+}
+ul li:nth-child(1){
+  animation-delay:.2s;
+}
+ul li:nth-child(2){
+  animation-delay:.4s;
+}
+ul li:nth-child(3){
+  animation-delay:.6s;
+}
+ul li:nth-child(4){
+  animation-delay:.8s;
+}
+ul li:nth-child(5){
+  animation-delay:1s;
+}
+ul li:nth-child(6){
+  animation-delay:1.2s;
+}
+ul li:nth-child(7){
+  animation-delay:1.4s;
 }
 
 h2 {
@@ -37,8 +121,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #747474;
+  color: #ffffff;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -48,14 +132,14 @@ input {
 }
 
 main {
-  margin: 0 auto;
+  margin: 10px auto;
   width: 100%;
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
   background: #fff;
   padding: 20px 24px;
-  padding-top: 0;
+  padding-top:0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -91,12 +175,12 @@ main {
 
 .bubble {
   background: #e5e9ff;
-  font-weight: 600;
-  font-size: 16px;
+  font-size: 10px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #000311;
   max-width: 40%;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .bot-bubble {
@@ -121,7 +205,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #00051d;
   color: white;
   border: none;
   border-radius: 4px;
@@ -129,7 +213,7 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
