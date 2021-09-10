@@ -25,6 +25,5 @@ This week was intense and I have to accept that I will not understand JS fully i
 Here it is: https://the-java-place.netlify.app/
 
 ## Sources and inspiration
-https://www.ometrics.com/blog/list-of-fun-chatbots/
-https://developer.mozilla.org/en-US/https://www.w3schools.com/
+https://www.ometrics.com/blog/list-of-fun-chatbots/  .  https://developer.mozilla.org/en-US/  .  https://www.w3schools.com/
 
