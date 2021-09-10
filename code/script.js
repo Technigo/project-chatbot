@@ -42,20 +42,21 @@ const greeting = () => {
 }
 const dogQuestion = () => {
   currentQuestion++
-    showMessage(`Do you like dogs`, 'bot')
-    setTimeout(1000)
+  setTimeout(() => showMessage('Do you like dogs', 'bot'), 1000)
+    
     inputWrapper.innerHTML =  `
     <button id="yes">YES</button>
     <button id="no">NO</button>
     `
  document.getElementById('yes').addEventListener('click', () => {
     showMessage('Yes', 'user')
-    showMessage('That´s what I thought! I mean who doesn’t?!', 'bot')
+    setTimeout(() => showMessage('That´s what I thought! I mean who doesn’t?!', 'bot'), 500)
+    // showMessage('That´s what I thought! I mean who doesn’t?!', 'bot')
     handleInput()
   })
   document.getElementById('no').addEventListener('click', () => {
     showMessage('No', 'user')
-    showMessage('Wrong answer! Who are you?! A cat person?', 'bot')
+    setTimeout(() => showMessage('Wrong answer! Who are you?! A cat person?', 'bot'), 1000)
     showMessage('Try another Bot! Bye bye! 👋🏼', 'bot')
     wrongAnswer()
   })
@@ -72,7 +73,7 @@ const wrongAnswer = () => {
 }
   const breedQuestion = () => {
     currentQuestion++
-    showMessage(`What breed do you like?`, 'bot')
+    setTimeout(() => showMessage(`What breed do you like?`, 'bot'), 1500)
       inputWrapper.innerHTML =  `
       <button id="kaffe">German Shepard</button>
       <button id="svante">Labrador</button>
@@ -80,13 +81,13 @@ const wrongAnswer = () => {
 
     document.getElementById('kaffe').addEventListener('click', () => {
       showMessage('German Shepard', 'user')
-      showMessage('Yay! That makes us two!', 'bot')
+      setTimeout(() => showMessage('Yay! That makes us two!', 'bot'), 1000)
       handleInput()
     }
     )
     document.getElementById('svante').addEventListener('click', () => {
       showMessage('Labrador', 'user')
-      showMessage('Yay! That makes us two!', 'bot')
+      setTimeout(() => showMessage('Yay! That makes us two!', 'bot'), 1000)
       handleInput()
   })
 }
@@ -95,7 +96,7 @@ const wrongAnswer = () => {
   const byeBye = () => {
     currentQuestion++
     console.log('BYE')
-      showMessage('Bye for now 👋🏼', 'bot')
+    setTimeout(() => showMessage('Bye for now 👋🏼', 'bot'), 1500)
       inputWrapper.innerHTML =  `
       <button id="bye">Bye bye!</button>
       `
@@ -118,15 +119,14 @@ nameForm.addEventListener('submit', (event) => {
     nameInput.value = ''
 
     const answerOne = (`Hi ${name}! Welcome!`) 
-    showMessage(answerOne, 'bot')
+    setTimeout(() => showMessage(answerOne, 'bot'), 1000)
     setTimeout(dogQuestion, 1000)
   }
 
 
 //We change the currentQuestion varible. I moved it to the end as it's more logic to change to next question AFTER you've answered it.
 const handleInput = (event) => {
-  // event.preventDefault()
-  
+    
   if (currentQuestion === 1) {
     handleName() }
     else if (currentQuestion === 2){
@@ -151,4 +151,3 @@ const handleInput = (event) => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
-
