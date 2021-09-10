@@ -4,6 +4,9 @@ const form = document.getElementById('name-form')
 const factButtons = document.getElementById('fact-btn')
 const yesNoButtons = document.getElementById('yes-no-btn')
 const timeOutTime = 1500
+//this makes the setTimeout a constant so we don't have to change the time for each bot response
+//instead we can just change up here and all of them will be changed.
+
 
 // Global variables, if you need any, declared here
 let questionNumber = 0;
@@ -11,8 +14,16 @@ let questionNumber = 0;
 
 // Functions declared here
 
+
+
+//This fuction sets the order of the questions with a conditonal.
+// Basically sets a order of the questions so the bot
+//does not repeat the last questin over and over again. It makes it move on to the next
+//like "if we were on the greeting and the user puts in a input move on to next question"
+//and then the nextQuestion is defind further down in the code.
+
 //We wrapped this if/else with at setTimeout - not entierly sure how, 
-//we got som help but it wotked.
+//we got som help but it worked. We've yet have to figure out how to get the timeout on the answers
 
 const nextQuestion = (answer) => {
   usrInput(answer)
@@ -35,6 +46,9 @@ const nextQuestion = (answer) => {
   }
 
 // This function will add a chat bubble in the correct place based on who the sender is
+
+//We got help with getting a link in the bot reply by adding the video and used the ternarys -
+//which is a quicker way of conditionals, insted of if/else it's ?/:
 
 const showMessage = (message, sender, video) => {
   const link = video ? `<a href=${video}>video</a>` : undefined
@@ -70,6 +84,7 @@ chat.scrollTop = chat.scrollHeight
 }
 
 // Chat starts here
+//Here you can see the questionNumbers and there order set with a number 1-3
 
 const greeting = () => {
   questionNumber = 1;
@@ -93,9 +108,12 @@ const question2 = (question) => {
   factButtons.style.display='flex'
 }
 
+//put in setTimeout for the buttons
 const dance = () => {
-  showMessage(`Dance`, 'user')
-  showMessage(`Perfect, do the macarena!`, 'bot')
+  setTimeout(function() {
+    showMessage(`Dance`, 'user')}, 1000)
+    setTimeout(function() {
+    showMessage(`Perfect, do the macarena!`, 'bot')}, 2000)
   form.style.display='flex'
   factButtons.style.display='none'
 }
@@ -128,6 +146,8 @@ const yes = () => {
   yesNoButtons.style.display='none'
 }
 
+//do a conditional here, if NO, pops up an answer from bot that says "Dude.. rude! choose again"
+//and then you can only choose YES
 const no = () => {
   showMessage(`No..`, 'user')
   showMessage(`Dude.. rude! Brb.`, 'bot')
@@ -152,9 +172,8 @@ document.getElementById('no').addEventListener('click', no)
 
 
 setTimeout(greeting, timeOutTime)
+//Here is also the constant we set at the top of the page
 
-
-// When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
