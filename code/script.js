@@ -3,9 +3,10 @@ const chat = document.getElementById('chat')
 const userInput = document.getElementById('name-input')
 const form = document.getElementById('name-form')
 const sendBtn = document.getElementById('send')
-let names = ''
+let cakeType = ''
 let pieces = ''
 let date = ''
+let names = ''
 
 // Global variables, if you need any, declared here
 // let currentQuestion = 0
@@ -106,7 +107,7 @@ const greeting = () => {
   names = userInput.value
   console.log (names)
   showMessage (names, 'user')
-  // userInput.value = ''
+  userInput.value = ''
   setTimeout(showFoodOptions, 900);
  }
 
@@ -138,8 +139,11 @@ const greeting = () => {
  } 
 
  const topping = (type) => {
-   
+   cakeType = type
+   showMessage(type, 'user') 
    showMessage(`Yummy in my tummy! I also love ${type} What kind of topping would you like?`, 'bot') 
+  
+
     if (type === 'Princess Cake') {
       form.innerHTML = `
       <select id="select" class="topping"> 
@@ -183,39 +187,40 @@ const greeting = () => {
 
   document
     .getElementById('fourBtn')
-    .addEventListener('click', () => delivery('four'))
+    .addEventListener('click', () => delivery('four', 100))
   document
     .getElementById('sixBtn')
-    .addEventListener('click', () => delivery('six'))
+    .addEventListener('click', () => delivery('six', 150))
   document
     .getElementById('twelveBtn')
-    .addEventListener('click', () => delivery('twelve'))
+    .addEventListener('click', () => delivery('twelve', 200))
   }
 
- const delivery = () => {
-  showMessage('what date would you like the delivery?', 'bot')
-  form.innerHTML = `
-  <label for="start" id="dateForm">Start date:</label>
+ const delivery = (pieces, price) => {
+  showMessage(pieces, 'user')
+  showMessage(`You have ordered ${pieces} pieces of ${cakeType}. That will cost you ${price}$. When do you like the delivery?`, 'bot')
+   form.innerHTML = `
+   <label for="start" id="dateForm">Start date:</label>
 
- <input type="date" id="dateInput" name="trip-start">
- <button id="sendDate">send</button>
-  `
-  document.getElementById("dateInput").addEventListener("change", function() {
-    const input = this.value;
-    var dateEntered = new Date(input);
+  <input type="date" id="dateInput" name="trip-start">
+  <button id="sendDate">send</button>
+   `
+   document.getElementById("dateInput").addEventListener("change", function() {
+     const input = this.value;
+     var dateEntered = new Date(input);
     console.log(input); //e.g. 2015-11-13
     console.log(dateEntered);
     
 });
-const dateform = document.getElementById('dateForm')
+const dateform = document.getElementById(input)
 dateform.addEventListener('change', () => godBye())
 
 
-//    const input = document.getElementById('input')
-//     input.addEventListener('change', () => godBye(input.value))
- }
+   const input = document.getElementById('input')
+    input.addEventListener('change', () => godBye(input.value))}
+ 
 
-const godBye = () => {
+ const godBye = () => {
   showMessage('what date would you like the delivery?', 'bot')
  
   
