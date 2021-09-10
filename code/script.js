@@ -51,6 +51,7 @@ const handleInput = (e) => {
     let name = nameInput.value;
     showMessage(name, "user");
     nameInput.value = "";
+    
     //bot answer after 2 seconds
     setTimeout(
       () =>

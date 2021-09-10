@@ -75,11 +75,11 @@ main {
   background: #fff;
   padding: 20px 24px;
   padding-top: 0;
-  /* box-sizing: border-box; */
   display: flex;
   flex-direction: column;
   background-color: rgb(191, 216, 184);
   border:3px solid rgb(250,250,250);
+  margin-bottom: 150px;
 }
 
 input {
@@ -96,6 +96,7 @@ input {
   flex: 1;
   border-radius: 10px;
   margin-bottom: 10px;
+
 }
 input:focus {
  outline: none;
@@ -188,10 +189,10 @@ button:hover {
 }
 /* FOOTER */
 .footer {
-  /* position: fixed;
+  position: fixed;
   bottom:0;
   left: 0; 
-   width: 100%;  */
+   width: 100%; 
   background-color: rgb(226, 194, 185);
   height: 100px;
   margin-top:30px; 

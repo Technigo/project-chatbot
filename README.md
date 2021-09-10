@@ -1,12 +1,11 @@
 # Project Name
 
-Replace this readme with your own information about your project.
+First pair-programming project with Technigo boot camp, and first project using Javascript. We created a chatbot selling flowers. 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We struggled with Javascript because none of us had worked with it before. We got help from a code coach and googled. We made the project with a step-by-step approach.
 
 ## View it live
 
