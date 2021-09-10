@@ -5,15 +5,17 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  background: rgb(72, 94, 81);
 }
 
 h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  padding-top: 25px;
+  color: whitesmoke;
   text-align: center;
 }
 
@@ -21,7 +23,7 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: whitesmoke;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -36,12 +38,12 @@ p {
 input {
   box-sizing: border-box;
   border: none;
-  border-radius: 4px 0 0 4px;
+  border-radius: 10px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #142c14;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Poppins';
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -51,8 +53,8 @@ main {
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
-  height: 600px;
-  border-radius: 30px;
+  height: 700px;
+  border-radius: 10px;
   background: #fff;
   padding: 20px 24px;
   padding-top: 0;
@@ -95,7 +97,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #142c14;
   max-width: 40%;
 }
 
@@ -120,21 +122,30 @@ main {
 }
 
 button {
-  background-color: #0026ff;
-  color: white;
+  background-color: #142c14;
+  color: whitesmoke;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   padding: 16px 40px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
-  font-weight: 500;
+  font-family: 'Poppins';
+  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 button:hover {
+  background-color: rgb(43, 82, 59);
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+footer {
+    align-items: flex-end;
+    text-align: center;
+    padding: 10px;
+    margin-top: 40px;
+    color:#142c14;
 }
