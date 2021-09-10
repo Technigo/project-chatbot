@@ -141,7 +141,6 @@ const moveOutCleaning = () => {
 
 // Function that activates the function showMessage, and saves `Move-out cleaning` as the value of service and currentQuestion as "windows"
 // It sends out a message through the sendBotMessage function and also adds new html in the form.
-
 const windowCleaning = () => {
   showMessage(`"Window cleaning"`, `user`);
   service = `Window cleaning`;
@@ -205,7 +204,6 @@ const isValueNotNumber = (message) => {
 };
 
 // The function SendUserMessage keeps track of where in the chain we are and what should happen in all the steps.
-
 const sendUserMessage = () => {
   const message = document.getElementById("textInput");
   showMessage(`"${message.value}"`, `user`);

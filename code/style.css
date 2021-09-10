@@ -227,3 +227,60 @@ select {
 .active {
   display: flex;
 }
+
+@media only screen and (max-width: 668px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  input {
+    font-size: 15px;
+  }
+
+  main {
+    width: 95%;
+    height: 500px;
+  }
+
+  button {
+    padding: 16px 10px;
+  }
+
+  .chat__bot-msg {
+    display: flex;
+    margin: 16px 8px 0 0;
+    flex-shrink: 0;
+  }
+
+  .chat__bubble {
+    max-width: 90%;
+  }
+
+  .icon {
+    font-size: 30px;
+  }
+
+  .form {
+    display: flex;
+    justify-content: center;
+  }
+
+  .input-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .input-wrapper form {
+    width: 100%;
+    display: flex;
+  }
+}
