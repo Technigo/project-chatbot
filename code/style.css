@@ -132,16 +132,19 @@ main {
   padding: 16px 24px;
   color: rgb(172, 113, 107);
   max-width: 40%;
+  box-shadow: rgba(172, 114, 107, 0.555) 5px 8px 5px;
 }
 
 .bot-bubble {
-  border-radius: 26px 26px 26px 26px;
+  border-radius: 5px 26px 26px 26px;
   margin-left: 8px;
+  height: -webkit-fill-available;
 }
 
 .user-bubble {
-  border-radius: 26px 26px 26px 26px;
+  border-radius: 26px 5px 26px 26px;
   margin-right: 8px;
+  height: -webkit-fill-available;
 }
 
 .input-wrapper {
@@ -181,10 +184,12 @@ button:hover {
   width: 100%;
   text-align: center;
   font-family: 'Montserrat Alternates', sans-serif;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: bold;
+  color: #465e61;
   border: #89b1b6 solid;
   border-radius: 5px;
+  height: 50px;
 }
 
 h4 {
@@ -211,13 +216,28 @@ h4 {
   main {
     width: 95%;
   }
+  p {
+    font-size: 16px;
+  }
+  .bot-msg img, .user-msg img {
+    width: 75px;
+    height: 75px;
+  }
   .bubble {
     max-width: 80%;
   }
   input {
     padding-right: 0px;
   }
-  button {
+  .send-btn {
     padding: 12px;
+  }
+  #time1, #time2, #time3, #time4, #time5 {
+    font-size: 12px;
+    padding: 12px;
+  }
+  h4 {
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 }

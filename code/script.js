@@ -3,9 +3,11 @@ const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById('input-wrapper')
 const input = document.getElementById('input')
 const sendBtn = document.getElementById('send')
-
 // Global variables, if you need any, declared here
 let questionNumber = 1
+let appointmentDate = '';
+let msgNotificationAudio = new Audio('./assets/notification.mp3');
+msgNotificationAudio.volume = 0.2;
 
 const botReply = (msg) => {
   showMessage(msg, 'bot')
@@ -21,8 +23,8 @@ const showMessage = (message, sender) => {
       <section class="user-msg">
         <div class="bubble user-bubble">
           <p>${message}</p>
-        </div>
-        <img src="assets/user.png" alt="User" />  
+        </div> 
+        <img src="assets/user.png" alt="User" /> 
       </section>
     `
   } else if (sender === 'bot') {
@@ -35,6 +37,9 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
+
+  msgNotificationAudio.play();
+
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
@@ -70,7 +75,7 @@ const nextQuestion = (message) => {
 // Starts here
 const greeting = () => {
   questionNumber = 1
-  botReply(`Welcome to Urban Hairdo! What is your name?`)
+  botReply(`Welcome to Urban Hairdo! What's your name?`)
 }
 
 const handleNameInput = document.getElementById('name-form').addEventListener('submit', (event) => {
@@ -97,10 +102,10 @@ const bookOrCancel = (msg) => {
 
   document
     .getElementById('bookBtn')
-    .addEventListener('click', () => nextQuestion('Book'))
+    .addEventListener('click', () => nextQuestion(`I want to book an appointment.`))
   document
     .getElementById('cancelBtn')
-    .addEventListener('click', () => nextQuestion('Cancel'))
+    .addEventListener('click', () => nextQuestion(`I want to cancel an appointment.`))
 }
 
 // Question3 (choose treatment)
@@ -108,14 +113,15 @@ const bookOrCancel = (msg) => {
 const showMenu = (type) => {
   questionNumber++
 
-  if (type === 'Book') {
-    botReply(`We can help you with that! Please choose type of appointment.`)
+  if (type === `I want to book an appointment.`) {
+    botReply(`Awesome! What kind of appointment would you like to book?`)
     inputWrapper.innerHTML = `
         <select id="select">
-          <option value="" selected disabled>Select treatment </option>
-          <option value="haircut">Haircut</option>
-          <option value="coloring">Coloring</option>
-          <option value="hair treatment">Hair Treatment</option>
+          <option value="" selected disabled>Select appointment</option>
+          <option value="Haircut">Haircut</option>
+          <option value="Coloring">Coloring</option>
+          <option value="Hair treatment">Hair Treatment</option>
+          <option value="Perm">Perm</option>
         </select>
       `
   } else {
@@ -132,7 +138,7 @@ const showMenu = (type) => {
 const showHairdresser = (treatment) => {
   questionNumber++
 
-  botReply(`You wish to book a ${treatment}. Which hairdresser would you like to book?`)
+  botReply(`A ${treatment.toLowerCase()}, how exciting! Which hairdresser would you like to book?`)
 
   inputWrapper.innerHTML = `
   <button id="bookAnna">Anna</button>
@@ -140,10 +146,10 @@ const showHairdresser = (treatment) => {
 `
   document
     .getElementById('bookAnna')
-    .addEventListener('click', () => nextQuestion('Anna'))
+    .addEventListener('click', () => nextQuestion(`Anna`))
   document
     .getElementById('bookHaru')
-    .addEventListener('click', () => nextQuestion('Haru'))
+    .addEventListener('click', () => nextQuestion(`Haru`))
 }
 
 // Question5 (choose date)
@@ -163,7 +169,10 @@ const showDate = (hairdresser) => {
     </form>
     `
   const input = document.getElementById('date')
-  input.addEventListener('change', () => nextQuestion(input.value))
+  input.addEventListener('change', () => {
+    appointmentDate = input.value;
+    nextQuestion(input.value);
+  })
 }
 
 //Question6 (choose time)
@@ -197,7 +206,7 @@ const showTime = (date) => {
 //Question7 (confirm booking)
 const showConfirmation = (time) => {
   questionNumber++
-  botReply(`Are you sure you want to book an appointment at ${time}?`)
+  botReply(`Are you sure you want to book an appointment on the ${appointmentDate} at ${time}?`)
 
   inputWrapper.innerHTML = `
   <button id="confirm">Yes</button>
@@ -205,7 +214,7 @@ const showConfirmation = (time) => {
   `
   document
     .getElementById('confirm')
-    .addEventListener('click', () => nextQuestion('Yes'))
+    .addEventListener('click', () => nextQuestion(`Yes, I'm sure!`))
 
   document
     .getElementById('restart')
