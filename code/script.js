@@ -53,7 +53,7 @@ const showMessage = (message, sender) => {
   `;
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-chat.scrollTop = chat.scrollHeight;
+setTimeout (()=> chat.scrollTop = chat.scrollHeight, 800);
 }
 
 // Starts here
