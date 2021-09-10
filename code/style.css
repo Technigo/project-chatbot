@@ -138,3 +138,9 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+.topping {
+  font-size: 25px;
+  color:#0026ff;
+  background-color: #e5e9ff;
+}

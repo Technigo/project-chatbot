@@ -3,10 +3,12 @@ const chat = document.getElementById('chat')
 const userInput = document.getElementById('name-input')
 const form = document.getElementById('name-form')
 const sendBtn = document.getElementById('send')
-
+let names = ''
+let pieces = ''
+let date = ''
 
 // Global variables, if you need any, declared here
-let currentQuestion = 0
+// let currentQuestion = 0
 
 // Functions declared here
 // 14-20 taget från exempel chat bot 
@@ -69,17 +71,17 @@ const showMessage = (message, sender) => {
 //      setTimeout(thankYou, 1000)
 //    }
 //  }
-const handleInput = (event) => {
-  event.preventDefault()
-  currentQuestion++
+// const handleInput = (event) => {
+//   event.preventDefault()
+//   currentQuestion++
 
-  console.log('question = ', currentQuestion)
-  if (currentQuestion === 0) {
-    handleNameInput()
-  }else if (currentQuestion === 1) {
-    showFoodOptions()
-  }
-}
+//   console.log('question = ', currentQuestion)
+//   if (currentQuestion === 0) {
+//     handleNameInput()
+//   }else if (currentQuestion === 1) {
+//     showFoodOptions()
+//   }
+// }
 
 // Starts here
 const greeting = () => {
@@ -99,21 +101,21 @@ const greeting = () => {
 //  });
 
  //från lektion 8/9 
- const handleNameInput = (event) => {
+  const handleNameInput = (event) => {
   event.preventDefault()
-  let name = userInput.value
-  console.log (name)
-  showMessage (name, 'user')
-  userInput.value = ''
+  names = userInput.value
+  console.log (names)
+  showMessage (names, 'user')
+  // userInput.value = ''
   setTimeout(showFoodOptions, 900);
  }
 
  //från lektion 8/9 
  form.addEventListener ('submit' , handleNameInput)
 
-  const showFoodOptions = (name) => { 
+  const showFoodOptions = () => { 
     
-    showMessage(`What type of yummy cake are you in the mood for today ${name}?`, 'bot')
+    showMessage(`What type of yummy cake are you in the mood for today ${names}?`, 'bot')
     form.innerHTML = `
     <button id="princessBtn">Princess Cake</button>
     <button id="pancakeBtn">Pancake Cake</button>
@@ -122,25 +124,25 @@ const greeting = () => {
 
   document
     .getElementById('princessBtn')
-    .addEventListener('click', () => showCakePieses('Princess Cake'))
+    .addEventListener('click', () => topping('Princess Cake'))
   document
     .getElementById('pancakeBtn')
-    .addEventListener('click', () => showCakePieses('Pancake Cake'))
+    .addEventListener('click', () => topping('Pancake Cake'))
   document
     .getElementById('strawberryBtn')
-    .addEventListener('click', () => showCakePieses('Strawberry Cake'))
+    .addEventListener('click', () => topping('Strawberry Cake'))
 
     
 
     // setTimeout(() => showCakePieses(), 1000)
  } 
 
- const showCakePieses = (type) => {
+ const topping = (type) => {
    
    showMessage(`Yummy in my tummy! I also love ${type} What kind of topping would you like?`, 'bot') 
     if (type === 'Princess Cake') {
       form.innerHTML = `
-      <select id="select"> 
+      <select id="select" class="topping"> 
       <option value="" selected disabled>Pick your topping!</option>
       <option value="sugar">icing sugar</option>
       <option value="strawberries">Strawberries</option>
@@ -150,7 +152,7 @@ const greeting = () => {
     }
     else if (type === 'Pancake Cake') {
       form.innerHTML = `
-        <select id="select">
+        <select id="select" class= topping>
           <option value="" selected disabled>Pick your topping!</option>
           <option value="chocolate">Chocolate sauce</option>
           <option value="sprinkles">Sprinkles</option>
@@ -159,7 +161,7 @@ const greeting = () => {
       `
     } else {
       form.innerHTML = `
-        <select id="select">
+        <select id="select" class="topping">
           <option value="" selected disabled>Pick your topping!</option>
           <option value="blueberries">Blue berries</option>
           <option value="chocolatesprinkles">Chocolate sprinkles</option>
@@ -167,17 +169,57 @@ const greeting = () => {
         </select>
       `
     }
+    const select = document.getElementById('select')
+    select.addEventListener('change', () => cakePieces(select.value))
+  }
+    const cakePieces = (event) => {
+    event.preventDefault
+    showMessage(`That´s a great choice of topping! How many pieces would you like? ${names}`, 'bot')
+    form.innerHTML = `
+    <button id="fourBtn">Four</button>
+    <button id="sixBtn">Six</button>
+    <button id="twelveBtn">Twelve</button>
+  `
+
+  document
+    .getElementById('fourBtn')
+    .addEventListener('click', () => delivery('four'))
+  document
+    .getElementById('sixBtn')
+    .addEventListener('click', () => delivery('six'))
+  document
+    .getElementById('twelveBtn')
+    .addEventListener('click', () => delivery('twelve'))
   }
 
-//   const select = document.getElementById('select')
-//   select.addEventListener('click', () => nextQuestion(select.value))
-// }
+ const delivery = () => {
+  showMessage('what date would you like the delivery?', 'bot')
+  form.innerHTML = `
+  <label for="start" id="dateForm">Start date:</label>
+
+ <input type="date" id="dateInput" name="trip-start">
+ <button id="sendDate">send</button>
+  `
+  document.getElementById("dateInput").addEventListener("change", function() {
+    const input = this.value;
+    var dateEntered = new Date(input);
+    console.log(input); //e.g. 2015-11-13
+    console.log(dateEntered);
+    
+});
+const dateform = document.getElementById('dateForm')
+dateform.addEventListener('change', () => godBye())
 
 
+//    const input = document.getElementById('input')
+//     input.addEventListener('change', () => godBye(input.value))
+ }
+
+const godBye = () => {
+  showMessage('what date would you like the delivery?', 'bot')
  
-
   
-
+ }
 // Set up your eventlisteners here
 
 // When website loaded, chatbot asks first question.
