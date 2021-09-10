@@ -690,11 +690,3 @@ const handleInput = (event) => {
 // Set up your eventlisteners here
 form.addEventListener('submit', handleInput)
 
-/*sendBtn.addEventListener('click', () => nextQuestion(input.value))*/
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-//setTimeout(greeting, 1000)
