@@ -104,6 +104,17 @@ main {
   max-width: 40%;
 }
 
+.bubble a {
+  color:#006D77;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.bubble a:hover {
+  color:#00373c;
+  
+}
+
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;

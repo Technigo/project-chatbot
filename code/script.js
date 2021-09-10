@@ -75,10 +75,10 @@ const botReply = (chosenPlant) => {
     I suggest you look at <a href="https://bloomscape.com/plant-care-guide/pilea"/> This site</a> for care advice`,
       "bot"
     );
-  } else { // If none of the other two are chosen, show this
+  } else if(chosenPlant === "Calathea") { // If none of the other two are chosen, show this
     showMessage(`${chosenPlant} can be tricky. They like to be misted and need moist soil. 
-    For more advice, <a target="_blank" href="https://bloomscape.com/plant-care-guide/calathea/">see here</a>`),
-      "bot";
+    For more advice, <a target="_blank" href="https://bloomscape.com/plant-care-guide/calathea/">see here</a>`,
+      "bot");
   }
 
   // This prompts the user to pick another flower to know more about
