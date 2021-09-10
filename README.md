@@ -2,7 +2,7 @@
 
 This week’s project is to practice some parts of JavaScript you've learnt so far by creating a chat bot!
 
-My bot is called the Java Place. Here you can order som hot or cold coffee from the bot Mr Coffee Bean. 🤖
+My bot is called The Java Place. Here you can order som hot or cold coffee from the bot Mr Coffee Bean. 🤖
 
 ## How did I do it?
 I started the project by going through the literations that were given for this week. One by one I read them and did the exercise. And it wasn’t until the 4th day of reading and looking at materials that I started coding.
@@ -12,7 +12,7 @@ What I learned:
 
 * To make up a story for the bot and then make it interact was really fun and I had so much fun doing it. To write JavaScript for the first time was challenging, frustrating, funny and scary. It has been a roller coaster of emotions. 🎉
 
-* That “trial and error” is my mantra - I have to accept that programming for me is two steps ahead one step back. 
+* "Trial and error” is my mantra - I have to accept that programming for me is two steps ahead one step back. 
 
 When I hit a dead end or a problem
 When a problem arose, I either googled, used dev-tools or asked my husband (he is a back-end developer). 
@@ -22,7 +22,7 @@ This week was intense and I have to accept that I will not understand JS fully i
 
 
 ## View it live
-Here it is: 
+Here it is: https://the-java-place.netlify.app/
 
 ## Sources and inspiration
 https://www.ometrics.com/blog/list-of-fun-chatbots/
