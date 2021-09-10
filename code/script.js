@@ -1,7 +1,7 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById('input-wrapper')
-let option = '';  // Global variable with no value. Keep option open. Row 100.
+let option = '';  // Global variable with no value. Keep option open. Row 101.
 
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -47,9 +47,9 @@ const greeting = () => {
 
 }
 
-// User answer after click on button - hot or cold coffee (coffeKind)
+// User answer after it clicks on button - hot or cold coffee (coffeKind).
 const handleCoffeeKindInput = (coffeeKind) => {
-  showMessage(coffeeKind, 'user')
+  showMessage(coffeeKind, 'user') //Answer from user 
 
 
   setTimeout(() => showCoffeeOptions(coffeeKind), 1000)
@@ -126,7 +126,7 @@ const handleCoffeeOptionInput = (coffeeOption) => {
 //Bot answer based up on selection. I added two template literals: ${coffeeSie} and ${option}
 const handleCoffeeSizeInput = (coffeeSize) => {
   showMessage(`A ${coffeeSize} ${option} coming up. Are you satisfied with your order?`, 'bot');
-  inputWrapper.innerHTML = 
+  inputWrapper.innerHTML = //innerHTML input field.
     `<input id="confirm-input" type="text" />
   <button class="send-btn" id="send" type="submit">
     Send
@@ -143,9 +143,9 @@ const handleCoffeeSizeInput = (coffeeSize) => {
 
 }
 
-// This part of the code took me several hours to solve. My solution in the end was to take it row by row. What do I want to happend in the input-filed? 
+// This part of the code took me several hours to solve. My solution in the end was to take it row by row. What do I want to happend depending on answer in input field? 
 
-//Function answer in input - when user do or don't give valid answer in input field there will be different outcomes. 
+//Function answer in input. When user do or don't give valid answer in input field there will be different outcomes. 
 const handleConfirmInput = (confirmText) => {
   showMessage(confirmText, 'user');
 
@@ -154,7 +154,7 @@ const handleConfirmInput = (confirmText) => {
     setTimeout(() => { //Anonymous function. 
       showMessage(`Great! Thank you for your order. Your ${option} will be right up! `, 'bot');
       inputWrapper.innerHTML = ''; //InputWrapper is cleared = ''; When user has answered yes - input field is cleared and removed.
-    }, 1000); // Anonymous function into the setTimeout() function. The setTimeout() function executes this anonymous function one second later.
+    }, 1000); // Anonymous function into the setTimeout() function. The setTimeout() function executes this anonymous function one millisecond later.
   }
   //Second outcome - user answer with confirmText: no
   else if (confirmText.toLowerCase() === 'no') { //Added toLowerCase due to user and device compatability.

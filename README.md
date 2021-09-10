@@ -1,13 +1,30 @@
-# Project Name
+# Project: Chat Bot 
 
-Replace this readme with your own information about your project.
+This week’s project is to practice some parts of JavaScript you've learnt so far by creating a chat bot!
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+My bot is called the Java Place. Here you can order som hot or cold coffee from the bot Mr Coffee Bean. 🤖
 
-## The problem
+## How did I do it?
+I started the project by going through the literations that were given for this week. One by one I read them and did the exercise. And it wasn’t until the 4th day of reading and looking at materials that I started coding.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+What I learned:
+* This week it was 99% JavaScript. And I have learned SO much!  I have learned about variabels, conditionals, booleans, strings, data types, … well the list goes on. It has been really really really though, but at the same time so educational and enlightening. It’s like learning a whole new language - and you have to write with the right grammar.👩‍💻
+
+* To make up a story for the bot and then make it interact was really fun and I had so much fun doing it. To write JavaScript for the first time was challenging, frustrating, funny and scary. It has been a roller coaster of emotions. 🎉
+
+* That “trial and error” is my mantra - I have to accept that programming for me is two steps ahead one step back. 
+
+When I hit a dead end or a problem
+When a problem arose, I either googled, used dev-tools or asked my husband (he is a back-end developer). 
+
+My own reflection
+This week was intense and I have to accept that I will not understand JS fully in months or even in years. I feel that I have to take baby steps when it come to this programming language. 
+
 
 ## View it live
+Here it is: 
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+## Sources and inspiration
+https://www.ometrics.com/blog/list-of-fun-chatbots/
+https://developer.mozilla.org/en-US/https://www.w3schools.com/
+
