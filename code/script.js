@@ -8,14 +8,11 @@ const form = document.getElementById('name-form')
 // Global variables, if you need any, declared here
 
 let currentQuestionNumber = 1
-console.log(currentQuestionNumber)
-let saveSize = ""
 let saveEvent = ""
 
 // Set up your eventlisteners here
 sendButton.addEventListener('click', (Event) => {
   event.preventDefault();
-  console.log('eventlistener works')
   currentQuestion();
 });
 
@@ -24,18 +21,15 @@ sendButton.addEventListener('click', (Event) => {
 const currentQuestion = () => {
   if (currentQuestionNumber === 1) {
     handleNameInput();
-    console.log('number1')
     currentQuestionNumber = 2
 
   }
   else if (currentQuestionNumber === 2) {
-    console.log('number2')
     sizeQuestion();
     currentQuestionNumber = 3
 
   }
   else if (currentQuestionNumber === 3) {
-    console.log('number3');
     currentQuestionNumber = 4
     resetWindow()
   }
@@ -53,7 +47,6 @@ const handleNameInput = () => {
 
   // Function that changes layout to three buttons
   const showFlowerOptions = () => {
-    console.log('showFlowerOptions')
     showMessage(`Hi ${name} ,what kind of event do you need flowers for?`, 'bot')
     form.innerHTML =
       `<div class="btn-wrapper">
@@ -61,14 +54,12 @@ const handleNameInput = () => {
       <button id="funeral-btn" name="Funeral">FUNERAL</button>
       <button id="romantic-btn" name="Romantic" >ROMANTIC</button>
       </div>`
-    console.log(form.innerHTML)
 
     const weddingBth = document.getElementById('wedding-btn')
     weddingBth.addEventListener('click', (event) => {
       event.preventDefault();
       const chosenEvent = weddingBth.name;
       saveEvent = weddingBth.name;
-      console.log("This is", weddingBth.name)
       showMessage(chosenEvent, 'user')
       currentQuestion()
       setTimeout(() => showMessage(`So you chosen ${chosenEvent} event. What size do you need on the bouquet?`, 'bot'), 500)
@@ -80,7 +71,7 @@ const handleNameInput = () => {
       event.preventDefault();
       const chosenEvent = funeralBth.name;
       saveEvent = funeralBth.name;
-      console.log("This is", funeralBth.name)
+
       showMessage(chosenEvent, 'user')
       currentQuestion()
       setTimeout(() => showMessage(`So you chosen ${chosenEvent} event. What size do you need on the bouquet?`, 'bot'), 500)
