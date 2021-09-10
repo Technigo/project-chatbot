@@ -38,10 +38,9 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
+// Conversation starts here
 const greeting = () => {
   showMessage(`Hi there! Welcome to Movie-Bob, the friendly movie picking bot. What's your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
 
 const ageQuestion = () => {
