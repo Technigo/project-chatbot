@@ -17,14 +17,14 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/dj.png" alt="User" />  
       </section>
     `;
 	} else if (sender === 'bot') {
 		// console.log('is this the bot?');
 		chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/scuba-diver.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -44,6 +44,11 @@ const greeting = () => {
 const clearInput = () => {
 	inputWrapper.innerHTML = ``;
 };
+
+const handleNotReady = () => {
+  showMessage(`Not ready yet...`, 'user');
+  setTimeout(greeting, 1000)
+}
 
 const selectTheme = () => {
 	showMessage(`Sure!`, 'user');
@@ -153,7 +158,7 @@ const confirmOrder = (item) => {
 
 // Set up your eventlisteners here
 yesBtn.addEventListener('click', () => selectTheme());
-noBtn.addEventListener('click', () => setTimeout(greeting, 1000));
+noBtn.addEventListener('click', () => handleNotReady());
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:

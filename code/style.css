@@ -6,7 +6,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url(https://r4.wallpaperflare.com/wallpaper/783/587/809/star-wars-death-star-science-fiction-wallpaper-a920d88d71eabd3be6d7f8afd0b1660d.jpg);
+  object-fit: cover;
+  /* background: #0026ff; */
 }
 
 h1 {
@@ -33,7 +35,7 @@ p {
   margin: 0;
 }
 
-input {
+input, select {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
