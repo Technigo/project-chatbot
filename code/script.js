@@ -163,7 +163,7 @@ const handleConfirmInput = (confirmText) => {
     }, 1000);
     setTimeout(() => window.location.reload(), 3500); //When user answers no. Page will reload after 3500 milliseconds. User will start new order.
   }
-  //Third outcome - user answer with confirmText: a non valid answer
+  //Third outcome - user answer with confirmText that is not yes or no: a non valid answer
   else {
     showMessage(`Sorry but ${confirmText} is not a valid answer`, 'bot');
   }
