@@ -152,7 +152,28 @@ main {
   cursor: pointer;
   transition: all 0.3s ease;
 }
+#rerun{
+  background-color:#C716B7;
+  color: #fff;
+  border: solid #C716B7;
+  border-radius: 20px;
+  padding: 16px 40px;
+  margin-right: 4px;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
 
+}
+#rerun:hover{
+  background-color: #fff;
+  color: #C716B7;
+  border: solid #C716B7;
+  opacity: 0.9;
+  transition: all 0.2s ease;
+}
 .send-btn:hover {
   background-color: #fff;
   color: #C716B7;

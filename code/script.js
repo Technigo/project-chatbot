@@ -64,12 +64,14 @@ const handleNameInput = () => {
   console.log('handleNameInput')
   showMessage(`My name is ${input.value}`, 'user');
   // questionNumber = 2
+  
   setTimeout(() => whatMood(), 1000);
 }
 const whatMood = () => {
   console.log('whatMood')
   showMessage(`Oh ${input.value} describe your mood in one word!`, 'bot')
   questionNumber = 3
+  input.value=''
 }
 const moodAnswer = () => {
   console.log('moodAnswer');
@@ -96,7 +98,7 @@ const songSelection = (input) => {
      <option value="" selected disabled> Select a beat..</option>
      <option value="Hassle">Erik Hassle - Hurtful</option>
      <option value="TheFray">The Fray - How to save a life</option>
-     <option onclick="playAudio() value="Coldplay">Coldplay - Fix you</option>
+     <option onchange()="playAudio()" value="Coldplay">Coldplay - Fix you</option>
    </select>
    `
    } else if (input === 'happy'|| input === 'glad'|| input === 'excited') {
