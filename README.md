@@ -1,13 +1,14 @@
-# Project Name
+# Yodabot
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The task was to creat chatbot with differnt input fields
 
 ## The problem
+We decide that we will use a long conditonal statment which deals with differnt answer.
+We declared a variable which checks the number of question being asked and then respnds with the correct conditional statment.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We used basic JS. We started with small steps and used a lot of console.log to understand what exactly is a happening. We had a little trouble understanding the click event and how to access value from it. With more time we would increase the complexity of questions.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+
+https://yodabot.netlify.app/
