@@ -45,7 +45,7 @@ const showMessage = (message, sender) => {
   } else if (sender === 'bot') {
     chat.innerHTML += `
     <section class="bot-msg">
-      <img src="assets/bot.png" alt="Bot" />
+      <img src="assets/spacebot.png" alt="Bot" />
       <div class="bubble bot-bubble">
         <p>${message}</p>
       </div>

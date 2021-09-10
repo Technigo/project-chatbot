@@ -8,17 +8,17 @@ body {
   font-family: 'Montserrat', sans-serif;
   background: #0026ff;
   z-index: 0;
+  /* overflow: hidden; */
 }
 
 
 /* https://www.w3schools.com/howto/howto_css_fullscreen_video.asp */
-/* .video {
-    position: fixed;
-    right: 0;
-    bottom: 0;
+.video {
+    height: 100%;
+    width: 177.77777778vh; /* 100 * 16 / 9 */
     min-width: 100%;
-    min-height: 100%;
-} */
+    min-height: 56.25vw;
+}
 
 /* hero video header  */
 
