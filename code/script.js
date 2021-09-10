@@ -43,11 +43,13 @@ const greeting = () => {
 //This first setTimeout 
 setTimeout(greeting, 1000)
 
+//here is the information on what name you have 
 const handleInput = (event) => {
   event.preventDefault()
   const inputValue = document.getElementById('name-input').value
   showMessage(inputValue, 'user')
 
+//and here it will be displayed by the bot🤖
   setTimeout(function() {
     showMessage(`Hello ${inputValue}, nice name 🌞`, 'bot')
     form.style.display="none"}, 1000)
@@ -103,6 +105,7 @@ const moreFacts = (answer) =>{
       showMessage(`No`, 'user')}, 1000)
     setTimeout(function() {
       showMessage(`Okay, thank you for today!😽`, 'bot')
+
       //here is our audio for when the user presses no and the last message shows up
       chat.innerHTML += '<audio autoplay src="./assets/cat-purr.mp3"></audio>'}, 1500
       )
