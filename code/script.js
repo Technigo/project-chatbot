@@ -44,6 +44,31 @@ const greeting = () => {
 
 const continentQuestion = () => {
   showMessage('Which continent do you prefer?', 'bot')
+  inputWrapper.innerHTML = /*html*/`
+    <select id="continentDropDown">
+      <option disabled selected value="">Pick a continent</option>
+      <option value="Africa">Africa</option>
+      <option value="Europe">Europe</option>
+      <option value="South America">South America</option>
+      <option value="North America">North America</option>
+      <option value="Asia">Asia</option>
+      <option value="Antarctica">Antarctica</option>
+      <option value="Oceania">Oceania</option>
+   </select>
+  `
+  continentDropDown.addEventListener('change', (event) => {
+    showMessage(event.target.value, 'user')
+    console.log('sending continent answer')
+  })
+}
+
+const activityQuestion = () => {
+  showMessage(`Great choice, please also tell us which activity would you like to do?`, 'bot')
+  inputWrapper.innerhtml = /*html*/`
+    <button id="Sun">Sun</button>
+    <button id="City">City</button>
+    <button id="Food">Food</button>
+`
 }
 
 const handleInputName = (event) => {
@@ -58,13 +83,6 @@ const handleInputName = (event) => {
 }
 
 
-// const continent = () => {
-//   showMessage(`Where would you like to go?`, 'user')
-// }
-
-// const activity = () => {
-//     showMessage(`What activity would you like to do?`, 'bot')  
-// }
 
 
 
