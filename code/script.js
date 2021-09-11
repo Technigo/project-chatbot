@@ -4,7 +4,11 @@ const sendButton = document.getElementById("sendName");
 const timeHourInput = document.getElementById("1h-btn");
 const timeDayInput = document.getElementById("1d-btn");
 const timeWeekInput = document.getElementById("1w-btn");
-
+const paymentCashInput = document.getElementById("cash-btn");
+const paymentCreditInput = document.getElementById("credit-btn");
+const paymentPayLaterInput = document.getElementById("payLater-btn");
+const orderConfirmationYesInput = document.getElementById("yes-btn");
+const orderConfirmationNoInput = document.getElementById("no-btn");
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -89,9 +93,60 @@ const showCostOptions = (value, cost) => {
   toggleVisible("question-time");
 }
 
+// 3. Read the value in button clicked, show the value, show question 4, change the options
+const handlePaymentInput = (event) => {
+  event.preventDefault();
+
+  //read the input 
+  const paymentMethod = event.target.value;
+
+  //choices depending on the input 
+  if (paymentMethod === "cash") {
+    showMessage("Cash", 'user');
+    setTimeout(() => showOrderConfirmation("cash"), 2000);
+  } else if (paymentMethod === "creditcard") {
+    showMessage("Credit Card", 'user');
+    setTimeout(() => showOrderConfirmation("Credit Card"), 2000);
+  } else {
+    showMessage("Pay Later", 'user');
+    setTimeout(() => showOrderConfirmation("Pay Later"), 2000);
+  }
+}
+const showOrderConfirmation = (paymentMethod) => {
+  showMessage(`Thank you, please confirm that you want to buy your time with ${paymentMethod}?`, 'bot');
+  toggleVisible("question-payment");
+  toggleVisible("question-order");
+
+}
+
+// 4. Read the value in button clicked, show the value, delete options and good bye message
+const handleOrderConfirmationInput = (event) => {
+  event.preventDefault();
+
+  //read the input 
+  const orderConfirmation = event.target.value;
+
+  //choices depending on the input 
+  if (orderConfirmation === "yes") {
+    showMessage("Yes", 'user');
+    toggleVisible("question-order");
+    setTimeout(() => showMessage("Thank you for your order, enjoy your time!", 'bot'), 2000);
+
+  } else if (orderConfirmation === "no") {
+    showMessage("No", 'user');
+    toggleVisible("question-order");
+    setTimeout(() => showMessage("Sorry to hear you changed your mind, you are welcome back any time!", 'bot'), 2000);
+  }
+}
+
 
 // Set up your eventlisteners here
 sendButton.addEventListener("click", handleNameInput);
 timeHourInput.addEventListener("click", handleTimeInput);
 timeDayInput.addEventListener("click", handleTimeInput);
 timeWeekInput.addEventListener("click", handleTimeInput);
+paymentCashInput.addEventListener("click", handlePaymentInput);
+paymentCreditInput.addEventListener("click", handlePaymentInput);
+paymentPayLaterInput.addEventListener("click", handlePaymentInput);
+orderConfirmationYesInput.addEventListener("click", handleOrderConfirmationInput);
+orderConfirmationNoInput.addEventListener("click", handleOrderConfirmationInput);
