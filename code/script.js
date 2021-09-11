@@ -7,6 +7,27 @@ const nameForm = document.getElementById('name-form')
 // Global variables, if you need any, declared here
 let currentQuestion = 1
 
+// Försöker lägga till ljud på knapparna i footern här 
+const voff = document.getElementById('voff')
+const voffSound = document.getElementById('voff-sound')
+
+voff.addEventListener('click', () => {
+    function playAudio (voffSound){
+      
+    }
+    voffSound.play();
+    console.log('VOFF')
+  })
+
+/* 
+const audio = document.getElementById('voff')
+
+audio.addEventListener('click', () => {
+  console.log('DOGBARK')
+  
+}) */
+
+
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
@@ -138,5 +159,7 @@ const handleInput = (event) => {
 //Here we passing the next bot question.
 
 // Set up your eventlisteners here
+
+
 
 setTimeout(greeting, 1000)
