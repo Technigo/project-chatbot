@@ -45,6 +45,7 @@ input {
   font-weight: 600;
   line-height: 26px;
   flex: 1;
+  flex-shrink: 1;
 }
 
 main {
@@ -121,6 +122,9 @@ img {
 .input-wrapper form {
   width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: auto 5px auto 5px;
 }
 
 button {
@@ -150,19 +154,23 @@ button:hover {
  }
 
  @media only screen and (max-width: 667px) {
+  main {
+    height: 75vh;
+  }
+  
   h1 {
     font-size: 30px;
     margin-bottom: 0;
   }
 
   h2 {
-    margin-bottom: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 
   .bubble {
     font-size: 12px;
-    line-height: 10px;
-    max-width: 60%;
+    max-width: 80%;
   }
 
 } 

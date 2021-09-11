@@ -98,7 +98,7 @@ document
 const lebowskiTreatment = () => {
   showMessage(`I want to know about the Big Lebowski treatment`, 'user')
 
-  setTimeout(() => showMessage(`The Big Lebowski treatment consists of a flee scrub and a ruff hairdo`, 'bot'), 1000)
+  setTimeout(() => showMessage(`The Big Lebowski treatment consists of a flee scrub and a rough hairdo`, 'bot'), 1000)
 
   inputWrapper.innerHTML = `
   <button id="bookTreatmentBtn">Book treatment</button>
