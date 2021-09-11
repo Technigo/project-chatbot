@@ -1,13 +1,15 @@
-# Project Name
+# Project Chatbot
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+We developed a Hair Salon chatbot that helps you book or cancel appointments.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Before we started coding, we decided on the theme and functions of the chatbot. After we were done with the core structure of our chatbot, we moved over to styling and design. 
+
+We approached problems with curiosity and used mostly StackOverflow to find answers.
+
+If we had more time we would add a function where the user wouldn't be able to choose appointment times that have past. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://urbanhairdo.netlify.app/
