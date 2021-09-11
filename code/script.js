@@ -10,10 +10,13 @@ const userSound = document.getElementById('clickUser')
 let questionNumber = 1
 
 
+
 // Global variables, if you need any, declared here
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
+    let sound = new Audio("assets/userClick.wav")
+    sound.play();
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -23,6 +26,8 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
+    let sound = new Audio("assets/botSound.wav")
+    sound.play();
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -142,7 +147,9 @@ const drinkChoices = (type) => {
 const theEnd = (message) => {
   questionNumber = 4
   showMessage(message, 'user')
-  showMessage(`Thank you for your order: ${message}!`, 'bot')
+  
+  setTimeout(() => showMessage(`Thank you for your order: ${message}!`, 'bot'), 500);
+  
   inputWrapper.innerHTML = ``
 
 }
