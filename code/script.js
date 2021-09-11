@@ -16,13 +16,13 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="./assets/user.jpeg" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="./assets/bartender.jpeg" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -39,7 +39,7 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-const handleNameInput = (event) => {
+const textInput = (event) => {
   event.preventDefault() //prevents the page from refreshing
   const name = inputValue.value  //input from user gets stored in name
   showMessage(name, 'user') //shows the msg the user typed in
@@ -60,24 +60,94 @@ const drinkMenu = () => {
   inputWrapper.innerHTML = `
   <button id='whiskeyButton'>Whiskey</button>
   <button id='rumButton'>Rum</button>
+  <button id='vodkaButton'>Vodka</button>
   `
-  //Whiskey button pressed = user says "Whiskey"
+  //Whiskey button pressed
   document.getElementById('whiskeyButton').addEventListener('click', () =>  {
     showMessage('Whiskey', 'user')
-    setTimeout(() => showMessage(`Ah, Whiskey... good choice!`, 'bot'), 1000)
+    setTimeout(() => showMessage(`Ah, Whiskey... good choice! How many glasses?`, 'bot'), 1000)
+    setTimeout(() => drinkNumberFunc(), 1000)
     })
 
-  //Rum button pressed = user says "Rum"
+  //Rum button pressed
   document.getElementById('rumButton').addEventListener('click', () =>  {
     showMessage('Rum', 'user')
-    setTimeout(() => showMessage(`Aye! Rum coming up matey.`, 'bot'), 1000)
+    setTimeout(() => showMessage(`Aye! Rum for my matey. How many glasses?`, 'bot'), 1000)
+    setTimeout(() => drinkNumberFunc(), 1000)
+    })
+
+  //Vodka button pressed
+  document.getElementById('vodkaButton').addEventListener('click', () =>  {
+    showMessage('Vodka', 'user')
+    setTimeout(() => showMessage(`Da! Vodka for my comrade. How many glasses?`, 'bot'), 1000)
+    setTimeout(() => drinkNumberFunc(), 1000)
     })
 }
 
+//Drink number function
+const drinkNumberFunc = () => {
+  //Clears previous buttons and insert form field again
+  inputWrapper.innerHTML = `
+  <form id='name-form'>
+  <input id='drink-input' type='text'/>
+  <button class='send-btn' id='send-btn' type='submit'>
+          Send
+  </button>
+  </form>
+  `
+  //Stores value in drinkNumber, listens to if button gets pressed
+  document.getElementById('send-btn').addEventListener('click', (event) => {
+    event.preventDefault()
+    let drinkNumber = document.getElementById('drink-input').value
+    showMessage(drinkNumber, 'user')
+    document.getElementById('drink-input').value = ''
+    const audio = new Audio('./assets/Clink-sound.mp3') //For drink clink audio
+
+    //Depending on nr of drinks, diffrent bot answers
+    if ( drinkNumber === '' || drinkNumber === '0' ) {
+      setTimeout(() => showMessage("Can't order 0 drinks. Please say again.", 'bot'), 1000)
+      drinkNumberFunc()
+    }
+    else if ( drinkNumber > '0' && drinkNumber < '2'){
+      setTimeout(() => showMessage(`Alright, ${drinkNumber} glass coming up!`, 'bot'), 1000)
+      setTimeout(() => showMessage('Thanks for the order, come back if you need a refill!', 'bot'), 3000)
+      setTimeout(() => audio.play(), 2000) //Plays drink clink
+
+      setTimeout(() =>
+      chat.innerHTML += `
+      <section class="bot-msg">
+        <img src="assets/bartender.jpeg" alt="Bot" />
+        <div class="bubble bot-bubble">
+        <img src="./assets/whiskey-glass.jpeg" id="glass" alt="glass" />
+        </div>
+      </section>
+    ` , 1000)
+
+      setTimeout(() => audio.play(), 2000) //Plays drink clink
+    }
+    else {
+      setTimeout(() => showMessage(`Oh, heavy drinker eh? ${drinkNumber} glasses coming up!`, 'bot'), 1000)
+      setTimeout(() => audio.play(), 2000) //Plays drink clink
+      
+      setTimeout(() =>
+      chat.innerHTML += `
+      <section class="bot-msg">
+        <img src="assets/bartender.jpeg" alt="Bot" />
+        <div class="bubble bot-bubble">
+        <img src="./assets/whiskey-glass.jpeg" id="glass" alt="glass" />
+        </div>
+      </section>
+    ` , 1000)
+
+      setTimeout(() => showMessage('Thanks for the order! Come back if you need a refill.', 'bot'), 4000)
+    }
+  
+  })
+}
 
 // Set up your eventlisteners here
 
-form.addEventListener('submit', handleNameInput) //listens to submit button, goes to handleNameInput func.
+form.addEventListener('submit', textInput) //listens to submit button, goes to textInput func.
 
 
 // When website loaded, chatbot asks first question.
