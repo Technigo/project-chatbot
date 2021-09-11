@@ -110,9 +110,8 @@ const drinkNumberFunc = () => {
     }
     else if ( drinkNumber > '0' && drinkNumber < '2'){
       setTimeout(() => showMessage(`Alright, ${drinkNumber} glass coming up!`, 'bot'), 1000)
-      setTimeout(() => showMessage('Thanks for the order, come back if you need a refill!', 'bot'), 3000)
       setTimeout(() => audio.play(), 2000) //Plays drink clink
-
+      //Image of glass in bot bubble
       setTimeout(() =>
       chat.innerHTML += `
       <section class="bot-msg">
@@ -122,13 +121,12 @@ const drinkNumberFunc = () => {
         </div>
       </section>
     ` , 1000)
-
-      setTimeout(() => audio.play(), 2000) //Plays drink clink
+      setTimeout(() => showMessage('Thanks for the order, come back if you need a refill!', 'bot'), 3000)
     }
     else {
       setTimeout(() => showMessage(`Oh, heavy drinker eh? ${drinkNumber} glasses coming up!`, 'bot'), 1000)
       setTimeout(() => audio.play(), 2000) //Plays drink clink
-      
+      //Image of glass in bot bubble
       setTimeout(() =>
       chat.innerHTML += `
       <section class="bot-msg">
@@ -138,8 +136,7 @@ const drinkNumberFunc = () => {
         </div>
       </section>
     ` , 1000)
-
-      setTimeout(() => showMessage('Thanks for the order! Come back if you need a refill.', 'bot'), 4000)
+      setTimeout(() => showMessage('Thanks for the order! Come back if you need a refill.', 'bot'), 3000)
     }
   
   })
