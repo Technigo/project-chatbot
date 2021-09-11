@@ -10,5 +10,5 @@ We worked together in VS code live share, and the one of us being more proficien
 If we had more time we would make the bot have a more complex decision tree and maybe try to style it different. 
 
 ## View it live
-Here is the Netlify link:
+Here is the Netlify link: https://chatbot-project-technigo-louisebecker-priscilaalfaro.netlify.app/
 
