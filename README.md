@@ -1,13 +1,16 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Pair project for making a chatbot in JavaScript, using variables, functions, string methods, conditionals and return values.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Watched the lessons and googled for understanding how to make it work.
+Started by checking out the PizzaBot a little bit for inspiration then headed on to doing the 1-5 iterations.
+The plan evolved during the iterations, made some changes along the way.
+Tried to add as much variety as we could technology wise regarding the task req. Added images and sound.
+
+If we had more time I think we would've wanted to add more dialogue options and more techniques.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://blissful-jackson-e60904.netlify.app/
