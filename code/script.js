@@ -1,7 +1,5 @@
-//just putting this comment here to mark this as the file we edited together!
 
-// All the DOM selectors stored as short variables
-// const chat = document.getElementById('chat')
+const chat = document.getElementById('chat')
 const handleNameInput = document.getElementById('name-input')
 const sendBtn = document.getElementById('send-btn')
 const nameForm = document.getElementById('name-form')
@@ -9,10 +7,7 @@ const inputWrapper = document.getElementById('input-wrapper')
 const userSound = document.getElementById('clickUser')
 let questionNumber = 1
 
-
-
-// Global variables, if you need any, declared here
-// This function will add a chat bubble in the correct place based on who the sender is
+//Decides who says what and puts the bubbles in the chat 
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     let sound = new Audio("assets/userClick.wav")
@@ -37,11 +32,11 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+
   chat.scrollTop = chat.scrollHeight
 }
 
-
+//This function makes the conversation happen
 const conversation = (message) => {
   if (questionNumber === 1) {
     setTimeout(() => greeting(message, 'bot'), 1000)
@@ -56,8 +51,6 @@ const conversation = (message) => {
     setTimeout(() => drinkChoices(message), 1000)
 
   } else (questionNumber === 4)
-    //showMessage(message)
-    //setTimeout(() => fika(message), 1000)
 }
 
 
@@ -76,7 +69,6 @@ const drinks = () => {
   setTimeout(function() {
     showMessage(`Hello ${inputedName}! What would you like to drink?`, 'bot');
   }, 500);
-
 
   drinkButtons();
 }
@@ -101,7 +93,7 @@ const drinkButtons = () => {
     .addEventListener('click', () => conversation('tea'))
   document.getElementById('juiceBtn')
     .addEventListener('click', () => conversation('juice'))
-//setTimeout(drinks, 1000);
+
 }
 
 
