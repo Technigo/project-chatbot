@@ -47,28 +47,33 @@ const continentQuestion = () => {
   inputWrapper.innerHTML = /*html*/`
     <select id="continentDropDown">
       <option disabled selected value="">Pick a continent</option>
-      <option value="Africa">Africa</option>
-      <option value="Europe">Europe</option>
-      <option value="South America">South America</option>
-      <option value="North America">North America</option>
-      <option value="Asia">Asia</option>
-      <option value="Antarctica">Antarctica</option>
-      <option value="Oceania">Oceania</option>
+      <option id="africa" value="Africa">Africa</option>
+      <option id="europe" value="Europe">Europe</option>
+      <option id="south-america" value="South America">South America</option>
+      <option id="north-america" value="North America">North America</option>
+      <option id="asia" value="Asia">Asia</option>
+      <option id="antarctica" value="Antarctica">Antarctica</option>
+      <option id="oceania" value="Oceania">Oceania</option>
    </select>
   `
   continentDropDown.addEventListener('change', (event) => {
     showMessage(event.target.value, 'user')
     console.log('sending continent answer')
   })
+
 }
 
 const activityQuestion = () => {
   showMessage(`Great choice, please also tell us which activity would you like to do?`, 'bot')
-  inputWrapper.innerhtml = /*html*/`
-    <button id="Sun">Sun</button>
-    <button id="City">City</button>
-    <button id="Food">Food</button>
-`
+//   if (continentDropDown === 'africa'){
+//     inputWrapper.innerhtml = /*html*/`
+//       <button id="Sun">Sun</button>
+//       <button id="City">City</button>
+//       <button id="Food">Food</button>
+// `
+// } else {
+//   console.log('nothing happens')
+// }
 }
 
 const handleInputName = (event) => {
@@ -78,9 +83,13 @@ const handleInputName = (event) => {
   console.log('the name is:', name)
   showMessage(name, 'user' )
   inputValue.value = ''
+  // inputWrapper.innerHTML = ''
   
   setTimeout(continentQuestion, 1000)
 }
+
+
+
 
 
 
