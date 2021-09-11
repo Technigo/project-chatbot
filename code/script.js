@@ -6,6 +6,7 @@ const startButton = document.getElementById('start-btn')
 const inputValue = document.getElementById('input-name')
 
 // Global variables, if you need any, declared here
+let currentQuestion = 0
 
 // Functions declared here
 
@@ -14,6 +15,8 @@ const inputValue = document.getElementById('input-name')
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
+    console.log('the user is sending')
+
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -23,6 +26,8 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
+    console.log('the bot is sending')
+
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -42,7 +47,44 @@ const greeting = () => {
   showMessage(`Welcome to the Travelbot! What's your name?`, 'bot')
 }
 
+const ageQuestion = () => {
+  showMessage('How old are you?', 'bot')
+}
+
+const petQuestion = () => {
+  showMessage('do you have pets?', 'bot')
+}
+
+const handleInput = (event1) => {
+  event1.preventDefault()
+  currentQuestion++
+
+
+  console.log('our currentQuestion variable is:', currentQuestion)
+  if (currentQuestion === 1) {
+    handleNameQuestion()
+  } else if (currentQuestion === 2) {
+    ageQuestion()
+  } else if (currentQuestion === 3) {
+    petQuestion() 
+  }
+}
+
+const handleNameQuestion = () => {
+  const name = inputValue.value
+  console.log('the name is:', name)
+  showMessage(`My name is ${name}`, 'user' )
+  inputValue.value = ''
+
+  setTimeout(ageQuestion, 500)
+
+}
+
+
 const continentQuestion = () => {
+  currentQuestion = 2
+  console.log('question number 2')
+
   showMessage('Which continent do you prefer?', 'bot')
   inputWrapper.innerHTML = /*html*/`
     <select id="continentDropDown">
@@ -56,14 +98,17 @@ const continentQuestion = () => {
       <option id="oceania" value="Oceania">Oceania</option>
    </select>
   `
-  continentDropDown.addEventListener('change', (event) => {
-    showMessage(event.target.value, 'user')
+  continentDropDown.addEventListener('change', (event2) => { 
+    showMessage(event2.target.value, 'user')
     console.log('sending continent answer')
+
   })
 
 }
 
 const activityQuestion = () => {
+  currentQuestion = 3
+  console.log('question number 3')
   showMessage(`Great choice, please also tell us which activity would you like to do?`, 'bot')
 //   if (continentDropDown === 'africa'){
 //     inputWrapper.innerhtml = /*html*/`
@@ -76,31 +121,19 @@ const activityQuestion = () => {
 // }
 }
 
-const handleInputName = (event) => {
-  event.preventDefault()
 
-  const name = inputValue.value
-  console.log('the name is:', name)
-  showMessage(name, 'user' )
-  inputValue.value = ''
-  // inputWrapper.innerHTML = ''
-  
-  setTimeout(continentQuestion, 1000)
+const handleInputContinent = (event3) => {
+  event3.preventDefault()  
+  setTimeout(continentQuestion, 1000)  
+
+  // activityQuestion()
+
 }
-
-
-
-
-
-
-
 
 // Set up your eventlisteners here
 startButton.addEventListener('click', greeting)
 
-form.addEventListener('submit', handleInputName)
-
-
+form.addEventListener('submit', handleInput)
 
 
 
