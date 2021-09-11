@@ -8,17 +8,36 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
     <title>Chat Bot</title>
   </head>
 
   <body>
-    <h1>Welcome to xxx.</h1>
-    <h2>Ask about xxxx.</h2>
+    <header class="header">
+      <div class="links">
+        <div class="pat-jes">
+          <img class="github-logo" src="./assets/GitHub-Mark-64px.png" alt="github-logo">
+          <a href="https://github.com/hemmahosjessi">@hemmahosjessi</a>
+        </div>
+        <div class="pat-jes">
+          <img class="github-logo" src="./assets/GitHub-Mark-64px.png" alt="github-logo">
+          <a href="https://github.com/Mattsson717">@Mattsson717</a>
+        </div>
+      </div>
+      <div class="voff-buttons" id="voff-buttons">
+        <button class="voff" id="voff">Play me a voff!</button>
+        <button class="mjau" id="mjau">Give me a mjau!</button>
+      </div>
+    </header>
+    
+    <div class="heading">
+    <h1>Hey yo, let´s go!</h1>
+    </div>
     <main>
       <section class="chat" id="chat"></section>
 
       <div class="input-wrapper" id="input-wrapper">
-        <form id="name-form">
+        <form class="name-form" id="name-form">
           <input id="name-input" type="text" />
           <button class="send-btn" type="submit">
             Send
@@ -26,6 +45,11 @@
         </form>
       </div>
     </main>
+
+    <div class="voff-buttons-bottom" id="voff-buttons">
+      <button class="voff" id="voff">Play me a voff!</button>
+      <button class="mjau" id="mjau">Give me a mjau!</button>
+    </div>
 
     <script src="./script.js"></script>
   </body>

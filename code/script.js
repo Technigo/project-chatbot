@@ -6,7 +6,6 @@ const nameForm = document.getElementById('name-form')
 
 // Global variables, if you need any, declared here
 let currentQuestion = 1
-console.log('HEJ')
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -51,7 +50,6 @@ const dogQuestion = () => {
  document.getElementById('yes').addEventListener('click', () => {
     showMessage('Yes', 'user')
     setTimeout(() => showMessage('That´s what I thought! I mean who doesn’t?!', 'bot'), 500)
-    // showMessage('That´s what I thought! I mean who doesn’t?!', 'bot')
     handleInput()
   })
   document.getElementById('no').addEventListener('click', () => {
@@ -92,11 +90,9 @@ const wrongAnswer = () => {
   })
 }
 
-  
   const byeBye = () => {
     currentQuestion++
-    console.log('BYE')
-    setTimeout(() => showMessage('Bye for now 👋🏼', 'bot'), 1500)
+      setTimeout(() => showMessage('Bye for now 👋🏼', 'bot'), 1500)
       inputWrapper.innerHTML =  `
       <button id="bye">Bye bye!</button>
       `
@@ -141,13 +137,6 @@ const handleInput = (event) => {
 
 //Here we passing the next bot question.
 
-
 // Set up your eventlisteners here
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
