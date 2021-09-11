@@ -139,6 +139,8 @@ button:hover {
   transition: all 0.2s ease;
 }
 
+/*Style to hide the buttons from the beginning and use the JS to show them*/
+
 #fact-btn {
   display: none;
   flex-direction: row;

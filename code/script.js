@@ -5,7 +5,7 @@ const factButtons = document.getElementById('fact-btn')
 const yesNoButtons = document.getElementById('yes-no-btn')
 const yesButton = document.getElementById('yes')
 const noButton = document.getElementById('no')
-const timeOutTime = 1500
+const timeOutTime = 1000
 //this makes the setTimeout a constant so we don't have to change the time for each bot response
 //instead we can just change up here and all of them will be changed.
 
@@ -15,15 +15,13 @@ let questionNumber = 0;
 
 // Functions declared here
 
-
 //This fuction sets the order of the questions with a conditonal.
 // Basically sets a order of the questions so the bot
-//does not repeat the last questin over and over again. It makes it move on to the next
-//like "if we were on the greeting and the user puts in a input move on to next question"
-//and then the nextQuestion is defind further down in the code.
+//does not repeat the last question over and over again. It makes it move on to the next.
+//So if we're on the greeting and the user puts in a input it moves on to next question.
+//The nextQuestion (question1/2/3) are defined further down in the code.
 
-//We wrapped this if/else with at setTimeout - not entierly sure how, 
-//we got som help but it worked. We've yet have to figure out how to get the timeout on the answers
+//We wrapped this if/else with at setTimeout and used the variable timeOutTime.
 
 const nextQuestion = (answer) => {
   usrInput(answer)
@@ -45,10 +43,7 @@ const nextQuestion = (answer) => {
     
   }
 
-// This function will add a chat bubble in the correct place based on who the sender is
-
-//We got help with getting a link in the bot reply by adding the video and used the ternarys -
-//which is a quicker way of conditionals, insted of if/else it's ?/:
+// This function will add a chat bubble in the correct place based on who the sender is.
 
 const showMessage = (message, sender) => {
   if (sender === 'user') {
@@ -87,7 +82,7 @@ chat.scrollTop = chat.scrollHeight
 
 const greeting = () => {
   questionNumber = 1;
-  showMessage(`Hello, whats your name?`, 'bot');
+  showMessage(`Hello, what's your name?`, 'bot');
 }
 
 const usrInput = (answer) => {
@@ -102,10 +97,12 @@ const question1 = (question) => {
   
 const question2 = (question) => {
   questionNumber++
-  showMessage(`I don't care, you get these three options to choose from.`, 'bot')
+  showMessage(`I don't care. Which one of these do you need help with?`, 'bot')
   form.style.display='none'
   factButtons.style.display='flex'
 }
+
+//Here we set a setTimeout for each answer - in comparison with the bots question, which are all set in the function above. 
 
 const mother = () => {
     setTimeout (() => showMessage(`Mother in law`, 'user'), 1000)
@@ -134,6 +131,9 @@ const question3 = (question) => {
   form.style.display='none'
   yesNoButtons.style.display='flex'
 }
+
+
+//Here is out conditional. Depending on if the user answers yes or no.
 
 const yesNoAnswer = (type) => {
   
