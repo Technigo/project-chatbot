@@ -1,0 +1,166 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin-top: 100px;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-image: url(assets/bar3.jpg) ;
+    box-sizing: border-box;
+  }
+  
+  h1 {
+    font-weight: bold;
+    font-size: 44px;
+    line-height: 34px;
+    color: #fff;
+    text-align: center;
+    font-family: 'Lobster', cursive;
+    text-shadow: -2px 2px black;
+  }
+  
+  h2 {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 34px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 36px;
+    font-family: 'Lobster', cursive;
+    text-shadow: -2px 2px black;
+  }
+  
+  p {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 28px;
+    margin: 0;
+    color: white;
+    text-shadow: 1px 1px black;
+  }
+  
+  input {
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    background: #0205148a;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    line-height: 26px;
+    flex: 1;
+    border: 1px solid white;
+  }
+  
+  main {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 700px;
+    height: 600px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.884);
+    padding: 20px 24px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 4px 6px white;
+    border: 3px solid white;
+  }
+  
+  .chat {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    overflow: scroll;
+    flex-direction: column;
+    padding-bottom: 16px;
+  }
+  
+  .bot-msg {
+    display: flex;
+    margin: 16px 8px 0 0;
+    flex-shrink: 0;
+  }
+  
+  .user-msg {
+    display: flex;
+    justify-content: flex-end;
+    margin: 16px 0 0 8px;
+    flex-shrink: 0;
+  }
+  
+  .bot-msg img,
+  .user-msg img {
+      border-radius: 50%;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .bubble {
+    background: #0205148a;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 26px;
+    padding: 16px 24px;
+    color: #0026ff;
+    max-width: 40%;
+  }
+  
+  .bot-bubble {
+    border-radius: 0px 26px 26px 26px;
+    margin-left: 8px;
+  }
+  
+  .user-bubble {
+    border-radius: 26px 0 26px 26px;
+    margin-right: 8px;
+  }
+  
+  .input-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .input-wrapper form {
+    width: 100%;
+    display: flex;
+  }
+  
+  button {
+    background-color: #1a1e309a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 16px 40px;
+    margin-right: 4px;
+    font-size: 16px;
+    line-height: 26px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid white;
+  }
+  
+  button:hover {
+    opacity: 0.9;
+    transition: all 0.2s ease;
+  }
+
+  footer {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(255, 255, 255, 0.363);
+      margin-top: 30px;
+      text-align: center;
+  }
+
+  footer p {
+    color: white;
+  }
