@@ -8,6 +8,10 @@
     font-family: 'Montserrat', sans-serif;
     background-image: url(assets/bar3.jpg) ;
     box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-size: auto;
+    box-sizing: border-box;
+    height: 100%;
   }
   
   h1 {
@@ -164,3 +168,18 @@
   footer p {
     color: white;
   }
+
+  @media (max-width: 767px) {
+    .bubble p {
+        font-size: 0.75em;
+    }
+    footer {
+        position: relative;
+        top: 0;
+        left: 0;
+       
+    }
+    input {
+        width: 100%;
+    }
+}
