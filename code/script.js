@@ -1,14 +1,16 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
-const startButton = document.getElementsByClassName('start-btn')
+const startButton = document.getElementById('start-btn')
 const form = document.getElementById('name-form')
+const inputWrapper = document.getElementById('input-wrapper')
 const inputValue = document.getElementById('name-input')
 
-// Global variables, if you need any, declared here
+// Global variables
 
+// A counter to let us know which question we're at
 let currentQuestion = 1;
 
-// Functions declared here
+// Functions
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -44,93 +46,150 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+  // Scroll to last message when there are too many in the chat box
   chat.scrollTop = chat.scrollHeight
 }
 
 // The dialogue starts here
 const greeting = () => {
   showMessage(`Hi there! What's your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
-const moodQuestion = () => {
-  showMessage('How are feeling today?', 'bot')
+const moodQuestion = (event) => {
+ 
+  showMessage('How are you feeling today?', 'bot')
+
+  inputWrapper.innerHTML = `
+  <button id="sadBtn">Sad</button>
+  <button id="neutralBtn">Neutral</button>
+  <button id="worriedBtn">Worried</button>
+  <button id="happyBtn">Happy</button>
+  `
+
+  document.getElementById('sadBtn').addEventListener('click', () => followUpQuestion('sad'))
+  document.getElementById('neutralBtn').addEventListener('click', () => followUpQuestion('neutral'))
+  document.getElementById('worriedBtn').addEventListener('click', () => followUpQuestion('worried'))
+  document.getElementById('happyBtn').addEventListener('click', () => followUpQuestion('happy'))
 }
 
-const secondQuestion = () => {
-  showMessage('Question number 2?', 'bot')
+const followUpQuestion = (mood) => {
+  currentQuestion++;
+  showMessage(`So you\'re feeling ${mood}, I see.`, 'bot')
+
+  if (mood === 'sad'){
+    inputWrapper.innerHTML = `
+    <select id="select">
+      <option value="" selected disabled>👇 Would you like to talk to someone?</option>
+      <option value="yes">Yes</option>
+      <option value="no thanks">No</option>
+    </select>
+  `
+} else if (mood === 'neutral') {
+  inputWrapper.innerHTML = `
+    <select id="select">
+      <option value="" selected disabled>👇Would you like some cute animal pics?</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No thanks</option>
+    </select>
+  `
+}  else if (mood === 'worried') {
+  inputWrapper.innerHTML = `
+    <select id="select">
+      <option value="" selected disabled>👇 Would you like to...</option>
+      <option value="Workout">Workout</option>
+      <option value="Meditate">Meditate</option>
+      <option value="Walk in nature">Walk in nature</option>
+    </select>
+    `
+  }
+ else {
+  inputWrapper.innerHTML = `
+    <select id="select">
+      <option value="" selected disabled>👇 Would you like to play some happy music?</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+    `
 }
+
+const select = document.getElementById('select')
+select.addEventListener('change', () => followUpQuestion(select.value))
+}
+
+// Handle user input answers
 
 const handleInput = (event) => {
   event.preventDefault()
-  
-  console.log('our currentQuestion variable is:', currentQuestion)
 
   if (currentQuestion === 1) {
-    handleMoodQuestion()
+    handleGreeting()
   } 
   else if (currentQuestion === 2){
-    handleSecondQuestion()
+    handleMoodQuestion()
   }
-  
+
   currentQuestion++
-  /* console.log('handing over to the bot with a new currentQuestion value', currentQuestion) */
+
+}
+
+const handleGreeting = () => {
+  const moodOption = inputValue.value
+
+  showMessage(`My name is ${moodOption}`, 'user')
+  inputValue.value = ''
+
+  setTimeout(moodQuestion, 1000) // Move to next bot question
+
 }
 
 const handleMoodQuestion = () => {
   const moodOption = inputValue.value
+  if (moodOption == 1) {
+    showMessage('I\'m feeling sad', 'user')
+  } else if (moodOption == 2){
+    showMessage('I\'m feeling neutral', 'user')
+  } else if (moodOption == 3){
+    showMessage('I\'m feeling worried', 'user')
+  } else if (moodOption == 4){
+    showMessage('I\'m feeling happy', 'user')
+  } else {
+    showMessage('Invalid input. Please enter one of the four options above')
+  }
 
-  showMessage(`My mood is ${moodOption}`, 'user')
   inputValue.value = ''
 
-  setTimeout(secondQuestion, 1000) //Here we passing the next bot question. This could also be setup more generic, for example with a botQuestion function.
+  setTimeout(followUpQuestion, 1000) 
+
 }
 
+// Event Listeners
 
-// Set up your eventlisteners here
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-
-// setTimeout(greeting, 1000)
-
+startButton.addEventListener('click', () => setTimeout(greeting, 1000))
 form.addEventListener('submit', handleInput)
 
-/* 
-This was a previous solution:
+// Pseudocode
 
-const onFormSubmit = (event) => {
-  event.preventDefault();
-  const message = document.getElementById('name-input').value;
-  showMessage(message, 'user');
-  message.value = '';
-};
- 
-const startButton = document.getElementById('start');
-startButton.addEventListener('click', () => {
-  showMessage(`Hi there! How are feeling today? Write '1' for sad, '2' for neutral, '3' for worried and '4' for happy`, 'bot');
-});
+/* LIST OF PEPPBOT QUESTIONS
 
-const form = document.getElementById('name-form');
-form.addEventListener('submit', onFormSubmit);
-*/
-
-// 0. Create "Start" button
-// 1. Click on button
-// 2. Get bot phrase
-// 3. Output bot phrase
-
-/* LIST OF BOT QUESTIONS
-
-1. Hi there! How are feeling today? (Multiple choice)
-2. If 1 (sad) = pepp; else if 2 (neutral) = do you want some cute animal pics to lighten up your day?;
+1. Hi there! How are you feeling today? (Multiple choice: sad, neutral, worried, happy)
+2. If 1 (sad) = offer hotline; else if 2 (neutral) = do you want some cute animal pics to lighten up your day?;
 else if 3 (worried) = do you want to follow along to a meditation with me?
-else if 4 (happy) = cool! Let's play some happy music.
+else if 4 (happy) = cool! Let's play some happy music; else "Please select one of four options above"
 
+Follow-up Questions: 
+
+Neutral: Dropdown list Yes/No
+
+If 'yes': display img of puppies/kittens
+If 'no': Do you want to end the chat? (If 'yes': hide input box and finish; if 'no': send to moodQuestion to start over)
+
+Worried: Dropdown list Yes/No
+
+If 'yes': display meditation video
+If 'no': Do you want to end the chat? (If 'yes': hide input box and finish; if 'no': send to moodQuestion to start over)
+
+Happy: Dropdown list Yes/No
+
+If 'yes': display music video
+If 'no': Do you want to end the chat? (If 'yes': hide input box and finish; if 'no': send to moodQuestion to start over)
 
 */
-
