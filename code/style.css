@@ -51,7 +51,7 @@ input {
 }
 
 main {
-  margin: 20px auto;
+  margin: 100px auto;
   width: 100%;
   max-width:700px;
   height: 700px;
@@ -72,7 +72,6 @@ main {
   flex-direction: column;
   padding-bottom: 16px;
 }
-
 
 .bot-msg {
   display: flex;
@@ -127,7 +126,7 @@ button {
   background-color: #0026ff;
   color: white;
   border: none;
-  /* border-radius: 4px; */
+  border-radius: 4px;
   padding: 16px 40px;
   margin-right: 4px;
   font-size: 16px;
@@ -137,9 +136,6 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
-
-
 
 button:hover {
   opacity: 0.9;
@@ -158,7 +154,6 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .start-button {
@@ -168,8 +163,6 @@ button:hover {
   margin: auto;
   display: block;
  }
-
-
 
 #selectStudy, #selectParty{ 
 border: none;
@@ -186,29 +179,26 @@ cursor: pointer;
 -webkit-appearance: none;
 } 
 
-
-
-.footer {
+footer {
   text-align: center;
   background-color: black;
   padding-bottom: 10px;
   color: rgb(213, 212, 212);
 }
 
-.footer p {
-  font-size: 10px;
-  line-height: 10px;
-}
 .footer-info {
   padding-top: 10px;
   margin: 0;
   font-family:'Courier New', Courier, monospace;
+  font-size: 10px;
+  line-height: 10px;
 }
 
 .technigo {
   text-decoration: none;
   color: blue;
 }
+
 .technigo:hover {
   color: orange;
 } 

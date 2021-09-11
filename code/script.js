@@ -7,11 +7,6 @@ const startButton = document.getElementById('startButton')
 const startPage = document.getElementById('startPage')
 const inputWrapper = document.getElementById('input-wrapper')
 
-
-// Global variables
-
-
-
 //FUNCTIONS
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -37,12 +32,11 @@ const showMessage = (message, sender) => {
     `
   }
 
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+// This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
 
-
-
+//to update the option for music style Study
 const updateStudy = () => {
   const selectStudy = document.getElementById('selectStudy')
   if (selectStudy.value === 'brain') {
@@ -59,6 +53,7 @@ const updateStudy = () => {
   }
 }
 
+//to update the option for music style Party
 const updateParty = () => {
   const selectParty = document.getElementById('selectParty')
   if (selectParty.value === 'ninety') {
@@ -75,18 +70,26 @@ const updateParty = () => {
   }
 }
 
-
-
 // QUESTIONS
+
+// show the first question after clicking to the start button 
+startButton.onclick = () => {
+  startPage.style.display = "none"
+  setTimeout(greeting, 1000)
+}
 
 // Question 1 
 const greeting = () => {
   showMessage(`Hello stranger! What's your name?`, 'bot')
-
 }
 const userReply = (input) => {
   showMessage(input, 'user')
 }
+
+sendBtn.addEventListener('click', () => {
+  userReply(userInput.value)
+  setTimeout(pickColor, 1000)
+})
 
 // Question 2 
 const pickColor = () => {
@@ -102,8 +105,8 @@ const pickColor = () => {
   pinkBtn.onclick = () => {
     //when user click on the Pink button, it's going to change background color to Pink. 
     document.body.style.backgroundColor = "pink";
-    userReply(`Pink`) //invoke userReply function with the input "Pink"
-    setTimeout(pickMusicStyle, 1000) // After 1s invoke function pickMusicStyle
+    userReply(`Pink`)                 //invoke userReply function with the input "Pink"
+    setTimeout(pickMusicStyle, 1000)  // After 1s invoke function pickMusicStyle
   }
   greenBtn.onclick = () => {
     document.body.style.backgroundColor = "green";
@@ -115,14 +118,9 @@ const pickColor = () => {
     userReply(`Black`)
     setTimeout(pickMusicStyle, 1000)
   }
-
-  
 }
 
-
-
 // Question 3 
-
 const pickMusicStyle = () => {
   showMessage(`Nice color! Now choose your favorite music style for today.`, 'bot')
   inputWrapper.innerHTML = `
@@ -154,47 +152,20 @@ const pickMusicStyle = () => {
       `
     userReply(`Party`)
   }
-
-
-  // not sure if we need these variables? 
-  // const brain = document.getElementById ('brain')
-  // const relaxing = document.getElementById ('relaxing')
-  // const focus = document.getElementById ('focus')
-  // const eighty = document.getElementById ('eighty')
-  // const ninety = document.getElementById ('ninety')
-  // const millenium = document.getElementById ('millenium')
-
 }
 
-
-
 // Question 4
-
 const playMusic = () => {
-  // showMessage(`A good choice! But I will play this, instead! 🤖`, 'bot')
   showMessage(`A good choice!`, 'bot')
-  showMessage(`But I will play this instead! 🤖`, 'bot')
+  setTimeout(() => showMessage(`But I will play this instead! 🤖`, 'bot'), 1000)
   inputWrapper.innerHTML = `
   <audio controls loop> 
   <source src="./automatik.mp3" type= "audio/mp3"> Your browser does not support the audio tag. 
   </audio>
-    `
+    ` 
 }
-
-sendBtn.addEventListener('click', () => {
-  userReply(userInput.value)
-  setTimeout(pickColor, 1000)
-})
-
-
 
 // prevent page refresh
 nameForm.addEventListener('submit', (event) => {
   event.preventDefault()
 })
-
-// show the first question after clicking to the start button 
-startButton.onclick = () => {
-  startPage.style.display = "none"
-  setTimeout(greeting, 1000)
-}
