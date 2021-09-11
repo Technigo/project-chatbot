@@ -1,13 +1,11 @@
-# Project Name
+# Friendbot by Bruna Santos and Anna Thunberg
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Create a chatbot with inputs from both the bot and the user.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We followed the iterations for the bot, but had some difficulties connecting the bot and the users inputs. We got help during on-call and from our teammates (go lions!) and finally made it work. We made three buttons where the user can choose their mood, and they can choose to see a GIF in the next step. We are happy with the project, as we really struggled this week. If we had more time we would have tried other sorts of buttons for options, and added more questions.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://friendbot.netlify.app/

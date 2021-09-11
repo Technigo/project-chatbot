@@ -12,8 +12,6 @@ let userMoodSaved = ""
 
 // Functions declared here
 
-// Functions declared here
-
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
@@ -39,6 +37,8 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
+//Question / answer flow
+
 const handleInput = (event) => {     
   event.preventDefault()
   console.log(currentQuestion)
@@ -58,7 +58,7 @@ const handleInput = (event) => {
 }
 
 
-// Starts here
+// Questions / answers starts here
 const greeting = () => {
   showMessage(`Hello there! What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
