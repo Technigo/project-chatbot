@@ -68,7 +68,7 @@ const nextQuestion = (message) => {
     setTimeout(() => showConfirmation(message), 1000)
   } else {
     userReply(message)
-    setTimeout(thankYou, 1000)
+    setTimeout(thankYou, 1500)
   }
 }
 
@@ -224,7 +224,7 @@ const showConfirmation = (time) => {
 }
 
 const thankYou = () => {
-  botReply(`Thank you for choosing Urban Hairdo! Looking forward to seeing you!`)
+  botReply(`Your appointment has been registered. Thank you for choosing Urban Hairdo! Looking forward to seeing you!`)
   inputWrapper.innerHTML = ``
 }
 
