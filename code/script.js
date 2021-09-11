@@ -139,7 +139,6 @@ const handleOrderConfirmationInput = (event) => {
   }
 }
 
-
 // Set up your eventlisteners here
 sendButton.addEventListener("click", handleNameInput);
 timeHourInput.addEventListener("click", handleTimeInput);
