@@ -18,8 +18,8 @@
       <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap" rel="stylesheet">
     <title>Chat Bot</title>
   </head>
-
   <body>
+    <!--CHAT BAR BLOCK-->
     <div class="overlay">
       <div class="overlay-inside">
     <h1>Welcome to The Beat Bot!</h1>
@@ -31,27 +31,38 @@
       <div class="rect4"></div>
       <div class="rect5"></div>
     </div>
-    <div class="sound-on">
-      <h3>Sound on!</h3>
-    </div>
-    <main>
-      <section class="chat" id="chat">
-        <button id="welcomeBtn" class="Welcome" type="button">Say Hey!</button>
-      </section>
 
-      <div class="input-wrapper" id="input-wrapper">
-        <form id="name-form">
-          <input id="input" type="text" />
-          <button class="send-btn" type="submit">
-            Send
-          </button>
-        </form>
-      </div>
-    </main>
-  </div>
-</div>
+    <div class="chat-bar-collapsible">
+        <button id="chat-button" type="button" class="collapsible">
+          <p class="chat-with-me">Sound on and chat with me!</p>
+        </button>
+
+        <div class="content">
+            <div class="full-chat-block">
+                <!--Message container-->
+                <div class="outer-container">
+                    <!-- User input box -->
+                    <main class="outer-container">
+                      <section class="chat" id="chat">
+                        <button id="welcomeBtn" class="Welcome" type="button">Say Hey!</button>
+                      </section>
+                
+                      <div class="input-wrapper" id="input-wrapper">
+                        <form id="name-form">
+                          <input id="input" type="text" />
+                          <button class="send-btn" type="submit">
+                            Send
+                          </button>
+                        </form>
+                      </div>
+                    </main>
+                  </div>
+                </div>
+        </div>
+
+    </div>
 
     <script src="./script.js"></script>
-  </body>
+</body>
 
 </html>

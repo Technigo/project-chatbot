@@ -7,6 +7,23 @@ const inputWrapper = document.getElementById('input-wrapper')
 const form = document.getElementById('name-form')
 const select1 = document.getElementById('select1')
 // Global variables, if you need any, declared here
+var coll = document.getElementsByClassName('collapsible');
+
+ 
+
+for (let i = 0; i < coll.length; i++) {
+    coll[i].addEventListener('click', function() {
+        this.classList.toggle('active');
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+
+        } else {
+            content.style.maxHeight = content.scrollHeight + 'px';
+        }
+    });
+
+}
 
 // Functions declared here
 let questionNumber = 1
@@ -48,6 +65,7 @@ const greeting = () => {
   showMessage(`Hello there Beat Bot!`, 'user')
   setTimeout(() => botGreeting(), 1000)
 }
+
 //starts conversation with button
 welcomeButton.onclick = function () {
   if (welcomeButton.style.display !== 'none') {

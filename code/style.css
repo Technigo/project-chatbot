@@ -39,9 +39,8 @@ h2 {
   margin-bottom: 36px;
 }
 
-h3 {
-  text-align: right;
-  margin-right: 270px;
+.chat-with-me {
+  text-align: left;
   color: #fff;
   font-family: 'Covered By Your Grace';
   font-size: 30px;
@@ -49,7 +48,7 @@ h3 {
 }
 
 p {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 28px;
   margin: 0;
@@ -161,12 +160,14 @@ main {
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
+/*Buttons when you're asked if you like the song*/
 #no, #yes {
   background-color:#2FAEAF;
   color: #fff;
   border: solid #2FAEAF;
   border-radius: 20px;
-  padding: 16px 40px;
+  padding: 5px 20px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
@@ -175,6 +176,8 @@ main {
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
+
 #rerun{
   background-color:#C716B7;
   color: #fff;
@@ -204,6 +207,8 @@ main {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+/*Start button that says 'Say Hey'*/
 .Welcome{
   width: 50%;
   height: 50px;
@@ -215,13 +220,21 @@ main {
   font-size: 30px;
   color: white;
 }
+
+/* Dropdown where you select a beat*/
 #select1, #select2, #select3, #select4, #select5{
   background: #2FAEAF;
+  color: #fff;
+  font-weight: bold;
   width: 50%;
   height: 40px;
-  border-radius: 20px;
+  border-radius: 10px;
   margin: 20px;
+  font-size: 16px;
+  border: none;
 }
+
+/*sound waves at the top of the page*/
 .spinner {
   margin: 20px auto;
   width: 50px;
@@ -267,4 +280,401 @@ main {
   40%, 100% { 
     transform: scaleY(0.4) 
   } 
+}
+
+
+/*styling to the collapsible chat bar*/
+.chat-bar-collapsible {
+  position: fixed;
+  bottom: 0;
+  right: 50px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.collapsible {
+  background-color: #C716B7;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 600px;
+  text-align: left;
+  outline: none;
+  font-size: 18px;
+  border-radius: 10px 10px 0px 0px;
+  border: 3px solid white;
+  border-bottom: none;
+}
+
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+
+.full-chat-block {
+  width: 600px;
+  background: white;
+  text-align: center;
+  overflow: auto;
+  scrollbar-width: none;
+  height: max-content;
+  transition: max-height 0.2s ease-out;
+}
+
+.outer-container {
+  min-height: 500px;
+  bottom: 0%;
+  position: relative;
+}
+
+.chat-container {
+  max-height: 500px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  scroll-behavior: smooth;
+  hyphens: auto;
+}
+
+.chat-container::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 668px) and (max-width: 1024px) {
+
+  .chat-bar-collapsible {
+    position: fixed;
+    bottom: 0;
+    
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .collapsible {
+    background-color: #C716B7;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 600px;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    border-radius: 10px 10px 0px 0px;
+    border: 3px solid white;
+    border-bottom: none;
+  }
+  
+  .content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+  }
+  
+  .full-chat-block {
+    width: 600px;
+    background: white;
+    text-align: center;
+    overflow: auto;
+    scrollbar-width: none;
+    height: max-content;
+    transition: max-height 0.2s ease-out;
+  }
+  
+  .outer-container {
+    min-height: 500px;
+    bottom: 0%;
+    position: relative;
+  }
+  
+  .chat-container {
+    max-height: 500px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    scroll-behavior: smooth;
+    hyphens: auto;
+  }
+  
+  .chat-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+}
+
+@media (max-width: 667px) {
+
+  .chat-bar-collapsible {
+    position: fixed;
+    bottom: 0;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .collapsible {
+    background-color: #C716B7;
+    color: white;
+    cursor: pointer;
+    padding: 14px;
+    width: 350px;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    border-radius: 10px 10px 0px 0px;
+    border: 3px solid white;
+    border-bottom: none;
+  }
+  
+  .content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+  }
+  
+  .full-chat-block {
+    width: 350px;
+    background: white;
+    text-align: center;
+    overflow: auto;
+    scrollbar-width: none;
+    height: max-content;
+    transition: max-height 0.2s ease-out;
+  }
+  
+  .outer-container {
+    min-height: 500px;
+    bottom: 0%;
+    position: relative;
+  }
+  
+  .chat-container {
+    max-height: 500px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    scroll-behavior: smooth;
+    hyphens: auto;
+  }
+  
+  .chat-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  h1 {
+    font-weight: bold;
+    font-size: 44px;
+    line-height: 34px;
+    color: #fff;
+    text-align: center;
+    font-family: 'Monoton';
+  }
+  
+  h2 {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 34px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  
+  .chat-with-me {
+    text-align: left;
+    color: #fff;
+    font-family: 'Covered By Your Grace';
+    font-size: 25px;
+    padding: 0px;
+  }
+  
+  p {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 28px;
+    margin: 0;
+  }
+  
+  input {
+    box-sizing: border-box;
+    border: none;
+    border-radius: 20px;
+    background: #2FAEAF;
+    color: #fff;
+    padding: 16px;
+    font-size: 16px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    line-height: 26px;
+    flex: 1;
+  }
+  
+  main {
+    margin: 0;
+    width: 100%;
+    max-width: 400px;
+    height: 600px;
+    border-radius: 30px;
+    background: #fff;
+    padding: 20px 24px;
+    padding-top: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    opacity:2;
+  }
+  
+  .chat {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    overflow: scroll;
+    flex-direction: column;
+    padding-bottom: 16px;
+  }
+  
+  .bot-msg {
+    display: flex;
+    margin: 16px 8px 0 0;
+    flex-shrink: 0;
+  }
+  
+  .user-msg {
+    display: flex;
+    justify-content: flex-end;
+    margin: 16px 20px 0 8px;
+    flex-shrink: 0;
+  }
+  
+  .bot-msg img,
+  .user-msg img {
+    width: 60px;
+    height: 60px;
+    background-color:#cb77c4;
+    border-radius: 50%;
+    box-shadow: 3px  5px #C716B7 ;
+  }
+  
+  .bubble {
+    background: #9fdfe3;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 26px;
+    padding: 12px 16px;
+    color: black;
+    max-width: 40%;
+    box-shadow: 3px  5px #2FAEAF ;
+  }
+  
+  .bot-bubble {
+    border-radius: 0px 26px 26px 26px;
+    margin-left: 8px;
+  }
+  
+  .user-bubble {
+    border-radius: 26px 0 26px 26px;
+    margin-right: 8px;
+  }
+  
+  .input-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .input-wrapper form {
+    width: 100%;
+    display: flex;
+  }
+  
+  .send-btn {
+    background-color:#C716B7;
+    color: #fff;
+    border: solid #C716B7;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-right: 3px;
+    font-size: 16px;
+    line-height: 26px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  /*Buttons when you're asked if you like the song*/
+  #no, #yes {
+    background-color:#2FAEAF;
+    color: #fff;
+    border: solid #2FAEAF;
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin-right: 4px;
+    font-size: 12px;
+    line-height: 26px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  
+  #rerun{
+    background-color:#C716B7;
+    color: #fff;
+    border: solid #C716B7;
+    border-radius: 20px;
+    padding: 16px 40px;
+    margin-right: 4px;
+    font-size: 16px;
+    line-height: 26px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  
+  }
+  #rerun:hover{
+    background-color: #fff;
+    color: #C716B7;
+    border: solid #C716B7;
+    opacity: 0.9;
+    transition: all 0.2s ease;
+    margin-right: 10px;
+  }
+  .send-btn:hover {
+    background-color: #fff;
+    color: #C716B7;
+    border: solid #C716B7;
+    opacity: 0.9;
+    transition: all 0.2s ease;
+  }
+  
+  /*Start button that says 'Say Hey'*/
+  .Welcome{
+    width: 50%;
+    height: 50px;
+    background-color: #C716B7;
+    align-self: center;
+    border: none;
+    border-radius: 20px;
+    margin-top: auto;
+    font-size: 20px;
+    color: white;
+  }
+  
+  /* Dropdown where you select a beat*/
+  #select1, #select2, #select3, #select4, #select5{
+    background: #2FAEAF;
+    color: #fff;
+    font-weight: bold;
+    width: 50%;
+    height: 40px;
+    border-radius: 10px;
+    margin: 20px;
+    font-size: 14px;
+    border: none;
+  }
+  
+  
 }
