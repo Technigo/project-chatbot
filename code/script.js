@@ -6,6 +6,7 @@ const nameForm = document.getElementById('name-form')
 // Button-Sounds
 const voff = document.getElementById('voff')
 const voffSound = document.getElementById('voff-sound')
+const mjauAlert = document.getElementById('mjau')
 
 let currentQuestion = 1
 
@@ -106,7 +107,7 @@ const wrongAnswer = () => {
 )
   }
 
-//Here we change the currentQuestion varible.
+//Here we change the currentQuestion varible
 const handleInput = (event) => {
     
   if (currentQuestion === 1) {
@@ -146,5 +147,6 @@ voff.addEventListener('click', () => {
 mjauAlert.addEventListener('click', () => {
   alert('Oh no, we don´t mjau here!')
 })
+
 
 setTimeout(greeting, 1000)
