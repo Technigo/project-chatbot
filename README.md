@@ -1,13 +1,13 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment was to create a chatbot using pair progrmaming. The purpose of the chatbot was up to us to choose and we decided on a plantbot which we named Plot the plant bot.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We started by formulate some questions and answers for our bot and we decided early in the process what theme we wanted for our chatbot. By participating in the weekly live sessions we got answers to many of our questions and issues. In our JavaScript we used variables, both constants and global, functions and conditionals. We also played around with ternary operators. 
+
+If we had more time we would like to test out different input types, such as dropdown menus, radio buttons and so on. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://emelies-linneaw-week4-chatbot.netlify.app/

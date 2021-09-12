@@ -39,9 +39,12 @@ const greeting = () => {
   showMessage(`Hello there! I'm Plot, the plant bot. What's your name?`, 'bot')
 }
 
+// Plot greets the user and asks what kind of plants the user likes
 const whatPlant = (name) => {
   showMessage(`Nice to meet you ${name}!`, 'bot') 
   setTimeout (() => {showMessage(`What kind of plants do you like?`, 'bot')
+
+// Buttons for plant preferences
 
     inputWrapper.innerHTML = `
     <button id="flowers">🌺</button>
@@ -57,12 +60,14 @@ const whatPlant = (name) => {
   }, 1500)
   }
 
+// Plot further questions the preferences in detail
 const plantSelection = (plantChoice) => {
   questionNumber++
   showMessage(`I prefer ${plantChoice}!`, 'user')
   const editedText = plantChoice.slice(0, -2) //removes the last two characters in the information sent through plantChoice.
   setTimeout (() => {showMessage(`Aha... ${editedText} you say.. let's find out more!`, 'bot')
 
+  // conditional to get more information about user preferences
     if (plantChoice === 'flowers 🌺') {
       inputWrapper.innerHTML = `
       <button id="oneBig">One BIG flower 🌸</button>
@@ -97,6 +102,8 @@ const plantSelection = (plantChoice) => {
   const lastChoice = (finalChoice) => {
     questionNumber++
     showMessage(finalChoice, 'user')
+
+      // conditional for different answers depending on users previous choice
     setTimeout (() => {
     if (finalChoice === 'One BIG flower 🌸') {
       showMessage(`Based on your fondness for big flowers I suggest a SUNFLOWER 🌻`, 'bot')
@@ -115,6 +122,7 @@ const plantSelection = (plantChoice) => {
     }
     }, 1500)
 
+    // user get to choose if they're happy with Plots choice of plant or want to try again
      setTimeout (() => {inputWrapper.innerHTML =`
       <button id="yes">I'm happy with your choice!</button>
       <button id="no">Naah, try again!</button>`
@@ -128,9 +136,7 @@ const plantSelection = (plantChoice) => {
 
     const playAgain = (happy) => {
     questionNumber++
-    showMessage(happy, 'user')
-    // trying out a different approach to the if/else statement
-    
+    showMessage(happy, 'user')    
     if (happy === `I'm very satisfied with your expertise!`) {
       showMessage(`Perfect! Let's wrap it up in paper for you!`, 'bot') 
       inputWrapper.innerHTML = ''
@@ -139,13 +145,13 @@ const plantSelection = (plantChoice) => {
       }, 1500)
      } else {
        showMessage(`I'm sorry to hear that... let's try again, then 🙄`, 'bot')
-       setTimeout (() => {location.reload()
+       setTimeout (() => {location.reload() // This functions reloads the program 
        return false
      }, 2500)
     }
   }
 
-
+// This concitional pushes the next question
 const handleInput = (event) => {
   event.preventDefault()
   questionNumber++
@@ -160,6 +166,7 @@ const handleInput = (event) => {
     } 
 }
 
+// Stores the user input (name) and sends it through to next bot answer so that the bot can be more personal
 const handleNameQuestion = () => {
   const name = userInput.value 
   showMessage(`My name is ${name}!`, 'user')
@@ -168,7 +175,6 @@ const handleNameQuestion = () => {
 }
 
 // Set up your eventlisteners here
-
 form.addEventListener('submit', handleInput)
 
 
