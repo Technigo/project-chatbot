@@ -37,8 +37,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: linen;
+  color: #6e0c2a;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -61,9 +61,23 @@ main {
   flex-direction: column;
 }
 
-.after-potion {
-  width: 300px;
+select {
+  border: none;
+  border-radius: 4px;
+  color: #6e0c2a;
+  font-size: 20px;
+  font-weight: 600;
+  height: 60px;
+  font-family: 'Montserrat';
+  background: linen;
+  width: 100%;
+  padding: 0 20px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
+
 
 .chat {
   flex: 1;
@@ -94,12 +108,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: linen;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #6e0c2a;
   max-width: 40%;
 }
 
@@ -124,7 +138,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #6e0c2a;
   color: white;
   border: none;
   padding: 15px 20px;
@@ -142,10 +156,3 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
-
-.after-potion {
-  width: 300px;
-  height: 300px;
-  border-radius: 50px;
-}
-
