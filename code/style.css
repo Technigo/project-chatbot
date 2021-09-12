@@ -24,19 +24,10 @@ background-color: rgb(94, 15, 84);
 h1 {
   font-weight: bold;
   font-size: 44px;
-  line-height: 34px;
   color: #fff;
   text-align: center;
   font-family: 'Monoton';
-}
-
-h2 {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
-  margin-bottom: 36px;
+  margin-bottom: 0;
 }
 
 .chat-with-me {
@@ -52,6 +43,13 @@ p {
   font-weight: 600;
   line-height: 28px;
   margin: 0;
+}
+
+.signature {
+  font-size: 10px;
+  color: #fff;
+  text-align: center;
+  margin-top: 0;
 }
 
 input {
@@ -177,7 +175,7 @@ main {
   transition: all 0.3s ease;
 }
 
-
+/*button to rerun*/
 #rerun{
   background-color:#C716B7;
   color: #fff;
@@ -242,7 +240,7 @@ main {
   text-align: center;
   font-size: 10px;
 }
-
+/*anumated spinner at top*/
 .spinner > div {
   background-color: #fff;
   height: 100%;
@@ -471,14 +469,6 @@ main {
     font-family: 'Monoton';
   }
   
-  h2 {
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 34px;
-    color: #fff;
-    text-align: center;
-    margin-bottom: 36px;
-  }
   
   .chat-with-me {
     text-align: left;
