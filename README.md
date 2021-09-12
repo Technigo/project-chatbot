@@ -1,13 +1,20 @@
-# Project Name
+ Project Name
+Project ChatBot (TravelBot)
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Jessica Hermansson & Maria Thomasson
+This week we are building a ChatBot in pairs using JavaScript, HTML and CSS. 
+Some of the learnings this week:
+- Be comfortable using variables
+- Know some string methods to modify strings
+- Understand control flow and the use of conditionals statements
+- Be able to write basic functions which take arguments and return values
+- Connect the JavaScript to show visual feedback in the HTML
 
 ## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We got stuck with having our bot to pick up multiple variables and get them in right order 
+to get the right respons as a user. We asked questions on Stack Owerflow and got help 
+from a former alumni to get the bot to pick up the variables and nicely answer where you 
+should travel from the aswers the user choosed.
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://travelbotjm.netlify.app/
