@@ -71,6 +71,10 @@ main {
   padding-bottom: 16px;
 }
 
+.chat::-webkit-scrollbar {
+  width: 0px;
+}
+
 .bot-msg {
   display: flex;
   margin: 16px 8px 0 0;
