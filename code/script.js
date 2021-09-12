@@ -4,39 +4,41 @@ const chat = document.getElementById('chat')
 const nameInput = document.getElementById('name-input')
 const form = document.getElementById('name-form')
 const main = document.getElementById('main')
+const title = document.getElementById('title')
+const title2 = document.getElementById('title2')
 
 // The below const are containing wrapped HTML buttons and select tags. 
 
 const btnSelectMain = `
-  <button id='sushi' type='submit'>Sushi</button>
-  <button id='pokebowl' type='submit'>Pokebowl</button>
-  <button id='yakisoba' type='submit'>Yakisoba</button>
+  <button id='sushi' type='submit'>Sushi 🍣</button>
+  <button id='pokebowl' type='submit'>Pokebowl 🥗</button>
+  <button id='yakisoba' type='submit'>Yakisoba 🍜</button>
   `
 
 const selectSushi = `
   <select name="sushi" id="select">
     <option value="" selected disabled>Please choose an option</option>
-    <option value="9">Mixed 9 pcs</option>
-    <option value="12">Mixed 12 pcs</option>
-    <option value="16">Mixed 16 pcs</option>
+    <option value="9">🍣 Mixed 9 pcs</option>
+    <option value="12">🍣 Mixed 12 pcs</option>
+    <option value="16">🍣 Mixed 16 pcs</option>
   </select>
   `
 
 const selectPokebowl = `
   <select name="pokebowl" id="select">
     <option value="" selected disabled>Please choose an option</option>
-    <option value="salmon">Pokebowl salmon</option>
-    <option value="schrimp">Pokebowl shrimp</option>
-    <option value="tofu">Pokebowl tofu</option>
+    <option value="salmon">🥗 Pokebowl salmon</option>
+    <option value="schrimp">🦐 Pokebowl shrimp</option>
+    <option value="tofu">🥗 Pokebowl tofu</option>
   </select>
   `
 
 const selectYakisoba = `
   <select name="Yakisoba" id="select">
     <option value="" selected disabled>Please choose an option</option>
-    <option value="salmon">Yakisoba salmon</option>
-    <option value="pork">Yakisoba pork</option>
-    <option value="tofu">Yakisoba tofu</option>
+    <option value="salmon">🍜 Yakisoba salmon</option>
+    <option value="pork">🍜 Yakisoba pork</option>
+    <option value="tofu">🍜 Yakisoba tofu</option>
   </select>
   `
   const btnpayment = `
@@ -54,7 +56,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/yakisoba.png" alt="User" /> 
       </section>
     `
   } else if (sender === 'bot') {
@@ -62,7 +64,7 @@ const showMessage = (message, sender) => {
 
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/sushi.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -73,8 +75,7 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-/* Interaction 1, initial greeting
- */
+/* Interaction 1, Initial greeting */
 
 const greeting = () => {
   showMessage(`Hello and welcome to Migaro! What is your name?`, 'bot')
@@ -94,7 +95,7 @@ const handleNameInput = (event) => { //at submit this function will be invoked
   setTimeout(() => foodOptions(btnSelectMain, name), 1000) //passing the arguments to foodOptions function with 1s delay
 }  
 
-// Interaction 2, Food options and select main
+/* Interaction 2, Food options and select main */
 
 const foodOptions = (selectMain, name) => { 
   showMessage(`Nice to meet you ${name}! What are you craving today? See our options below.`, 'bot')
@@ -103,7 +104,7 @@ const foodOptions = (selectMain, name) => {
   .getElementById('sushi')
   .addEventListener('click', () => {
     showMessage(`Sushi would make my day!`,'user')
-    form.innerHTML = '' //remove selectMain from form
+    form.innerHTML = '' //removes selectMain from form
     setTimeout(() => selectFinalOption(selectSushi, 'Sushi'), 1000)
   })
 
@@ -124,7 +125,7 @@ const foodOptions = (selectMain, name) => {
   })
 }
 
-// Interaction 3, Final choice
+/* Interaction 3, Final choice */
 
 const selectFinalOption = (selectFood, foodName) => {
   showMessage(`Great choice! Our ${foodName} are very popular! Make your choice below.`,'bot')
@@ -144,10 +145,10 @@ const selectFinalOption = (selectFood, foodName) => {
   })
 }
 
-// Interaction 4 payment
+/* Interaction 4, Payment */
 
 const paymentOption = () => {
-  showMessage('It will be delivered in 15 minutes. How would you like to pay?', 'bot')
+  showMessage('It will be delivered in 15 min ⏲️. How would you like to pay?', 'bot')
   form.innerHTML = btnpayment
   document
   .getElementById('card')
@@ -173,20 +174,20 @@ const paymentChoice = (paymethod) => {
   showMessage('Please Swish to this number 123456789.', 'bot')
  }
  form.innerHTML = ''
- setTimeout(() => thankYou(), 3000)
+ setTimeout(() => thankYou(), 5000)
 }
 
 
-// Interaction 5 Thank you
+/* Interaction 5 Thank you */
+
 const thankYou = () => {
   main.innerHTML = '<h1 class="thankyou">Thank you for your order!</h1>' 
-  main.style.backgroundColor = "#0026ff";
+  main.style.backgroundColor = "#141010"; 
+  main.style.justifyContent = "center";
+  title.style.display = "none";
+  title2.style.display = "none";
 }
 
-
-const handleFoodInput = (event) => {
-  event.preventDefault()
-}
 
 // Set up your eventlisteners here
 

@@ -6,14 +6,15 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #141010;
+ 
 }
 
 h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: #C94E4E;
   text-align: center;
 }
 
@@ -21,7 +22,7 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: #C94E4E;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -38,7 +39,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #393E46;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -90,12 +91,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #F5EDED;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #393E46;
   max-width: 40%;
 }
 
@@ -117,10 +118,15 @@ main {
 .input-wrapper form {
   width: 100%;
   display: flex;
+  justify-content: center;
+}
+
+#name-input {
+  background-color: #F5EDED ;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #393E46;
   color: white;
   border: none;
   border-radius: 4px;
@@ -139,7 +145,27 @@ button:hover {
   transition: all 0.2s ease;
 }
 
+select {
+  background-color: #393E46;
+  color: white;
+  border-radius: 4px;
+  padding: 16px 40px;
+  margin-right: 4px;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  cursor: pointer;
+}
+
+option {
+  font-size: 16px;
+  line-height: 26px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+}
+
 .thankyou {
-  color: black;
+  color: #F5EDED;
   text-align: center;
 }
