@@ -1,6 +1,6 @@
 // DOM SELECTORS
 const chat = document.getElementById("chat");
-const button = document.getElementById("btn");
+// const button = document.getElementById("btn");
 const form = document.getElementById('name-form')
 const nameInput = document.getElementById("name-input");
 const inputWrapper = document.getElementById("input-wrapper");
