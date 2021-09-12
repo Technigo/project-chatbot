@@ -2,23 +2,19 @@
 const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById('input-wrapper') 
 const form = document.getElementById('name-form')
-// const startButton = document.getElementById('start-btn')
 const inputValue = document.getElementById('input-name')
 
 // Global variables, if you need any, declared here
 let currentQuestion = 0
-// let weather = ""
 let yourName = ""
 let continent = ""
-
 
 // Functions declared here
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
-    console.log('the user is sending')
-
+    // console.log('the user is sending')
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -28,8 +24,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
-    console.log('the bot is sending')
-
+    // console.log('the bot is sending')
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -68,7 +63,7 @@ const continentQuestion = () => {
 }
 
 const weatherQuestion = () => {
-  showMessage('What weather do you prefer?', 'bot')
+  showMessage('What kind of weather do you prefer?', 'bot')
   inputWrapper.innerHTML = /*html*/ `
   <button id="sun" value="sun">Sunny</button>
   <button id="cloud" value="cloud">Cloudy</button>
@@ -94,45 +89,45 @@ const bookQuestion = () => {
   `
   document
   .getElementById('yes')
-  .addEventListener('click', () => handleBookQuestion('Hell yeah!')) //Oklart vad som är fel
+  .addEventListener('click', () => handleBookQuestion('Hell yeah!'))
   document
   .getElementById('no')
   .addEventListener('click', () => handleBookQuestion('No, thanks.'))
 }
 
-
-const lastMessage = () => { //Oklart vad som är fel
-  showMessage(`Thank you!`, 'bot')
-  inputWrapper.innerHTML = ``
+const lastMessage = () => {
+    showMessage(`Thank you, bye!`, 'bot')
+    inputWrapper.innerHTML = ``
 }
 
-
 // const lastMessage = () => {
-//     showMessage(`Thank you! Your booking has been sent tou you`, 'bot')
-  // if (book === 'yes'){
-  //   showMessage(`Thank you ${yourName}! Your booking has been sent tou you`, 'bot')
-  // } else {
-  //   showMessage(`Sorry to see you go, ${yourName}`, 'bot')
-  // }
-  // inputWrapper.innerHTML = ''
+//   if (book === 'yes'){
+//     showMessage(`Thank you ${yourName}! Your booking has been sent tou you`, 'bot')
+//     inputWrapper.innerHTML = ''
+//   } else {
+//     showMessage(`Sorry to see you go, ${yourName}`, 'bot')
+//     inputWrapper.innerHTML = ''
+//   }
 // }
 
 const handleInput = (event1) => {
   event1.preventDefault()
   currentQuestion++
-  console.log('our currentQuestion variable is:', currentQuestion)
+  // console.log('our currentQuestion variable is:', currentQuestion)
   if (currentQuestion === 1) {
     handleNameQuestion()
   } else if (currentQuestion === 2) {
     handleContinentQuestion()
   } else if (currentQuestion === 3) {
     handleWeatherQuestion() 
-  }
+  } else if (currentQuestion === 3) {
+    handleBookQuestion() 
+  } 
 }
 
 const handleNameQuestion = () => {
   yourName = inputValue.value
-  console.log('the name is:', yourName)
+  // console.log('the name is:', yourName)
   showMessage(`My name is ${yourName}`, 'user' )
   inputValue.value = ''
   setTimeout(continentQuestion, 1000)
@@ -140,49 +135,29 @@ const handleNameQuestion = () => {
 
 const handleContinentQuestion = () => {
   continent = select.value
-  console.log('the continent is:', continent)
+  // console.log('the continent is:', continent)
   showMessage(`I would like to visit ${continent}`, 'user' )
   inputValue.value = ''
   setTimeout(weatherQuestion, 1000)
 }
 
-handleWeatherQuestion = (weather) => {
-  console.log(`The weather is`, weather)
+const handleWeatherQuestion = (weather) => {
+  // console.log(`The weather is`, weather)
   showMessage(`I'll like the weather to be ${weather}`, 'user' )
   inputValue.value = ``
-  setTimeout(bookQuestion, 1000) //Fel
+  setTimeout(bookQuestion, 1000)
 }
 
-handleBookQuestion = (book) => {
-  console.log(`The booking is`, book)
+const handleBookQuestion = (book) => {
+  // console.log(`The booking is`, book)
   showMessage(book, 'user' )
   inputValue.value = ``
   setTimeout(lastMessage, 1000)
 }
 
 
-// const handleBookQuestion = (book) => {
-//   console.log('user is sending:', book)
-//   showMessage(book, 'user' )
-//   inputValue.value = ``
-//   setTimeout(lastMessage, 1000)
-// }
-
-
-
-
-
-
-
 // Set up your eventlisteners here
-// startButton.addEventListener('click', greeting)
 form.addEventListener('submit', handleInput)
 
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
+// Here we invoke the greeting with a delay of 1 sek.
 setTimeout(greeting, 1000)
