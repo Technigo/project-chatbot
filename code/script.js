@@ -2,15 +2,17 @@
 const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById('input-wrapper') 
 const form = document.getElementById('name-form')
-const startButton = document.getElementById('start-btn')
+// const startButton = document.getElementById('start-btn')
 const inputValue = document.getElementById('input-name')
 
 // Global variables, if you need any, declared here
 let currentQuestion = 0
+// let weather = ""
+let yourName = ""
+let continent = ""
+
 
 // Functions declared here
-
-
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -47,47 +49,10 @@ const greeting = () => {
   showMessage(`Welcome to the Travelbot! What's your name?`, 'bot')
 }
 
-const ageQuestion = () => {
-  showMessage('How old are you?', 'bot')
-}
-
-const petQuestion = () => {
-  showMessage('do you have pets?', 'bot')
-}
-
-const handleInput = (event1) => {
-  event1.preventDefault()
-  currentQuestion++
-
-
-  console.log('our currentQuestion variable is:', currentQuestion)
-  if (currentQuestion === 1) {
-    handleNameQuestion()
-  } else if (currentQuestion === 2) {
-    ageQuestion()
-  } else if (currentQuestion === 3) {
-    petQuestion() 
-  }
-}
-
-const handleNameQuestion = () => {
-  const name = inputValue.value
-  console.log('the name is:', name)
-  showMessage(`My name is ${name}`, 'user' )
-  inputValue.value = ''
-
-  setTimeout(ageQuestion, 500)
-
-}
-
-
 const continentQuestion = () => {
-  currentQuestion = 2
-  console.log('question number 2')
-
-  showMessage('Which continent do you prefer?', 'bot')
+  showMessage(`Hello ${yourName}! Which continent would you like to visit?`, 'bot')
   inputWrapper.innerHTML = /*html*/`
-    <select id="continentDropDown">
+    <select id="select">
       <option disabled selected value="">Pick a continent</option>
       <option id="africa" value="Africa">Africa</option>
       <option id="europe" value="Europe">Europe</option>
@@ -98,44 +63,104 @@ const continentQuestion = () => {
       <option id="oceania" value="Oceania">Oceania</option>
    </select>
   `
-  continentDropDown.addEventListener('change', (event2) => { 
-    showMessage(event2.target.value, 'user')
-    console.log('sending continent answer')
-
-  })
-
+  const select = document.getElementById('select')
+  select.addEventListener('change', () => handleContinentQuestion(select.value))
 }
 
-const activityQuestion = () => {
-  currentQuestion = 3
-  console.log('question number 3')
-  showMessage(`Great choice, please also tell us which activity would you like to do?`, 'bot')
-//   if (continentDropDown === 'africa'){
-//     inputWrapper.innerhtml = /*html*/`
-//       <button id="Sun">Sun</button>
-//       <button id="City">City</button>
-//       <button id="Food">Food</button>
-// `
-// } else {
-//   console.log('nothing happens')
-// }
+const weatherQuestion = () => {
+  showMessage('What weather do you prefer?', 'bot')
+  inputWrapper.innerHTML = /*html*/ `
+  <button id="sun" value="sun">Sunny</button>
+  <button id="cloud" value="cloud">Cloudy</button>
+  <button id="snow" value="snow">Snowy</button>
+  `
+  document
+  .getElementById('sun')
+  .addEventListener('click', () => handleWeatherQuestion('sunny'))
+  document
+  .getElementById('cloud')
+  .addEventListener('click', () => handleWeatherQuestion('cloudy'))
+  document
+  .getElementById('snow')
+  .addEventListener('click', () => handleWeatherQuestion('snowy'))
 }
 
 
-const handleInputContinent = (event3) => {
-  event3.preventDefault()  
-  setTimeout(continentQuestion, 1000)  
-
-  // activityQuestion()
-
+const bookQuestion = () => {
+  showMessage(`Perfect! We have found a destination in ${continent} where the weather is always as you want. Would you like to book a ticket?`, 'bot')
+  inputWrapper.innerHTML = /*html*/ `
+  <button id="yes" value="yes">Hell yeah!</button>
+  <button id="no" value="no">No, thanks.</button>
+  `
+  document
+  .getElementById('yes')
+  .addEventListener('click', () => handleBookQuestion('Hell yeah!'))
+  document
+  .getElementById('no')
+  .addEventListener('click', () => handleBookQuestion('No, thanks.'))
 }
+
+const lastMessage = () => {
+  if (book === 'yes'){
+    showMessage(`Thank you ${yourName}! Your booking has been sent tou you`, 'bot')
+  } else {
+    showMessage(`Sorry to see you go, ${yourName}`, 'bot')
+  }
+}
+
+const handleInput = (event1) => {
+  event1.preventDefault()
+  currentQuestion++
+  console.log('our currentQuestion variable is:', currentQuestion)
+  if (currentQuestion === 1) {
+    handleNameQuestion()
+  } else if (currentQuestion === 2) {
+    handleContinentQuestion()
+  } else if (currentQuestion === 3) {
+    handleWeatherQuestion() 
+  }
+}
+
+const handleNameQuestion = () => {
+  yourName = inputValue.value
+  console.log('the name is:', yourName)
+  showMessage(`My name is ${yourName}`, 'user' )
+  inputValue.value = ''
+  setTimeout(continentQuestion, 1000)
+}
+
+const handleContinentQuestion = () => {
+  continent = select.value
+  console.log('the continent is:', continent)
+  showMessage(`I would like to visit ${continent}`, 'user' )
+  inputValue.value = ''
+  setTimeout(weatherQuestion, 1000)
+}
+
+const handleWeatherQuestion = (weather) => {
+  console.log(`The weather is`, weather)
+  showMessage(`I like the weather to be ${weather}`, 'user' )
+  inputValue.value = ``
+  setTimeout(bookQuestion, 1000)
+}
+
+const handleBookQuestion = (book) => {
+  console.log(book)
+  showMessage(book, 'user' )
+  inputValue.value = ``
+  inputWrapper.innerHTML = ''
+  setTimeout(lastMessage, 1000)
+}
+
+
+
+
+
+
 
 // Set up your eventlisteners here
-startButton.addEventListener('click', greeting)
-
+// startButton.addEventListener('click', greeting)
 form.addEventListener('submit', handleInput)
-
-
 
 
 // When website loaded, chatbot asks first question.
@@ -144,5 +169,4 @@ form.addEventListener('submit', handleInput)
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-// setTimeout(greeting, 1000)
-// 
+setTimeout(greeting, 1000)
