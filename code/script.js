@@ -6,6 +6,7 @@ const nameForm = document.getElementById('name-form')
 const startButton = document.getElementById('startButton')
 const startPage = document.getElementById('startPage')
 const inputWrapper = document.getElementById('input-wrapper')
+const messageAudio = new Audio ('./message-pop-alert.mp3');
 
 //FUNCTIONS
 
@@ -18,19 +19,23 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/fox.svg" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/alienMonster.svg" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
       </section>
     `
   }
+
+// add a sound to each sending message
+messageAudio.currentTime = 0
+messageAudio.play()
 
 // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
