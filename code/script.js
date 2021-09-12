@@ -78,7 +78,7 @@ const showMessage = (message, sender) => {
 /* Interaction 1, Initial greeting */
 
 const greeting = () => {
-  showMessage(`Hello and welcome to Migaro! What is your name?`, 'bot')
+  showMessage(`Hello and welcome to Migaro! 😊 What is your name?`, 'bot')
 }
 
 setTimeout(greeting, 1000) //the greeting function will be called one second after the website is loaded.
@@ -89,7 +89,7 @@ const handleNameInput = (event) => { //at submit this function will be invoked
   const name = nameInput.value //input value will be stored in the const name
   console.log(name)
 
-  showMessage(`My name is ${name}`, 'user') //users answer
+  showMessage(`My name is ${name}.`, 'user') //users answer
   nameInput.value = '' //clearing name input setting it to an empty string
   
   setTimeout(() => foodOptions(btnSelectMain, name), 1000) //passing the arguments to foodOptions function with 1s delay
@@ -103,7 +103,7 @@ const foodOptions = (selectMain, name) => {
   document
   .getElementById('sushi')
   .addEventListener('click', () => {
-    showMessage(`Sushi would make my day!`,'user')
+    showMessage(`Sushi would make my day! 😋`,'user')
     form.innerHTML = '' //removes selectMain from form
     setTimeout(() => selectFinalOption(selectSushi, 'Sushi'), 1000)
   })
@@ -111,7 +111,7 @@ const foodOptions = (selectMain, name) => {
   document
   .getElementById('pokebowl')
   .addEventListener('click', () => {
-    showMessage(`I'll go with a Pokebowl!`,'user')
+    showMessage(`I'll go with a Pokebowl! 😋`,'user')
     form.innerHTML = ''
     setTimeout(() => selectFinalOption(selectPokebowl, 'Pokebowl'), 1000)
   })
@@ -119,7 +119,7 @@ const foodOptions = (selectMain, name) => {
   document
   .getElementById('yakisoba')
   .addEventListener('click', () => {
-    showMessage(`I'm craving for Yakisoba!`,'user')
+    showMessage(`I'm craving for Yakisoba! 😋`,'user')
     form.innerHTML = ''
     setTimeout(() => selectFinalOption(selectYakisoba, 'Yakisoba'), 1000)
   })
@@ -128,7 +128,7 @@ const foodOptions = (selectMain, name) => {
 /* Interaction 3, Final choice */
 
 const selectFinalOption = (selectFood, foodName) => {
-  showMessage(`Great choice! Our ${foodName} are very popular! Make your choice below.`,'bot')
+  showMessage(`Great choice! Our ${foodName} is very popular! Make your choice below.`,'bot')
   form.innerHTML = selectFood /*html*/
   const mainChoice = document.getElementById('select')
   mainChoice.addEventListener('change', (event) => { // listens to the change of select
@@ -174,7 +174,7 @@ const paymentChoice = (paymethod) => {
   showMessage('Please Swish to this number 123456789.', 'bot')
  }
  form.innerHTML = ''
- setTimeout(() => thankYou(), 5000)
+ setTimeout(() => thankYou(), 6000)
 }
 
 
