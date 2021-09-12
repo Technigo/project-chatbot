@@ -1,80 +1,111 @@
-// DOM SELECTORS
+// DOM SELECTORS:
 const chat = document.getElementById("chat");
-// const button = document.getElementById("btn");
-const form = document.getElementById('name-form')
+const form = document.getElementById("name-form");
 const nameInput = document.getElementById("name-input");
 const inputWrapper = document.getElementById("input-wrapper");
 
-// GLOBAL VARIABLES
+// GLOBAL VARIABLE:
 let currentQuestion = 1;
 
 // FUNCTIONS:
 
-// First Function showMessage: This function will add a chat bubble in the correct place based on who the sender is
+// 1rs Function showMessage: This function will add a chat bubble in the correct place based on who the sender is.
 const showMessage = (message, sender) => {
   if (sender === "user") {
-    chat.innerHTML += 
-    `
+    chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
         <img src="./Pictures/bill-chatbot.png" alt="User" />  
       </section>
-    `
+    `;
   } else if (sender === "bot") {
-    chat.innerHTML += 
-    `
+    chat.innerHTML += `
       <section class="bot-msg">
         <img src="./Pictures/julieta-chatbot.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
       </section>
-    `
+    `;
   }
   chat.scrollTop = chat.scrollHeight; // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
 };
 
-// Secind Function greeting: This function invokes ('calls') the first function, so when the function greeting is invoked, it invokes the first function.
+// 2nd Function greeting: This function invokes ('calls') the first function, so when the function greeting is invoked, it invokes the first function.
 const greeting = () => {
   showMessage(`Welcome to Flowerland! What's your name?`, "bot");
 };
 setTimeout(greeting, 1000);
 
-// Third Function questions
-const handleInput = (e) => {
-  e.preventDefault();
+// 3rd Function handleInput
+const handleInput = (event, answer) => {
+  event.preventDefault();
 
   if (currentQuestion === 1) {
-    //user answer
     let name = nameInput.value;
     showMessage(name, "user");
-    nameInput.value = "";
-    
-    //bot answer after 2 seconds
-    setTimeout(
-      () =>
-        showMessage(
-          `What type of flowers would you like to order ${name}?`,
-          "bot"
-        ),
-      2000
-    );
-
-    currentQuestion = 2;
+    setTimeout(() => showFlowerTypes(name), 1000);
 
   } else if (currentQuestion === 2) {
-    let flower = nameInput.value;
-    showMessage(flower, "user");
-    nameInput.value = "";
-    setTimeout(
-      () => showMessage(`You have chosen ${flower}! Great choice!`, "bot"),
-      2000)
-    }
-   
+    showMessage(answer, "user");
+    inputWrapper.innerHTML = "";
+    setTimeout(() => showFlowerSize(answer), 2000);
+
+  } else if (currentQuestion === 3) {
+    showMessage(answer, "user" );
+    setTimeout(()=> showFinalMessages(answer),2000);
+  }
 };
 
-form.addEventListener('submit', handleInput);
+// THREE FUNCTIONS THAT ARE BEING INVOKED INSIDE OF THE HANDLEINPUT FUNCTION:
+
+function showFlowerTypes(name) {
+  showMessage(`What type of flowers would you like to order ${name}?`, "bot");
+  inputWrapper.innerHTML = 
+  `
+  <select id="select">
+    <option value="" selected disabled>👇 Select a bouquet of flowers...</option>
+    <option value="Rose">Roses</option>
+    <option value="Tulip">Tulips</option>
+    <option value="Sunflower">Sunflowers</option>
+    <option value="Magnolia">Magnolia</option>
+  </select>
+`;
+  const select = document.getElementById("select");
+  select.addEventListener("change", (event) => handleInput(event, select.value));
+  currentQuestion++;
+}
+
+function showFlowerSize(answer) {
+  showMessage( `You have chosen ${answer}! Great choice! What size would you like your bouquet to be?`,"bot");
+  inputWrapper.innerHTML = 
+  `
+    <button id="smallBtn">Small</button>
+    <button id="mediumBtn">Medium</button>
+    <button id="largeBtn">Large</button>
+  `;
+  const smallBtn = document.getElementById("smallBtn");
+  smallBtn.addEventListener("click", (event) => handleInput(event,'small'));
+
+  const mediumBtn = document.getElementById("mediumBtn");
+  mediumBtn.addEventListener("click", (event) => handleInput(event,'medium'));
+
+  const largeBtn = document.getElementById("largeBtn");
+  largeBtn.addEventListener("click", (event) => handleInput(event,'large'));
+
+  currentQuestion++;
+}
+
+function showFinalMessages(answer) {
+
+  showMessage(`A ${answer} bouquet. Excelent!`,'bot')
+  inputWrapper.innerHTML = "";
+  setTimeout(()=> showMessage(`Your ${answer} bouquet will be soon ready and send.`,'bot'),2000)
+  setTimeout(()=> showMessage('Thank you for shopping at Flowerland and see you soon!','bot'),4000) 
+}
 
 
+// EVENT LISTENER FOR INVOKING THE FUNCTION HANDLEINPUT
+form.addEventListener("submit", handleInput);
