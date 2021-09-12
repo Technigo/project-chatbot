@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #5C48FF;
 }
 
 h1 {
@@ -46,6 +46,25 @@ input {
   line-height: 26px;
   flex: 1;
 }
+
+select {
+  border: none;
+  border-radius: 4px;
+  color: #0026ff;
+  font-size: 20px;
+  font-weight: 600;
+  height: 60px;
+  font-family: 'Montserrat';
+  background: #e5e9ff;
+  width: 100%;
+  padding: 0 20px;
+  cursor: pointer;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 
 main {
   margin: 0 auto;
@@ -125,7 +144,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #5C48FF;
   color: white;
   border: none;
   border-radius: 4px;
@@ -142,4 +161,12 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+#start-btn {
+ display: block;
+ margin: 20px auto;
+ width: 15%;
+ background-color: #d48506;
+ padding: 10px;
 }
