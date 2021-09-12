@@ -3,29 +3,11 @@ const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById('input-wrapper')
 const nameInput = document.getElementById('name-input')
 const nameForm = document.getElementById('name-form')
-
-// Global variables, if you need any, declared here
-let currentQuestion = 1
-
-// Försöker lägga till ljud på knapparna i footern här 
+// Button-Sounds
 const voff = document.getElementById('voff')
 const voffSound = document.getElementById('voff-sound')
 
-voff.addEventListener('click', () => {
-    function playAudio (voffSound){
-      
-    }
-    voffSound.play();
-    console.log('VOFF')
-  })
-
-/* 
-const audio = document.getElementById('voff')
-
-audio.addEventListener('click', () => {
-  console.log('DOGBARK')
-  
-}) */
+let currentQuestion = 1
 
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -51,7 +33,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+// This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
 
@@ -120,11 +102,26 @@ const wrongAnswer = () => {
       document.getElementById('bye').addEventListener('click', () => {
         
       location.reload () 
-
 }
 )
   }
-//Here we handle all the user input answers. 
+
+//Here we change the currentQuestion varible.
+const handleInput = (event) => {
+    
+  if (currentQuestion === 1) {
+    handleName() }
+    else if (currentQuestion === 2){
+    dogQuestion()
+  } else if (currentQuestion === 3) {
+    breedQuestion()
+  } else {
+    byeBye()
+  }
+  currentQuestion++
+}
+
+// Set up your eventlisteners here
 nameForm.addEventListener('submit', (event) => {
     event.preventDefault ()
     handleInput()
@@ -140,26 +137,14 @@ nameForm.addEventListener('submit', (event) => {
     setTimeout(dogQuestion, 1000)
   }
 
-
-//We change the currentQuestion varible. I moved it to the end as it's more logic to change to next question AFTER you've answered it.
-const handleInput = (event) => {
-    
-  if (currentQuestion === 1) {
-    handleName() }
-    else if (currentQuestion === 2){
-    dogQuestion()
-  } else if (currentQuestion === 3) {
-    breedQuestion()
-  } else {
-    byeBye()
+voff.addEventListener('click', () => {
+  function playAudio (voffSound){
   }
-  currentQuestion++
-}
+  voffSound.play();
+})
 
-//Here we passing the next bot question.
-
-// Set up your eventlisteners here
-
-
+mjauAlert.addEventListener('click', () => {
+  alert('Oh no, we don´t mjau here!')
+})
 
 setTimeout(greeting, 1000)
