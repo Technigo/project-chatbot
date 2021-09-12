@@ -33,11 +33,11 @@ position: absolute;
 .container__h1 {
   position: absolute;
   font-weight: bold;
-  font-size: 144%;
+  font-size: 140%;
   line-height: 34px;
   color: #fff;
   text-align: center;
-  margin: 9vh 29vw;
+  margin: 9vh 0 0 30vw;
   text-shadow: 0 0 5px #5f4c24;
   
 }
