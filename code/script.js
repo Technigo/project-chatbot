@@ -37,6 +37,11 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+const handleNameInput = (event) => {
+  event.preventDefault()
+  
+}
+
 // Set up your eventlisteners here
 
 // When website loaded, chatbot asks first question.
