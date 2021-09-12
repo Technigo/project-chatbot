@@ -1,18 +1,16 @@
-// All the DOM selectors stored as short variables (only selectors that have an event to it)
+//DOM selectors stored as short variables
 const chat = document.getElementById('chat') 
 const form = document.getElementById('name-form') //The form
 const inputValue = document.getElementById('name-input') //Input field
 const inputWrapper = document.getElementById('input-wrapper')
 const sendBtn = document.getElementById('submit')
 
-// Global variables, if you need any, declared here
+//Global variables
+let userName = ''
 
-
-// FUNCTIONS declared here (always has to be created before we can call it-->
-
+//Functions
 
 //This function will add a chat bubble in the correct place based on who the sender is
-
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     
@@ -48,8 +46,8 @@ const greeting = () => {
 }
 
 //2nd
-const handleFoodInput = (name) => { //Why does it say undefined?
-  setTimeout(() => showMessage(`Hi ${name}, what would you like to order?`, 'bot'), 1000) 
+const handleFoodInput = () => { 
+  setTimeout(() => showMessage(`Hi ${userName}, what would you like to order?`, 'bot'), 1000) 
 
   inputWrapper.innerHTML = `
   <button id="Pizza">Pizza</button>
@@ -58,11 +56,12 @@ const handleFoodInput = (name) => { //Why does it say undefined?
  `
 
  inputWrapper.addEventListener('click', handleRequest)
+ 
 }
 
 //3rd
-const handleRequest = (type) => { 
-  setTimeout(() => showMessage (`Thanks for choosing ${type}, would you like a drink with that?`, 'bot'), 1000)
+const handleRequest = () => { 
+  setTimeout(() => showMessage (`Good choice, ${userName}! Would you like a drink with that?`, 'bot'), 1000)
 
   inputWrapper.innerHTML = `
   <button id="Yes">Yes</button>
@@ -93,14 +92,13 @@ const drinkOrder = (type) => { //depending on answer, different messages will oc
 const handleNameInput = (event) => { 
   event.preventDefault()
 
-  const name = inputValue.value
+  userName = inputValue.value
 
-  showMessage(`Hey, my name is ${name}!`, 'user')
+  showMessage(`Hey, my name is ${userName}!`, 'user')
   inputValue.value = '' //this is to take away the name from the form and call on another function
 
-  setTimeout(handleFoodInput, 1000)
+  setTimeout(handleFoodInput, 1000) //
 }
-
   
 //The button on the form, envoked every time we submit the form
 form.addEventListener('submit', handleNameInput)
@@ -108,4 +106,3 @@ form.addEventListener('submit', handleNameInput)
 
 //When website loaded, chatbot asks first question with a 1sec delay:
 setTimeout(greeting, 1000)
-
