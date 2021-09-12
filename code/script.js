@@ -100,10 +100,9 @@ function showFlowerSize(answer) {
 
 function showFinalMessages(answer) {
 
-  showMessage(`A ${answer} bouquet. Excellent!`,'bot')
+  showMessage(`A ${answer} bouquet. Excellent! Your ${answer} bouquet will be soon ready.`,'bot')
   inputWrapper.innerHTML = "";
-  setTimeout(()=> showMessage(`Your ${answer} bouquet will be soon ready and send.`,'bot'),2000)
-  setTimeout(()=> showMessage('Thank you for shopping at Flowerland and see you soon!','bot'),4000) 
+  setTimeout(()=> showMessage('Thank you for shopping at Flowerland and see you soon!','bot'),2000) 
 }
 
 
