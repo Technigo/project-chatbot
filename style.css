@@ -6,7 +6,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #0e6d26;
+  background-image: url(https://images.unsplash.com/photo-1470058869958-2a77ade41c02?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80);
+  background-size: cover;
 }
 
 h1 {
@@ -37,8 +39,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #e5ffe6;
+  color: #0e6d26;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -90,12 +92,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #e5ffe6;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #0e6d26;
   max-width: 40%;
 }
 
@@ -120,7 +122,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #0e6d26;
   color: white;
   border: none;
   border-radius: 4px;
