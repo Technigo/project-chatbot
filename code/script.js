@@ -94,19 +94,27 @@ const bookQuestion = () => {
   `
   document
   .getElementById('yes')
-  .addEventListener('click', () => handleBookQuestion('Hell yeah!'))
+  .addEventListener('click', () => handleBookQuestion('Hell yeah!')) //Oklart vad som är fel
   document
   .getElementById('no')
   .addEventListener('click', () => handleBookQuestion('No, thanks.'))
 }
 
-const lastMessage = () => {
-  if (book === 'yes'){
-    showMessage(`Thank you ${yourName}! Your booking has been sent tou you`, 'bot')
-  } else {
-    showMessage(`Sorry to see you go, ${yourName}`, 'bot')
-  }
+
+const lastMessage = () => { //Oklart vad som är fel
+  showMessage(`Thank you for booking or not booking.`, 'bot')
 }
+
+
+// const lastMessage = () => {
+//     showMessage(`Thank you! Your booking has been sent tou you`, 'bot')
+  // if (book === 'yes'){
+  //   showMessage(`Thank you ${yourName}! Your booking has been sent tou you`, 'bot')
+  // } else {
+  //   showMessage(`Sorry to see you go, ${yourName}`, 'bot')
+  // }
+  // inputWrapper.innerHTML = ''
+// }
 
 const handleInput = (event1) => {
   event1.preventDefault()
@@ -137,20 +145,27 @@ const handleContinentQuestion = () => {
   setTimeout(weatherQuestion, 1000)
 }
 
-const handleWeatherQuestion = (weather) => {
+handleWeatherQuestion = (weather) => {
   console.log(`The weather is`, weather)
   showMessage(`I like the weather to be ${weather}`, 'user' )
   inputValue.value = ``
-  setTimeout(bookQuestion, 1000)
+  setTimeout(bookQuestion, 1000) //Fel
 }
 
-const handleBookQuestion = (book) => {
-  console.log(book)
-  showMessage(book, 'user' )
+handleBookQuestion = (book) => {
+  console.log(`The booking is`, book)
+  showMessage(`Booking: ${book}`, 'user' )
   inputValue.value = ``
-  inputWrapper.innerHTML = ''
   setTimeout(lastMessage, 1000)
 }
+
+
+// const handleBookQuestion = (book) => {
+//   console.log('user is sending:', book)
+//   showMessage(book, 'user' )
+//   inputValue.value = ``
+//   setTimeout(lastMessage, 1000)
+// }
 
 
 

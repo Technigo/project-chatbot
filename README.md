@@ -1,19 +1,14 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Travelbot by Ebba Delsol & Jakob Lindström.
+The project was to build a chatbot with topic of you choice.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Our first approach was to decide what the chatbot should be about. We decided that our bot was going to be travelbot that will find a perfect place for you to visit. We were given HTML and CSS styling and focused on JavaScript variables, functions and conditionals.
+
+If we had more time we would have liked to get each continent choice together with a weather choice to lead to a unique place/city. We would have liked to add more conditionals. We would also have liked to add sound on the messages.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
-
-Questions:
-we dont understand the instructions.a
-what were we supposed to console log?
-Before we start with iterations, how far along should we have gotten.
-Do you have to "prevent" the default behaviour and add a action, or is it enough with just giving an action?
+https://travelchat-bot.netlify.app/
