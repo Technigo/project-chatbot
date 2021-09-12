@@ -102,7 +102,8 @@ const bookQuestion = () => {
 
 
 const lastMessage = () => { //Oklart vad som är fel
-  showMessage(`Thank you for booking or not booking.`, 'bot')
+  showMessage(`Thank you!`, 'bot')
+  inputWrapper.innerHTML = ``
 }
 
 
@@ -147,14 +148,14 @@ const handleContinentQuestion = () => {
 
 handleWeatherQuestion = (weather) => {
   console.log(`The weather is`, weather)
-  showMessage(`I like the weather to be ${weather}`, 'user' )
+  showMessage(`I'll like the weather to be ${weather}`, 'user' )
   inputValue.value = ``
   setTimeout(bookQuestion, 1000) //Fel
 }
 
 handleBookQuestion = (book) => {
   console.log(`The booking is`, book)
-  showMessage(`Booking: ${book}`, 'user' )
+  showMessage(book, 'user' )
   inputValue.value = ``
   setTimeout(lastMessage, 1000)
 }
