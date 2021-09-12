@@ -1,4 +1,4 @@
-# Project Name
+# The Beat Bot - Chatbot with Javascript
 
 Replace this readme with your own information about your project.
 
