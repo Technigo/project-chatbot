@@ -1,10 +1,15 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat');
-const yesBtn = document.getElementById('yes-btn');
-const noBtn = document.getElementById('no-btn');
 const inputWrapper = document.getElementById('input-wrapper');
 
-// Global variables, if you need any, declared here
+// If we have time it would be nice to add the replies automatically instead...
+// const botReply = (msg) => {
+//   showMessage(msg, 'bot')
+// }
+
+// const userReply = (msg) => {
+//   showMessage(msg, 'user')
+// }
 
 // Functions declared here
 
@@ -35,26 +40,46 @@ const showMessage = (message, sender) => {
 	chat.scrollTop = chat.scrollHeight;
 };
 
-// Starts here
-const greeting = () => {
-	showMessage(`Hello there, are you ready to place your order?`, 'bot');
-	// Just to check it out, change 'bot' to 'user' here 👆
-};
-
+// This function clears the content in the innerHTML - used here to clear the input buttons when the chat ends
 const clearInput = () => {
 	inputWrapper.innerHTML = ``;
 };
 
-const handleNotReady = () => {
-  showMessage(`Not ready yet...`, 'user');
-  setTimeout(greeting, 1000)
+// Starts here
+// This function will greet the user to the chat
+const greeting = () => {
+	showMessage(`Hello there, are you ready to place your order?`, 'bot');
+  inputWrapper.innerHTML = `
+  <button id="ready">Sure!</button>
+  <button id="notReady">Not ready yet...</button
+  `
+  document.getElementById('ready').addEventListener('click', () => {
+    showMessage(`Sure!`, 'user');
+    startChatting();
+  });
+  document.getElementById('notReady').addEventListener('click', () => {
+    showMessage(`Not ready yet...`, 'user');
+    handleNotReady();
+  });
 }
 
+// This function will get the chat started
+const startChatting = () => {
+  setTimeout(() => {showMessage(`Awesome! Please select the LEGO® theme you're interested in below.`, 'bot');
+  selectTheme();}, 1000);
+}
+
+// This function will handle the not ready reply and ping the user to get started shopping
+const handleNotReady = (message) => {
+  setTimeout(() => {showMessage(`Hello again, are you ready to place your order now?`, 'bot');}, 2000);
+  document.getElementById('notReady').addEventListener('click', () => {
+  });
+}
+
+// This function will present the different LEGO themes available for shopping
 const selectTheme = () => {
-	showMessage(`Sure!`, 'user');
-	showMessage(`That's awesome!`, 'bot');
 	inputWrapper.innerHTML = `
-  <select id="select-theme">
+  <select id="select">
     <option value="" selected disabled>👇 Select a theme...</option>
     <option value="Architecture">Architecture</option>
     <option value="Batman™">Batman™</option>
@@ -98,67 +123,92 @@ const selectTheme = () => {
     <option value="Xtra">Xtra</option>
   </select>
 `;
-	const select = document.getElementById('select-theme');
+	const select = document.getElementById('select');
 	select.addEventListener('change', () => evaluateThemeSelection(select.value));
 };
 
+// This function will handle the LEGO theme choice made by the user 
 const evaluateThemeSelection = (selectedTheme) => {
-	showMessage(selectedTheme, 'user');
-	if (selectedTheme === 'Star Wars™') {
-		showMessage(`Awesome! You picked the only valid choice!`, 'bot');
+	if (selectedTheme === "Star Wars™") {
+    showMessage(selectedTheme, 'user');
 		starWarsItems();
 	} else {
-		showMessage(`Shoot! ${selectedTheme} is out of stock. How about Star Wars lego?`, 'bot');
-		inputWrapper.innerHTML = `
-    <button id="yes-btn">Sure! Show me what you got!</button>
-    <button id="no-btn">Not, not interested.</button>
+    showMessage(selectedTheme, 'user');
+    setTimeout(() => {showMessage(`Shoot! ${selectedTheme} is out of stock. How about Star Wars™ lego?`, 'bot');
+    inputWrapper.innerHTML = `
+    <button id="yesBtn">Ok! Show me what you got in stock!</button>
+    <button id="notInterestedBtn">No, not interested.</button>
     `;
-		document.getElementById('yes-btn').addEventListener('click', () => {
-			showMessage('Sure! Show me what you got!', 'user');
-			starWarsItems();
-		});
-		document.getElementById('no-btn').addEventListener('click', () => {
-			showMessage('No, not interested.', 'user');
-			showMessage('Ok. Good bye.', 'bot');
-			clearInput();
-		});
+    document.getElementById('yesBtn').addEventListener('click', () => { 
+      showMessage(`Ok. Show me what you got in stock!`, 'user');
+      starWarsItems();
+    });
+    document.getElementById('notInterestedBtn').addEventListener('click', () => handleNotInterested());}, 1000);
 	}
 };
 
+
+// This function will present the LEGO Star Wars items available for order
 const starWarsItems = () => {
-	showMessage(`May the force be with you! Choose one of our top picks:`, 'bot');
+  setTimeout(() => {showMessage(`May the force be with you, you made the only valid choice 🥳 ! Choose one of our top picks:`, 'bot');
 	inputWrapper.innerHTML = `
-  <button id="btn-1">Millenium Falcon</button>
-  <button id="btn-2">R2D2</button>
-  <button id="btn-3">Death Star</button>
+  <button id="btn1">Millenium Falcon</button>
+  <button id="btn2">R2D2</button>
+  <button id="btn3">Death Star</button>
     `;
-	document.getElementById('btn-1').addEventListener('click', () => confirmOrder('Millenium Falcon'));
-	document.getElementById('btn-2').addEventListener('click', () => confirmOrder('R2D2'));
-	document.getElementById('btn-3').addEventListener('click', () => confirmOrder('Death Star'));
+	document.getElementById('btn1').addEventListener('click', () => confirmOrder('Millenium Falcon'));
+	document.getElementById('btn2').addEventListener('click', () => confirmOrder('R2D2'));
+	document.getElementById('btn3').addEventListener('click', () => confirmOrder('Death Star'));}, 1000);
 };
 
+
+// This function will handle the not interested reply 
+const handleNotInterested = () => {
+  showMessage(`No, not interested.`, 'user');
+  goodByeMessage();
+}
+
+// This function will ask the user to confirm the purchase 
 const confirmOrder = (item) => {
 	showMessage(item, 'user');
-	showMessage(`One ${item} added to you cart. Are you happy with order?`, 'bot');
+	setTimeout(() => {showMessage(`Excellent choice! One ${item} have now been added to your cart. Are you happy with your order?`, 'bot');
 	inputWrapper.innerHTML = `
-  <button id="yes-btn">Yes!</button>
-  <button id="no-btn">No!</button>
+  <button id="confirmBtn">Yes!</button>
+  <button id="notConfirmedBtn">No!</button>
   `;
-	document.getElementById('yes-btn').addEventListener('click', () => {
-		showMessage('Yes', 'user');
-		showMessage(`Awesome! One ${item} will be sent to you from a galaxy far far away.`, 'bot');
-		clearInput();
-	});
-	document.getElementById('no-btn').addEventListener('click', () => {
-		showMessage('No.', 'user');
-		showMessage('Ok. Good bye.', 'bot');
-		clearInput();
-	});
-};
+  document.getElementById('confirmBtn').addEventListener('click', () => thankYou(item));
+  document.getElementById('notConfirmedBtn').addEventListener('click', () => {
+    showMessage('No.', 'user');
+    goodByeMessage();
+});}, 1000);
+}
+
+// This function will close the deal and end the chat with Thank You message and order confirmation. 
+const thankYou = (item) => {
+  showMessage('Yes!', 'user');
+  setTimeout(() => {showMessage(`Awesome! One ${item} will be sent to you from a galaxy far far away.`, 'bot');
+  playSound ();
+  clearInput();
+});
+}
+
+
+const playSound = () => {
+  inputWrapper.innerHTML = `
+  <audio autoplay>
+    <source src="./assets/star-wars-theme.mp3" type="audio/mpeg">
+  </audio>
+  `;
+  document.getElementById("audio").play();
+}
+
+// This function will end the chat with the message "Ok, Good bye". 
+const goodByeMessage = () => {
+  setTimeout(() => {showMessage('Ok. Good bye.', 'bot');
+  clearInput();}, 1000);
+}
 
 // Set up your eventlisteners here
-yesBtn.addEventListener('click', () => selectTheme());
-noBtn.addEventListener('click', () => handleNotReady());
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
