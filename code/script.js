@@ -16,14 +16,14 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user1.png" alt="User" />  
+        <img src="user1.png" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     console.log('mordor', 'bot')
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot2.png" alt="Bot" />
+        <img src="bot2.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -169,7 +169,7 @@ const afterPotionResult = (antitode) => {
   if (antitode === 'ringPhoto') {
     showMessage(`
     
-        <img src="assets/giphy.webp" class="after-potion"></img>
+        <img src="giphy.webp" class="after-potion"></img>
         `
       , 'user')
     
@@ -187,7 +187,7 @@ const afterPotionResult = (antitode) => {
   
   }
   else {
-    showMessage(`<img src="assets/orcs_dead.jpeg" class=" after-potion">`, 'user')
+    showMessage(`<img src="orcs_dead.jpeg" class=" after-potion">`, 'user')
     showMessage(`Good job! you can go home or you can restart. Have a nice day`, 'bot')
     inputWrapper.innerHTML =`
     <section class='input-wrapper'>
