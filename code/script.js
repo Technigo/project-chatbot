@@ -27,8 +27,8 @@ const showPlantOptions = (userName) => {
   ), 1000);
   // It then switches out the input-field for a dropdown containing three different plant choises
   // It also creates a restart-button where you can reset the chat and start over if you want to
-  inputWrapper.innerHTML = `
-  <select id="dropdown">
+  inputWrapper.innerHTML = 
+  `<select id="dropdown">
     <option value="Monstera">Monstera</option>
     <option value="Pilea">Pilea</option>
     <option value="Calathea">Calathea</option>
