@@ -17,4 +17,4 @@ We would like to remove the event listener in order to prevent users from clicki
 
 ## View it live
 
-[Celebrity Chat Bot](https://ecstatic-ride-5df75e.netlify.app/?)
+[Celebrity Chat Bot](https://celebrity-soulmate-bot.netlify.app/)
