@@ -1,13 +1,7 @@
-# Project Name
+we are al in al satisfied with the result, even though its a bit "simple" and we had big ambitions with it in the start. Some illness got in the way for the teamwork and we ended up coding and figuring stuff out a bit on our own and a bit together. In the end we merged the code together and made it work.
 
-Replace this readme with your own information about your project.
+As I made the link to Netlify I saw that the sounds that are supposed to come when the different chat bubbles appear, is not in sync... It worked in the live server, so this problem appeared just as we were to hand the project in.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+If we had more time we would like to maybe add some items to the order and make a "order presentation" in the end, and also to make the sounds sync at all times.
 
-## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
-
-## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Link to Netlify: https://hopeful-turing-a599ec.netlify.app
