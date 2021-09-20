@@ -18,7 +18,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
-    console.log(message);
+    
 
     chat.innerHTML += `
       <section class="bot-msg">
@@ -73,7 +73,7 @@ const showCoffeeOptions = (coffeeKind) => {
     //Used else if condition - if user chose COLD the showMessage will be different from HOT. 
   }
   else if (coffeeKind === 'Cold') {
-    showMessage('Hot out there? Chose your cold beverage down below!', 'bot');
+    showMessage('Hot out there? Choose your cold beverage down below!', 'bot');
     inputWrapper.innerHTML = `
   <select id="select">
     <option value="" selected disabled> Chose your cold coffee</option>
@@ -99,7 +99,7 @@ const showCoffeeOptions = (coffeeKind) => {
 // Added 3 buttons of size alternatives (105,106,107). Same code as for hot and cold button in the start.
 const handleCoffeeOptionInput = (coffeeOption) => {
   option = coffeeOption;
-  console.log(coffeeOption);
+  
   showMessage(`${coffeeOption}, excellent choice! What size do you want?`, 'bot');
   inputWrapper.innerHTML = `
     <button id="smallBtn">Small</button>
