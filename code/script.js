@@ -19,11 +19,13 @@ let currentQuestion = 1;
         setTimeout(() => showFoodOptions(message), 1000)
 
       } else if(currentQuestion === 2) {
+        inputWrapper.innerHTML = ''
         showMessage(message, 'user')
         setTimeout(() => showMessage(`So you want to order ${message}?`, 'bot'), 1000)
         showPriceSushi() 
 
       } else if(currentQuestion === 3) {
+        inputWrapper.innerHTML = ''
         showMessage(message, 'user')
         ending(message)
       } 
@@ -70,7 +72,7 @@ let currentQuestion = 1;
 
       const bigSushi = document.getElementById('big-sushi')
       bigSushi.addEventListener('click', () => nextQuestion('12 pieces'))
-     
+
     }
 // 7.
     const showPriceSushi = () => {
@@ -107,7 +109,8 @@ let currentQuestion = 1;
         showMessage('Thank you for your order', 'bot')
         setTimeout(() => location.reload(), 5000)
       } else  
-        setTimeout(() => location.reload(), 1500)
+        showMessage('Okey, see you later!', 'bot')
+        setTimeout(() => location.reload(), 5000)
       
 
     }
