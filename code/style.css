@@ -6,33 +6,60 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background-color: white;
+  background-color: rgb(185, 202, 201);
   width: 100%;
+
   
 }
-.video {
-  object-fit: cover;
-  width: 100%;
-  /* height: 100vh; */
+video {
   position: relative;
-  /* overflow: hidden; */
-
-
+  display: block;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100vh;
+  object-fit: cover;
 }
 
-.container-on-video {
+.video{
+    background-color: #7B6079;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
   position: absolute;
-  top: 6vh;
-  margin: auto;
-  padding: 5vh;
-  width: 600px;
+  top: 220px;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 700px;
+  min-height: 570px;
+  max-height: 800px;
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px 24px;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
 
 }
 
-.header{
+
+header{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  width: 100%;
+  max-height: 200px;
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 1vh 3vh;
-  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  
  
 }
 
@@ -75,20 +102,7 @@ input {
   flex: 1;
 }
 
-main {
-  margin-top: 2vh;
-  width: 100%;
-  max-width: 600px;
-  height: 570px;
-  border-radius: 30px;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 2vh 3vh;
-  padding-top: 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
 
-}
 
 .chat {
   flex: 1;
@@ -180,7 +194,53 @@ button:hover {
 
 footer {
   display: block;
+  bottom: 0;
+  width: 100%;
+  background-color:rgba(0, 0, 0, 0.5);
   color: black;
   border:none;
-  padding-left: 20px;
+  padding: 10px 0 10px 30px;
+  height: auto;
+ 
+
 }
+
+footer p {
+  font-size: 8pt;
+  line-height: 10pt;
+}
+
+@media (max-width: 720px) {
+main {
+  top: 170px;
+  max-width: 650px;
+  min-height: 350px;
+  max-height: 400px;
+  
+}
+
+  h1 {
+    font-size: 28px;
+    line-height: 30px;
+  }
+  
+  h2 {
+    font-size: 18px;
+    line-height: 20px;
+    margin-bottom: 20px;
+  }
+
+
+  button {
+    padding: 16px 10px;
+    font-size: 10pt;
+  }
+
+}
+
+.bubble {
+  padding: 12px 18px;
+  max-width: 50%;
+}
+
+
