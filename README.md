@@ -14,7 +14,7 @@ Thats a learing project targeted on practicing DOM, Conditionals and EventHandle
 ## Tech Stack: JavaScript , CSS (Flexbox approach) & HTML
 
 ## View it live
-https://space-bot-johannamj-marysnopok.netlify.app/
+https://space-bot-pair-programming.netlify.app
 
 ## Resources
 Avatar creator can be found here: https://nice-avatar.dapiok.com/
