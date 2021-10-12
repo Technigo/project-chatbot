@@ -8,7 +8,6 @@ body {
   font-family: 'Montserrat', sans-serif;
   background-image: url(https://r4.wallpaperflare.com/wallpaper/783/587/809/star-wars-death-star-science-fiction-wallpaper-a920d88d71eabd3be6d7f8afd0b1660d.jpg);
   object-fit: cover;
-  /* background: #0026ff; */
 }
 
 h1 {
@@ -48,6 +47,10 @@ select {
   font-weight: 600;
   line-height: 26px;
   flex: 1;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 main {
