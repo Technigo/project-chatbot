@@ -4,12 +4,11 @@ Pair project for making a chatbot in JavaScript, using variables, functions, str
 
 ## The problem
 
-Watched the lessons and googled for understanding how to make it work.
-Started by checking out the PizzaBot a little bit for inspiration then headed on to doing the 1-5 iterations.
+Started by watching some examples of chatbots and trying to figure out what the bot should chat about. During the dummy content phase it became a bartender bot with the idea to serve some virtual drink.
 The plan evolved during the iterations, made some changes along the way.
-Tried to add as much variety as we could technology wise regarding the task req. Added images and sound.
+Tried to add as much variety as possible technology wise for learning purposes, like added images and sound.
 
-If we had more time I think we would've wanted to add more dialogue options and more techniques.
+If there was more time adding more dialogue options and more techniques would be focused.
 
 ## View it live
 
