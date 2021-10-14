@@ -1,4 +1,6 @@
-we are al in al satisfied with the result, even though its a bit "simple" and we had big ambitions with it in the start. Some illness got in the way for the teamwork and we ended up coding and figuring stuff out a bit on our own and a bit together. In the end we merged the code together and made it work.
+This bot is built by Emelie Lindblom and Hedvig Mejstedt in the Technigo 24 weeks bootcamp. 
+
+We are al in al satisfied with the result, even though its a bit "simple" and we had big ambitions with it in the start. Some illness got in the way for the teamwork and we ended up coding and figuring stuff out a bit on our own and a bit together. In the end we merged the code together and made it work.
 
 As I made the link to Netlify I saw that the sounds that are supposed to come when the different chat bubbles appear, is not in sync... It worked in the live server, so this problem appeared just as we were to hand the project in.
 
