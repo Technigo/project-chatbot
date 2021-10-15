@@ -61,7 +61,7 @@ main {
   height: 70vh;
   border-radius: 30px;
   background: #fff;
-  padding: 20px 24px;
+  padding: 20px 15px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
@@ -173,6 +173,7 @@ button:hover {
   main {
     width: 100%;
     height: 600px;
+    padding: 20px 24px;
   }
   input {
     width: 100%;
