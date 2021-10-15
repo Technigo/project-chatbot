@@ -22,7 +22,8 @@ const showMessage = (message, sender) => {
            <img src="assets/user.png" alt="User" />  
          </section>
        `;
-    }, 500);
+      chat.scrollTop = chat.scrollHeight;
+    }, 700);
   } else if (sender === "bot") {
     setTimeout(() => {
       chat.innerHTML += `
@@ -33,11 +34,10 @@ const showMessage = (message, sender) => {
           </div>
         </section>
       `;
+      // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
       chat.scrollTop = chat.scrollHeight;
-    }, 1000);
+    }, 1400);
   }
-
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
 };
 
 // Starts here
@@ -46,7 +46,6 @@ const greeting = () => {
     `Hello and welcome to the Cake Factory &#x1F370 What's your name?`,
     "bot"
   );
-  // Just to check it out, change 'bot' to 'user' here 👆
 };
 //Name input
 const handleNameInput = (event) => {
@@ -62,27 +61,28 @@ form.addEventListener("submit", handleNameInput);
 
 const showFoodOptions = () => {
   // setTimeout()
+
   showMessage(
     `What type of yummy cake are you in the mood for today ${names}?`,
     "bot"
   );
-  form.innerHTML = `
-    <button id="princessBtn">Princess Cake</button>
-    <button id="pancakeBtn">Pancake Cake</button>
-    <button id="strawberryBtn">Strawberry Cake</button>
+  setTimeout(() => {
+    form.innerHTML = `
+    <button id="princessBtn" class="cake-btn">Princess Cake</button>
+    <button id="pancakeBtn" class="cake-btn">Pancake Cake</button>
+    <button id="strawberryBtn" class="cake-btn">Strawberry Cake</button>
   `;
 
-  document
-    .getElementById("princessBtn")
-    .addEventListener("click", () => topping("Princess Cake"));
-  document
-    .getElementById("pancakeBtn")
-    .addEventListener("click", () => topping("Pancake Cake"));
-  document
-    .getElementById("strawberryBtn")
-    .addEventListener("click", () => topping("Strawberry Cake"));
-
-  // setTimeout(() => showCakePieses, 1000)
+    document
+      .getElementById("princessBtn")
+      .addEventListener("click", () => topping("Princess Cake"));
+    document
+      .getElementById("pancakeBtn")
+      .addEventListener("click", () => topping("Pancake Cake"));
+    document
+      .getElementById("strawberryBtn")
+      .addEventListener("click", () => topping("Strawberry Cake"));
+  }, 700);
 };
 
 const topping = (type) => {
@@ -123,8 +123,6 @@ const topping = (type) => {
   }
   const select = document.getElementById("select");
   select.addEventListener("change", () => cakePieces(select.value));
-
-  // select.value ni skickar med det till nästa funktion men använder det inte där consol logga det.
 };
 const cakePieces = (topping) => {
   cakeTopping = topping;
