@@ -1,6 +1,6 @@
 # Project Name
 
-Pair programming project creating a chat bot using HTML, CSS and JavaScript.
+Pair programming project by Amanda Tilly & Naushin Malik. We have created a chat bot using HTML, CSS and JavaScript.
 
 ## The problem
 
