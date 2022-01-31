@@ -1,5 +1,6 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+// här kan vi isåfall lägga till: const userInput = document.getElementById('user-input') som jag skapat i index.html
 
 // Global variables, if you need any, declared here
 
@@ -44,4 +45,4 @@ const greeting = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000)
+setTimeout(greeting, 800)

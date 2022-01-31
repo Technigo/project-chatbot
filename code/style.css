@@ -4,9 +4,9 @@
 
 body {
   margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   background: #0026ff;
+  width: 100% fixed;
 }
 
 h1 {
@@ -41,7 +41,7 @@ input {
   color: #0026ff;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -52,10 +52,9 @@ main {
   width: 100%;
   max-width: 700px;
   height: 600px;
-  border-radius: 30px;
+  border-radius: 20px;
   background: #fff;
-  padding: 20px 24px;
-  padding-top: 0;
+  padding: 1.5rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -128,7 +127,7 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -137,4 +136,17 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+/* MEDIA QUERY – MOBILE */
+@media (max-width: 767px) {
+  body {
+    margin-bottom: 64px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  main {
+    height: 370px;
+  }
 }
