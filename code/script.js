@@ -4,12 +4,19 @@ const input = document.getElementById("name-input");
 const sendButton = document.getElementById("send-btn");
 // Global variables, if you need any, declared here
 
+const greetingMessage = `Hello there, What's your name?`;
+
 // Functions declared here
 
+const form = document.getElementById("name-form")
+form.addEventListener("submit", (event) => {
+    event.preventDefault()
+    let message = input.value
+    showMessage(message, "user")
+})
+
 // sendButton.addEventListener("click", function () {
-//   // document.getElementById('form').onsubmit = event => {
-//   let message = input.value
-//   showMessage(message, "user")
+  
 // })
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -41,7 +48,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(greetingMessage, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
