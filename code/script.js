@@ -1,5 +1,7 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+const inputWrapper = document.getElementById('inputWrapper')
+
 
 // Global variables, if you need any, declared here
 
@@ -38,6 +40,7 @@ const greeting = () => {
 }
 
 // Set up your eventlisteners here
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
