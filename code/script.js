@@ -2,10 +2,9 @@
 const chat = document.getElementById('chat')
 
 // Global variables, if you need any, declared here
-
 // Functions declared here
-
 // This function will add a chat bubble in the correct place based on who the sender is
+
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     chat.innerHTML += `
@@ -17,6 +16,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
+    console.log('bot') 
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
