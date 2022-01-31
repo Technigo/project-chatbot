@@ -8,6 +8,7 @@ const chat = document.getElementById('chat')
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
+    
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -28,15 +29,31 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
+  
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, which universe are you from?`, 'bot')
+  showMessage(`Hello there, what is your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
+
+
+// const handleNameInput = (event) => {
+//   event.preventDefault()
+//   // Store the value in a variable so we can access it after we 
+// 	// clear it from the input
+//   const name = nameInput.value
+//   showMessage(name, 'user')
+//   nameInput.value = ''
+
+//   // After 1 second, show the next question by invoking the next function.
+// 	// passing the name into it to have access to the user's name if we want
+// 	// to use it in the next question from the bot.
+//   setTimeout(() => showFoodOptions(name), 1000)
+// }
 
 // Set up your eventlisteners here
 
