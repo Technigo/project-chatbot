@@ -170,7 +170,7 @@ body {
   width: 285px;
   height: 620px;
   margin-top: -20px;
-  visibility: hidden;
+  visibility: visible;
 }
 
 /* Chat Screen Upperbar w Icon & Display Name */
