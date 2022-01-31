@@ -1,3 +1,41 @@
+// Our Javascript
+
+// Get Hours & Minutes
+const findTime = new Date().toTimeString().substr(0,5);
+const time = findTime.replace(":", ".");
+console.log(time);
+
+//Get Weekday
+const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+const weekday = new Date();
+let today = weekdays[weekday.getDay()];
+console.log(today);
+
+//Get Date
+const date = new Date().toDateString().substr(8,2);
+console.log(date);
+
+// Get Month
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+const currentMonth = new Date();
+let month = months[currentMonth.getMonth()];
+console.log(month);
+
+
+//Insert Time
+const insertTime = document.getElementById("time");
+insertTime.innerText = time
+
+//Insert Date
+const insertDate = document.getElementById("date");
+insertDate.innerText = `${today}, ${date} ${month}`;
+
+
+
+// Their JavaScript
+
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 

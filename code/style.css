@@ -1,39 +1,203 @@
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  text-decoration: none;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-color: F2F1F0;
+  height: 100vh;
 }
 
-h1 {
-  font-weight: bold;
-  font-size: 44px;
-  line-height: 34px;
-  color: #fff;
+/* Font Properties */
+
+.ui-text {
+  font-family: 'Encode Sans', sans-serif;
+  font-weight: 400;
+  color: white;
+}
+
+.title {
+  font-size: 80px;
   text-align: center;
 }
 
-h2 {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 34px;
-  color: #fff;
+.subtitle {
+  font-size: 20px;
   text-align: center;
-  margin-bottom: 36px;
 }
 
-p {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 28px;
-  margin: 0;
+
+/* Page Container for Phone for Centering */
+.phone-container {
+  display: grid;
+  height: 100vh;
+  justify-items: center;
+  align-content: center;
 }
 
-input {
+/* Pink Phone with Drop Shadow */
+.pink-phone {
+  background-color: #EEBFC7;
+  width: 325px;
+  height: 650px;
+  /* max-height: 750px; */
+  border-radius: 20px;
+  box-shadow: 4px 6px 0 #bfbfbf;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+}
+
+/* Black Background Screen */
+.black-screen {
+  background-color: #0D0E0F;
+  width: 305px;
+  height: 630px;
+  /* max-height: 730px; */
+  border-radius: 15px;
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
+}
+
+/* Upper Bar - Incl. Camera Hole*/
+.camera-space {
+  margin-top: 9px;
+  background-color: #0D0E0F;
+  border-radius: 0px 0px 15px 15px;
+  width: 135px;
+  height: 15px;
+  display: flex;
+  position: absolute;
+}
+
+.camera-hole {
+  height: 12px;
+  width: 12px;
+  background-color: black;
+  border-radius: 50%;
+  margin-left: 9px;
+  margin-top: -3.5px;
+  box-shadow: inset 1px 1px 0 #14181c;
+}
+
+/* First Screen That Prompts User to Unlock with Name */
+.unlock-screen {
+  width: 285px;
+  height: 630px;
+  background-color: purple;
+  background-color: #0D0E0F;
+  visibility: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.white-lock {
+  height: 40px;
+  width: 40px;
+  margin-top: 30px;
+}
+
+.pink-swirl {
+  width: 240px;
+  height: 240px;
+  margin: 18px 0;
+}
+
+.login-container {
+  display: flex;
+  background-color: #0D0E0F;
+  color: white;
+  height: 60px;
+  width: 230px;
+  border: 3px solid white;
+  border-radius: 25px;
+  overflow: hidden;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.login-container:hover {
+  background-color: #EEBFC7;
+}
+
+.username__button {
+  border: none;
+  cursor: pointer;
+  height: 50px;
+  width: 160px;
+  background: transparent;
+  color: white;
+  padding-left: 15px;
+}
+
+.username__button:focus {
+  outline: none;
+  color: white;
+
+}
+
+.login__button {
+  background: transparent;
+  border: none;
+}
+
+.send-arrow {
+  width: 42px;
+  height: 42px;
+}
+
+/* After Unlock, Transition Screen with Button To Open New Message */
+.new-message-screen {
+  width: 285px;
+  height: 630px;
+  margin-top: -630px;
+  background-color: green;
+  visibility: hidden;
+}
+
+
+/* Chat Screen */
+.chat-screen {
+  width: 285px;
+  height: 620px;
+  margin-top: -20px;
+  visibility: hidden;
+}
+
+/* Chat Screen Upperbar w Icon & Display Name */
+.chat-screen__upperbar {
+  width: 285px;
+  height: 80px;
+  background-color: #2D2E2F;
+  position: relative;
+  margin-top: -1230px;
+  border-radius: 15px 15px 0px 0px;
+  display: flex;
+
+}
+
+/* Chat Area for JS Conversation */
+.chat-area {
+
+}
+
+/* Input/Chat Area for User */
+.input-area {
+
+}
+
+/* Their CSS */
+
+#name-input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
@@ -59,6 +223,7 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  background-color: blue;
 }
 
 .chat {
@@ -119,7 +284,7 @@ main {
   display: flex;
 }
 
-button {
+.send-btn {
   background-color: #0026ff;
   color: white;
   border: none;
@@ -134,7 +299,11 @@ button {
   transition: all 0.3s ease;
 }
 
-button:hover {
+.send-btn:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+
+/* Our CSS */
+

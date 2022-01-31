@@ -4,28 +4,71 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet" />
+    <!-- Link to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Oxygen:wght@300;400;700&family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link to Stylesheet -->
+    <link rel="stylesheet" href="style.css">
     <title>Chat Bot</title>
   </head>
 
   <body>
-    <h1>Welcome to xxx.</h1>
-    <h2>Ask about xxxx.</h2>
-    <main>
-      <section class="chat" id="chat"></section>
 
-      <div class="input-wrapper" id="input-wrapper">
-        <form id="name-form">
-          <input id="name-input" type="text" />
-          <button class="send-btn" type="submit">
-            Send
-          </button>
-        </form>
+    <div class="phone-container">
+      <div class="pink-phone">
+          <div class="black-screen">
+
+              <!-- DIVS for camera space and hole - NO INPUT -->
+              <div class="camera-space">
+                  <div class="camera-hole">
+                  </div>
+              </div>
+              <!-- END DIVS for camera space and hole - NO INPUT -->
+
+              <div class="unlock-screen">
+                <img class="white-lock" src="assets/lock_white.png" alt="Lock Icon" />
+                <h1 class="ui-text title" id="time"> </h1>
+                <h2 class="ui-text subtitle" id="date"> </h2>
+                <img class="pink-swirl" src="assets/pink_swirl.png" alt="Pink Swirl" />
+                <h2 class="ui-text subtitle">Enter Your Name <br>to Unlock</h2>
+                  <form class="login-container">
+                    <input class="username__button" type="text" id="userName" name="userName" required />
+                    <input type="image" src="assets/colored_arrow_black.png" class="login__button send-arrow" id="loginButton" name="loginButton" alt="Login Button" />
+                  </form>
+              </div>
+
+              <div class="new-message-screen">
+              </div>
+
+              <div class="chat-screen">
+                  <div class="chat-screen__upperbar">
+                  </div>
+                  <div class="chat-area">
+                      <div class="input-area">
+
+                      </div>
+                  </div>
+              </div>
+
+          </div>
       </div>
-    </main>
+  </div>
+
+  <!-- Their Chatbot -->
+
+  <main id="main">
+    <section class="chat" id="chat"></section>
+    <div class="input-wrapper" id="input-wrapper">
+      <form id="name-form">
+        <input id="name-input" type="text" />
+        <button class="send-btn" type="submit">
+          Send
+        </button>
+      </form>
+    </div>
+  </main>
+
 
     <script src="./script.js"></script>
   </body>
