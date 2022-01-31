@@ -40,6 +40,9 @@ const greeting = () => {
 
 // Set up your eventlisteners here
 
+//document.getElementById("btn").addEventListener("click", greeting); ---> spara syntax
+
+  
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
