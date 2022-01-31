@@ -2,6 +2,7 @@
 const chat = document.getElementById('chat')
 const nameInput  = document.getElementById('name-input');
 const submitBtn = document.getElementById('btn');
+const inputWrapper = document.getElementById('input-wrapper')
 // Global variables, if you need any, declared here
 
 // Functions declared here
@@ -63,6 +64,58 @@ submitBtn.addEventListener('click', handleNameInput);
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
 
+const showButtons = () => {
+  inputWrapper.innerHTML = `
+    <button id="pizzaBtn">Pizza</button>
+    <button id="pastaBtn">Pasta</button>
+    <button id="saladBtn">Salad</button>
+  `
+
+  document
+    .getElementById('pizzaBtn')
+    .addEventListener('click', () => nextQuestion('pizza'))
+  document
+    .getElementById('pastaBtn')
+    .addEventListener('click', () => nextQuestion('pasta'))
+  document
+    .getElementById('saladBtn')
+    .addEventListener('click', () => nextQuestion('salad'))
+}
+
+
 const showFoodOptions = (name) => {
   showMessage(`hello, ${name} What a lovely day🍎 What do you want to eat today? `,'bot');
+  //3 options in buttons
+  showButtons();
 }
+
+const nextQuestion = (menu) => {
+  if(menu === 'pizza') {
+    showMessage('which pizza do you want?', 'bot');
+    inputWrapper.innerHTML = `
+    <select id="select">
+      <option value="Hawaii">Hawaii</option>
+      <option value="Neapolitan">Neapolitan</option>
+      <option value="Margarita">Margarita</option>
+      </select>`;
+  }else if(menu === 'pasta'){
+    showMessage('which pasta do you want?', 'bot');
+    inputWrapper.innerHTML = `
+    <select id="select">
+      <option value="Ravioli">Ravioli pasta</option>
+      <option value="Carbonara">Carbonara pasata</option>
+      <option value="Spaghetti">Spaghetti</option>
+      </select>`;
+  }else{
+    showMessage('which salad do you want?', 'bot');
+    inputWrapper.innerHTML = `
+    <select id="select">
+      <option value="Broccoli">Broccoli salad</option>
+      <option value="Ceaser">Ceaser salad</option>
+      <option value="leafgreen">Leafgreen salad</option>
+      </select>`;
+  }
+  const select = document.getElementById('select')
+select.addEventListener('change', () => nextQuestion(select.value)) 
+}
+
