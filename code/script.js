@@ -1,15 +1,12 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
-const nameInput = document.getElementById('name-input') //<-- användaren skriver sitt namn
-const choiceModel = document.getElementById('choice-model') // 
-const sendBtn = document.getElementById('send')
-
-let = currentQuestion = 1
-
-// const inputWrapper = document.getElemendbyId('input-wrapper') // <-- användaren väljer (modell/färg?)
+const userInput = document.getElementById('user-input') // user writes her/his name
+const form = document.getElementById('chat-form')
+const inputWrapper = document.getElementById('input-wrapper') // user chooses model/color
 
 
 // Global variables, if you need any, declared here
+let questionNumber = 0
 
 // Functions declared here
 
@@ -38,14 +35,29 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// Questions
-
-// Fråga 1. Vad heter du?
+// Starting here. Introducing botQuestions
+// Question 1. What's your name, user?
 const greeting = () => {
-  currentQuestion = 1
-  showMessage(`Hello there, what's your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage(`Hi and welcome to Bicycle Bot Shop, what's your name?`, 'bot')
 }
+
+// Bot greets the user, and asks if she/he wants to order a bike
+const whichBike = (name) => {
+  showMessage(`Nice to meet you ${name}!`, 'bot')
+  setTimeout (() => {showMessage(`Would you like to order a bike?`, 'bot')
+
+// YES or NO
+inputWrapper.innerHTML = `
+<button id="yes">Yes! 👍</button>
+<button id="no">No! 👎</button>
+`
+
+// User responds
+document.getElementById('yes')
+.addEventListener('click', () => colorSelection ('yes'))
+document.getElementById('no')
+.addEventListener('click', () => colorSelection('no'))
+  }, 1500 )}
 
 // Vill att användaren skriver i sitt namn
 // Skapar en funktion som sparar username som ett value
@@ -63,15 +75,16 @@ const textInput = (event) => {
   else { // If user puts in name, continue
     setTimeout(() => showMessage(`Hey ${name}`, 'bot'), 1000) // Bot says hey to 'name'
   }
-
 }
 
-// Hälsar Hej username. 
 
-
-
-// Vill du beställa en cykel, ja/nej?
-
+// Stores the user input (name) and sends it through to next bot answer, so that the bot can be more personal
+const handleNameQuesion = () => {
+  const name = userInput.value
+  showMessage(`My name is ${name}!`, 'user')
+  inputWrapper.innerHTML = ``
+  setTimeout (() => {whichBike(name)},1000) // 1 sek until sending to which color
+}
 
 
 
@@ -79,10 +92,8 @@ const textInput = (event) => {
 // const choiceModel = document.getElementById('choice-model').addEventListener('submit')
 
 
-// Color question
-
-
 // Set up your eventlisteners here
+form.addEventlistener('submit', handleInput)
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
