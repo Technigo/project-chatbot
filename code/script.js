@@ -2,6 +2,7 @@
 const chat = document.getElementById('chat');
 const input = document.getElementById("name-input");
 const sendButton = document.getElementById("send-btn");
+const inputWrapper = document.getElementById("input-wrapper");
 // Global variables, if you need any, declared here
 
 const greetingMessage = `Hello there, What's your name?`;
@@ -9,11 +10,45 @@ const greetingMessage = `Hello there, What's your name?`;
 // Functions declared here
 
 const form = document.getElementById("name-form")
-form.addEventListener("submit", (event) => {
+ form.addEventListener("submit", (event) => {
     event.preventDefault()
-    let message = input.value
-    showMessage(message, "user")
-})
+    let userName = input.value
+    showMessage(userName, "user")
+    input.value = '';
+    setTimeout(questionAge(userName), 1000)
+  })
+
+const questionAge = (name) => {
+  showMessage(`Hello ${name}! How old are you?`,"bot")
+  inputWrapper.innerHTML = ''
+  let button1 = document.createElement('button')
+  button1.innerHTML = '18'
+  inputWrapper.appendChild(button1)
+}
+
+
+
+// const form = document.getElementById("name-form");
+// form.addEventListener("submit", handleNameInput);
+
+// const handleNameInput = (event) => {
+//   event.preventDefault();
+//   let userName = input.value;
+//   showMessage(userName, "user");
+//   input.value = '';
+// };
+
+
+
+
+// const handleNameInput = (event) => {
+//   event.preventDefault()
+//   // Store the value in a variable so we can access it after we 
+// 	// clear it from the input
+//   const name = nameInput.value
+//   showMessage(name, 'user')
+//   nameInput.value = ''
+// }
 
 // sendButton.addEventListener("click", function () {
   
@@ -63,3 +98,15 @@ const greeting = () => {
 
 setTimeout(greeting, 0)
 
+
+
+// function to change the background color into a random color
+let values = [];
+function makeColors () {
+  
+  for (let i = 0; i < 3; i++) {
+    values.push(Math.floor(Math.random() * (256 - 0) + 0))
+  }
+}
+// makeColors();
+// document.getElementsByTagName("body")[0].style.backgroundColor = `rgb(${values[0]}, ${values[1]}, ${values[2]})`;

@@ -1,0 +1,7 @@
+question 1 - what your name? text 
+question 2 - how old are you ? multiple choice buttons
+question 3 - What's your energy level? range
+question 4 - What emoticon are you? multiple choice buttons
+question 5 - what's the weather like? select sunny/snowy/rainy/windy/
+
+result = random background-color rgb (range(0,255))
