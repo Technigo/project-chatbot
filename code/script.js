@@ -1,6 +1,7 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
-
+const nameInput  = document.getElementById('name-input');
+const submitBtn = document.getElementById('btn');
 // Global variables, if you need any, declared here
 
 // Functions declared here
@@ -17,6 +18,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
+    console.log('hello bot!');
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -32,12 +34,27 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Hello there, What is your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
+const handleNameInput = (event) => {
+  event.preventDefault()
+  // Store the value in a variable so we can access it after we 
+	// clear it from the input
+  const name = nameInput.value
+  console.log(name);
+  showMessage(name, 'user')
+  nameInput.value = ''
+
+  // After 1 second, show the next question by invoking the next function.
+	// passing the name into it to have access to the user's name if we want
+	// to use it in the next question from the bot.
+  setTimeout(() => showFoodOptions(name), 1000)
+}
+
 
 // Set up your eventlisteners here
-
+submitBtn.addEventListener('click', handleNameInput);
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
@@ -45,3 +62,7 @@ const greeting = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
+
+const showFoodOptions = (name) => {
+  showMessage(`hello, ${name} What a lovely day🍎 What do you want to eat today? `,'bot');
+}
