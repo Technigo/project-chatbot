@@ -12,17 +12,39 @@
   </head>
 
   <body>
-    <h1>Welcome to xxx.</h1>
-    <h2>Ask about xxxx.</h2>
+    <h1>Welcome to chatbot</h1>
+    <h2>Ask about support </h2>
     <main>
       <section class="chat" id="chat"></section>
 
       <div class="input-wrapper" id="input-wrapper">
         <form id="name-form">
+         
           <input id="name-input" type="text" />
-          <button class="send-btn" type="submit">
+          <button id="send-btn" class="send-btn" type="submit" >
             Send
           </button>
+       
+          
+          <audio id="myAudio">
+            <source src="audio/whoosh.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+
+          <!--<div id="course" class="course">
+          <input id="html" type="button" value="HTML">
+          <input id="css" type="button" value="CSS">
+          <input id="javascript" type="button" value="JavaScript">
+        </div>-->
+
+      <!--
+        <div id="priceSlect" class="priceSelect">
+          <input id="priceSelect-one" type="button" value="3500 Kr">
+          <input id="priceSelect-two" type="button" value="4000 Kr">
+          <input id="priceSelect-three" type="button" value="10000 Kr">
+        </div>-->
+        
+
         </form>
       </div>
     </main>
