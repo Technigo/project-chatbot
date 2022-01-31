@@ -34,7 +34,9 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Welcome`, 'bot')
+  showMessage(`What's your name?`, 'bot')
+
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
