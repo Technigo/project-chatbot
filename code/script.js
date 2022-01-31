@@ -1,6 +1,11 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
-// här kan vi isåfall lägga till: const userInput = document.getElementById('user-input') som jag skapat i index.html
+// här kan vi lägga till fler, ex: 
+// const userInput = document.getElementById('user-input') <-- när användaren fyller i
+// const inputWrapper = document.getElemendbyId('input-wrapper') <-- användaren väljer 
+// const nameInput = document.getElementById('name-input') <-- användaren skriver sitt namn
+// const chatForm = document.getElementById('chat-form) // <-- hela chattformuläret
+
 
 // Global variables, if you need any, declared here
 
@@ -18,6 +23,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
+    console.log("Hi there, I'm a user!") /*Provade att lägga in denna console.log här för att se att det funkar, det funkade :) */
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
