@@ -17,15 +17,17 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
-    chat.innerHTML += `
+      chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
-      </section>
-    `
-  }
+      </section>`
+  } 
+
+
+
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
