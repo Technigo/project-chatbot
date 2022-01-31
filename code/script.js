@@ -2,7 +2,8 @@
 const chat = document.getElementById('chat')
 const nameInput  = document.getElementById('name-input');
 const submitBtn = document.getElementById('btn');
-const inputWrapper = document.getElementById('input-wrapper')
+const inputWrapper = document.getElementById('input-wrapper');
+let name = 'apple';
 // Global variables, if you need any, declared here
 
 // Functions declared here
@@ -42,7 +43,8 @@ const handleNameInput = (event) => {
   event.preventDefault()
   // Store the value in a variable so we can access it after we 
 	// clear it from the input
-  const name = nameInput.value
+  // const name = nameInput.value;
+   let name =  nameInput.value;
   console.log(name);
   showMessage(name, 'user')
   nameInput.value = ''
@@ -73,16 +75,30 @@ const showButtons = () => {
 
   document
     .getElementById('pizzaBtn')
-    .addEventListener('click', () => nextQuestion('pizza'))
+    .addEventListener('click', () => foodOptions('pizza'))
   document
     .getElementById('pastaBtn')
-    .addEventListener('click', () => nextQuestion('pasta'))
+    .addEventListener('click', () => foodOptions('pasta'))
   document
     .getElementById('saladBtn')
-    .addEventListener('click', () => nextQuestion('salad'))
+    .addEventListener('click', () => foodOptions('salad'))
 }
 
+const showPrice = (menu) => {
+  console.log(menu);
+  showMessage(`${menu} will cost 100kr. Will you continue to checkout?`, 'bot');
+  
+  inputWrapper.innerHTML = `
+  <button id="yes">Yes!</button>
+  <button id="no">No</button>
+ `
+ const yesBtn = document.getElementById('yes');
+ yesBtn.addEventListener('click', () => {showMessage(`thank you for your order!`, 'bot')});
 
+ const noBtn= document.getElementById('no');
+ noBtn.addEventListener('click', () =>{showMessage('Ooops, bye!', 'bot')});
+
+}
 const showFoodOptions = (name) => {
   showMessage(`hello, ${name} What a lovely day🍎 What do you want to eat today? `,'bot');
   //3 options in buttons
@@ -90,6 +106,22 @@ const showFoodOptions = (name) => {
 }
 
 const nextQuestion = (menu) => {
+ console.log(menu);
+ showMessage(`Would you like to order ${menu}?`, 'bot');
+
+ inputWrapper.innerHTML = `
+  <button id="yes">Yes!</button>
+  <button id="no">No</button>
+ `
+ const yesBtn = document.getElementById('yes');
+ yesBtn.addEventListener('click', () => {showPrice(menu)});
+
+ const noBtn= document.getElementById('no');
+ noBtn.addEventListener('click', () =>{showMessage('😭', 'bot')});
+ 
+}
+
+const foodOptions = (menu) => {
   if(menu === 'pizza') {
     showMessage('which pizza do you want?', 'bot');
     inputWrapper.innerHTML = `
