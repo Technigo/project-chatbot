@@ -18,12 +18,10 @@
     <main>
       <section class="chat" id="chat"></section>
 
-      <div class="input-wrapper" id="input-wrapper"> <!-- Här får användaren ett val av flera knappar-->
-        <form id="name-form"> <!--Ändra till chat-form?-->
-
-          <!-- Nedan: kanske byta namn till id="user-input" och i js-filen skapa variabel för user-input? förtydligar vad den gör-->
+      <div class="input-wrapper" id="input-wrapper"> <!-- Här får användaren ett val av flera knappar, kanske cykelmodell/färg?-->
+        <form id="name-form">
           <input id="name-input" type="text" />
-          <button class="send-btn" type="submit">
+            <button id="send" class="send-btn" type="submit">
             Send
           </button>
         </form>
