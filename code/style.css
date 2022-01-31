@@ -9,6 +9,13 @@ body {
   background: #0026ff;
 }
 
+.button-wrapper {
+  display: flex;
+  width: 25%;
+  padding-left: 42%;
+  margin-bottom: 4%;
+}
+
 h1 {
   font-weight: bold;
   font-size: 44px;
@@ -24,6 +31,22 @@ h2 {
   color: #fff;
   text-align: center;
   margin-bottom: 36px;
+}
+
+.quiz-button {
+  background-color: white;
+  color: black;
+  /* width: 25%; */
+  border: none;
+  border-radius: 4px;
+  padding: 16px 40px;
+  margin-right: 4px;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 p {
@@ -119,7 +142,7 @@ main {
   display: flex;
 }
 
-button {
+.send-btn {
   background-color: #0026ff;
   color: white;
   border: none;
