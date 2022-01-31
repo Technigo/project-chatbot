@@ -75,13 +75,20 @@ const showButtons = () => {
 
   document
     .getElementById('pizzaBtn')
-    .addEventListener('click', () => foodOptions('pizza'))
+    .addEventListener('click', () => {
+      showMessage(`I would like pizza please`,'user');
+      foodOptions('pizza')
+    })
   document
     .getElementById('pastaBtn')
-    .addEventListener('click', () => foodOptions('pasta'))
+    .addEventListener('click', () => {
+      showMessage(`I would like pasta please`,'user');
+      foodOptions('pasta')})
   document
     .getElementById('saladBtn')
-    .addEventListener('click', () => foodOptions('salad'))
+    .addEventListener('click', () => {
+      showMessage(`I would like salad please`,'user');
+      foodOptions('salad')})
 }
 
 const showPrice = (menu) => {
@@ -107,6 +114,7 @@ const showFoodOptions = (name) => {
 
 const nextQuestion = (menu) => {
  console.log(menu);
+//  showMessage(`I want ${menu}?`, 'user');
  showMessage(`Would you like to order ${menu}?`, 'bot');
 
  inputWrapper.innerHTML = `
@@ -114,7 +122,9 @@ const nextQuestion = (menu) => {
   <button id="no">No</button>
  `
  const yesBtn = document.getElementById('yes');
- yesBtn.addEventListener('click', () => {showPrice(menu)});
+ yesBtn.addEventListener('click', () => {
+  showPrice(menu)
+  });
 
  const noBtn= document.getElementById('no');
  noBtn.addEventListener('click', () =>{showMessage('😭', 'bot')});
@@ -147,7 +157,9 @@ const foodOptions = (menu) => {
       <option value="leafgreen">Leafgreen salad</option>
       </select>`;
   }
-  const select = document.getElementById('select')
-select.addEventListener('change', () => nextQuestion(select.value)) 
-}
+  const select = document.getElementById('select');
+  select.addEventListener('change', () => {
+  showMessage(`I would like please`,'user')
+  nextQuestion(select.value)});
 
+}
