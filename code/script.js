@@ -2,12 +2,12 @@
 const chat = document.getElementById('chat')
 const userInput = document.getElementById('user-input') // user writes her/his name
 const form = document.getElementById('chat-form')
+const sendBtn = document.getElementById('send') // Variable for first send-button
 const inputWrapper = document.getElementById('input-wrapper') // user chooses model/color
-
+let inputName = "" // variabel som sparar namnet globalt
 
 // Global variables, if you need any, declared here
 let questionNumber = 0
-
 // Functions declared here
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -31,6 +31,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
+
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
@@ -62,29 +63,24 @@ document.getElementById('no')
 // Vill att användaren skriver i sitt namn
 // Skapar en funktion som sparar username som ett value
 // Sedan skickas användaren vidare till ny fråga
-const textInput = (event) => { 
-  event.preventDefault() // Prevents the page from refreshing
-  const name = inputValue.value // Input from user gets stored in username
-  showMessage(name, 'user') // Shows the msg the user typed in
-  inputValue.value = '' // Clears form
-  
-  if (name === "") { // If no user name
-    setTimeout (() => showMessage(`No name? Please try again.`, 'bot'), 1000)
-  }
-  
-  else { // If user puts in name, continue
-    setTimeout(() => showMessage(`Hey ${name}`, 'bot'), 1000) // Bot says hey to 'name'
-  }
+const textInput = () => {
+
+    const name = userInput.value // Input from user gets stored in username
+    showMessage(name, 'user') // Shows the msg the user typed in
+    userInput.value = '' // Clears form
+
+    if (name === "") { // If no user name
+    setTimeout(() => showMessage(`No name? Please try again.`, 'bot'), 1000)
+    }
+
+    else { // If user puts in name, continue
+      setTimeout(() => showMessage(`Hey ${name}`, 'bot'), 1000) // Bot says hey to 'name'
+      inputName += name
+      whichBike(inputName) // call next function in case user wrote her name
+    }
 }
 
 
-// Stores the user input (name) and sends it through to next bot answer, so that the bot can be more personal
-const handleNameQuesion = () => {
-  const name = userInput.value
-  showMessage(`My name is ${name}!`, 'user')
-  inputWrapper.innerHTML = ``
-  setTimeout (() => {whichBike(name)},1000) // 1 sek until sending to which color
-}
 
 
 
@@ -93,7 +89,9 @@ const handleNameQuesion = () => {
 
 
 // Set up your eventlisteners here
-form.addEventlistener('submit', handleInput)
+
+// Ev ta bort denna. --> 
+// form.addEventlistener('submit', handleInput)
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
@@ -102,3 +100,8 @@ form.addEventlistener('submit', handleInput)
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 800)
+
+// sentBtn.addEventListener("click", (e)=>{ 
+// e.preventDefault
+// textInput()
+// })
