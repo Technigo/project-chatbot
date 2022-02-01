@@ -72,19 +72,40 @@ const showMessage = (message, sender) => {
 
       kidsBtn.addEventListener('click', () => {
         replyUser('Kids')
-        selectGenre()
+        selectGenre('kids-movie')
       })
 
       adultsBtn.addEventListener('click', () => {
         replyUser('Adults')
-        selectGenre()
+        selectGenre('adults-movie')
       })
     }
 
     //
     
-    const selectGenre = (age) => {
-      if ()
+    const selectGenre = (type) => {
+        replyBot(`Great! Please select a genre for your movie`)
+        if (type === 'kids-movie') {
+          inPutWrapper.innerHTML = `
+          <select id="select-genre">
+            <option value='' selected disabled>Movie genre</option>
+            <option value='adventure'>Adventure movie</option> 
+            <option value='musical'>Musical</option>
+            <option value='cartoon'>Cartoon</option>
+          </select>`
+          
+        const selectGenre = document.getElementById("select-genre").value
+
+      } else {
+          inPutWrapper.innerHTML = `
+          <select id="select-genre">
+            <option value='' selected disabled>Movie genre</option>
+            <option value='action'>Action</option> 
+            <option value='comedy'>Comedy</option>
+            <option value='horror'>Horror</option>
+            <option value='fantasy'>Fantasy</option>
+          </select>`
+      }
     }
     
      //const handleNameInput = (event) => {
