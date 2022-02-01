@@ -63,8 +63,8 @@ const showMessage = (message, sender) => {
 
     const selectTargetGroup = () => {
       inPutWrapper.innerHTML = `
-          <button id="kids-btn">Kids</button>
-          <button id="adults-btn">Adults</button>
+          <button id='kids-btn'>Kids</button>
+          <button id='adults-btn'>Adults</button>
           ` 
       const kidsBtn = document.getElementById('kids-btn')
       const adultsBtn = document.getElementById('adults-btn')
@@ -81,47 +81,150 @@ const showMessage = (message, sender) => {
       })
     }
 
-    //
     
     const selectGenre = (type) => {
         replyBot(`Great! Please select a genre for your movie`)
+
         if (type === 'kids-movie') {
           inPutWrapper.innerHTML = `
-          <select id="select-genre">
+          <select id='select-genre'>
             <option value='' selected disabled>Movie genre</option>
-            <option value='adventure'>Adventure movie</option> 
-            <option value='musical'>Musical</option>
-            <option value='cartoon'>Cartoon</option>
-          </select>`
-          
-        const selectGenre = document.getElementById("select-genre").value
+            <option value='adventure'>An Adventure movie</option> 
+            <option value='musical'>A Musical</option>
+            <option value='cartoon'>A Cartoon</option>
+          </select>
+          <button id='movie-btn'>Choose genre</button> `
 
-      } else {
-          inPutWrapper.innerHTML = `
-          <select id="select-genre">
-            <option value='' selected disabled>Movie genre</option>
-            <option value='action'>Action</option> 
-            <option value='comedy'>Comedy</option>
-            <option value='horror'>Horror</option>
-            <option value='fantasy'>Fantasy</option>
-          </select>`
-      }
+        } else {
+            inPutWrapper.innerHTML = `
+            <select id='select-genre'>
+              <option value='' selected disabled>Movie genre</option>
+              <option value='action'>An Action movie</option> 
+              <option value='comedy'>A Comedy</option>
+              <option value='horror'>A Horror movie</option>
+              <option value='fantasy'>A Fantasy movie</option>
+            </select>
+            <button id='movie-btn'>Choose genre</button> `
+        }
+        submitMovie()
+    }
+
+    const submitMovie = () => {
+      const selectMovie = document.getElementById('select-genre')
+      const movieBtn = document.getElementById('movie-btn') 
+
+      movieBtn.addEventListener('click', () => {
+        //If time/option 1: targeting text instead of value
+        const selectedMovie = selectMovie.value
+        replyUser(selectedMovie)  
+        showSavourySnacks(selectedMovie) 
+      })
+    }
+
+    const showSavourySnacks = (selectedMovie) => {
+      //If time/option 2: Do uppercase for option value  
+      replyBot(`${selectedMovie}, great choice! What kind of snacks do you want?`)
+
+      inPutWrapper.innerHTML = `
+      <button id='popcorn-btn'>Popcorn</button>
+      <button id='nachos-btn'>Nachos</button>
+      <button id='chips-btn'>Chips</button>
+      `
+      selectSavourySnacks()
+    }
+
+    const selectSavourySnacks = () => {
+      const popcornBtn = document.getElementById('popcorn-btn')
+      const nachosBtn = document.getElementById('nachos-btn')
+      const chipsBtn = document.getElementById('chips-btn')
+
+      popcornBtn.addEventListener('click', () => {
+        replyUser(`Popcorn`)
+        showSweetSnacks()
+      })
+      nachosBtn.addEventListener('click', () => {
+        replyUser(`Nachos`)
+        showSweetSnacks()
+      })
+      chipsBtn.addEventListener('click', () => {
+        replyUser(`Chips`)
+        showSweetSnacks()
+      })
+      
+    }
+
+    const showSweetSnacks = () => {
+      //If time/option 2: Do uppercase for option value  
+      replyBot(`And what is your sweet tooth craving?`)
+
+      inPutWrapper.innerHTML = `
+      <button id='chocolate-btn'>Chocolate</button>
+      <button id='liquorice-btn'>Salty Liquorice</button>
+      <button id='gummy-bears-btn'>Gummy Bears</button>
+      `
+      selectSweetSnacks()
+    }
+
+    const selectSweetSnacks = () => {
+      const chocolateBtn = document.getElementById('chocolate-btn')
+      const liquoriceBtn = document.getElementById('liquorice-btn')
+      const gummyBearsBtn = document.getElementById('gummy-bears-btn')
+
+      chocolateBtn.addEventListener('click', () => {
+        replyUser(`Chocolate`)
+        showDrinks()
+      })
+      liquoriceBtn.addEventListener('click', () => {
+        replyUser(`Salty Liquorice`)
+        showDrinks()
+      })
+      gummyBearsBtn.addEventListener('click', () => {
+        replyUser(`Gummy Bears`)
+        showDrinks()
+      })
+      
+    }
+
+    const showDrinks = () => {
+      //If time/option 2: Do uppercase for option value  
+      replyBot(`And what do you want to drink?`)
+
+      inPutWrapper.innerHTML = `
+      <button id='coke-btn'>Coke</button>
+      <button id='fanta-btn'>Fanta</button>
+      <button id='sprite-btn'>Sprite</button>
+      <button id='water-btn'>Sparkling water</button>
+      `
+      selectDrinks()
+    }
+
+    const selectDrinks = () => {
+      const cokeBtn = document.getElementById('coke-btn')
+      const fantaBtn = document.getElementById('fanta-btn')
+      const spriteBtn = document.getElementById('sprite-btn')
+      const waterBtn = document.getElementById('water-btn')
+
+      cokeBtn.addEventListener('click', () => {
+        replyUser(`Coke`)
+      })
+      fantaBtn.addEventListener('click', () => {
+        replyUser(`Fanta`)
+      })
+      spriteBtn.addEventListener('click', () => {
+        replyUser(`Sprite`)
+      })
+      waterBtn.addEventListener('click', () => {
+        replyUser(`Sparkling Water`)
+      })
     }
     
-     //const handleNameInput = (event) => {
-    //  event.preventDefault()
-    // }
+    // 1. Last respons from bot
+    // 2. Look into timeOut-method
+    // 3. check problems on row 117 and 125
+    // 4. Refactoring of code
+    // 5. Styling!!!! 
 
-    //   const name = userName.value
-    //   showMessage(name, 'user')
-    //  userName.value = ''
-    //   setTimeout(() => {
-    //     selectTargetGroup(name)
-    //  }, 1000);
-    // }
-    // Set up your eventlisteners here
-
-    //form.addEventListener('submit', handleNameInput())
+    
     
     // When website loaded, chatbot asks first question.
     // normally we would invoke a function like this:
@@ -129,4 +232,5 @@ const showMessage = (message, sender) => {
     // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
+
 setTimeout(greeting, 1000)
