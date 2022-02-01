@@ -41,7 +41,6 @@ const chat = document.getElementById('chat')
 const loginButton = document.querySelector('.login__button');
 let userName = "";
 
-
 //Event Listener for Login Button Push
 loginButton.addEventListener('click', function() {
   // prevent.Default stops page from reloading when clicking icon
