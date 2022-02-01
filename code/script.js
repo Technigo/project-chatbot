@@ -3,7 +3,6 @@ const chat = document.getElementById('chat')
 const nameInput  = document.getElementById('name-input');
 const submitBtn = document.getElementById('btn');
 const inputWrapper = document.getElementById('input-wrapper');
-let name = 'apple';
 // Global variables, if you need any, declared here
 
 // Functions declared here
@@ -45,7 +44,6 @@ const handleNameInput = (event) => {
 	// clear it from the input
   // const name = nameInput.value;
    let name =  nameInput.value;
-  console.log(name);
   showMessage(name, 'user')
   nameInput.value = ''
 
