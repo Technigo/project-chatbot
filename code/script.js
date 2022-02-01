@@ -11,17 +11,19 @@ const showMessage = (message, sender) => {
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
-          <p>Hejhej</p>
+          <p>${message}</p>
         </div>
         <img src="assets/user.png" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
+    // console.log('testing testing to see the log')
+    // console.log(message)//we can call for a function
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
-          <p>Hejdå</p>
+          <p>${message}</p> 
         </div>
       </section>
     `
@@ -32,7 +34,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Hello hey! What´s your name? I need to know!`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 
 }
