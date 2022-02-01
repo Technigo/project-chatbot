@@ -3,12 +3,14 @@ const chat = document.getElementById('chat')
 const nameInput = document.getElementById('name-input')
 const form = document.getElementById('name-form')
 const submit = document.getElementById('submit')
+const main = document.getElementById('main')
 // Global variables, if you need any, declared here
 // Functions declared here
 // This function will add a chat bubble in the correct place based on who the sender is
 
 const showMessage = (message, sender) => {
   if (sender === 'user') {
+    console.log('user')
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -34,23 +36,33 @@ const showMessage = (message, sender) => {
 
 // Starts here
   const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Hello and welcome to the Compliment Bot, what's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
-}
 
+//---- First intention ----// 
+}
   const handleNameInput = (event) => { //at submit this function will be invoked
   event.preventDefault() //prevents website refresh at submit
 
   const name = nameInput.value //input value will be stored in the const name
   console.log(name)
 
-  showMessage(`My name is ${name}.`, 'user') //users answer
+  showMessage(`My name is ${name}.`, 'user') //users answer 
   nameInput.value = '' //clearing name input setting it to an empty string
 
-  setTimeout(() => foodOptions(btnSelectMain, name), 1000) //passing the arguments to foodOptions function with 1s delay
-}  
+  setTimeout(() => complimentOptions(name), 1000) //passing the arguments to complimentOptions
+}
+
+//---- Second intention ----//
+  const complimentOptions = (name) => { 
+  showMessage(`Nice to meet you ${name}! Do you want a compliment?`, 'bot')
+  }
+
+//---- Third intention ----//
+
 
 form.addEventListener('submit', handleNameInput)
+
 
 // Set up your eventlisteners here
 /*form.addEventListener('submit', (event) => {
