@@ -42,17 +42,8 @@ const greeting = () => {
    // Just to check it out, change 'bot' to 'user' here 👆
  }
 
-// Displays users name - Test 1
-//  document.getElementById('name-form').onsubmit = (event) => {
-//   event.preventDefault()
 
-//   const inputValue = document.getElementById('name-input').value
-
-
-//   document.getElementById('greeting').innerHTML = `${inputValue}`
-// }
-
-// Displays users name - Test 2
+// Displays users name
 
 const handleNameInput = (event) => {
   event.preventDefault()
