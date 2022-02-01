@@ -1,15 +1,15 @@
 // Our Javascript
 
 // Get Hours & Minutes
-const findTime = new Date().toTimeString().substr(0,5);
-const time = findTime.replace(":", ".");
+let findTime = new Date().toTimeString().substr(0,5);
+let time = findTime.replace(":", ".");
 console.log(time);
 
 //Get Weekday
 const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 const weekday = new Date();
-let today = weekdays[weekday.getDay()];
+let today = weekdays[weekday.getDay() - 1];
 console.log(today);
 
 //Get Date
