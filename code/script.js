@@ -68,7 +68,7 @@ setTimeout(greeting, 1000)
 
 //Changed the order so it gets more orginized :)
 const showFoodOptions = (name) => {
-  showMessage(`hello, ${name} What a lovely day🍎 What do you want to eat today? `,'bot');
+  showMessage(`Hello, ${name} What a lovely day🍎 What do you want to eat today? `,'bot');
   //3 options in buttons
   showButtons();
 }
@@ -83,18 +83,18 @@ const showButtons = () => {
   document
     .getElementById('pizzaBtn')
     .addEventListener('click', () => {
-      showMessage(`I would like pizza please`,'user');
+      showMessage(`I would like 🍕 pizza please`,'user');
       foodOptions('pizza')
     })
   document
     .getElementById('pastaBtn')
     .addEventListener('click', () => {
-      showMessage(`I would like pasta please`,'user');
+      showMessage(`I would like 🍝 pasta please`,'user');
       foodOptions('pasta')})
   document
     .getElementById('saladBtn')
     .addEventListener('click', () => {
-      showMessage(`I would like salad please`,'user');
+      showMessage(`I would like 🥬 salad please`,'user');
       foodOptions('salad')})
 }
 
@@ -126,15 +126,14 @@ const foodOptions = (menu) => {
   }
   const select = document.getElementById('select');
   select.addEventListener('change', () => {
-  showMessage(`I would like please`,'user')
+  let dish = select.value
+  showMessage(`I would like ${dish} please`,'user')
   confirmation(select.value)});
 
 }
 
-const confirmation = (menu) => {
-  console.log(menu);
- //  showMessage(`I want ${menu}?`, 'user');
-  showMessage(`Would you like to order ${menu}?`, 'bot');
+const confirmation = (dish) => {
+  showMessage(`Would you like to order ${dish}?`, 'bot');
  
   inputWrapper.innerHTML = `
    <button id="yes">Yes!</button>
@@ -142,34 +141,50 @@ const confirmation = (menu) => {
   `
   const yesBtn = document.getElementById('yes');
   yesBtn.addEventListener('click', () => {
-   showPrice(menu)
+    showMessage(`Yes`,'user')
+   showPrice(dish)
    });
  
-  const noBtn= document.getElementById('no');
-  noBtn.addEventListener('click', () =>{showMessage('😭', 'bot')});
+    const noBtn= document.getElementById('no');
+  noBtn.addEventListener('click', () =>{
+    showMessage(`No`,'user')
+    showMessage('😭', 'bot')
+  inputWrapper.innerHTML = `
+  <button id="restart">Restart the order</button>
+   ` 
+   document.getElementById('restart').addEventListener('click', () => {
+     window.location.reload()
+   })});
   
  }
 
-const showPrice = (menu) => {
-  console.log(menu);
-  showMessage(`${menu} will cost 100kr. Will you continue to checkout?`, 'bot');
+const showPrice = (dish) => {
+  showMessage(`${dish} will cost 100kr. Would you like to place this order?`, 'bot');
   
   inputWrapper.innerHTML = `
   <button id="yes">Yes!</button>
   <button id="no">No</button>
  `
  const yesBtn = document.getElementById('yes');
- yesBtn.addEventListener('click', () => {showMessage(`thank you for your order!`, 'bot')
- inputWrapper.innerHTML = `
- <button id="restart">Make another order</button>
-  ` 
-  document.getElementById('restart').addEventListener('click', () => {
+ yesBtn.addEventListener('click', () => {showMessage(`Thank you for your order!`, 'bot')
+   inputWrapper.innerHTML = `
+  <button id="restart">Make another order</button>
+   ` 
+   document.getElementById('restart').addEventListener('click', () => {
+     window.location.reload()
+   })
+ });
+
+ const noBtn= document.getElementById('no');
+ noBtn.addEventListener('click', () => {
+   showMessage('Ooops, bye!', 'bot')
+   inputWrapper.innerHTML = `
+   <button id="restart">Restart the order</button>
+   `
+   document.getElementById('restart').addEventListener('click', () => {
     window.location.reload()
   })
 });
-
- const noBtn= document.getElementById('no');
- noBtn.addEventListener('click', () =>{showMessage('Ooops, bye!', 'bot')});
 
 }
 
