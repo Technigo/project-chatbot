@@ -44,7 +44,7 @@ const showMessage = (message, sender) => {
     }
     
     // const handleNameInput = (event) => {
-    //   event.preventDefault() 
+    //   event.preventDefault() test
     
     //   const name = userName.value
     //   showMessage(name, 'user')
