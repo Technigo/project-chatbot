@@ -66,6 +66,13 @@ submitBtn.addEventListener('click', handleNameInput);
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
 
+//Changed the order so it gets more orginized :)
+const showFoodOptions = (name) => {
+  showMessage(`hello, ${name} What a lovely day🍎 What do you want to eat today? `,'bot');
+  //3 options in buttons
+  showButtons();
+}
+
 const showButtons = () => {
   inputWrapper.innerHTML = `
     <button id="pizzaBtn">Pizza</button>
@@ -89,46 +96,6 @@ const showButtons = () => {
     .addEventListener('click', () => {
       showMessage(`I would like salad please`,'user');
       foodOptions('salad')})
-}
-
-const showPrice = (menu) => {
-  console.log(menu);
-  showMessage(`${menu} will cost 100kr. Will you continue to checkout?`, 'bot');
-  
-  inputWrapper.innerHTML = `
-  <button id="yes">Yes!</button>
-  <button id="no">No</button>
- `
- const yesBtn = document.getElementById('yes');
- yesBtn.addEventListener('click', () => {showMessage(`thank you for your order!`, 'bot')});
-
- const noBtn= document.getElementById('no');
- noBtn.addEventListener('click', () =>{showMessage('Ooops, bye!', 'bot')});
-
-}
-const showFoodOptions = (name) => {
-  showMessage(`hello, ${name} What a lovely day🍎 What do you want to eat today? `,'bot');
-  //3 options in buttons
-  showButtons();
-}
-
-const nextQuestion = (menu) => {
- console.log(menu);
-//  showMessage(`I want ${menu}?`, 'user');
- showMessage(`Would you like to order ${menu}?`, 'bot');
-
- inputWrapper.innerHTML = `
-  <button id="yes">Yes!</button>
-  <button id="no">No</button>
- `
- const yesBtn = document.getElementById('yes');
- yesBtn.addEventListener('click', () => {
-  showPrice(menu)
-  });
-
- const noBtn= document.getElementById('no');
- noBtn.addEventListener('click', () =>{showMessage('😭', 'bot')});
- 
 }
 
 const foodOptions = (menu) => {
@@ -160,6 +127,45 @@ const foodOptions = (menu) => {
   const select = document.getElementById('select');
   select.addEventListener('change', () => {
   showMessage(`I would like please`,'user')
-  nextQuestion(select.value)});
+  confirmation(select.value)});
 
 }
+
+const confirmation = (menu) => {
+  console.log(menu);
+ //  showMessage(`I want ${menu}?`, 'user');
+  showMessage(`Would you like to order ${menu}?`, 'bot');
+ 
+  inputWrapper.innerHTML = `
+   <button id="yes">Yes!</button>
+   <button id="no">No</button>
+  `
+  const yesBtn = document.getElementById('yes');
+  yesBtn.addEventListener('click', () => {
+   showPrice(menu)
+   });
+ 
+  const noBtn= document.getElementById('no');
+  noBtn.addEventListener('click', () =>{showMessage('😭', 'bot')});
+  
+ }
+
+const showPrice = (menu) => {
+  console.log(menu);
+  showMessage(`${menu} will cost 100kr. Will you continue to checkout?`, 'bot');
+  
+  inputWrapper.innerHTML = `
+  <button id="yes">Yes!</button>
+  <button id="no">No</button>
+ `
+ const yesBtn = document.getElementById('yes');
+ yesBtn.addEventListener('click', () => {showMessage(`thank you for your order!`, 'bot')});
+
+ const noBtn= document.getElementById('no');
+ noBtn.addEventListener('click', () =>{showMessage('Ooops, bye!', 'bot')});
+
+}
+
+
+
+
