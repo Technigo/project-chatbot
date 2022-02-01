@@ -130,19 +130,18 @@ body {
 
 .username__button {
   border: none;
-  cursor: pointer;
   height: 50px;
   width: 160px;
-  background: transparent;
+  background-color: transparent;
   color: white;
   padding-left: 25px;
   font-family: 'Oxygen', sans-serif;
   font-weight: 400;
-  font-size: 22px;
+  font-size: 20px;
   cursor: initial;
 }
 
-.username__button:focus {
+.username__button:focus, .name-input:focus {
   outline: none;
 }
 
@@ -156,13 +155,17 @@ body {
   height: 42px;
 }
 
+.send-arrow:hover {
+  opacity: 0.9;
+  transition: all 0.2s ease;
+}
+
 
 /* Chat Screen */
 .chat-screen {
-  width: 285px;
-  height: 620px;
   margin-top: -20px;
   visibility: hidden;
+  width: 285px;
 }
 
 /* Chat Screen Upperbar w Icon & Display Name */
@@ -191,13 +194,7 @@ body {
   border-radius: 50%;
 }
 
-/* Chat Area for JS Conversation */
-.chat-area {
-  display: flex;
-  flex-direction: column;
-
-}
-
+/* Chat Icon Styling */
 .chat-icon {
   width: 44px;
   height: 44px;
@@ -205,27 +202,15 @@ body {
   border-radius: 50%;
 }
 
-/* Input/Chat Area for User */
-.input-area {
-
+.bestie-icon {
+  align-self: flex-start;
 }
 
+.user-icon {
+  align-self: flex-end;
+}
 
 /* Their CSS */
-#name-input {
-  box-sizing: border-box;
-  border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
-  padding: 16px;
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 600;
-  line-height: 26px;
-  flex: 1;
-}
-
 .chat {
   flex: 1;
   display: flex;
@@ -233,38 +218,42 @@ body {
   overflow: scroll;
   flex-direction: column;
   padding-bottom: 16px;
+  height: 470px;
 }
 
 .bot-msg {
   display: flex;
-  margin: 16px 8px 0 0;
+  margin: 16px 0 0 0;
   flex-shrink: 0;
 }
 
 .user-msg {
   display: flex;
   justify-content: flex-end;
-  margin: 16px 0 0 8px;
+  margin: 16px 0 0 0;
   flex-shrink: 0;
 }
 
 .bubble {
-  background: #e5e9ff;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 26px;
-  padding: 16px 24px;
-  color: #0026ff;
-  max-width: 40%;
+  background-color: #AFD4E2;
+  color: #0D0E0F;
+  max-width: 70%;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.25;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
 }
 
 .bot-bubble {
-  border-radius: 0px 26px 26px 26px;
+  border-radius: 0 20px 20px 15px;
   margin-left: 8px;
 }
 
 .user-bubble {
-  border-radius: 26px 0 26px 26px;
+  border-radius: 20px 15px 0px 20px;
   margin-right: 8px;
 }
 
@@ -273,31 +262,35 @@ body {
   justify-content: center;
 }
 
-.input-wrapper form {
-  width: 100%;
+.name-form {
+  background-color: #AFD4E2;
+  color: #0D0E0F;
+  border-radius: 20px 15px 0 20px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
   display: flex;
+  padding: 5px 10px;
+  align-items: center;
+  align-self: flex-end;
+}
+
+.name-input {
+  border: none;
+  background-color: transparent;
+  padding: 15px;
+  flex: 1;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
 }
 
 .send-btn {
-  background-color: #0026ff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 16px 40px;
-  margin-right: 4px;
-  font-size: 16px;
-  line-height: 26px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  width: 42px;
+  height: 42px;
 }
 
 .send-btn:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
-
-
-/* Our CSS */
-

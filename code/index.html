@@ -28,7 +28,7 @@
                 <img class="pink-swirl" src="assets/pink_swirl.png" alt="Pink Swirl" />
                 <h2 class="ui-text subtitle">Enter Your Name <br>to Unlock</h2>
                   <div class="login-container">
-                    <input class="username__button" type="text" id="userName" name="userName" required />
+                    <input class="username__button" type="text" id="userName" name="userName" autocomplete="off" required />
                     <input type="image" src="assets/colored_arrow_black.png" class="login__button send-arrow" id="loginButton" name="loginButton" alt="Login Button" />
                   </div>
               </div>
@@ -44,28 +44,19 @@
                     <h3 class="ui-text upperbar-text">💅 Bestie 💅</h3>
                   </div>
                   <!-- End Chat Screen Upperbar with Icon & Name -->
+
                   <!-- Input their Chatbot -->
-
-                  <div class="chat-area">
                     <section class="chat" id="chat"></section>
-                    <div class="input-wrapper" id="input-wrapper">
-                      <form id="name-form">
-                        <input id="name-input" type="text" />
-                        <button class="send-btn" type="submit">
-                          Send
-                        </button>
-                      </form>
-                    </div>
-
-                      <div class="input-area">
-
+                      <div class="name-form">
+                        <input class="name-input" type="text" autocomplete="off" name="exName" required />
+                        <input type="image" src="assets/send_arrow2.png" class="send-btn" />
                       </div>
-                  </div>
+                  
               </div>
               <!-- Chat Screen DIV End -->
 
 
-              <!-- DIVS for camera space and hole styling - NO INPUT -->
+              <!-- START DIVS for camera space and hole styling - NO INPUT -->
               <div class="camera-space">
                 <div class="camera-hole">
                 </div>
@@ -79,8 +70,8 @@
   </div>
 
 
-
-    <script src="./script.js"></script>
+  <!-- Link to Javascript -->
+  <script src="./script.js"></script>
   </body>
 
 </html>
