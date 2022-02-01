@@ -1,5 +1,6 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+const input = document.getElementById('name-input')
 
 // Global variables, if you need any, declared here
 
@@ -25,7 +26,7 @@ const showMessage = (message, sender) => {
         </div>
       </section>
     `
-  }
+  } 
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
@@ -37,6 +38,12 @@ const greeting = () => {
 }
 
 // Set up your eventlisteners here
+document.getElementById('name-form').onsubmit = event => {
+  event.preventDefault();
+  showMessage(input.value, 'user');
+  input.value ='';
+}
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
@@ -44,4 +51,4 @@ const greeting = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000)
+setTimeout(greeting, 500)
