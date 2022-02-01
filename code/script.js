@@ -11,7 +11,7 @@ const showMessage = (message, sender) => {
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
-          <p>${message}</p>
+          <p>Hejhej</p>
         </div>
         <img src="assets/user.png" alt="User" />  
       </section>
@@ -21,7 +21,7 @@ const showMessage = (message, sender) => {
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
-          <p>${message}</p>
+          <p>Hejdå</p>
         </div>
       </section>
     `
@@ -34,6 +34,7 @@ const showMessage = (message, sender) => {
 const greeting = () => {
   showMessage(`Hello there, What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
+
 }
 
 // Set up your eventlisteners here
@@ -44,4 +45,4 @@ const greeting = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000)
+setTimeout(greeting, 500)
