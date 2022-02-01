@@ -15,62 +15,69 @@
 
   <body>
 
-    <!-- Louisa was here-->
-    <!-- Michael was also here -->
-
     <div class="phone-container">
       <div class="pink-phone">
           <div class="black-screen">
 
-              <!-- DIVS for camera space and hole - NO INPUT -->
-              <div class="camera-space">
-                  <div class="camera-hole">
-                  </div>
-              </div>
-              <!-- END DIVS for camera space and hole - NO INPUT -->
 
+              <!-- Unlock Screen DIV start -->
               <div class="unlock-screen">
                 <img class="white-lock" src="assets/lock_white.png" alt="Lock Icon" />
                 <h1 class="ui-text title" id="time"> </h1>
                 <h2 class="ui-text subtitle" id="date"> </h2>
                 <img class="pink-swirl" src="assets/pink_swirl.png" alt="Pink Swirl" />
                 <h2 class="ui-text subtitle">Enter Your Name <br>to Unlock</h2>
-                  <form class="login-container">
+                  <div class="login-container">
                     <input class="username__button" type="text" id="userName" name="userName" required />
                     <input type="image" src="assets/colored_arrow_black.png" class="login__button send-arrow" id="loginButton" name="loginButton" alt="Login Button" />
-                  </form>
-              </div>
-
-              <div class="new-message-screen">
-              </div>
-
-              <div class="chat-screen">
-                  <div class="chat-screen__upperbar">
                   </div>
+              </div>
+              <!-- Unlock Screen DIV end -->
+
+
+              <!-- Chat Screen DIV Start -->
+              <div class="chat-screen">
+
+                  <!-- Start Chat Screen Upperbar with Icon & Name -->
+                  <div class="chat-screen__upperbar">
+                    <img class="bestie-icon__header" src="assets/sassy.png" alt="Bestie Icon">
+                    <h3 class="ui-text upperbar-text">💅 Bestie 💅</h3>
+                  </div>
+                  <!-- End Chat Screen Upperbar with Icon & Name -->
+                  <!-- Input their Chatbot -->
+
                   <div class="chat-area">
+                    <section class="chat" id="chat"></section>
+                    <div class="input-wrapper" id="input-wrapper">
+                      <form id="name-form">
+                        <input id="name-input" type="text" />
+                        <button class="send-btn" type="submit">
+                          Send
+                        </button>
+                      </form>
+                    </div>
+
                       <div class="input-area">
 
                       </div>
                   </div>
               </div>
+              <!-- Chat Screen DIV End -->
 
+
+              <!-- DIVS for camera space and hole styling - NO INPUT -->
+              <div class="camera-space">
+                <div class="camera-hole">
+                </div>
+              </div>
+              <!-- END DIVS for camera space and hole - NO INPUT -->
+
+
+            <!-- END DIVS FOR PHONE CONTAINER, PINK PHONE, BLACK SCREEN  -->
           </div>
       </div>
   </div>
 
-  <!-- Their Chatbot -->
-
-  <main id="main">
-    <section class="chat" id="chat"></section>
-    <div class="input-wrapper" id="input-wrapper">
-      <form id="name-form">
-        <input id="name-input" type="text" />
-        <button class="send-btn" type="submit">
-          Send
-        </button>
-      </form>
-    </div>
-  </main>
 
 
     <script src="./script.js"></script>

@@ -1,37 +1,68 @@
 // Our Javascript
 
+// Page 1 - Login Page
+
 // Get Hours & Minutes
 let findTime = new Date().toTimeString().substr(0,5);
 let time = findTime.replace(":", ".");
 console.log(time);
 
-//Get Weekday
+//Get Weekday (Define array, pull date, subtract 1 for array)
 const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-
 const weekday = new Date();
 let today = weekdays[weekday.getDay() - 1];
 console.log(today);
 
-//Get Date
-const date = new Date().toDateString().substr(8,2);
+//Get Date (Fixed to remove 0 from 01-09 in date)
+let date = new Date().toDateString().substr(8,2);
+if (date < 10) {
+  date = date.replace("0", "");
+}
 console.log(date);
 
-// Get Month
+// Get Month (Define Array, Choose Array item)
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-const currentMonth = new Date();
-let month = months[currentMonth.getMonth()];
+let currentMonth = new Date();
+const month = months[currentMonth.getMonth()];
 console.log(month);
 
-
-//Insert Time
+//Insert Time into Unlock Scren
 const insertTime = document.getElementById("time");
 insertTime.innerText = time
 
-//Insert Date
+//Insert Date into Unlock Screen
 const insertDate = document.getElementById("date");
 insertDate.innerText = `${today}, ${date} ${month}`;
 
+// Add event listener to keep input container PINK when clicked on
+const usernameInput = document.querySelector('.login-container');
+usernameInput.addEventListener('click', function() {
+  this.classList.toggle("login-container--active")
+})
+
+// Add event listener for login button push
+// Login Button Behaviour
+const loginButton = document.querySelector('.login__button');
+loginButton.addEventListener('click', function() {
+  // prevent.Default stops page from reloading when clicking icon
+  event.preventDefault();
+
+  // Store nameString
+  const nameString = document.getElementById('userName').value;
+  console.log(nameString);
+
+  // Correct nameString to userName (cut string after first name, correct Case)
+  const nameString2 = nameString.split(" ")[0];
+  console.log(nameString2);
+  const userName = nameString2.charAt(0).toUpperCase() + nameString2.substr(1).toLowerCase();
+  console.log(userName);
+
+  // Hide Login Screen
+  document.querySelector(".unlock-screen").style.visibility = "hidden";
+
+  //Show Chat Screen
+  document.querySelector(".chat-screen").style.visibility = "visible";
+})
 
 
 // Their JavaScript
@@ -51,13 +82,13 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/profile.png" alt="User" class="chat-icon" />  
       </section>
     `
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/sassy.png" alt="Bestie Icon" class="chat-icon" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -70,7 +101,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Hello there ${userName}`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 

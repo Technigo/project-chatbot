@@ -66,14 +66,13 @@ body {
   overflow: hidden;
 }
 
-/* Upper Bar - Incl. Camera Hole*/
+/* Upper Bar - Incl. Camera Hole - Visual Only */
 .camera-space {
   margin-top: 9px;
   background-color: #0D0E0F;
   border-radius: 0px 0px 15px 15px;
   width: 135px;
   height: 15px;
-  display: flex;
   position: absolute;
 }
 
@@ -125,7 +124,7 @@ body {
   margin-top: 20px;
 }
 
-.login-container:hover {
+.login-container--active, .login-container:hover {
   background-color: #EEBFC7;
 }
 
@@ -136,13 +135,15 @@ body {
   width: 160px;
   background: transparent;
   color: white;
-  padding-left: 15px;
+  padding-left: 25px;
+  font-family: 'Oxygen', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  cursor: initial;
 }
 
 .username__button:focus {
   outline: none;
-  color: white;
-
 }
 
 .login__button {
@@ -155,22 +156,13 @@ body {
   height: 42px;
 }
 
-/* After Unlock, Transition Screen with Button To Open New Message */
-.new-message-screen {
-  width: 285px;
-  height: 630px;
-  margin-top: -630px;
-  background-color: green;
-  visibility: hidden;
-}
-
 
 /* Chat Screen */
 .chat-screen {
   width: 285px;
   height: 620px;
   margin-top: -20px;
-  visibility: visible;
+  visibility: hidden;
 }
 
 /* Chat Screen Upperbar w Icon & Display Name */
@@ -179,15 +171,38 @@ body {
   height: 80px;
   background-color: #2D2E2F;
   position: relative;
-  margin-top: -1230px;
+  margin-top: -600px;
   border-radius: 15px 15px 0px 0px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 15px;
+}
 
+.upperbar-text {
+  font-size: 16px;
+}
+
+.bestie-icon__header {
+  height: 34px;
+  width: 34px;
+  background-color: white;
+  border-radius: 50%;
 }
 
 /* Chat Area for JS Conversation */
 .chat-area {
+  display: flex;
+  flex-direction: column;
 
+}
+
+.chat-icon {
+  width: 44px;
+  height: 44px;
+  background-color: white;
+  border-radius: 50%;
 }
 
 /* Input/Chat Area for User */
@@ -195,8 +210,8 @@ body {
 
 }
 
-/* Their CSS */
 
+/* Their CSS */
 #name-input {
   box-sizing: border-box;
   border: none;
@@ -209,21 +224,6 @@ body {
   font-weight: 600;
   line-height: 26px;
   flex: 1;
-}
-
-main {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 700px;
-  height: 600px;
-  border-radius: 30px;
-  background: #fff;
-  padding: 20px 24px;
-  padding-top: 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  background-color: blue;
 }
 
 .chat {
@@ -246,12 +246,6 @@ main {
   justify-content: flex-end;
   margin: 16px 0 0 8px;
   flex-shrink: 0;
-}
-
-.bot-msg img,
-.user-msg img {
-  width: 60px;
-  height: 60px;
 }
 
 .bubble {
