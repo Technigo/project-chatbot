@@ -190,7 +190,3 @@ const showPrice = (dish) => {
 });
 
 }
-
-
-
-
