@@ -1,11 +1,19 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
-const btn = document.getElementsByClassName('send-btn')
+const btn = document.getElementById('send-btn')
 const userName = document.getElementById('name-input')
 const form = document.getElementById('name-form')
+const inPutWrapper = document.getElementById('input-wrapper')
+
+const replyBot = (message) => {
+  showMessage(message, 'bot')
+} 
+
+const replyUser = (message) => {
+  showMessage(message, 'user')
+}
 
 // Global variables, if you need any, declared here
-
 // Functions declared here
 // const selectTargetGroup = () => {
 //   console.log('Does it work?')
@@ -39,13 +47,50 @@ const showMessage = (message, sender) => {
     
     // Starts here
     const greeting = () => {
-      showMessage(`Hello there, What's your name?`, 'bot')
+      replyBot(`Hello there, What's your name?`)
       // Just to check it out, change 'bot' to 'user' here 👆
     }
     
-    // const handleNameInput = (event) => {
-    //   event.preventDefault() test
+    inPutWrapper.addEventListener('submit', (event) => {
+      event.preventDefault()
+      const nameInput = userName.value
+      console.log(nameInput)
+      replyUser(nameInput)
+      userName.value = ''
+      replyBot(`Hello ${nameInput}! Are you looking for a movie for kids or adults?`)
+      selectTargetGroup()
+    })
+
+    const selectTargetGroup = () => {
+      inPutWrapper.innerHTML = `
+          <button id="kids-btn">Kids</button>
+          <button id="adults-btn">Adults</button>
+          ` 
+      const kidsBtn = document.getElementById('kids-btn')
+      const adultsBtn = document.getElementById('adults-btn')
+
+
+      kidsBtn.addEventListener('click', () => {
+        replyUser('Kids')
+        selectGenre()
+      })
+
+      adultsBtn.addEventListener('click', () => {
+        replyUser('Adults')
+        selectGenre()
+      })
+    }
+
+    //
     
+    const selectGenre = (age) => {
+      if ()
+    }
+    
+     //const handleNameInput = (event) => {
+    //  event.preventDefault()
+    // }
+
     //   const name = userName.value
     //   showMessage(name, 'user')
     //  userName.value = ''
