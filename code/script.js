@@ -53,13 +53,13 @@ const nextQuestion = (message) => {
     setTimeout(() => showCakes(message), 1000)
   } else if (questionNumber === 2) {
     userReply(message)
-    setTimeout(() => showMenu(message), 1000)
+    setTimeout(() => showIcing(message), 1000)
   } else if (questionNumber === 3) {
     userReply(message)
-    setTimeout(() => showDishSize(message), 1000)
+    setTimeout(() => showSize(message), 1000)
   } else if (questionNumber === 4) {
     userReply(message)
-    setTimeout(() => showPrice(message), 1000)
+    setTimeout(() => showOrder(message), 1000)
   } else {
     userReply(message)
     setTimeout(thankYou, 1000)
@@ -77,19 +77,78 @@ const greeting = () => {
 
 const showCakes = (msg) => {
   questionNumber++
-  botReply(`What cake would you like ${msg}`);
+  botReply(`What type of cake would you like, ${msg}`);
   inputWrapper.innerHTML = `
-  <button id="chocolate">Chocolate</button>
-  <button id="vanilla">Vanilla</button>
-  <button id="fruits">Fruits</fruits>
+  <button id="chocolateBtn">Chocolate</button>
+  <button id="vanillaBtn">Vanilla</button>
+  <button id="fruitBtn">Fruit</button>
   `
+  document.getElementById('chocolateBtn').addEventListener('click', () => nextQuestion('chocolate'))
+  document.getElementById('vanillaBtn').addEventListener('click', () => nextQuestion('vanilla'))
+  document.getElementById('fruitBtn').addEventListener('click', () => nextQuestion('fruit'))
 };
 
+const showIcing = (msg) => {
+  questionNumber++
+  botReply(`A ${msg} cake, what a great choice! What colour do you want for the icing?`);
+  inputWrapper.innerHTML = `
+  <button id="pinkBtn">Pink</button>
+  <button id="greenBtn">Green</button>
+  <button id="yellowBtn">Yellow</button>
+  `
+  document.getElementById('pinkBtn').addEventListener('click', () => nextQuestion('pink'))
+  document.getElementById('greenBtn').addEventListener('click', () => nextQuestion('green'))
+  document.getElementById('yellowBtn').addEventListener('click', () => nextQuestion('yellow'))
+}
 
+const showSize = (msg) => {
+  console.log()
+  questionNumber++
+  botReply(`A ${msg} icing, what a great choice! What size do you want?`);
+  inputWrapper.innerHTML = `
+  <button id="4Btn">4 pieces</button>
+  <button id="8Btn">8 pieces</button>
+  <button id="12Btn">12 pieces</button>
+  <button id="16Btn">16 pieces</button>
+  `
+  document.getElementById('4Btn').addEventListener('click', () => nextQuestion('4 pieces'))
+  document.getElementById('8Btn').addEventListener('click', () => nextQuestion('8 pieces'))
+  document.getElementById('12Btn').addEventListener('click', () => nextQuestion('12 pieces'))
+  document.getElementById('16Btn').addEventListener('click', () => nextQuestion('16 pieces'))
+  
+  // `
+  // <select id="select">
+  //   <option value="" selected disabled>Select the number of pieces</option>
+  //   <option value="4">4 pieces</option>
+  //   <option value="8">8 pieces</option>
+  //   <option value="12">12 pieces</option>
+  //   <option value="16">16 pieces</option>
+  // </select>
+  // `
+  // const select = document.getElementById('select')
+  // select.addEventListener('change', () => nextQuestion(select.value))
 
+}
 
+const showOrder = (msg) => {
+  questionNumber++
+  botReply(`Are you sure your want to order a ${msg} cake?`)
+  inputWrapper.innerHTML = `
+  <button id="yesBtn">Yes</button>
+  <button id="noBtn">No</button>
+  `
+  document.getElementById('noBtn').addEventListener('click', () => {
+    location.reload()
+    return false
+  })
 
+  document.getElementById('yesBtn').addEventListener('click', () => nextQuestion('Yes!'))
+}
 
+const thankYou = () => {
+  botReply(`Thanks you for your order, it will be X €`)
+  inputWrapper.innerHTML = ``
+}
 
 // Set up your eventlisteners here
 
