@@ -176,3 +176,22 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+/* MOBILE */
+@media (max-width:667px) {
+  h1 {
+    text-decoration-line: none;
+  }
+
+  main {
+    width: 98%;
+  }
+
+  input {
+    width: 95%;
+  }
+
+  .input-wrapper button {
+    padding: 16px 35px;
+  }
+}
