@@ -1,7 +1,10 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 
-const quizButton = document.querySelector(".quiz-button")
+const quizButton = document.querySelector('.quiz-button')
+
+const sendButton = document.querySelector('.send-btn')
+
 
 // Global variables, if you need any, declared here
 
@@ -34,18 +37,48 @@ const showMessage = (message, sender) => {
 }
 
 // Starts here
-
 const greeting = () => {
    showMessage(`Hello there, What's your name?`, 'bot')
    // Just to check it out, change 'bot' to 'user' here 👆
  }
+
+// Displays users name - Test 1
+//  document.getElementById('name-form').onsubmit = (event) => {
+//   event.preventDefault()
+
+//   const inputValue = document.getElementById('name-input').value
+
+
+//   document.getElementById('greeting').innerHTML = `${inputValue}`
+// }
+
+// Displays users name - Test 2
+
+const handleNameInput = (event) => {
+  event.preventDefault()
+
+  // Store the value in a variable so we can access it after we clear it from the input 
+  const name = nameInput.value
+  showMessage(name, 'user')
+  nameInput.value = ''
+
+  // Time delay - next question
+  setTimeout(() => firstQuestion(name), 1000)
+
+}
+
+// const firstAnswer = () => {
+//   showMessage(``)
+// }
 
 
 
 
 // Set up your eventlisteners here
 
-quizButton.addEventListener("click", greeting)
+quizButton.addEventListener('click', greeting)
+
+sendButton.addEventListener('click', handleNameInput)
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
