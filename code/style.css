@@ -1,12 +1,12 @@
 * {
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #ECB390;
 }
 
 h1 {
@@ -41,10 +41,22 @@ input {
   color: #0026ff;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
   flex: 1;
+}
+
+select {
+  border: none;
+  border-radius: 4px;
+  color: #363636;
+  font-size: 20px;
+  font-weight: 600;
+  height: 60px;
+  background: #ffe8e5;
+  width: 100%;
+  padding: 0 20px;
+  cursor: pointer;
 }
 
 main {
@@ -90,12 +102,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #ffe8e5;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #363636;
   max-width: 40%;
 }
 

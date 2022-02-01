@@ -36,7 +36,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What is your name?`, 'bot')
+  showMessage(`Hello there, What a lovely day🍎 What is your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 const handleNameInput = (event) => {
@@ -68,7 +68,7 @@ setTimeout(greeting, 1000)
 
 //Changed the order so it gets more orginized :)
 const showFoodOptions = (name) => {
-  showMessage(`Hello, ${name} What a lovely day🍎 What do you want to eat today? `,'bot');
+  showMessage(`Hello, ${name} What do you want to eat today? `,'bot');
   //3 options in buttons
   showButtons();
 }
@@ -100,9 +100,10 @@ const showButtons = () => {
 
 const foodOptions = (menu) => {
   if(menu === 'pizza') {
-    showMessage('which pizza do you want?', 'bot');
+    showMessage('Which pizza do you want?', 'bot');
     inputWrapper.innerHTML = `
     <select id="select">
+    <option value="" selected disabled>🍕 Select a pizza...</option>
       <option value="Hawaii">Hawaii</option>
       <option value="Neapolitan">Neapolitan</option>
       <option value="Margarita">Margarita</option>
@@ -111,6 +112,7 @@ const foodOptions = (menu) => {
     showMessage('which pasta do you want?', 'bot');
     inputWrapper.innerHTML = `
     <select id="select">
+    <option value="" selected disabled>🍝 Select a pasta...</option>
       <option value="Ravioli">Ravioli pasta</option>
       <option value="Carbonara">Carbonara pasata</option>
       <option value="Spaghetti">Spaghetti</option>
@@ -119,6 +121,7 @@ const foodOptions = (menu) => {
     showMessage('which salad do you want?', 'bot');
     inputWrapper.innerHTML = `
     <select id="select">
+    <option value="" selected disabled>🥬 Select a salad...</option>
       <option value="Broccoli">Broccoli salad</option>
       <option value="Ceaser">Ceaser salad</option>
       <option value="leafgreen">Leafgreen salad</option>
