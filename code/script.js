@@ -159,7 +159,14 @@ const showPrice = (menu) => {
   <button id="no">No</button>
  `
  const yesBtn = document.getElementById('yes');
- yesBtn.addEventListener('click', () => {showMessage(`thank you for your order!`, 'bot')});
+ yesBtn.addEventListener('click', () => {showMessage(`thank you for your order!`, 'bot')
+ inputWrapper.innerHTML = `
+ <button id="restart">Make another order</button>
+  ` 
+  document.getElementById('restart').addEventListener('click', () => {
+    window.location.reload()
+  })
+});
 
  const noBtn= document.getElementById('no');
  noBtn.addEventListener('click', () =>{showMessage('Ooops, bye!', 'bot')});
