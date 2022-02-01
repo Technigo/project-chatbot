@@ -41,11 +41,12 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Good day and welcome to Bot Theatre! Are you in the mood for a movie?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
 // Set up your eventlisteners here
+
 
 
 
