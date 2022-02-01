@@ -1,7 +1,16 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+const inputWrapper = document.getElementById('input-wrapper')
+const nameInput = document.getElementById('name-input')
+const form = document.getElementById('name-form')
 
 // Global variables, if you need any, declared here
+let questionStep = 1
+
+// const Options = () => {
+//   questionStep++;
+
+// }
 
 // Functions declared here
 
@@ -33,7 +42,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Hello my name is Simon, What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -45,4 +54,4 @@ const greeting = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 3000)
+setTimeout(greeting, 1200)
