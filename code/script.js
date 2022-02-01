@@ -35,7 +35,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot') // denna är kopplad till <p>message</p>
+  showMessage(`Hello, what is your name?`, 'bot') // denna är kopplad till <p>message</p>
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
