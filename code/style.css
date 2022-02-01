@@ -6,24 +6,31 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: url('https://images.unsplash.com/photo-1543157145-f78c636d023d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top left;
+
 }
 
+/*do media queries to make title different color for mobiles or box around it*/
 h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: #b20b25;
   text-align: center;
+  font-family: 'Lobster', cursive;
 }
 
 h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: #b20b25;
   text-align: center;
   margin-bottom: 36px;
+  font-family: 'Lobster', cursive;
 }
 
 p {
@@ -31,6 +38,7 @@ p {
   font-weight: 600;
   line-height: 28px;
   margin: 0;
+  font-family: 'Lobster'
 }
 
 input {
@@ -38,7 +46,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #472b38;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -53,7 +61,8 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background-color: white;
+  opacity: 0.8;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -95,7 +104,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #472b38;
   max-width: 40%;
 }
 
@@ -120,7 +129,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #472b38;
   color: white;
   border: none;
   border-radius: 4px;

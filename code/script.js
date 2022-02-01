@@ -1,8 +1,8 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById('input-wrapper')
-//const input = document.getElementById('input')
-//const sendBtn = document.getElementById('send')
+const input = document.getElementById('input')
+const sendBtn = document.getElementById('send')
 
 // Global variables, if you need any, declared here
 let questionNumber = 1
@@ -51,7 +51,7 @@ const nextQuestion=(message)=>{
 
   else if (questionNumber === 2) {
     userReply(message)
-    input.value = ''
+    input.value =''
     setTimeout(()=> deliveryPerson (message), 1000)
   }
 }
@@ -62,26 +62,22 @@ const greeting = () => {
   showMessage(`Hello there! Tomorrows options are tulips, roses and lilies`, 'bot')
 
 inputWrapper.innerHTML=
-`<button id="tulips">Tulips</button>
-<button id="roses">Roses</button>
-<button id="lilies">Lilies</button>`
+`<button id="tulipsBtn">Tulips</button>
+<button id="rosesBtn">Roses</button>
+<button id="liliesBtn">Lilies</button>`
 
 // Set up your eventlisteners here
 document
-    .getElementById('tulips')
-    .addEventListener('click', () => nextQuestion())
+    .getElementById('tulipsBtn')
+    .addEventListener('click', () => nextQuestion('Tulips'))
 document
-    .getElementById('roses')
-    .addEventListener('click', () => nextQuestion())
+    .getElementById('rosesBtn')
+    .addEventListener('click', () => nextQuestion('Roses'))
 document
-    .getElementById('lilies')
-    .addEventListener('click', () => nextQuestion())
+    .getElementById('liliesBtn')
+    .addEventListener('click', () => nextQuestion('Lilies'))
 }
 
-/* To make the flowerbuttons disapear after click
-const select = document.getElementById('select')
-  select.addEventListener('change', () => nextQuestion(select.value))
-*/ 
 
 const deliveryAddress = ()=> {
   questionNumber++
@@ -91,19 +87,36 @@ const deliveryAddress = ()=> {
 const deliveryPerson = ()=> {
   questionNumber++
   botReply(`Are the flowers for yourself or someone else?`)
+
   inputWrapper.innerHTML=
-`<button id="myself">Myself</button>
-<button id="someoneElse">Someone Else</button>`
+`<button id="myselfBtn">Myself</button>
+<button id="someoneElseBtn">Someone Else</button>`
 
 document
-    .getElementById('myself')
-    .addEventListener('click', () => nextQuestion())
+    .getElementById('myselfBtn')
+    .addEventListener('click', () => nextQuestion('myself'))
 document
-    .getElementById('someoneElse')
-    .addEventListener('click', () => nextQuestion())
+    .getElementById('someoneElseBtn')
+    .addEventListener('click', () => nextQuestion('someoneElse'))
 }
+/*
+const card = ()=> {
+  questionNumber++
+  botReply(`Would you like to add a card with your flowers?`)
+  inputWrapper.innerHTML=
+  `<button id="cardYesBtn">Yes</button>
+  <button id="cardNoBtn">No</button>`
 
+  If they say No it doesnt go to the next question, it goes two questions ahead
 
+  document
+  .getElementById('cardYesBtn')
+  .addEventListener('click', () => nextQuestion('Yes'))
+document
+  .getElementById('cardNoBtn')
+  .addEventListener('click', () => nextQuestion('No'))
+}
+*/
 
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
