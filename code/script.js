@@ -10,6 +10,7 @@ let inputName = "" // variabel som sparar namnet globalt
 let questionNumber = 0
 // Functions declared here
 
+
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
@@ -26,7 +27,7 @@ const showMessage = (message, sender) => {
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
-          <p>${message}</p>
+        <p>${message}</p>
         </div>
       </section>
     `
@@ -43,7 +44,7 @@ const greeting = () => {
 }
 
 // Bot greets the user, and asks if she/he wants to order a bike
-const whichBike = (name) => {
+const wantBike = (name) => {
   showMessage(`Nice to meet you ${name}!`, 'bot')
   setTimeout (() => {showMessage(`Would you like to order a bike?`, 'bot')
 
@@ -52,46 +53,58 @@ inputWrapper.innerHTML = `
 <button id="yes">Yes! 👍</button>
 <button id="no">No! 👎</button>
 `
+  document.getElementById('yes').addEventListener('click', () => wantBike('yes'))
+  document.getElementById('no').addEventListener('click', () => wantBike ('no'))
+}, 1200)
+}
 
-// User responds
-document.getElementById('yes')
-.addEventListener('click', () => colorSelection ('yes'))
-document.getElementById('no')
-.addEventListener('click', () => colorSelection('no'))
-  }, 1500 )}
+// If user wants bike or not
 
-// Vill att användaren skriver i sitt namn
-// Skapar en funktion som sparar username som ett value
-// Sedan skickas användaren vidare till ny fråga
-const textInput = () => {
 
-    const name = userInput.value // Input from user gets stored in username
-    showMessage(name, 'user') // Shows the msg the user typed in
-    userInput.value = '' // Clears form
 
-    if (name === "") { // If no user name
-    setTimeout(() => showMessage(`No name? Please try again.`, 'bot'), 1000)
+// Pushes to the next question - our schedule
+const handleInput = (event) => {
+  event.preventDefault()
+  questionNumber++
+    if (questionNumber === 1) {
+      handleNameQuestion() 
+    } else if (questionNumber === 2) {
+      setTimeout(XXXX, 1500)
+    } else if (questionNumber === 3) {
+      setTimeout(XXXX, 1500)
+    } else if (questionNumber === 4) {
+      setTimeout(XXXX, 1500)
+      }
     }
 
-    else { // If user puts in name, continue
-      setTimeout(() => showMessage(`Hey ${name}`, 'bot'), 1000) // Bot says hey to 'name'
-      inputName += name
-      whichBike(inputName) // call next function in case user wrote her name
-    }
+
+// Stores name in variable "name"
+const handleNameQuestion = () => {
+  const name = userInput.value
+  showMessage(`My name is ${name}!`, 'user')
+  inputWrapper.innerHTML = ``
+  setTimeout (() => {wantBike(name)}, 1000)
 }
 
 
 
+// Set up your eventlisteners here
+form.addEventListener('submit', handleInput)
+
+
+// // Stores the input (name)
+// const handleNameQuestion = () => {
+//   const name = userInput.value
+//   showMessage(`My name is ${name}!`, 'user')
+//   inputWrapper.innerHTML = ``
+//   setTimeout (() => {whatPlant(greeting)}, 1000)
+// }
 
 
 // Model question - Which model would you like?
 // const choiceModel = document.getElementById('choice-model').addEventListener('submit')
 
 
-// Set up your eventlisteners here
-
-// Ev ta bort denna. --> 
-// form.addEventlistener('submit', handleInput)
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
@@ -104,4 +117,4 @@ setTimeout(greeting, 800)
 // sentBtn.addEventListener("click", (e)=>{ 
 // e.preventDefault
 // textInput()
-// })
+//
