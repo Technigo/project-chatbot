@@ -1,3 +1,5 @@
+//let userTxt = document.getElementById("name-input")
+
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 
@@ -16,7 +18,7 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `
-  } else if (sender === 'bot') { console.log("It works!")
+  } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -32,9 +34,23 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hi there Icecream lover, What's your name?`, 'bot')
+  showMessage(`Hello there ice cream lover, What's your name?`, 'bot')
+  
+
   // Just to check it out, change 'bot' to 'user' here 👆
 }
+
+let userTxt = document.getElementById('name-input')
+let sendBtn = document.getElementById('userbtn')
+
+sendBtn.addEventListener("click", (e)=>{
+  e.preventDefault()
+   userTxt = userTxt.value
+   if (userTxt){ 
+    showMessage(`${userTxt}`, 'user')
+    showMessage(`Welcome ${userTxt}!! What icecream would you like? `, 'bot')
+   }
+  }
 
 // Set up your eventlisteners here
 
@@ -44,4 +60,5 @@ const greeting = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 800)
+
+,setTimeout(greeting, 1000))
