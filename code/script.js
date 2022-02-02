@@ -1,9 +1,9 @@
-// All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const sendBtn = document.querySelector(".send-btn");
-const form = document.getElementById("name-form");
+const inputWrapper = document.getElementById("input-wrapper");
 
-// Global variables, if you need any, declared here
+  
+
 
 // Functions declared here
 
@@ -21,103 +21,111 @@ const showMessage = (message, sender) => {
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="https://images.unsplash.com/photo-1634909924531-4daae117dbc1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2062&q=80" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
       </section>
     `
   }
-  // This little thing makes the chat scroll to the last 
+  // This little thing makes the chat scroll to th/e last 
   //message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage(`Hi, I am Dr.Strange, what can I help with today?`, 'bot')
+  inputWrapper.innerHTML = `
+  <button type="button" id="ambulance"> 🚑 I need an ambulance</button>
+  <button type="button" id="minor-injury"> 🤕 Minor Injury </button>
+`;
+  
+ //Add event lisnner to Ambulance button
+ const ambulanceBtn = document.getElementById("ambulance");
+
+ ambulanceBtn.addEventListener("click", function(){
+   showMessage(`🚑 I need an ambulance`, 'user')
+   showMessage(`oh, you need an ambulance! <br> Please write your address`, 'bot')
+
+  inputWrapper.innerHTML = `
+  <form id="address-form">
+  <input id="address-input" type="text" />
+  <button class="send-btn" type="submit">
+    Send
+  </button>
+</form>
+`;
+document.getElementById("address-form").addEventListener("submit",(e)=>{
+  e.preventDefault()
+let addressInput = document.querySelector("#address-input").value;
+if (addressInput == "") {
+showMessage(`RIP 🥲`, 'bot')} 
+
+else {
+  showMessage(`We will pick you up at ${addressInput}, 
+  when we feel like it`, 'bot')
+}
+})
+ });
+
+ //Injury Button
+ const injuryBtn = document.getElementById("minor-injury");
+ injuryBtn.addEventListener("click", function(){
+
+
+});
 }
 
-// Set up your eventlisteners here
-// Input Name and Show on Chat Screen  
-sendBtn.addEventListener("click", (e)=> {
-  e.preventDefault();
-  const nameInput = document.getElementById("name-input").value;
-  showMessage(nameInput, "user");
-  document.getElementById("name-input").value = "";
 
-  // Bot update Name
-  const answerName = () => {
-    showMessage(`Nice to meet you ${nameInput}`, "bot");
-    showMessage(`Please choose your food`, "bot");
-    // Choose food
-    foodOption();
-  }
-  setTimeout(answerName,1500);
-  
+// 1. First question
 
-  // Add foodOption to html
-  const foodOption = () => {
-    form.innerHTML = `
-    <button id="pizza" type="button">Pizza</button>
-    <button id="hamburger" type="button">Hamburger</button>
- `; 
-   document.getElementById("pizza").addEventListener("click", function(){
-       typeOfFood(pizza); //typeOfFood(food) 
-       showMessage(`You are in mood for pizza, please choose size`, "bot");
-       showMessage(`pizza`,'user')
-   })
-   document.getElementById("hamburger").addEventListener("click", function(){
-       typeOfFood(hamburger);
-       showMessage(`You are in mood for hamburger, please choose size`, "bot");
-       showMessage(`hamburger`,'user')
-   })
+/*
+ //Add event lisnner to button
+ const ambulanceBtn = document.getElementById("ambulance");
+ ambulanceBtn.addEventListener("click", function(){
+   
+ });
+ const saladBtn = document.getElementById("salad");
+ saladBtn.addEventListener("click", function(){
 
-  const typeOfFood = (food) => {
-    if (food === pizza) {
-      form.innerHTML = `
-      <label for="pizza-topping">Choose topping:</label>
-      <select name="pizza" id="pizza-topping">
-        <option value="chicken">Chicken</option>
-        <option value="ham">Ham</option>
-        <option value="vegan">Vegan</option>
-      </select>
-      `
-     const topping=document.getElementById('pizza-topping');
-     topping.addEventListener('change',function(){
-      showMessage(`${topping.value}`,'bot')  
-     })
-    
-    } else if (food === hamburger) {
-      form.innerHTML = `
-      <label for="salad-topping">Choose topping:</label>
-  
-      <select name="salad" id="salad-topping">
-        <option value="tomato">tomato</option>
-        <option value="egg">egg</option>
-        <option value="salmon">salmon</option>
-      </select>
-      `
-      const saladTopping=document.getElementById('salad-topping');
-      saladTopping.addEventListener('change',function(){
-        showMessage(`${saladTopping.value}`,'bot')
-      })
+
+});
+}*/
+
+/*
+const handleNameInput = (e) => {
+    const name = nameInput.value;
+    //This is to prevent page reloading when user submit input
+    e.preventDefault(); 
+    if (name === "suki") {
+      setTimeout(() =>  showMessage(`Hi, Please try again`, "bot"), 1000)   
+     } else {
+    //Show message on User side
+    setTimeout(() =>  showMessage(`${name}`, "user"), 500);
+
+    //Show message on Bot side
+    setTimeout(() =>  showMessage(`Hi ${name}, what would 
+    you like to order`, "bot"), 1000);
+     
+    //Question 2
     }
-   }
-  }
-})
-
- // Choose size 
- const foodSize = (size) => {
-  form.innerHTML = `
-  <button id="big" type="button">Big 😍</button>
-  <button id="small" type="button">Small 😢</button>
-`;
- }
 
 
-//Bot answer qi
+    //clear input
+    nameInput.value = "";
+ 
+    }
+    
+form.addEventListener("submit", handleNameInput);
+
+// Trigger handleNameInput function when user click Send
+
+*/
+
+
+
+
 
 
 
@@ -127,4 +135,12 @@ sendBtn.addEventListener("click", (e)=> {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000)
+setTimeout(greeting, 1000);
+
+
+// 1. Asking user name
+     // User input Name
+
+// 2. Hi ${userName}, what do you want to order?
+// 2a. Pop up button (pizza || salad)
+     // User choose one btn
