@@ -6,11 +6,15 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
-  background: #0026ff;
+  background-image: url(./assets/heroimage.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 h1 {
   font-weight: bold;
-  font-size: 44px;
+  font-size: 40px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -18,17 +22,44 @@ h1 {
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 25px;
   line-height: 34px;
   color: #fff;
   text-align: center;
   margin-bottom: 36px;
 }
+h3 {
+  font-family: cursive;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 50px;
+  background: linear-gradient(to right, #dd099d, #e20f36);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-bottom: 20px;
+}
+a {
+  text-align: center;
+  margin: 10vh 25vw;
+  text-decoration: none;
+}
+
+.booking {
+  margin-top: 10vh;
+  margin-bottom: 15vh;
+  background-color: rgb(224, 196, 255);
+  letter-spacing: 1px;
+  color: black;
+  font-weight: bolder;
+  padding: 20px;
+  border: none;
+}
 
 p {
-  font-size: 18px;
+  font-size: 12px;
   font-weight: 600;
-  line-height: 28px;
+  line-height: 20px;
   margin: 0;
 }
 
@@ -36,20 +67,21 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: rgba(224, 196, 255, 0.644);
+  color: black;
   padding: 16px;
   font-size: 16px;
   font-family: "Montserrat";
   font-weight: 600;
-  line-height: 26px;
+  line-height: 20px;
   flex: 1;
+  width: 50vw;
 }
 
 main {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 700px;
+  margin: 20vh auto;
+  width: 70vw;
+  max-width: 500px;
   height: 600px;
   border-radius: 30px;
   background: #fff;
@@ -84,17 +116,18 @@ main {
 
 .bot-msg img,
 .user-msg img {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: rgba(224, 196, 255, 0.644);
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: black;
 }
 
 .bot-bubble {
@@ -117,17 +150,15 @@ main {
   display: flex;
 }
 
-button {
+#send-btn {
   background-color: #0026ff;
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 16px 40px;
   margin-right: 4px;
-  font-size: 16px;
-  line-height: 26px;
+  font-size: 13px;
+  font-weight: 600;
   font-family: "Montserrat";
-  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -135,4 +166,21 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  p {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 26px;
+  }
+
+  input {
+    line-height: 26px;
+  }
+
+  #send-btn {
+    padding: 10px 20px;
+  }
+}
+@media (min-width: 1025px) {
 }

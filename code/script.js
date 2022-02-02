@@ -28,9 +28,10 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
+    console.log ('it works')
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bot.jpg" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -81,8 +82,7 @@ const nextQuestion = (message) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage(`Hello gorgeous! What is your name?`, 'bot')
 }
 const reply1 = (message) => {
   questionNumber++ 
