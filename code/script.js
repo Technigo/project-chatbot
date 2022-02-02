@@ -1,9 +1,14 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+const inputWrapper = document.getElementById('input-wrapper')
+const inputValue = document.getElementById('name-input')
+const nameForm = document.getElementById('name-form')
+
 
 // Global variables, if you need any, declared here
 
 // Functions declared here
+
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -38,8 +43,24 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-// Set up your eventlisteners here
+const textInput = (event) => {
+  event.preventDefault()
+  const name = inputValue.value  
+  showMessage(name, 'user') 
+  inputValue.value = '' 
 
+  if (name === ""){
+    setTimeout(() => showMessage(`Give me your name.`, 'bot'), 1000)
+  }
+  else{
+    setTimeout(() => showMessage(`Hey ${name}!`, 'bot'), 1000)
+    
+  }
+}
+
+
+// Set up your eventlisteners here
+nameForm.addEventListener('submit', textInput)
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
