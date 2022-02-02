@@ -1,6 +1,6 @@
-# Project Name
+Chatbot
 
-Replace this readme with your own information about your project.
+This week me and Justine are going to make a chabot on java script.
 
 Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
