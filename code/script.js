@@ -12,7 +12,6 @@ const send = document.getElementById('send')
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
-    console.log()
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -22,7 +21,6 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
-    console.log()
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -42,23 +40,23 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-const handleNameInput = () => {  
+const handleNameInput = (event) => {  
+  event.preventDefault()
   // Store the value in a variable so we can access it after we 
 	// clear it from the input
   const name = nameInput.value
   showMessage(name, 'user')
   nameInput.value = ''
+  setTimeout(() => showMoods(name), 1000)
 }
 
+const showMoods = (name) => {
+  showMessage(`Welcome ${name}, what mood are you in today?`, 'bot');
+}
 
-// Set up your eventlisteners here
+// Set up your eventlisteners here. 
 
-form.addEventListener("submit", (event) => { 
- event.preventDefault();
-})
-
-form.addEventListener('submit', handleNameInput)
-
+form.addEventListener('submit', handleNameInput);
  
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
@@ -67,4 +65,3 @@ form.addEventListener('submit', handleNameInput)
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1200) 
-//setTimeout(() => showFoodOptions(name), 1000)
