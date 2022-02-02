@@ -101,9 +101,9 @@ const greeting = (userName) => {
 const exNameTrigger = document.querySelector('.send-btn');
 
 exNameTrigger.addEventListener('click', function() {
-  // let exName = document.querySelector('.name-input').value;
-  // console.log(exName);
-  showMessage = (`Their name was Poop`, 'user')
+  let exName = document.querySelector('.name-input').value;
+  console.log(exName);
+  // showMessage = (`Their name was Poop`, 'user')
 }
 )
 
