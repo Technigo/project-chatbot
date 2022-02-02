@@ -47,11 +47,21 @@ const handleNameInput = (event) => {
   const name = nameInput.value
   showMessage(name, 'user')
   nameInput.value = ''
-  setTimeout(() => showMoods(name), 1000)
+  setTimeout(() => showDecade(name), 1000)
 }
 
-const showMoods = (name) => {
-  showMessage(`Welcome ${name}, what mood are you in today?`, 'bot');
+const showDecade = (name) => {
+  showMessage(`Welcome ${name}, what decade do feel like today?`, 'bot');
+
+  inputWrapper.innerHTML = `
+    <button id="1980Btn">1980s</button>
+    <button id="1990Btn">1990s</button>
+    <button id="2000Btn">2000s</button>
+  `
+
+  // document.getElementById('1980Btn').addEventListener('click', () => nextQuestion('1980'))
+  // document.getElementById('1990Btn').addEventListener('click', () => nextQuestion('1990'))
+  // document.getElementById('2000Btn').addEventListener('click', () => nextQuestion('2000'))
 }
 
 // Set up your eventlisteners here. 
