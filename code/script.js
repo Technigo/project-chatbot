@@ -8,8 +8,8 @@ let inputName = "" // variabel som sparar namnet globalt
 
 // Global variables, if you need any, declared here
 let questionNumber = 0
-// Functions declared here
 
+// Functions declared here
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -60,12 +60,32 @@ inputWrapper.innerHTML = `
 
 // Funcion if user wants bike or not
 const bikeSelection = (response) => {
-  console.log("hello")
   questionNumber++
-  showMessage(`${response}`, 'user') // Yes or no
+  showMessage(response, 'user')
 
-}
+// Continue function with conditionals
+  setTimeout (() => {
+  if (response === 'yes') {
+    showMessage(`Happy to hear ${name}!`, 'bot') 
+    setTimeout (() => {showMessage(`What kind of bike would you like?`, 'bot')
+    
+    inputWrapper.innerHTML = `
+    <button id="mountainBike"> Mountainbike </button>
+    <button id="ladyBike"> Ladybike </button>
+    <button id="sportyBike"> Sportybike </button>
+    `
+    document.getElementById('mountainBike').addEventListener('click', () => modelSelection('mountainBike'))
+    document.getElementById('ladyBike').addEventListener('click', () => modelSelection('ladyBike'))
+    document.getElementById('sportyBike').addEventListener('click', () => modelSelection('sportyBike'))
+  }, 1500)
+  }
 
+  } else {
+      showMessage(`Okay, have a nice day`, 'bot')
+      setTimeout (() => {location.reload()
+        return false
+      }, 2500)  
+    }
 
 
 // Pushes to the next question - our schedule
@@ -75,11 +95,11 @@ const handleInput = (event) => {
     if (questionNumber === 1) {
       handleNameQuestion() 
     } else if (questionNumber === 2) {
-      setTimeout(XXXX, 1500)
+      setTimeout(XXXX, 800)
     } else if (questionNumber === 3) {
-      setTimeout(XXXX, 1500)
+      setTimeout(XXXX, 800)
     } else if (questionNumber === 4) {
-      setTimeout(XXXX, 1500)
+      setTimeout(XXXX, 800)
       }
     }
 
@@ -120,8 +140,4 @@ form.addEventListener('submit', handleInput)
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 800)
-
-// sentBtn.addEventListener("click", (e)=>{ 
-// e.preventDefault
-// textInput()
-//
+}
