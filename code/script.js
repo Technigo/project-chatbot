@@ -30,7 +30,6 @@ const showMessage = (message, sender) => {
   } 
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
-//  questionFlow(); 
 }
 
 // Starts here
@@ -44,7 +43,7 @@ document.getElementById('name-form').onsubmit = event => {
   event.preventDefault();
   showMessage(nameInput.value, 'user');
   nameInput.value ='';
-  setTimeout(questionFlow, 1000);
+  questionFlow();
   // call function to move through questions
 }
 
@@ -67,44 +66,53 @@ let questionCounter = 0;
 const questionFlow = () => {
   questionCounter++;
   if (questionCounter === 1) {
-    question1();
+    setTimeout(question1, 1000);
   } else if (questionCounter === 2) {
-    question2();
+    setTimeout(question2, 1000);
   }
 }
 
-// Question 1 function
+// Question-function structure
   // display bot-message here (add set-timeout?)
   // html form input type (i.e. how to answer)
   // show answer
   // continue in question flow
 
+  // Question 1
 const question1 = () => {
-  showMessage(`Second  question`, 'bot');
+  
+  showMessage(`First  question with two buttons`, 'bot');
 
   inputWrapper.innerHTML = `
     <button id="coffee-btn">coffee</button>
     <button id="tea-btn">tea</button>
-    <button>bulle</button>
-    <button>cookie</button>
-`
-  document.getElementById('coffee-btn').addEventListener("click", () => {
+    `
+  const coffeeButton = document.getElementById('coffee-btn');
+  const teaButton = document.getElementById('tea-btn');
+  
+  coffeeButton.addEventListener("click", () => {
     showMessage(document.getElementById('coffee-btn').innerText, 'user');
     questionFlow();
   });
-  document.getElementById('tea-btn').addEventListener("click", () => {
-    console.log("tea");
+  teaButton.addEventListener("click", () => {
+    showMessage(document.getElementById('tea-btn').innerText, 'user');
+    questionFlow();
   });
 }
 
-// Question 2 function
-  // repeat above question structure
-
+// Question 2
 const question2 = () => {
-  showMessage(`Third  banana`, 'bot');
+  showMessage(`Second question with a text answer`, 'bot');
   inputWrapper.innerHTML = `
-    <button id="banana-btn">banana</button>
-`
+    <input id="second-input" type="text" />
+    <button id="second-btn">Send</button>
+  `
+  const secondInput = document.getElementById('second-input');
+  document.getElementById('second-btn').addEventListener("click", () => {
+    showMessage(secondInput.value, 'user');
+    secondInput.value ='';
+    questionFlow();
+  });
 }
 
 // Question 3 function
