@@ -115,7 +115,8 @@ const showMessage = (message, sender) => {
 
       movieBtn.addEventListener('click', () => {
         //If time/option 1: targeting text instead of value
-        const selectedMovie = selectMovie.value
+       // const selectedMovie = selectMovie.value
+       const selectedMovie = selectMovie[selectMovie.selectedIndex].text
         replyUser(selectedMovie)  
         showSavourySnacks(selectedMovie) 
       })
