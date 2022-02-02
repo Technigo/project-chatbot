@@ -17,14 +17,13 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user2.png" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
-    console.log("bot is typing")
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/airplane.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -38,23 +37,21 @@ const showMessage = (message, sender) => {
 // Starts here
 const greeting = () => {
   showMessage(`Hey you, What's your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+  
 }
-
+// Function that saves users name
 const handleNameInput = (event) => {
   event.preventDefault()
   const name = nameInput.value 
-  showMessage("My name is " + name, 'user')
+  showMessage(`My name is ${name}`, 'user')
   nameInput.value = ''
-  console.log('name input works')
   showDestinations(name)
 }
 
-
+// 
 const showDestinations = (name) => {
-  questionNumber = 2
-  showMessage ('Hej ' + name, 'bot')
-  showMessage ('Where do you want to travel? ','bot')
+  setTimeout(() => showMessage (`Hello ${name}!`, 'bot'), 1000)
+  setTimeout(() => showMessage ('Where do you want to travel? ','bot'), 1300)
 
   inputWrapper.innerHTML = `
     <button id="newyorkBtn">New York</button>
@@ -68,9 +65,9 @@ const showDestinations = (name) => {
 }
 
 const showflightAlternatives = (destination) => {
-  questionNumber = 3
+  
   showMessage (`${destination}`, 'user')
-  showMessage (`How do you want to fly to ${destination} ?`, 'bot')
+  setTimeout(() => showMessage (`Good choice! How do you want to fly to ${destination} ?`, 'bot'), 1000)
 
   inputWrapper.innerHTML = `
   <button id="economyBtn">Economy</button>
@@ -82,7 +79,7 @@ const showflightAlternatives = (destination) => {
 
 const showflightSummary = (flightAlternative, dest) => {
   showMessage(`${flightAlternative}`, 'user')
-  showMessage(`You want to fly ${flightAlternative} class to ${dest}, is that correct?`, 'bot')
+  setTimeout(() => showMessage(`You want to fly ${flightAlternative} class to ${dest}, is that correct?`, 'bot'), 1000)
   inputWrapper.innerHTML = `
   <button id="yesBtn">Yes</button>
   <button id="noBtn">No</button>
@@ -93,10 +90,13 @@ const showflightSummary = (flightAlternative, dest) => {
 
 const showConfirmation = (yesOrNo) => {
   if (yesOrNo === 'yes') {
-    showMessage('Thanks for your order!', 'bot')
+    showMessage('Yes', 'user')
+    setTimeout(() => showMessage ('Thanks for your order!', 'bot'), 1000)
   } else if (yesOrNo === 'no') {
-    showMessage('OK, I see, welcome back another day.', 'bot')
+    showMessage('No', 'user')
+    setTimeout(() => showMessage('OK, I see, welcome back another day.', 'bot'), 1000)
   }
+inputWrapper.innerHTML = ``
 }
 
 // Set up your eventlisteners here

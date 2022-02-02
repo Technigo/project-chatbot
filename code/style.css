@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: rgb(153, 152, 152);
 }
 
 h1 {
@@ -90,12 +90,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #eeeff3;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: black;
   max-width: 40%;
 }
 
@@ -120,8 +120,8 @@ main {
 }
 
 button {
-  background-color: #0026ff;
-  color: white;
+  background-color: rgb(38, 137, 230);
+  color: black;
   border: none;
   border-radius: 4px;
   padding: 16px 40px;
