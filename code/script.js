@@ -2,8 +2,13 @@
 const chat = document.getElementById('chat')
 const form = document.getElementById('name-form')
 const inputText = document.getElementById('name-input')
+const inputWrapper = document.getElementById('input-wrapper')
+// const sendBtn = document.getElementById('submit')
 
 // Global variables, if you need any, declared here
+const firstPlace = 'Gothenburg'
+const secondPlace = 'Malmö'
+const thirdPlace = 'Stockholm'
 
 // Functions declared here
 
@@ -38,11 +43,11 @@ const showMessage = (message, sender) => {
 // Starts here
 const greeting = () => {
   showMessage(`Good day Sir/Ms, please type your name`, 'bot')
-
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
 // Function that listens to user input and showing it
+
 
 const handleNameInput =  (event) => {
   event.preventDefault()
@@ -51,14 +56,62 @@ const handleNameInput =  (event) => {
   inputText.value = ''
   setTimeout(() => destination(), 1000)
 }
+
 const destination = () => {
-  showMessage(`Type your destination here`, 'bot')
-  
+  showMessage(`Choose your destination here`, 'bot')
+
+  inputWrapper.innerHTML = `
+    <button id="gotBtn">Gothenburg</button>
+    <button id="mmxBtn">Malmö</button>
+    <button id="stoBtn">Stockholm</button>`
+
+  document
+    .getElementById('gotBtn')
+    .addEventListener('click', () => showMessage('Gothenburg', 'user'))
+    setTimeout(() => vehicle(), 3000)
+
+  document
+    .getElementById('mmxBtn')
+    .addEventListener('click', () => showMessage('Malmö', 'user'))
+    
+  document
+    .getElementById('stoBtn')
+    .addEventListener('click', () => showMessage('Stockholm', 'user'))
+
 }
 
 
+const vehicle = () => {
+  showMessage(`Choose your vehicle`, 'bot')
+
+inputWrapper.innerHTML = `
+      <select id="select">
+        <option value="" selected disabled>👇 These vehicles are available...</option>
+        <option value="limo">Limousine</option>
+        <option value="minibus">Minibus</option>
+        <option value="rickshaw">Rickshaw</option>
+      </select>`
+}
+      
+
+// if (firstPlace === true) {
+//   console.log('Gothenburg is a nice place, choose your vehicle', 'bot')
+
+// }
+
+
+
+
+// const handleDestination =  (event) => {
+//   event.preventDefault()
+//   showMessage(`I would like to go to ${inputText.value}`, 'user')
+//   inputText.value = ''
+//   // setTimeout(() => destination(), 1000)
+// }
+
 // Set up your eventlisteners here
   form.addEventListener('submit', handleNameInput)
+  // form.addEventListener('submit', handleDestination)
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
