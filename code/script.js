@@ -4,6 +4,10 @@ const nameInput = document.getElementById('name-input')
 const form = document.getElementById('name-form')
 const submit = document.getElementById('submit')
 const main = document.getElementById('main')
+const inputWrapper = document.getElementById('input-wrapper')
+
+
+
 // Global variables, if you need any, declared here
 // Functions declared here
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -41,42 +45,79 @@ const showMessage = (message, sender) => {
 
 //---- First intention ----// 
 }
-  const handleNameInput = (event) => { //at submit this function will be invoked
-  event.preventDefault() //prevents website refresh at submit
+  const handleNameInput = (event) => { // at submit this function will be invoked
+  event.preventDefault() // prevents website refresh at submit
 
-  const name = nameInput.value //input value will be stored in the const name
+  const name = nameInput.value // input value will be stored in the const name
   console.log(name)
 
-  showMessage(`My name is ${name}.`, 'user') //users answer 
-  nameInput.value = '' //clearing name input setting it to an empty string
+  showMessage(`My name is ${name}.`, 'user') // users answer 
+  nameInput.value = '' // clearing name input setting it to an empty string
 
-  setTimeout(() => complimentOptions(name), 1000) //passing the arguments to complimentOptions
+  setTimeout(() => complimentOptions(name), 1000) // passing the arguments to complimentOptions function with 1s delay
 }
+
 
 //---- Second intention ----//
   const complimentOptions = (name) => { 
-  showMessage(`Nice to meet you ${name}! Do you want a compliment?`, 'bot')
-  }
+  showMessage(`Nice to meet you ${name}! Do you want a compliment?`, 'bot') //sends second message from bot
+  
+  
+  inputWrapper.innerHTML = // add Yes No button
+  `<button id="yesBtn" type="submit">Yes</button>
+  <button id="noBtn" type="submit">No</button>`
 
-//---- Third intention ----//
+  document
+  .getElementById('yesBtn')
+  .addEventListener('click', () => {
+    showMessage('I would love to get a compliment', 'user')
+    setTimeout(() => chooseCompliment(submit), 1000) // After clicking the button; passing the arguments to complimentOptions function with 1s delay 
+    document.getElementById("input-wrapper").style.display = "none"; // Button dissapears
+    // Also add some code in here to add answer options for next message
+  })
+
+  document
+  .getElementById('noBtn')
+  .addEventListener('click', () => {
+    showMessage('No thank you, goodbye', 'user')
+    setTimeout(() => chooseDefault(submit), 1000) // After clicking the button; passing the arguments to complimentOptions function with 1s delay 
+    document.getElementById("input-wrapper").style.display = "none"; // Button dissapears 
+    // Also add some code in here to add answer options for next message
+  }) 
+}
 
 
+//------ Third intention ------//
+
+const chooseCompliment = (submit) => {
+  showMessage(`Nice! What kind of comliment do you want?`, 'bot') // When clicking YES on the second intention
+
+
+
+}
+
+
+//------ Default ------// 
+
+const chooseDefault = (submit) => { // When clicking NO on the second intention
+  showMessage(`Buuuuuu :(`, 'bot')
+  setTimeout(() => location.reload(), 2000)
+  return false;
+}
+
+
+  // Set up your eventlisteners here
+  
 form.addEventListener('submit', handleNameInput)
 
 
-// Set up your eventlisteners here
-/*form.addEventListener('submit', (event) => {
-  event.preventDefault()
-  nxtQuestion(input.value)
-})*/
-
   // Store the value in a variable so we can access it after we 
-	// clear it from the input
+  // clear it from the input
   
 
   // After 1 second, show the next question by invoking the next function.
-	// passing the name into it to have access to the user's name if we want
-	// to use it in the next question from the bot.
+  // passing the name into it to have access to the user's name if we want
+  // to use it in the next question from the bot.
   //
  
 
@@ -88,11 +129,3 @@ form.addEventListener('submit', handleNameInput)
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
-
-
-
-
-
-
-
-
