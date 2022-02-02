@@ -93,9 +93,23 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = (userName) => {
-  showMessage(`Heyyy ${userName}, I heard you just got dumped by that asshole... what was his name again?`, 'bot')
+  showMessage(`Heyyy ${userName}, I heard you just got dumped by that asshole... what was their name again?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
+
+// Reply to ex name
+const exNameTrigger = document.querySelector(".send-btn");
+let exName = "";
+
+exNameTrigger.addEventListener("click", function() {
+  exName = document.querySelector(".name-input").value;
+  console.log(exName);
+  showMessage = (`Their name was ${exName}`)
+}
+)
+
+
+
 
 // Set up your eventlisteners here
 
