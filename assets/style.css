@@ -162,8 +162,7 @@ button:hover {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  padding: 16px;
+  background-color: #e5e9ff;
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 600;
@@ -172,16 +171,25 @@ button:hover {
 }
 
 .contact-options {
-  background:rgb(207, 207, 207);
+  box-sizing: border-box;
+  background-color: #fe8541;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 0 20px;
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 600;
-  box-sizing: border-box;
-  border: none;
-  border-radius: 4px 0 0 4px;
-  z-index: 1;
-  position: relative;
-  margin-top: 10px;
+  height: 60px;
   width: 100%;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.option {
   opacity: 0.5;
 }
+
+

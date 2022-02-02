@@ -2,9 +2,7 @@
 const chat = document.getElementById("chat");
 const inputWrapper = document.querySelector(".input-wrapper");
 const selectWrapper = document.querySelector(".select-wrapper");
-const selectParagraph = document.querySelector(".select-paragraph");
-const select = document.querySelector(".contact-options");
-const contactOptions = document.querySelectorAll(".option");
+const buttonWrapper = document.querySelector(".button-wrapper");
 const bothButtons = document.querySelectorAll(".button");
 const buttonOne = document.querySelector(".button-one");
 const buttonTwo = document.querySelector(".button-two");
@@ -13,21 +11,14 @@ const myDate = new Date();
 const hours = myDate.getHours();
 let greet;
 
-if (hours < 12) {
-  greet = "Good Morning",
-  timeOfDay = "Morning"
-} else if (hours >= 12 && hours <= 17) {
-  greet = "Good Afternoon",
-  timeOfDay = "Afternoon"
-} else if (hours >= 17 && hours <= 24) {
-  greet = "Good Evening",
-  timeOfDay = "Evening"
-} else {
-  greet = "Hello"
-}
+if (hours < 12) greet = "Good Morning";
+else if (hours >= 12 && hours <= 17) greet = "Good Afternoon";
+else if (hours >= 17 && hours <= 24) greet = "Good Evening";
+else greet = "Hello";
 
 // Global variables
 let count = 0;
+let contactChoice;
 let physicalSymptoms =
   [
     "Do you have a cough?",
@@ -62,9 +53,10 @@ const hideButtons = () => {
 }
 
 const showDropdown = () => {
-  selectWrapper.innerHTML += `
+  selectWrapper.style.background = "none"
+  selectWrapper.innerHTML = `
   <select name="contactOptions" class="contact-options" id="contactOptions">
-  <option class="option" value="chat">Select a contact option...</option>
+  <option class="option" value="">Select a contact option...</option>
     <option class="option" value="chat">By chat</option>
     <option class="option" value="phone">By phone</option>
     <option class="option" value="video">By video call</option>
@@ -74,11 +66,25 @@ const showDropdown = () => {
 
 const displaySelectWrapper = () => selectWrapper.style.display = 'block';
 
-const showParagraph = () => {
-  selectParagraph.addEventListener('click', () => {
-    showDropdown()
+const closingMessages = () => {
+  selectWrapper.addEventListener("change", (event) => {
+    contactChoice = event.target.value;
+    showMessage(`${event.target.value}`, "user")
+    selectWrapper.style.display = "none"
+    let closingMessage =
+      [
+        `You have chosen to be contacted by ${contactChoice}, let me connect you with a practictioner...`,
+        `Thank you for using Medibot, I am connecting you with a practictioner now, This page will reload in 10 seconds`
+      ]
+    showMessage(closingMessage[0], "bot")
+    setTimeout(() => {
+      showMessage(closingMessage[1], "bot")
+    }, 1000);
+    setTimeout(() => {
+      location.reload()
+    }, 10000);
   })
-}
+}  
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -104,9 +110,11 @@ const showMessage = (message, sender) => {
 }
 
 const contactMethod = () => {
-  showMessage('Thank you for your information, How would you prefer to be contacted?', 'bot');
+  showMessage('How would you prefer to be contacted?', 'bot');
+  buttonWrapper.style.display = "none"
+  chat.scrollTop = chat.scrollHeight
+  showDropdown()
 }
-
 
 const greeting = () => {
   showMessage(`${greet}, What's your name?`, 'bot')
@@ -132,54 +140,53 @@ bothButtons.forEach(button => {
   button.addEventListener("click", () => {
     count++;
     switch (count) {
-      case 1: 
-      showMessage(`${button.innerHTML}`, "user");
-      if (buttonOne.value === "first") {
-        const cough = () => showMessage(physicalSymptoms[0], "bot");
-        setTimeout(cough, 2000);
-        setTimeout(yesNoButtons, 2000);
-      } else {
-        const sad = () => showMessage(psychologicalSymptoms[0], "bot");
-        setTimeout(sad, 2000);
-        setTimeout(yesNoButtons, 2000);
-      }
-      break;
+      case 1:
+        showMessage(`${button.innerHTML}`, "user");
+        if (buttonOne.value === "first") {
+          const cough = () => showMessage(physicalSymptoms[0], "bot");
+          setTimeout(cough, 2000);
+          setTimeout(yesNoButtons, 2000);
+        } else {
+          const sad = () => showMessage(psychologicalSymptoms[0], "bot");
+          setTimeout(sad, 2000);
+          setTimeout(yesNoButtons, 2000);
+        }
+        break;
 
-      case 2: 
-      showMessage(`${button.innerHTML}`, "user");
-      if (buttonOne.value === "first") {
-        const fever = () => showMessage(physicalSymptoms[1], "bot");
-        setTimeout(fever, 2000);
-        setTimeout(yesNoButtons, 2000);
-      } else {
-        const stress = () => showMessage(psychologicalSymptoms[1], "bot");
-        setTimeout(stress, 2000);
-        setTimeout(yesNoButtons, 2000);
-      }
-      break;
+      case 2:
+        showMessage(`${button.innerHTML}`, "user");
+        if (buttonOne.value === "first") {
+          const fever = () => showMessage(physicalSymptoms[1], "bot");
+          setTimeout(fever, 2000);
+          setTimeout(yesNoButtons, 2000);
+        } else {
+          const stress = () => showMessage(psychologicalSymptoms[1], "bot");
+          setTimeout(stress, 2000);
+          setTimeout(yesNoButtons, 2000);
+        }
+        break;
 
-      case 3: 
-      showMessage(`${button.innerHTML}`, "user")
-      if (buttonOne.value === "first") {
-        const runnyNose = () => showMessage(physicalSymptoms[2], "bot");
-        setTimeout(runnyNose, 2000);
-        setTimeout(yesNoButtons, 2000);
-      } else {
-        const mood = () => showMessage(psychologicalSymptoms[2], "bot");
-        setTimeout(mood, 2000);
-        setTimeout(yesNoButtons, 2000);
-      }
-      break;
+      case 3:
+        showMessage(`${button.innerHTML}`, "user")
+        if (buttonOne.value === "first") {
+          const runnyNose = () => showMessage(physicalSymptoms[2], "bot");
+          setTimeout(runnyNose, 2000);
+          setTimeout(yesNoButtons, 2000);
+        } else {
+          const mood = () => showMessage(psychologicalSymptoms[2], "bot");
+          setTimeout(mood, 2000);
+          setTimeout(yesNoButtons, 2000);
+        }
+        break;
 
-      case 4: 
-      showMessage(`${button.innerHTML}`, "user")
-      hideButtons();
-      setTimeout(contactMethod, 1000);
-      setTimeout(displaySelectWrapper, 1000)
-      showParagraph()
+      case 4:
+        showMessage(`${button.innerHTML}`, "user")
+        hideButtons();
+        setTimeout(contactMethod, 1000);
+        setTimeout(displaySelectWrapper, 1000)
     }
   })
 })
 
-// setTimeout(greeting, 1000)
-setTimeout(greeting, 100)
+setTimeout(greeting, 1000);
+closingMessages();
