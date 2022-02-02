@@ -68,13 +68,13 @@ inputWrapper.innerHTML = `
 <button id="popcorn"> popcorn </button>
 `
 document.getElementById("candyButton").addEventListener("click", () =>{
-  showMessage(`Candy please`, 'user')
-  setTimeout(() => showMessage(`Okey, candy it is! How much?`, 'bot'),1000  
+  showMessage(`Candy, please`, 'user')
+  setTimeout(() => showMessage(`Okey, candy it is! How much?`, 'bot'),1000)  
 })
 
 document.getElementById("icecreamButton").addEventListener("click", () =>{
-  showMessage(`Ice cream please`, 'user')
-  setTimeout(() => showMessage(`Okey,ice crem it is! How much?`, 'bot'),1000
+  showMessage(`Ice cream, please`, 'user')
+  setTimeout(() => showMessage(`Okey,ice crem it is! How much?`, 'bot'),1000)
 })
 
 }
