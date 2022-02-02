@@ -5,6 +5,15 @@ const bothButtons = document.querySelectorAll(".button");
 const buttonOne = document.querySelector(".button-one");
 const buttonTwo = document.querySelector(".button-two");
 
+const myDate = new Date();
+const hours = myDate.getHours();
+let greet;
+
+if (hours < 12) greet = "Good Morning"
+else if (hours >= 12 && hours <= 17) greet = "Good Afternoon"
+else if (hours >= 17 && hours <= 24) greet = "Good Evening"
+else greet = "Hello"
+
 
 // Global variables, if you need any, declared here
 
@@ -45,7 +54,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`${greet}, What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
