@@ -69,22 +69,43 @@ const questionFlow = () => {
   if (questionCounter === 1) {
     question1();
   } else if (questionCounter === 2) {
-
+    question2();
   }
 }
 
 // Question 1 function
   // display bot-message here (add set-timeout?)
   // html form input type (i.e. how to answer)
-  // do something on submit (event listener) that calls showMessage
-    // submit can have logic built in depending on how user answers
+  // show answer
+  // continue in question flow
 
 const question1 = () => {
   showMessage(`Second  question`, 'bot');
+
+  inputWrapper.innerHTML = `
+    <button id="coffee-btn">coffee</button>
+    <button id="tea-btn">tea</button>
+    <button>bulle</button>
+    <button>cookie</button>
+`
+  document.getElementById('coffee-btn').addEventListener("click", () => {
+    showMessage(document.getElementById('coffee-btn').innerText, 'user');
+    questionFlow();
+  });
+  document.getElementById('tea-btn').addEventListener("click", () => {
+    console.log("tea");
+  });
 }
 
 // Question 2 function
   // repeat above question structure
+
+const question2 = () => {
+  showMessage(`Third  banana`, 'bot');
+  inputWrapper.innerHTML = `
+    <button id="banana-btn">banana</button>
+`
+}
 
 // Question 3 function
   // repeat above structure
