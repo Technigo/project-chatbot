@@ -1,5 +1,6 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+const inputWrapper = document.getElementById('input-wrapper')
 const form = document.getElementById('name-form')
 const nameInput = document.getElementById('name-input')
 
@@ -54,8 +55,49 @@ const showDestinations = (name) => {
   questionNumber = 2
   showMessage ('Hej ' + name, 'bot')
   showMessage ('Where do you want to travel? ','bot')
+
+  inputWrapper.innerHTML = `
+    <button id="newyorkBtn">New York</button>
+    <button id="parisBtn">Paris</button>
+    <button id="londonBtn">London</button>
+  `
+  document.getElementById('newyorkBtn').addEventListener('click', () => showflightAlternatives('New York'));
+  document.getElementById('parisBtn').addEventListener('click', () => showflightAlternatives('Paris'));
+  document.getElementById('londonBtn').addEventListener('click', () => showflightAlternatives('London'));
+  // inputWrapper.addEventListener('click', nextQuestion('Paris'))
 }
 
+const showflightAlternatives = (destination) => {
+  questionNumber = 3
+  showMessage (`${destination}`, 'user')
+  showMessage (`How do you want to fly to ${destination} ?`, 'bot')
+
+  inputWrapper.innerHTML = `
+  <button id="economyBtn">Economy</button>
+  <button id="businessBtn">Business</button>
+  `
+  document.getElementById('economyBtn').addEventListener('click', () => showflightSummary('Economy', destination));
+  document.getElementById('businessBtn').addEventListener('click', () => showflightSummary('Business', destination));
+}
+
+const showflightSummary = (flightAlternative, dest) => {
+  showMessage(`${flightAlternative}`, 'user')
+  showMessage(`You want to fly ${flightAlternative} class to ${dest}, is that correct?`, 'bot')
+  inputWrapper.innerHTML = `
+  <button id="yesBtn">Yes</button>
+  <button id="noBtn">No</button>
+  `
+  document.getElementById('yesBtn').addEventListener('click', () => showConfirmation('yes'));
+  document.getElementById('noBtn').addEventListener('click', () => showConfirmation('no'));
+}
+
+const showConfirmation = (yesOrNo) => {
+  if (yesOrNo === 'yes') {
+    showMessage('Thanks for your order!', 'bot')
+  } else if (yesOrNo === 'no') {
+    showMessage('OK, I see, welcome back another day.', 'bot')
+  }
+}
 
 // Set up your eventlisteners here
 form.addEventListener('submit', handleNameInput);
