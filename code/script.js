@@ -37,10 +37,9 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
+// ------- GREETING --------//
 const greeting = () => {
   showMessage(`Hello sweetie, who's there?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
 
 const textInput = (event) => {
@@ -50,16 +49,41 @@ const textInput = (event) => {
   inputValue.value = '' 
 
   if (name === ""){
-    setTimeout(() => showMessage(`Give me your name.`, 'bot'), 1000)
+    setTimeout(() => showMessage(`Please, give me your name.`, 'bot'), 1000)
   }
   else{
     setTimeout(() => showMessage(`Hey ${name}!`, 'bot'), 1000)
-    
+    setTimeout(() => options(),2000)
   }
 }
 
+//----- FIRST QUESTION WHAT DO YOU WANT TO ORDER -------//
 
-// Set up your eventlisteners here
+const options = () => {
+showMessage(`What do you want to order?`, 'bot')
+
+inputWrapper.innerHTML = `
+<button id="candyButton"> candy </button>
+<button id="icecreamButton"> icecream </button>
+<button id="popcorn"> popcorn </button>
+`
+document.getElementById("candyButton").addEventListener("click", () =>{
+  showMessage(`Candy please`, 'user')
+  setTimeout(() => showMessage(`Okey, candy it is! How much?`, 'bot'),1000  
+})
+
+document.getElementById("icecreamButton").addEventListener("click", () =>{
+  showMessage(`Ice cream please`, 'user')
+  setTimeout(() => showMessage(`Okey,ice crem it is! How much?`, 'bot'),1000
+})
+
+}
+
+
+
+
+
+
 nameForm.addEventListener('submit', textInput)
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
