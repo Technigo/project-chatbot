@@ -34,7 +34,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello you, What's your name?`, 'bot')
+  showMessage(`Hey you, What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -47,4 +47,4 @@ const greeting = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000)
+setTimeout(greeting, 500)
