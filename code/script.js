@@ -44,6 +44,42 @@ document.getElementById('name-form').onsubmit = event => {
   input.value ='';
 }
 
+// ------- PSEUDOCODE ------- //
+
+// Define our variables
+// let questionCounter ...
+// const inputWrapper ...
+
+// declare function to move through questions that is called from event listeners
+// obs naming a function should decribe what it is doing. ex 'messageHandler" or 'messageDelivery'
+  // display user input message
+  // update questionCounter to keep track of what question comes next
+  // move through questionnaire based on which question we're on usung if else statement
+    // if questionCounter === 1 {
+      // display bot-message here OR in the question itself (add set-timeout?)
+      // call first question function
+    // } else if... {
+      // call next question function
+    // }
+
+// Question 1 function
+  // display bot-message here OR in if-else statement (add set-timeout?)
+  // html form input type (i.e. how to answer)
+  // do something on submit (event listener) that calls looping function
+    // submit can have logic built in depending on how user answers
+
+// Question 2 function
+  // repeat above question structure
+
+// Question 3 function
+  // repeat above structure
+
+// Question 4 function
+  // repeat above structure
+
+// ...
+
+// End message
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
