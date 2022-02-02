@@ -53,12 +53,18 @@ inputWrapper.innerHTML = `
 <button id="yes">Yes! 👍</button>
 <button id="no">No! 👎</button>
 `
-  document.getElementById('yes').addEventListener('click', () => wantBike('yes'))
-  document.getElementById('no').addEventListener('click', () => wantBike ('no'))
+  document.getElementById('yes').addEventListener('click', () => bikeSelection ('yes'))
+  document.getElementById('no').addEventListener('click', () => bikeSelection ('no'))
 }, 1200)
 }
 
-// If user wants bike or not
+// Funcion if user wants bike or not
+const bikeSelection = (response) => {
+  console.log("hello")
+  questionNumber++
+  showMessage(`${response}`, 'user') // Yes or no
+
+}
 
 
 
@@ -76,6 +82,7 @@ const handleInput = (event) => {
       setTimeout(XXXX, 1500)
       }
     }
+
 
 
 // Stores name in variable "name"
