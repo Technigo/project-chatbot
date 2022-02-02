@@ -1,5 +1,7 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+const form = document.getElementById('name-form')
+const inputText = document.getElementById('name-input')
 
 // Global variables, if you need any, declared here
 
@@ -28,6 +30,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
+
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
@@ -39,8 +42,23 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-// Set up your eventlisteners here
+// Function that listens to user input and showing it
 
+const handleNameInput =  (event) => {
+  event.preventDefault()
+  const name = inputText.value
+  showMessage(`My name is ${name}`, 'user')
+  inputText.value = ''
+  setTimeout(() => destination(), 1000)
+}
+const destination = () => {
+  showMessage(`Type your destination here`, 'bot')
+  
+}
+
+
+// Set up your eventlisteners here
+  form.addEventListener('submit', handleNameInput)
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
