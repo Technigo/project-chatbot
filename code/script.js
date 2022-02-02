@@ -44,7 +44,7 @@ document.getElementById('name-form').onsubmit = event => {
   event.preventDefault();
   showMessage(nameInput.value, 'user');
   nameInput.value ='';
-  questionFlow();
+  setTimeout(questionFlow, 1000);
   // call function to move through questions
 }
 
@@ -69,16 +69,7 @@ const questionFlow = () => {
   if (questionCounter === 1) {
     question1();
   } else if (questionCounter === 2) {
-  //   // call question 2 function
-  // }
-  // } else if (questionCounter === 3) {
-  //   // call question 2 function
-  // }
-  // } else if (questionCounter === 4) {
-  //   // call question 2 function
-  // }
-  // } else if (questionCounter === 5) {
-  //   // call question 2 function
+
   }
 }
 
@@ -106,7 +97,7 @@ const question1 = () => {
 // End message
 
 
-setTimeout(greeting, 500)
+setTimeout(greeting, 1000)
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
