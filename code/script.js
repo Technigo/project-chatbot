@@ -1,9 +1,8 @@
 // All the DOM selectors stored as short variables
-const chat = document.getElementById('chat')
-
-const quizButton = document.querySelector('.quiz-button')
-
-const sendButton = document.querySelector('.send-btn')
+const chat = document.getElementById('chat'),
+      quizButton = document.querySelector('.quiz-button'),
+      sendButton = document.querySelector('.send-btn'),
+      inputWrapper = document.getElementById('inputWrapper');
 
 
 // Global variables, if you need any, declared here
@@ -42,7 +41,6 @@ const greeting = () => {
    // Just to check it out, change 'bot' to 'user' here 👆
  }
 
-
 // Displays users name
 
 const handleNameInput = (event) => {
@@ -54,20 +52,34 @@ const handleNameInput = (event) => {
   nameInput.value = ''
 
   // Time delay - next question
-  setTimeout(() => firstQuestion(name), 1000)
-
+  setTimeout(oreoQuestion, 1000)
 }
 
-// const firstAnswer = () => {
-//   showMessage(``)
-// }
+const oreoQuestion = () => {
+  showMessage(`How do you eat an oreo?`,'bot')
 
+  // Generate a set of buttons with bite choices - START HERE TOMORROW, VANESSA & JOANNA! 
 
+  inputWrapper.innerHTML = `
+  <button id="oneBiteBtn">In one bite</button>
+  <button id="pickApartBtn">Pick apart</button>
+  <button id="dipMilkBtn">Dip in milk</button>
+  `
+
+  // Send to next question depending on which button was clicked
+
+  document.getElementById('oneBiteBtn').addEventListener('click', () => followUpQuestion('oneBite'))
+  document.getElementById('pickApartBtn').addEventListener('click', () => followUpQuestion('pickApart'))
+  document.getElementById('dipMilkBtn').addEventListener('click', () => followUpQuestion('dipMilk'))
+
+}
 
 
 // Set up your eventlisteners here
 
-quizButton.addEventListener('click', greeting)
+quizButton.addEventListener('click', () => setTimeout(greeting, 1000))
+
+// quizButton.addEventListener('click', greeting)
 
 sendButton.addEventListener('click', handleNameInput)
 
@@ -78,3 +90,27 @@ sendButton.addEventListener('click', handleNameInput)
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 // setTimeout(greeting, 1000)
+
+// Pseudocode 
+
+/* LIST OF BAKINGBOT QUESTIONS
+
+1. How do eat your oreos? (Multiple choice: one bite, pick apart, dip in milk)
+2. If one bite = XXX
+Else if pick apart = XXX
+Else dip in milk = XXX
+
+Follow-up questions: 
+
+One bite: button multiple choice
+If X: show picture of cookie
+If Y: "message + gets sent back to the start"
+
+Pick apart: button multiple choice
+If X: show picture of X
+If Y: "message + gets sent back to the start"
+
+Dip in milk: button multiple choice
+If X: show picture of X
+If Y: "message + gets sent back to the start"
+*/
