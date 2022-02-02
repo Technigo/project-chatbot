@@ -66,6 +66,20 @@ let questionCounter = 0;
 
 const questionFlow = () => {
   questionCounter++;
+  if (questionCounter === 1) {
+    question1();
+  } else if (questionCounter === 2) {
+  //   // call question 2 function
+  // }
+  // } else if (questionCounter === 3) {
+  //   // call question 2 function
+  // }
+  // } else if (questionCounter === 4) {
+  //   // call question 2 function
+  // }
+  // } else if (questionCounter === 5) {
+  //   // call question 2 function
+  }
 }
 
 // Question 1 function
@@ -74,6 +88,9 @@ const questionFlow = () => {
   // do something on submit (event listener) that calls showMessage
     // submit can have logic built in depending on how user answers
 
+const question1 = () => {
+  showMessage(`Second  question`, 'bot');
+}
 
 // Question 2 function
   // repeat above question structure
