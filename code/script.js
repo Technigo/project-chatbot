@@ -59,7 +59,7 @@ let questionCounter = 0;
   // move through questionnaire based on which question we're on usung if else statement
     // if questionCounter === 1 {
       // call first question function
-    // } else if... {
+    // } else if... { 
       // call next question function
     // }
 
@@ -69,6 +69,8 @@ const questionFlow = () => {
     setTimeout(question1, 1000);
   } else if (questionCounter === 2) {
     setTimeout(question2, 1000);
+  } else if (questionCounter === 3) {
+    setTimeout(question3, 1000);
   }
 }
 
@@ -90,12 +92,12 @@ const question1 = () => {
   const coffeeButton = document.getElementById('coffee-btn');
   const teaButton = document.getElementById('tea-btn');
   
-  coffeeButton.addEventListener("click", () => {
-    showMessage(document.getElementById('coffee-btn').innerText, 'user');
+  coffeeButton.addEventListener('click', () => {
+    showMessage(coffeeButton.innerText, 'user');
     questionFlow();
   });
-  teaButton.addEventListener("click", () => {
-    showMessage(document.getElementById('tea-btn').innerText, 'user');
+  teaButton.addEventListener('click', () => {
+    showMessage(teaButton.innerText, 'user');
     questionFlow();
   });
 }
@@ -108,7 +110,7 @@ const question2 = () => {
     <button id="second-btn">Send</button>
   `
   const secondInput = document.getElementById('second-input');
-  document.getElementById('second-btn').addEventListener("click", () => {
+  document.getElementById('second-btn').addEventListener('click', () => {
     showMessage(secondInput.value, 'user');
     secondInput.value ='';
     questionFlow();
@@ -116,10 +118,25 @@ const question2 = () => {
 }
 
 // Question 3 function
-  // repeat above structure
+const question3 = () => {
+  showMessage(`Third question with a option answer`, 'bot');
+  inputWrapper.innerHTML = `
+    <select id="third-input" type="option">
+      <option id="option-1">option 1</option>
+      <option id="option-2">option 2</option>
+      <option id="option-3">option 3</option>
+    </select>
+    `
+  const select = document.getElementById('third-input');
+  select.addEventListener('change', () => {
+    showMessage(select.value, 'user');
+    questionFlow();
+  });
+
+}
 
 // Question 4 function
-  // repeat above structure
+
 
 // ...
 
