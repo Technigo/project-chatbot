@@ -98,15 +98,26 @@ const greeting = (userName) => {
 }
 
 // Reply to ex name
-const exNameTrigger = document.querySelector('.send-btn');
+const exNameTrigger = document.querySelector('.ex-send-btn');
+const inputForm = document.querySelector('.input-form');
+let exName = "";
 
 exNameTrigger.addEventListener('click', function() {
-  let exName = document.querySelector('.name-input').value;
+  exName = document.querySelector('.ex-name-input').value;
   console.log(exName);
   showMessage(`Their name was ${exName}`, 'user');
-  showMessage(`${exName}?? Eww such a gross name! Can't believe you dated someone called that!`, 'bot');
+  showMessage(`${exName}?? Eww such a gross name! Can't believe you dated someone called that! How are you feeling babe?`, 'bot');
+  document.querySelector('.ex-name-input').style.display = "none";
+  document.querySelector('.ex-send-btn').style.display = "none";
+  inputForm.innerHTML += `
+  <p class="cry-emoji emoji-option">😭</p>
+  <p class="puke-emoji emoji-option">🤮</p>
+  <p class="angry-emoji emoji-option">🤬</p>
+  `
 }
 )
+
+// Select Emoji Trigger
 
 
 
