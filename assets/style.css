@@ -157,3 +157,31 @@ button:hover {
 .button-active {
   display: flex;
 }
+
+.select-wrapper {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  background: #e5e9ff;
+  padding: 16px;
+  font-size: 16px;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  line-height: 26px;
+  display: none;
+}
+
+.contact-options {
+  background:rgb(207, 207, 207);
+  font-size: 16px;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  z-index: 1;
+  position: relative;
+  margin-top: 10px;
+  width: 100%;
+  opacity: 0.5;
+}
