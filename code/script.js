@@ -1,6 +1,7 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 
+
 // Global variables, if you need any, declared here
 
 // Functions declared here
@@ -17,6 +18,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
+    console.log("bot is typing")
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -32,9 +34,10 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Hello you, What's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
+
 
 // Set up your eventlisteners here
 
