@@ -120,3 +120,6 @@ exNameTrigger.addEventListener('click', function() {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 // setTimeout(greeting, 1000)
+
+// Doesn't work?? hmm...
+// setTimeout(() => showMessage(message, sender), 1000);
