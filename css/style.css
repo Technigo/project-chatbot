@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #a52a2a;
 }
 
 h1 {
@@ -35,10 +35,10 @@ p {
 
 input {
   box-sizing: border-box;
-  border: none;
+  border: 1px solid;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #0026ff;
+  color: #ffffff;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -102,11 +102,13 @@ main {
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  background-color: #f0e68c;
 }
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  background-color: #faebd7;;
 }
 
 .input-wrapper {
@@ -117,6 +119,7 @@ main {
 .input-wrapper form {
   width: 100%;
   display: flex;
+  justify-content: center;
 }
 
 button {
@@ -132,6 +135,7 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-left: 4px;
 }
 
 button:hover {
@@ -139,10 +143,5 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-.course{
-  display: flex;
-}
 
-.priceSelect{
-  display: flex;
-}
+

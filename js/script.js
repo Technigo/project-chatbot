@@ -1,28 +1,25 @@
-// All the DOM selectors stored as short variables
+// All the DOM selectors stored as short variables 
 const chat = document.getElementById('chat')
+const inputWrapper = document.getElementById('input-wrapper') 
 
-// Global variables, if you need any, declared here
-
-// Functions declared here
-
+/*audio sound*/
+let sound = document.getElementById("myAudio");
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
-          <p>${message}</p>
+          <p>${getTime()} ${message}</p>
         </div>
-        <img src="img/user.png" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="img/bot.png" alt="Bot" />
-        <div class="bubble bot-bubble">
-          <p>${message}</p>
-        </div>
+      <div class="bubble bot-bubble">
+      <p>${getTime()} ${message}</p>
+      </div>
       </section>
     `
   }
@@ -32,7 +29,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello, <br>What's your name?`, 'bot')
+  showMessage(`Welcome to our online bootcamp, <br>What is your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 //display time
@@ -48,100 +45,183 @@ const getTime = ()=> {
     minutes = "0" + minutes;
   }
   let time = hours + ":" + minutes
-
    return time;
 }
 
-let displayTime = document.getElementById("chat")
-displayTime.append (getTime())
-
-/*audio sound*/
-let sound = document.getElementById("myAudio");
 /*take user input */
-let user1 = document.getElementById("send-btn");
+let sendBtn = document.getElementById("send-btn");
 let userText = document.getElementById("name-input");
-user1.addEventListener("click", sendText);
 
-function sendText(event){
+sendBtn.addEventListener("click", (event)=> {
   event.preventDefault();
-let txt = userText.value;
-  if(txt){
-    showMessage(`${txt}`, 'user');
-    userText.value = "";
-    sound.play();
-    setTimeout(() => showMessage(`Thanks ${txt}<br> Select a course that you want!`, 'bot'), 2000)
-    /*setTimeout(() => document.getElementById('course').removeAttribute('class','course'),2000)
-    document.getElementById('send-btn').setAttribute('disabled','true')
-    document.getElementById('name-input').setAttribute('disabled','true')*/
-    setTimeout(() => document.getElementById('name-form').innerHTML =`<div id="course" class="course">
-    <input id="html" type="button" value="HTML">
-    <input id="css" type="button" value="CSS">
-    <input id="javascript" type="button" value="JavaScript">
-  </div>`,2000)
+  userText = userText.value;
+  sound.play()
+  if (userText == ""){
+    alert('You must write your name!')
+    location.reload()
+  }else if(isNaN(userText) == false){
+    alert('Please only use letters!')
+    location.reload()
+  }else{
+    showMessage(`${userText}`, 'user');
+    setTimeout(()=>  showMessage(`Thank you ${userText}<br> So I understand you want to change career?`, 'bot'),1000)
+    //Show YES NO button
+    inputWrapper.innerHTML =`
+    <input id="yes" type="button" value="YES">
+    <input id="no" type="button" value="NO">
+    `
+
+    let yesBtn = document.querySelector('#yes')
+    let noBtn = document.querySelector('#no')
+    // if choose yes
+    yesBtn.addEventListener('click', () =>{
+      yesBtn = yesBtn.value
+      sound.play()
+      showMessage(`${yesBtn}`, 'user');
+      setTimeout(()=>  showMessage(`We provide two programs.<br> Please choose One`, 'bot'),1000)
+      //display course
+      inputWrapper.innerHTML =`
+      <input id="fullstackDeveloper" type="button" value="Fullstack developer">
+      <input id="netDeveloper" type="button" value=".Net developer">
+      `
+
+    //connect HTML DOM
+    let fullstackDeveloper = document.querySelector('#fullstackDeveloper')
+    let netDeveloper = document.querySelector('#netDeveloper')
+      // choose fullstack program
+    fullstackDeveloper.addEventListener('click',()=>{
+      fullstackDeveloper = fullstackDeveloper.value
+      sound.play()
+      showMessage(`${fullstackDeveloper}`, 'user');
+      setTimeout(()=> showMessage(`When would you like to start?.<br> Please choose one option`, 'bot'),1000)
+
+      //add term of program
+      inputWrapper.innerHTML =`
+      <input id="fullstackAutumn" type="button" value="Autumn">
+      <input id="fullstackWinter" type="button" value="Winter">
+      `
+
+    let fullstackAutumn = document.querySelector('#fullstackAutumn')
+    let fullstackWinter = document.querySelector('#fullstackWinter')
+      //fullstack Autumn
+    fullstackAutumn.addEventListener('click',()=>{
+      fullstackAutumn = fullstackAutumn.value
+      sound.play()
+      showMessage(`${fullstackAutumn}`, 'user');
+      setTimeout(()=> showMessage(`Our autumn session begins on August 10.<br> Please enter your e-mail.`, 'bot'),1000)
+      
+      inputWrapper.innerHTML =`
+      <input id="fullstackAutumnEmail" type ="email" value="" placeholder="info@abc.com"/>
+      <input id="fullstackemailSend" type="button" value="send" >
+      `
+      let fullstackAutumnEmail = document.querySelector("#fullstackAutumnEmail")
+      let fullstackemailSend = document.querySelector("#fullstackemailSend")
+
+      fullstackemailSend.addEventListener('click', ()=>{
+        fullstackAutumnEmail = fullstackAutumnEmail.value
+        sound.play()
+
+        if(fullstackAutumnEmail){
+          setTimeout(()=> showMessage(`Thank you! You will recieve a full info-package at ${fullstackAutumnEmail}`, 'bot'),1000)
+          inputWrapper.innerHTML =`
+          <input type="button" value="Thanks">
+          `
+        setTimeout(()=>window.location.href = window.location.href, 5000) //back to beginning
+
+          }
+      })
+    })
+    //fullstack winter
+    fullstackWinter.addEventListener('click', ()=>{
+      fullstackWinter = fullstackWinter.value
+      sound.play()
+      showMessage(`${fullstackWinter}`,'user')
+      setTimeout(()=>showMessage(`Our winter session begins on January 22.<br> Please enter your e-mail.`, 'bot'),1000 ) 
+      
+      inputWrapper.innerHTML =`
+      <input id="fullstackWinterEmail" type ="email" value="" placeholder="info@abc.com"/>
+      <input id="fullstackWinterEmailSend" type="button" value="send" >
+      `
+      let fullstackWinterEmail = document.querySelector("#fullstackWinterEmail")
+      let fullstackWinterEmailSend = document.querySelector("#fullstackWinterEmailSend")
+
+      fullstackWinterEmailSend.addEventListener('click', ()=>{
+        fullstackWinterEmail = fullstackWinterEmail.value
+        sound.play()
+
+        if(fullstackWinterEmail){
+          setTimeout(()=> showMessage(`Thank you! You will recieve a full info-package at ${fullstackWinterEmail}`, 'bot'),1000)
+          inputWrapper.innerHTML =`
+          <input type="button" value="Thanks">
+          `
+        setTimeout(()=>location.reload(), 5000) //back to beginning
+
+          }
+
+      })
+
+    })
+
+    })
+    // choose .NET program
+    netDeveloper.addEventListener('click',()=>{
+      netDeveloper = netDeveloper.value
+      sound.play()
+      showMessage(`${netDeveloper}`, 'user');
+      setTimeout(()=> showMessage(`Each year we have only one session`, 'bot'),1000)
+
+      inputWrapper.innerHTML =`
+      <input id="netAutumn" type="button" value="Autumn">
+      `
+      let netAutumn = document.querySelector("#netAutumn")
+
+      netAutumn.addEventListener('click',()=>{
+      netAutumn = netAutumn.value
+      sound.play()
+
+      showMessage(`${netAutumn}`, 'user');
+      setTimeout(()=> showMessage(`Our autumn session begins on August 10.<br> Please enter your e-mail.`, 'bot'),1000)
+        //add email input
+        inputWrapper.innerHTML =`
+      <input id="netAutumnEmail" type ="email" placeholder="info@abc.com"/>
+      <button id="emailSend" type="submit" >Send </button>
+      `
+      let netAutumnEmail = document.getElementById("netAutumnEmail")
+      let emailSend = document.getElementById("emailSend")
+
+      emailSend.addEventListener('click',()=>{
+        netAutumnEmail = netAutumnEmail.value
+        sound.play()
     
-    
-    //select course
-    let htmlBtn = document.getElementById('html')
-    let cssBtn = document.getElementById('css')
-    let javascriptBtn = document.getElementById('javascript')
-    
-    
-    htmlBtn.addEventListener('click', () =>{
-      htmlBtn = htmlBtn.value
-      console.log(htmlBtn)
-      showMessage(`${htmlBtn}`, 'user');
-      setTimeout(() => showMessage(`Thanks <br> Select price!`, 'bot'), 2000)
-      setTimeout(() => document.getElementById('name-form').innerHTML =`<div id="priceSlect" class="priceSelect">
-      <input id="priceSelect-one" type="button" value="3500 Kr">
-      <input id="priceSelect-two" type="button" value="4000 Kr">
-      <input id="priceSelect-three" type="button" value="10000 Kr">
-    </div>`,2000)
-      /*
-      setTimeout(() => document.getElementById('course').setAttribute('class','course'),2000)
-      setTimeout(() => document.getElementById('priceSlect').removeAttribute('class','priceSlect'),2000)
-      document.getElementById('send-btn').setAttribute('disabled','true')
-      document.getElementById('name-input').setAttribute('disabled','true')*/
+      if(netAutumnEmail){
+      setTimeout(()=>showMessage(`Thank you! You will recieve a full info-package at ${netAutumnEmail}`, 'bot'),2000)
+      inputWrapper.innerHTML =`
+      <input type="button" value="Thanks">
+      `
+      setTimeout(()=>location.reload(), 5000)//back to beginning
+      }
+  
+    })
+
+    })
+    })
+
+    }) 
+
+    // if choose NO
+    noBtn.addEventListener('click', () =>{
+      noBtn = noBtn.value
+      sound.play()
+      showMessage(`${noBtn}`, 'user');
+      setTimeout(()=>showMessage(`Oh! That's sad <br>Good Luck in your current job`, 'bot'),2000)
+      inputWrapper.innerHTML =` `
+
+      setTimeout(()=>location.reload(), 5000)//back to beginning
+    })
+  
 
 
-    })
-    
-    cssBtn.addEventListener('click', () =>{
-      cssBtn = cssBtn.value
-      showMessage(`${cssBtn}`, 'user');
-      setTimeout(() => showMessage(`Thanks <br> Select price!`, 'bot'), 2000)
-      setTimeout(() => document.getElementById('course').setAttribute('class','course'),2000)
-    })
-    
-    javascriptBtn.addEventListener('click', () =>{
-      javascriptBtn = javascriptBtn.value
-      showMessage(`${javascriptBtn}`, 'user');
-      setTimeout(() => showMessage(`Thanks <br> Select price!`, 'bot'), 2000)
-      setTimeout(() => document.getElementById('course').setAttribute('class','course'),2000)
-    })
-  
-  
-  
   }
-}
-/*
-const courseSelect = ()=>{
-  let htmlBtn = document.getElementById('html')
-  let cssBtn = document.getElementById('css')
-  let javascriptBtn = document.getElementById('javascript')
-  htmlBtn.addEventListener('click', () =>{
-    htmlBtn = htmlBtn.value
-  })
-  
-}*/
+})
 
-
-
-// Set up your eventlisteners here
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
