@@ -26,7 +26,6 @@ const userReply = (msg) => {
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
-    console.log() //Move this to line 12/13?
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -36,7 +35,6 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
-    console.log()
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot1.png" alt="Bot" />
@@ -63,30 +61,37 @@ const nextQuestion = (message) => {
         userReply(`I'm ${userName}`)
       }
       inputField.value = ''
+      setTimeout(() => processingTime(message), 100)
       setTimeout(() => showCakes(message), 1000)
     } else if (questionNumber === 2) {
       type = message
       userReply(message)
+      setTimeout(() => processingTime(message), 100)
       setTimeout(() => showIcing(message), 1000)
     } else if (questionNumber === 3) {
       icing = message
       userReply(message)
       if (message === "without icing") {
         questionNumber++
+        setTimeout(() => processingTime(message), 100)
         setTimeout(() => showSize(message), 1000)
       } else {
+        setTimeout(() => processingTime(message), 100)
         setTimeout(() => showColour(message), 1000)
       }
     } else if (questionNumber === 4) {
       colour = message
       userReply(message)
+      setTimeout(() => processingTime(message), 100)
       setTimeout(() => showSize(message), 1000)
     } else if (questionNumber === 5) {
       size = message
       userReply(message)
+      setTimeout(() => processingTime(message), 100)
       setTimeout(() => showOrder(message), 1000)
     } else {
       userReply(message)
+      setTimeout(() => processingTime(message), 100)
       setTimeout(() => thankYou(size, icing), 1000)
     }
   }
@@ -100,6 +105,11 @@ const greeting = () => {
   botReply(`Welcome at Bakery E&N!<br/>What's your name?`)
   // Just to check it out, change 'bot' to 'user' here 👆
 }
+
+const processingTime = () => {
+  botReply(`...`)
+}
+
 
 const showCakes = (msg) => {
   questionNumber++
@@ -153,7 +163,19 @@ const showSize = () => {
   } else {
     botReply(`Noted, ${userName}! What size do you want?`)
   }
-  inputWrapper.innerHTML =
+  inputWrapper.innerHTML = `
+  <select id="select">
+    <option value="" selected disabled>Select the number of pieces <span role="img" aria-label="curved downwards arrow">&#x21B4</span></option>
+    <option value="4 pieces">4 pieces</option>
+    <option value="8 pieces">8 pieces</option>
+    <option value="12 pieces">12 pieces</option>
+    <option value="16 pieces">16 pieces</option>
+  </select>
+  `
+  const select = document.getElementById('select')
+  receivedInput = true // double click: re-enable clicking on button for this question
+  select.addEventListener('change', () => nextQuestion(select.value))
+
     // button option commented out
     //   `
     // <button id="4Btn">4 pieces</button>
@@ -167,18 +189,6 @@ const showSize = () => {
     // document.getElementById('12Btn').addEventListener('click', () => nextQuestion('12 pieces'))
     // document.getElementById('16Btn').addEventListener('click', () => nextQuestion('16 pieces'))
 
-    `
-  <select id="select">
-    <option value="" selected disabled>Select the number of pieces <span role="img" aria-label="curved downwards arrow">&#x21B4</span></option>
-    <option value="4 pieces">4 pieces</option>
-    <option value="8 pieces">8 pieces</option>
-    <option value="12 pieces">12 pieces</option>
-    <option value="16 pieces">16 pieces</option>
-  </select>
-  `
-  const select = document.getElementById('select')
-  receivedInput = true // double click: re-enable clicking on button for this question
-  select.addEventListener('change', () => nextQuestion(select.value))
 
 }
 
@@ -199,7 +209,7 @@ const showOrder = () => {
     return false
   })
   receivedInput = true // double click: re-enable clicking on button for this question
-  document.getElementById('yesBtn').addEventListener('click', () => nextQuestion('Yes!'))
+  document.getElementById('yesBtn').addEventListener('click', () => nextQuestion('I am!'))
 }
 
 const thankYou = (size, icing) => {
@@ -217,7 +227,7 @@ const thankYou = (size, icing) => {
     price += 5
   }
 
-  new Audio ("./assets/confirmed.wav").play()
+  new Audio ("assets/confirmed.wav").play()
   botReply(`Thanks you for your order! It will be ${price} €, please <a href="mailto:help@bakery.com"><strong>contact Bakery E&N</strong></a> for your payment.`)
   inputWrapper.innerHTML = ``
 
