@@ -1,11 +1,11 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
-
 const inputWrapper = document.getElementById('input-wrapper')
 const nameInput = document.getElementById('name-input')
 const button = document.getElementById("send-btn")
 // Global variables, if you need any, declared here
 let questionNumber = 1
+//let mailformat = .-@;
 
 // Functions declared here
 const botAnswer = (message) =>{
@@ -100,42 +100,89 @@ const reply1 = (message) => {
  const reply2 = (message) => {
    questionNumber ++ 
    if (message === 'Hair cut') {
-     botAnswer(`Choose a Stylist below`)
-     inputWrapper.innerHTML = `
-     <select name="stylist" id="select">
+    botAnswer(`Choose a Stylist below`)
+    inputWrapper.innerHTML = `
+    <select name="stylist" id="select">
      <option value="" selected disabled> Choose your options</option>
      <option value="Junior stylist">Junior stylist</option>
-     <option value="Senior stylist">Senior Stylist</option>  </select>`
+     <option value="Senior stylist">Senior Stylist</option>  
+    </select>`
  
  const select = document.getElementById('select')
- select.addEventListener('change', () => nextQuestion(select.value))}
+ select.addEventListener('change', () => nextQuestion(select.value))
+}
  
    if (message === 'Hair color') {
-   botAnswer(`Great! Choose your desired style`)
-   inputWrapper.innerHTML = `
-   <select name="colors" id="select">
+    botAnswer(`Great! Choose your desired style`)
+    inputWrapper.innerHTML = `
+    <select name="colors" id="select">
      <option value="" selected disabled> Choose your options</option>
      <option value="Baylage">Baylage</option>
      <option value="Highlights">Highlights</option>
      <option value="Ombré">Ombré </option>
      <option value="Streaks">Streaks </option>
      <option value="Others">Others </option>
-   </select>`
+    </select>`
+
+  select.addEventListener('change', () => nextQuestion(select.value))
  }
  
    else if (message === 'Hair spa') {
      botAnswer(`Great! Choose your desired treatment`)
      inputWrapper.innerHTML = `
-     <select name="spa" id="select">
+    <select name="spa" id="select">
      <option value="" selected disabled> Choose your options</option>
-     <option value="Hair wash">Hair wash</option>
      <option value="Oil treatment">Oil treatment</option>
      <option value="Hair wash with blow out">Hair wash with blow out </option>
      <option value="L'oréal">L'oréal </option>
      <option value="Olaplex">Olaplex </option>
    </select>`
+
+   select.addEventListener('change', () => nextQuestion(select.value))
  }  
   }
+
+  const reply3 = (message) => {
+    questionNumber ++ 
+
+      botAnswer(`You will look amazing! Now choose the date and time for your ${message}.`)
+      inputWrapper.innerHTML = `
+      <label for="appointment"></label>
+      <input type="datetime-local" id="appointment" name="appointment">
+      <button id="bookIt">Send</button>`
+
+      document.getElementById('appointment')
+      document.getElementById('bookIt').addEventListener('click', () => nextQuestion(appointment.value))
+  
+  }
+
+  /*const reply4 = (message) => {
+    questionNumber ++ 
+
+     botAnswer(`For booking confirmation we need your email adress`)
+     inputWrapper.innerHTML = `
+     <label for="email"></label>
+     <input type="email" id="email" name="email" required>
+     <button id="bookIt">Send</button>
+     `
+     document.getElementById('email')
+     document.getElementById('bookIt').addEventListener('click', () => nextQuestion(email.value))
+    }*/
+
+    const reply4 = (message) => {
+      questionNumber ++ 
+      
+        botAnswer(`Thank you! Your booking is confirmed on ${message}Have a great day 💐`)
+
+      }
+  // Need to find out how make it recognize an email (required isn´t enough) tried to use mailformat(not working)
+  // https://stackoverflow.com/questions/46155/whats-the-best-way-to-validate-an-email-address-in-javascript  
+  // .value.match(mailformat) 
+  //if (message === )  {
+     // botAnswer(`Thank you gorgeous! You will find your confirmation in your inbox: ${email.value}`)
+    //}
+    
+
  
 // Set up your eventlisteners here
 document.getElementById("name-form").addEventListener("click", function(event){
