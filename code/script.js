@@ -109,7 +109,7 @@ exNameTrigger.addEventListener('click', function() {
   showMessage(`${exName}?? Eww such a gross name! Can't believe you dated someone called that! How are you feeling babe?`, 'bot');
   document.querySelector('.ex-name-input').style.display = "none";
   document.querySelector('.ex-send-btn').style.display = "none";
-  
+  const cryEmoji = document.querySelector('.cry-emoji');
   
   inputForm.innerHTML += `
   <div class="cry-emoji emoji-option">😭</div>
@@ -119,9 +119,10 @@ exNameTrigger.addEventListener('click', function() {
 }
 )
 
-{/* <input type="button" class="cry-emoji emoji-option" value="😭" />
+// Test for Different Input Types
+/* <input type="button" class="cry-emoji emoji-option" value="😭" />
 <input type="button" class="puke-emoji emoji-option" value="🤮" />
-<input type="button" class="angry-emoji emoji-option" value="🤬" /> */}
+<input type="button" class="angry-emoji emoji-option" value="🤬" /> */
 
 
 // Select Emoji Trigger
