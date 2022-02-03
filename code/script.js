@@ -121,11 +121,12 @@ exNameTrigger.addEventListener('click', function() {
 )
 
 // Reply to lenght
-let exLenght="";
-  exLengthTrigger.addEventListener('click', function() {
+const relationshipLength = document.querySelector('ex-send-btn');
+let exLength="";
+  relationshipLength.addEventListener('click', function() {
   exLength = document.querySelector('.ex-length-input').value;
   console.log(exLength);
-  showMessage(` ${exLength}...`, 'user');
+  showMessage(`${exLength}...`, 'user');
   showMessage(`${exLength}?? Wow ew do not throw anymore of your pearls on that ${exName}-trashbin! What is the 3 worst things about them?`, 'bot')
 }
 )
@@ -160,14 +161,6 @@ const cryEmoji = document.querySelector('.cry-emoji');
 //   showMessage(`Girl why??`, 'bot');
 //   document.querySelector('.emoji-buttons').style.display = "none";
 // })
-
-
-/*
-eventlistener to each emoji and click message from user 
-message back from the bot 
-hide the emojis 
-*/
-
 
 
 // Set up your eventlisteners here
