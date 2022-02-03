@@ -50,28 +50,7 @@ const showMessage = (message, sender) => {
 }
 
 
-// kopierat från technigo 
-// const nextQuestion = (message) => {
-//   console.log('questionNumber', questionNumber)
 
-//   if (questionNumber === 1) {
-//     userReply(message)
-//     input.value = ''
-//     setTimeout(() => showFoodTypes(message), 1000)
-//   } else if (questionNumber === 2) {
-//     userReply(message)
-//     setTimeout(() => showMenu(message), 1000)
-//   } else if (questionNumber === 3) {
-//     userReply(message)
-//     setTimeout(() => showDishSize(message), 1000)
-//   } else if (questionNumber === 4) {
-//     userReply(message)
-//     setTimeout(() => showPrice(message), 1000)
-//   } else {
-//     userReply(message)
-//     setTimeout(thankYou, 1000)
-//   }
-// }
 
 // Starts here
 const greeting = () => {
@@ -130,7 +109,7 @@ const drinkRec = (name) => {
 // Interaction 3  
 
 
-const softyOrWild = (yes) => {
+const softyOrWild = () => {
   showMessage(`Are you a softy or a wild cat?`, 'bot')
   formInputWrapper.innerHTML=
   `<button id="softy" type="button">Softy</button>
@@ -140,22 +119,95 @@ const softyOrWild = (yes) => {
     .getElementById('softy')
     .addEventListener('click', () => {
       showMessage('Yes I´m soft', 'user')
-      setTimeout(() => drinkRecTwo(''), 1000) 
+      setTimeout( () => yourSoftyDrink(), 1000) //Yoursofty ist för softy i parentes
 })
 
       document
       .getElementById('wildCat')
       .addEventListener('click', () => {
         showMessage('I got my groove on', 'user')
-        setTimeout( () => drinkRecTwo(), 1000) 
+        setTimeout( () => yourWildDrink(), 1000) 
         //call next function with a paremeter for no
       })   
 
 }
 
+// Interaction 4  
+
 const noThankYou = () => {
   showMessage(`Ok, have a nice life then! You can still press yes if you change your mind`, 'bot')
   }
+
+// Interaction 5
+
+const yourSoftyDrink = () => {
+  showMessage(`A mocktail is your cup of tea`, 'bot')
+  setTimeout( () => satisfied(), 1000) 
+  //picture of 
+  // formInputWrapper.innerHTML=
+  // <section><img src="assets/bot.png" alt="Bot"/> </section>
+  //remove buttons
+}
+
+
+// Interaction 6
+
+const yourWildDrink = () => {
+  showMessage(`A whiskey on the rocks for you stud`, 'bot')
+  setTimeout( () => satisfied(), 1000) 
+//picture of 
+  //remove buttons
+}
+
+// Interaction 7 = conditionals
+
+
+
+const satisfied = () => {
+
+  showMessage(`Are you happy with your recomendation?`, 'bot')
+  formInputWrapper.innerHTML=
+  `<button id="yes" type="submit">Yes!</button>
+    <button id="no" type="submit">No</button>`
+
+    document
+    .getElementById('yes')
+    .addEventListener('click', () => {
+      showMessage('yes its all good', 'user')
+      // endingPhrase('yes') //call next function with a parameter for yes
+      setTimeout( () => endingPhrase(), 1000) 
+    })
+
+    document
+    .getElementById('no')
+    .addEventListener('click', () => {
+      showMessage('no thanks', 'user')
+      endingPhrase('no') //call next function with a parameter for yes
+    })
+  }
+
+// Interaction 8 = conditionals
+    
+//   const endingPhrase = () => {
+
+//   if (  === yes) {
+//     showMessage('Hope you enjoy your evening!', 'bot')
+ 
+    
+//   } else {
+//     showMessage('Too bad!', 'bot')
+//   }
+
+// }
+
+  
+//are you satisfied with your recomendation. 
+// if Yes "hope you enjoy your evening
+// else if No to bad sucker ev a link to more drinks
+
+
+
+
 
 
 
