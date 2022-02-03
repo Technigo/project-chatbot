@@ -108,6 +108,11 @@ const timeStamp = () => {
   return `${dateIndex} ${month}, ${hours}:${minutes}`;
 }
 
+const chatAudio = () => {
+  var audio = new Audio('https://notificationsounds.com/storage/sounds/file-sounds-1143-clearly.mp3');
+  audio.play();
+}
+
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender, date) => {
   if (sender === 'user') {
@@ -131,6 +136,7 @@ const showMessage = (message, sender, date) => {
     `
   }
   chat.scrollTop = chat.scrollHeight
+  chatAudio();
 }
 
 const contactMethod = () => {
