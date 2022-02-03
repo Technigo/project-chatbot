@@ -97,7 +97,7 @@ const nextQuestion = (message) => {
 // Starts here
 const greeting = () => {
   questionNumber = 1;
-  botReply(`Welcome!<br/>What is your name?`);
+  botReply(`Welcome at Bakery E & N!<br/>What's your name?`);
   // Just to check it out, change 'bot' to 'user' here 👆
 };
 
@@ -169,7 +169,7 @@ const showSize = () => {
 
     `
   <select id="select">
-    <option value="" selected disabled>Select the number of pieces</option>
+    <option value="" selected disabled>Select the number of pieces <span role="img" aria-label="curved downwards arrow">&#x21B4</span></option>
     <option value="4 pieces">4 pieces</option>
     <option value="8 pieces">8 pieces</option>
     <option value="12 pieces">12 pieces</option>
@@ -190,8 +190,8 @@ const showOrder = () => {
   }
   botReply(`Are you sure that you want to order a ${size} ${type} cake${icingString}?`);
   inputWrapper.innerHTML = `
-  <button id="yesBtn">Yes</button>
-  <button id="noBtn">No</button>
+  <button id="yesBtn">Yes, I confirm!</button>
+  <button id="noBtn">No, I want to start over</button>
   `;
   receivedInput = true; // double click: re-enable clicking on button for this question
   document.getElementById('noBtn').addEventListener('click', () => {
@@ -216,8 +216,10 @@ const thankYou = (size, icing) => {
   if (icing === "with icing") {
     price += 5;
   }
-  botReply(`Thanks you for your order, it will be ${price} €`);
+  botReply(`Thanks you for your order, it will be ${price} €. Please <a href="mailto:help@bakery.com"><strong>contact Bakery E & N</strong></a> for your payment.`);
   inputWrapper.innerHTML = ``;
+  new Audio ("./assets/confirmed.mp3").currentTime = 0
+  new Audio ("./assets/confirmed.mp3").play();
 };
 
 // Set up your eventlisteners here
@@ -251,4 +253,3 @@ setTimeout(greeting, 1000);
 document.getElementById('name-form').onsubmit = event => {
   event.preventDefault();
 };
-

@@ -37,6 +37,11 @@ p {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 input {
   box-sizing: border-box;
   border: none;
@@ -51,10 +56,10 @@ input {
 }
 
 main {
-  margin: 0 auto;
+  margin: 0 auto 36px auto;
   width: 100%;
   max-width: 700px;
-  height: 600px;
+  height: 500px;
   border-radius: 30px;
   background: #eaeefa;
   padding: 20px 24px;
@@ -103,7 +108,7 @@ main {
 }
 
 .bot-bubble {
-  border-radius: 0px 26px 26px 26px;
+  border-radius: 0 26px 26px 26px;
   margin-left: 8px;
 }
 
@@ -173,6 +178,7 @@ select {
 footer {
   background-color: #2740a5;
   color: white;
+  position: relative;
   width: 100%;
   bottom: 0;
   left: 0;
@@ -180,6 +186,5 @@ footer {
   margin-top: 16px;
   text-align: center;
   font-size: 16px;
-  /* line-height: 24px; */
   font-weight: 400;
 }
