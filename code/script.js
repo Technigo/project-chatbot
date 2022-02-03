@@ -30,14 +30,14 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user1.png" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     //console.log('chatbot')
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bot1.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -48,114 +48,132 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-const nextQuestion = (message) => {
-  console.log('questionNumber', questionNumber)
-
-  if (questionNumber === 1) {
-    userReply(message)
-    input.value = ''
-    setTimeout(() => handleFeelingAnswer(message), 1000)
-  } else if (questionNumber === 2) {
-    userReply(message)
-    setTimeout(() => handleQuoteChoice(message), 1000)
-  } else if (questionNumber === 3) {
-    userReply(message)
-    setTimeout(() => showDishSize(message), 1000)
-  } else if (questionNumber === 4) {
-    userReply(message)
-    setTimeout(() => showPrice(message), 1000)
-  } else {
-    userReply(message)
-    setTimeout(thankYou, 1000)
-  }
-}
-
-
-// Starts here
+// Starts here- First message from bot
 const greeting = () => {
   questionNumber = 1
   botReply(`Hi! How you doing?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+//first userreply about how the user feels
 const handleFeelingQuestion = (event) => {
   event.preventDefault()
-  console.log('feeling question invoked', feelingInput.value)
   name = feelingInput
   userReply(`${feelingInput.value}`, 'user') 
  }
 
+// first botanswer and present three buttons
 const handleFeelingAnswer = (message) => {
   questionNumber++
   botReply(`OK, I understand, choose a quote`, 'bot') 
 
   inputWrapper.innerHTML = `
+    
     <button id="realityCheckBtn">Reality check</button>
     <button id="pickMeUpBtn">Pick-me-up</button>
     <button id="lifeAdviceBtn">Life Advice</button>
   `
-
+   
   document
     .getElementById('realityCheckBtn')
-    .addEventListener('click', () => nextQuestion('a reality check'))
+    .addEventListener('click', () => wantsRealityCheck('a reality check'))
   document
     .getElementById('pickMeUpBtn')
-    .addEventListener('click', () => nextQuestion('a pick-me-up'))
+    .addEventListener('click', () => wantsPickUp('a pick-me-up'))
   document
     .getElementById('lifeAdviceBtn')
-    .addEventListener('click', () => nextQuestion('a life advice'))
+    .addEventListener('click', () => wantsLifeAdvice('a life advice'))
 }
+//If you click on reality check button you get a youtube video link - works
+const wantsRealityCheck = () => {
+  userReply(`Yes I´m feeling to joyful, give me a reality check`, 'user')
+  botReply(`Ok, here comes a reality check for you! click on this <a href="https://www.youtube.com/watch?v=FvM0ryhD5rY&t=6s">link</a>`, 'bot')
+  inputWrapper.innerHTML = ''
+}
+//User chooses a Pick me up and is presented three buttons -works
+const wantsPickUp = () => {
+  userReply(`Yes please, pick me up`, 'user')
+  botReply(`Ok, what kind of pick-me-up do you want?`)
 
-const handleQuoteChoice  = (type) => {
-  questionNumber++
-  botReply(`Oh, so you want ${type}? In what area?`)
+     inputWrapper.innerHTML = `
+    <button id="pepTalkBtn">Peptalk</button>
+    <button id="funnyJokeBtn">Funny joke</button>
+    <button id="memeBtn">Meme</button>
+        `
 
-  if (type === 'realityCheck') {
-    inputWrapper.innerHTML = `
-    <button id="covid">Covid</button>
-    <button id="sleepDeprivation">Lack of sleep</button>
-    <button id="rollerCoaster">Emotional Rollercoaster</button>
-    `
-    
-  } else if (type === 'pickMeUp') {
-    inputWrapper.innerHTML = `
-    <button id="pepTalk">Peptalk</button>
-    <button id="funnyJoke"Funny joke</button>
-    <button id="meme">Meme</button>
-    `
-  } else {
-    inputWrapper.innerHTML = `
-    <button id="love">Love</button>
-    <button id="career">Career</button>
-    `
-  document
-    .getElementById('covidBtn')
-    .addEventListener('click', () => nextQuestion('I choose a reality check about Covid'))
-  document
-    .getElementById('sleepDeprivationBtn')
-    .addEventListener('click', () => nextQuestion('I choose a reality check about sleep deprivation'))
-  document
-    .getElementById('rollerCoasterBtn')
-    .addEventListener('click', () => nextQuestion('I choose a reality check about this emotional rollercoaster'))
   document
     .getElementById('pepTalkBtn')
-    .addEventListener('click', () => nextQuestion('I choose a pick-me-up about peptalk'))
+    .addEventListener('click', () => choosePepTalk('I choose a pick-me-up about peptalk'))
   document
     .getElementById('funnyJokeBtn')
-    .addEventListener('click', () => nextQuestion('I choose a pick-me-up about funny joke'))
+    .addEventListener('click', () => chooseFunnyJoke('I choose a pick-me-up about funny joke'))
   document
     .getElementById('memeBtn')
-    .addEventListener('click', () => nextQuestion('I choose a meme as a pick-me-up'))
+    .addEventListener('click', () => chooseMeme('I choose a meme as a pick-me-up'))
+  }
+//User chooses peptalk and is presented a youtube link to TED talk -works
+const choosePepTalk = () => {
+  userReply(`Yey peptalk!`, 'user')
+  botReply(`Here comes a link to a inspirational <a href="https://www.youtube.com/watch?v=jpRqbP9Nv9k">TEDTalk</a>`, 'bot')
+  inputWrapper.innerHTML = ''
+}
+//User chooses Funny Joke and a short joke is presented in text - works
+const chooseFunnyJoke = () => {
+  userReply(`A joke sounds great!`, 'user')
+  botReply(`A priest comes in to a school and says...`, 'bot')
+  inputWrapper.innerHTML = ''
+}
+//User chooses Meme and gets a picture with a pug and meme - works
+const chooseMeme = () => {
+  userReply(`I like memes`, 'user')
+  botReply(`<img src="assets/pugmeme.png" alt="meme" />`, 'bot')
+  inputWrapper.innerHTML = ''
+}
+//User chooses Life Advice and gets 2 choices 
+const wantsLifeAdvice = () => {
+  userReply(`Oh I really need a life advice`, 'user')
+  botReply(`Ok, what kind of life advice do you want?`)
+
+     inputWrapper.innerHTML = `
+    <button id="loveBtn">Love</button>
+    <button id="careerBtn">Career</button>
+        `
+
   document
     .getElementById('loveBtn')
-    .addEventListener('click', () => nextQuestion('I choose life advice about love'))
+    .addEventListener('click', () => chooseLove('I choose love, always!'))
   document
     .getElementById('careerBtn')
-    .addEventListener('click', () => nextQuestion('I choose life advice about career'))
- 
+    .addEventListener('click', () => chooseCareer('I choose career advice'))
   }
-
+  
+//User chooses love and is presented an audiofile - music
+const chooseLove = () => {
+  userReply(`Love <3`, 'user')
+  botReply(`Of course you will get some loving`, 'bot')
+  //audio
+  inputWrapper.innerHTML = ''
 }
+//User chooses career and is presented an audiofile - music
+const chooseCareer = () => {
+  userReply(`Career advice sounds great!`, 'user')
+  botReply(`Career tips coming right up: 1: never 2: always.`, 'bot')
+  inputWrapper.innerHTML = ''
+}
+//Chat ends and user gets 
+/*const thankYouPage = () => {
+  botReply(`Hope you had a pleasant time. See you soon`)
+  
+  inputWrapper.innerHTML = `
+  <button id="byeBtn">Bye bye</button>
+  `
+  document
+  .getElementById('byeBtn')
+  .addEventListener('click', () => {
+  document
+  .getElementById('content').style.display="none"
+  document
+  .getElementById('thankYouPage').style.display="flex"
+  })*/
 
 // Set up your eventlisteners here
 form.addEventListener ('submit', handleFeelingQuestion)

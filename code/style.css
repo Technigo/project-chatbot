@@ -35,10 +35,10 @@ p {
 
 input {
   box-sizing: border-box;
-  border: none;
+  border: solid;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #794be6;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
