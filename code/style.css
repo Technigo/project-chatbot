@@ -11,7 +11,7 @@ body {
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  max-height: 100vh;
+  /* max-height: 100vh; */
 }
 
 h1 {
@@ -41,8 +41,12 @@ p {
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
+}
+
+.mailto {
+  text-decoration: underline;
 }
 
 input {
