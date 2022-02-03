@@ -12,11 +12,13 @@ body {
 }
 
 h1 {
-  font-weight: bold;
-  font-size: 44px;
+  font-size: 60px;
   line-height: 34px;
   color: #fff;
   text-align: center;
+  font-family: 'Lobster', cursive;
+  margin: 80px;
+  text-shadow: 2px 2px gray;
 }
 
 h2 {

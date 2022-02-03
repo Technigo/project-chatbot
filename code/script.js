@@ -17,13 +17,13 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/flour.png" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/chef-hat.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -129,7 +129,8 @@ showMessage(`That will be ${price}. Are you sure you want this?`, 'bot')
 }
 
 const confirm = () => {  
-  showMessage('Thank you ', 'bot')
+  showMessage(`Thank you for ordering ${nameInput.value}. Fika is on the way!`, 'bot')
+  inputWrapper.innerHTML = ``
 //}
 }
 
