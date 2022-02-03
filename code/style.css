@@ -5,6 +5,7 @@
 body {
   margin: 0;
   padding: 0;
+  min-height: 100vh;
   font-family: 'Montserrat', sans-serif;
   /*background: #0026ff;*/
   background-image: url('assets/background-popcorn.jpg');
@@ -16,16 +17,19 @@ body {
 h1 {
   font-weight: bold;
   font-size: 44px;
-  line-height: 34px;
-  color: #fff;
+  line-height: 0.85em;
+  color: #B6002D;
+  text-shadow: 1px 1px #222222;
   text-align: center;
+  text-transform: uppercase;
 }
 
 h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: #B6002D;
+  text-shadow: 1px 1px #222222;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -40,16 +44,24 @@ p {
 input {
   box-sizing: border-box;
   border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
+  border-radius: 5px;
+  background: rgb(240, 239, 237);
+  box-shadow: 3px 3px 3px 1px #8a8a8a;
   color: #A51817;
-  /*#0026ff;*/
   padding: 16px;
+  margin-right: 10px; 
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
   flex: 1;
+}
+
+input:focus {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; 
+  outline: 1px solid rgba(218, 165, 32, 0.952);
 }
 
 main {
@@ -58,7 +70,8 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: rgb(240, 239, 237, 0.9);
+/*  background: #c2ad9bea;*/
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -95,13 +108,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #cfc7c4ec;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
   color: #B6002D;
-  /*#0026ff;*/
   max-width: 40%;
 }
 
@@ -125,14 +137,20 @@ main {
   display: flex;
 }
 
-button {
-  background-color: #d99013e7;
-  /*#0026ff;*/
-  color: white;
+button,
+#select-genre {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(218, 165, 32, 0.952);
+  /*#d99013e7;*/
+  /*#eeae40;*/
+  color: #B6002D;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   padding: 16px 40px;
   margin-right: 4px;
+  margin-top: 10px;
   font-size: 16px;
   line-height: 26px;
   font-family: 'Montserrat';
@@ -141,7 +159,9 @@ button {
   transition: all 0.3s ease;
 }
 
-button:hover {
+
+button:hover,
+#select-genre {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
