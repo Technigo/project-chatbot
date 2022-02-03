@@ -109,7 +109,6 @@ exNameTrigger.addEventListener('click', function() {
   showMessage(`${exName}?? Eww such a gross name! Can't believe you dated someone called that! How are you feeling babe?`, 'bot');
   document.querySelector('.ex-name-input').style.display = "none";
   document.querySelector('.ex-send-btn').style.display = "none";
-  const cryEmoji = document.querySelector('.cry-emoji');
   
   inputForm.innerHTML += `
   <div class="cry-emoji emoji-option">😭</div>
