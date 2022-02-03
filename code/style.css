@@ -33,6 +33,11 @@ p {
   margin: 0;
 }
 
+/* .input-wrapper {
+  display: flex;
+  justify-content: space-around;
+} */
+
 input {
   box-sizing: border-box;
   border: none;
@@ -134,6 +139,10 @@ button {
   transition: all 0.3s ease;
 }
 
+.more-margin {
+  margin-left: 2rem;
+}
+
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
@@ -142,8 +151,9 @@ button:hover {
 .smiley-div {
   font-size: 3rem;
 }
-.slidecontainer {
-  width: 100%; /* Width of the outside container */
+.slide-container {
+  /* width: 100%; Width of the outside container */
+  width: 300px;
 }
 
 /* The slider itself */
@@ -169,14 +179,20 @@ button:hover {
   appearance: none;
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
-  background: #04AA6D; /* Green background */
+  background: #CEC0CB; /* Green background */
   cursor: pointer; /* Cursor on hover */
 }
 
 .slider::-moz-range-thumb {
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
-  background: #04AA6D; /* Green background */
+  background: #be219c; /* Green background */
   cursor: pointer; /* Cursor on hover */
 }
 
+
+
+
+.display-none {
+  display: none;
+}
