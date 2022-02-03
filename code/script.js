@@ -104,7 +104,7 @@ const greeting = () => {
 const showCakes = (msg) => {
   questionNumber++;
   if (userName == '') {
-    botReply(`What type of cake would you like, mysterious customer?`);
+    botReply(`What type of cake would you like, mysterious person?`);
   } else {
     botReply(`What type of cake would you like, ${msg}?`);
   }
@@ -121,23 +121,23 @@ const showCakes = (msg) => {
 
 const showIcing = (msg) => {
   questionNumber++;
-  botReply(`A ${msg} cake, what a great choice! Do you want icing?<br/>(extra charge: 5 €)`);
+  botReply(`A ${msg} cake, what a great choice! Do you want icing?<br/>(+ 5 €)`);
   inputWrapper.innerHTML = `
   <button id="yesBtn">Yes please!</button>
-  <button id="noBtn">No, it would be to sweet </button>
+  <button id="noBtn">No, too sweet!</button>
   `;
   receivedInput = true; // double click: re-enable clicking on button for this question
   document.getElementById('yesBtn').addEventListener('click', () => nextQuestion('with icing'));
   document.getElementById('noBtn').addEventListener('click', () => nextQuestion('without icing'));
 };
 
-const showColour = (msg) => {
+const showColour = () => {
   questionNumber++;
-  botReply(`A cake with icing is always better! What colour do you want?`);
+  botReply(`Always better with icing! What colour?`);
   inputWrapper.innerHTML = `
-  <button id="pinkBtn">Pink</button>
-  <button id="greenBtn">Green</button>
-  <button id="yellowBtn">Yellow</button>
+  <button class="pink-btn" id="pinkBtn">Pink</button>
+  <button class="green-btn" id="greenBtn">Green</button>
+  <button class="yellow-btn" id="yellowBtn">Yellow</button>
   `;
   receivedInput = true; // double click: re-enable clicking on button for this question
   document.getElementById('pinkBtn').addEventListener('click', () => nextQuestion('pink'));
@@ -145,24 +145,29 @@ const showColour = (msg) => {
   document.getElementById('yellowBtn').addEventListener('click', () => nextQuestion('yellow'));
 };
 
-const showSize = (msg) => {
+const showSize = () => {
   console.log();
   questionNumber++;
-  botReply(`It's noted ${userName}! What size do you want?`);
+  if (userName == '') {
+    botReply(`Noted, enigmatic human! What size do you want?`);
+  } else {
+    botReply(`Noted, ${userName}! What size do you want?`);
+  }
   inputWrapper.innerHTML =
-  //   `
-  // <button id="4Btn">4 pieces</button>
-  // <button id="8Btn">8 pieces</button>
-  // <button id="12Btn">12 pieces</button>
-  // <button id="16Btn">16 pieces</button>
-  // `;
-  // receivedInput = true; // double click: re-enable clicking on button for this question
-  // document.getElementById('4Btn').addEventListener('click', () => nextQuestion('4 pieces'));
-  // document.getElementById('8Btn').addEventListener('click', () => nextQuestion('8 pieces'));
-  // document.getElementById('12Btn').addEventListener('click', () => nextQuestion('12 pieces'));
-  // document.getElementById('16Btn').addEventListener('click', () => nextQuestion('16 pieces'));
+    // button option commented out
+    //   `
+    // <button id="4Btn">4 pieces</button>
+    // <button id="8Btn">8 pieces</button>
+    // <button id="12Btn">12 pieces</button>
+    // <button id="16Btn">16 pieces</button>
+    // `;
+    // receivedInput = true; // double click: re-enable clicking on button for this question
+    // document.getElementById('4Btn').addEventListener('click', () => nextQuestion('4 pieces'));
+    // document.getElementById('8Btn').addEventListener('click', () => nextQuestion('8 pieces'));
+    // document.getElementById('12Btn').addEventListener('click', () => nextQuestion('12 pieces'));
+    // document.getElementById('16Btn').addEventListener('click', () => nextQuestion('16 pieces'));
 
-  `
+    `
   <select id="select">
     <option value="" selected disabled>Select the number of pieces</option>
     <option value="4 pieces">4 pieces</option>
@@ -170,20 +175,20 @@ const showSize = (msg) => {
     <option value="12 pieces">12 pieces</option>
     <option value="16 pieces">16 pieces</option>
   </select>
-  `
-  const select = document.getElementById('select')
-    receivedInput = true // double click: re-enable clicking on button for this question
-  select.addEventListener('change', () => nextQuestion(select.value))
+  `;
+  const select = document.getElementById('select');
+  receivedInput = true; // double click: re-enable clicking on button for this question
+  select.addEventListener('change', () => nextQuestion(select.value));
 
 };
 
-const showOrder = (msg) => {
+const showOrder = () => {
   questionNumber++;
   let icingString = ''; // variable for the recap of the order
   if (colour !== '') {
     icingString = ' with ' + colour + ' icing';
   }
-  botReply(`Are you sure your want to order a ${size} ${type} cake${icingString}?`);
+  botReply(`Are you sure that you want to order a ${size} ${type} cake${icingString}?`);
   inputWrapper.innerHTML = `
   <button id="yesBtn">Yes</button>
   <button id="noBtn">No</button>
