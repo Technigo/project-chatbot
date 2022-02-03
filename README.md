@@ -1,13 +1,8 @@
-# Project Name
+# Buddy Bot
 
-Replace this readme with your own information about your project.
+This is a chat bot that gives you some examples about what to do if you're not feeling that well. It also encourage you to share your joy if you're feeling happy.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+We added an if/else statement to check what time of the day the user visits the Buddy Bot. If it's before 12 it greets you with  goodmorning, after 12 good afternoon and after 18 it says good evening.
 
-## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
-
-## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Try it out here:
+https://buddybot.netlify.app/
