@@ -5,21 +5,21 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: 'Bebas Neue', cursive;
+  background: #141414;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
+  font-size: 58px;
   line-height: 34px;
-  color: #fff;
+  color: #E50914;
   text-align: center;
 }
 
 h2 {
-  font-weight: bold;
-  font-size: 24px;
+  font-weight: lighter;
+  font-size: 30px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -37,12 +37,12 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  border: 1px solid white;
+  background: #141414;
+  color: white;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 600;
+  font-weight: lighter;
   line-height: 26px;
   flex: 1;
 }
@@ -52,8 +52,9 @@ main {
   width: 100%;
   max-width: 700px;
   height: 600px;
-  border-radius: 30px;
-  background: #fff;
+  border: 1px solid white;
+  border-radius: 10px;
+  background: #141414;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -90,18 +91,20 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
-  font-weight: 600;
-  font-size: 16px;
+  background: white;
+  font-weight: lighter;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 8px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #141414;
   max-width: 40%;
 }
 
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  font-size: 10px;
 }
 
 .user-bubble {
@@ -120,7 +123,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #E50914;
   color: white;
   border: none;
   border-radius: 4px;
