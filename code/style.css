@@ -6,7 +6,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  /* background: #0026ff; */
+  background-image: url("./assets/bakery.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+  max-height: 100vh; 
 }
 
 h1 {
@@ -137,4 +143,22 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+select {
+  border: none;
+  border-radius: 4px;
+  color: #0026ff;
+  font-size: 20px;
+  font-weight: 600;
+  height: 60px;
+  font-family: 'Montserrat';
+  background: #e5e9ff;
+  width: 100%;
+  padding: 0 20px;
+  cursor: pointer;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
