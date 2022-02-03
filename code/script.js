@@ -227,7 +227,7 @@ const thankYou = (size, icing) => {
     price += 5
   }
 
-  new Audio ("assets/confirmed.wav").play()
+  new Audio ("./assets/confirmed.wav").autoplay = true
   botReply(`Thanks you for your order! It will be ${price} €, please <a href="mailto:help@bakery.com"><strong>contact Bakery E&N</strong></a> for your payment.`)
   inputWrapper.innerHTML = ``
 
