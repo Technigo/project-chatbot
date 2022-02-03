@@ -9,8 +9,7 @@ body {
   background: url(assets/flower.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: top left;
-
+  background-position: top left
 }
 
 /*This is the media queries to make background image for mobiles or box around it*/

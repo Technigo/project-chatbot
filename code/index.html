@@ -14,26 +14,28 @@
 
   <body>
     <div class= "chatdiv" id="chatdiv">
-    <h1>Welcome to the flower delivery bot</h1>
-    <h2>Order flowers for the next day</h2>
-    <main>
-      <section class="chat" id="chat"></section>
-      <div class="input-wrapper" id="input-wrapper">
-        <form id="name-form">
-          <input id="name-input" type="text" />
-          <button class="send-btn" type="submit" id="send">Send</button>
-        </form>
-      </div>
-    </main>
+      <h1>Welcome to the flower delivery bot</h1>
+      <h2>Order flowers for the next day</h2>
+      <main>
+        <section class="chat" id="chat"></section>
+        <div class="input-wrapper" id="input-wrapper">
+          <form id="name-form">
+            <input id="name-input" type="text" />
+            <button class="send-btn" type="submit" id="send">Send</button>
+          </form>
+        </div>
+      </main>
     </div>
-  <div class="confirmpage" id="confirmpage">
-    <h1></h1>
-    <h2></h2>
-    <main class="thankyoumessage">
-      <h1> Thank you for your order </h1>
-    </main>
-  </div>
-    <script src="./script.js"></script>
+    <!--- This is undisplayed in the beginning and will be showen when 
+      clicking the confirm button of the flower ordering--->
+    <div class="confirmpage" id="confirmpage">
+      <h1></h1>
+      <h2></h2>
+      <main class="thankyoumessage">
+        <h1> Thank you for your order </h1>
+      </main>
+    </div>
+  <script src="./script.js"></script>
   </body>
 
 </html>

@@ -117,7 +117,6 @@ const deliveryAddress = ()=> {
   questionNumber++
   botReply(`What is the delivery address?`)
   
-
   inputWrapper.innerHTML=
   `<form id="formAddress">
     <input id="inputAddress" type="text" />
@@ -149,17 +148,20 @@ document.getElementById('someoneElseBtn').addEventListener('click', () =>{
   nextQuestion('someone else')
 })
 } 
+
 //Question 4
 const card = () => {
   questionNumber++
+  
   botReply(`Would you like to add a greeting card with your flowers?`)
+  
   inputWrapper.innerHTML=
   `<button id="cardYesBtn">Yes</button>
   <button id="cardNoBtn">No</button>`
-
+  
   document.getElementById('cardYesBtn').addEventListener('click', () => {
   cardYes="Yes"
-
+  
   nextQuestion('Yes')
   })
 
@@ -172,12 +174,15 @@ const card = () => {
 // Question number 5
 const cardGreeting = () => {
   questionNumber++
+  
   botReply (`Type your greeting here, for example ''Happy Birthday Lisa, Love Tom''`)
+  
   inputWrapper.innerHTML=
   `<form id="formCardGreeting">
     <input id="inputField" type="text"/>
     <button id="sendBtn" class="send-btn" type="submit">Send</button>
   </form>`
+  
   document.getElementById('formCardGreeting').addEventListener('submit', (event) => {
     event.preventDefault()
     cardText= inputField.value
@@ -188,7 +193,9 @@ const cardGreeting = () => {
 // Question number 6
 const deliveryTime = () => {
   questionNumber++
+
   botReply (`What time would you like your delivery?`)
+  
   inputWrapper.innerHTML=
   `<select id="deliveryTime">
     <option value="" selected disabled>👇 Select a delivery time...</option>
@@ -197,7 +204,9 @@ const deliveryTime = () => {
     <option value="2PM-4PM">2PM-4PM</option>
     <option value="4PM-6PM">4PM-6PM</option>
   </select>`
+  
   let select = document.getElementById('deliveryTime')
+  
   select.addEventListener('change', () => {
    delTime= select.value
    nextQuestion(select.value)
@@ -211,31 +220,33 @@ const finalMessage = () => {
     a card reading "${cardText}" to the address: ${address} between ${delTime}. 
     Please press "confirm" to continue with the order or "restart" to make changes`)
   }
+
   else {
     botReply(`Thank you for your order. We will deliver ${flowers} to the address: ${address} between ${delTime}. 
     Please press "confirm" to continue with the order or "restart" to make changes`)
   }
+
   inputWrapper.innerHTML=
   `<button id="confirmBtn">Confirm</button>
   <button id="restartBtn">Restart</button>`
 
   document.getElementById('confirmBtn').addEventListener('click', () => {
    document.getElementById('chatdiv').style.display="none"
-   document.getElementById('confirmpage').style.display="block"
-    // botReply(`Thank you for your order. We will now redirect you to the payment page`)
+   document.getElementById('confirmpage').style.display="flex"
+    
   })
-
   document.getElementById('restartBtn').addEventListener('click', () => {
     questionNumber=1
+    
     flowers = "" //resetting variable to empty for new choices
     address = "" //resetting variable to empty for new choices
     cardText = "" //resetting variable to empty for new choices
     delTime = "" //resetting variable to empty for new choices 
     cardYes = "" //resetting variable to empty for new choices
+    
     greeting()
     }) 
 }
-
 
  // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
