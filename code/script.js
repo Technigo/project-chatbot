@@ -1,13 +1,100 @@
-// All the DOM selectors stored as short variables
+// Declare variables
 const chat = document.getElementById('chat')
 const nameInput = document.getElementById('name-input')
+const inputWrapper = document.getElementById('input-wrapper');
+let questionCounter = 0;
 
-// Global variables, if you need any, declared here
+// Function to move through questions that is called from event listeners
+const questionGenerator = () => {
+  questionCounter++;
+  if (questionCounter === 1) {
+    setTimeout(question1, 1000);
+  } else if (questionCounter === 2) {
+    setTimeout(question2, 1000);
+  } else if (questionCounter === 3) {
+    setTimeout(question3, 1000);
+  } else if (questionCounter === 4) {
+    setTimeout(question4, 1000);
+  }
+}
+
+// Question 1
+const question1 = () => {
+  showMessage(`Hello there, What's your name?`, 'bot')
+
+  document.getElementById('name-form').onsubmit = event => {
+    event.preventDefault();
+    showMessage(nameInput.value, 'user');
+    nameInput.value ='';
+    questionGenerator();
+  }
+}
+
+// Question 2
+const question2 = () => {
+  
+  showMessage(`Question with two buttons`, 'bot');
+
+  inputWrapper.innerHTML = `
+    <button class="button-input">coffee</button>
+    <button class="button-input">tea</button>
+    `
+  addButtonListeners('button-input');
+}
+
+// Question 3
+const question3 = () => {
+  showMessage(`Question with a text answer`, 'bot');
+  inputWrapper.innerHTML = `
+    <input id="second-input" type="text" />
+    <button id="second-btn">Send</button>
+  `
+  const secondInput = document.getElementById('second-input');
+  document.getElementById('second-btn').addEventListener('click', () => {
+    showMessage(secondInput.value, 'user');
+    secondInput.value ='';
+    questionGenerator();
+  });
+}
+
+// Question 4 function
+const question4 = () => {
+  showMessage(`Question with a option answer`, 'bot');
+  inputWrapper.innerHTML = `
+    <select id="third-input" type="option">
+      <option id="option-1">option 1</option>
+      <option id="option-2">option 2</option>
+      <option id="option-3">option 3</option>
+    </select>
+    `
+  const select = document.getElementById('third-input');
+  select.addEventListener('change', () => {
+    showMessage(select.value, 'user');
+    questionGenerator();
+  });
+}
+
+// Question 5 function
+
+// ...
+
+// End message
 
 
-// Functions declared here
+// Event listener functions that can be reused here
+const addButtonListeners = (buttonClassName) => {
+  const sendButtons = document.getElementsByClassName(buttonClassName);
 
-// This function will add a chat bubble in the correct place based on who the sender is
+  Array.from(sendButtons).forEach(button => {
+    button.addEventListener('click', () => {
+      showMessage(button.innerText, 'user');
+      questionGenerator();
+    });
+  });
+}
+
+// Move showMessage function here
+// Function that adds a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     chat.innerHTML += `
@@ -32,121 +119,5 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
-// Starts here
-const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
-}
-
-// Set up your eventlisteners here
-document.getElementById('name-form').onsubmit = event => {
-  event.preventDefault();
-  showMessage(nameInput.value, 'user');
-  nameInput.value ='';
-  questionFlow();
-  // call function to move through questions
-}
-
-// ------- PSEUDOCODE ------- //
-
-// Define our variables
-const inputWrapper = document.getElementById('input-wrapper');
-let questionCounter = 0;
-
-// declare function to move through questions that is called from event listeners
-// obs naming a function should decribe what it is doing. ex 'messageHandler" or 'messageDelivery'
-  // update questionCounter to keep track of what question comes next
-  // move through questionnaire based on which question we're on usung if else statement
-    // if questionCounter === 1 {
-      // call first question function
-    // } else if... { 
-      // call next question function
-    // }
-
-const questionFlow = () => {
-  questionCounter++;
-  if (questionCounter === 1) {
-    setTimeout(question1, 1000);
-  } else if (questionCounter === 2) {
-    setTimeout(question2, 1000);
-  } else if (questionCounter === 3) {
-    setTimeout(question3, 1000);
-  }
-}
-
-// Question-function structure
-  // display bot-message here (add set-timeout?)
-  // html form input type (i.e. how to answer)
-  // show answer
-  // continue in question flow
-
-  // Question 1
-const question1 = () => {
-  
-  showMessage(`First  question with two buttons`, 'bot');
-
-  inputWrapper.innerHTML = `
-    <button id="coffee-btn">coffee</button>
-    <button id="tea-btn">tea</button>
-    `
-  const coffeeButton = document.getElementById('coffee-btn');
-  const teaButton = document.getElementById('tea-btn');
-  
-  coffeeButton.addEventListener('click', () => {
-    showMessage(coffeeButton.innerText, 'user');
-    questionFlow();
-  });
-  teaButton.addEventListener('click', () => {
-    showMessage(teaButton.innerText, 'user');
-    questionFlow();
-  });
-}
-
-// Question 2
-const question2 = () => {
-  showMessage(`Second question with a text answer`, 'bot');
-  inputWrapper.innerHTML = `
-    <input id="second-input" type="text" />
-    <button id="second-btn">Send</button>
-  `
-  const secondInput = document.getElementById('second-input');
-  document.getElementById('second-btn').addEventListener('click', () => {
-    showMessage(secondInput.value, 'user');
-    secondInput.value ='';
-    questionFlow();
-  });
-}
-
-// Question 3 function
-const question3 = () => {
-  showMessage(`Third question with a option answer`, 'bot');
-  inputWrapper.innerHTML = `
-    <select id="third-input" type="option">
-      <option id="option-1">option 1</option>
-      <option id="option-2">option 2</option>
-      <option id="option-3">option 3</option>
-    </select>
-    `
-  const select = document.getElementById('third-input');
-  select.addEventListener('change', () => {
-    showMessage(select.value, 'user');
-    questionFlow();
-  });
-
-}
-
-// Question 4 function
-
-
-// ...
-
-// End message
-
-
-setTimeout(greeting, 1000)
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
+// Start chatbot by calling questionGenerator
+questionGenerator();
