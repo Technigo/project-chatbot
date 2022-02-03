@@ -112,43 +112,36 @@ exNameTrigger.addEventListener('click', function() {
   
   
   inputForm.innerHTML += `
-  <button class="cry-emoji emoji-option">😭</button>
-  <button class="puke-emoji emoji-option">🤮</button>
-  <button class="angry-emoji emoji-option">🤬</button>
-  
+  <div class="cry-emoji emoji-option">😭</div>
+  <div class="puke-emoji emoji-option">🤮</div>
+  <div class="angry-emoji emoji-option">🤬</div>
   `
 }
 )
 
+{/* <input type="button" class="cry-emoji emoji-option" value="😭" />
+<input type="button" class="puke-emoji emoji-option" value="🤮" />
+<input type="button" class="angry-emoji emoji-option" value="🤬" /> */}
+
 
 // Select Emoji Trigger
-const emojiButtons = document.getElementByClassName('emoji-buttons');
-document.getElementsByClassName(".emoji-buttons").style.visibility = "visible";
+// const emojiButtons = document.getElementByClassName('emoji-buttons');
+// document.getElementsByClassName(".emoji-buttons").style.visibility = "visible";
 
 
-const cryEmoji = document.querySelector('.cry-emoji')
-let feeling = "sad";
+const cryEmoji = document.querySelector('.cry-emoji');
 
-cry-emoji.addEventListener('click', function() {
-  console.log("saaaad");
-  feeling = document.querySelector('.feeling-input').value;
- console.log("feeling");
- document.querySelector('.emoji-buttons').style.display = "none";
+// cryEmoji.addEventListener('click', function() {
+//   console.log(This works);
+// })
 
- showMessage(`I'm feeling ${feeling}...`, 'user');
+// cryEmoji.addEventListener('click', function() {
+//   console.log("saaaad");
+//   showMessage(`I'm feeling sad... 😭😭😭`, 'user');
+//   showMessage(`Girl why??`, 'bot');
+//   document.querySelector('.emoji-buttons').style.display = "none";
+// })
 
-  
-/*
-;
-cryEmoji = document.createElement("button");
-
-cry-emoji.onclick = function () {
-  console.log("Button is clicked");
-};
-
-document.body.appendChild(cryEmoji);
-
-*/
 
 /*
 eventlistener to each emoji and click message from user 

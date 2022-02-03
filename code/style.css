@@ -299,7 +299,8 @@ body {
 
 .emoji-option {
   font-size: 30px;
-  visibility: hidden;  /*ADDED TEST*/
+  border: none;
+  background: transparent;
 }
 
 .emoji-option:hover {
@@ -318,5 +319,5 @@ body {
 
 .angry-emoji {
   float: right;
-  padding-right: 15px;
+  padding-right: 30px;
 }
