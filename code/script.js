@@ -106,7 +106,7 @@ exNameTrigger.addEventListener('click', function() {
   exName = document.querySelector('.ex-name-input').value;
   console.log(exName);
   showMessage(`Their name was ${exName}...`, 'user');
-  showMessage(`${exName}?? Eww such a gross name! Can't believe you dated someone called that! How are you feeling babe?`, 'bot');
+  showMessage(`${exName}?? Eww such a gross name! Can't believe you dated someone called that! How long were you together?`, 'bot');
   document.querySelector('.ex-name').style.display = "none";
   /*
   document.querySelector('.ex-send-btn').style.display = "none";
@@ -125,7 +125,6 @@ let exLenght="";
   exLengthTrigger.addEventListener('click', function() {
   exLength = document.querySelector('.ex-length-input').value;
   console.log(exLength);
-  /*inputForm.innerHTML += or I dunno something to ...*/
   showMessage(` ${exLength}...`, 'user');
   showMessage(`${exLength}?? Wow ew do not throw anymore of your pearls on that ${exName}-trashbin! What is the 3 worst things about them?`, 'bot')
 }
