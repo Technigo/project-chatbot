@@ -23,6 +23,7 @@ const userReply = (msg) => {
 }
 
 // function for the waiting bubbles
+// not able for now to remove these bubbles when the message appears
 const processingTime = () => {
   botReply(`...`)
 }
@@ -51,6 +52,7 @@ const showMessage = (message, sender) => {
   // chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
+
 // conditionals to go from one question to the other
 const nextQuestion = (message) => {
   // conditional to prevent double click

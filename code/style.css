@@ -11,7 +11,6 @@ body {
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  /* max-height: 100vh; */
 }
 
 h1 {
@@ -45,6 +44,7 @@ a {
   text-decoration: none;
 }
 
+/* underline so the mailto link in last message is easier to notice */
 .mailto {
   text-decoration: underline;
 }
