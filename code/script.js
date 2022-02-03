@@ -6,6 +6,8 @@ const submit = document.getElementById('submit')
 const main = document.getElementById('main')
 const inputWrapper = document.getElementById('input-wrapper')
 
+const compliment = ["You", "Du är snäll", "Du är bra"];
+let randomSentence = 0;
 
 
 // Global variables, if you need any, declared here
@@ -51,7 +53,7 @@ const showMessage = (message, sender) => {
   const name = nameInput.value // input value will be stored in the const name
   console.log(name)
 
-  showMessage(`My name is ${name}.`, 'user') // users answer 
+  showMessage(`My name is ${name}`, 'user') // users answer 
   nameInput.value = '' // clearing name input setting it to an empty string
 
   setTimeout(() => complimentOptions(name), 1000) // passing the arguments to complimentOptions function with 1s delay
@@ -72,7 +74,6 @@ const showMessage = (message, sender) => {
   .addEventListener('click', () => {
     showMessage('I would love to get a compliment', 'user')
     setTimeout(() => chooseCompliment(submit), 1000) // After clicking the button; passing the arguments to complimentOptions function with 1s delay 
-    document.getElementById("input-wrapper").style.display = "none"; // Button dissapears
     // Also add some code in here to add answer options for next message
   })
 
@@ -89,12 +90,30 @@ const showMessage = (message, sender) => {
 
 //------ Third intention ------//
 
-const chooseCompliment = (submit) => {
-  showMessage(`Nice! What kind of comliment do you want?`, 'bot') // When clicking YES on the second intention
+  const chooseCompliment = (submit) => {
+  showMessage(`Nice! Click on the button below to get a random compliment`, 'bot') // When clicking YES on the second intention 
+  
+  inputWrapper.innerHTML = // add Yes No button
+  `<button id="randomBtn" type="submit">Ge a Random Compliment</button>`
 
+  document
+  .getElementById('randomBtn')
+  .addEventListener('click', () => {
+    
+    //randomSentence = Math.floor(Math.random() * 3);
+  showMessage(compliment[Math.floor(Math.random() * 3)], 'bot');
+    
+    // Returns a random integer from 0 to 3:
 
-
+     // After clicking the button; passing the arguments to complimentOptions function with 1s delay 
+    // Also add some code in here to add answer options for next message
+  })
 }
+
+//------ Random compliment ------//
+
+
+
 
 
 //------ Default ------// 
