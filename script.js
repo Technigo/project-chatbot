@@ -58,6 +58,9 @@ const nextQuestion = (message) => {
   } else if (questionNumber === 4) {
     userReply(message)
     setTimeout(() => showSnacks("snack?"), 1000)
+  } else if (questionNumber === 5) {
+    userReply(message)
+    setTimeout(() => showChoice(message), 1000)
   } else {
     userReply(message)
     setTimeout(thankYou, 1000)
@@ -147,7 +150,7 @@ const showTitles = (type) => {
   select.addEventListener('change', () => nextQuestion(select.value))
 }
 // Snacks yes or no
-const showMenu = (movie) => {
+  const showMenu = (movie) => {
   questionNumber++
 
   botReply(`Awesome choice! The ${movie} is a great movie! Would you like some snacks also?`)
@@ -157,16 +160,18 @@ const showMenu = (movie) => {
     <button id="confirm">YES</button>
     `
 // If no snacks THE END
-  document.getElementById('theEnd').addEventListener('click', () => {
+  document. getElementById('theEnd').addEventListener('click', () => {
     botReply("No snacks no movie! Go home!")
       // location.reload()
       return false
     })
-//if snacks true move to next question
+
+//Ff snacks true move to next question
     document
       .getElementById('confirm')
       .addEventListener('click', () => nextQuestion('Yes!!!'))
   }
+
 //Choose snacks
   const showSnacks = (candy) => {
     questionNumber++
@@ -178,17 +183,25 @@ const showMenu = (movie) => {
       <button id="candyBtn">🍫</button>
       <button id="cheeseBtn">🧀 </button>
       `
-      document
+    document
       .getElementById('popcornBtn')
-      .addEventListener('click', () => nextQuestion('Popcorn'))
+      .addEventListener('click', () => nextQuestion('🍿'))
     document
       .getElementById('candyBtn')
-      .addEventListener('click', () => nextQuestion('Candy'))
+      .addEventListener('click', () => nextQuestion('🍫'))
     document
       .getElementById('cheeseBtn')
-      .addEventListener('click', () => nextQuestion('Cheese'))
+      .addEventListener('click', () => nextQuestion('🧀'))
     }
-  
+
+//When you have chosen a snack
+  const showChoice = (choice) => {
+    questionNumber++
+      
+    botReply (`${choice} is really good!`)
+    }
+
+
 const thankYou = () => {
   botReply(`Enjoy your movie! Hope your have a great night! 👋🏼`)
   inputWrapper.innerHTML = ``
@@ -202,34 +215,9 @@ input.addEventListener('keypress', (event) => {
  setTimeout(greeting, 1000)
 
  nameForm.addEventListener("submit", (event) => {
-  event.preventDefault()
+    event.preventDefault()
 })
 
 
 
-//   document
-//     .getElementById('adult')
-//     .addEventListener('click', () => nextQuestion('adult'))
-//   document
-//     .getElementById('child')
-//     .addEventListener('click', () => nextQuestion('child'))
-// }
-
-// const showPrice = (size) => {
-//   questionNumber++
-
-//   let price
-//   if (size === 'adult') {
-//     price = '€15'
-//   } else {
-//     price = '€10'
-//   }
-
-//   botReply(
-//     `One ${size} sized dish will be prepared for you. That'll be ${price}. Are you sure you want to order this?`
-//   )
-
-//   inputWrapper.innerHTML = `
-//     <button id="restart">NO</button>
-//     <button id="confirm">YES</button>
-//   `
+ 
