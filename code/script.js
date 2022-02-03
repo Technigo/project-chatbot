@@ -92,6 +92,7 @@ const question5 = () => {
   showMessage(`Sounds great! When should we chat next?`, 'bot');
   inputWrapper.innerHTML = `
     <select id="option-menu" type="option">
+      <option>Choose a time</option>
       <option>Tomorrow</option>
       <option>In three days</option>
       <option>Next week</option>
