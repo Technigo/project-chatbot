@@ -13,14 +13,13 @@ body {
 
 }
 
-/*THis is the media queries to make background image for mobiles or box around it*/
+/*This is the media queries to make background image for mobiles or box around it*/
 @media (max-width:767px) {
   body {
   color: #ffff;
   background: rosybrown;
   }
 }
-
 
 h1 {
   font-weight: bold;
@@ -40,7 +39,6 @@ h2 {
   margin-bottom: 36px;
   font-family: 'Lobster', cursive;
 }
-
 
 p {
   font-size: 18px;
@@ -70,7 +68,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background-color: white;
+  background-color: #fff;
   opacity: 0.8;
   padding: 20px 24px;
   padding-top: 0;
@@ -101,10 +99,14 @@ main {
   flex-shrink: 0;
 }
 
-.bot-msg img,
-.user-msg img {
+.bot-msg img {
   width: 60px;
   height: 60px;
+}
+
+.user-msg img {
+  width: 50px;
+  height: 50px;
 }
 
 .bubble {
@@ -156,4 +158,16 @@ button:hover, select:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+/*After clicking confirm page, this will be shown*/
+.confirmpage {
+  display: none;
+}
+
+.thankyoumessage {
+  justify-content: center;
+  background: none;
+  font-size: 50px;
+}
+
 

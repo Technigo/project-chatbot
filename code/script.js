@@ -4,6 +4,7 @@ const inputWrapper = document.getElementById('input-wrapper')
 const input = document.getElementById('name-input')
 const sendBtn = document.getElementById('send')
 const form = document.getElementById('name-form')
+const messageSound = new Audio ("assets/message-pop-alert.mp3");
 
 // Global variables, if you need any, declared here
 let questionNumber = 1 //variable for counting which question we are dealing (defined in Figma)
@@ -45,6 +46,10 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
+  //makes sound when sending a message 
+  messageSound.currentTime = 0
+  messageSound.play()
+
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
@@ -111,14 +116,17 @@ document.getElementById('liliesBtn').addEventListener('click', () => {
 const deliveryAddress = ()=> {
   questionNumber++
   botReply(`What is the delivery address?`)
+  
 
   inputWrapper.innerHTML=
-  `<input id="inputAddress" type="text"/>
-  <button id="sendBtn" class="send-btn" type="submit">Send</button>
+  `<form id="formAddress">
+    <input id="inputAddress" type="text" />
+    <button class="send-btn" type="submit" id="send">Send</button>
+  </form>
   `
-
-  document.getElementById('sendBtn').addEventListener('click', () => {
-    address=inputAddress.value
+  document.getElementById('formAddress').addEventListener('submit', (event) => {
+    event.preventDefault()
+    address = inputAddress.value
     nextQuestion(inputAddress.value)
   })
 }
@@ -140,12 +148,8 @@ document.getElementById('myselfBtn').addEventListener('click', () => {
 document.getElementById('someoneElseBtn').addEventListener('click', () =>{
   nextQuestion('someone else')
 })
-}
-/*Trying the if else function 
-  
-  */
-
-// Question number 4
+} 
+//Question 4
 const card = () => {
   questionNumber++
   botReply(`Would you like to add a greeting card with your flowers?`)
@@ -170,11 +174,14 @@ const cardGreeting = () => {
   questionNumber++
   botReply (`Type your greeting here, for example ''Happy Birthday Lisa, Love Tom''`)
   inputWrapper.innerHTML=
-  `<input id="inputField" type="text"/>
-  <button id="sendBtn" class="send-btn" type="submit">Send</button>`
-  document.getElementById('sendBtn').addEventListener('click', () => {
-  cardText= inputField.value
-  nextQuestion(inputField.value)
+  `<form id="formCardGreeting">
+    <input id="inputField" type="text"/>
+    <button id="sendBtn" class="send-btn" type="submit">Send</button>
+  </form>`
+  document.getElementById('formCardGreeting').addEventListener('submit', (event) => {
+    event.preventDefault()
+    cardText= inputField.value
+    nextQuestion(inputField.value)
   })
 }
 
@@ -199,13 +206,13 @@ const deliveryTime = () => {
 
 //Question number 7 
 const finalMessage = () => {
-  if (cardYes= "Yes"){
+  if (cardYes === "Yes"){
     botReply(`Thank you for your order. We will deliver ${flowers} with 
-    a card reading ${cardText} to address ${address} between ${delTime}. 
+    a card reading "${cardText}" to the address: ${address} between ${delTime}. 
     Please press "confirm" to continue with the order or "restart" to make changes`)
   }
   else {
-    botReply(`Thank you for your order. We will deliver ${flowers} to address ${address} between ${delTime}. 
+    botReply(`Thank you for your order. We will deliver ${flowers} to the address: ${address} between ${delTime}. 
     Please press "confirm" to continue with the order or "restart" to make changes`)
   }
   inputWrapper.innerHTML=
@@ -213,7 +220,9 @@ const finalMessage = () => {
   <button id="restartBtn">Restart</button>`
 
   document.getElementById('confirmBtn').addEventListener('click', () => {
-    botReply(`Thank you for your order. We will now redirect you to the payment page`)
+   document.getElementById('chatdiv').style.display="none"
+   document.getElementById('confirmpage').style.display="block"
+    // botReply(`Thank you for your order. We will now redirect you to the payment page`)
   })
 
   document.getElementById('restartBtn').addEventListener('click', () => {
@@ -226,6 +235,7 @@ const finalMessage = () => {
     greeting()
     }) 
 }
+
 
  // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
