@@ -6,7 +6,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: linear-gradient(135deg, #dd3939, #b69d59);
+  height: 100%;
 }
 
 h1 {
@@ -31,10 +32,12 @@ p {
   font-weight: 600;
   line-height: 28px;
   margin: 0;
+  color: #c18250;
 }
 
 a {
   color: #0026ff;
+  text-decoration: none;
 }
 
 a:hover {
@@ -45,8 +48,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #ffeee5;
+  color: #c18250;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -98,12 +101,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #ffe5e5;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #c18250;
   max-width: 40%;
 }
 
@@ -128,7 +131,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #c18250;
   color: white;
   border: none;
   border-radius: 4px;

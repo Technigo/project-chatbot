@@ -41,7 +41,7 @@ const showMessage = (message, sender) => {
 const greeting = () => {
   let goodX
 
-  //greetings based on time of the day
+  // Greetings based on time of the day
   if (curHr < 12) {
     goodX = 'Good morning'
   } else if (curHr < 18) {
@@ -49,11 +49,10 @@ const greeting = () => {
   } else {
     goodX = 'Good evening'
   }
-
   showMessage(`${goodX} buddy, what's your name?`, 'bot')
 }
 
-// reads and shows the value from the input field 
+// Reads and shows the value from the input field 
 const showName = () => {
   userName = nameInput.value
   showMessage(`${nameInput.value}!`, 'user')
@@ -64,7 +63,7 @@ const howAreYou = () => {
   showMessage(`Hello ${userName}, how do you feel today?`, 'bot')
 
   inputWrapper.innerHTML = `
-    <button id="goodButton">I feel Good</button>
+    <button id="goodButton">I feel good</button>
     <button id="badButton">Not so good</button>
     `
   document.getElementById('goodButton').addEventListener('click', () => feelingGood())
@@ -73,19 +72,19 @@ const howAreYou = () => {
 
 const feelingGood = () => {
   showMessage(`I'm feeling super`, 'user')
-  setTimeout(() => showMessage(` Im happy to hear that ${userName}. Please take a minute of your time to tell us why? Please follow this link to our <a href="https://jamboard.google.com/d/1Jr0VPHAZ9leYBqf77Iqp-6DFdM4-2GSYYJ-b9JZVtvY/edit?usp=sharing">wall</a> .`, 'bot'), 2000);
+  setTimeout(() => showMessage(` Yaay ${userName}! If you want to spread your happiness, follow this link to our <a href="https://jamboard.google.com/d/1Jr0VPHAZ9leYBqf77Iqp-6DFdM4-2GSYYJ-b9JZVtvY/edit?usp=sharing">wall</a> and share your thoughts .`, 'bot'), 2000);
   inputWrapper.innerHTML = '';
 }
 
 const feelingBad = () => {
   showMessage(`Not so good`, 'user')
-  setTimeout(() => showMessage(`I'm sorry that you're feeling that way ${userName}. Why are you feeling that way?`, 'bot'), 2000);
+  setTimeout(() => showMessage(`I'm sorry that you're feeling that way ${userName} 😢. Do you want to tell me why are you feeling that way?`, 'bot'), 2000);
 
   setTimeout(() => {
     inputWrapper.innerHTML = `
-    <button id="imLonely">Im Lonely</button>
-    <button id="imHurt">Im injured</button>
-    <button id="iDontWantToTalk">I dont want to talk about it</button>
+    <button id="imLonely">I'm Lonely</button>
+    <button id="imHurt">I'm injured</button>
+    <button id="iDontWantToTalk">I don't want to talk about it</button>
     `
 
     document.getElementById('imLonely').addEventListener('click', () => feelingLonely())
@@ -95,19 +94,19 @@ const feelingBad = () => {
 }
 
 const feelingLonely = () => {
-  showMessage(`I'm feeling lonely`, 'user')
-  setTimeout(() => showMessage(`If you're feeling lonely ${userName}, please reach out to <a href="#">Jourhavande Medmänniska</a> `, 'bot'), 2000);
+  showMessage(`I am feeling lonely`, 'user')
+  setTimeout(() => showMessage(`No one should feel that way ${userName}, please reach out to <a href="https://www.jourhavande-medmanniska.se/">Jourhavande Medmänniska</a> if you want to have a chat with a real person`, 'bot'), 2000);
   inputWrapper.innerHTML = '';
 }
 
 const feelingHurt = () => {
-  showMessage(`I'm injured`, 'user')
-  setTimeout(() => showMessage(`If you're feeling injured ${userName}, please reach out to <a href="https://www.1177.se/olyckor--skador/">Vårdguiden</a>. If it's life threatening please call 911 immediately. `, 'bot'), 2000);
+  showMessage(`I am injured`, 'user')
+  setTimeout(() => showMessage(`Oh no! If you're injured ${userName}, please contact <a href="https://www.1177.se/olyckor--skador/">Vårdguiden</a>. And if it's life threatening please call 911 immediately. `, 'bot'), 2000);
   inputWrapper.innerHTML = '';
 }
 
 const dontWantToTalk = () => {
-  showMessage(`I don't want to talk`, 'user')
+  showMessage(`I dont want to talk`, 'user')
   setTimeout(() => showMessage(`If you don't want to talk ${userName}, perhaps you want to play a game? <a href="https://pbskids.org/sesame/games/ramp-racers/">Play Sesam street ramp racers here</a>.`, 'bot'), 2000);
   inputWrapper.innerHTML = '';
 }
@@ -117,7 +116,6 @@ sendButton.addEventListener('click', (event) => {
   event.preventDefault()
   showName()
 })
-
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
