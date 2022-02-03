@@ -5,6 +5,8 @@ const chatBox = document.getElementById('chat-box');
 const chat = document.getElementById('chat')
 const nameInput = document.getElementById('name-input')
 const inputWrapper = document.getElementById('input-wrapper');
+
+let buttonText = "";
 let questionCounter = 0;
 
 // Function to move through questions
@@ -13,13 +15,15 @@ const questionGenerator = () => {
   if (questionCounter === 1) {
     setTimeout(question1, 1000);
   } else if (questionCounter === 2) {
-    setTimeout(question2, 1000);
+    setTimeout(question2, 1000, nameInput.value);
   } else if (questionCounter === 3) {
-    setTimeout(question3, 1000);
+    setTimeout(question3, 1000, buttonText);
   } else if (questionCounter === 4) {
     setTimeout(question4, 1000);
   } else if (questionCounter === 5) {
-    setTimeout(endMessage(nameInput.value), 1000);
+    setTimeout(question5, 1000);
+  } else if (questionCounter === 6) {
+    setTimeout(endMessage, 1000, nameInput.value);
   }
 }
 
@@ -35,20 +39,26 @@ const question1 = () => {
 }
 
 // Question 2
-const question2 = () => {
+const question2 = (message) => {
   
-  showMessage(`Question with two buttons`, 'bot');
+  showMessage(`How is your day going, ${message}?`, 'bot');
 
   inputWrapper.innerHTML = `
-    <button class="button-input">option 1</button>
-    <button class="button-input">option 2</button>
+    <button class="button-input">Great!</button>
+    <button class="button-input">Could be better</button>
     `
   addButtonListeners('button-input');
 }
 
 // Question 3
-const question3 = () => {
-  showMessage(`Question with a text answer`, 'bot');
+const question3 = (answer) => {
+  console.log(buttonText);
+  if (answer === 'Great!') {
+    showMessage(`Glad to hear it! Name one thing that made you happy.`, 'bot');
+  } else {
+    showMessage(`Aw, what's bugging you?`, 'bot');
+  }
+
   inputWrapper.innerHTML = `
     <input id="second-input" type="text" />
     <button id="second-btn">Send</button>
@@ -61,14 +71,31 @@ const question3 = () => {
   });
 }
 
-// Question 4
-const question4 = () => {
-  showMessage(`Question with a option answer`, 'bot');
+//
+const question4 = (answer) => {
+  showMessage(`Thanks for sharing. What's something you're looking forward to this week?`, 'bot');
+
+  inputWrapper.innerHTML = `
+    <input id="another-input" type="text" />
+    <button id="another-btn">Send</button>
+  `
+  const anotherInput = document.getElementById('another-input');
+  document.getElementById('another-btn').addEventListener('click', () => {
+    showMessage(anotherInput.value, 'user');
+    anotherInput.value ='';
+    questionGenerator();
+  });
+}
+
+// Question 5
+const question5 = () => {
+  showMessage(`Sounds great! When should we chat next?`, 'bot');
   inputWrapper.innerHTML = `
     <select id="option-menu" type="option">
-      <option id="option-1">option 1</option>
-      <option id="option-2">option 2</option>
-      <option id="option-3">option 3</option>
+      <option>Tomorrow</option>
+      <option>In three days</option>
+      <option>Next week</option>
+      <option>I'm not sure</option>
     </select>
     `
   const select = document.getElementById('option-menu');
@@ -80,7 +107,7 @@ const question4 = () => {
 
 // End message
 const endMessage = (message) => {
-  showMessage(`It was nice to chat with you, ${message}. Have a good day!`, 'bot');
+  showMessage(`Alright, let's keep in touch. Have a good day and don't forget that you're a rockstar ${message}!`, 'bot');
   inputWrapper.innerHTML = '';
 }
 
@@ -92,6 +119,7 @@ const addButtonListeners = (buttonClassName) => {
   Array.from(sendButtons).forEach(button => {
     button.addEventListener('click', () => {
       showMessage(button.innerText, 'user');
+      buttonText = button.innerText;
       questionGenerator();
     });
   });
