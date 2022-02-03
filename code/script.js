@@ -106,10 +106,10 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+// for the ... bubbles
 const processingTime = () => {
   botReply(`...`)
 }
-
 
 const showCakes = (msg) => {
   questionNumber++
@@ -176,20 +176,18 @@ const showSize = () => {
   receivedInput = true // double click: re-enable clicking on button for this question
   select.addEventListener('change', () => nextQuestion(select.value))
 
-    // button option commented out
-    //   `
-    // <button id="4Btn">4 pieces</button>
-    // <button id="8Btn">8 pieces</button>
-    // <button id="12Btn">12 pieces</button>
-    // <button id="16Btn">16 pieces</button>
-    // `
-    // receivedInput = true // double click: re-enable clicking on button for this question
-    // document.getElementById('4Btn').addEventListener('click', () => nextQuestion('4 pieces'))
-    // document.getElementById('8Btn').addEventListener('click', () => nextQuestion('8 pieces'))
-    // document.getElementById('12Btn').addEventListener('click', () => nextQuestion('12 pieces'))
-    // document.getElementById('16Btn').addEventListener('click', () => nextQuestion('16 pieces'))
-
-
+  // button option commented out
+  //   `
+  // <button id="4Btn">4 pieces</button>
+  // <button id="8Btn">8 pieces</button>
+  // <button id="12Btn">12 pieces</button>
+  // <button id="16Btn">16 pieces</button>
+  // `
+  // receivedInput = true // double click: re-enable clicking on button for this question
+  // document.getElementById('4Btn').addEventListener('click', () => nextQuestion('4 pieces'))
+  // document.getElementById('8Btn').addEventListener('click', () => nextQuestion('8 pieces'))
+  // document.getElementById('12Btn').addEventListener('click', () => nextQuestion('12 pieces'))
+  // document.getElementById('16Btn').addEventListener('click', () => nextQuestion('16 pieces'))
 }
 
 const showOrder = () => {
@@ -209,7 +207,10 @@ const showOrder = () => {
     return false
   })
   receivedInput = true // double click: re-enable clicking on button for this question
-  document.getElementById('yesBtn').addEventListener('click', () => nextQuestion('I am!'))
+  document.getElementById('yesBtn').addEventListener('click', () => {
+    nextQuestion('I am!')
+    new Audio ("./assets/confirmed.wav").play()
+  })
 }
 
 const thankYou = (size, icing) => {
@@ -227,10 +228,11 @@ const thankYou = (size, icing) => {
     price += 5
   }
 
-  new Audio ("./assets/confirmed.wav").autoplay = true
+  // this line works like the one after but 'autoplay = true' is supposed to work on iOS (not working for now)
+  // new Audio ("./assets/confirmed.wav").play()
+  // new Audio("./assets/confirmed.wav").autoplay = true
   botReply(`Thanks you for your order! It will be ${price} €, please <a href="mailto:help@bakery.com"><strong>contact Bakery E&N</strong></a> for your payment.`)
   inputWrapper.innerHTML = ``
-
 }
 
 // Set up your eventlisteners here
