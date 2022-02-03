@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+  <link rel="stylesheet" href="style.css" />
+  <title>TravelBot</title>
+</head>
+<body>
+    <header>
+    <div id="startPage" class="start-page">
+        <button id="startButton" class="start-button">Let us help you choose your next journey!</button>
+    </div>
+    <h1>Welcome to the TravelBot!</h1>
+    <h2>Choose your favorite destination</h2>
+    </header> 
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet" />
-    <title>Chat Bot</title>
-  </head>
-
-  <body>
-    <h1>Welcome to xxx.</h1>
-    <h2>Ask about xxxx.</h2>
     <main>
       <section class="chat" id="chat"></section>
-
-      <div class="input-wrapper" id="input-wrapper">
+        <div class="input-wrapper" id="input-wrapper">
         <form id="name-form">
-          <input id="name-input" type="text" />
-          <button class="send-btn" type="submit">
+            <input id="user-input" type="text" />
+            <button id="send-btn" class="send-btn" type="submit">
             Send
-          </button>
+            </button>
         </form>
-      </div>
+        </div>
     </main>
-
-    <script src="./script.js"></script>
-  </body>
-
+  <script src="script.js"></script>
+</body>
 </html>

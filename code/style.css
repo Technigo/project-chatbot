@@ -1,112 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500&display=swap');
+
 * {
-  box-sizing: border-box;
-}
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box; 
+  font-family: 'Lato', monospace;
+  font-size: 62.5;
+ }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url(IMG/main-bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+  max-height: 100vh;   
+}
+
+.start-page {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  top: 0%;
+  left: 0%;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-button {
+  width: 20rem;
+  height: 5rem;
+  border-radius: 4px;
+  margin: auto;
+  display: block;
+  background-color: #fff;
+  color: #000;
+}
+  
+h1, h2 {
+  text-align: center;
+  color: #fff;
+  font-weight: 400;
 }
 
 h1 {
-  font-weight: bold;
-  font-size: 44px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
+  font-size: 1.5rem;  
 }
 
 h2 {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
-  margin-bottom: 36px;
+  font-size: 1rem;
 }
 
 p {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 28px;
-  margin: 0;
+  font-size: .9rem;
+  font-weight: 300;
+  line-height: 2rem;
 }
 
-input {
-  box-sizing: border-box;
-  border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
-  padding: 16px;
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 600;
-  line-height: 26px;
-  flex: 1;
+header {
+  margin: auto;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+header h1 {
+  padding-bottom: 1rem;
 }
 
 main {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 700px;
-  height: 600px;
-  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  margin: 3rem auto;
+  width: 90%;
+  max-width: 22rem;
+  height: 40rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+}
+
+input {
+  border: none;
   background: #fff;
-  padding: 20px 24px;
-  padding-top: 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-}
-
-.chat {
+  color: #000;
+  padding: 1rem;
+  font-size: 1rem;
+  line-height: 2rem;
   flex: 1;
-  display: flex;
-  justify-content: flex-start;
-  overflow: scroll;
-  flex-direction: column;
-  padding-bottom: 16px;
-}
-
-.bot-msg {
-  display: flex;
-  margin: 16px 8px 0 0;
-  flex-shrink: 0;
-}
-
-.user-msg {
-  display: flex;
-  justify-content: flex-end;
-  margin: 16px 0 0 8px;
-  flex-shrink: 0;
-}
-
-.bot-msg img,
-.user-msg img {
-  width: 60px;
-  height: 60px;
-}
-
-.bubble {
-  background: #e5e9ff;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 26px;
-  padding: 16px 24px;
-  color: #0026ff;
-  max-width: 40%;
-}
-
-.bot-bubble {
-  border-radius: 0px 26px 26px 26px;
-  margin-left: 8px;
-}
-
-.user-bubble {
-  border-radius: 26px 0 26px 26px;
-  margin-right: 8px;
 }
 
 .input-wrapper {
@@ -114,22 +98,71 @@ main {
   justify-content: center;
 }
 
+.input-wrapper img {
+  width: 10rem;
+  height: auto;
+  margin: 1rem;
+}
+
 .input-wrapper form {
   width: 100%;
   display: flex;
+  margin: 1rem 0;
 }
 
+.chat {
+  display: flex;
+  justify-content: flex-start;
+  overflow: scroll;
+  flex-direction: column;
+  padding-bottom: 1rem;
+  flex: 1;
+}
+
+img {
+  width: 70px;
+  height: 70px;
+  margin: 0 1rem;
+}
+
+.bot-msg {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem auto;
+  width: 20rem;
+}
+
+.user-msg {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem auto;
+  width: 20rem;
+}
+
+.bot-bubble {
+  border-radius: 1rem 0 1rem 0;
+  margin: 0 1rem;
+}
+
+.user-bubble {
+  border-radius: 0 1rem 0 1rem;
+  margin: 0 1rem;
+} 
+
+.bubble {
+  background: #fff;
+  font-size: .7rem;
+  color: #000;
+  max-width: 60%;
+  padding: .8rem;
+}
+  
 button {
-  background-color: #0026ff;
+  background-color: #79a9d1;
   color: white;
   border: none;
-  border-radius: 4px;
-  padding: 16px 40px;
-  margin-right: 4px;
-  font-size: 16px;
-  line-height: 26px;
-  font-family: 'Montserrat';
-  font-weight: 500;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -138,3 +171,27 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+#beachBtn,
+#skiBtn,
+#cityBtn {
+  margin: 1rem 0;
+}
+
+#lessBtn,
+#moreBtn {
+  margin: 1rem;
+}
+  
+#selectLess, #selectMore{
+  border: none;
+  border-radius: 4px;
+  color: #000;
+  font-size: 1rem;
+  height: 4rem;
+  margin-bottom: 1rem;
+  background: #fff;
+  padding: 0  1rem;
+  cursor: pointer;
+  -webkit-appearance: none;
+  }
