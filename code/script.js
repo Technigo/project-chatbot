@@ -55,7 +55,7 @@ const handleQuestion1 = event => { //the handleQuestion is only used in event li
   username = nameInput.value //store input value 
   showMessage(`My name is ${username}`, 'user')
   nameInput.value = '' //clears name input to empty string
-  setTimeout(() => askQuestion2(), 100)
+  setTimeout(() => askQuestion2(), 1000)
   // setTimeout(() => selectDestination(name), 1000)  //pass arguments to selectDestination function with 1s delay
 }
 
@@ -75,7 +75,7 @@ const askQuestion2 = () => {
 
   const addressForm = document.getElementById('address-form') //find the form with id = address-form (the one created above)
   // console.log(addressForm)
-  addressForm.addEventListener('submit', handleQuestion2)//when submitting the address form run the handleAnswer2 function -- this is to run the next function
+  addressForm.addEventListener('submit',  handleQuestion2)//when submitting the address form run the handleAnswer2 function -- this is to run the next function
 }
 
 const handleQuestion2 = event => {
@@ -85,8 +85,6 @@ const handleQuestion2 = event => {
   showMessage(`My address is ${address}`, 'user')
   addressInput.value = ''
   setTimeout(() => askQuestion3(), 1000)
-
-
 }
 
 // QUESTION 3
@@ -143,7 +141,7 @@ const askQuestion4 = () => {
   showMessage(`What type of car would you like?`, 'bot') 
   inputWrapper.innerHTML = `
  
-  <select name="cars" id="cars">
+  <select class="box" name="cars" id="cars">
   <option value="" selected disabled>Select a car</option>
   <option value="Basic">Basic</option>
   <option value="Luxury">Luxury</option>
@@ -151,7 +149,6 @@ const askQuestion4 = () => {
   </select>
   `
   const carSelection = document.getElementById("cars")
-
   carSelection.addEventListener('change', () => handleQuestion4(carSelection.value))
   // const luxury = document.getElementById("luxury")
   // cars.addEventListener('click', () => handleQuestion4("luxury"))
@@ -174,7 +171,7 @@ const handleQuestion4 = (inputCar) => {
 
   const offerChampagne = () => {
     showMessage(`Beautiful choice ${username}! Here is a bottle of champagne for your ride, enjoy!`, 'bot')
-    goodbyeMessage ()
+    setTimeout(goodbyeMessage, 1000)
     inputWrapper.innerHTML = ""
   }
 
@@ -186,16 +183,6 @@ const handleQuestion4 = (inputCar) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
 // //REPLY 2
 // const areaOfDestination = (area) => {
 //   console.log(area)
@@ -203,8 +190,6 @@ const handleQuestion4 = (inputCar) => {
 // }
 
 // QUESTION 3
-
-
 
 
 // Set up your eventlisteners here
