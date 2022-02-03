@@ -33,6 +33,14 @@ p {
   margin: 0;
 }
 
+a {
+  color: #0026ff;
+}
+
+a:hover {
+  color: #f6941e;
+}
+
 input {
   box-sizing: border-box;
   border: none;
