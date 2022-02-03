@@ -3,6 +3,7 @@ const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById('input-wrapper')
 const nameInput = document.getElementById('name-input')
 const button = document.getElementById("send-btn")
+const nameForm = document.getElementById("name-form")
 // Global variables, if you need any, declared here
 let questionNumber = 1
 //let mailformat = .-@;
@@ -81,12 +82,14 @@ const nextQuestion = (message) => {
 }
 
 // Starts here
+// When website loaded, chatbot asks first question.
 const greeting = () => {
   showMessage(`Hello gorgeous! What is your name?`, 'bot')
 }
 const reply1 = (message) => {
   questionNumber++ 
   botAnswer(`Hey ${message}, Which booking would you like to make? `)
+ 
   inputWrapper.innerHTML = `
      <button id="cutBtn" >Hair cut</button>
      <button id="colorBtn" >Hair color</button>
@@ -149,11 +152,10 @@ const reply1 = (message) => {
       inputWrapper.innerHTML = `
       <label for="appointment"></label>
       <input type="datetime-local" id="appointment" name="appointment">
-      <button id="bookIt">Send</button>`
+      `
 
-      document.getElementById('appointment')
-      document.getElementById('bookIt').addEventListener('click', () => nextQuestion(appointment.value))
-  
+      document.getElementById('appointment').addEventListener('change', () => nextQuestion(appointment.value))
+     
   }
 
   /*const reply4 = (message) => {
@@ -171,9 +173,8 @@ const reply1 = (message) => {
 
     const reply4 = (message) => {
       questionNumber ++ 
-      
-        botAnswer(`Thank you! Your booking is confirmed on ${message}Have a great day 💐`)
-
+      botAnswer(`Thank you! Your booking is confirmed on ${message}Have a great day 💐`)
+      inputWrapper.innerHTML = ` `
       }
   // Need to find out how make it recognize an email (required isn´t enough) tried to use mailformat(not working)
   // https://stackoverflow.com/questions/46155/whats-the-best-way-to-validate-an-email-address-in-javascript  
@@ -184,15 +185,14 @@ const reply1 = (message) => {
     
 
  
-// Set up your eventlisteners here
-document.getElementById("name-form").addEventListener("click", function(event){
+//prevent page refresh
+nameForm.addEventListener("submit", (event) => {
   event.preventDefault()
-});
+})
+
+// Set up your eventlisteners here
 button.addEventListener('click', () =>  nextQuestion(nameInput.value)); 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
+
+
+//Timeout for greeting
 setTimeout(greeting, 1000)
