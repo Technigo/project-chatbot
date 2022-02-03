@@ -216,10 +216,11 @@ const thankYou = (size, icing) => {
   if (icing === "with icing") {
     price += 5;
   }
-  botReply(`Thanks you for your order, it will be ${price} €. Please <a href="mailto:help@bakery.com"><strong>contact Bakery E & N</strong></a> for your payment.`);
+  new Audio ("./assets/confirmed.wav").currentTime = 0
+  new Audio ("./assets/confirmed.wav").play();
+  botReply(`Thanks you for your order! It will be ${price} €, please <a href="mailto:help@bakery.com"><strong>contact Bakery E & N</strong></a> for your payment.`);
   inputWrapper.innerHTML = ``;
-  new Audio ("./assets/confirmed.mp3").currentTime = 0
-  new Audio ("./assets/confirmed.mp3").play();
+
 };
 
 // Set up your eventlisteners here
