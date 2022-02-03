@@ -1,14 +1,16 @@
 // DOM selectors
 const chat = document.getElementById("chat");
 const inputWrapper = document.querySelector(".input-wrapper");
+const submitButton = document.querySelector("#submitButton");
 const selectWrapper = document.querySelector(".select-wrapper");
 const buttonWrapper = document.querySelector(".button-wrapper");
 const bothButtons = document.querySelectorAll(".button");
 const buttonOne = document.querySelector(".button-one");
 const buttonTwo = document.querySelector(".button-two");
+const date = document.querySelector(".date");
 
-const myDate = new Date();
-const hours = myDate.getHours();
+const newDate = new Date();
+const hours = newDate.getHours();
 let greet;
 
 if (hours < 12) greet = "Good Morning";
@@ -18,7 +20,7 @@ else greet = "Hello";
 
 // Global variables
 let count = 0;
-let contactChoice;
+let practitioner;
 let physicalSymptoms =
   [
     "Do you have a cough?",
@@ -55,8 +57,8 @@ const hideButtons = () => {
 const showDropdown = () => {
   selectWrapper.style.background = "none"
   selectWrapper.innerHTML = `
-  <select name="contactOptions" class="contact-options" id="contactOptions">
-  <option class="option" value="">Select a contact option...</option>
+  <select name="contactOptions" class="input contact-options" id="contactOptions">
+    <option class="option" value="">Select a contact option...</option>
     <option class="option" value="chat">By chat</option>
     <option class="option" value="phone">By phone</option>
     <option class="option" value="video">By video call</option>
@@ -64,25 +66,20 @@ const showDropdown = () => {
  `
 }
 
-const displaySelectWrapper = () => selectWrapper.style.display = 'block';
-
 const closingMessages = () => {
   selectWrapper.addEventListener("change", (event) => {
-    contactChoice = event.target.value;
+    const contactChoice = event.target.value;
     showMessage(`${event.target.value}`, "user")
     selectWrapper.style.display = "none"
-    let closingMessage =
-      [
-        `You have chosen to be contacted by ${contactChoice}, let me connect you with a practictioner...`,
-        `Thank you for using Medibot, I am connecting you with a practictioner now, This page will reload in 10 seconds`
-      ]
-    showMessage(closingMessage[0], "bot")
     setTimeout(() => {
-      showMessage(closingMessage[1], "bot")
-    }, 1000);
+      showMessage(`You have chosen to be contacted by ${contactChoice}...`, "bot")
+    }, 3000);
+    setTimeout(() => {
+      showMessage(`Thank you for using Medibot, I will connect you with a ${practitioner} now, This page will reload in 10 seconds!`, "bot")
+    }, 6000);
     setTimeout(() => {
       location.reload()
-    }, 10000);
+    }, 16000);
   })
 }  
 
@@ -99,7 +96,7 @@ const showMessage = (message, sender) => {
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="./assets/images/robot.png" alt="Bot" />
+        <img src="./assets/images/doctor.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -110,8 +107,9 @@ const showMessage = (message, sender) => {
 }
 
 const contactMethod = () => {
-  showMessage('How would you prefer to be contacted?', 'bot');
-  buttonWrapper.style.display = "none"
+  showMessage('Thank you for your response, how would you prefer to be contacted?', 'bot');
+  buttonWrapper.style.display = "none";
+  selectWrapper.style.display = 'block';
   chat.scrollTop = chat.scrollHeight
   showDropdown()
 }
@@ -124,16 +122,22 @@ const greeting = () => {
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   userName = document.querySelector("#input").value;
-  if (userName.length === 0 || !userName) {
-    showMessage("Please provide your name", "bot");
-  } else {
+  if (userName.length > 1 || userName) {
     showMessage(userName, "user");
     setTimeout(helpButtons, 1000);
+  } else {
+    showMessage("Please enter your name", "bot");
   }
 })
 
 buttonOne.addEventListener("click", () => {
-  buttonOne.innerHTML === "Physical" ? buttonOne.value = "first" : buttonTwo.value = "second";
+  if(buttonOne.innerHTML === "Physical") {
+    buttonOne.value = "first"
+    practitioner = "doctor";
+  } else {
+    buttonTwo.value = "second";
+    practitioner = "psychologist";
+  }
 })
 
 bothButtons.forEach(button => {
@@ -182,8 +186,7 @@ bothButtons.forEach(button => {
       case 4:
         showMessage(`${button.innerHTML}`, "user")
         hideButtons();
-        setTimeout(contactMethod, 1000);
-        setTimeout(displaySelectWrapper, 1000)
+        setTimeout(contactMethod, 5000);
     }
   })
 })
