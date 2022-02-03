@@ -6,7 +6,7 @@ const submit = document.getElementById('submit')
 const main = document.getElementById('main')
 const inputWrapper = document.getElementById('input-wrapper')
 
-const compliment = ["You", "Du är snäll", "Du är bra"];
+const compliment = ["You're all that and a super-size bag of chips.", "On a scale from 1 to 10, you're an 11.", "Aside From Food, You're My Favorite."];
 let randomSentence = 0;
 
 
@@ -101,7 +101,12 @@ const showMessage = (message, sender) => {
   .addEventListener('click', () => {
     
     //randomSentence = Math.floor(Math.random() * 3);
-  showMessage(compliment[Math.floor(Math.random() * 3)], 'bot');
+   
+    setTimeout(() =>  showMessage(compliment[Math.floor(Math.random() * 3)], 'bot'), 1000)
+    
+    setTimeout(() => moreCompliment(compliment), 1000)
+
+
     
     // Returns a random integer from 0 to 3:
 
@@ -123,6 +128,37 @@ const chooseDefault = (submit) => { // When clicking NO on the second intention
   setTimeout(() => location.reload(), 2000)
   return false;
 }
+
+
+
+
+const moreCompliment = (name) => { 
+  showMessage(`Do you want another compliment?`, 'bot') //sends second message from bot
+  
+  
+  inputWrapper.innerHTML = // add Yes No button
+  `<button id="yesBtn" type="submit">Yes</button>
+  <button id="noBtn" type="submit">No</button>`
+
+  document
+  .getElementById('yesBtn')
+  .addEventListener('click', () => {
+    showMessage('I would love to get a compliment', 'user')
+    setTimeout(() => chooseCompliment(submit), 1000) // After clicking the button; passing the arguments to complimentOptions function with 1s delay 
+    // Also add some code in here to add answer options for next message
+  })
+
+  document
+  .getElementById('noBtn')
+  .addEventListener('click', () => {
+    showMessage('No thank you, goodbye', 'user')
+    setTimeout(() => chooseDefault(submit), 1000) // After clicking the button; passing the arguments to complimentOptions function with 1s delay 
+    document.getElementById("input-wrapper").style.display = "none"; // Button dissapears 
+    // Also add some code in here to add answer options for next message
+  }) 
+}
+
+
 
 
   // Set up your eventlisteners here
