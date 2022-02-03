@@ -295,6 +295,23 @@ body {
   transition: all 0.2s ease;
 }
 
+/* Number of Years */
+
+.years-input {
+  border: none;
+  background-color: transparent;
+  padding: 15px;
+  flex: 1;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.years-send-btn {
+  width: 42px;
+  height: 42px;
+}
+
 /* Emoji Options Reply */
 
 .emoji-option {
@@ -319,3 +336,4 @@ body {
   float: right;
   padding-right: 30px;
 }
+

@@ -106,30 +106,35 @@ exNameTrigger.addEventListener('click', function() {
   exName = document.querySelector('.ex-name-input').value;
   console.log(exName);
   showMessage(`Their name was ${exName}...`, 'user');
-  showMessage(`${exName}?? Eww such a gross name! Can't believe you dated someone called that! How long were you together?`, 'bot');
-  document.querySelector('.ex-name').style.display = "none";
-  /*
+  showMessage(`${exName}?? Eww such a gross name! Can't believe you dated someone called that! How many years were you together?`, 'bot');
+  document.querySelector('.ex-name-input').style.display = "none";
   document.querySelector('.ex-send-btn').style.display = "none";
   
+  // inputForm.innerHTML += `
+  // <div class="cry-emoji emoji-option">😭</div>
+  // <div class="puke-emoji emoji-option">🤮</div>
+  // <div class="angry-emoji emoji-option">🤬</div>
+  // `
+
   inputForm.innerHTML += `
-  <div class="cry-emoji emoji-option">😭</div>
-  <div class="puke-emoji emoji-option">🤮</div>
-  <div class="angry-emoji emoji-option">🤬</div>
+  <input class="years-input" type="number" autocomplete="off" name="relationshipYears" required />
+  <input class="years-send-btn" type="image" src="assets/send_arrow2.png" />
   `
-*/
+
 }
 )
 
-// Reply to lenght
-const relationshipLength = document.querySelector('ex-send-btn');
+// Reply to relationship length
+const relationshipLength = document.querySelector('years-send-btn');
 let exLength="";
   relationshipLength.addEventListener('click', function() {
-  exLength = document.querySelector('.ex-length-input').value;
+  exLength = document.querySelector('.years-input').value;
   console.log(exLength);
-  showMessage(`${exLength}...`, 'user');
+  showMessage(`${exLength} years...`, 'user');
   showMessage(`${exLength}?? Wow ew do not throw anymore of your pearls on that ${exName}-trashbin! What is the 3 worst things about them?`, 'bot')
 }
 )
+
 // Reply to 3 worst things
 /*send meme??*/
 /*or a reply with buttons or a drop-down menue*/
