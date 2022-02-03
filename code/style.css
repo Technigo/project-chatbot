@@ -296,8 +296,10 @@ body {
 }
 
 /* Emoji Options Reply */
+
 .emoji-option {
   font-size: 30px;
+  visibility: hidden;  /*ADDED TEST*/
 }
 
 .emoji-option:hover {

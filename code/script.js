@@ -109,16 +109,52 @@ exNameTrigger.addEventListener('click', function() {
   showMessage(`${exName}?? Eww such a gross name! Can't believe you dated someone called that! How are you feeling babe?`, 'bot');
   document.querySelector('.ex-name-input').style.display = "none";
   document.querySelector('.ex-send-btn').style.display = "none";
+  
+  
   inputForm.innerHTML += `
-  <p class="cry-emoji emoji-option">😭</p>
-  <p class="puke-emoji emoji-option">🤮</p>
-  <p class="angry-emoji emoji-option">🤬</p>
+  <button class="cry-emoji emoji-option">😭</button>
+  <button class="puke-emoji emoji-option">🤮</button>
+  <button class="angry-emoji emoji-option">🤬</button>
+  
   `
 }
 )
 
-// Select Emoji Trigger
 
+// Select Emoji Trigger
+const emojiButtons = document.getElementByClassName('emoji-buttons');
+document.getElementsByClassName(".emoji-buttons").style.visibility = "visible";
+
+
+const cryEmoji = document.querySelector('.cry-emoji')
+let feeling = "sad";
+
+cry-emoji.addEventListener('click', function() {
+  console.log("saaaad");
+  feeling = document.querySelector('.feeling-input').value;
+ console.log("feeling");
+ document.querySelector('.emoji-buttons').style.display = "none";
+
+ showMessage(`I'm feeling ${feeling}...`, 'user');
+
+  
+/*
+;
+cryEmoji = document.createElement("button");
+
+cry-emoji.onclick = function () {
+  console.log("Button is clicked");
+};
+
+document.body.appendChild(cryEmoji);
+
+*/
+
+/*
+eventlistener to each emoji and click message from user 
+message back from the bot 
+hide the emojis 
+*/
 
 
 
