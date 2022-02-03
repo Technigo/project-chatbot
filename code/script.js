@@ -107,7 +107,8 @@ exNameTrigger.addEventListener('click', function() {
   console.log(exName);
   showMessage(`Their name was ${exName}...`, 'user');
   showMessage(`${exName}?? Eww such a gross name! Can't believe you dated someone called that! How are you feeling babe?`, 'bot');
-  document.querySelector('.ex-name-input').style.display = "none";
+  document.querySelector('.ex-name').style.display = "none";
+  /*
   document.querySelector('.ex-send-btn').style.display = "none";
   
   inputForm.innerHTML += `
@@ -115,9 +116,26 @@ exNameTrigger.addEventListener('click', function() {
   <div class="puke-emoji emoji-option">🤮</div>
   <div class="angry-emoji emoji-option">🤬</div>
   `
-
+*/
 }
 )
+
+// Reply to lenght
+let exLenght="";
+  exLengthTrigger.addEventListener('click', function() {
+  exLength = document.querySelector('.ex-length-input').value;
+  console.log(exLength);
+  /*inputForm.innerHTML += or I dunno something to ...*/
+  showMessage(` ${exLength}...`, 'user');
+  showMessage(`${exLength}?? Wow ew do not throw anymore of your pearls on that ${exName}-trashbin! What is the 3 worst things about them?`, 'bot')
+}
+)
+// Reply to 3 worst things
+/*send meme??*/
+/*or a reply with buttons or a drop-down menue*/
+
+
+
 
 // Test for Different Input Types
 /* <input type="button" class="cry-emoji emoji-option" value="😭" />
@@ -129,8 +147,9 @@ exNameTrigger.addEventListener('click', function() {
 // const emojiButtons = document.getElementByClassName('emoji-buttons');
 // document.getElementsByClassName(".emoji-buttons").style.visibility = "visible";
 
-
+/*
 const cryEmoji = document.querySelector('.cry-emoji');
+*/
 
 // cryEmoji.addEventListener('click', function() {
 //   console.log(This works);
