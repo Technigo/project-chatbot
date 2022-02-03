@@ -6,12 +6,27 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url(https://images.unsplash.com/photo-1610926950541-fb98c47896d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHN1cnJlYWxpc218ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+}
+
+.start-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 50%;
+}
+
+.start-button{
+  margin: 0 25% ;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
+  font-size: 8vw;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -120,7 +135,7 @@ input {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #3f1456;
   color: white;
   border: none;
   border-radius: 4px;

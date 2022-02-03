@@ -84,7 +84,8 @@ const question4 = () => {
 // Event listener functions that can be reused here
 const addButtonListeners = (buttonClassName) => {
   const sendButtons = document.getElementsByClassName(buttonClassName);
-
+  console.log(sendButtons)
+  
   Array.from(sendButtons).forEach(button => {
     button.addEventListener('click', () => {
       showMessage(button.innerText, 'user');
@@ -93,7 +94,6 @@ const addButtonListeners = (buttonClassName) => {
   });
 }
 
-// Move showMessage function here
 // Function that adds a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
@@ -120,4 +120,14 @@ const showMessage = (message, sender) => {
 }
 
 // Start chatbot by calling questionGenerator
-questionGenerator();
+
+
+const startButton = document.getElementById('start-button');
+const startContent = document.getElementById('start-content');
+const chatBox = document.getElementById('chat-box');
+
+startButton.addEventListener('click', () => {
+  startContent .style.display = "none";
+  chatBox.style.display = "flex";
+  questionGenerator();
+});
