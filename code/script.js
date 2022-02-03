@@ -58,21 +58,60 @@ const handleNameInput = (event) => {
 const oreoQuestion = () => {
   showMessage(`How do you eat an oreo?`,'bot')
 
-  // Generate a set of buttons with bite choices - START HERE TOMORROW, VANESSA & JOANNA! 
+  // Generate a set of buttons with bite choices
 
   inputWrapper.innerHTML = `
-  <button id="oneBiteBtn">In one bite</button>
-  <button id="pickApartBtn">Pick apart</button>
-  <button id="dipMilkBtn">Dip in milk</button>
+    <button id="oneBiteBtn">In one bite</button>
+    <button id="pickApartBtn">Pick apart</button>
+    <button id="dipMilkBtn">Dip in milk</button>
   `
 
   // Send to next question depending on which button was clicked
 
-  document.getElementById('oneBiteBtn').addEventListener('click', () => followUpQuestion('oneBite'))
-  document.getElementById('pickApartBtn').addEventListener('click', () => followUpQuestion('pickApart'))
-  document.getElementById('dipMilkBtn').addEventListener('click', () => followUpQuestion('dipMilk'))
+  document.getElementById('oneBiteBtn').addEventListener('click', () => {
+    console.log('hej hej')
+    showMessage('In one bite', 'user')
+    setTimeout(() => showMessage('Great choice..', 'bot'), 1000)
+    handleInput()
+  })
+  document.getElementById('pickApartBtn').addEventListener('click', () => {
+    showMessage('Pick apart', 'user')
+    setTimeout(() => showMessage('Great choice..', 'bot'), 1000)
+    handleInput()
+  })
+  document.getElementById('dipMilkBtn').addEventListener('click', () => {
+    showMessage('Dip in milk', 'user')
+    setTimeout(() => showMessage('Great choice..', 'bot'), 1000)
+    handleInput()
+  })
 
 }
+
+//Final question of our bot
+// const lastQuestion = () => {
+//   setTimeout(() => showMessage('What would rather do?', 'bot'), 3000) 
+//   console.log('hallu')
+//   inputWrapper.innerHTML = `
+//     <button id="option1">Option 1</button>
+//     <button id="option2">Option 2</button>
+//     <button id="option3">Option 3</button>
+//     `
+// document.getElementById('option1').addEventListener('click', () => {
+//     showMessage('Option 1', 'user')
+//     setTimeout(() => showMessage('Great choice! Let me give you what you want!', 'bot'))
+//     bye()
+// })
+// document.getElementById('option2').addEventListener('click', () => {
+//   showMessage('Option 2', 'user')
+//   setTimeout(() => showMessage('Great choice! Let me give you what you want!', 'bot'))
+//   bye()
+// })
+// document.getElementById('option3').addEventListener('click', () => {
+//   showMessage('Option 3', 'user')
+//   setTimeout(() => showMessage('Great choice! Let me give you what you want!', 'bot'))
+//   bye()
+// })
+// }
 
 
 // Set up your eventlisteners here
@@ -82,6 +121,8 @@ quizButton.addEventListener('click', () => setTimeout(greeting, 1000))
 // quizButton.addEventListener('click', greeting)
 
 sendButton.addEventListener('click', handleNameInput)
+
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:

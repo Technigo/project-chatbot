@@ -142,7 +142,7 @@ main {
   display: flex;
 }
 
-.send-btn {
+.send-btn, #oneBiteBtn, #pickApartBtn, #dipMilkBtn {
   background-color: #0026ff;
   color: white;
   border: none;
