@@ -172,7 +172,7 @@ const pickTravelDuration = () => {
 
 const showTravelTime = () => {
   showMessage(`Great!`, "bot")
-  setTimeout(() => showMessage(`Unfortunately it´s fully booked! But we will send you here instead! \uD83C\uDF32 \uD83C\uDF32 \uD83C\uDF32
+  setTimeout(() => showMessage(`Unfortunately it´s fully booked but we will send you here instead! \uD83C\uDF32 \uD83C\uDF32
   `, "bot") , 1000)
   document.body.style.backgroundImage = "url('IMG/nature.jpg')";
 }
