@@ -6,28 +6,28 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #F6E1E2;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
+  font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: #333367;
   text-align: center;
 }
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 18px;
   line-height: 34px;
-  color: #fff;
+  color:#333367;
   text-align: center;
   margin-bottom: 36px;
 }
 
 p {
-  font-size: 18px;
+  font-size: 12px;
   font-weight: 600;
   line-height: 28px;
   margin: 0;
@@ -37,8 +37,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #F6E1E2;
+  color: #333367;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -90,12 +90,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #333367;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color:#F8F8F8;
   max-width: 40%;
 }
 
@@ -120,7 +120,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #F7941E;
   color: white;
   border: none;
   border-radius: 4px;
