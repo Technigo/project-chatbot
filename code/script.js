@@ -22,7 +22,6 @@ const showMessage = (message, sender) => {
       </section>
     `;
   } else if (sender === "bot") {
-    console.log("hello bot!");
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -34,6 +33,18 @@ const showMessage = (message, sender) => {
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
+};
+
+// Restart function
+const restartPage = (botMessage, buttonMessage) => {
+  inputWrapper.innerHTML = `
+  <button id="restart">${buttonMessage}</button>
+   `;
+  showMessage(botMessage, "bot");
+
+  document.getElementById("restart").addEventListener("click", () => {
+    window.location.reload(); //great!!
+  });
 };
 
 // Starts here
@@ -67,11 +78,11 @@ submitBtn.addEventListener("click", getUsername);
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000);
 
-//Changed the order so it gets more orginized :) -> great!! super good to read
+
 const showFoodOptions = () => {
   showMessage(`Hello, ${username}! What do you want to eat today? `, "bot");
   //3 options in buttons
-  setTimeout(showButtons, 1000); //[updated] setTimeoug
+  setTimeout(showButtons, 1000); 
 };
 
 const showButtons = () => {
@@ -81,22 +92,22 @@ const showButtons = () => {
     <button id="saladBtn">Salad</button>
   `;
   document.getElementById("pizzaBtn").addEventListener("click", () => {
-    showMessage(`I would like 🍕 pizza please`, "user"); //cute with icons!
+    showMessage(`I would like 🍕 pizza please`, "user"); 
     setTimeout(() => {
       foodOptions("pizza");
-    }, 1000); //[updated] setTimeout
+    }, 1000); 
   });
   document.getElementById("pastaBtn").addEventListener("click", () => {
     showMessage(`I would like 🍝 pasta please`, "user");
     setTimeout(() => {
       foodOptions("pasta");
-    }, 1000); //[updated] setTimeout
+    }, 1000); 
   });
   document.getElementById("saladBtn").addEventListener("click", () => {
     showMessage(`I would like 🥬 salad please`, "user");
     setTimeout(() => {
       foodOptions("salad");
-    }, 1000); //[updated] setTimeout
+    }, 1000); 
   });
 };
 
@@ -115,7 +126,7 @@ const foodOptions = (menu) => {
     <select id="select">
     <option value="" selected disabled>🍝 Select a pasta...</option>
       <option value="Ravioli">Ravioli pasta</option>
-      <option value="Carbonara">Carbonara pasata</option>
+      <option value="Carbonara">Carbonara pasta</option>
       <option value="Spaghetti">Spaghetti</option>
       </select>`;
     showMessage("which pasta do you want?", "bot");
@@ -123,9 +134,9 @@ const foodOptions = (menu) => {
     inputWrapper.innerHTML = `
     <select id="select">
     <option value="" selected disabled>🥬 Select a salad...</option>
-      <option value="Broccoli">Broccoli salad</option>
-      <option value="Ceaser">Ceaser salad</option>
-      <option value="Leafgreen">Leafgreen salad</option>
+      <option value="Broccoli salad">Broccoli salad</option>
+      <option value="Ceaser salad">Ceaser salad</option>
+      <option value="Leafgreen salad">Leafgreen salad</option>
       </select>`;
     showMessage("which salad do you want?", "bot");
   }
@@ -135,7 +146,7 @@ const foodOptions = (menu) => {
     showMessage(`I would like ${dish} please`, "user");
     setTimeout(() => {
       confirmation(select.value);
-    }, 1000); //[updated] setTimeout
+    }, 1000); 
   });
 };
 
@@ -151,7 +162,7 @@ const confirmation = (dish) => {
     showMessage(`Yes`, "user");
     setTimeout(() => {
       showPrice(dish);
-    }, 1000); //[updated] setTimeout
+    }, 1000); 
   });
 
   const noBtn = document.getElementById("no");
@@ -159,21 +170,10 @@ const confirmation = (dish) => {
     showMessage(`No`, "user");
     setTimeout(() => {
       restartPage("😭", "Restart the order");
-    }, 1000); //[updated] make seperate function 'restart page' so we can use it again, and added setTimeout
+    }, 1000); 
   });
 };
 
-//[updated] added restartPaged function
-const restartPage = (botMessage, buttonMessage) => {
-  inputWrapper.innerHTML = `
-  <button id="restart">${buttonMessage}</button>
-   `;
-  showMessage(botMessage, "bot");
-
-  document.getElementById("restart").addEventListener("click", () => {
-    window.location.reload(); //great!!
-  });
-};
 
 const showPrice = (dish) => {
   inputWrapper.innerHTML = `
@@ -190,8 +190,7 @@ const showPrice = (dish) => {
     showMessage("Yes!", "user");
     setTimeout(() => {
       showAdditionalRequest(dish);
-      // restartPage("Thank you for your order!", "Make another order");
-    }, 1000); //[updated] setTimeout, restartPage
+    }, 1000);
   });
 
   const noBtn = document.getElementById("no");
@@ -203,7 +202,7 @@ const showPrice = (dish) => {
   });
 };
 
-//[added] showAdditionalRequest order -> ask allergy
+// showAdditionalRequest order -> ask allergy
 const showAdditionalRequest = (menu) => {
   inputWrapper.innerHTML = `
     <form id="name-form">
