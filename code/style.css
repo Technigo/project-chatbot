@@ -6,22 +6,24 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background-image: url(https://images.unsplash.com/photo-1610926950541-fb98c47896d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHN1cnJlYWxpc218ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60);
+  background-image: url(./images/background_purple.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 100vh;
+  min-height:100vh;
 }
 
 .start-content{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 50%;
+  margin-top: 36vh;
 }
 
 .start-button{
   margin: 0 25% ;
+  color: black ;
+  background-color: white;
 }
 
 h1 {
@@ -36,7 +38,7 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: black;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -52,8 +54,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: white;
+  color: black;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -62,13 +64,28 @@ input {
   flex: 1;
 }
 
+select {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  background: black;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  line-height: 26px;
+  flex: 0.3;
+}
+
 .chat-box {
-  margin: 0 auto;
+  margin: auto;
+  margin-top: 13vh;
   width: 100%;
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: rgb(255, 255, 255, 0.7);
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -100,17 +117,17 @@ input {
 
 .bot-msg img,
 .user-msg img {
-  width: 60px;
-  height: 60px;
+  width: 35px;
+  height: 35px;
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: white;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: black;
   max-width: 40%;
 }
 
@@ -135,7 +152,7 @@ input {
 }
 
 button {
-  background-color: #3f1456;
+  background-color: black;
   color: white;
   border: none;
   border-radius: 4px;
@@ -150,6 +167,7 @@ button {
 }
 
 button:hover {
-  opacity: 0.9;
-  transition: all 0.2s ease;
+  background-color: black;
+  color: white;
+  transition: all 1.5s ease;
 }

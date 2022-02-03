@@ -65,13 +65,13 @@ const question3 = () => {
 const question4 = () => {
   showMessage(`Question with a option answer`, 'bot');
   inputWrapper.innerHTML = `
-    <select id="third-input" type="option">
+    <select id="option-menu" type="option">
       <option id="option-1">option 1</option>
       <option id="option-2">option 2</option>
       <option id="option-3">option 3</option>
     </select>
     `
-  const select = document.getElementById('third-input');
+  const select = document.getElementById('option-menu');
   select.addEventListener('change', () => {
     showMessage(select.value, 'user');
     questionGenerator();
@@ -80,7 +80,7 @@ const question4 = () => {
 
 // End message
 const endMessage = (message) => {
-  showMessage(`Have a good day ${message}!`, 'bot');
+  showMessage(`It was nice to chat with you, ${message}. Have a good day!`, 'bot');
   inputWrapper.innerHTML = '';
 }
 
