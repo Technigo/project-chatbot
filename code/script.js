@@ -1,10 +1,13 @@
 // Declare variables
+const startButton = document.getElementById('start-button');
+const startContent = document.getElementById('start-content');
+const chatBox = document.getElementById('chat-box');
 const chat = document.getElementById('chat')
 const nameInput = document.getElementById('name-input')
 const inputWrapper = document.getElementById('input-wrapper');
 let questionCounter = 0;
 
-// Function to move through questions that is called from event listeners
+// Function to move through questions
 const questionGenerator = () => {
   questionCounter++;
   if (questionCounter === 1) {
@@ -15,12 +18,14 @@ const questionGenerator = () => {
     setTimeout(question3, 1000);
   } else if (questionCounter === 4) {
     setTimeout(question4, 1000);
+  } else if (questionCounter === 5) {
+    setTimeout(endMessage, 1000);
   }
 }
 
 // Question 1
 const question1 = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Hello there, what's your name?`, 'bot')
 
   document.getElementById('name-form').onsubmit = event => {
     event.preventDefault();
@@ -36,8 +41,8 @@ const question2 = () => {
   showMessage(`Question with two buttons`, 'bot');
 
   inputWrapper.innerHTML = `
-    <button class="button-input">coffee</button>
-    <button class="button-input">tea</button>
+    <button class="button-input">option 1</button>
+    <button class="button-input">option 2</button>
     `
   addButtonListeners('button-input');
 }
@@ -57,7 +62,7 @@ const question3 = () => {
   });
 }
 
-// Question 4 function
+// Question 4
 const question4 = () => {
   showMessage(`Question with a option answer`, 'bot');
   inputWrapper.innerHTML = `
@@ -74,14 +79,13 @@ const question4 = () => {
   });
 }
 
-// Question 5 function
-
-// ...
-
 // End message
+const endMessage = () => {
+  showMessage(`Have a good day!`, 'bot');
+  inputWrapper.innerHTML = '';
+}
 
-
-// Event listener functions that can be reused here
+// Reusable event listener(s)
 const addButtonListeners = (buttonClassName) => {
   const sendButtons = document.getElementsByClassName(buttonClassName);
   console.log(sendButtons)
@@ -94,7 +98,7 @@ const addButtonListeners = (buttonClassName) => {
   });
 }
 
-// Function that adds a chat bubble in the correct place based on who the sender is
+// Add chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     chat.innerHTML += `
@@ -102,30 +106,23 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user_neutral.png" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bot_neutral.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
       </section>
     `
   } 
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
 }
 
-// Start chatbot by calling questionGenerator
-
-
-const startButton = document.getElementById('start-button');
-const startContent = document.getElementById('start-content');
-const chatBox = document.getElementById('chat-box');
-
+// Start chatbot by moving past start page
 startButton.addEventListener('click', () => {
   startContent .style.display = "none";
   chatBox.style.display = "flex";
