@@ -4,10 +4,16 @@ const inputWrapper = document.getElementById("input-wrapper");
 const nameInput = document.getElementById("name-input");
 const form = document.getElementById("name-form");
 
+const sendBtn = document.getElementById("send-btn")
+const audio = new Audio ("drill.mp3");
+
+
 // Global variables, if you need any, declared here
 let questionStep = 1;
 
 // Functions declared here
+
+
 // Function to display the message on the screen both for bot and user
 const botAnswer = (inputMessage) => {
   showMessage(inputMessage, "bot");
@@ -24,9 +30,6 @@ const handleInput = (message) => {
   } else if (questionStep === 3) {
     userAnswer(message);
     setTimeout(() => priceInformation(message), 1000);
-  } else if (questionStep === 4) {
-    userAnswer(message);
-    setTimeout(() => requestConfirmation(message), 1000);
   } else {
     userAnswer(message);
     setTimeout(goodBye, 1000);
@@ -54,6 +57,12 @@ const showMessage = (message, sender) => {
       </section>
     `;
   }
+
+  // Audio 
+
+  audio.currentTime = 0
+  audio.play()
+
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
 };
@@ -99,18 +108,23 @@ const moreServices = (type) => {
   botAnswer(
     `So you need help with ${type}. Which type of ${type} service will you require?`
   );
-
+if(type === "plumbingButton" || "electricalButton") {
   inputWrapper.innerHTML = `
   <select id = 'select'>
   <option value='' selected disabled> Choose service </option>
   <option value='installation'>Installation</option>
   <option value='maintenece'>Maintenece</option>
   <option value='repair'>Repair</option>
-  <option value='emergency repair'>Emergency Repair</option>
+  <option value='emergency repair'>Emergency Repair</option>`
+}
+else{
+  inputWrapper.innerHTML = `
+  <select id = 'select'>
+  <option value='' selected disabled> Choose service </option>
   <option value='interior painting'>Interrior Painting</option>
   <option value='exterior painting'>Exterior Painting</option>
   <option value='wall resurfacing'>Wall Resurfacing</option>
-  </select> `;
+  </select> `}
   const select = document.getElementById("select");
   select.addEventListener("change", () => handleInput(select.value));
 };
@@ -125,12 +139,17 @@ const priceInformation = (service) => {
   }
 
   inputWrapper.innerHTML = `
-<button id="booktButton">I want to book</button>
+<button id="bookButton">I want to book</button>
 `;
   document
     .getElementById("bookButton")
     .addEventListener("click", () => handleInput("I want to book"));
 };
 
+// 5 th bot message 
+function goodBye() {
+  botAnswer(`Thank you for booking ${type} with us, some will contact you soon. `);
+  botAnswer(`Have a lovley day ${name}`);
+}
 //This function will be called one second after the website is loaded.
 setTimeout(greeting, 1200);
