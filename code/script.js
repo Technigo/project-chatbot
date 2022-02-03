@@ -19,7 +19,7 @@ const questionGenerator = () => {
   } else if (questionCounter === 4) {
     setTimeout(question4, 1000);
   } else if (questionCounter === 5) {
-    setTimeout(endMessage, 1000);
+    setTimeout(endMessage(nameInput.value), 1000);
   }
 }
 
@@ -30,7 +30,6 @@ const question1 = () => {
   document.getElementById('name-form').onsubmit = event => {
     event.preventDefault();
     showMessage(nameInput.value, 'user');
-    nameInput.value ='';
     questionGenerator();
   }
 }
@@ -80,8 +79,8 @@ const question4 = () => {
 }
 
 // End message
-const endMessage = () => {
-  showMessage(`Have a good day!`, 'bot');
+const endMessage = (message) => {
+  showMessage(`Have a good day ${message}!`, 'bot');
   inputWrapper.innerHTML = '';
 }
 
