@@ -116,6 +116,7 @@ exNameTrigger.addEventListener('click', function() {
   <div class="puke-emoji emoji-option">🤮</div>
   <div class="angry-emoji emoji-option">🤬</div>
   `
+
 }
 )
 
