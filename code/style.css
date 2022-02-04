@@ -214,4 +214,7 @@ button:hover,
   button {
     padding: 16px 40px;
   }
+  p {
+    font-size: 1.125rem;
+  }
 }
