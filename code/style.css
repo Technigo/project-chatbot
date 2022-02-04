@@ -13,11 +13,11 @@ header {
   flex-direction: column;
 }
 header img {
-  height: 100vh;
+  height: 50vh;
   width: 100vw;
-  position: fixed;
   z-index: -5;
   opacity: 80%;
+  position: fixed;
 }
 
 h1 {
@@ -37,15 +37,16 @@ h2 {
   margin-bottom: 36px;
 }
 h3 {
-  font-family: cursive;
-  font-weight: bold;
-  font-size: 32px;
+  font-family: "Comforter";
+  font-size: 40px;
   line-height: 50px;
   text-align: center;
   color: #fff;
   margin-bottom: 20px;
-  font-style: italic;
+  margin-top: 50px;
+  letter-spacing: 3px;
 }
+
 a {
   text-align: center;
   margin: 10vh 25vw;
@@ -54,13 +55,15 @@ a {
 
 .booking {
   margin-top: 10vh;
-  margin-bottom: 15vh;
+  margin-bottom: 10vh;
   background-color: rgb(224, 196, 255);
   letter-spacing: 1px;
   color: black;
   font-weight: bolder;
   padding: 20px;
   border: none;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 p {
@@ -172,12 +175,59 @@ main {
   padding: 5px;
   transform: rotate(50deg);
 }
+#cutBtn,
+#colorBtn,
+#spaBtn {
+  margin: 10px 5px;
+  border-radius: 10px;
+  background: linear-gradient(to right, #a88beb, #f8ceec);
+  letter-spacing: 1px;
+  color: black;
+  font-weight: bolder;
+  padding: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+#select {
+  background: linear-gradient(to right, #a88beb, #f8ceec);
+  border-radius: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  border: none;
+}
+
+#select:hover {
+  opacity: 0.9;
+  transition: all 0.2s ease;
+  transform: scale(1.1);
+}
+
+option {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(224, 196, 255);
+}
 
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+  transform: scale(1.1);
 }
 @media (min-width: 768px) and (max-width: 1024px) {
+  header img {
+    height: 70vh;
+    width: 100vw;
+    z-index: -5;
+    opacity: 80%;
+    position: fixed;
+  }
+
   p {
     font-size: 16px;
     font-weight: 600;
@@ -193,4 +243,14 @@ button:hover {
   }
 }
 @media (min-width: 1025px) {
+  header img {
+    height: 100vh;
+    width: 100vw;
+    z-index: -5;
+    opacity: 70%;
+    position: fixed;
+  }
+  h3 {
+    font-size: 60px;
+  }
 }
