@@ -16,7 +16,6 @@ const userReply = (msg) => {
 }
 
 
-
 // Functions declared here
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -71,7 +70,6 @@ const nextQuestion = (message) => {
  const greeting = () => {
   questionNumber = 1
   botReply(`Good day and welcome to Bot Theatre! What is your name?`, 'bot')
-   // Just to check it out, change 'bot' to 'user' here 👆
  }
 
  const showMoodTypes = (msg) => {
@@ -162,8 +160,7 @@ const showTitles = (type) => {
 // If no snacks THE END
   document. getElementById('theEnd').addEventListener('click', () => {
     botReply("No snacks no movie! Go home!")
-      // location.reload()
-      return false
+    inputWrapper.innerHTML = ``
     })
 
 //Ff snacks true move to next question
@@ -173,10 +170,10 @@ const showTitles = (type) => {
   }
 
 //Choose snacks
-  const showSnacks = (candy) => {
+  const showSnacks = (snack) => {
     questionNumber++
 
-    botReply (`Snacks is life! Whats your favorite ${candy}`)
+    botReply (`Snacks is life! Whats your favorite ${snack}`)
 
     inputWrapper.innerHTML = `
       <button id="popcornBtn">🍿</button>
@@ -198,7 +195,15 @@ const showTitles = (type) => {
   const showChoice = (choice) => {
     questionNumber++
       
-    botReply (`${choice} is really good!`)
+    botReply (`${choice} is really good! Are you ready for movietime?`)
+
+    inputWrapper.innerHTML = `
+      <button id="ready">Ready</button>
+    `
+    document
+      .getElementById('ready')
+      .addEventListener('click', () => thankYou('Ready'))
+
     }
 
 

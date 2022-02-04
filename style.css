@@ -1,20 +1,27 @@
 * {
+	margin: 0;
+	padding: 0;
 	box-sizing: border-box;
   }
   
   body {
-	margin: 0;
-	padding: 0;
-	font-family: 'Montserrat', sans-serif;
-	background: #990000;
+	font-family: 'Acme';
+	background-image: url(image/cinema.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+  	background-attachment: fixed;
+  	background-position: center; 
+  	max-height: 100vh;   
   }
   
   h1 {
 	font-weight: bold;
-	font-size: 44px;
+	font-size: 75px;
 	line-height: 34px;
 	color: #fff;
 	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 25px;
   }
   
   h2 {
@@ -37,11 +44,10 @@
 	box-sizing: border-box;
 	border: none;
 	border-radius: 4px 0 0 4px;
-	background: #e5e9ff;
-	color: #0026ff;
+	background: #ffe5e5;
+	color: #e43838;
 	padding: 16px;
 	font-size: 16px;
-	font-family: 'Montserrat';
 	font-weight: 600;
 	line-height: 26px;
 	flex: 1;
@@ -55,12 +61,11 @@
   select {
 	border: none;
 	border-radius: 4px;
-	color: #0026ff;
+	color: #e43838;
 	font-size: 20px;
 	font-weight: 600;
 	height: 60px;
-	font-family: 'Montserrat';
-	background: #e5e9ff;
+	background: #ffe5e5;
 	width: 100%;
 	padding: 0 20px;
 	cursor: pointer;
@@ -77,6 +82,7 @@
 	height: 600px;
 	border-radius: 30px;
 	background: #fff;
+	opacity: 90%;
 	padding: 20px 24px;
 	padding-top: 0;
 	box-sizing: border-box;
@@ -113,12 +119,12 @@
   }
   
   .bubble {
-	background: #e5e9ff;
+	background: #e43838;
 	font-weight: 600;
 	font-size: 16px;
 	line-height: 26px;
 	padding: 16px 24px;
-	color: #0026ff;
+	color: #ffffff;
 	max-width: 40%;
   }
   
@@ -138,21 +144,22 @@
   }
   
   button {
-	background-color: #0026ff;
-	color: white;
-	border: none;
+	background-color: #ffe5e5;
+	color: #e43838;
+	border: solid;
+	border-color: #e43838;
 	border-radius: 4px;
-	padding: 16px 40px;
+	padding: 13px 30px;
 	margin-right: 4px;
-	font-size: 16px;
+	font-size: 20px;
 	line-height: 26px;
-	font-family: 'Montserrat';
+	font-family: 'Acme';
 	font-weight: 500;
 	cursor: pointer;
 	transition: all 0.3s ease;
   }
   
   button:hover {
-	opacity: 0.9;
+	opacity: 0.8;
 	transition: all 0.2s ease;
   }
