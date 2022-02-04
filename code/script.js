@@ -63,7 +63,7 @@ const skiStyle = ()  => {
   showMessage(`Thank you for your interest, ${userInput.value}. What type of skiing would you like to try?`, 'bot') 
     inputWrapper.innerHTML = `
       <button id="downhill-btn"> Downhill </button>    
-      <button id="crosscountry-btn"> Crosscountry </button>
+      <button id="crosscountry-btn"> Cross-country </button>
       `
 
       document
