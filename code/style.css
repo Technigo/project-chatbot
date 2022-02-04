@@ -123,7 +123,7 @@ main {
   justify-content: flex-start;
   overflow: scroll;
   flex-direction: column;
-  padding-bottom: 16px;
+  /*padding-bottom: 16px;*/
 }
 
 .bot-msg {
