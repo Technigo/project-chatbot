@@ -84,6 +84,8 @@ const closingMessages = () => {
 
 const timeStamp = () => {
   const newDate = new Date();
+  let seconds = newDate.getSeconds();
+  if (seconds < 10) seconds = `0${seconds}`;
   let hours = newDate.getHours();
   if (hours < 10) hours = `0${hours}`;
   let minutes = newDate.getMinutes();
@@ -91,22 +93,23 @@ const timeStamp = () => {
   const dateIndex = newDate.getDate();
   const monthIndex = newDate.getMonth();
   let months = [
-    "January",
-    "February",
-    "March",
-    "April",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
     "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
   let month = months[monthIndex];
-  return `${dateIndex} ${month}, ${hours}:${minutes}`;
+  return `${dateIndex} ${month}, ${hours}:${minutes}:${seconds}`;
 }
+
 
 const chatAudio = () => {
   var audio = new Audio('https://notificationsounds.com/storage/sounds/file-sounds-1143-clearly.mp3');
