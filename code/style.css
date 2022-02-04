@@ -7,8 +7,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Montserrat", sans-serif;
-  background-image: url("Painter.jpg");
+  font-family: 'Montserrat', sans-serif;
+  background-image: url('Painter.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -48,7 +48,7 @@ input {
   color: #a54444;
   padding: 16px;
   font-size: 16px;
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -75,7 +75,6 @@ main {
   overflow: hidden;
   flex-direction: column;
   padding-bottom: 16px;
-
 }
 
 .bot-msg {
@@ -99,7 +98,7 @@ main {
 }
 
 .bubble {
-  background: #f1b9b9
+  background: #f1b9b9;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
@@ -112,14 +111,13 @@ main {
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
-  background: #e3f4f7
-
+  background: #e3f4f7;
 }
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
-  background:  #f8d4d4
+  background: #f8d4d4;
 }
 
 .input-wrapper {
@@ -141,7 +139,7 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
