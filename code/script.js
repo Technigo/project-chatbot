@@ -82,6 +82,7 @@ questionNumber++
   } else {
     setTimeout(() => {showMessage(`Okay, have a nice day`, 'bot')
       location.reload()
+      return false
       }, 2500)  
     }
   }
@@ -93,7 +94,7 @@ questionNumber++
 
     if (modelChoice === 'mountainBike') {
       showMessage(`I would like a mountainbike`, 'user')
-      setTimeout(showMessage(`Alright, a mountainbike! What colour do you prefer?`, 'bot'), 3000)
+      setTimeout(() => {showMessage(`Alright, a mountainbike! What colour do you prefer?`, 'bot')}, 2000)
 
       inputWrapper.innerHTML = `
       <button id="blueColor">Blue</button>
@@ -157,12 +158,21 @@ questionNumber++
   document.getElementById('yes').addEventListener('click', () => receipt(`I'm happy with my choice!`))
   document.getElementById('no').addEventListener('click', () => receipt(`I would like to change some things`))
 }, 3000)
-
 }
 
+  // // // Receipt
+  // const receipt = (happy) => {
 
+  //   if (happy === `I'm happy with my choice!`) {
+  //   showMessage(`Happy to hear that ${name}, you're welcome to come pick up your bike tomorrow 12:00. The address is Hamngatan 17, 111 47 Stockholm.`, 'bot')
+  //   inputWrapper.innerHTML = ''
+  //   setTimeout (() => {
+  //     showMessage(`Good luck with your new bike! 🚲`, 'bot')
+  //   }, 1500)
+  // } else {
+  //   showMessage(`Please call us to change your order, we're happy to help!`)
+  // }
 
-  
 
   // Pushes to the next question - our schedule
   const handleInput = (event) => {
