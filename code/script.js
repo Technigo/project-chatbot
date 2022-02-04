@@ -87,6 +87,8 @@ document.getElementById("popcornButton").addEventListener("click", () =>{
 
 }
 
+//------HOW MUCH YOU WANT ORDER-------//
+
 const amount = () => {
 
   inputWrapper.innerHTML = `
@@ -117,6 +119,8 @@ document.getElementById("fiveBox").addEventListener("click", () =>{
 
 }
 
+//--------PAYMENT METHODS---------//
+
 const paymentMethods = () => {
 
   inputWrapper.innerHTML = `
@@ -143,6 +147,8 @@ const paymentChoice = (paymethod) => {
    
   }
  }
+
+ //--------CARD PICTURES AND SOUNDEFFECT-------//
 
  const cardPicture = () => {
   chat.innerHTML += `
@@ -172,6 +178,8 @@ const paymentChoice = (paymethod) => {
   setTimeout (() => thankYou (), 3000)
  }
 
+//-------THANK YOU MESSAGE------//
+
  const thankYou = () => {
  chat.innerHTML += `
  <body class="thank-you">
@@ -183,7 +191,7 @@ const paymentChoice = (paymethod) => {
   `
 }
 
-
+//-------ADD EVENT LISTENER------//
 
 nameForm.addEventListener('submit', textInput)
 // When website loaded, chatbot asks first question.
