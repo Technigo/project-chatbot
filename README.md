@@ -10,7 +10,7 @@ Describe how you approached to problem, and what tools and techniques you used t
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://camilla-fay-chatbot.netlify.app/
 
 
 ## Planning for the Bot
@@ -19,11 +19,8 @@ Taxi tomorrow
 Questions to be asked 
 
 1. Greeting with name - free text (re use in the answer)
-2. Where do you want to go? - free text
-3. How many people are you? - number
-4. What time? Morning/afternoon/evening (clickable buttons)
+2. What is your address? - free text
+3. Where do you want to go? - clickable buttons 
 5. Type of car? Dropdown selection (basic/lux/limo)
     1. If you choose limo ask if they want champagne
-6. Confirmation with all fields - yes/no 
-    1. If yes then print message thank you
-    2. If no then start from the beginning
+6. Confirmation with all fields
