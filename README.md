@@ -1,13 +1,14 @@
-# Project Name
+# Chat Bot
 
-Replace this readme with your own information about your project.
+This project was a colloboration between Jennifer Kurtto and Savannah Hayes. This Medical Chat Bot allows users to chat about medical issues and after taking in their responses direct them to the right healthcare professional. 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+## The project
 
-## The problem
+The first step was to plan what we wanted to build, from there we could implment javascript to create an interactive chat bot, and lastly add some styling and sound effects to the chat. 
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+If we had more time, the next step would be to refactor our code and see if we can make the code more efficient.
 
-## View it live
+## Demo
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Demo Project: https://optimistic-edison-9024ce.netlify.app/
+
