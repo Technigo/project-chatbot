@@ -6,7 +6,7 @@ const button = document.getElementById("send-btn")
 const nameForm = document.getElementById("name-form")
 // Global variables, if you need any, declared here
 let questionNumber = 1
-//let mailformat = .-@;
+
 
 // Functions declared here
 const botAnswer = (message) =>{
