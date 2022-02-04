@@ -20,7 +20,6 @@ h1 {
 h2 {
   font-weight: normal;
   font-size: 23px;
-  /* line-height: 34px; */
   color: #333367;
   text-align: center;
   margin-bottom: 36px;
@@ -29,7 +28,6 @@ h2 {
 p {
   font-size: 14px;
   font-weight: 600;
-  /* line-height: 28px; */
   margin: 0;
 }
 
@@ -59,7 +57,7 @@ main {
   display: flex;
   flex-direction: column;
 }
-
+/* This div was used to create the illusion of a box around the main container */
 .full-page-container {
   margin: 16px;
   border-radius: 7px;
@@ -72,7 +70,8 @@ main {
   flex: 1;
   display: flex;
   justify-content: flex-start;
-  overflow: auto;
+  /* changed overflow:scroll (code that was given to us) to overflow:auto in order to remove the scroll when not needed */
+  overflow: auto; 
   flex-direction: column;
   padding-bottom: 16px;
 }
@@ -207,7 +206,6 @@ button:hover {
   }
 
   input {
-    /* width:100%; */
     flex: 1;
   }
 
@@ -237,7 +235,7 @@ button:hover {
   }
 
   .full-page-container {
-    margin: 37px;
+    margin: 80px;
   }
 
   .container {
@@ -256,8 +254,6 @@ button:hover {
     margin-right: 50px;
     margin-top: 50px;
   }
-
-
 
   .footer {
     display: flex;
