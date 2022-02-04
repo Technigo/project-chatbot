@@ -220,6 +220,8 @@ const showMessage = (message, sender) => {
 
       document.getElementById('confirm-btn').addEventListener('click', () => {
         bringNextQuestion(`Confirm`)
+        const audio = new Audio('assets/tadaa.mp3')
+        setTimeout(() => audio.play(), 2500)
       })
       document.getElementById('restart-btn').addEventListener('click', () => {
         chat.innerHTML = ``
@@ -229,12 +231,13 @@ const showMessage = (message, sender) => {
     
     const thankYouMessage = () => {
       replyBot(`Okey dokey! Your reservation is now ready. You can pay when arriving. We hope you enjoy the movie! &#127871 &#129380 &#128525`)
-      const audio = new Audio('assets/tadaa.mp3')
-      audio.play()
       inPutWrapper.innerHTML = ``
     }
     
   
+      // 2. fixing the space underneath the chat
+      // 3. audio clip not working on mobile
+      // 
     
     // When website loaded, chatbot asks first question.
     // normally we would invoke a function like this:

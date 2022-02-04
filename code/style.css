@@ -6,8 +6,7 @@ body {
   margin: 0 auto;
   padding: 0;
   min-height: 100vh;
-  font-family: 'Fjalla One', sans-serif;
-  /*background: #0026ff;*/
+  font-family: 'Fjalla One', 'Montserrat', sans-serif;
   background-image: url('assets/background-popcorn.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -56,7 +55,7 @@ body {
 h1 {
   font-weight: bold;
   font-size: 44px;
-  line-height: 0.85em;
+  line-height: 1em;
   color: #B6002D;
   text-shadow: 1px 1px #222222;
   text-align: center;
@@ -111,7 +110,7 @@ main {
   height: 600px;
   border-radius: 30px;
   background: rgb(240, 239, 237, 0.9);
-  padding: 20px 24px;
+  padding: 15px 24px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
@@ -173,6 +172,7 @@ main {
 
 .input-wrapper form {
   width: 100%;
+  height: auto;
   display: flex;
 }
 
@@ -185,7 +185,7 @@ button,
   color: #B6002D;
   border: none;
   border-radius: 5px;
-  padding: 16px 40px;
+  padding: 16px 30px;
   margin-right: 4px;
   margin-top: 10px;
   font-weight: 600;
@@ -200,4 +200,10 @@ button:hover,
 #select-genre {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  button {
+    padding: 16px 40px;
+  }
 }
