@@ -1,12 +1,17 @@
 * {
   box-sizing: border-box;
+   
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url('https://boka.taxikurir.se/static/publicPlaceholders/taxikurir.se/desktop.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background-position: center;
 }
 
 h1 {
@@ -53,12 +58,14 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: rgba(245, 245, 245, 0.4);
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  
+  
 }
 
 .chat {
@@ -68,6 +75,9 @@ main {
   overflow: scroll;
   flex-direction: column;
   padding-bottom: 16px;
+  /* background: #e5e9ff; */
+  
+  
 }
 
 .bot-msg {
@@ -97,26 +107,38 @@ main {
   padding: 16px 24px;
   color: #0026ff;
   max-width: 40%;
+  -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+  box-shadow: 5px 5px 15px 5px #000000;
 }
 
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  background-color: #CDDEFF;
 }
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  background-color: #CDDEFF;
 }
 
 .input-wrapper {
   display: flex;
   justify-content: center;
+  
 }
 
 .input-wrapper form {
   width: 100%;
   display: flex;
+}
+
+#name-input {
+  background-color: #fff;
+  border: 1px solid grey;
+  border-radius: 1rem;
+  margin-right: 0.5rem;
 }
 
 button {
@@ -132,6 +154,7 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  border-radius: 1rem;
 }
 
 button:hover {
