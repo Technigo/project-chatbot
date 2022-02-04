@@ -135,7 +135,7 @@ const yourSoftyDrink = () => {
 const mocktailImg = () => {
   formInputWrapper.innerHTML=
   showMessage('<img src="assets/paige-ledford-1Di03LTniYE-unsplash.jpg" alt="Bot"/>', 'bot')
-  setTimeout( () => satisfied(), 3000) 
+  setTimeout( () => satisfied(), 1500) 
 }
 
 // Interaction 6
@@ -149,7 +149,7 @@ const yourWildDrink = () => {
 const whiskeylImg = () => {
   formInputWrapper.innerHTML=
   showMessage('<img src="assets/ambitious-creative-co-rick-barrett-UyF3Tal_KXw-unsplash.jpg" alt="Bot"/>', 'bot')
-  setTimeout( () => satisfied(), 3000) 
+  setTimeout( () => satisfied(), 1500) 
 }
 
 // Interaction 7 = conditionals
