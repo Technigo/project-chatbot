@@ -160,7 +160,7 @@ const handleQuestion4 = (inputCar) => {
 }
 
 const offerChampagne = () => {
-  showMessage(`Beautiful choice ${username}! Here is a bottle of champagne for your ride, enjoy!`, 'bot')
+  showMessage(`Beautiful choice ${username}! Here is a bottle of champagne for your ride &#127870, enjoy!`, 'bot')
   setTimeout(goodbyeMessage, 1000) //call the goodbyeMessage after someone has selected Limousine and is presented with the above message.
   inputWrapper.innerHTML = ""
 }
