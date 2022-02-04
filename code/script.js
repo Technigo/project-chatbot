@@ -125,7 +125,7 @@ exNameTrigger.addEventListener('click', function() {
 )
 
 // Reply to relationship length
-const relationshipLength = document.querySelector('years-send-btn');
+const relationshipLength = document.getElementsByClassName('years-send-btn');
 let exLength="";
   relationshipLength.addEventListener('click', function() {
   exLength = document.querySelector('.years-input').value;
