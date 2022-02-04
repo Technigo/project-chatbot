@@ -236,8 +236,7 @@ const showMessage = (message, sender) => {
     
   
       // 2. fixing the space underneath the chat
-      // 3. audio clip not working on mobile
-      // 
+  
     
     // When website loaded, chatbot asks first question.
     // normally we would invoke a function like this:

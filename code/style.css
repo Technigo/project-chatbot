@@ -54,7 +54,7 @@ body {
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
+  font-size: 2.8rem;
   line-height: 1em;
   color: #B6002D;
   text-shadow: 1px 1px #222222;
@@ -65,7 +65,7 @@ h1 {
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 34px;
   color: #B6002D;
   text-shadow: 1px 1px #222222;
@@ -74,7 +74,7 @@ h2 {
 }
 
 p {
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 28px;
   margin: 0;
@@ -89,7 +89,7 @@ input {
   color: #A51817;
   padding: 16px;
   margin-right: 10px; 
-  font-size: 16px;
+  font-size: 1rem;
   font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
@@ -139,20 +139,19 @@ main {
   flex-shrink: 0;
 }
 
-.bot-msg img,
-.user-msg img {
-  width: 60px;
-  height: 60px;
+.bot-msg img {
+  width: 40px;
+  height: 40px;
 }
 
 .bubble {
   background: rgba(216, 164, 31, 0.705);
   font-weight: 600;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 26px;
-  padding: 16px 24px;
+  padding: 8px 12px;
   color: #B6002D;
-  max-width: 40%;
+  max-width: 50%;
 }
 
 .bot-bubble {
@@ -171,7 +170,6 @@ main {
 }
 
 .input-wrapper form {
-  width: 100%;
   height: auto;
   display: flex;
 }
@@ -185,11 +183,11 @@ button,
   color: #B6002D;
   border: none;
   border-radius: 5px;
-  padding: 16px 30px;
+  padding: 16px 20px;
   margin-right: 4px;
   margin-top: 10px;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 26px;
   font-family: 'Fjalla One';
   cursor: pointer;
@@ -203,6 +201,16 @@ button:hover,
 }
 
 @media (min-width: 768px) {
+  .bot-msg img {
+    width: 60px;
+    height: 60px;
+  }
+  .bubble {
+    padding: 16px 24px;
+  }
+  .input-wrapper form {
+    width: 100%;
+  }
   button {
     padding: 16px 40px;
   }
