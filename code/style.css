@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Merriweather', serif;
   background: rgb(153, 152, 152);
 }
 
@@ -41,7 +41,7 @@ input {
   color: #0026ff;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Merriweather';
   font-weight: 600;
   line-height: 26px;
   flex: 1;
