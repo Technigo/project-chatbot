@@ -42,13 +42,13 @@ const showMessage = (message, sender) => {
 // Question 1. What's your name, user?
 const greeting = () => {
   console.log("First convo")
-  showMessage(`Hi and welcome to Bicycle Bot Shop, what's your name?`, 'bot')
+  showMessage(`Hi and welcome to BOT SHOP, who am I talking to?`, 'bot')
 }
 
 // Bot greets the user, and asks if she/he wants to order a bike
 const wantBike = (name) => {
   console.log("Second convo")
-  showMessage(`Nice to meet you ${name}!`, 'bot')
+  showMessage(`Very nice to meet you ${name}!`, 'bot')
   setTimeout (() => {showMessage(`Would you like to order a bike?`, 'bot')
 
 // YES or NO
