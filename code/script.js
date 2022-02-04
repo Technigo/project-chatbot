@@ -99,7 +99,7 @@ const lastQuestion = () => {
     .addEventListener('click', () => {
       showMessage('Just a small bite', 'user')
       setTimeout(() => 
-      showMessage('Just the right amount! You seem like the ultimate version of yourself. You know have to have balance in your life. "To have the cake and eat it too" is your life motto.', 'bot'))
+      showMessage('Just the right amount! You seem like the ultimate version of yourself. You know how to have balance in your life. "To have the cake and eat it too" is your life motto.', 'bot'))
       bye()
   })
   document.getElementById('no3')
