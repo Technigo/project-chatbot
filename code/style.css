@@ -163,8 +163,7 @@ main {
 #send-btn {
   color: rgba(20, 19, 19, 0.884);
   border: none;
-  margin-right: 4px;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 600;
   font-family: "Montserrat";
   cursor: pointer;
@@ -240,6 +239,7 @@ button:hover {
 
   #send-btn {
     padding: 10px 20px;
+    font-size: 20px;
   }
 }
 @media (min-width: 1025px) {
@@ -252,5 +252,9 @@ button:hover {
   }
   h3 {
     font-size: 60px;
+  }
+  #send-btn {
+    padding: 10px 20px;
+    font-size: 20px;
   }
 }
