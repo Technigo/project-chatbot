@@ -1,13 +1,9 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
-
+Week 4 project was to create a chatbot using HTML, CSS and Javascript. Ida Näslund and myself created a 'Hairdo chatbot' for booking hairdresser appointment
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
-
+Our first hurdle was to start the intial chat conversation after the greeting message. Inspecting the example chatbot helped to understand how to invoke the function. The next hurdle was to prevent default page refresh of input type form.
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+The deployed project: https://vigilant-archimedes-b3cf4b.netlify.app/#chat
