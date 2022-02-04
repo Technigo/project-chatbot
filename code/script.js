@@ -11,9 +11,7 @@ const audio = new Audio("drill.mp3");
 let questionStep = 1;
 
 // This variabels shows in the last messages
-let name = "";
-let type = "";
-let service = "";
+
 
 // Functions declared here
 
@@ -78,7 +76,7 @@ const greeting = () => {
 // This will display the first answer (user name)
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  const name = nameInput.value;
+ let name = nameInput.value;
   userAnswer(`${name}`);
   // This will keep the input box empty after user clicks send
   nameInput.value = "";
@@ -161,7 +159,7 @@ function goodBye () {
   botAnswer(
     `Thank you for booking ${type} with us, some will contact you soon. `
   );
-  botAnswer(`Have a lovley day! ${name}`);
+  botAnswer(`Have a lovley day! `);
   // Below clears the option to click book after once selected.
   inputWrapper.innerHTML = ``;
 }
