@@ -36,7 +36,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  showMessage(`Hello, what is your name?`, 'bot') // denna är kopplad till <p>message</p>
+  showMessage(`Hi there, who is this?`, 'bot') // denna är kopplad till <p>message</p>
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -45,13 +45,14 @@ const handleNameInput = (event) => {
   // Store the value in a variable so we can access it after we
   // clear it from the input
   const name = nameInput.value;
-  showMessage(name, 'user');
+  showMessage(`It's me, ${name}. Please help!`, 'user');
   nameInput.value = "";
   setTimeout(() => showDecade(name), 1000);
 }
 
 const showDecade = (name) => {
-  showMessage(`Welcome ${name}. What decade do you feel like diving into?`, 'bot');
+  showMessage(`Welcome ${name}. Of course! Let's start with the decade you feel like diving into?`, 'bot');
+  setTimeout(() => selectMovie(year), 1000);
 
   inputWrapper.innerHTML = `
     <button id='1980Btn'>1980s</button>
@@ -66,8 +67,8 @@ const showDecade = (name) => {
   
 const selectMovie = (year) => {
   inputWrapper.innerHTML =""
-  showMessage(year, 'user');
-  setTimeout(() => showMessage(`${year} you say! Cool, what genre do you feel like?`, 'bot'), 1000);
+  showMessage(`Really feel like watching something from the ${year} `,  'user');
+  showMessage(`${year} you say! Cool, what genre do you feel like?`, 'bot');
 
   if (year === '1980s') {
     inputWrapper.innerHTML = `
@@ -119,15 +120,18 @@ const tooBad = (answer) => {
   showMessage(answer, 'user');
 
   if (answer === 'no') {
-    
-  setTimeout(() => showMessage(`Too bad. This bot is sponsored by Netflix. Might we suggest opening an account`, 'bot'), 1000);
+  setTimeout(() => showMessage(`Too bad. This bot is sponsored by Netflix.`, 'bot'), 1000);
   inputWrapper.innerHTML = `
-    <button id="noAccount"><a href="https://www.netflix.com">Sign up here!</a></button>
+    <button id="signUpBtn"><a href="https://www.netflix.com/signup" target="_blank">Sign up here!</a></button>
     `
-
-  } else 
-  setTimeout(() => showMessage(`Good. You know what to <a href="https://www.netflix.com">do</a>`, 'bot'), 1000);
-}
+  } else {
+  setTimeout(() => showMessage(`Good. Despite your wishes, these are the three best movies of all times.`, 'bot'), 1000);
+  inputWrapper.innerHTML = `
+  <button id="jawsBtn"><a href="https://www.netflix.com/se-en/title/60001220" target="_blank">Jaws</a></button>
+  <button id="scaryBtn"><a href="https://www.netflix.com/se-en/title/60000870" target="_blank">Scary Movie</a></button>
+  <button id="shindlerBtn"><a href="https://www.netflix.com/se/title/60036359" target="_blank">Schindler's List</a></button>
+  `
+}}
 
 // Set up your eventlisteners here. 
 
