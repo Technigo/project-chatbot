@@ -155,7 +155,7 @@ const whiskeylImg = () => {
 // Interaction 7 = conditionals
 const satisfied = () => {
 
-  showMessage(`Are you happy with your recommendation?`, 'bot')
+  showMessage(`Are you happy with your drink?`, 'bot')
   formInputWrapper.innerHTML=
   `<button id="yes" type="submit">Yes!</button>
    <button id="no" type="submit">No</button>`
