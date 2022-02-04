@@ -1,26 +1,26 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
-const inputWrapper = document.getElementById('inputWrapper')
+const inputWrapper = document.getElementById('input-wrapper')
 const form =document.getElementById('feeling-form')
 const feelingInput = document.getElementById('feeling-input')
 const sendBtn = document.getElementById('send')
 
 
 // Global variables, if you need any, declared here
-
+const today = new Date()
+const currentHour = today.getHours()
 
 // Functions declared here
 
-let questionNumber = 1
+//let questionNumber = 1
 
 const botReply = (msg) => {
   showMessage(msg, 'bot')
-}
+  }
 
 const userReply = (msg) => {
   showMessage(msg, 'user')
-}
-
+  }
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -50,10 +50,23 @@ const showMessage = (message, sender) => {
 
 // Starts here- First message from bot
 const greeting = () => {
-  questionNumber = 1
-  botReply(`Hi! How you doing?`, 'bot')
-}
+  //questionNumber = 1
+  let greetingTime
+  
+  if (currentHour >= 6 && currentHour <= 12) { 
+    greetingTime = 'Top of the mornin'
+    
+  } else if (currentHour >=12 && currentHour <= 16) { 
+      greetingTime= 'Good day mate'
+  } else if (currentHour >=16 && currentHour <= 23) { 
+      greetingTime= 'Good evening, fella!'
+  } else {
+    greetingTime = 'Hi there, night owl'
+  }
 
+  botReply(`${greetingTime}! How you doing?`, 'bot')
+  }
+  
 //first userreply about how the user feels
 const handleFeelingQuestion = (event) => {
   event.preventDefault()
@@ -63,7 +76,7 @@ const handleFeelingQuestion = (event) => {
 
 // first botanswer and present three buttons
 const handleFeelingAnswer = (message) => {
-  questionNumber++
+  //questionNumber++
   botReply(`OK, I understand, choose a quote`, 'bot') 
 
   inputWrapper.innerHTML = `
@@ -85,8 +98,14 @@ const handleFeelingAnswer = (message) => {
 }
 //If you click on reality check button you get a youtube video link - works
 const wantsRealityCheck = () => {
-  userReply(`Yes I´m feeling to joyful, give me a reality check`, 'user')
-  botReply(`Ok, here comes a reality check for you! click on this <a href="https://www.youtube.com/watch?v=FvM0ryhD5rY&t=6s">link</a>`, 'bot')
+  userReply(`Yes I´m feeling too joyful, give me a reality check`, 'user')
+  botReply(`Ok, here comes a reality check for you! Click on this <a href="https://www.youtube.com/watch?v=FvM0ryhD5rY&t=6s">link</a>`, 'bot')
+  setTimeout ( () => endingMessageRealityCheck () , 1500) 
+}
+
+  //Bot says good bye
+  const endingMessageRealityCheck = () => {
+  botReply(`Hope you are feeling like you are back with both feet on earth. See you another day! Bye! <img src="assets/emojirc.png" alt="meme" />`)
   inputWrapper.innerHTML = ''
 }
 //User chooses a Pick me up and is presented three buttons -works
@@ -114,20 +133,37 @@ const wantsPickUp = () => {
 const choosePepTalk = () => {
   userReply(`Yey peptalk!`, 'user')
   botReply(`Here comes a link to a inspirational <a href="https://www.youtube.com/watch?v=jpRqbP9Nv9k">TEDTalk</a>`, 'bot')
+  setTimeout ( () => endingMessagePeptalk () , 1500) 
+}
+  //Bot says good bye
+  const endingMessagePeptalk = () => {
+  botReply(`Hope you liked the pep talk. See you another day! Bye! <img src="assets/emojipt.png" alt="meme" />`)
   inputWrapper.innerHTML = ''
 }
+
 //User chooses Funny Joke and a short joke is presented in text - works
 const chooseFunnyJoke = () => {
   userReply(`A joke sounds great!`, 'user')
-  botReply(`A priest comes in to a school and says...`, 'bot')
+  botReply(`"What did the shark say when he ate the clownfish? This tastes a little funny"`, 'bot')
+  setTimeout ( () => endingMessageJoke () , 1500) 
+}
+  //Bot says good bye
+  const endingMessageJoke = () => {
+  botReply(`Did you enjoy the joke? See you another day! Bye! <img src="assets/emojifj.png" alt="meme" />`)
   inputWrapper.innerHTML = ''
 }
-//User chooses Meme and gets a picture with a pug and meme - works
+//User chooses Meme and gets a picture with a pug and meme - works, but pugs too small
 const chooseMeme = () => {
   userReply(`I like memes`, 'user')
-  botReply(`<img src="assets/pugmeme.png" alt="meme" />`, 'bot')
+  botReply(`Every time a new sprint begins... <img src="assets/pugmeme.png" alt="meme">`, 'bot') 
+  setTimeout ( () => endingMessageMeme () , 1500) 
+}
+  //Bot says good bye
+const endingMessageMeme = () => {
+  botReply(`Did you get the meme? Soo funny! See you another day! Bye! <img src="assets/emojim.png" alt="meme" />`, 'bot')
   inputWrapper.innerHTML = ''
 }
+
 //User chooses Life Advice and gets 2 choices 
 const wantsLifeAdvice = () => {
   userReply(`Oh I really need a life advice`, 'user')
@@ -148,32 +184,29 @@ const wantsLifeAdvice = () => {
   
 //User chooses love and is presented an audiofile - music
 const chooseLove = () => {
-  userReply(`Love <3`, 'user')
-  botReply(`Of course you will get some loving`, 'bot')
-  //audio
-  inputWrapper.innerHTML = ''
+  userReply(`Love <img src="assets/love.png" alt="meme" />`, 'user')
+  botReply(`Of course you will get some loving, listen to this: <audio controls><source src="assets/love.mp3" type="audio/mpeg"></audio> `, 'bot')
+  setTimeout ( () => endingMessageLove () , 1500) 
 }
-//User chooses career and is presented an audiofile - music
-const chooseCareer = () => {
-  userReply(`Career advice sounds great!`, 'user')
-  botReply(`Career tips coming right up: 1: never 2: always.`, 'bot')
-  inputWrapper.innerHTML = ''
-}
-//Chat ends and user gets 
-/*const thankYouPage = () => {
-  botReply(`Hope you had a pleasant time. See you soon`)
   
-  inputWrapper.innerHTML = `
-  <button id="byeBtn">Bye bye</button>
-  `
-  document
-  .getElementById('byeBtn')
-  .addEventListener('click', () => {
-  document
-  .getElementById('content').style.display="none"
-  document
-  .getElementById('thankYouPage').style.display="flex"
-  })*/
+    //Bot says good bye
+  const endingMessageLove = () => {
+  botReply(`Are you feeling the love in the air? See you another day! Bye! <img src="assets/emojil.png" alt="meme" /> `)
+  inputWrapper.innerHTML = ''
+}
+
+//User chooses career 
+const chooseCareer = () => {
+  userReply(`Career advice sounds great! <img src="assets/career.png" alt="meme" />`, 'user')
+  botReply(`"Always go with the choice that scares you the most, because that is the one that is going to help you grow! "`, 'bot')
+  setTimeout ( () => endingMessageCareer () , 1500) 
+}
+  
+    //Bot says good bye
+  const endingMessageCareer = () => {
+  botReply(`Hope that helped your career! See you another day! Bye! <img src="assets/emojic.png" alt="meme" />`)
+  inputWrapper.innerHTML = ''
+}
 
 // Set up your eventlisteners here
 form.addEventListener ('submit', handleFeelingQuestion)
