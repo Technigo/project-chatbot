@@ -1,11 +1,13 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat'),
       quizButton = document.querySelector('.quiz-button'),
-      sendButton = document.querySelector('.send-btn'),
-      inputWrapper = document.getElementById('inputWrapper');
+      inputWrapper = document.getElementById('inputWrapper'),
+      nameInput = document.getElementById('nameInput'),
+      form = document.getElementById('name-form');
 
 
-// Global variables, if you need any, declared here
+// Global variables
+let currentQuestion = 0; 
 
 // Functions declared here
 
@@ -22,6 +24,7 @@ const showMessage = (message, sender) => {
     `
   } else if (sender === 'bot') {
     console.log('Hello')
+    // functionCounter++;
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -35,123 +38,137 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
+// Starts here, all the bot questions
 const greeting = () => {
-   showMessage(`Hello there, What's your name?`, 'bot')
-   // Just to check it out, change 'bot' to 'user' here 👆
+  currentQuestion = 1
+  showMessage(`Hello there, What's your name?`, 'bot')
+  console.log('bot')
  }
 
-// Displays users name
-
-const handleNameInput = (event) => {
-  event.preventDefault()
-
-  // Store the value in a variable so we can access it after we clear it from the input 
-  const name = nameInput.value
-  showMessage(name, 'user')
-  nameInput.value = ''
-
-  // Time delay - next question
-  setTimeout(oreoQuestion, 1000)
-}
-
 const oreoQuestion = () => {
-  showMessage(`How do you eat an oreo?`,'bot')
-
+  currentQuestion++
+  setTimeout(() => 
+  showMessage('How do you eat an Oreo?','bot'), 1200);
+  
   // Generate a set of buttons with bite choices
-
   inputWrapper.innerHTML = `
-    <button id="oneBiteBtn">In one bite</button>
-    <button id="pickApartBtn">Pick apart</button>
-    <button id="dipMilkBtn">Dip in milk</button>
+  <button id="oneBiteBtn">In one bite</button>
+  <button id="pickApartBtn">Pick apart</button>
+  <button id="dipMilkBtn">Dip in milk</button>
   `
-
   // Send to next question depending on which button was clicked
-
   document.getElementById('oneBiteBtn').addEventListener('click', () => {
-    console.log('hej hej')
-    showMessage('In one bite', 'user')
-    setTimeout(() => showMessage('Great choice..', 'bot'), 1000)
+    showMessage('I eat it in one bite.', 'user')
+    setTimeout(() => showMessage('Excellent choice!', 'bot'), 1000)
     handleInput()
   })
   document.getElementById('pickApartBtn').addEventListener('click', () => {
-    showMessage('Pick apart', 'user')
-    setTimeout(() => showMessage('Great choice..', 'bot'), 1000)
+    showMessage('I like to pick it apart.', 'user')
+    setTimeout(() => showMessage('Great choice!', 'bot'), 1000)
     handleInput()
   })
   document.getElementById('dipMilkBtn').addEventListener('click', () => {
-    showMessage('Dip in milk', 'user')
-    setTimeout(() => showMessage('Great choice..', 'bot'), 1000)
+    showMessage('I like to dip it in milk.', 'user')
+    setTimeout(() => showMessage('Wet and fantastic choice!', 'bot'), 1000)
     handleInput()
   })
+
+  console.log('hej hej')
 
 }
 
 //Final question of our bot
-// const lastQuestion = () => {
-//   setTimeout(() => showMessage('What would rather do?', 'bot'), 3000) 
-//   console.log('hallu')
-//   inputWrapper.innerHTML = `
-//     <button id="option1">Option 1</button>
-//     <button id="option2">Option 2</button>
-//     <button id="option3">Option 3</button>
-//     `
-// document.getElementById('option1').addEventListener('click', () => {
-//     showMessage('Option 1', 'user')
-//     setTimeout(() => showMessage('Great choice! Let me give you what you want!', 'bot'))
-//     bye()
-// })
-// document.getElementById('option2').addEventListener('click', () => {
-//   showMessage('Option 2', 'user')
-//   setTimeout(() => showMessage('Great choice! Let me give you what you want!', 'bot'))
-//   bye()
-// })
-// document.getElementById('option3').addEventListener('click', () => {
-//   showMessage('Option 3', 'user')
-//   setTimeout(() => showMessage('Great choice! Let me give you what you want!', 'bot'))
-//   bye()
-// })
-// }
+const lastQuestion = () => {
+
+  currentQuestion++
+  setTimeout(() => showMessage('Do you share your dessert with others?', 'bot'), 3000) 
+  console.log('hallu')
+  inputWrapper.innerHTML = `
+    <button id="yes1">Yes of course!</button>
+    <button id="little2">Just a small bite</button>
+    <button id="no3">Hell no!</button>
+    `
+  document.getElementById('yes1')
+    .addEventListener('click', () => {
+      showMessage('Yes of course!', 'user')
+      setTimeout(() => 
+      showMessage('What an angel! You sound like an amazing person! You strive to look after the people around you. Everyone wants to be your friend!', 'bot'))
+      bye()
+  })
+  document.getElementById('little2')
+    .addEventListener('click', () => {
+      showMessage('Just a small bite', 'user')
+      setTimeout(() => 
+      showMessage('Just the right amount! You seem like the ultimate version of yourself. You know have to have balance in your life. "To have the cake and eat it too" is your life motto.', 'bot'))
+      bye()
+  })
+  document.getElementById('no3')
+    .addEventListener('click', () => {
+      showMessage('Hell no!', 'user')
+      setTimeout(() => 
+      showMessage('Alright! You definitely have integrity, buddy. You know what you want and you are not afraid to ask for it! Keep rockin\' on!', 'bot'))
+      bye()
+  })
+}
+
+// This is were the user finds out the truth
+const bye = () => {
+  currentQuestion++
+    setTimeout(() => 
+    showMessage('Hope you\'ve learned a bit about yourself today. Enjoy life!', 'bot'), 5000)
+    setTimeout(() => 
+    showMessage('Are you unhappy with my evaluation of you? You\'re welcome to take this test again.', 'bot'), 9000)
+    inputWrapper.innerHTML = `
+    <button id="bye">Redo test</button>
+    `
+    document.getElementById('bye')
+      .addEventListener('click', () => {
+        location.reload()
+    })
+}
 
 
-// Set up your eventlisteners here
+// If .. else statement that loops the questions
+const handleInput = (event) => {
 
-quizButton.addEventListener('click', () => setTimeout(greeting, 1000))
+  if (currentQuestion === 1) {
+    nameQuestion()
+  } else if (currentQuestion === 2) {
+    oreoQuestion()
+  } else if (currentQuestion === 3) {
+    lastQuestion()
+  } else {
+    bye(currentQuestion === 4)
+  }
+  currentQuestion++
+}
 
-// quizButton.addEventListener('click', greeting)
+// input user answers
+form.addEventListener('submit', (event) => {
+  event.preventDefault()
+  handleInput()
+})
 
-sendButton.addEventListener('click', handleNameInput)
+const nameQuestion = () => {
+  const name = nameInput.value
+  showMessage(name, 'user')
+  nameInput.value = ''
 
 
+  // First answer 
+  const firstAnswer = (`Hi ${name}! Nice to see you here!`)
+    setTimeout(() => 
+    showMessage(firstAnswer, 'bot'), 1000)
+    setTimeout(oreoQuestion, 1000)
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-// setTimeout(greeting, 1000)
+  nameInput.innerHTML = `
+    <input id="nameInput" type="text" />
+    <button class="send-btn" type="submit">
+      Send
+    </button>
+  `
+}
 
-// Pseudocode 
-
-/* LIST OF BAKINGBOT QUESTIONS
-
-1. How do eat your oreos? (Multiple choice: one bite, pick apart, dip in milk)
-2. If one bite = XXX
-Else if pick apart = XXX
-Else dip in milk = XXX
-
-Follow-up questions: 
-
-One bite: button multiple choice
-If X: show picture of cookie
-If Y: "message + gets sent back to the start"
-
-Pick apart: button multiple choice
-If X: show picture of X
-If Y: "message + gets sent back to the start"
-
-Dip in milk: button multiple choice
-If X: show picture of X
-If Y: "message + gets sent back to the start"
-*/
+// Eventlistener - Start the quiz
+quizButton.addEventListener('click', () => 
+setTimeout(greeting, 1000))
