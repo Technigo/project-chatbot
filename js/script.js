@@ -1,6 +1,7 @@
 // All the DOM selectors stored as short variables 
 const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById('input-wrapper') 
+const form = document.getElementById('name-form') 
 
 /*audio sound*/
 let sound = document.getElementById("myAudio");
@@ -52,8 +53,9 @@ const errorDisplay = (errorMessage)=>{
   `
 }
 
+
 //email validation
-const emailValidation = (emailMessage)=>{
+const emailValidation = (emailMessage,courseTerm)=>{
   let emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   if(emailMessage.match(emailFormat)){
     setTimeout(()=>showMessage(`Thank you! You will recieve a full info-package at ${emailMessage}`, 'bot'),1000)
@@ -63,23 +65,18 @@ const emailValidation = (emailMessage)=>{
     setTimeout(()=>location.reload(), 6000)
   }else{
     errorDisplay(`${emailMessage} is wrong email format`)
-    inputWrapper.innerHTML =`
-  <label>${errorMessage}</label> 
-  `
     setTimeout(()=>location.reload(), 6000)
   }
 }
 
 /*take user input */
-let sendBtn = document.getElementById("send-btn");
 let userText = document.getElementById("name-input");
 
-sendBtn.addEventListener("click", (event)=> {
+form.addEventListener("submit", (event)=> {
   event.preventDefault();
   userText = userText.value;
   sound.play()
   if (userText == ""){
-    //alert('You must write your name!')
     errorDisplay ('Please enter your name')
     setTimeout(()=> location.reload(),2000)
   }else if(isNaN(userText) == false){
@@ -134,24 +131,17 @@ sendBtn.addEventListener("click", (event)=> {
       setTimeout(()=> showMessage(`Our autumn session begins on August 10.<br> Please enter your e-mail.`, 'bot'),1000)
       
       inputWrapper.innerHTML =`
-      <input id="fullstackAutumnEmail" type ="email" value="" placeholder="info@abc.com"/>
-      <input id="fullstackemailSend" type="button" value="send" >
+      <input id="AutumnEmail" type ="email" value="" placeholder="info@abc.com"/>
+      <input id="AutumnEmailSend" type="button" value="Send" >
       `
-      let fullstackAutumnEmail = document.querySelector("#fullstackAutumnEmail")
-      let fullstackemailSend = document.querySelector("#fullstackemailSend")
+      let fullstackAutumnEmail = document.querySelector("#AutumnEmail")
+      let fullstackemailSend = document.querySelector("#AutumnEmailSend")
 
       fullstackemailSend.addEventListener('click', ()=>{
         fullstackAutumnEmail = fullstackAutumnEmail.value
         sound.play()
-        emailValidation(fullstackAutumnEmail)
-        /*
-        if(fullstackAutumnEmail){
-          setTimeout(()=> showMessage(`Thank you! You will recieve a full info-package at ${fullstackAutumnEmail}`, 'bot'),1000)
-          inputWrapper.innerHTML =`
-          <input type="button" value="Thanks">
-          `
-        setTimeout(()=>window.location.href = window.location.href, 5000) //back to beginning
-          }*/
+
+        emailValidation(fullstackAutumnEmail,fullstackAutumn)
       })
     })
     //fullstack winter
@@ -162,29 +152,19 @@ sendBtn.addEventListener("click", (event)=> {
       setTimeout(()=>showMessage(`Our winter session begins on January 22.<br> Please enter your e-mail.`, 'bot'),1000 ) 
       
       inputWrapper.innerHTML =`
-      <input id="fullstackWinterEmail" type ="email" value="" placeholder="info@abc.com"/>
-      <input id="fullstackWinterEmailSend" type="button" value="send" >
+      <input id="WinterEmail" type ="email" value="" placeholder="info@abc.com"/>
+      <input id="WinterEmailSend" type="button" value="Send" >
       `
-      let fullstackWinterEmail = document.querySelector("#fullstackWinterEmail")
-      let fullstackWinterEmailSend = document.querySelector("#fullstackWinterEmailSend")
+      let fullstackWinterEmail = document.querySelector("#WinterEmail")
+      let fullstackWinterEmailSend = document.querySelector("#WinterEmailSend")
 
       fullstackWinterEmailSend.addEventListener('click', ()=>{
         fullstackWinterEmail = fullstackWinterEmail.value
         sound.play()
-        emailValidation(fullstackWinterEmail)
-        /*if(fullstackWinterEmail){
-          setTimeout(()=> showMessage(`Thank you! You will recieve a full info-package at ${fullstackWinterEmail}`, 'bot'),1000)
-          inputWrapper.innerHTML =`
-          <input type="button" value="Thanks">
-          `
-        setTimeout(()=>location.reload(), 5000) //back to beginning
 
-          }*/
-
+        emailValidation(fullstackWinterEmail,fullstackWinter)
       })
-
     })
-
     })
     // choose .NET program
     netDeveloper.addEventListener('click',()=>{
@@ -206,32 +186,23 @@ sendBtn.addEventListener("click", (event)=> {
       setTimeout(()=> showMessage(`Our autumn session begins on August 10.<br> Please enter your e-mail.`, 'bot'),1000)
         //add email input
         inputWrapper.innerHTML =`
-      <input id="netAutumnEmail" type ="email" placeholder="info@abc.com"/>
-      <button id="emailSend" type="submit" >Send </button>
+      <input id="AutumnEmail" type ="email" placeholder="info@abc.com"/>
+      <button id="AutumnEmailSend" type="submit" >Send </button>
       `
-      let netAutumnEmail = document.getElementById("netAutumnEmail")
-      let emailSend = document.getElementById("emailSend")
+      let netAutumnEmail = document.getElementById("AutumnEmail")
+      let emailSend = document.getElementById("AutumnEmailSend")
 
       emailSend.addEventListener('click',()=>{
         netAutumnEmail = netAutumnEmail.value
         sound.play()
     
-        emailValidation(netAutumnEmail)
-        /*
-      if(netAutumnEmail){
-      setTimeout(()=>showMessage(`Thank you! You will recieve a full info-package at ${netAutumnEmail}`, 'bot'),1000)
-      inputWrapper.innerHTML =`
-      <input type="button" value="Thanks">
-      `*/
-      //setTimeout(()=>location.reload(), 6000)//back to beginning
-      //}
+        emailValidation(netAutumnEmail, netAutumn)
     })
 
     })
     })
 
     }) 
-
     // if choose NO
     noBtn.addEventListener('click', () =>{
       noBtn = noBtn.value
