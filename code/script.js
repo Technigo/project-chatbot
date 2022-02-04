@@ -70,7 +70,7 @@ const handleNameQuestion = (e) => {
 
 // interaction 2 Day or evening
 const drinkRec = (name) => {
-  showMessage(`Would you like a drinkrecommendation, ${name}?`, 'bot')
+  showMessage(`Would you like a drink recommendation, ${name}?`, 'bot')
 
   formInputWrapper.innerHTML=
   `<button id="yes" type="submit">Yes</button>
