@@ -143,7 +143,21 @@ questionNumber++
       } else if (lastChoice === 'Purple') {
       showMessage(`Based on your selection you have ordered a purple sportybike, is that what you want? Please confirm.`, 'bot')
     }}, 500)
-  }
+ 
+
+  // User responds if satisfied with order
+  setTimeout (() => {inputWrapper.innerHTML = `
+  <button id="yes">Yes, I'm happy with my choice!</button>
+  <button id="no">Nope, try again!</button>`
+  
+  document.getElementById('yes').addEventListener('click', () => receipt(`I'm happy with my choice!`))
+  document.getElementById('no').addEventListener('click', () => receipt(`I would like to change some things`))
+}, 3000)
+
+}
+
+
+
   
 
   // Pushes to the next question - our schedule
@@ -158,6 +172,8 @@ questionNumber++
       setTimeout(bikeSelection, 800)
     } else if (questionNumber === 4) {
       setTimeout(modelSelection, 800)
+    } else if (questionNumber === 5) {
+      setTimeout(orderConfirmation, 800)
     }
     }
 
