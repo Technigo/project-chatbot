@@ -59,7 +59,7 @@ inputWrapper.innerHTML = `
 console.log("Third convo")
   document.getElementById('yes').addEventListener('click', () => bikeSelection ('Yes'))
   document.getElementById('no').addEventListener('click', () => bikeSelection ('No'))
-}, 1200)
+}, 1400)
 }
 
 
@@ -70,19 +70,18 @@ questionNumber++
   showMessage(`${bikeChoice}`, 'user')
   
   if (bikeChoice === 'Yes') {
+    setTimeout(() => {showMessage(`What kind of bike would you like?`, 'bot')
     inputWrapper.innerHTML = `
     <button id="mountainBike">Mountainbike</button>
     <button id="ladyBike">Ladybike</button>
     <button id="sportyBike">Sportybike</button>
     `
-    showMessage(`What kind of bike would you like?`, 'bot')
     document.getElementById('mountainBike').addEventListener('click', () => modelSelection('mountainBike'))
     document.getElementById('ladyBike').addEventListener('click', () => modelSelection('ladyBike'))
-    document.getElementById('sportyBike').addEventListener('click', () => modelSelection('sportyBike'))
+    document.getElementById('sportyBike').addEventListener('click', () => modelSelection('sportyBike'))}, 2000)
   } else {
-      showMessage(`Okay, have a nice day`, 'bot')
-      setTimeout (() => {location.reload()
-        return false
+    setTimeout(() => {showMessage(`Okay, have a nice day`, 'bot')
+      location.reload()
       }, 2500)  
     }
   }
