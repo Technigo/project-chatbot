@@ -26,11 +26,9 @@ const showMessage = (message, sender) => {
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
-
 // Starts here
 const greeting = () => {
   showMessage(`Welcome to our online bootcamp, <br>What is your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
 //display time
 const getTime = ()=> {
@@ -47,6 +45,30 @@ const getTime = ()=> {
   let time = hours + ":" + minutes
    return time;
 }
+//display error message
+const errorDisplay = (errorMessage)=>{
+  inputWrapper.innerHTML =`
+  <label>${errorMessage}</label> 
+  `
+}
+
+//email validation
+const emailValidation = (emailMessage)=>{
+  let emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if(emailMessage.match(emailFormat)){
+    setTimeout(()=>showMessage(`Thank you! You will recieve a full info-package at ${emailMessage}`, 'bot'),1000)
+    inputWrapper.innerHTML =`
+    <input type="button" value="Thanks">
+    `
+    setTimeout(()=>location.reload(), 6000)
+  }else{
+    errorDisplay(`${emailMessage} is wrong email format`)
+    inputWrapper.innerHTML =`
+  <label>${errorMessage}</label> 
+  `
+    setTimeout(()=>location.reload(), 6000)
+  }
+}
 
 /*take user input */
 let sendBtn = document.getElementById("send-btn");
@@ -57,11 +79,12 @@ sendBtn.addEventListener("click", (event)=> {
   userText = userText.value;
   sound.play()
   if (userText == ""){
-    alert('You must write your name!')
-    location.reload()
+    //alert('You must write your name!')
+    errorDisplay ('Please enter your name')
+    setTimeout(()=> location.reload(),2000)
   }else if(isNaN(userText) == false){
-    alert('Please only use letters!')
-    location.reload()
+    errorDisplay ('Please use letters only')
+    setTimeout(()=> location.reload(),2000)
   }else{
     showMessage(`${userText}`, 'user');
     setTimeout(()=>  showMessage(`Thank you ${userText}<br> So I understand you want to change career?`, 'bot'),1000)
@@ -120,15 +143,15 @@ sendBtn.addEventListener("click", (event)=> {
       fullstackemailSend.addEventListener('click', ()=>{
         fullstackAutumnEmail = fullstackAutumnEmail.value
         sound.play()
-
+        emailValidation(fullstackAutumnEmail)
+        /*
         if(fullstackAutumnEmail){
           setTimeout(()=> showMessage(`Thank you! You will recieve a full info-package at ${fullstackAutumnEmail}`, 'bot'),1000)
           inputWrapper.innerHTML =`
           <input type="button" value="Thanks">
           `
         setTimeout(()=>window.location.href = window.location.href, 5000) //back to beginning
-
-          }
+          }*/
       })
     })
     //fullstack winter
@@ -148,15 +171,15 @@ sendBtn.addEventListener("click", (event)=> {
       fullstackWinterEmailSend.addEventListener('click', ()=>{
         fullstackWinterEmail = fullstackWinterEmail.value
         sound.play()
-
-        if(fullstackWinterEmail){
+        emailValidation(fullstackWinterEmail)
+        /*if(fullstackWinterEmail){
           setTimeout(()=> showMessage(`Thank you! You will recieve a full info-package at ${fullstackWinterEmail}`, 'bot'),1000)
           inputWrapper.innerHTML =`
           <input type="button" value="Thanks">
           `
         setTimeout(()=>location.reload(), 5000) //back to beginning
 
-          }
+          }*/
 
       })
 
@@ -193,14 +216,15 @@ sendBtn.addEventListener("click", (event)=> {
         netAutumnEmail = netAutumnEmail.value
         sound.play()
     
+        emailValidation(netAutumnEmail)
+        /*
       if(netAutumnEmail){
-      setTimeout(()=>showMessage(`Thank you! You will recieve a full info-package at ${netAutumnEmail}`, 'bot'),2000)
+      setTimeout(()=>showMessage(`Thank you! You will recieve a full info-package at ${netAutumnEmail}`, 'bot'),1000)
       inputWrapper.innerHTML =`
       <input type="button" value="Thanks">
-      `
-      setTimeout(()=>location.reload(), 5000)//back to beginning
-      }
-  
+      `*/
+      //setTimeout(()=>location.reload(), 6000)//back to beginning
+      //}
     })
 
     })

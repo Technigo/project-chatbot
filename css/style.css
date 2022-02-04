@@ -143,5 +143,11 @@ button:hover {
   transition: all 0.2s ease;
 }
 
+label {
+  background-color: deepskyblue;
+  color: black;
+  font-size: 25px;
+  margin-bottom: 15%;
+}
 
 
