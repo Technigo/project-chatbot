@@ -1,13 +1,13 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This chatbot is to help customers ordering food in an interactive way. The chatbot is aksing questions according to given scenario.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The challenges were :
+
+Input invalidation. Solved by if and else statement in getUsername function
+Custom styling, especially and element. Refer to style.css Minimise repetitive codes. Solved by restartPage((botMessage, buttonMessage) Assign setTimeout function all messages by chatbot.
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+ View it live https://project-chatbot-week4.netlify.app
