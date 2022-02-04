@@ -129,9 +129,9 @@ const noThankYou = () => {
 const yourSoftyDrink = () => {
   showMessage(`A mocktail is your cup of tea!`, 'bot')
   setTimeout( () => mocktailImg(), 1000) 
-  formInputWrapper.innerHTML = ''
 }
- //Picture of mocktail
+ //Picture of mocktail 
+ //("undefined" is showing when picture is loaded in bubble, don´t know why)
 const mocktailImg = () => {
   formInputWrapper.innerHTML=
   showMessage('<img src="assets/paige-ledford-1Di03LTniYE-unsplash.jpg" alt="Bot"/>', 'bot')
@@ -145,6 +145,7 @@ const yourWildDrink = () => {
 }
 
 //Picture of whiskey
+//("undefined" is showing when picture is loaded in bubble, don´t know why)
 const whiskeylImg = () => {
   formInputWrapper.innerHTML=
   showMessage('<img src="assets/ambitious-creative-co-rick-barrett-UyF3Tal_KXw-unsplash.jpg" alt="Bot"/>', 'bot')
