@@ -36,13 +36,13 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user1.png" alt="User" />  
+        <img src="assets/user.png" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot1.png" alt="Bot" />
+        <img src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -174,19 +174,6 @@ const showSize = () => {
   const select = document.getElementById('select')
   receivedInput = true
   select.addEventListener('change', () => nextQuestion(select.value))
-
-  // button option commented out
-  //   `
-  // <button id="4Btn">4 pieces</button>
-  // <button id="8Btn">8 pieces</button>
-  // <button id="12Btn">12 pieces</button>
-  // <button id="16Btn">16 pieces</button>
-  // `
-  // receivedInput = true
-  // document.getElementById('4Btn').addEventListener('click', () => nextQuestion('4 pieces'))
-  // document.getElementById('8Btn').addEventListener('click', () => nextQuestion('8 pieces'))
-  // document.getElementById('12Btn').addEventListener('click', () => nextQuestion('12 pieces'))
-  // document.getElementById('16Btn').addEventListener('click', () => nextQuestion('16 pieces'))
 }
 
 const showOrder = () => {
