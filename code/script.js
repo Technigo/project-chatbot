@@ -94,7 +94,7 @@ questionNumber++
 
     if (modelChoice === 'mountainBike') {
       showMessage(`I would like a mountainbike`, 'user')
-      setTimeout(showMessage(`What colour do you prefer?`, 'bot'), 3000)
+      setTimeout(showMessage(`Alright, a mountainbike! What colour do you prefer?`, 'bot'), 3000)
 
       inputWrapper.innerHTML = `
       <button id="blueColor">Blue</button>
@@ -104,7 +104,7 @@ questionNumber++
       document.getElementById('redColor').addEventListener('click', () => orderConfirmation('Red'))
     } else if (modelChoice === 'ladyBike') {
       showMessage(`I would like a ladybike`, 'user')
-      setTimeout(showMessage(`What colour do you prefer?`, 'bot'), 3000)
+      setTimeout(showMessage(`Alright, a ladybike! What colour do you prefer?`, 'bot'), 3000)
       inputWrapper.innerHTML = `
       <button id="greenColor">Green</button>
       <button id="orangeColor">Orange</button>
@@ -113,7 +113,7 @@ questionNumber++
       document.getElementById('orangeColor').addEventListener('click', () => orderConfirmation('Orange'))
     } else {
       showMessage(`I would like a sportybike`, 'user')
-      setTimeout(showMessage(`What colour do you prefer?`, 'bot'), 3000)
+      setTimeout(showMessage(`Alright, a sportybike! What colour do you prefer?`, 'bot'), 3000)
       inputWrapper.innerHTML = `
       <button id="pinkColor">Pink</button>
       <button id="purpleColor">Purple</button>
@@ -130,17 +130,22 @@ questionNumber++
 
     setTimeout(() => {
       if (lastChoice === 'Blue') {
-        
+        showMessage(`Blue`, 'user')
         showMessage(`Based on your selection you have ordered a blue mountainbike, is that what you want? Please confirm.`, 'bot')
       } else if (lastChoice === 'Red') {
+        showMessage(`Red`, 'user')
         showMessage(`Based on your selection you have ordered a red mountainbike, is that what you want? Please confirm.`, 'bot')
       } else if (lastChoice === 'Green') {
+        showMessage(`Green`, 'user')
         showMessage(`Based on your selection you have ordered a green ladybike, is that what you want? Please confirm.`, 'bot')
       } else if (lastChoice === 'Orange') {
+        showMessage(`Orange`, 'user')
       showMessage(`Based on your selection you have ordered a orange ladybike, is that what you want? Please confirm.`, 'bot')
       } else if (lastChoice === 'Pink') {
+        showMessage(`Pink`, 'user')
       showMessage(`Based on your selection you have ordered a pink sportybike, is that what you want? Please confirm.`, 'bot')
       } else if (lastChoice === 'Purple') {
+        showMessage(`Purple`, 'user')
       showMessage(`Based on your selection you have ordered a purple sportybike, is that what you want? Please confirm.`, 'bot')
     }}, 500)
  
