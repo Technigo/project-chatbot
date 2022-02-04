@@ -7,10 +7,10 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   background-image: url("Painter.jpg");
-  background-attachment: fixed;
-  background-size:100% 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 h1 {
@@ -20,9 +20,7 @@ h1 {
   line-height: 34px;
   color: #fff;
   text-align: center;
-  
 }
-
 
 h2 {
   text-transform: uppercase;
@@ -46,11 +44,11 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #eeb1b1;
+  color: #a54444;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -62,7 +60,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: #ffffff4d;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -74,12 +72,10 @@ main {
   flex: 1;
   display: flex;
   justify-content: flex-start;
-  overflow: scroll;
+  overflow: hidden;
   flex-direction: column;
   padding-bottom: 16px;
-  background:url("handyman.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
+
 }
 
 .bot-msg {
@@ -99,10 +95,11 @@ main {
 .user-msg img {
   width: 60px;
   height: 60px;
+  object-fit: cover;
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #f1b9b9
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
@@ -115,11 +112,14 @@ main {
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  background: #e3f4f7
+
 }
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  background:  #f8d4d4
 }
 
 .input-wrapper {
@@ -133,7 +133,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #ad3e1c;
   color: white;
   border: none;
   border-radius: 4px;
@@ -141,7 +141,7 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -151,9 +151,8 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
-footer{
+footer {
   color: white;
-  text-align:center;
-  margin:50px;
-  
+  text-align: center;
+  margin: 50px;
 }
