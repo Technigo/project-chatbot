@@ -41,7 +41,7 @@ const showMessage = (message, sender) => {
         </section>
         `
       }
-      chat.scrollTop = chat.scrollHeight 
+      chat.scrollTop = chat.scrollHeight
   }
 
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
@@ -49,11 +49,9 @@ const showMessage = (message, sender) => {
 
 
     const bringNextQuestion = (userAnswer) => {
-      console.log('Number of the question is:', questionNumber)
 
       if (questionNumber === 1) {
         replyUser(userAnswer)
-        //moved userName.value = '' to row 87"
         setTimeout(() => selectTargetGroup(userAnswer), 800)
       } else if (questionNumber === 2) {
         replyUser(userAnswer)
@@ -162,13 +160,12 @@ const showMessage = (message, sender) => {
       })
     }
 
-
     const selectSweetSnacks = (snack) => {
       questionNumber = 5  
       replyBot(`Ah yum, ${snack}! And what is your sweet tooth craving?`)
 
       inPutWrapper.innerHTML = `
-      <button id='chocolate-btn'>Chocolate <img src="assets/chocolate.png" alt="chocolate" /></button>
+      <button id='chocolate-btn'>Chocolate<br><img src="assets/chocolate.png" alt="chocolate" /></button>
       <button id='liquorice-btn'>Salty Liquorice <img src="assets/salty-liquorice.png" alt="salty-liquorice" /></button>
       <button id='gummy-bears-btn'>Gummy Bears <img src="assets/gummy-bear.png" alt="gummy-bear" /></button>
       `
@@ -224,14 +221,13 @@ const showMessage = (message, sender) => {
         setTimeout(() => audio.play(), 2500)
       })
       document.getElementById('restart-btn').addEventListener('click', () => {
-        chat.innerHTML = ``
-        greeting()
+        location.reload();
       })
     }
     
     const thankYouMessage = () => {
       replyBot(`Okey dokey! Your reservation is now ready. You can pay when arriving. We hope you enjoy the movie! &#127871 &#129380 &#128525`)
-      inPutWrapper.innerHTML = ``
+      inPutWrapper.innerHTML = ''
     }
     
   

@@ -121,9 +121,9 @@ main {
   flex: 1;
   display: flex;
   justify-content: flex-start;
-  overflow: scroll;
+  overflow-y: scroll;
   flex-direction: column;
-  /*padding-bottom: 16px;*/
+  padding-bottom: 1rem;
 }
 
 .bot-msg {
@@ -170,7 +170,7 @@ main {
 }
 
 .input-wrapper form {
-  height: auto;
+  height: fit-content;
   display: flex;
 }
 
@@ -183,7 +183,7 @@ button,
   color: #B6002D;
   border: none;
   border-radius: 5px;
-  padding: 16px 20px;
+  padding: 10px 15px;
   margin-right: 4px;
   margin-top: 10px;
   font-weight: 600;
@@ -201,6 +201,15 @@ button:hover,
 }
 
 @media (min-width: 768px) {
+  h1 {
+    font-size: 4rem;
+    padding: 0.825em 0 0.325em;
+  }
+  h2 {
+    font-size: 2.5rem;
+    padding-bottom: 0.825em;
+    margin-top: 0;
+  }
   .bot-msg img {
     width: 60px;
     height: 60px;
