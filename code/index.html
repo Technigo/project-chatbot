@@ -11,27 +11,29 @@
     <title>Chat Bot</title>
   </head>
 
-  <body>
-    <h1>Welcome to planet Frontus.</h1>
-    <h2>Ask about my world.</h2>
+  <body id="jsBody">
+    
+    <video class="container" autoplay muted loop>
+      <source src="./assets/outer-space.mp4" type="video/mp4">
+    </video>
+    <div class="wrapper">
+    <h1>Welcome to planet Frontus</h1>
+    <h2>Have a chat with your neighbour in outer space</h2>
     <main>
       <section class="chat" id="chat"></section>
 
       <div class="input-wrapper" id="input-wrapper">
         <form id="name-form">
           <input id="name-input" type="text" />
-
-          <button class="send-btn" type="submit" id="btn">
+          <button class="send-btn" type="submit">
             Send
           </button>
-
-          
-
         </form>
       </div>
     </main>
-
+    </div>
     <script src="./script.js"></script>
   </body>
 
 </html>
+
