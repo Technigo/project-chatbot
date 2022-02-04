@@ -56,68 +56,139 @@ sendButton.addEventListener('click', () => {
   setTimeout(skiStyle, 900)
   })
 
-// Question 1: 
 
+
+// Question 1: Select ski track 
 const skiStyle = ()  => {
-  showMessage(`Thank you for your interest ${userInput.value}. What style of ski would you like to try?`, 'bot') 
+  showMessage(`Thank you for your interest, ${userInput.value}. What type of skiing would you like to try?`, 'bot') 
     inputWrapper.innerHTML = `
       <button id="downhill-btn"> Downhill </button>    
-      <button id="crosscountry-btn"> Crosscountry </button>`
+      <button id="crosscountry-btn"> Crosscountry </button>
+      `
 
       document
       .getElementById('downhill-btn')
       .addEventListener('click', () => {
         showMessage('Downhill', 'user')
-        setTimeout(() => downhillLevel('downhill-btn'), 900)
+        downHillTrack()
       })
 
       document
       .getElementById('crosscountry-btn')
       .addEventListener('click', () => {
         showMessage('Cross-country', 'user')
-        setTimeout(() => downhillLevel('crosscountry-btn'), 900)
+        crossCountryTrack()
       })
-  }
+      }
 
+// Question 2: this will categorize users into 2 levels based on their answers (beginner (bgn) and intermediate (int))
 
-  // Question 2:
+const downHillTrack = ()  => {
+  showMessage('Great choice! Now time to choose your level. Have you tried downhill skiing before?', 'bot')
+        inputWrapper.innerHTML = `
+        <button id="dh-yes-btn"> Yes </button>    
+        <button id="dh-no-btn"> No </button>
+        `
+        document
+        .getElementById('dh-yes-btn')
+        .addEventListener('click', () => {
+          showMessage('Yes', 'user')
+          downHillTrackNext()
+        })
 
-const downhillLevel = ()  => {
-  showMessage(`Great choice! Now time to choose your level. Have you skiied before?`, 'bot')
-      inputWrapper.innerHTML = `
-      <button id="yes-btn"> Yes </button>    
-      <button id="no-btn"> No </button>`
+        document
+        .getElementById('dh-no-btn')
+        .addEventListener('click', () => {
+          showMessage('No', 'user')
+          downHillTrackBgn()
+        })
+}
 
-      document
-      .getElementById('yes-btn')
+const crossCountryTrack = ()  => {
+  showMessage('Great choice! Now time to choose your level. Have you tried cross-country skiing before?', 'bot')
+        inputWrapper.innerHTML = `
+        <button id="cc-yes-btn"> Yes </button>    
+        <button id="cc-no-btn"> No </button>
+        `
+        document
+      .getElementById('cc-yes-btn')
       .addEventListener('click', () => {
         showMessage('Yes', 'user')
-        setTimeout(() => downhillLevel('downhill-btn'), 900)
+        crossCountryTrackNext()
+      })
+
+      document
+      .getElementById('cc-no-btn')
+      .addEventListener('click', () => {
+        showMessage('No', 'user')
+        crossCountryTrackBgn()
       })
 }
-// const downHill = document.getElementById('downhill')
-// // const crossCountry = document.getElementById('crosscountry')
-// downHill.onclick = () => {
-//     showMessage(`Great choice! Now time to choose your level`, 'bot')
-//     inputWrapper.innerHTML = `
-//     <button id="lv1"> Level 1 (you have never skiied before) </button>    
-//     <button id="lv2"> Level 2: (you have skiied before) </button>`
-//   }
+const downHillTrackNext = ()  => {
+  showMessage('When was the last time you have skiied?', 'bot')
+        inputWrapper.innerHTML = `
+        <button id="dh-more-than-5"> More than 5 years </button>    
+        <button id="dh-less-than-5"> Less than 5 years </button>
+        `
+        document
+        .getElementById('dh-more-than-5')
+        .addEventListener('click', () => {
+          showMessage('More than 5 years', 'user')
+          downHillTrackBgn()
+        })
 
+        document
+        .getElementById('dh-less-than-5')
+        .addEventListener('click', () => {
+          showMessage('Less than 5 years', 'user')
+          downHillTrackInt()
+        })
+}
 
+const crossCountryTrackNext = ()  => {
+  showMessage('When was the last time you have skiied?', 'bot')
+        inputWrapper.innerHTML = `
+        <button id="cc-more-than-5"> More than 5 years </button>    
+        <button id="cc-less-than-5"> Less than 5 years </button>
+        `
+        document
+        .getElementById('cc-more-than-5')
+        .addEventListener('click', () => {
+          showMessage('More than 5 years', 'user')
+          crossCountryTrackBgn()
+        })
 
+        document
+        .getElementById('cc-less-than-5')
+        .addEventListener('click', () => {
+          showMessage('Less than 5 years', 'user')
+          crossCountryTrackInt()
+        })
+}
 
+// The suitable course for the user
 
-//       showMessage(`Great!`, 'bot')
-//         }
-// return showMessage (`Sorry ${userInput.value}! We recommend checking out other schools that may suit your need better!`, 'bot');
-// }
-
-
-// inputWrapper.innerHTML = `
-// <button id= "studyBtn"> Study </button>    
-// <button id= "partyBtn"> Party </button>
-
-
-// prevent page refresh
-
+const downHillTrackBgn = ()  => {
+  showMessage('We recommend checking out our "Fearless Downhill Beginner course"', 'bot')
+  inputWrapper.innerHTML = `
+  <p> Read about this course <a href="#">here</a></p>
+  `
+}
+const downHillTrackInt = ()  => {
+  showMessage('We recommend checking out our "Rusty Downhill Skiier course"', 'bot')
+  inputWrapper.innerHTML = `
+  <p> Read about this course <a href="#">here</a></p>
+  `
+}
+const crossCountryTrackBgn = ()  => {
+  showMessage('We recommend checking out our "Fearless Cross-country Beginner course"', 'bot')
+  inputWrapper.innerHTML = `
+  <p> Read about this course <a href="#">here</a></p>
+  `
+}
+const crossCountryTrackInt = ()  => {
+  showMessage('We recommend checking out our "Rusty Cross-country Skiier course"', 'bot')
+  inputWrapper.innerHTML = `
+  <p> Read about this course <a href="#">here</a></p>
+  `
+}

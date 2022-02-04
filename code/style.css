@@ -138,3 +138,16 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+footer {
+  margin-top: 20px;
+}
+footer p {
+  color: #fff;
+  font-size: .8em;
+  text-align: center;
+}
+
+footer a {
+  color: #080808;
+}
