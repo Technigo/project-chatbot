@@ -153,35 +153,30 @@ const reply1 = (message) => {
       <label for="appointment"></label>
       <input type="datetime-local" id="appointment" name="appointment">
       `
-
       document.getElementById('appointment').addEventListener('change', () => nextQuestion(appointment.value))
      
   }
 
-  /*const reply4 = (message) => {
+    const reply4 = (message) => {
     questionNumber ++ 
 
-     botAnswer(`For booking confirmation we need your email adress`)
+     botAnswer(`For booking confirmation we need your email address`)
      inputWrapper.innerHTML = `
      <label for="email"></label>
-     <input type="email" id="email" name="email" required>
-     <button id="bookIt">Send</button>
+     <input type="email" id="email" name="email">
+     <button id="send-btn" type="submit">
+     <i class='fa fa-send' ></i>
+   </button>
      `
-     document.getElementById('email')
-     document.getElementById('bookIt').addEventListener('click', () => nextQuestion(email.value))
-    }*/
+     document.getElementById('send-btn').addEventListener('click', () => nextQuestion(email.value))
+    }
 
-    const reply4 = (message) => {
+    const reply5 = (message) => {
       questionNumber ++ 
-      botAnswer(`Thank you! Your booking is confirmed on ${message}Have a great day 💐`)
+      botAnswer(`Thank you gorgeous! Your booking is confirmed and the booking confirmation is sent to your email
+      ${message}.Have a great day 💐`)
       inputWrapper.innerHTML = ` `
       }
-  // Need to find out how make it recognize an email (required isn´t enough) tried to use mailformat(not working)
-  // https://stackoverflow.com/questions/46155/whats-the-best-way-to-validate-an-email-address-in-javascript  
-  // .value.match(mailformat) 
-  //if (message === )  {
-     // botAnswer(`Thank you gorgeous! You will find your confirmation in your inbox: ${email.value}`)
-    //}
     
 
  
