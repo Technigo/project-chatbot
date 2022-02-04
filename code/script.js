@@ -17,13 +17,13 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/netbot-user.svg" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/netbot.svg" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -40,73 +40,93 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-const handleNameInput = (event) => {  
-  event.preventDefault()
-  // Store the value in a variable so we can access it after we 
-	// clear it from the input
-  const name = nameInput.value
-  showMessage(name, 'user')
-  nameInput.value = ''
-  setTimeout(() => showDecade(name), 1000)
+const handleNameInput = (event) => {
+  event.preventDefault();
+  // Store the value in a variable so we can access it after we
+  // clear it from the input
+  const name = nameInput.value;
+  showMessage(name, 'user');
+  nameInput.value = "";
+  setTimeout(() => showDecade(name), 1000);
 }
 
 const showDecade = (name) => {
-  showMessage(`Welcome ${name}, what decade do feel like today?`, 'bot');
+  showMessage(`Welcome ${name}. What decade do you feel like diving into?`, 'bot');
 
   inputWrapper.innerHTML = `
-    <button id="1980Btn">1980s</button>
-    <button id="1990Btn">1990s</button>
-    <button id="2000Btn">2000s</button>
+    <button id='1980Btn'>1980s</button>
+    <button id='1990Btn'>1990s</button>
+    <button id='2000Btn'>2000s</button>
   `
 
-  document.getElementById('1980Btn').addEventListener('click', () => chooseGenre('1980s'))
-  document.getElementById('1990Btn').addEventListener('click', () => chooseGenre('1990s'))
-  document.getElementById('2000Btn').addEventListener('click', () => chooseGenre('2000s'))
-  setTimeout(() => showGenre(type), 1000)
+  document.getElementById('1980Btn').addEventListener("click", () => selectMovie('1980s'));
+  document.getElementById('1990Btn').addEventListener("click", () => selectMovie('1990s'));
+  document.getElementById('2000Btn').addEventListener("click", () => selectMovie('2000s'));
+}
+  
+const selectMovie = (year) => {
+  inputWrapper.innerHTML =""
+  showMessage(year, 'user');
+  setTimeout(() => showMessage(`${year} you say! Cool, what genre do you feel like?`, 'bot'), 1000);
+
+  if (year === '1980s') {
+    inputWrapper.innerHTML = `
+      <select id="select">
+        <option value="" selected disabled>Pick a genre</option>
+        <option value="1980's comedy">An 1980's comedy</option>
+        <option value="1980's horror">An 1980's horror</option>
+        <option value="1980's documentary">An 1980's documentary</option>
+      </select>
+    `
+  } else if (year === '1990s') {
+      inputWrapper.innerHTML = `
+       <select id="select">
+        <option value="" selected disabled>Pick a genre</option>
+        <option value="1990's comedy">An 1990's comedy</option>
+        <option value="1990's horror">An 1990's horror</option>
+       <option value="1990's documentary">An 1990's documentary</option>
+      </select>
+    `
+  } else {
+    inputWrapper.innerHTML = `
+      <select id="select">
+        <option value="" selected disabled>Pick a genre</option>
+        <option value="2000's comedy">A 2000's comedy</option>
+        <option value="2000's horror">A 2000's horror</option>
+       <option value="2000's documentary">A 2000's documentary</option>
+      </select>
+    `
+  }
+  const select = document.getElementById('select')
+  select.addEventListener('change', () => confirmation(select.value))
 }
 
-const chooseGenre = (type) => {
-  showMessage(type, 'user')
-  showMessage(`${type}? Good taste. Please pick a preferred category`, 'bot') 
-
-  inputWrapper.innerHTML = `
-  <button id="comedyBtn">Comedy</button>
-  <button id="horrorBtn">Horror</button>
-  <button id="documentaryBtn">Documentary</button>
-`
-  document.getElementById('comedyBtn').addEventListener('click', () => selectMovie('Comedy'))
-  document.getElementById('horrorBtn').addEventListener('click', () => selectMovie('Horror'))
-  document.getElementById('documentaryBtn').addEventListener('click', () => selectMovie('Documentary'))
-  setTimeout(() => selectMovie(genre), 1000)
-}
-
-
-const selectMovie = (genre) => {
-  showMessage(genre, 'user')
-  showMessage (`${genre} you say! Cool, here are my top three choices, please pick the one you want to watch!`, 'bot')
+const confirmation = (select) => {
+  showMessage(select, 'user');
+  setTimeout(() => showMessage(`You have chosen ${select}. Do you have a Netflix account?`, 'bot'), 1000);
   
   inputWrapper.innerHTML = `
-    <button id="movieOne">Jaws</button>
-    <button id="movieTwo">Movie two</button>
-    <button id="movieThree">Movie three</button>
+    <button id='yesBtn'>Yes</button>
+    <button id='noBtn'>No</button>
+  `
+
+  document.getElementById('yesBtn').addEventListener("click", () => tooBad('yes'));
+  document.getElementById('noBtn').addEventListener("click", () => tooBad('no'));
+  button.addEventListener('select', () => tooBad(answer));
+}
+
+const tooBad = (answer) => {
+  showMessage(answer, 'user');
+
+  if (answer === 'no') {
+    
+  setTimeout(() => showMessage(`Too bad. This bot is sponsored by Netflix. Might we suggest opening an account`, 'bot'), 1000);
+  inputWrapper.innerHTML = `
+    <button id="noAccount"><a href="https://www.netflix.com">Sign up here!</a></button>
     `
 
-  document.getElementById('movieOne').addEventListener('click', () => movieChoice('Jaws'))
-  document.getElementById('movieTwo').addEventListener('click', () => movieChoice('Movie two'))
-  document.getElementById('movieThree').addEventListener('click', () => movieChoice('Movie three'))
-  setTimeout(() => movieChoice(choice), 1000)
-
-}
-
-
-const movieChoice = (choice) => {
-  showMessage(choice, 'user')
-  showMessage (`${choice}!! You're too fancy! Here's the link to that, enjoy!`, 'bot')
-  
-  inputWrapper.innerHTML = `
-<button id="jaws"><a href="https://www.netflix.com/watch/60001220?trackId=253863245&tctx=0%2C3%2Ce680cd6d-886b-40f6-92fc-fdde43f8e78a-293626776%2C6b3ee427-8d85-4938-8904-492c18bee7be_35566007X19XX1643892807490%2C6b3ee427-8d85-4938-8904-492c18bee7be_ROOT%2C%2C%2C" target="_blank">JAWS</a></button>
-
-`
+  } else 
+  setTimeout(() => showMessage(`Good. You know what to <a href="https://www.netflix.com">do</a>`, 'bot'), 1000);
 }
 
 // Set up your eventlisteners here. 
