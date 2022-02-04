@@ -1,4 +1,4 @@
-# Project Name
+# Project chatbot
 
 This chatbot is to help customers ordering food in an interactive way. The chatbot is aksing questions according to given scenario.
 
