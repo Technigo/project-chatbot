@@ -44,7 +44,7 @@ a {
   text-decoration: none;
 }
 
-/* underline so the mailto link in last message is easier to notice */
+/* Underline so the mailto link in last message is easier to notice */
 .mailto {
   text-decoration: underline;
 }
@@ -135,6 +135,7 @@ main {
 }
 
 button {
+  width: 200px;
   background-color: #2740a5;
   color: white;
   border: none;

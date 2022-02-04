@@ -5,30 +5,33 @@ const sendBtn = document.getElementById('send-btn')
 const inputField = document.getElementById('input-field')
 
 // Global variables
+// Variable for counting which question to handle
 let questionNumber = 1
+// Variables we want to show later on in the conversation
 let userName = ''
 let type = ''
 let icing = ''
 let colour = ''
 let size = ''
+// To prevent double click
 let receivedInput = true
 
-// functions for the replies
-const botReply = (msg) => {
-  showMessage(msg, 'bot')
+// Functions for the bot and user replies
+const botReply = (message) => {
+  showMessage(message, 'bot')
 }
 
-const userReply = (msg) => {
-  showMessage(msg, 'user')
+const userReply = (message) => {
+  showMessage(message, 'user')
 }
 
-// function for the waiting bubbles
-// not able for now to remove these bubbles when the message appears
+// Function for the waiting bubbles
+// Not able for now to remove these bubbles when the message appears
 const processingTime = () => {
   botReply(`...`)
 }
 
-// conditional to place the chat bubble in the correct place based on who the sender is
+// Conditional to place the chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     chat.innerHTML += `
@@ -49,26 +52,26 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
-  // chat scroll to the last message when there are too many to be shown in the chat box
+  // Chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
 
-// conditionals to go from one question to the other
+// Conditionals to go from one question to the other
 const nextQuestion = (message) => {
-  // conditional to prevent double click
+  // Conditional to prevent double click
   if (receivedInput == true) {
     receivedInput = false
     if (questionNumber === 1) {
       userName = message
-      // conditional to decide which answer should be displayed
+      // Conditional to decide which answer should be displayed
       if (userName == '') {
         userReply(`I don't want to say my name`)
       } else {
         userReply(`I'm ${userName}`)
       }
       inputField.value = ''
-      setTimeout(() => processingTime(message), 100)
-      setTimeout(() => showCakes(message), 1000)
+      setTimeout(() => processingTime(message), 100) // To show the "..."
+      setTimeout(() => showCakes(message), 1000) // The next question will be displayed in 1s
     } else if (questionNumber === 2) {
       type = message
       userReply(message)
@@ -77,7 +80,7 @@ const nextQuestion = (message) => {
     } else if (questionNumber === 3) {
       icing = message
       userReply(message)
-      // conditional to decide which question should be the next
+      // Conditional to decide which question should be the next
       if (message === "without icing") {
         questionNumber++
         setTimeout(() => processingTime(message), 100)
@@ -104,33 +107,32 @@ const nextQuestion = (message) => {
   }
 }
 
-// Starts here
 const greeting = () => {
   questionNumber = 1
   botReply(`Welcome at Bakery E&N!<br/>What's your name?`)
 }
 
-const showCakes = (msg) => {
+const showCakes = (message) => {
   questionNumber++
   if (userName == '') {
     botReply(`What type of cake would you like, mysterious person?`)
   } else {
-    botReply(`What type of cake would you like, ${msg}?`)
+    botReply(`What type of cake would you like, ${message}?`)
   }
   inputWrapper.innerHTML = `
   <button id="chocolateBtn">Chocolate</button>
   <button id="vanillaBtn">Vanilla</button>
   <button id="fruitBtn">Fruit</button>
   `
-  receivedInput = true // re-enables clicking on button for this question
+  receivedInput = true // Re-enables clicking on button for this question
   document.getElementById('chocolateBtn').addEventListener('click', () => nextQuestion('chocolate'))
   document.getElementById('vanillaBtn').addEventListener('click', () => nextQuestion('vanilla'))
   document.getElementById('fruitBtn').addEventListener('click', () => nextQuestion('fruit'))
 }
 
-const showIcing = (msg) => {
+const showIcing = (message) => {
   questionNumber++
-  botReply(`A ${msg} cake, what a great choice! Do you want icing?<br/>(+ 5 €)`)
+  botReply(`A ${message} cake, what a great choice! Do you want icing?<br/>(+ 5 €)`)
   inputWrapper.innerHTML = `
   <button id="yesBtn">Yes please!</button>
   <button id="noBtn">No, too sweet!</button>
@@ -178,10 +180,11 @@ const showSize = () => {
 
 const showOrder = () => {
   questionNumber++
-  // conditional for the recap of the order about with or without icing
+  // Conditional for the recap of the order about with or without icing
   let icingString = ''
+  // `colour !== ''` : will only happen if the '' is not empty
   if (colour !== '') {
-    icingString = ' with ' + colour + ' icing'
+    icingString = ` with ${colour} icing`
   }
   botReply(`Are you sure that you want to order a ${size} ${type} cake${icingString}?`)
   inputWrapper.innerHTML = `
@@ -196,13 +199,13 @@ const showOrder = () => {
   receivedInput = true
   document.getElementById('yesBtn').addEventListener('click', () => {
     nextQuestion('I am!')
-    new Audio("./assets/confirmed.wav").play() // sound effect playing at the end only when the user confirms
+    new Audio("./assets/confirmed.wav").play() // Sound effect playing at the end only when the user confirms
   })
 }
 
 const thankYou = (size, icing) => {
   let price = ''
-  // conditional to set the price of the cake based on size
+  // Conditional to set the price of the cake based on size
   if (size === "4 pieces") {
     price = 10
   } else if (size === "8 pieces") {
@@ -212,7 +215,7 @@ const thankYou = (size, icing) => {
   } else {
     price = 40
   }
-  // conditional to set the price of the cake based on with or without icing
+  // Conditional to set the price of the cake based on with or without icing
   if (icing === "with icing") {
     price += 5
   }
@@ -220,15 +223,15 @@ const thankYou = (size, icing) => {
   inputWrapper.innerHTML = ``
 }
 
-// eventlistener
+// Eventlistener
 sendBtn.addEventListener('click', () => {
   nextQuestion(inputField.value)
 })
 
-// little delay before the greeting function is called after the website is loaded
+// Little delay before the greeting function is called after the website is loaded
 setTimeout(greeting, 1000)
 
-// prevents default reset of the form after being submitted
+// Prevents default reset of the form after being submitted
 document.getElementById('name-form').onsubmit = event => {
   event.preventDefault()
 }
