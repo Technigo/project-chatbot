@@ -7,7 +7,7 @@ Start by briefly describing the assignment in a sentence or two. Keep it short a
 ## The problem
 
 We hade some problem with the JS on how to get started, after haveing a look we know how to do start the code. We hade some ups and downs for sure with the JS code :) 
-Im not even sure if i klnow how everythings works yeat :) 
+One of the problem was to how to fix so the price was diffrent on 2 menys depending on what service u bookt.
 
 Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
 
