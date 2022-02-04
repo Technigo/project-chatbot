@@ -1,3 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Raleway:wght@100&family=Roboto:wght@100&display=swap');
+
+
 * {
   box-sizing: border-box;
 }
@@ -5,23 +9,29 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: 'Roboto', sans-serif;
+  background-image: url(glass2.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  max-height: 100vh;
 }
+
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
+  font-size: 60px;
   line-height: 34px;
-  color: #fff;
+  color: purple;
   text-align: center;
 }
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 30px;
   line-height: 34px;
-  color: #fff;
+  color: rgb(169, 89, 172);
   text-align: center;
   margin-bottom: 36px;
 }
@@ -120,7 +130,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #ab21bd;
   color: white;
   border: none;
   border-radius: 4px;

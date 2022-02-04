@@ -1,13 +1,11 @@
-//let userTxt = document.getElementById("name-input")
 
-// All the DOM selectors stored as short variables
+// DOM selectors
 const chat = document.getElementById('chat')
+const nameInput = document.getElementById('name-input')
+const form = document.getElementById('name-form')
+const inputWrapper = document.getElementById('input-wrapper')
 
-// Global variables, if you need any, declared here
-
-// Functions declared here
-
-// This function will add a chat bubble in the correct place based on who the sender is
+// Chat function
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     chat.innerHTML += `
@@ -15,50 +13,130 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/newuser.jpg" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bot2.jfif" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
       </section>
     `
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+  // Chatt scroll
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
+// GREETING
 const greeting = () => {
-  showMessage(`Hello there ice cream lover, What's your name?`, 'bot')
+  showMessage(`Hello there ice cream lover 😉 what's your name?`, 'bot')
   
-
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-let userTxt = document.getElementById('name-input')
-let sendBtn = document.getElementById('userbtn')
+const handleNameQuestion = (event) => {event.preventDefault()
+    const name = nameInput.value 
+    showMessage(`I'm ${name} and i love ice cream! 🍧`, 'user')
+    nameInput.value = ''
+    setTimeout(() => showIcecreamOptions(), 1000)
 
-sendBtn.addEventListener("click", (e)=>{
-  e.preventDefault()
-   userTxt = userTxt.value
-   if (userTxt){ 
-    showMessage(`${userTxt}`, 'user')
-    showMessage(`Welcome ${userTxt}!! What icecream would you like? `, 'bot')
-   }
+}
+
+// QUESTION: What flavour?
+
+const showIcecreamOptions = () => {
+  showMessage(`Sounds lovley 😄 what icecream would you like today? `, 'bot')
+    
+  inputWrapper.innerHTML=
+    `<button id="vanilla">Vanilla</button>
+    <button id="strawberry">Strawberry</button>`
+  
+  document
+  .getElementById('vanilla')
+  .addEventListener('click', () => {
+    showMessage('I want vanilla!', 'user')
+    setTimeout(() => showSizeOptions('vanilla'), 1000)
+  })
+
+  document
+    .getElementById('strawberry')
+    .addEventListener('click', () => {
+      showMessage('I want strawberry! 🍓', 'user')
+      setTimeout(() => showSizeOptions('strawberry'), 1000)
+  })
+
+}
+
+
+
+// QUESTION: What size?
+
+const showSizeOptions = () => {
+  showMessage(`Great, what size would you like 📏`, 'bot')
+  
+  inputWrapper.innerHTML=
+    `<button id="small" type="button">Small</button>
+      <button id="large" type="button">Large</button>`
+
+  document
+    .getElementById('small')
+    .addEventListener('click', () => {
+      showMessage('Small 🐜', 'user')
+      setTimeout( () => deliveryQuestion(), 1000)
+  })
+
+  document
+    .getElementById('large')
+    .addEventListener('click', () => {
+      showMessage('Large 🐘', 'user')
+      setTimeout( () => deliveryQuestion(), 1000) 
+
+  })   
+
+}
+
+// QUESTION: Delivery?
+
+const deliveryQuestion = () => {showMessage (`Would you like that delivered?`, 'bot')
+ 
+  inputWrapper.innerHTML=
+    `<button id="yes" type="button">Yes</button>
+      <button id="no" type="button">No</button>`
+  
+  document
+    .getElementById('yes')
+    .addEventListener('click', () =>{
+      showMessage(`Yes`,'user')
+      setTimeout(() => deliveryChoice ('yes'), 1000)
+  })
+  
+  document
+    .getElementById('no')
+    .addEventListener('click', () =>{
+      showMessage(`No`,'user')
+      setTimeout(() => deliveryChoice ('no'), 1000)
+  })
+
+}
+
+// QUESTION: Closing
+
+const deliveryChoice = (delivery) => {
+  if (delivery === 'yes') {
+    showMessage(`Great we'll be there in 5 min 🚀`, 'bot')
+    setTimeout(1000)
   }
+  else {
+    showMessage(`Ok, it's ready for pickup in 1 min. HURRY! 🏃`, 'bot')
+    setTimeout(1000)
+  }
+  inputWrapper.innerHTML=""
+}
 
-// Set up your eventlisteners here
+// Eventlistener
+form.addEventListener('submit', handleNameQuestion)
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
 
-,setTimeout(greeting, 1000))
+setTimeout(greeting, 1000) 
