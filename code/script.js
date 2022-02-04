@@ -129,11 +129,12 @@ const noThankYou = () => {
 const yourSoftyDrink = () => {
   showMessage(`A mocktail is your cup of tea!`, 'bot')
   setTimeout( () => mocktailImg(), 1000) 
+  formInputWrapper.innerHTML = ''
 }
  //Picture of mocktail
 const mocktailImg = () => {
   formInputWrapper.innerHTML=
-  '<img src="assets/paige-ledford-1Di03LTniYE-unsplash.jpg" alt="Bot"/>'
+  showMessage('<img src="assets/paige-ledford-1Di03LTniYE-unsplash.jpg" alt="Bot"/>', 'bot')
   setTimeout( () => satisfied(), 3000) 
 }
 
@@ -146,7 +147,7 @@ const yourWildDrink = () => {
 //Picture of whiskey
 const whiskeylImg = () => {
   formInputWrapper.innerHTML=
-  '<img src="assets/ambitious-creative-co-rick-barrett-UyF3Tal_KXw-unsplash.jpg" alt="Bot"/>'
+  showMessage('<img src="assets/ambitious-creative-co-rick-barrett-UyF3Tal_KXw-unsplash.jpg" alt="Bot"/>', 'bot')
   setTimeout( () => satisfied(), 3000) 
 }
 
