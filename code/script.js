@@ -37,9 +37,11 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
+
 // Starting here. Introducing botQuestions
 // Question 1. What's your name, user?
 const greeting = () => {
+  console.log("Hello")
   showMessage(`Hi and welcome to Bicycle Bot Shop, what's your name?`, 'bot')
 }
 
@@ -61,11 +63,10 @@ inputWrapper.innerHTML = `
 
 // Funcion if user wants bike or not
 const bikeSelection = (bikeChoice) => {
-  questionNumber++
-  showMessage(`Hmm.. ${bikeChoice}`, 'user')
-  setTimeout (() => {showMessage(`What kind of bike would you like?`, 'bot')
-
-// Continue function with conditionals
+questionNumber++
+  showMessage(`${bikeChoice}`, 'user')
+  showMessage(`What kind of bike would you like?`, 'bot')
+  
   if (bikeChoice === 'yes') {
     inputWrapper.innerHTML = `
     <button id="mountainBike">Mountainbike</button>
@@ -81,12 +82,16 @@ const bikeSelection = (bikeChoice) => {
         return false
       }, 2500)  
     }
+  }
 
 // Color choice
   const modelSelection = (modelChoice) => {
     questionNumber++
 
     if (modelChoice === 'mountainBike') {
+      showMessage(`I would like a mountainbike`, 'user')
+      setTimeout(showMessage(`What colour do you prefer?`, 'bot'),1000)
+
       inputWrapper.innerHTML = `
       <button id="blueColor">Blue</button>
       <button id="redColor">Red</button>
@@ -94,6 +99,7 @@ const bikeSelection = (bikeChoice) => {
       document.getElementById('blueColor').addEventListener('click', () => orderConfirmation('Blue'))
       document.getElementById('redColor').addEventListener('click', () => orderConfirmation('Red'))
     } else if (modelChoice === 'ladyBike') {
+      showMessage(`I would like a ladybike`, 'user')
       inputWrapper.innerHTML = `
       <button id="greenColor">Green</button>
       <button id="orangeColor">Orange</button>
@@ -101,6 +107,7 @@ const bikeSelection = (bikeChoice) => {
       document.getElementById('greenColor').addEventListener('click', () => orderConfirmation('Green'))
       document.getElementById('orangeColor').addEventListener('click', () => orderConfirmation('Orange'))
     } else {
+      showMessage(`I would like a sportybike`, 'user')
       inputWrapper.innerHTML = `
       <button id="pinkColor">Pink</button>
       <button id="purpleColor">Purple</button>
@@ -116,6 +123,7 @@ const bikeSelection = (bikeChoice) => {
 
     setTimeout(() => {
       if (lastChoice === 'Blue') {
+        
         showMessage(`Based on your selection you have ordered a blue mountainbike, is that what you want? Please confirm.`, 'bot')
       } else if (lastChoice === 'Red') {
         showMessage(`Based on your selection you have ordered a red mountainbike, is that what you want? Please confirm.`, 'bot')
@@ -125,8 +133,11 @@ const bikeSelection = (bikeChoice) => {
       showMessage(`Based on your selection you have ordered a orange ladybike, is that what you want? Please confirm.`, 'bot')
       } else if (lastChoice === 'Pink') {
       showMessage(`Based on your selection you have ordered a pink sportybike, is that what you want? Please confirm.`, 'bot')
-      } else (lastChoice === 'Purple') {
+      } else if (lastChoice === 'Purple') {
       showMessage(`Based on your selection you have ordered a purple sportybike, is that what you want? Please confirm.`, 'bot')
+    }}, 1000)
+  }
+  
 
   // Pushes to the next question - our schedule
   const handleInput = (event) => {
