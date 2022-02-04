@@ -58,28 +58,23 @@ inputWrapper.innerHTML = `
 }, 1200)
 }
 
+
 // Funcion if user wants bike or not
-const bikeSelection = (response) => {
+const bikeSelection = (bikeChoice) => {
   questionNumber++
-  showMessage(response, 'user')
+  showMessage(`Hmm.. ${bikeChoice}`, 'user')
+  setTimeout (() => {showMessage(`What kind of bike would you like?`, 'bot')
 
 // Continue function with conditionals
-  setTimeout (() => {
-  if (response === 'yes') {
-    showMessage(`Happy to hear ${name}!`, 'bot') 
-    setTimeout (() => {showMessage(`What kind of bike would you like?`, 'bot')
-    
+  if (bikeChoice === 'yes') {
     inputWrapper.innerHTML = `
-    <button id="mountainBike"> Mountainbike </button>
-    <button id="ladyBike"> Ladybike </button>
-    <button id="sportyBike"> Sportybike </button>
+    <button id="mountainBike">Mountainbike</button>
+    <button id="ladyBike">Ladybike</button>
+    <button id="sportyBike">Sportybike</button>
     `
     document.getElementById('mountainBike').addEventListener('click', () => modelSelection('mountainBike'))
     document.getElementById('ladyBike').addEventListener('click', () => modelSelection('ladyBike'))
     document.getElementById('sportyBike').addEventListener('click', () => modelSelection('sportyBike'))
-  }, 1500)
-  }
-
   } else {
       showMessage(`Okay, have a nice day`, 'bot')
       setTimeout (() => {location.reload()
@@ -87,22 +82,66 @@ const bikeSelection = (response) => {
       }, 2500)  
     }
 
+// Color choice
+  const modelSelection = (modelChoice) => {
+    questionNumber++
 
-// Pushes to the next question - our schedule
-const handleInput = (event) => {
+    if (modelChoice === 'mountainBike') {
+      inputWrapper.innerHTML = `
+      <button id="blueColor">Blue</button>
+      <button id="redColor">Red</button>
+      `
+      document.getElementById('blueColor').addEventListener('click', () => orderConfirmation('Blue'))
+      document.getElementById('redColor').addEventListener('click', () => orderConfirmation('Red'))
+    } else if (modelChoice === 'ladyBike') {
+      inputWrapper.innerHTML = `
+      <button id="greenColor">Green</button>
+      <button id="orangeColor">Orange</button>
+      `
+      document.getElementById('greenColor').addEventListener('click', () => orderConfirmation('Green'))
+      document.getElementById('orangeColor').addEventListener('click', () => orderConfirmation('Orange'))
+    } else {
+      inputWrapper.innerHTML = `
+      <button id="pinkColor">Pink</button>
+      <button id="purpleColor">Purple</button>
+      `
+      document.getElementById('pinkColor').addEventListener('click', () => orderConfirmation('Pink'))
+      document.getElementById('purpleColor').addEventListener('click', () => orderConfirmation('Purple'))
+    }
+  }
+
+  // Summary before order confirmation
+  const orderConfirmation = (lastChoice) => {
+    questionNumber++
+
+    setTimeout(() => {
+      if (lastChoice === 'Blue') {
+        showMessage(`Based on your selection you have ordered a blue mountainbike, is that what you want? Please confirm.`, 'bot')
+      } else if (lastChoice === 'Red') {
+        showMessage(`Based on your selection you have ordered a red mountainbike, is that what you want? Please confirm.`, 'bot')
+      } else if (lastChoice === 'Green') {
+        showMessage(`Based on your selection you have ordered a green ladybike, is that what you want? Please confirm.`, 'bot')
+      } else if (lastChoice === 'Orange') {
+      showMessage(`Based on your selection you have ordered a orange ladybike, is that what you want? Please confirm.`, 'bot')
+      } else if (lastChoice === 'Pink') {
+      showMessage(`Based on your selection you have ordered a pink sportybike, is that what you want? Please confirm.`, 'bot')
+      } else (lastChoice === 'Purple') {
+      showMessage(`Based on your selection you have ordered a purple sportybike, is that what you want? Please confirm.`, 'bot')
+
+  // Pushes to the next question - our schedule
+  const handleInput = (event) => {
   event.preventDefault()
   questionNumber++
     if (questionNumber === 1) {
       handleNameQuestion() 
     } else if (questionNumber === 2) {
-      setTimeout(XXXX, 800)
+      setTimeout(wantBike, 800)
     } else if (questionNumber === 3) {
-      setTimeout(XXXX, 800)
+      setTimeout(bikeSelection, 800)
     } else if (questionNumber === 4) {
       setTimeout(XXXX, 800)
       }
     }
-
 
 
 // Stores name in variable "name"
@@ -119,20 +158,6 @@ const handleNameQuestion = () => {
 form.addEventListener('submit', handleInput)
 
 
-// // Stores the input (name)
-// const handleNameQuestion = () => {
-//   const name = userInput.value
-//   showMessage(`My name is ${name}!`, 'user')
-//   inputWrapper.innerHTML = ``
-//   setTimeout (() => {whatPlant(greeting)}, 1000)
-// }
-
-
-// Model question - Which model would you like?
-// const choiceModel = document.getElementById('choice-model').addEventListener('submit')
-
-
-
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
@@ -140,4 +165,3 @@ form.addEventListener('submit', handleInput)
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 800)
-}
