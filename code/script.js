@@ -41,12 +41,13 @@ const showMessage = (message, sender) => {
 // Starting here. Introducing botQuestions
 // Question 1. What's your name, user?
 const greeting = () => {
-  console.log("Hello")
+  console.log("First convo")
   showMessage(`Hi and welcome to Bicycle Bot Shop, what's your name?`, 'bot')
 }
 
 // Bot greets the user, and asks if she/he wants to order a bike
 const wantBike = (name) => {
+  console.log("Second convo")
   showMessage(`Nice to meet you ${name}!`, 'bot')
   setTimeout (() => {showMessage(`Would you like to order a bike?`, 'bot')
 
@@ -55,24 +56,26 @@ inputWrapper.innerHTML = `
 <button id="yes">Yes! 👍</button>
 <button id="no">No! 👎</button>
 `
-  document.getElementById('yes').addEventListener('click', () => bikeSelection ('yes'))
-  document.getElementById('no').addEventListener('click', () => bikeSelection ('no'))
+console.log("Third convo")
+  document.getElementById('yes').addEventListener('click', () => bikeSelection ('Yes'))
+  document.getElementById('no').addEventListener('click', () => bikeSelection ('No'))
 }, 1200)
 }
 
 
 // Funcion if user wants bike or not
 const bikeSelection = (bikeChoice) => {
+  console.log("Fourth convo")
 questionNumber++
   showMessage(`${bikeChoice}`, 'user')
-  showMessage(`What kind of bike would you like?`, 'bot')
   
-  if (bikeChoice === 'yes') {
+  if (bikeChoice === 'Yes') {
     inputWrapper.innerHTML = `
     <button id="mountainBike">Mountainbike</button>
     <button id="ladyBike">Ladybike</button>
     <button id="sportyBike">Sportybike</button>
     `
+    showMessage(`What kind of bike would you like?`, 'bot')
     document.getElementById('mountainBike').addEventListener('click', () => modelSelection('mountainBike'))
     document.getElementById('ladyBike').addEventListener('click', () => modelSelection('ladyBike'))
     document.getElementById('sportyBike').addEventListener('click', () => modelSelection('sportyBike'))
@@ -87,10 +90,11 @@ questionNumber++
 // Color choice
   const modelSelection = (modelChoice) => {
     questionNumber++
+    console.log("Fifth convo")
 
     if (modelChoice === 'mountainBike') {
       showMessage(`I would like a mountainbike`, 'user')
-      setTimeout(showMessage(`What colour do you prefer?`, 'bot'),1000)
+      setTimeout(showMessage(`What colour do you prefer?`, 'bot'), 3000)
 
       inputWrapper.innerHTML = `
       <button id="blueColor">Blue</button>
@@ -100,6 +104,7 @@ questionNumber++
       document.getElementById('redColor').addEventListener('click', () => orderConfirmation('Red'))
     } else if (modelChoice === 'ladyBike') {
       showMessage(`I would like a ladybike`, 'user')
+      setTimeout(showMessage(`What colour do you prefer?`, 'bot'), 3000)
       inputWrapper.innerHTML = `
       <button id="greenColor">Green</button>
       <button id="orangeColor">Orange</button>
@@ -108,6 +113,7 @@ questionNumber++
       document.getElementById('orangeColor').addEventListener('click', () => orderConfirmation('Orange'))
     } else {
       showMessage(`I would like a sportybike`, 'user')
+      setTimeout(showMessage(`What colour do you prefer?`, 'bot'), 3000)
       inputWrapper.innerHTML = `
       <button id="pinkColor">Pink</button>
       <button id="purpleColor">Purple</button>
@@ -119,6 +125,7 @@ questionNumber++
 
   // Summary before order confirmation
   const orderConfirmation = (lastChoice) => {
+    console.log("Sixth convo")
     questionNumber++
 
     setTimeout(() => {
@@ -135,7 +142,7 @@ questionNumber++
       showMessage(`Based on your selection you have ordered a pink sportybike, is that what you want? Please confirm.`, 'bot')
       } else if (lastChoice === 'Purple') {
       showMessage(`Based on your selection you have ordered a purple sportybike, is that what you want? Please confirm.`, 'bot')
-    }}, 1000)
+    }}, 500)
   }
   
 
@@ -150,8 +157,8 @@ questionNumber++
     } else if (questionNumber === 3) {
       setTimeout(bikeSelection, 800)
     } else if (questionNumber === 4) {
-      setTimeout(XXXX, 800)
-      }
+      setTimeout(modelSelection, 800)
+    }
     }
 
 
