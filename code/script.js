@@ -6,9 +6,6 @@ const inputWrapper = document.getElementById('input-wrapper')
 // const sendBtn = document.getElementById('submit')
 
 // Global variables, if you need any, declared here
-const firstPlace = 'Gothenburg'
-const secondPlace = 'Malmö'
-const thirdPlace = 'Stockholm'
 
 // Functions declared here
 
@@ -59,7 +56,6 @@ const handleNameInput =  (event) => {
 
 const destination = () => {
   showMessage(`Choose your destination here`, 'bot')
-
   inputWrapper.innerHTML = `
     <button id="gotBtn">Gothenburg</button>
     <button id="mmxBtn">Malmö</button>
@@ -67,37 +63,79 @@ const destination = () => {
 
   document
     .getElementById('gotBtn')
-    .addEventListener('click', () => showMessage('Gothenburg', 'user'))
-    setTimeout(() => vehicle(), 3000)
+    .addEventListener('click', () => { showMessage('Gothenburg', 'user')
+    setTimeout(() => showMessage('Gothenburg is a nice place, choose your vehicle', 'bot'), 1000)
+    inputWrapper.innerHTML = ''
+      setTimeout(vehicle, 2000)
+  })
 
   document
     .getElementById('mmxBtn')
-    .addEventListener('click', () => showMessage('Malmö', 'user'))
+    .addEventListener('click', () => { showMessage('Malmö', 'user')
+    setTimeout(() => showMessage('Malmö is a nice place, choose your vehicle', 'bot'), 1000)
+    inputWrapper.innerHTML = ''
+    setTimeout(vehicle, 2000)
+  })
     
   document
     .getElementById('stoBtn')
-    .addEventListener('click', () => showMessage('Stockholm', 'user'))
-
+    .addEventListener('click', () => { showMessage('Stockholm', 'user')
+    setTimeout(() => showMessage('Stockholm is a nice place, choose your vehicle', 'bot'), 1000)
+    inputWrapper.innerHTML = ''
+    setTimeout(vehicle, 2000)
+  })
 }
 
-
 const vehicle = () => {
-  showMessage(`Choose your vehicle`, 'bot')
-
 inputWrapper.innerHTML = `
       <select id="select">
         <option value="" selected disabled>👇 These vehicles are available...</option>
-        <option value="limo">Limousine</option>
-        <option value="minibus">Minibus</option>
-        <option value="rickshaw">Rickshaw</option>
+        <option value="Limo">Limousine</option>
+        <option value="Minibus">Minibus</option>
+        <option value="Rickshaw">Rickshaw</option>
       </select>`
+
+  document.getElementById("select").addEventListener("change", () => { 
+    showMessage(`Please take me in a ${select.value}`, 'user')
+    setTimeout(rate,1000)
+})
 }
-      
+const rate = () => {
+  let price
+if (select.value === 'Limo') {
+  price = '20000SEK'
+} else if (select.value === 'Minibus') {
+  price = '5000SEK'
+} else if (select.value === 'Rickshaw') {
+  price = '10sek'
+  alert('Unfortunately your ride will be in a Rickshaw')
+}
+showMessage(`${select.value}, that will be ${price}. Would you like to place the order?`, 'bot')
+inputWrapper.innerHTML = ''
 
-// if (firstPlace === true) {
-//   console.log('Gothenburg is a nice place, choose your vehicle', 'bot')
+inputWrapper.innerHTML = `
+    <button id="Yes">Yes</button>
+    <button id="No">No</button>`
 
-// }
+    document.getElementById("Yes").addEventListener("click", () => {
+      showMessage('Yes', 'user')
+      setTimeout(order, 1000)
+    })
+    document.getElementById("No").addEventListener("click", () => {
+      location.reload()
+      return false  
+    })
+  
+}
+
+
+const order = () => {
+  inputWrapper.innerHTML = ''
+  showMessage('Thanks for your order, we will arrive shortly', 'bot')
+
+}
+
+
 
 
 
@@ -110,8 +148,8 @@ inputWrapper.innerHTML = `
 // }
 
 // Set up your eventlisteners here
-  form.addEventListener('submit', handleNameInput)
-  // form.addEventListener('submit', handleDestination)
+form.addEventListener('submit', handleNameInput)
+  // form.addEventListener('submit', handleDestination,true)
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
