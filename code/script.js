@@ -42,11 +42,9 @@ const showMessage = (message, sender) => {
         `
       }
       chat.scrollTop = chat.scrollHeight 
-  } 
+  }
 
-      // <img src="assets/user.png" alt="User" />  
-
-      // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
       
 
 
@@ -69,6 +67,9 @@ const showMessage = (message, sender) => {
       } else if (questionNumber === 5) {
         replyUser(userAnswer)
         setTimeout(() => selectDrinks(userAnswer), 800)
+      } else if (questionNumber === 6) {
+        replyUser(userAnswer)
+        setTimeout(() => confirmReservation(userAnswer), 800)
       } else {
         replyUser(userAnswer)
         setTimeout(() => thankYouMessage(userAnswer), 1500)
@@ -78,7 +79,7 @@ const showMessage = (message, sender) => {
     // Starts here if (questionNumber === 6)
     const greeting = () => {
       questionNumber = 1
-      replyBot(`Hello there, What's your name?`)
+      replyBot(`Hello there, what's your name?`)
     }
     
     form.addEventListener('submit', (event) => {
@@ -91,8 +92,8 @@ const showMessage = (message, sender) => {
       replyBot(`Hey ${userName.value}! Are you looking for a movie for kids or adults?`)
       userName.value = ''
       inPutWrapper.innerHTML = `
-          <button id='kids-btn'>Kids</button>
-          <button id='adults-btn'>Adults</button>
+          <button id='kids-btn'>Kids <img src="assets/kids.png" alt="kid" /></button>
+          <button id='adults-btn'>Adults <img src="assets/adults.png" alt="adult" /></button>
           ` 
       document.getElementById('kids-btn').addEventListener('click', () => {
         bringNextQuestion('Kids')
@@ -142,7 +143,7 @@ const showMessage = (message, sender) => {
 
     const selectSavourySnacks = (selectedMovie) => {
       questionNumber = 4
-      replyBot(`${selectedMovie}, great choice! Then to the important part! What kind of snacks would you like to have?`)
+      replyBot(`${selectedMovie}, great choice! Then to the important part! What kind of snacks would you like to have? &#128523`)
 
       inPutWrapper.innerHTML = `
       <button id='popcorn-btn'>Popcorn <img src="assets/popcorn.png" alt="popcorn" /></button>
@@ -208,10 +209,29 @@ const showMessage = (message, sender) => {
       })
     }
 
+    const confirmReservation = () => {
+      questionNumber = 7
+      replyBot(`Alright! Now you can press confirm to send your order or press restart if you want to start a new order instead &#129303`)
+
+      inPutWrapper.innerHTML = `
+      <button id='confirm-btn'>Confirm </button>
+      <button id='restart-btn'>Restart </button>
+      `
+
+      document.getElementById('confirm-btn').addEventListener('click', () => {
+        bringNextQuestion(`Confirm`)
+      })
+      document.getElementById('restart-btn').addEventListener('click', () => {
+        chat.innerHTML = ``
+        greeting()
+      })
+    }
     
     const thankYouMessage = () => {
-      replyBot('Okey dokey! Your reservation is now ready. You can pay when arriving. We hope you enjoy the movie! And the snacks too of course ;)')
-      inPutWrapper.innerHTML = ''
+      replyBot(`Okey dokey! Your reservation is now ready. You can pay when arriving. We hope you enjoy the movie! &#127871 &#129380 &#128525`)
+      const audio = new Audio('assets/tadaa.mp3')
+      audio.play()
+      inPutWrapper.innerHTML = ``
     }
     
   

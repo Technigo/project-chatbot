@@ -3,15 +3,54 @@
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   min-height: 100vh;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Fjalla One', sans-serif;
   /*background: #0026ff;*/
   background-image: url('assets/background-popcorn.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.drop-curtain {
+  background-image: url('assets/curtains.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  z-index: -5;
+  opacity: 0;
+}
+
+.drop-curtain {
+  transform: translateY(0);
+  animation: slideup 5s ease-out 1;
+}
+
+@keyframes slideup {
+  0% {
+    z-index: 2;
+    transform: translateY(0%);
+    position: fixed;
+    display: block;
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(0);
+  }
+
+  100% {
+    z-index: 2;
+    transform: translateY(-100%);
+    position: fixed;
+    display: block;
+    opacity: 1;
+  }
 }
 
 h1 {
@@ -22,6 +61,7 @@ h1 {
   text-shadow: 1px 1px #222222;
   text-align: center;
   text-transform: uppercase;
+  margin-top: 2rem;
 }
 
 h2 {
@@ -31,7 +71,7 @@ h2 {
   color: #B6002D;
   text-shadow: 1px 1px #222222;
   text-align: center;
-  margin-bottom: 36px;
+  margin-bottom: 1rem;
 }
 
 p {
@@ -71,7 +111,6 @@ main {
   height: 600px;
   border-radius: 30px;
   background: rgb(240, 239, 237, 0.9);
-/*  background: #c2ad9bea;*/
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -108,7 +147,7 @@ main {
 }
 
 .bubble {
-  background: #cfc7c4ec;
+  background: rgba(216, 164, 31, 0.705);
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
@@ -142,23 +181,20 @@ button,
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(218, 165, 32, 0.952);
-  /*#d99013e7;*/
-  /*#eeae40;*/
+  background-color: rgba(216, 164, 31, 0.705);
   color: #B6002D;
   border: none;
   border-radius: 5px;
   padding: 16px 40px;
   margin-right: 4px;
   margin-top: 10px;
+  font-weight: 600;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
-  font-weight: 500;
+  font-family: 'Fjalla One';
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
 
 button:hover,
 #select-genre {
