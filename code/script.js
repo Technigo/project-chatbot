@@ -9,16 +9,8 @@ const nameInput = document.getElementById('name-input')
 // Global variables, if you need any, declared here
 
 
-
 // Functions declared here
 
-// const botReplay = (msg) => {
-//   showMessage(msg, 'bot')
-// }
-
-// const userReplay = (msg) => {
-//   showMessage(msg, 'user')
-// }
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -29,14 +21,14 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user_2.png" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     // console.log('testing testing to see the log')
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bot_2.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p> 
         </div>
@@ -50,13 +42,10 @@ const showMessage = (message, sender) => {
 }
 
 
-
-
 // Starts here
 const greeting = () => {
   showMessage(`Hello hey! What´s your name? I need to know!`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
-
 }
 
 //This function adds the name
@@ -76,7 +65,7 @@ const handleNameQuestion = (e) => {
   // setTimeout(handleNameQuestion, 500)
 
   //added below to get to the next question
-  setTimeout(() => drinkRec(name), 1000) //Added thursday
+  setTimeout(() => drinkRec(name), 1000) 
 }
 
 // interaction 2 Day or evening
@@ -84,8 +73,8 @@ const drinkRec = (name) => {
   showMessage(`Would you like a drinkrecommendation, ${name}?`, 'bot')
 
   formInputWrapper.innerHTML=
-  `<button id="yes" type="button">Yes</button>
-    <button id="no" type="button">No</button>`
+  `<button id="yes" type="submit">Yes</button>
+    <button id="no" type="submit">No</button>`
     
   document
     .getElementById('yes')
@@ -107,18 +96,16 @@ const drinkRec = (name) => {
 
   
 // Interaction 3  
-
-
 const softyOrWild = () => {
-  showMessage(`Are you a softy or a wild cat?`, 'bot')
+  showMessage(`Are you a softy or a wildcat?`, 'bot')
   formInputWrapper.innerHTML=
   `<button id="softy" type="button">Softy</button>
-    <button id="wildCat" type="button">Wild cat</button>`
+    <button id="wildCat" type="button">Wildcat</button>`
 
     document
     .getElementById('softy')
     .addEventListener('click', () => {
-      showMessage('Yes I´m soft', 'user')
+      showMessage('I´m a softy!', 'user')
       setTimeout( () => yourSoftyDrink(), 1000) //Yoursofty ist för softy i parentes
 })
 
@@ -129,144 +116,80 @@ const softyOrWild = () => {
         setTimeout( () => yourWildDrink(), 1000) 
         //call next function with a paremeter for no
       })   
-
 }
 
 // Interaction 4  
-
 const noThankYou = () => {
-  showMessage(`Ok, have a nice life then! You can still press yes if you change your mind`, 'bot')
+  showMessage(`Oh well, see you another day then!`, 'bot')
+  formInputWrapper.innerHTML = ''
   }
 
-// Interaction 5
 
+// Interaction 5
 const yourSoftyDrink = () => {
-  showMessage(`A mocktail is your cup of tea`, 'bot')
-  setTimeout( () => satisfied(), 1000) 
-  //picture of 
-  // formInputWrapper.innerHTML=
-  // <section><img src="assets/bot.png" alt="Bot"/> </section>
-  //remove buttons
+  showMessage(`A mocktail is your cup of tea!`, 'bot')
+  setTimeout( () => mocktailImg(), 1000) 
+}
+ //Picture of mocktail
+const mocktailImg = () => {
+  formInputWrapper.innerHTML=
+  '<img src="assets/paige-ledford-1Di03LTniYE-unsplash.jpg" alt="Bot"/>'
+  setTimeout( () => satisfied(), 3000) 
 }
 
-
 // Interaction 6
-
 const yourWildDrink = () => {
-  showMessage(`A whiskey on the rocks for you stud`, 'bot')
-  setTimeout( () => satisfied(), 1000) 
-//picture of 
-  //remove buttons
+  showMessage(`A whiskey on the rocks for you then!`, 'bot')
+  setTimeout( () => whiskeylImg(), 1000) 
+}
+
+//Picture of whiskey
+const whiskeylImg = () => {
+  formInputWrapper.innerHTML=
+  '<img src="assets/ambitious-creative-co-rick-barrett-UyF3Tal_KXw-unsplash.jpg" alt="Bot"/>'
+  setTimeout( () => satisfied(), 3000) 
 }
 
 // Interaction 7 = conditionals
-
-
-
 const satisfied = () => {
 
-  showMessage(`Are you happy with your recomendation?`, 'bot')
+  showMessage(`Are you happy with your recommendation?`, 'bot')
   formInputWrapper.innerHTML=
   `<button id="yes" type="submit">Yes!</button>
-    <button id="no" type="submit">No</button>`
+   <button id="no" type="submit">No</button>`
 
     document
     .getElementById('yes')
     .addEventListener('click', () => {
-      showMessage('yes its all good', 'user')
-      // endingPhrase('yes') //call next function with a parameter for yes
-      setTimeout( () => endingPhrase(), 1000) 
+      showMessage('Yes, it´s all good', 'user')
+      endingPhrase('yes') //call next function with a parameter for yes
     })
 
     document
     .getElementById('no')
     .addEventListener('click', () => {
-      showMessage('no thanks', 'user')
-      endingPhrase('no') //call next function with a parameter for yes
+      showMessage('Nah, I don´t like it..', 'user')
+      endingPhrase('no') //call next function with a parameter for no
     })
   }
 
-// Interaction 8 = conditionals
-    
-//   const endingPhrase = () => {
+// Interaction 8 = conditionals  
+const endingPhrase = (satisfied) => {
 
-//   if (  === yes) {
-//     showMessage('Hope you enjoy your evening!', 'bot')
- 
-    
-//   } else {
-//     showMessage('Too bad!', 'bot')
-//   }
-
-// }
-
-  
-//are you satisfied with your recomendation. 
-// if Yes "hope you enjoy your evening
-// else if No to bad sucker ev a link to more drinks
-
-
-
-
-
-
-
-  // if (option === 'morning') {
-  //   setTimeout(showMessage('Are you a softy or  wild cat?', 'bot'), 1000)
-  //   formInputWrapper.innerHTML=
-  //   `<button id="softy" type="submit">softy</button>
-  //    <button id="wildCat" type="submit">wild cat</button>`
-  //   input.value = ''
-  //   // Also add some code in here to add answer options for next message
-
-  // } else if (option === 'evening'){
-  //   setTimeout(showMessage('Are you a sassy lady or a cool cat?', 'bot'), 1000)
-  //   formInputWrapper.innerHTML=
-  //   `<button id="sassyLady" type="submit">Sassy Lady</button>
-  //    <button id="coolCat" type="submit">Cool Cat</button>`
-  //    input.value = ''
-  //   // Also add some code in here to add answer options for next message
+  if (satisfied === 'yes') {
+  showMessage('Hope you enjoy your evening!', 'bot')
+  console.log('yes to drinks')
+  formInputWrapper.innerHTML = ''
+  } else if (satisfied === 'no') {
+  showMessage('So sad to hear that! Click <a href="https://www.worlddrinksawards.com/">here</a> to get some more inspiration!', 'bot')
+  console.log('nonono')
+  formInputWrapper.innerHTML = '' //reset input field
+  }
+}
 
   
-
-
-
-
-
-    // setTimeout(showMessage('Are you a softy or a wild cat?', 'bot'), 1000)
-    // formInputWrapper.innerHTML=
-    // `<button id="softy" type="submit">softy</button>
-    //  <button id="wildCat" type="submit">wild cat</button>`
-    //  input.value = ''
-    // // Also add some code in here to add answer options for next message
-
-
-    //  formInputWrapper.innerHTML=
-    // `<button id="softy" type="submit">softy</button>
-    //  <button id="wildCat" type="submit">wild cat</button>`
-    //  input.value = ''
-    // Also add some code in here to add answer options for next message
-  
-
-//Interaction 3  () 
-
-// const nextFunction = () => {
-
-//   if (morning ===)
-
-//   showMessage(`Then you should have a tea, probably green)
-// } 
-
-
-// Interaction 4 Evening..
-
-
-
-
 // Set up your eventlisteners here
 form.addEventListener('submit', handleNameQuestion)
-
-
 
 
 // When website loaded, chatbot asks first question.

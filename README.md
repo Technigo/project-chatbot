@@ -1,12 +1,19 @@
-# Project Name
+# Chat-bot Drinkifier 
 
-Replace this readme with your own information about your project.
+This is a chatbot suggestion a drink for you based on how you feel.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+First time practising javascript and first time pair-programing. 
+We used functions (and some conditions). And eventlistners. 
+
+We started off with a more complex storyline but "scaled" it down to a pretty simple one to foucus on really understing what we were doing.
+
+We know that this isn't the best way to solve it, (DRY method has NOT been applied) but we learned a lot. And understand that this way of building, nesting functions, get super complicated when building bigger. And also that we should place eventlistner in a condition instead. 
+
+If we hade more time we would re do with more conditions (if-statements) on every step. Like one for replies another for questions and one more for eventlistners. 
+
 
 ## View it live
 
