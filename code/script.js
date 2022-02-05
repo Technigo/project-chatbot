@@ -81,8 +81,8 @@ const modelSelection = (modelChoice) => {
     showMessage(`I would like a mountainbike`, 'user')
     setTimeout(() => {showMessage(`Alright, a mountainbike! What colour do you prefer?`, 'bot')
     inputWrapper.innerHTML = `
-    <button id="blueColor">Blue 💙</button>
-    <button id="redColor">Red ❤️</button>
+    <button id="blueColor">Blue</button>
+    <button id="redColor">Red</button>
     `
  
     document.getElementById('blueColor').addEventListener('click', () => orderConfirmation('Blue'))
@@ -93,8 +93,8 @@ const modelSelection = (modelChoice) => {
     showMessage(`I would like a ladybike`, 'user')
     setTimeout(() => {showMessage(`Alright, a ladybike! What colour do you prefer?`, 'bot')
     inputWrapper.innerHTML = `
-    <button id="greenColor">Green 💚</button>
-    <button id="orangeColor">Orange 🧡</button>
+    <button id="greenColor">Green</button>
+    <button id="orangeColor">Orange</button>
     `
     document.getElementById('greenColor').addEventListener('click', () => orderConfirmation('Green'))
     document.getElementById('orangeColor').addEventListener('click', () => orderConfirmation('Orange'))}, 1000)
@@ -104,8 +104,8 @@ const modelSelection = (modelChoice) => {
     showMessage(`I would like a sportybike`, 'user')
     setTimeout(() => {showMessage(`Alright, a sporty bike! What colour do you prefer?`, 'bot')
     inputWrapper.innerHTML = `
-    <button id="yellowColor">Yellow 💛</button>
-    <button id="purpleColor">Purple 💜</button>
+    <button id="yellowColor">Yellow</button>
+    <button id="purpleColor">Purple</button>
     `
     document.getElementById('yellowColor').addEventListener('click', () => orderConfirmation('Yellow'))
     document.getElementById('purpleColor').addEventListener('click', () => orderConfirmation('Purple'))}, 1000)
@@ -137,10 +137,10 @@ const orderConfirmation = (lastChoice) => {
 // }, 500)
 // User responds if satisfied with order
 setTimeout(() => {inputWrapper.innerHTML = `
-<button id="yes">Yes, I'm happy with my choice!</button>
-<button id="no">Nope, try again!</button>`
-document.getElementById('yes').addEventListener('click', () => receipt(`I'm happy with my choice!`))
-document.getElementById('no').addEventListener('click', () => receipt(`I would like to change some things`))
+<button id="happyChoice">Yes, I'm happy with my choice!</button>
+<button id="notHappy">Nope, try again!</button>`
+document.getElementById('happyChoice').addEventListener('click', () => receipt(`I'm happy with my choice!`))
+document.getElementById('notHappy').addEventListener('click', () => receipt(`I would like to change some things`))
 }, 1200)
 }
 const receipt = (final) => {

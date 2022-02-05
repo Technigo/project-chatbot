@@ -140,8 +140,15 @@ button:hover {
 
 footer {
   text-align: center;
-  padding-top: 20px;
+  padding: 2rem;
   color: white;
+  width: 100%;
+  margin-top: 13rem;
+}
+
+footer a {
+  color: #0f644d;
+  text-decoration: none;
 }
 
 /* MEDIA QUERY – MOBILE */
@@ -168,6 +175,12 @@ footer {
 
   main {
     height: 370px;
+  }
+
+  button {
+    margin-right: 0;
+    font-size: 14px;
+    line-height: 20px;
   }
 
   .send-btn {
@@ -205,10 +218,14 @@ footer {
     line-height: 20px;
   }
 
-  button {
-    margin-right: 0;
-    font-size: 14px;
-    line-height: 20px;
+  #yes {
+    width: 50%;
+    margin-right: 0.5rem;
+  }
+
+  #no {
+    width: 50%;
+    margin-left: 0.5rem;
   }
 
   #chat-form {
@@ -216,6 +233,46 @@ footer {
     flex-direction: column;
     margin: 0%;
     padding: 0%;
+  }
+
+  #yellowColor {
+    width: 50%;
+    margin-right: 0.5rem;
+  }
+
+  #purpleColor {
+    width: 50%;
+    margin-right: 0.5rem;
+  }
+
+  #blueColor {
+    width: 50%;
+    margin-right: 0.5rem;
+  }
+
+  #redColor {
+    width: 50%;
+    margin-right: 0.5rem;
+  }
+
+  #greenColor {
+    width: 50%;
+    margin-right: 0.5rem;
+  }
+
+  #orangeColor {
+    width: 50%;
+    margin-right: 0.5rem;
+  }
+
+  #happyChoice {
+    width: 50%;
+    margin-right: 0.5rem;
+  }
+
+  #notHappy {
+    width: 50%;
+    margin-right: 0.5rem;
   }
 
   .input-wrapper form {
@@ -251,15 +308,9 @@ footer {
     margin: 0;
   }
 
-  /*Added styling to button id:s, targeted in JavaScript-file*/
-
-  #yes {
-    width: 50%;
-    margin-right: 0.5rem;
-  }
-
-  #no {
-    width: 50%;
-    margin-left: 0.5rem;
+  footer {
+    text-align: center;
+    margin: 20px 0 20px 0;
+    color: white;
   }
 }
