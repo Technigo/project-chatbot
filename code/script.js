@@ -67,13 +67,13 @@ const question3 = (answer) => {
   }
 
   inputWrapper.innerHTML = `
-    <input id="second-input" type="text" />
-    <button id="second-btn">Send</button>
+    <input id="text-input" type="text" />
+    <button id="send-btn">Send</button>
   `
-  const secondInput = document.getElementById('second-input');
-  document.getElementById('second-btn').addEventListener('click', () => {
-    showMessage(secondInput.value, 'user');
-    secondInput.value ='';
+  const textInput = document.getElementById('text-input');
+  document.getElementById('send-btn').addEventListener('click', () => {
+    showMessage(textInput.value, 'user');
+    textInput.value ='';
     questionGenerator();
   });
 }
@@ -83,13 +83,13 @@ const question4 = (answer) => {
   showMessage(`Thanks for sharing. What's something you're looking forward to this week?`, 'bot');
 
   inputWrapper.innerHTML = `
-    <input id="another-input" type="text" />
-    <button id="another-btn">Send</button>
+    <input id="text-input" type="text" />
+    <button id="send-btn">Send</button>
   `
-  const anotherInput = document.getElementById('another-input');
-  document.getElementById('another-btn').addEventListener('click', () => {
-    showMessage(anotherInput.value, 'user');
-    anotherInput.value ='';
+  const textInput = document.getElementById('text-input');
+  document.getElementById('send-btn').addEventListener('click', () => {
+    showMessage(textInput.value, 'user');
+    textInput.value ='';
     questionGenerator();
   });
 }
