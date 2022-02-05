@@ -11,20 +11,22 @@ body {
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
-  line-height: 34px;
+  font-size: 60px;
+  line-height: 30px;
   color: #fff;
   text-align: center;
-  margin-top: 80px;
+  margin-top: 100px;
+  font-family: "Quintessential", cursive;
 }
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 28px;
   line-height: 34px;
   color: #fff;
   text-align: center;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
+  font-family: "Quintessential", cursive;
 }
 
 p {
@@ -146,11 +148,11 @@ footer {
   color: white;
   width: 100%;
   margin-top: 13rem;
+  line-height: 1rem;
 }
 
-footer a {
-  color: #0f644d;
-  text-decoration: none;
+footer p {
+  font-family: "Quintessential", cursive;
 }
 
 /* MEDIA QUERY – MOBILE */
@@ -171,7 +173,7 @@ footer a {
 
   h1 {
     font-size: 3.1rem;
-    padding: 1rem;
+    padding: 0.5rem;
     margin-top: 2.2rem;
     font-family: "Quintessential", cursive;
     line-height: 5px;
@@ -193,7 +195,7 @@ footer a {
   h2 {
     font-weight: bold;
     font-size: 28px;
-    line-height: 34px;
+    line-height: 2.5rem;
     color: #fff;
     text-align: center;
     margin-bottom: 10px;
@@ -333,7 +335,14 @@ footer a {
 
   footer {
     text-align: center;
-    margin: 20px 0 20px 0;
     color: white;
+    line-height: 1rem;
+    margin-top: 0;
+    font-family: "Quintessential", cursive;
+  }
+
+  footer p {
+    font-size: 1.2rem;
+    line-height: 1.9rem;
   }
 }
