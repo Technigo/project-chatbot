@@ -10,12 +10,6 @@ const audio = new Audio("drill.mp3");
 // Global variables, if you need any, declared here
 let questionStep = 1;
 
-// This variabels shows in the last messages
-let name = "";
-let type = "";
-let service = "";
-
-// Functions declared here
 
 // Function to display the message on the screen both for bot and user
 const botAnswer = (inputMessage) => {
