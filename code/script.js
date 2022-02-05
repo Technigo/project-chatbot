@@ -47,8 +47,8 @@ inputWrapper.innerHTML = `
 <button id="no">No! 👎 </button>
 `
   document.getElementById('yes').addEventListener('click', () => bikeSelection ('Yes'))
-  document.getElementById('no').addEventListener('click', () => bikeSelection ('No'))
-}, 1000)
+  document.getElementById('no').addEventListener('click', () => bikeSelection ('No'))}, 1100)
+
 }
 // Funcion if user wants bike or not
 const bikeSelection = (bikeChoice) => {
