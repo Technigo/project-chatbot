@@ -51,7 +51,7 @@ inputWrapper.innerHTML = `
 console.log("Third convo")
   document.getElementById('yes').addEventListener('click', () => bikeSelection ('Yes'))
   document.getElementById('no').addEventListener('click', () => bikeSelection ('No'))
-}, 1500)
+}, 1000)
 }
 // Funcion if user wants bike or not
 const bikeSelection = (bikeChoice) => {
@@ -68,7 +68,7 @@ questionNumber++
     `
     document.getElementById('mountainBike').addEventListener('click', () => modelSelection('mountainBike'))
     document.getElementById('ladyBike').addEventListener('click', () => modelSelection('ladyBike'))
-    document.getElementById('sportyBike').addEventListener('click', () => modelSelection('sportyBike'))}, 2000)
+    document.getElementById('sportyBike').addEventListener('click', () => modelSelection('sportyBike'))}, 1000)
  
   } else {
     setTimeout(() =>  showMessage(`Okay, have a nice day`, 'bot'), 1000)
@@ -84,13 +84,14 @@ const modelSelection = (modelChoice) => {
   console.log("Fifth convo")
   if (modelChoice === 'mountainBike') {
     showMessage(`I would like a mountainbike`, 'user')
-    setTimeout(() => {showMessage(`Alright, a mountainbike! What colour do you prefer?`, 'bot')}, 1000)
+    setTimeout(() => {showMessage(`Alright, a mountainbike! What colour do you prefer?`, 'bot')
     inputWrapper.innerHTML = `
     <button id="blueColor">Blue 💙</button>
     <button id="redColor">Red ❤️</button>
     `
+ 
     document.getElementById('blueColor').addEventListener('click', () => orderConfirmation('Blue'))
-    document.getElementById('redColor').addEventListener('click', () => orderConfirmation('Red'))
+    document.getElementById('redColor').addEventListener('click', () => orderConfirmation('Red')) }, 1000)
   } else if (modelChoice === 'ladyBike') {
     showMessage(`I would like a ladybike`, 'user')
     setTimeout(showMessage(`Alright, a ladybike! What colour do you prefer?`, 'bot'), 3000)
@@ -141,7 +142,7 @@ setTimeout (() => {inputWrapper.innerHTML = `
 <button id="no">Nope, try again!</button>`
 document.getElementById('yes').addEventListener('click', () => receipt(`I'm happy with my choice!`))
 document.getElementById('no').addEventListener('click', () => receipt(`I would like to change some things`))
-}, 3000)
+}, 1000)
 }
 const receipt = (final) => {
   questionNumber++
