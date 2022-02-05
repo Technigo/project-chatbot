@@ -1,13 +1,14 @@
-# Project Name
+# Chatbot Inspirational Quotes, week 4
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weeks assignment was to build a chatbot in javaScript. We got some starter code and a example from Technigo.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We did a visual structure of the user flow in Figma (bot questions and user replies). 
+We looked at the example code in devTools to try to understand the functions and variables, googled for some answers and articles and looked at youtube videos about js. 
+If we would have more time to complete the assignment, we would look further into the CSS and one thing particularily is the picture of the pug that shows in the bot reply when you choose a pick me up in form of a meme. 
 
 ## View it live
+You can look at our inspirational quote bot on Netlify:
 
 Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
