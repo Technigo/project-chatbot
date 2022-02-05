@@ -128,8 +128,10 @@ if (yearsTogether === 0) {
   showMessage(`Not even a year? Thank god you got rid of him so fast! How are you feeling now?`, 'bot')
 } else if (yearsTogether > 0 && yearsTogether < 3) {
   showMessage(`${yearsTogether} years huh.. Not too long luckily. How are you feeling?`, 'bot');
-} else {
+} else if (yearsTogether >= 3 && yearsTogether < 10) {
   showMessage(`${yearsTogether} years!! Wow what a waste of time. Thank god you're free. How are you feeling?`, 'bot')
+} else if (yearsTogether > 9) {
+  showMessage(`${yearsTogether} years!!! That's a whole lifetime. Should we plan their murder? How are you feeling?`, 'bot')
 }
   document.querySelector('.years-input').style.display = "none";
   document.querySelector('.years-send-btn').style.display = "none";
