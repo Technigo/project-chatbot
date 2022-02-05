@@ -92,18 +92,22 @@ const modelSelection = (modelChoice) => {
  
     document.getElementById('blueColor').addEventListener('click', () => orderConfirmation('Blue'))
     document.getElementById('redColor').addEventListener('click', () => orderConfirmation('Red')) }, 1000)
+
+
   } else if (modelChoice === 'ladyBike') {
     showMessage(`I would like a ladybike`, 'user')
-    setTimeout(showMessage(`Alright, a ladybike! What colour do you prefer?`, 'bot'), 3000)
+    setTimeout(() => showMessage(`Alright, a ladybike! What colour do you prefer?`, 'bot'), 1000)
     inputWrapper.innerHTML = `
     <button id="greenColor">Green 💚</button>
     <button id="orangeColor">Orange 🧡</button>
     `
     document.getElementById('greenColor').addEventListener('click', () => orderConfirmation('Green'))
     document.getElementById('orangeColor').addEventListener('click', () => orderConfirmation('Orange'))
-  } else {
+  }
+  
+  else {
     showMessage(`I would like a sportybike`, 'user')
-    setTimeout(showMessage(`Alright, a sportybike! What colour do you prefer?`, 'bot'), 3000)
+    setTimeout(() => showMessage(`Alright, a sportybike! What colour do you prefer?`, 'bot'), 1000)
     inputWrapper.innerHTML = `
     <button id="yellowColor">Yellow 💛</button>
     <button id="purpleColor">Purple 💜</button>
