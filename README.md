@@ -1,4 +1,4 @@
-# Project Name
+# Chatbot 🤖
 
 The assignment for week 4 was to build a chatbot in JavaScript. Me and Jenny created a BOT SHOP where the user is able to order a bike in a specific model and color.
 
