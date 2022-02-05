@@ -1,13 +1,18 @@
 # Project Name
 
-Replace this readme with your own information about your project.
+The assignment was to build a chatbot using JavaScript functions and conditional statements. The project required working together in a pair to complete all project iterations.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Stretch goals that we reached include:
+- Changing the styling
+- Adding additional form elements
+- Refactoring the code to learn more about different approaches with functions
+
+The project was done as pair programming in collaboration with Åsa Stieurin.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+More coming soon.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Here is a link to our project on Netlify: https://hello-friend-chatbot.netlify.app/
