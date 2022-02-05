@@ -13,6 +13,9 @@ We first made a plan on figma, choosing a theme, and deciding how to structure t
 
 
 
-## View it live
+## What would you do, if you could have more time?
 
 If there were more time, we would add more dialogue options to make it more realistic.
+
+## View it live
+https://dr-strange-chatbot.netlify.app
