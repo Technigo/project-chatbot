@@ -4,240 +4,188 @@ const input = document.getElementById("name-input");
 const sendButton = document.getElementById("send-btn");
 const inputWrapper = document.getElementById("input-wrapper");
 const form = document.getElementById("name-form");
-let buttons = document.getElementsByTagName("button"); // tjänar syfte?? se rad 53
-const notAllowed = [1, 2, 3, 4, 5, 6, 7, 8, 9, "!", "?", "@", ":", ";"]
 
 // Global variables, if you need any, declared here
-let numberOfQuestionsAsked = 0
-const greetingMessage = `Hello there, What's your name?`;
-let userNameDict = {}
+let numberOfQuestionsAsked = 0;
+
+let allKnowingObj = {};
+
+const ageAlternatives = ["0-29", "30-59", "60+"]
+const smileyHTMLText = ["&#128520", "&#128525", "&#128549", "&#128556", "&#128513"];
+const weatherArray = ["Sunny", "Cloudy", "Rainy", "Snowy", "Stormy", "Windy", "Hail"];
+
+const blueish = "linear-gradient(90deg, rgba(10,41,84,1) 0%, rgba(10,63,64,1) 30%, rgba(19,74,92,1) 53%, rgba(26,49,112,1) 72%, rgba(24,21,91,1) 88%)";
+const greenish = "linear-gradient(90deg, rgba(18,8,80,1) 0%, rgba(11,52,9,1) 30%, rgba(50,92,19,1) 53%, rgba(26,112,49,1) 72%, rgba(21,91,73,1) 88%)";
+const redish = "linear-gradient(90deg, rgba(84,10,10,1) 0%, rgba(64,25,10,1) 30%, rgba(92,76,19,1) 53%, rgba(96,112,26,1) 72%, rgba(91,64,21,1) 88%)";
+const yellowish = "linear-gradient(90deg, rgba(51,48,11,1) 0%, rgba(75,64,14,1) 30%, rgba(90,92,19,1) 53%, rgba(131,158,55,1) 72%, rgba(176,190,34,1) 88%)";
+const purpleish = "linear-gradient(90deg, rgba(48,11,51,1) 0%, rgba(21,14,75,1) 30%, rgba(75,19,92,1) 53%, rgba(78,26,70,1) 72%, rgba(131,27,49,1) 88%)";
+const backgroundGradients = [blueish, redish, greenish, yellowish, purpleish];
+
 // Functions declared here
 
-
-form.addEventListener("submit", (event) => {
-  //prevent reload of page
-  event.preventDefault();
-});
-
-const buttonClicked = () => {
-  numberOfQuestionsAsked++
-  
-  if (numberOfQuestionsAsked < 6) {
-    console.log(numberOfQuestionsAsked)
-    if (numberOfQuestionsAsked === 1) {
-      showMessage(input.value, "user")
-      //saves the user's name
-      userNameDict["name"] = input.value
-      questionAge()
-    } else if (numberOfQuestionsAsked === 2) {
-      showMessage(event.target.innerHTML, "user")
-      questionEnergy()
-    } else if (numberOfQuestionsAsked === 3) {
-      showMessage(userNameDict["slider-value"], "user");
-      questionMood()
-    } else if (numberOfQuestionsAsked === 4) {
-      // console.log("sista frågan")
-      showMessage(userNameDict["slider-value"], "user");
-      questionWeather();
-    } else if (numberOfQuestionsAsked === 5) {
-      questionHappy()
-      // console.log(numberOfQuestionsAsked)
-    }
-  } else {
-    
-    let statement = userNameDict["happy"].includes("yes")
-    let statement2 = userNameDict["happy"].includes("oui")
-      if (statement || statement2) {
-        makeColors();
-        document.getElementsByTagName("body")[0].style.backgroundColor = `rgb(${values[0]}, ${values[1]}, ${values[2]})`;
-      } else {
-        document.getElementsByTagName("body")[0].style.backgroundColor = "black"
-      }
-  }
+//På firefox är texten från förra gången kvar när man laddar om sidan...
+input.value = '';
 
 
+const greeting = () => {
+  showMessage(`Hello stranger! What's your name?`, 'bot');
   input.value = '';
 };
 
+setTimeout(greeting, 500);
 
-for (let button of buttons) {
-button.addEventListener("click", buttonClicked)
-console.log(buttons);
+
+
+const buttonClicked = () => {
+  
+  numberOfQuestionsAsked++;
+  if (numberOfQuestionsAsked < 6) {
+    if (numberOfQuestionsAsked === 1) {
+      showMessage(input.value, "user");
+      //saves the user's name
+      allKnowingObj["name"] = input.value;
+      setTimeout(() => {
+        showMessage(`Hello ${allKnowingObj["name"]}! So you're wondering what your mood is? Let me help!
+        I'm going to ask you a couple of questions to help deterine the right color for you!`, "bot")
+      }, 500);
+      setTimeout(questionAge, 2000)
+    } else if (numberOfQuestionsAsked === 2) {
+      showMessage(`I am ${allKnowingObj["age-range"]} years old`, "user");
+      setTimeout(questionEnergy, 500);
+    } else if (numberOfQuestionsAsked === 3) {
+      showMessage(`I would say I'm at ${allKnowingObj["slider-value"]} out of 10`, "user");
+      setTimeout(questionMood(), 2000);
+    } else if (numberOfQuestionsAsked === 4) {
+      showMessage(allKnowingObj["mood-smiley"], "user");
+      setTimeout(questionWeather, 500);
+    } else if (numberOfQuestionsAsked === 5) {
+      showMessage(allKnowingObj["weather-choice"], "user");
+      setTimeout(questionHappy, 500);
+    };
+  } else {
+    setTimeout(() => {
+      showMessage("Thank you for your input! Here is your mood colour!", "bot");
+      console.log("hallå?");
+      if (allKnowingObj["happy"].includes("yes") || allKnowingObj["happy"].includes("oui")) {
+        setTimeout(() => {
+          changeBackground(backgroundGradients[randomIndex()]);
+        }, 1500);
+      } else {
+        setTimeout(() => {
+          changeBackground("black");
+        }, 500);
+      };
+    }, 500);
+    inputWrapper.innerHTML = "";
+  };
+  input.value = '';
 };
 
-
-
-
-// form.addEventListener("submit", (event) => {
-//   //prevent reload of page
-//   event.preventDefault()
-//   numberOfQuestionsAsked++
-//   //posts user's message
-//   showMessage(input.value, "user")
-  
-//   if (numberOfQuestionsAsked < 6) {
-//     console.log(numberOfQuestionsAsked)
-//     if (numberOfQuestionsAsked === 1) {
-//       //saves the user's name
-//       let userName = input.value
-//       questionAge(userName)
-//     } else if (numberOfQuestionsAsked === 2) {
-//       console.log(numberOfQuestionsAsked)
-//     } else if (numberOfQuestionsAsked === 3) {
-//       console.log(numberOfQuestionsAsked)
-//     } else if (numberOfQuestionsAsked === 4) {
-//       console.log(numberOfQuestionsAsked)
-//     } else if (numberOfQuestionsAsked === 5) {
-//       console.log(numberOfQuestionsAsked)
-//     }
-    
-//   }
-//   input.value = '';
-// })
-
 const questionAge = () => {
-  showMessage(`Hello ${userNameDict["name"]}! How old are you?`,"bot")
-  inputWrapper.innerHTML = ''
-  // input.type = "button"
+  showMessage("How old are you?", "bot");
+  inputWrapper.innerHTML = '';
 
-  let button1 = document.createElement('button')
-  let button2 = document.createElement('button')
-  let button3 = document.createElement('button')
+  const ageButtons = createNewElement("button", 3);
+  giveElementsText(ageButtons, ageAlternatives);
+  
+  for (let button of ageButtons) {
+    inputWrapper.appendChild(button);
+    button.onclick = function () {
+      allKnowingObj["age-range"] = this.innerHTML;
+      buttonClicked();
+    };
+  };
+};
 
-  button1.innerHTML = '0-29'
-  button2.innerHTML = '30-59'
-  button3.innerHTML = '60+'
+const questionEnergy = () => {
+  inputWrapper.innerHTML = "";
 
-  let buttonsToAppend = [button1, button2, button3]
+  if (allKnowingObj["age-range"] == "0-29") {
+    showMessage(`Alright young one, what's your energy level?`,"bot"); //Vi kanske kan ändra vilket meddelande som ska postas utifrån vilket svar vi får
+  } else if (allKnowingObj["age-range"] == "30-59") {
+    showMessage(`What's your energy level?`,"bot");
+  } else {
+    showMessage(`What's your energy level?`,"bot");
+  };
+  
+  inputWrapper.appendChild(form);
+  form.appendChild(input);
+  form.appendChild(sendButton);
 
-  for (let button of buttonsToAppend) {
-    inputWrapper.appendChild(button)
-    button.onclick = buttonClicked
-  }
 
-}
+  form.classList.add("slide-container")
+  input.classList.add("slider")
+  sendButton.classList.add("more-margin");
+  input.type = "range";
+  input.max = "10";
+  input.min = "0";
+  allKnowingObj["slider-value"] = input.value;
+  // Update the current slider value (each time you drag the slider handle)
+  input.oninput = function () {
+    allKnowingObj["slider-value"] = this.value;
+  };
+};
 
 const questionMood = () => {
-  showMessage(`So, ${userNameDict["name"]}.. Which smiley best describes your mood?`,"bot")
-  inputWrapper.innerHTML = ''
+  showMessage(`So, ${allKnowingObj["name"]}.. Which smiley best describes your mood?`,"bot");
+  inputWrapper.innerHTML = '';
+  const smileyDivs = createNewElement("div", 5);
+  giveElementsText(smileyDivs, smileyHTMLText);
   
-  let smileyDiv1 = document.createElement('div')
-  let smileyDiv2 = document.createElement('div')
-  let smileyDiv3 = document.createElement('div')
-  let smileyDiv4 = document.createElement('div')
-  let smileyDiv5 = document.createElement('div')
-
-  smileyDiv1.innerHTML = '&#128520'
-  smileyDiv2.innerHTML = '&#128525'
-  smileyDiv3.innerHTML = '&#128549'
-  smileyDiv4.innerHTML = '&#128556'
-  smileyDiv5.innerHTML = '&#128513'
-
-  let smileys = [smileyDiv1, smileyDiv2, smileyDiv3, smileyDiv4, smileyDiv5]
-  for (let smiley of smileys) {
-    smiley.classList.add("smiley-div")
-    smiley.onclick = buttonClicked
-    inputWrapper.appendChild(smiley)
-  }
-}
-
-const questionEnergy=()=>{
-  showMessage(`What's your energy level?`,"bot")
-  inputWrapper.innerHTML=""
-  const slideContainer=document.createElement("div")
-  slideContainer.className="slide-container"
-  const slider =document.createElement("input")
-  slider.type="range"
-  slider.min="1" 
-  slider.max="5"
-  slider.className="slider"
-  slideContainer.appendChild(slider)
-  inputWrapper.appendChild(slideContainer)
-  inputWrapper.appendChild(sendButton)
-  sendButton.classList.toggle("more-margin")
-  userNameDict["slider-value"] = slider.value
- // const slide = document.getElementById("myRange");
-  const output = document.getElementById("demo");
-  // output.innerHTML = slider.value; // Display the default slider value
-
-  // Update the current slider value (each time you drag the slider handle)
-  slider.oninput = function() {
-    // output.innerHTML = this.value;
-    userNameDict["slider-value"] = this.value
-    // showMessage(this.value, "user")
-  }
-}
+  for (let smiley of smileyDivs) {
+    inputWrapper.appendChild(smiley);
+    smiley.classList.add("smiley-div");
+    smiley.onclick = function () {
+      allKnowingObj["mood-smiley"] = this.innerHTML;
+      buttonClicked();
+      input.value = '';
+    };
+  };
+};
 
 const questionWeather = () => {
-  showMessage(`Which word would best describe the current weather?`,"bot")
-
-  inputWrapper.innerHTML=""
+  showMessage(`Which word would best describe the current weather?`,"bot");
+  inputWrapper.innerHTML = ""
 
   const selecter = document.createElement("select")
-  
-  const weatherArray = ["Sunny", "Cloudy", "Rainy", "Snowy", "Stormy", "Windy", "Hail"]
+  inputWrapper.appendChild(selecter);
+  inputWrapper.append(sendButton);
 
-  for (let i = 0; i < 7; i++) {
-    let optionX = document.createElement("option");
-    optionX.innerHTML = weatherArray[i];
-    selecter.appendChild(optionX);
+  const options = createNewElement("option", 7);
+  giveElementsText(options, weatherArray)
+  for (let option of options) {
+    selecter.appendChild(option);
   }
-  inputWrapper.appendChild(selecter)
-  inputWrapper.append(sendButton)
-  sendButton.onclick = buttonClicked
+
+  allKnowingObj["weather-choice"] = selecter.value;
+  selecter.oninput = function () {
+    allKnowingObj["weather-choice"] = this.value;
+  };
 }
 
 const questionHappy = () => {
-  showMessage(`Are you happy with our service`,"bot")
+  showMessage("Ah, how lovely!", "bot")
+  showMessage("I only have one final question before revealing your mood color! Are you happy with our service?","bot");
   
-  // const newForm = document.createElement("form")
-  inputWrapper.innerHTML = ""
-  // const newInput = document.createElement("input")
-  // newInput.type = "text"
-  inputWrapper.appendChild(form)
-  form.appendChild(input)
-  form.appendChild(sendButton)
-  sendButton.onclick = buttonClicked
+  inputWrapper.innerHTML = "";
+ 
+ 
+  inputWrapper.appendChild(form);
+  form.appendChild(input);
+  form.appendChild(sendButton);
+  input.type = "text";
+  input.value = '';
+  input.classList.remove("slider");
+  // sendButton.onclick = buttonClicked;
   input.oninput = function() {
-    // output.innerHTML = this.value;
-    userNameDict["happy"] = this.value
-  }
-}
+    allKnowingObj["happy"] = this.value;
+  };
+};
 
-// const checkForYes = (inputValue) => {
-//   console.log(inputValue)
-// }
-
-// const form = document.getElementById("name-form");
-// form.addEventListener("submit", handleNameInput);
-
-// const handleNameInput = (event) => {
-//   event.preventDefault();
-//   let userName = input.value;
-//   showMessage(userName, "user");
-//   input.value = '';
-// };
-
-
-
-
-// const handleNameInput = (event) => {
-//   event.preventDefault()
-//   // Store the value in a variable so we can access it after we 
-// 	// clear it from the input
-//   const name = nameInput.value
-//   showMessage(name, 'user')
-//   nameInput.value = ''
-// }
-
-// sendButton.addEventListener("click", function () {
-  
-// })
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
-    console.log(sender);
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -247,7 +195,6 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
-    console.log(sender);
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -261,34 +208,35 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
-const greeting = () => {
-  showMessage(greetingMessage, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+//Helper functions
+
+const createNewElement = (type, numberOfTimes) => {
+  let elementList = []
+  for (let i= 0; i < numberOfTimes; i++) {
+      elementList.push(document.createElement(type))
+  }
+  return elementList
+}
+
+const giveElementsText = (elements, text) => {
+  for (let i = 0; i < elements.length; i++) {
+      elements[i].innerHTML = text[i]
+  }
+}
+
+const changeBackground = (value) => {
+  document.getElementsByTagName("body")[0].style.background = value;
+}
+
+const randomIndex = () => {
+  return (Math.floor(Math.random() * (5 - 0) + 0))
 }
 
 // Set up your eventlisteners here
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
+//prevent reload of page
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+});
 
-setTimeout(greeting, 0)
-
-
-
-// function to change the background color into a random color
-let values = [];
-function makeColors () {
-  
-  for (let i = 0; i < 3; i++) {
-    values.push(Math.floor(Math.random() * (256 - 0) + 0))
-  }
-}
-// makeColors();
-// document.getElementsByTagName("body")[0].style.backgroundColor = `rgb(${values[0]}, ${values[1]}, ${values[2]})`;
-
-
+sendButton.addEventListener("click", buttonClicked);
