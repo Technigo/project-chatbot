@@ -1,13 +1,10 @@
 # Project Name
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Week 4 project was to create a chatbot using HTML, CSS and Javascript. Lisen and i made a "Fika chat-bot" for ordering  fika.
 
 ## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We struggled how to trigger the chat bot question and make it go to the next question. We read stack overflow and asked the team.
+If we have more time we would make chat sound and some animation. 
 
 ## View it live
+https://inspiring-mcnulty-cbe717.netlify.app/
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
