@@ -144,12 +144,13 @@ document.getElementById('happyChoice').addEventListener('click', () => receipt(`
 document.getElementById('notHappy').addEventListener('click', () => receipt(`I would like to change some things`))
 }, 1200)
 }
+
 const receipt = (final) => {
   questionNumber++
   showMessage(final, 'user')
-  if (final === `I'm happy with my choice!`){
-    setTimeout(() => showMessage(`Perfect!`, 'bot'), 1000)
-      inputWrapper.innerHTML =
+  if (final === `I'm happy with my choice!`) {
+     setTimeout(() =>showMessage(`Perfect!`, 'bot'), 1000)
+      inputWrapper.innerHTML = ''
       setTimeout(() => {
         showMessage(`You will have it delivered within a week! Thanks for using our service!`, 'bot')
         showMessage(`🚲  🚲  🚲 `, 'bot')
