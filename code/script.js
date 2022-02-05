@@ -156,7 +156,7 @@ function goodBye () {
   botAnswer(
     `Thank you for booking ${type} with us, some will contact you soon. `
   );
-  botAnswer(`Have a lovley day! ${name}`);
+  botAnswer(`Have a lovley day!`);
   // Below clears the option to click book after once selected.
   inputWrapper.innerHTML = ``;
 }
