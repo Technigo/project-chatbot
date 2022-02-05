@@ -181,6 +181,7 @@ footer a {
     margin-right: 0;
     font-size: 14px;
     line-height: 20px;
+    border-radius: 8px;
   }
 
   .send-btn {
@@ -192,9 +193,8 @@ footer a {
   #mountainBike {
     width: 30%;
     margin-right: 0.5rem;
-    border-radius: 8px;
     border: none;
-    padding: 12px;
+    padding: 10px;
     text-align: center;
     line-height: 20px;
   }
@@ -202,18 +202,16 @@ footer a {
   #ladyBike {
     width: 30%;
     margin-right: 0.5rem;
-    border-radius: 8px;
     border: none;
-    padding: 12px;
+    padding: 10px;
     text-align: center;
     line-height: 20px;
   }
 
   #sportyBike {
     width: 30%;
-    border-radius: 8px;
     border: none;
-    padding: 12px;
+    padding: 10px;
     text-align: center;
     line-height: 20px;
   }
@@ -268,11 +266,13 @@ footer a {
   #happyChoice {
     width: 50%;
     margin-right: 0.5rem;
+    padding: 10px;
   }
 
   #notHappy {
     width: 50%;
     margin-right: 0.5rem;
+    padding: 10px;
   }
 
   .input-wrapper form {
