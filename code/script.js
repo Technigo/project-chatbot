@@ -41,8 +41,16 @@ const chat = document.getElementById('chat')
 const loginButton = document.querySelector('.login__button');
 let userName = "";
 
-//Event Listener for Login Button Push
-loginButton.addEventListener('click', function() {
+/////////////////////////////////////////////////////////////////////////////////////////////// DOM TEST tried moving them up here 
+const exName = document.querySelector('.ex-name-input');
+const exNameTrigger = document.querySelector('.ex-send-btn');
+const inputForm = document.querySelector('.input-form');
+
+const form = document.getElementById("name-form"); /////////////////////////////// TEST ADDED in HTML and here, don't know if we need it but it was in their original code
+
+
+//Event Listener for Login Button Push   ////////////////////////////////////////// ADDED EVENT here within brackets
+loginButton.addEventListener('click', function(event) {
   // prevent.Default stops page from reloading when clicking icon
   event.preventDefault();
 
@@ -94,9 +102,29 @@ const showMessage = (message, sender) => {
 // Starts here
 const greeting = (userName) => {
   showMessage(`Heyyy ${userName}, I heard you just got dumped by that asshole... what was their name again?`, 'bot')
+  setTimeout(() => exNameInput(), 1000); ///////////////////////////////// tried timeDelay for users answer here
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+
+///////////////////////////////////////////////////////////////////////////////////////// Reply to ex name TEST 
+const exNameInput = (userName) => {  
+/*exName = document.querySelector('.ex-name-input').value;*/
+
+document.getElementsByClassName('ex-send-btn').addEventListener('click', function(event) {
+  event.preventDefault();
+  
+  nameString.value = ""; /////////////////////////////////////////////////////////////////// Try to reuse the nameString here for exname so reset it
+  userName = nameString.value;
+  console.log(userName);
+
+showMessage(`Their name was ${userName}...`, 'user');
+setTimeout(() => relationshipLength(exLength), 1000);
+}
+)
+}
+
+/*
 // Reply to ex name
 const exNameTrigger = document.querySelector('.ex-send-btn');
 const inputForm = document.querySelector('.input-form');
@@ -109,21 +137,31 @@ exNameTrigger.addEventListener('click', function() {
   showMessage(`${exName}?? Eww such a gross name! Can't believe you dated someone called that! How many years were you together?`, 'bot');
   document.querySelector('.ex-name-input').style.display = "none";
   document.querySelector('.ex-send-btn').style.display = "none";
+  */
   
   // inputForm.innerHTML += `
   // <div class="cry-emoji emoji-option">😭</div>
   // <div class="puke-emoji emoji-option">🤮</div>
   // <div class="angry-emoji emoji-option">🤬</div>
   // `
-
+/*
   inputForm.innerHTML += `
   <input class="years-input" type="number" autocomplete="off" name="relationshipYears" required />
   <input class="years-send-btn" type="image" src="assets/send_arrow2.png" />
   `
+*/
+/*  setTimeout(() => relationshipLength(exLength), 1000) // TEST
+}
+)*/
+
+// Reply to ex-lenght TEST
+/*
+const relationshipLength = () => {
+showMessage(`${exName}?? Eww such a gross name! Can't believe you dated someone called that! How many years were you together?`, 'bot');
+
 
 }
-)
-
+/*
 // Reply to relationship length
 const relationshipLength = document.getElementsByClassName('years-send-btn');
 let exLength="";
@@ -134,6 +172,7 @@ let exLength="";
   showMessage(`${exLength}?? Wow ew do not throw anymore of your pearls on that ${exName}-trashbin! What is the 3 worst things about them?`, 'bot')
 }
 )
+*/
 
 // Reply to 3 worst things
 /*send meme??*/
