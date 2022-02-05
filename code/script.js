@@ -171,16 +171,19 @@ const crying = () => {
   document.querySelector('.puke-emoji').style.display = "none";
   document.querySelector('.angry-emoji').style.display = "none";
   inputForm.innerHTML += `
-  <select class="feel-better-options" name="options">
-    <option value="uplift">Uplift me 🥺</option>
-    <option value="trash">Trash ${exName}!</option>
-    <option value="revenge">Revenge 😈</option>
-  </select>
-  <input class="options-send-btn send-btn" type="image" src="assets/send_arrow2.png" />
+  <input type="button" class="uplift-me upliftmeanbutton" value="Uplift me 🥺">
+  <input type="button" class="be-mean upliftmeanbutton" value="Be mean 😈">
   `
-  document.querySelector('.options-send-btn').addEventListener('click', () => {
+  document.querySelector('.uplift-me').addEventListener('click', () => {
   event.preventDefault();
-  setTimeout(options, 1000);
+  showMessage(`I need a confidence boost.. I'm not feeling too great 🥺`, 'user');
+  setTimeout(upliftMe, 1000);
+  })
+
+  document.querySelector('.be-mean').addEventListener('click', () => {
+  event.preventDefault();
+  showMessage(`I want you to say mean things about ${exName}!`, 'user')
+  setTimeout(beMean, 1000);
   })
 }
 
@@ -191,17 +194,19 @@ const sick = () => {
   document.querySelector('.puke-emoji').style.display = "none";
   document.querySelector('.angry-emoji').style.display = "none";
   inputForm.innerHTML += `
-  <select class="feel-better-options" name="options">
-    <option value="uplift">Uplift me</option>
-    <option value="trash">Be mean</option>
-    <option value="revenge">Revenge 😈</option>
-  </select>
-  <input class="options-send-btn send-btn" type="image" src="assets/send_arrow2.png" />
+  <input type="button" class="uplift-me upliftmeanbutton" value="Uplift me 🥺">
+  <input type="button" class="be-mean upliftmeanbutton" value="Be mean 😈">
   `
-
-  document.querySelector('.options-send-btn').addEventListener('click', () => {
+  document.querySelector('.uplift-me').addEventListener('click', () => {
   event.preventDefault();
-  setTimeout(options, 1000);
+  showMessage(`I need a confidence boost.. I'm not feeling too great 🥺`, 'user');
+  setTimeout(upliftMe, 1000);
+  })
+
+  document.querySelector('.be-mean').addEventListener('click', () => {
+  event.preventDefault();
+  showMessage(`I want you to say mean things about ${exName}!`, 'user')
+  setTimeout(beMean, 1000);
   })
 }
 
@@ -212,38 +217,31 @@ const angry = () => {
   document.querySelector('.puke-emoji').style.display = "none";
   document.querySelector('.angry-emoji').style.display = "none";
   inputForm.innerHTML += `
-  <select class="feel-better-options" name="options">
-    <option value="uplift">Uplift me</option>
-    <option value="trash">Be mean</option>
-    <option value="revenge">Revenge 😈</option>
-  </select>
-  <input class="options-send-btn send-btn" type="image" src="assets/send_arrow2.png" />
+  <input type="button" class="uplift-me upliftmeanbutton" value="Uplift me 🥺">
+  <input type="button" class="be-mean upliftmeanbutton" value="Be mean 😈">
   `
-
-  document.querySelector('.options-send-btn').addEventListener('click', () => {
+  document.querySelector('.uplift-me').addEventListener('click', () => {
   event.preventDefault();
-  setTimeout(options, 1000);
+  showMessage(`I need a confidence boost.. I'm not feeling too great 🥺`, 'user');
+  setTimeout(upliftMe, 1000);
+  })
+
+  document.querySelector('.be-mean').addEventListener('click', () => {
+  event.preventDefault();
+  showMessage(`I want you to say mean things about ${exName}!`, 'user')
+  setTimeout(beMean, 1000);
   })
 }
 
 
-// Dropdown Choices
+// Uplift me
 
-// const options = () => {
-//   if 
-// }
+const upliftMe = () => {
 
-// const options {
-//   if (options.value =
-//   showMessage(`My confidence needs a boost 🥺`, 'user');
-//   showMessage(`Say some mean things about ${exName}`, 'user');
-//   showMessage(`I want revenge 😈`, 'user');
-// }
+}
 
+// Be Mean
 
+const beMean = () => {
 
-// Reply to 3 worst things
-/*send meme??*/
-/*or a reply with buttons or a drop-down menue*/
-
-// setTimeout(() => showMessage(message, sender), 1000);
+}

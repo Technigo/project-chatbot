@@ -332,21 +332,24 @@ body {
   margin-right: 15px;
 }
 
-/* Feel Better Drop-down */
+/* Uplift Me / Be Mean */
 
-select {
-  background-color: transparent;
+.upliftmeanbutton {
   border: none;
-  margin: 0;
-  width: 100%;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: inherit;
-  line-height: inherit;
-  outline: none;
   background: transparent;
+  font-size: 18px;
+  cursor: pointer;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
 }
 
-.feel-better-options {
+.uplift-me {
+  margin-left: 10px;
+  margin-right: auto;
+}
 
+.be-mean {
+  margin-left: auto;
+  margin-right: 10px;
 }
