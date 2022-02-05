@@ -120,26 +120,27 @@ const modelSelection = (modelChoice) => {
 const orderConfirmation = (lastChoice) => {
   console.log("Sixth convo")
   questionNumber++
-  setTimeout(() => {
+  // setTimeout(() => {
     if (lastChoice === 'Blue') {
       showMessage(`Blue`, 'user')
-      showMessage(`Based on your selection you have ordered a blue mountainbike, is that what you want? Please confirm.`, 'bot')
+      setTimeout(() => {showMessage(`Based on your selection you have ordered a blue mountainbike, is that what you want? Please confirm.`, 'bot')}, 1200)
     } else if (lastChoice === 'Red') {
       showMessage(`Red`, 'user')
-      showMessage(`Based on your selection you have ordered a red mountainbike, is that what you want? Please confirm.`, 'bot')
+      setTimeout(() => {showMessage(`Based on your selection you have ordered a red mountainbike, is that what you want? Please confirm.`, 'bot')}, 1200)
     } else if (lastChoice === 'Green') {
       showMessage(`Green`, 'user')
-      showMessage(`Based on your selection you have ordered a green ladybike, is that what you want? Please confirm.`, 'bot')
+      setTimeout(() => {showMessage(`Based on your selection you have ordered a green ladybike, is that what you want? Please confirm.`, 'bot')}, 1200)
     } else if (lastChoice === 'Orange') {
       showMessage(`Orange`, 'user')
     showMessage(`Based on your selection you have ordered a orange ladybike, is that what you want? Please confirm.`, 'bot')
     } else if (lastChoice === 'Yellow') {
       showMessage(`Yellow`, 'user')
-    showMessage(`Based on your selection you have ordered a yellow sportybike, is that what you want? Please confirm.`, 'bot')
+      setTimeout(() => {showMessage(`Based on your selection you have ordered a yellow sportybike, is that what you want? Please confirm.`, 'bot')}, 1200)
     } else if (lastChoice === 'Purple') {
       showMessage(`Purple`, 'user')
-    showMessage(`Based on your selection you have ordered a purple sportybike, is that what you want? Please confirm.`, 'bot')
-  }}, 500)
+      setTimeout(() => {showMessage(`Based on your selection you have ordered a purple sportybike, is that what you want? Please confirm.`, 'bot')}, 1200)
+  }
+// }, 500)
 // User responds if satisfied with order
 setTimeout (() => {inputWrapper.innerHTML = `
 <button id="yes">Yes, I'm happy with my choice!</button>
