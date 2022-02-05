@@ -10,5 +10,5 @@ If we would have more time to complete the assignment, we would look further int
 
 ## View it live
 You can look at our inspirational quote bot on Netlify:
+https://inspirational-bot.netlify.app/
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
