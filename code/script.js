@@ -10,7 +10,6 @@ const audio = new Audio("drill.mp3");
 // Global variables, if you need any, declared here
 let questionStep = 1;
 
-
 // Function to display the message on the screen both for bot and user
 const botAnswer = (inputMessage) => {
   showMessage(inputMessage, "bot");
@@ -75,10 +74,9 @@ form.addEventListener("submit", (event) => {
   const name = nameInput.value;
   userAnswer(`${name}`);
   // This will keep the input box empty after user clicks send
-  
+
   nameInput.value = "";
   setTimeout(() => serviceOptions(name), 1000);
-
 });
 
 // 2nd Bot message
@@ -110,17 +108,8 @@ const moreServices = (type) => {
   botAnswer(
     `So you need help with ${type}. Which type of ${type} service will you require?`
   );
-
   // Here we added a conditional statement for specific service options depending on the category.
-  if (type === "plumbingButton" || "electricalButton") {
-    inputWrapper.innerHTML = `
-  <select id = 'select'>
-  <option value='' selected disabled> Choose service </option>
-  <option value='installation'>Installation</option>
-  <option value='maintenece'>Maintenece</option>
-  <option value='repair'>Repair</option>
-  <option value='emergency repair'>Emergency Repair</option>`;
-  } else {
+  if (type === "painting") {
     inputWrapper.innerHTML = `
   <select id = 'select'>
   <option value='' selected disabled> Choose service </option>
@@ -128,6 +117,14 @@ const moreServices = (type) => {
   <option value='exterior painting'>Exterior Painting</option>
   <option value='wall resurfacing'>Wall Resurfacing</option>
   </select> `;
+  } else {
+    inputWrapper.innerHTML = `
+    <select id = 'select'>
+    <option value='' selected disabled> Choose service </option>
+    <option value='installation'>Installation</option>
+    <option value='maintenece'>Maintenece</option>
+    <option value='repair'>Repair</option>
+    <option value='emergency repair'>Emergency Repair</option>`;
   }
   const select = document.getElementById("select");
   select.addEventListener("change", () => handleInput(select.value));
@@ -141,7 +138,6 @@ const priceInformation = (service) => {
   } else {
     botAnswer(`Perfect! Our starting price for ${service} is SEK 3,000.`);
   }
-  
 
   inputWrapper.innerHTML = `
 <button id="bookButton">I want to book</button>
@@ -152,7 +148,7 @@ const priceInformation = (service) => {
 };
 
 // 5 th bot message
-function goodBye () {
+function goodBye() {
   botAnswer(
     `Thank you for booking ${type} with us, some will contact you soon. `
   );
