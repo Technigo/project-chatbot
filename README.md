@@ -1,6 +1,6 @@
 # Project Name
 
-For this weeks project our assignment was to build a chatbot. The project was done by working in pairs.
+For this weeks project our assignment was to build a chatbot. The project was done by pair-programming together with @emmahogberg88. 
 
 ## The problem
 
