@@ -9,6 +9,12 @@
   text-decoration: none;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   background-color: F2F1F0;
   height: 100vh;
@@ -282,14 +288,9 @@ body {
   font-size: 18px;
 }
 
-.ex-send-btn {
+.send-btn {
   width: 42px;
   height: 42px;
-}
-
-.ex-send-btn:hover {
-  opacity: 0.9;
-  transition: all 0.2s ease;
 }
 
 /* Number of Years */
@@ -302,11 +303,6 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 500;
   font-size: 18px;
-}
-
-.years-send-btn {
-  width: 42px;
-  height: 42px;
 }
 
 /* Emoji Options Reply */
@@ -336,3 +332,21 @@ body {
   margin-right: 15px;
 }
 
+/* Feel Better Drop-down */
+
+select {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  outline: none;
+  background: transparent;
+}
+
+.feel-better-options {
+
+}

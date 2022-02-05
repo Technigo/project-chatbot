@@ -101,6 +101,8 @@ const greeting = (userName) => {
 let exName = "";
 let yearsTogether = "";
 
+// Ex's Name
+
 exNameTrigger.addEventListener('click', () => {
   event.preventDefault();
   exName = document.querySelector('.ex-name-input').value;
@@ -111,7 +113,7 @@ exNameTrigger.addEventListener('click', () => {
   document.querySelector('.ex-send-btn').style.display = "none";
   inputForm.innerHTML += `
   <input class="years-input" type="number" autocomplete="off" name="relationshipYears" />
-  <input class="years-send-btn" type="image" src="assets/send_arrow2.png" />
+  <input class="years-send-btn send-btn" type="image" src="assets/send_arrow2.png" />
   `
   document.querySelector('.years-send-btn').addEventListener('click', () => {
     event.preventDefault();
@@ -122,6 +124,8 @@ exNameTrigger.addEventListener('click', () => {
   })
 
 })
+
+// Years Together
 
 const showYears = () => {
 if (yearsTogether === 0) {
@@ -142,162 +146,104 @@ if (yearsTogether === 0) {
   `
 
   document.querySelector('.cry-emoji').addEventListener('click', () => {
-    showMessage(`I feel like crying... 😭 😭 😭`, 'user');
+    showMessage(`I'm so sad I can't stop crying... 😭 😭 😭`, 'user');
     setTimeout(crying, 1000);
   })
 
   document.querySelector('.puke-emoji').addEventListener('click', () => {
-    showMessage(`I feel like puking 🤮`, 'user');
+    showMessage(`I feel sick... Like I want to puke 🤮`, 'user');
     setTimeout(sick, 1000);
   })
 
   document.querySelector('.angry-emoji').addEventListener('click', () => {
-    showMessage(`I'm so f*cking pissed!! 🤬🤬🤬`, 'user');
+    showMessage(`I'm so f*cking pissed!! 🤬 🤬 🤬`, 'user');
     setTimeout(angry, 1000);
   })
 }
 
+
+// Emoji Choices
+
 const crying = () => {
-  showMessage('', 'bot')
+  showMessage(`I get that you're sad but I can't believe you're crying over a trashbag called ${exName}!`, 'bot');
+  showMessage(`What would make you feel better?`, 'bot');
   document.querySelector('.cry-emoji').style.display = "none";
   document.querySelector('.puke-emoji').style.display = "none";
   document.querySelector('.angry-emoji').style.display = "none";
-
+  inputForm.innerHTML += `
+  <select class="feel-better-options" name="options">
+    <option value="uplift">Uplift me 🥺</option>
+    <option value="trash">Trash ${exName}!</option>
+    <option value="revenge">Revenge 😈</option>
+  </select>
+  <input class="options-send-btn send-btn" type="image" src="assets/send_arrow2.png" />
+  `
+  document.querySelector('.options-send-btn').addEventListener('click', () => {
+  event.preventDefault();
+  setTimeout(options, 1000);
+  })
 }
 
 const sick = () => {
-  showMessage('', 'bot')
+  showMessage(`I totally get it... You know, ${exName} always did have disgusting breath. Probably wipes back to front, too.`, 'bot');
+  showMessage(`What can I do to make you feel better?`, 'bot');
   document.querySelector('.cry-emoji').style.display = "none";
   document.querySelector('.puke-emoji').style.display = "none";
   document.querySelector('.angry-emoji').style.display = "none";
+  inputForm.innerHTML += `
+  <select class="feel-better-options" name="options">
+    <option value="uplift">Uplift me</option>
+    <option value="trash">Be mean</option>
+    <option value="revenge">Revenge 😈</option>
+  </select>
+  <input class="options-send-btn send-btn" type="image" src="assets/send_arrow2.png" />
+  `
+
+  document.querySelector('.options-send-btn').addEventListener('click', () => {
+  event.preventDefault();
+  setTimeout(options, 1000);
+  })
 }
 
 const angry = () => {
-  showMessage('', 'bot')
+  showMessage(`Me too! What should we do? Go to ${exName}'s house and set their car on fire?`, 'bot')
+  showMessage(`I'm just kidding! But is there anything that would make you feel better?`, 'bot');
   document.querySelector('.cry-emoji').style.display = "none";
   document.querySelector('.puke-emoji').style.display = "none";
   document.querySelector('.angry-emoji').style.display = "none";
-}
-
-
-
-
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////// Reply to ex name TEST 
-// const exNameInput = (userName) => {  
-// /*exName = document.querySelector('.ex-name-input').value;*/
-
-// document.getElementsByClassName('ex-send-btn').addEventListener('click', function(event) {
-//   event.preventDefault();
-  
-//   nameString.value = ""; /////////////////////////////////////////////////////////////////// Try to reuse the nameString here for exname so reset it
-//   userName = nameString.value;
-//   console.log(userName);
-
-// showMessage(`Their name was ${userName}...`, 'user');
-// setTimeout(() => relationshipLength(exLength), 1000);
-// }
-// )
-// }
-
-/*
-// Reply to ex name
-const exNameTrigger = document.querySelector('.ex-send-btn');
-const inputForm = document.querySelector('.input-form');
-let exName = "";
-
-exNameTrigger.addEventListener('click', function() {
-  exName = document.querySelector('.ex-name-input').value;
-  console.log(exName);
-  showMessage(`Their name was ${exName}...`, 'user');
-  showMessage(`${exName}?? Eww such a gross name! Can't believe you dated someone called that! How many years were you together?`, 'bot');
-  document.querySelector('.ex-name-input').style.display = "none";
-  document.querySelector('.ex-send-btn').style.display = "none";
-  */
-  
-  // inputForm.innerHTML += `
-  // <div class="cry-emoji emoji-option">😭</div>
-  // <div class="puke-emoji emoji-option">🤮</div>
-  // <div class="angry-emoji emoji-option">🤬</div>
-  // `
-/*
   inputForm.innerHTML += `
-  <input class="years-input" type="number" autocomplete="off" name="relationshipYears" required />
-  <input class="years-send-btn" type="image" src="assets/send_arrow2.png" />
+  <select class="feel-better-options" name="options">
+    <option value="uplift">Uplift me</option>
+    <option value="trash">Be mean</option>
+    <option value="revenge">Revenge 😈</option>
+  </select>
+  <input class="options-send-btn send-btn" type="image" src="assets/send_arrow2.png" />
   `
-*/
-/*  setTimeout(() => relationshipLength(exLength), 1000) // TEST
-}
-)*/
 
-// Reply to ex-length TEST
-/*
-const relationshipLength = () => {
-showMessage(`${exName}?? Eww such a gross name! Can't believe you dated someone called that! How many years were you together?`, 'bot');
+  document.querySelector('.options-send-btn').addEventListener('click', () => {
+  event.preventDefault();
+  setTimeout(options, 1000);
+  })
+}
 
 
-}
-/*
-// Reply to relationship length
-const relationshipLength = document.getElementsByClassName('years-send-btn');
-let exLength="";
-  relationshipLength.addEventListener('click', function() {
-  exLength = document.querySelector('.years-input').value;
-  console.log(exLength);
-  showMessage(`${exLength} years...`, 'user');
-  showMessage(`${exLength}?? Wow ew do not throw anymore of your pearls on that ${exName}-trashbin! What is the 3 worst things about them?`, 'bot')
-}
-)
-*/
+// Dropdown Choices
+
+// const options = () => {
+//   if 
+// }
+
+// const options {
+//   if (options.value =
+//   showMessage(`My confidence needs a boost 🥺`, 'user');
+//   showMessage(`Say some mean things about ${exName}`, 'user');
+//   showMessage(`I want revenge 😈`, 'user');
+// }
+
+
 
 // Reply to 3 worst things
 /*send meme??*/
 /*or a reply with buttons or a drop-down menue*/
 
-
-
-
-// Test for Different Input Types
-/* <input type="button" class="cry-emoji emoji-option" value="😭" />
-<input type="button" class="puke-emoji emoji-option" value="🤮" />
-<input type="button" class="angry-emoji emoji-option" value="🤬" /> */
-
-
-// Select Emoji Trigger
-// const emojiButtons = document.getElementByClassName('emoji-buttons');
-// document.getElementsByClassName(".emoji-buttons").style.visibility = "visible";
-
-/*
-const cryEmoji = document.querySelector('.cry-emoji');
-*/
-
-// cryEmoji.addEventListener('click', function() {
-//   console.log(This works);
-// })
-
-// cryEmoji.addEventListener('click', function() {
-//   console.log("saaaad");
-//   showMessage(`I'm feeling sad... 😭😭😭`, 'user');
-//   showMessage(`Girl why??`, 'bot');
-//   document.querySelector('.emoji-buttons').style.display = "none";
-// })
-
-
-// Set up your eventlisteners here
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-// setTimeout(greeting, 1000)
-
-// Doesn't work?? hmm...
 // setTimeout(() => showMessage(message, sender), 1000);
