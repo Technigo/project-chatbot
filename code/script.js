@@ -101,7 +101,7 @@ const modelSelection = (modelChoice) => {
   }
   
   else {
-    showMessage(`I would like a sportybike`, 'user')
+    showMessage(`I would like a sporty bike`, 'user')
     setTimeout(() => {showMessage(`Alright, a sporty bike! What colour do you prefer?`, 'bot')
     inputWrapper.innerHTML = `
     <button id="yellowColor">Yellow</button>
