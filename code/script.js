@@ -1,6 +1,7 @@
 // Declare variables
 const startButton = document.getElementById('start-button');
 const startContent = document.getElementById('start-content');
+const footer = document.getElementById('footer')
 const chatBox = document.getElementById('chat-box');
 const chat = document.getElementById('chat')
 const form = document.getElementById('name-form')
@@ -13,6 +14,7 @@ let questionCounter = 0;
 // Start chat by moving past start page
 startButton.addEventListener('click', () => {
   startContent .style.display = "none";
+  footer.style.display = 'none'; //hide when chat opens until positioning is fixed
   chatBox.style.display = "flex";
   questionGenerator();
 });
