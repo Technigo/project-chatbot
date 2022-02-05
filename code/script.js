@@ -3,7 +3,7 @@ const chat = document.getElementById('chat')
 const form = document.getElementById('name-form')
 const inputText = document.getElementById('name-input')
 const inputWrapper = document.getElementById('input-wrapper')
-// const sendBtn = document.getElementById('submit')
+const messageAudio = new Audio ("./assets/button_click.mp3");
 
 // Global variables, if you need any, declared here
 
@@ -18,14 +18,14 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/customer.svg" alt="User" />  
+        <img src="assets/girl.png" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     console.log ('what do you want?')
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/taxi-operator.svg" alt="Bot" />
+        <img src="assets/operator.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -33,19 +33,20 @@ const showMessage = (message, sender) => {
     `
   }
 
+  //Function that triggers click sound
+  messageAudio.currentTime = 0
+  messageAudio.play()
+
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
+//Startup greeting after load (timeout 1000)
 const greeting = () => {
   showMessage(`Good day Sir/Ms, please type your name`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-// Function that listens to user input and showing it
-
-
+// First function handle name input
 const handleNameInput =  (event) => {
   event.preventDefault()
   const name = inputText.value
@@ -54,6 +55,7 @@ const handleNameInput =  (event) => {
   setTimeout(() => destination(), 1000)
 }
 
+//Second function choose of destination
 const destination = () => {
   showMessage(`Choose your destination here`, 'bot')
   inputWrapper.innerHTML = `
@@ -86,34 +88,37 @@ const destination = () => {
   })
 }
 
+//Third function choose of vehicle
 const vehicle = () => {
-inputWrapper.innerHTML = `
-      <select id="select">
-        <option value="" selected disabled>👇 These vehicles are available...</option>
-        <option value="Limo">Limousine</option>
-        <option value="Minibus">Minibus</option>
-        <option value="Rickshaw">Rickshaw</option>
-      </select>`
+  inputWrapper.innerHTML = `
+    <select id="select">
+      <option value="" selected disabled>👇 Select vehicle</option>
+      <option value="Limo">Limousine</option>
+      <option value="Minibus">Minibus</option>
+      <option value="Rickshaw">Rickshaw</option>
+    </select>`
 
-  document.getElementById("select").addEventListener("change", () => { 
+  document.getElementById("select").addEventListener('change', () => { 
     showMessage(`Please take me in a ${select.value}`, 'user')
     setTimeout(rate,1000)
-})
+  })
 }
+
+//Fourth function decide rate
 const rate = () => {
   let price
-if (select.value === 'Limo') {
-  price = '20000SEK'
-} else if (select.value === 'Minibus') {
-  price = '5000SEK'
-} else if (select.value === 'Rickshaw') {
-  price = '10sek'
-  alert('Unfortunately your ride will be in a Rickshaw')
-}
-showMessage(`${select.value}, that will be ${price}. Would you like to place the order?`, 'bot')
-inputWrapper.innerHTML = ''
+  if (select.value === 'Limo') {
+    price = '20000SEK'
+  } else if (select.value === 'Minibus') {
+    price = '5000SEK'
+  } else {
+    price = '10sek'
+    alert('Unfortunately your ride will be in a Rickshaw')
+  }
+  showMessage(`${select.value}, that will be ${price}. Would you like to place the order?`, 'bot')
+  inputWrapper.innerHTML = ''
 
-inputWrapper.innerHTML = `
+  inputWrapper.innerHTML = `
     <button id="Yes">Yes</button>
     <button id="No">No</button>`
 
@@ -125,27 +130,13 @@ inputWrapper.innerHTML = `
       location.reload()
       return false  
     })
-  
 }
 
-
+//Fifth function order statement
 const order = () => {
   inputWrapper.innerHTML = ''
   showMessage('Thanks for your order, we will arrive shortly', 'bot')
-
 }
-
-
-
-
-
-
-// const handleDestination =  (event) => {
-//   event.preventDefault()
-//   showMessage(`I would like to go to ${inputText.value}`, 'user')
-//   inputText.value = ''
-//   // setTimeout(() => destination(), 1000)
-// }
 
 // Set up your eventlisteners here
 form.addEventListener('submit', handleNameInput)

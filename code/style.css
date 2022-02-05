@@ -41,9 +41,10 @@ p {
 input {
   box-sizing: border-box;
   border: none;
+  outline: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #000;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -55,17 +56,15 @@ input {
 main {
   margin: 0 auto;
   width: 100%;
-  max-width: 700px;
-  height: 600px;
+  max-width: 500px;
+  height: 700px;
   border-radius: 30px;
   background: rgba(245, 245, 245, 0.4);
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
-  
-  
+  flex-direction: column; 
 }
 
 .chat {
@@ -74,10 +73,7 @@ main {
   justify-content: flex-start;
   overflow: scroll;
   flex-direction: column;
-  padding-bottom: 16px;
-  /* background: #e5e9ff; */
-  
-  
+  padding-bottom: 16px; 
 }
 
 .bot-msg {
@@ -100,12 +96,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  background-color: #7e8186;
+  color: #fff;
   max-width: 40%;
   -webkit-box-shadow: 5px 5px 15px 5px #000000; 
   box-shadow: 5px 5px 15px 5px #000000;
@@ -113,20 +109,17 @@ main {
 
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
-  margin-left: 8px;
-  background-color: #CDDEFF;
+  margin-left: 8px; 
 }
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
-  background-color: #CDDEFF;
 }
 
 .input-wrapper {
   display: flex;
   justify-content: center;
-  
 }
 
 .input-wrapper form {
@@ -135,18 +128,19 @@ main {
 }
 
 #name-input {
-  background-color: #fff;
+  background-color: #fff; 
   border: 1px solid grey;
   border-radius: 1rem;
   margin-right: 0.5rem;
+  margin-top: 10px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #EC255A;
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 16px 40px;
+  padding: 16px 30px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
@@ -155,9 +149,65 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 1rem;
+  position: relative;
+ z-index: 1;
+ overflow: hidden;
 }
 
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+button:after {
+  content: "";
+  background: white;
+  position: absolute;
+  z-index: -1;
+  left: -20%;
+  right: -20%;
+  top: 0;
+  bottom: 0;
+  transform: skewX(-45deg) scale(0, 1);
+  transition: all 0.5s;
+ }
+ 
+ 
+ 
+ button:hover:after {
+  transform: skewX(-45deg) scale(1, 1);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+ }
+ 
+select {
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+  height: 60px;
+  background: #C8C6C6;
+  width: 100%;
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+
+/* Media queries */
+@media (max-width:667px) {
+  .bubble {
+    max-width: 50%;
+  }
+  .input-wrapper button {
+    max-width: 100px;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+  }
+  select {
+    font-size: 17px;
+    height: 40px;
+  }
 }
