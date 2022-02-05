@@ -80,10 +80,10 @@ questionNumber++
     document.getElementById('ladyBike').addEventListener('click', () => modelSelection('ladyBike'))
     document.getElementById('sportyBike').addEventListener('click', () => modelSelection('sportyBike'))}, 2000)
   } else {
-    setTimeout(() => {showMessage(`Okay, have a nice day`, 'bot')
-      location.reload()
+   showMessage(`Okay, have a nice day`, 'bot')
+   setTimeout(() => {location.reload()
       return false
-      }, 2500)  
+      }, 3000)  
     }
   }
 
