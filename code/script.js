@@ -134,11 +134,12 @@ const orderConfirmation = (lastChoice) => {
       showMessage(`Purple`, 'user')
       setTimeout(() => {showMessage(`Based on your selection you have ordered a purple sporty bike, is that what you want? Please confirm.`, 'bot')}, 1200)
   }
-// }, 500)
+
 // User responds if satisfied with order
 setTimeout(() => {inputWrapper.innerHTML = `
 <button id="happyChoice">Yes, I'm happy with my choice!</button>
 <button id="notHappy">Nope, try again!</button>`
+
 document.getElementById('happyChoice').addEventListener('click', () => receipt(`I'm happy with my choice!`))
 document.getElementById('notHappy').addEventListener('click', () => receipt(`I would like to change some things`))
 }, 1200)
@@ -175,6 +176,8 @@ questionNumber++
     setTimeout(modelSelection, 800)
   } else if (questionNumber === 5) {
     setTimeout(orderConfirmation, 800)
+  } else if (questionNumber === 6) {
+    setTimeout(receipt, 800)
   }
   }
 // Stores name in variable "name"
