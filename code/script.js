@@ -9,7 +9,7 @@ const inputWrapper = document.getElementById('input-wrapper')
 const compliment = ["You're all that and a super-size bag of chips.", "On a scale from 1 to 10, you're an 11.", "Aside From Food, You're My Favorite.", 
 "Is that your picture next to “charming” in the dictionary?", "You’re a smart cookie.", "I know this is corny, but you are a-maize-ing!", 
 "You're like sunshine on a rainy day.", "I bet you sweat glitter.", "You're better than a triple-scoop ice cream cone. With sprinkles." ];
-let randomSentence = 0;
+
 
 
 // Global variables, if you need any, declared here
@@ -42,10 +42,12 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
+
 // Starts here
   const greeting = () => {
   showMessage(`Hello and welcome to the Compliment Bot, what's your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
+
 
 //---- First intention ----// 
 }
@@ -96,7 +98,8 @@ const showMessage = (message, sender) => {
   showMessage(`Nice! Click on the button below to get a random compliment`, 'bot') // When clicking YES on the second intention 
   
   inputWrapper.innerHTML = // add Yes No button
-  `<button id="randomBtn" type="submit">Ge a Random Compliment</button>`
+  `<button id="randomBtn" type="submit">Get a Compliment</button>`
+  
 
   document
   .getElementById('randomBtn')
@@ -105,9 +108,9 @@ const showMessage = (message, sender) => {
     //randomSentence = Math.floor(Math.random() * 3);
    
     setTimeout(() =>  showMessage(compliment[Math.floor(Math.random() * 9)], 'bot'), 1000)
+    clearTimeout(setTimeout);
     
     setTimeout(() => moreCompliment(compliment), 1000)
-
 
     
     // Returns a random integer from 0 to 3:
@@ -123,7 +126,7 @@ const showMessage = (message, sender) => {
 
 
 
-//------ Default ------// 
+//------ Default - No Button ------// 
 
 const chooseDefault = (submit) => { // When clicking NO on the second intention
   showMessage(`Buuuuuu :(`, 'bot')
@@ -131,11 +134,10 @@ const chooseDefault = (submit) => { // When clicking NO on the second intention
   return false;
 }
 
-
-
+//------ Default - New compliment? ------//
 
 const moreCompliment = (name) => { 
-  showMessage(`Do you want another compliment?`, 'bot') //sends second message from bot
+  setTimeout(() => showMessage(`Do you want another compliment?`, 'bot') ,2000) //sends second message from bot
   
   
   inputWrapper.innerHTML = // add Yes No button
@@ -164,7 +166,7 @@ const moreCompliment = (name) => {
 
 
   // Set up your eventlisteners here
-  
+
 form.addEventListener('submit', handleNameInput)
 
 
