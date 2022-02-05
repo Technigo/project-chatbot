@@ -160,19 +160,24 @@ questionNumber++
 }, 3000)
 }
 
-  // // // Receipt
-  // const receipt = (happy) => {
+  const receipt = (final) => {
+    questionNumber++
+    showMessage(final, 'user')
 
-  //   if (happy === `I'm happy with my choice!`) {
-  //   showMessage(`Happy to hear that ${name}, you're welcome to come pick up your bike tomorrow 12:00. The address is Hamngatan 17, 111 47 Stockholm.`, 'bot')
-  //   inputWrapper.innerHTML = ''
-  //   setTimeout (() => {
-  //     showMessage(`Good luck with your new bike! 🚲`, 'bot')
-  //   }, 1500)
-  // } else {
-  //   showMessage(`Please call us to change your order, we're happy to help!`)
-  // }
-
+    if (final === `I'm happy with my choice!`){
+        showMessage(`Perfect!`, 'bot')
+        inputWrapper.innerHTML =
+        setTimeout (() => {
+          showMessage(`You will have it delivered within a week! Thanks for using our service!`, 'bot')
+        }, 1500)
+      } else {
+        showMessage(`Hmmmm, that's too bad. Let's try again`, 'bot')
+        setTimeout (() => {location.reload() // This function reloads the program
+          return false
+        }, 2500)
+      }
+    }
+      
 
   // Pushes to the next question - our schedule
   const handleInput = (event) => {
