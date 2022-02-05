@@ -35,12 +35,10 @@ const showMessage = (message, sender) => {
 // Starting here. Introducing botQuestions
 // Question 1. What's your name, user?
 const greeting = () => {
-  console.log("First convo")
   showMessage(`Hi and welcome to BOT SHOP, who am I talking to?`, 'bot')
 }
 // Bot greets the user, and asks if she/he wants to order a bike
 const wantBike = (name) => {
-  console.log("Second convo")
   showMessage(`Very nice to meet you ${name}!`, 'bot')
   setTimeout (() => {showMessage(`Would you like to order a bike?`, 'bot')
 // YES or NO
@@ -48,14 +46,12 @@ inputWrapper.innerHTML = `
 <button id="yes">Yes! 👍</button>
 <button id="no">No! 👎 </button>
 `
-console.log("Third convo")
   document.getElementById('yes').addEventListener('click', () => bikeSelection ('Yes'))
   document.getElementById('no').addEventListener('click', () => bikeSelection ('No'))
 }, 1000)
 }
 // Funcion if user wants bike or not
 const bikeSelection = (bikeChoice) => {
-  console.log("Fourth convo")
 questionNumber++
   showMessage(`${bikeChoice}`, 'user')
   
@@ -64,7 +60,7 @@ questionNumber++
     inputWrapper.innerHTML = `
     <button id="mountainBike">Mountainbike</button>
     <button id="ladyBike">Ladybike</button>
-    <button id="sportyBike">Sportybike</button>
+    <button id="sportyBike">Sporty bike</button>
     `
     document.getElementById('mountainBike').addEventListener('click', () => modelSelection('mountainBike'))
     document.getElementById('ladyBike').addEventListener('click', () => modelSelection('ladyBike'))
@@ -81,7 +77,6 @@ questionNumber++
 /// Color choice
 const modelSelection = (modelChoice) => {
   questionNumber++
-  console.log("Fifth convo")
   if (modelChoice === 'mountainBike') {
     showMessage(`I would like a mountainbike`, 'user')
     setTimeout(() => {showMessage(`Alright, a mountainbike! What colour do you prefer?`, 'bot')
@@ -107,7 +102,7 @@ const modelSelection = (modelChoice) => {
   
   else {
     showMessage(`I would like a sportybike`, 'user')
-    setTimeout(() => {showMessage(`Alright, a sportybike! What colour do you prefer?`, 'bot')
+    setTimeout(() => {showMessage(`Alright, a sporty bike! What colour do you prefer?`, 'bot')
     inputWrapper.innerHTML = `
     <button id="yellowColor">Yellow 💛</button>
     <button id="purpleColor">Purple 💜</button>
@@ -118,7 +113,6 @@ const modelSelection = (modelChoice) => {
 }
 // Summary before order confirmation
 const orderConfirmation = (lastChoice) => {
-  console.log("Sixth convo")
   questionNumber++
   // setTimeout(() => {
     if (lastChoice === 'Blue') {
@@ -138,7 +132,7 @@ const orderConfirmation = (lastChoice) => {
       setTimeout(() => {showMessage(`Based on your selection you have ordered a yellow sportybike, is that what you want? Please confirm.`, 'bot')}, 1200)
     } else if (lastChoice === 'Purple') {
       showMessage(`Purple`, 'user')
-      setTimeout(() => {showMessage(`Based on your selection you have ordered a purple sportybike, is that what you want? Please confirm.`, 'bot')}, 1200)
+      setTimeout(() => {showMessage(`Based on your selection you have ordered a purple sporty bike, is that what you want? Please confirm.`, 'bot')}, 1200)
   }
 // }, 500)
 // User responds if satisfied with order

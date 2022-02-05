@@ -5,7 +5,7 @@
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
-  background: url(bicycle.jpg);
+  background: url(bicycle.jpg) fixed;
   width: 100% fixed;
 }
 
@@ -138,11 +138,95 @@ button:hover {
   transition: all 0.2s ease;
 }
 
+footer {
+  text-align: center;
+  padding-top: 20px;
+  color: white;
+}
+
 /* MEDIA QUERY – MOBILE */
 @media (max-width: 767px) {
   body {
     margin-bottom: 64px;
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 2rem;
+    padding: 1.5rem;
+    margin-top: 0%;
+  }
+
+  main {
+    height: 370px;
+  }
+
+  .send-btn {
+    font-size: 14px;
+    padding: 12px;
+    margin-right: 0%;
+  }
+
+  button {
+    margin-right: 0;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  #chat-form {
+    display: flex;
+    flex-direction: column;
+    margin: 0%;
+    padding: 0%;
+  }
+
+  .input-wrapper form {
+    margin-left: 0px;
+  }
+
+  input {
+    padding: 0.5rem;
+  }
+
+  .bot-msg img,
+  .user.msg img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .bubble {
+    max-width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 20px;
+  }
+
+  .bot-msg {
+    margin: 0;
+  }
+
+  .user-msg {
+    margin: 0;
+  }
+
+  // Added styling to button id:s, targeted in JavaScript-file
+  #yes {
+    width: 50%;
+    margin-right: 0.5rem;
+  }
+
+  #no {
+    width: 50%;
+    margin-left: 0.5rem;
   }
 }
