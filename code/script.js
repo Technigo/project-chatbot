@@ -1,5 +1,3 @@
-// Our Javascript
-
 // Page 1 - Login Page
 // Get Hours & Minutes
 let findTime = new Date().toTimeString().substr(0,5);
@@ -40,13 +38,8 @@ usernameInput.addEventListener('click', function() {
 const chat = document.getElementById('chat')
 const loginButton = document.querySelector('.login__button');
 let userName = "";
-
-/////////////////////////////////////////////////////////////////////////////////////////////// DOM TEST tried moving them up here 
-const exName = document.querySelector('.ex-name-input');
 const exNameTrigger = document.querySelector('.ex-send-btn');
 const inputForm = document.querySelector('.input-form');
-
-const form = document.getElementById("name-form"); /////////////////////////////// TEST ADDED in HTML and here, don't know if we need it but it was in their original code
 
 
 //Event Listener for Login Button Push   ////////////////////////////////////////// ADDED EVENT here within brackets
@@ -102,27 +95,114 @@ const showMessage = (message, sender) => {
 // Starts here
 const greeting = (userName) => {
   showMessage(`Heyyy ${userName}, I heard you just got dumped by that asshole... what was their name again?`, 'bot')
-  setTimeout(() => exNameInput(), 1000); ///////////////////////////////// tried timeDelay for users answer here
-  // Just to check it out, change 'bot' to 'user' here 👆
+  // setTimeout(() => exNameInput(), 1000); tried timeDelay for users answer here
 }
+
+let exName = "";
+let yearsTogether = "";
+
+exNameTrigger.addEventListener('click', () => {
+  event.preventDefault();
+  exName = document.querySelector('.ex-name-input').value;
+  console.log(exName);
+  showMessage(`Their name was ${exName}...`, 'user');
+  showMessage(`${exName}?? Eww such a gross name! Can't believe you dated someone called that! How many years were you together?`, 'bot');
+  document.querySelector('.ex-name-input').style.display = "none";
+  document.querySelector('.ex-send-btn').style.display = "none";
+  inputForm.innerHTML += `
+  <input class="years-input" type="number" autocomplete="off" name="relationshipYears" />
+  <input class="years-send-btn" type="image" src="assets/send_arrow2.png" />
+  `
+  document.querySelector('.years-send-btn').addEventListener('click', () => {
+    event.preventDefault();
+    yearsTogether = document.querySelector('.years-input').value;
+    console.log(yearsTogether);
+    showMessage(`We were together for ${yearsTogether} years...`, 'user')
+    setTimeout(showYears,1000)
+  })
+
+})
+
+const showYears = () => {
+if (yearsTogether === 0) {
+  showMessage(`Not even a year? Thank god you got rid of him so fast! How are you feeling now?`, 'bot')
+} else if (yearsTogether > 0 && yearsTogether < 3) {
+  showMessage(`${yearsTogether} years huh.. Not too long luckily. How are you feeling?`, 'bot');
+} else {
+  showMessage(`${yearsTogether} years!! Wow what a waste of time. Thank god you're free. How are you feeling?`, 'bot')
+}
+  document.querySelector('.years-input').style.display = "none";
+  document.querySelector('.years-send-btn').style.display = "none";
+    inputForm.innerHTML += `
+  <input type="button" class="cry-emoji emoji-option" value="😭">
+  <input type="button" class="puke-emoji emoji-option" value="🤮">
+  <input type="button" class="angry-emoji emoji-option" value="🤬">
+  `
+
+  document.querySelector('.cry-emoji').addEventListener('click', () => {
+    showMessage(`I feel like crying... 😭 😭 😭`, 'user');
+    setTimeout(crying, 1000);
+  })
+
+  document.querySelector('.puke-emoji').addEventListener('click', () => {
+    showMessage(`I feel like puking 🤮`, 'user');
+    setTimeout(sick, 1000);
+  })
+
+  document.querySelector('.angry-emoji').addEventListener('click', () => {
+    showMessage(`I'm so f*cking pissed!! 🤬🤬🤬`, 'user');
+    setTimeout(angry, 1000);
+  })
+}
+
+const crying = () => {
+  showMessage('', 'bot')
+  document.querySelector('.cry-emoji').style.display = "none";
+  document.querySelector('.puke-emoji').style.display = "none";
+  document.querySelector('.angry-emoji').style.display = "none";
+
+}
+
+const sick = () => {
+  showMessage('', 'bot')
+  document.querySelector('.cry-emoji').style.display = "none";
+  document.querySelector('.puke-emoji').style.display = "none";
+  document.querySelector('.angry-emoji').style.display = "none";
+}
+
+const angry = () => {
+  showMessage('', 'bot')
+  document.querySelector('.cry-emoji').style.display = "none";
+  document.querySelector('.puke-emoji').style.display = "none";
+  document.querySelector('.angry-emoji').style.display = "none";
+}
+
+
+
+
+
+
+
+
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////// Reply to ex name TEST 
-const exNameInput = (userName) => {  
-/*exName = document.querySelector('.ex-name-input').value;*/
+// const exNameInput = (userName) => {  
+// /*exName = document.querySelector('.ex-name-input').value;*/
 
-document.getElementsByClassName('ex-send-btn').addEventListener('click', function(event) {
-  event.preventDefault();
+// document.getElementsByClassName('ex-send-btn').addEventListener('click', function(event) {
+//   event.preventDefault();
   
-  nameString.value = ""; /////////////////////////////////////////////////////////////////// Try to reuse the nameString here for exname so reset it
-  userName = nameString.value;
-  console.log(userName);
+//   nameString.value = ""; /////////////////////////////////////////////////////////////////// Try to reuse the nameString here for exname so reset it
+//   userName = nameString.value;
+//   console.log(userName);
 
-showMessage(`Their name was ${userName}...`, 'user');
-setTimeout(() => relationshipLength(exLength), 1000);
-}
-)
-}
+// showMessage(`Their name was ${userName}...`, 'user');
+// setTimeout(() => relationshipLength(exLength), 1000);
+// }
+// )
+// }
 
 /*
 // Reply to ex name
@@ -154,7 +234,7 @@ exNameTrigger.addEventListener('click', function() {
 }
 )*/
 
-// Reply to ex-lenght TEST
+// Reply to ex-length TEST
 /*
 const relationshipLength = () => {
 showMessage(`${exName}?? Eww such a gross name! Can't believe you dated someone called that! How many years were you together?`, 'bot');

@@ -141,7 +141,7 @@ body {
   cursor: initial;
 }
 
-.username__button:focus, .ex-name-input:focus {
+.username__button:focus, .ex-name-input:focus, .years-input:focus {
   outline: none;
 }
 
@@ -242,7 +242,7 @@ body {
   font-weight: 500;
   font-size: 18px;
   line-height: 1.25;
-  padding: 5px 10px;
+  padding: 7px 10px 5px 10px;
   display: flex;
   align-items: center;
 }
@@ -257,15 +257,10 @@ body {
   margin-right: 8px;
 }
 
-.input-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
 .input-form {
   background-color: #AFD4E2;
   color: #0D0E0F;
-  border-radius: 20px 15px 0 20px;
+  border-radius: 15px;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 500;
   font-size: 18px;
@@ -273,6 +268,8 @@ body {
   padding: 5px 10px;
   align-items: center;
   align-self: flex-end;
+  height: 55px;
+  border: 2px solid white;
 }
 
 .ex-name-input {
@@ -316,6 +313,8 @@ body {
 
 .emoji-option {
   font-size: 30px;
+  border: none;
+  background: transparent;
 }
 
 .emoji-option:hover {
@@ -324,7 +323,7 @@ body {
 
 .cry-emoji {
   float: left;
-  padding-left: 15px;
+  margin-left: 15px;
 }
 
 .puke-emoji {
@@ -334,6 +333,6 @@ body {
 
 .angry-emoji {
   float: right;
-  padding-right: 30px;
+  margin-right: 15px;
 }
 
