@@ -35,47 +35,48 @@ const showMessage = (message, sender) => {
 }
 
 // Starts here
+
+//Bot  Default Greeting
 const greeting = () => {
 showMessage(`Hello there, What's your name?`, 'bot')
-
-
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-
+// This will display the first answer (user name)
 const handleNameInput = (event) => {
   event.preventDefault()
   const name = nameInput.value
   showMessage(`My name is ${nameInput.value}`, 'user')
-  
   setTimeout(() => showFoodOptions(name), 1000)
-
 }
 
+//Bot Question 2
 const showFoodOptions = () => {
   showMessage(`Nice to meet you ${nameInput.value}! What fika would you like?`, 'bot')
-
 inputWrapper.innerHTML = `
-<button id="cinamonnrollBtn">Cinnamon roll</button>
+<button id="cinnamonrollBtn">Cinnamon roll</button>
 <button id="semlaBtn">Semla</button>
 <button id="prinsesscakeBtn">Prinsess cake</button>
 `
-document.getElementById("cinamonnrollBtn").addEventListener("click", () => {
+//Add event listener for "cinnamon roll"
+document.getElementById("cinnamonrollBtn").addEventListener("click", () => {
   showMessage('Cinnamon roll', 'user')
   setTimeout(showQuantity,1000)
 })
+
+//Add event listener for "semla"
 document.getElementById("semlaBtn").addEventListener("click" , () => {
   showMessage('Semla', 'user')
   setTimeout(showQuantity,1000)
 })
+
+//Add event listener for "prinsess cake"
 document.getElementById("prinsesscakeBtn").addEventListener("click", () => {
    showMessage('Prinsess cake' , 'user')
    setTimeout(showQuantity,1000)
 })
-
-//setTimeout(() => showQuantity(), 1000)
 }
 
+//Bot Question 3
 const showQuantity = () => {
   showMessage(`Good choice! How many would you like?`, 'bot')
   inputWrapper.innerHTML = `
@@ -87,18 +88,14 @@ const showQuantity = () => {
     <option value="four">4</option>
   </select>
   `
+ //Add event listener for "quantity"
 document.getElementById("select").addEventListener("change", () => { 
   showMessage(`I would like ${select.value}`, 'user')
   setTimeout(showPrice,1000)
 })
-
 }
 
-//document.getElementById('1').addEventListener('click', () => {
-
-//document.getElementById('2').addEventListener('click', () => ))
-
-
+ // Price calculation
 const showPrice = () => {
   let price 
 if (select.value === 'one') {
@@ -110,46 +107,35 @@ if (select.value === 'one') {
 } else  {
   price = '40SEK'
 }
+
+//Bot Question 4 Confirmation
 showMessage(`That will be ${price}. Are you sure you want this?`, 'bot')
-
-
 
  inputWrapper.innerHTML = `
  <button id="yesBtn">Yes</button>
  <button id="noBtn">No</button>
   `
+  // Add event listener for yes
   document.getElementById("yesBtn").addEventListener("click", () => {
     showMessage('Yes', 'user')
     setTimeout(confirm,1000)
   })
+
+  // Add event listener for no (reload)
   document.getElementById("noBtn").addEventListener("click", () => {
     location.reload()
     return false  
   })
 }
 
+//Bot final message
 const confirm = () => {  
   showMessage(`Thank you for ordering ${nameInput.value}. Fika is on the way!`, 'bot')
   inputWrapper.innerHTML = ``
-//}
 }
-
-
-
-//const amountInput = () => {
- // const = amountInput.value
-  //showMessage(`I would like ${amountInput.value}`, 'user')
-  //setTimeout(() => (name), 1000)
-
-//b}
-
-//const select = document.getElementById('select')
-//select addEventListener('change', () => nextQuestion(select.value))
 
 // Set up your eventlisteners here
 form.addEventListener('submit', handleNameInput)
-
-
 
 
 // When website loaded, chatbot asks first question.
