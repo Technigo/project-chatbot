@@ -6,7 +6,9 @@ const submit = document.getElementById('submit')
 const main = document.getElementById('main')
 const inputWrapper = document.getElementById('input-wrapper')
 
-const compliment = ["You're all that and a super-size bag of chips.", "On a scale from 1 to 10, you're an 11.", "Aside From Food, You're My Favorite."];
+const compliment = ["You're all that and a super-size bag of chips.", "On a scale from 1 to 10, you're an 11.", "Aside From Food, You're My Favorite.", 
+"Is that your picture next to “charming” in the dictionary?", "You’re a smart cookie.", "I know this is corny, but you are a-maize-ing!", 
+"You're like sunshine on a rainy day.", "I bet you sweat glitter.", "You're better than a triple-scoop ice cream cone. With sprinkles." ];
 let randomSentence = 0;
 
 
@@ -22,14 +24,14 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="/img/chatbot.png" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     console.log('bot') 
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="/img/feelings.png"" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -102,7 +104,7 @@ const showMessage = (message, sender) => {
     
     //randomSentence = Math.floor(Math.random() * 3);
    
-    setTimeout(() =>  showMessage(compliment[Math.floor(Math.random() * 3)], 'bot'), 1000)
+    setTimeout(() =>  showMessage(compliment[Math.floor(Math.random() * 9)], 'bot'), 1000)
     
     setTimeout(() => moreCompliment(compliment), 1000)
 
