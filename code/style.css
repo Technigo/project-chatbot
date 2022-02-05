@@ -114,6 +114,7 @@ main {
 .input-wrapper {
   display: flex;
   justify-content: center;
+  margin-top: 10px;
 }
 
 .input-wrapper form {
@@ -123,7 +124,7 @@ main {
 }
 
 button {
-  background-color: #0f644d;
+  background-color: #0f644dde;
   color: white;
   border: none;
   border-radius: 4px;
@@ -155,7 +156,9 @@ footer p {
   font-family: "Quintessential", cursive;
 }
 
-/* MEDIA QUERY – MOBILE */
+/* MEDIA QUERY – MOBILE – MAX 767 PX*/
+/* -------------------------------------- */
+
 @media (max-width: 767px) {
   body {
     margin-bottom: 64px;
@@ -173,14 +176,15 @@ footer p {
 
   h1 {
     font-size: 3.1rem;
-    padding: 0.5rem;
+    padding: 0.4rem;
     margin-top: 2.2rem;
     font-family: "Quintessential", cursive;
     line-height: 5px;
   }
 
   main {
-    height: 390px;
+    height: 410px;
+    padding: 0.9rem;
   }
 
   .chat {
@@ -194,7 +198,7 @@ footer p {
 
   h2 {
     font-weight: bold;
-    font-size: 28px;
+    font-size: 1.8rem;
     line-height: 2.5rem;
     color: #fff;
     text-align: center;
@@ -344,5 +348,27 @@ footer p {
   footer p {
     font-size: 1.2rem;
     line-height: 1.9rem;
+  }
+}
+
+/* MEDIA QUERY – TABLET – MIN 768 PX MAX 991 PX*/
+/* -------------------------------------- */
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .header {
+    flex-direction: column;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+  }
+
+  h1 {
+    font-size: 64x;
+    padding: 1rem;
+  }
+
+  main {
+    height: 550px;
   }
 }
