@@ -152,12 +152,12 @@ const receipt = (final) => {
   questionNumber++
   showMessage(final, 'user')
   if (final === `I'm happy with my choice!`){
-      showMessage(`Perfect!`, 'bot')
+    setTimeout(() => showMessage(`Perfect!`, 'bot'), 1000)
       inputWrapper.innerHTML =
-      setTimeout (() => {
+      setTimeout(() => {
         showMessage(`You will have it delivered within a week! Thanks for using our service!`, 'bot')
         showMessage(`🚲  🚲  🚲 `, 'bot')
-      }, 1500)
+      }, 2000)
     } else {
       showMessage(`Hmmmm, that's too bad. Let's try again`, 'bot')
       setTimeout (() => {location.reload() // This function reloads the program
