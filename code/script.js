@@ -3,6 +3,7 @@ const startButton = document.getElementById('start-button');
 const startContent = document.getElementById('start-content');
 const chatBox = document.getElementById('chat-box');
 const chat = document.getElementById('chat')
+const form = document.getElementById('name-form')
 const nameInput = document.getElementById('name-input')
 const inputWrapper = document.getElementById('input-wrapper');
 
@@ -40,6 +41,7 @@ const question1 = () => {
 
   document.getElementById('name-form').onsubmit = event => {
     event.preventDefault();
+    form.submitButton.disabled = true;
     showMessage(nameInput.value, 'user');
     questionGenerator();
   }
@@ -75,7 +77,7 @@ const question3 = (answer) => {
     showMessage(textInput.value, 'user');
     textInput.value ='';
     questionGenerator();
-  });
+  }, {once: true});
 }
 
 // Question 4
@@ -91,7 +93,7 @@ const question4 = (answer) => {
     showMessage(textInput.value, 'user');
     textInput.value ='';
     questionGenerator();
-  });
+  }, {once: true});
 }
 
 // Question 5
@@ -129,7 +131,7 @@ const addButtonListeners = (buttonClassName) => {
       showMessage(button.innerText, 'user');
       buttonText = button.innerText;
       questionGenerator();
-    });
+    }, {once: true});
   });
 }
 
