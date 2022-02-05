@@ -58,7 +58,7 @@ questionNumber++
   if (bikeChoice === 'Yes') {
     setTimeout(() => {showMessage(`What kind of bike would you like?`, 'bot')
     inputWrapper.innerHTML = `
-    <button id="mountainBike">Mountainbike</button>
+    <button id="mountainBike">Mountain&shy;bike</button>
     <button id="ladyBike">Ladybike</button>
     <button id="sportyBike">Sporty bike</button>
     `
