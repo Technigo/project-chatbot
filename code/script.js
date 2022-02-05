@@ -9,6 +9,13 @@ const inputWrapper = document.getElementById('input-wrapper');
 let buttonText = "";
 let questionCounter = 0;
 
+// Start chat by moving past start page
+startButton.addEventListener('click', () => {
+  startContent .style.display = "none";
+  chatBox.style.display = "flex";
+  questionGenerator();
+});
+
 // Function to move through questions
 const questionGenerator = () => {
   questionCounter++;
@@ -71,7 +78,7 @@ const question3 = (answer) => {
   });
 }
 
-//
+// Question 4
 const question4 = (answer) => {
   showMessage(`Thanks for sharing. What's something you're looking forward to this week?`, 'bot');
 
@@ -126,7 +133,7 @@ const addButtonListeners = (buttonClassName) => {
   });
 }
 
-// Add chat bubble in the correct place based on who the sender is
+// Placement of chat bubble based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     chat.innerHTML += `
@@ -149,10 +156,3 @@ const showMessage = (message, sender) => {
   } 
   chat.scrollTop = chat.scrollHeight;
 }
-
-// Start chatbot by moving past start page
-startButton.addEventListener('click', () => {
-  startContent .style.display = "none";
-  chatBox.style.display = "flex";
-  questionGenerator();
-});
