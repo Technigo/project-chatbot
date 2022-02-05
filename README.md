@@ -6,10 +6,13 @@ Find the link to our Figma here: https://www.figma.com/file/5BzSxiwmffIjChgvtpeV
 
 ## The problem
 
-We first made a plan on figma, choosing a theme, and deciding how to structure the bot. Then we did Iteration 1-6 before we started building our project. We planned the bot a little different from the technigo one and made some changes to make it our version. How did we make it different?
- - We decided to customise every single answer with specific question, instead of having same next questions (basing on Technigo's example). 
+We first made a plan on figma, choosing a theme, and deciding how to structure the bot. Then we did Iteration 1-6 before we started building our project. We planned the bot a little different from the technigo one and made some changes to make it our version. 
+
+How did we make it different?
+
+ - We decided to develop the user's answers in a more unique way by adding customised next questions, instead of having them repeating (basing on Technigo's example). At the same time, our end goal was to follow Technigo's instruction and leverage the if/else statement to solve the problem
  
- - In order to keep the code clean and easy to follow through, we created 2 seperate cases (AMBULANCE OR MINOR INJURY),and made seperate if/else statement. 
+ - Next, we added media queries to make the site responsive, as the raw code was only writen for desktop version.  It was challenging to look at the other's code and make changes. We took advantage of using the browser inspector and going through every single detail such as font-size, button, margin, padding, and so on. As the result, we are happy with how our chat bot looks like now. 
 
 
 
