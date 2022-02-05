@@ -7,7 +7,7 @@ Stretch goals that we reached include:
 - Adding additional form elements
 - Refactoring the code to learn more about different approaches with functions
 
-The project was done as pair programming in collaboration with Åsa Stieurin.
+The project was done as pair programming in collaboration with Åsa Sieurin.
 
 ## The problem
 
