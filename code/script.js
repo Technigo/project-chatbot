@@ -51,7 +51,7 @@ const buttonClicked = () => {
   if (numberOfQuestionsAsked < 6) {
     if (numberOfQuestionsAsked === 1) {
       showMessage(`My name is ${input.value}`, "user");
-      //saves the user's name
+      //saves the user's name in the object
       allKnowingObj["name"] = input.value;
       setTimeout(() => {
         showMessage(`Hello ${allKnowingObj["name"]}! So you're wondering what your mood is? Let me help!
