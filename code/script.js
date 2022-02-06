@@ -129,7 +129,7 @@ exNameTrigger.addEventListener('click', () => {
 
 const showYears = () => {
 if (yearsTogether < 1) { /////////// changed here to this since it skipped the text when i put 0 before
-  showMessage(`Not even a year? Thank god you got rid of him so fast! How are you feeling now?`, 'bot')
+  showMessage(`Not even a year? Thank god you got rid of them so fast! How are you feeling now?`, 'bot')
 } else if (yearsTogether > 0 && yearsTogether < 3) {
   showMessage(`${yearsTogether} years huh.. Not too long luckily. How are you feeling?`, 'bot');
 } else if (yearsTogether >= 3 && yearsTogether < 10) {
@@ -237,26 +237,17 @@ const angry = () => {
 // Uplift me
 
 const upliftMe = () => {
-showMessage(`Who needs boring ${exName} when you have the whole internet!? This seems like a fun page: https://find-happiness.netlify.app/`, `bot`);
 
-/* used this link : https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_img_create
 showMessage(`So I found this old picture of you guys, imma just leave it here...`, 'bot');  
+chat.innerHTML += `
+<input type="image" src="assets/exPhoto.png" height="250" width="250">  
+`
 document.querySelector('.uplift-me').style.display = "none";
 document.querySelector('.be-mean').style.display = "none";
 
-let x = document.createElement("IMG");
-  x.setAttribute("src", "https://i.pinimg.com/originals/d7/4b/3f/d74b3f6ace35d142588c0065368f00d0.jpg");   //also tried exPhoto.png
-  x.setAttribute("width", "304");
-  x.setAttribute("height", "228");
-  x.setAttribute("alt", "Thrashbin");
-  document.body.appendChild(x);
-
-showMessage(`${x}`, 'bot');*/
-
 /*
-inputForm.innerHTML += `
-<input type="image" src="exPhoto.png" height="300" width="250">  
-`*/
+showMessage(`Who needs boring ${exName} when you have the whole internet!? This seems like a fun page: https://find-happiness.netlify.app/`, `bot`);
+*/
 }
 
 // Be Mean

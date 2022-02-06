@@ -353,3 +353,8 @@ body {
   margin-left: auto;
   margin-right: 10px;
 }
+
+.uplift-meme {
+width: 150px;
+visibility: hidden;  
+}
