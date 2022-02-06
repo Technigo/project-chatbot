@@ -221,6 +221,11 @@ button:hover {
 }
 
 
+@media (max-width: 795px){
+  .content .buttonmain{
+    top: 60%;
+  }
+}
 
 
 
