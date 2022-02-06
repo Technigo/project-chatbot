@@ -313,10 +313,15 @@ footer p {
     margin: 0 0 1rem 0;
   }
 
-  .bot-msg img,
+  .bot-msg img {
+    width: 47px;
+    height: 47px;
+  }
+
   .user-msg img {
     width: 50px;
     height: 50px;
+    margin-right: 10px;
   }
 
   .bubble {
