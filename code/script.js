@@ -40,7 +40,7 @@ const loginButton = document.querySelector('.login__button');
 let userName = "";
 const exNameTrigger = document.querySelector('.ex-send-btn');
 const inputForm = document.querySelector('.input-form');
-
+const inputWrapper = document.querySelector('.input-wrapper');
 
 //Event Listener for Login Button Push   ////////////////////////////////////////// ADDED EVENT here within brackets
 loginButton.addEventListener('click', function(event) {
@@ -108,11 +108,11 @@ exNameTrigger.addEventListener('click', () => {
   exName = document.querySelector('.ex-name-input').value;
   console.log(exName);
   showMessage(`Their name was ${exName}...`, 'user');
-  showMessage(`${exName}?? Eww such a gross name! Can't believe you dated someone called that! How many years were you together?`, 'bot');
+  setTimeout(() => showMessage(`${exName}?? Eww such a gross name! Can't believe you dated someone called that! How many years were you together?`, 'bot'), 1500);
   document.querySelector('.ex-name-input').style.display = "none";
   document.querySelector('.ex-send-btn').style.display = "none";
   inputForm.innerHTML += `
-  <input class="years-input" type="number" autocomplete="off" name="relationshipYears" onkeydown="return event.key != 'Enter';" />
+  <input class="years-input" type="number" autocomplete="off" name="relationshipYears" placeholder="type number here" onkeydown="return event.key != 'Enter';" />
   <input class="years-send-btn send-btn" type="image" src="assets/send_arrow2.png" />
   `
 
@@ -121,7 +121,7 @@ exNameTrigger.addEventListener('click', () => {
     yearsTogether = document.querySelector('.years-input').value;
     console.log(yearsTogether);
     showMessage(`We were together for ${yearsTogether} years...`, 'user')
-    setTimeout(showYears,1000)
+    setTimeout(showYears, 1500)
   })
 
 })
@@ -148,17 +148,17 @@ const showYears = () => {
 
   document.querySelector('.cry-emoji').addEventListener('click', () => {
     showMessage(`I'm so sad I can't stop crying... 😭 😭 😭`, 'user');
-    setTimeout(crying, 1000);
+    setTimeout(crying, 1500);
   })
 
   document.querySelector('.puke-emoji').addEventListener('click', () => {
     showMessage(`I feel sick... Like I want to puke 🤮`, 'user');
-    setTimeout(sick, 1000);
+    setTimeout(sick, 1500);
   })
 
   document.querySelector('.angry-emoji').addEventListener('click', () => {
     showMessage(`I'm so f*cking pissed!! 🤬 🤬 🤬`, 'user');
-    setTimeout(angry, 1000);
+    setTimeout(angry, 1500);
   })
 }
 
@@ -178,13 +178,13 @@ const crying = () => {
   document.querySelector('.uplift-me').addEventListener('click', () => {
   event.preventDefault();
   showMessage(`I need a confidence boost.. I'm not feeling too great 🥺`, 'user');
-  setTimeout(upliftMe, 1000);
+  setTimeout(upliftMe, 1500);
   })
 
   document.querySelector('.be-mean').addEventListener('click', () => {
   event.preventDefault();
   showMessage(`I want you to say mean things about ${exName}!`, 'user')
-  setTimeout(beMeanFirstChoice, 1000);
+  setTimeout(beMeanFirstChoice, 1500);
   })
 }
 
@@ -201,13 +201,13 @@ const sick = () => {
   document.querySelector('.uplift-me').addEventListener('click', () => {
   event.preventDefault();
   showMessage(`I need a confidence boost.. I'm not feeling too great 🥺`, 'user');
-  setTimeout(upliftMe, 1000);
+  setTimeout(upliftMe, 1500);
   })
 
   document.querySelector('.be-mean').addEventListener('click', () => {
   event.preventDefault();
   showMessage(`I want you to say mean things about ${exName}!`, 'user')
-  setTimeout(beMeanFirstChoice, 1000);
+  setTimeout(beMeanFirstChoice, 1500);
   })
 }
 
@@ -224,13 +224,13 @@ const angry = () => {
   document.querySelector('.uplift-me').addEventListener('click', () => {
   event.preventDefault();
   showMessage(`I need a confidence boost.. I'm not feeling too great 🥺`, 'user');
-  setTimeout(upliftMe, 1000);
+  setTimeout(upliftMe, 1500);
   })
 
   document.querySelector('.be-mean').addEventListener('click', () => {
   event.preventDefault();
   showMessage(`I want you to say mean things about ${exName}!`, 'user')
-  setTimeout(beMeanFirstChoice, 1000);
+  setTimeout(beMeanFirstChoice, 1500);
   })
 }
 
@@ -271,19 +271,19 @@ const upliftMe = () => {
   document.querySelector('.be-mean').style.display = "none";
 
   inputForm.innerHTML += `
-  <input type="button" class="good-point upliftmeanbutton" value="...good point 😤">
-  <input type="button" class="ok-go-mean upliftmeanbutton" value="Ok go mean 😈">
+  <input type="button" class="good-point upliftmeanbutton" value="Good point 🙄">
+  <input type="button" class="ok-go-mean upliftmeanbutton" value="Be meaner 😈">
   `
   document.querySelector('.good-point').addEventListener('click', () => {
     event.preventDefault();
     showMessage(`Ok good point, I can't argue with that! I really should raise my standards 😤`, 'user');
-    setTimeout(goodPoint, 1000);
+    setTimeout(goodPoint, 1500);
   })
 
   document.querySelector('.ok-go-mean').addEventListener('click', () => {
     event.preventDefault();
     showMessage(`I want you to say mean things about ${exName}!`, 'user')
-    setTimeout(beMean, 1000);
+    setTimeout(beMean, 1500);
   })
 }
 
@@ -299,7 +299,7 @@ const goodPoint = () => {
   `
   document.querySelector('.check-out').addEventListener('click', () => {
     showMessage("I'll check out the link. Thank you Satan 💖", 'user')
-    setTimeout(feelingBetter, 1000);
+    setTimeout(feelingBetter, 1500);
   })
 }
 
@@ -316,7 +316,7 @@ const beMeanFirstChoice = () => {
   `
   document.querySelector('.check-out').addEventListener('click', () => {
     showMessage("I'll check out the link. Thank you Satan 💖", 'user')
-    setTimeout(feelingBetter, 1000);
+    setTimeout(feelingBetter, 1500);
   })
 }
 
@@ -335,7 +335,7 @@ const beMean = () => {
   `
   document.querySelector('.check-out').addEventListener('click', () => {
     showMessage("I'll check out the link. Thank you Satan 💖", 'user')
-    setTimeout(feelingBetter, 1000);
+    setTimeout(feelingBetter, 1500);
   })
 }
 
@@ -345,5 +345,15 @@ const beMean = () => {
 const feelingBetter = () => {
   showMessage(`No problem. Hope you're feeling better babe.`, 'bot');
   showMessage('I definitely am. Talk to you later!', 'user');
-  document.querySelector('.check-out').style.display = "none";
+  document.querySelector('.input-form').style.display = "none";
+  inputWrapper.innerHTML += `
+  <div class="logout-button">
+    <input type ="button" class="logout" value="Logout" />
+  </div>
+  `
+
+  document.querySelector('.logout').addEventListener('click', () => {
+    location.reload()
+    return false
+  })
 }
