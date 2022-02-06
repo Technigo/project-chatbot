@@ -238,23 +238,37 @@ const angry = () => {
 
 const upliftMe = () => {
 
-showMessage(`So I found this old picture of you guys, imma just leave it here...`, 'bot');  
+showMessage(`Ok, so I found this old picture of you guys, imma just leave it here...`, 'bot');  
 chat.innerHTML += `
 <input type="image" src="assets/exPhoto.png" height="250" width="250" margin="20px">  
 `
+
 document.querySelector('.uplift-me').style.display = "none";
 document.querySelector('.be-mean').style.display = "none";
 
 inputForm.innerHTML += `
-  <input type="button" class="uplift-me upliftmeanbutton" value="...good point 😤">
-  <input type="button" class="be-mean upliftmeanbutton" value="Ok go mean 😈">
-  `
-  document.querySelector('.uplift-me').addEventListener('click', () => {
+<input type="button" class="good-point goodmeanbutton" value="...good point 😤">
+<input type="button" class="ok-go-mean goodmeanbutton" value="ok go mean 😈">
+`
+  document.querySelector('.good-point').addEventListener('click', () => {
   event.preventDefault();
-  showMessage(`I can't argue with that, I guess you're right 😤`, 'user');
-  setTimeout(upliftMe, 1000);
+  showMessage(`Ok good point, I can't argue with that! I really should raise my standards 😤`, 'user');
+  setTimeout(goodpoint, 1000);
+/*
+  //////////////////////////////////// so this will link to the be mean section below
+  document.querySelector('.be-mean').addEventListener('click', () => {
+  event.preventDefault();
+  showMessage(`I want you to say mean things about ${exName}!`, 'user')
+  setTimeout(beMean, 1000);
+  })
+}
 
-showMessage(`And who needs boring ${exName} when you have the whole internet!? This seems like a fun page: https://find-happiness.netlify.app/`, 'bot');
+////////////////// Good-point function, 
+
+/*
+const goodpoint */ 
+
+showMessage(`Yes who needs boring ${exName} when you have the whole internet!? This seems like a fun page: https://find-happiness.netlify.app/`, 'bot');
 
 
   }
