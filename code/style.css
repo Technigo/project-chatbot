@@ -195,6 +195,7 @@ footer p {
     overflow: scroll;
     flex-direction: column;
     padding-bottom: 16px;
+    width: 100%;
   }
 
   h2 {
