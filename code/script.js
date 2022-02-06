@@ -122,8 +122,8 @@ const botReply3 = (answer) => {
 }
 
 const userReply3Yes = () => {
-  const dropdown = document.getElementById("select")                    //function that ??
-  const selectanswer = dropdown.options[dropdown.selectedIndex].value;  //function that stores the option that user has chosen ??
+  const dropdown = document.getElementById("select")                    //creating variabel for the dropdown
+  const selectanswer = dropdown.options[dropdown.selectedIndex].value;  //function that stores the option that user has chosen
 
   //messages shown depending on users chosen option in dropdown menu
   if (selectanswer === 'quarantine') {
@@ -214,6 +214,6 @@ const exit = () => {
 }
   
   // set up your eventlisteners here
-  form.addEventListener('submit', handleSubmit)   //makes it possible to modify the form submit
+  form.addEventListener('submit', handleSubmit)   //After submitting the name,  the "handleSubmit" funtion invokes with a conditional. This leads to next question after answering the first one.
   
   setTimeout(botReply1, 1000)  //two arguments with the function greeting and the second is how much time to wait before chat bubble appear.
