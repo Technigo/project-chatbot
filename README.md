@@ -1,4 +1,4 @@
-# Project Chatbot 
+# Project Chatbot - by Stephannie Medenilla and Mathilda Karlsson
 
 The assignment was to build a chatbot using mainly JavaScript, and hooking it up with HTML and CSS. The chatbot should be able to store data like the users name and answer with that data in a sentence. The user should be able to choose different answers from buttons and dropdowns and then get a reply from the chatbot depending on which answer was chosen.
 
