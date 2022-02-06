@@ -112,9 +112,10 @@ exNameTrigger.addEventListener('click', () => {
   document.querySelector('.ex-name-input').style.display = "none";
   document.querySelector('.ex-send-btn').style.display = "none";
   inputForm.innerHTML += `
-  <input class="years-input" type="number" autocomplete="off" name="relationshipYears" />
+  <input class="years-input" type="number" autocomplete="off" name="relationshipYears" onkeydown="return event.key != 'Enter';" />
   <input class="years-send-btn send-btn" type="image" src="assets/send_arrow2.png" />
   `
+
   document.querySelector('.years-send-btn').addEventListener('click', () => {
     event.preventDefault();
     yearsTogether = document.querySelector('.years-input').value;
@@ -183,7 +184,7 @@ const crying = () => {
   document.querySelector('.be-mean').addEventListener('click', () => {
   event.preventDefault();
   showMessage(`I want you to say mean things about ${exName}!`, 'user')
-  setTimeout(beMean, 1000);
+  setTimeout(beMeanFirstChoice, 1000);
   })
 }
 
@@ -206,7 +207,7 @@ const sick = () => {
   document.querySelector('.be-mean').addEventListener('click', () => {
   event.preventDefault();
   showMessage(`I want you to say mean things about ${exName}!`, 'user')
-  setTimeout(beMean, 1000);
+  setTimeout(beMeanFirstChoice, 1000);
   })
 }
 
@@ -229,13 +230,14 @@ const angry = () => {
   document.querySelector('.be-mean').addEventListener('click', () => {
   event.preventDefault();
   showMessage(`I want you to say mean things about ${exName}!`, 'user')
-  setTimeout(beMean, 1000);
+  setTimeout(beMeanFirstChoice, 1000);
   })
 }
 
 
 // Uplift me //////
 
+// Send Meme Function
 const sendMeme = () => {
   chat.innerHTML += `
 <section class="bot-msg">
@@ -248,7 +250,20 @@ const sendMeme = () => {
 chat.scrollTop = chat.scrollHeight
 }
 
+// SendLink Function
+const sendLink = (link) => {
+  chat.innerHTML += `
+<section class="bot-msg">
+  <img src="assets/sassy.png" alt="Bestie Icon" class="chat-icon bestie-icon" />
+  <div class="bubble bot-bubble">
+    <a href="${link}" target="_blank">Click here!</a> 
+  </div>
+</section>
+`
+chat.scrollTop = chat.scrollHeight
+}
 
+// Uplift me Function
 const upliftMe = () => {
   showMessage(`So I found this old picture of you guys, imma just leave it here...`, 'bot'); 
   sendMeme();
@@ -275,8 +290,8 @@ const upliftMe = () => {
 
 ////////////////// Good-point function
 const goodPoint = () => {
-  showMessage(`Yes who needs boring ${exName} when you have the whole internet!?`, 'bot');
-  showMessage('This seems like a fun page: https://find-happiness.netlify.app/', 'bot');
+  showMessage(`Yes who needs boring ${exName} when you have the whole internet!? This seems like a fun page:`, 'bot');
+  sendLink('https://find-happiness.netlify.app/');
   document.querySelector('.good-point').style.display = "none";
   document.querySelector('.ok-go-mean').style.display = "none";
   inputForm.innerHTML += `
@@ -290,10 +305,27 @@ const goodPoint = () => {
 
 
 
-// Be Mean Function
+// Be Mean Function 1
+const beMeanFirstChoice = () => {
+  showMessage(`You know what, ${exName} seems terrible and deserve to be punished, but who has got the time right so just sign'em up here:`, 'bot');
+  sendLink('https://deathbyspam-week3.netlify.app');
+  document.querySelector('.uplift-me').style.display = "none";
+  document.querySelector('.be-mean').style.display = "none";
+  inputForm.innerHTML += `
+  <input type="button" class="check-out upliftmeanbutton" value="I'll check out the link...">
+  `
+  document.querySelector('.check-out').addEventListener('click', () => {
+    showMessage("I'll check out the link. Thank you Satan 💖", 'user')
+    setTimeout(feelingBetter, 1000);
+  })
+}
+
+
+// Be Mean Function (2nd choice)
+
 const beMean = () => {
   showMessage(`You know what, ${exName} seems terrible and deserve to be punished, but who has got the time right so just sign'em up here:`, 'bot');
-  showMessage('https://deathbyspam-week3.netlify.app', 'bot');
+  sendLink('https://deathbyspam-week3.netlify.app');
   document.querySelector('.uplift-me').style.display = "none";
   document.querySelector('.be-mean').style.display = "none";
   document.querySelector('.good-point').style.display = "none";
