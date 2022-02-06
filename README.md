@@ -8,4 +8,4 @@ We started off by doing a mockup which made it easier for us to write the code i
 
 ## View it live
 
-Netlify link here
+https://chatbot-botshop.netlify.app/
