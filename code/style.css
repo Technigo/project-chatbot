@@ -356,5 +356,8 @@ body {
 
 .uplift-meme {
 width: 150px;
+padding: 20px;
+display: flex;
+align-items: center;
 visibility: hidden;  
 }
