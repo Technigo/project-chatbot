@@ -11,8 +11,15 @@ let numberOfQuestionsAsked = 0;
 let allKnowingObj = {};
 
 const ageAlternatives = ["0-29", "30-59", "60+"]
+
 const smileyHTMLText = ["&#128520", "&#128525", "&#128549", "&#128556", "&#128513"];
+
+//min and max values for the energy range slider
+const min_ = document.createElement("p");
+const max_ = document.createElement("p");
+
 const weatherArray = ["Sunny", "Cloudy", "Rainy", "Snowy", "Stormy", "Windy", "Hail"];
+
 
 const blueish = "linear-gradient(90deg, rgba(10,41,84,1) 0%, rgba(10,63,64,1) 30%, rgba(19,74,92,1) 53%, rgba(26,49,112,1) 72%, rgba(24,21,91,1) 88%)";
 const greenish = "linear-gradient(90deg, rgba(18,8,80,1) 0%, rgba(11,52,9,1) 30%, rgba(50,92,19,1) 53%, rgba(26,112,49,1) 72%, rgba(21,91,73,1) 88%)";
@@ -20,6 +27,8 @@ const redish = "linear-gradient(90deg, rgba(84,10,10,1) 0%, rgba(64,25,10,1) 30%
 const yellowish = "linear-gradient(90deg, rgba(51,48,11,1) 0%, rgba(75,64,14,1) 30%, rgba(90,92,19,1) 53%, rgba(131,158,55,1) 72%, rgba(176,190,34,1) 88%)";
 const purpleish = "linear-gradient(90deg, rgba(48,11,51,1) 0%, rgba(21,14,75,1) 30%, rgba(75,19,92,1) 53%, rgba(78,26,70,1) 72%, rgba(131,27,49,1) 88%)";
 const backgroundGradients = [blueish, redish, greenish, yellowish, purpleish];
+
+
 
 // Functions declared here
 
@@ -65,7 +74,6 @@ const buttonClicked = () => {
   } else {
     setTimeout(() => {
       showMessage("Thank you for your input! Here is your mood colour!", "bot");
-      console.log("hallå?");
       if (allKnowingObj["happy"].includes("yes") || allKnowingObj["happy"].includes("oui")) {
         setTimeout(() => {
           changeBackground(backgroundGradients[randomIndex()]);
@@ -107,19 +115,23 @@ const questionEnergy = () => {
   } else {
     showMessage(`What's your energy level?`,"bot");
   };
-  
+
   inputWrapper.appendChild(form);
+  form.appendChild(min_);
   form.appendChild(input);
+  form.appendChild(max_);
   form.appendChild(sendButton);
 
-
-  form.classList.add("slide-container")
-  input.classList.add("slider")
+  form.classList.add("slide-container");
+  input.classList.add("slider");
   sendButton.classList.add("more-margin");
   input.type = "range";
   input.max = "10";
   input.min = "0";
+  min_.innerHTML = input.min;
+  max_.innerHTML = input.max;
   allKnowingObj["slider-value"] = input.value;
+
   // Update the current slider value (each time you drag the slider handle)
   input.oninput = function () {
     allKnowingObj["slider-value"] = this.value;
@@ -167,8 +179,10 @@ const questionHappy = () => {
   showMessage("Ah, how lovely!", "bot")
   showMessage("I only have one final question before revealing your mood color! Are you happy with our service?","bot");
   
+  form.removeChild(min_);
+  form.removeChild(max_);
   inputWrapper.innerHTML = "";
- 
+  
  
   inputWrapper.appendChild(form);
   form.appendChild(input);
