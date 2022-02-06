@@ -234,7 +234,7 @@ const angry = () => {
 }
 
 
-// Uplift me ////// MARGIN/CSS  NOT WORKING MEME, and tried to cheat with emoji-buttons...
+// Uplift me //////
 
 const sendMeme = () => {
   chat.innerHTML += `
@@ -275,9 +275,17 @@ const upliftMe = () => {
 
 ////////////////// Good-point function
 const goodPoint = () => {
-  showMessage(`Yes who needs boring ${exName} when you have the whole internet!? This seems like a fun page: https://find-happiness.netlify.app/`, 'bot');
+  showMessage(`Yes who needs boring ${exName} when you have the whole internet!?`, 'bot');
+  showMessage('This seems like a fun page: https://find-happiness.netlify.app/', 'bot');
   document.querySelector('.good-point').style.display = "none";
   document.querySelector('.ok-go-mean').style.display = "none";
+  inputForm.innerHTML += `
+  <input type="button" class="check-out upliftmeanbutton" value="I'll check out the link...">
+  `
+  document.querySelector('.check-out').addEventListener('click', () => {
+    showMessage("I'll check out the link. Thank you Satan 💖", 'user')
+    setTimeout(feelingBetter, 1000);
+  })
 }
 
 
@@ -290,4 +298,19 @@ const beMean = () => {
   document.querySelector('.be-mean').style.display = "none";
   document.querySelector('.good-point').style.display = "none";
   document.querySelector('.ok-go-mean').style.display = "none";
+  inputForm.innerHTML += `
+  <input type="button" class="check-out upliftmeanbutton" value="I'll check out the link...">
+  `
+  document.querySelector('.check-out').addEventListener('click', () => {
+    showMessage("I'll check out the link. Thank you Satan 💖", 'user')
+    setTimeout(feelingBetter, 1000);
+  })
+}
+
+
+// Feeling Better / Logout Function
+
+const feelingBetter = () => {
+  showMessage(`No problem. Hope you're feeling better babe.`, 'bot');
+  document.querySelector('.check-out').style.display = "none";
 }
