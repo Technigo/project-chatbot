@@ -1,13 +1,11 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assigment: Build a chatbot with Javascript. Project was done in pairs using pairprogramming.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We had some issues with connecting the functions in jacascript and making the chat run smoothly. If  we we would redo it we would use a seperat function to push forward the questions and answers, but for this version we solved it by coding one function at the time where each function evokes the next one. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://vigorous-heisenberg-a2daca.netlify.app/
