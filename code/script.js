@@ -30,14 +30,14 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user1.png" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     console.log('bot') 
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bot1.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -49,7 +49,7 @@ const showMessage = (message, sender) => {
     console.log('botrandom') 
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bot1.png" alt="Bot" />
         <div class="bubblerandom bot-bubblerandom">
           <p>${message}</p>
         </div>
