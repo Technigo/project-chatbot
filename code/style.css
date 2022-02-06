@@ -354,10 +354,19 @@ body {
   margin-right: 10px;
 }
 
-.uplift-meme {
-width: 150px;
-padding: 20px;
-display: flex;
-align-items: center;
-visibility: hidden;  
+.meme {
+  height: 175px;
+  width: 175px;
+}
+
+/* Good Point */
+
+.good-point {
+  margin-left: 10px;
+  margin-right: auto;
+}
+
+.ok-go-mean {
+  margin-left: auto;
+  margin-right: 10px;
 }

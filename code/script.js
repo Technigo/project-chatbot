@@ -128,15 +128,15 @@ exNameTrigger.addEventListener('click', () => {
 // Years Together
 
 const showYears = () => {
-if (yearsTogether < 1) { /////////// changed here to this since it skipped the text when i put 0 before
-  showMessage(`Not even a year? Thank god you got rid of them so fast! How are you feeling now?`, 'bot')
-} else if (yearsTogether > 0 && yearsTogether < 3) {
-  showMessage(`${yearsTogether} years huh.. Not too long luckily. How are you feeling?`, 'bot');
-} else if (yearsTogether >= 3 && yearsTogether < 10) {
-  showMessage(`${yearsTogether} years!! Wow what a waste of time. Thank god you're free. How are you feeling?`, 'bot')
-} else if (yearsTogether > 9) {
-  showMessage(`${yearsTogether} years!!! That's a whole lifetime. Should we plan their murder? How are you feeling?`, 'bot')
-}
+  if (yearsTogether < 1) { /////////// changed here to this since it skipped the text when i put 0 before
+    showMessage(`Not even a year? Thank god you got rid of them so fast! How are you feeling now?`, 'bot')
+  } else if (yearsTogether > 0 && yearsTogether < 3) {
+    showMessage(`${yearsTogether} years huh.. Not too long luckily. How are you feeling?`, 'bot');
+  } else if (yearsTogether >= 3 && yearsTogether < 10) {
+    showMessage(`${yearsTogether} years!! Wow what a waste of time. Thank god you're free. How are you feeling?`, 'bot')
+  } else if (yearsTogether > 9) {
+    showMessage(`${yearsTogether} years!!! That's a whole lifetime. Should we plan their murder? How are you feeling?`, 'bot')
+  }
   document.querySelector('.years-input').style.display = "none";
   document.querySelector('.years-send-btn').style.display = "none";
     inputForm.innerHTML += `
@@ -236,52 +236,58 @@ const angry = () => {
 
 // Uplift me ////// MARGIN/CSS  NOT WORKING MEME, and tried to cheat with emoji-buttons...
 
+const sendMeme = () => {
+  chat.innerHTML += `
+<section class="bot-msg">
+<img src="assets/sassy.png" alt="Bestie Icon" class="chat-icon bestie-icon" />
+  <div class="bubble bot-bubble">
+    <img src="assets/exPhoto.png" class="meme"> 
+  </div>
+</section>
+`
+chat.scrollTop = chat.scrollHeight
+}
+
+
 const upliftMe = () => {
+  showMessage(`So I found this old picture of you guys, imma just leave it here...`, 'bot'); 
+  sendMeme();
+  document.querySelector('.uplift-me').style.display = "none";
+  document.querySelector('.be-mean').style.display = "none";
 
-showMessage(`Ok, so I found this old picture of you guys, imma just leave it here...`, 'bot');  
-chat.innerHTML += `
-<input type="image" src="assets/exPhoto.png" height="250" width="250" margin="20px">  
-`
-
-document.querySelector('.uplift-me').style.display = "none";
-document.querySelector('.be-mean').style.display = "none";
-
-inputForm.innerHTML += `
-<input type="button" class="good-point goodmeanbutton" value="...good point 😤">
-<input type="button" class="ok-go-mean goodmeanbutton" value="ok go mean 😈">
-`
+  inputForm.innerHTML += `
+  <input type="button" class="good-point upliftmeanbutton" value="...good point 😤">
+  <input type="button" class="ok-go-mean upliftmeanbutton" value="Ok go mean 😈">
+  `
   document.querySelector('.good-point').addEventListener('click', () => {
-  event.preventDefault();
-  showMessage(`Ok good point, I can't argue with that! I really should raise my standards 😤`, 'user');
-  setTimeout(goodpoint, 1000);
-/*
-  //////////////////////////////////// so this will link to the be mean section below
-  document.querySelector('.be-mean').addEventListener('click', () => {
-  event.preventDefault();
-  showMessage(`I want you to say mean things about ${exName}!`, 'user')
-  setTimeout(beMean, 1000);
+    event.preventDefault();
+    showMessage(`Ok good point, I can't argue with that! I really should raise my standards 😤`, 'user');
+    setTimeout(goodPoint, 1000);
+  })
+
+  document.querySelector('.ok-go-mean').addEventListener('click', () => {
+    event.preventDefault();
+    showMessage(`I want you to say mean things about ${exName}!`, 'user')
+    setTimeout(beMean, 1000);
   })
 }
 
-////////////////// Good-point function, 
 
-/*
-const goodpoint */ 
-
-showMessage(`Yes who needs boring ${exName} when you have the whole internet!? This seems like a fun page: https://find-happiness.netlify.app/`, 'bot');
-
-
-  }
-  )
+////////////////// Good-point function
+const goodPoint = () => {
+  showMessage(`Yes who needs boring ${exName} when you have the whole internet!? This seems like a fun page: https://find-happiness.netlify.app/`, 'bot');
+  document.querySelector('.good-point').style.display = "none";
+  document.querySelector('.ok-go-mean').style.display = "none";
 }
 
-// Be Mean //// need to add link in HTML 
 
+
+// Be Mean Function
 const beMean = () => {
-showMessage(`You know what, ${exName} seems terrible and deserve to be punished, but who has got the time right so just sign'em up here:`, 'bot');
-/*chat.innerHTML += 
-
-<input type="link" src="https://deathbyspam-week3.netlify.app/>
-*/
-
+  showMessage(`You know what, ${exName} seems terrible and deserve to be punished, but who has got the time right so just sign'em up here:`, 'bot');
+  showMessage('https://deathbyspam-week3.netlify.app', 'bot');
+  document.querySelector('.uplift-me').style.display = "none";
+  document.querySelector('.be-mean').style.display = "none";
+  document.querySelector('.good-point').style.display = "none";
+  document.querySelector('.ok-go-mean').style.display = "none";
 }
