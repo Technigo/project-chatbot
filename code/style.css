@@ -1,3 +1,4 @@
+/* Remove Default Styling */
 * {
   margin: 0;
   padding: 0;
@@ -15,13 +16,25 @@
   box-sizing: border-box;
 }
 
+/* Hide Number Up/Down Buttons */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Body */
 body {
   background-color: F2F1F0;
   height: 100vh;
 }
 
 /* Font Properties */
-
 .ui-text {
   font-family: 'Encode Sans', sans-serif;
   font-weight: 400;
@@ -36,6 +49,10 @@ body {
 .subtitle {
   font-size: 20px;
   text-align: center;
+}
+
+a {
+  color: white;
 }
 
 
@@ -216,7 +233,7 @@ body {
   align-self: flex-end;
 }
 
-/* Their CSS */
+/* Technigo's CSS */
 .chat {
   flex: 1;
   display: flex;
@@ -294,7 +311,6 @@ body {
 }
 
 /* Number of Years */
-
 .years-input {
   border: none;
   background-color: transparent;
@@ -306,7 +322,6 @@ body {
 }
 
 /* Emoji Options Reply */
-
 .emoji-option {
   font-size: 30px;
   border: none;
@@ -333,7 +348,6 @@ body {
 }
 
 /* Uplift Me / Be Mean */
-
 .upliftmeanbutton {
   border: none;
   background: transparent;
@@ -360,7 +374,6 @@ body {
 }
 
 /* Good Point */
-
 .good-point {
   margin-left: 10px;
   margin-right: auto;
@@ -374,8 +387,4 @@ body {
 .check-out {
   margin-left: auto;
   margin-right: auto;
-}
-
-a {
-  color: white;
 }
