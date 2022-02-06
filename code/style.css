@@ -41,7 +41,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0f644d;
+  color: #24667e;
   padding: 16px;
   font-size: 16px;
   font-family: "Montserrat";
@@ -92,12 +92,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #cee5eb;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0f644d;
+  color: #24667e;
   max-width: 100%;
 }
 
@@ -124,7 +124,7 @@ main {
 }
 
 button {
-  background-color: #0f644dde;
+  background-color: #3f93b1;
   color: white;
   border: none;
   border-radius: 4px;
@@ -136,6 +136,7 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-top: 5px;
 }
 
 button:hover {
@@ -211,6 +212,7 @@ footer p {
     font-size: 14px;
     line-height: 20px;
     border-radius: 8px;
+    margin-top: 0;
   }
 
   .send-btn {
@@ -330,7 +332,7 @@ footer p {
   }
 
   p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     line-height: 20px;
   }
 
@@ -375,5 +377,9 @@ footer p {
 
   main {
     height: 550px;
+  }
+
+  button {
+    margin-top: 0;
   }
 }
