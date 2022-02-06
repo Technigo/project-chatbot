@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
   padding: 2px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 0;
+  transition: all .3s cubic-bezier(.16,.8,.62,1.52);
 }
 
 body {
@@ -9,6 +12,8 @@ body {
   font-family: 'Press Start 2P', cursive;
   background: #ffb0aa;
 }
+
+
 
 h1 {
   font-weight: bold;
@@ -77,9 +82,15 @@ main {
   display: flex;
   justify-content: flex-start;
   overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
   flex-direction: column;
   padding-bottom: 16px;
 }
+
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */}
 
 .bot-msg {
   display: flex;
@@ -114,6 +125,24 @@ main {
   
 }
 
+.bubblerandom {
+  background: #2459bb;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+  padding: 16px 24px;
+  color: white;
+  max-width: 50%;
+  box-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+               0px 8px 13px rgba(0,0,0,0.1),
+               0px 18px 23px rgba(0,0,0,0.1);
+  
+}
+
+.bot-bubblerandom {
+  border-radius: 0px 26px 26px 26px;
+  margin-left: 8px;
+}
 
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;

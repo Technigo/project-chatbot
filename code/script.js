@@ -38,6 +38,18 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
+
+  else if (sender === 'botrandom') {
+    console.log('botrandom') 
+    chat.innerHTML += `
+      <section class="bot-msg">
+        <img src="/img/feelings.png"" alt="Bot" />
+        <div class="bubblerandom bot-bubblerandom">
+          <p>${message}</p>
+        </div>
+      </section>
+    `
+  }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
@@ -104,13 +116,18 @@ const showMessage = (message, sender) => {
   document
   .getElementById('randomBtn')
   .addEventListener('click', () => {
+
+ 
     
     //randomSentence = Math.floor(Math.random() * 3);
    
-    setTimeout(() =>  showMessage(compliment[Math.floor(Math.random() * 9)], 'bot'), 1000)
+    setTimeout(() =>  showMessage(compliment[Math.floor(Math.random() * 9)], 'botrandom'), 1000)
+    
     clearTimeout(setTimeout);
     
-    setTimeout(() => moreCompliment(compliment), 1000)
+    setTimeout(() => moreCompliment(compliment), 3000)
+
+
 
     
     // Returns a random integer from 0 to 3:
@@ -137,7 +154,7 @@ const chooseDefault = (submit) => { // When clicking NO on the second intention
 //------ Default - New compliment? ------//
 
 const moreCompliment = (name) => { 
-  setTimeout(() => showMessage(`Do you want another compliment?`, 'bot') ,2000) //sends second message from bot
+   showMessage(`Do you want another compliment?`, 'bot') //sends second message from bot
   
   
   inputWrapper.innerHTML = // add Yes No button
