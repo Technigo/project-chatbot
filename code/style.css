@@ -337,11 +337,16 @@ footer p {
   }
 
   .bot-msg {
+    display: flex;
     margin: 0;
+    flex-shrink: 0;
   }
 
   .user-msg {
+    display: flex;
+    justify-content: flex-end;
     margin: 0;
+    flex-shrink: 0;
   }
 
   footer {
