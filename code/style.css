@@ -11,16 +11,19 @@ body {
 }
 
 h1 {
+  font-family: 'Faune', sans-serif;
   font-weight: bold;
-  font-size: 44px;
+font-style: italic;
+  font-size: 60px;
   line-height: 34px;
   color: #fff;
   text-align: center;
 }
 
 h2 {
+  font-family: 'Faune', sans-serif;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 32px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -33,6 +36,7 @@ p {
   line-height: 28px;
   margin: 0;
 }
+
 
 /* .input-wrapper {
   display: flex;

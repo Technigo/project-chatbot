@@ -5,7 +5,7 @@ const sendButton = document.getElementById("send-btn");
 const inputWrapper = document.getElementById("input-wrapper");
 const form = document.getElementById("name-form");
 
-// Global variables, if you need any, declared here
+// Global variables
 let numberOfQuestionsAsked = 0;
 
 let allKnowingObj = {};
@@ -18,9 +18,10 @@ const smileyHTMLText = ["&#128520", "&#128525", "&#128549", "&#128556", "&#12851
 const min_ = document.createElement("p");
 const max_ = document.createElement("p");
 
+//Choices for the dropdown menu
 const weatherArray = ["Sunny", "Cloudy", "Rainy", "Snowy", "Stormy", "Windy", "Hail"];
 
-
+//Gradients displaying if last answer is yes
 const blueish = "linear-gradient(90deg, rgba(10,41,84,1) 0%, rgba(10,63,64,1) 30%, rgba(19,74,92,1) 53%, rgba(26,49,112,1) 72%, rgba(24,21,91,1) 88%)";
 const greenish = "linear-gradient(90deg, rgba(18,8,80,1) 0%, rgba(11,52,9,1) 30%, rgba(50,92,19,1) 53%, rgba(26,112,49,1) 72%, rgba(21,91,73,1) 88%)";
 const redish = "linear-gradient(90deg, rgba(84,10,10,1) 0%, rgba(64,25,10,1) 30%, rgba(92,76,19,1) 53%, rgba(96,112,26,1) 72%, rgba(91,64,21,1) 88%)";
@@ -33,6 +34,7 @@ const backgroundGradients = [blueish, redish, greenish, yellowish, purpleish];
 // Functions declared here
 
 //På firefox är texten från förra gången kvar när man laddar om sidan...
+// Kan vi testa: document.getElementbyId("name-form").reset();
 input.value = '';
 
 
@@ -132,7 +134,7 @@ const questionEnergy = () => {
   max_.innerHTML = input.max;
   allKnowingObj["slider-value"] = input.value;
 
-  // Update the current slider value (each time you drag the slider handle)
+  // Updates the current slider value (each time you drag the slider handle)
   input.oninput = function () {
     allKnowingObj["slider-value"] = this.value;
   };
@@ -218,7 +220,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+  // This function makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
 
@@ -246,9 +248,9 @@ const randomIndex = () => {
   return (Math.floor(Math.random() * (5 - 0) + 0))
 }
 
-// Set up your eventlisteners here
 
-//prevent reload of page
+
+//Prevents reload of page
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 });
