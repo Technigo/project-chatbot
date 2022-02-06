@@ -1,13 +1,9 @@
 # Project Name
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This project is part of Technigo boot camp, week 4. The goal was to create a simple chat bot. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The biggest challenge for us was to understand javascript and it's fundamental concepts. We solved it with allowing ourselves to try and make mistakes, learning by doing. In the end we wanted to keep it simple and to the point, and focused on understanding the javascript we needed to use for this project. If we had more time we would want to make the conversation smoother with better utilising setTimeout, as well as adding more fun functions in javascript. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
