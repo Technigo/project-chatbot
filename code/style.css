@@ -14,7 +14,6 @@ body {
 }
 
 
-
 h1 {
   font-weight: bold;
   font-size: 35px;
@@ -184,33 +183,38 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-@media(max-width:767px){
 
-
-
-}
-
-
-.button{
-  background: #00aa2b;
+.buttonmain{
+  background: #ff7982;
   color: #fff;
+  margin-top: 30%;
   padding: 10px 40px;
   box-shadow: 6px 6px 39px -4px rgba(0,0,0,0.75);
-  border-radius: 3px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: 0.4s;
-}
-
-.button:hover{
-  background: #34495e;
-  color: #fff;
-}
-
-.close{
   position: absolute;
-  top: 15px;
-  right: 15px;
-  height: 15px;
-  width: 15px;
-  cursor: pointer;
+  align-items: center;
+  text-decoration: none;
+  margin: 20% 20% 20% 40%;
 }
+
+.buttonmain:hover{
+  background: #feeced;
+
+}
+
+@media (max-width:768px){
+  .buttonmain{
+    margin: 20% 10% 20% 22%;
+    padding: 10px 50px;
+  }
+}
+
+@media (max-width:375px){
+  .buttonmain{
+    margin: 20% 5% 5% 15%;
+    padding: 10px 50px;
+  }
+}
+
+

@@ -1,6 +1,8 @@
-  document.getElementById("button").addEventListener("click", function(){
+  document.getElementById("buttonmain").addEventListener("click", function(){
+  buttonmain.style.visibility="hidden";
   document.querySelector("main").style.display = "flex";
 })
+
 
 
 // All the DOM selectors stored as short variables
@@ -208,7 +210,4 @@ form.addEventListener('submit', handleNameInput)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
 
-document.querySelector(".close").addEventListener("click", function(){
-  document.querySelector("main").style.display = "none";
 
-})
