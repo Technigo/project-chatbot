@@ -312,5 +312,6 @@ const beMean = () => {
 
 const feelingBetter = () => {
   showMessage(`No problem. Hope you're feeling better babe.`, 'bot');
+  showMessage('I definitely am. Talk to you later!', 'user');
   document.querySelector('.check-out').style.display = "none";
 }
