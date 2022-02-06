@@ -70,7 +70,7 @@ main {
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
-  display: flex;
+  display: none;
   flex-direction: column; 
   box-shadow: 0px 4px 3px rgba(0,0,0,0.4),
                0px 8px 13px rgba(0,0,0,0.1),
@@ -126,7 +126,7 @@ main {
 }
 
 .bubblerandom {
-  background: #2459bb;
+  background: #f7a5aa;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
@@ -188,4 +188,29 @@ button:hover {
 
 
 
+}
+
+
+.button{
+  background: #00aa2b;
+  color: #fff;
+  padding: 10px 40px;
+  box-shadow: 6px 6px 39px -4px rgba(0,0,0,0.75);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.button:hover{
+  background: #34495e;
+  color: #fff;
+}
+
+.close{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
 }

@@ -1,3 +1,8 @@
+  document.getElementById("button").addEventListener("click", function(){
+  document.querySelector("main").style.display = "flex";
+})
+
+
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const nameInput = document.getElementById('name-input')
@@ -127,9 +132,6 @@ const showMessage = (message, sender) => {
     
     setTimeout(() => moreCompliment(compliment), 3000)
 
-
-
-    
     // Returns a random integer from 0 to 3:
 
      // After clicking the button; passing the arguments to complimentOptions function with 1s delay 
@@ -205,3 +207,8 @@ form.addEventListener('submit', handleNameInput)
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000)
+
+document.querySelector(".close").addEventListener("click", function(){
+  document.querySelector("main").style.display = "none";
+
+})
