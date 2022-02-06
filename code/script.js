@@ -290,7 +290,7 @@ const upliftMe = () => {
 
 ////////////////// Good-point function
 const goodPoint = () => {
-  showMessage(`Yes who needs boring ${exName} when you have the whole internet!? This seems like a fun page:`, 'bot');
+  showMessage(`Yes who needs boring ${exName} when you have the whole internet!? This seems like a fun service 🍑😜🍆`, 'bot');
   sendLink('https://find-happiness.netlify.app/');
   document.querySelector('.good-point').style.display = "none";
   document.querySelector('.ok-go-mean').style.display = "none";
@@ -307,7 +307,7 @@ const goodPoint = () => {
 
 // Be Mean Function 1
 const beMeanFirstChoice = () => {
-  showMessage(`You know what, ${exName} seems terrible and deserve to be punished, but who has got the time right so just sign'em up here:`, 'bot');
+  showMessage(`You know what, ${exName} is terrible and deserves to be punished, but who has the time right so just sign'em up for quick revenge here:`, 'bot');
   sendLink('https://deathbyspam-week3.netlify.app');
   document.querySelector('.uplift-me').style.display = "none";
   document.querySelector('.be-mean').style.display = "none";
@@ -324,7 +324,7 @@ const beMeanFirstChoice = () => {
 // Be Mean Function (2nd choice)
 
 const beMean = () => {
-  showMessage(`You know what, ${exName} seems terrible and deserve to be punished, but who has got the time right so just sign'em up here:`, 'bot');
+  showMessage(`You know what, ${exName} is terrible and deserves to be punished, but who has the time right so just sign'em up for quick revenge here:`, 'bot');
   sendLink('https://deathbyspam-week3.netlify.app');
   document.querySelector('.uplift-me').style.display = "none";
   document.querySelector('.be-mean').style.display = "none";
