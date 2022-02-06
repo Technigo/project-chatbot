@@ -1,19 +1,21 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  
 }
 
+/* added background iamge in the body and font used by Netflix  */
 body {
   margin: 0;
   padding: 0;
   width: 100vw;
+  height: 100%;
   font-family: 'Netflix sans','Helvetica Neue',Helvetica,Arial, sans-serif;
-  background-image: url('assets/background.jpg');
+  background-image: url('assets/background.jpg'); 
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
 }
 
+/* added some faded backgrounds and other styling to h1 & h2 */
 h1 {
   font-weight: bold;
   font-size: 58px;
@@ -39,9 +41,9 @@ h2 {
   margin-bottom: 36px;
 }
 
+/* added and styled a start page and start page button */
 .start-page {
   display: flex;
-  
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -54,16 +56,16 @@ h2 {
 .start-page button {
   height: 300px;
   width: 700px;
-  line-height: 40px;
+  line-height: 50px;
   font-family: 'Netflix sans','Helvetica Neue',Helvetica,Arial, sans-serif;
-  font-size: 60px;
+  font-size: 35px;
   border-radius: 10px;
 
 }
 
+
 p {
   font-size: 16px;
-  font-family: 'Quicksand', sans-serif;
   font-weight: normal;
   line-height: 28px;
   margin: 0;
@@ -71,7 +73,6 @@ p {
 
 a {
   text-decoration: none;
-  font-family: 'Quicksand', sans-serif;
   color: #141414;
 }
 
@@ -89,6 +90,7 @@ input {
   flex: 1;
 }
 
+/* added a select drop down menu in JS and styled it in css */
 select {
   border: none;
   border-radius: 4px;
@@ -96,7 +98,6 @@ select {
   font-size: 20px;
   font-weight: lighter;
   height: 60px;
-  font-family: 'Quicksand', sans-serif;
   background: #E50914;
   width: 100%;
   padding: 0 20px;
@@ -151,7 +152,6 @@ main {
   background: white;
   font-size: 12px;
   font-weight: lighter;
-  font-family: 'Quicksand', sans-serif;
   line-height: 26px;
   padding: 16px 24px;
   color: #141414;
@@ -198,6 +198,7 @@ button:hover {
   transition: all 0.2s ease;
 }
 
+/* styled the h1 & h2 with media query for responsiveness */
 @media (max-width:500px){
   h1 {
     font-size: 45px;

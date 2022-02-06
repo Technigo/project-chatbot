@@ -7,8 +7,6 @@ const send = document.getElementById('send')
 const startPage = document.getElementById('startPage')
 const startBtn = document.getElementById('startBtn')
 
-// Global variables, if you need any, declared here
-
 // Functions declared here
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -36,32 +34,28 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
+// Starts here with a start button leading to the chat and inital greeting (with timer)
 
 startBtn.onclick = () => {
   startPage.style.display = "none"
   setTimeout(greeting, 1200)
 }
 
-
 const greeting = () => {
-  showMessage(`Hi there, who is this?`, 'bot') // denna är kopplad till <p>message</p>
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage(`Hi there, who is this?`, 'bot') // bot greeting here
 }
 
 const handleNameInput = (event) => {
   event.preventDefault();
-  // Store the value in a variable so we can access it after we
-  // clear it from the input
   const name = nameInput.value;
   showMessage(`It's me, ${name}. Please help!`, 'user');
   nameInput.value = "";
-  setTimeout(() => showDecade(name), 1000);
+  setTimeout(() => showDecade(name), 1000);  // users first answer, when submitting answer peage refresh is prevented by (event)
 }
 
-const showDecade = (name) => {
+const showDecade = (name) => { // follow upp question by bot, showing first options buttons
   showMessage(`Welcome ${name}. Of course! First, please tell me what decade you feel like diving into?`, 'bot');
-  setTimeout(() => selectMovie(year), 1000);
+  setTimeout(() => selectMovie(year), 1000); 
 
   inputWrapper.innerHTML = `
     <button id='1980Btn'>1980s</button>
@@ -69,25 +63,25 @@ const showDecade = (name) => {
     <button id='2000Btn'>2000s</button>
   `
 
-  document.getElementById('1980Btn').addEventListener("click", () => selectMovie('1980s'));
+  document.getElementById('1980Btn').addEventListener("click", () => selectMovie('1980s')); // when one of these selections are selected, it leads the chat to the next question which is the selectMovie function 
   document.getElementById('1990Btn').addEventListener("click", () => selectMovie('1990s'));
   document.getElementById('2000Btn').addEventListener("click", () => selectMovie('2000s'));
 }
   
-const selectMovie = (year) => {
-  inputWrapper.innerHTML =""
+const selectMovie = (year) => { 
+  inputWrapper.innerHTML ="" // this clears input wrapper from content (the buttons in the previous question)
   showMessage(`Really feel like watching something from the ${year} `,  'user');
   showMessage(`${year} you say! Cool, what genre do you feel like?`, 'bot');
 
-  if (year === '1980s') {
+  if (year === '1980s') { //fist conditional, different drop down select menus depeneding on users choice of decade
     inputWrapper.innerHTML = `
-      <select id="select">
+      <select id="select"> 
         <option value="" selected disabled>Pick a genre</option>
         <option value="1980's comedy">An 1980's comedy</option>
         <option value="1980's horror">An 1980's horror</option>
         <option value="1980's documentary">An 1980's documentary</option>
       </select>
-    `
+    `// this creates a drop-down select menu in the input wrapper 
   } else if (year === '1990s') {
       inputWrapper.innerHTML = `
        <select id="select">
@@ -107,8 +101,9 @@ const selectMovie = (year) => {
       </select>
     `
   }
+
   const select = document.getElementById('select')
-  select.addEventListener('change', () => confirmation(select.value))
+  select.addEventListener('change', () => confirmation(select.value))//this allows user to select from drop down menu leads to next question
 }
 
 const confirmation = (select) => {
@@ -123,9 +118,12 @@ const confirmation = (select) => {
   document.getElementById('yesBtn').addEventListener("click", () => tooBad('yes'));
   document.getElementById('noBtn').addEventListener("click", () => tooBad('no'));
   button.addEventListener('select', () => tooBad(answer));
+
+  //this function leads to two different option depending on whether you click yes or no. 
+  //Yes leads to pick a movie and no to the option to create an account on Netflix, using conditionals
 }
 
-const tooBad = (answer) => {
+const tooBad = (answer) => { 
   showMessage(answer, 'user');
 
   if (answer === 'no') {
@@ -134,22 +132,16 @@ const tooBad = (answer) => {
     <button id="signUpBtn"><a href="https://www.netflix.com/signup" target="_blank">Create an account</a></button>
     `
   } else {
-  setTimeout(() => showMessage(`Awesome. However, despite your wishes, these are the three best movies of all times. So go ahead and pick one. Enjoy your meal!`, 'bot'), 1000);
+  setTimeout(() => showMessage(`Awesome. However, despite your wishes, these are the three best movies of all times. So go ahead and pick one. Enjoy!`, 'bot'), 1000);
   inputWrapper.innerHTML = `
   <button id="jawsBtn"><a href="https://www.netflix.com/se-en/title/60001220" target="_blank">Jaws</a></button>
   <button id="scaryBtn"><a href="https://www.netflix.com/se-en/title/60000870" target="_blank">Scary Movie</a></button>
   <button id="shindlerBtn"><a href="https://www.netflix.com/se/title/60036359" target="_blank">Schindler's List</a></button>
   `
+  //Last interaction with the bot, the chat is ended with being sent to Netflix
 }}
 
 // Set up your eventlisteners here. 
 
 form.addEventListener('submit', handleNameInput);
  
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-// setTimeout(greeting, 1200) 
