@@ -6,9 +6,9 @@ const inputWrapper = document.getElementById("input-wrapper");
 const form = document.getElementById("name-form");
 
 // Global variables
-let numberOfQuestionsAsked = 0;
+let numberOfQuestionsAsked = 0; //counter for number of questions
 
-let allKnowingObj = {};
+let allKnowingObj = {}; //To save all the answers and make them available in the global scope
 
 const ageAlternatives = ["0-29", "30-59", "60+"]
 
@@ -33,10 +33,7 @@ const backgroundGradients = [blueish, redish, greenish, yellowish, purpleish];
 
 // Functions declared here
 
-//På firefox är texten från förra gången kvar när man laddar om sidan...
-// Kan vi testa: document.getElementbyId("name-form").reset();
 input.value = '';
-
 
 const greeting = () => {
   showMessage(`Hello stranger! What's your name?`, 'bot');
@@ -46,43 +43,44 @@ const greeting = () => {
 setTimeout(greeting, 500);
 
 
-
+//Called everytime a button is clicked and checks which number question is next
 const buttonClicked = () => {
   
-  numberOfQuestionsAsked++;
+  numberOfQuestionsAsked++; //adds 1 to the counter
+
   if (numberOfQuestionsAsked < 6) {
     if (numberOfQuestionsAsked === 1) {
-      showMessage(input.value, "user");
+      showMessage(`My name is ${input.value}`, "user");
       //saves the user's name
       allKnowingObj["name"] = input.value;
       setTimeout(() => {
         showMessage(`Hello ${allKnowingObj["name"]}! So you're wondering what your mood is? Let me help!
         I'm going to ask you a couple of questions to help deterine the right color for you!`, "bot")
       }, 500);
-      setTimeout(questionAge, 2000)
+      setTimeout(questionAge, 2000) //Calls on second question
     } else if (numberOfQuestionsAsked === 2) {
       showMessage(`I am ${allKnowingObj["age-range"]} years old`, "user");
-      setTimeout(questionEnergy, 500);
+      setTimeout(questionEnergy, 500); //Calls on third question
     } else if (numberOfQuestionsAsked === 3) {
       showMessage(`I would say I'm at ${allKnowingObj["slider-value"]} out of 10`, "user");
-      setTimeout(questionMood(), 2000);
+      setTimeout(questionMood(), 2000); //Calls on fourth question
     } else if (numberOfQuestionsAsked === 4) {
       showMessage(allKnowingObj["mood-smiley"], "user");
-      setTimeout(questionWeather, 500);
+      setTimeout(questionWeather, 500); //Calls on fifth question
     } else if (numberOfQuestionsAsked === 5) {
       showMessage(allKnowingObj["weather-choice"], "user");
-      setTimeout(questionHappy, 500);
+      setTimeout(questionHappy, 500); //Calls last question
     };
-  } else {
+  } else { //Triggered if there have been 6 questions asked
     setTimeout(() => {
       showMessage("Thank you for your input! Here is your mood colour!", "bot");
-      if (allKnowingObj["happy"].includes("yes") || allKnowingObj["happy"].includes("oui")) {
+      if (allKnowingObj["happy"].includes("yes") || allKnowingObj["happy"].includes("oui")) { //if user is happy with the service they get a random colour form the gradient array
         setTimeout(() => {
           changeBackground(backgroundGradients[randomIndex()]);
         }, 1500);
       } else {
         setTimeout(() => {
-          changeBackground("black");
+          changeBackground("black"); //if user is not happy they get the colour black
         }, 500);
       };
     }, 500);
@@ -95,9 +93,11 @@ const questionAge = () => {
   showMessage("How old are you?", "bot");
   inputWrapper.innerHTML = '';
 
+  //creates three answer alternatives
   const ageButtons = createNewElement("button", 3);
   giveElementsText(ageButtons, ageAlternatives);
   
+  //saves age answer in object and calls on the main function buttonClicked
   for (let button of ageButtons) {
     inputWrapper.appendChild(button);
     button.onclick = function () {
@@ -110,14 +110,9 @@ const questionAge = () => {
 const questionEnergy = () => {
   inputWrapper.innerHTML = "";
 
-  if (allKnowingObj["age-range"] == "0-29") {
-    showMessage(`Alright young one, what's your energy level?`,"bot"); //Vi kanske kan ändra vilket meddelande som ska postas utifrån vilket svar vi får
-  } else if (allKnowingObj["age-range"] == "30-59") {
-    showMessage(`What's your energy level?`,"bot");
-  } else {
-    showMessage(`What's your energy level?`,"bot");
-  };
-
+  showMessage(`Alright, what's your energy level?`,"bot"); 
+  
+  //re-appends the form and change of input to range 
   inputWrapper.appendChild(form);
   form.appendChild(min_);
   form.appendChild(input);
@@ -132,6 +127,8 @@ const questionEnergy = () => {
   input.min = "0";
   min_.innerHTML = input.min;
   max_.innerHTML = input.max;
+
+  // saves input value to object
   allKnowingObj["slider-value"] = input.value;
 
   // Updates the current slider value (each time you drag the slider handle)
@@ -140,6 +137,7 @@ const questionEnergy = () => {
   };
 };
 
+// Pretty much exactly the same as the questionAge but with smileys
 const questionMood = () => {
   showMessage(`So, ${allKnowingObj["name"]}.. Which smiley best describes your mood?`,"bot");
   inputWrapper.innerHTML = '';
@@ -157,6 +155,7 @@ const questionMood = () => {
   };
 };
 
+//Changes the form to a select menu with wheater options
 const questionWeather = () => {
   showMessage(`Which word would best describe the current weather?`,"bot");
   inputWrapper.innerHTML = ""
@@ -166,20 +165,21 @@ const questionWeather = () => {
   inputWrapper.append(sendButton);
 
   const options = createNewElement("option", 7);
-  giveElementsText(options, weatherArray)
+  giveElementsText(options, weatherArray);
   for (let option of options) {
     selecter.appendChild(option);
-  }
+  };
 
   allKnowingObj["weather-choice"] = selecter.value;
   selecter.oninput = function () {
     allKnowingObj["weather-choice"] = this.value;
   };
-}
+};
 
+// asks user if they are happy with the service and saves answer in object
 const questionHappy = () => {
   showMessage("Ah, how lovely!", "bot")
-  showMessage("I only have one final question before revealing your mood color! Are you happy with our service?","bot");
+  showMessage("I only have one final question before revealing your mood color! Are you happy with our service? Yes/No","bot");
   
   form.removeChild(min_);
   form.removeChild(max_);
@@ -197,7 +197,6 @@ const questionHappy = () => {
     allKnowingObj["happy"] = this.value;
   };
 };
-
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -247,8 +246,6 @@ const changeBackground = (value) => {
 const randomIndex = () => {
   return (Math.floor(Math.random() * (5 - 0) + 0))
 }
-
-
 
 //Prevents reload of page
 form.addEventListener("submit", (event) => {

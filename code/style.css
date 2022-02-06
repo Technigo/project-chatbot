@@ -37,12 +37,6 @@ p {
   margin: 0;
 }
 
-
-/* .input-wrapper {
-  display: flex;
-  justify-content: space-around;
-} */
-
 input {
   box-sizing: border-box;
   border: none;
@@ -198,7 +192,3 @@ button:hover {
 .display-none {
   display: none;
 }
-/* 
-.gradient-blue {
-  background-color: -moz-linear-gradient(90deg, rgba(10,41,84,1) 0%, rgba(10,63,64,1) 30%, rgba(19,74,92,1) 53%, rgba(26,49,112,1) 72%, rgba(24,21,91,1) 88%);
-} */
