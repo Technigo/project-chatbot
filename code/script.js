@@ -4,9 +4,9 @@ let findTime = new Date().toTimeString().substr(0,5);
 let time = findTime.replace(":", ".");
 
 //Get Weekday (Define array, pull date, subtract 1 for array)
-const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const weekday = new Date();
-let today = weekdays[weekday.getDay() - 1];
+let today = weekdays[weekday.getDay()];
 
 //Get Date (Fixed to remove 0 from 01-09 in date)
 let date = new Date().toDateString().substr(8,2);
