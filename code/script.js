@@ -1,3 +1,4 @@
+  //Open the chatbot while clicking on the button
   document.getElementById("buttonmain").addEventListener("click", function(){
   buttonmain.style.visibility="hidden";
   document.querySelector("main").style.display = "flex";
@@ -21,7 +22,6 @@ const compliment = ["You're all that and a super-size bag of chips.", "On a scal
 // Global variables, if you need any, declared here
 // Functions declared here
 // This function will add a chat bubble in the correct place based on who the sender is
-
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     console.log('user')
@@ -123,36 +123,26 @@ const showMessage = (message, sender) => {
   .getElementById('randomBtn')
   .addEventListener('click', () => {
 
- 
-    
     //randomSentence = Math.floor(Math.random() * 3);
    
-    setTimeout(() =>  showMessage(compliment[Math.floor(Math.random() * 9)], 'botrandom'), 1000)
+    setTimeout(() =>  showMessage(compliment[Math.floor(Math.random() * 9)], 'botrandom'), 1000) // Returns a random integer from 0 to 3:
     
     clearTimeout(setTimeout);
     
-    setTimeout(() => moreCompliment(compliment), 3000)
+    setTimeout(() => moreCompliment(compliment), 3000) // After clicking the button; passing the arguments to complimentOptions function with 1s delay 
 
-    // Returns a random integer from 0 to 3:
-
-     // After clicking the button; passing the arguments to complimentOptions function with 1s delay 
-    // Also add some code in here to add answer options for next message
   })
 }
-
-//------ Random compliment ------//
-
-
-
 
 
 //------ Default - No Button ------// 
 
-const chooseDefault = (submit) => { // When clicking NO on the second intention
+const chooseDefault = (submit) => { // When clicking NO on the second intention the chat bot closes
   showMessage(`Buuuuuu :(`, 'bot')
   setTimeout(() => location.reload(), 2000)
   return false;
 }
+
 
 //------ Default - New compliment? ------//
 
@@ -183,9 +173,7 @@ const moreCompliment = (name) => {
 }
 
 
-
-
-  // Set up your eventlisteners here
+// Set up your eventlisteners here
 
 form.addEventListener('submit', handleNameInput)
 
