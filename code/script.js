@@ -65,6 +65,7 @@ sendButton.addEventListener('click', () => {
 // if reply.value <= 25 {
   //   inputWrapper.innerHTML = `
 //     <input type="text" id="age-check"> 
+// `
 //   showMessage(`Sorry, we only offer courses for adultier adults who are older than 25 years old. :()`, 'bot')
 //   setTimeout(() => location.reload(), 1000)
 //   return false;
