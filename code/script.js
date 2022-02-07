@@ -59,7 +59,7 @@ sendButton.addEventListener('click', () => {
 
 const ageCheck = () =>  {
   showMessage(`Thank you for your interest, ${userInput.value}. May I know your age?`, 'bot')
-  if (typeof userInput !== 'number') {
+  if (typeof userInput.value !== 'number') {
     return showMessage(`Sorry, please only add numbers`, 'bot')
   }
   else if
