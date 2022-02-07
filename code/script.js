@@ -62,7 +62,7 @@ sendButton.addEventListener('click', () => {
       showMessage(`Sorry, please only add numbers`, 'bot')
       showMessage(` May I know your age?`, 'bot')
     } else {
-      if (userInput.value < '25') {
+      if (userInput.value <= '25') {
         showMessage(`Sorry, we only offer courses for adultier adults who are older than 25 years old. :)`, 'bot')
         setTimeout(() => location.reload(), 1000)
         return false;
