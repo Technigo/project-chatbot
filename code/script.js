@@ -59,7 +59,7 @@ sendButton.addEventListener('click', () => {
   else if (flag = 'age') {
     reply(userInput.value)
     if (isNumeric(userInput.value) === false) {
-      showMessage(`Sorry, please only add numbers`, 'bot')
+      showMessage(`Sorry, please only add digits.`, 'bot')
       showMessage(` May I know your age?`, 'bot')
     } else {
       if (userInput.value <= 25) {
