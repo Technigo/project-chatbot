@@ -9,4 +9,9 @@ I think  one of the problems are that I have three different eventlisteners. 1 -
 Another issue is that I can't seem to type directly within the form, I can however copy/paste into it. 
 I also get double "showTattooStyles"-responses from the bot. It also previously skipped over a question but this I managed to fix by assigning the questions specific numbers instead of using the "++". 
 
-I really feel like there has been a dramatic leap in how advanced the assignment is and hopefully I'll find the resources to catch up soon.
+I really feel like there has been a dramatic leap in how advanced the assignments have gotten and hopefully I'll find the resources to catch up soon.
+
+# Watch it live
+
+https://silly-hoover-8e96d6.netlify.app/
+

@@ -139,8 +139,8 @@ const showDesigns = (type) => {
     inputWrapper.innerHTML = `
       <select id="select">
         <option value="" selected disabled>👇 Select a design...</option>
-        <option value="popcult">Superhero/villain</option>
-        <option value="religion">Religious</option>
+        <option value="Superhero/villain">Superhero/villain</option>
+        <option value="religious">Religious</option>
         <option value="mythology">Mythology</option>
       </select>
     `
