@@ -44,8 +44,8 @@ const helpButtons = () => {
 }
 
 const yesNoButtons = () => {
-  buttonOne.innerHTML = "yes";
-  buttonTwo.innerHTML = "no";
+  buttonOne.innerHTML = "Yes";
+  buttonTwo.innerHTML = "No";
 }
 
 const hideButtons = () => {
@@ -68,7 +68,7 @@ const showDropdown = () => {
 const closingMessages = () => {
   selectWrapper.addEventListener("change", (event) => {
     const contactChoice = event.target.value;
-    showMessage(`${event.target.value}`, "user", timeStamp())
+    showMessage(`By ${contactChoice}`, "user", timeStamp())
     selectWrapper.style.display = "none"
     setTimeout(() => {
       showMessage(`You have chosen to be contacted by ${contactChoice}...`, "bot", timeStamp())
@@ -167,13 +167,7 @@ form.addEventListener("submit", (event) => {
 })
 
 buttonOne.addEventListener("click", () => {
-  if(buttonOne.innerHTML === "Physical") {
-    buttonOne.value = "first"
-    practitioner = "doctor";
-  } else {
-    buttonTwo.value = "second";
-    practitioner = "psychologist";
-  }
+  buttonOne.innerHTML === "Physical" ? buttonOne.value = "first" : buttonTwo.value = "second";
 })
 
 bothButtons.forEach(button => {
@@ -183,41 +177,48 @@ bothButtons.forEach(button => {
       case 1:
         showMessage(`${button.innerHTML}`, "user", timeStamp());
         if (buttonOne.value === "first") {
+          practitioner = "Doctor";
           const cough = () => showMessage(physicalSymptoms[0], "bot", timeStamp());
           setTimeout(cough, 2000);
           setTimeout(yesNoButtons, 2000);
         } else {
+          practitioner = "Psychologist";
           const sad = () => showMessage(psychologicalSymptoms[0], "bot", timeStamp());
           setTimeout(sad, 2000);
           setTimeout(yesNoButtons, 2000);
         }
-        break;
+      break;
 
       case 2:
         showMessage(`${button.innerHTML}`, "user", timeStamp());
         if (buttonOne.value === "first") {
+          practitioner = "Doctor";
           const fever = () => showMessage(physicalSymptoms[1], "bot", timeStamp());
           setTimeout(fever, 2000);
           setTimeout(yesNoButtons, 2000);
         } else {
+          practitioner = "Psychologist";
           const stress = () => showMessage(psychologicalSymptoms[1], "bot", timeStamp());
           setTimeout(stress, 2000);
           setTimeout(yesNoButtons, 2000);
         }
-        break;
+      break;
 
       case 3:
         showMessage(`${button.innerHTML}`, "user", timeStamp())
         if (buttonOne.value === "first") {
+          practitioner = "Doctor";
+          console.log(practitioner)
           const runnyNose = () => showMessage(physicalSymptoms[2], "bot", timeStamp());
           setTimeout(runnyNose, 2000);
           setTimeout(yesNoButtons, 2000);
         } else {
+          practitioner = "Psychologist";
           const mood = () => showMessage(psychologicalSymptoms[2], "bot", timeStamp());
           setTimeout(mood, 2000);
           setTimeout(yesNoButtons, 2000);
         }
-        break;
+      break;
 
       case 4:
         showMessage(`${button.innerHTML}`, "user", timeStamp())
