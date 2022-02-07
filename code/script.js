@@ -48,32 +48,62 @@ const reply = (input) => {
   showMessage(input, 'user')
 }
 
+
+let flag = 'name'
 sendButton.addEventListener('click', () => {
-  reply(userInput.value)
-  setTimeout(ageCheck, 900)
-  })
-
-  
-
-// Age check (if the age is <= 25, the chat will end. If user input is >= 25, the question 1: Select ski track will run)
-
-const ageCheck = () =>  {
-  showMessage(`Thank you for your interest, ${userInput.value}. May I know your age?`, 'bot')
-  if (typeof userInput.value !== 'number') {
-    return showMessage(`Sorry, please only add numbers`, 'bot')
+  if (flag === 'name') {
+    reply(userInput.value)
+    showMessage(`Thank you for your interest, ${userInput.value}. May I know your age?`, 'bot')
+    flag = 'age'
   }
-  else if
-   (userInput <= '25') {
-      showMessage(`Sorry, we only offer courses for adultier adults who are older than 25 years old. :()`, 'bot')
-      setTimeout(() => location.reload(), 1000)
-      return false;
-} else {
-    skiStyle()
+  else if (flag = 'age') {
+    reply(userInput.value)
+    if (isNumeric(userInput.value) === false) {
+      showMessage(`Sorry, please only add numbers`, 'bot')
+      showMessage(` May I know your age?`, 'bot')
+    } else {
+      if (userInput.value < '25') {
+        showMessage(`Sorry, we only offer courses for adultier adults who are older than 25 years old. :)`, 'bot')
+        setTimeout(() => location.reload(), 1000)
+        return false;
+      } else {
+        return skiStyle()
+      }
+    }
   }
+})
+
+function isNumeric(val) {
+  return /^-?\d+$/.test(val);
 }
+
 
 // let ageValidate = (userInput) => {
 //   if (typeof userInput !== 'number') {
+//     return showMessage(`Sorry, please only add numbers`, 'bot')
+//   }
+//   else if
+//     (userInput <= '25') {
+//     showMessage(`Sorry, we only offer courses for adultier adults who are older than 25 years old. :(`, 'bot')
+//     setTimeout(() => location.reload(), 1000)
+//     return false;
+//   } else {
+//     return skiStyle()
+//   }
+// }
+
+// sendButton.addEventListener('click', () => {
+//   reply(userInput.value)
+//   setTimeout(ageCheck, 900)
+//   })
+
+  
+
+// // Age check (if the age is <= 25, the chat will end. If user input is >= 25, the question 1: Select ski track will run)
+
+// const ageCheck = () =>  {
+//   showMessage(`Thank you for your interest, ${userInput.value}. May I know your age?`, 'bot')
+//   if (typeof userInput.value !== 'number') {
 //     return showMessage(`Sorry, please only add numbers`, 'bot')
 //   }
 //   else if
