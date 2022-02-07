@@ -1,12 +1,11 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Chatbot => conversation between two person. One may be user and other from automated. In realfield, its like customer support via chatting.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+First, added HTML and CSS for displaying text in two side of a board, 1. user end 2. bot end
+Used JavaScript DOM to solve the problem. In future I will add more validation and CSS for better display.
 
 ## View it live
 
