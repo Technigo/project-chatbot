@@ -57,21 +57,21 @@ sendButton.addEventListener('click', () => {
 
 // Age check
 
-// const ageCheck = ()  => {
+const ageCheck = ()  => {
 
-//   showMessage(`Thank you for your interest, ${userInput.value}. May I know your age?`, 'bot') 
-// }
+  showMessage(`Thank you for your interest, ${userInput.value}. May I know your age?`, 'bot') 
+}
 
-// if reply.value <= 25 {
-  //   inputWrapper.innerHTML = `
-//     <input type="text" id="age-check"> 
-// `
-//   showMessage(`Sorry, we only offer courses for adultier adults who are older than 25 years old. :()`, 'bot')
-//   setTimeout(() => location.reload(), 1000)
-//   return false;
-// } else {
-//   skistyle()
-// }
+if reply.value <= 25 {
+    inputWrapper.innerHTML = `
+    <input type="text" id="age-check"> 
+`
+  showMessage(`Sorry, we only offer courses for adultier adults who are older than 25 years old. :()`, 'bot')
+  setTimeout(() => location.reload(), 1000)
+  return false;
+} else {
+  skiStyle()
+}
 
 
 
