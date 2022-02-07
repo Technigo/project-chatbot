@@ -2,7 +2,7 @@
 const chat = document.getElementById('chat')
 const sendButton = document.getElementById('send-btn')
 const nameForm = document.getElementById('name-form')
-const userInput = document.getElementById('user-input')
+let userInput = document.getElementById('user-input')
 const inputWrapper = document.getElementById('input-wrapper')
 
 nameForm.addEventListener('submit', (event) => {
@@ -58,28 +58,22 @@ sendButton.addEventListener('click', () => {
 // Age check (if the age is <= 25, the chat will end. If user input is >= 25, the question 1: Select ski track will run)
 
 const ageCheck = () =>  {
-  showMessage(`Thank you for your interest, ${userInput.value}. May I know your age?`, 'bot') 
-  sendButton.addEventListener('click', () => {
-    reply(userInput.value)
-    setTimeout(ageValidate, 900)
-    })
+  showMessage(`Thank you for your interest, ${userInput.value}. May I know your age?`, 'bot')
 }
 
-const ageValidate = (reply) => {
-  if ( typeof reply !=='number') {
-    return false 
-  } else if (reply <= 25) {
-  showMessage(`Sorry, we only offer courses for adultier adults who are older than 25 years old. :()`, 'bot')
-  setTimeout(() => location.reload(), 1000)
-  return false
+let ageValidate = (userInput) => {
+  if (userInput <= '25') {
+      showMessage(`Sorry, we only offer courses for adultier adults who are older than 25 years old. :()`, 'bot')
+      setTimeout(() => location.reload(), 1000)
+      return false;
 } else {
-  skiStyle()
-}
+    skiStyle()
+  }
 }
 
 // // Question 1: Select ski track 
 const skiStyle = ()  => {
-  showMessage(`So ${userInput.value}, what type of skiing would you like to try?`, 'bot') 
+  showMessage(`What type of skiing would you like to try?`, 'bot') 
     inputWrapper.innerHTML = `
       <button id="downhill-btn"> Downhill </button>    
       <button id="crosscountry-btn"> Cross-country </button>
