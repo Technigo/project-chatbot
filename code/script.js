@@ -38,7 +38,7 @@ const showMessage = (message, sender) => {
 // Starts here
 const greeting = () => {
 
-  showMessage(`Hello Skiier, what's your name?`, 'bot')
+  showMessage(`Hello Skier, what's your name?`, 'bot')
 }
 
 // This means the greeting function will be called one second after the website is loaded.
@@ -194,7 +194,7 @@ const downHillTrackBgn = ()  => {
   `
 }
 const downHillTrackInt = ()  => {
-  showMessage('We recommend checking out our "Rusty Downhill Skiier course"', 'bot')
+  showMessage('We recommend checking out our "Rusty Downhill Skier course"', 'bot')
   inputWrapper.innerHTML = `
   <p> Read about this course <a href="#">here</a></p>
   `
@@ -206,7 +206,7 @@ const crossCountryTrackBgn = ()  => {
   `
 }
 const crossCountryTrackInt = ()  => {
-  showMessage('We recommend checking out our "Rusty Cross-country Skiier course"', 'bot')
+  showMessage('We recommend checking out our "Rusty Cross-country Skier course"', 'bot')
   inputWrapper.innerHTML = `
   <p> Read about this course <a href="#">here</a></p>
   `
