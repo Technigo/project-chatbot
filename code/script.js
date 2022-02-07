@@ -59,10 +59,11 @@ sendButton.addEventListener('click', () => {
 
 const ageCheck = () =>  {
   showMessage(`Thank you for your interest, ${userInput.value}. May I know your age?`, 'bot')
-}
-
-let ageValidate = (userInput) => {
-  if (userInput <= '25') {
+  if (typeof userInput !== 'number') {
+    return showMessage(`Sorry, please only add numbers`, 'bot')
+  }
+  else if
+   (userInput <= '25') {
       showMessage(`Sorry, we only offer courses for adultier adults who are older than 25 years old. :()`, 'bot')
       setTimeout(() => location.reload(), 1000)
       return false;
@@ -70,6 +71,20 @@ let ageValidate = (userInput) => {
     skiStyle()
   }
 }
+
+// let ageValidate = (userInput) => {
+//   if (typeof userInput !== 'number') {
+//     return showMessage(`Sorry, please only add numbers`, 'bot')
+//   }
+//   else if
+//    (userInput <= '25') {
+//       showMessage(`Sorry, we only offer courses for adultier adults who are older than 25 years old. :()`, 'bot')
+//       setTimeout(() => location.reload(), 1000)
+//       return false;
+// } else {
+//     skiStyle()
+//   }
+// }
 
 // // Question 1: Select ski track 
 const skiStyle = ()  => {
