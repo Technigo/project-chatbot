@@ -39,7 +39,6 @@ const showMessage = (message, sender) => {
 const greeting = () => {
 
   showMessage(`Hello Skiier, what's your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
 
 // This means the greeting function will be called one second after the website is loaded.
@@ -49,18 +48,35 @@ const reply = (input) => {
   showMessage(input, 'user')
 }
 
-
-// Set up your eventlisteners here
 sendButton.addEventListener('click', () => {
   reply(userInput.value)
-  setTimeout(skiStyle, 900)
+  setTimeout(ageCheck, 900)
   })
 
+  
+
+// Age check
+
+// const ageCheck = ()  => {
+
+//   showMessage(`Thank you for your interest, ${userInput.value}. May I know your age?`, 'bot') 
+// }
+
+// if reply.value <= 25 {
+  //   inputWrapper.innerHTML = `
+//     <input type="text" id="age-check"> 
+//   showMessage(`Sorry, we only offer courses for adultier adults who are older than 25 years old. :()`, 'bot')
+//   setTimeout(() => location.reload(), 1000)
+//   return false;
+// } else {
+//   skistyle()
+// }
 
 
-// Question 1: Select ski track 
+
+// // Question 1: Select ski track 
 const skiStyle = ()  => {
-  showMessage(`Thank you for your interest, ${userInput.value}. What type of skiing would you like to try?`, 'bot') 
+  showMessage(`What type of skiing would you like to try?`, 'bot') 
     inputWrapper.innerHTML = `
       <button id="downhill-btn"> Downhill </button>    
       <button id="crosscountry-btn"> Cross-country </button>
