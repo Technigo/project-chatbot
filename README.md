@@ -1,13 +1,12 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Week 4 projec at Technigo Bootcamp. A pairproject where we were supposed to make a chatbot with Javascript. 
+Made by Sofie Pellegrini and Jessica Sandler
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We started with planning the chatbot and what questions it would ask etc. After that our mainfocus was to understand the code and to get the chatbot to work. After that we continued with some styling. If we would have had more time we would have learned more about Javascript and made the chatbot more advanced but considering the time we had we're proud of the result. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://tender-albattani-943232.netlify.app/
