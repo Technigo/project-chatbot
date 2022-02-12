@@ -66,11 +66,10 @@ const nextQuestion = (message) => {
   }
 }
 
-// Starts here
- const greeting = () => {
-  questionNumber = 1
-  botReply(`Good day and welcome to Bot Theatre! What is your name?`, 'bot')
- }
+const greeting = () => {
+  showMessage(`Good day and welcome to Bot Theatre! What is your name?`, 'bot')
+  input.value = '';
+ } 
 
  const showMoodTypes = (msg) => {
   questionNumber++
