@@ -55,12 +55,14 @@ sendButton.addEventListener('click', () => {
     reply(userInput.value)
     showMessage(`Thank you for your interest, ${userInput.value}. May I know your age?`, 'bot')
     flag = 'age'
+    userInput.value = ''
   }
   else if (flag = 'age') {
     reply(userInput.value)
     if (isNumeric(userInput.value) === false) {
       showMessage(`Sorry, please only add digits.`, 'bot')
       showMessage(` May I know your age?`, 'bot')
+      userInput.value = ''
     } else {
       if (userInput.value <= 25) {
         showMessage(`Sorry, we only offer courses for adultier adults who are older than 25 years old. :)`, 'bot')
