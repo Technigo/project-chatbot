@@ -41,8 +41,7 @@ const greeting = () => {
   showMessage(`Hello Skier, what's your name?`, 'bot')
 }
 
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 900)
+setTimeout(greeting, 500)
 
 const reply = (input) => {
   showMessage(input, 'user')
@@ -50,32 +49,41 @@ const reply = (input) => {
 
 
 let flag = 'name'
+
+setTimeout(()=>{
+
+}, 1000)
+
 sendButton.addEventListener('click', () => {
   if (flag === 'name') {
     reply(userInput.value)
-    showMessage(`Thank you for your interest, ${userInput.value}. May I know your age?`, 'bot')
-    flag = 'age'
-    userInput.value = ''
+    setTimeout(()=>{
+      showMessage(`Thank you for your interest, ${userInput.value}. May I know your age?`, 'bot')
+      flag = 'age'
+      userInput.value = ''
+    }, 1000)
   }
   else if (flag = 'age') {
     reply(userInput.value)
     if (isNumeric(userInput.value) === false) {
-      showMessage(`Sorry, please only add digits.`, 'bot')
-      showMessage(` May I know your age?`, 'bot')
-      userInput.value = ''
+      setTimeout(()=>{
+        showMessage(`Sorry, please only add digits.`, 'bot')
+        showMessage(` May I know your age?`, 'bot')
+        userInput.value = ''
+      }, 1000)
     } else {
       if (userInput.value <= 25) {
         showMessage(`Sorry, we only offer courses for adultier adults who are older than 25 years old. :)`, 'bot')
-        setTimeout(() => location.reload(), 1000)
+        setTimeout(() => location.reload(), 2000)
         return false;
       } else {
-        return setTimeout(skiStyle, 900)
+        return setTimeout(skiStyle, 1000)
       }
     }
   }
 })
 
-function isNumeric(val) {
+const isNumeric =(val) => {
   return /^-?\d+$/.test(val);
 }
 
@@ -101,6 +109,7 @@ const skiStyle = ()  => {
         crossCountryTrack()
       })
       }
+      
 
 // Question 2: this will categorize users into 2 levels based on their answers (beginner (bgn) and intermediate (int))
 
