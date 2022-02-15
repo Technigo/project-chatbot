@@ -4,7 +4,6 @@
   document.querySelector("main").style.display = "flex";
 })
 
-
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
 const nameInput = document.getElementById('name-input')
@@ -17,10 +16,6 @@ const compliment = ["You're all that and a super-size bag of chips.", "On a scal
 "Is that your picture next to “charming” in the dictionary?", "You’re a smart cookie.", "I know this is corny, but you are a-maize-ing!", 
 "You're like sunshine on a rainy day.", "I bet you sweat glitter.", "You're better than a triple-scoop ice cream cone. With sprinkles." ];
 
-
-
-// Global variables, if you need any, declared here
-// Functions declared here
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
@@ -33,6 +28,7 @@ const showMessage = (message, sender) => {
         <img src="assets/user1.png" alt="User" />  
       </section>
     `
+
   } else if (sender === 'bot') {
     console.log('bot') 
     chat.innerHTML += `
@@ -56,7 +52,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+  // Makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
 
@@ -64,7 +60,6 @@ const showMessage = (message, sender) => {
 // Starts here
   const greeting = () => {
   showMessage(`Hello and welcome to the Compliment Bot, what's your name?`, 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
 
 
 //---- First intention ----// 
@@ -100,8 +95,7 @@ const showMessage = (message, sender) => {
   })
 
   document
-  .getElementById('noBtn')
-  .addEventListener('click', () => {
+  .getElementById('noBtn').addEventListener('click', () => {
     showMessage('No thank you, goodbye', 'user')
     setTimeout(() => chooseDefault(submit), 1000) // After clicking the button; passing the arguments to complimentOptions function with 1s delay 
     document.getElementById("input-wrapper").style.display = "none"; // Button dissapears 
@@ -118,14 +112,11 @@ const showMessage = (message, sender) => {
   inputWrapper.innerHTML = // add Yes No button
   `<button id="randomBtn" type="submit">Get a Compliment</button>`
   
-
-  document
-  .getElementById('randomBtn')
-  .addEventListener('click', () => {
+  document.getElementById('randomBtn').addEventListener('click', () => {
 
     //randomSentence = Math.floor(Math.random() * 3);
    
-    setTimeout(() =>  showMessage(compliment[Math.floor(Math.random() * 9)], 'botrandom'), 1000) // Returns a random integer from 0 to 3:
+    setTimeout(() =>  showMessage(compliment[Math.floor(Math.random() * 9)], 'botrandom'), 1000) // Returns a random integer from 0 to 10:
     
     clearTimeout(setTimeout);
     
@@ -174,7 +165,6 @@ const moreCompliment = (name) => {
 
 
 // Set up your eventlisteners here
-
 form.addEventListener('submit', handleNameInput)
 
 
