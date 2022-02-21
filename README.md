@@ -10,4 +10,4 @@ If we had more time we would have tried to have more logical conversation betwee
 
 ## View it live
 
-chatbot-amanda-naushin.netlify.app
+https://chatbot-amanda-naushin.netlify.app/
