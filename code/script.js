@@ -1,4 +1,4 @@
-// DOM SELECTORS:
+/* --------------DOM SELECTORS ------------------- */
 const chat = document.getElementById("chat");
 const form = document.getElementById("name-form");
 const nameInput = document.getElementById("name-input");
@@ -7,9 +7,9 @@ const inputWrapper = document.getElementById("input-wrapper");
 // GLOBAL VARIABLE:
 let currentQuestion = 1;
 
-// FUNCTIONS:
+/* --------------- FUNCTIONS ----------------------- */
 
-// 1rs Function showMessage: This function will add a chat bubble in the correct place based on who the sender is.
+// 1- Function showMessage: This function will add a chat bubble in the correct place based on who the sender is.
 const showMessage = (message, sender) => {
   if (sender === "user") {
     chat.innerHTML += `
@@ -17,13 +17,13 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="./Pictures/bill-chatbot.png" alt="User" />  
+        <img src="./assets/bill-chatbot.png" alt="user" />  
       </section>
     `;
   } else if (sender === "bot") {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="./Pictures/julieta-chatbot.png" alt="Bot" />
+        <img src="./assets/julieta-chatbot.png" alt="bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -33,13 +33,13 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight; // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
 };
 
-// 2nd Function greeting: This function invokes ('calls') the first function, so when the function greeting is invoked, it invokes the first function.
+// 2- Function greeting: This function invokes ('calls') the first function, so when the function greeting is invoked, it invokes the first function.
 const greeting = () => {
   showMessage(`Welcome to Flowerland! What's your name?`, "bot");
 };
 setTimeout(greeting, 1000);
 
-// 3rd Function handleInput
+// 3- Function handleInput
 const handleInput = (event, answer) => {
   event.preventDefault();
 
@@ -59,7 +59,7 @@ const handleInput = (event, answer) => {
   }
 };
 
-// THREE FUNCTIONS THAT ARE BEING INVOKED INSIDE OF THE HANDLEINPUT FUNCTION:
+/* ------------- FUNCTIONS THAT ARE BEING INVOKED INSIDE OF THE HANDLEINPUT FUNCTION ----------*/
 
 function showFlowerTypes(name) {
   showMessage(`What type of flowers would you like to order ${name}?`, "bot");
