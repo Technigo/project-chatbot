@@ -11,7 +11,6 @@ const buttonTwo = document.querySelector(".button-two");
 const newDate = new Date();
 let hours = newDate.getHours();
 
-// Global variables
 let greet;
 let count = 0;
 let practitioner;
@@ -110,15 +109,13 @@ const timeStamp = () => {
   return `${dateIndex} ${month}, ${hours}:${minutes}:${seconds}`;
 }
 
-
 const chatAudio = () => {
-  var audio = new Audio('https://notificationsounds.com/storage/sounds/file-sounds-1143-clearly.mp3');
+  var audio = new Audio("https://notificationsounds.com/storage/sounds/file-sounds-1143-clearly.mp3");
   audio.play();
 }
 
-// This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender, date) => {
-  if (sender === 'user') {
+  if (sender === "user") {
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -127,7 +124,7 @@ const showMessage = (message, sender, date) => {
       </section>
       <p class="timestamp timestamp-right">${date}</p>
     `
-  } else if (sender === 'bot') {
+  } else if (sender === "bot") {
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="./assets/images/doctor.png" alt="Bot" />
@@ -143,18 +140,17 @@ const showMessage = (message, sender, date) => {
 }
 
 const contactMethod = () => {
-  showMessage('Thank you for your response, how would you prefer to be contacted?', 'bot', timeStamp());
+  showMessage("Thank you for your response, how would you prefer to be contacted?", "bot", timeStamp());
   buttonWrapper.style.display = "none";
-  selectWrapper.style.display = 'block';
+  selectWrapper.style.display = "block";
   chat.scrollTop = chat.scrollHeight
   showDropdown()
 }
 
 const greeting = () => {
-  showMessage(`${greet}, What's your name?`, 'bot', timeStamp())
+  showMessage(`${greet}, What's your name?`, "bot", timeStamp())
 }
 
-// Eventlisteners 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   userName = document.querySelector("#input").value;
@@ -208,7 +204,6 @@ bothButtons.forEach(button => {
         showMessage(`${button.innerHTML}`, "user", timeStamp())
         if (buttonOne.value === "first") {
           practitioner = "Doctor";
-          console.log(practitioner)
           const runnyNose = () => showMessage(physicalSymptoms[2], "bot", timeStamp());
           setTimeout(runnyNose, 2000);
           setTimeout(yesNoButtons, 2000);
