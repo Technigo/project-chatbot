@@ -1,5 +1,6 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById('chat')
+const summary = document.getElementById('summary')
 const inputWrapper = document.getElementById('input-wrapper')
 const input = document.getElementById('input')
 const sendBtn = document.getElementById('send')
@@ -8,6 +9,7 @@ const form = document.getElementById('form')
 // Global variables, if you need any, declared here
 
 let questionNumber = 1
+
 
 const botReply = (msg) => {
   showMessage(msg, 'bot')
@@ -31,6 +33,7 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `
+    showSummary(message)
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
@@ -46,24 +49,27 @@ const showMessage = (message, sender) => {
 }
 
 const nextQuestion = (message) => {
-  console.log('questionNumber', questionNumber)
+  console.log('Question Number:', questionNumber)
 
   if (questionNumber === 1) {
     userReply(message)
-    input.value = ''
+    // input.value = ''
     setTimeout(() => showTattooStyles(message), 1000)
   } else if (questionNumber === 2) {
     userReply(message)
+
     setTimeout(() => showDesigns(message), 1000)
   } else if (questionNumber === 3) {
     userReply(message)
     setTimeout(() => showPlacement(message), 1000)
   } else if (questionNumber === 4) {
     userReply(message)
+
     setTimeout(() => showPrice(message), 1000)
   } else {
     userReply(message)
     setTimeout(thankYou, 1000)
+    setTimeout(showSummary, 2000)
   }
 }
 
@@ -77,10 +83,7 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-form.addEventListener('submit', (bajskorv) => {
-  bajskorv.preventDefault()
-  nextQuestion(input.value)
- })
+
 
 
 //QUESTION 2
@@ -112,7 +115,6 @@ const showTattooStyles = (msg) => {
 
 const showDesigns = (type) => {
   questionNumber = 3
-
   botReply(
     `Excellent choice, let's get you a ${type}-type tattoo. What design will that be?`
   )
@@ -200,24 +202,54 @@ const showPrice = (placement) => {
 }
 
 
-//QUESTION 2
+//QUESTION 6
 const thankYou = () => {
-  botReply(`Thank you for your booking!`)
-  inputWrapper.innerHTML = ``
+  botReply(`Thank you for your booking!`
+ )
+  summary.style.display = 'block'
+
+  inputWrapper.innerHTML = `
+  <button id="restart">New booking</button>
+  `
+  document.getElementById('restart').addEventListener('click', () => {
+    location.reload()
+    return false
+  })
 }
 
+const showSummary = (input) => {
+
+  if (input) {
+    summary.innerHTML += 
+  `<section class="bot-msg">
+    <div class="sum-bubble">
+      <p>${input}</p>
+    </div>
+  </section>
+`}
+}
 
 
 // Set up your eventlisteners here
 
+form.addEventListener('submit', (e) => {
+  e.preventDefault()
+  nextQuestion(input.value)
+ })
+
+// const submitReply = () => {
+
+//   sendBtn.addEventListener('click', () => nextQuestion(input.value))
+
+// }
 
 
-sendBtn.addEventListener('click', () => nextQuestion(input.value))
 
-
-input.addEventListener('keypress', (event) => {
-  event.preventDefault()
-  if (event.key === 'Enter' && input.value) nextQuestion(input.value)
+input.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter' && input.value) {
+    e.preventDefault()
+    nextQuestion(input.value)
+  }
 })
 
 // When website loaded, chatbot asks first question.
