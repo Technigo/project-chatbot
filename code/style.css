@@ -138,3 +138,12 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+.hidden-wrapper {
+  display: none;
+}
+
+.visible-wrapper {
+  display: flex;
+  justify-content: space-around;
+}

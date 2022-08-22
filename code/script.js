@@ -36,7 +36,7 @@ const showMessage = (message, sender) => {
 // Starts here
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot');
+  showMessage("Hello adventurer, what is your name?", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -49,3 +49,21 @@ const greeting = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000);
+
+//START OF OUR CODE
+const submitButton = document.querySelector(".send-btn");
+const inputField = document.querySelector("#name-input")
+submitButton.addEventListener("click", function(e) {
+    e.preventDefault(); 
+    let inputContens = inputField.value;
+    showMessage(`My name is ${inputContens}`, "user");
+    showMessage(`${inputContens}, you are about to embark on an adventure! Choose one item below to aid you on you quest. I advise you to choose wisely!`, "bot");  
+
+    // Make buttons visible
+    const buttonWrapper =  document.querySelector("#button-wrapper");
+    buttonWrapper.classList.add("visible-wrapper");
+    // Attempt to hide the input line and send button
+    const inputWrapper = document.querySelector("#input-wrapper");
+    buttonWrapper.classList.add("hidden-wrapper");
+
+})
