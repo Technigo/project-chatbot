@@ -1,10 +1,18 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 
+
 // If you need any global variables that you can use across different functions, declare them here:
 
-
+const getMessage = () => {
+  const btn = document.querySelector(".send-btn");
+  btn.addEventListener('click', () => {
+    const message  = document.getElementById('name-input');
+    console.log(message);
+  })
+}
 // Declare your functions after this comment
+
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
