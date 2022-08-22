@@ -28,11 +28,10 @@ h2 {
   font-family: 'DynaPuff', cursive;
 }
 
-.chat-bar-collapsible {
+.chat-bar-collapse {
   position: fixed;
   bottom: 0;
   right: 50px;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 
@@ -57,18 +56,13 @@ input {
   flex: 1;
 }
 
+
 main {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 700px;
-  height: 600px;
-  border-radius: 30px;
-  background: #efedd8;
-  padding: 20px 24px;
-  padding-top: 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+  
 }
 
 
@@ -79,7 +73,11 @@ main {
   overflow: scroll;
   flex-direction: column;
   padding-bottom: 16px;
+  height: 500px;
+  
 }
+
+
 
 .bot-msg {
   display: flex;

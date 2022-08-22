@@ -4,9 +4,29 @@
 const chat = document.getElementById('chat'); 
 const nameInput = document.getElementById ('name-input')
 const form = document.getElementById ('name-form')
+const initialButton = document.getElementById('chat-button');
+const loadBot = document.getElementById('chat-bar-collapse');
 
 let buttonText = "";
 let questionCounter = 0; 
+
+// Collapsible
+var coll = document.getElementsByClassName("collapse");
+
+for (let i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+
+        var content = this.nextElementSibling;
+
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+
+    });
+}
 
 
 // Declare your functions after this comment
