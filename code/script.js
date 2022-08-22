@@ -60,10 +60,11 @@ submitButton.addEventListener("click", function(e) {
     showMessage(`${inputContens}, you are about to embark on an adventure! Choose one item below to aid you on you quest. I advise you to choose wisely!`, "bot");  
 
     // Make buttons visible
-    const buttonWrapper =  document.querySelector("#button-wrapper");
+    const buttonWrapper = document.querySelector("#button-wrapper");
     buttonWrapper.classList.add("visible-wrapper");
-    // Attempt to hide the input line and send button
-    const inputWrapper = document.querySelector("#input-wrapper");
-    buttonWrapper.classList.add("hidden-wrapper");
+    
+    // Attempt to hide the input line and send button - fixed. used wrong const name when trying to add classlist.
+    const inputWrapper = document.querySelector(".input-wrapper");
+    inputWrapper.classList.add("hidden-wrapper");
 
 })
