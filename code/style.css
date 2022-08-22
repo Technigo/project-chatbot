@@ -74,6 +74,7 @@ main {
   flex-direction: column;
   padding-bottom: 16px;
   height: 500px;
+  padding: 10px;
   
 }
 
@@ -121,11 +122,13 @@ main {
 .input-wrapper {
   display: flex;
   justify-content: center;
+  background: #F9ADA5;
 }
 
 .input-wrapper form {
   width: 100%;
   display: flex;
+  padding: 10px;
 }
 
 button {
