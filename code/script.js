@@ -5,11 +5,21 @@ const chat = document.getElementById('chat');
 const nameInput = document.getElementById ('name-input')
 const form = document.getElementById ('name-form')
 
-// If you need any global variables that you can use across different functions, declare them here:
-
+let buttonText = "";
+let questionCounter = 0; 
 
 
 // Declare your functions after this comment
+const questionGen = () => {
+  questionCounter++;  /* Need this to move on*/
+if (questionCounter === 0) {    /* Set to 0, put 1 when popup*/
+setTimeout(question1, 100)
+} else if (questionCounter === 1) {
+    setTimeout(question2, 1000, nameInput.value)
+  }
+  }
+
+
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -40,17 +50,34 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
-// Starts here
-const greeting = () => {
+// INITAL BOT GREETING/ QUESTION1 !
+const question1 = () => {
   showMessage("Hello there, what's your name?", 'bot')
 
   form.onsubmit = event => {
     event.preventDefault();
-    /*form.submitButton.disabled = true;*/
-    showMessage(nameInput.value, 'user');
+    form.submitButton.disabled = true;   
+    const name = nameInput.value
+    showMessage(name, 'user');
+    questionGen();
   }
 }
 
+
+// QUESTION 2
+const question2 = (message) => {
+  showMessage(`Nice to meet you, ${message}! I would like to make your day even better! `, 'bot');
+  questionGen();
+  }
+
+
+  /* Use this??
+  inputWrapper.innerHTML = `
+    <button class="button-input">Great!</button>
+    <button class="button-input">Could be better</button>
+    `
+  addButtonListeners('button-input');
+  */
 
 //
 
@@ -64,7 +91,8 @@ const greeting = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 100);
+ 
+setTimeout(question1, 100); /* Why do we need this?? */
 
 
 
