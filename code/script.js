@@ -3,6 +3,7 @@ const chat = document.getElementById("chat");
 const iceCream = document.getElementById("ice-cream");
 const softIceCream = document.getElementById("soft-ice-cream");
 const form = document.getElementById("form");
+const inputWrapper = document.getElementById("input-wrapper");
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -44,6 +45,14 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 };
 
+const question2 = () => {
+  inputWrapper.innerHTML = `
+<button id= "Cupbtn"> Cup </button>
+<button id= "conebtn"> Cone </button>
+`
+showMessage("Would you like:", 'bot');
+}
+  
 /*
 form.onsubmit = (event) => {
   event.preventDefault();
@@ -61,11 +70,15 @@ form.onsubmit = (event) => {
 softIceCream.addEventListener('click', (event) => {
   event.preventDefault();
   showMessage("Soft Ice Cream", "user");
+
+  setTimeout(() => question2(), 1000);
 });
 
 iceCream.addEventListener('click', (event) => {
   event.preventDefault();
   showMessage("Ice Cream", "user");
+
+  setTimeout(() => question2(), 1000);
 });
 
 // When website loaded, chatbot asks first question.
