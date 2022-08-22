@@ -6,25 +6,35 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #F55E43;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
+  font-size: 95px;
   line-height: 34px;
-  color: #fff;
+  color: #6F314A;
   text-align: center;
+  font-family: 'DynaPuff', cursive;
 }
 
 h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: #F6C1AE;
   text-align: center;
   margin-bottom: 36px;
+  font-family: 'DynaPuff', cursive;
 }
+
+.chat-bar-collapsible {
+  position: fixed;
+  bottom: 0;
+  right: 50px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
 
 p {
   font-size: 18px;
@@ -37,7 +47,7 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
+  background: #F6C1AE;
   color: #0026ff;
   padding: 16px;
   font-size: 16px;
@@ -53,13 +63,14 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: #efedd8;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
+
 
 .chat {
   flex: 1;
@@ -90,12 +101,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #F9ADA5;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #6F314A;
   max-width: 40%;
 }
 
@@ -120,7 +131,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #6F314A;;
   color: white;
   border: none;
   border-radius: 4px;

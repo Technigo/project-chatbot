@@ -1,3 +1,5 @@
+
+
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 
@@ -38,7 +40,7 @@ const showMessage = (message, sender) => {
 // Starts here
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot');
+  showMessage("Hello there, what's your name?", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -51,3 +53,8 @@ const greeting = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000);
+
+
+//collapse
+var coll = document.getElementsByClassName("collapse");
+
