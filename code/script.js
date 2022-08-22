@@ -1,9 +1,12 @@
 
 
 // Variables that point to selected DOM elements
-const chat = document.getElementById('chat');
+const chat = document.getElementById('chat'); 
+const nameInput = document.getElementById ('name-input')
+const form = document.getElementById ('name-form')
 
 // If you need any global variables that you can use across different functions, declare them here:
+
 
 
 // Declare your functions after this comment
@@ -39,10 +42,19 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, what's your name?", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage("Hello there, what's your name?", 'bot')
+
+  form.onsubmit = event => {
+    event.preventDefault();
+    /*form.submitButton.disabled = true;*/
+    showMessage(nameInput.value, 'user');
+  }
 }
+
+
+//
+
+
 
 // Set up your eventlisteners here
 
@@ -52,7 +64,8 @@ const greeting = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000);
+setTimeout(greeting, 100);
+
 
 
 //collapse
