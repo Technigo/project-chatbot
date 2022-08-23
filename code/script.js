@@ -53,7 +53,7 @@ const showMessage = (message, sender) => {
   if (questionNumber === 1) {
     userReply(message)
     input.value = ''
-    setTimeout(() => showFoodTypes(message), 1000)
+    setTimeout(() => showHelpTypes(message), 1000)
   } else if (questionNumber === 2) {
     userReply(message)
     setTimeout(() => showMenu(message), 1000)
@@ -77,13 +77,11 @@ const greeting = () => {
   botReply("Hello there, What's your name?")
   // Just to check it out, change 'bot' to 'user' here 👆
 }
-const showFoodTypes = (msg) => {
+const showHelpTypes = (msg) => {
   questionNumber++
   botReply(
     `Nice to meet you ${msg}. What do you need help with today?`
   ) 
-
-
 inputWrapper.innerHTML = `
 <button id="htmlBtn">Html</button>
 <button id="cssBtn">Css</button>
@@ -96,7 +94,21 @@ document.getElementById('cssBtn')
 document.getElementById('saladBtn')
 .addEventListener('click', () => nextQuestion('javascript'))
 
-}
+
+const showCodeMenu = (type) => {
+  questionNumber++
+  botReply(
+    `Oh so you need help with ${type}? I understand its hard.`
+  )
+
+    if (type === 'html') {
+      inputWrapper.innerHTML = `
+      <select id="select">
+        <option value="" selected disabled>Select help tool ....</option>
+        `
+    }
+
+}  
 // Set up your eventlisteners here
 sendBtn.addEventListener('click', () => nextQuestion(input.value))
 input.addEventListener('keypress', (event) => {
