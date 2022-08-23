@@ -1,5 +1,8 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
+const inputWrapper = document.getElementById('input-wrapper')
+const nameForm = document.getElementById('name-form')
+const nameInput = document.getElementById('input')
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -43,7 +46,7 @@ const showMessage = (message, sender) => {
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
 }
-
+/*
 const nextQuestion = (message) => {
   console.log('questionNumber', questionNumber)
 
@@ -57,11 +60,7 @@ const nextQuestion = (message) => {
     }/* else if (questionNumber === 3) {
       userReply(message)
       setTimeout(() => showRiddle(message), 1000)
-    }*/ else {
-      userReply (message)
-      setTimeout (thankYou, 100)
-    }
-}
+    }*/
 
 
 // Starts here
@@ -70,6 +69,69 @@ const greeting = () => {
   botReply(`Hello there, What's your name?`, 'bot');
 }
 
+setTimeout(greeting, 800)
+
+// first question
+const handleNameInput = (event) => {
+  event.preventDefault() //prevents submit to reset page
+  const userName = nameInput.value //Adds a variable from the input element in HTML
+  showMessage(userName, 'user')//Shows the message as a user in the chat.
+  nameInput.value = ''
+  setTimeout (() => showMessage(`Nice to meet you ${userName}!`, 'bot'), 1000 ) //shows the message "nice to meet you with the submitted name after one second".
+  setTimeout(() => showMessage('What do you call a fish wearing a bowtie?', 'bot'), 2000) //Writes a second message with the joke.
+  setTimeout (() => handleJokeInput(userName), 2000) //Adds the input parameters that the user can choose from.
+}
+
+nameForm.addEventListener('submit', handleNameInput) //Calls the handeNameInput when the user press the submit button.
+
+// Second question
+const handleJokeInput = () => { //Function for the input parameters of first question.
+  inputWrapper.innerHTML = `
+    <button id="Joke1true">Sofishticated</button>
+    <button id="Joke1false">Mr.Reddensnapper</button>
+  `//adds two alternatives to choose from.
+  
+  document
+  .getElementById('Joke1true')
+  .addEventListener('click',() => { //Calls the showMessage below when user press the joke1true button.
+    showMessage("It's Sofishticated, of course!", 'user') //Writes the users anwer in the chat
+    inputWrapper.innerHTML = '' 
+    setTimeout(() => askFoodChoice('pizza'), 1000) //Writes the 
+  })
+
+  document
+  .getElementById('Joke1false')
+  .addEventListener('click',() => { //Calls the showMessage below when user press the joke2false button.
+    showMessage('Mr. Reddensnapper, if I may.', 'user') //Writes the users anwer in the chat
+    inputWrapper.innerHTML = '' 
+    setTimeout(() => askFoodChoice('pasta'), 1000) 
+  })
+} 
+
+// Third question
+// Question 3
+const askFoodChoice = foodChoice => {
+  showMessage(`${foodChoice} sounds good! What kind of ${foodChoice} do you want?`, 'bot')
+
+  if (foodChoice === 'pizza') {
+    inputWrapper.innerHTML = pizzaChoice
+  } else if (foodChoice === 'pasta') {
+    inputWrapper.innerHTML = pastaChoice
+  } else {
+    inputWrapper.innerHTML = salladChoice
+  }
+
+  const selectedFood = document.getElementById('select')
+
+  selectedFood.addEventListener('change', () => {
+    showMessage(selectedFood.value, 'user')
+    confirmation += `So you want ${selectedFood.value} `
+    inputWrapper.innerHTML=''
+    setTimeout(() => askForAmount(selectedFood.value), 1000)
+  }) 
+}
+
+/*
 const showJoke = (msg) => {
   questionNumber++
   botReply(
@@ -88,30 +150,10 @@ const showJoke = (msg) => {
     .addEventListener('click', () => nextQuestion('Mr.Reddensnapper'))
 }
 
-const jokeAnswer = (type) => {
-  questionNumber++
-  
-  //botReply (`Oh, you chose ${type}`, `that's ${alternative}`); {
-  //  if ()
-  //}
-}
+*/
 
-const handleNameInput = (event) => {
-  event.preventDefault()
-  // Store the value in a variable so we can access it after we 
-	// clear it from the input
-  const name = nameInput.value
-  
-  showMessage(name, 'user')
-  nameInput.value = ''
 
-  // After 1 second, show the next question by invoking the next function.
-	// passing the name into it to have access to the user's name if we want
-	// to use it in the next question from the bot.
-  // setTimeout(() => showFoodOptions(name), 1000)
-}
 
-// --- First intention --- //
 
 
 
@@ -125,9 +167,4 @@ const handleNameInput = (event) => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-const thankYou = () => {
-  botReply(`Thank you for listening! See you soon 👋🏼`)
-  inputWrapper.innerHTML = ``
-}
 
-setTimeout(greeting, 800)
