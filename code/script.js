@@ -61,8 +61,19 @@ const handleNameInput = (event) => {
 }
 
 const chooseTourGuide = (name) => {
+ // const tourGuide = ???.value
   showMessage(`${name}, please choose your tour guide`, 'bot')
+ // tourGuide = 
+  inputWrapper.innerHTML=` 
+  <button id="pirateBtn">Pirate</button>
+  <button id="vampireBtn">Vampire</button>
+  <button id="witchBtn">Witch</button>`
+
+  document
+  .getElementById('pirateBtn')
+  .addEventListener('click',()=> showMessage ("Pirate", 'bot'))
 }
+
 
 // Set up your eventlisteners here
 nameForm.addEventListener('submit', handleNameInput);
