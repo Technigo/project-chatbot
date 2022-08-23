@@ -67,8 +67,8 @@ let handleFormInput = (event) => { // at submit this function will be invoked
 const helpSelection = () => {
   showMessage(`Hello room, what can I help you with today?`, 'bot');
   inputWrapper.innerHTML = `
-  <button id="amenities" type="sbumit">Amenities </button>;
-  <button id="room-service" type="submit">Rooom service </button>;
+  <button id="amenities" type="sbumit">Amenities </button>
+  <button id="room-service" type="submit">Rooom service </button>
   <button id="wake-up-call" type="submit">Wake-up call </button>
   `
   document.getElementById('amenities').addEventListener('click',() => selectionAnswer ('amenities'));
@@ -84,16 +84,19 @@ const selectionAnswer = (selection) => {
     showMessage(`I need amenities, please`, 'user')
     setTimeout(() => showMessage(`Sure, what do you need?`, 'bot'),1000);
     inputWrapper.innerHTML = `
-    <button id="toothbrush" type="sbumit">Toothbrush & paste </button>;
-    <button id="schampoo" type="submit">Schampoo & Conditioner </button>;
-    <button id="toiletpaper" type="submit">Toiletpaper </button>
+    <button id="toothbrush" type="submit">Toothbrush & paste </button>
+    <button id="shampoo" type="submit">Schampoo & Conditioner </button>
+    <button id="toiletrykit" type="submit">Toiletry Kit </button>
+    <button id="shavingkit" type="submit">Shaving Kit </button>
     `
     document.getElementById('toothbrush').addEventListener('click',() => 
       setTimeout(() => showMessage(`I need some toothbrush and toothpaste`, 'user')), 1000);
-    document.getElementById('schampoo').addEventListener('click',() =>
-      setTimeout(() => showMessage(`I need some schampoo and conditioner`, 'user')),1000);
-    document.getElementById('toiletpaper').addEventListener('click',() => 
-      setTimeout(() => showMessage(`I need some toiletpaper`, 'user')), 1000);
+    document.getElementById('shampoo').addEventListener('click',() =>
+      setTimeout(() => showMessage(`I need some shampoo and conditioner`, 'user')),1000);
+    document.getElementById('toiletrykit').addEventListener('click',() => 
+      setTimeout(() => showMessage(`I need a toiletry kit`, 'user')), 1000);
+    document.getElementById('shavingkit').addEventListener('click',() => 
+      setTimeout(() => showMessage(`I need a shaving kit`, 'user')), 1000);
 
   }
 
@@ -101,25 +104,25 @@ const selectionAnswer = (selection) => {
     showMessage(`I need food, please`, 'user')
     setTimeout(() => showMessage(`Of course, what are you in the mood for?`, 'bot'),1000);
     inputWrapper.innerHTML = `
-    <button id="pasta" type="sbumit">Pasta Carbonara </button>;
-    <button id="sallad" type="submit">Ceaser Salad</button>;
-    <button id="frenchToast" type="submit">French TOast </button>
+    <button id="pasta" type="submit">Pasta Carbonara </button>
+    <button id="sallad" type="submit">Ceaser Salad</button>
+    <button id="tomatoesoup" type="submit">Tomatoe Soup </button>
      `
     document.getElementById('pasta').addEventListener('click', () =>
-    setTimeout(() => showMessage(`I would love som Pasta Carbonara`, 'user')), 1000);
+    setTimeout(() => showMessage(`I would love some Pasta Carbonara`, 'user')), 1000);
     document.getElementById('sallad').addEventListener('click', () =>
     setTimeout(() => showMessage(`I could eat a Ceaser Salad`, 'user')), 1000);
-    document.getElementById('frenchToast').addEventListener('click', () =>
-    setTimeout(() => showMessage(`I crave some French Toast`, 'user')), 1000);
+    document.getElementById('tomatoesoup').addEventListener('click', () =>
+    setTimeout(() => showMessage(`I crave some Tomatoe Soup`, 'user')), 1000);
   }
 
   else  {
     showMessage(`I need a wake-up-call.`, 'user');
     setTimeout(() => showMessage(`Sure, at what time?`, 'bot'),1000);
     inputWrapper.innerHTML = `
-    <button id="6" type="sbumit">06.00 </button>;
-    <button id="7" type="submit">07.00 </button>;
-    <button id="8" type="submit">08.00 </button>;
+    <button id="6" type="sbumit">06.00 </button>
+    <button id="7" type="submit">07.00 </button>
+    <button id="8" type="submit">08.00 </button>
    `
    document.getElementById('6').addEventListener('click', () => 
    setTimeout(() => showMessage(`I need to wake up at 06.00, please`, 'user')), 1000);
@@ -129,7 +132,6 @@ const selectionAnswer = (selection) => {
    setTimeout(() => showMessage(`I need to wake up at 08.00, please`, 'user')), 1000);
 
   }
-
 
 }
 
