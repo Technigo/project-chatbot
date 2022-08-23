@@ -1,5 +1,9 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
+const nameInput = document.getElementById('name-input');
+const submit = document.getElementsByClassName('sendBtn')
+const inputWrapper = document.getElementsByClassName('input-wrapper')
+const nameForm = document.getElementById('name-form')
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -46,7 +50,20 @@ const greeting2 = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+
+
 // Set up your eventlisteners here
+
+
+const handleNameInput = (event) => {
+  event.preventDefault();
+  let userName = nameInput.value
+  showMessage(userName, "user")
+}
+
+nameForm.addEventListener('submit', handleNameInput);
+
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
@@ -54,5 +71,8 @@ const greeting2 = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1500);
+setTimeout(greeting, 1000);
 setTimeout(greeting2, 2000);
+
+//event.preventDefault();
+//nameInput.value = ''
