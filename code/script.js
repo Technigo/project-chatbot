@@ -4,8 +4,7 @@
 const chat = document.getElementById('chat'); 
 const nameInput = document.getElementById ('name-input')
 const form = document.getElementById ('name-form')
-const initialButton = document.getElementById('chat-button');
-const loadBot = document.getElementById('chat-bar-collapse');
+const inputWrapper = document.getElementById ('input-wrapper')
 
 let buttonText = "";
 let questionCounter = 0; 
@@ -36,6 +35,10 @@ if (questionCounter === 0) {    /* Set to 0, put 1 when popup*/
 setTimeout(question1, 100)
 } else if (questionCounter === 1) {
     setTimeout(question2, 1000, nameInput.value)
+} else if (questionCounter === 2) {
+    setTimeout(question3, 1000, showMessage.value)
+  } else if (questionCounter === 3) {
+    setTimeout(question4, 1000,)
   }
   }
 
@@ -74,23 +77,37 @@ const showMessage = (message, sender) => {
 const question1 = () => {
   showMessage("Hello there, what's your name?", 'bot')
 
-  form.onsubmit = event => {
+  form.addEventListener("submit", (event) =>{
     event.preventDefault();
-    form.submitButton.disabled = true;   
+    form.submitButton.disabled = false;   //only click enter//
     const name = nameInput.value
     showMessage(name, 'user');
     questionGen();
-  }
+  });
 }
+
+  
 
 
 // QUESTION 2
 const question2 = (message) => {
-  showMessage(`Nice to meet you, ${message}! I would like to make your day even better! `, 'bot');
+  showMessage(`Nice to meet you, ${message}! 
+  I would like to make your day even better! `, 'bot');
   questionGen();
   }
 
 
+
+
+  // Q3 - buttons 
+ const question3 = (message) => {
+showMessage('hejhej', 'bot');
+questionGen();
+ }
+
+
+
+ 
   /* Use this??
   inputWrapper.innerHTML = `
     <button class="button-input">Great!</button>
