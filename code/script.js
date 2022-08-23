@@ -148,8 +148,8 @@ const joke1Answer = joke1Choice => {
   const selectedFood = document.getElementById('select') //
 
   selectedFood.addEventListener('change', () => {
-    showMessage(selectedFood.value, 'user')
-    confirmation += `So you want ${selectedFood.value} `
+    showMessage(selectedFood.value, 'user') //Collects the data from variable above.
+    confirmation += `So you want ${selectedFood.value} ` //Bot answers with a new topic.
     inputWrapper.innerHTML=''
     setTimeout(() => askForAmount(selectedFood.value), 1000)
   }) 
