@@ -39,11 +39,15 @@ const showMessage = (message, sender) => {
 }
 
 // Starts here
+// Bot: Hi! What's your name?
+
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hi Friend, What's your name?", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }
+
+// User: Replies with name
 
 const handleNameInput = (event) => {
   event.preventDefault()
@@ -54,6 +58,24 @@ const handleNameInput = (event) => {
   showMessage(name, 'user')
   nameInput.value = ''
 }
+
+
+// Bot: Are you looking for something new to watch?
+
+
+
+// User: YES / NO
+
+
+
+// Bot: (If Yes) What kind of TV show would you like to see?
+
+
+
+// User: DRAMA / THRILLER / COMEDY
+
+
+
 
 // Set up your eventlisteners here
 
