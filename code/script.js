@@ -97,15 +97,27 @@ itemButton.forEach(button => button.addEventListener("click", function (event) {
   heroInventory.push(this.innerHTML); 
   console.log(`Added ${this.innerHTML} to backpack`);
   console.log("inventory", heroInventory);
+  showMessage (`I choose ${this.innerHTML}`,"user");
+  setTimeout(hideButtons, 1000);
 }))
-  
-  
+
+//When selected item, the buttons will disapprear and show next message. 
+const hideButtons = () => {
+  const buttonWrapper = document.querySelector("#button-wrapper");
+  buttonWrapper.classList.remove("visible-wrapper");   
+  showMessage (`You added ${heroInventory} to your packpack. Now you need to decide which way to go!`,"bot");
+}
+
+
+
+
+
+
   
   /* 
-    e.preventDefault();
-  }
+
     /*console.log(hero);
-    if (hero.includes("Rope🪢")) {
+    if (heroInventory.includes("Rope🪢")) {
       console.log("yay")    
     }
     else if (!hero.includes("Rope🪢")) {
