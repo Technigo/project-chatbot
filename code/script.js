@@ -16,6 +16,24 @@ const userReply = (msg) => {
   showMessage(msg, 'user')
 }
 
+const joke1AnswerCorrect = `
+  <select class="food-select" id='select'>
+    <option value='' selected disabled>Click here to choose pizza</option>
+    <option value='Margarita'>Margarita</option>
+    <option value='Hawaii'>Hawaii</option>
+    <option value='Calzone'>Calzone</option>
+  </select>
+`
+
+const joke1AnswerWrong = `
+  <select class="food-select" id='select'>
+    <option value='' selected disabled>Click here to choose Pasta</option>
+    <option value='Carbonara'>Carbonara</option>
+    <option value='Bolognese'>Bolognese</option>
+    <option value='Frutti di mare'>Frutti Di Mare</option>
+  </select>
+`
+
 // Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -94,9 +112,11 @@ const handleJokeInput = () => { //Function for the input parameters of first que
   document
   .getElementById('Joke1true')
   .addEventListener('click',() => { //Calls the showMessage below when user press the joke1true button.
-    showMessage("It's Sofishticated, of course!", 'user') //Writes the users anwer in the chat
+    showMessage("It's Sofishticated, of course!", 'user') //Writes the users answer in the chat
     inputWrapper.innerHTML = '' 
-    setTimeout(() => askFoodChoice('pizza'), 1000) //Writes the 
+    setTimeout(() => joke1Answer(`Excellent choice! It's correct!`), 1000) //Writes the 
+    setTimeout(() => showMessage('Would you like a riddle instead?', 'bot'), 2000) //
+    setTimeout (() => handleRiddleInput(userName), 2000) //
   })
 
   document
@@ -104,24 +124,28 @@ const handleJokeInput = () => { //Function for the input parameters of first que
   .addEventListener('click',() => { //Calls the showMessage below when user press the joke2false button.
     showMessage('Mr. Reddensnapper, if I may.', 'user') //Writes the users anwer in the chat
     inputWrapper.innerHTML = '' 
-    setTimeout(() => askFoodChoice('pasta'), 1000) 
+    setTimeout(() => joke1Answer('Close, but no cigar'), 1000) 
   })
 } 
 
+const handleRiddleInput = () => { //Function for the input parameters of first question.
+  inputWrapper.innerHTML = `
+    <button id="Joke1true">Awsome! Give me a riddle!</button>
+    <button id="Joke1false">Dangit! Can I try another one?</button>
+  `//adds two alternatives to choose from.
+}
+
 // Third question
-// Question 3
-const askFoodChoice = foodChoice => {
-  showMessage(`${foodChoice} sounds good! What kind of ${foodChoice} do you want?`, 'bot')
+const joke1Answer = joke1Choice => {
+  showMessage(`${joke1Choice}`, 'bot')
 
-  if (foodChoice === 'pizza') {
-    inputWrapper.innerHTML = pizzaChoice
-  } else if (foodChoice === 'pasta') {
-    inputWrapper.innerHTML = pastaChoice
-  } else {
-    inputWrapper.innerHTML = salladChoice
-  }
+  if (joke1Choice === `It's Sofishticated, of course!`) {
+    inputWrapper.innerHTML = joke1AnswerCorrect
+  } else if (joke1Choice === `Mr. Reddensnapper, if I may.`) {
+    inputWrapper.innerHTML = joke1AnswerWrong
+  } 
 
-  const selectedFood = document.getElementById('select')
+  const selectedFood = document.getElementById('select') //
 
   selectedFood.addEventListener('change', () => {
     showMessage(selectedFood.value, 'user')
