@@ -110,13 +110,14 @@ main {
 }
 
 .input-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.input-wrapper form {
   width: 100%;
   display: flex;
+  display: none;
+}
+
+.active {
+  display: flex;
+  justify-content: center;
 }
 
 button {
@@ -132,9 +133,16 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  
 }
 
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+.flavor-boxes{
+  color: #0026ff; 
+  font-family: 'Times New Roman', Times, serif;
+
 }

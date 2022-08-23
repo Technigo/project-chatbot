@@ -1,11 +1,25 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById("chat");
-const iceCream = document.getElementById("ice-cream");
-const softIceCream = document.getElementById("soft-ice-cream");
-const form = document.getElementById("form");
 const inputWrapper = document.getElementById("input-wrapper");
 
+//Buttons:
+const coneBtn = document.getElementById("cone-btn");
+const cupBtn = document.getElementById("cup-btn");
+
+// const form = document.getElementById("form");
+
 // If you need any global variables that you can use across different functions, declare them here:
+
+// "if ic"
+
+const customerOrder = {
+  typeOfIceCream: "",
+  coneOrCup: "",
+  flavor: "",
+  topping: "",
+  phoneNo: "",
+  getReceipt: () => {},
+};
 
 // Declare your functions after this comment
 
@@ -41,44 +55,79 @@ const showMessage = (message, sender) => {
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Welcome to The Ice Cream Shop! Let me take your order.", "bot");
-  showMessage("Would you like:", "bot");
-  // Just to check it out, change 'bot' to 'user' here 👆
+  setTimeout(() => {
+    showMessage("Would you like your ice cream in a:", "bot");
+    inputWrapper.classList.toggle("active");
+  }, 2000);
 };
 
+
+// Question 2
 const question2 = () => {
   inputWrapper.innerHTML = `
-<button id= "Cupbtn"> Cup </button>
-<button id= "conebtn"> Cone </button>
-`
-showMessage("Would you like:", 'bot');
-}
-  
-/*
-form.onsubmit = (event) => {
-  event.preventDefault();
-  if (softIceCream.clicked == true) {
-    showMessage("Soft Ice Cream", "user");
-    console.log("Soft!");
-  } else if (iceCream.clicked == true) {
+<button id="ice-cream-btn">Ice cream</button>
+<button id="soft-ice-cream-btn">Soft ice cream</button>
+`;
+
+  const iceCreamBtn = document.getElementById("ice-cream-btn");
+  const softIceCreamBtn = document.getElementById("soft-ice-cream-btn");
+
+  iceCreamBtn.addEventListener("click", () => {
+    customerOrder.typeOfIceCream = "Ice Cream";
     showMessage("Ice Cream", "user");
-    console.log("Ice!");
-  }
+
+    setTimeout(() => question3Ice(), 700);
+  });
+
+  softIceCreamBtn.addEventListener("click", () => {
+    customerOrder.typeOfIceCream = "Soft Ice Cream";
+    showMessage("Soft Ice Cream", "user");
+
+    setTimeout(() => question3Soft(), 700);
+  });
+
+  showMessage(`Would you like:`, "bot");
 };
-*/
+
+//Question 3 - Soft Ice Cream
+const question3Soft = () => {
+  inputWrapper.innerHTML = `
+<select id="topping">
+<option value="topping1">Rainbow</option>
+<option value="topping2">Chocolate</option>
+<option value="topping3">Liquorice</option>
+<option value="topping4">Strawberry</option>
+<option value="topping4">None</option>
+</select>
+<button id="next">Next</button>`;
+  showMessage(`Sprinkles?`, "bot");
+};
+
+//Question 3 - Ice Cream
+const question3Ice = () => {
+  inputWrapper.innerHTML = `
+  <input type="checkbox" class="flavor-boxes" id="vanilla" name="vanilla">Vanilla</input>
+  <input type="checkbox" class="flavor-boxes" id="mango" name="mango">Mango</input>
+  <input type="checkbox" class="flavor-boxes" id="chocolate" name="chocolate">Chocolate</input>
+  <input type="checkbox" class="flavor-boxes" id="elderflower" name="elderflower">Elderflower</input>
+  <button id="next">Next</button>
+  `
+
+};
 
 // Set up your eventlisteners here
-softIceCream.addEventListener('click', (event) => {
-  event.preventDefault();
-  showMessage("Soft Ice Cream", "user");
+cupBtn.addEventListener("click", () => {
+  customerOrder.coneOrCup = "Cup";
+  showMessage("Cup", "user");
 
-  setTimeout(() => question2(), 1000);
+  setTimeout(() => question2(), 700);
 });
 
-iceCream.addEventListener('click', (event) => {
-  event.preventDefault();
-  showMessage("Ice Cream", "user");
+coneBtn.addEventListener("click", () => {
+  customerOrder.coneOrCup = "Cone";
+  showMessage("Cone", "user");
 
-  setTimeout(() => question2(), 1000);
+  setTimeout(() => question2(), 700);
 });
 
 // When website loaded, chatbot asks first question.
