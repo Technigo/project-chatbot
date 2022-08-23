@@ -37,10 +37,14 @@ const showMessage = (message, sender) => {
 // Starts here
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot');
+  showMessage("Hello and welcome to our movie suggestor!", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }
-
+const greeting2 = () => {
+  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
+  showMessage("I'm guessing you're having trouble deciding what movie to watch tonight?", 'bot');
+  // Just to check it out, change 'bot' to 'user' here 👆
+}
 
 // Set up your eventlisteners here
 
@@ -51,3 +55,4 @@ const greeting = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1500);
+setTimeout(greeting2, 2000);
