@@ -43,6 +43,21 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+//FRÅN TECHNIGOS SIDA
+const handleNameInput = (event) => {
+  event.preventDefault()
+  // Store the value in a variable so we can access it after we 
+	// clear it from the input
+  const name = nameInput.value
+  showMessage(name, 'user')
+  nameInput.value = ''
+  
+}
+
+
+
+
+
 
 // Set up your eventlisteners here
 
@@ -53,6 +68,7 @@ const greeting = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000);
+
 
 
 /*Hej vad heter du
