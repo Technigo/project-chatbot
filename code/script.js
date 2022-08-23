@@ -1,5 +1,8 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
+const nameForm = document.getElementById('name-form')
+const nameInput = document.getElementById('name-input')
+const inputWrapper = document.getElementById('input-wrapper')
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -40,6 +43,7 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+
 // Set up your eventlisteners here
 
 // When website loaded, chatbot asks first question.
@@ -49,3 +53,25 @@ const greeting = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000);
+
+
+/*Hej vad heter du
+Hur mår du idag?
+ - Glad, Ledsen, Hungrig
+
+*Glad
+  - Vad roligt! Visste du att... (fakta om glädje)
+  - Vill du ha ett till fakta?
+ 
+*Ledsen
+  - Länk till klipp på YouTube
+  - Länk till annat klipp
+
+*Hungrig
+ - Oj! Här är din närmsta matbutik...
+ - Väldigt hungrig? Här är närmsta restaurang...
+
+
+Tack för ditt besök - hoppas vi kunde hjälpa till! Välommen åter.
+ 
+*/
