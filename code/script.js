@@ -1,5 +1,7 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById("chat");
+const inputWrapper = document.getElementById("input-wrapper");
+const nameInput = document.getElementById("name-input");
 //const chat = document.querySelector(# .chat) ...this means the same as above
 
 // If you need any global variables that you can use across different functions, declare them here:
@@ -37,17 +39,21 @@ const showMessage = (message, sender) => {
 };
 
 // Starts here
+
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello we are Petra and David", "user");
-  console.log("user som skriver nr 2");
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage("Hello and welcome to Coffee Shop D&P!", "bot");
+  console.log("bot som skriver");
 };
 
-const hello = () => {
-  showMessage("just a test", "user");
-  console.log("user som skriver nr 2");
+const nameGiving = () => {
+  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
+  showMessage("Enter your name!", "bot");
+  console.log("bot som skriver");
 };
+
+// Just to check it out, change 'bot' to 'user' here 👆
+
 // Set up your eventlisteners here
 
 // When website loaded, chatbot asks first question.
@@ -56,5 +62,6 @@ const hello = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
+
 setTimeout(greeting, 1500);
-setTimeout(hello, 2000);
+setTimeout(nameGiving, 2000);
