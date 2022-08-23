@@ -5,7 +5,7 @@ const form = document.getElementById('name-form');
 const roomInput = document.getElementById('name-input'); //user writes their room
 const sendBtn = document.getElementById('send-btn');
 
-  // added variables pointing to html Ids, changed it to room numbers instad of name /S //
+  // added variables pointing to html Ids, changed it to room numbers instad of name //
 
   
 // If you need any global variables that you can use across different functions, declare them here:
@@ -14,7 +14,7 @@ const sendBtn = document.getElementById('send-btn');
 // Declare your functions after this comment
 
 
-// This function will add a chat bubble in the correct place based on who the sender is
+  // This function will add a chat bubble in the correct place based on who the sender is
 
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
@@ -54,7 +54,7 @@ const greeting = () => {
 
 // Answer with room number from user 
 
-const handleFormInput = (event) => { // at submit this function will be invoked
+let handleFormInput = (event) => { // at submit this function will be invoked
   event.preventDefault() // prevents website refresh at submit
   const room = roomInput.value // input value will be stored in the const name
   showMessage(`My room number is ${room}.`, 'user') // users answer 
@@ -82,7 +82,7 @@ const selectionAnswer = (selection) => {
 
   if (selection === 'amenities') {
     showMessage(`I need amenities, please`, 'user')
-    setTimeout(() => showMessage(`Sure, what do you need?`, 'bot'),1000)
+    setTimeout(() => showMessage(`Sure, what do you need?`, 'bot'),1000);
     inputWrapper.innerHTML = `
     <button id="toothbrush" type="sbumit">Toothbrush & paste </button>;
     <button id="schampoo" type="submit">Schampoo & Conditioner </button>;
@@ -95,12 +95,11 @@ const selectionAnswer = (selection) => {
     document.getElementById('toiletpaper').addEventListener('click',() => 
       setTimeout(() => showMessage(`I need some toiletpaper`, 'user')), 1000);
 
-    
   }
 
   else if (selection === 'room-service') {
     showMessage(`I need food, please`, 'user')
-    setTimeout(() => showMessage(`Of course, what are you in the mood for?`, 'bot'),1000)
+    setTimeout(() => showMessage(`Of course, what are you in the mood for?`, 'bot'),1000);
     inputWrapper.innerHTML = `
     <button id="pasta" type="sbumit">Pasta Carbonara </button>;
     <button id="sallad" type="submit">Ceaser Salad</button>;
@@ -112,32 +111,53 @@ const selectionAnswer = (selection) => {
     setTimeout(() => showMessage(`I could eat a Ceaser Salad`, 'user')), 1000);
     document.getElementById('frenchToast').addEventListener('click', () =>
     setTimeout(() => showMessage(`I crave some French Toast`, 'user')), 1000);
-
   }
 
   else  {
     showMessage(`I need a wake-up-call.`, 'user');
-    setTimeout(() => showMessage(`Sure, at what time?`, 'bot'),1000)
+    setTimeout(() => showMessage(`Sure, at what time?`, 'bot'),1000);
     inputWrapper.innerHTML = `
-    <input id="time-input" type="text">
-    <button id="send-btn" class="send-btn" type="submit">Send </button>
-    `
-    const wakeUpTime = () => {document.getElementById('time-input'), setTimeout(() => showMessage(`I need to wake up at ${wakeUpTime}`, 'user'), 1000);
-    }
-  };
+    <button id="6" type="sbumit">06.00 </button>;
+    <button id="7" type="submit">07.00 </button>;
+    <button id="8" type="submit">08.00 </button>;
+   `
+   document.getElementById('6').addEventListener('click', () => 
+   setTimeout(() => showMessage(`I need to wake up at 06.00, please`, 'user')), 1000);
+   document.getElementById('7').addEventListener('click', () => 
+   setTimeout(() => showMessage(`I need to wake up at 07.00, please`, 'user')), 1000);
+   document.getElementById('8').addEventListener('click', () => 
+   setTimeout(() => showMessage(`I need to wake up at 08.00, please`, 'user')), 1000);
 
-  setTimeout(() => goodbye, 1000)
+  }
+
+
 }
 
-// Question 3 
+// Thank you message and asking if anything else is needed?
+
 const goodbye = () => {
-showMessage('We will take care of that for you right away! Goodbye', 'bot')
+showMessage('We will take care of that for you right away. Do you need anything else?', 'bot')
+inputWrapper.innerHTML = `
+  <button id="yes" type="sbumit">Yes, please </button>;
+  <button id="no" type="submit">No, thank you</button>;
+  `
+document.getElementById('yes').addEventListener('click',() => goodbyeAnswer ('yes'));
+document.getElementById('no').addEventListener('click',() => goodbyeAnswer ('no'));
+
+if (goodbyeAnswer === 'yes') {
+  showMessage('I need some more..', 'user')
 }
+
+else {
+  showMessage('Ok. Have a nice day', 'bot')
+}
+
+} 
 
 
 // Set up your eventlisteners here
 
-form.addEventListener('submit', handleFormInput);
+form.addEventListener('submit', handleFormInput)
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
