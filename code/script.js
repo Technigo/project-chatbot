@@ -1,18 +1,31 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
+const nameInput = document.getElementById('name-input');
+const form = document.getElementById('name-form');
 
 
 // If you need any global variables that you can use across different functions, declare them here:
 
-const getMessage = () => {
-  const btn = document.querySelector(".send-btn");
-  btn.addEventListener('click', () => {
-    const message  = document.getElementById('name-input');
-    console.log(message);
-  })
-}
-// Declare your functions after this comment
 
+// Declare your functions after this comment
+  const handleNameInput = (event) => {
+    event.preventDefault()
+    console.log("test")
+    // Store the value in a variable so we can access it after we 
+    // clear it from the input
+    const name = nameInput.value
+    showMessage(name, 'user')
+    nameInput.value = ''
+
+    // After 1 second, show the next question by invoking the next function.
+    // passing the name into it to have access to the user's name if we want
+    // to use it in the next question from the bot.
+    setTimeout(() => showFoodOptions(name), 1000)
+  }
+
+  const showFoodOptions = () => {
+
+  }
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -48,6 +61,7 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+ 
 // Set up your eventlisteners here
 
 // When website loaded, chatbot asks first question.
@@ -57,3 +71,12 @@ const greeting = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000);
+
+form.addEventListener('submit', (event)=> {
+  event.preventDefault()
+  const name = nameInput.value
+    showMessage(name, 'user')
+    nameInput.value = ''
+
+    setTimeout(showMessage(`Welcome ${name}!`, 'bot'), 1000);
+});
