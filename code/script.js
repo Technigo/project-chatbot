@@ -1,6 +1,7 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
-
+const inputWrapper = document.getElementById('input-wrapper')
+const input = document.getElementById('name-input')
 // If you need any global variables that you can use across different functions, declare them here:
 
 
@@ -20,6 +21,7 @@ const showMessage = (message, sender) => {
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
+    console.log('showMessage', showMessage)
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -40,6 +42,32 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+const form = document.getElementById('chat-form');
+console.log('form', form);
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  console.log('event', event);
+  console.log('form is submitted'); 
+});
+form.addEventListener('submit',function(event) {
+  console.log('form is submitted'); 
+});
+
+const handleNameInput = (event) => {
+  event.preventDefault();
+  
+  // Store the value in a variable so we can access it after we 
+	// clear it from the input
+  const name = nameInput.value
+  showMessage(name, 'user')
+  nameInput.value = ''
+
+  // After 1 second, show the next question by invoking the next function.
+	// passing the name into it to have access to the user's name if we want
+	// to use it in the next question from the bot.
+  setTimeout(() => showFoodOptions(name), 2000)
+}
 // Set up your eventlisteners here
 
 // When website loaded, chatbot asks first question.
