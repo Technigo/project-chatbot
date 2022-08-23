@@ -39,21 +39,50 @@ const showMessage = (message, sender) => {
 // Starts here
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot');
+  showMessage("Hello and welcome to your personal Pep bot! What's your name?", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-//FRÅN TECHNIGOS SIDA
-const handleNameInput = (event) => {
-  event.preventDefault()
-  // Store the value in a variable so we can access it after we 
-	// clear it from the input
-  const name = nameInput.value
-  showMessage(name, 'user')
-  nameInput.value = ''
-  
+const greeting2 = () => {
+  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
+  showMessage("Please start off by telling us your name! 😊", 'bot');
 }
 
+//FRÅN TECHNIGOS SIDA // Store the value in a variable so we can access it after we 
+	// clear it from the input
+const handleNameInput = (event) => {
+  event.preventDefault()
+  let userName = nameInput.value
+  showMessage(userName, 'user')
+  //nameInput.value = ''
+  setTimeout(() => howAreYou(userName), 1000);
+}
+
+nameForm.addEventListener('submit', handleNameInput);
+
+//Question 2
+const howAreYou = () => {
+  showMessage(`Nice to meet you, ${nameInput.value}! How are you feeling today?`, 'bot')
+  inputWrapper.innerHTML=`
+    <button class="choice-btn" id="yes">Happy! 😀</button>
+    <button class="choice-btn" id="no">Sad 😢</button>
+    <button class="choice-btn" id="no">Hungry 🍔</button>`
+
+}
+
+
+
+/*In the starter code, the first event is asking for the user's name. 
+The starter code asks the first question from the bot, and we've got the 
+input field in the page ready for the user to type their name. 
+So the first task is to listen to the form being submitted, 
+(by clicking send or hitting the enter key), and to react to it.
+
+**We want to:**
+
+1. Listen for the form submit event
+2. When the form is submitted, post the value from the text input as a message from the user
+3. Progress the app to the next question.*/ 
 
 
 
