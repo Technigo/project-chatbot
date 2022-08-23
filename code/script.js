@@ -80,13 +80,23 @@ const greeting = () => {
 const showFoodTypes = (msg) => {
   questionNumber++
   botReply(
-    `Nice to meet you ${msg}. What type of food would you like to order?`
+    `Nice to meet you ${msg}. What do you need help with today?`
   ) 
-}
- /* const userReplay = (msg) => {
-  showMessage(`Nice to meet you ${msg}. What would you like to have help with?', 'user`);
-*/
 
+
+inputWrapper.innerHTML = `
+<button id="htmlBtn">Html</button>
+<button id="cssBtn">Css</button>
+<button id="jsBtn">Javascript</button>
+`
+document.getElementById('htmlBtn')
+.addEventListener('click', () => nextQuestion('html'))
+document.getElementById('cssBtn')
+.addEventListener('click', () => nextQuestion('css'))
+document.getElementById('saladBtn')
+.addEventListener('click', () => nextQuestion('javascript'))
+
+}
 // Set up your eventlisteners here
 sendBtn.addEventListener('click', () => nextQuestion(input.value))
 input.addEventListener('keypress', (event) => {
