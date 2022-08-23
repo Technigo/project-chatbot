@@ -1,5 +1,10 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
+const nameInput = document.getElementById('name-input')
+const submitBtn = document.getElementById('send-btn')     // we created the variables to work with it.
+const nameForm = document.getElementById('name-form')
+const inputWrapper = document.getElementById('input-wrapper')
+
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -41,7 +46,17 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+const handleNameInput = (event) => {      // Here we creat a function to avoid the submit when we click or press the button sumbit.
+  event.preventDefault()                  // .preventDefault() avoits the refresh the page.
+  const name = nameInput.value            // we create a new variable with the typed message in the input bar to use for the chatbot.
+  showMessage(name, 'user')               // here calls the function showMessage() to see what was typed before.
+  nameInput.value = ''                    // converts the info of nameInput.value to a stirng.
+  setTimeout(() => showMessage(`Welcome ${name}. Want to talk about you price, or have some problem?`, 'bot'), 750)
+};
+
 // Set up your eventlisteners here
+
+nameForm.addEventListener('submit', handleNameInput);
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
