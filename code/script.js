@@ -51,15 +51,18 @@ const nextQuestion = (message) => {
     userReply(message)
     input.value = ''
     setTimeout(() => showJoke(message), 1000)
-    else if (questionNumber === 2) {
+  } else if (questionNumber === 2) {
       userReply(message)
       setTimeout(() => showJokeResponse(message), 1000)
-    /*} else if (questionNumber === 3) {
+    }/* else if (questionNumber === 3) {
       userReply(message)
       setTimeout(() => showRiddle(message), 1000)
-    }*/
-  }
+    }*/ else {
+      userReply (message)
+      setTimeout (thankYou, 100)
+    }
 }
+
 
 // Starts here
 const greeting = () => {
@@ -69,11 +72,28 @@ const greeting = () => {
 
 const showJoke = (msg) => {
   questionNumber++
-  botReply (`Nice to meet you ${msg}. What do you call a fish wearing a bowtie?`)
+  botReply(
+    `Nice to meet you ${msg}. What do you call a fish wearing a bowtie?`
+    )
   inputWrapper.innerHTML = `
   <button id="joke1true">Sofishticated</button>
-  <button id="joke1false>XXXXXX</button>
+  <button id="joke1false>Mr.Reddensnapper</button>
   `
+
+  document
+    .getElementById('joke1true')
+    .addEventListener('click', () => nextQuestion('Sofishticated'))
+  document
+    .getElementById('joke1false')
+    .addEventListener('click', () => nextQuestion('Mr.Reddensnapper'))
+}
+
+const jokeAnswer = (type) => {
+  questionNumber++
+  
+  //botReply (`Oh, you chose ${type}`, `that's ${alternative}`); {
+  //  if ()
+  //}
 }
 
 const handleNameInput = (event) => {
@@ -105,4 +125,9 @@ const handleNameInput = (event) => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 800);
+const thankYou = () => {
+  botReply(`Thank you for listening! See you soon 👋🏼`)
+  inputWrapper.innerHTML = ``
+}
+
+setTimeout(greeting, 800)
