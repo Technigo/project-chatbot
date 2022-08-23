@@ -38,7 +38,7 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
-// Starts here
+// Greeting/Question 1
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello and welcome to our movie suggestor!", 'bot');
@@ -46,24 +46,29 @@ const greeting = () => {
 }
 const greeting2 = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("I'm guessing you're having trouble deciding what movie to watch tonight?", 'bot');
+  showMessage("Please start off by telling us your name! 😊", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-
-
 // Set up your eventlisteners here
-
 
 const handleNameInput = (event) => {
   event.preventDefault();
   let userName = nameInput.value
   showMessage(userName, "user")
+  setTimeout(() => watchMovie(userName), 1000);
 }
 
 nameForm.addEventListener('submit', handleNameInput);
 
+//Question 2
+const watchMovie = () => {
+  showMessage(`Nice to meet you, ${nameInput.value}! I'm guessing you are having trouble choosing a movie to watch tonight?`, 'bot')
+  inputWrapper.innerHTML=`
+    <button class="choice-btn" id="yes">Yes!</button>
+    <button class="choice-btn" id="no">No, I'm good!</button>`
 
+}
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
