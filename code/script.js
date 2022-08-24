@@ -15,9 +15,8 @@ const botAnswer = (inputCommunicate) => {
 
 const userAnswer = (inputCommunicate) => {
   showMessage(inputCommunicate, 'user')
-};
+}; 
 
-//
 
 const userSpa = (message) => {
   if (question === 1) {
@@ -31,6 +30,7 @@ const userSpa = (message) => {
     setTimeout(() => emailAdressAnswer(message), 2000)
   } else if (question === 4) {
     userAnswer(message)
+    setTimeout(() => theEndAnswer(message), 2000) 
 
   }
 };
@@ -79,37 +79,33 @@ const nameQuestion = ((event) => {
   console.log('text')
   userAnswer(`My name is ${name} and I want to know more about the spa packets!`, 'user')
   nameInput.value = ''
-
   setTimeout(() => showSpaOptions(name), 1000)
 });
 
 // second question
 const showSpaOptions = () => {
   question = 2
-  botAnswer(`We can offer you three kinds of spa packages, what are you interested in more?`, 'bot')
-  inputWrapper.innerHTML = `
+  botAnswer(`Welcome to our spa breaks! We can offer you three kinds of spa packages, what are you interested in more?`, 'bot')
+  chat.innerHTML += 
+  ` <div id="btnOptions" class="options"> 
      <button class="btn" id= 'birthdayButton' value='Birthday spa breaks' type="click">Birthday spa breaks</button>
      <button class="btn" id= 'dinnerButton' value='Dinner & Spa breaks' type="click">Dinner & Spa breaks</button>
-     <button class="btn "id= 'boxingButton' value='Boxing Day Spa' type="click">Boxing Day Spa breaks</button>
+     <button class="btn" id= 'boxingButton' value='Boxing Day Spa' type="click">Boxing Day Spa breaks</button>
+     </div>
      `
 
   document.getElementById('birthdayButton').addEventListener('click', () => userSpa('Birthday spa breaks'))
   document.getElementById('dinnerButton').addEventListener('click', () => userSpa('Dinner & Spa breaks'))
   document.getElementById('boxingButton').addEventListener('click', () => userSpa('Boxing Day Spa breaks'))
 
-  // setTimeout(() => emailAdressQuestion(message), 1000)
+
 };
-
-/*const answerPackets = (choice) => {
-  console.log('packet')
-  showMessage(`My option is ${choice}`,'user')
-  setTimeout(() => showBithdaySpaOptions(message), 1000)
-}*/
-
 
 // third question
 const choosingOptions = (choice) => {
   question = 3
+  const btnOptions = document.getElementById('btnOptions')
+  btnOptions.remove(); 
   //const choiceInput = choiceInput.value
   console.log("Choice: " + choice);
   if ((choice === 'Boxing Day Spa breaks')) {
@@ -119,25 +115,34 @@ const choosingOptions = (choice) => {
   } else {
     botAnswer(`Nice! ${choice} will cost 1500kr. Please, Can you give your email adress? So we send you the information and payment method.`, 'bot')
   }
-  
 };
 
 
 // fourth question
-const emailAdressAnswer = (email) => {
-  question = 4
-  userAnswer(`${email}`, 'user')
-  //nameInput.value = ''
-  setTimeout(() => showtions(), 1000)
-}
+// const emailAdressAnswer = () => {
+//   question = 4
+//   consol.log (theEmail)
+//   userAnswer(`${email}`, 'user')
+//   nameInput.value = ''
+// }
 
-//    const emailAdressAnswer = (event) => {event.preventDefault()
-//               // do stuff here 
-//               //call message function
-//                showMessage(`Perfect! In a few minutes you will receive an email. Enjoy your day with us!`, 'bot')
-//                nameInput.value = '' 
-//                 setTimeout(() => shotions(), 1000)
-//                   }
+// const emailAdressAnswer = (event) => {
+//   question = 4
+//   // event.preventDefault()
+//   // const name = nameInput.value
+//   // console.log('emailTest')
+//   userAnswer(`My e-mail is ${email}`, 'user')
+//   nameInput.value = '' 
+                  
+//   }
+
+
+  //  const theEndAnswer = () => {
+             
+  //   botAnswer(`Perfect! In a few minutes you will receive an email. Enjoy your day with us!`, 'bot')
+  //  nameInput.value = '' 
+    
+  //   }
 
 //  // Set up your eventlisteners here
 
