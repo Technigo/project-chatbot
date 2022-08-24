@@ -82,6 +82,17 @@ const handleMessage = (e) => {
 // e.preventDefault();
 showMessage(nameInput.value,'user' );
 showMessage(`${nameInput.value} What do you prefer to eat for today?`, 'bot');
+
+
+
+// setTimeout(()=>{
+//   chooseFood()
+// }, 2000)
+// let chooseFood= ()=>{
+
+// }
+
+
 inputWrapper.innerHTML=`
 <button id="pizzabtn">Pizza</button>
 <button id="pastabtn">Pasta</button>
@@ -89,7 +100,7 @@ inputWrapper.innerHTML=`
 `
 
 document.getElementById('pizzabtn').addEventListener('click',()=>{
-  showMessage('Nice choose! Which kind of pizza do you want? ', 'bot');
+  showMessage('Nice choose! Which kind of pizza do you want? Select from Menu ', 'bot');
   setTimeout(()=>{
 pizza()
   
@@ -149,6 +160,8 @@ const salad = () => {
 
 
 // Set up your eventlisteners here
+
+
 
 
 
