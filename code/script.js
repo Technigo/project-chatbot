@@ -123,22 +123,22 @@ const selectionAnswer = (selection) => {
     `
     document.getElementById('toothbrush').addEventListener('click',() => {
       showMessage(`I need toothbrush and toothpaste`, 'user')
-      setTimeout(() => goodbye (selection), 2000)
+      setTimeout(() => goodbye ('amenities'), 2000)
     })
 
     document.getElementById('shampoo').addEventListener('click',() => {
       showMessage(`I need shampoo and conditioner`, 'user')
-      setTimemout(() => goodbye (selection), 2000)
+      setTimeout(() => goodbye ('amenities'), 2000)
     })
 
     document.getElementById('toiletrykit').addEventListener('click',() => {
       showMessage(`I need a toiletry kit`, 'user')
-      setTimeout(() => goodbye (selection), 2000)
+      setTimeout(() => goodbye ('amenities'), 2000)
     })
 
     document.getElementById('shavingkit').addEventListener('click',() => {
-      showMessage=(`I need a shaving kit`, 'user')
-      setTimeout(() => goodbye (selection), 2000)
+      showMessage(`I need a shaving kit`, 'user')
+      setTimeout(() => goodbye('amenities'), 2000)
     })
     
 
@@ -153,17 +153,17 @@ const selectionAnswer = (selection) => {
    `
     document.getElementById('pasta').addEventListener('click', () => {
       showMessage(`I would love some Pasta Carbonara`, 'user')
-      setTimeout(() => goodbnye(selection), 2000)
+      setTimeout(() => goodbye('room-service'), 2000)
     }) 
 
     document.getElementById('sallad').addEventListener('click', () => {
       showMessage(`I would love a Ceasar Salad`, 'user')
-      setTimeout(() => goodbye (selection), 2000)
+      setTimeout(() => goodbye ('room-service'), 2000)
     })
 
     document.getElementById('tomatoesoup').addEventListener('click', () => {
       showMessage(`I crave some Tomatoe Soup`, 'user')
-      setTimeout(() => goodbye(selection), 2000)
+      setTimeout(() => goodbye('room-service'), 2000)
     })
   }
 
@@ -179,42 +179,67 @@ const selectionAnswer = (selection) => {
     `
     document.getElementById(wakeUpInput).addEventListener('submit', () => {
       showMessage(`Wake me up at ${wakeUpInput.value}`, 'user')
-      setTimeout(() => goodbye(selection), 1000)
+      setTimeout(() => goodbye('wake-up-call'), 1000)
     })
   }
   
-  //const wakeUpInput = (event) => { // at submit this function will be invoked
-      //event.preventDefault() // prevents website refresh at submit
-      //const wakeUp = wakeUpInput.value // input value will be stored in the const name
-     // showMessage(`Wake me up at ${wakeUp}`, 'user') // users answer 
-      //wakeUpInput.value = '' // clearing room input setting it to an empty string
-     // passing the arguments to next function with 1sec delay
-    //}
-
-
 }
 
 // Thank you message and asking if anything else is needed?
 
 const goodbye = (selection) => {
-showMessage(`We will take care of ${selection} for you right away. Do you need anything else?`, 'bot')
-inputWrapper.innerHTML = `
-  <button id="yes" type="sbumit" class="chat-btn">Yes, please </button>
-  <button id="no" type="submit" class="chat-btn">No, thank you</button>
+
+  if (selection === 'amenities') {
+    showMessage(`We will send up those amenities for you right away. Do you need anything else?`, 'bot')
+    inputWrapper.innerHTML = `
+    <button id="yes" type="sbumit" class="chat-btn">Yes, please </button>
+    <button id="no" type="submit" class="chat-btn">No, thank you</button>
   `
-document.getElementById('yes').addEventListener('click',() => goodbyeAnswer ('yes'));
-document.getElementById('no').addEventListener('click',() => goodbyeAnswer ('no'));
+    setTimeout(() => anythingElse(goodbye), 2000)
+  }
+
+  else if (selection === 'room-service') {
+    showMessage(`Great choice! We will serve you room-service shortly. Do you need anything else?`, 'bot')
+    inputWrapper.innerHTML = `
+    <button id="yes" type="sbumit" class="chat-btn">Yes, please </button>
+    <button id="no" type="submit" class="chat-btn">No, thank you</button>
+  `
+    setTimeout(() => anythingElse(goodbye), 2000)
+  }
+
+  else if (selection === 'wake-up-call') {
+    showMessage(`We will call you at the chosen time tomorrow. Do you need anything else?`, 'bot')
+    inputWrapper.innerHTML = `
+    <button id="yes" type="sbumit" class="chat-btn">Yes, please </button>
+    <button id="no" type="submit" class="chat-btn">No, thank you</button>
+  `
+    setTimeout(() => anythingElse(goodbye), 2000)
+  }
 
 }
 
-//if (goodbyeAnswer === 'yes') {
-  //showMessage('I need some more..', 'user')
-//}
+// Yes and no buttons for anything else? 
 
-//else {
-  //showMessage('Ok. Have a nice day', 'bot')
-//}
-//}
+const anythingElse = (goodbye) => {
+  inputWrapper.innerHTML = `
+  <button id="yes" type="sbumit" class="chat-btn">Yes, please </button>
+  <button id="no" type="submit" class="chat-btn">No, thank you</button>
+`
+document.getElementById('yes').addEventListener('click',() => goodbye ('yes'));
+document.getElementById('no').addEventListener('click',() => goodbye ('no'));
+
+}
+
+
+// If the guest needs something else 
+
+
+// if the guest don't need something else
+
+const confirmation = (anythingElse) => {
+  showMessage(`${anythingElse === 'no'}`, 'user')
+  setTimeout(() => showMessage('Thank you for using our chatbot. Have a nice day!', 'bot'))
+}
 
 
 
