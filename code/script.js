@@ -88,9 +88,9 @@ const showSpaOptions = () => {
   question = 2
   botAnswer(`We can offer you three kinds of spa packages, what are you interested in more?`, 'bot')
   inputWrapper.innerHTML = `
-     <button class="btn" id= 'birthdayButton' type="click">Birthday spa breaks</button>
-     <button class="btn" id= 'dinnerButton' type="click">Dinner & Spa breaks</button>
-     <button class="btn "id= 'boxingButton'type="click">Boxing Day Spa breaks</button>
+     <button class="btn" id= 'birthdayButton' value='Birthday spa breaks' type="click">Birthday spa breaks</button>
+     <button class="btn" id= 'dinnerButton' value='Dinner & Spa breaks' type="click">Dinner & Spa breaks</button>
+     <button class="btn "id= 'boxingButton' value='Boxing Day Spa' type="click">Boxing Day Spa breaks</button>
      `
 
   document.getElementById('birthdayButton').addEventListener('click', () => userSpa('Birthday spa breaks'))
@@ -111,9 +111,16 @@ const showSpaOptions = () => {
 const emailAdressQuestion = (choice) => {
   question = 3
   //const choiceInput = choiceInput.value
-  botAnswer(`Great! You chose ${choice}! That will cost 2000kr. Please, Can you give your email adress? So we send you the information and payment method.`, 'bot')
-  //choiceInput.value = ''
+  if ((choice === 'Boxing Day Spa breaks')) {
+    botAnswer(`Great! You choose ${choice}! That will cost 2000kr. Please, Can you give your email adress? So we send you the information and payment method.`, 'bot')
+  } else if (choice === 'Dinner  & Spa breaks') {
+    botAnswer(`Perfect! ${choice} will cost 1000kr. Alcoholic drinks are not included. Please, Can you give your email adress? So we send you the information and payment method.`, 'bot')
+  } else {
+    botAnswer(`Nice! ${choice} will cost 1500kr. Please, Can you give your email adress? So we send you the information and payment method.`, 'bot')
+  }
+  
 };
+
 
 // fourth question
 const emailAdressAnswer = (email) => {
