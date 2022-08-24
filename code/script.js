@@ -84,7 +84,7 @@ const nextQuestion = (message) => {
 // Starts here
 const greeting = () => {
   questionNumber = 1
-  botReply(`Hello there, What's your name?`, 'bot');
+  botReply(`Hi! Tell me your name and I will give you a joke!`, 'bot');
 }
 
 setTimeout(greeting, 800)
@@ -125,6 +125,8 @@ const handleJokeInput = () => { //Function for the input parameters of first que
     showMessage('Mr. Reddensnapper, if I may.', 'user') //Writes the users anwer in the chat
     inputWrapper.innerHTML = '' 
     setTimeout(() => joke1Answer('Close, but no cigar'), 1000) 
+    setTimeout(() => showMessage('Do you want another one?'), 2000) 
+    setTimeout (() => handleRiddleInput(userName), 2000) //Username not defined
   })
 } 
 
@@ -136,7 +138,7 @@ const handleRiddleInput = () => { //Function for the input parameters of first q
 }
 
 // Third question
-const joke1Answer = joke1Choice => {
+const joke1Answer = joke1Choice => { //Changed showfoodcoice to joke1answer
   showMessage(`${joke1Choice}`, 'bot')
 
   if (joke1Choice === `It's Sofishticated, of course!`) {
@@ -145,13 +147,13 @@ const joke1Answer = joke1Choice => {
     inputWrapper.innerHTML = joke1AnswerWrong
   } 
 
-  const selectedFood = document.getElementById('select') //
+  const joke1Answer = document.getElementById('select') //
 
-  selectedFood.addEventListener('change', () => {
-    showMessage(selectedFood.value, 'user') //Collects the data from variable above.
-    confirmation += `So you want ${selectedFood.value} ` //Bot answers with a new topic.
+  joke1Answer.addEventListener('change', () => {
+    showMessage(joke1Answer.value, 'user') //Collects the data from variable above.
+    confirmation += `So you want ${joke1Answer.value} ` //Bot answers with a new topic.
     inputWrapper.innerHTML=''
-    setTimeout(() => askForAmount(selectedFood.value), 1000)
+    setTimeout(() => askForAmount(joke1Answer.value), 1000)
   }) 
 }
 
