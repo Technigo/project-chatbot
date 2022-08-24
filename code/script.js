@@ -114,7 +114,7 @@ const choosingOptions = (choice) => {
   console.log("Choice: " + choice);
   if ((choice === 'Boxing Day Spa breaks')) {
     botAnswer(`Great! You choose ${choice}! That will cost 2000kr. Please, Can you give your email adress? So we send you the information and payment method.`, 'bot')
-  } else if (choice === 'Dinner &? Spa breaks') {
+  } else if (choice === 'Dinner & Spa breaks') {
     botAnswer(`Perfect! ${choice} will cost 1000kr. Alcoholic drinks are not included. Please, Can you give your email adress? So we send you the information and payment method.`, 'bot')
   } else {
     botAnswer(`Nice! ${choice} will cost 1500kr. Please, Can you give your email adress? So we send you the information and payment method.`, 'bot')
