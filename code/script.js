@@ -1,7 +1,10 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('input-wrapper')
-const input = document.getElementById('name-input')
+const nameInput = document.getElementById('name-input')
+const form = document.getElementById('name-form')
+const submit = document.getElementById('submit')
+const main = document.getElementById('main')
 // If you need any global variables that you can use across different functions, declare them here:
 
 
@@ -38,41 +41,36 @@ const showMessage = (message, sender) => {
 // Starts here
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot');
+  showMessage("Hello! Intrested in donating money to charity? What's your name?", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
-}
-
-const form = document.getElementById('chat-form');
-console.log('form', form);
-
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  console.log('event', event);
-  console.log('form is submitted'); 
-});
-form.addEventListener('submit',function(event) {
-  console.log('form is submitted'); 
-});
-
-const handleNameInput = (event) => {
-  event.preventDefault();
-  
-  // Store the value in a variable so we can access it after we 
-	// clear it from the input
-  const name = nameInput.value
-  showMessage(name, 'user')
-  nameInput.value = ''
-
-  // After 1 second, show the next question by invoking the next function.
-	// passing the name into it to have access to the user's name if we want
-	// to use it in the next question from the bot.
-  setTimeout(() => showFoodOptions(name), 2000)
 }
 // Set up your eventlisteners here
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
+
+const handleNameInput = document.getElementById('name-form').addEventListener('submit', (event) => {
+  event.preventDefault()
+  // Store the value in a variable so we can access it after we 
+	// clear it from the input
+ const name = nameInput.value
+ console.log(name)
+ 
+ showMessage(`My name is ${name}.`, 'user')
+  nameInput.value = ''
+
+  setTimeout(() => showCharityOptions(name), 2000)
+}
+)
+
+//Bot-chat question two:
+
+const showCharityOptions = (name) => {
+  showMessage(`Nice to meet you ${name}! Choose a charity below!`, 'bot')
+} 
+// förslagsvis så kommer det tre alternativ att klicka på
+
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
