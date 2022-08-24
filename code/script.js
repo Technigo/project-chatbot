@@ -7,6 +7,8 @@ const sendBtn = document.getElementById('send');
 const form = document.getElementById('name-form')
 
 
+let questionNumber = 1
+
 const botAnswer = (inputMessage) => {
   showMessage(inputMessage, 'bot')
 }
@@ -51,20 +53,20 @@ const nextQuestion = (message) => {
   console.log('questionNumber', questionNumber)
 
   if (questionNumber === 1) {
-    userReply(message)
+    userAnswer(message)
     input.value = ''
-    setTimeout(() => nameBooking(message), 1000)
-  } else if (questionNumber === 2) {
-    userReply(message)
     setTimeout(() => dayBooking(message), 1000)
-  } else if (questionNumber === 3) {
-    userReply(message)
+  } else if (questionNumber === 2) {
+    userAnswer(message)
     setTimeout(() => timeBooking(message), 1000)
+  } else if (questionNumber === 3) {
+    userAnswer(message)
+    setTimeout(() => notthereyet(message), 1000)
   } else if (questionNumber === 4) {
-    userReply(message)
+    userAnswer(message)
     setTimeout(() => showPrice(message), 1000)
   } else {
-    userReply(message)
+    userAnswer(message)
     setTimeout(thankYou, 1000)
   }
 }
