@@ -61,7 +61,7 @@ const nextQuestion = (message) => {
     setTimeout(() => timeBooking(message), 1000)
   } else if (questionNumber === 3) {
     userAnswer(message)
-    setTimeout(() => notthereyet(message), 1000)
+    setTimeout(() => guestBooking(message), 1000)
   } else if (questionNumber === 4) {
     userAnswer(message)
     setTimeout(() => showPrice(message), 1000)
@@ -110,14 +110,14 @@ const dayBooking = () => {
 
 const timeBooking = (type) => {
   questionNumber++
-  botAnswer(`Which time on ${type} would you like to book?.`)
+  botAnswer(`Which time on ${type} would you like to book?`)
   if (type === 'Friday') {
     inputWrapper.innerHTML=`
     <select id = 'select'>
       <option value='' selected disabled> Choose time </option>
       <option value='lunch'>Lunch</option>
       <option value='dinner'>Dinner</option>
-      </select> 
+    </select> 
       `
   } 
   else {
@@ -135,86 +135,24 @@ const timeBooking = (type) => {
   select.addEventListener('change', () => nextQuestion(select.value))
 }
 
+// fourth question 
+
+const guestBooking = () => { 
+  questionNumber++
+  showMessage("How many guests do you want to book for?", 'bot');
 
 
-  // inputWrapper.innerHTML = `
-  // <select id = 'select'>
-  //   <option value='' selected disabled> Choose service </option>
-  //   <option value='bathing'>Bathing</option>
-  //   <option value='brushing'>Brushing</option>
-  //   <option value='Nail trimming'>Nail trimming</option>
-  //   <option value='Haircut'>Haircut</option>
-  //   </select> 
-  //   `
-  // const select = document.getElementById('select')
-  // select.addEventListener('change', () => usersDay(select.value))
-
-
-
-/*
-document
-  .getElementById('friday')
-  .addEventListener('click', () => nextQuestion('time'))
-  //nextFunction('friday') //call next function with a parameter for yes
-
-  //setTimeout(() => time(), 1000)
-  //showMessage("Which time do you want to eat?", 'bot');
-  
-
-document
-  .getElementById('saturday')
-  .addEventListener('click', () => nextQuestion('time'))
-  //nextFunction('saturday') //call next function with a parameter for yes
-
-  //setTimeout(() => time(), 1000)
-  
+inputWrapper.innerHTML=`
+<select id = 'select'>
+  <option value='' selected disabled> Number of quests </option>
+  <option value='1'>1</option>
+  <option value='2'>2</option>
+  <option value='3'>3</option>
+  <option value='4'>4</option>
+  <option value='5+'>5+</option>
+</select> 
+  `
 }
 
-const nextFunction = (option) => { 
 
-
-  if (dayBooking === 'friday') {
-    showMessage("Which time do you want to eat?", 'bot');
-    inputWrapper.innerHTML = `
-    <button id='lunch'>Lunch</button>
-    <button id='dinner'>Dinner</button>
-  `
-  }
-  
-  else (dayBooking === 'saturday') {
-    showMessage("Which time do you want to eat?", 'bot');
-    inputWrapper.innerHTML = `
-    <button id='breakfast'>Breakfast</button>
-    <button id='lunch'>Lunch</button>
-    <button id='dinner'>Dinner</button>
-    `
-  }
-
-    document
-    .getElementById('breakfast')
-    .addEventListener('click', () => nextQuestion('guests'))
-    document
-    .getElementById('lunch')
-    .addEventListener('click', () => nextQuestion('guests'))
-    document
-    .getElementById('dinner')
-    .addEventListener('click', () => nextQuestion('guests'))
-  }
-*/
-
-
-
-
-
-
-
-
-
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000);
