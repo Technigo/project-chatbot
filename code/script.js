@@ -72,17 +72,83 @@ const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
 
   showMessage("Hello there, What's your name?", 'bot');
-  
   // showMessage(`${nameInput.value}`,'user' );
   // showMessage('What do you want to eat today? ', 'bot')
+  handleMessage();
   // Just to check it out, change 'bot' to 'user' here 👆
+}
+const handleMessage = (e) => {
+// e.preventDefault();
+showMessage(nameInput.value,'user' );
+showMessage(`${nameInput.value} What do you prefer to eat for today?`, 'bot');
+inputWrapper.innerHTML=`
+<button id="pizzabtn">Pizza</button>
+<button id="pastabtn">Pasta</button>
+<button id="saladbtn">Salad</button>
+`
+
+document.getElementById('pizzabtn').addEventListener('click',()=>{
+  showMessage('Nice choose! Which kind of pizza do you want? ', 'bot');
+  setTimeout(()=>{
+pizza()
+  
+}, 2000)
+
+
+})
+
+document.getElementById('pastabtn').addEventListener('click',()=>{
+  showMessage('Oh , So you are in the mood for Pasta! Check menu... '); 
+  setTimeout(()=>{
+    pasta()
+  })
+})
+
+document.getElementById('saladbtn').addEventListener('click',()=>{
+  showMessage('Oh , So you are in the mood for Salad! Check menu... ');
+  setTimeout(()=>{
+    salad()
+  })
+})
+}
+
+const pizza = () =>{
+  inputWrapper.innerHTML= `
+
+  <select>
+  <option value="">Select A Pizza from menu 👇 </option>
+  <option value="Margarita">Margarita</option>
+  <option value="Peperoni">Peperoni</option>
+  <option value="Salami">Salami</option>
+  </select>
+  `
+}
+
+const pasta=()=>{
+  inputWrapper.innerHTML = `
+  <select>
+  <option value="">Select A Pasta from menu 👇 </option>
+  <option value="carbonara">Pasta Carbonara</option>
+  <option value="pomodoro">Pasta Pomodoro </option>
+  <option value="langon">Langon Pasta</option>
+  </select>
+  `
+}
+
+const salad = () => {
+  inputWrapper.innerHTML = `
+  <select>
+  <option value="">Select A Salad from menu 👇 </option>
+  <option value="green">Green Salad</option>
+  <option value="been">Been Salad</option>
+  <option value="chicken">Chicken Salad</option>
+  </select>
+  `
 }
 
 
 // Set up your eventlisteners here
 
-// const pizzaBtn = document.createElement('button');
-// inputWrapper.appendChild(pizzaBtn);
 
 
 // When website loaded, chatbot asks first question.
