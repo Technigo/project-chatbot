@@ -4,7 +4,6 @@ const inputWrapper = document.getElementById("input-wrapper");
 
 //Buttons:
 const allButtons = document.getElementsByTagName("button");
-console.log(allButtons);
 const coneBtn = document.getElementById("cone-btn");
 const cupBtn = document.getElementById("cup-btn");
 
@@ -12,19 +11,18 @@ const cupBtn = document.getElementById("cup-btn");
 
 // If you need any global variables that you can use across different functions, declare them here:
 
-// "if ic"
-
 const customerOrder = {
-  typeOfIceCream: "",
-  coneOrCup: "",
-  flavors: "",
-  topping: "",
-  phoneNo: "",
+  type: "",
+  serving: "",
+  flavors: [],
+  sprinkles: "",
+  phone: "",
   getReceipt: () => {},
 };
 
 // Declare your functions after this comment
-// Making buttons only clickable once
+
+// Disabling all buttons after first click
 const disableBtnAfterClick = () => {
   for (let i = 0; i < allButtons.length; i++) {
     allButtons[i].disabled = true;
@@ -38,16 +36,16 @@ const chooseIceCream = () => {
 
   iceCreamBtn.addEventListener("click", () => {
     customerOrder.typeOfIceCream = "Ice Cream";
-    showMessage("Ice Cream", "user");
 
+    showMessage("Ice Cream", "user");
     disableBtnAfterClick();
     setTimeout(() => question3Flavors(), 1000);
   });
 
   softIceCreamBtn.addEventListener("click", () => {
     customerOrder.typeOfIceCream = "Soft Ice Cream";
-    showMessage("Soft Ice Cream", "user");
 
+    showMessage("Soft Ice Cream", "user");
     disableBtnAfterClick();
     setTimeout(() => question3Sprinkles(), 1000);
   });
@@ -56,8 +54,12 @@ const chooseIceCream = () => {
 //Question 3 – Sprinkles (Soft)
 const chooseSprinkles = () => {
   const sprinkleNextBtn = document.getElementById("sprinkles-next");
+  const sprinklesSelection = document.getElementById("sprinkles");
+
   sprinkleNextBtn.addEventListener("click", () => {
-    showMessage(`sprinkles`, "user");
+    customerOrder.sprinkles = sprinklesSelection.value;
+
+    showMessage(`${sprinklesSelection.options[sprinklesSelection.selectedIndex].text}, please`, "user");
     disableBtnAfterClick();
     setTimeout(() => question4PhoneNo(), 1000);
   });
@@ -66,30 +68,32 @@ const chooseSprinkles = () => {
 //Question 3 – flavors (Ice)
 const chooseFlavors = () => {
   const flavorsNextBtn = document.getElementById("flavors-next");
+  const flavorsBoxes = document.getElementsByClassName("flavors-boxes");
 
   flavorsNextBtn.addEventListener("click", () => {
     // customerOrder.flavors =
-    showMessage(`flavors`, "user");
 
+    showMessage(`flavors`, "user");
     disableBtnAfterClick();
     setTimeout(() => question4PhoneNo(), 1000);
   });
+
+  for (let i = 0; i < flavorsBoxes.length; i++) {
+    if (flavorsBoxes[i].checked === true) {
+      customerOrder.flavors.push(input.value);
+    }
+  }
 };
 
 //Question 4 - Phone Number
 const phoneNumber = () => {
-const confirmPhoneBtn = document.getElementById("confirm-btn");
-const cancelOrderBtn = document.getElementById("cancel-btn");
+  const confirmPhoneBtn = document.getElementById("confirm-btn");
 
-confirmPhoneBtn.addEventListener("click", () => {
-
-  disableBtnAfterClick();
-  showMessage(`HEJ`, "bot");
-});
-
-cancelOrderBtn.addEventListener("click", () => {
-  
-});
+  confirmPhoneBtn.addEventListener("click", () => {
+    disableBtnAfterClick();
+    showMessage(`Phone number`, "user");
+    showMessage(`Thank you for your order`, "bot");
+  });
 };
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -106,7 +110,6 @@ const showMessage = (message, sender) => {
     `;
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === "bot") {
-    console.log("bot");
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -126,7 +129,7 @@ const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Welcome to The Ice Cream Shop! Let me take your order.", "bot");
   setTimeout(() => {
-    showMessage("Would you like your ice cream in a:", "bot");
+    showMessage("Would you like your ice cream in a cup or a cone?", "bot");
 
     inputWrapper.classList.toggle("active");
   }, 2000);
@@ -143,22 +146,22 @@ const question2IceOrSoft = () => {
   chooseIceCream();
 };
 
-//Question 3 - Soft Ice Cream
+//Question 3 - Sprinkles (Soft Ice Cream)
 const question3Sprinkles = () => {
   inputWrapper.innerHTML = `
-<select id="topping">
-<option value="topping1">Rainbow</option>
-<option value="topping2">Chocolate</option>
-<option value="topping3">Liquorice</option>
-<option value="topping4">Strawberry</option>
-<option value="topping4">None</option>
+<select name="sprinkles" id="sprinkles">
+<option value="rainbow">Rainbow sprinkles</option>
+<option value="chocolate">Chocolate sprinkles</option>
+<option value="liquorice">Liquorice sprinkles</option>
+<option value="none">No sprinkles</option>
 </select>
+
 <button id="sprinkles-next">Next</button>`;
   showMessage(`Sprinkles?`, "bot");
   chooseSprinkles();
 };
 
-//Question 3 - Ice Cream
+//Question 3 - Flavors (Ice Cream)
 const question3Flavors = () => {
   inputWrapper.innerHTML = `
   <div>
@@ -198,7 +201,6 @@ const question4PhoneNo = () => {
 // Set up your eventlisteners here
 cupBtn.addEventListener("click", () => {
   customerOrder.coneOrCup = "Cup";
-  console.log(customerOrder);
   showMessage("Cup", "user");
 
   disableBtnAfterClick();
@@ -207,7 +209,6 @@ cupBtn.addEventListener("click", () => {
 
 coneBtn.addEventListener("click", () => {
   customerOrder.coneOrCup = "Cone";
-  console.log(customerOrder);
   showMessage("Cone", "user");
 
   disableBtnAfterClick();
