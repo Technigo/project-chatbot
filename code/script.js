@@ -124,26 +124,62 @@ const joke1Answer = joke1Choice => {
 
 const joke1AnswerCorrect = () => {
   inputWrapper.innerHTML =  `
-    <button id="gimmeRiddle">Awesome! Give me a riddle!</button>
+    <button id="Riddle">Awesome! Give me a riddle!</button>
     <button id="gimmieJoke">No, not done! Can I try another one?</button>
 `
 }
 const joke1AnswerWrong = () => { 
   inputWrapper.innerHTML = `
-    <button id="gimmeRiddle">Dammit! Give me a riddle!</button>
+    <button id="gimmeRiddle1">Dammit! Give me a riddle!</button>
     <button id="gimmejoke">Give me another chance!</button>
 `
+document
+  .getElementById('gimmeRiddle1')
+  .addEventListener('click',() => { //Calls the showMessage below when user press the riddle1true button.
+    showMessage("What do you call an alligator in a vest?", 'bot') //Writes the users answer in the chat
+    inputWrapper.innerHTML = `
+      <button id="aligatorRiddle1">An investigator</button>
+      <button id="Riddle1false">Wrong aligator answer</button>`
+  })
 }
 
-const handleRiddleInput = (event) => {
-  event.preventDefault() 
-  const userName = nameInput.value 
-  showMessage(userName, 'user')
-  nameInput.value = ''
-  setTimeout (() => showMessage(`Nice to meet you ${userName}!`, 'bot'), 1000 )
-  setTimeout(() => showMessage('What do you call a fish wearing a bowtie?', 'bot'), 2000) 
-  setTimeout (() => handleJokeInput(userName), 2000) 
+//copied first question
+
+const HandleRiddle = () => { //Function for the input parameters of first question.
+  inputWrapper.innerHTML = `
+    <button id="aligatorRiddle1">An investigator</button>
+    <button id="Riddle1false">Wrong aligator answer</button>
+  `//adds two alternatives to choose from.
+  
+  /*document
+  .getElementById('aligatorRiddle1')
+  .addEventListener('click',() => { //Calls the showMessage below when user press the riddle1true button.
+    showMessage("What do you call an alligator in a vest?", 'bot') //Writes the users answer in the chat
+  })*/
+} 
+
+const riddleAnswer = riddle1Choice => {
+  showMessage(`${riddle1Choice}`, 'bot')
+
+  if (riddle1Choice === `An investigator`) {
+    inputWrapper.innerHTML = goodByeMsg
+  } else if (riddle1Choice === `Wrong aligator answer`) {
+    inputWrapper.innerHTML = goodByeMsg
+  } 
 }
+
+/*const riddleOrJokeAnswer = () => {
+  showMessage('What do you call an alligator in a vest?', 'bot')
+  inputWrapper.innerHTML =  `
+  <button id="riddle1true">An investigator</button>
+  <button id="riddle1false">Riddle answer false</button>
+`
+}
+document.getElementById('gimmeRiddle1')
+.addEventListener('click',() => riddleOrJokeAnswer())
+
+
+
 
 // Riddle
 
@@ -160,3 +196,12 @@ const handleRiddleInput = (event) => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 
+/*const handleRiddleInput = (event) => {
+  event.preventDefault() 
+  const userName = nameInput.value 
+  showMessage(userName, 'user')
+  nameInput.value = ''
+  setTimeout (() => showMessage(`Nice to meet you ${userName}!`, 'bot'), 1000 )
+  setTimeout(() => showMessage('What do you call a fish wearing a bowtie?', 'bot'), 2000) 
+  setTimeout (() => handleJokeInput(userName), 2000) 
+}*/
