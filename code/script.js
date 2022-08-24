@@ -1,18 +1,16 @@
-// Variables that point to selected DOM elements
-const chat = document.getElementById('chat');
-const nameInput = document.getElementById('name-input');
-const submit = document.getElementsByClassName('sendBtn')
-const inputWrapper = document.getElementsByClassName('input-wrapper')
-const nameForm = document.getElementById('name-form')
-
-// If you need any global variables that you can use across different functions, declare them here:
+// All the DOM selectors stored as short variables
+const chat = document.getElementById('chat')
+const form = document.getElementById('name-form')
+const inputWrapper = document.getElementById('input-wrapper')
+let userName = ""
 
 
-// Declare your functions after this comment
+// Global variables, if you need any, declared here
+
+// Functions declared here
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
@@ -22,9 +20,7 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `
-    // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
-    console.log(sender)
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -35,49 +31,105 @@ const showMessage = (message, sender) => {
     `
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-  chat.scrollTop = chat.scrollHeight;
+  chat.scrollTop = chat.scrollHeight
 }
 
-// Greeting/Question 1
+//Question 1
 const greeting = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello and welcome to our movie suggestor!", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
-}
-const greeting2 = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Please start off by telling us your name! 😊", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage(`Hello there, What's your name?`, 'bot')
 }
 
-// Set up your eventlisteners here
-
-const handleNameInput = (event) => {
-  event.preventDefault();
-  let userName = nameInput.value
-  showMessage(userName, "user")
-  setTimeout(() => watchMovie(userName), 1000);
+const handleResponse = () => {
+  let userName = document.getElementById('name-input').value;
+  showMessage(`Nice to meet you ${userName}!`, 'bot') 
 }
-
-nameForm.addEventListener('submit', handleNameInput);
 
 //Question 2
 const watchMovie = () => {
-  showMessage(`Nice to meet you, ${nameInput.value}! I'm guessing you are having trouble choosing a movie to watch tonight?`, 'bot')
-  inputWrapper.innerHTML=`
-    <button class="choice-btn" id="yes">Yes!</button>
-    <button class="choice-btn" id="no">No, I'm good!</button>`
+  let userName = document.getElementById('name-input').value;
+  showMessage(`I'm guessing you're having trouble finding something to watch on Netflix?`, 'bot')
+  inputWrapper.innerHTML = `
+    <button id="option1">Yes</button>
+    <button id="option2">No</button>
+    
+    `
+    document.getElementById("option1").addEventListener("click", () => {
+      showMessage("Yes, i can't decide what to watch, help me!", 'user')
+      setTimeout (() => showMessage("I'm happy to help! How are you feeling today?", "bot"), 1500)
+      setTimeout (() => inputWrapper.innerHTML=`
+      <button id="optHappy">😄</button>
+      <button id="optSad">😥</button>
+      <button id="optAngry">😡</button>
+    `, 1500)
+    })
 
+     /*  document.getElementById("optHappy").addEventListener("click", () => {
+        showMessage("I'm feeling happy today!", 'user')
+    
+      })
+      setTimeout (() => showMessage("Since you are happy, I have few recommendations for you", 'bot'), 1500)
+      setTimeout (() => inputWrapper.innerHTML=`
+      <button id="optHappyFeet">Happy Feet</button>
+      <button id="optPrettyWoman">Pretty Woman</button>
+      <button id="optSingingInTheRain">Singing in the Rain</button>
+    `, 1500)
+       })
+      */
+    document.getElementById("option2").addEventListener("click", () => {
+      showMessage("No thanks, i just wanted to try the functions of this bot!", 'user')
+      setTimeout (() => showMessage("Well, now that you know that it works, you're more than welcome back once you need my help!", "bot"), 1500)
+      setTimeout (() => inputWrapper.innerHTML=`
+      <p>Thanks for using this bot!</p>
+    `, 1500)
+    
+    })
 }
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000);
-setTimeout(greeting2, 2000);
+//Question 2(Happy)
+/*const movieMoods = () => {
+  document.getElementById('optHappy').addEventListener('click', () => {
+  showMessage("Since you are happy! I recommend this comedy", 'bot')
+  //setTimeout (() => movieMoods(value, 'bot'), 1000)
+ })
+}
+*/
 
-//event.preventDefault();
-//nameInput.value = ''
+//Question 2(Sad)
+
+
+//Question 2(Angry)
+  
+
+
+
+// Set up your eventlisteners here
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const value = document.getElementById('name-input').value;
+  showMessage(value, 'user')
+});
+
+/*form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  showMessage(value, 'bot')
+});
+*/
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const value = document.getElementById('name-input').value;
+  setTimeout (() => handleResponse(value, 'bot'), 1000)
+  setTimeout (() => watchMovie(value, 'bot'), 2000)
+});
+
+
+
+/*
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  showMessage(value, 'bot')
+  setTimeout (() => watchMovie(value, 'bot'), 1000)
+});
+*/
+
+setTimeout(greeting, 1000)
