@@ -116,7 +116,7 @@ const handleJokeInput = () => { //Function for the input parameters of first que
     inputWrapper.innerHTML = '' 
     setTimeout(() => joke1Answer(`Excellent choice! It's correct!`), 1000) //Writes the 
     setTimeout(() => showMessage('Would you like a riddle instead?', 'bot'), 2000) //
-    setTimeout (() => handleRiddleInput(userName), 2000) //
+    setTimeout (() => handleRiddleInput(userName), 2000)
   })
 
   document
@@ -126,14 +126,14 @@ const handleJokeInput = () => { //Function for the input parameters of first que
     inputWrapper.innerHTML = '' 
     setTimeout(() => joke1Answer('Close, but no cigar'), 1000) 
     setTimeout(() => showMessage('Do you want another one?'), 2000) 
-    setTimeout (() => handleRiddleInput(userName), 2000) //Username not defined
+    //setTimeout (() => handleRiddleInput(userName), 2000) //Username not defined
   })
 } 
 
 const handleRiddleInput = () => { //Function for the input parameters of first question.
   inputWrapper.innerHTML = `
-    <button id="Joke1true">Awsome! Give me a riddle!</button>
-    <button id="Joke1false">Dangit! Can I try another one?</button>
+    <button id="Riddle1Yes">Yes! Give me a riddle!</button>
+    <button id="Riddle1No">No, not done! Can I try another one?</button>
   `//adds two alternatives to choose from.
 }
 
@@ -149,12 +149,13 @@ const joke1Answer = joke1Choice => { //Changed showfoodcoice to joke1answer
 
   const joke1Answer = document.getElementById('select') //
 
-  joke1Answer.addEventListener('change', () => {
-    showMessage(joke1Answer.value, 'user') //Collects the data from variable above.
-    confirmation += `So you want ${joke1Answer.value} ` //Bot answers with a new topic.
+  Riddle1Yes.addEventListener('change', () => {
+    showMessage(Riddle1Yes.value, 'user') //Collects the data from variable above.
+    confirmation += `So you want ${Riddle1Yes.value} ` //Bot answers with a new topic.
     inputWrapper.innerHTML=''
-    setTimeout(() => askForAmount(joke1Answer.value), 1000)
+    setTimeout(() => askForAmount(Riddle1Yes.value), 1000)
   }) 
+
 }
 
 /*
