@@ -43,10 +43,6 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-const greeting2 = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Please start off by telling us your name! 😊", 'bot');
-}
 
 //FRÅN TECHNIGOS SIDA // Store the value in a variable so we can access it after we 
 	// clear it from the input
