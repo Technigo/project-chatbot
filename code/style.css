@@ -110,14 +110,23 @@ main {
 }
 
 .input-wrapper {
-  display: flex;
+  display: block;
   justify-content: center;
+}
+
+.button {
+ display: flex;
+ justify-content: center;
+
 }
 
 .input-wrapper form {
   width: 100%;
   display: flex;
+
 }
+
+.input-wrapper 
 
 button {
   background-color: #0026ff;
@@ -132,6 +141,7 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  
 }
 
 button:hover {
