@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet" />
-    <title>Chat Bot</title>
+      rel="stylesheet"
+    />
+    <title>Personal Trainer Bot</title>
   </head>
 
   <body>
-    <h1>Welcome to xxx.</h1>
-    <h2>Ask about xxxx.</h2>
+    <h1>Welcome to your Personal Trainer Bot</h1>
+    <h2>Let us help you plan your next workout!</h2>
     <main>
-      <section class="chat" id="chat"></section>
+      <section class="chat" id="chat">
+        <!--This is where the chat messages will be rendered when you add a message as either the bot or the user.-->
+      </section>
 
       <div class="input-wrapper" id="input-wrapper">
-        <form id="name-form">
-          <label for="name-input">name</label>
-          <input id="name-input" type="text" />
-          <button class="send-btn" type="submit">
-            Send
-          </button>
+        <form id="workout-form">
+          <label for="user-input"></label>
+          <input id="user-input" type="text" />
+          <button class="send-btn" type="submit">Send</button>
         </form>
       </div>
     </main>
 
     <script src="./script.js"></script>
   </body>
-
 </html>
