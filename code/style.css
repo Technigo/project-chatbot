@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #bec3e0;
+  background: #abb3e0;
 }
 
 h1 {
@@ -53,7 +53,8 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  
+  background: #ffffff4d;;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
