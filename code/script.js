@@ -53,11 +53,14 @@ const nextQuestion = () => {
     botAskWhatTime();
   } else if (questionNumber === 4) {
     botAskHowManyPeople();
+  } else if (questionNumber === 5) {
+    botAskWhatPhoneNumber();
   }
 
   if (questionNumber > 10) {
     showMessage("Oh, you're talkative aren't you...", "bot");
   }
+
   questionNumber++;
 };
 
@@ -71,13 +74,22 @@ const botGreetsUserAndAsksName = () => {
 //function asking about what day
 const botAskWhichDay = () => {
   //Here we call the next question about what day they would like to visit
+  //  When do you want to book for?
+  //  Today
+  //  Tomorrow
   showBotMessage("What day would like to book your table?");
+  // @TODO show today/tomorrow button picker UI for user
 };
 
-//funciton asking about what time of the day
+//function asking about what time of the day
 const botAskWhatTime = () => {
   //Here we call the next question about what day they would like to visit
+  // What time?
+  //  - 5pm
+  //  - 6pm
+  //  - 7pm
   showBotMessage("For what TIME would like to book your table?");
+  // @TODO show list of available time for user
 };
 
 const botAskHowManyPeople = () => {
@@ -89,7 +101,11 @@ const botAskHowManyPeople = () => {
   // @TODO show 2-3-4 button picker UI for user
 };
 
-//function handling the name-input
+const botAskWhatPhoneNumber = () => {
+  showBotMessage("I'll need a phone number for the booking, please.");
+};
+
+//function handling the user input
 const handleUserInput = (event) => {
   console.log(nameInput);
   let userMessage = nameInput.value;
@@ -99,7 +115,7 @@ const handleUserInput = (event) => {
   nameInput.value = "";
 
   // if (userMessage === "") {
-  //   showMessage("Sorry, I didnt get that ", "bot");
+  //   showMessage("Sorry, I didnt get that", "bot");
   //   return;
   // }
   nextQuestion();
