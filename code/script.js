@@ -6,14 +6,20 @@ const nameInput = document.getElementById ('name-input')
 const form = document.getElementById ('name-form')
 const inputWrapper = document.getElementById ('input-wrapper')
 const sendBtn = document.getElementById ('send-btn')
+
 const botReply = (msg) => {
   showMessage(msg, 'bot')
 }
 const userReply = (msg) => {
   showMessage(msg, 'user')
 }
+
 let buttonText = "";
-let questionCounter = 0; 
+let answers = {
+  name: "",
+  day: "",
+};
+
 
 // Collapsible
 var coll = document.getElementsByClassName("collapse");
@@ -35,31 +41,37 @@ for (let i = 0; i < coll.length; i++) {
 
 
 // Declare your functions after this comment
+let questionCounter = 0; 
 const questionGen = (message) => {
   questionCounter++;  /* Need this to move on*/
+
 if (questionCounter === 0) {    /* Set to 0, put 1 when popup*/
-setTimeout(question1, 100)
+    botGreeting();
 
 } else if (questionCounter === 1) {
-    setTimeout(question2, 1000, nameInput.value)
+  friendlyBot(nameInput.value);
 
 } else if (questionCounter === 2) {
-    setTimeout(question3, 1000, message)
+    seekingAdvice();
 
-  } else if (questionCounter === 3) {
-    setTimeout(question4, 1000, message)
+} else if (questionCounter === 3) {
+    soonMotivated();
 
   } else if (questionCounter === 4) {
-  setTimeout(quotes, 1000, message)
+  firstQuote();
 
 } else if (questionCounter === 5) {
-  setTimeout(question6, 1000, message, answer)
+  rYouHappy();
 
 } else if (questionCounter === 6) {
-  setTimeout(question7, 1000, )
+  response();
 }
 }
-
+const showBotMessage = (message) => {
+  setTimeout(() => {
+    showMessage(message, "bot");
+  }, 300);
+};
 
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -92,7 +104,7 @@ const showMessage = (message, sender) => {
 }
 
 // INITAL BOT GREETING/ QUESTION1 !
-const question1 = () => {
+const botGreeting = () => {
   botReply ("Hello there, what's your name?",)
 
   form.addEventListener("submit", (event) =>{
@@ -106,25 +118,28 @@ const question1 = () => {
 
   
 // QUESTION 2
-const question2 = (message) => {
+const friendlyBot = (message) => {
   botReply(`Nice to meet you, ${message}! 
-  I would like to make your day even better! `);
-  questionGen();
+  I would like to make your day even better! Is that ok ?`);
   }
 
 
+// Here User need to enter something, like OK etc
 
-
-  // QUESTION 3 - buttons 
- const question3 = () => {
+// QUESTION 3 - buttons 
+ const seekingAdvice = () => {
 botReply('Do you need motivation or encouragement?');
 inputWrapper.innerHTML = `
 <button id="motivationBtn">Motivation of course!</button>
 <button id="encouragementBtn">Definately encourgement!</button>
 `
 
-document.getElementById('motivationBtn').addEventListener('click', () => questionGen('Motivation'))
-document.getElementById('encouragementBtn').addEventListener('click', () => questionGen('Encouragement'))
+document
+.getElementById('motivationBtn')
+.addEventListener('click', () => soonMotivated('Motivation'))
+document
+.getElementById('encouragementBtn')
+.addEventListener('click', () => soonMotivated('Encouragement'))
 
 
 
@@ -145,30 +160,41 @@ document.getElementById('motivationBtn').addEventListener('click', () => {
 }
 
 //QUESTION 4
-const question4 = (answer) => {
-  userReply(`${answer} please`)
-  document.addEventListener('submit', () => questionGen('please'));
+const soonMotivated= (answer) => {
+  userReply(`${answer} please`);
+  firstQuote();
 }
 
 
 //Question 5   MÅSTE DUBBEKLICKA 4 FÖR ATT KUNNA KOMMA TILL 5 WHY?
-const quotes = () => { 
-  botReply(`ddddddd`);
-
-  // Makes user able to write again 
-  inputWrapper.innerHTML = `
-  <input id="text-input" type="text" />
-  <button id="send-btn">Send</button>
-`
-const textInput = document.getElementById('text-input');
-  document.getElementById('send-btn').addEventListener('click', () => {
-  showMessage(textInput.value, 'user');
-  textInput.value ='';
-  questionGen();
-}, {once: true}); 
+const firstQuote = (firstQuote) => { 
+  botReply(`Glaset är halvfullt`);
+  rYouHappy();
 }
 
+ const rYouHappy = (youbetterbe) => {
+  userReply("......?")
+  setTimeout(() => botReply (`Do you feel better now?`), 2000);
 
+  inputWrapper.innerHTML = `
+<button id="happyBtn" id="yes">Yes - Give me more! </button>
+<button id="sadBtn" id="no">No - let's stop!</button>
+`
+
+document
+.getElementById('happyBtn')
+.addEventListener('click', () => response('yes'))
+document
+.getElementById('sadBtn')
+.addEventListener('click', () => response('no'))
+
+ }
+ 
+ // If sats här? 
+const response = (response) => {
+  userReply('it can not get worse?')
+  setTimeout(() => botReply('HAHA jo då'), 1000)
+}
 
 
   
@@ -209,6 +235,6 @@ questionGen()
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
  
-setTimeout(question1, 100); /* Why do we need this?? */
+setTimeout(botGreeting, 100); /* Why do we need this?? */
 
 
