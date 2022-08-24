@@ -97,7 +97,8 @@ main {
 }
 
 .bubble {
-  background: rgb(202, 164, 149);
+  background: rgb(216, 197, 190);
+  box-shadow: 1px 2px 10px 1px #a3a3a3;
   font-weight: 600;
   font-size: 13px;
   line-height: 26px;
