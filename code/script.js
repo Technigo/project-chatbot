@@ -1,10 +1,29 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
-
+const sendBtn = document.querySelector('.send-btn')
+const nameInput = document.getElementById('name-input')
 // If you need any global variables that you can use across different functions, declare them here:
 
 
 // Declare your functions after this comment
+
+const handleNameInput = (event) => {
+  event.preventDefault()
+  // Store the value in a variable so we can access it after we 
+	// clear it from the input
+  const userName = nameInput.value
+  showMessage(userName, 'user')
+  //showMessage(`My name is ${userName}´,'user') /NB?
+
+  // Clears the input field
+  nameInput.value = '' 
+
+  // After 1 second, show the next question by invoking the next function.
+	// passing the name into it to have access to the user's name if we want
+	// to use it in the next question from the bot.
+  setTimeout(() => showFoodOptions(userName), 1000)
+}
+//Flytta funktion nedanför "greetings" för att få det i ordning/ NB?
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -35,6 +54,7 @@ const showMessage = (message, sender) => {
 }
 
 // Starts here
+// greeting from Wiledbeest Burgers
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Why hello there, welcome to Wildebeest Burgers. What's your name", 'bot');
@@ -42,6 +62,8 @@ const greeting = () => {
 }
 
 // Set up your eventlisteners here
+sendBtn.addEventListener('click', (event) => handleNameInput(event))
+//sendBtn.addEventListener('submit', handleNameInput); /NB
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
