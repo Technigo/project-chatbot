@@ -1,9 +1,8 @@
 // Variables that point to selected DOM elements
-const chat = document.getElementById("chat");
-const inputWrapper = document.getElementById("input-wrapper");
-const nameInput = document.getElementById("name-input");
-//const chat = document.querySelector(# .chat) ...this means the same as above
-
+const chat = document.querySelector("#chat");
+const inputWrapper = document.querySelector("#input-wrapper");
+const nameInput = document.querySelector("#name-input");
+const nameForm = document.querySelector("#name-form");
 // If you need any global variables that you can use across different functions, declare them here:
 
 // Declare your functions after this comment
@@ -42,34 +41,39 @@ const showMessage = (message, sender) => {
 
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello and welcome to the Coffee Shop D&P!", "bot");
-  console.log("bot som skriver");
+  showMessage("Hello and welcome to the Coffee by D&P! What's your name?", "bot");
+  console.log("bot som skriver"); //can be omitted
 };
 
-const nameGiving = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Enter your name!", "bot");
-  console.log("bot som skriver");
+const handleInput = (event) => {
+  event.preventDefault(); //prevents refreshing the page
+  let answerName = nameInput.value;
+  showMessage(`Hi! I am ${answerName}.`, "user"); //calling on function
+  nameInput.value = ""; //erases the answer field
+  setTimeout(() => question1(answerName), 1000);
 };
 
-// Just to check it out, change 'bot' to 'user' here 👆
-
-const handleNameInput = (event) => {
-  event.preventDefault();
-  // Store the value in a variable so we can access it after we
-  // clear it from the input
-  const name = nameInput.value;
-  showMessage(name, "user");
-  nameInput.value = "";
-
-  // After 1 second, show the next question by invoking the next function.
-  // passing the name into it to have access to the user's name if we want
-  // to use it in the next question from the bot.
-  setTimeout(() => showFoodOptions(name), 1000);
+const question1 = (answerName) => {
+  showMessage(`Hello ${answerName}! What kind of coffee would you like to order?`, "bot");
+  console.log("bot som skriver"); //can be omitted
 };
+
+const handleInput2 = (event) => {
+  event.preventDefault(); //prevents refreshing the page
+  let answerName2 = coffeeInput.value;
+  showMessage(`Hi! I am ${answerName2}.`, "user"); //calling on function
+  coffeeInput.value = ""; //erases the answer field
+  setTimeout(() => question2(answerName2), 1000);
+};
+
+const question2 = (answerName2) => {
+  showMessage(`I would love to have some ${answerName2}!`, "user");
+  console.log("bot som skriver"); //can be omitted
+};
+
 
 // Set up your eventlisteners here
-
+nameForm.addEventListener("submit", handleInput);
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
@@ -78,4 +82,3 @@ const handleNameInput = (event) => {
 // This means the greeting function will be called one second after the website is loaded.
 
 setTimeout(greeting, 1500);
-setTimeout(nameGiving, 2000);
