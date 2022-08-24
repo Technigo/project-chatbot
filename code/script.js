@@ -83,15 +83,9 @@ const handleFormInput = (event) => { // at submit this function will be invoked
 const helpSelection = () => {
   showMessage(`Hello "room", what can I help you with today?`, 'bot');
   inputWrapper.innerHTML = `
-<<<<<<< HEAD
   <button id="amenities" type="sbumit" class="chat-btn">Amenities </button>
   <button id="room-service" type="submit" class="chat-btn">Rooom service </button>
   <button id="wake-up-call" type="submit" class="chat-btn">Wake-up call </button>
-=======
-  <button id="amenities" type="sbumit">Amenities </button>
-  <button id="room-service" type="submit">Rooom service </button>
-  <button id="wake-up-call" type="submit">Wake-up call </button>
->>>>>>> 3c8259872d112946eb8aadc73d78a8c0454f9b05
   `
   document.getElementById('amenities').addEventListener('click',() => selectionAnswer ('amenities'));
   document.getElementById('room-service').addEventListener('click',() => selectionAnswer ('room-service'));
@@ -106,17 +100,10 @@ const selectionAnswer = (selection) => {
     showMessage(`I need amenities, please`, 'user')
     setTimeout(() => showMessage(`Sure, what do you need?`, 'bot'),1000);
     inputWrapper.innerHTML = `
-<<<<<<< HEAD
     <button id="toothbrush" type="submit" class="chat-btn">Toothbrush & paste </button>
     <button id="shampoo" type="submit" class="chat-btn">Schampoo & Conditioner </button>
     <button id="toiletrykit" type="submit" class="chat-btn">Toiletry Kit </button>
     <button id="shavingkit" type="submit" class="chat-btn">Shaving Kit </button>
-=======
-    <button id="toothbrush" type="submit">Toothbrush & paste </button>
-    <button id="shampoo" type="submit">Schampoo & Conditioner </button>
-    <button id="toiletrykit" type="submit">Toiletry Kit </button>
-    <button id="shavingkit" type="submit">Shaving Kit </button>
->>>>>>> 3c8259872d112946eb8aadc73d78a8c0454f9b05
     `
     document.getElementById('toothbrush').addEventListener('click',() => 
       setTimeout(() => showMessage(`I need some toothbrush and toothpaste`, 'user')), 1000);
@@ -133,16 +120,10 @@ const selectionAnswer = (selection) => {
     showMessage(`I need food, please`, 'user')
     setTimeout(() => showMessage(`Of course, what are you in the mood for?`, 'bot'),1000);
     inputWrapper.innerHTML = `
-<<<<<<< HEAD
     <button id="pasta" type="submit" class="chat-btn">Pasta Carbonara </button>
     <button id="sallad" type="submit" class="chat-btn">Ceaser Salad</button>
     <button id="tomatoesoup" type="submit" class="chat-btn">Tomatoe Soup </button>
-=======
-    <button id="pasta" type="submit">Pasta Carbonara </button>
-    <button id="sallad" type="submit">Ceaser Salad</button>
-    <button id="tomatoesoup" type="submit">Tomatoe Soup </button>
->>>>>>> 3c8259872d112946eb8aadc73d78a8c0454f9b05
-     `
+   `
     document.getElementById('pasta').addEventListener('click', () =>
     setTimeout(() => showMessage(`I would love some Pasta Carbonara`, 'user')), 1000);
     document.getElementById('sallad').addEventListener('click', () =>
@@ -156,14 +137,13 @@ const selectionAnswer = (selection) => {
      
     setTimeout(() => showMessage(`Sure, at what time?`, 'bot'),1000);
     inputWrapper.innerHTML = `
-<<<<<<< HEAD
-        <form id="wakeUp-form"> 
-          <input id="wakeUpInput" type="text" placeholder="wake-up time.."/>  
-          <button id="send-btn" class="send-btn" type="submit"> 
-            Send
-          </button>
-        </form>
-       `
+      <form id="wakeUp-form"> 
+        <input id="wakeUpInput" type="text" placeholder="wake-up time.."/>  
+        <button id="send-btn" class="send-btn" type="submit"> 
+           Send
+        </button>
+      </form>
+    `
     const handleWakeUpInput = (event) => { // at submit this function will be invoked
       event.preventDefault() // prevents website refresh at submit
       const wakeUp = wakeUp.value // input value will be stored in the const name
@@ -171,22 +151,7 @@ const selectionAnswer = (selection) => {
       roomInput.value = '' // clearing room input setting it to an empty string
       setTimeout(() => goodbye, 1000) // passing the arguments to next function with 1sec delay
     }
-   
-=======
-    <button id="6" type="sbumit">06.00 </button>
-    <button id="7" type="submit">07.00 </button>
-    <button id="8" type="submit">08.00 </button>
-   `
-   document.getElementById('6').addEventListener('click', () => 
-   setTimeout(() => showMessage(`I need to wake up at 06.00, please`, 'user')), 1000);
-   document.getElementById('7').addEventListener('click', () => 
-   setTimeout(() => showMessage(`I need to wake up at 07.00, please`, 'user')), 1000);
-   document.getElementById('8').addEventListener('click', () => 
-   setTimeout(() => showMessage(`I need to wake up at 08.00, please`, 'user')), 1000);
-
->>>>>>> 3c8259872d112946eb8aadc73d78a8c0454f9b05
   }
-
 }
 
 // Thank you message and asking if anything else is needed?
@@ -223,4 +188,4 @@ form.addEventListener('submit', handleFormInput)
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 600);
+setTimeout(greeting, 600)
