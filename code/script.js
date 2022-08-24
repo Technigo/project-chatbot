@@ -56,11 +56,12 @@ const handleNameInput = (event) => {
 	// clear it from the input
   const name = nameInput.value
   showMessage(name, 'user')
+  showMessage(`So ${nameInput.value} I understand that your’re done watching a TV show and are looking for something new to watch?`, 'bot') // Bot: Are you looking for something new to watch?
   nameInput.value = ''
 }
 
 
-// Bot: Are you looking for something new to watch?
+
 
 
 
