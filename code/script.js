@@ -55,7 +55,7 @@ const handleNameInput = document.getElementById('name-form').addEventListener('s
   // Store the value in a variable so we can access it after we 
 	// clear it from the input
  const name = nameInput.value
- console.log(name)
+  console.log(name)
  
  showMessage(`My name is ${name}.`, 'user')
   nameInput.value = ''
@@ -68,8 +68,56 @@ const handleNameInput = document.getElementById('name-form').addEventListener('s
 
 const showCharityOptions = (name) => {
   showMessage(`Nice to meet you ${name}! Choose a charity below!`, 'bot')
+
+  inputWrapper.innerHTML = `
+<button id="unisefBtn">Unisef</button>
+<button id="amnistyBtn">Amnisty</button>
+<button id="brisBtn">Bris</button>
+`
+
+document
+  .getElementById('unisefBtn')
+  .addEventListener('click', () => {
+    showMessage('I choose Unisef!', 'user') 
+  })
+
+  document
+  .getElementById('amnistyBtn')
+  .addEventListener('click', () => {
+    showMessage('I choose Amnisty!', 'user') 
+  })
+
+  document
+  .getElementById('brisBtn')
+  .addEventListener('click', () => {
+    showMessage('I choose Bris!', 'user')
+  })
+
+  setTimeout(() => showAmountOptions(type), 2000)
 } 
-// förslagsvis så kommer det tre alternativ att klicka på
+
+//Här blir det något tokigt - vet inte vad exakt, men något måste nog
+//ändras för att trigga nästa text från bot:en och tror specificera "type"
+//på något sätt - så att det går att koppla med nästa fråga. 
+
+// Bot Q nr three
+
+const showAmountOptions = (type) => {
+  console.log(type) 
+    showMessage (`Great choice! What amount would you like to donate to ${type}`, 'bot')
+  //
+   // if (type === '') {
+    // inputWrapper.innerHTML = `
+    //<select id="select">
+      //<option value="" selected disabled>
+        //&#11088; Select an amount: </option>
+        //<option value="50kr">50kr</option>
+        //<option value="100kr">100kr</option>
+        //<option value="200kr">200kr</option>
+        //</select>
+        //`
+   //}
+}
 
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
