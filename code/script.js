@@ -42,7 +42,7 @@ const showMessage = (message, sender) => {
 
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello and welcome to Coffee Shop D&P!", "bot");
+  showMessage("Hello and welcome to the Coffee Shop D&P!", "bot");
   console.log("bot som skriver");
 };
 
@@ -53,6 +53,20 @@ const nameGiving = () => {
 };
 
 // Just to check it out, change 'bot' to 'user' here 👆
+
+const handleNameInput = (event) => {
+  event.preventDefault();
+  // Store the value in a variable so we can access it after we
+  // clear it from the input
+  const name = nameInput.value;
+  showMessage(name, "user");
+  nameInput.value = "";
+
+  // After 1 second, show the next question by invoking the next function.
+  // passing the name into it to have access to the user's name if we want
+  // to use it in the next question from the bot.
+  setTimeout(() => showFoodOptions(name), 1000);
+};
 
 // Set up your eventlisteners here
 
