@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  /*background: #0026ff;*/
+  background-color: #7B6079;
   width: 100%;
 }
 
@@ -22,23 +22,6 @@ header{
   display: flex;
   flex-direction: column;
  
-}
-
-video {
-  position: relative;
-  display: block;
-  right: 0;
-  bottom: 0;
-  min-width: 100%; 
-  min-height: 100vh;
-  object-fit: cover;
-}
-
-.video{
-    background-color: #7B6079;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 h1 {

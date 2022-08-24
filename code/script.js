@@ -2,14 +2,42 @@
 const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('input-wrapper');
 const form = document.getElementById('name-form');
-const nameInput= document.getElementById('name-input');
+const nameInput = document.getElementById('name-input');
+const buttonInput = document.getElementById('send-btn');
 
 // If you need any global variables that you can use across different functions, declare them here:
-// let name=""
+let question = 1;
+
 // Declare your functions after this comment
+const botAnswer = (inputCommunicate) => {
+  showMessage(inputCommunicate, 'bot')
+};
+
+const userAnswer = (inputCommunicate) => {
+  showMessage(inputCommunicate, 'user')
+};
+
+//
+
+const userSpa = (message) => {
+  if (question === 1) {
+    userAnswer(message)
+    setTimeout(() => showSpaOptions(message), 1000)
+  } else if (question === 2) {
+    userAnswer(message)
+    setTimeout(() => emailAdressQuestion(message), 2000)
+  } else if (question === 3) {
+    userAnswer(message)
+    setTimeout(() => emailAdressAnswer(message), 2000)
+  } else if (question === 4) {
+    userAnswer(message)
+
+  }
+};
+
 
 // This function will add a chat bubble in the correct place based on who the sender is
-const showMessage = (message, sender) => {
+function showMessage(message, sender) {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
     chat.innerHTML += `
@@ -19,7 +47,7 @@ const showMessage = (message, sender) => {
         </div>
         <img src="assets/user.png" alt="User" />  
       </section>
-    `
+    `;
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
     chat.innerHTML += `
@@ -29,63 +57,71 @@ const showMessage = (message, sender) => {
           <p>${message}</p>
         </div>
       </section>
-    `
+    `;
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
-}
+};
 
 // Starts here
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot')
+  botAnswer(`Hello there, What's your name?`, 'bot')
   console.log('This is bot writing')
   // Just to check it out, change 'bot' to 'user' here 👆
-}
+};
 
-   const nameQuestion = (event) => {event.preventDefault()
-   const name = nameInput.value 
-   console.log('text')
-   showMessage(`My name is ${name} and I want to know more about the spa packets!`, 'user')
-   nameInput.value = ''
-   setTimeout(() => showSpaOptions(name), 1000)
-   }
+// first user answer 
+const nameQuestion = ((event) => {
+  question = 1
+  event.preventDefault()
+  const name = nameInput.value
+  console.log('text')
+  userAnswer(`My name is ${name} and I want to know more about the spa packets!`, 'user')
+  nameInput.value = ''
 
-  const showSpaOptions = () => {
-    showMessage(`We can offer you three kinds of spa packages, what are you interested in more?`, 'bot')
-    chat.innerHTML += `
-     <button id= 'birthdayButton' type="click">Birthday spa breaks</button>
-     <button id= 'dinnerButton' type="click">Dinner & Spa breaks</button>
-     <button id= 'boxingButton'type="click">Boxing Day Spa breaks</button>
+  setTimeout(() => showSpaOptions(name), 1000)
+});
+
+// second question
+const showSpaOptions = () => {
+  question = 2
+  botAnswer(`We can offer you three kinds of spa packages, what are you interested in more?`, 'bot')
+  inputWrapper.innerHTML = `
+     <button class="btn" id= 'birthdayButton' type="click">Birthday spa breaks</button>
+     <button class="btn" id= 'dinnerButton' type="click">Dinner & Spa breaks</button>
+     <button class="btn "id= 'boxingButton'type="click">Boxing Day Spa breaks</button>
      `
-   }
- 
-   const answerPackets = (event) => {event.preventDefault()
-    console.log('packet')
-    showMessage(`My option is `, 'user')
-    // setTimeout(() => showBithdaySpaOptions(name), 1000)
-       
-  }
 
-  
+  document.getElementById('birthdayButton').addEventListener('click', () => userSpa('Birthday spa breaks'))
+  document.getElementById('dinnerButton').addEventListener('click', () => userSpa('Dinner & Spa breaks'))
+  document.getElementById('boxingButton').addEventListener('click', () => userSpa('Boxing Day Spa breaks'))
+
+  setTimeout(() => emailAdressQuestion(message), 1000)
+};
+
+/*const answerPackets = (choice) => {
+  console.log('packet')
+  showMessage(`My option is ${choice}`,'user')
+  setTimeout(() => showBithdaySpaOptions(message), 1000)
+}*/
 
 
-//   const emailAdressQuestion = (event) => {event.preventDefault()
-//    // do stuff here 
-//    //call message function
-//     showMessage(`Great! You chose ${choice} package! That will cost 2000kr. Please, Can you give your 
-//     email adress? So we send you the information and payment method.`, 'bot')
-//     nameInput.value = '' 
-//      setTimeout(() => showptions(), 1000)
-//        }
- 
-//    const emailAdressAnswer = (event) => {event.preventDefault()
-//         // do stuff here 
-//         //call message function
-//          showMessage(`${email}`, 'user')
-//          nameInput.value = '' 
-//           setTimeout(() => showtions(), 1000)
-//             }
+// third question
+const emailAdressQuestion = (choice) => {
+  question = 3
+  //const choiceInput = choiceInput.value
+  botAnswer(`Great! You chose ${choice}! That will cost 2000kr. Please, Can you give your email adress? So we send you the information and payment method.`, 'bot')
+  //choiceInput.value = ''
+};
+
+// fourth question
+const emailAdressAnswer = (email) => {
+  question = 4
+  userAnswer(`${email}`, 'user')
+  //nameInput.value = ''
+  setTimeout(() => showtions(), 1000)
+}
 
 //    const emailAdressAnswer = (event) => {event.preventDefault()
 //               // do stuff here 
@@ -94,13 +130,13 @@ const greeting = () => {
 //                nameInput.value = '' 
 //                 setTimeout(() => shotions(), 1000)
 //                   }
-            
+
 //  // Set up your eventlisteners here
- 
- 
-  form.addEventListener("submit", nameQuestion)
-  chat.addEventListener("click", answerPackets)
- 
+
+
+form.addEventListener("submit", nameQuestion)
+/*chat.addEventListener("click", answerPackets)*/
+
 
 
 // // When website loaded, chatbot asks first question.
