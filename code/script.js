@@ -6,7 +6,12 @@ const nameInput = document.getElementById ('name-input')
 const form = document.getElementById ('name-form')
 const inputWrapper = document.getElementById ('input-wrapper')
 const sendBtn = document.getElementById ('send-btn')
-
+const botReply = (msg) => {
+  showMessage(msg, 'bot')
+}
+const userReply = (msg) => {
+  showMessage(msg, 'user')
+}
 let buttonText = "";
 let questionCounter = 0; 
 
@@ -34,16 +39,22 @@ const questionGen = (message) => {
   questionCounter++;  /* Need this to move on*/
 if (questionCounter === 0) {    /* Set to 0, put 1 when popup*/
 setTimeout(question1, 100)
+
 } else if (questionCounter === 1) {
     setTimeout(question2, 1000, nameInput.value)
+
 } else if (questionCounter === 2) {
     setTimeout(question3, 1000, message)
+
   } else if (questionCounter === 3) {
     setTimeout(question4, 1000, message)
-  } else if (questionCounter === 4, message, buttonText) {
-  setTimeout(question5, 1000, buttonText)
+
+  } else if (questionCounter === 4) {
+  setTimeout(quotes, 1000, message)
+
 } else if (questionCounter === 5) {
-  setTimeout(question6, 1000, buttonText)
+  setTimeout(question6, 1000, message, answer)
+
 } else if (questionCounter === 6) {
   setTimeout(question7, 1000, )
 }
@@ -82,13 +93,13 @@ const showMessage = (message, sender) => {
 
 // INITAL BOT GREETING/ QUESTION1 !
 const question1 = () => {
-  showMessage("Hello there, what's your name?", 'bot')
+  botReply ("Hello there, what's your name?",)
 
   form.addEventListener("submit", (event) =>{
     event.preventDefault();
     form.submitButton.disabled = false;   //only click enter//
     const name = nameInput.value
-    showMessage(name, 'user');
+    userReply(name);
     questionGen();
   });
 }
@@ -96,16 +107,17 @@ const question1 = () => {
   
 // QUESTION 2
 const question2 = (message) => {
-  showMessage(`Nice to meet you, ${message}! 
-  I would like to make your day even better! `, 'bot');
+  botReply(`Nice to meet you, ${message}! 
+  I would like to make your day even better! `);
   questionGen();
   }
 
 
-  // QUESTION 3 - buttons 
- const question3 = (message) => {
-showMessage('Do you need motivation or encouragement?', 'bot');
 
+
+  // QUESTION 3 - buttons 
+ const question3 = () => {
+botReply('Do you need motivation or encouragement?');
 inputWrapper.innerHTML = `
 <button id="motivationBtn">Motivation of course!</button>
 <button id="encouragementBtn">Definately encourgement!</button>
@@ -115,51 +127,62 @@ document.getElementById('motivationBtn').addEventListener('click', () => questio
 document.getElementById('encouragementBtn').addEventListener('click', () => questionGen('Encouragement'))
 
 
-/*document.getElementById('motivationBtn').addEventListener('click', () => {
-  showMessage('I would like some motivation today', 'user')
-  setTimeout(() => showMessage('Of course! Here you go ... ', 'bot'), 1000)
-  handleInput()
+
+/*
+document.getElementById('motivationBtn').addEventListener('click', () => {
+  userReply('I would like some motivation today', 'user')
+  setTimeout(() => botReply('Of course! Here you go ... '), 1000)
 });
 
   document.getElementById('encouragementBtn').addEventListener('click', () => {
-  showMessage('Today is difficult - I need some pep', 'user')
-  setTimeout(() => showMessage('Some days we need encouragement...', 'bot'), 1000)
-  handleInput()
+  userReply('Today is difficult - I need some pep', 'user')
+  setTimeout(() => botReply('Some days we need encouragement...'), 1000)
+
   })
-*/ 
-input.value = ''
-questionGen()
+*/
+
+
 }
-
-
 
 //QUESTION 4
 const question4 = (answer) => {
-  showMessage(`${answer} please`, 'user')
-  questionGen()
+  userReply(`${answer} please`)
+  document.addEventListener('submit', () => questionGen('please'));
+}
 
 
-  // Return text input after button question 
-inputWrapper.innerHTML = `
-    <input id="text-input" type="text" />
-    <button id="send-btn">Send</button>
-  `
+//Question 5   MÅSTE DUBBEKLICKA 4 FÖR ATT KUNNA KOMMA TILL 5 WHY?
+const quotes = () => { 
+  botReply(`ddddddd`);
+
+  // Makes user able to write again 
+  inputWrapper.innerHTML = `
+  <input id="text-input" type="text" />
+  <button id="send-btn">Send</button>
+`
 const textInput = document.getElementById('text-input');
-    document.getElementById('send-btn').addEventListener('click', () => {
-    showMessage(textInput.value, 'user');
-    textInput.value ='';
-    questionGenerator();
-  }, {once: true});
+  document.getElementById('send-btn').addEventListener('click', () => {
+  showMessage(textInput.value, 'user');
+  textInput.value ='';
+  questionGen();
+}, {once: true}); 
 }
 
 
 
+
+  
+  /* // Q4
+  userReply(`${answer} please`)
+  questionGen()*/
+
+
+/*
 // QUESTION 5
-const question5 = () => {
-showMessage(`Okidoki, will do`, 'bot')
-
-
-}
+const question6 = () => {
+botReply(`Fråga 6`, 'bot')
+questionGen();
+}*/
 
 
 
@@ -188,11 +211,4 @@ questionGen()
  
 setTimeout(question1, 100); /* Why do we need this?? */
 
-
-
-//collapse
-var coll = document.getElementsByClassName("collapse");
-var quotes = [ 
-  "flskdldsf", "jsdkadjsja", "adjsaksd"
-]
 
