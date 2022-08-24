@@ -1,6 +1,6 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
-const button = document.querySelector('.send-btn');
+const sendButton = document.querySelector('.send-btn');
 const inputWrapper = document.getElementById('input-wrapper');
 const nameInput = document.getElementById('name-input');
 const form = document.getElementById('name-form"')
@@ -17,7 +17,7 @@ let question= 0;
 
 
 // Declare your functions after this comment
-button.addEventListener('click', (e) => {
+sendButton.addEventListener('click', (e) => {
   e.preventDefault();
     // chat.appendChild(userDiv);
   // userDiv.appendChild(nameInput);
@@ -28,7 +28,7 @@ button.addEventListener('click', (e) => {
 
 })
 
-const allQuestion=(answer)=>{
+const allQuestions=(answer)=>{
   if(questionNumber===1){
  
     input.value=""
