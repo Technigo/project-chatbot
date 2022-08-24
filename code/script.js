@@ -73,7 +73,7 @@ const nextQuestion = (message) => {
 
 // First question
 const greeting = () => {
-
+  questionNumber = 1
   showMessage("Hello there! In what name do you want to make the reservation?", 'bot');
   
 }
@@ -91,6 +91,7 @@ form.addEventListener('submit', (event) => {
 // second question dayBooking
 
 const dayBooking = () => { 
+  questionNumber++
   showMessage("Which day would you like to book a table for?", 'bot');
 
   inputWrapper.innerHTML = `
