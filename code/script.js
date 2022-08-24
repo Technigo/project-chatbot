@@ -53,13 +53,13 @@ const nextQuestion = (message) => {
   if (questionNumber === 1) {
     userReply(message)
     input.value = ''
-    setTimeout(() => dayBooking(message), 1000)
+    setTimeout(() => nameBooking(message), 1000)
   } else if (questionNumber === 2) {
     userReply(message)
-    setTimeout(() => time(message), 1000)
+    setTimeout(() => dayBooking(message), 1000)
   } else if (questionNumber === 3) {
     userReply(message)
-    setTimeout(() => guests(message), 1000)
+    setTimeout(() => timeBooking(message), 1000)
   } else if (questionNumber === 4) {
     userReply(message)
     setTimeout(() => showPrice(message), 1000)
@@ -69,14 +69,14 @@ const nextQuestion = (message) => {
   }
 }
 
-// Starts here
+// First question
 const greeting = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
+
   showMessage("Hello there! In what name do you want to make the reservation?", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
+  
 }
 
-// Set up your eventlisteners here
+
 
 form.addEventListener('submit', (event) => {
   event.preventDefault()
@@ -86,20 +86,67 @@ form.addEventListener('submit', (event) => {
   setTimeout(() => dayBooking(), 1000)
 })
 
+// second question dayBooking
+
 const dayBooking = () => { 
   showMessage("Which day would you like to book a table for?", 'bot');
 
   inputWrapper.innerHTML = `
-    <button id='friday'>Friday</button>
-    <button id='saturday'>Saturday</button>
+    <button id='fridayButton'>Friday</button>
+    <button id='saturdayButton'>Saturday</button>
     `
   document
-    .getElementById('friday')
-    .addEventListener('click', () => nextQuestion('time'))
+    .getElementById('fridayButton')
+    .addEventListener('click', () => nextQuestion('Friday'))
   document
-    .getElementById('saturday')
-    .addEventListener('click', () => nextQuestion('time'))
+    .getElementById('saturdayButton')
+    .addEventListener('click', () => nextQuestion('Saturday'))
+  }
+
+// third question
+
+const timeBooking = (type) => {
+  questionNumber++
+  botAnswer(`Which time on ${type} would you like to book?.`)
+  if (type === 'Friday') {
+    inputWrapper.innerHTML=`
+    <select id = 'select'>
+      <option value='' selected disabled> Choose time </option>
+      <option value='lunch'>Lunch</option>
+      <option value='dinner'>Dinner</option>
+      </select> 
+      `
+  } 
+  else {
+    inputWrapper.innerHTML=`
+    <select id = 'select'>
+      <option value='' selected disabled> Choose time </option>
+      <option value='breakfast'>Breakfast</option>
+      <option value='lunch'>Lunch</option>
+      <option value='dinner'>Dinner</option>
+      </select> 
+      `
+  }
+
+  const select = document.getElementById('select')
+  select.addEventListener('change', () => nextQuestion(select.value))
 }
+
+
+
+  // inputWrapper.innerHTML = `
+  // <select id = 'select'>
+  //   <option value='' selected disabled> Choose service </option>
+  //   <option value='bathing'>Bathing</option>
+  //   <option value='brushing'>Brushing</option>
+  //   <option value='Nail trimming'>Nail trimming</option>
+  //   <option value='Haircut'>Haircut</option>
+  //   </select> 
+  //   `
+  // const select = document.getElementById('select')
+  // select.addEventListener('change', () => usersDay(select.value))
+
+
 
 /*
 document
