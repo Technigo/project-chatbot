@@ -1,12 +1,12 @@
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
   background-image: url(./images/hotelvosje-3.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -18,6 +18,7 @@ h1 {
   line-height: 34px;
   color: #fff;
   text-align: center;
+  padding-top: 50px;
 }
 
 h2 {
@@ -47,35 +48,61 @@ input {
   font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
-  flex: 1;
+  flex:1;
 }
 
-main {
-  margin: -20px auto;
-  width: 600px;
-  max-width: 600px;
-  height: 600px;
-  border-radius: 30px;
-  background: white;
-  padding: 20px 24px;
-  padding-top: 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  bottom: 0;
-  right: 30px;
+section {
+    max-width: 600px;
+    margin:auto;
+    text-align: center;
+    padding: 0 1rem;
 }
 
-
-.chat {
-  flex: 1;
-  display: flex;
-  justify-content: flex-start;
-  overflow: scroll;
-  flex-direction: column;
-  padding-bottom: 16px;
+.chat-button{
+  position:fixed;
+  right: 50px;
+  bottom: 20px;
+  background-color: darkgray;
+  color:black;
+  border:none;
+  width: 50px;
+  height:50px;
+  border-radius: 50%;
+  opacity: 0.7;
+  box-shadow: 3px 3px 8px black;
 }
+
+.chat-button:hover{
+  opacity: 1;
+}
+
+.chat-popup{
+    display:none;
+    bottom: 40px;
+    right: 50px;
+    height: 600px;
+    width: 600px;
+    background-color: #fff;
+    flex-direction: column;
+    justify-content: space-between;
+    border:none;
+    box-shadow: 2px 2px 5px black;
+    border-radius: 10px;
+}
+
+/*This is a class I created to trigger from JS, when called back, our chat-popup will show as flex*/
+.show{
+    display: flex;
+}
+
+.chat{
+  height:80%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  hyphens: auto;
+  padding-top: 30px;
+}
+
 
 .bot-msg {
   display: flex;
@@ -127,6 +154,7 @@ main {
 .input-wrapper form {
   width: 100%;
   display: flex;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .send-btn {
@@ -144,35 +172,8 @@ main {
   transition: all 0.3s ease;
 }
 
-.chat-btn {
+button{
   background-color: darkgray;
-  color: black;
-  border: none;
-  border-radius: 19px;
-  padding: 13px 34px;
-  margin: 3px;
-  font-size: 13px;
-  line-height: 20px;
-  font-family: 'Montserrat';
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.collapse-btn {
-  background-color: darkgray;
-  color: black;
-  border: none;
-  border-radius: 4px;
-  font-size: 15px;
-  line-height: 30px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  opacity: 0.9;
-  transition: all 0.2s ease;
+  color:black;
+  padding:10px;
 }

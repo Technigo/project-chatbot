@@ -1,34 +1,21 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
+const chatPopUp = document.getElementById("chat-popup");
+const chatBtn = document.getElementById("chat-button");
 const inputWrapper = document.getElementById('input-wrapper');
 const form = document.getElementById('room-form');
 const roomInput = document.getElementById('room-input'); //user writes their room
 const sendBtn = document.getElementById('send-btn');
-const collapse = document.getElementsByClassName("main-collapse");
 const wakeUpInput = document.getElementById('wakeUpinput');
 const wakeUpForm = document.getElementById('wakeUp-form');
 
   
-// If you need any global variables that you can use across different functions, declare them here:
 
-
-// Declare your functions after this comment
-
-// This function will open and close chatbar //not workning right now
+// To add toggle 
+chatBtn.addEventListener("click", ()=>{
+  chatPopUp.classList.toggle("show");
+});
   
-  for (let i = 0; i < collapse.length; i++) {
-    collapse[i].addEventListener("click", function(){
-        this.classList.toggle("active");
-
-        let content = this.nextElementSibling;
-        if (content.style.maxHeight){
-            content.style.maxHeight = null;
-        } else {
-            content.style.maxHeight = content.scrollHeight + "px";
-        }
-
-    });
-}
 // This function will add a chat bubble in the correct place based on who the sender is
 
 const showMessage = (message, sender) => {
@@ -69,15 +56,14 @@ const greeting = () => {
 // Answer with room number from user 
 
 const handleFormInput = (event) => {        // at submit this function will be invoked
-  event.preventDefault()        // prevents website refresh at submit
-  const room = roomInput.value        // input value will be stored in the const name
-  showMessage(`My room number is ${room}`, 'user')      // users answer 
-  roomInput.value = ''        // clearing room input setting it to an empty string
+  event.preventDefault();        // prevents website refresh at submit
+  const room = roomInput.value;        // input value will be stored in the const name
+  showMessage(`My room number is ${room}`, 'user');      // users answer 
+  roomInput.value = '';        // clearing room input setting it to an empty string
 
   if (room === '') {       // this will prompt the user to answer correctly
     setTimeout(() => showMessage(`Please, give me your room number.`, 'bot'), 1000) 
-  }
-  else{
+  } else{
     setTimeout(() => helpSelection(room), 1000)
   }
 }
