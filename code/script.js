@@ -5,6 +5,7 @@ const chat = document.getElementById('chat');
 const nameInput = document.getElementById ('name-input')
 const form = document.getElementById ('name-form')
 const inputWrapper = document.getElementById ('input-wrapper')
+const sendBtn = document.getElementById ('send-btn')
 
 let buttonText = "";
 let questionCounter = 0; 
@@ -29,18 +30,24 @@ for (let i = 0; i < coll.length; i++) {
 
 
 // Declare your functions after this comment
-const questionGen = () => {
+const questionGen = (message) => {
   questionCounter++;  /* Need this to move on*/
 if (questionCounter === 0) {    /* Set to 0, put 1 when popup*/
 setTimeout(question1, 100)
 } else if (questionCounter === 1) {
     setTimeout(question2, 1000, nameInput.value)
 } else if (questionCounter === 2) {
-    setTimeout(question3, 1000, showMessage.value)
+    setTimeout(question3, 1000, message)
   } else if (questionCounter === 3) {
-    setTimeout(question4, 1000,)
-  }
-  }
+    setTimeout(question4, 1000, message)
+  } else if (questionCounter === 4) {
+  setTimeout(question5, 1000, message, buttonText)
+} else if (questionCounter === 5) {
+  setTimeout(question6, 1000, buttonText)
+} else if (questionCounter === 6) {
+  setTimeout(question7, 1000, )
+}
+}
 
 
 
@@ -87,37 +94,75 @@ const question1 = () => {
 }
 
   
-
-
 // QUESTION 2
 const question2 = (message) => {
   showMessage(`Nice to meet you, ${message}! 
   I would like to make your day even better! `, 'bot');
+  
   questionGen();
   }
 
 
-
-
-  // Q3 - buttons 
+  // QUESTION 3 - buttons 
  const question3 = (message) => {
-showMessage('hejhej', 'bot');
+showMessage('Do you need motivation or encouragement?', 'bot');
+
+inputWrapper.innerHTML = `
+<button id="motivationBtn">Motivation of course!</button>
+<button id="encouragementBtn">Definately encourgement!</button>
+`
+/*
+document.getElementById('motivationBtn').addEventListener('click', () => questionGen('Motivation'))
+document.getElementById('encouragementBtn').addEventListener('click', () => questionGen('Encouragement'))
+*/
+document.getElementById('motivationBtn').addEventListener('click', () => {
+  showMessage('I would like some motivation today', 'user')
+  setTimeout(() => showMessage('Of course! Here you go ... ', 'bot'), 1000)
+  HandleInput()
+});
+
+  document.getElementById('encouragementBtn').addEventListener('click', () => {
+  showMessage('Today is difficult - I need some pep', 'user')
+  setTimeout(() => showMessage('Some days we need encouragement...', 'bot'), 1000)
+  handleInput()
+  })
+
+input.value = ''
 questionGen();
- }
+};
+
+/*
+
+// QUESTION 4
+const question4 = (answer) => {
+  showMessage(`${answer} please`, 'user')
+  questionGen()
+
+}
 
 
 
+// QUESTION 5
+const question5 = (reply) => {
+/*showMessage(`Okidoki, will do`, 'bot')*/
+/* if (reply ===)
+
+}
+*/
+
+
+ /* QUESTION 6
+const question6 = () => {
+function newQuote(){
+  var randomNumber = Math.floor(Math.random()*quotes.length);
+  document.getElementById('quotes').innerHTML = quotes[randomNumber];
+}
+questionGen() 
+} */
  
-  /* Use this??
-  inputWrapper.innerHTML = `
-    <button class="button-input">Great!</button>
-    <button class="button-input">Could be better</button>
-    `
-  addButtonListeners('button-input');
-  */
 
-//
 
+// Beroende på knapp vill vi trigga svar till btnimp1 eller btnimp2?
 
 
 // Set up your eventlisteners here
@@ -135,4 +180,7 @@ setTimeout(question1, 100); /* Why do we need this?? */
 
 //collapse
 var coll = document.getElementsByClassName("collapse");
+var quotes = [ 
+  "flskdldsf", "jsdkadjsja", "adjsaksd"
+]
 
