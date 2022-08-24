@@ -4,6 +4,7 @@ const inputWrapper = document.querySelector("#input-wrapper");
 const nameInput = document.querySelector("#name-input");
 const nameForm = document.querySelector("#name-form");
 // If you need any global variables that you can use across different functions, declare them here:
+//let userAnswer;
 
 // Declare your functions after this comment
 
@@ -56,24 +57,29 @@ const handleInput = (event) => {
 const question1 = (answerName) => {
   showMessage(`Hello ${answerName}! What kind of coffee would you like to order?`, "bot");
   console.log("bot som skriver"); //can be omitted
+  nameForm.removeEventListener("submit", handleInput);
+  nameForm.addEventListener("submit", handleInput2);
 };
 
 const handleInput2 = (event) => {
   event.preventDefault(); //prevents refreshing the page
-  let answerName2 = coffeeInput.value;
-  showMessage(`Hi! I am ${answerName2}.`, "user"); //calling on function
-  coffeeInput.value = ""; //erases the answer field
-  setTimeout(() => question2(answerName2), 1000);
+  let answerName = nameInput.value;
+  showMessage(`${answerName}`, "user"); //calling on function
+  nameInput.value = ""; //erases the answer field
+  setTimeout(() => question2(answerName), 1000);
 };
 
 const question2 = (answerName2) => {
-  showMessage(`I would love to have some ${answerName2}!`, "user");
+  showMessage(`I see, ${answerName2}. Excellent choice!`, "bot");
   console.log("bot som skriver"); //can be omitted
+  nameForm.removeEventListener("submit", handleInput2);
+  //nameForm.addEventListener("submit", handleInput3);
 };
-
 
 // Set up your eventlisteners here
 nameForm.addEventListener("submit", handleInput);
+
+
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
@@ -82,3 +88,4 @@ nameForm.addEventListener("submit", handleInput);
 // This means the greeting function will be called one second after the website is loaded.
 
 setTimeout(greeting, 1500);
+
