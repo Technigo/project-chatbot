@@ -25,7 +25,7 @@ const userSpa = (message) => {
     setTimeout(() => showSpaOptions(message), 1000)
   } else if (question === 2) {
     userAnswer(message)
-    setTimeout(() => emailAdressQuestion(message), 2000)
+    setTimeout(() => choosingOptions(message), 2000)
   } else if (question === 3) {
     userAnswer(message)
     setTimeout(() => emailAdressAnswer(message), 2000)
@@ -97,7 +97,7 @@ const showSpaOptions = () => {
   document.getElementById('dinnerButton').addEventListener('click', () => userSpa('Dinner & Spa breaks'))
   document.getElementById('boxingButton').addEventListener('click', () => userSpa('Boxing Day Spa breaks'))
 
-  setTimeout(() => emailAdressQuestion(message), 1000)
+  // setTimeout(() => emailAdressQuestion(message), 1000)
 };
 
 /*const answerPackets = (choice) => {
@@ -108,12 +108,13 @@ const showSpaOptions = () => {
 
 
 // third question
-const emailAdressQuestion = (choice) => {
+const choosingOptions = (choice) => {
   question = 3
   //const choiceInput = choiceInput.value
+  console.log("Choice: " + choice);
   if ((choice === 'Boxing Day Spa breaks')) {
     botAnswer(`Great! You choose ${choice}! That will cost 2000kr. Please, Can you give your email adress? So we send you the information and payment method.`, 'bot')
-  } else if (choice === 'Dinner  & Spa breaks') {
+  } else if (choice === 'Dinner &? Spa breaks') {
     botAnswer(`Perfect! ${choice} will cost 1000kr. Alcoholic drinks are not included. Please, Can you give your email adress? So we send you the information and payment method.`, 'bot')
   } else {
     botAnswer(`Nice! ${choice} will cost 1500kr. Please, Can you give your email adress? So we send you the information and payment method.`, 'bot')
