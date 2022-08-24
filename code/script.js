@@ -119,10 +119,7 @@ const joke1Answer = joke1Choice => {
   } else if (joke1Choice === `Mr. Reddensnapper, if I may.`) {
     inputWrapper.innerHTML = joke1AnswerWrong
   } 
-  //const joke1Answer = document.getElementById('select')
 }
-
-// Second question
 
 const joke1AnswerCorrect = () => {
   inputWrapper.innerHTML =  `
@@ -137,17 +134,17 @@ const joke1AnswerWrong = () => {
 `
 document
   .getElementById('gimmeRiddle1')
-  .addEventListener('click',() => { //Calls the showMessage below when user press the riddle1true button.
-    showMessage("What do you call an alligator in a vest?", 'bot') //Writes the users answer in the chat
+  .addEventListener('click',() => { 
+    showMessage("What do you call an alligator in a vest?", 'bot')
     inputWrapper.innerHTML = `
       <button id="aligatorRiddle1">An investigator</button>
       <button id="Riddle1false">Crocodile Dundee</button>`
   })
-  //give me another chance
+
   document
   .getElementById('gimmieAnotherChance')
-  .addEventListener('click',() => { //Calls the showMessage below when user press the riddle1true button.
-    showMessage("What do you call an alligator in a vest?", 'bot') //Writes the users answer in the chat
+  .addEventListener('click',() => { 
+    showMessage("What do you call an alligator in a vest?", 'bot') 
     inputWrapper.innerHTML = `
       <button id="aligatorRiddle1">An investigator</button>
       <button id="Riddle1false">Crocodile Dundee</button>`
@@ -163,13 +160,33 @@ const handleRiddle = () => { //Function for the input parameters of first questi
 
 const riddleAnswer = riddle1Choice => {
   showMessage(`${riddle1Choice}`, 'bot')
-
-  if (riddle1Choice === `An investigator`) {
-    inputWrapper.innerHTML = goodByeMsg
-  } else if (riddle1Choice === `Crocodile Dundee`) {
-    inputWrapper.innerHTML = goodByeMsg
-  } 
 }
+
+//testing (but bot working)
+
+const handleAligator = () => { //Function for the input parameters of first question.
+  inputWrapper.innerHTML = `
+  <button id="aligatorRiddle1">An investigator</button>
+  <button id="Riddle1false">Crocodile Dundee</button>
+  `//adds two alternatives to choose from.
+  
+  document
+  .getElementById('Riddle')
+  .addEventListener('click',() => { //Calls the showMessage below when user press the joke1true button.
+    showMessage("Obv an investigator", 'user') //Writes the users answer in the chat
+    inputWrapper.innerHTML = '' 
+    setTimeout(() => byemsg(`Bye`), 1000) //
+  })
+
+  document
+  .getElementById('gimmieJoke')
+  .addEventListener('click',() => { //Calls the showMessage below when user press the joke2false button.
+    showMessage('Croc dundee', 'user') //Writes the users anwer in the chat
+    inputWrapper.innerHTML = '' 
+    setTimeout(() => byemsg('Bye'), 1000) 
+  })
+} 
+
 
 // Set up your eventlisteners here
 
