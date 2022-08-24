@@ -1,12 +1,15 @@
 * {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url(./images/hotelvosje-3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 h1 {
@@ -37,8 +40,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #ffefe5f1;
+  color: black;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -48,18 +51,22 @@ input {
 }
 
 main {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 700px;
+  margin: -20px auto;
+  width: 600px;
+  max-width: 600px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: white;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  position: fixed;
+  bottom: 0;
+  right: 30px;
 }
+
 
 .chat {
   flex: 1;
@@ -90,13 +97,13 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: rgb(202, 164, 149);
   font-weight: 600;
-  font-size: 16px;
+  font-size: 13px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
-  max-width: 40%;
+  color: black;
+  max-width: 42%;
 }
 
 .bot-bubble {
@@ -112,6 +119,8 @@ main {
 .input-wrapper {
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 
 .input-wrapper form {
@@ -119,15 +128,43 @@ main {
   display: flex;
 }
 
-button {
-  background-color: #0026ff;
-  color: white;
+.send-btn {
+  background-color: darkgray;
+  color: black;
   border: none;
   border-radius: 4px;
-  padding: 16px 40px;
+  padding: 16px 34px;
   margin-right: 4px;
-  font-size: 16px;
-  line-height: 26px;
+  font-size: 15px;
+  line-height: 22px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.chat-btn {
+  background-color: darkgray;
+  color: black;
+  border: none;
+  border-radius: 19px;
+  padding: 13px 34px;
+  margin: 3px;
+  font-size: 13px;
+  line-height: 20px;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.collapse-btn {
+  background-color: darkgray;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  line-height: 30px;
   font-family: 'Montserrat';
   font-weight: 500;
   cursor: pointer;
