@@ -6,14 +6,14 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #ff9d00;
+  background: hwb(172 1% 2%);
 }
 
 h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: rgb(38, 203, 57);
   text-align: center;
 }
 
@@ -21,7 +21,7 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: rgb(38, 203, 57);
   text-align: center;
   margin-bottom: 36px;
 }
@@ -37,8 +37,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #e0ede1;
+  color: rgb(38, 203, 57);
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -90,12 +90,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #e0ede1;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: rgb(38, 203, 57);
   max-width: 40%;
 }
 
@@ -112,6 +112,8 @@ main {
 .input-wrapper {
   display: flex;
   justify-content: center;
+  font-size: 16px;
+  color: #0026ff;
 }
 
 .input-wrapper form {
@@ -120,7 +122,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: rgb(38, 203, 57);
   color: white;
   border: none;
   border-radius: 4px;

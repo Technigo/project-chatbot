@@ -96,7 +96,7 @@ const handleJokeInput = () => { //Function for the input parameters of first que
     showMessage("It's Sofishticated, of course!", 'user') //Writes the users answer in the chat
     inputWrapper.innerHTML = '' 
     setTimeout(() => joke1Answer(`Excellent choice! It's correct!`), 1000) //
-    setTimeout(() => showMessage('Would you like a riddle instead?', 'bot'), 2000) //
+    setTimeout(() => showMessage('Would you like to try a riddle now?', 'bot'), 2000) //
     setTimeout (() => joke1AnswerCorrect(), 2000)
   })
 
@@ -106,7 +106,7 @@ const handleJokeInput = () => { //Function for the input parameters of first que
     showMessage('Mr. Reddensnapper, if I may.', 'user') //Writes the users anwer in the chat
     inputWrapper.innerHTML = '' 
     setTimeout(() => joke1Answer('Close, but no cigar'), 1000) 
-    setTimeout(() => showMessage('Do you want another one?', 'bot'), 2000) 
+    //setTimeout(() => showMessage('Do you want another one?', 'bot'), 2000) 
     setTimeout (() => joke1AnswerWrong(), 2000)
   })
 } 
@@ -122,16 +122,18 @@ const joke1Answer = joke1Choice => {
   //const joke1Answer = document.getElementById('select')
 }
 
+// Second question
+
 const joke1AnswerCorrect = () => {
   inputWrapper.innerHTML =  `
-    <button id="Riddle">Awesome! Give me a riddle!</button>
+    <button id="Riddle">Yes, give me a riddle!</button>
     <button id="gimmieJoke">No, not done! Can I try another one?</button>
 `
 }
 const joke1AnswerWrong = () => { 
   inputWrapper.innerHTML = `
     <button id="gimmeRiddle1">Dammit! Give me a riddle!</button>
-    <button id="gimmejoke">Give me another chance!</button>
+    <button id="gimmieAnotherChance">Give me another chance!</button>
 `
 document
   .getElementById('gimmeRiddle1')
@@ -139,23 +141,24 @@ document
     showMessage("What do you call an alligator in a vest?", 'bot') //Writes the users answer in the chat
     inputWrapper.innerHTML = `
       <button id="aligatorRiddle1">An investigator</button>
-      <button id="Riddle1false">Wrong aligator answer</button>`
+      <button id="Riddle1false">Crocodile Dundee</button>`
+  })
+  //give me another chance
+  document
+  .getElementById('gimmieAnotherChance')
+  .addEventListener('click',() => { //Calls the showMessage below when user press the riddle1true button.
+    showMessage("What do you call an alligator in a vest?", 'bot') //Writes the users answer in the chat
+    inputWrapper.innerHTML = `
+      <button id="aligatorRiddle1">An investigator</button>
+      <button id="Riddle1false">Crocodile Dundee</button>`
   })
 }
 
-//copied first question
-
-const HandleRiddle = () => { //Function for the input parameters of first question.
+const handleRiddle = () => { //Function for the input parameters of first question.
   inputWrapper.innerHTML = `
     <button id="aligatorRiddle1">An investigator</button>
-    <button id="Riddle1false">Wrong aligator answer</button>
+    <button id="Riddle1false">Crocodile Dundee</button>
   `//adds two alternatives to choose from.
-  
-  /*document
-  .getElementById('aligatorRiddle1')
-  .addEventListener('click',() => { //Calls the showMessage below when user press the riddle1true button.
-    showMessage("What do you call an alligator in a vest?", 'bot') //Writes the users answer in the chat
-  })*/
 } 
 
 const riddleAnswer = riddle1Choice => {
@@ -163,29 +166,10 @@ const riddleAnswer = riddle1Choice => {
 
   if (riddle1Choice === `An investigator`) {
     inputWrapper.innerHTML = goodByeMsg
-  } else if (riddle1Choice === `Wrong aligator answer`) {
+  } else if (riddle1Choice === `Crocodile Dundee`) {
     inputWrapper.innerHTML = goodByeMsg
   } 
 }
-
-/*const riddleOrJokeAnswer = () => {
-  showMessage('What do you call an alligator in a vest?', 'bot')
-  inputWrapper.innerHTML =  `
-  <button id="riddle1true">An investigator</button>
-  <button id="riddle1false">Riddle answer false</button>
-`
-}
-document.getElementById('gimmeRiddle1')
-.addEventListener('click',() => riddleOrJokeAnswer())
-
-
-
-
-// Riddle
-
-
-
-// Another joke
 
 // Set up your eventlisteners here
 
@@ -195,13 +179,3 @@ document.getElementById('gimmeRiddle1')
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-
-/*const handleRiddleInput = (event) => {
-  event.preventDefault() 
-  const userName = nameInput.value 
-  showMessage(userName, 'user')
-  nameInput.value = ''
-  setTimeout (() => showMessage(`Nice to meet you ${userName}!`, 'bot'), 1000 )
-  setTimeout(() => showMessage('What do you call a fish wearing a bowtie?', 'bot'), 2000) 
-  setTimeout (() => handleJokeInput(userName), 2000) 
-}*/
