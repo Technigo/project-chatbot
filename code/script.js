@@ -89,17 +89,16 @@ form.addEventListener('submit', (event) => {
 const dayBooking = () => { 
   showMessage("Which day would you like to book a table for?", 'bot');
 
-inputWrapper.innerHTML = `
-  <button id='friday'>Friday</button>
-  <button id='saturday'>Saturday</button>
-  `
-document
-  .getElementById('friday')
-  .addEventListener('click', () => nextQuestion('time'))
-document
-  .getElementById('saturday')
-  .addEventListener('click', () => nextQuestion('time'))
-
+  inputWrapper.innerHTML = `
+    <button id='friday'>Friday</button>
+    <button id='saturday'>Saturday</button>
+    `
+  document
+    .getElementById('friday')
+    .addEventListener('click', () => nextQuestion('time'))
+  document
+    .getElementById('saturday')
+    .addEventListener('click', () => nextQuestion('time'))
 }
 
 /*
@@ -151,7 +150,7 @@ const nextFunction = (option) => {
     .getElementById('dinner')
     .addEventListener('click', () => nextQuestion('guests'))
   }
-/*
+*/
 
 
 
