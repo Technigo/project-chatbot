@@ -40,8 +40,8 @@ setTimeout(question1, 100)
     setTimeout(question3, 1000, message)
   } else if (questionCounter === 3) {
     setTimeout(question4, 1000, message)
-  } else if (questionCounter === 4) {
-  setTimeout(question5, 1000, message, buttonText)
+  } else if (questionCounter === 4, message, buttonText) {
+  setTimeout(question5, 1000, buttonText)
 } else if (questionCounter === 5) {
   setTimeout(question6, 1000, buttonText)
 } else if (questionCounter === 6) {
@@ -98,7 +98,6 @@ const question1 = () => {
 const question2 = (message) => {
   showMessage(`Nice to meet you, ${message}! 
   I would like to make your day even better! `, 'bot');
-  
   questionGen();
   }
 
@@ -111,14 +110,15 @@ inputWrapper.innerHTML = `
 <button id="motivationBtn">Motivation of course!</button>
 <button id="encouragementBtn">Definately encourgement!</button>
 `
-/*
+
 document.getElementById('motivationBtn').addEventListener('click', () => questionGen('Motivation'))
 document.getElementById('encouragementBtn').addEventListener('click', () => questionGen('Encouragement'))
-*/
-document.getElementById('motivationBtn').addEventListener('click', () => {
+
+
+/*document.getElementById('motivationBtn').addEventListener('click', () => {
   showMessage('I would like some motivation today', 'user')
   setTimeout(() => showMessage('Of course! Here you go ... ', 'bot'), 1000)
-  HandleInput()
+  handleInput()
 });
 
   document.getElementById('encouragementBtn').addEventListener('click', () => {
@@ -126,29 +126,41 @@ document.getElementById('motivationBtn').addEventListener('click', () => {
   setTimeout(() => showMessage('Some days we need encouragement...', 'bot'), 1000)
   handleInput()
   })
-
+*/ 
 input.value = ''
-questionGen();
-};
+questionGen()
+}
 
-/*
 
-// QUESTION 4
+
+//QUESTION 4
 const question4 = (answer) => {
   showMessage(`${answer} please`, 'user')
   questionGen()
 
+
+  // Return text input after button question 
+inputWrapper.innerHTML = `
+    <input id="text-input" type="text" />
+    <button id="send-btn">Send</button>
+  `
+const textInput = document.getElementById('text-input');
+    document.getElementById('send-btn').addEventListener('click', () => {
+    showMessage(textInput.value, 'user');
+    textInput.value ='';
+    questionGenerator();
+  }, {once: true});
 }
 
 
 
 // QUESTION 5
-const question5 = (reply) => {
-/*showMessage(`Okidoki, will do`, 'bot')*/
-/* if (reply ===)
+const question5 = () => {
+showMessage(`Okidoki, will do`, 'bot')
+
 
 }
-*/
+
 
 
  /* QUESTION 6
