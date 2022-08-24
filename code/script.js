@@ -2,10 +2,19 @@
 const chat = document.getElementById("chat");
 const nameForm = document.getElementById("name-form");
 const nameInput = document.getElementById("name-input");
+const inputWrapper = document.getElementById("input-wrapper");
 
 // If you need any global variables that you can use across different functions, declare them here:
 
 let questionNumber = 1;
+let answers = {
+  //object with properties to stor data
+  userMessage: "",
+  day: "",
+  time: "",
+  people: "",
+  confirm: "",
+};
 
 // Declare your functions after this comment
 
@@ -55,6 +64,8 @@ const nextQuestion = () => {
     botAskHowManyPeople();
   } else if (questionNumber === 5) {
     botAskWhatPhoneNumber();
+  } else if (questionNumber === 6) {
+    botAskWhatEmail();
   }
 
   if (questionNumber > 10) {
@@ -67,18 +78,38 @@ const nextQuestion = () => {
 // Starts here
 const botGreetsUserAndAsksName = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showBotMessage("Hello there, What's your name?");
+  showBotMessage("Hello there, what's your name?");
   // Just to check it out, change 'bot' to 'user' here 👆
 };
 
 //function asking about what day
-const botAskWhichDay = () => {
+const botAskWhichDay = (userMessage) => {
   //Here we call the next question about what day they would like to visit
   //  When do you want to book for?
   //  Today
   //  Tomorrow
-  showBotMessage("What day would like to book your table?");
+  showBotMessage(
+    `Ok ${userMessage} Which day would you like to book a table for?`
+  );
   // @TODO show today/tomorrow button picker UI for user
+  inputWrapper.innerHTML = `
+    <button class="send-btn" id="today" type="submit">Today</button>
+    <button class="send-btn" id="tomorrow" type="submit">Tomorrow</button>
+    `;
+
+  document
+    .getElementById("today")
+    .addEventListener("click", () => daySelection("today"));
+  document
+    .getElementById("tomorrow")
+    .addEventListener("click", () => daySelection("tomorrow"));
+};
+
+const daySelection = (dayChoice) => {
+  //if (dayChoice === "today") {
+  showMessage(dayChoice, "user");
+  botAskWhatTime();
+  // }
 };
 
 //function asking about what time of the day
@@ -88,8 +119,15 @@ const botAskWhatTime = () => {
   //  - 5pm
   //  - 6pm
   //  - 7pm
-  showBotMessage("For what TIME would like to book your table?");
+  showBotMessage("For what time would like to book your table?");
   // @TODO show list of available time for user
+  inputWrapper.innerHTML = `
+      <select name="dayChoice" id="dayChoice">
+        <option value="five">5pm</option>
+        <option value="six">6pm</option>
+        <option value="seven">7pm</option>
+      </select>
+    `;
 };
 
 const botAskHowManyPeople = () => {
@@ -105,12 +143,18 @@ const botAskWhatPhoneNumber = () => {
   showBotMessage("I'll need a phone number for the booking, please.");
 };
 
+const botAskWhatEmail = () => {
+  showBotMessage("And an email address as well :)");
+};
+
 //function handling the user input
 const handleUserInput = (event) => {
+  event.preventDefault();
   console.log(nameInput);
-  let userMessage = nameInput.value;
-  //console.log(userMessage);
 
+  const userMessage = nameInput.value;
+  console.log(answers);
+  answers.userMessage = userMessage;
   showMessage(userMessage, "user");
   nameInput.value = "";
 
