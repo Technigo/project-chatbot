@@ -38,6 +38,12 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 };
 
+const showBotMessage = (message) => {
+  setTimeout(() => {
+    showMessage(message, "bot");
+  }, 300);
+};
+
 const nextQuestion = () => {
   if (questionNumber === 1) {
     botGreetsUserAndAsksName();
@@ -58,20 +64,20 @@ const nextQuestion = () => {
 // Starts here
 const botGreetsUserAndAsksName = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", "bot");
+  showBotMessage("Hello there, What's your name?");
   // Just to check it out, change 'bot' to 'user' here 👆
 };
 
 //function asking about what day
 const botAskWhichDay = () => {
   //Here we call the next question about what day they would like to visit
-  showMessage("What day would like to book your table?", "bot");
+  showBotMessage("What day would like to book your table?");
 };
 
 //funciton asking about what time of the day
 const botAskWhatTime = () => {
   //Here we call the next question about what day they would like to visit
-  showMessage("For what TIME would like to book your table?", "bot");
+  showBotMessage("For what TIME would like to book your table?");
 };
 
 const botAskHowManyPeople = () => {
@@ -79,20 +85,20 @@ const botAskHowManyPeople = () => {
   //   - 2
   //   - 3
   //   - 4
-  showMessage("How many people?", "bot");
+  showBotMessage("How many people?");
   // @TODO show 2-3-4 button picker UI for user
 };
 
 //function handling the name-input
 const handleUserInput = (event) => {
   console.log(nameInput);
-  let userMsg = nameInput.value;
-  //console.log(userMsg);
+  let userMessage = nameInput.value;
+  //console.log(userMessage);
 
-  showMessage(userMsg, "user");
+  showMessage(userMessage, "user");
   nameInput.value = "";
 
-  // if (userMsg === "") {
+  // if (userMessage === "") {
   //   showMessage("Sorry, I didnt get that ", "bot");
   //   return;
   // }
@@ -109,4 +115,4 @@ nameForm.addEventListener("submit", handleUserInput);
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(nextQuestion, 1000);
+setTimeout(nextQuestion, 600);
