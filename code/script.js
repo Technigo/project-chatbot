@@ -6,10 +6,21 @@ const chat = document.getElementById('chat');
 
 // Declare your functions after this comment
 
+/* tika -const botReply = (msg) => {
+  showMessage(msg,'bot')
+}
+
+const userReply = (msg) => {
+  showMessage(msg,'user')
+}
+*/
+
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
+    //This is the console log we added
+    console.log("goodluck");
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -32,6 +43,8 @@ const showMessage = (message, sender) => {
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
 }
+//this is to invoke the function
+showMessage("message", "user");
 
 // Starts here
 const greeting = () => {
@@ -41,7 +54,9 @@ const greeting = () => {
 }
 
 // Set up your eventlisteners here
+document.getElementById('submit').addEventListener('click', () => {
 
+})
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
