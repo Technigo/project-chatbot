@@ -7,6 +7,10 @@ let question = 1;
 
 // If you need any global variables that you can use across different functions, declare them here:
 
+/*const select = () => {
+  document.getElementsByClassName('.select').addEventListener('change', () => showMessage(select.value, 'user'));
+  console.log('test')
+}*/
 
 // Declare your functions after this comment
   const handleNameInput = (event) => {
@@ -23,35 +27,83 @@ let question = 1;
     // to use it in the next question from the bot.
     setTimeout(() => showEmergencies(name), 1000)
   }
-
+  
   const showEmergencies = () => {
     inputWrapper.innerHTML = `
     <button id="bleached">Help! I accidently bleached my hair</button>
-    <button id= "bald"> I woke up bald!</button>
-    <button id= "wedding">Need a last minute wedding-do!</button>`
+    <button id="bald"> I woke up bald!</button>
+    <button id="wedding">Need a last minute wedding-do!</button>`
   
     document.getElementById("bleached")
-    .addEventListener('click', () => nextQuestion('bleached'));
+    .addEventListener('click', () => setTimeout(() => showBleachedOptions(), 1000));  //nextQuestion('bleached'));
     document.getElementById("bald")
-    .addEventListener('click', () => nextQuestion('bald'));
+    .addEventListener('click', () => setTimeout(() => showBaldOptions(), 1000)); 
     document.getElementById("wedding")
-    .addEventListener('click', () => nextQuestion('wedding'));
+    .addEventListener('click', () => setTimeout(() => showWeddingOptions(), 1000)); 
   }
+
   const showBleachedOptions = () => {
+    showMessage("Accidentally bleached my hair!", 'user');
+    setTimeout(showMessage("Oh no! 😱 What can we do for you?", 'bot'), 3000);
     inputWrapper.innerHTML = `
-    <select id="select">
+    <select id="select" class="select">
         <option value="" selected disabled>Select your fix</option>
-        <option value="color">Color it back to normal</option>
-        <option value="cut">Cut it off</option>
+        <option value="Color it back to normal">Color it back to normal</option>
+        <option value="Cut it off">Cut it off</option>
+    </select>
+    `
+    // select();
+    const select = document.getElementById('select');
+      select.addEventListener('change', () => showMessage(select.value, 'user'));
+      
+      // HOW TO EMPTY INPUTWRAPPER?
+      question++; 
+      console.log("question number", question);
+  }
+
+  const showBaldOptions = () => {
+    showMessage("I woke up bald!", 'user');
+    const wig = `<a href=https://www.wig.se/>wig.se</a>`
+    setTimeout(showMessage(`Sorry we cant help you 🤷‍♀️. Perhaps you can get help at ${wig}`, 'bot'), 3000);
+  }
+
+  const showWeddingOptions = () => {
+    showMessage("Need a last minute wedding-do!", 'user');
+    setTimeout(showMessage(`Oh how wonderful! Which hairdo would like?`, 'bot'), 3000);
+    inputWrapper.innerHTML = `
+    <button id="long">Long hair</button>
+    <button id="short">Short hair</button>`
+
+    question++; 
+    document.getElementById("long")
+    .addEventListener('click', () => setTimeout(() => showMessage('Long hair it is!', 'user'), nextQuestion(), 1000)); 
+    document.getElementById("short")
+    .addEventListener('click', () => setTimeout(() => showMessage('Short hair it is!', 'user'), nextQuestion(), 1000));    
+  
+  }
+
+  const timeSlots = () => {
+    showMessage("Please pick a time below", 'bot');
+    inputWrapper.innerHTML = `
+    <select id="selectTime" class="select">
+        <option value="" selected disabled>Select your time</option>
+        <option value="14:00">14:00</option>
+        <option value="15:00">15:00</option>
+        <option value="16:00">16:00</option>
+        <option value="17:00">17:00</option>
       </select>
       `
+      const select = document.getElementById('selectTime');
+      select.addEventListener('change', () => showMessage(select.value, 'user'));
+      question++;
+      nextQuestion()
   }
-  const nextQuestion = (service) => {
-    console.log("question number", question);
-    if (question === 1) {
-      setTimeout(() => showBleachedOptions(), 1000)  
-    } else if (question === 2) {
-      setTimeout(() => showMessage('Sorry we cant help you (sorry-emoji)'), 1000)
+  const nextQuestion = () => {
+  //   console.log("question number", question);
+  if (question === 2) {
+    setTimeout(() => timeSlots(), 1000);
+} else if (question === 3) {
+   setTimeout(() => showMessage('Enter your details below'), 1000)
     }
   }
 
@@ -100,6 +152,7 @@ const greeting = () => {
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000);
 showEmergencies();
+nextQuestion();
 
 form.addEventListener('submit', (event)=> {
   event.preventDefault()
