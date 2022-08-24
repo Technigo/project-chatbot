@@ -37,7 +37,7 @@ const showMessage = (message, sender) => {
 // Starts here
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot');
+  showMessage("Why hello there, welcome to Wildebeest Burgers. What's your name", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
