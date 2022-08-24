@@ -4,6 +4,7 @@ const chat = document.getElementById('chat');
 // If you need any global variables that you can use across different functions, declare them here:
 
 
+
 // Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -33,14 +34,36 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
-// Starts here
+// Öppningsfråga
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot');
+  showMessage("Hello there, what's your name?", 'bot');
+  //showMessage("hej", "user");
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+//Svar på öppningsfråga
+const submitButton = document.querySelector(".send-btn")
+const inputField = document.querySelector("#name-input")
+submitButton.addEventListener('click', function(event) {
+  event.preventDefault();
+  const name = inputField.value;
+ showMessage(`My name is ${name}`, "user");
+  
+})
+
+//Fråga två med Tre alternativ, "har du problem med huvudvärk, halsont, ångest"
+
+
+
 // Set up your eventlisteners here
+
+chat.addEventListener('submit', ()=> {
+
+});
+chat.onsubmit = ()=> {
+  
+}
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
