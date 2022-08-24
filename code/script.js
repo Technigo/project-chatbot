@@ -64,7 +64,7 @@ const nextQuestion = (message) => {
     setTimeout(() => guestBooking(message), 1000)
   } else if (questionNumber === 4) {
     userAnswer(message)
-    setTimeout(() => showPrice(message), 1000)
+    setTimeout(() => finaliseBooking(message), 1000)
   } else {
     userAnswer(message)
     setTimeout(thankYou, 1000)
@@ -149,10 +149,26 @@ inputWrapper.innerHTML=`
   <option value='2'>2</option>
   <option value='3'>3</option>
   <option value='4'>4</option>
-  <option value='5+'>5+</option>
+  <option value='5'>5</option>
 </select> 
-  `
+`
+
+const select = document.getElementById('select')
+select.addEventListener('change', () => nextQuestion(select.value))
 }
+
+// summary
+const finaliseBooking = (choice) => {
+  questionNumber++
+  if (choice === '5') {
+    showMessage ("How lovely that you are so many that want to visit us. Please contact us at gm@fakemail.com for large bookings!", 'bot');
+  } else {
+    showMessage ("We look forward to your visit!", 'bot');
+  }
+
+}
+
+
 
 
 setTimeout(greeting, 1000);
