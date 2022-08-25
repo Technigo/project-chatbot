@@ -146,3 +146,14 @@ button:hover {
   opacity: 0.85;
   transition: all 0.2s ease;
 }
+
+.selectChoice {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  width: 100%;
+  background: #e5e9ff;
+  font-family: "Montserrat";
+  padding: 16px;
+  line-height: 26px;
+}
