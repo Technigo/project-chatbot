@@ -2,28 +2,11 @@
 const chat = document.getElementById('chat');
 const sendBtn = document.querySelector('.send-btn')
 const nameInput = document.getElementById('name-input')
+const inputWrapper = document.getElementById('input-wrapper')
 // If you need any global variables that you can use across different functions, declare them here:
 
 
 // Declare your functions after this comment
-
-const handleNameInput = (event) => {
-  event.preventDefault()
-  // Store the value in a variable so we can access it after we 
-	// clear it from the input
-  const userName = nameInput.value
-  showMessage(userName, 'user')
-  //showMessage(`My name is ${userName}´,'user') /NB?
-
-  // Clears the input field
-  nameInput.value = '' 
-
-  // After 1 second, show the next question by invoking the next function.
-	// passing the name into it to have access to the user's name if we want
-	// to use it in the next question from the bot.
-  setTimeout(() => showFoodOptions(userName), 1000)
-}
-//Flytta funktion nedanför "greetings" för att få det i ordning/ NB?
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -53,6 +36,7 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
+
 // Starts here
 // greeting from Wiledbeest Burgers
 const greeting = () => {
@@ -61,14 +45,77 @@ const greeting = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-// Set up your eventlisteners here
-sendBtn.addEventListener('click', (event) => handleNameInput(event))
-//sendBtn.addEventListener('submit', handleNameInput); /NB
+const showFoodOptions = (userName) => {
+  showMessage(`Okay ${userName}, I'm gonna call you Susan. Can I take your order Susan?`, 'bot')
+  inputWrapper.innerHTML = `
+    <button class="burgersBtn">Burgers</button>
+    <button class="veggieBtn">Veggie Burgers</button>
+    <button class="saladBtn">Salad</button>
+  `
+  document.querySelector('.burgersBtn').addEventListener('click', () => {
+  showMessage('Yes, I would like a burger', 'user')
+  setTimeout(() => showMenu('burger'), 1000)
+  })
+  document.querySelector('.veggieBtn').addEventListener('click', () => {
+  showMessage('Yes, I would like a veggie burger', 'user')
+  setTimeout(() => showMenu('veggie burger'), 1000)
+  })
+  document.querySelector('.saladBtn').addEventListener('click', () => {
+  showMessage('Yes, I would like a salad', 'user')
+  setTimeout(() => showMenu('salad'), 1000)
+  })
+}
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
+const showMenu = foodType => {
+  showMessage(`Which ${foodType} would you like?`, 'bot')
+
+  if (foodType === 'burger') {
+  inputWrapper.innerHTML = `
+  <select id="select">
+    <option value selected disabled>👇 Select a burger...</option>
+    <option value='"The beest" burger'>"The beest" burger</option>
+    <option value="BBQ burger">BBQ burger</option>
+    <option value="Fresh burger">Fresh burger</option>
+  </select>
+  `
+  }
+  if (foodType === 'veggie burger') {
+  inputWrapper.innerHTML = `
+  <select id="select">
+    <option value selected disabled>👇 Select a veggie burger...</option>
+    <option value="Ketchup burger without burger">Ketchup burger without burger</option>
+    <option value="Burger with Goat Cheese and Arugula">Burger with Goat Cheese and Arugula</option>
+    <option value="Totally vegetarian burger ™">Totally vegetarian burger ™</option>
+  </select>
+  `
+  }
+  if (foodType === 'salad') {
+  inputWrapper.innerHTML = `
+  <select id="select">
+    <option value selected disabled>👇 Select a salad...</option>
+    <option value='Wildebeest salad deluxe'>Wildebeest salad deluxe</option>
+    <option value="Green lettuce tasty salad">Green lettuce tasty salad</option>
+    <option value="Surprise salad with chicken-like meat">Surprise salad with chicken-like meat</option>
+  </select>
+  `
+  }
+}
+
+
+// Set up your eventlisteners here
+sendBtn.addEventListener('click', (event) => {
+  event.preventDefault()
+  // Store the value in a variable so we can access it after we 
+	// clear it from the input
+  const userName = nameInput.value
+  showMessage(`My name is ${userName}`,'user');
+
+  // Clears the input field
+  nameInput.value = '' 
+
+  setTimeout(() => showFoodOptions(userName), 1000)
+})
+
+
+// Starts the initial greeting
 setTimeout(greeting, 1000);
