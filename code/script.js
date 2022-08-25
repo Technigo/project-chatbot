@@ -7,13 +7,15 @@ const inputWrapper = document.getElementById("input-wrapper");
 // If you need any global variables that you can use across different functions, declare them here:
 
 let questionNumber = 1;
+
 let answers = {
-  //object with properties to stor data
-  userMessage: "",
+  //Global. Object with properties to store data. Can use it both to reference previous answers as well as a summary at the end
+  name: "",
   day: "",
   time: "",
   people: "",
-  confirm: "",
+  phonenr: "",
+  email: "",
 };
 
 // Declare your functions after this comment
@@ -66,6 +68,8 @@ const nextQuestion = () => {
     botAskWhatPhoneNumber();
   } else if (questionNumber === 6) {
     botAskWhatEmail();
+  } else if (questionNumber === 7) {
+    botAskForConfirmation();
   }
 
   if (questionNumber > 10) {
@@ -77,21 +81,20 @@ const nextQuestion = () => {
 
 // Starts here
 const botGreetsUserAndAsksName = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showBotMessage("Hello there, what's your name?");
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showBotMessage("Hello, what's your name?");
 };
 
-//function asking about what day
-const botAskWhichDay = (userMessage) => {
+const botAskWhichDay = () => {
   //Here we call the next question about what day they would like to visit
   //  When do you want to book for?
   //  Today
   //  Tomorrow
+
+  //console.log("userMessage", userMessage);
+
   showBotMessage(
-    `Ok ${userMessage} Which day would you like to book a table for?`
+    `Ok ${answers.name} Which day would you like to book a table for?`
   );
-  // @TODO show today/tomorrow button picker UI for user
   inputWrapper.innerHTML = `
     <button class="send-btn" id="today" type="submit">Today</button>
     <button class="send-btn" id="tomorrow" type="submit">Tomorrow</button>
@@ -105,64 +108,146 @@ const botAskWhichDay = (userMessage) => {
     .addEventListener("click", () => daySelection("tomorrow"));
 };
 
-const daySelection = (dayChoice) => {
-  //if (dayChoice === "today") {
-  showMessage(dayChoice, "user");
-  botAskWhatTime();
-  // }
-};
-
-//function asking about what time of the day
 const botAskWhatTime = () => {
-  //Here we call the next question about what day they would like to visit
-  // What time?
-  //  - 5pm
-  //  - 6pm
-  //  - 7pm
   showBotMessage("For what time would like to book your table?");
-  // @TODO show list of available time for user
   inputWrapper.innerHTML = `
-      <select name="dayChoice" id="dayChoice">
-        <option value="five">5pm</option>
-        <option value="six">6pm</option>
-        <option value="seven">7pm</option>
+    <select id="timeChoice">
+        <option value="" selected disabled>Select a time</option>
+        <option value="5pm">5pm</option>
+        <option value="6pm">6pm</option>
+        <option value="7pm">7pm</option>
       </select>
+      <button class="send-btn" id="time" type="submit">OK</button>
     `;
+  document
+    .getElementById("time")
+    .addEventListener("click", () => timeSelection(timeChoice.value));
 };
 
 const botAskHowManyPeople = () => {
-  // How many people? (Buttons)
-  //   - 2
-  //   - 3
-  //   - 4
   showBotMessage("How many people?");
-  // @TODO show 2-3-4 button picker UI for user
+  inputWrapper.innerHTML = `
+      <select id="peopleChoice">
+        <option value="" selected disabled>How many people?</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <button class="send-btn" id="people" type="submit">OK</button>
+    `;
+  document
+    .getElementById("people")
+    .addEventListener("click", () => peopleSelection(people.value));
 };
 
 const botAskWhatPhoneNumber = () => {
   showBotMessage("I'll need a phone number for the booking, please.");
+  inputWrapper.innerHTML = `
+        <form id="phone">
+          <input id="phoneInput" type="tel" />
+          <button class="send-btn" type="submit">Send</button>
+        </form>
+        `;
+  phone.addEventListener("submit", handleUserPhonenr);
 };
 
 const botAskWhatEmail = () => {
   showBotMessage("And an email address as well :)");
+  inputWrapper.innerHTML = `
+        <form id="email">
+          <input id="emailInput" type="email" />
+          <button class="send-btn" type="submit">Send</button>
+        </form>
+        `;
+  email.addEventListener("submit", handleUserEmail);
 };
 
-//function handling the user input
+const botAskForConfirmation = () => {
+  showBotMessage(
+    "Fantastic, thank you. Let me just double check I've got everything right before I confirm your booking: you'd like to book a table for INSERTAMOUNTOFPEOPLE on INSERTDAY at INSERTTIME, is this correct?"
+  );
+  //TODO show Y/N button IU for user which leads to either last bot "question" aka booking confirmed message, or to bot saying "Ok, sorry for that, let's start over" and then reload page (??)
+  inputWrapper.innerHTML = `
+  <button class="send-btn" id="yes" type="submit">Yes, confirm booking</button>
+  <button class="send-btn" id="no" type="submit">No, start over</button>
+  `;
+
+  document
+    .getElementById("yes")
+    .addEventListener("click", () => bookingConfirmation("yes"));
+  document
+    .getElementById("no")
+    .addEventListener("click", () => bookingConfirmation("no"));
+};
+
 const handleUserInput = (event) => {
   event.preventDefault();
-  console.log(nameInput);
-
   const userMessage = nameInput.value;
-  console.log(answers);
-  answers.userMessage = userMessage;
   showMessage(userMessage, "user");
+  answers.name = userMessage;
   nameInput.value = "";
 
-  // if (userMessage === "") {
-  //   showMessage("Sorry, I didnt get that", "bot");
-  //   return;
-  // }
+  if (userMessage === "") {
+    showMessage("Sorry, I didn't get that", "bot");
+    return;
+  }
+
   nextQuestion();
+};
+
+const daySelection = (dayChoice) => {
+  //if (dayChoice === "today") {
+  answers.day = dayChoice;
+  showMessage(dayChoice, "user");
+  //botAskWhatTime();
+  nextQuestion();
+  // }
+};
+
+const timeSelection = (event) => {
+  const time = timeChoice.value;
+  showMessage(time, "user");
+  answers.time = time;
+  nextQuestion();
+  console.log(time);
+};
+
+const peopleSelection = (event) => {
+  const people = peopleChoice.value;
+  showMessage(people, "user");
+  answers.people = people;
+  nextQuestion();
+  console.log(people);
+};
+
+const handleUserPhonenr = (event) => {
+  event.preventDefault();
+  const userPhoneNr = phoneInput.value;
+  showMessage(userPhoneNr, "user");
+  answers.phonenr = userPhoneNr;
+  phoneInput.value = "";
+  nextQuestion();
+};
+
+const handleUserEmail = (event) => {
+  event.preventDefault();
+  const userEmail = emailInput.value;
+  showMessage(userEmail, "user");
+  answers.email = userEmail;
+  emailInput.value = "";
+  nextQuestion();
+};
+
+const bookingConfirmation = (confirmationChoice) => {
+  if (confirmationChoice === "yes") {
+    showMessage("Yes", "user");
+  } else {
+    showMessage("No", "user");
+  }
+  //botAskWhatTime();
+  nextQuestion();
+  // }
 };
 
 // Set up your eventlisteners here
