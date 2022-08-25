@@ -62,10 +62,10 @@ const showMessage = (message, sender) => {
     setTimeout(() => showCodeHelper(message), 1000)
   } else if (questionNumber === 4) {
     userReply(message)
-    setTimeout(() => showPrice(message), 1000)
+    setTimeout(() => showContactinformation(message), 1000)
   } else {
     userReply(message)
-    setTimeout(thankYou, 1000)
+    setTimeout(survey, 1000)
   }
 }
 
@@ -107,7 +107,6 @@ const showCodeMenu = (type) => {
         <option value="" selected disabled>👇 Select a sorce for HTML-help...</option>
         <option value="matilda">Matilda</option>
         <option value="daniel">Daniel</option>
-        <option value="amelie">Amelie</option>
       </select>
     `
   } else if (type === 'css') {
@@ -115,7 +114,6 @@ const showCodeMenu = (type) => {
       <select id="select">
         <option value="" selected disabled>👇 Select a source for CSS-help...</option>
         <option value="jennie">Jennie</option>
-        <option value="damien">Damien</option>
         <option value="poya">Poya</option>
       </select>
     `
@@ -124,7 +122,6 @@ const showCodeMenu = (type) => {
       <select id="select">
         <option value="" selected disabled>👇 Select a source for JavaScript-help...</option>
         <option value="dali">Dalai lama</option>
-        <option value="pope">Pope Francis</option>
         <option value="wonderwoman">Wonder woman</option>
       </select>
     `
@@ -156,6 +153,35 @@ const showCodeHelper = (coder) => {
     .getElementById('house')
     .addEventListener('click', () => nextQuestion('house'))
 }
+
+const showContactinformation = (nextQuestion) => {
+  questionNumber++
+
+if (nextQuestion === 'phone') {
+  botReply(`Their phonenumber is 123456789📞`)
+} else if (nextQuestion === 'email'){
+  botReply(`Their email is pleaseDontEmailMe@dont.com📧`)
+} else {
+  botReply(`Their homeadress is 21 Jumpstreet Wonderland🏠`)
+}
+
+inputWrapper.innerHTML = `
+<button id="finish">I found what i needed</button>
+<button id="restart">I need more help, pls</button>
+`
+document.getElementById('restart').addEventListener('click', () => {
+  location.reload()
+})
+
+document.getElementById('finish').addEventListener('click', () => {
+  botReply(`Would you like to take a 2 hour survey of this experience on this chatbot?`)
+  inputWrapper.innerHTML = `
+    <button id="ohNo">This is the only option</button>
+  `
+})
+
+}
+
 
 // Set up your eventlisteners here
 sendBtn.addEventListener('click', () => nextQuestion(input.value))
