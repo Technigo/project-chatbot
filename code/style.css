@@ -32,9 +32,14 @@ h2 {
 .chat-bar-collapse {
   position: fixed;
   bottom: 0;
-  right: 50px;
+  right: 2px;
+
 }
 
+#chat-button {
+  background: #6F314A;
+  max-width: 400px;
+}
 
 p {
   font-size: 18px;
@@ -63,8 +68,8 @@ main {
     overflow: hidden;
     transition: max-height 0.2s ease-out;
     background-color: #f1f1f1;
-    width:550px;
-  
+    max-width: 414px;
+
 }
 
 
@@ -75,15 +80,12 @@ main {
   overflow: scroll;
   flex-direction: column;
   padding-bottom: 16px;
-  height: 600px;
+  height: 450px;
   padding: 10px;
   
 }
 
-#chat-button {
-  background: #6F314A;
-  width: 550px;
-}
+
 
 
 .bot-msg {
@@ -112,7 +114,7 @@ main {
   line-height: 26px;
   padding: 16px 24px;
   color: #6F314A;
-  max-width: 35%;
+  max-width: 80%;
 }
 
 .bot-bubble {
@@ -142,7 +144,7 @@ button {
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 16px 40px;
+  padding: 16px 16px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
@@ -155,4 +157,15 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+@media (max-width: 668px){
+.chat-bar-collapse {
+  position: center;
+  right: o;
+}
+h1 {
+  font-size: 60px;
+  padding-top: 60px;
+}
 }

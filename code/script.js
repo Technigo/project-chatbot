@@ -188,8 +188,7 @@ const response = (response) => {
     setTimeout(() => botReply('OK, another one coming up...'), 2000);
     moreQuotes();
   }  else { setTimeout(() => userReply  ('No, that is it for today.'), 1000);
-  setTimeout(() => botReply ('Oh, I am sorry I could not cheer you up today. See you another time'), 1000);
-  inputWrapper.innerHTML = ``
+  setTimeout(() => botReply ('Sorry - wrong anser - try again!  *hint, you need to hear this*'), 1000);  //Cheeky bot message, you need more quotes ;-) 
   }
 }
 
