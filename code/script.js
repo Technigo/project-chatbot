@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', ()=> {
+
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('input-wrapper');
@@ -7,8 +9,8 @@ const sendBtn = document.getElementById('send');
 
 // If you need any global variables that you can use across different functions, declare them here:
 
-
 // Declare your functions after this comment
+let tourGuide = "";
 // const botReply = (msg) => {
 //   showMessage(msg, 'bot')
 // }
@@ -61,13 +63,11 @@ const handleNameInput = (event) => {
 }
 
 const chooseTourGuide = (name) => {
-  //const tourGuide = inputWrapper.value
   showMessage(`${name}, please choose your tour guide`, 'bot')
   inputWrapper.innerHTML=` 
-  <button id="pirateBtn">Pirate</button>
-  <button id="vampireBtn">Vampire</button>
-  <button id="witchBtn">Witch</button>`
-
+  <button id="pirateBtn" type="submit">Pirate</button>
+  <button id="vampireBtn" type="submit">Vampire</button>
+  <button id="witchBtn" type="submit">Witch</button>`
   document
   .getElementById('pirateBtn')
   .addEventListener('click',()=> handleTourGuide ('Pirate'))
@@ -79,6 +79,7 @@ const chooseTourGuide = (name) => {
   document
   .getElementById('witchBtn')
   .addEventListener('click',()=> handleTourGuide ('Witch'))
+
 }
 
 const handleTourGuide = (tourGuide) => {
@@ -120,18 +121,43 @@ const chooseActivity = (tourGuide) => {
   }
 
   const select = document.getElementById('select')
-  select.addEventListener('change', () => handleActivity(select.value));
+  select.addEventListener('change', () => handleActivity(tourGuide, select.value));
   
 }
 
-const handleActivity = (tourGuide) => {
-  showMessage(select.value, 'user')
-  const activity = select.value
+const handleActivity = (tourGuide, activity) => {
+  showMessage(activity, 'user')
   setTimeout(() => confirmation(tourGuide, activity), 500)
 }
 
 const confirmation = (tourGuide, activity) => {
   showMessage(`Are you sure you want to ${activity} with the ${tourGuide}?`, 'bot')
+  inputWrapper.innerHTML=` 
+  <button id="Yes" type="submit">Yes</button>
+  <button id="No" type="submit">No</button>
+  `
+
+  document
+  .getElementById('Yes')
+  .addEventListener('click',()=> handleConfirmation ('Yes'))
+
+  document
+  .getElementById('No')
+  .addEventListener('click',()=> handleConfirmation ('No'))
+}
+
+const handleConfirmation = (agreement) => {
+showMessage(agreement, 'user')
+
+if (agreement === 'Yes') {
+  showMessage("See you soon!", 'bot')
+}
+
+else { 
+  showMessage("Okay. Please rechoose your options.", 'bot')
+  setTimeout(()=> window.location.reload (), 3000)
+  
+}
 }
 
 
@@ -146,3 +172,4 @@ nameForm.addEventListener('submit', handleNameInput);
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 500); //We satisfied with one second.
+});
