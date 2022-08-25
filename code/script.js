@@ -40,40 +40,61 @@ const showMessage = (message, sender) => {
 
 // Starts here
 
+//Greeting
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello and welcome to the Coffee by D&P! What's your name?", "bot");
   console.log("bot som skriver"); //can be omitted
 };
 
+//User answering his name
 const handleInput = (event) => {
   event.preventDefault(); //prevents refreshing the page
-  let answerName = nameInput.value;
-  showMessage(`Hi! I am ${answerName}.`, "user"); //calling on function
+  let userName = nameInput.value;
+  showMessage(`Hi! I am ${userName}.`, "user"); //calling on function
   nameInput.value = ""; //erases the answer field
-  setTimeout(() => question1(answerName), 1000);
+  setTimeout(() => question1(userName), 500);
 };
 
-const question1 = (answerName) => {
-  showMessage(`Hello ${answerName}! What kind of coffee would you like to order?`, "bot");
+//Bot asking which coffee the person wants
+const question1 = (userName) => {
+  showMessage(`Hello ${userName}! What kind of coffee would you like to order?`, "bot");
   console.log("bot som skriver"); //can be omitted
   nameForm.removeEventListener("submit", handleInput);
   nameForm.addEventListener("submit", handleInput2);
 };
 
+//User answering the wished coffee type/getting coffee type answer 
 const handleInput2 = (event) => {
   event.preventDefault(); //prevents refreshing the page
-  let answerName = nameInput.value;
-  showMessage(`${answerName}`, "user"); //calling on function
+  let coffeeChoice = nameInput.value;
+  showMessage(`${coffeeChoice}`, "user"); //calling on function
   nameInput.value = ""; //erases the answer field
-  setTimeout(() => question2(answerName), 1000);
+  setTimeout(() => question2(coffeeChoice), 500);
 };
 
-const question2 = (answerName2) => {
-  showMessage(`I see, ${answerName2}. Excellent choice!`, "bot");
+//Bot asking if milk wanted
+const question2 = (milkChoice) => {
+  showMessage(`I see, ${milkChoice}. Excellent choice! Would you like some milk with it?`, "bot");
   console.log("bot som skriver"); //can be omitted
   nameForm.removeEventListener("submit", handleInput2);
-  //nameForm.addEventListener("submit", handleInput3);
+  nameForm.addEventListener("submit", handleInput3);
+};
+
+//User answering about milk/Getting milk answer
+const handleInput3 = (event) => {
+  event.preventDefault(); //prevents refreshing the page
+  let milkChoice = nameInput.value;
+  showMessage(`${milkChoice}`, "user"); //calling on function
+  nameInput.value = ""; //erases the answer field
+  setTimeout(() => question3(milkChoice), 500);
+};
+
+const question3 = (userName, milkChoice,) => {
+  showMessage(`Great ${userName}, then I am writing down ${milkChoice} for the milk choice. I'll fix it right a way!`, "bot");
+  console.log("bot som skriver"); //can be omitted
+  nameForm.removeEventListener("submit", handleInput3);
+  nameForm.addEventListener("submit", handleInput4);
 };
 
 // Set up your eventlisteners here
@@ -87,5 +108,5 @@ nameForm.addEventListener("submit", handleInput);
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 
-setTimeout(greeting, 1500);
+setTimeout(greeting, 400);
 
