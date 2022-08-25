@@ -242,7 +242,7 @@ const thirdQuote = (thirdQuote) => {
     const lastResponse = () => {
       setTimeout(() => botReply ('Whoever is happy will make others happy too'), 1000);
       setTimeout(() => botReply ("And don't forget  - CARPE DIEM 😉"), 2800); 
-
+      inputWrapper.innerHTML = ``
     }
 
   
