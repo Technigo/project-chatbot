@@ -164,8 +164,10 @@ const botAskWhatEmail = () => {
 };
 
 const botAskForConfirmation = () => {
+  console.log(answers);
   showBotMessage(
-    "Fantastic, thank you. Let me just double check I've got everything right before I confirm your booking: you'd like to book a table for INSERTAMOUNTOFPEOPLE on INSERTDAY at INSERTTIME, is this correct?"
+    `"Fantastic, thank you. Let me just double check I've got everything right before I confirm your booking ${answers.name}: you'd like to book a table for ${answers.people} on ${answers.day} at ${answers.time} and your contact information is ${answers.phonenr} and ${answers.email}
+    Is this correct?`
   );
   //TODO show Y/N button IU for user which leads to either last bot "question" aka booking confirmed message, or to bot saying "Ok, sorry for that, let's start over" and then reload page (??)
   inputWrapper.innerHTML = `
