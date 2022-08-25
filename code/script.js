@@ -56,10 +56,10 @@ const showMessage = (message, sender) => {
     setTimeout(() => showHelpTypes(message), 1000)
   } else if (questionNumber === 2) {
     userReply(message)
-    setTimeout(() => showMenu(message), 1000)
+    setTimeout(() => showCodeMenu(message), 1000)
   } else if (questionNumber === 3) {
     userReply(message)
-    setTimeout(() => showDishSize(message), 1000)
+    setTimeout(() => showCodeHelper(message), 1000)
   } else if (questionNumber === 4) {
     userReply(message)
     setTimeout(() => showPrice(message), 1000)
@@ -91,24 +91,72 @@ document.getElementById('htmlBtn')
 .addEventListener('click', () => nextQuestion('html'))
 document.getElementById('cssBtn')
 .addEventListener('click', () => nextQuestion('css'))
-document.getElementById('saladBtn')
+document.getElementById('jsBtn')
 .addEventListener('click', () => nextQuestion('javascript'))
-
+}
 
 const showCodeMenu = (type) => {
   questionNumber++
   botReply(
-    `Oh so you need help with ${type}? I understand its hard.`
+    `Oh so you need help with ${type} today? My best advice is to visit one of the sources below!`
   )
 
-    if (type === 'html') {
-      inputWrapper.innerHTML = `
+  if (type === 'html') {
+    inputWrapper.innerHTML = `
       <select id="select">
-        <option value="" selected disabled>Select help tool ....</option>
-        `
-    }
+        <option value="" selected disabled>👇 Select a sorce for HTML-help...</option>
+        <option value="matilda">Matilda</option>
+        <option value="daniel">Daniel</option>
+        <option value="amelie">Amelie</option>
+      </select>
+    `
+  } else if (type === 'css') {
+    inputWrapper.innerHTML = `
+      <select id="select">
+        <option value="" selected disabled>👇 Select a source for CSS-help...</option>
+        <option value="jennie">Jennie</option>
+        <option value="damien">Damien</option>
+        <option value="poya">Poya</option>
+      </select>
+    `
+  } else {
+    inputWrapper.innerHTML = `
+      <select id="select">
+        <option value="" selected disabled>👇 Select a source for JavaScript-help...</option>
+        <option value="dali">Dalai lama</option>
+        <option value="pope">Pope Francis</option>
+        <option value="wonderwoman">Wonder woman</option>
+      </select>
+    `
+  }
 
-}  
+  const select = document.getElementById('select')
+  select.addEventListener('change', () => nextQuestion(select.value))
+  }
+  
+
+const showCodeHelper = (coder) => {
+  questionNumber++
+
+  botReply(`Oh excellent so you choice ${coder}, Do you want to call 📞? Or email 📧? or their favorit the suprise visit to their home 🏠?`)
+
+  inputWrapper.innerHTML = `
+    <button id="phone">📞</button>
+    <button id="email">📧</button>
+    <button id="house">🏠</button>
+  `
+
+  document
+    .getElementById('phone')
+    .addEventListener('click', () => nextQuestion('phone'))
+  document
+    .getElementById('email')
+    .addEventListener('click', () => nextQuestion('email'))
+    document
+    .getElementById('house')
+    .addEventListener('click', () => nextQuestion('house'))
+}
+
 // Set up your eventlisteners here
 sendBtn.addEventListener('click', () => nextQuestion(input.value))
 input.addEventListener('keypress', (event) => {
@@ -122,4 +170,4 @@ input.addEventListener('keypress', (event) => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000);
-}
+
