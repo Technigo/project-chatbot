@@ -135,6 +135,7 @@ const emailAddressAnswer = ((event) => {
   console.log('emailTest')
   userAnswer(`My e-mail is ${email}.`, 'user')
   nameInput.value = ''
+  setTimeout(theEndAnswer, 2000);
 });
 
 
@@ -143,7 +144,10 @@ const theEndAnswer = () => {
   question = 4
   botAnswer(`Perfect! In a few minutes you will receive an email. Enjoy your day with us!`, 'bot')
   console.log('the end')
+  
 };
+
+
 
 
 //  // Set up your eventlisteners here
