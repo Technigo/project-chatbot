@@ -160,12 +160,12 @@ const soonMotivated= (answer) => {
 
 
 const firstQuote = (firstQuote) => { 
-  setTimeout(() => botReply(`So far you have survived 100% of your worst days!`), 1000);
+  setTimeout(() => botReply(`So far you have survived 100% of your worst days!`), 3000);
   rYouHappy();
 }
 
  const rYouHappy = (youbetterbe) => {
-  setTimeout(() => botReply (`Do you feel better now?`), 2000);
+  setTimeout(() => botReply (`Do you feel better now?`), 4000);
   
   inputWrapper.innerHTML = `
   <button id="happyBtn" id="yes">Yes - Give me more! </button>
@@ -188,14 +188,14 @@ const response = (response) => {
     setTimeout(() => botReply('OK, another one coming up...'), 2000);
     moreQuotes();
   }  else { setTimeout(() => userReply  ('No, that is it for today.'), 1000);
-  setTimeout(() => botReply ('Sorry - wrong anser - try again!  *hint, you need to hear this*'), 1000);  //Cheeky bot message, you need more quotes ;-) 
+  setTimeout(() => botReply ('Sorry - wrong anser - try again!  *hint, you need to hear this*'), 3000);  //Cheeky bot message, you need more quotes ;-) 
   }
 }
 
 const moreQuotes = () => {
     setTimeout(() => botReply("The sun's rays do not burn until brought to a focus"), 4000)
-    setTimeout(() => botReply('🧡'), 4600)
-    setTimeout((thirdQuote), 5000);
+    setTimeout(() => botReply('🧡'), 5000)
+    setTimeout((thirdQuote), 6000);
   }
 
 const thirdQuote = (thirdQuote) => {
@@ -241,7 +241,7 @@ const thirdQuote = (thirdQuote) => {
 
     const lastResponse = () => {
       setTimeout(() => botReply ('Whoever is happy will make others happy too'), 1000);
-      setTimeout(() => botReply ("And don't forget  - CARPE DIEM 😉"), 2300); 
+      setTimeout(() => botReply ("And don't forget  - CARPE DIEM 😉"), 2800); 
 
     }
 
