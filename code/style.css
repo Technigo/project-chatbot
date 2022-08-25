@@ -14,7 +14,7 @@ h1 {
   font-size: 95px;
   line-height: 34px;
   color: #6F314A;
-  padding: 20px;
+  padding-top: 190px;
   text-align: center;
   font-family: 'DynaPuff', cursive;
 }
@@ -166,6 +166,6 @@ button:hover {
 }
 h1 {
   font-size: 60px;
-  padding-top: 60px;
+  padding-top: 120px;
 }
 }
