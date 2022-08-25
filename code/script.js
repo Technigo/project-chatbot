@@ -106,7 +106,6 @@ const handleJokeInput = () => { //Function for the input parameters of first que
     showMessage('Mr. Reddensnapper, if I may.', 'user') //Writes the users anwer in the chat
     inputWrapper.innerHTML = '' 
     setTimeout(() => joke1Answer('Close, but no cigar'), 1000) 
-    //setTimeout(() => showMessage('Do you want another one?', 'bot'), 2000) 
     setTimeout (() => joke1AnswerWrong(), 2500)
   })
 } 
@@ -130,15 +129,17 @@ document
   .getElementById('Riddle')
   .addEventListener('click',() => { 
     showMessage("Yes, give me a riddle!", 'user')
-    /*inputWrapper.innerHTML = `
+    setTimeout(() => showMessage("Ok! What do you call an alligator in a vest?", 'bot'), 1500) 
+    inputWrapper.innerHTML = `
       <button id="aligatorRiddle1">An investigator</button>
-      <button id="Riddle1false">Crocodile Dundee</button>`*/
+      <button id="Riddle1false">Crocodile Dundee</button>`
   })
 
   document
   .getElementById('gimmieJoke')
   .addEventListener('click',() => { 
-    showMessage("What do you call an alligator in a vest?", 'bot') 
+    showMessage("No, not done! Can I try another one?", 'user')
+    setTimeout(() => showMessage("Ok! What do you call an alligator in a vest?", 'bot'), 1500) 
     inputWrapper.innerHTML = `
       <button id="aligatorRiddle1">An investigator</button>
       <button id="Riddle1false">Crocodile Dundee</button>`
@@ -152,7 +153,8 @@ const joke1AnswerWrong = () => {
 document
   .getElementById('gimmeRiddle1')
   .addEventListener('click',() => { 
-    showMessage("What do you call an alligator in a vest?", 'bot')
+    showMessage("Dammit! Give me a riddle!", 'user')
+    setTimeout(() => showMessage("What do you call an alligator in a vest?", 'bot'), 1500)
     inputWrapper.innerHTML = `
       <button id="aligatorRiddle1">An investigator</button>
       <button id="Riddle1false">Crocodile Dundee</button>`
@@ -161,7 +163,8 @@ document
   document
   .getElementById('gimmieAnotherChance')
   .addEventListener('click',() => { 
-    showMessage("What do you call an alligator in a vest?", 'bot') 
+    showMessage("Give me another chance!", 'user')
+    setTimeout(() => showMessage("What do you call an alligator in a vest?", 'bot'), 1500)
     inputWrapper.innerHTML = `
       <button id="aligatorRiddle1">An investigator</button>
       <button id="Riddle1false">Crocodile Dundee</button>`
