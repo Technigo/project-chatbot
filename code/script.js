@@ -5,6 +5,7 @@ const form = document.getElementById('name-form');
 const nameInput = document.getElementById('name-input');
 const buttonInput = document.getElementById('send-btn');
 
+
 // If you need any global variables that you can use across different functions, declare them here:
 let question = 1;
 
@@ -15,9 +16,10 @@ const botAnswer = (inputCommunicate) => {
 
 const userAnswer = (inputCommunicate) => {
   showMessage(inputCommunicate, 'user')
-}; 
+};
 
 
+// Dialogue.
 const userSpa = (message) => {
   if (question === 1) {
     userAnswer(message)
@@ -27,14 +29,25 @@ const userSpa = (message) => {
     setTimeout(() => choosingOptions(message), 2000)
   } else if (question === 3) {
     userAnswer(message)
-    setTimeout(() => emailAdressAnswer(message), 2000)
+    setTimeout(() => emailAddressAnswer(message), 2000)
   } else if (question === 4) {
     userAnswer(message)
-    setTimeout(() => theEndAnswer(message), 2000) 
+    setTimeout(() => theEndAnswer(message), 2000)
 
   }
 };
 
+// This function only shows us the user's answer.
+const handleAnswer = (event) => {
+  event.preventDefault()
+  console.log("Question number: " + question)
+  if (question === 1) {
+    nameAnswer(event)
+  }
+  else if (question === 3) {
+    emailAddressAnswer(event)
+  }
+};
 
 // This function will add a chat bubble in the correct place based on who the sender is
 function showMessage(message, sender) {
@@ -72,7 +85,7 @@ const greeting = () => {
 };
 
 // first user answer 
-const nameQuestion = ((event) => {
+const nameAnswer = ((event) => {
   question = 1
   event.preventDefault()
   const name = nameInput.value
@@ -86,8 +99,8 @@ const nameQuestion = ((event) => {
 const showSpaOptions = () => {
   question = 2
   botAnswer(`Welcome to our spa breaks! We can offer you three kinds of spa packages, what are you interested in more?`, 'bot')
-  chat.innerHTML += 
-  ` <div id="btnOptions" class="options"> 
+  chat.innerHTML +=
+    ` <div id="btnOptions" class="options"> 
      <button class="btn" id= 'birthdayButton' value='Birthday spa breaks' type="click">Birthday spa breaks</button>
      <button class="btn" id= 'dinnerButton' value='Dinner & Spa breaks' type="click">Dinner & Spa breaks</button>
      <button class="btn" id= 'boxingButton' value='Boxing Day Spa' type="click">Boxing Day Spa breaks</button>
@@ -98,14 +111,13 @@ const showSpaOptions = () => {
   document.getElementById('dinnerButton').addEventListener('click', () => userSpa('Dinner & Spa breaks'))
   document.getElementById('boxingButton').addEventListener('click', () => userSpa('Boxing Day Spa breaks'))
 
-
 };
 
 // third question
 const choosingOptions = (choice) => {
   question = 3
   const btnOptions = document.getElementById('btnOptions')
-  btnOptions.remove(); 
+  btnOptions.remove();
   //const choiceInput = choiceInput.value
   console.log("Choice: " + choice);
   if ((choice === 'Boxing Day Spa breaks')) {
@@ -115,40 +127,42 @@ const choosingOptions = (choice) => {
   } else {
     botAnswer(`Nice! ${choice} will cost 1500kr. Please, Can you give your email adress? So we send you the information and payment method.`, 'bot')
   }
+
 };
 
 
+/*const emailAddressAnswer = ((event) => {
+  question = 4
+  event.preventDefault()
+  console.log('the Email')
+  userAnswer(`${email}`, 'user')
+  nameInput.value = ''
+});*/
+
+
 // fourth question
-// const emailAdressAnswer = () => {
-//   question = 4
-//   consol.log (theEmail)
-//   userAnswer(`${email}`, 'user')
-//   nameInput.value = ''
-// }
-
-// const emailAdressAnswer = (event) => {
-//   question = 4
-//   // event.preventDefault()
-//   // const name = nameInput.value
-//   // console.log('emailTest')
-//   userAnswer(`My e-mail is ${email}`, 'user')
-//   nameInput.value = '' 
-                  
-//   }
+const emailAddressAnswer = ((event) => {
+  question = 3
+  const email = nameInput.value
+  console.log('emailTest')
+  userAnswer(`My e-mail is ${email}.`, 'user')
+  nameInput.value = ''
+});
 
 
-  //  const theEndAnswer = () => {
-             
-  //   botAnswer(`Perfect! In a few minutes you will receive an email. Enjoy your day with us!`, 'bot')
-  //  nameInput.value = '' 
-    
-  //   }
+// fifth question
+const theEndAnswer = () => {
+  question = 4
+  botAnswer(`Perfect! In a few minutes you will receive an email. Enjoy your day with us!`, 'bot')
+  console.log('the end')
+};
 
 //  // Set up your eventlisteners here
 
 
-form.addEventListener("submit", nameQuestion)
-/*chat.addEventListener("click", answerPackets)*/
+form.addEventListener("submit", handleAnswer)
+//inputWrapper.addEventListener("submit", emailAddressAnswer)
+//chat.addEventListener("click", emailAddressAnswer)
 
 
 
