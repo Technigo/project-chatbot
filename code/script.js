@@ -33,9 +33,7 @@ const userSpa = (message) => {
   } else if (question === 4) {
     userAnswer(message)
     setTimeout(() => theEndAnswer(message), 2000)
-
-  }
-};
+}};
 
 // This function only shows us the user's answer.
 const handleAnswer = (event) => {
@@ -118,7 +116,6 @@ const choosingOptions = (choice) => {
   question = 3
   const btnOptions = document.getElementById('btnOptions')
   btnOptions.remove();
-  //const choiceInput = choiceInput.value
   console.log("Choice: " + choice);
   if ((choice === 'Boxing Day Spa breaks')) {
     botAnswer(`Great! You choose ${choice}! That will cost 2000kr. Please, Can you give your email adress? So we send you the information and payment method.`, 'bot')
@@ -129,15 +126,6 @@ const choosingOptions = (choice) => {
   }
 
 };
-
-
-/*const emailAddressAnswer = ((event) => {
-  question = 4
-  event.preventDefault()
-  console.log('the Email')
-  userAnswer(`${email}`, 'user')
-  nameInput.value = ''
-});*/
 
 
 // fourth question
@@ -157,12 +145,9 @@ const theEndAnswer = () => {
   console.log('the end')
 };
 
+
 //  // Set up your eventlisteners here
-
-
 form.addEventListener("submit", handleAnswer)
-//inputWrapper.addEventListener("submit", emailAddressAnswer)
-//chat.addEventListener("click", emailAddressAnswer)
 
 
 
