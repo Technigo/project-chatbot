@@ -58,7 +58,7 @@ const handleNameInput = (event) => {
   showMessage(name, 'user')
   showMessage(`So ${nameInput.value} I understand that your’re done watching a TV show and are looking for something new to watch?`, 'bot') // Bot: Are you looking for something new to watch?
   nameInput.value = ''
-  inputWrapper.innerHTML = // add Yes No button
+  inputWrapper.innerHTML = // add Yes/No button
     `<button id="yesBtn" type="submit">Yes</button>
     <button id="noBtn" type="submit">No</button>`
 
@@ -66,11 +66,11 @@ const handleNameInput = (event) => {
     .getElementById('yesBtn')
     .addEventListener('click', () => {
       showMessage('YES', 'user');
-    showMessage('What kind of TV show would you like to see??', 'bot');
-      nextFunction('yes') //call next function with a parameter for yes
-    //showMessage('What kind of TV show would you like to see?', 'bot');
+      showMessage('What kind of TV show would you like to see??', 'bot');
+      askForGenre() //call next function with a parameter for yes
+   
     })
-
+// Bot: (If No) Okay! Then I will not be of any help.
     document
     .getElementById('noBtn')
     .addEventListener('click', () => {
@@ -78,24 +78,78 @@ const handleNameInput = (event) => {
       showMessage('Thank you, have a good day!', 'bot')
       nextFunction('no') //call next function with a parameter for no
     }) 
+
+// Genre list
+/*
+    inputWrapper.innerHTML = `
+       <select id="select">
+        <option value="" selected disabled>Choose a genre...</option>
+        <option value="drama">Drama</option>
+        <option value="thriller">Thriller</option>
+        <option value="comedy">Comedy</option>
+      </select>
+      `
+*/
+      
+const askForGenre = () => {      
+  inputWrapper.innerHTML = // add genre buttons
+   `<button id="drama" type="submit">Drama</button>
+    <button id="thriller" type="submit">Thriller</button>
+    <button id="comedy" type="submit">Comedy</button>`
+    document
+      .getElementById('drama')
+      .addEventListener('click', () => {
+        showMessage('Drama', 'user')
+        showMessage('Okay, then I would suggest this: drama', 'bot');
+        setTimeout(() => showMessage('Are you happy with my suggestion?', 'bot'), 2000);
+        askForLastUserAnswer() //call next function with a parameter for no
+      })
+    document
+      .getElementById('thriller')
+      .addEventListener('click', () => {
+        showMessage('Thriller', 'user')
+        showMessage('Okay, then I would suggest this: thriller', 'bot')
+        setTimeout(() => showMessage('Are you happy with my suggestion?', 'bot'), 2000);
+        askForLastUserAnswer()
+      })
+
+      document
+      .getElementById('comedy')
+      .addEventListener('click', () => {
+        showMessage('Comedy', 'user')
+        showMessage('Okay, then I would suggest this: comedy', 'bot')
+        setTimeout(() => showMessage('Are you happy with my suggestion?', 'bot'), 2000)
+        askForLastUserAnswer()
+      })
+
+     
+    }
+// We need to setTimeout for the YES/NO buttons so they show after some time - optional
+    const askForLastUserAnswer = () => {
+      inputWrapper.innerHTML = // add Yes/No button
+    `<button id="yesBtn" type="submit">Yes</button>
+    <button id="noBtn" type="submit">No</button>`
+
+    document
+    .getElementById('yesBtn')
+    .addEventListener('click', () => {
+      showMessage('YES', 'user');
+      showMessage('Great! I hope you enjoy it! Have a great day/evening!', 'bot');
+      
+   
+    })
+
+    document
+      .getElementById('noBtn')
+      .addEventListener('click', () => {
+        showMessage('No thank you, goodbye', 'user')
+        showMessage('Oh no! I’m so sorry to hear that! This was unfortunately the best I could come up with. You can check our blog post with 10 best series in Netflix here ....', 'bot')
+       
+    }) 
+      
+    }
+  
 }
-
-
-
-
-
-
-// User: YES / NO
-
-
-
-// Bot: (If Yes) What kind of TV show would you like to see?
-
-
-
-// User: DRAMA / THRILLER / COMEDY
-
-
 
 
 // Set up your eventlisteners here
