@@ -77,8 +77,8 @@ function showMessage(message, sender) {
 // Starts here
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  botAnswer(`Hello there, What's your name?`, 'bot')
-  console.log('This is bot writing')
+  botAnswer(`Hello my friend, What's your name and how can I help you today?`, 'bot')
+  console.log('The bot first question')
   // Just to check it out, change 'bot' to 'user' here 👆
 };
 
@@ -87,8 +87,8 @@ const nameAnswer = ((event) => {
   question = 1
   event.preventDefault()
   const name = nameInput.value
-  console.log('text')
-  userAnswer(`My name is ${name} and I want to know more about the spa packets!`, 'user')
+  console.log('The user first answer')
+  userAnswer(`My name is ${name} and I want to know more about the spa packages!`, 'user')
   nameInput.value = ''
   setTimeout(() => showSpaOptions(name), 1000)
 });
@@ -118,11 +118,11 @@ const choosingOptions = (choice) => {
   btnOptions.remove();
   console.log("Choice: " + choice);
   if ((choice === 'Boxing Day Spa breaks')) {
-    botAnswer(`Great! You choose ${choice}! That will cost 2000kr. Please, Can you give your email adress? So we send you the information and payment method.`, 'bot')
+    botAnswer(`Great! You choose ${choice}! That will cost 2000kr. Could you please write your email address so we can send you the information and the payment method.`, 'bot')
   } else if (choice === 'Dinner & Spa breaks') {
-    botAnswer(`Perfect! ${choice} will cost 1000kr. Alcoholic drinks are not included. Please, Can you give your email adress? So we send you the information and payment method.`, 'bot')
+    botAnswer(`Perfect! ${choice} will cost 1000kr. Alcoholic drinks are not included. Could you please write your email address so we send you the information and the payment method.`, 'bot')
   } else {
-    botAnswer(`Nice! ${choice} will cost 1500kr. Please, Can you give your email adress? So we send you the information and payment method.`, 'bot')
+    botAnswer(`Nice! ${choice} will cost 1500kr. Could you please write your email address so we send you the information and the payment method.`, 'bot')
   }
 
 };
