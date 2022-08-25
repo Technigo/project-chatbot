@@ -5,23 +5,24 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: "Montserrat", sans-serif;
+  background: #efe2d0;
 }
 
 h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: rgb(216, 107, 115);
   text-align: center;
+  font-family: "Lobster", cursive;
 }
 
 h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: rgb(255, 255, 255);
   text-align: center;
   margin-bottom: 36px;
 }
@@ -38,10 +39,10 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #070706;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -52,9 +53,8 @@ main {
   width: 100%;
   max-width: 700px;
   height: 600px;
-  border-radius: 30px;
+  border-radius: 20px;
   background: #fff;
-  padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
@@ -68,6 +68,7 @@ main {
   overflow: scroll;
   flex-direction: column;
   padding-bottom: 16px;
+  padding: 20px 24px;
 }
 
 .bot-msg {
@@ -85,27 +86,26 @@ main {
 
 .bot-msg img,
 .user-msg img {
-  width: 60px;
-  height: 60px;
+  height: 50px;
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #71b9b9;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #475665;
   max-width: 40%;
 }
 
 .bot-bubble {
-  border-radius: 0px 26px 26px 26px;
+  border-radius: 5px 26px 26px 26px;
   margin-left: 8px;
 }
 
 .user-bubble {
-  border-radius: 26px 0 26px 26px;
+  border-radius: 26px 5px 26px 26px;
   margin-right: 8px;
 }
 
@@ -121,7 +121,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #e4a140;
   color: white;
   border: none;
   border-radius: 4px;
@@ -129,11 +129,11 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  
+  margin-bottom: 30px;
 }
 
 button:hover {
@@ -141,6 +141,38 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-.flavor-boxes{
-  color: #0026ff; 
+.flavor-boxes {
+  color: #0026ff;
+}
+
+.popup-overlay {
+  position: absolute;
+  background: #fafafac7;
+  height: 600px;
+  width: 700px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hide {
+  display: none;
+}
+
+.popup-container {
+  width: 60%;
+  background: #6cb5b6;
+  text-align: center;
+  padding: 25px 16px 80px 16px;
+  border-radius: 16px;
+}
+
+h3 {
+  color: #2a2622;
+  font-family: "Lobster", cursive;
+  font-size: 30px;
+}
+
+.checkbox {
 }

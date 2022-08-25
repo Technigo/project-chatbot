@@ -1,6 +1,7 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById("chat");
 const inputWrapper = document.getElementById("input-wrapper");
+const popup = document.getElementById("popup");
 
 //Buttons:
 const allButtons = document.getElementsByTagName("button");
@@ -93,6 +94,7 @@ const phoneNumber = () => {
     disableBtnAfterClick();
     showMessage(`Phone number`, "user");
     showMessage(`Thank you for your order`, "bot");
+    popup.classList.toggle("hide");
   });
 };
 
