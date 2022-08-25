@@ -3,6 +3,8 @@ const chat = document.getElementById('chat');
 const nameForm = document.getElementById('name-form')
 const nameInput = document.getElementById('name-input')
 const inputWrapper = document.getElementById('input-wrapper')
+/*LA TILL*/ const submit = document.getElementsByClassName('send-btn')
+
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -39,7 +41,7 @@ const showMessage = (message, sender) => {
 // Starts here
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello and welcome to your personal Pep bot! What's your name?", 'bot');
+  showMessage("Hello and welcome to your personal Pep bot! What's your name? 🌞", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -54,17 +56,67 @@ const handleNameInput = (event) => {
   setTimeout(() => howAreYou(userName), 1000);
 }
 
+//Eventlistener
 nameForm.addEventListener('submit', handleNameInput);
 
 //Question 2
 const howAreYou = () => {
   showMessage(`Nice to meet you, ${nameInput.value}! How are you feeling today?`, 'bot')
   inputWrapper.innerHTML=`
-    <button class="choice-btn" id="yes">Happy! 😀</button>
-    <button class="choice-btn" id="no">Sad 😢</button>
-    <button class="choice-btn" id="no">Hungry 🍔</button>`
+  <button id="happyBtn">Happy! 😀</button>
+  <button id="sadBtn">Sad 😢</button>
+  <button id="hungryBtn">Hungry 🍔</button>`
 
 }
+
+/*document
+    .getElementById('happyBtn')
+    .addEventListener('click', () => {
+     showMessage('happy', 'user')
+     setTimeout(() => askForHelp('happy), 1000)
+    })
+    
+    .getElementById('sadBtn')
+    .addEventListener('click', () => {
+     showMessage('sad', 'user')
+     setTimeout(() => askForHelp('sad), 1000)
+    })
+
+    .getElementById('hungryBtn')
+    .addEventListener('click', () => {
+     showMessage('hungry', 'user')
+     setTimeout(() => askForHelp('hungry'), 1000)
+    })
+    
+    */
+
+    //Question 3 do we need to keep "information" can we change it?
+const askForHelp = information => {
+  //showMessage(`Ok`, 'bot')
+  
+  if (information === "zinc") {
+    showMessage(`Ok`, 'bot')
+    setTimeout(() => askFor---('zinc'), 2000)
+    
+    
+
+  } else if (information === "protein") {
+    showMessage(`Protein`, 'bot')
+    setTimeout(() => askForMore('protein'), 2000)
+
+  } else {
+    showMessage(`Few foods`, 'bot')
+    setTimeout(() => askForMore('vitaminD'), 2000)
+  }
+}
+
+
+
+
+
+
+
+
 
 
 
