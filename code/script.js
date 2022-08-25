@@ -2,6 +2,7 @@
 const chat = document.getElementById("chat");
 const input = document.getElementById("user-input");
 const form = document.getElementById("workout-form");
+const inputWrapper = document.getElementById("input-wrapper"); // this connects the js with the element in the html.
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -44,22 +45,76 @@ const ageQuestion = () => {
   showMessage("Firstly, how old are you?", "bot");
 };
 
-const handleAgeInput = (event) => {
+const showAgeInput = (event) => {
   event.preventDefault();
-  // Store the value in a variable so we can access it after we
-  // clear it from the input
-  const age = input.value;
-  showMessage(age, "user");
-  input.value = "";
+  const ageInput = input.value; //input value will be stored in the variable
+  showMessage(ageInput, "user");
+  input.value = ""; // clear text field from the input
+  setTimeout(() => musclegroupQuestion(ageInput), 1000);
+};
+/* 
+const handleAgeInput = (ageInput) => {
+  let age2 = boolean;
+  age2 = ageInput;
+  if (age2 < 16) {
+    return true;
+  } else {
+    return false;
+  }
+};
+console.log(age2); */
+
+/* 
+function testNum(a) {
+  let result;
+  if (a > 0) {
+    result = 'positive';
+  } else {
+    result = 'NOT positive';
+  }
+  return result;
+} */
+
+const musclegroupQuestion = (ageInput) => {
+  showMessage(
+    `That's great! You are ${ageInput}. What muscle group would you like to focus on today?`,
+    "bot"
+  );
+  inputWrapper.innerHTML = `
+    <button id="lowerBtn">Lower body</button>
+    <button id="upperBtn">Upper body</button>
+  `;
+  document
+    .getElementById("lowerBtn")
+    .addEventListener("click", () => lowerAnswer("lowerbody"));
+  document
+    .getElementById("upperBtn")
+    .addEventListener("click", () => upperAnswer("upperbody"));
 };
 
-/* const ageReaction = (age) => {
-  if (age >= 16) {
-    console.log("age");
-  } else {
-    //do that
-  }
-}; */
+let link1 = "https://www.google.se";
+let link2 = "https://www.google.com";
+
+/* var a = document.createElement('a');
+var linkText = document.createTextNode("my title text");
+a.appendChild(linkText);
+a.title = "my title text";
+a.href = "http://example.com";
+document.body.appendChild(a); */
+
+const lowerAnswer = (link1) => {
+  showMessage(
+    `Lower body, how fun! Here's a link to a workout you might like:  ${link1} `,
+    "bot"
+  );
+};
+
+const upperAnswer = (link2) => {
+  showMessage(
+    `Upper body, how fun! Here's a link to a workout you might like: ${link2} `,
+    "bot"
+  );
+};
 
 // After 1 second, show the next question by invoking the next function.
 // passing the name into it to have access to the user's name if we want
@@ -69,7 +124,7 @@ const handleAgeInput = (event) => {
 
 // Set up your eventlisteners here
 
-form.addEventListener("submit", handleAgeInput);
+form.addEventListener("submit", showAgeInput);
 
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 setTimeout(greeting, 1000);
