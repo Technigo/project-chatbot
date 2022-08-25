@@ -14,13 +14,13 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/icon-user.png" alt="User" />  
       </section>
     `
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/icon-bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -57,7 +57,7 @@ const watchMovie = () => {
         <button id="optSad">😥</button>
         <button id="optAngry">😡</button>
        `
-   
+      
       optHappy.addEventListener('click', () => {
         console.log("Happy indeed!")
         showMessage("I'm feeling happy today", "user")

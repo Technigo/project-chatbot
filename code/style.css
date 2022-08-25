@@ -6,22 +6,23 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url(/code/assets/pexels-keegan-evans-57043.jpg)
 }
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
+  font-size: px;
   line-height: 34px;
-  color: #fff;
+  color: #E50914;
   text-align: center;
+  font-family: 'Abril Fatface', cursive;
 }
 
 h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: #E50914;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -37,8 +38,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #d8d8d8;
+  color: #4d4e4e;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -53,7 +54,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: rgb(255, 254, 236);
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -102,11 +103,15 @@ main {
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  color: white;
+  background-color: #4d4e4e;
 }
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  background-color: #e50914de;
+  color: white;
 }
 
 .input-wrapper {
@@ -120,7 +125,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #4d4e4e;
   color: white;
   border: none;
   border-radius: 4px;
