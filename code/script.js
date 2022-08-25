@@ -133,7 +133,7 @@ const emailAddressAnswer = ((event) => {
   question = 3
   const email = nameInput.value
   console.log('emailTest')
-  userAnswer(`My e-mail is ${email}.`, 'user')
+  userAnswer(`My e-mail adress is ${email}.`, 'user')
   nameInput.value = ''
   setTimeout(theEndAnswer, 2000);
 });
