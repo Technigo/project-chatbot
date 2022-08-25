@@ -58,6 +58,26 @@ const handleNameInput = (event) => {
   showMessage(name, 'user')
   showMessage(`So ${nameInput.value} I understand that your’re done watching a TV show and are looking for something new to watch?`, 'bot') // Bot: Are you looking for something new to watch?
   nameInput.value = ''
+  inputWrapper.innerHTML = // add Yes No button
+    `<button id="yesBtn" type="submit">Yes</button>
+    <button id="noBtn" type="submit">No</button>`
+
+    document
+    .getElementById('yesBtn')
+    .addEventListener('click', () => {
+      showMessage('YES', 'user');
+    showMessage('What kind of TV show would you like to see??', 'bot');
+      nextFunction('yes') //call next function with a parameter for yes
+    //showMessage('What kind of TV show would you like to see?', 'bot');
+    })
+
+    document
+    .getElementById('noBtn')
+    .addEventListener('click', () => {
+      showMessage('No thank you, goodbye', 'user')
+      showMessage('Thank you, have a good day!', 'bot')
+      nextFunction('no') //call next function with a parameter for no
+    }) 
 }
 
 
