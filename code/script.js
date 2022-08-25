@@ -83,11 +83,6 @@ setTimeout(rYouHappy, 2000);
 } else {userReply(message)
 setTimeout(thankYou, 1000)}
 
-}
-const showBotMessage = (message) => {
-  setTimeout(() => {
-    showMessage(message, "bot");
-  }, 300);
 };
 
 
@@ -120,13 +115,13 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
-// INITAL BOT GREETING/ QUESTION1 !
+// INITAL BOT GREETING! 
 const botGreeting = () => {
   botReply ("Hello there, what's your name?",)
 
   form.addEventListener("submit", (event) =>{
     event.preventDefault();
-    form.submitButton.disabled = false;   //only click enter//
+    form.submitButton.disabled = false;   //only click enter, press send btn is enabled right now//
     const name = nameInput.value
     userReply(name);
     questionGen();
@@ -141,9 +136,7 @@ const friendlyBot = (message) => {
   }
 
 
-// Here User need to enter something, like OK etc
-
-// QUESTION 3 - buttons 
+// Here User need to enter something, like OK etc Any imput is fine to trigger "seeking Advice?"
  const seekingAdvice = () => {
 botReply('Do you need motivation or encouragement?')
 inputWrapper.innerHTML = `
@@ -160,29 +153,12 @@ document
 
 
 
-/*
-document.getElementById('motivationBtn').addEventListener('click', () => {
-  userReply('I would like some motivation today', 'user')
-  setTimeout(() => botReply('Of course! Here you go ... '), 1000)
-});
-
-  document.getElementById('encouragementBtn').addEventListener('click', () => {
-  userReply('Today is difficult - I need some pep', 'user')
-  setTimeout(() => botReply('Some days we need encouragement...'), 1000)
-
-  })
-*/
-
-
-
-//QUESTION 4
 const soonMotivated= (answer) => {
   setTimeout(() => userReply(`${answer} please`), 1000);
     firstQuote();
 }
 
 
-//Question 5   MÅSTE DUBBEKLICKA 4 FÖR ATT KUNNA KOMMA TILL 5 WHY?
 const firstQuote = (firstQuote) => { 
   setTimeout(() => botReply(`So far you have survived 100% of your worst days!`), 1000);
   rYouHappy();
@@ -214,12 +190,12 @@ const response = (response) => {
   }  else { setTimeout(() => userReply  ('No, that is it for today.'), 1000);
   setTimeout(() => botReply ('Oh, I am sorry I could not cheer you up today. See you another time'), 1000);
   inputWrapper.innerHTML = ``
-}
   }
+}
 
 const moreQuotes = () => {
-    setTimeout(() => botReply('Carpe diem'), 4000)
-    setTimeout(() => botReply('😉'), 4600)
+    setTimeout(() => botReply("The sun's rays do not burn until brought to a focus"), 4000)
+    setTimeout(() => botReply('🧡'), 4600)
     setTimeout((thirdQuote), 5000);
   }
 
@@ -244,70 +220,37 @@ const thirdQuote = (thirdQuote) => {
       setTimeout(() => userReply ('Yes I need more!'), 1000);
       setTimeout(() => botReply('The way to get started is to quit talking and begin doing'), 2000);
       lastQuote();
-    }  else { setTimeout(() => userReply  ('No, that is it for today.'), 1000);
+    }  else { setTimeout(() => userReply  ('No, I am fine.'), 1000);
     setTimeout(() => botReply ('Okidoki! See you another time'), 1000);
     inputWrapper.innerHTML = ``
   }
-    }
+  }
 
 
 
 
     const lastQuote = (lastquote) => {
-      setTimeout(() => botReply (`Good things come in three, last one`), 4000);
+      setTimeout(() => botReply (`Good things come in three, so this will be the last one`), 5000);
       
       inputWrapper.innerHTML = `
-      <button id="lastQuote" id="yes">Give me</button>
+      <button id="lastQuote" id="yes">Last quote please</button>
       `
       document
       .getElementById('lastQuote')
-      .addEventListener('click', () => lastResponse('Give me!')); 
+      .addEventListener('click', () => lastResponse('Last quote')); 
     }
 
     const lastResponse = () => {
       setTimeout(() => botReply ('Whoever is happy will make others happy too'), 1000);
-      setTimeout(() => botReply ("And don't forget - CARPE DIEM"), 2000); 
+      setTimeout(() => botReply ("And don't forget  - CARPE DIEM 😉"), 2300); 
 
     }
 
   
-  /* // Q4
-  userReply(`${answer} please`)
-  questionGen()*/
-
-
-/*
-// QUESTION 5
-const question6 = () => {
-botReply(`Fråga 6`, 'bot')
-questionGen();
-}*/
 
 
 
- /* QUESTION 6
-const question6 = () => {
-function newQuote(){
-  var randomNumber = Math.floor(Math.random()*quotes.length);
-  document.getElementById('quotes').innerHTML = quotes[randomNumber];
-}
-questionGen() 
-} */
  
-
-
-// Beroende på knapp vill vi trigga svar till btnimp1 eller btnimp2?
-
-
-// Set up your eventlisteners here
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
- 
-setTimeout(botGreeting, 1000); /* Why do we need this?? */
-
+// Inital trigger for first bot greeting 
+setTimeout(botGreeting, 2000); 
 
