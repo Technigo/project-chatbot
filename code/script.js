@@ -47,6 +47,7 @@ const greeting = () => {
   console.log("bot som skriver"); //can be omitted
 };
 
+
 //User answering his name
 const handleInput = (event) => {
   event.preventDefault(); //prevents refreshing the page
@@ -58,7 +59,7 @@ const handleInput = (event) => {
 
 //Bot asking which coffee the person wants
 const question1 = (userName) => {
-  showMessage(`Hello ${userName}! What kind of coffee would you like to order?`, "bot");
+  showMessage(`Hello ${userName}! How are you today?`, "bot");
   console.log("bot som skriver"); //can be omitted
   nameForm.removeEventListener("submit", handleInput);
   nameForm.addEventListener("submit", handleInput2);
@@ -74,8 +75,8 @@ const handleInput2 = (event) => {
 };
 
 //Bot asking if milk wanted
-const question2 = (milkChoice) => {
-  showMessage(`I see, ${milkChoice}. Excellent choice! Would you like some milk with it?`, "bot");
+const question2 = (coffeeChoice) => {
+  showMessage(`I see, ${coffeeChoice}. Excellent choice! Would you like some milk with it?`, "bot");
   console.log("bot som skriver"); //can be omitted
   nameForm.removeEventListener("submit", handleInput2);
   nameForm.addEventListener("submit", handleInput3);
@@ -90,12 +91,73 @@ const handleInput3 = (event) => {
   setTimeout(() => question3(milkChoice), 500);
 };
 
-const question3 = (userName, milkChoice,) => {
-  showMessage(`Great ${userName}, then I am writing down ${milkChoice} for the milk choice. I'll fix it right a way!`, "bot");
-  console.log("bot som skriver"); //can be omitted
+const question3 = (milkChoice,) => {
+  showMessage(`Great, then I am writing down ${milkChoice} for the milk choice. I'll fix it right a way!`, "bot");
+ /*  console.log("bot som skriver"); //can be omitted
   nameForm.removeEventListener("submit", handleInput3);
   nameForm.addEventListener("submit", handleInput4);
 };
+
+const handleInput4 = (answerName) => {
+  showMessage(`Hello ${answerName}! What kind of coffee would you like to order?`, "bot"); */
+  console.log("bot som skriver"); //can be omitted
+  inputWrapper.innerHTML = `
+  <button id="blackCoffee" type="submit" class="chat-btn">Black Coffee</button>
+  <button id="macchiato" type="submit" class="chat-btn">Macchiato</button>
+  <button id="withMilk" type="submit" class="chat-btn">With Milk</button>
+  `
+
+  document.getElementById("blackCoffee").addEventListener("click", blackChoice);
+  document.getElementById("macchiato").addEventListener("click", macchiatoChoice);
+  document.getElementById("withMilk").addEventListener("click", withMilkChoice);
+};
+
+const blackChoice = (event) => {
+  event.preventDefault(); //prevents refreshing the page
+  let coffeeAnswer = inputWrapper.value;
+  showMessage(`I would love some Black Coffe!`, "user");
+  inputWrapper.value = "";
+  console.log("black choice"); //can be omitted
+  setTimeout(() => question4(coffeeAnswer), 1000);
+};
+
+const macchiatoChoice = (event) => {
+  event.preventDefault(); //prevents refreshing the page
+  let coffeeAnswer = inputWrapper.value;
+  showMessage(`A macchiato will be!`, "user");
+  inputWrapper.value = "";
+  console.log("machiato choice"); //can be omitted
+  setTimeout(() => question4(coffeeAnswer), 1000);
+};
+
+const withMilkChoice = (event) => {
+  event.preventDefault(); //prevents refreshing the page
+  let coffeeAnswer = inputWrapper.value;
+  showMessage(`Coffe with milk, plz!`, "user");
+  inputWrapper.value = "";
+  console.log("with milk choice"); //can be omitted
+  setTimeout(() => question4(coffeeAnswer), 1000);
+};
+
+const question4 = () => {
+  showMessage("Stress or zen mode?", "bot");
+  console.log("bot som skriver"); //can be omitted
+  inputWrapper.innerHTML = `
+  <button id="takeAway" type="submit" class="chat-btn">Take away</button>
+  <button id="drinkHere" type="submit" class="chat-btn">Drink here</button>
+  `
+  document.getElementById("takeAway").addEventListener("click", takeAway);
+  document.getElementById("drinkHere").addEventListener("click", drinkHere);
+};
+
+
+
+
+
+
+
+
+
 
 // Set up your eventlisteners here
 nameForm.addEventListener("submit", handleInput);
@@ -108,5 +170,5 @@ nameForm.addEventListener("submit", handleInput);
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 
-setTimeout(greeting, 400);
+setTimeout(greeting, 0);
 
