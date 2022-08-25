@@ -1,6 +1,6 @@
 # Project Chatbot
 
-Our task was to create a chatbot using JavaScript.
+Our task was to create a chatbot using HTML, CSS and JavaScript.
 
 ## The problem
 
