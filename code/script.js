@@ -31,7 +31,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/bot.png" alt="User" />  
       </section>
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
@@ -159,14 +159,18 @@ select.addEventListener('change', () => nextQuestion(select.value))
 
 // summary
 const finaliseBooking = (choice) => {
+  select.remove();
   questionNumber++
+  
   if (choice === '5') {
     showMessage ("How lovely that you are so many that want to visit us. Please contact us at gm@fakemail.com for large bookings!", 'bot');
   } else {
     showMessage ("We look forward to your visit!", 'bot');
   }
-
+  
+  select.addEventListener('change', () => nextQuestion(inputValue))
 }
+
 
 
 

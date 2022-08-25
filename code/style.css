@@ -6,7 +6,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url("mango.jpg");
+  background-size: cover;
+  /* background: #0026ff; */
 }
 
 h1 {
@@ -35,10 +37,10 @@ p {
 
 input {
   box-sizing: border-box;
-  border: none;
+  border: 1px solid #11b84c;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #d9f4e2;
+  color: #11b84c;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -53,7 +55,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.786);
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -90,12 +92,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #d9f4e2;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #11b84c;
   max-width: 40%;
 }
 
@@ -120,7 +122,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #11b84c;
   color: white;
   border: none;
   border-radius: 4px;
@@ -137,4 +139,23 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+input,
+select {
+	border: none;
+	border-radius: 4px 0 0 4px;
+	background: #d9f4e2;
+	color: #11b84c;
+	padding: 10px;
+	font-size: 16px;
+	font-family: 'Montserrat';
+	font-weight: 600;
+	line-height: 26px;
+	flex: 1;
+  text-align: center;
+
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 }
