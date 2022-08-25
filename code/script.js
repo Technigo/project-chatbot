@@ -3,7 +3,8 @@ const chat = document.getElementById('chat');
 const nameInput = document.getElementById('name-input');
 const form = document.getElementById('name-form');
 const inputWrapper = document.getElementById('input-wrapper');
-let question = 1;
+const submitBtn = document.getElementsByClassName('send-btn')
+let question = 0;
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -16,18 +17,33 @@ let question = 1;
   const handleNameInput = (event) => {
     event.preventDefault()
     console.log("test")
-    // Store the value in a variable so we can access it after we 
-    // clear it from the input
     const name = nameInput.value
-    showMessage(name, 'user')
+    showMessage(`Your appointment is booked. We will send you a confirmation at ${name}`, 'bot')
     nameInput.value = ''
-
-    // After 1 second, show the next question by invoking the next function.
-    // passing the name into it to have access to the user's name if we want
-    // to use it in the next question from the bot.
-    setTimeout(() => showEmergencies(name), 1000)
   }
   
+  const getEmail = () => {
+    showMessage('Enter your details below', 'bot');
+    inputWrapper.innerHTML = 
+    `
+    <form id="name-form">
+          <label for="name-input"></label>
+          <input id="name-input" type="email" />
+          <button class="send-btn" type="submit">
+            Send
+          </button>
+    </form>
+    `
+    submitBtn.addEventListener('click', (event) => {
+      // event.preventDefault()
+      console.log("test")
+      const name = nameInput.value
+      setTimeout(() => showMessage(`Your appointment is booked. We will send you a confirmation at ${name}`, 'bot'), 1000) ;
+      nameInput.value = ''
+  
+  })
+  }
+
   const showEmergencies = () => {
     inputWrapper.innerHTML = `
     <button id="bleached">Help! I accidently bleached my hair</button>
@@ -44,7 +60,7 @@ let question = 1;
 
   const showBleachedOptions = () => {
     showMessage("Accidentally bleached my hair!", 'user');
-    setTimeout(showMessage("Oh no! 😱 What can we do for you?", 'bot'), 3000);
+    setTimeout(()=> (showMessage("Oh no! 😱 What can we do for you?", 'bot'), 3000));
     inputWrapper.innerHTML = `
     <select id="select" class="select">
         <option value="" selected disabled>Select your fix</option>
@@ -53,12 +69,14 @@ let question = 1;
     </select>
     `
     // select();
-    const select = document.getElementById('select');
-      select.addEventListener('change', () => showMessage(select.value, 'user'));
+    //const select =
+    question++; 
+    document.getElementById('select').addEventListener('change', () => setTimeout(() => showMessage(select.value, 'user'), nextQuestion()));
+    
+ 
+    // HOW TO EMPTY INPUTWRAPPER?
       
-      // HOW TO EMPTY INPUTWRAPPER?
-      question++; 
-      console.log("question number", question);
+    console.log("question number", question);
   }
 
   const showBaldOptions = () => {
@@ -69,7 +87,7 @@ let question = 1;
 
   const showWeddingOptions = () => {
     showMessage("Need a last minute wedding-do!", 'user');
-    setTimeout(showMessage(`Oh how wonderful! Which hairdo would like?`, 'bot'), 3000);
+    setTimeout(() => showMessage(`Oh how wonderful! Which hairdo would like?`, 'bot'), 3000);
     inputWrapper.innerHTML = `
     <button id="long">Long hair</button>
     <button id="short">Short hair</button>`
@@ -79,7 +97,8 @@ let question = 1;
     .addEventListener('click', () => setTimeout(() => showMessage('Long hair it is!', 'user'), nextQuestion(), 1000)); 
     document.getElementById("short")
     .addEventListener('click', () => setTimeout(() => showMessage('Short hair it is!', 'user'), nextQuestion(), 1000));    
-  
+    console.log("question number", question);
+
   }
 
   const timeSlots = () => {
@@ -93,17 +112,18 @@ let question = 1;
         <option value="17:00">17:00</option>
       </select>
       `
-      const select = document.getElementById('selectTime');
-      select.addEventListener('change', () => showMessage(select.value, 'user'));
+      //const select = document.getElementById('selectTime');
       question++;
-      nextQuestion()
+      document.getElementById('selectTime').addEventListener('change', () => setTimeout(() => showMessage(selectTime.value, 'user'), nextQuestion()));
+      console.log("question number", question);
+   
   }
   const nextQuestion = () => {
   //   console.log("question number", question);
-  if (question === 2) {
+  if (question === 1) {
     setTimeout(() => timeSlots(), 1000);
-} else if (question === 3) {
-   setTimeout(() => showMessage('Enter your details below'), 1000)
+  } else if (question === 2) {
+   setTimeout(() => getEmail(), 1000)
     }
   }
 
@@ -136,29 +156,14 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greeting = () => {
+  question = 0
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello! What is your hair emergency?", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
+  showEmergencies();
 }
 
  
 // Set up your eventlisteners here
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000);
-showEmergencies();
-nextQuestion();
-
-form.addEventListener('submit', (event)=> {
-  event.preventDefault()
-  const name = nameInput.value
-    showMessage(name, 'user')
-    nameInput.value = ''
-
-    setTimeout(showMessage(`Welcome ${name}!`, 'bot'), 1000);
-});
