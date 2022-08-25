@@ -135,7 +135,7 @@ const showCodeMenu = (type) => {
 const showCodeHelper = (coder) => {
   questionNumber++
 
-  botReply(`Oh excellent so you choice ${coder}, Do you want to call 📞? Or email 📧? or their favorit the suprise visit to their home 🏠?`)
+  botReply(`Oh excellent so you choose ${coder}, Do you want to call 📞? Or email 📧? or their favorite the suprise visit to their home 🏠?`)
 
   inputWrapper.innerHTML = `
     <button id="phone">📞</button>
@@ -176,7 +176,7 @@ document.getElementById('restart').addEventListener('click', () => {
 document.getElementById('finish').addEventListener('click', () => {
   botReply(`Would you like to take a 2 hour survey of this experience on this chatbot?`)
   inputWrapper.innerHTML = `
-    <button id="ohNo">This is the only option</button>
+    <button onclick="location.href='https://www.surveymonkey.com/r/9Y3HP2P'" type="button">This is the only option</button>
   `
 })
 
