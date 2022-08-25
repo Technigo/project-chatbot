@@ -18,7 +18,7 @@ const userAnswer = (inputMessage) => {
   showMessage(inputMessage, 'user')
 }
 
-// Start of functions
+// Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -46,28 +46,28 @@ const showMessage = (message, sender) => {
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
 }
-// Dictates function flow
-// const nextQuestion = (message) => {
-//   console.log('questionNumber', questionNumber)
 
-//   if (questionNumber === 1) {
-//     userAnswer(message)
-//     input.value = ''
-//     setTimeout(() => dayBooking(message), 1000)
-//   } else if (questionNumber === 2) {
-//     userAnswer(message)
-//     setTimeout(() => timeBooking(message), 1000)
-//   } else if (questionNumber === 3) {
-//     userAnswer(message)
-//     setTimeout(() => guestBooking(message), 1000)
-//   } else if (questionNumber === 4) {
-//     userAnswer(message)
-//     setTimeout(() => finaliseBooking(message), 1000)
-//   } else {
-//     userAnswer(message)
-//     setTimeout(thankYou, 1000)
-//   }
-// }
+const nextQuestion = (message) => {
+  console.log('questionNumber', questionNumber)
+
+  if (questionNumber === 1) {
+    userAnswer(message)
+    input.value = ''
+    setTimeout(() => dayBooking(message), 1000)
+  } else if (questionNumber === 2) {
+    userAnswer(message)
+    setTimeout(() => timeBooking(message), 1000)
+  } else if (questionNumber === 3) {
+    userAnswer(message)
+    setTimeout(() => guestBooking(message), 1000)
+  } else if (questionNumber === 4) {
+    userAnswer(message)
+    setTimeout(() => finaliseBooking(message), 1000)
+  } else {
+    userAnswer(message)
+    setTimeout(thankYou, 1000)
+  }
+}
 
 // First question
 const greeting = () => {
