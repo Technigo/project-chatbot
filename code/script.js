@@ -17,7 +17,6 @@ const userReply = (msg) => {
 let buttonText = "";
 let answers = {
   name: "",
-  day: "",
 };
 
 
@@ -52,7 +51,7 @@ if (questionCounter === 0) {    /* Set to 0, put 1 when popup*/
   friendlyBot(nameInput.value);
 
 } else if (questionCounter === 2) {
-    seekingAdvice();
+    setTimeout(seekingAdvice, 1000);
 
 } else if (questionCounter === 3) {
     soonMotivated();
@@ -61,11 +60,29 @@ if (questionCounter === 0) {    /* Set to 0, put 1 when popup*/
   firstQuote();
 
 } else if (questionCounter === 5) {
-  rYouHappy();
+setTimeout(rYouHappy, 2000);
 
 } else if (questionCounter === 6) {
   response();
-}
+
+} else if (questionCounter === 6) {
+  moreQuotes();
+
+} else if (questionCounter === 6) {
+  thirdQuote();
+
+} else if (questionCounter === 6) {
+  secondResponse();
+
+} else if (questionCounter === 6) {
+  lastQuote();
+
+} else if (questionCounter === 6) {
+  lastResponse();  
+
+} else {userReply(message)
+setTimeout(thankYou, 1000)}
+
 }
 const showBotMessage = (message) => {
   setTimeout(() => {
@@ -119,8 +136,8 @@ const botGreeting = () => {
   
 // QUESTION 2
 const friendlyBot = (message) => {
-  botReply(`Nice to meet you, ${message}! 
-  I would like to make your day even better! Is that ok ?`);
+  setTimeout(() => botReply(`Nice to meet you, ${message}! 
+  I would like to make your day even better! Is that ok ?`), 1000);
   }
 
 
@@ -128,18 +145,18 @@ const friendlyBot = (message) => {
 
 // QUESTION 3 - buttons 
  const seekingAdvice = () => {
-botReply('Do you need motivation or encouragement?');
+botReply('Do you need motivation or encouragement?')
 inputWrapper.innerHTML = `
 <button id="motivationBtn">Motivation of course!</button>
 <button id="encouragementBtn">Definately encourgement!</button>
 `
-
 document
 .getElementById('motivationBtn')
 .addEventListener('click', () => soonMotivated('Motivation'))
 document
 .getElementById('encouragementBtn')
 .addEventListener('click', () => soonMotivated('Encouragement'))
+ }
 
 
 
@@ -157,45 +174,99 @@ document.getElementById('motivationBtn').addEventListener('click', () => {
 */
 
 
-}
 
 //QUESTION 4
 const soonMotivated= (answer) => {
-  userReply(`${answer} please`);
-  firstQuote();
+  setTimeout(() => userReply(`${answer} please`), 1000);
+    firstQuote();
 }
 
 
 //Question 5   MÅSTE DUBBEKLICKA 4 FÖR ATT KUNNA KOMMA TILL 5 WHY?
 const firstQuote = (firstQuote) => { 
-  botReply(`Glaset är halvfullt`);
+  setTimeout(() => botReply(`So far you have survived 100% of your worst days!`), 1000);
   rYouHappy();
 }
 
  const rYouHappy = (youbetterbe) => {
-  userReply("......?")
   setTimeout(() => botReply (`Do you feel better now?`), 2000);
-
+  
   inputWrapper.innerHTML = `
-<button id="happyBtn" id="yes">Yes - Give me more! </button>
-<button id="sadBtn" id="no">No - let's stop!</button>
-`
-
-document
-.getElementById('happyBtn')
-.addEventListener('click', () => response('yes'))
-document
-.getElementById('sadBtn')
-.addEventListener('click', () => response('no'))
-
- }
+  <button id="happyBtn" id="yes">Yes - Give me more! </button>
+  <button id="sadBtn" id="no">No - let's stop!</button>
+  `
+  
+  document
+  .getElementById('happyBtn')
+  .addEventListener('click', () => response('yes'))
+  document
+  .getElementById('sadBtn')
+  .addEventListener('click', () => response('no'))
+  ;}
  
- // If sats här? 
+ 
 const response = (response) => {
-  userReply('it can not get worse?')
-  setTimeout(() => botReply('HAHA jo då'), 1000)
-}
 
+  if (response === 'yes'){
+    setTimeout(() => userReply ('Yes I need more!'), 1000);
+    setTimeout(() => botReply('OK, another one coming up...'), 2000);
+    moreQuotes();
+  }  else { setTimeout(() => userReply  ('No, that is it for today.'), 1000);
+  setTimeout(() => botReply ('Oh, I am sorry I could not cheer you up today. See you another time'), 1000);
+  inputWrapper.innerHTML = ``
+}
+  }
+
+const moreQuotes = () => {
+    setTimeout(() => botReply('Carpe diem'), 4000)
+    setTimeout(() => botReply('😉'), 4600)
+    setTimeout((thirdQuote), 5000);
+  }
+
+const thirdQuote = (thirdQuote) => {
+    setTimeout(() => botReply (`Do you need more?`), 1000);
+    
+    inputWrapper.innerHTML = `
+    <button id="nextQuote" id="yes">Yes! </button>
+    <button id="sadBtn" id="no">No - I'm good for now!</button>
+    `
+    document
+  .getElementById('nextQuote')
+  .addEventListener('click', () => secondResponse('yes2'))
+  document
+  .getElementById('sadBtn')
+  .addEventListener('click', () => secondResponse('no'))
+  ;}
+ 
+  const secondResponse = (secondResponse) => {
+
+    if (secondResponse === 'yes2'){
+      setTimeout(() => userReply ('Yes I need more!'), 1000);
+      setTimeout(() => botReply('The way to get started is to quit talking and begin doing'), 2000);
+      lastQuote();
+    }  else { setTimeout(() => userReply  ('No, that is it for today.'), 1000);
+    setTimeout(() => botReply ('Okidoki! See you another time'), 1000);
+    inputWrapper.innerHTML = ``
+  }
+    }
+
+    const lastQuote = (lastquote) => {
+      setTimeout(() => botReply (`Good things come in three, last one`), 1000);
+      
+      inputWrapper.innerHTML = `
+      <button id="lastQuote" id="yes">Give me</button>
+      `
+      document
+      .getElementById('lastQuote')
+      .addEventListener('click', () => lastResponse('Give me!'), 
+      userReply ('Yes!')); 
+    }
+
+    const lastResponse = () => {
+      setTimeout(() => botReply ('Whoever is happy will make others happy too'), 1000);
+      setTimeout(() => botReply ("And don't forget - CARPE DIEM"), 2000); 
+
+    }
 
   
   /* // Q4
@@ -235,6 +306,6 @@ questionGen()
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
  
-setTimeout(botGreeting, 100); /* Why do we need this?? */
+setTimeout(botGreeting, 1000); /* Why do we need this?? */
 
 
