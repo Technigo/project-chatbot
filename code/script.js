@@ -1,14 +1,15 @@
 
-// Variables that point to selected DOM elements
+// DOM elements
 const chat = document.getElementById('chat');
 let nameInput = document.getElementById("name-input");
 const inputWrapper = document.getElementById('input-wrapper');
 const sendBtn = document.getElementById('send');
 const form = document.getElementById('name-form')
 
-
+// Dictates question flow
 let questionNumber = 1
 
+// Dictates chat flow
 const botAnswer = (inputMessage) => {
   showMessage(inputMessage, 'bot')
 }
@@ -17,10 +18,7 @@ const userAnswer = (inputMessage) => {
   showMessage(inputMessage, 'user')
 }
 
-// If you need any global variables that you can use across different functions, declare them here:
-
-
-// Declare your functions after this comment
+// Start of functions
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -48,34 +46,33 @@ const showMessage = (message, sender) => {
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
 }
+// Dictates function flow
+// const nextQuestion = (message) => {
+//   console.log('questionNumber', questionNumber)
 
-const nextQuestion = (message) => {
-  console.log('questionNumber', questionNumber)
-
-  if (questionNumber === 1) {
-    userAnswer(message)
-    input.value = ''
-    setTimeout(() => dayBooking(message), 1000)
-  } else if (questionNumber === 2) {
-    userAnswer(message)
-    setTimeout(() => timeBooking(message), 1000)
-  } else if (questionNumber === 3) {
-    userAnswer(message)
-    setTimeout(() => guestBooking(message), 1000)
-  } else if (questionNumber === 4) {
-    userAnswer(message)
-    setTimeout(() => finaliseBooking(message), 1000)
-  } else {
-    userAnswer(message)
-    setTimeout(thankYou, 1000)
-  }
-}
+//   if (questionNumber === 1) {
+//     userAnswer(message)
+//     input.value = ''
+//     setTimeout(() => dayBooking(message), 1000)
+//   } else if (questionNumber === 2) {
+//     userAnswer(message)
+//     setTimeout(() => timeBooking(message), 1000)
+//   } else if (questionNumber === 3) {
+//     userAnswer(message)
+//     setTimeout(() => guestBooking(message), 1000)
+//   } else if (questionNumber === 4) {
+//     userAnswer(message)
+//     setTimeout(() => finaliseBooking(message), 1000)
+//   } else {
+//     userAnswer(message)
+//     setTimeout(thankYou, 1000)
+//   }
+// }
 
 // First question
 const greeting = () => {
   questionNumber = 1
-  showMessage("Hello there! In what name do you want to make the reservation?", 'bot');
-  
+  botAnswer(`Welcome! In what name do you want to make a reservation?`);
 }
 
 
@@ -92,7 +89,7 @@ form.addEventListener('submit', (event) => {
 
 const dayBooking = () => { 
   questionNumber++
-  showMessage("Which day would you like to book a table for?", 'bot');
+  showMessage("Which day would you like to visit us?", 'bot');
 
   inputWrapper.innerHTML = `
     <button id='fridayButton'>Friday</button>
@@ -116,7 +113,7 @@ const timeBooking = (type) => {
     <select id = 'select'>
       <option value='' selected disabled> Choose time </option>
       <option value='lunch'>Lunch</option>
-      <option value='dinner'>Dinner</option>
+      <option value='After Work'>After Work</option>
     </select> 
       `
   } 
@@ -124,8 +121,7 @@ const timeBooking = (type) => {
     inputWrapper.innerHTML=`
     <select id = 'select'>
       <option value='' selected disabled> Choose time </option>
-      <option value='breakfast'>Breakfast</option>
-      <option value='lunch'>Lunch</option>
+      <option value='Brunch'>Brunch</option>
       <option value='dinner'>Dinner</option>
       </select> 
       `
@@ -137,9 +133,9 @@ const timeBooking = (type) => {
 
 // fourth question 
 
-const guestBooking = () => { 
+const guestBooking = (time) => { 
   questionNumber++
-  showMessage("How many guests do you want to book for?", 'bot');
+  botAnswer(`How many guests will you be for ${time}?`);
 
 
 inputWrapper.innerHTML=`
@@ -161,11 +157,13 @@ select.addEventListener('change', () => nextQuestion(select.value))
 const finaliseBooking = (choice) => {
   select.remove();
   questionNumber++
-  
-  if (choice === '5') {
-    showMessage ("How lovely that you are so many that want to visit us. Please contact us at gm@fakemail.com for large bookings!", 'bot');
+
+  if (choice === '1') {
+    showMessage("Oh! We see you brought your best company, Yourself! We'll make sure you get the best table!", 'bot')
+  } else if (choice === '5') {
+    showMessage("We love a big crowd! Please contact us at gm@fakemail.com for large bookings!", 'bot')
   } else {
-    showMessage ("We look forward to your visit!", 'bot');
+    botAnswer("We look forward to your visit!", 'bot')
   }
   
   select.addEventListener('change', () => nextQuestion(inputValue))
