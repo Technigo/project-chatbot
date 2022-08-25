@@ -1,12 +1,11 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
-const inputWrapper = document.getElementById('input-wrapper')
-const nameInput = document.getElementById('name-input')
-const form = document.getElementById('name-form')
-const submit = document.getElementById('submit')
-const main = document.getElementById('main')
+const inputWrapper = document.getElementById('input-wrapper');
+const nameInput = document.getElementById('name-input');
+const form = document.getElementById('name-form');
+const submit = document.getElementById('submit');
+const main = document.getElementById('main');
 // If you need any global variables that you can use across different functions, declare them here:
-
 
 // Declare your functions after this comment
 
@@ -21,7 +20,7 @@ const showMessage = (message, sender) => {
         </div>
         <img src="assets/user.png" alt="User" />  
       </section>
-    `
+    `;
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
     console.log('showMessage', showMessage)
@@ -32,18 +31,19 @@ const showMessage = (message, sender) => {
           <p>${message}</p>
         </div>
       </section>
-    `
-  }
+    `;
+  };
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
-}
+};
 
 // Starts here
+//Question 1
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello! Intrested in donating money to charity? What's your name?", 'bot');
+  showMessage('Welcome! Let´s brighten someones day with flowers! Who would you like to send them too?', 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
-}
+};
 // Set up your eventlisteners here
 
 // When website loaded, chatbot asks first question.
@@ -57,67 +57,136 @@ const handleNameInput = document.getElementById('name-form').addEventListener('s
  const name = nameInput.value
   console.log(name)
  
- showMessage(`My name is ${name}.`, 'user')
+ showMessage(`I'd like to send some too ${name}.`, 'user')
   nameInput.value = ''
 
-  setTimeout(() => showCharityOptions(name), 2000)
-}
-)
+  setTimeout(() => showColorOptions(name), 2000)
+});
 
-//Bot-chat question two:
+//Question 2
 
-const showCharityOptions = (name) => {
-  showMessage(`Nice to meet you ${name}! Choose a charity below!`, 'bot')
+const showColorOptions = (name) => {
+  showMessage(`Thats so nice of you! Let's start by choosing a color ${name} would like!`, 'bot')
 
   inputWrapper.innerHTML = `
-<button id="unisefBtn">Unisef</button>
-<button id="amnistyBtn">Amnisty</button>
-<button id="brisBtn">Bris</button>
-`
+<button id="redBtn">Red</button>
+<button id="yellowBtn">Yellow</button>
+<button id="orangeBtn">Orange</button>
+`;
 
-document
-  .getElementById('unisefBtn')
-  .addEventListener('click', () => {
-    showMessage('I choose Unisef!', 'user') 
-  })
+document.getElementById('redBtn').addEventListener('click', () => {
+    inputWrapper.innerHTML = "";
+    setTimeout(() => showTypesOptions('Red'), 500)
+  });
 
-  document
-  .getElementById('amnistyBtn')
-  .addEventListener('click', () => {
-    showMessage('I choose Amnisty!', 'user') 
-  })
+  document.getElementById('yellowBtn').addEventListener('click', () => {
+    setTimeout(() => showTypesOptions('Yellow'), 500)
+  });
 
-  document
-  .getElementById('brisBtn')
-  .addEventListener('click', () => {
-    showMessage('I choose Bris!', 'user')
-  })
-
-  setTimeout(() => showAmountOptions(type), 2000)
+  document.getElementById('orangeBtn').addEventListener('click', () => {
+    setTimeout(() => showTypesOptions('Orange'), 500)
+  });
 } 
 
-//Här blir det något tokigt - vet inte vad exakt, men något måste nog
-//ändras för att trigga nästa text från bot:en och tror specificera "type"
-//på något sätt - så att det går att koppla med nästa fråga. 
-
-// Bot Q nr three
-
-const showAmountOptions = (type) => {
+// Question 3 
+// För att ja emoji vid alternativen kolla upp emojis ID
+//Listan måste stylas i CSS
+const showTypesOptions = (type) => {
   console.log(type) 
-    showMessage (`Great choice! What amount would you like to donate to ${type}`, 'bot')
-  //
-   // if (type === '') {
-    // inputWrapper.innerHTML = `
-    //<select id="select">
-      //<option value="" selected disabled>
-        //&#11088; Select an amount: </option>
-        //<option value="50kr">50kr</option>
-        //<option value="100kr">100kr</option>
-        //<option value="200kr">200kr</option>
-        //</select>
-        //`
-   //}
-}
+  showMessage(`I choose the color ${type}!`, 'user'); 
+
+    setTimeout(() => showMessage(`Great choice! Let's choose a type of ${type} flowers?`, 'bot'), 2000);
+  
+    setTimeout(() => {
+      if (type === 'Red') {
+        inputWrapper.innerHTML = `
+        <select id="select">
+          <option value="" selected disabled>Select a type: </option>
+          <option value="Rose">Rose</option>
+          <option value="Coronation">Coronation</option>
+          <option value="Daisies">Daisies</option>
+        </select>
+      `;
+      } else if (type === 'Yellow') {
+        inputWrapper.innerHTML = `
+        <select id="select">
+          <option value="" selected disabled>Select an type:</option>
+          <option value="Sunflower">Sunflower</option>
+          <option value="Daffodil">Daffodil</option>
+          <option value="Poppy">Poppy</option>
+        </select>
+      `;
+      } else {
+        inputWrapper.innerHTML = `
+        <select id="select">
+          <option value="" selected disabled>Select a type:</option>
+          <option value="Dahlia">Dhalia</option>
+          <option value="Tulip">Tulip</option>
+          <option value="Lily">Lily</option>
+        </select>
+      `;
+      }
+      const select = document.getElementById('select');
+      select.addEventListener('change', () => {
+        inputWrapper.innerHTML = "";
+        setTimeout(() => bouquetSize(select.value), 1000);
+      });
+    }, 2000);
+  };
+ 
+  // Question 4
+    const bouquetSize = (select) => {
+      showMessage(`My choice is ${select}!`, 'user');
+      setTimeout(() => showMessage(`Sweet! What size of bouquet for those ${select}?`, 'bot'), 2500);
+    
+      setTimeout(() => {
+        inputWrapper.innerHTML = `
+        <button id="small">Small</button>
+        <button id="medium">Medium</button>
+        <button id="large">Large</button>
+        `;
+    
+        document.getElementById('small').addEventListener('click', () => {
+          inputWrapper.innerHTML = "";
+          setTimeout(() => cardOption('Small'), 1000);
+        });
+        document.getElementById('medium').addEventListener('click', () => {
+          inputWrapper.innerHTML = "";
+          setTimeout(() => cardOption('Medium'), 1000);
+        });
+        document.getElementById('large').addEventListener('click', () => {
+          inputWrapper.innerHTML = "";
+          setTimeout(() => cardOption('Large'), 1000);
+        });
+      }, 2500);
+    };
+
+    //Question 5
+    const cardOption = (size) => {
+      showMessage(`I want a ${size}.`, 'user');
+      setTimeout(() => showMessage(`${size} it is! Let's choose a card.`), 2000);
+
+      setTimeout(() => {
+        inputWrapper.innerHTML = `
+        <button id="heart">heart</button>
+        <button id="star">Star</button>
+        `;
+        document.getElementById('heart').addEventListener('click', () => {
+          setTimeout(() => order('heart'), 1000);
+        });
+        document.getElementById('star').addEventListener('click', () => {
+          setTimeout(() => order('star'), 1000);
+          });
+      }, 2000);
+    };
+
+    //Question 6 
+    // Kanske att vi borde byta plats på fråga 5 och 6, så den om storlek triggar en sista fråga
+    // som summerar ordern, eller tar fram pris beroende på storlek (If else)
+    //Och så en ja och nej knapp om man vill lägga ordern - som vidare triggar ett Tack... 
+    // eller ett meddelande ang nej alt. att sidan resettar 
+    //för att summera ordern ska det finnas userFormInput. vid varje val (tror jag)
+
 
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
