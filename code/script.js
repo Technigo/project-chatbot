@@ -1,6 +1,20 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
+const nameForm = document.querySelector("#name-form")
+const main = document.querySelector("main")
+const beerOptions = document.querySelector("beer-options")
+const beerTypeOptions = document.querySelector("#beer-type")
+const lightBtn = document.querySelector("#light-btn")
+const darkBtn = document.querySelector("#dark-btn")
+const heinBtn = document.querySelector("#hein-btn")
+const carlBtn = document.querySelector("#carl-btn")
+const guinBtn = document.querySelector("#guin-btn")
+const bernBtn = document.querySelector("#bernbtn")
+const backToOptionsBtn = document.querySelector("#back-to-options-btn")
 
+const beers = ["Light", "Dark"]
+const lightBeer = ["Heineken", "Carlsberg"]
+const darkBeer = ["Guinness", "Bernard"]
 // If you need any global variables that you can use across different functions, declare them here:
 
 
@@ -39,6 +53,46 @@ const greeting = () => {
   showMessage("Hello there, What's your name?", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }
+
+const submitButton = document.querySelector(".send-btn")
+const inputField = document.querySelector("#name-input")
+submitButton.addEventListener("click", function(event) {
+  event.preventDefault();
+  nameUser = inputField.value;
+  showMessage(`hi ${nameUser}`, 'bot')
+})
+
+// If the user doesnt type name:
+let nameUser = null;
+
+nameForm.addEventListener("submit", (event) => {
+  event.preventDefault()
+  nameUser = document.querySelector("#name-input").value 
+  if (nameUser.length === 0 || nameUser === null) {
+    showMessage('Please tell us your name', "bot")
+  } else {
+    showMessage(nameUser, "user")
+    setTimeout(showTypes, 500)
+  }
+})
+
+// let isFirstTime = true
+
+// const showBeer = () => {
+//   nameForm.classList.add('hide')
+//   buttonOptions.classList.remove('active')
+//   beerOptions.classlist.add('active')
+//   if (isFirstTime) {
+//     showMessage(`Pleased to meet you ${nameUser}! what would you like to order?`, 'bot')  
+//   isFirstTime = false
+//   } else {
+//     showMessage (`Choose another type, please`, "bot")
+//     for (beer of beers) {
+//       main.classList.remove(beers)
+      
+//     }
+//   }
+// }
 
 // Set up your eventlisteners here
 
