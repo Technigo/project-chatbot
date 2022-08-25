@@ -12,14 +12,19 @@
       href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://kit.fontawesome.com/7c916fe5d2.js"
+      crossorigin="anonymous"
+    ></script>
 
     <title>Ice Cream Bot</title>
   </head>
 
   <body>
     <div class="wrapper">
-      <h1>Welcome to the Ice Cream Shop</h1>
-      <h2>Let me help you take your order</h2>
+      <img class="title" src="assets/logo.png" />
+      <!-- <h1>Welcome to the Ice Cream Shop</h1>
+      <h2>Let me help you take your order</h2> -->
       <main>
         <section class="chat" id="chat"></section>
         <div class="input-wrapper" id="input-wrapper">
@@ -34,13 +39,12 @@
             </div>
             <h3>Thank you!</h3>
             <p>Your order will soon be ready for pickup</p>
-            <!-- <button class="ok-btn">
-            <span>OK</span>
-          </button> -->
+
+            <button id="refresh-button">OK</button>
           </div>
         </div>
       </main>
-    </wrapper>
+    </div>
     <script src="./script.js"></script>
   </body>
 </html>

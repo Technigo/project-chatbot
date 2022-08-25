@@ -9,6 +9,19 @@ body {
   background: #efe2d0;
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  width: 450px;
+  max-width: 100%;
+  padding: 16px;
+}
+
 h1 {
   font-weight: bold;
   font-size: 44px;
@@ -46,13 +59,15 @@ input {
   font-weight: 600;
   line-height: 26px;
   flex: 1;
+  margin-bottom: 29px;
+  margin-left: 16px;
 }
 
 main {
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
-  height: 600px;
+  height: 530px;
   border-radius: 20px;
   background: #fff;
   padding-top: 0;
@@ -96,7 +111,7 @@ main {
   line-height: 26px;
   padding: 16px 24px;
   color: #475665;
-  max-width: 40%;
+  max-width: 260px;
 }
 
 .bot-bubble {
@@ -145,6 +160,14 @@ button:hover {
   color: #0026ff;
 }
 
+select#sprinkles {
+  font-family: Montserrat;
+  color: #ac5e44;
+  background: #efcd9d;
+  height: 60px;
+  border-radius: 10px;
+}
+
 .popup-overlay {
   position: absolute;
   background: #fafafac7;
@@ -168,11 +191,38 @@ button:hover {
   border-radius: 16px;
 }
 
+.check-cointaner {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+i.fas.fa-check {
+  background: #f7bfc5;
+  padding: 30px;
+  border-radius: 60px;
+  font-size: 30px;
+  color: white;
+  position: absolute;
+  top: calc(
+    -25px - 45px
+  ); /* 25px .popup-container padding top, 45=half height i.fa.fa-check */
+}
+
 h3 {
   color: #2a2622;
   font-family: "Lobster", cursive;
   font-size: 30px;
 }
 
-.checkbox {
+button#refresh-button {
+  margin-top: 50px;
+  background-color: #497879;
+}
+
+.loading {
+  color: tomato;
+  margin-top: 32px;
+  margin-left: 48px;
 }
