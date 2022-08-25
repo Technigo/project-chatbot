@@ -103,28 +103,84 @@ const watchMovie = () => {
         console.log("Sad :(")
         showMessage("I'm feeling sad today", "user")
         setTimeout (() => showMessage("I'm so sorry to   hear that you are not feeling good. Sometimes all you need is a good cry. I can help you get there.", "bot"), 1000)
-        setTimeout (() => inputWrapper.innerHTML=`
+        inputWrapper.innerHTML=`
           <label> Take a pick!
-            <select name="sad-movies">
-              <option value="titanic">Titanic</option>
-              <option value="ps-i-love-uou">PS I Love You</option>
-              <option value="brokeback-mountain">Brokeback Mountain</option>
+              <button id="titanic">Titanic</option>
+              <button id="theNotebook">The Notebook</option>
+              <button id="brokebackMountain">Brokeback Mountain</option>
             </select>
-          </label>`, 1000)
+          </label>`
+       
+          titanic.addEventListener('click', () => {
+            console.log("I'm sure this works too")
+            showMessage("i'll watch Titanic tonight!", 'user')
+            setTimeout (() => showMessage("Classic, maybe this time Jack will fit on the door!", 'bot'), 1000)
+            setTimeout (() => inputWrapper.innerHTML=`
+              <p>Thanks for using this bot!</p>
+              `, 1000)
+          })
+
+          theNotebook.addEventListener('click', () => {
+            console.log("I'm sure this works too")
+            showMessage("i'll watch The Notebook tonight!", 'user')
+            setTimeout (() => showMessage("Great choice, make sure to bring napkins!", 'bot'), 1000)
+            setTimeout (() => inputWrapper.innerHTML=`
+              <p>Thanks for using this bot!</p>
+              `, 1000)
+          })
+          
+          brokebackMountain.addEventListener('click', () => {
+            console.log("I'm sure this works too")
+            showMessage("i'll watch Brokeback Mountain tonight!", 'user')
+            setTimeout (() => showMessage("Nice one! One of my overall favorites!", 'bot'), 1000)
+            setTimeout (() => inputWrapper.innerHTML=`
+              <p>Thanks for using this bot!</p>
+              `, 1000)
+          })
+       
         })
     
       optAngry.addEventListener('click', () => {
         console.log("grrr!")
         showMessage("I'm feeling angry today", "user")
         setTimeout (() => showMessage("Oh dear, I can feel your anger through the screen. Perhaps one of these films could be a good fit for you?", "bot"), 1000)
-        setTimeout (() => inputWrapper.innerHTML=`
+        inputWrapper.innerHTML=`
           <label> Take a pick!
-            <select name="angry-movies">
-              <option value="anger-management">Anger Management</option>
-              <option value="terminator-2">Terminator 2: Judgement Day</option>
-              <option value="django-unchained">Django Unchained</option>
+              <button id="angerManagement">Anger Management</option>
+              <button id="terminator2">Terminator 2</option>
+              <button id="djangoUnchained">Django Unchained</option>
             </select>
-          </label>`, 1000)
+          </label>`
+       
+          angerManagement.addEventListener('click', () => {
+            console.log("I'm sure this works too")
+            showMessage("i'll watch Anger Management tonight!", 'user')
+            setTimeout (() => showMessage("Good one, sounds like it could be needed!", 'bot'), 1000)
+            setTimeout (() => inputWrapper.innerHTML=`
+              <p>Thanks for using this bot!</p>
+              `, 1000)
+          })
+
+          terminator2.addEventListener('click', () => {
+            console.log("I'm sure this works too")
+            showMessage("i'll watch Terminator 2 tonight!", 'user')
+            setTimeout (() => showMessage('Great choice. Hasta la vista, baby!', 'bot'), 1000)
+            setTimeout (() => inputWrapper.innerHTML=`
+              <p>Thanks for using this bot!</p>
+              `, 1000)
+          })
+          
+          djangoUnchained.addEventListener('click', () => {
+            console.log("I'm sure this works too")
+            showMessage("i'll watch Django Unchained tonight!", 'user')
+            setTimeout (() => showMessage("Good movie, one of Tarantinos best works!", 'bot'), 1000)
+            setTimeout (() => inputWrapper.innerHTML=`
+              <p>Thanks for using this bot!</p>
+              `, 1000)
+          })
+       
+       
+       
         })
     })
 
@@ -148,6 +204,14 @@ form.addEventListener('submit', (event) => {
   setTimeout (() => watchMovie(value, 'bot'), 2000)
 });
 
+
+const changeHTML = () => {
+  inputWrapper.innerHTML=` 
+    <button id="optHappy">😄</button>
+    <button id="optSad">😥</button>
+    <button id="optAngry">😡</button>
+  `
+}
 
 
 setTimeout(greeting, 1000)

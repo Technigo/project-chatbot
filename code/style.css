@@ -51,8 +51,8 @@ input {
 main {
   margin: 0 auto;
   width: 100%;
-  max-width: 700px;
-  height: 600px;
+  max-width: 900px;
+  height: 700px;
   border-radius: 30px;
   background: rgb(255, 254, 236);
   padding: 20px 24px;
@@ -117,11 +117,15 @@ main {
 .input-wrapper {
   display: flex;
   justify-content: center;
+  justify-items: center;
+  
 }
 
 .input-wrapper form {
   width: 100%;
   display: flex;
+  justify-content: center;
+  justify-items: center;
 }
 
 button {
@@ -137,6 +141,7 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  justify-content: center;
 }
 
 button:hover {
