@@ -79,7 +79,7 @@ const handleNameInput = (event) => {
   nameInput.value = ''
   setTimeout (() => showMessage(`Nice to meet you ${userName}!`, 'bot'), 1000 ) //shows the message "nice to meet you with the submitted name after one second".
   setTimeout(() => showMessage('What do you call a fish wearing a bowtie?', 'bot'), 2000) //Writes a second message with the joke.
-  setTimeout (() => handleJokeInput(userName), 2000) //Adds the input parameters that the user can choose from.
+  setTimeout (() => handleJokeInput(userName), 3500) //Adds the input parameters that the user can choose from.
 }
 
 nameForm.addEventListener('submit', handleNameInput) //Calls the handeNameInput when the user press the submit button.
@@ -97,7 +97,7 @@ const handleJokeInput = () => { //Function for the input parameters of first que
     inputWrapper.innerHTML = '' 
     setTimeout(() => joke1Answer(`Excellent choice! It's correct!`), 1000) //
     setTimeout(() => showMessage('Would you like to try a riddle now?', 'bot'), 2000) //
-    setTimeout (() => joke1AnswerCorrect(), 2000)
+    setTimeout (() => joke1AnswerCorrect(), 3500)
   })
 
   document
@@ -107,7 +107,7 @@ const handleJokeInput = () => { //Function for the input parameters of first que
     inputWrapper.innerHTML = '' 
     setTimeout(() => joke1Answer('Close, but no cigar'), 1000) 
     //setTimeout(() => showMessage('Do you want another one?', 'bot'), 2000) 
-    setTimeout (() => joke1AnswerWrong(), 2000)
+    setTimeout (() => joke1AnswerWrong(), 2500)
   })
 } 
 
@@ -126,6 +126,23 @@ const joke1AnswerCorrect = () => {
     <button id="Riddle">Yes, give me a riddle!</button>
     <button id="gimmieJoke">No, not done! Can I try another one?</button>
 `
+document
+  .getElementById('Riddle')
+  .addEventListener('click',() => { 
+    showMessage("Yes, give me a riddle!", 'user')
+    /*inputWrapper.innerHTML = `
+      <button id="aligatorRiddle1">An investigator</button>
+      <button id="Riddle1false">Crocodile Dundee</button>`*/
+  })
+
+  document
+  .getElementById('gimmieJoke')
+  .addEventListener('click',() => { 
+    showMessage("What do you call an alligator in a vest?", 'bot') 
+    inputWrapper.innerHTML = `
+      <button id="aligatorRiddle1">An investigator</button>
+      <button id="Riddle1false">Crocodile Dundee</button>`
+  })
 }
 const joke1AnswerWrong = () => { 
   inputWrapper.innerHTML = `
@@ -150,42 +167,6 @@ document
       <button id="Riddle1false">Crocodile Dundee</button>`
   })
 }
-
-const handleRiddle = () => { //Function for the input parameters of first question.
-  inputWrapper.innerHTML = `
-    <button id="aligatorRiddle1">An investigator</button>
-    <button id="Riddle1false">Crocodile Dundee</button>
-  `//adds two alternatives to choose from.
-} 
-
-const riddleAnswer = riddle1Choice => {
-  showMessage(`${riddle1Choice}`, 'bot')
-}
-
-//testing (but bot working)
-
-const handleAligator = () => { //Function for the input parameters of first question.
-  inputWrapper.innerHTML = `
-  <button id="aligatorRiddle1">An investigator</button>
-  <button id="Riddle1false">Crocodile Dundee</button>
-  `//adds two alternatives to choose from.
-  
-  document
-  .getElementById('Riddle')
-  .addEventListener('click',() => { //Calls the showMessage below when user press the joke1true button.
-    showMessage("Obv an investigator", 'user') //Writes the users answer in the chat
-    inputWrapper.innerHTML = '' 
-    setTimeout(() => byemsg(`Bye`), 1000) //
-  })
-
-  document
-  .getElementById('gimmieJoke')
-  .addEventListener('click',() => { //Calls the showMessage below when user press the joke2false button.
-    showMessage('Croc dundee', 'user') //Writes the users anwer in the chat
-    inputWrapper.innerHTML = '' 
-    setTimeout(() => byemsg('Bye'), 1000) 
-  })
-} 
 
 
 // Set up your eventlisteners here
