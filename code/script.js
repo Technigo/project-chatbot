@@ -208,7 +208,7 @@ const firstQuote = (firstQuote) => {
 const response = (response) => {
 
   if (response === 'yes'){
-    setTimeout(() => userReply ('Yes I need more!'), 1000);
+    setTimeout(() => userReply ('Yes, but I need more!'), 1000);
     setTimeout(() => botReply('OK, another one coming up...'), 2000);
     moreQuotes();
   }  else { setTimeout(() => userReply  ('No, that is it for today.'), 1000);
@@ -250,16 +250,18 @@ const thirdQuote = (thirdQuote) => {
   }
     }
 
+
+
+
     const lastQuote = (lastquote) => {
-      setTimeout(() => botReply (`Good things come in three, last one`), 1000);
+      setTimeout(() => botReply (`Good things come in three, last one`), 4000);
       
       inputWrapper.innerHTML = `
       <button id="lastQuote" id="yes">Give me</button>
       `
       document
       .getElementById('lastQuote')
-      .addEventListener('click', () => lastResponse('Give me!'), 
-      userReply ('Yes!')); 
+      .addEventListener('click', () => lastResponse('Give me!')); 
     }
 
     const lastResponse = () => {
