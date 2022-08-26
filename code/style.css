@@ -9,7 +9,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
-  background-image: url("/project-chatbot/images/background-picture.jpg");
+  background-image: url("background-picture.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
