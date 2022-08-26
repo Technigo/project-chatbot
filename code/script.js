@@ -4,10 +4,6 @@ const inputWrapper = document.getElementById('input-wrapper')
 const nameForm = document.getElementById('name-form')
 const nameInput = document.getElementById('input')
 
-// If you need any global variables that you can use across different functions, declare them here:
-
-/*let questionNumber = 1*/
-
 const botReply = (msg) => {
   showMessage(msg, 'bot')
 }
@@ -15,8 +11,6 @@ const botReply = (msg) => {
 const userReply = (msg) => {
   showMessage(msg, 'user')
 }
-
-// Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -49,7 +43,6 @@ const showMessage = (message, sender) => {
 }
 // Starts here
 const greeting = () => {
-  /*questionNumber = 1*/
   botReply(`Hi 👋 ! Tell me your name and I will give you a joke!`, 'bot');
 }
 
@@ -81,7 +74,7 @@ const handleJokeInput = () => { //Function for the input parameters of first que
     inputWrapper.innerHTML = '' 
     setTimeout(() => joke1Answer(`Excellent choice! It's correct!`), 1000) //
     setTimeout(() => showMessage('Would you like to try a riddle now?', 'bot'), 2000) //
-    setTimeout (() => joke1AnswerCorrect(), 3500)
+    setTimeout (() => joke1AnswerCorrect(), 2500)
   })
 
   document
@@ -115,7 +108,7 @@ document
   .addEventListener('click',() => { 
     showMessage("Yes, give me a riddle!", 'user')
     setTimeout(() => showMessage("Ok! What do you call an alligator in a vest? 🐊 ", 'bot'), 1000) 
-    inputWrapper.innerHTML =
+    inputWrapper.innerHTML = ''
     setTimeout(() => riddleAligator(), 2500);
   })
 
@@ -124,7 +117,7 @@ document
   .addEventListener('click',() => { 
     showMessage("No, not done! Can I try another one?", 'user')
     setTimeout(() => showMessage("Ok! What do you call an alligator in a vest? 🐊 ", 'bot'), 1500) 
-    inputWrapper.innerHTML =
+    inputWrapper.innerHTML = ''
     setTimeout (() => riddleAligator(), 2500)
   })
 }
@@ -138,8 +131,8 @@ document
   .getElementById('gimmeRiddle1')
   .addEventListener('click',() => { 
     showMessage("Dammit! Give me a riddle!", 'user')
-    setTimeout(() => showMessage("What do you call an alligator in a vest? 🐊 ", 'bot'), 1500)
-    inputWrapper.innerHTML =
+    setTimeout(() => showMessage("What do you call an alligator in a vest? 🐊 ", 'bot'), 1000)
+    inputWrapper.innerHTML = ''
     setTimeout (() => riddleAligator(), 2500)
   })
 
@@ -147,8 +140,8 @@ document
   .getElementById('gimmieAnotherChance')
   .addEventListener('click',() => { 
     showMessage("Give me another chance!", 'user')
-    setTimeout(() => showMessage("What do you call an alligator in a vest? 🐊 ", 'bot'), 1500)
-    inputWrapper.innerHTML =
+    setTimeout(() => showMessage("What do you call an alligator in a vest? 🐊 ", 'bot'), 1000)
+    inputWrapper.innerHTML = ''
     setTimeout (() => riddleAligator(), 2500)
   })
 }
@@ -162,7 +155,7 @@ document
 .getElementById('aligatorRiddle1')
 .addEventListener('click',() => {
   showMessage("An investigator!", 'user')
-  setTimeout (() => showMessage("Yes that's correct and all for today. See you later alligator!", 'bot'), 1500)
+  setTimeout (() => showMessage("Yes that's correct and all for today. See you later alligator!", 'bot'), 800)
   inputWrapper.innerHTML = ''
   })
 
@@ -171,16 +164,7 @@ document
 .getElementById('Riddle1false')
 .addEventListener('click',() => {
   showMessage("Crocodile Dundee?", 'user')
-  setTimeout (() => showMessage("That's wrong, better luck next time. See you later alligator!", 'bot'), 1500)
+  setTimeout (() => showMessage("That's wrong, better luck next time. See you later alligator!", 'bot'), 800)
   inputWrapper.innerHTML = ''
   })
 }
-
-// Set up your eventlisteners here
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
