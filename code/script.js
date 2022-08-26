@@ -1,9 +1,10 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
-
+const inputwrapper = document.getElementById("input-wrapper");
+const bodybuttons = document.getElementById("bodybuttons");
+const nameform = document.getElementById("name-form");
+const nameinput = document.getElementById("name-input");
 // If you need any global variables that you can use across different functions, declare them here:
-let userName = ""
-
 
 // Declare your functions after this comment
 
@@ -52,11 +53,18 @@ submitButton.addEventListener('click', function(event) {
 })
 
 
-//Fråga två med Tre alternativ, "har du problem med huvudvärk, halsont, ångest"
+//Svar: "Hej...., vad har du problem med?: knappar för huvudvärk, halsont, ångest
 submitButton.addEventListener('click', function(event) {
   event.preventDefault();
-showMessage(`Hello ${name} what do you have problems with?`, 'bot');
+showMessage(`Nice to meet you ${name}, what do you have problems with?`, 'bot');
+bodybuttons.innerHTML= `
+        <button id="headache" type="submit" class="bodybuttons"> Headache </button>
+        <button id="anxiety" type="submit" class="bodybuttons"> Anxiety </button>
+        <button id="broken-arm" type="submit" class="bodyscan"> Broken arm </button>
+        `
+        
 })
+
 
 // Set up your eventlisteners here
 
@@ -74,4 +82,3 @@ chat.onsubmit = ()=> {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000);
-

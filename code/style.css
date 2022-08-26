@@ -119,6 +119,17 @@ main {
   display: flex;
 }
 
+.bodybuttons {
+  background-color: aquamarine;
+  display: flex;
+  justify-content: center;
+}
+
+.bodybuttons form {
+  width: 100%;
+  display: flex;
+}
+
 button {
   background-color: #0026ff;
   color: white;
