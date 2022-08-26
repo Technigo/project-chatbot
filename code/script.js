@@ -44,7 +44,6 @@ const showMessage = (message, sender) => {
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hi Friend, What's your name?", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
 
 // User: Replies with name
@@ -103,6 +102,7 @@ const askForGenre = () => {
         showMessage(`Okay, then I would suggest this: <a href="https://www.imdb.com/title/tt4786824/">The Crown</a>`, 'bot');
         setTimeout(() => showMessage('Are you happy with my suggestion?', 'bot'), 2000);
         askForLastUserAnswer() //call next function with a parameter for no
+      
       })
     document
       .getElementById('thriller')
@@ -111,6 +111,7 @@ const askForGenre = () => {
         showMessage(`Okay, then I would suggest this: <a href="https://www.imdb.com/title/tt10574558/">Midnight Mass</a>`, 'bot')
         setTimeout(() => showMessage('Are you happy with my suggestion?', 'bot'), 2000);
         askForLastUserAnswer()
+      
       })
 
       document
@@ -120,6 +121,7 @@ const askForGenre = () => {
         showMessage(`Okay, then I would suggest this: <a href="https://www.imdb.com/title/tt10062292/?ref_=fn_al_tt_1">Never Have I Ever</a>`, 'bot')
         setTimeout(() => showMessage('Are you happy with my suggestion?', 'bot'), 2000)
         askForLastUserAnswer()
+      
       })
 
      
@@ -134,17 +136,19 @@ const askForGenre = () => {
     .getElementById('yesBtn')
     .addEventListener('click', () => {
       showMessage('Yes', 'user');
-      showMessage('Great! I hope you enjoy it! Have a great day/evening!', 'bot');
-      
+      showMessage('Great! I hope you enjoy it!', 'bot');
+    yesBtn.remove();
+    noBtn.remove();
    
     })
 
     document
-      .getElementById('noBtn')
-      .addEventListener('click', () => {
-        showMessage('No thank you, goodbye', 'user')
-        showMessage('Oh no! I’m so sorry to hear that! This was unfortunately the best I could come up with. You can check our blog post with 10 best series in Netflix here ....', 'bot')
-       
+    .getElementById('noBtn')
+    .addEventListener('click', () => {
+      showMessage('No', 'user')
+      showMessage('Oh no! I’m so sorry to hear that! This was unfortunately the best I could come up with. You can check our blog post with 10 best series in Netflix here ....', 'bot')
+    yesBtn.remove();
+    noBtn.remove();
     }) 
       
     }
