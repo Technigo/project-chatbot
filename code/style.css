@@ -6,14 +6,14 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: hwb(172 1% 2%);
+  background: hwb(172 70% 0%);
 }
 
 h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: rgb(38, 203, 57);
+  color: #00A38D;
   text-align: center;
 }
 
@@ -21,7 +21,7 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: rgb(38, 203, 57);
+  color: #00A38D;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -36,9 +36,9 @@ p {
 input {
   box-sizing: border-box;
   border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e0ede1;
-  color: rgb(38, 203, 57);
+  border-radius: 30px;
+  background: #d5fff9;
+  color: #00A38D;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -90,17 +90,17 @@ main {
 }
 
 .bubble {
-  background: #e0ede1;
+  background: #d5fff9;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: rgb(38, 203, 57);
+  color: #00A38D;
   max-width: 40%;
 }
 
 .bot-bubble {
-  border-radius: 0px 26px 26px 26px;
+  border-radius: 0px 30px 30px 30px;
   margin-left: 8px;
 }
 
@@ -122,12 +122,12 @@ main {
 }
 
 button {
-  background-color: rgb(38, 203, 57);
-  color: white;
+  background-color: #00A38D;
+  color: #d5fff9;
   border: none;
-  border-radius: 4px;
+  border-radius: 30px;
   padding: 16px 40px;
-  margin-right: 4px;
+  margin: 0 4px 0 10px;
   font-size: 16px;
   line-height: 26px;
   font-family: 'Montserrat';
