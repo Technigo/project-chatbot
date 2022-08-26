@@ -1,6 +1,7 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 const inputWrapper = document.querySelector(".input-wrapper");
+const entireScreen = document.querySelector("#body-id");
 
 // If you need any global variables that you can use across different functions, declare them here:
 let heroName;
@@ -281,17 +282,10 @@ const pathChoice = () => {
 }))
 }
 
-// GAME OVER FUNCTION
-const gameOver = () => {
-  location.reload();
-}
-
 //function to create continue button 
 const continueButtonClick = () => {
   inputWrapper.innerHTML = `<button class="continue-button" id="continue-btn">Continue</button>`
 }
-
-// Function to choose way to face the dragon!
 
 const botIntersection2 = () => {
   showMessage(`Your legs are tired but your will is strong. You can see the Villain castle in the distance. 
@@ -301,151 +295,177 @@ const botIntersection2 = () => {
   methodChoice();
 }
 
-  const methodChoice = () => {
-    inputWrapper.innerHTML = `
+// Function to choose way to face the dragon!
+const methodChoice = () => {
+  inputWrapper.innerHTML = `
     <button class="method-button" id="soothe">Soothe</button>
     <button class="method-button" id="strike">Strike</button>
     <button class="method-button" id="sneak">Sneak past</button>
-    `;
-  
-    let pathSelect = document.querySelectorAll(".method-button");
-    pathSelect.forEach(button => button.addEventListener("click", function (event) {
-      event.preventDefault();
-      console.log(this.id)
-      inputWrapper.innerHTML = "";
-      showMessage(`Ooo, I will try to ${this.innerHTML} the dragon!`, "user");
-     
-  
+  `;
+
+  let pathSelect = document.querySelectorAll(".method-button");
+  pathSelect.forEach(button => button.addEventListener("click", function (event) {
+    event.preventDefault();
+    console.log(this.id)
+    inputWrapper.innerHTML = "";
+    showMessage(`Ooo, I will try to ${this.innerHTML} the dragon!`, "user");
   
   // These are if-statment within an if-statement. Depending on which path the Hero chooses and what it has in it's backpack/inventory different conditions are triggered. 
   // For one road, one item is perfect, one item makes you loose 1 hp, the rest will give game over.
-      if (this.id === "soothe") {
-        console.log("soothe")
-              if (heroInventory.includes("guitar")) {
-                console.log("Perfect") 
-                setTimeout( () => {
-                  showMessage(`As you aproach the castle you pull out the guitar from your inventory and start plocking the notes of your favourite lullaby. 
-                  The dragon is soon sound asleep and yo can safely walk in to the castle.`,`bot`);   
-                  setTimeout( () => {showMessage(`🥳`,`user`)}, 1000);
-                }, 1500);
-              setTimeout(conclusion, 7000);
+    if (this.id === "soothe") {
+            console.log("soothe")
+            if (heroInventory.includes("guitar")) {
+              console.log("Perfect") 
+              setTimeout( () => {
+                showMessage(`As you aproach the castle you pull out the guitar from your inventory and start plocking the notes of your favourite lullaby. 
+                The dragon is soon sound asleep and yo can safely walk in to the castle.`,`bot`);   
+                setTimeout( () => {showMessage(`🥳`,`user`)}, 1000);
+              }, 1500);
+            setTimeout(conclusion, 7000);
             }
-              
-  
-              else if (heroInventory.includes("meat")) {
-                console.log("Loose 1hp")
-                setTimeout( () => { showMessage(`You approah carefully but the dragon spots you and throws you to the ground with a wag of its tail. 
+            
+
+            else if (heroInventory.includes("meat")) {
+              console.log("Loose 1hp")
+              setTimeout( () => { 
+                showMessage(`You approah carefully but the dragon spots you and throws you to the ground with a wag of its tail. 
                 As you fall you backpack is caught on a branch and it tears your bag in two. As the dragon moves closer, only inches away from you, 
                 it picks up the scent of the piece of meat that has fallen out of your severed backpack. As the dragon feasts on your Koebe beef, 
                 you manage to limp into the caslte. Lose one HP.`,`bot`); 
                 heroHp = (heroHp -1);
                 console.log(heroHp);
                 setTimeout( () => {showMessage(`❤️‍🩹😭`,`user`)}, 1000);
+                if (heroHp === 0) {
+                  setTimeout(deathBy0Hp, 5000) //to make deathBy0Hp function run if hp is 0, otherwise run conclusion function. 🅰️ När if/esle-statmentet ligger i setTimeout från rad 334 så funkar det
+                }
+                else {
+                  setTimeout(conclusion, 7000);
+                }
               }, 1500);
-              //to make deathBy0Hp function run if hp is 0, otherwise run conclusion function
-                  if (heroHp === 0) {
-                    setTimeout(deathBy0Hp, 5000)
-                  }
-                  else {
-                    setTimeout(conclusion, 7000);
-                  }
-              }
-  
-              else {
-                console.log("GAME OVER")
-                setTimeout( () => { showMessage(`You put to much trust in your ablility to calm others down. Not reflecting over the fact that soothing a dragon is different 
-                from soothing your angry drunken friends at the tavern back home. The dragon scuffs as your attemt, burning you to a crisp. The dragon swallows you whole. You die. GAME OVER.`,`bot`); 
-                }, 1500);
-                //setTimeout(gameOver, 8000);
-              }
-  
-  
-  
-     } else if (this.id === "strike") {
-              console.log("strike")
-              if (heroInventory.includes("sword")) {
-                console.log("Perfect") 
-                setTimeout( () => { showMessage(`You pull out your sword, thanking your self for every hour you spent watching Game of Thrones. 
+            }
+                
+            else {
+              console.log("GAME OVER")
+              setTimeout( () => { 
+                showMessage(`You put to much trust in your ablility to calm others down. Not reflecting over the fact that soothing a dragon is different 
+                from soothing your angry drunken friends at the tavern back home. The dragon scuffs as your attemt, burning you to a crisp. The dragon swallows you whole. 
+                You die. GAME OVER.`,`bot`); 
+              }, 1500);
+              //setTimeout(gameOver, 8000);
+            }
+
+    } else if (this.id === "strike") {
+            console.log("strike")
+            if (heroInventory.includes("sword")) {
+              console.log("Perfect") 
+              setTimeout( () => { 
+                showMessage(`You pull out your sword, thanking your self for every hour you spent watching Game of Thrones. 
                 You duck, roll and thrust your sword in the dragons heart. As the dragon takes its' last breath, you press on into the castle.`,`bot`);   
                 setTimeout( () => {showMessage(`🥳`,`user`)}, 1000);
               }, 1500);
-              
+              setTimeout(conclusion, 7000);
             }
-  
-              else if (heroInventory.includes("shield")) {
-                console.log("Loose 1hp")
-                setTimeout( () => {showMessage(`The dragon charges at you and you manage to put up your shield in the last second. 
+
+            else if (heroInventory.includes("shield")) {
+              console.log("Loose 1hp")
+              setTimeout( () => {
+                showMessage(`The dragon charges at you and you manage to put up your shield in the last second. 
                 You block most of the attack but the back of the shield hits you in the forehead, giving you a concussion. As the dragon has a hard time 
                 stopping on the roads rolling gravel, you have enough time to slip into hte castle, very dizzy but alive. Lose one Hp.`,`bot`);
                 heroHp = (heroHp -1);
                 console.log(heroHp); 
                 setTimeout( () => {showMessage(`❤️‍🩹😭`,`user`)}, 1000);
+                //to make deathBy0Hp function run if hp is 0, otherwise run conclusion function
+                if (heroHp === 0) {
+                  setTimeout(deathBy0Hp, 5000)
+                }
+                else {
+                  setTimeout(conclusion, 7000);
+                }
               }, 1500);
-                  //to make deathBy0Hp function run if hp is 0, otherwise run conclusion function
-                  if (heroHp === 0) {
-                    setTimeout(deathBy0Hp, 5000)
-                  }
-                  else {
-                    setTimeout(conclusion, 7000);
-                  }
-                
-              }
-              
-              else {
-                console.log("GAME OVER")
-                setTimeout( () => { showMessage(`Spending all that time at your local gym you are feeling invincible. You pound a fist at your chest and taunts the dragon; 
+            }
+            
+            else {
+              console.log("GAME OVER")
+              setTimeout( () => { 
+                showMessage(`Spending all that time at your local gym you are feeling invincible. You pound a fist at your chest and taunts the dragon; 
                 “Come at me, bro!”. The dragon makes a violent sweep with its massive tail and as it hits you. Your spine snaps like a dry twig. You die! GAME OVER`,`bot`); 
               }, 1500);
               //setTimeout(gameOver, 10000);
             }
-  
-      } else {
-            console.log("sneak")
-            
-            if (heroInventory.includes("invicibility-cloak")) {
-              console.log("Perfect") 
-              setTimeout( () => {
+
+    } else {
+          console.log("sneak")
+          
+          if (heroInventory.includes("invicibility-cloak")) {
+            console.log("Perfect") 
+            setTimeout( () => {
               showMessage(`You put on your invicibility cloak in good time and carefully, as quietly as you possibly can, sneek past the dragon. 
               You whisper a silent prayer for the hinges to be oiled as you softly opens the castle doors. Unnoticed you close the door behind you as you enter the castle.`,`bot`);   
               setTimeout( () => {showMessage(`🥳`,`user`)}, 1000);
             }, 1500);
-              setTimeout(conclusion, 7000);
-            }
-            else if (heroInventory.includes("moccasin")) {
-              console.log("Loose 1hp")
-              setTimeout( () => {
-                showMessage(`Slipping in to your moccasins you approach the castle in silence. You cant belive how comfortable they are 
-                and think you'll start to wear them all the time after this. Amazed by your silent footware you forget the dragon can still see you. 
-                It does and it beathes out a scorching flame that hits your shoulder and sets the grass on fire. 
-                You manage to stumble into the castle through a cloud of smoke, hurting, choughing, but breathing. Lose one Hp.`,`bot`); 
-                setTimeout( () => {showMessage(`❤️‍🩹😭`,`user`)}, 1000);
-                heroHp = (heroHp -1);
-                console.log(heroHp);
-                  //to make deathBy0Hp function run if hp is 0, otherwise run conclusion function
-                  if (heroHp === 0) {
-                    setTimeout(deathBy0Hp, 5000)
-                  }
-                  else {
-                    setTimeout(conclusion, 7000);
-                  }
-
-              }, 1500);
-            
-            }
-            else {
-              console.log("GAME OVER")
-              setTimeout( () => {
-              showMessage(`As you approach as stealthy as you possibly can, you begin to wish that you attended a few more yoga classes. As you try to jump over a small pit you clumsliy fall. Finding no way up you realise this pit and the stars in the night sky above is the last thing you will see. Eventually, you die! GAME OVER.  `,`bot`); 
+            setTimeout(conclusion, 7000);
+          }
+          else if (heroInventory.includes("moccasin")) {
+            console.log("Loose 1hp")
+            setTimeout( () => {
+              showMessage(`Slipping in to your moccasins you approach the castle in silence. You cant belive how comfortable they are 
+              and think you'll start to wear them all the time after this. Amazed by your silent footware you forget the dragon can still see you. 
+              It does and it beathes out a scorching flame that hits your shoulder and sets the grass on fire. 
+              You manage to stumble into the castle through a cloud of smoke, hurting, choughing, but breathing. Lose one Hp.`,`bot`); 
+              setTimeout( () => {showMessage(`❤️‍🩹😭`,`user`)}, 1000);
+              heroHp = (heroHp -1);
+              console.log(heroHp);
+              //to make deathBy0Hp function run if hp is 0, otherwise run conclusion function
+              if (heroHp === 0) {
+                setTimeout(deathBy0Hp, 5000)
+              }
+              else {
+                setTimeout(conclusion, 7000);
+              }
+            }, 1500);
+          }
+          else {
+            console.log("GAME OVER")
+            setTimeout( () => {
+            showMessage(`As you approach as stealthy as you possibly can, you begin to wish that you attended a few more yoga classes. As you try to jump over a small pit you clumsliy fall. Finding no way up you realise this pit and the stars in the night sky above is the last thing you will see. Eventually, you die! GAME OVER.  `,`bot`); 
             }, 1500);
             //setTimeout(gameOver, 8000);
-         }
-      } 
+          }
+    } 
   }))
   }
-
+// Har lagt in det vi pratade om med val för att ta valp eller skatt
 const conclusion = () => {
-  showMessage(`As you enter the main hallway of the castle an adorable puppy with golden fur and flopping ears come to greet you. 
-  As you look into its eyes you feel that all the hardships you encountered on your road was worth it. You and the puppy head out to the garden where you see a helicopter`,`bot`)
+  showMessage(`As you enter the main hallway of the castle an adorable puppy with golden fur and flopping ears come to greet you. You also see a marvelous treasure. 
+  What will you take with you?`, "bot");
+
+  inputWrapper.innerHTML = `
+    <button class="price-button" id="puppy-button">Adorable puppy</button>
+    <button class="price-button" id="treasure-button">Marvelous treasure</button>
+    `;
+  
+    let pathSelect = document.querySelectorAll(".price-button");
+    pathSelect.forEach(button => button.addEventListener("click", function (event) {
+      event.preventDefault();
+      console.log(this.id)
+      inputWrapper.innerHTML = "";
+      if (this.id === "puppy-button") {
+        showMessage(`I will rescue this ${this.innerHTML}, of course!`, "user");
+        setTimeout(finalScene, 2000)
+      }
+      else {
+        showMessage(`I will take this ${this.innerHTML}!`, "user");
+        setTimeout(showMessage(`You chose the ${this.innerHTML} over the Adorable puppy? ${heroName}, you are a horrible, greedy person. GAME OVER`, "user"));
+        setTimeout(gameOver, 2000);
+      }
+    }))
+}
+
+  const finalScene = () => {
+    showMessage("As you look into the puppys' eyes you feel that all the hardships you encountered on your road was worth it.", "bot") 
+    setTimeout(showMessage("You and the puppy head out to the garden where you see a helicopter. You both get in and fly away to safety","bot"), 3000)
+    setTimeout(endScreen, 5000)
 }
 
 const deathBy0Hp = () => {
@@ -453,4 +473,32 @@ const deathBy0Hp = () => {
     showMessage(`You have no more hp. You die`, 'bot');
     gameOver();
   }
+}
+//här kan vi lägga in en end screen 
+const endScreen = () => {
+  entireScreen.innerHTML=`
+  <div class="end-content-wrapper">
+    <h1>Victory!<h1>
+    <p>You rescued the puppy from the evil oppressor! Now you and the puppy can enjoy a well deserved rest! Mission accomplished!</p>
+    <div>
+      <iframe src="https://giphy.com/embed/LRZZJtvKUb6pBASWSH" class="giphy-embed" allowFullScreen></iframe>
+      <p><a href="https://giphy.com/gifs/hawaii-maui-kauai-LRZZJtvKUb6pBASWSH">via GIPHY</a></p>
+    </div>
+  </div>
+  `
+}
+
+// GAME OVER FUNCTION - Förslag: vi gör en stor text där det står game over som kommer upp över hela skärmen
+const gameOver = () => {
+  entireScreen.innerHTML = `
+  <div class="gameover-wrapper">
+    <h1 class="game-over">GAME OVER</h1>
+    <button class="retry-btn">Try again</button>
+  </div>
+  `
+  let retryButton = document.querySelector(".retry-btn");
+  retryButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    location.reload();
+  })
 }

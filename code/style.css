@@ -139,13 +139,29 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-.hidden-wrapper {
-  display: none;
-}
-
-.visible-wrapper {
+.gameover-wrapper {
+  background-color: #000;
+  height: 100vh;
+  width: 100%;
   display: flex;
-  justify-content: space-around;
-
+  justify-content: center;
+  align-items: center;
+  opacity: 90%;
+  flex-direction: column;
 }
 
+.retry-btn {
+  background-color: red;
+}
+
+.giphy-embed {
+ 
+  height:50vh;
+  border: 0;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+ 
