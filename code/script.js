@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
   */
 
   const greeting = () => {
-    showMessage("Hello SUN, want some pizza?", 'bot');
+    showMessage("Hello Sunshine, want some pizza?", 'bot');
   }
   setTimeout(greeting, 1000);
 
