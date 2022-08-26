@@ -1,29 +1,14 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
-const nameInput = document.getElementById('name-input');
-const form = document.getElementById('name-form');
 const inputWrapper = document.getElementById('input-wrapper');
-const submitBtn = document.getElementsByClassName('send-btn')
-let question = 0;
 
 // If you need any global variables that you can use across different functions, declare them here:
-
-/*const select = () => {
-  document.getElementsByClassName('.select').addEventListener('change', () => showMessage(select.value, 'user'));
-  console.log('test')
-}*/
+let question = 0;
 
 // Declare your functions after this comment
-  const handleNameInput = (event) => {
-    event.preventDefault()
-    console.log("test")
-    const name = nameInput.value
-    showMessage(`Your appointment is booked. We will send you a confirmation at ${name}`, 'bot')
-    nameInput.value = ''
-  }
-  
+
   const getEmail = () => {
-    showMessage('Enter your details below', 'bot');
+    showMessage('Enter your email below', 'bot');
     inputWrapper.innerHTML = 
     `
     <form id="name-form">
@@ -34,11 +19,15 @@ let question = 0;
           </button>
     </form>
     `
-    submitBtn.addEventListener('click', (event) => {
-      // event.preventDefault()
-      console.log("test")
-      const name = nameInput.value
-      setTimeout(() => showMessage(`Your appointment is booked. We will send you a confirmation at ${name}`, 'bot'), 1000) ;
+    question++;
+
+    document.getElementById('name-form').addEventListener('submit', (event) => {
+      event.preventDefault()
+      const nameInput = document.getElementById('name-input');
+      const email = nameInput.value
+      setTimeout(() => showMessage (`${email}`, 'user'))
+      setTimeout(() => showMessage(`Your appointment is booked. We will send you a confirmation at <em>${email}</em>`, 'bot'), 1000) ;
+      setTimeout(() => nextQuestion(), 2000);
       nameInput.value = ''
   
   })
@@ -51,7 +40,7 @@ let question = 0;
     <button id="wedding">Need a last minute wedding-do!</button>`
   
     document.getElementById("bleached")
-    .addEventListener('click', () => setTimeout(() => showBleachedOptions(), 1000));  //nextQuestion('bleached'));
+    .addEventListener('click', () => setTimeout(() => showBleachedOptions(), 1000));  
     document.getElementById("bald")
     .addEventListener('click', () => setTimeout(() => showBaldOptions(), 1000)); 
     document.getElementById("wedding")
@@ -60,7 +49,7 @@ let question = 0;
 
   const showBleachedOptions = () => {
     showMessage("Accidentally bleached my hair!", 'user');
-    setTimeout(()=> (showMessage("Oh no! 😱 What can we do for you?", 'bot'), 3000));
+    setTimeout(()=> showMessage("Oh no! 😱 What can we do for you?", 'bot'), 2000);
     inputWrapper.innerHTML = `
     <select id="select" class="select">
         <option value="" selected disabled>Select your fix</option>
@@ -68,26 +57,19 @@ let question = 0;
         <option value="Cut it off">Cut it off</option>
     </select>
     `
-    // select();
-    //const select =
     question++; 
     document.getElementById('select').addEventListener('change', () => setTimeout(() => showMessage(select.value, 'user'), nextQuestion()));
-    
- 
-    // HOW TO EMPTY INPUTWRAPPER?
-      
-    console.log("question number", question);
   }
 
   const showBaldOptions = () => {
     showMessage("I woke up bald!", 'user');
     const wig = `<a href=https://www.wig.se/>wig.se</a>`
-    setTimeout(showMessage(`Sorry we cant help you 🤷‍♀️. Perhaps you can get help at ${wig}`, 'bot'), 3000);
+    setTimeout(showMessage(`Sorry we cant help you 🤷‍♀️. Perhaps you can get help at ${wig}`, 'bot'), 2000);
   }
 
   const showWeddingOptions = () => {
     showMessage("Need a last minute wedding-do!", 'user');
-    setTimeout(() => showMessage(`Oh how wonderful! Which hairdo would like?`, 'bot'), 3000);
+    setTimeout(() => showMessage(`Oh how wonderful! Which hairdo would like?`, 'bot'), 2000);
     inputWrapper.innerHTML = `
     <button id="long">Long hair</button>
     <button id="short">Short hair</button>`
@@ -97,7 +79,6 @@ let question = 0;
     .addEventListener('click', () => setTimeout(() => showMessage('Long hair it is!', 'user'), nextQuestion(), 1000)); 
     document.getElementById("short")
     .addEventListener('click', () => setTimeout(() => showMessage('Short hair it is!', 'user'), nextQuestion(), 1000));    
-    console.log("question number", question);
 
   }
 
@@ -112,20 +93,24 @@ let question = 0;
         <option value="17:00">17:00</option>
       </select>
       `
-      //const select = document.getElementById('selectTime');
       question++;
-      document.getElementById('selectTime').addEventListener('change', () => setTimeout(() => showMessage(selectTime.value, 'user'), nextQuestion()));
-      console.log("question number", question);
-   
+      document.getElementById('selectTime').addEventListener('change', () => setTimeout(() => showMessage(selectTime.value, 'user'), nextQuestion()));   
   }
+
   const nextQuestion = () => {
-  //   console.log("question number", question);
   if (question === 1) {
-    setTimeout(() => timeSlots(), 1000);
+      setTimeout(() => timeSlots(), 1000);
   } else if (question === 2) {
-   setTimeout(() => getEmail(), 1000)
-    }
+      setTimeout(() => getEmail(), 1000)
+  } else if (question === 3) {
+      setTimeout(() => goodBye(), 1000)
   }
+  }
+
+  const goodBye = () => {
+    inputWrapper.innerHTML = '';
+    showMessage("Thank you for contacting us, goodbye!", 'bot')
+}
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
