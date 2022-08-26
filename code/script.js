@@ -81,7 +81,7 @@ const handleNameInput = () => {
   let userName = nameInput.value
   showMessage(userName, "user")
   nameInput.value = ''
-  setTimeout (() => showMessage(`Nice to meet you, ${userName}! What are you looking for in a book?`, 'bot'), 1000)
+  setTimeout (() => showMessage(`Nice to meet you, ${userName}! What are you looking for in a book?`, 'bot'), 500)
   question = 2
 
   inputWrapper.innerHTML = `
@@ -97,7 +97,7 @@ const handleNameInput = () => {
 //Question 2. Function to connect it to askBookType
 const askBookType = (type) => {
   event.preventDefault()
-  setTimeout (() => showMessage(`Awesome! And which timeline do you find interesting?`, 'bot'), 1000)
+  setTimeout (() => showMessage(`Awesome! And which timeline do you find interesting?`, 'bot'), 500)
   question = 3
 
   if (type === "Funny"){
@@ -138,7 +138,7 @@ const askBookType = (type) => {
 //Question 3. New function & connect to askForTimeline
 const askForTimeline = () => {
   event.preventDefault()
-  setTimeout (() => showMessage(`Alright! That will be 150:- including shipping. Are you ready to meet your date?`, 'bot'), 1000)
+  setTimeout (() => showMessage(`Alright! That will be 150:- including shipping. Are you ready to meet your date?`, 'bot'), 500)
   question = 4
   
   inputWrapper.innerHTML = `
@@ -154,7 +154,7 @@ const askForTimeline = () => {
 
 //Last message. Thank you which is part of else.
 const thankYou = () => {
-  setTimeout (() => showMessage(`Thank you for trying Lovelits! Don't forget to tell us how it goes and GOOD LUCK with the blind date.`, 'bot'), 1000)
+  setTimeout (() => showMessage(`Thank you for trying Lovelits! Don't forget to tell us how it goes and GOOD LUCK with the blind date.`, 'bot'), 500)
   
   inputWrapper.innerHTML=''
 }
