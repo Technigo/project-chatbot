@@ -38,6 +38,27 @@ const enableBtnAfterClick = () => {
   }
 };
 
+// loading function
+const showLoading = () => {
+  chat.innerHTML += `
+  <div class="fa-1x loading">
+    <i class="fa-solid fa-circle fa-bounce"></i>
+    <i class="fa-solid fa-circle fa-bounce" style="--fa-animation-delay: 0.2s"></i>
+    <i class="fa-solid fa-circle fa-bounce" style="--fa-animation-delay: 0.4s"></i>
+  </div>
+  `;
+  chat.scrollTop = chat.scrollHeight;
+};
+
+// removes loading icon
+const removeLoading = () => {
+  const elements = document.getElementsByClassName('loading');
+  Array.from(elements).forEach((el) => {
+    el.parentNode.removeChild(el);
+  });
+  console.log(elements);
+};
+
 // Starts here
 
 // Question 1 – Cup or Cone
@@ -85,17 +106,17 @@ const chooseIceCream = () => {
     customerOrder.type = 'Ice Cream';
 
     showMessage(`I scream: ${customerOrder.type}`, 'user');
-    disableBtnAfterClick();
 
+    disableBtnAfterClick();
     setTimeout(() => question3Flavors(), 1000);
     showLoading();
-
   });
 
   softIceCreamBtn.addEventListener('click', () => {
     customerOrder.type = 'Soft Ice Cream';
 
     showMessage(`${customerOrder.type}`, 'user');
+
     disableBtnAfterClick();
     setTimeout(() => question3Sprinkles(), 1000);
     showLoading();
@@ -118,6 +139,7 @@ const chooseSprinkles = () => {
     );
     disableBtnAfterClick();
     setTimeout(() => question4PhoneNo(), 1000);
+    showLoading();
   });
 };
 
@@ -129,17 +151,23 @@ const chooseFlavors = () => {
     const chosenFlavors = document.querySelectorAll(
       '#flavors input[type=checkbox]:checked'
     );
-
+    
     for (let i = 0; i < chosenFlavors.length; i++) {
       customerOrder.flavors += `${chosenFlavors[i].value} `;
     }
 
-
-    showMessage(`${customerOrder.flavors} , please`, 'user');
-
-    disableBtnAfterClick();
-    setTimeout(() => question4PhoneNo(), 1000);
+    if (customerOrder.flavors) {
+      disableBtnAfterClick();
+      setTimeout(() => question4PhoneNo(), 1000);
+      showLoading();
+      showMessage(`${customerOrder.flavors}`, 'user');
+    } else {
+      alert('Pick at least one flavor');
+      disableBtnAfterClick();
+      setTimeout(() => enableBtnAfterClick(), 500);
+    }
   });
+
 };
 
 //Question 4 - Phone Number and Thank you
@@ -239,7 +267,7 @@ const question3Sprinkles = () => {
 const question3Flavors = () => {
   inputWrapper.innerHTML = `
   <div id="flavors">
-
+  <form>
     <div>
       <label for="vanilla" class="textbox-label">Vanilla</label>
       <input type="checkbox" class="flavors-boxes" id="vanilla" name="flavors" value="Vanilla" />
@@ -257,7 +285,7 @@ const question3Flavors = () => {
       <input type="checkbox" class="flavors-boxes" id="elderflower" name="flavors" value="Elderflower"/>
     </div>
     <button id="flavors-next" type="submit">Next</button>  
-
+</form>
   </div>
 `;
   showMessage(`What flavors?`, 'bot');
@@ -275,30 +303,10 @@ const question4PhoneNo = () => {
 
   showMessage(`Phone number please`, 'bot');
   phoneNumber();
+  removeLoading();
 };
 
-// loading function
-const showLoading = () => {
-  chat.innerHTML += `
-  <div class="fa-1x loading">
-    <i class="fa-solid fa-circle fa-bounce"></i>
-    <i class="fa-solid fa-circle fa-bounce" style="--fa-animation-delay: 0.2s"></i>
-    <i class="fa-solid fa-circle fa-bounce" style="--fa-animation-delay: 0.4s"></i>
-  </div>
-  `;
-
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-  chat.scrollTop = chat.scrollHeight;
-};
-
-// removes loading icon
-const removeLoading = () => {
-  const elements = document.getElementsByClassName('loading');
-  Array.from(elements).forEach((el) => {
-    el.parentNode.removeChild(el);
-  });
-  console.log(elements);
-};
+// This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
 
 // Set up your eventlisteners here
 
