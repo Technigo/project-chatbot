@@ -136,7 +136,7 @@ const question4 = (answerName) => {
 const blackChoice = (event) => {
   event.preventDefault(); //prevents refreshing the page
   let coffeeAnswer = inputWrapper.value;
-  showMessage(`I would love some Black Coffe!`, "user");
+  showMessage(`I would love some black coffee!`, "user");
   inputWrapper.value = "";
   console.log("black choice"); //can be omitted
   setTimeout(() => question5(coffeeAnswer), 1000);
@@ -145,7 +145,7 @@ const blackChoice = (event) => {
 const macchiatoChoice = (event) => {
   event.preventDefault(); //prevents refreshing the page
   let coffeeAnswer = inputWrapper.value;
-  showMessage(`A macchiato will be!`, "user");
+  showMessage(`A macchiato it will be!`, "user");
   inputWrapper.value = "";
   console.log("machiato choice"); //can be omitted
   setTimeout(() => question5(coffeeAnswer), 1000);
@@ -154,7 +154,7 @@ const macchiatoChoice = (event) => {
 const withMilkChoice = (event) => {
   event.preventDefault(); //prevents refreshing the page
   let coffeeAnswer = inputWrapper.value;
-  showMessage('Coffe with milk, plz!.', "user");
+  showMessage('Coffee with milk, plz!.', "user");
   inputWrapper.value = '';
   console.log("with milk choice"); //can be omitted
   setTimeout(() => question5(coffeeAnswer), 1000);
