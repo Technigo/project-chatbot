@@ -6,7 +6,7 @@ const nameInput = document.getElementById('input')
 
 // If you need any global variables that you can use across different functions, declare them here:
 
-let questionNumber = 1
+/*let questionNumber = 1*/
 
 const botReply = (msg) => {
   showMessage(msg, 'bot')
@@ -45,11 +45,11 @@ const showMessage = (message, sender) => {
   }
 
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-  chat.scrollTop = chat.scrollHeight;
+  setTimeout(() => chat.scrollTop = chat.scrollHeight, 1500)
 }
 // Starts here
 const greeting = () => {
-  questionNumber = 1
+  /*questionNumber = 1*/
   botReply(`Hi 👋 ! Tell me your name and I will give you a joke!`, 'bot');
 }
 
@@ -163,6 +163,7 @@ document
 .addEventListener('click',() => {
   showMessage("An investigator!", 'user')
   setTimeout (() => showMessage("Yes that's correct and all for today. See you later alligator!", 'bot'), 1500)
+  inputWrapper.innerHTML = ''
   })
 
 
@@ -171,6 +172,7 @@ document
 .addEventListener('click',() => {
   showMessage("Crocodile Dundee?", 'user')
   setTimeout (() => showMessage("That's wrong, better luck next time. See you later alligator!", 'bot'), 1500)
+  inputWrapper.innerHTML = ''
   })
 }
 
