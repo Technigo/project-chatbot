@@ -34,7 +34,7 @@ const showMessage = (message, sender) => {
 
 //Question 1: Bot greets and asks for the user's name
 const greeting = () => {
-  showMessage(`Hello there, What's your name?`, 'bot')
+  showMessage(`Hello there, what's your name?`, 'bot')
 }
 
 const handleResponse = () => {
@@ -45,7 +45,7 @@ const handleResponse = () => {
 //Question 2: Bot asks if user is having trouble choosing a movie
 const watchMovie = () => {
   showMessage(`I'm guessing you're having trouble finding something to watch on Netflix?`, 'bot')
-  setTimeout (() => yesOrNo(), 900)
+  setTimeout (() => yesOrNo(), 1000)
 }
 
 //Question 2.1 The pop-up of the Yes- or No buttons
@@ -57,13 +57,13 @@ const yesOrNo = () => {
   document.getElementById("option1").addEventListener("click", () => {
     showMessage("Yes, I can't decide what to watch, help me!", 'user')  
     inputWrapper.innerHTML = ''
-    setTimeout (() => doYouNeedHelp('option1'), 1500)
+    setTimeout (() => doYouNeedHelp('option1'), 1000)
   })
   
   document.getElementById("option2").addEventListener("click", () => {
     showMessage("No thanks, i just wanted to try the functions of this bot!", 'user')
     inputWrapper.innerHTML = ''
-    setTimeout (() => doYouNeedHelp('option2'), 1500)
+    setTimeout (() => doYouNeedHelp('option2'), 1000)
   })
 }
 
@@ -71,12 +71,14 @@ const yesOrNo = () => {
 const doYouNeedHelp = (selection) => {
   if (selection === 'option1') {
     showMessage("I'm happy to help! How are you feeling today?", "bot")
+    setTimeout (() => moodChoice (), 1000)
+    
+   const moodChoice = () =>  {
     inputWrapper.innerHTML= 
     `<button id="optHappy">😄</button>
     <button id="optSad">😥</button>
     <button id="optAngry">😡</button>`
- 
-
+   
     document.getElementById("optHappy").addEventListener('click', () => {
       showMessage("I'm feeling happy today", "user")
       inputWrapper.innerHTML = ''
@@ -94,6 +96,7 @@ const doYouNeedHelp = (selection) => {
       inputWrapper.innerHTML = ''
       setTimeout (() => chooseByMood('optAngry'), 1000)
     })
+  }
   } 
   
   else if (selection === 'option2') {
@@ -102,10 +105,14 @@ const doYouNeedHelp = (selection) => {
     <p>Thanks for using this bot!</p>`
       }
     }
+
 //Question 4: Bot's answer depends on which Mood-button has been chosen
 const chooseByMood = (selection) => {
  if (selection === "optHappy") {
   showMessage("Great to hear that you are happy! Then one of these movies might suit your mood", "bot")
+  setTimeout (() => happyFilmButtons (), 1000)
+  
+  const happyFilmButtons = () => {
   inputWrapper.innerHTML=`
       <button id="happyFeet">Happy feet</button>
       <button id="singingInTheRain">Singing in the Rain</button>
@@ -127,11 +134,15 @@ const chooseByMood = (selection) => {
         showMessage("I'll watch Grease tonight", 'user')
         inputWrapper.innerHTML = ''
         setTimeout (() => lastReplyHappy('grease'), 1000)
-      })
+      }) 
+    }
   }
 
  else if (selection === "optSad") {
-  showMessage("I'm so sorry to hear that you are not feeling good. Sometimes all you need is a good cry. I can help you get there.", "bot"), 100
+  showMessage("I'm so sorry to hear that you are not feeling good. Sometimes all you need is a good cry. I can help you get there.", "bot")
+  setTimeout (() => sadFilmButtons (), 1000)
+  
+  const sadFilmButtons = () => {
   inputWrapper.innerHTML=`
       <button id="titanic">Titanic</button>
       <button id="theNotebook">The Notebook</button>
@@ -154,13 +165,14 @@ const chooseByMood = (selection) => {
         inputWrapper.innerHTML = ''
         setTimeout (() => lastReplySad('brokebackMountain'), 1000)
         }) 
- 
- 
- 
+      }
     }
 
  else if (selection === "optAngry") {
   showMessage("Oh dear, I can feel your anger through the screen. Perhaps one of these films could be a good fit for you?", "bot")
+  setTimeout (() => angryFilmButtons(), 1000)
+  
+  const angryFilmButtons = () => {
   inputWrapper.innerHTML=`
         <button id="angerManagement">Anger Management</button>
         <button id="terminator2">Terminator 2</button>
@@ -182,69 +194,76 @@ const chooseByMood = (selection) => {
           showMessage("I'll watch Django Unchained tonight", 'user')
           inputWrapper.innerHTML = ''
           setTimeout (() => lastReplyAngry('djangoUnchained'), 1000)
-        })
-}
+        })  
+    }
+  }
 }
 
 //Question 5: This is where the user chooses one of 3 movies that were suggested based on the user's mood
 const lastReplyHappy = (selection) => {
   if (selection === "happyFeet") {
     showMessage("Great pick! Happy feet is one of my all time favorites. Enjoy the movie!", 'bot');
-    inputWrapper.innerHTML = `
+    setTimeout (() => inputWrapper.innerHTML = `
       <p>Thank you for using this bot!</p>
-    `
+    `, 1000)
   }
   else if (selection === "singingInTheRain") {
     showMessage("Good choice! Singing in the Rain sure is 10/10!", 'bot')
-    inputWrapper.innerHTML = `
+    setTimeout (() => inputWrapper.innerHTML = `
       <p>Thank you for using this bot!</p>
-    `
+    `, 1000)
   }
   else if (selection === "grease") {
     showMessage("Great pick! I LOVE Grease!", 'bot')
-    inputWrapper.innerHTML = `
+    setTimeout (() => inputWrapper.innerHTML = `
       <p>Thank you for using this bot!</p>
-    `
+    `, 1000)
   }
 }
 
 const lastReplySad = (selection) => {
   if (selection === "titanic") {
     showMessage("Classic, maybe this time Jack will fit on the door!", 'bot')
-    inputWrapper.innerHTML = `
-    <p>Thank you for using this bot!</p>`
+    setTimeout (() => inputWrapper.innerHTML = `
+    <p>Thank you for using this bot!</p>
+    `, 1000)
   }
   
   else if (selection === "theNotebook") {
     showMessage("Great choice, make sure to bring napkins!", 'bot')
-    inputWrapper.innerHTML = `
-    <p>Thank you for using this bot!</p>`
+    setTimeout (() => inputWrapper.innerHTML = `
+    <p>Thank you for using this bot!</p>
+    `, 1000)
   }
 
   else if (selection === "brokebackMountain") {
     showMessage("Nice, that's one of my overall favorites!", 'bot')
-    inputWrapper.innerHTML = `
-    <p>Thank you for using this bot!</p>`
+    setTimeout (() => inputWrapper.innerHTML = `
+    <p>Thank you for using this bot!</p>
+    `, 1000)
   }
 }
 
 const lastReplyAngry = (selection) => {
   if (selection === "angerManagement") {
     showMessage("Good one, sounds like it could be needed!", 'bot')
-    inputWrapper.innerHTML = `
-    <p>Thank you for using this bot!</p>`
+    setTimeout (() => inputWrapper.innerHTML = `
+    <p>Thank you for using this bot!</p>
+    `, 1000)
   }
 
   else if (selection === "terminator2") {
     showMessage('Great choice. Hasta la vista, baby!', 'bot')
-    inputWrapper.innerHTML = `
-    <p>Thank you for using this bot!</p>`
+    setTimeout (() => inputWrapper.innerHTML = `
+    <p>Thank you for using this bot!</p>
+    `, 1000)
   }
 
   else if (selection === "djangoUnchained") {
     showMessage("Good movie, one of Tarantinos best works!", 'bot') 
-    inputWrapper.innerHTML = `
-    <p>Thank you for using this bot!</p>`
+    setTimeout (() => inputWrapper.innerHTML = `
+    <p>Thank you for using this bot!</p>
+    `, 1000)
   }
 }
 
@@ -261,6 +280,5 @@ form.addEventListener('submit', (event) => {
   setTimeout (() => handleResponse(value, 'bot'), 1000)
   setTimeout (() => watchMovie(value, 'bot'), 2000)
 });
-
 
 setTimeout(greeting, 1000)

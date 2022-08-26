@@ -7,15 +7,17 @@ body {
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   background-image: url(/code/assets/pexels-keegan-evans-57043.jpg)
+
 }
 
 h1 {
   font-weight: bold;
-  font-size: px;
+  font-size: 70px;
   line-height: 34px;
-  color: #E50914;
+  color: red;
   text-align: center;
-  font-family: 'Abril Fatface', cursive;
+  font-family: 'Bebas Neue', cursive;
+  text-shadow: 2px 2px black;
 }
 
 h2 {
@@ -25,6 +27,7 @@ h2 {
   color: #E50914;
   text-align: center;
   margin-bottom: 36px;
+  text-shadow: 1px 1px black;
 }
 
 p {
@@ -57,6 +60,7 @@ main {
   background: rgb(255, 254, 236);
   padding: 20px 24px;
   padding-top: 0;
+  margin-bottom: 10px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -118,7 +122,7 @@ main {
   display: flex;
   justify-content: center;
   justify-items: center;
-  
+  height: 70px;
 }
 
 .input-wrapper form {
