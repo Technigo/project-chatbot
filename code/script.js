@@ -1,7 +1,7 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById("chat");
-const nameForm = document.getElementById("name-form");
-const nameInput = document.getElementById("name-input");
+const inputForm = document.getElementById("input-form");
+const userInput = document.getElementById("user-input");
 const inputWrapper = document.getElementById("input-wrapper");
 
 // If you need any global variables that you can use across different functions, declare them here:
@@ -52,7 +52,13 @@ const showMessage = (message, sender) => {
 const showBotMessage = (message) => {
   setTimeout(() => {
     showMessage(message, "bot");
-  }, 700);
+  }, 600);
+};
+
+const showUserMessage = (message) => {
+  setTimeout(() => {
+    showMessage(message, "user");
+  }, 600);
 };
 
 const nextQuestion = () => {
@@ -72,25 +78,21 @@ const nextQuestion = () => {
     botAskForConfirmation();
   }
 
-  if (questionNumber > 10) {
-    showMessage("Oh, you're talkative aren't you...", "bot");
-  }
-
   questionNumber++;
 };
 
 // Starts here
 const botGreetsUserAndAsksName = () => {
-  showBotMessage("Hello, what's your name?");
+  showBotMessage(
+    "Hello there! I'm Tablebooker, your friendly table booking bot 😊"
+  );
+  showBotMessage("May I have your name please?");
 };
 
+//Here we call the next question about what day they would like to visit
 const botAskWhichDay = () => {
-  //Here we call the next question about what day they would like to visit
-
-  //console.log("userMessage", userMessage);
-
   showBotMessage(
-    `Ok ${answers.name}, which day would you like to book a table for?`
+    `Okay ${answers.name}, which day would you like to book a table for?`
   );
   inputWrapper.innerHTML = `
     <button class="send-btn" id="today" type="submit">Today</button>
@@ -110,9 +112,9 @@ const botAskWhatTime = () => {
   inputWrapper.innerHTML = `
     <select id="timeChoice" class="selectChoice">
         <option value="" selected disabled>Select a time</option>
-        <option value="5pm">5pm</option>
-        <option value="6pm">6pm</option>
-        <option value="7pm">7pm</option>
+        <option value="5 p.m.">5 p.m.</option>
+        <option value="6 p.m.">6 p.m.</option>
+        <option value="7 p.m.">7 p.m.</option>
       </select>
       <button class="send-btn" id="time" type="submit">OK</button>
     `;
@@ -139,7 +141,7 @@ const botAskHowManyPeople = () => {
 };
 
 const botAskWhatPhoneNumber = () => {
-  showBotMessage("I'll need a phone number for the booking, please.");
+  showBotMessage("I'll need a phone number for the booking, please 🙂");
   inputWrapper.innerHTML = `
         <form id="phone">
           <input id="phoneInput" type="tel" />
@@ -150,7 +152,7 @@ const botAskWhatPhoneNumber = () => {
 };
 
 const botAskWhatEmail = () => {
-  showBotMessage("And an email address as well :)");
+  showBotMessage("And an email address as well.");
   inputWrapper.innerHTML = `
         <form id="email">
           <input id="emailInput" type="email" />
@@ -165,10 +167,9 @@ const botAskForConfirmation = () => {
     `Fantastic ${answers.name}! Let me just double check I've got everything down right.`
   );
   showBotMessage(
-    `You'd like to book a table for ${answers.people} ${answers.day} at ${answers.time} and your contact information is ${answers.phonenr} and ${answers.email}?`
+    `You'd like to book a table for ${answers.people} ${answers.day} at ${answers.time} under the name ${answers.name}, and your contact information is ${answers.phonenr} and ${answers.email}?`
   );
   showBotMessage(`Is this correct?`);
-  //TODO show Y/N button IU for user which leads to either last bot "question" aka booking confirmed message, or to bot saying "Ok, sorry for that, let's start over" and then reload page (??)
   inputWrapper.innerHTML = `
   <button class="send-btn" id="yes" type="submit">Yes, confirm booking</button>
   <button class="send-btn" id="no" type="submit">No, start over</button>
@@ -182,15 +183,14 @@ const botAskForConfirmation = () => {
     .addEventListener("click", () => bookingConfirmation("no"));
 };
 
-const handleUserInput = (event) => {
-  event.preventDefault();
-  const userMessage = nameInput.value;
-  showMessage(userMessage, "user");
+const handleUserInput = () => {
+  const userMessage = userInput.value;
+  showUserMessage(userMessage);
   answers.name = userMessage;
-  nameInput.value = "";
+  userInput.value = "";
 
   if (userMessage === "") {
-    showMessage("Sorry, I didn't get that", "bot");
+    showBotMessage("Sorry, I didn't get that");
     return;
   }
 
@@ -198,43 +198,36 @@ const handleUserInput = (event) => {
 };
 
 const daySelection = (dayChoice) => {
-  //if (dayChoice === "today") {
   answers.day = dayChoice;
-  showMessage(dayChoice, "user");
-  //botAskWhatTime();
+  showUserMessage(dayChoice);
   nextQuestion();
-  // }
 };
 
-const timeSelection = (event) => {
+const timeSelection = () => {
   const time = timeChoice.value;
-  showMessage(time, "user");
+  showUserMessage(time);
   answers.time = time;
   nextQuestion();
-  console.log(time);
 };
 
-const peopleSelection = (event) => {
+const peopleSelection = () => {
   const people = peopleChoice.value;
-  showMessage(people, "user");
+  showUserMessage(people);
   answers.people = people;
   nextQuestion();
-  console.log(people);
 };
 
-const handleUserPhonenr = (event) => {
-  event.preventDefault();
+const handleUserPhonenr = () => {
   const userPhoneNr = phoneInput.value;
-  showMessage(userPhoneNr, "user");
+  showUserMessage(userPhoneNr);
   answers.phonenr = userPhoneNr;
   phoneInput.value = "";
   nextQuestion();
 };
 
-const handleUserEmail = (event) => {
-  event.preventDefault();
+const handleUserEmail = () => {
   const userEmail = emailInput.value;
-  showMessage(userEmail, "user");
+  showUserMessage(userEmail);
   answers.email = userEmail;
   emailInput.value = "";
   nextQuestion();
@@ -242,30 +235,22 @@ const handleUserEmail = (event) => {
 
 const bookingConfirmation = (confirmationChoice) => {
   if (confirmationChoice === "yes") {
-    showMessage("Yes", "user");
-    showMessage(
-      `Your booking is confirmed. Thank you, we are looking forward seeing you ${answers.day}! :)`,
-      "bot"
+    showUserMessage("Yes");
+    showBotMessage(
+      `Your booking is confirmed. Thank you, we are looking forward seeing you ${answers.day}! :)`
     );
     inputWrapper.innerHTML = ` `;
   } else {
-    showMessage("No", "user");
-    showMessage("Ok, no problem! Let's start from the beginning.", "bot");
+    showUserMessage("No");
+    showBotMessage("Ok, no problem! Let's start from the beginning.");
     location.reload();
   }
-  //botAskWhatTime();
-  nextQuestion();
-  // }
 };
 
-// Set up your eventlisteners here
+// EventListener for form. Listening for a submit when the user have added something in the form.
 
-nameForm.addEventListener("submit", handleUserInput);
+inputForm.addEventListener("submit", handleUserInput);
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
+// Sets load time for first bot message
+
 setTimeout(nextQuestion, 600);

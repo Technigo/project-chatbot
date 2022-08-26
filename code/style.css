@@ -1,6 +1,5 @@
 /* set body font-size and changed all px font sizes to em (which is relative to body font size) */
 /* removed lots of paddig ie changd from 16 px down to 10 etc, to make chat appear less "bulky" */
-/*  */
 
 * {
   box-sizing: border-box;
@@ -12,7 +11,7 @@ body {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   background-image: url("./assets/background-image01.jpg");
-  background-position: absolute;
+  background-position: center;
 }
 
 h1 {
@@ -64,6 +63,7 @@ input:-webkit-autofill:active {
 }
 
 .all-the-content {
+  /*@TODO change name of this to something semantic also see what can be deleted*/
   margin: 0 auto;
   box-sizing: border-box;
   display: flex;
@@ -72,11 +72,12 @@ input:-webkit-autofill:active {
 }
 
 main {
+  /*added min value to height to make chat box responsive without using media queries*/
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
-  height: 600px;
-  border-radius: 20px;
+  height: min(600px, 65vh);
+  border-radius: 13px;
   background: white;
   padding: 12px 12px;
   padding-top: 0;
@@ -169,11 +170,11 @@ button:hover {
 .selectChoice {
   box-sizing: border-box;
   border: none;
-  border-radius: 4px 0 0 4px;
   width: 100%;
+  border-radius: 4px;
   background: #f9edea;
   font-family: "Montserrat";
-  padding: 16px;
-  line-height: 26px;
+  padding: 10px;
+  line-height: 20px;
   font-size: 1em;
 }
