@@ -4,27 +4,31 @@ const inputWrapper = document.getElementById('input-wrapper');
 const popup = document.getElementById('popup');
 const allButtons = document.getElementsByTagName('button');
 
-const coneBtn = document.getElementById('cone-btn');
-const cupBtn = document.getElementById('cup-btn');
-const msgSound = new Audio('assets/pop.mp3');
-msgSound.volume = 0.6;
-
-// If you need any global variables that you can use across different functions, declare them here:
+// Object to save user inputs and method to present the order back to the customer
 const customerOrder = {
-  type: '',
   serving: '',
-  flavors: '',
+  type: '',
   sprinkles: '',
+  flavors: '',
   phone: '',
-  /* getReceipt: () => {
-    if (this.type === ice cream)
-    `One ${this.serving} of ${this.type}`
-  }, */
+  presentOrder: () => {
+    if (customerOrder.type === 'ice cream') {
+      showMessage(
+        `One ${customerOrder.serving} of ${customerOrder.flavors} ${customerOrder.type} is in the making!`,
+        'bot'
+      );
+    } else if (customerOrder.type === 'soft ice cream') {
+      showMessage(
+        `One ${customerOrder.serving} of ${customerOrder.type} with ${customerOrder.sprinkles} is in the making!`,
+        'bot'
+      );
+    }
+  }
 };
 
-// Declare your functions after this comment
+// Functions
 
-// Disabling all buttons after first click
+// disabling all buttons after click
 const disableBtnAfterClick = () => {
   for (let i = 0; i < allButtons.length; i++) {
     allButtons[i].disabled = true;
@@ -38,7 +42,7 @@ const enableBtnAfterClick = () => {
   }
 };
 
-// loading function
+// loading animation
 const showLoading = () => {
   chat.innerHTML += `
   <div class="fa-1x loading">
@@ -50,7 +54,7 @@ const showLoading = () => {
   chat.scrollTop = chat.scrollHeight;
 };
 
-// removes loading icon
+// removes loading animation
 const removeLoading = () => {
   const elements = document.getElementsByClassName('loading');
   Array.from(elements).forEach((el) => {
@@ -59,42 +63,38 @@ const removeLoading = () => {
   console.log(elements);
 };
 
-// Starts here
+// play sound effect
+const playSound = () => {
+  let msgSound = new Audio('assets/pop.mp3');
+  msgSound.volume = 0.6;
+};
+
+// User replies & function logic/event listeners
 
 // Question 1 – Cup or Cone
-const greeting = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
+const cupOrCone = () => {
+  const coneBtn = document.getElementById('cone-btn');
+  const cupBtn = document.getElementById('cup-btn');
 
-  showMessage('Welcome to The Ice Cream Shop! Let me take your order.', 'bot');
+  cupBtn.addEventListener('click', () => {
+    customerOrder.serving = 'cup';
 
-  showLoading();
-  setTimeout(() => {
-    showMessage('Would you like your ice cream in a cup or a cone?', 'bot');
+    showMessage('Cup', 'user');
 
-    removeLoading();
+    disableBtnAfterClick();
+    setTimeout(() => question2IceOrSoft(), 1000);
+    showLoading();
+  });
 
-    cupBtn.addEventListener('click', () => {
-      customerOrder.coneOrCup = 'Cup';
+  coneBtn.addEventListener('click', () => {
+    customerOrder.serving = 'cone';
 
-      showMessage('Cup', 'user');
+    showMessage('Cone', 'user');
 
-      disableBtnAfterClick();
-      setTimeout(() => question2IceOrSoft(), 1000);
-      showLoading();
-    });
-
-    coneBtn.addEventListener('click', () => {
-      customerOrder.coneOrCup = 'Cone';
-
-      showMessage('Cone', 'user');
-
-      disableBtnAfterClick();
-      setTimeout(() => question2IceOrSoft(), 1000);
-      showLoading();
-    });
-
-    inputWrapper.classList.toggle('active');
-  }, 1000);
+    disableBtnAfterClick();
+    setTimeout(() => question2IceOrSoft(), 1000);
+    showLoading();
+  });
 };
 
 //Question 2 - Ice Cream or Soft Ice Cream
@@ -103,9 +103,9 @@ const chooseIceCream = () => {
   const softIceCreamBtn = document.getElementById('soft-ice-cream-btn');
 
   iceCreamBtn.addEventListener('click', () => {
-    customerOrder.type = 'Ice Cream';
+    customerOrder.type = 'ice cream';
 
-    showMessage(`I scream: ${customerOrder.type}`, 'user');
+    showMessage('Ice cream', 'user');
 
     disableBtnAfterClick();
     setTimeout(() => question3Flavors(), 1000);
@@ -113,9 +113,9 @@ const chooseIceCream = () => {
   });
 
   softIceCreamBtn.addEventListener('click', () => {
-    customerOrder.type = 'Soft Ice Cream';
+    customerOrder.type = 'soft ice cream';
 
-    showMessage(`${customerOrder.type}`, 'user');
+    showMessage('Soft ice cream', 'user');
 
     disableBtnAfterClick();
     setTimeout(() => question3Sprinkles(), 1000);
@@ -132,13 +132,11 @@ const chooseSprinkles = () => {
     customerOrder.sprinkles = sprinklesSelection.value;
 
     showMessage(
-      `${
-        sprinklesSelection.options[sprinklesSelection.selectedIndex].text
-      }, please`,
+      `${sprinklesSelection.options[sprinklesSelection.selectedIndex].text}`,
       'user'
     );
     disableBtnAfterClick();
-    setTimeout(() => question4PhoneNo(), 1000);
+    setTimeout(() => question4PhoneNo(), 2000);
     showLoading();
   });
 };
@@ -151,23 +149,22 @@ const chooseFlavors = () => {
     const chosenFlavors = document.querySelectorAll(
       '#flavors input[type=checkbox]:checked'
     );
-    
+
     for (let i = 0; i < chosenFlavors.length; i++) {
       customerOrder.flavors += `${chosenFlavors[i].value} `;
     }
 
     if (customerOrder.flavors) {
       disableBtnAfterClick();
-      setTimeout(() => question4PhoneNo(), 1000);
-      showLoading();
+      setTimeout(() => question4PhoneNo(), 2000);
       showMessage(`${customerOrder.flavors}`, 'user');
+      showLoading();
     } else {
       alert('Pick at least one flavor');
       disableBtnAfterClick();
       setTimeout(() => enableBtnAfterClick(), 500);
     }
   });
-
 };
 
 //Question 4 - Phone Number and Thank you
@@ -175,9 +172,8 @@ const phoneNumber = () => {
   const confirmPhoneBtn = document.getElementById('confirm-btn');
 
   confirmPhoneBtn.addEventListener('click', () => {
+
     disableBtnAfterClick();
-    showMessage(`Phone number`, 'user');
-    showMessage(`Thank you for your order`, 'bot');
     popup.classList.toggle('hide');
     enableBtnAfterClick();
 
@@ -227,22 +223,27 @@ const showMessage = (message, sender) => {
 
 // Question 1 - Greeting & Choose Cup/Cone
 const question1Greeting = () => {
-  showMessage('Welcome to The Ice Cream Shop! Let me take your order.', 'bot');
+  showMessage('Hi there! Let me help you take your order...', 'bot');
+
+  showLoading();
   setTimeout(() => {
     showMessage('Would you like your ice cream in a cup or a cone?', 'bot');
 
+    removeLoading();
     inputWrapper.classList.toggle('active');
-  }, 2000);
+  }, 1000);
+
+  cupOrCone();
 };
 
 // Question 2 - Choose Ice Cream
 const question2IceOrSoft = () => {
   inputWrapper.innerHTML = `
-<button id="ice-cream-btn">Ice cream</button>
-<button id="soft-ice-cream-btn">Soft ice cream</button>
+<button id="ice-cream-btn">Ice Cream</button>
+<button id="soft-ice-cream-btn">Soft Ice Cream</button>
 `;
 
-  showMessage(`Would you like:`, 'bot');
+  showMessage(`Do you want regular ice cream or soft?`, 'bot');
   chooseIceCream();
   removeLoading();
 };
@@ -251,14 +252,14 @@ const question2IceOrSoft = () => {
 const question3Sprinkles = () => {
   inputWrapper.innerHTML = `
 <select name="sprinkles" id="sprinkles">
-<option value="rainbow">Rainbow sprinkles</option>
-<option value="chocolate">Chocolate sprinkles</option>
-<option value="liquorice">Liquorice sprinkles</option>
-<option value="none">No sprinkles</option>
+<option value="rainbow sprinkles">Rainbow sprinkles</option>
+<option value="chocolate sprinkles">Chocolate sprinkles</option>
+<option value="liquorice sprinkles">Liquorice sprinkles</option>
+<option value="no sprinkles">No sprinkles</option>
 </select>
 
 <button id="sprinkles-next">Next</button>`;
-  showMessage(`Sprinkles?`, 'bot');
+  showMessage(`Maybe with some sprinkles on top?`, 'bot');
   chooseSprinkles();
   removeLoading();
 };
@@ -270,25 +271,25 @@ const question3Flavors = () => {
   <form>
     <div>
       <label for="vanilla" class="textbox-label">Vanilla</label>
-      <input type="checkbox" class="flavors-boxes" id="vanilla" name="flavors" value="Vanilla" />
+      <input type="checkbox" class="flavors-boxes" id="vanilla" name="flavors" value="vanilla" />
     </div>
     <div>
       <label for="mango" class="textbox-label">Mango</label>
-      <input type="checkbox" class="flavors-boxes" id="mango" name="flavors" value="Mango"/>
+      <input type="checkbox" class="flavors-boxes" id="mango" name="flavors" value="mango"/>
     </div>
     <div>
       <label for="chocolate" class="textbox-label">Chocolate</label>
-      <input type="checkbox" class="flavors-boxes" id="chocolate" name="flavors" value="Chocolate"/>
+      <input type="checkbox" class="flavors-boxes" id="chocolate" name="flavors" value="chocolate"/>
     </div>
     <div>
       <label for="elderflower" class="textbox-label">Elderflower</label>
-      <input type="checkbox" class="flavors-boxes" id="elderflower" name="flavors" value="Elderflower"/>
+      <input type="checkbox" class="flavors-boxes" id="elderflower" name="flavors" value="elderflower"/>
     </div>
     <button id="flavors-next" type="submit">Next</button>  
 </form>
   </div>
 `;
-  showMessage(`What flavors?`, 'bot');
+  showMessage(`What flavors would you like?`, 'bot');
   chooseFlavors();
   removeLoading();
 };
@@ -296,25 +297,18 @@ const question3Flavors = () => {
 //Question 4 - Phone Number
 const question4PhoneNo = () => {
   inputWrapper.innerHTML = `
-  <input type="tel" class="phone-number" required> 
-  <button id="confirm-btn">Confirm</button>
+  <input type="tel" id="phone-number" required> 
+  <button id="confirm-btn" onClick=>Confirm</button>
   <button id="cancel-btn" onClick="window.location.reload();">Cancel</button>`;
-  console.log();
 
-  showMessage(`Phone number please`, 'bot');
+  customerOrder.presentOrder();
+  showMessage(
+    `Please type in your phone number below and we'll notify you as soon as your ${customerOrder.type} is ready.`,
+    'bot'
+  );
   phoneNumber();
   removeLoading();
 };
 
-// This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-
-// Set up your eventlisteners here
-
 // When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-
-setTimeout(greeting, 500);
+setTimeout(question1Greeting, 500);
