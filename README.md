@@ -1,13 +1,14 @@
 # Project Name
 
-Replace this readme with your own information about your project.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Our assignment was to create a working chat-bot from an existing base with just a few lines of code to start with.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This was our first time using JavaScript for real so it was hard at some points to understand how it works. But once we got the hang of it, we used trial and error, stack overflow and google to tackle our problems.
+
+If we had more time, we would add links to the movies in the last steps, and tried using different input methods such as selections, 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://moviesuggestor.netlify.app/
