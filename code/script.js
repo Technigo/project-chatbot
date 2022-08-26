@@ -143,9 +143,11 @@ const chooseSprinkles = () => {
 
 //Question 3 – Flavors (Ice Cream)
 const chooseFlavors = () => {
+  const pickOneFlavor = document.getElementById('pick-one');
   const flavorsNextBtn = document.getElementById('flavors-next');
 
   flavorsNextBtn.addEventListener('click', () => {
+    disableBtnAfterClick();
     const chosenFlavors = document.querySelectorAll(
       '#flavors input[type=checkbox]:checked'
     );
@@ -155,14 +157,14 @@ const chooseFlavors = () => {
     }
 
     if (customerOrder.flavors) {
-      disableBtnAfterClick();
+      /* disableBtnAfterClick(); */
       setTimeout(() => question4PhoneNo(), 2000);
       showMessage(`${customerOrder.flavors}`, 'user');
       showLoading();
     } else {
-      alert('Pick at least one flavor');
-      disableBtnAfterClick();
-      setTimeout(() => enableBtnAfterClick(), 500);
+      pickOneFlavor.classList.toggle('show-pick-one');
+      /* alert('Pick at least one flavor'); */
+      setTimeout(() => enableBtnAfterClick(), 1000);
     }
   });
 };
@@ -223,7 +225,7 @@ const showMessage = (message, sender) => {
 
 // Question 1 - Greeting & Choose Cup/Cone
 const question1Greeting = () => {
-  showMessage('Hi there! Let me help you take your order...', 'bot');
+  showMessage('Hi there! Let me help you take your order.', 'bot');
 
   showLoading();
   setTimeout(() => {
@@ -269,6 +271,7 @@ const question3Flavors = () => {
   inputWrapper.innerHTML = `
   <div id="flavors">
   <form>
+  <p class="pick-one" id="pick-one">* Pick at least one flavor</p>
     <div>
       <label for="vanilla" class="textbox-label">Vanilla</label>
       <input type="checkbox" class="flavors-boxes" id="vanilla" name="flavors" value="vanilla" />
