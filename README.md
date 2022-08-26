@@ -12,4 +12,4 @@ If we had more time and more knowledge we would add better effects. For example,
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+[Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.](https://brilliant-cassata-6614e6.netlify.app/)
