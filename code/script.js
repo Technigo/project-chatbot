@@ -151,7 +151,7 @@ const chooseFlavors = () => {
     const chosenFlavors = document.querySelectorAll(
       '#flavors input[type=checkbox]:checked'
     );
-    
+
     for (let i = 0; i < chosenFlavors.length; i++) {
       customerOrder.flavors += `${chosenFlavors[i].value} `;
     }
@@ -167,14 +167,14 @@ const chooseFlavors = () => {
       setTimeout(() => enableBtnAfterClick(), 500);
     }
   });
-
 };
 
 //Question 4 - Phone Number and Thank you
 const phoneNumber = () => {
-  const confirmPhoneBtn = document.getElementById('confirm-btn');
-
-  confirmPhoneBtn.addEventListener('click', () => {
+  const phoneForm = document.getElementById('phone-form');
+  phoneForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    console.log(phoneForm);
     disableBtnAfterClick();
     showMessage(`Phone number`, 'user');
     showMessage(`Thank you for your order`, 'bot');
@@ -190,7 +190,6 @@ const phoneNumber = () => {
     };
 
     refreshButton.addEventListener('click', () => {
-      console.log('hejhej');
       refreshPage();
     });
   });
@@ -266,25 +265,27 @@ const question3Sprinkles = () => {
 //Question 3 - Flavors (Ice Cream)
 const question3Flavors = () => {
   inputWrapper.innerHTML = `
+  
   <div id="flavors">
-  <form>
+  <form class="checkbox-form">
     <div>
-      <label for="vanilla" class="textbox-label">Vanilla</label>
-      <input type="checkbox" class="flavors-boxes" id="vanilla" name="flavors" value="Vanilla" />
+    <input type="checkbox" class="flavors-boxes" id="vanilla" name="flavors" value="Vanilla" />
+    <label for="vanilla" class="textbox-label">Vanilla</label>
     </div>
     <div>
-      <label for="mango" class="textbox-label">Mango</label>
-      <input type="checkbox" class="flavors-boxes" id="mango" name="flavors" value="Mango"/>
+    <input type="checkbox" class="flavors-boxes" id="mango" name="flavors" value="Mango"/>
+    <label for="mango" class="textbox-label">Mango</label>
     </div>
     <div>
-      <label for="chocolate" class="textbox-label">Chocolate</label>
-      <input type="checkbox" class="flavors-boxes" id="chocolate" name="flavors" value="Chocolate"/>
+    <input type="checkbox" class="flavors-boxes" id="chocolate" name="flavors" value="Chocolate"/>
+    <label for="chocolate" class="textbox-label">Chocolate</label>
     </div>
     <div>
-      <label for="elderflower" class="textbox-label">Elderflower</label>
-      <input type="checkbox" class="flavors-boxes" id="elderflower" name="flavors" value="Elderflower"/>
+    <input type="checkbox" class="flavors-boxes" id="elderflower" name="flavors" value="Elderflower"/>
+    <label for="elderflower" class="textbox-label">Elderflower</label>
     </div>
-    <button id="flavors-next" type="submit">Next</button>  
+    <button id="flavors-next" type="submit">Next</button> 
+     
 </form>
   </div>
 `;
@@ -296,10 +297,12 @@ const question3Flavors = () => {
 //Question 4 - Phone Number
 const question4PhoneNo = () => {
   inputWrapper.innerHTML = `
-  <input type="tel" class="phone-number" required> 
-  <button id="confirm-btn">Confirm</button>
-  <button id="cancel-btn" onClick="window.location.reload();">Cancel</button>`;
-  console.log();
+  <form id="phone-form">
+  <input type="tel" class="phone-number" name="phone" maxlength="12" required> 
+  <button type="submit" id="confirm-btn">Confirm</button>
+  <button id="cancel-btn" onClick="window.location.reload();">Cancel</button>
+  </form>
+  `;
 
   showMessage(`Phone number please`, 'bot');
   phoneNumber();
