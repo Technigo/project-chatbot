@@ -1,12 +1,14 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+We have made a chatbot with the theme of a fantasy tour.
+The assignment was to make a chatbot with JavaScript.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+First we made a plan in Jamboard so we knew exactly what theme and which questions we wanted.
+We used pair programming and used the example bot a lot for reference. If we got stuck, we either checked stack overflow to post questions or check for other peoples posts, or we tried to google.
+
+If we had more time and more knowledge we would add better effects. For example, changing the bot image depending on which tour guide the user chooses.
 
 ## View it live
 
