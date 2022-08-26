@@ -30,7 +30,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <i class="fa-solid fa-user"></i>  
       </section>
     `;
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
@@ -38,7 +38,7 @@ const showMessage = (message, sender) => {
     console.log("Bot saying this:", message);
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+      <i class="fa-solid fa-shrimp"></i>
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -52,7 +52,7 @@ const showMessage = (message, sender) => {
 const showBotMessage = (message) => {
   setTimeout(() => {
     showMessage(message, "bot");
-  }, 300);
+  }, 700);
 };
 
 const nextQuestion = () => {
@@ -86,14 +86,11 @@ const botGreetsUserAndAsksName = () => {
 
 const botAskWhichDay = () => {
   //Here we call the next question about what day they would like to visit
-  //  When do you want to book for?
-  //  Today
-  //  Tomorrow
 
   //console.log("userMessage", userMessage);
 
   showBotMessage(
-    `Ok ${answers.name} Which day would you like to book a table for?`
+    `Ok ${answers.name}, which day would you like to book a table for?`
   );
   inputWrapper.innerHTML = `
     <button class="send-btn" id="today" type="submit">Today</button>
@@ -111,7 +108,7 @@ const botAskWhichDay = () => {
 const botAskWhatTime = () => {
   showBotMessage("For what time would like to book your table?");
   inputWrapper.innerHTML = `
-    <select id="timeChoice">
+    <select id="timeChoice" class="selectChoice">
         <option value="" selected disabled>Select a time</option>
         <option value="5pm">5pm</option>
         <option value="6pm">6pm</option>
@@ -127,8 +124,8 @@ const botAskWhatTime = () => {
 const botAskHowManyPeople = () => {
   showBotMessage("How many people?");
   inputWrapper.innerHTML = `
-      <select id="peopleChoice">
-        <option value="" selected disabled>How many people?</option>
+      <select id="peopleChoice" class="selectChoice">
+        <option value="" selected disabled>Select how many people?</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -164,11 +161,13 @@ const botAskWhatEmail = () => {
 };
 
 const botAskForConfirmation = () => {
-  console.log(answers);
   showBotMessage(
-    `"Fantastic, thank you. Let me just double check I've got everything right before I confirm your booking ${answers.name}: you'd like to book a table for ${answers.people} on ${answers.day} at ${answers.time} and your contact information is ${answers.phonenr} and ${answers.email}
-    Is this correct?`
+    `Fantastic ${answers.name}! Let me just double check I've got everything down right.`
   );
+  showBotMessage(
+    `You'd like to book a table for ${answers.people} ${answers.day} at ${answers.time} and your contact information is ${answers.phonenr} and ${answers.email}?`
+  );
+  showBotMessage(`Is this correct?`);
   //TODO show Y/N button IU for user which leads to either last bot "question" aka booking confirmed message, or to bot saying "Ok, sorry for that, let's start over" and then reload page (??)
   inputWrapper.innerHTML = `
   <button class="send-btn" id="yes" type="submit">Yes, confirm booking</button>
@@ -244,8 +243,15 @@ const handleUserEmail = (event) => {
 const bookingConfirmation = (confirmationChoice) => {
   if (confirmationChoice === "yes") {
     showMessage("Yes", "user");
+    showMessage(
+      `Your booking is confirmed. Thank you, we are looking forward seeing you ${answers.day}! :)`,
+      "bot"
+    );
+    inputWrapper.innerHTML = ` `;
   } else {
     showMessage("No", "user");
+    showMessage("Ok, no problem! Let's start from the beginning.", "bot");
+    location.reload();
   }
   //botAskWhatTime();
   nextQuestion();
