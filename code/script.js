@@ -163,7 +163,7 @@ const question5 = () => {
   // Här ifrån fungerar ej
   document.getElementById("takeAway").addEventListener("click", takeAwayChoice);
   document.getElementById("drinkHere").addEventListener("click", drinkHereChoice);
-  setTimeout(() => question6(coffeeAnswer), 1000);
+  /*setTimeout(() => question6(coffeeAnswer), 1000);*/
   /* setTimeout(() => question6(coffeeAnswer), 1000); */
 };
 
