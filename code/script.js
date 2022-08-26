@@ -4,6 +4,11 @@ const inputWrapper = document.getElementById('input-wrapper');
 const popup = document.getElementById('popup');
 const allButtons = document.getElementsByTagName('button');
 
+const coneBtn = document.getElementById('cone-btn');
+const cupBtn = document.getElementById('cup-btn');
+const msgSound = new Audio('assets/pop.mp3');
+msgSound.volume = 0.6;
+
 // If you need any global variables that you can use across different functions, declare them here:
 const customerOrder = {
   type: '',
@@ -26,33 +31,49 @@ const disableBtnAfterClick = () => {
   }
 };
 
-// Starts here:
+// enable all buttons again
+const enableBtnAfterClick = () => {
+  for (let i = 0; i < allButtons.length; i++) {
+    allButtons[i].disabled = false;
+  }
+};
 
-// User replies & function logic:
+// Starts here
 
 // Question 1 – Cup or Cone
-const chooseCupCone = () => {
-  const cupBtn = document.getElementById('cup-btn');
-  const coneBtn = document.getElementById('cone-btn');
+const greeting = () => {
+  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
 
-  cupBtn.addEventListener('click', () => {
-    customerOrder.serving = 'Cup';
-    showMessage(`In a ${customerOrder.serving}, please`, 'user');
+  showMessage('Welcome to The Ice Cream Shop! Let me take your order.', 'bot');
 
-    disableBtnAfterClick();
-    setTimeout(() => question2IceOrSoft(), 2000);
-  });
+  showLoading();
+  setTimeout(() => {
+    showMessage('Would you like your ice cream in a cup or a cone?', 'bot');
 
-  coneBtn.addEventListener('click', () => {
-    customerOrder.serving = 'Cone';
-    showMessage(
-      `I would like it in a ${customerOrder.serving}, please`,
-      'user'
-    );
+    removeLoading();
 
-    disableBtnAfterClick();
-    setTimeout(() => question2IceOrSoft(), 2000);
-  });
+    cupBtn.addEventListener('click', () => {
+      customerOrder.coneOrCup = 'Cup';
+
+      showMessage('Cup', 'user');
+
+      disableBtnAfterClick();
+      setTimeout(() => question2IceOrSoft(), 1000);
+      showLoading();
+    });
+
+    coneBtn.addEventListener('click', () => {
+      customerOrder.coneOrCup = 'Cone';
+
+      showMessage('Cone', 'user');
+
+      disableBtnAfterClick();
+      setTimeout(() => question2IceOrSoft(), 1000);
+      showLoading();
+    });
+
+    inputWrapper.classList.toggle('active');
+  }, 1000);
 };
 
 //Question 2 - Ice Cream or Soft Ice Cream
@@ -65,7 +86,10 @@ const chooseIceCream = () => {
 
     showMessage(`I scream: ${customerOrder.type}`, 'user');
     disableBtnAfterClick();
-    setTimeout(() => question3Flavors(), 800);
+
+    setTimeout(() => question3Flavors(), 1000);
+    showLoading();
+
   });
 
   softIceCreamBtn.addEventListener('click', () => {
@@ -73,7 +97,8 @@ const chooseIceCream = () => {
 
     showMessage(`${customerOrder.type}`, 'user');
     disableBtnAfterClick();
-    setTimeout(() => question3Sprinkles(), 500);
+    setTimeout(() => question3Sprinkles(), 1000);
+    showLoading();
   });
 };
 
@@ -92,7 +117,7 @@ const chooseSprinkles = () => {
       'user'
     );
     disableBtnAfterClick();
-    setTimeout(() => question4PhoneNo(), 500);
+    setTimeout(() => question4PhoneNo(), 1000);
   });
 };
 
@@ -109,7 +134,9 @@ const chooseFlavors = () => {
       customerOrder.flavors += `${chosenFlavors[i].value} `;
     }
 
+
     showMessage(`${customerOrder.flavors} , please`, 'user');
+
     disableBtnAfterClick();
     setTimeout(() => question4PhoneNo(), 1000);
   });
@@ -124,6 +151,20 @@ const phoneNumber = () => {
     showMessage(`Phone number`, 'user');
     showMessage(`Thank you for your order`, 'bot');
     popup.classList.toggle('hide');
+    enableBtnAfterClick();
+
+    // OK-button for popup
+    const refreshButton = document.getElementById('refresh-button');
+    console.log(refreshButton);
+
+    const refreshPage = () => {
+      location.reload();
+    };
+
+    refreshButton.addEventListener('click', () => {
+      console.log('hejhej');
+      refreshPage();
+    });
   });
 };
 
@@ -136,7 +177,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user2.png" alt="User" />  
       </section>
     `;
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
@@ -175,6 +216,7 @@ const question2IceOrSoft = () => {
 
   showMessage(`Would you like:`, 'bot');
   chooseIceCream();
+  removeLoading();
 };
 
 //Question 3 - Sprinkles (Soft Ice Cream)
@@ -190,6 +232,7 @@ const question3Sprinkles = () => {
 <button id="sprinkles-next">Next</button>`;
   showMessage(`Sprinkles?`, 'bot');
   chooseSprinkles();
+  removeLoading();
 };
 
 //Question 3 - Flavors (Ice Cream)
@@ -219,6 +262,7 @@ const question3Flavors = () => {
 `;
   showMessage(`What flavors?`, 'bot');
   chooseFlavors();
+  removeLoading();
 };
 
 //Question 4 - Phone Number
@@ -233,6 +277,29 @@ const question4PhoneNo = () => {
   phoneNumber();
 };
 
+// loading function
+const showLoading = () => {
+  chat.innerHTML += `
+  <div class="fa-1x loading">
+    <i class="fa-solid fa-circle fa-bounce"></i>
+    <i class="fa-solid fa-circle fa-bounce" style="--fa-animation-delay: 0.2s"></i>
+    <i class="fa-solid fa-circle fa-bounce" style="--fa-animation-delay: 0.4s"></i>
+  </div>
+  `;
+
+  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+  chat.scrollTop = chat.scrollHeight;
+};
+
+// removes loading icon
+const removeLoading = () => {
+  const elements = document.getElementsByClassName('loading');
+  Array.from(elements).forEach((el) => {
+    el.parentNode.removeChild(el);
+  });
+  console.log(elements);
+};
+
 // Set up your eventlisteners here
 
 // When website loaded, chatbot asks first question.
@@ -241,4 +308,5 @@ const question4PhoneNo = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(question1Greeting, 1000);
+
+setTimeout(greeting, 500);
