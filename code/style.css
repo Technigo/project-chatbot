@@ -1,3 +1,7 @@
+/* set body font-size and changed all px font sizes to em (which is relative to body font size) */
+/* removed lots of paddig ie changd from 16 px down to 10 etc, to make chat appear less "bulky" */
+/*  */
+
 * {
   box-sizing: border-box;
 }
@@ -35,15 +39,28 @@ p {
 input {
   box-sizing: border-box;
   border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  border-radius: 4px;
+  background: #f9edea;
+  color: #202020;
   padding: 10px;
   font-size: 1em;
   font-family: "Montserrat";
-  font-weight: 600;
   line-height: 20px;
   flex: 1;
+}
+
+input:focus,
+select:focus {
+  /* removes outline around input and selects when in focus */
+  outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  /* removes babyblue color of input fields in certain states */
+  -webkit-box-shadow: 0 0 0 30px #f9edea inset;
 }
 
 .all-the-content {
@@ -69,8 +86,7 @@ main {
 }
 
 .chat {
-  /* adjusted overflows to remove ugly scroll bars */
-
+  /* adjusted overflows to remove horizontal scroll bar and hide vertical until actually needed */
   flex: 1;
   display: flex;
   justify-content: flex-start;
@@ -93,29 +109,32 @@ main {
   flex-shrink: 0;
 }
 
-.bot-msg img,
-.user-msg img {
-  width: 50px;
-  height: 50px;
+.bot-msg i,
+.user-msg i {
+  /* changed chat icons from starter jpg files to fontawesome icons because easy to change color and icon image right here in the size in css file */
+  font-size: 38px;
+  padding-top: 5px;
 }
 
 .bubble {
-  background: #e8d6d0;
+  /*removed max-width to make chat bubbles stretch out fully in chat, saving usage of horizontal space and giving better overview of past messages*/
   font-weight: 500;
   font-size: 1em;
   line-height: 26px;
   padding: 14px 26px;
-  color: #0026ff;
+  color: #202020;
 }
 
 .bot-bubble {
   border-radius: 0px 17px 17px 17px;
   margin-left: 8px;
+  background: #e2e2e2;
 }
 
 .user-bubble {
   border-radius: 17px 0 17px 17px;
   margin-right: 8px;
+  background: #e8d6d0;
 }
 
 .input-wrapper {
@@ -129,15 +148,15 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #8f776f;
   color: white;
   border: none;
   border-radius: 4px;
   padding: 5px 30px;
   margin-left: 8px;
-  font-size: 1.1em;
+  font-size: 1em;
   font-family: "Montserrat";
-  font-weight: 500;
+  font-weight: 450;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -152,8 +171,9 @@ button:hover {
   border: none;
   border-radius: 4px 0 0 4px;
   width: 100%;
-  background: #e5e9ff;
+  background: #f9edea;
   font-family: "Montserrat";
   padding: 16px;
   line-height: 26px;
+  font-size: 1em;
 }
