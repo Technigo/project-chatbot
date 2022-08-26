@@ -191,7 +191,7 @@ select#sprinkles {
   border-radius: 16px;
 }
 
-.check-cointaner {
+.check-container {
   position: relative;
   display: flex;
   flex-direction: column-reverse;
