@@ -3,12 +3,8 @@ const chat = document.getElementById('chat');
 const sendButton = document.querySelector('.send-btn');
 const inputWrapper = document.getElementById('input-wrapper');
 const nameInput = document.getElementById('name-input');
-const form = document.getElementById('name-form"')
-// const userDiv= document.createElement('div');
-// const userimg = document.createElement('img');
-// userimg.src = './assets/user.png';
-// userimg.style.height='60px';
-// userimg.style.width='60px';
+const form = document.getElementById('name-form')
+
 
 
 // If you need any global variables that you can use across different functions, declare them here:
@@ -20,12 +16,10 @@ let question= 0;
 // Declare your functions after this comment
 sendButton.addEventListener('click', (e) => {
   e.preventDefault();
-    // chat.appendChild(userDiv);
-  // userDiv.appendChild(nameInput);
-  // userDiv.appendChild(userimg);
+
   const name = nameInput.value;
   showMessage(name, 'user');
-  nameInput.value = ''; 
+ name = ''; 
 
 })
 
@@ -100,11 +94,12 @@ inputWrapper.innerHTML=`
 `
 
 document.getElementById('pizzabtn').addEventListener('click',()=>{
-  showMessage('Nice choose! Which kind of pizza do you want? Select from Menu ', 'bot');
+  showMessage('Nice choice! Which kind of pizza do you want? Select from Menu ', 'bot');
   setTimeout(()=>{
 pizza()
   
 }, 2000)
+
 
 
 })
