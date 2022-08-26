@@ -1,13 +1,13 @@
 # Project Name
 
-Replace this readme with your own information about your project.
+Our project is based on dating sites, but instead of dating with people, user gets to date with a book. Our chatbot is called LOVELITS for those who crave surprise in their life. 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment is to create a chatbot and to have an understanding of basic JavaScript with functions, variables, and statement. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Overall, we had problems with the real basic of JavaScript like what everything is. We managed to solve our problems by asking questions, browsing answers from Google, and inspecting codes from other websites, and just experiment with our knowledge.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://phenomenal-kelpie-2b24fb.netlify.app
