@@ -4,6 +4,9 @@ const inputWrapper = document.getElementById('input-wrapper');
 const popup = document.getElementById('popup');
 const allButtons = document.getElementsByTagName('button');
 
+// Sound effect
+let msgSound = new Audio('assets/pop.mp3');
+
 // Object to save user inputs and method to present the order back to the customer
 const customerOrder = {
   serving: '',
@@ -61,12 +64,6 @@ const removeLoading = () => {
     el.parentNode.removeChild(el);
   });
   console.log(elements);
-};
-
-// play sound effect
-const playSound = () => {
-  let msgSound = new Audio('assets/pop.mp3');
-  msgSound.volume = 0.6;
 };
 
 // User replies & function logic/event listeners
@@ -198,6 +195,7 @@ const phoneNumber = () => {
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
+    msgSound.play();
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -208,6 +206,7 @@ const showMessage = (message, sender) => {
     `;
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
+    msgSound.play();
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/icon.png" alt="Bot" />
