@@ -56,7 +56,7 @@ const handleNameInput = (event) => {
 	// clear it from the input
   const name = nameInput.value
   showMessage(name, 'user')
-  showMessage(`So ${nameInput.value} I understand that your’re done watching a TV show and are looking for something new to watch?`, 'bot') // Bot: Are you looking for something new to watch?
+  showMessage(`So ${nameInput.value}, I understand that your’re done watching a TV show and are looking for something new to watch?`, 'bot') // Bot: Are you looking for something new to watch?
   nameInput.value = ''
   inputWrapper.innerHTML = // add Yes/No button
     `<button id="yesBtn" type="submit">Yes</button>
@@ -65,8 +65,8 @@ const handleNameInput = (event) => {
     document
     .getElementById('yesBtn')
     .addEventListener('click', () => {
-      showMessage('YES', 'user');
-      showMessage('What kind of TV show would you like to see??', 'bot');
+      showMessage('Yes', 'user');
+      showMessage('What kind of TV show would you like to see?', 'bot');
       askForGenre() //call next function with a parameter for yes
    
     })
@@ -74,8 +74,8 @@ const handleNameInput = (event) => {
     document
     .getElementById('noBtn')
     .addEventListener('click', () => {
-      showMessage('No thank you, goodbye', 'user')
-      showMessage('Thank you, have a good day!', 'bot')
+      showMessage('No', 'user')
+      showMessage('Okay! Have a good day!', 'bot')
       nextFunction('no') //call next function with a parameter for no
     }) 
 
@@ -100,7 +100,7 @@ const askForGenre = () => {
       .getElementById('drama')
       .addEventListener('click', () => {
         showMessage('Drama', 'user')
-        showMessage('Okay, then I would suggest this: drama', 'bot');
+        showMessage(`Okay, then I would suggest this: <a href="https://www.imdb.com/title/tt4786824/">The Crown</a>`, 'bot');
         setTimeout(() => showMessage('Are you happy with my suggestion?', 'bot'), 2000);
         askForLastUserAnswer() //call next function with a parameter for no
       })
@@ -108,7 +108,7 @@ const askForGenre = () => {
       .getElementById('thriller')
       .addEventListener('click', () => {
         showMessage('Thriller', 'user')
-        showMessage('Okay, then I would suggest this: thriller', 'bot')
+        showMessage(`Okay, then I would suggest this: <a href="https://www.imdb.com/title/tt10574558/">Midnight Mass</a>`, 'bot')
         setTimeout(() => showMessage('Are you happy with my suggestion?', 'bot'), 2000);
         askForLastUserAnswer()
       })
@@ -117,7 +117,7 @@ const askForGenre = () => {
       .getElementById('comedy')
       .addEventListener('click', () => {
         showMessage('Comedy', 'user')
-        showMessage('Okay, then I would suggest this: comedy', 'bot')
+        showMessage(`Okay, then I would suggest this: <a href="https://www.imdb.com/title/tt10062292/?ref_=fn_al_tt_1">Never Have I Ever</a>`, 'bot')
         setTimeout(() => showMessage('Are you happy with my suggestion?', 'bot'), 2000)
         askForLastUserAnswer()
       })
@@ -133,7 +133,7 @@ const askForGenre = () => {
     document
     .getElementById('yesBtn')
     .addEventListener('click', () => {
-      showMessage('YES', 'user');
+      showMessage('Yes', 'user');
       showMessage('Great! I hope you enjoy it! Have a great day/evening!', 'bot');
       
    
