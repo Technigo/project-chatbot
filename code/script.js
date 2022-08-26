@@ -1,53 +1,78 @@
 // Variables that point to selected DOM elements
-const chat = document.getElementById('chat');
+document.addEventListener('DOMContentLoaded', ()=> {
+  //const chat = document.getElementById('chat');
+  const nameForm = document.getElementById('name-form');
+  let userInput = '';
+  let questionCounter = 0;
 
-// If you need any global variables that you can use across different functions, declare them here:
 
-
-// Declare your functions after this comment
-
-// This function will add a chat bubble in the correct place based on who the sender is
-const showMessage = (message, sender) => {
-  // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
-  if (sender === 'user') {
-    console.log("userMessage")
-    chat.innerHTML += `
-      <section class="user-msg">
-        <div class="bubble user-bubble">
-          <p>${message}</p>
-        </div>
-        <img src="assets/user.png" alt="User" />  
-      </section>
-    `
-    // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
-  } else if (sender === 'bot') {
-    console.log("botMessage")
-    chat.innerHTML += `
-      <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
-        <div class="bubble bot-bubble">
-          <p>${message}</p>
-        </div>
-      </section>
-    `
+  // This function will add a chat bubble in the correct place based on who the sender is
+  const showMessage = (message, sender) => {
+    if (sender === 'user') {
+      console.log("userMessage")
+      chat.innerHTML += `
+        <section class="user-msg">
+          <div class="bubble user-bubble">
+            <p>${message}</p>
+          </div>
+          <img src="assets/user.png" alt="User" />  
+        </section>
+      `
+    } else if (sender === 'bot') {
+      console.log("botMessage")
+      chat.innerHTML += `
+        <section class="bot-msg">
+          <img src="assets/bot.png" alt="Bot" />
+          <div class="bubble bot-bubble">
+            <p>${message}</p>
+          </div>
+        </section>
+      `
+    }
+    chat.scrollTop = chat.scrollHeight;
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-  chat.scrollTop = chat.scrollHeight;
-}
 
-// Starts here
-const greeting = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello sunshine, What's your name?", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
-}
+  const readUserInput = () => {
+    const userInput = document.getElementById('name-input').value;
+    // userInput.value = '';
+    nameForm.reset();
+    return userInput;
+  }
 
-// Set up your eventlisteners here
+  // Starts here
+  const greeting = () => {
+    showMessage("Hello SUN, want some pizza?", 'bot');
+  }
+  setTimeout(greeting, 1000);
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000);
+  // -1. Listen for the form submit event
+  // Set up your eventlisteners here
+  nameForm.addEventListener('submit', (event)=> {
+    event.preventDefault();
+    userInput = readUserInput();
+    showMessage(userInput, 'user');
+    if (questionCounter === 0) {
+      if (userInput === 'yes') {
+          showMessage('Veggie or meat?', 'bot');
+          questionCounter ++;
+      } else {
+          showMessage('Good bye!', 'bot');
+      }
+      // questionCounter = questionCounter + 1;
+  } else if (questionCounter === 1) {
+      if (userInput === 'Veggie') {
+          showMessage('Margherita or Vegetariana?', 'bot');
+      } else {
+          showMessage('Capricciosa or Kebabpizza?', 'bot');
+      }
+      questionCounter += 1;
+  }
+  });
+
+  // -2. When the form is submitted, post the value from the text input as a message from the user
+  //Den här TROR vi är överflödig
+  //const userAnswer1 = () => {
+  //  showMessage("name", 'user');
+  
+  // -3. Progress the app to the next question. 
+});
