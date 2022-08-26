@@ -11,5 +11,4 @@ We used pair programming and used the example bot a lot for reference. If we got
 If we had more time and more knowledge we would add better effects. For example, changing the bot image depending on which tour guide the user chooses.
 
 ## View it live
-
-[Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.](https://brilliant-cassata-6614e6.netlify.app/)
+https://brilliant-cassata-6614e6.netlify.app/
