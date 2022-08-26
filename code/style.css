@@ -8,7 +8,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   background-image: url("mango.jpg");
   background-size: cover;
-  /* background: #0026ff; */
+  
 }
 
 h1 {
@@ -141,7 +141,6 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-
 select {
 	border: none;
 	border-radius: 4px 0 0 4px;
@@ -155,12 +154,8 @@ select {
 	line-height: 26px;
 	flex: 1;
   text-align: center;
-
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
 }
 
-select:active{
-  background-color: green;
-}

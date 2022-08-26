@@ -6,7 +6,7 @@ const inputWrapper = document.getElementById('input-wrapper');
 const sendBtn = document.getElementById('send');
 const form = document.getElementById('name-form')
 
-// Dictates question flow
+// Dictates question order & enables Q flow
 let questionNumber = 1
 
 // Dictates chat flow
@@ -18,7 +18,6 @@ const userAnswer = (inputMessage) => {
   showMessage(inputMessage, 'user')
 }
 
-// Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -47,26 +46,24 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
+// Question flow
 const nextQuestion = (message) => {
   console.log('questionNumber', questionNumber)
 
   if (questionNumber === 1) {
     userAnswer(message)
     input.value = ''
-    setTimeout(() => dayBooking(message), 1000)
+    setTimeout(() => dayBooking(message), 700)
   } else if (questionNumber === 2) {
     userAnswer(message)
-    setTimeout(() => timeBooking(message), 1000)
+    setTimeout(() => timeBooking(message), 700)
   } else if (questionNumber === 3) {
     userAnswer(message)
-    setTimeout(() => guestBooking(message), 1000)
+    setTimeout(() => guestBooking(message), 700)
   } else if (questionNumber === 4) {
     userAnswer(message)
-    setTimeout(() => finaliseBooking(message), 1000)
-  } else {
-    userAnswer(message)
-    setTimeout(thankYou, 1000)
-  }
+    setTimeout(() => finaliseBooking(message), 700)
+  } 
 }
 
 // First question
@@ -74,7 +71,6 @@ const greeting = () => {
   questionNumber = 1
   botAnswer(`Welcome! In what name do you want to make a reservation?`);
 }
-
 
 
 form.addEventListener('submit', (event) => {
@@ -89,7 +85,7 @@ form.addEventListener('submit', (event) => {
 
 const dayBooking = () => { 
   questionNumber++
-  showMessage("Which day would you like to visit us?", 'bot');
+  botAnswer(`Which day would you like to visit us?`);
 
   inputWrapper.innerHTML = `
     <button id='fridayButton'>Friday</button>
@@ -112,19 +108,19 @@ const timeBooking = (type) => {
     inputWrapper.innerHTML=`
     <select id = 'select'>
       <option value='' selected disabled> Choose time </option>
-      <option value='lunch'>Lunch</option>
+      <option value='Lunch'>Lunch</option>
       <option value='After Work'>After Work</option>
     </select> 
-      `
+    `
   } 
   else {
     inputWrapper.innerHTML=`
     <select id = 'select'>
       <option value='' selected disabled> Choose time </option>
       <option value='Brunch'>Brunch</option>
-      <option value='dinner'>Dinner</option>
-      </select> 
-      `
+      <option value='Dinner'>Dinner</option>
+    </select> 
+    `
   }
 
   const select = document.getElementById('select')
@@ -154,6 +150,7 @@ select.addEventListener('change', () => nextQuestion(select.value))
 }
 
 // summary
+
 const finaliseBooking = (choice) => {
   select.remove();
   questionNumber++
@@ -168,9 +165,5 @@ const finaliseBooking = (choice) => {
   
   select.addEventListener('change', () => nextQuestion(inputValue))
 }
-
-
-
-
 
 setTimeout(greeting, 1000);
