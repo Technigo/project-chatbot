@@ -40,39 +40,74 @@ document.addEventListener('DOMContentLoaded', ()=> {
   }
 
   // Starts here
+
+  /*
+  B: Hello SUN, want some pizza?
+  U: Yes
+  B: Veggie or meat?
+  U: Veggie
+    => Margherita or Vegetariana?
+     Meat
+     => Capricciosa or Kebabpizza?
+  B: Excellent choice! Pick up your order in 15 minutes :)
+  B: Thank you for using PizzaBot!
+
+  U: No
+    => Good bye!
+  
+  U: else than "Yes" or "No"
+    => I'm sorry, I don't understand. Please answer with a Yes or No :)
+  */
+
   const greeting = () => {
     showMessage("Hello SUN, want some pizza?", 'bot');
   }
   setTimeout(greeting, 1000);
 
-  // -1. Listen for the form submit event
-  // Set up your eventlisteners here
-  nameForm.addEventListener('submit', (event)=> {
-    event.preventDefault();
-    userInput = readUserInput();
-    showMessage(userInput, 'user');
-    if (questionCounter === 0) {
-      if (userInput === 'yes') {
-          showMessage('Veggie or meat?', 'bot');
-          questionCounter ++;
-      } else {
-          showMessage('Good bye!', 'bot');
-      }
-      // questionCounter = questionCounter + 1;
-  } else if (questionCounter === 1) {
-      if (userInput === 'Veggie') {
-          showMessage('Margherita or Vegetariana?', 'bot');
-      } else {
-          showMessage('Capricciosa or Kebabpizza?', 'bot');
-      }
-      questionCounter += 1;
-  }
-  });
+    nameForm.addEventListener('submit', (event)=> {
+      event.preventDefault();
+      userInput = readUserInput();
+      showMessage(userInput, 'user');
 
-  // -2. When the form is submitted, post the value from the text input as a message from the user
-  //Den här TROR vi är överflödig
-  //const userAnswer1 = () => {
-  //  showMessage("name", 'user');
-  
-  // -3. Progress the app to the next question. 
+
+      if (questionCounter === 0) {
+        if (userInput === 'Yes') {
+          showMessage('Veggie or Meat?', 'bot');}
+          else if (userInput === 'No') {
+          showMessage('Good bye!', 'bot');} 
+          else if (userInput !== 'Yes' || 'No'){
+          showMessage("I'm sorry, I don't understand. Please answer with a Yes or No.", 'bot');
+          }
+        questionCounter +1;
+      }
+
+      else if (questionCounter === 1) {
+        if (userInput === 'Veggie') {
+          showMessage('Margherita or Vegetariana?', 'bot');}
+          else if (userInput === 'Meat') {
+          showMessage('Capricciosa or Kebabpizza?', 'bot');}
+          else if (userInput !== 'Veggie' || 'Meat'){
+          showMessage("I'm sorry, I don't understand. Please answer with a Veggie or Meat.", 'bot');
+          }
+        questionCounter +1;
+      }
+      
+      else if (questionCounter === 2) {
+        if (userInput === 'Margherita' || 'Vegetariana' || 'Capricciosa' || 'Kebabpizza') {
+          showMessage('Excellent choice! Pick up your order in 15 minutes.', 'bot');
+          showMessage('Thank you for using PizzaBot!', 'bot');}
+          else if (userInput !== 'Margherita' || 'Vegetariana' || 'Capricciosa' || 'Kebabpizza'){
+          showMessage("I'm sorry, I don't understand. Please answer with a pizza name.", 'bot');
+          }  
+        questionCounter +1;
+      }
+
+
+      /*else if (questionCounter === 3) {
+          showMessage('Thank you for using PizzaBot!', 'bot');
+      }
+        */questionCounter += 1;
+    
+    });
+ 
 });
