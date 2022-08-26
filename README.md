@@ -1,14 +1,11 @@
-# Project Name
+# Netflix helper chatbot
 
-TEST TEST TEST 
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Technigo Bootcamp project week 2. Simple chatbot for series streaming platform. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The biggest problem was to make it answer the questions in the proper order, we approached problem with open mind and curiosity, asking questions and with 'try and learn' method.
+
 
 ## View it live
 
