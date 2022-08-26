@@ -123,14 +123,14 @@ button {
   background-color: #3E3636;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 25px;
   padding: 16px 40px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
   font-family: 'Montserrat';
   font-weight: 500;
-  cursor: pointer;
+  cursor: url(assets/popcorn.png), auto ; /*<a href="https://www.flaticon.com/free-icons/popcorn" title="popcorn icons">Popcorn icons created by Freepik - Flaticon</a>*/
   transition: all 0.3s ease;
 }
 

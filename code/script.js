@@ -75,7 +75,9 @@ const handleNameInput = (event) => {
     .addEventListener('click', () => {
       showMessage('No', 'user')
       showMessage('Okay! Have a good day!', 'bot')
-      nextFunction('no') //call next function with a parameter for no
+      
+    yesBtn.remove();
+    noBtn.remove(); //call next function with a parameter for no
     }) 
 
 // Genre list
@@ -121,22 +123,23 @@ const askForGenre = () => {
         showMessage(`Okay, then I would suggest this: <a href="https://www.imdb.com/title/tt10062292/?ref_=fn_al_tt_1">Never Have I Ever</a>`, 'bot')
         setTimeout(() => showMessage('Are you happy with my suggestion?', 'bot'), 2000)
         askForLastUserAnswer()
-      
+        
       })
 
      
     }
 // We need to setTimeout for the YES/NO buttons so they show after some time - optional
     const askForLastUserAnswer = () => {
-      inputWrapper.innerHTML = // add Yes/No button
+    inputWrapper.innerHTML = // add Yes/No button after short time
     `<button id="yesBtn" type="submit">Yes</button>
     <button id="noBtn" type="submit">No</button>`
 
+    
     document
     .getElementById('yesBtn')
     .addEventListener('click', () => {
       showMessage('Yes', 'user');
-      showMessage('Great! I hope you enjoy it!', 'bot');
+      showMessage('Great! I hope you enjoy it! Have a great day/evening!', 'bot');
     yesBtn.remove();
     noBtn.remove();
    
