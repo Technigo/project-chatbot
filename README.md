@@ -15,5 +15,4 @@ Assignment for week 1 is to make a chatbot by using variables. conditionals and 
 7. We create a generic function called userSpa() that keeps track of the current question and then calls other functions. We had some problem understanding how to work the statements if/ else if. But finally, we understood that let question = 1 was a point important. 
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://chatbot-naghmeh-antonella-technigo.netlify.app
