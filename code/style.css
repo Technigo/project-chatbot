@@ -1,12 +1,19 @@
 * {
   box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  color: #302f2f;
 }
 
 body {
+  height: 100%;
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
-  background: #0026ff;
+  background-image: url("/project-chatbot/images/background-picture.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
 h1 {
@@ -16,7 +23,9 @@ h1 {
   color: #fff;
   text-align: center;
 }
-
+.coffee-logo {
+  height: 65px;
+}
 h2 {
   font-weight: bold;
   font-size: 24px;
@@ -37,8 +46,7 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #a7797956;
   padding: 16px;
   font-size: 16px;
   font-family: "Montserrat";
@@ -65,7 +73,7 @@ main {
   flex: 1;
   display: flex;
   justify-content: flex-start;
-  overflow: scroll;
+  overflow: hidden;
   flex-direction: column;
   padding-bottom: 16px;
 }
@@ -90,12 +98,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #a7797956;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #704f4f;
   max-width: 40%;
 }
 
@@ -120,7 +128,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #704f4f;
   color: white;
   border: none;
   border-radius: 4px;

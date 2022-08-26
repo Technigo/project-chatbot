@@ -18,7 +18,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/girldrinking.png" alt="User" />  
       </section>
     `;
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
@@ -27,7 +27,7 @@ const showMessage = (message, sender) => {
 
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/cuterobot.jpg" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -44,7 +44,7 @@ const showMessage = (message, sender) => {
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello and welcome to the Coffee by D&P! What's your name?", "bot");
-  console.log("bot som skriver"); //can be omitted
+  console.log("greeting"); //can be omitted
 };
 
 
@@ -53,14 +53,15 @@ const handleInput = (event) => {
   event.preventDefault(); //prevents refreshing the page
   let userName = nameInput.value;
   showMessage(`Hi! I am ${userName}.`, "user"); //calling on function
+  console.log("Handle input name given");
   nameInput.value = ""; //erases the answer field
   setTimeout(() => question1(userName), 500);
 };
 
-//Bot asking which coffee the person wants
+//Bot asking the users mood
 const question1 = (userName) => {
   showMessage(`Hello ${userName}! How are you today?`, "bot");
-  console.log("bot som skriver"); //can be omitted
+  console.log("user mood asking from bot"); //can be omitted
   nameForm.removeEventListener("submit", handleInput);
   nameForm.addEventListener("submit", handleInput2);
 };
@@ -70,14 +71,15 @@ const handleInput2 = (event) => {
   event.preventDefault(); //prevents refreshing the page
   let moodChoice = nameInput.value;
   showMessage(`${moodChoice}`, "user"); //calling on function
+  console.log("User answering his mood"); //can be omitted
   nameInput.value = ""; //erases the answer field
   setTimeout(() => question2(), 500);
 };
 
 //Bot asking to make a coffee order
 const question2 = (event) => {
-  showMessage(`Mmm regardless your feeling your day can always get better with a cup of coffee! Would you like some?`, "bot");
-  console.log("bot som skriver"); //can be omitted
+  showMessage(`Mmm 😏 regardless your feeling your day can always get better with a cup of coffee! Would you like some?`, "bot");
+  console.log("Bot asking to make a coffee order"); //can be omitted
   inputWrapper.innerHTML = `
   <button id="ofCourse" type="submit" class="chat-btn">Of course!</button>
   <button id="noThanks" type="submit" class="chat-btn">I will pass</button>
@@ -86,15 +88,17 @@ const question2 = (event) => {
   document.getElementById("noThanks").addEventListener("click", noThanksChoice);
 };
 
+//User denying coffee order
 const noThanksChoice = (event) => {
   event.preventDefault(); //prevents refreshing the page
   let denierAnswer = inputWrapper.value;
   showMessage("No thank you. I'll pass!", "user");
   inputWrapper.value = "";
-  console.log("Denied coffee wish"); //can be omitted
+  console.log("Denied coffee wish from use"); //can be omitted
   setTimeout(() => byeChat(denierAnswer), 1000);
 };
 
+//Bot ending the chat
 const byeChat = () => {
   showMessage("Sure! No problem. Have a nice day tho!", "bot");
   console.log("Ending chat"); //can be omitted
@@ -103,18 +107,20 @@ const byeChat = () => {
   `
 };
 
+//User confirming a coffee order
 const ofCourseChoice = (event) => {
   event.preventDefault(); //prevents refreshing the page
   let doerAnswer = inputWrapper.value;
   showMessage("Of course I want!", "user");
   inputWrapper.value = "";
-  console.log("Confirmed coffee wish"); //can be omitted
+  console.log("User confirmed coffee wish"); //can be omitted
   setTimeout(() => question4(doerAnswer), 1000);
 };
 
+//Bot asking which coffee user wants to order
 const question4 = (answerName) => {
   showMessage("What kind of coffee would you like to order?", "bot");
-  console.log("bot som skriver"); //can be omitted
+  console.log("Bot asking which coffee user wants to order"); //can be omitted
   inputWrapper.innerHTML = `
   <button id="blackCoffee" type="submit" class="chat-btn">Black Coffee</button>
   <button id="macchiato" type="submit" class="chat-btn">Macchiato</button>
@@ -126,9 +132,7 @@ const question4 = (answerName) => {
 };
 
 
-/* document.getElementById('takeAwayBtn').addEventListener('click', () => finalDecision('yes'))
-document.getElementById('drinkHereBtn').addEventListener('click', () => finalDecision('no')) */
-
+// 3 different choices
 const blackChoice = (event) => {
   event.preventDefault(); //prevents refreshing the page
   let coffeeAnswer = inputWrapper.value;
@@ -156,9 +160,10 @@ const withMilkChoice = (event) => {
   setTimeout(() => question5(coffeeAnswer), 1000);
 };
 
+//Bot asking take away or drink here
 const question5 = () => {
   showMessage("Stress or zen mode?", "bot");
-  console.log("bot som skriver"); //can be omitted
+  console.log("Bot asking take away or drink here"); //can be omitted
   inputWrapper.innerHTML = `
   <button id="takeAwayBtn">Take away</button>
   <button id="drinkHereBtn">Drink here</button>
@@ -168,7 +173,7 @@ const question5 = () => {
   document.getElementById('drinkHereBtn').addEventListener('click', () => finalDecision("drink here"))
   ;}
 
-
+//Final decision and video 
 const finalDecision = (finalDecision) => {
 
   if (finalDecision === "take away"){
@@ -180,60 +185,28 @@ const finalDecision = (finalDecision) => {
   <video src="https://assets.mixkit.co/videos/preview/mixkit-coffee-maker-making-coffee-3578-large.mp4" width=100% height="552" autoplay></video>
     `, 4500);
     setTimeout(() => showMessage("Your coffee is preparing...", "bot"), 4500);
-    /* moreQuotes(); */
+    setTimeout(() => chat.innerHTML = `
+    <img src="assets/thanks.jpg" alt="Thank you image"/>
+    `, 15500);
+    setTimeout(() => inputWrapper.innerHTML = `<span>`, 15500);
   } else { 
     setTimeout(() => inputWrapper.innerHTML = `<span>`, 0);
     setTimeout(() => showMessage("Drink here", "user"), 500);
-    setTimeout(() => inputWrapper.innerHTML = `<p>"Sit down and relax! Your coffee is preparing ..."<p>`, 1500);
+    setTimeout(() => inputWrapper.innerHTML = `<p>"Sit down and relax!..."<p>`, 1500);
     setTimeout(() => showMessage("...", "bot"), 1500);
     setTimeout(() => chat.innerHTML = `
   <video src="https://assets.mixkit.co/videos/preview/mixkit-coffee-maker-making-coffee-3578-large.mp4" width=100% height="552" autoplay></video>
     `, 4500);
     setTimeout(() => showMessage("Your coffee is preparing", "bot"), 4500);
   }
+  setTimeout(() => chat.innerHTML = `
+  <img src="assets/thanks.jpg" alt="Thank you image"/>
+    `, 15500);
+    setTimeout(() => inputWrapper.innerHTML = `<span>`, 15500);
 }
-
-  
-  // Här ifrån fungerar ej
-/*   document.getElementById("takeAway").addEventListener("click", question6 => takeawayChoice('take away')
-  document.getElementById("drinkHere").addEventListener("click", goHome);
-};
-
-let finalDecision = "take away";
-let goHome = "";
-if (finalDecision == "take away") {
-showMessage('take away', "user");
-} else {
-showMessage('drink here', "user");
-}; 
- */
-
-
-
-/* let coffeChoice = () => {
-  if (coffeChoice === "blackCoffee") {
-    showMessage(`Nice choice!`, "bot")
-    setTimeout(() => question2(answerName), 1000);
-  } else if (coffeeChoice === "macchiato") {
-    showMessage(`Nice choice!`, "bot")
-    setTimeout(() => question2(answerName), 1000);
-  } else {
-    showMessage(`Nice choice!`, "bot")
-    setTimeout(() => question2(answerName), 1000);
-  }
-} */
-
 
 // Set up your eventlisteners here
 nameForm.addEventListener("submit", handleInput);
-
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
 
 setTimeout(greeting, 0);
 
