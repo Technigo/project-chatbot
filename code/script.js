@@ -65,6 +65,7 @@ let question = 0;
     showMessage("I woke up bald!", 'user');
     const wig = `<a href=https://www.wig.se/>wig.se</a>`
     setTimeout(showMessage(`Sorry we cant help you 🤷‍♀️. Perhaps you can get help at ${wig}`, 'bot'), 2000);
+    setTimeout(() => goodBye(), 1000);
   }
 
   const showWeddingOptions = () => {
