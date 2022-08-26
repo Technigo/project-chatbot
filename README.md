@@ -1,13 +1,11 @@
-# Project Name
+# Project Hotel Chatbot
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+For this project we decided to make a chatbot for a hotel reception desk. This set up some different challenges for us that we manage to overcome as a team. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We approached the different problems in several ways. We did a lot of trial/error. However when we got stuck we asked for help in the StackOverflow. Our biggest problem was creating a second input wrapper with new text input from the user. We solved this problem by talking it through together and trying several things. If we had more time we would make the general hotel page look more real. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://hotelvosje-chatbot-lions.netlify.app/ 

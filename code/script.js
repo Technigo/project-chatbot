@@ -6,7 +6,6 @@ const inputWrapper = document.getElementById('input-wrapper');
 const form = document.getElementById('room-form');
 const roomInput = document.getElementById('room-input'); //user writes their room
 const sendBtn = document.getElementById('send-btn'); //user writes their wake-up time
-const wakeUpBtn = document.getElementById("wake-up");
   
 
 // Toggle effect
@@ -20,6 +19,16 @@ chatBtn.addEventListener("click", ()=>{
 const messageSound = () => {
   let audio = new Audio("https://notificationsounds.com/storage/sounds/file-sounds-1233-elegant.mp3")
   audio.play();
+}
+
+const botTyping = () => {
+  chat.innerHTML += `
+    <ul class="bot-typing">
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  `
 }
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -85,6 +94,7 @@ const greetingLoop = (room) => {
 // Question 2 - Bot asks 'What do you need help with today?' and sends selection-buttons
 
 const helpSelection = () => {
+  botTyping()
   showMessage('What can I help you with?', 'bot');
   inputWrapper.innerHTML = `
   <button id="amenities" type="sbumit" class="chat-btn">Amenities </button>
