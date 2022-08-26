@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const botReply = (msg) => {
     showMessage(msg, 'bot');
-  };
+  }
 
   // This function will add a chat bubble in the correct place based on who the sender is
   const showMessage = (message, sender) => {
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </section>
       `;
-    };
+    }
     chat.scrollTop = chat.scrollHeight;
   }
 
@@ -54,14 +54,14 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout (() => confirmBooking(message), 1000);
     } else if (questionNumber === 5) {
       setTimeout (() => goodbye(message), 1000);
-    };
-  };
+    }
+  }
 
   // Greeting from the bot turns up when the page is loaded
   const greeting = () => {
     questionNumber = 1;
     botReply('Hello there. What is your name?');
-  };
+  }
 
   // The function that makes the users name-response turn up
   const handleInput = (event) => {
@@ -70,8 +70,13 @@ document.addEventListener('DOMContentLoaded', () => {
       showMessage(reply, 'user');
       userInput.value = '';
 
-      setTimeout(() => generateRequest(reply), 500);
-  };
+      if (reply !== '') {
+        setTimeout (() => showOptions(reply), 1000);
+      } else {
+        setTimeout (() => botReply('That is not a valid answer'), 300); 
+      }
+
+  }
 
   // the bots first question; a multiple choise question with three buttons with different alternatives
   const showOptions = (message) => {
@@ -96,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         generateRequest('');
         showMessage('Train', 'user');
       });
-  };
+  }
 
   // the bots second question; a list of numbers to choose from
   const passengers = () => {
@@ -115,8 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('numberOfPassengers') .onchange = () => {
       generateRequest(numberOfPassengers.value);
       showMessage(numberOfPassengers.value, 'user');
-    };
-  };
+    }
+  }
 
   // the bots third question; a multiple choise question with 'yes'- and 'no'-button
   const addBagage = () => {
@@ -162,9 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // the bots first question; a multiple choise question with three buttons with different alternatives
   const goodbye = () => {
     questionNumber++;
-    botReply('Thank you for your booking!')
+    botReply('Thank you for your booking!');
 
-    inputWrapper.innerHTML = ''
+    inputWrapper.innerHTML = '';
 
   }
 
