@@ -3,7 +3,7 @@ const chat = document.getElementById('chat');
 const nameForm = document.getElementById('name-form')
 const nameInput = document.getElementById('name-input')
 const inputWrapper = document.getElementById('input-wrapper')
-/*LA TILL*/ const submit = document.getElementsByClassName('send-btn')
+const submit = document.getElementsByClassName('send-btn')
 
 
 // If you need any global variables that you can use across different functions, declare them here:
@@ -57,7 +57,7 @@ const handleNameInput = (event) => {
 }
 
 //Eventlistener
-nameForm.addEventListener('submit', handleNameInput);
+/*nameForm.addEventListener('submit', handleNameInput);*/
 
 //Question 2
 const howAreYou = () => {
@@ -66,46 +66,42 @@ const howAreYou = () => {
   <button id="happyBtn">Happy! 😀</button>
   <button id="sadBtn">Sad 😢</button>
   <button id="hungryBtn">Hungry 🍔</button>`
-
 }
 
-/*document
-    .getElementById('happyBtn')
-    .addEventListener('click', () => {
+    document.getElementById('happyBtn').addEventListener('click', () => {
      showMessage('happy', 'user')
-     setTimeout(() => askForHelp('happy), 1000)
+     inputWrapper.innerHTML = ''
+     setTimeout(() => askForHelp('happy'), 1000)
     })
-    
-    .getElementById('sadBtn')
-    .addEventListener('click', () => {
+  
+    document.getElementById('sadBtn').addEventListener('click', () => {
      showMessage('sad', 'user')
-     setTimeout(() => askForHelp('sad), 1000)
+     inputWrapper.innerHTML = ''
+     setTimeout(() => askForHelp('sad'), 1000)
     })
 
-    .getElementById('hungryBtn')
-    .addEventListener('click', () => {
+    document.getElementById('hungryBtn').addEventListener('click', () => {
      showMessage('hungry', 'user')
+     inputWrapper.innerHTML = ''
      setTimeout(() => askForHelp('hungry'), 1000)
     })
     
-    */
 
     //Question 3 do we need to keep "information" can we change it?
-const askForHelp = information => {
-  //showMessage(`Ok`, 'bot')
+  const askForHelp = (information) => {
+      showMessage(`Ok`, 'bot')
   
-  if (information === "zinc") {
-    showMessage(`Ok`, 'bot')
-    setTimeout(() => askFor---('zinc'), 2000)
-    
+  if (information === "happy") {
+    showMessage(`Text happy`, 'bot')
+    setTimeout(() => askForMore('zinc'), 2000)
     
 
-  } else if (information === "protein") {
-    showMessage(`Protein`, 'bot')
+  } else if (information === "sad") {
+    showMessage(`Text sad`, 'bot')
     setTimeout(() => askForMore('protein'), 2000)
 
   } else {
-    showMessage(`Few foods`, 'bot')
+    showMessage(`Text hungry`, 'bot')
     setTimeout(() => askForMore('vitaminD'), 2000)
   }
 }
@@ -145,6 +141,7 @@ So the first task is to listen to the form being submitted,
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greeting, 1000);
+nameForm.addEventListener('submit', handleNameInput);
 
 
 
