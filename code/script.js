@@ -1,23 +1,25 @@
 // Variables that point to selected DOM elements
-const chat = document.getElementById("chat");
-const inputWrapper = document.getElementById("input-wrapper");
-const popup = document.getElementById("popup");
+const chat = document.getElementById('chat');
+const inputWrapper = document.getElementById('input-wrapper');
+const popup = document.getElementById('popup');
 
 //Buttons:
-const allButtons = document.getElementsByTagName("button");
-const coneBtn = document.getElementById("cone-btn");
-const cupBtn = document.getElementById("cup-btn");
+const allButtons = document.getElementsByTagName('button');
+const coneBtn = document.getElementById('cone-btn');
+const cupBtn = document.getElementById('cup-btn');
+const msgSound = new Audio('assets/pop.mp3');
+msgSound.volume = 0.6;
 
 // const form = document.getElementById("form");
 
 // If you need any global variables that you can use across different functions, declare them here:
 
 const customerOrder = {
-  type: "",
-  serving: "",
+  type: '',
+  serving: '',
   flavors: [],
-  sprinkles: "",
-  phone: "",
+  sprinkles: '',
+  phone: '',
   getReceipt: () => {},
 };
 
@@ -43,71 +45,75 @@ const enableBtnAfterClick = () => {
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
 
-  showMessage("Welcome to The Ice Cream Shop! Let me take your order.", "bot");
+  showMessage('Welcome to The Ice Cream Shop! Let me take your order.', 'bot');
+
   showLoading();
   setTimeout(() => {
-    showMessage("Would you like your ice cream in a cup or a cone?", "bot");
+    showMessage('Would you like your ice cream in a cup or a cone?', 'bot');
+
     removeLoading();
 
-    cupBtn.addEventListener("click", () => {
-      customerOrder.coneOrCup = "Cup";
-      showLoading();
-      showMessage("Cup", "user");
+    cupBtn.addEventListener('click', () => {
+      customerOrder.coneOrCup = 'Cup';
+
+      showMessage('Cup', 'user');
 
       disableBtnAfterClick();
       setTimeout(() => question2IceOrSoft(), 1000);
+      showLoading();
     });
 
-    coneBtn.addEventListener("click", () => {
-      customerOrder.coneOrCup = "Cone";
-      showLoading();
-      showMessage("Cone", "user");
+    coneBtn.addEventListener('click', () => {
+      customerOrder.coneOrCup = 'Cone';
+
+      showMessage('Cone', 'user');
 
       disableBtnAfterClick();
       setTimeout(() => question2IceOrSoft(), 1000);
+      showLoading();
     });
 
-    inputWrapper.classList.toggle("active");
+    inputWrapper.classList.toggle('active');
   }, 1000);
 };
 
 //Question 2
 const chooseIceCream = () => {
-  const iceCreamBtn = document.getElementById("ice-cream-btn");
-  const softIceCreamBtn = document.getElementById("soft-ice-cream-btn");
+  const iceCreamBtn = document.getElementById('ice-cream-btn');
+  const softIceCreamBtn = document.getElementById('soft-ice-cream-btn');
 
-  iceCreamBtn.addEventListener("click", () => {
-    customerOrder.typeOfIceCream = "Ice Cream";
+  iceCreamBtn.addEventListener('click', () => {
+    customerOrder.typeOfIceCream = 'Ice Cream';
 
-    showLoading();
-    showMessage("Ice Cream", "user");
+    showMessage('Ice Cream', 'user');
     disableBtnAfterClick();
     setTimeout(() => question3Flavors(), 1000);
+    showLoading();
   });
 
-  softIceCreamBtn.addEventListener("click", () => {
-    customerOrder.typeOfIceCream = "Soft Ice Cream";
+  softIceCreamBtn.addEventListener('click', () => {
+    customerOrder.typeOfIceCream = 'Soft Ice Cream';
 
-    showLoading();
-    showMessage("Soft Ice Cream", "user");
+    showMessage('Soft Ice Cream', 'user');
     disableBtnAfterClick();
     setTimeout(() => question3Sprinkles(), 1000);
+    showLoading();
   });
 };
 
 //Question 3 – Sprinkles (Soft)
 const chooseSprinkles = () => {
-  const sprinkleNextBtn = document.getElementById("sprinkles-next");
-  const sprinklesSelection = document.getElementById("sprinkles");
+  const sprinkleNextBtn = document.getElementById('sprinkles-next');
+  const sprinklesSelection = document.getElementById('sprinkles');
 
-  sprinkleNextBtn.addEventListener("click", () => {
+  sprinkleNextBtn.addEventListener('click', () => {
     customerOrder.sprinkles = sprinklesSelection.value;
 
     showMessage(
       `${
         sprinklesSelection.options[sprinklesSelection.selectedIndex].text
       }, please`,
-      "user"
+      'user'
     );
     disableBtnAfterClick();
     setTimeout(() => question4PhoneNo(), 1000);
@@ -116,15 +122,15 @@ const chooseSprinkles = () => {
 
 //Question 3 – flavors (Ice)
 const chooseFlavors = () => {
-  const flavorsNextBtn = document.getElementById("flavors-next");
-  const flavorsForm = document.getElementById("flavors");
+  const flavorsNextBtn = document.getElementById('flavors-next');
+  const flavorsForm = document.getElementById('flavors');
 
-  flavorsForm.addEventListener("onSubmit", (event) => {
+  flavorsForm.addEventListener('onSubmit', (event) => {
     event.preventDefault();
 
     console.log(flavorsForm);
 
-    showMessage(`flavors`, "user");
+    showMessage(`flavors`, 'user');
     disableBtnAfterClick();
     setTimeout(() => question4PhoneNo(), 1000);
   });
@@ -132,25 +138,25 @@ const chooseFlavors = () => {
 
 //Question 4 - Phone Number
 const phoneNumber = () => {
-  const confirmPhoneBtn = document.getElementById("confirm-btn");
+  const confirmPhoneBtn = document.getElementById('confirm-btn');
 
-  confirmPhoneBtn.addEventListener("click", () => {
+  confirmPhoneBtn.addEventListener('click', () => {
     disableBtnAfterClick();
-    showMessage(`Phone number`, "user");
-    showMessage(`Thank you for your order`, "bot");
-    popup.classList.toggle("hide");
+    showMessage(`Phone number`, 'user');
+    showMessage(`Thank you for your order`, 'bot');
+    popup.classList.toggle('hide');
     enableBtnAfterClick();
 
     // OK-button for popup
-    const refreshButton = document.getElementById("refresh-button");
+    const refreshButton = document.getElementById('refresh-button');
     console.log(refreshButton);
 
     const refreshPage = () => {
       location.reload();
     };
 
-    refreshButton.addEventListener("click", () => {
-      console.log("hejhej");
+    refreshButton.addEventListener('click', () => {
+      console.log('hejhej');
       refreshPage();
     });
   });
@@ -159,7 +165,7 @@ const phoneNumber = () => {
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
-  if (sender === "user") {
+  if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -169,7 +175,7 @@ const showMessage = (message, sender) => {
       </section>
     `;
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
-  } else if (sender === "bot") {
+  } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/icon.png" alt="Bot" />
@@ -190,7 +196,7 @@ const question2IceOrSoft = () => {
 <button id="soft-ice-cream-btn">Soft ice cream</button>
 `;
 
-  showMessage(`Would you like:`, "bot");
+  showMessage(`Would you like:`, 'bot');
   chooseIceCream();
   removeLoading();
 };
@@ -206,7 +212,7 @@ const question3Sprinkles = () => {
 </select>
 
 <button id="sprinkles-next">Next</button>`;
-  showMessage(`Sprinkles?`, "bot");
+  showMessage(`Sprinkles?`, 'bot');
   chooseSprinkles();
   removeLoading();
 };
@@ -234,7 +240,7 @@ const question3Flavors = () => {
     <button id="flavors-next" type="submit">Next</button>
   </form>
 `;
-  showMessage(`What flavors?`, "bot");
+  showMessage(`What flavors?`, 'bot');
   chooseFlavors();
   removeLoading();
 };
@@ -247,7 +253,7 @@ const question4PhoneNo = () => {
   <button id="cancel-btn" onClick="window.location.reload();">Cancel</button>`;
   console.log();
 
-  showMessage(`Phone number please`, "bot");
+  showMessage(`Phone number please`, 'bot');
   phoneNumber();
 };
 
@@ -267,7 +273,7 @@ const showLoading = () => {
 
 // removes loading icon
 const removeLoading = () => {
-  const elements = document.getElementsByClassName("loading");
+  const elements = document.getElementsByClassName('loading');
   Array.from(elements).forEach((el) => {
     el.parentNode.removeChild(el);
   });
