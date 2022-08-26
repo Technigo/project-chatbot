@@ -41,73 +41,71 @@ const showMessage = (message, sender) => {
 // Starts here
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello and welcome to your personal Pep bot! What's your name? 🌞", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage("Hello and welcome to your personal Pep Bot! What's your name? 🌞", 'bot');
+  
 }
 
-
-//FRÅN TECHNIGOS SIDA // Store the value in a variable so we can access it after we 
-	// clear it from the input
+//Greeting + name
 const handleNameInput = (event) => {
   event.preventDefault()
   let userName = nameInput.value
   showMessage(userName, 'user')
-  //nameInput.value = ''
+  nameInput.value = ''
   setTimeout(() => howAreYou(userName), 1000);
 }
 
-//Eventlistener
-/*nameForm.addEventListener('submit', handleNameInput);*/
 
-//Question 2
+//Question 1
 const howAreYou = () => {
   showMessage(`Nice to meet you, ${nameInput.value}! How are you feeling today?`, 'bot')
   inputWrapper.innerHTML=`
-  <button id="happyBtn">Happy! 😀</button>
-  <button id="sadBtn">Sad 😢</button>
-  <button id="hungryBtn">Hungry 🍔</button>`
+  <button id="happyBtn" type="submit">Happy! 😀</button>
+  <button id="sadBtn" type="submit">Sad 😢</button>
+  <button id="hungryBtn" type ="submit">Hungry 🍔</button>`
+  document.getElementById('happyBtn').addEventListener('click', () => {
+    showMessage('Happy', 'user')
+    inputWrapper.innerHTML = ''
+    setTimeout(() => askForHelp('happy'), 1000)
+   })
+ 
+   document.getElementById('sadBtn').addEventListener('click', () => {
+    showMessage('Sad', 'user')
+    inputWrapper.innerHTML = ''
+    setTimeout(() => askForHelp('sad'), 1000)
+   })
+
+   document.getElementById('hungryBtn').addEventListener('click', () => {
+    showMessage('Hungry', 'user')
+    inputWrapper.innerHTML = ''
+    setTimeout(() => askForHelp('hungry'), 1000)
+   })
+   
 }
 
-    document.getElementById('happyBtn').addEventListener('click', () => {
-     showMessage('happy', 'user')
-     inputWrapper.innerHTML = ''
-     setTimeout(() => askForHelp('happy'), 1000)
-    })
-  
-    document.getElementById('sadBtn').addEventListener('click', () => {
-     showMessage('sad', 'user')
-     inputWrapper.innerHTML = ''
-     setTimeout(() => askForHelp('sad'), 1000)
-    })
-
-    document.getElementById('hungryBtn').addEventListener('click', () => {
-     showMessage('hungry', 'user')
-     inputWrapper.innerHTML = ''
-     setTimeout(() => askForHelp('hungry'), 1000)
-    })
-    
-
-    //Question 3 do we need to keep "information" can we change it?
+//Question 2 do we need to keep "information" can we change it?
   const askForHelp = (information) => {
-      showMessage(`Ok`, 'bot')
+      /*showMessage(`Ok`, 'bot')*/
   
-  if (information === "happy") {
-    showMessage(`Text happy`, 'bot')
-    setTimeout(() => askForMore('zinc'), 2000)
-    
+    if (information === "happy") {
+    showMessage(`Wow, it is awesome that you are happy! Happiness: protects your heart and strengthens your immune system. 
+    So, keep up the happiness, it is certainly good for you 😍 `, 'bot')
+    setTimeout(() => askForMore('happy'), 1000) 
 
   } else if (information === "sad") {
-    showMessage(`Text sad`, 'bot')
-    setTimeout(() => askForMore('protein'), 2000)
+    showMessage(`Oh no! I’m sad to hear so. I found you <a href="https://www.youtube.com/watch?v=mbfiE40az_0"> a video</a> that I hope will cheer you up!`
+    , 'bot')
+    showMessage(`If that didn’t do the trick, look at <a href="https://www.rd.com/list/happy-facts/">these spectacular facts</a> that'll make you smile!`, 'bot')
+    setTimeout(() => askForMore('sad'), 1000)
 
   } else {
     showMessage(`Text hungry`, 'bot')
-    setTimeout(() => askForMore('vitaminD'), 2000)
+    setTimeout(() => askForMore('hungry'), 1000)
   }
 }
 
 
-
+//Eventlistener
+/*nameForm.addEventListener('submit', handleNameInput);*/
 
 
 
@@ -140,8 +138,9 @@ So the first task is to listen to the form being submitted,
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting, 1000);
 nameForm.addEventListener('submit', handleNameInput);
+setTimeout(greeting, 1000);
+
 
 
 
