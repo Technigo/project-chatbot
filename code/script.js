@@ -15,7 +15,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/icon-user.png" alt="User" />  
+        <img src="assets/icon-user.png" alt="User" />   
       </section>
     `
   } else if (sender === 'bot') {
@@ -29,7 +29,7 @@ const showMessage = (message, sender) => {
     `
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-  chat.scrollTop = chat.scrollHeight
+  setTimeout (() => chat.scrollTop = chat.scrollHeight, 1)
 }
 
 //Question 1: Bot greets and asks for the user's name
