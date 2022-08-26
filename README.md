@@ -1,13 +1,20 @@
-# Project Name
+# Project chatbot
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The object of this project is to build a chatbot to practice writing javaScript.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We started looking at the example chatbot code and the starter code provided for the project, and trying to understand them fully.
+We discussed and agreed on how the user would interact with the bot and what service the chatbot would provide. 
+
+Stack Overflow was very useful in finding answers to some of the issues we had, e.g. how to correctly define a eventlistener function. The live sessions were also helpul in how to structure our code.
+
+If we had more time, we would like to make the code more efficient and less repetitive, as we have some code that repeats in a number of the functions. We would also style it more and add some additional effects, e.g. sound effects.
+The flow of the timing of the responses can also be improved. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Link to deployed your project:
+
+
+
