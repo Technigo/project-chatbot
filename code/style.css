@@ -10,7 +10,7 @@ body {
 h1 {
   font-weight: bold;
   font-size: 44px;
-  line-height: 34px;
+  line-height: 44px;
   color: #fff;
   text-align: center;
   padding: 50px;
@@ -167,7 +167,7 @@ section {
   transition: all 0.3s ease;
 }
 
-button{
+button {
   background-color: darkgray;
   border-radius: 19px;
   box-shadow: 1px 2px 10px 1px #a3a3a3;

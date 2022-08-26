@@ -5,24 +5,22 @@ const chatBtn = document.getElementById("chat-button");
 const inputWrapper = document.getElementById('input-wrapper');
 const form = document.getElementById('room-form');
 const roomInput = document.getElementById('room-input'); //user writes their room
-const sendBtn = document.getElementById('send-btn');
-const wakeUpInput = document.getElementById('wakeUpInput'); //user writes their wake-up time
-const wakeUpForm = document.getElementById('wakeUpForm');
-
+const sendBtn = document.getElementById('send-btn'); //user writes their wake-up time
+const wakeUpBtn = document.getElementById("wake-up");
   
 
-// To add toggle 
+// Toggle effect
+
 chatBtn.addEventListener("click", ()=>{
   chatPopUp.classList.toggle("show");
 });
   
-// sound effect
+// Sound effect
 
 const messageSound = () => {
   let audio = new Audio("https://notificationsounds.com/storage/sounds/file-sounds-1233-elegant.mp3")
   audio.play();
 }
-
 
 // This function will add a chat bubble in the correct place based on who the sender is
 
@@ -72,16 +70,22 @@ const handleFormInput = (event) => {        // at submit this function will be i
 
   if (room === '') {       // this will prompt the user to answer correctly
     setTimeout(() => showMessage(`Please, give me your room number.`, 'bot'), 1500) 
-  } else{
-    setTimeout(() => helpSelection(room), 1500)
+  } else {
+    setTimeout(() => greetingLoop(room), 1500)
   }
 }
 
+// The bot answers hello room #. This const will also be used as loop back selections if guest needs something else
+
+const greetingLoop = (room) => {
+  showMessage(`Hello room ${room}`, 'bot');
+  setTimeout(() => helpSelection(), 600)
+}
 
 // Question 2 - Bot asks 'What do you need help with today?' and sends selection-buttons
 
-const helpSelection = (room) => {
-  showMessage(`Hello room ${room}, what can I help you with today?`, 'bot');
+const helpSelection = () => {
+  showMessage('What can I help you with?', 'bot');
   inputWrapper.innerHTML = `
   <button id="amenities" type="sbumit" class="chat-btn">Amenities </button>
   <button id="room-service" type="submit" class="chat-btn">Room service </button>
@@ -89,17 +93,17 @@ const helpSelection = (room) => {
   `
   document.getElementById('amenities').addEventListener('click',() => {
     showMessage(`I need amenities, please`, 'user')
-    setTimeout(() => selectionAnswer ('amenities'),1500);
+    setTimeout(() => selectionAnswer('amenities'),1500);
 })
 
   document.getElementById('room-service').addEventListener('click',() => {
     showMessage(`I need food, please`, 'user')
-    setTimeout(() => selectionAnswer ('room-service'),1500)
+    setTimeout(() => selectionAnswer('room-service'),1500)
 })
 
   document.getElementById('wake-up').addEventListener('click',() => {
     showMessage(`I need a wake-up-call.`, 'user')
-    setTimemout(() => selectionAnswer ('wake-up'),1500);
+    setTimeout(() => selectionAnswer('wake-up'),1500);
   })
 
 }
@@ -118,26 +122,25 @@ const selectionAnswer = (selection) => {
     `
     document.getElementById('toothbrush').addEventListener('click',() => {
       showMessage(`I need toothbrush and toothpaste`, 'user')
-      setTimeout(() => goodbye ('amenities'), 1800)
+      setTimeout(() => goodbye('amenities'), 1800)
     })
 
     document.getElementById('shampoo').addEventListener('click',() => {
       showMessage(`I need shampoo and conditioner`, 'user')
-      setTimeout(() => goodbye ('amenities'), 1800)
+      setTimeout(() => goodbye('amenities'), 1800)
     })
 
     document.getElementById('toiletrykit').addEventListener('click',() => {
       showMessage(`I need a toiletry kit`, 'user')
-      setTimeout(() => goodbye ('amenities'), 1800)
+      setTimeout(() => goodbye('amenities'), 1800)
     })
 
     document.getElementById('shavingkit').addEventListener('click',() => {
       showMessage(`I need a shaving kit`, 'user')
       setTimeout(() => goodbye('amenities'), 1800)
     })
-    
-
   }
+
 
   else if (selection === 'room-service') {      // If guest needs room-service
     showMessage(`Of course, what are you in the mood for?`, 'bot');
@@ -153,7 +156,7 @@ const selectionAnswer = (selection) => {
 
     document.getElementById('sallad').addEventListener('click', () => {
       showMessage(`I would love a Ceasar Salad`, 'user')
-      setTimeout(() => goodbye ('room-service'), 1800)
+      setTimeout(() => goodbye('room-service'), 1800)
     })
 
     document.getElementById('tomatoesoup').addEventListener('click', () => {
@@ -172,14 +175,22 @@ const selectionAnswer = (selection) => {
         </button>
       </form>
     `
-    
-    document.getElementById('wakeUpInput').addEventListener('submit', () => {
-      showMessage(`Wake me up at ${wakeUpInput.value}`, 'user');
-      setTimeout(()=> goodbye ('wake-up'), 1800)
-    })
-  } 
-}
+  }
+  
+      document.getElementById('wakeUpForm').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const wakeUp = wakeUpInput.value
+      showMessage(`Wake me up at ${wakeUp}`, 'user');
+      wakeUpInput.value = '';
+      
+      if (wakeUp === '') {       // this will prompt the user to answer correctly
+      setTimeout(() => showMessage(`Please, give me a time.`, 'bot'), 1500);
+      } else {
+      setTimeout(()=> goodbye('wake-up'), 1800);
+  }
+})
 
+}
 
 // Question 4 - Bot sends thank you message and ask 'Do you need anything else?'
 
@@ -195,7 +206,7 @@ const goodbye = (selection) => {
   document.getElementById('yes').addEventListener('click', () => {      // If guest says yes
     showMessage(`Yes, I need something else`, 'user')
     setTimeout(() => helpSelection(), 1500)
-  }) 
+  })
 
   document.getElementById('no').addEventListener('click', () => {     // If guest says no 
     showMessage(`No, thank you`, 'user')
@@ -250,6 +261,7 @@ const goodbye = (selection) => {
 
 // Final confirmation message
 
+
 const confirmation = () => {
   showMessage('Ok, thank you for using our chat. Have a nice day!', 'bot')
   inputWrapper.innerHTML = `
@@ -261,7 +273,8 @@ const confirmation = () => {
 
 // Set up your eventlisteners here
 
-form.addEventListener('submit', handleFormInput)
+form.addEventListener('submit', handleFormInput) 
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
