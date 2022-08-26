@@ -146,7 +146,7 @@ const askForGenre = () => {
     .getElementById('noBtn')
     .addEventListener('click', () => {
       showMessage('No', 'user')
-      showMessage('Oh no! I’m so sorry to hear that! This was unfortunately the best I could come up with. You can check our blog post with 10 best series in Netflix here ....', 'bot')
+      showMessage(`Oh no! I’m so sorry to hear that! Maybe you can check out this list of the best shows on Netflix right now: <a href="https://www.digitaltrends.com/movies/best-shows-on-netflix/">List</a>`, 'bot')
     yesBtn.remove();
     noBtn.remove();
     }) 
