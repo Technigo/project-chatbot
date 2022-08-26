@@ -1,12 +1,9 @@
-/* set body font-size and changed all px font sizes to em (which is relative to body font size) */
-/* removed lots of paddig ie changd from 16 px down to 10 etc, to make chat appear less "bulky" */
-
 * {
   box-sizing: border-box;
 }
 
 body {
-  margin: 25px 0 0 0;
+  margin: 10px 0 0 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
@@ -15,18 +12,11 @@ body {
 }
 
 h1 {
-  font-size: 2em;
-  line-height: 30px;
+  font-size: 4em;
+  line-height: 70px;
   color: #fff;
   text-align: center;
-}
-
-h2 {
-  font-size: 1.5em;
-  line-height: 30px;
-  color: #fff;
-  text-align: center;
-  margin-bottom: 36px;
+  font-family: "Cormorant Infant", serif;
 }
 
 p {
@@ -62,8 +52,7 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #f9edea inset;
 }
 
-.all-the-content {
-  /*@TODO change name of this to something semantic also see what can be deleted*/
+.content-wrapper {
   margin: 0 auto;
   box-sizing: border-box;
   display: flex;
@@ -72,7 +61,6 @@ input:-webkit-autofill:active {
 }
 
 main {
-  /*added min value to height to make chat box responsive without using media queries*/
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
@@ -87,7 +75,6 @@ main {
 }
 
 .chat {
-  /* adjusted overflows to remove horizontal scroll bar and hide vertical until actually needed */
   flex: 1;
   display: flex;
   justify-content: flex-start;
@@ -112,13 +99,11 @@ main {
 
 .bot-msg i,
 .user-msg i {
-  /* changed chat icons from starter jpg files to fontawesome icons because easy to change color and icon image right here in the size in css file */
   font-size: 38px;
   padding-top: 5px;
 }
 
 .bubble {
-  /*removed max-width to make chat bubbles stretch out fully in chat, saving usage of horizontal space and giving better overview of past messages*/
   font-weight: 500;
   font-size: 1em;
   line-height: 26px;
@@ -157,7 +142,7 @@ button {
   margin-left: 8px;
   font-size: 1em;
   font-family: "Montserrat";
-  font-weight: 450;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
 }
