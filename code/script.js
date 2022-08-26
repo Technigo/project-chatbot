@@ -4,12 +4,11 @@ const inputForm = document.getElementById("input-form");
 const userInput = document.getElementById("user-input");
 const inputWrapper = document.getElementById("input-wrapper");
 
-// If you need any global variables that you can use across different functions, declare them here:
-
+// Starts the counter of what number of question to ask the user at 1
 let questionNumber = 1;
 
+// Variable that stores the data we get from the user to be able to present it back to the user
 let answers = {
-  //Global. Object with properties to store data. Can use it both to reference previous answers as well as a summary at the end
   name: "",
   day: "",
   time: "",
@@ -17,8 +16,6 @@ let answers = {
   phonenr: "",
   email: "",
 };
-
-// Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -49,18 +46,7 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 };
 
-const showBotMessage = (message) => {
-  setTimeout(() => {
-    showMessage(message, "bot");
-  }, 600);
-};
-
-const showUserMessage = (message) => {
-  setTimeout(() => {
-    showMessage(message, "user");
-  }, 600);
-};
-
+// This function handles the order in which the questions are asked
 const nextQuestion = () => {
   if (questionNumber === 1) {
     botGreetsUserAndAsksName();
@@ -81,15 +67,28 @@ const nextQuestion = () => {
   questionNumber++;
 };
 
-// Starts here
+const showBotMessage = (message) => {
+  setTimeout(() => {
+    showMessage(message, "bot");
+  }, 600);
+};
+
+const showUserMessage = (message) => {
+  setTimeout(() => {
+    showMessage(message, "user");
+  }, 600);
+};
+
+// Functions containing the messages from bot send as well as the choices presented to the user
+
 const botGreetsUserAndAsksName = () => {
   showBotMessage(
     "Hello there! I'm Tablebooker, your friendly table booking bot 😊"
   );
-  showBotMessage("May I have your name please?");
+  showBotMessage("May I have your name, please?");
+  inputForm.addEventListener("submit", handleUserName);
 };
 
-//Here we call the next question about what day they would like to visit
 const botAskWhichDay = () => {
   showBotMessage(
     `Okay ${answers.name}, which day would you like to book a table for?`
@@ -98,7 +97,6 @@ const botAskWhichDay = () => {
     <button class="send-btn" id="today" type="submit">Today</button>
     <button class="send-btn" id="tomorrow" type="submit">Tomorrow</button>
     `;
-
   document
     .getElementById("today")
     .addEventListener("click", () => daySelection("today"));
@@ -108,7 +106,7 @@ const botAskWhichDay = () => {
 };
 
 const botAskWhatTime = () => {
-  showBotMessage("For what time would like to book your table?");
+  showBotMessage("What time shall we have it ready for?");
   inputWrapper.innerHTML = `
     <select id="timeChoice" class="selectChoice">
         <option value="" selected disabled>Select a time</option>
@@ -124,10 +122,10 @@ const botAskWhatTime = () => {
 };
 
 const botAskHowManyPeople = () => {
-  showBotMessage("How many people?");
+  showBotMessage("How many will you be?");
   inputWrapper.innerHTML = `
       <select id="peopleChoice" class="selectChoice">
-        <option value="" selected disabled>Select how many people?</option>
+        <option value="" selected disabled>Select amount of people</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -141,7 +139,9 @@ const botAskHowManyPeople = () => {
 };
 
 const botAskWhatPhoneNumber = () => {
-  showBotMessage("I'll need a phone number for the booking, please 🙂");
+  showBotMessage(
+    "Okay. Now, I will just need a phone number for the booking 🙂"
+  );
   inputWrapper.innerHTML = `
         <form id="phone">
           <input id="phoneInput" type="tel" />
@@ -152,7 +152,7 @@ const botAskWhatPhoneNumber = () => {
 };
 
 const botAskWhatEmail = () => {
-  showBotMessage("And an email address as well.");
+  showBotMessage("Thank you! And lastly, an email address as well, please.");
   inputWrapper.innerHTML = `
         <form id="email">
           <input id="emailInput" type="email" />
@@ -164,10 +164,10 @@ const botAskWhatEmail = () => {
 
 const botAskForConfirmation = () => {
   showBotMessage(
-    `Fantastic ${answers.name}! Let me just double check I've got everything down right.`
+    `Fantastic ${answers.name}! Let me just double check that I have got everything down right.`
   );
   showBotMessage(
-    `You'd like to book a table for ${answers.people} ${answers.day} at ${answers.time} under the name ${answers.name}, and your contact information is ${answers.phonenr} and ${answers.email}?`
+    `You would like to book a table for ${answers.people} ${answers.day} at ${answers.time} under the name ${answers.name}, and your contact information is ${answers.phonenr} and ${answers.email}?`
   );
   showBotMessage(`Is this correct?`);
   inputWrapper.innerHTML = `
@@ -183,14 +183,16 @@ const botAskForConfirmation = () => {
     .addEventListener("click", () => bookingConfirmation("no"));
 };
 
-const handleUserInput = () => {
+// Functions handling the data received from the user
+
+const handleUserName = () => {
   const userMessage = userInput.value;
   showUserMessage(userMessage);
   answers.name = userMessage;
   userInput.value = "";
 
   if (userMessage === "") {
-    showBotMessage("Sorry, I didn't get that");
+    showBotMessage("Sorry, I didn't quite catch that 😳");
     return;
   }
 
@@ -237,20 +239,16 @@ const bookingConfirmation = (confirmationChoice) => {
   if (confirmationChoice === "yes") {
     showUserMessage("Yes");
     showBotMessage(
-      `Your booking is confirmed. Thank you, we are looking forward seeing you ${answers.day}! :)`
+      `Your booking is now confirmed. Thank you! We are looking forward to seeing you ${answers.day} 😊`
     );
     inputWrapper.innerHTML = ` `;
   } else {
     showUserMessage("No");
-    showBotMessage("Ok, no problem! Let's start from the beginning.");
+    showBotMessage("Okay, no problem! Let's start from the beginning.");
     location.reload();
   }
 };
 
-// EventListener for form. Listening for a submit when the user have added something in the form.
-
-inputForm.addEventListener("submit", handleUserInput);
-
 // Sets load time for first bot message
 
-setTimeout(nextQuestion, 600);
+setTimeout(nextQuestion, 700);
