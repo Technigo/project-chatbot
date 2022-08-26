@@ -86,6 +86,11 @@ const handleTourGuide = (tourGuide) => {
 const chooseActivity = (tourGuide) => {  
   showMessage (`You have chosen the ${tourGuide}. What do you want to do together?`, 'bot');
   if (tourGuide === 'Pirate') {
+    document.body.style.backgroundImage = "url('assets/pirate-ship.jpg')"
+    // "Pirate Ship. Nikon D3100. DSC_0170." by Robert.Pittman is licensed under CC BY-ND 2.0. 
+    //To view a copy of this license, visit https://creativecommons.org/licenses/by-nd/2.0/?ref=openverse. 
+    document.getElementsByTagName('h1')[0].style.color = '#31423b';
+    document.getElementsByTagName('h2')[0].style.color = '#31423b';
     inputWrapper.innerHTML =`
     <select id="select">
      <option value="" selected disabled>Choose your activity</option>
@@ -96,6 +101,9 @@ const chooseActivity = (tourGuide) => {
   }
 
   else if (tourGuide === 'Vampire') {
+    document.body.style.backgroundImage = "url('assets/vampire-castle.jpg')"
+    //"Creepy castle" by Ars Skeptica is licensed under CC BY-SA 2.0. 
+    //To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/2.0/?ref=openverse. 
     inputWrapper.innerHTML =`
     <select id="select">
      <option value="" selected disabled>Choose your activity</option>
@@ -106,6 +114,9 @@ const chooseActivity = (tourGuide) => {
   }
 
   else {
+    document.body.style.backgroundImage = "url('assets/potion-room.jpg')"
+    // "The Making of Harry Potter" by Dave Catchpole is licensed under CC BY 2.0. 
+    //To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/?ref=openverse. 
     inputWrapper.innerHTML =`
     <select id="select">
      <option value="" selected disabled>Choose your activity</option>
