@@ -71,7 +71,7 @@ const handleInput2 = (event) => {
   let moodChoice = nameInput.value;
   showMessage(`${moodChoice}`, "user"); //calling on function
   nameInput.value = ""; //erases the answer field
-  setTimeout(() => question2(moodChoice), 500);
+  setTimeout(() => question2(), 500);
 };
 
 //Bot asking to make a coffee order
@@ -120,11 +120,14 @@ const question4 = (answerName) => {
   <button id="macchiato" type="submit" class="chat-btn">Macchiato</button>
   <button id="withMilk" type="submit" class="chat-btn">With Milk</button>
   `
-
   document.getElementById("blackCoffee").addEventListener("click", blackChoice);
   document.getElementById("macchiato").addEventListener("click", macchiatoChoice);
   document.getElementById("withMilk").addEventListener("click", withMilkChoice);
 };
+
+
+/* document.getElementById('takeAwayBtn').addEventListener('click', () => finalDecision('yes'))
+document.getElementById('drinkHereBtn').addEventListener('click', () => finalDecision('no')) */
 
 const blackChoice = (event) => {
   event.preventDefault(); //prevents refreshing the page
@@ -157,25 +160,53 @@ const question5 = () => {
   showMessage("Stress or zen mode?", "bot");
   console.log("bot som skriver"); //can be omitted
   inputWrapper.innerHTML = `
-  <button id="takeAway" type="submit" class="chat-btn">Take away</button>
-  <button id="drinkHere" type="submit" class="chat-btn">Drink here</button>
+  <button id="takeAwayBtn">Take away</button>
+  <button id="drinkHereBtn">Drink here</button>
   `
+
+  document.getElementById('takeAwayBtn').addEventListener('click', () => finalDecision("take away"))
+  document.getElementById('drinkHereBtn').addEventListener('click', () => finalDecision("drink here"))
+  ;}
+
+
+const finalDecision = (finalDecision) => {
+
+  if (finalDecision === "take away"){
+    setTimeout(() => inputWrapper.innerHTML = `<span>`, 0);
+    setTimeout(() => showMessage("Take away", "user"), 500);
+    setTimeout(() => inputWrapper.innerHTML = `<p>Please wait<p>`, 1500);
+    setTimeout(() => showMessage("...", "bot"), 1500);
+    setTimeout(() => chat.innerHTML = `
+  <video src="https://assets.mixkit.co/videos/preview/mixkit-coffee-maker-making-coffee-3578-large.mp4" width=100% height="552" autoplay></video>
+    `, 4500);
+    setTimeout(() => showMessage("Your coffee is preparing...", "bot"), 4500);
+    /* moreQuotes(); */
+  } else { 
+    setTimeout(() => inputWrapper.innerHTML = `<span>`, 0);
+    setTimeout(() => showMessage("Drink here", "user"), 500);
+    setTimeout(() => inputWrapper.innerHTML = `<p>"Sit down and relax! Your coffee is preparing ..."<p>`, 1500);
+    setTimeout(() => showMessage("...", "bot"), 1500);
+    setTimeout(() => chat.innerHTML = `
+  <video src="https://assets.mixkit.co/videos/preview/mixkit-coffee-maker-making-coffee-3578-large.mp4" width=100% height="552" autoplay></video>
+    `, 4500);
+    setTimeout(() => showMessage("Your coffee is preparing", "bot"), 4500);
+  }
+}
+
+  
   // Här ifrån fungerar ej
-  document.getElementById("takeAway").addEventListener("click", takeAwayChoice);
-  document.getElementById("drinkHere").addEventListener("click", drinkHereChoice);
-  /*setTimeout(() => question6(coffeeAnswer), 1000);*/
-  /* setTimeout(() => question6(coffeeAnswer), 1000); */
+/*   document.getElementById("takeAway").addEventListener("click", question6 => takeawayChoice('take away')
+  document.getElementById("drinkHere").addEventListener("click", goHome);
 };
 
-let question6 = () => {
-  if (question6 = 'takeAway') {
-  showMessage('take away', "user");
-  } else if (question6 === "drinkHere") {
-  showMessage('drink here', "user");
-  } else {
-    console.log("test")
-  }
-};
+let finalDecision = "take away";
+let goHome = "";
+if (finalDecision == "take away") {
+showMessage('take away', "user");
+} else {
+showMessage('drink here', "user");
+}; 
+ */
 
 
 
