@@ -1,6 +1,6 @@
 # Project Chatbot 
 
-Assignment for week 2 is to make a chatbot by using variables. conditionals and functions in Javascript.
+Assignment for week 1 is to make a chatbot by using variables. conditionals and functions in Javascript.
 
 
 ## The problem
