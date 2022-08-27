@@ -186,21 +186,6 @@ select#sprinkles {
   border-radius: 16px;
 }
 
-.popup-overlay {
-  position: absolute;
-  background: #fafafac7;
-  height: 600px;
-  width: 700px;
-  border-radius: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hide {
-  display: none;
-}
-
 #phone-form {
   display: flex;
   width: 100%;
@@ -214,14 +199,26 @@ select#sprinkles {
   margin-left: 48px;
 }
 
-
 /* Confirm Popup */
 
+.popup-overlay {
+  position: absolute;
+  background: #fafafac7;
+  height: 600px;
+  width: 700px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+}
+
 .popup-container {
-  width: 60%;
+  max-width: 420px;
   background: #6cb5b6;
   text-align: center;
-  padding: 25px 71px;
+  padding: 25px;
+  margin: 0 16px;
   border-radius: 16px;
 }
 
@@ -258,4 +255,8 @@ h3 {
 button#refresh-button {
   margin-top: 50px;
   background-color: #497879;
+}
+
+.hide {
+  display: none;
 }
