@@ -6,10 +6,8 @@ const inputWrapper = document.getElementById('input-wrapper');
 const form = document.getElementById('room-form');
 const roomInput = document.getElementById('room-input'); //user writes their room
 const sendBtn = document.getElementById('send-btn'); //user writes their wake-up time
-  
 
 // Toggle effect
-
 chatBtn.addEventListener("click", ()=>{
   chatPopUp.classList.toggle("show");
 });
@@ -21,18 +19,8 @@ const messageSound = () => {
   audio.play();
 }
 
-const botTyping = () => {
-  chat.innerHTML += `
-    <ul class="bot-typing">
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
-  `
-}
 
 // This function will add a chat bubble in the correct place based on who the sender is
-
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
   if (sender === 'user') {
@@ -50,24 +38,45 @@ const showMessage = (message, sender) => {
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot-hotel.svg" alt="Bot" />
-        <div class="bubble bot-bubble">
-          <p class="p-bubble-msg">${message}</p>
+
+        <div class="bot-input-wrapper" id="bot-input-wrapper">
+           <div class="preload-bubble" id="preloader">
+             <ul class="bot-typing">
+               <li></li>
+               <li></li>
+               <li></li>
+             </ul> 
+           </div>
+
+           <div class="bubble bot-bubble">
+              <p class="p-bubble-msg">${message}</p>
+           </div>
         </div>
       </section>
     `
-  }
+  } 
     // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box and adds sound
   chat.scrollTop = chat.scrollHeight;
   messageSound();
 }
 
+
 // Conversations starts here
 
 // Question 1 - Bot asks 'What is your room number'?
 
+
 const greeting = () => {
-  showMessage("Welcome to Hotel Vosje. What is your room number?", 'bot'); 
+  showMessage("Welcome to Hotel Vosje. What is your room number?", 'bot');  
+  setTimeout( ()=> {
+    const preloader = document.getElementById("preloader");
+    preloader.style.display = "none";
+   }, 2000);
 };
+//greeting.addEventListener("load", ()=> {
+  //loader.style.display = "none";
+  //});
+
 
 // User answers with room number
 
@@ -94,7 +103,6 @@ const greetingLoop = (room) => {
 // Question 2 - Bot asks 'What do you need help with today?' and sends selection-buttons
 
 const helpSelection = () => {
-  botTyping()
   showMessage('What can I help you with?', 'bot');
   inputWrapper.innerHTML = `
   <button id="amenities" type="sbumit" class="chat-btn">Amenities </button>
@@ -107,8 +115,8 @@ const helpSelection = () => {
 })
 
   document.getElementById('room-service').addEventListener('click',() => {
-    showMessage(`I need food, please`, 'user')
-    setTimeout(() => selectionAnswer('room-service'),1500)
+    showMessage(`I need food, please`, 'user');
+    setTimeout(() => selectionAnswer('room-service'),1500);
 })
 
   document.getElementById('wake-up').addEventListener('click',() => {
@@ -121,7 +129,6 @@ const helpSelection = () => {
 // Question 3 - Bot asks what guest needs depending on what guest chose in helpselection
 
 const selectionAnswer = (selection) => {
-
   if (selection === 'amenities') {         // If guest needs amenities 
     showMessage(`Sure, what do you need?`, 'bot');
     inputWrapper.innerHTML = `
