@@ -1,4 +1,4 @@
-# Project Name
+# Flower Bot
 
 This project is a flower themed bot, that is collecting and storing the users inputs. 
 
