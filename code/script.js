@@ -7,6 +7,7 @@ const form = document.getElementById('room-form');
 const roomInput = document.getElementById('room-input'); //user writes their room
 const sendBtn = document.getElementById('send-btn'); //user writes their wake-up time
 
+
 // Toggle effect
 chatBtn.addEventListener("click", ()=>{
   chatPopUp.classList.toggle("show");
@@ -34,7 +35,7 @@ const showMessage = (message, sender) => {
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html section inside the chat with the posted message
   } else if (sender === 'bot') {
-    console.log('bot-message') //added console log
+    //console.log('bot-message') //added console log
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot-hotel.svg" alt="Bot" />
@@ -64,19 +65,16 @@ const showMessage = (message, sender) => {
 // Conversations starts here
 
 // Question 1 - Bot asks 'What is your room number'?
-
+function loadingDots(){
+  const preloader= document.getElementById("preloader");
+  preloader.style.display = "none";
+}
 
 const greeting = () => {
-  showMessage("Welcome to Hotel Vosje. What is your room number?", 'bot');  
-  setTimeout( ()=> {
-    const preloader = document.getElementById("preloader");
-    preloader.style.display = "none";
-   }, 2000);
-};
-//greeting.addEventListener("load", ()=> {
-  //loader.style.display = "none";
-  //});
-
+      setTimeout((loadingDots),1500);
+      showMessage("Welcome to Hotel Vosje. What is your room number?", 'bot'),2000; 
+    };
+  
 
 // User answers with room number
 
@@ -87,9 +85,9 @@ const handleFormInput = (event) => {        // at submit this function will be i
   roomInput.value = '';        // clearing room input setting it to an empty string
 
   if (room === '') {       // this will prompt the user to answer correctly
-    setTimeout(() => showMessage(`Please, give me your room number.`, 'bot'), 1500) 
+    showMessage(`Please, give me your room number.`, 'bot');
   } else {
-    setTimeout(() => greetingLoop(room), 1500)
+    greetingLoop(room);
   }
 }
 
@@ -111,7 +109,10 @@ const helpSelection = () => {
   `
   document.getElementById('amenities').addEventListener('click',() => {
     showMessage(`I need amenities, please`, 'user')
-    setTimeout(() => selectionAnswer('amenities'),1500);
+    setTimeout( ()=> {
+      preloader.style.display = "none";
+     }, 2000);
+    setTimeout(() => selectionAnswer('amenities'),2500);
 })
 
   document.getElementById('room-service').addEventListener('click',() => {
