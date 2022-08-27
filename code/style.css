@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background: #efe2d0;
 }
 
@@ -28,7 +28,7 @@ h1 {
   line-height: 34px;
   color: rgb(216, 107, 115);
   text-align: center;
-  font-family: "Lobster", cursive;
+  font-family: 'Lobster', cursive;
 }
 
 h2 {
@@ -55,12 +55,10 @@ input {
   color: #070706;
   padding: 16px;
   font-size: 16px;
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
   flex: 1;
-  margin-bottom: 29px;
-  margin-left: 16px;
 }
 
 main {
@@ -122,12 +120,17 @@ main {
 .user-bubble {
   border-radius: 26px 5px 26px 26px;
   margin-right: 8px;
+  background: #9fd6cc;
 }
 
 .input-wrapper {
   width: 100%;
   display: flex;
   display: none;
+  padding: 10px;
+  border-top: 3px solid #efe2d0;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .active {
@@ -144,11 +147,10 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-bottom: 30px;
 }
 
 button:hover {
@@ -164,8 +166,24 @@ select#sprinkles {
   font-family: Montserrat;
   color: #ac5e44;
   background: #efcd9d;
+  border: none;
   height: 60px;
   border-radius: 10px;
+  padding: 16px;
+}
+
+.checkbox-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.checkbox-form div {
+  padding: 13px;
+  background: antiquewhite;
+  border-radius: 16px;
 }
 
 .popup-overlay {
@@ -183,19 +201,31 @@ select#sprinkles {
   display: none;
 }
 
+#phone-form {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .popup-container {
   width: 60%;
   background: #6cb5b6;
   text-align: center;
-  padding: 25px 16px 80px 16px;
+  padding: 25px 71px;
   border-radius: 16px;
 }
 
-.check-cointaner {
+.check-container {
   position: relative;
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
+}
+
+.popup-container p,
+.popup-container h3 {
+  color: white;
 }
 
 i.fas.fa-check {
@@ -212,7 +242,7 @@ i.fas.fa-check {
 
 h3 {
   color: #2a2622;
-  font-family: "Lobster", cursive;
+  font-family: 'Lobster', cursive;
   font-size: 30px;
 }
 

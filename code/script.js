@@ -169,9 +169,11 @@ const chooseFlavors = () => {
 
 //User reply 4 - Phone Number and Thank you-popup
 const phoneNumber = () => {
-  const confirmPhoneBtn = document.getElementById('confirm-btn');
 
-  confirmPhoneBtn.addEventListener('click', () => {
+  const phoneForm = document.getElementById('phone-form');
+  phoneForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    console.log(phoneForm);
 
     disableBtnAfterClick();
     popup.classList.toggle('hide');
@@ -186,7 +188,6 @@ const phoneNumber = () => {
     };
 
     refreshButton.addEventListener('click', () => {
-      console.log('hejhej');
       refreshPage();
     });
   });
@@ -215,6 +216,7 @@ const showMessage = (message, sender) => {
         </div>
       </section>
     `;
+    msgSound.play();
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
@@ -268,26 +270,28 @@ const question3Sprinkles = () => {
 //Bot question 3 - Flavors (Ice Cream)
 const question3Flavors = () => {
   inputWrapper.innerHTML = `
+  
   <div id="flavors">
-  <form>
+
+  <form class="checkbox-form">
   <p class="pick-one" id="pick-one">* Pick at least one flavor</p>
     <div>
-      <label for="vanilla" class="textbox-label">Vanilla</label>
-      <input type="checkbox" class="flavors-boxes" id="vanilla" name="flavors" value="vanilla" />
+    <input type="checkbox" class="flavors-boxes" id="vanilla" name="flavors" value="Vanilla" />
+    <label for="vanilla" class="textbox-label">Vanilla</label>
     </div>
     <div>
-      <label for="mango" class="textbox-label">Mango</label>
-      <input type="checkbox" class="flavors-boxes" id="mango" name="flavors" value="mango"/>
+    <input type="checkbox" class="flavors-boxes" id="mango" name="flavors" value="Mango"/>
+    <label for="mango" class="textbox-label">Mango</label>
     </div>
     <div>
-      <label for="chocolate" class="textbox-label">Chocolate</label>
-      <input type="checkbox" class="flavors-boxes" id="chocolate" name="flavors" value="chocolate"/>
+    <input type="checkbox" class="flavors-boxes" id="chocolate" name="flavors" value="Chocolate"/>
+    <label for="chocolate" class="textbox-label">Chocolate</label>
     </div>
     <div>
-      <label for="elderflower" class="textbox-label">Elderflower</label>
-      <input type="checkbox" class="flavors-boxes" id="elderflower" name="flavors" value="elderflower"/>
+    <input type="checkbox" class="flavors-boxes" id="elderflower" name="flavors" value="Elderflower"/>
+    <label for="elderflower" class="textbox-label">Elderflower</label>
     </div>
-    <button id="flavors-next" type="submit">Next</button>  
+    <button id="flavors-next" type="submit">Next</button> 
 </form>
   </div>
 `;
@@ -299,9 +303,13 @@ const question3Flavors = () => {
 //Bot question 4 - Phone Number
 const question4PhoneNo = () => {
   inputWrapper.innerHTML = `
-  <input type="tel" id="phone-number" required> 
-  <button id="confirm-btn" onClick=>Confirm</button>
-  <button id="cancel-btn" onClick="window.location.reload();">Cancel</button>`;
+
+  <form id="phone-form">
+  <input type="tel" class="phone-number" name="phone" maxlength="12" required> 
+  <button type="submit" id="confirm-btn">Confirm</button>
+  <button id="cancel-btn" onClick="window.location.reload();">Cancel</button>
+  </form>
+  `;
 
   customerOrder.presentOrder();
   showMessage(
