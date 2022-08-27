@@ -45,24 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Eventlisteners here
 
-  sendButton.addEventListener('click', (e) => {
+  const handleMessage= sendButton.addEventListener('click', (e) => {
     e.preventDefault();
     const name = nameInput.value;
     showMessage(name, 'user');
- 
-    setTimeout(() => askNextQuestion(name), 2000) 
-  
-    // if (nameInput.value === pizza){
-    //   showMessage(pizza)
 
-    // }
-    // else if (nameInput.value ===pasta){
-    //   showMessage(pasta)
-    // }
-    // else{
-    //   showMessage(salad)
-    // }
-
+    setTimeout(() => askNextQuestion(name), 2000)  
+    // nameInput.value = ''; 
   })
 
 
@@ -70,14 +59,36 @@ document.addEventListener('DOMContentLoaded', () => {
     inputWrapper.innerHTML = `
   <select id="pizza" >
   <option> Select A Pizza from menu 👇 </option>
-  <option value="Margarita">Margarita</option>
-  <option value="Peperoni">Peperoni</option>
-  <option value="Salami">Salami</option>
+  <option value="Margarita" class="dropDown" id="Margarita>Margarita</option>
+  <option value="Peperoni" class="dropDown" id="Peperoni">Peperoni</option>
+  <option value="Salami" class="dropDown" id="Salami">Salami</option>
   </select>
-
   `
-  
+    }
+
+  const choosePizza = () => {
+    const pizzaArray = ['Margarita', 'Peperoni', 'Salami'];
+
+    for (let i = 0; i < pizzaArray.length; i++) {
+       console.log('you choose', pizzaArray[i], 'We gonna make it ! ')
+    }
   }
+  choosePizza()
+
+   
+    // function myFunction() {
+      //   let elem = document.querySelectorAll(".dropDown");
+      //   elem.forEach(element => {
+      //     element.addEventListener("click", () => {
+      //       // console.log(e.target.innerHTML)
+      //       // console.log(`Nice , you choose ${e.target.innerHTML}`)
+      //       console.log(element)
+      //     })
+      //   })
+      // }
+
+
+
 
   const pasta = () => {
     inputWrapper.innerHTML = `
@@ -88,7 +99,33 @@ document.addEventListener('DOMContentLoaded', () => {
   <option value="langon">Langon Pasta</option>
   </select>
   `
-  }
+ 
+   }
+
+  //  const choosePasta = () =>{
+  //    const passaArray = ['Carbonara', 'Pomodoro', 'Langon'];
+
+  //    for (let i = 0; i < passaArray.length; i++) {
+  //     //  console.log('you choose', passaArray[i], 'We gonna make it ! ')
+  //    }
+  //  }
+
+
+  const choosePasta = () =>{
+     let text;
+     const passaArray = ['Carbonara', 'Pomodoro', 'Langon'];
+     switch(passaArray){
+      case 'Carbonara':
+        text="Nice you want Carbonara";
+        break;
+        case 'Pomodoro':
+         text ="Nice you want Pomodoro";
+         break;
+       default: "Nice you want Langon"
+     }
+    }
+   choosePasta()
+
 
   const salad = () => {
     inputWrapper.innerHTML = `
@@ -101,21 +138,69 @@ document.addEventListener('DOMContentLoaded', () => {
   `
   }
  
-
+// Adult , Child btn
   const buttonAdultChlid= ()=>{
     inputWrapper.innerHTML = `
    <button id="adult">👨🏽‍🦳</button>
      <button id="child">🧒🏽</button>`
+
+     document.getElementById('adult')
+     .addEventListener('click',()=>{
+      showMessage('For an adult', 'user')
+      adultChildOption('adult')
+     })
+     
+     document.getElementById('child')
+     .addEventListener('click',()=>{
+      showMessage('For a child', 'user')
+      adultChildOption('child')
+     })
+
   }
 
-  const buttonYesNo= ()=>{
-    inputWrapper.innerHTML = `
-    <button>Yes</button>
-    <button>No</button>
-    `
-    
+  //  If statment for Child or adult
+  const adultChildOption= (chooseOption)=>{
+    if (chooseOption === 'adult'){
+      showMessage('For an adult', 'user')
+      // inputWrapper.innerHTML = `Adult`
+    }else{
+      showMessage('For a child', 'user')
+    }
   }
   
+
+   
+
+  // Yes, No btn
+  const buttonYesNo= ()=>{
+    inputWrapper.innerHTML = `
+    <button id="yes">Yes</button>
+    <button id="no">No</button>
+    `
+    document.getElementById('yes').addEventListener('click', () => {
+      showMessage( 'the price is 15$, Do u wanna order it? ','bot')
+      // Call next function with a parameter for yes
+      nextFunction('yes')
+    })
+
+    document.getElementById('no').addEventListener('click', () => {
+      showMessage('No problem ! See u another time', 'bot')
+      //call next function with a parameter for no
+      nextFunction('no')
+    })
+
+  }
+      // Next function or If statment for YES or NO ! 
+      const nextFunction =(option)=>{
+if(option === 'yes') {
+  showMessage('Thank you for your order! See you soon 👋🏼', 'bot')
+}
+else{
+  showMessage('bye', 'bot')
+}
+    
+      }
+
   function askNextQuestion() {
 showMessage(` ${ nameInput.value } , What do you want to eat today? `, 'bot');
  nameInput.value = '';
@@ -138,29 +223,30 @@ inputWrapper.innerHTML = `
 
       }, 2000)
 
-      pizza()
       setTimeout(() => {
-
-      }, 1000);
-
-      // showMessage('', 'user');
-      // setTimeout(()=>{
-
-      // }, 2000)
-
-      // showMessage('One ${}coming up! It is for an adult or a chlid? ', 'bot')
-      // setTimeout(()=>{
-
-      // }, 1000);
-      // buttonAdultChlid();
-      // showMessage('', 'user');
-      // showMessage('One adult will be prepared for you. That would be 15$. Are you sure you want to order it? ', 'bot');
-      // buttonYesNo();
+        pizza()
+      }, 2000);
       
+      setTimeout(() => {
+        buttonAdultChlid();
 
-      
+      }, 4000);
 
+      setTimeout(() =>{
+        adultChildOption();
+      }, 2000)
+    
+         setTimeout(() => {
+        showMessage('One adult will be prepared for you. That would be 15$. Are you sure you want to order it? ', 'bot');
 
+      }, 4000)
+
+      setTimeout(() =>{
+     buttonYesNo()
+      }, 5000)
+  setTimeout(() =>{
+   
+  })
     })
  
     document.getElementById('pastabtn').addEventListener('click', () => {
@@ -169,29 +255,27 @@ inputWrapper.innerHTML = `
       setTimeout(() => {
         pasta()
       })
+
+    setTimeout(() => {
+      choosePasta()
+    },1000)
+    showMessage('text', 'user')
+
     })
 
       document.getElementById('saladbtn').addEventListener('click', () => {
         showMessage('Salad', 'user');
         showMessage('Oh , So you are in the mood for Salad! Check menu... ', 'bot');
+
         setTimeout(() => {
           salad()
         }, 1000)
       })
 
 
-
 setTimeout(() => 1000)
   }
-  
-  
 
-
-  // When website loaded, chatbot asks first question.
-  // normally we would invoke a function like this:
-  // greeting()
-  // But if we want to add a little delay to it, we can wrap it in a setTimeout:
-  // setTimeout(functionName, timeToWaitInMilliSeconds)
   // This means the greeting function will be called one second after the website is loaded.
   setTimeout(greeting, 1000);
 
