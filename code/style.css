@@ -6,7 +6,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(https://media.gettyimages.com/photos/wind-farm-picture-id1198660415?k=20&m=1198660415&s=612x612&w=0&h=halW352EaPnEMLC5HAxu8JtpOnw38tlwSBLAFKUPYLM=);
 }
 
 h1 {
@@ -36,9 +38,9 @@ p {
 input {
   box-sizing: border-box;
   border: none;
-  border-radius: 4px 0 0 4px;
+  border-radius: 12px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #000000;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -90,12 +92,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #a5a7aabd;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #000000;
   max-width: 40%;
 }
 
@@ -114,16 +116,23 @@ main {
   justify-content: center;
 }
 
+.select {
+  max-width: 100%;
+  display: flex;
+
+}
+
 .input-wrapper form {
   width: 100%;
   display: flex;
 }
 
+
 button {
-  background-color: #0026ff;
+  background-color: #000000;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
   padding: 16px 40px;
   margin-right: 4px;
   font-size: 16px;
@@ -137,4 +146,19 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+#select {
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 40px;
+  margin-right: 4px;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
