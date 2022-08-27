@@ -5,24 +5,18 @@ const userFormInputs = {};
 const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('input-wrapper');
 const handleNameInput = document.getElementById('name-form');
-//const form = document.getElementById('name-form');
-//const submit = document.getElementById('submit');
-//const main = document.getElementById('main');
 
-// If you need any global variables that you can use across different functions, declare them here:
 
-// Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/flowerUser.png" alt="User" />  
       </section>
     `;
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
@@ -30,7 +24,7 @@ const showMessage = (message, sender) => {
     console.log('showMessage', showMessage)
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/flower.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -52,18 +46,20 @@ handleNameInput.addEventListener('submit', (event) => {
   const nameInput = document.getElementById('name-input');
   const userName = nameInput.value; 
   userFormInputs.name = userName;
-    showMessage(`I'd like to send ${userName} flowers.`, 'user');
+    
+  showMessage(`I'd like to send ${userName} flowers.`, 'user');
     setTimeout(() => showColorOptions(userName), 1000)
   });
 
 //Question 2
 const showColorOptions = (userName) => {
   showMessage(`That's so nice of you! Choose a color ${userName} would like.`, 'bot')
+  
   inputWrapper.innerHTML = `
-<button id="redBtn">Red</button>
-<button id="yellowBtn">Yellow</button>
-<button id="orangeBtn">Orange</button>
-`;
+    <button id="redBtn">Red</button>
+    <button id="yellowBtn">Yellow</button>
+    <button id="orangeBtn">Orange</button>
+  `;
 
 document.getElementById('redBtn').addEventListener('click', () => {
     inputWrapper.innerHTML = "";
@@ -82,11 +78,8 @@ document.getElementById('redBtn').addEventListener('click', () => {
 }; 
 
 // Question 3 
-// För att ja emoji vid alternativen kolla upp emojis ID
-//Listan måste stylas i CSS
 const showTypesOptions = (flowerType) => {
   userFormInputs.color = flowerType;
-  //console.log(type); 
   showMessage(`I choose ${flowerType}.`, 'user'); 
 
     setTimeout(() => showMessage(`Great choice! What type of ${flowerType} flowers?`, 'bot'), 1000);
@@ -166,7 +159,7 @@ const showTypesOptions = (flowerType) => {
           price = '250kr';
         } else {
           price = '350kr'; 
-        }
+        };
 
         setTimeout(() => { 
         showMessage(`${size} it is! That will be ${price}. Please review and confirm below:`, 'bot');
@@ -174,7 +167,7 @@ const showTypesOptions = (flowerType) => {
         showMessage(
           `Name: ${userFormInputs.name}<br> Color: ${userFormInputs.color}<br> Type: ${userFormInputs.size}<br>
            Size: ${userFormInputs.payment}<br>`, 'bot');
-      }, 1000);
+       }, 1000);
       
         setTimeout(() => {
           inputWrapper.innerHTML = `

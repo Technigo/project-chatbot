@@ -1,12 +1,12 @@
 # Project Name
 
-Replace this readme with your own information about your project.
+This project is a flower themed bot, that is collecting and storing the users inputs. 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
-
+Build a chatbot using JavaScript, theme could be anything. This project reuired working in pair.
 ## The problem
+We had a problem with; first of all understaning JavaScript because it's completely new to us both. One thing we struggled with was the userFormInputs, and getting it to work. 
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We approched the problem using StackOverflow, Google and our brains. We understood the importance of naming the variables and values. If we had more time we would add some alternatives and steps in the order, and also style it more.
 
 ## View it live
 
