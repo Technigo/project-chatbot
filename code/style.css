@@ -256,3 +256,13 @@ button#refresh-button {
   margin-top: 32px;
   margin-left: 48px;
 }
+
+
+/* istället för alert-rutan när man inte valt ngn smak */
+.pick-one {
+  display: none;
+}
+
+.show-pick-one {
+  display: block;
+}
