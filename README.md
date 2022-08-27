@@ -18,4 +18,5 @@ Next step for this chatbot is to add soundeffect to the chat , for example; one 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://teal-sawine-93d703.netlify.app/
+
