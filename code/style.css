@@ -1,3 +1,11 @@
+/* CSS HEX 
+--sandal: #a98365;  // waiter message background chat color
+--cocoa-brown: #231a18; // buttons
+--loafer: #f3f7ea; // instead of white, for example text color
+--light-wisteria: #d6a2d8; // hippo message background chat color
+--chamois: #e9d3a5; // background chat color
+*/
+
 * {
   box-sizing: border-box;
 }
@@ -6,25 +14,31 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  /* z-index: -10;
+  position: absolute; */
+  /* ta bort background: ; */
+}
+
+ .container {
+  position:relative;
+  width: 100%;
+  background-image: url(./assets/pexels-pixabay-55814_lion.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 100vh;
+  font-size: 100px;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
-  line-height: 34px;
-  color: #fff;
+  font-size: 80px;
+  color: #f3f7ea;
   text-align: center;
-}
-
-h2 {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
-  margin-bottom: 36px;
-}
+  padding: 50px 0;
+  text-shadow: 0 0 5px #5f4c24; 
+  margin: 0;
+} 
 
 p {
   font-size: 18px;
@@ -37,8 +51,7 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #f3f7ea;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -47,32 +60,39 @@ input {
   flex: 1;
 }
 
+input:focus {
+  outline: none;
+}
+
 main {
-  margin: 0 auto;
+  margin-right: 10px;
+  margin-left: auto;
   width: 100%;
-  max-width: 700px;
+  max-width: 600px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
   padding: 20px 24px;
   padding-top: 0;
+  gap: 10px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  backdrop-filter: blur(20px);
 }
 
 .chat {
   flex: 1;
   display: flex;
+  margin-bottom: 15px;
   justify-content: flex-start;
-  overflow: scroll;
+  overflow: hidden;
   flex-direction: column;
   padding-bottom: 16px;
 }
 
 .bot-msg {
   display: flex;
-  margin: 16px 8px 0 0;
+  margin: 16px 8px 10px 0;
   flex-shrink: 0;
 }
 
@@ -90,21 +110,22 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #231a18;
   max-width: 40%;
 }
 
 .bot-bubble {
+  border: 2px solid #231a18;
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
 }
 
 .user-bubble {
+  border: 2px solid #231a18;
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
 }
@@ -120,11 +141,11 @@ main {
 }
 
 button {
-  background-color: #0026ff;
-  color: white;
+  background-color: #231a18; 
+  color: #f3f7ea; 
   border: none;
   border-radius: 4px;
-  padding: 16px 40px;
+  padding: 16px 20px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
@@ -132,22 +153,24 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  /* text-shadow:0 0 2px rgb(0, 0, 0); */
 }
 
 button:hover {
   opacity: 0.9;
-  transition: all 0.2s ease;
+  transition: all 0.05s ease;
+  transform: scale(95%);
 }
 
 select {
   border: none;
   border-radius: 4px;
-  color: #0026ff;
+  color: #231a18; 
   font-size: 20px;
   font-weight: 600;
   height: 60px;
   font-family: 'Montserrat';
-  background: #e5e9ff;
+  background: #f3f7ea;
   width: 100%;
   padding: 0 20px;
   cursor: pointer;
@@ -156,3 +179,9 @@ select {
   -moz-appearance: none;
   appearance: none;
 }
+
+select:focus {
+  outline: none;
+
+}
+

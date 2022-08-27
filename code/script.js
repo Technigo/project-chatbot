@@ -3,7 +3,8 @@ const chat = document.getElementById('chat');
 const sendBtn = document.querySelector('.send-btn');
 const nameInput = document.getElementById('name-input');
 const inputWrapper = document.getElementById('input-wrapper');
-// If you need any global variables that you can use across different functions, declare them here:
+
+
 
 
 // Declare your functions after this comment
@@ -17,14 +18,14 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/Hippo.png" alt="User" />  
       </section>
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/waiter21.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -37,15 +38,15 @@ const showMessage = (message, sender) => {
 
 
 // Starts here
+
 // greeting from Wiledbeest Burgers
 const greeting = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Why hello there, welcome to Wildebeest Burgers. What's your name", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+
 const showFoodOptions = (userName) => {
-  showMessage(`Okay ${userName}, I'm gonna call you Susan. Can I take your order Susan?`, 'bot')
+  showMessage(`Okay ${userName !== '' ? userName : 'Slim shady'}, I'm gonna call you Susan. Can I take your order Susan?`, 'bot')
   inputWrapper.innerHTML = `
     <button class="burgersBtn">Burgers</button>
     <button class="veggieBtn">Veggie Burgers</button>
@@ -65,53 +66,43 @@ const showFoodOptions = (userName) => {
   })
 }
 
+
 const showMenu = foodType => {
   showMessage(`Which ${foodType} would you like?`, 'bot')
 
-  if (foodType === 'burger') {
-  inputWrapper.innerHTML = `
-  <select id="select">
-    <option value selected disabled>👇 Select a burger...</option>
-    <option value='"The beest" burger'>"The beest" burger</option>
-    <option value="BBQ burger">BBQ burger</option>
-    <option value="Fresh burger">Fresh burger</option>
-  </select>
-  `
+  let option1, option2, option3;
+
+  if(foodType === 'burger') {
+    option1 = `"The beest" burger`
+    option2 = `BBQ burger`
+    option3 = `Fresh burger`
+  } else if (foodType === 'veggie burger'){
+    option1 = `Ketchup burger without burger`
+    option2 = `Burger with Goat Cheese and Arugula`
+    option3 = `Totally vegetarian burger ™`
+  } else {
+    option1 = `Wildebeest salad deluxe`
+    option2 = `Green lettuce tasty salad`
+    option3 = `Surprise salad with chicken-like meat`
   }
-  if (foodType === 'veggie burger') {
+
   inputWrapper.innerHTML = `
-  <select id="select">
-    <option value selected disabled>👇 Select a veggie burger...</option>
-    <option value="Ketchup burger without burger">Ketchup burger without burger</option>
-    <option value="Burger with Goat Cheese and Arugula">Burger with Goat Cheese and Arugula</option>
-    <option value="Totally vegetarian burger ™">Totally vegetarian burger ™</option>
-  </select>
-  `
-  }
-  if (foodType === 'salad') {
-  inputWrapper.innerHTML = `
-  <select id="select">
-    <option value selected disabled>👇 Select a salad...</option>
-    <option value='Wildebeest salad deluxe'>Wildebeest salad deluxe</option>
-    <option value="Green lettuce tasty salad">Green lettuce tasty salad</option>
-    <option value="Surprise salad with chicken-like meat">Surprise salad with chicken-like meat</option>
-  </select>
-  `
-  }
-  // user answer
-  // eventListner on all buttons
-  // call next function set timeOut
+      <select id="select">
+        <option value="" selected disabled>👇 Select a ${foodType}...</option>
+        <option value='${option1}'>${option1}</option>
+        <option value='${option2}'>${option2}</option>
+        <option value='${option3}'>${option3}</option>
+      </select>
+    `;
+
   document.getElementById('select').addEventListener('change', () => {
     showMessage(select.value, 'user')
     setTimeout(showSideMenu, 1000)
   })
 }
 
+
 const showSideMenu = () => {
-  // bot reply
-  // new buttons for sideOrders
-  // eventListner buttons
-  // call on knock knock joke =)
   showMessage('Excellent choice, and also my personal favorite! What side order would you like with that?', 'bot')
   inputWrapper.innerHTML = `
   <button id="fries">🥤🍟 </but ton>
@@ -127,6 +118,7 @@ const showSideMenu = () => {
   document.getElementById('carrots').addEventListener('click', ()=> replySides('I would like drink and baby carrots'))
 
 }
+
 
 const knockJoke =() => {
   showMessage('Knock, knock', 'bot')
@@ -149,8 +141,8 @@ const knockJoke =() => {
       setTimeout(confirmOrder,1000)
       }, 1000)
   } )
-  // Who's there
 
+  // Who's there
   document.getElementById('who-there').addEventListener('click', () => {
     showMessage("Who's there?", 'user')
     setTimeout(joke, 1000)
@@ -172,14 +164,16 @@ const joke = () => {
       setTimeout(confirmOrder,1000)
       }, 1000)
   } )
-  // Joke
+
+  // Punchline
   document.getElementById('europe').addEventListener('click', () => {
     showMessage("Europe who?", 'user')
     setTimeout(() => {
       showMessage("No YOU’RE A POO!", 'bot')
-      setTimeout(confirmOrder,1000)
       }, 1000)
+      setTimeout(confirmOrder,3000)
   } )
+
   // Get back to order
   document.getElementById('order').addEventListener('click', () => {
     showMessage("Can we get back to my order?", 'user')
@@ -194,14 +188,16 @@ const sassyBot = () => {
   <button id="fine"> Fine, Europe who? </button>
   <button id="ticked-off"> Okay I’m going to Hippo Burgers across the street, bye. </button>
   `
+  // Punchline II
   document.getElementById('fine').addEventListener('click', () => {
     showMessage("Europe who?", 'user')
     setTimeout(() => {
       showMessage("No YOU’RE A POO!", 'bot')
-      setTimeout(confirmOrder,1000)
       }, 1000)
+      setTimeout(confirmOrder,3000)
   } )
 
+  // Reload
   document.getElementById('ticked-off').addEventListener('click', () => {
     showMessage("Okay I’m going to Hippo Burgers across the street, bye.", 'user')
     setTimeout(reload, 1000)
@@ -209,39 +205,38 @@ const sassyBot = () => {
 }
 
 // confirm order
-// readback total order
-
 const confirmOrder = () => {
   showMessage("Are you happy with this order?", 'bot')
   inputWrapper.innerHTML = `
   <button id="yes"> Yes, very happy! </button>
   <button id="no"> Not happy.. </button>
   `
+  // The end
   document.getElementById('yes').addEventListener('click', () => {
     showMessage("Yes very happy!", 'user')
     setTimeout(end, 1000)
   })
 
+  // Reload II
   document.getElementById('no').addEventListener('click', () => {
     showMessage("Not happy at all..", 'user')
     setTimeout(reload, 1000)
   })
 }
 
-// Reload
 
 const reload = () => location.reload()
 
-// The End
 
 const end = () => {
   showMessage('Thank you Susan your order will be ready in a jiff!', 'bot')
   inputWrapper.innerHTML = ''
 }
 
-// Set up your eventlisteners here
+// Initial button click 
 sendBtn.addEventListener('click', (event) => {
   event.preventDefault()
+
   // Store the value in a variable so we can access it after we 
 	// clear it from the input
   const userName = nameInput.value
@@ -256,9 +251,3 @@ sendBtn.addEventListener('click', (event) => {
 
 // Starts the initial greeting
 setTimeout(greeting, 1000);
-// knockJoke()
-
-//lördag, fördröjning punchline
-// css buttons, css ändra style bakgrund, stl ruta osv 
-// ta bort onödiga komentarer
-// refaktorering
