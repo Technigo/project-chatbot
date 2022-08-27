@@ -4,7 +4,7 @@ const nameForm = document.getElementById('name-form');
 const nameInput = document.getElementById('name-input')
 const inputWrapper = document.getElementById('input-wrapper')
 
-//OUR JOKE ARRAY
+//OUR JOKE ARRAY & VARIABLES
 const jokeList = [
 "Why is 2019 afraid of 2020? Cause they had a fight and 2021.",
 "What's orange and sounds like a parrot? A carrot.",
@@ -13,10 +13,9 @@ const jokeList = [
 "What did one ocean say to the other ocean? Nothing, it just waved.",
 "What’s the difference between a hippo and a zippo? One is really heavy and the other’s a little lighter.",
 "When does a joke become a ‘dad’ joke? When it becomes apparent.",
-"Uh oh, I'm all out of jokes :("
 ]; 
 
-let jokeCounter = 0; //This keeps track of what joke we're on
+let jokeCounter = 0; //This variable keeps track of what joke we're on
 let joke = jokeList[jokeCounter]; //this variable contains whatever joke we're on, determined by the jokeCounter above.
 const laughtrack = new Audio('laughtrack.mp3'); //Our laugh track
 
@@ -75,7 +74,7 @@ const intro = (name) => {
   setTimeout(showYesNoBtn, 1000)
 }
 
-//This function modifies the content of the inputWrapper to display 2 buttons ('Sure!' or 'No thanks.'). The eventlistener takes us to the next function when the user clicks on one of the buttons.
+//This function modifies the content of all the HTML elements inside the inputWrapper to instead display 2 buttons ('Sure!' or 'No thanks.'). The eventlistener takes us to the next function once the user clicks on one of the buttons.
 const showYesNoBtn = () => {
   inputWrapper.innerHTML = `
   <button id="yesBtn">Sure!</button>
@@ -85,7 +84,7 @@ const showYesNoBtn = () => {
   document.getElementById('noBtn').addEventListener('click', () => userReply('No thanks.'));
 }
 
-//This function displays the user response in the chat and invokes one of two functions (tellJoke or sayGoodbye), based on which button the user pressed in the above function.
+//This function is a conditional which displays the user response in the chat and invokes one of two functions (tellJoke or sayGoodbye), based on which button the user pressed in the showYesNoBtn function above.
 const userReply = (userReply) => {
   if (userReply === 'Sure!') {
     showMessage(`Sure!`, 'user')
@@ -96,10 +95,10 @@ const userReply = (userReply) => {
   }
  }
 
- //If the user said 'Sure!', this function tells a joke from our array of jokes before invoking the laughter function.
+ //If the user chose 'Sure!', this function tells a joke from our array of jokes before invoking the subsequent laughter function.
  const tellJoke =  () => {
   showMessage (joke, 'bot');
-  setTimeout(laughter, 1000)
+  setTimeout(laughter, 1000);
 }
 
 //This function activates a laughter audio track, invokes the anotherJoke function AND adds +1 to the jokeCounter variable. We then refresh the definition of the joke variable to = the next joke in the jokeList array.
@@ -110,17 +109,24 @@ const laughter = () => {
   joke = jokeList[jokeCounter];
 }
 
-//If the user hates having fun, they clicked on the 'No thanks' button and get this disappointed message from the bot. This ends the conversation.
+//If the user hates having fun, they clicked on the 'No thanks' button and get this disappointed message from the bot. This ends the conversation and clears the inputWrapper section.
  const sayGoodbye = () => {
   showMessage (`Alright. See you another time! :(`, 'bot');
+  inputWrapper.innerHTML = ``;
 }
 
-//This function appears after the bot's told a joke and asks whether the user would like to hear another one.
+//This function appears after the bot's told a joke and asks whether the user would like to hear another one. If the user has suffered through all the jokes in the array, however, the bot will tell the user that it's run out of jokes and say goodbye, clearing the inputWrapper section.
 const anotherJoke = () => {
-  showMessage(`Would you like to hear another joke?`, 'bot')
-  setTimeout(yesNoPlease, 1000)
+  if (jokeCounter < 7) {
+    showMessage(`Would you like to hear another joke?`, 'bot')
+    setTimeout(yesNoPlease, 1000)
+  } else {
+    showMessage(`Aaand that's all the jokes I've got! Goodbye!`, 'bot')
+    inputWrapper.innerHTML = ``;
+  }
 }
 
+//The two functions below are just a variation of the yesNoBtn and userReply functions above. They ask for the user's 'consent' to keep telling jokes. and react according to which option the user selects.
 const yesNoPlease = () => {
   inputWrapper.innerHTML = `
   <button id="yesPleaseBtn">Yes please!</button>
@@ -140,9 +146,10 @@ const userReply1 = (userReply1) => {
   }
  }
 
-// Set up your eventlisteners here
+// EVENT LISTENERS
 
-nameForm.addEventListener('submit', handleNameInput) //This listens for inputs submitted in the input field of the name form and invokes the handleNameInput function when triggered.
+//This listens for inputs submitted in the input field of the name form and invokes the handleNameInput function when triggered.
+nameForm.addEventListener('submit', handleNameInput)
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
