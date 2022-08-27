@@ -40,12 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
 
     showMessage("Hello there, What's your name?", 'bot');
-   
+  
   }
 
   // Eventlisteners here
-
-  const handleMessage= sendButton.addEventListener('click', (e) => {
+  sendButton.addEventListener('click', (e) => {
     e.preventDefault();
     const name = nameInput.value;
     showMessage(name, 'user');
@@ -144,32 +143,31 @@ document.addEventListener('DOMContentLoaded', () => {
    <button id="adult">👨🏽‍🦳</button>
      <button id="child">🧒🏽</button>`
 
-     document.getElementById('adult')
+     let adult= document.getElementById('adult')
      .addEventListener('click',()=>{
       showMessage('For an adult', 'user')
+      
       adultChildOption('adult')
      })
      
-     document.getElementById('child')
+     let child= document.getElementById('child')
      .addEventListener('click',()=>{
       showMessage('For a child', 'user')
+
       adultChildOption('child')
      })
 
   }
 
   //  If statment for Child or adult
-  const adultChildOption= (chooseOption)=>{
-    if (chooseOption === 'adult'){
+  const adultChildOption= (chooseOption) =>{
+    if (chooseOption === adult){
       showMessage('For an adult', 'user')
-      // inputWrapper.innerHTML = `Adult`
     }else{
       showMessage('For a child', 'user')
     }
   }
   
-
-   
 
   // Yes, No btn
   const buttonYesNo= ()=>{
@@ -178,9 +176,10 @@ document.addEventListener('DOMContentLoaded', () => {
     <button id="no">No</button>
     `
     document.getElementById('yes').addEventListener('click', () => {
-      showMessage( 'the price is 15$, Do u wanna order it? ','bot')
+      showMessage('One adult will be prepared for you. That would be 15$. Are you sure you want to order it? ', 'bot')
       // Call next function with a parameter for yes
       nextFunction('yes')
+
     })
 
     document.getElementById('no').addEventListener('click', () => {
@@ -227,25 +226,25 @@ inputWrapper.innerHTML = `
         pizza()
       }, 2000);
       
+   
+
+      setTimeout(() =>{
+        showMessage(`One Pizza is coming Up! Is it for an Adult or a Child?`, 'bot');
+      }, 2000)
+
       setTimeout(() => {
         buttonAdultChlid();
-
       }, 4000);
 
       setTimeout(() =>{
-        adultChildOption();
-      }, 2000)
-    
-         setTimeout(() => {
-        showMessage('One adult will be prepared for you. That would be 15$. Are you sure you want to order it? ', 'bot');
-
-      }, 4000)
+        adultChildOption()
+      }, 5000)
 
       setTimeout(() =>{
      buttonYesNo()
-      }, 5000)
+      }, 7000)
   setTimeout(() =>{
-   
+ 
   })
     })
  
