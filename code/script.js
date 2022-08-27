@@ -54,18 +54,35 @@ submitButton.addEventListener('click', function(event) {
 
 
 //Svar: "Hej...., vad har du problem med?: knappar för huvudvärk, halsont, ångest
+const whatsTheIssue = () => {
 submitButton.addEventListener('click', function(event) {
   event.preventDefault();
 showMessage(`Nice to meet you ${name}, what do you have problems with?`, 'bot');
-bodybuttons.innerHTML= `
+inputwrapper.innerHTML= `
         <button id="headache" type="submit" class="bodybuttons"> Headache </button>
         <button id="anxiety" type="submit" class="bodybuttons"> Anxiety </button>
-        <button id="broken-arm" type="submit" class="bodyscan"> Broken arm </button>
+        <button id="broken-arm" type="submit" class="bodybuttons"> Broken arm </button>
         `
-        
+        document.getElementById('headache').addEventListener('click', () => {
+          showMessage('headache', 'user')
+          inputWrapper.innerHTML = ''
+          setTimeout(() => askForHelp('headache'), 1000)
+         })
+       
+         document.getElementById('anxiety').addEventListener('click', () => {
+          showMessage('anxiety', 'user')
+          inputWrapper.innerHTML = ''
+          setTimeout(() => askForHelp('anxiety'), 1000)
+         })
+      
+         document.getElementById('broken-arm').addEventListener('click', () => {
+          showMessage('broken-arm', 'user')
+          inputWrapper.innerHTML = ''
+          setTimeout(() => askForHelp('hungry'), 1000)
+         })
 })
 
-
+}
 // Set up your eventlisteners here
 
 chat.addEventListener('submit', ()=> {

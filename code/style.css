@@ -120,9 +120,11 @@ main {
 }
 
 .bodybuttons {
-  background-color: aquamarine;
+  
   display: flex;
-  justify-content: center;
+  justify-content: center;´
+  justify-content: left;
+  flex-direction: row;
 }
 
 .bodybuttons form {
