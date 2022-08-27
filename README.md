@@ -1,13 +1,17 @@
-# Project Name
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+# Ice Cream Bot
+The assignment was to build a chatbot and we decided to make one for an imaginary Ice Cream Shop.
+The focus was to practice the JavaScript parts, but also to hook it up with the HTML.
 
 ## The problem
+First we started bouncing around ideas about what kind of chatbot we wanted to build. When we decided on the Ice Cream Shop we started to think about the questions and the chat "flow", what input types we wanted for every question etc.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The most challenging parts was probably to get rather "small" things to work the way we wanted them to. For example getting the checked checkboxes in to the customerOrder object and making the number input behave like we wanted.
+
+We used a for-loop and if/else statement to solve the checkbox problem and we used another if/else for the object method presentOrder. We also got a lot of practice in form inputs and the way they behave and how to make them do certain things etc.
+
+We started off coding a lot together but split up some of the tasks. We had some troubles with github since one of us was working in the main branch and another in their own branch etc. A little stressful, but in the end it was nice the get to know git/github a little bit better.
+
+If we had more time we would probably split up the functions a little more. For example, not just separating the bot questions from the user replies, but also keeping the event listeners separated from the reply functions.
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://ice-cream-bot.netlify.app/
