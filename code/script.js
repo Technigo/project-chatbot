@@ -4,10 +4,10 @@ const userFormInputs = {};
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('input-wrapper');
-const nameInput = document.getElementById('name-input');
-const form = document.getElementById('name-form');
-const submit = document.getElementById('submit');
-const main = document.getElementById('main');
+const handleNameInput = document.getElementById('name-form');
+//const form = document.getElementById('name-form');
+//const submit = document.getElementById('submit');
+//const main = document.getElementById('main');
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -38,41 +38,27 @@ const showMessage = (message, sender) => {
     `;
   };
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-  setTimeout(() => chat.scrollTop = chat.scrollHeight, 500)
+  setTimeout(() => chat.scrollTop = chat.scrollHeight, 300)
 };
 
 // Starts here
 //Question 1
 const greeting = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Welcome! Let's brighten someones day with flowers! Who would you like to send them too?", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage("Welcome! Let's brighten someones day with flowers &#127804; &#127802 Who would you like to send them to?", 'bot');
 };
-// Set up your eventlisteners here
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-
-const handleNameInput = document.getElementById('name-form').addEventListener('submit', (event) => {
-  event.preventDefault()
-  // Store the value in a variable so we can access it after we 
-	// clear it from the input
- const name = nameInput.value
-  //console.log(name)
-  userFormInputs.name = name;
- 
- showMessage(`I'd like to send some too ${name}.`, 'user')
-  nameInput.value = ''
-
-  setTimeout(() => showColorOptions(name), 2000)
-});
+handleNameInput.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const nameInput = document.getElementById('name-input');
+  const userName = nameInput.value; 
+  userFormInputs.name = userName;
+    showMessage(`I'd like to send ${userName} flowers.`, 'user');
+    setTimeout(() => showColorOptions(userName), 1000)
+  });
 
 //Question 2
-
-const showColorOptions = (name) => {
-  showMessage(`Thats so nice of you! Let's start by choosing a color ${name} would like!`, 'bot')
-
+const showColorOptions = (userName) => {
+  showMessage(`That's so nice of you! Choose a color ${userName} would like.`, 'bot')
   inputWrapper.innerHTML = `
 <button id="redBtn">Red</button>
 <button id="yellowBtn">Yellow</button>
@@ -101,33 +87,33 @@ document.getElementById('redBtn').addEventListener('click', () => {
 const showTypesOptions = (flowerType) => {
   userFormInputs.color = flowerType;
   //console.log(type); 
-  showMessage(`I choose the color ${flowerType}!`, 'user'); 
+  showMessage(`I choose ${flowerType}.`, 'user'); 
 
-    setTimeout(() => showMessage(`Great choice! Let's choose a type of ${flowerType} flowers?`, 'bot'), 2000);
+    setTimeout(() => showMessage(`Great choice! What type of ${flowerType} flowers?`, 'bot'), 1000);
   
     setTimeout(() => {
       if (flowerType === 'Red') {
         inputWrapper.innerHTML = `
         <select id="select">
-          <option value="" selected disabled>Select a flower type: </option>
+          <option value="" selected disabled> &#127801; Select a flower type: </option>
           <option value="Rose">Rose</option>
           <option value="Coronation">Coronation</option>
-          <option value="Daisies">Daisies</option>
+          <option value="Poppy">Poppy</option>
         </select>
       `;
       } else if (flowerType === 'Yellow') {
         inputWrapper.innerHTML = `
         <select id="select">
-          <option value="" selected disabled>Select an flower type:</option>
+          <option value="" selected disabled> &#127803; Select a flower type:</option>
           <option value="Sunflower">Sunflower</option>
           <option value="Daffodil">Daffodil</option>
-          <option value="Poppy">Poppy</option>
+          <option value="Daisies">Daisies</option>
         </select>
       `;
       } else {
         inputWrapper.innerHTML = `
         <select id="select">
-          <option value="" selected disabled>Select a flower type:</option>
+          <option value="" selected disabled> &#127809; Select a flower type:</option>
           <option value="Dahlia">Dhalia</option>
           <option value="Tulip">Tulip</option>
           <option value="Lily">Lily</option>
@@ -139,14 +125,14 @@ const showTypesOptions = (flowerType) => {
         inputWrapper.innerHTML = "";
         setTimeout(() => bouquetSize(select.value), 1000);
       });
-    }, 2000);
+    }, 1500);
   };
 
   // Question 4
     const bouquetSize = (select) => {
       userFormInputs.size = select;
-      showMessage(`My choice is ${select}!`, 'user');
-      setTimeout(() => showMessage(`Sweet! What size of bouquet for those ${select}?`, 'bot'), 2500);
+      showMessage(`I pick ${select}.`, 'user');
+      setTimeout(() => showMessage(`Sweet! What size of bouquet for those ${select}?`, 'bot'), 1000);
     
       setTimeout(() => {
         inputWrapper.innerHTML = `
@@ -165,52 +151,51 @@ const showTypesOptions = (flowerType) => {
         });
         document.getElementById('large').addEventListener('click', () => {
           inputWrapper.innerHTML = "";
-          setTimeout(() => paymentSize('Large'), 1500);
+          setTimeout(() => paymentSize('Large'), 1000);
         });
-      }, 2500);
+      }, 1500);
     };
 
       const paymentSize = (size) => {
         userFormInputs.payment = size;
         showMessage(`I want a ${size}.`, 'user');
         
-        let price;
-        if (size === 'small') {
+        if (size === 'Small') {
           price = '150kr';
-        } else if (size === 'medium') {
+        } else if (size === 'Medium') {
           price = '250kr';
         } else {
-          price = '350kr';
+          price = '350kr'; 
+        }
 
         setTimeout(() => { 
-          
-        showMessage(`${size} it is! That will cost you ${price}. Please review and confirm below:`, 'bot');
+        showMessage(`${size} it is! That will be ${price}. Please review and confirm below:`, 'bot');
 
         showMessage(
-          `Name : ${userFormInputs.name}<br> Color : ${userFormInputs.color}<br> Type : ${userFormInputs.size}<br>
-           Size : ${userFormInputs.payment}<br> Price : ${price}`, 'bot');
-      }, 2000);
+          `Name: ${userFormInputs.name}<br> Color: ${userFormInputs.color}<br> Type: ${userFormInputs.size}<br>
+           Size: ${userFormInputs.payment}<br>`, 'bot');
+      }, 1000);
       
         setTimeout(() => {
           inputWrapper.innerHTML = `
-          <button id="agree">Agree</button>
-          <button id="reload">Disagree</button>`;
+          <button id="agree">Agree &#128515</button>
+          <button id="reload">Disagree &#129344</button>`;
 
           document.getElementById('agree').addEventListener('click', () => {
             inputWrapper.innerHTML = "";
-            setTimeout(() => orderCompleted('agree'), 1000);
+            setTimeout(() => order('Agree'), 1000);
           });
           document.getElementById('reload').addEventListener('click', () => {
             location.reload();
             });
-          }, 2500);
-      }};
+          }, 1500);
+      };
 
         const order = (completed) => {
-          userFormInputs.confirmation = completed;
+          userFormInputs.order = completed;
           showMessage(`${completed}`, 'user');
 
-          setTimeout(() => showMessage('Thank you for the order. It will soon be sent out', 'bot'), 1000);
+          setTimeout(() => showMessage('Thank you for the order. It will soon be sent out; &#128171', 'bot'), 1000);
 
           inputWrapper.innerHTML = "";
         };

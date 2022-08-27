@@ -2,11 +2,16 @@
   box-sizing: border-box;
 }
 
+
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: 'Lobster Two', cursive;
+  background: #7FB77E;
+  background-image:url("https://images.pexels.com/photos/7156465/pexels-photo-7156465.jpeg?cs=srgb&dl=pexels-gustavo-fring-7156465.jpg&fm=jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 h1 {
@@ -38,7 +43,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #E38B29;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -59,6 +64,7 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  margin-bottom: 30px;
 }
 
 .chat {
@@ -90,12 +96,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #FDEEDC;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #E38B29;
   max-width: 40%;
 }
 
@@ -120,7 +126,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #E38B29;
   color: white;
   border: none;
   border-radius: 4px;
@@ -132,6 +138,24 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+select {
+  border: none;
+  border-radius: 4px;
+  color: #FFD8A9;
+  font-size: 20px;
+  font-weight: 600;
+  height: 60px;
+  font-family: 'Montserrat';
+  background: #FDEEDC;
+  width: 100%;
+  padding: 0 20px;
+  cursor: pointer;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 button:hover {
