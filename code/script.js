@@ -69,7 +69,7 @@ const removeLoading = () => {
 
 // User replies & function logic/event listeners
 
-// Question 1 – Cup or Cone
+// User reply 1 – Cup or Cone
 const cupOrCone = () => {
   const coneBtn = document.getElementById('cone-btn');
   const cupBtn = document.getElementById('cup-btn');
@@ -95,7 +95,7 @@ const cupOrCone = () => {
   });
 };
 
-//Question 2 - Ice Cream or Soft Ice Cream
+//User reply 2 - Ice Cream or Soft Ice Cream
 const chooseIceCream = () => {
   const iceCreamBtn = document.getElementById('ice-cream-btn');
   const softIceCreamBtn = document.getElementById('soft-ice-cream-btn');
@@ -121,7 +121,7 @@ const chooseIceCream = () => {
   });
 };
 
-//Question 3 – Sprinkles (Soft Ice Cream)
+//User reply 3 – Sprinkles (Soft Ice Cream)
 const chooseSprinkles = () => {
   const sprinkleNextBtn = document.getElementById('sprinkles-next');
   const sprinklesSelection = document.getElementById('sprinkles');
@@ -139,7 +139,7 @@ const chooseSprinkles = () => {
   });
 };
 
-//Question 3 – Flavors (Ice Cream)
+//User reply 3 – Flavors (Ice Cream)
 const chooseFlavors = () => {
   const pickOneFlavor = document.getElementById('pick-one');
   const flavorsNextBtn = document.getElementById('flavors-next');
@@ -167,7 +167,7 @@ const chooseFlavors = () => {
   });
 };
 
-//Question 4 - Phone Number and Thank you
+//User reply 4 - Phone Number and Thank you-popup
 const phoneNumber = () => {
   const confirmPhoneBtn = document.getElementById('confirm-btn');
 
@@ -196,7 +196,6 @@ const phoneNumber = () => {
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
-    msgSound.play();
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -223,7 +222,7 @@ const showMessage = (message, sender) => {
 
 // Bot questions & HTML structure manipulation:
 
-// Question 1 - Greeting & Choose Cup/Cone
+// Bot question 1 - Greeting & Choose Cup/Cone
 const question1Greeting = () => {
   showMessage('Hi there! Let me help you take your order.', 'bot');
 
@@ -238,7 +237,7 @@ const question1Greeting = () => {
   cupOrCone();
 };
 
-// Question 2 - Choose Ice Cream
+//Bot question 2 - Choose Ice Cream
 const question2IceOrSoft = () => {
   inputWrapper.innerHTML = `
 <button id="ice-cream-btn">Ice Cream</button>
@@ -250,7 +249,7 @@ const question2IceOrSoft = () => {
   removeLoading();
 };
 
-//Question 3 - Sprinkles (Soft Ice Cream)
+//Bot question 3 - Sprinkles (Soft Ice Cream)
 const question3Sprinkles = () => {
   inputWrapper.innerHTML = `
 <select name="sprinkles" id="sprinkles">
@@ -266,7 +265,7 @@ const question3Sprinkles = () => {
   removeLoading();
 };
 
-//Question 3 - Flavors (Ice Cream)
+//Bot question 3 - Flavors (Ice Cream)
 const question3Flavors = () => {
   inputWrapper.innerHTML = `
   <div id="flavors">
@@ -297,7 +296,7 @@ const question3Flavors = () => {
   removeLoading();
 };
 
-//Question 4 - Phone Number
+//Bot question 4 - Phone Number
 const question4PhoneNo = () => {
   inputWrapper.innerHTML = `
   <input type="tel" id="phone-number" required> 
