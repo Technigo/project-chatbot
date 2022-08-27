@@ -6,6 +6,7 @@ const allButtons = document.getElementsByTagName('button');
 
 // Sound effect
 let msgSound = new Audio('assets/pop.mp3');
+msgSound.volume = 0.6;
 
 // Object to save user inputs and method to present the order back to the customer
 const customerOrder = {
@@ -20,7 +21,7 @@ const customerOrder = {
         `One ${customerOrder.serving} of ${customerOrder.flavors} ${customerOrder.type} is in the making!`,
         'bot'
       );
-    } else if (customerOrder.type === 'soft ice cream') {
+    } else {
       showMessage(
         `One ${customerOrder.serving} of ${customerOrder.type} with ${customerOrder.sprinkles} is in the making!`,
         'bot'
