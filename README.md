@@ -10,4 +10,6 @@ We approched the problem using StackOverflow, Google and our brains. We understo
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Netlify :https://teal-khapse-dbfdca.netlify.app/
+
+
