@@ -1,3 +1,8 @@
+/* Here we modified what was already their, we put in a 
+background pictures, changed the images of the bot and user
+we also added styling for the select-element (drop down menu)
+you'll find that at the bottom of "style.css" */
+
 * {
   box-sizing: border-box;
 }
@@ -5,23 +10,26 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: rgb(180 0 255 / 94%);
+  font-family: 'Courirer New', monospace;
+  background-image: url("./assets/backgroundletters.jpg");
+  background-size: 100%;
 }
 
 h1 {
   font-weight: bold;
   font-size: 44px;
-  line-height: 34px;
-  color: #fff;
+  line-height: 44px;
+  color:#f49434;
   text-align: center;
+  background-image: none;
+  padding-top: 50px;
 }
 
 h2 {
   font-weight: bold;
   font-size: 24px;
-  line-height: 34px;
-  color: #fff;
+  line-height: 24px;
+  color: #f4c392;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -37,8 +45,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #e7feee;
+  color: #037f26;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -73,7 +81,7 @@ main {
 .bot-msg {
   display: flex;
   margin: 16px 8px 0 0;
-  flex-shrink: 0;
+  flex-shrink: 10;
 }
 
 .user-msg {
@@ -90,12 +98,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #fceedd;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #b700ff;
+  color: #ac5601;
   max-width: 40%;
 }
 
@@ -120,7 +128,7 @@ main {
 }
 
 button {
-  background-color: #5e0275;
+  background-color: #ca78f8;
   color: white;
   border: none;
   border-radius: 4px;
@@ -137,4 +145,15 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+select {
+  background-color: #ca78f8;
+  color:white;
+  border-radius: 4px;
+  padding: 16px 40px;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: 'Montserrat';
+  font-weight: 500;
 }
