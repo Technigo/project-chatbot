@@ -1,6 +1,6 @@
-# Project Name
+# Project Chatbot
 
-We are bulding a chatbot and ours is asking questions about how you feel and suggest things to alter your mood for the better
+We are bulding a chatbot and ours is asking questions about how you feel and suggest things to alter your mood for the better.
 
 ## The problem
 
@@ -8,4 +8,4 @@ Describe how you approached to problem, and what tools and techniques you used t
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://spectacular-pegasus-2e4240.netlify.app/
