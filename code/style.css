@@ -1,29 +1,37 @@
 * {
   box-sizing: border-box;
-}
+  padding:0;
+  margin: 0;
+  }
+
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #abb3e0;
+  margin: 40, 20, 40, 20px;
+  padding: 40px;
+  background-image: url(https://images.pexels.com/photos/1831744/pexels-photo-1831744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-size: cover;          /*   covering the the page with the whole picture,meaning no partials*/
+  background-repeat: no-repeat;     /*  meaning we wont repeat it many times in a row*/
+  height: 100vh;     /* VIEWPORTHEIGHT, takes the complete 100% height of the page, automtic adjustment also in RESPOSSIVE DESIGN*/
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  
 }
 
 h1 {
   font-weight: bold;
   font-size: 44px;
-  line-height: 34px;
   color: #fff;
-  text-align: center;
+  text-align:center ;
+  font-family: "Sofia", sans-serif;
 }
 
 h2 {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 34px;
-  color: rgb(240, 234, 234);
-  text-align: center;
-  margin-bottom: 36px;
+font-weight: bold;
+font-size: 24px;
+line-height: 34px;
+color: #fff;
+text-align: center;
+margin-bottom: 36px;
+font-family: "sofia", sans-serif;
 }
 
 p {
@@ -31,6 +39,16 @@ p {
   font-weight: 600;
   line-height: 28px;
   margin: 0;
+  font-family: cursive;
+}
+
+
+footer p {
+  color:#ffffff4b;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: right;
+  font-family: "sofia", sans-serif;
 }
 
 input {
@@ -38,10 +56,10 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color:#663333;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: cursive;
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -53,13 +71,13 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  
-  background: #ffffff4d;;
+  background: #ffffff88;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  overflow-y: hidden;  
 }
 
 .chat {
@@ -69,6 +87,7 @@ main {
   overflow: scroll;
   flex-direction: column;
   padding-bottom: 16px;
+  
 }
 
 .bot-msg {
@@ -80,7 +99,7 @@ main {
 .user-msg {
   display: flex;
   justify-content: flex-end;
-  margin: 18px 0 0 8px;
+  margin: 16px 0 0 8px;
   flex-shrink: 0;
 }
 
@@ -96,24 +115,31 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
   max-width: 40%;
+  box-shadow: #938690 0px 4px 4px, #544351 0px 4px 4px;
 }
 
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  background: #ffffff49;
+  color:#663333
+  
 }
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  color:#663333 ;
+  background: #ffffff4b;
 }
 
 .input-wrapper {
   display: flex;
   justify-content: center;
+  
 }
+
 
 .input-wrapper form {
   width: 100%;
@@ -121,21 +147,24 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background: #642020a8;
   color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 16px 40px;
+  border-radius: 3%;
+  padding: 16px 30px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: cursive;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  border:none;
+
 }
 
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+  border: 2px solid white;
 }
+
