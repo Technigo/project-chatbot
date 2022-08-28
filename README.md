@@ -1,13 +1,15 @@
-# Project Name
+chatbot
+This weeks project was to build a chatbot, to practise JavaScript and connection to HTML.
 
-Replace this readme with your own information about your project.
+The problem
+By using course information, videos and exercises in code pen we created the chatbox. We started off by choosing theme and content for the chatbot, then created the code and last did some styling in css. To get the chatbot to replay, moving on to the next question. We solved it by watching the lectures, taking inspo from other chatbot, and trail and error. We also had trouble synching our scheduels, but we had great communication, and showed eachother what we did, so both understood.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+By using course information, videos and exercises in code pen we created the chatbox. We started off by choosing theme and content for the chatbot, then created the code and last did some styling in css.
 
-## The problem
+We had great teamwork, and communcation, fun week.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+if we had more time, mabey add sounds, and evolving it more.
 
-## View it live
+View it live
 
 Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
