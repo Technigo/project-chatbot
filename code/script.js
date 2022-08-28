@@ -52,7 +52,7 @@ const greetingAnswer = (event) => {
   const answer = nameInput.value //storing the answer in a variable
   showMessage(`My name is ${answer}`, 'user');   //the greeting answer with name from user 
   nameInput.value = ''          //setting the users answer into an empty string
-  showMessage(`Hello! ${answer} Show a topic you would like to know about?` ,  'bot');
+  showMessage(`Hello! ${answer} Choose a topic you would like to know about?` ,  'bot');
   setTimeout(() => questionTwo(answer), 1000) //excecuting the function upon completion of timer in milliseconds
 }
 
@@ -169,7 +169,7 @@ const answerTwo = (choice) => {      //answer , passing the parameter
         }
 
         else if (lastChoice === 'wings'){
-        setTimeout(() => showMessage("Fact: Unicorns actually don't have wings - thats Pegasus!", 'bot'),1000)
+        setTimeout(() => showMessage("Fact: Unicorns actually don't have wings - that's Pegasus!", 'bot'),1000)
         setTimeout(() => closure('single', 'bot')),1000  // calling out the next answer in a new function named CLOSURE   
         }
         else if (lastChoice === 'animals'){
@@ -189,11 +189,11 @@ const answerTwo = (choice) => {      //answer , passing the parameter
     }
 
     const closure = (end) => {
-        setTimeout(() => showMessage("Hope you had a good time, would you like to know more facts or end this chat?", 'bot'),3000)
+        setTimeout(() => showMessage("... I hope you had a good time, would you like to know more facts or end this chat?", 'bot'),3000)
 
         inputWrapper.innerHTML = `
         <button id = "yes" type = "submit">Yes, more facts.</button>
-        <button id = "no" type = "submit">End, chat.</button>
+        <button id = "no" type = "submit">End chat.</button>
         `
         document.getElementById('yes').addEventListener('click' , () => { showMessage("I want to know more!", 'user')
         setTimeout(() => questionTwo('yes' , 'user')),1000  // calling out the next answer in a new function named facts

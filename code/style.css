@@ -6,13 +6,13 @@
 
 
 body {
-  margin: 40, 20, 40, 20px;
+  margin: 40, 20, 40, 20;
   padding: 40px;
   background-image: url(https://images.pexels.com/photos/1831744/pexels-photo-1831744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
   background-size: cover;          /*   covering the the page with the whole picture,meaning no partials*/
   background-repeat: no-repeat;     /*  meaning we wont repeat it many times in a row*/
   height: 100vh;     /* VIEWPORTHEIGHT, takes the complete 100% height of the page, automtic adjustment also in RESPOSSIVE DESIGN*/
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   
 }
 
@@ -21,7 +21,7 @@ h1 {
   font-size: 44px;
   color: #fff;
   text-align:center ;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "sofia";
 }
 
 h2 {
@@ -31,7 +31,7 @@ line-height: 34px;
 color: #fff;
 text-align: center;
 margin-bottom: 36px;
-font-family: Arial, Helvetica, sans-serif;
+font-family: 'sofia';
 }
 
 p {
@@ -39,7 +39,7 @@ p {
   font-weight: 600;
   line-height: 28px;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 
@@ -48,7 +48,7 @@ footer p {
   font-size: 14px;
   font-weight: 400;
   text-align: right;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'sofia';
 }
 
 input {
@@ -59,8 +59,8 @@ input {
   color:#663333;
   padding: 16px;
   font-size: 16px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 600;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
   line-height: 26px;
   flex: 1;
 }
@@ -137,7 +137,6 @@ main {
 .input-wrapper {
   display: flex;
   justify-content: center;
-  
 }
 
 
@@ -154,8 +153,8 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 500;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
   border:none;
