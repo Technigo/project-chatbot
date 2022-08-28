@@ -2,6 +2,8 @@
 
 Task was to build a chatbot. The focus was to practice the JavaScript parts, but also to hook it up with the HTML and css.
 
+Project build by Mia Dahlgren & Julia Östedt
+
 ## The problem
 
 We planned our project with a Figma-board creating a flow chart and mapping out our ideas. Decided to start with a basic function and add on more as we went along.
@@ -12,4 +14,4 @@ If we had more time, we would have added more chat-interactions and something to
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://dashing-fudge-3eb833.netlify.app
