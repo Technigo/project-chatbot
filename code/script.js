@@ -60,7 +60,7 @@ nameForm.addEventListener('submit', greetingAnswer) //event listenr, in this ord
 
 
 const questionTwo = () => { //second question ,BOT
-    showMessage('Choose a topic of what you would like to know about?', 'bot'), 1000
+    
     inputWrapper.innerHTML = `     
     <button id = "romance" type = "submit">Romance</button>
     <button id = "nature" type = "submit">Nature</button> 
