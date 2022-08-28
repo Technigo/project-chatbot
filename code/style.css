@@ -21,13 +21,15 @@ body {
 
  .container {
   position:relative;
-  width: 100%;
-  background-image: url(./assets/pexels-pixabay-55814_lion.jpg);
+  background: url(./assets/pexels-pixabay-55814_lion.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 50% 50%;
+  max-width: 100%;
+  /* height: auto; */
   height: 100vh;
-  font-size: 100px;
+  background-position: 50% 50%;
+  /* width hight */
+  /* font-size: 100px; */
 }
 
 h1 {

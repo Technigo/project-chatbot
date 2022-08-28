@@ -4,10 +4,18 @@ const sendBtn = document.querySelector('.send-btn');
 const nameInput = document.getElementById('name-input');
 const inputWrapper = document.getElementById('input-wrapper');
 
-
+const nickname = getRandomName(); // returns a name from the nameArray
 
 
 // Declare your functions after this comment
+function getRandomName() {
+  const nameArray = ['Susan', 'Carol', 'Pumpkin', 'Muffin', 'Princess']
+  const randomNumber = Math.trunc(Math.random() * 5); // Between 0 and 4
+  return nameArray[randomNumber]
+}
+
+// 0.45 * 5 = 2.25 = 2
+// 0.9 * 5 = 4.5 = 4
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -25,7 +33,7 @@ const showMessage = (message, sender) => {
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/waiter21.png" alt="Bot" />
+        <img src="assets/Waiter3.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -46,7 +54,7 @@ const greeting = () => {
 
 
 const showFoodOptions = (userName) => {
-  showMessage(`Okay ${userName !== '' ? userName : 'Slim shady'}, I'm gonna call you Susan. Can I take your order Susan?`, 'bot')
+  showMessage(`Okay ${userName !== '' ? userName : 'Slim shady'}, I'm gonna call you ${nickname}. Can I take your order ${nickname}?`, 'bot')
   inputWrapper.innerHTML = `
     <button class="burgersBtn">Burgers</button>
     <button class="veggieBtn">Veggie Burgers</button>
@@ -136,10 +144,8 @@ const knockJoke =() => {
   // come in
   document.getElementById('come-in').addEventListener('click', () => {
     showMessage("Come in!", 'user')
-    setTimeout(() => {
-      showMessage('Thanks!', 'bot')
-      setTimeout(confirmOrder,1000)
-      }, 1000)
+    setTimeout(() => showMessage('Thanks!', 'bot'), 1000)
+    setTimeout(confirmOrder,3000)
   } )
 
   // Who's there
@@ -159,10 +165,8 @@ const joke = () => {
   // come in II
   document.getElementById('come-in').addEventListener('click', () => {
     showMessage("Come in!", 'user')
-    setTimeout(() => {
-      showMessage('Thanks!', 'bot')
-      setTimeout(confirmOrder,1000)
-      }, 1000)
+    setTimeout(() => showMessage('Thanks!', 'bot'), 1000)
+    setTimeout(confirmOrder,3000)
   } )
 
   // Punchline
@@ -190,7 +194,7 @@ const sassyBot = () => {
   `
   // Punchline II
   document.getElementById('fine').addEventListener('click', () => {
-    showMessage("Europe who?", 'user')
+    showMessage("Fine, Europe who?", 'user')
     setTimeout(() => {
       showMessage("No YOU’RE A POO!", 'bot')
       }, 1000)
@@ -229,7 +233,7 @@ const reload = () => location.reload()
 
 
 const end = () => {
-  showMessage('Thank you Susan your order will be ready in a jiff!', 'bot')
+  showMessage(`Thank you ${nickname} your order will be ready in a jiff!`, 'bot')
   inputWrapper.innerHTML = ''
 }
 
