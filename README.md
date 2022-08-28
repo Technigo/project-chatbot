@@ -1,6 +1,6 @@
 # Project Name
 
-We are bulding a chatbot and ours is asking questions about how you feel and suggest things to alter your mood for the beter
+We are bulding a chatbot and ours is asking questions about how you feel and suggest things to alter your mood for the better
 
 ## The problem
 
