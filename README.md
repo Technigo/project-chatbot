@@ -22,7 +22,7 @@ To individualize CSS for our project, we made new bot and user icons and we made
 Each function starts with a bot answer, and ends with calling on the next functionality using setTimeout
 
 ## View it live
-Link Netlify: 
+Link Netlify: https://wildebeest-burgers.netlify.app/
 
 
 
