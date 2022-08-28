@@ -1,13 +1,18 @@
-# Project Name
+# Funfacts chatbot
 
-Replace this readme with your own information about your project.
+We created a fun facts chatbot that shows differents facts from different topics through a chat function. The task was to style it in css, write the code in javaScript and have an HTML as well. 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Tools used: VSCode
 
-## The problem
+We created a function to solve the chat flow. 
+Added some sound effect. 
 
 Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Deployed the project in netlify as well. 
+
+https://illustrious-lily-ab1cf7.netlify.app/
+
+Project created by Maria So and Johanna Rosenholm
