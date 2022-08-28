@@ -69,22 +69,24 @@ inputWrapper.innerHTML = `
         document.getElementById('headache').addEventListener('click', () => {
           userReply('Help me with my headache')
           inputWrapper.innerHTML = ''
-          setTimeout(() => booking('headache'), 1000)
+          setTimeout(() => booking('headache'), 1000);
          })
       
          document.getElementById('anxiety').addEventListener('click', () => {
           userReply('Help me with anxiety')
           inputWrapper.innerHTML = ''
-          setTimeout(() => booking('anxiety'), 1000)
+          setTimeout(() => booking('anxiety'), 1000);
          })
         
          document.getElementById('brokenArm').addEventListener('click', () => {
           userReply('Help me with my broken arm')
           inputWrapper.innerHTML = ''
-          setTimeout(() => booking('brokenArm'), 1000)
+          setTimeout(() => booking('brokenArm'), 1000);
          })     
       }
 
+
+      // Bot answers to choices made by pressing buttons
 const booking = (selection) => {
     if (selection === 'headache') {
       botReply("Oh no! 🤕 I'll book you a doctor who will help you with your headache.")
