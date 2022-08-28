@@ -1,4 +1,4 @@
-# HANNAH & NICLAS' CHATBOT
+# HANNA & NICLAS' CHATBOT
 
 For this assignment, we created a chatbot that dispenses (bad) jokes in an interactive conversation with the user. The bot dispenses a new joke at the user's
 request until it has fully exhausted its array of jokes. 
