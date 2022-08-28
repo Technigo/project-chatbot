@@ -1,13 +1,26 @@
-# Project Name
+# Project Name - Puppy rescue (chat-bot)
 
-Replace this readme with your own information about your project.
+We were tasked with creating a chat-bot and decided to do an interactive story where a hero can help to resue a puppy from a terrible dragon.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+✓ How to use variables in JavaScript.
+
+✓ How to use conditionals in JavaScript.
+
+✓ Know some string methods to modify strings.
+
+✓ Understand control flow and the use of conditionals statements.
+
+✓ How to use functions in JavaScript
+
+✓ Different datatypes
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+For player choises we have used if/else statements and we have used javascrip to modify inner HTML of various elements. We have stored objects in an array (heroInventory) and used it to trigger different conditions for if/else statements. 
+
+Next step wpuld be to work on the CSS, and to get the setTimeout more correct. 
+The code is very linear, flowing from top to bottom and quite repetative. We would have liked to have a more effecient structure of the code and reusability of functions. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://incandescent-bonbon-278a98.netlify.app

@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #A8DBA8
 }
 
 h1 {
@@ -38,7 +38,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #3B8686;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -95,7 +95,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #3B8686;
   max-width: 40%;
 }
 
@@ -120,7 +120,7 @@ main {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #0B486B;
   color: white;
   border: none;
   border-radius: 4px;
@@ -151,11 +151,17 @@ button:hover {
 }
 
 .retry-btn {
-  background-color: red;
+  background-color: #ff0000;
+  cursor: pointer;
+}
+
+.replay-btn {
+  background-color: #0B486B;
+  margin-top: 16px;
+  cursor: pointer;
 }
 
 .giphy-embed {
- 
   height:50vh;
   border: 0;
   }
@@ -165,3 +171,6 @@ button:hover {
     text-decoration: none;
   }
  
+.price-button {
+  font-size: 50px;
+}
