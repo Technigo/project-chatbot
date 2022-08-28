@@ -23,4 +23,4 @@ The code is very linear, flowing from top to bottom and quite repetative. We wou
 
 ## View it live
 
-https://incandescent-bonbon-278a98.netlify.app
+https://delightful-praline-eda5a7.netlify.app/
