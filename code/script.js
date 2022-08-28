@@ -2,15 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Variables that point to selected DOM elements
 const chatSection = document.getElementById('chat');
-const inputWrapper = document.getElementById("input-wrapper");
-const bodyButtons = document.getElementById("bodybuttons");
-const nameForm = document.getElementById("name-form");
-const nameInput = document.getElementById("name-input");
-const submitBtn = document.getElementById('submit');
-const sendBtn = document.getElementById('send-btn');
+const inputWrapper = document.getElementById('input-wrapper');
+const nameForm = document.getElementById('name-form');
+const nameInput = document.getElementById('name-input');
 
 // If you need any global variables that you can use across different functions, declare them here:
-//let questionNumber = 0;
+
 // Declare your functions after this comment
 const botReply = (message) => {
   showMessage(message, 'bot');
@@ -63,18 +60,17 @@ nameForm.addEventListener('submit', (event) => {
 
 // Question 2: //Second question from the bot, where there will be one written question and then three buttons.
 const whatsTheIssue = () => {
-botReply(`Nice to meet you, what do you have problems with?`);
+botReply('Nice to meet you, what do you have problems with?');
 inputWrapper.innerHTML = `
-        <button id="headache" class="body-buttons"> Headache </button>
-        <button id="anxiety" class="body-buttons"> Anxiety </button>
-        <button id="brokenArm" class="body-buttons"> Broken arm </button>
+        <button id="headache" class="body-buttons"> My head hurts </button>
+        <button id="anxiety" class="body-buttons"> I have anxiety </button>
+        <button id="brokenArm" class="body-buttons"> My arm is broken </button>
         `
         document.getElementById('headache').addEventListener('click', () => {
           userReply('Help me with my headache')
           inputWrapper.innerHTML = ''
           setTimeout(() => booking('headache'), 1000)
          })
-        
       
          document.getElementById('anxiety').addEventListener('click', () => {
           userReply('Help me with anxiety')
@@ -91,134 +87,19 @@ inputWrapper.innerHTML = `
 
 const booking = (selection) => {
     if (selection === 'headache') {
-      botReply("That's unfortunate, I'll book you a doctor.")
+      botReply("Oh no! 🤕 I'll book you a doctor who will help you with your headache.")
     } 
     
     else if (selection === 'anxiety') {
-      botReply("That's sad, I'll book you a doctor")
+      botReply("Take a deep breath ❤️ a therapist will call you in a couple of minutes.")
     } 
     
     else {
-      botReply("Broken arm is though")
+      botReply("I'm afraid we can't help you with broken bones 👩‍🦽 please go to the emergency.")
     }
   }
 
-  /*botReply("Thats unfortunate! Should I book you a doctor?");
-    inputwrapper.innerHTML = `
-        <button id='yes'>Yes</button>
-        <button id='no'>No</button>
-        `;
-*/
-/*
-//Conditionals to set order of the questions
-const nextQuestion = (message) => {
-  if (questionNumber === 0) {
-    setTimeout (() => whatsTheIssue(message), 1000);
-  } else if (questionNumber === 1) {
-setTimeout (() => booking(message), 1000);
-  } else if (questionNumber === 2) {
-    setTimeout (() => doctorIsBooked(message), 1000);
-  }
-}
-*/
 
-/*const handleNameInput = (event) => {      // Here we creat a function to avoid the submit when we click or press the button sumbit.
-  event.preventDefault()                  // .preventDefault() avoits the refresh the page.
-  const name = nameInput.value            // we create a new variable with the typed message in the input bar to use for the chatbot.
-  userReplay(name)               // here calls the function showMessage() to see what was typed before.
-  nameInput.value = ''                    
-  //counter += 1
-  setTimeout(() => showMessage(`Welcome ${name}. Want to talk about you Plan, or do you have some problem?`, 'bot'), 750)
-  setTimeout(() => nextMessage(showOptions()),750)
-  console.log('counter', counter)
-};*/
-
-
-/*
-// First question from the bot
-const greeting = () => {
-  questionNumber = 1;
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  //showMessage("Hello there, what's your name?", 'bot');
-  botReply("Hello there, what's your name?");
-  //showMessage("hej", "user");
-  // Just to check it out, change 'bot' to 'user' here 👆
-}
-
-//Answer from the user
-const submitButton = document.querySelector(".send-btn")
-const inputField = document.querySelector("#name-input")
-//submitButton.addEventListener('click', function(event)
-const handleNameInput = (event) => {
- event.preventDefault();
-  const name = nameInput.value
- userReply(`My name is ${name}`);
-}
-*/
-
-/* Jessikas förslag som inte funkade: nameForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const value = document.getElementById('name-input').value;
-  showMessage(value, 'user')
-  setTimeout (() => handleNameInput(value, 'bot'), 1000)*/
-
-/*
-//Second question from the bot, where there will be one written question and then three buttons.
-const whatsTheIssue = (name) => {
-  questionNumber++;
-submitButton.addEventListener('click', function(event) {
-  event.preventDefault();
-botReply(`Nice to meet you ${name}, what do you have problems with?`);
-inputwrapper.innerHTML =+ `
-        <button id="headache" type="submit" class="bodybuttons"> Headache </button>
-        <button id="anxiety" type="submit" class="bodybuttons"> Anxiety </button>
-        <button id="broken-arm" type="submit" class="bodybuttons"> Broken arm </button>
-        `
-        document.getElementById('headache').addEventListener('click', () => {
-          showMessage('headache', 'user')
-          inputWrapper.innerHTML =+ ''
-          setTimeout(() => askForHelp('headache'), 1000)
-         })
-       
-         document.getElementById('anxiety').addEventListener('click', () => {
-          showMessage('anxiety', 'user')
-          inputWrapper.innerHTML =+ ''
-          setTimeout(() => askForHelp('anxiety'), 1000)
-         })
-      
-         document.getElementById('broken-arm').addEventListener('click', () => {
-          showMessage('broken-arm', 'user')
-          inputWrapper.innerHTML =+ ''
-          setTimeout(() => askForHelp('hungry'), 1000)
-         })
-
-  //Answer from bot with two buttons
-const booking = () => {
-  questionNumber++;
-  botReply("Thats unfortunate! Should I book you a doctor?");
-  inputwrapper.innerHTML =+ `
-  <button id='yes'>Yes</button>
-      <button id='no'>No</button>
-  `;
-
-  document.getElementById('yes') .addEventListener('click', () => {
-    generateRequest('');
-    showMessage('Yes', 'user');
-  });
-  document.getElementById('no') .addEventListener('click', () => {
-    generateRequest('');
-    showMessage('No', 'user');
-  });
-}
-//Booking confirmation from the bot
-const doctorIsBooked = () => {
-  questionNumber++;
-  botReply("We have now booked you a doctor, please check your email for booking confirmation")
-}
-
-})
- 
-} */
 // Set up your eventlisteners here
 
 chatSection.addEventListener('submit', ()=> {
