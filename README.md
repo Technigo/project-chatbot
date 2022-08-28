@@ -1,12 +1,14 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Task was to build a chatbot. The focus was to practice the JavaScript parts, but also to hook it up with the HTML and css.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We planned our project with a Figma-board creating a flow chart and mapping out our ideas. Decided to start with a basic function and add on more as we went along.
+We spent quite some time on understanding the connection between the javascript and HTML which cleared up as we progressed.
+We struggled to create links in our chat-messages but through some research and stackoverflow help we learnt that a basic a-tag was the solution.
+
+If we had more time, we would have added more chat-interactions and something to show the user that the bot is processing it's answer.
 
 ## View it live
 

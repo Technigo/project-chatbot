@@ -1,3 +1,9 @@
+/* Colors:
+Green: #5F7161
+Light green: #6D8B74
+Beige: #EFEAD8
+Grey: #D0C9C0
+ */
 * {
   box-sizing: border-box;
 }
@@ -6,14 +12,15 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
-  background-image: url(assets/background-gym.jpg);
+  background-image: url(assets/background-gym2.jpg);
+  background-size: cover;
 }
 
 h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: #5f7161;
   text-align: center;
 }
 
@@ -21,7 +28,7 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: #6d8b74;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -37,8 +44,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #fff;
+  color: #5f7161;
   padding: 16px;
   font-size: 16px;
   font-family: "Montserrat";
@@ -51,9 +58,9 @@ main {
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
-  height: 600px;
+  height: 470px;
   border-radius: 30px;
-  background: #fff;
+  background: #d0c9c0;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -65,9 +72,9 @@ main {
   flex: 1;
   display: flex;
   justify-content: flex-start;
-  overflow: scroll;
   flex-direction: column;
   padding-bottom: 16px;
+  overflow-x: hidden;
 }
 
 .bot-msg {
@@ -90,12 +97,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #5f7161;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #fff;
   max-width: 40%;
 }
 
@@ -119,9 +126,22 @@ main {
   display: flex;
 }
 
+a:link {
+  color: #fff;
+}
+a:visited {
+  color: #fff;
+}
+a:hover {
+  color: #d0c9c0;
+}
+a:active {
+  color: #d0c9c0;
+}
+
 button {
-  background-color: #0026ff;
-  color: white;
+  background-color: #5f7161;
+  color: #fff;
   border: none;
   border-radius: 4px;
   padding: 16px 40px;

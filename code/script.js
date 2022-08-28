@@ -5,13 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("workout-form");
   const inputWrapper = document.getElementById("input-wrapper"); // this connects the js with the element in the html.
 
-  // If you need any global variables that you can use across different functions, declare them here:
+  input.focus(); // Makes the browser auto-select the input field so that the user doesn't have to click the field before writing
 
   // Declare your functions after this comment
 
   // This function will add a chat bubble in the correct place based on who the sender is
-  input.focus(); // Makes the browser auto-select the input field so that the user doesn't have to click the field before writing
-
   const showMessage = (message, sender) => {
     // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
     if (sender === "user") {
@@ -31,17 +29,16 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
-      </section>
+      </section> 
     `;
     }
     // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
     chat.scrollTop = chat.scrollHeight;
   };
 
-  // Starts here
   const greeting = () => {
     // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-    showMessage("Hello there, I'm your personal trainer bot.", "bot");
+    showMessage("Hello there, I'm your personal trainer bot", "bot");
   };
 
   const ageQuestion = () => {
@@ -56,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => handleAgeInput(ageInput), 1000);
   };
 
+  //This function decide which message to show the user depending on the age input.
   const handleAgeInput = (ageInput) => {
     ageInput;
     if (ageInput >= 16) {
@@ -73,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  // This function asks the user what to train and creates two buttons with alternatives.
   const musclegroupQuestion = (ageInput) => {
     showMessage(
       `${ageInput}, that's great! What muscle group would you like to focus on today?`,
@@ -90,8 +89,11 @@ document.addEventListener("DOMContentLoaded", () => {
       .addEventListener("click", () => upperAnswer());
   };
 
+  // These two following functions create a message based on the alternative chosen by the user.
   const lowerAnswer = () => {
-    showMessage("Upper Body", "user");
+    showMessage("Lower Body", "user");
+    lowerBtn.remove(); // Removes the buttons when user makes their choice
+    upperBtn.remove();
     setTimeout(
       () =>
         showMessage(
@@ -104,6 +106,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const upperAnswer = () => {
     showMessage("Upper Body", "user");
+    lowerBtn.remove(); // Removes the buttons when user makes their choice
+    upperBtn.remove();
     setTimeout(
       () =>
         showMessage(
