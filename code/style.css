@@ -6,24 +6,28 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #fed429;
+  background-image: url("../code/assets/beer.jpeg");
 }
 
-h1 {
+
+  h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: #fed429;
   text-align: center;
+  text-shadow: 2px 2px 4px black;
 }
 
 h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: #fed429;
   text-align: center;
   margin-bottom: 36px;
+  text-shadow: 2px 2px 4px black;
 }
 
 p {
@@ -33,12 +37,13 @@ p {
   margin: 0;
 }
 
+
 input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #e3e5f1;
+  color: #000000;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -90,12 +95,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #e3e5f1;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #000000;
   max-width: 40%;
 }
 
@@ -110,26 +115,19 @@ main {
 }
 
 .input-wrapper {
-  display: block;
+  display: flex;
   justify-content: center;
 }
 
-.button {
- display: flex;
- justify-content: center;
-
-}
 
 .input-wrapper form {
   width: 100%;
   display: flex;
 
 }
-
-.input-wrapper 
-
+ 
 button {
-  background-color: #0026ff;
+  background-color: #fed429;
   color: white;
   border: none;
   border-radius: 4px;
