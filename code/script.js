@@ -422,6 +422,7 @@ const deathBy0Hp = () => {
     setTimeout(gameOver, 3000);
   }
 }
+
 //victory screen function
 const endScreen = () => {
   entireScreen.innerHTML=`
