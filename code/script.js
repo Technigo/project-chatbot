@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
 
 // Variables that point to selected DOM elements
-const chat = document.getElementById('chat');
-const inputwrapper = document.getElementById("input-wrapper");
-const bodybuttons = document.getElementById("bodybuttons");
-const nameform = document.getElementById("name-form");
-const nameinput = document.getElementById("name-input");
-const submit = document.getElementById('submit');
-const sendbtn = document.getElementById('send-btn');
+const chatSection = document.getElementById('chat');
+const inputWrapper = document.getElementById("input-wrapper");
+const bodyButtons = document.getElementById("bodybuttons");
+const nameForm = document.getElementById("name-form");
+const nameInput = document.getElementById("name-input");
+const submitBtn = document.getElementById('submit');
+const sendBtn = document.getElementById('send-btn');
 
 // If you need any global variables that you can use across different functions, declare them here:
-let questionNumber = 0;
+//let questionNumber = 0;
 // Declare your functions after this comment
 const botReply = (message) => {
   showMessage(message, 'bot');
@@ -46,6 +46,70 @@ const showMessage = (message, sender) => {
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
 }
+
+// Question 1: bot asks for name.
+
+const greeting = () => {
+  botReply("Hello there, what's your name?");
+}
+
+//Answer from the user
+nameForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+     const name = nameInput.value
+    userReply(`My name is ${name}`);
+    setTimeout(() => whatsTheIssue(), 1000);
+})
+
+// Question 2: //Second question from the bot, where there will be one written question and then three buttons.
+const whatsTheIssue = () => {
+botReply(`Nice to meet you, what do you have problems with?`);
+inputWrapper.innerHTML = `
+        <button id="headache" class="body-buttons"> Headache </button>
+        <button id="anxiety" class="body-buttons"> Anxiety </button>
+        <button id="brokenArm" class="body-buttons"> Broken arm </button>
+        `
+        document.getElementById('headache').addEventListener('click', () => {
+          userReply('Help me with my headache')
+          inputWrapper.innerHTML = ''
+          setTimeout(() => booking('headache'), 1000)
+         })
+        
+      
+         document.getElementById('anxiety').addEventListener('click', () => {
+          userReply('Help me with anxiety')
+          inputWrapper.innerHTML = ''
+          setTimeout(() => booking('anxiety'), 1000)
+         })
+        
+         document.getElementById('brokenArm').addEventListener('click', () => {
+          userReply('Help me with my broken arm')
+          inputWrapper.innerHTML = ''
+          setTimeout(() => booking('brokenArm'), 1000)
+         })     
+      }
+
+const booking = (selection) => {
+    if (selection === 'headache') {
+      botReply("That's unfortunate, I'll book you a doctor.")
+    } 
+    
+    else if (selection === 'anxiety') {
+      botReply("That's sad, I'll book you a doctor")
+    } 
+    
+    else {
+      botReply("Broken arm is though")
+    }
+  }
+
+  /*botReply("Thats unfortunate! Should I book you a doctor?");
+    inputwrapper.innerHTML = `
+        <button id='yes'>Yes</button>
+        <button id='no'>No</button>
+        `;
+*/
+/*
 //Conditionals to set order of the questions
 const nextQuestion = (message) => {
   if (questionNumber === 0) {
@@ -56,6 +120,7 @@ setTimeout (() => booking(message), 1000);
     setTimeout (() => doctorIsBooked(message), 1000);
   }
 }
+*/
 
 /*const handleNameInput = (event) => {      // Here we creat a function to avoid the submit when we click or press the button sumbit.
   event.preventDefault()                  // .preventDefault() avoits the refresh the page.
@@ -69,7 +134,7 @@ setTimeout (() => booking(message), 1000);
 };*/
 
 
-
+/*
 // First question from the bot
 const greeting = () => {
   questionNumber = 1;
@@ -89,8 +154,15 @@ const handleNameInput = (event) => {
   const name = nameInput.value
  userReply(`My name is ${name}`);
 }
+*/
 
+/* Jessikas förslag som inte funkade: nameForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const value = document.getElementById('name-input').value;
+  showMessage(value, 'user')
+  setTimeout (() => handleNameInput(value, 'bot'), 1000)*/
 
+/*
 //Second question from the bot, where there will be one written question and then three buttons.
 const whatsTheIssue = (name) => {
   questionNumber++;
@@ -146,14 +218,12 @@ const doctorIsBooked = () => {
 
 })
  
-}
+} */
 // Set up your eventlisteners here
 
-chat.addEventListener('submit', ()=> {
-
+chatSection.addEventListener('submit', ()=> {
 });
-chat.onsubmit = ()=> {
-  
+chatSection.onsubmit = ()=> {
 }
 
 // When website loaded, chatbot asks first question.
