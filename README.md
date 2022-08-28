@@ -1,12 +1,15 @@
-# Project Name
+# HANNAH & NICLAS' CHATBOT
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+For this assignment, we created a chatbot that dispenses (bad) jokes in an interactive conversation with the user. The bot dispenses a new joke at the user's
+request until it has fully exhausted its array of jokes. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+As the learning goal for this assignment was to become familiarised with JS functions and arrays, we used both extensively to create the bot. We deecided
+early on that a joke-dispensing chatbot would allow us to complete the learning objectives of the assignment. 
+
+If we had more time, we could have added additional functions to make the conversation flow more interactive, such as setting up multiple joke arrays with different
+types of jokes that the user could select from instead of just g-rated 'dad jokes'.
 
 ## View it live
 
