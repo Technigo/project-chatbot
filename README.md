@@ -13,6 +13,6 @@ Describe how you approached to problem, and what tools and techniques you used t
 
 Deployed the project in netlify as well. 
 
-https://illustrious-lily-ab1cf7.netlify.app/
+https://sparkly-cannoli-70d42e.netlify.app/
 
 Project created by Maria So and Johanna Rosenholm
