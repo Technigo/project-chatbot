@@ -4,20 +4,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const chat = document.getElementById('chat');
   const userInput = document.getElementById('user-input');
   const form = document.getElementById('user-form');
-  const submit = document.getElementById('submit');
-  const main = document.getElementById('main');
   const inputWrapper = document.getElementById('input-wrapper');
-  let = questionNumber = 1;
+  let questionNumber = 1;
 
   const botReply = (msg) => {
     showMessage(msg, 'bot');
+  }
+
+  const userReply = (msg) => {
+    showMessage(msg, 'user');
   }
 
   // This function will add a chat bubble in the correct place based on who the sender is
   const showMessage = (message, sender) => {
     
     if (sender === 'user') {
-      console.log('answer');
       chat.innerHTML += `
         <section class="user-msg">
           <div class="bubble user-bubble">
@@ -27,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         </section>
       `;
     } else if (sender === 'bot') {
-      console.log('question');
       chat.innerHTML += `
         <section class="bot-msg">
           <img src="assets/bot.png" alt="Bot" />
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (questionNumber === 2) {
       setTimeout (() => passengers(message), 1000);
     } else if (questionNumber === 3) {
-      setTimeout (() => addBagage(message), 1000);
+      setTimeout (() => addBaggage(message), 1000);
     } else if (questionNumber === 4) {
       setTimeout (() => confirmBooking(message), 1000);
     } else if (questionNumber === 5) {
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const handleInput = (event) => {
       event.preventDefault();
       const reply = userInput.value;
-      showMessage(reply, 'user');
+      userReply(reply);
       userInput.value = '';
 
       if (reply !== '') {
@@ -84,29 +84,29 @@ document.addEventListener('DOMContentLoaded', () => {
     botReply(`Hi ${message}, How would you like to travel?`);
 
       inputWrapper.innerHTML = `
-        <button id='firstBtn'>Boat</button>
-        <button id='secondBtn'>Bus</button>
-        <button id='thirdBtn'>Train</button>
+        <button id='boatBtn'>Boat</button>
+        <button id='busBtn'>Bus</button>
+        <button id='trainBtn'>Train</button>
       `;
 
-      document.getElementById('firstBtn') .addEventListener('click', () => {
-        generateRequest('');
-        showMessage('Boat', 'user');
+      document.getElementById('boatBtn') .addEventListener('click', () => {
+        generateRequest('Boat');
+        userReply('Boat');
       });
-      document.getElementById('secondBtn') .addEventListener('click', () => {
-        generateRequest('');
-        showMessage('Bus', 'user');
+      document.getElementById('busBtn') .addEventListener('click', () => {
+        generateRequest('Bus');
+        userReply('Bus');
       });
-      document.getElementById('thirdBtn') .addEventListener('click', () => {
-        generateRequest('');
-        showMessage('Train', 'user');
+      document.getElementById('trainBtn') .addEventListener('click', () => {
+        generateRequest('Train');
+        userReply('Train');
       });
   }
 
   // the bots second question; a list of numbers to choose from
-  const passengers = () => {
+  const passengers = (transport) => {
     questionNumber++;
-    botReply('How many passengers will you be?');
+    botReply(`${transport} you say, how fun! How many passengers will you be?`);
       
     inputWrapper.innerHTML =`
       <select id='numberOfPassengers' onchange='changeFunc'>
@@ -119,27 +119,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('numberOfPassengers') .onchange = () => {
       generateRequest(numberOfPassengers.value);
-      showMessage(numberOfPassengers.value, 'user');
+      userReply(numberOfPassengers.value);
     }
   }
 
   // the bots third question; a multiple choise question with 'yes'- and 'no'-button
-  const addBagage = () => {
+  const addBaggage = () => {
     questionNumber++;
-    botReply('Would you like to add bagage?');
+    botReply(`A booking for ${numberOfPassengers.value} coming up! Would you like to add any baggage?`);
     
     inputWrapper.innerHTML = `
-      <button id='yesBtn'>Yes</button>
-      <button id='noBtn'>No</button>
+      <button id='yesBaggage'>Yes</button>
+      <button id='noBaggage'>No</button>
     `;
 
-    document.getElementById('yesBtn') .addEventListener('click', () => {
+    document.getElementById('yesBaggage') .addEventListener('click', () => {
       generateRequest('');
-      showMessage('Yes', 'user');
+      userReply('Yes');
     });
-    document.getElementById('noBtn') .addEventListener('click', () => {
+    document.getElementById('noBaggage') .addEventListener('click', () => {
       generateRequest('');
-      showMessage('No', 'user');
+      userReply('No');
     });
   }
 
@@ -149,22 +149,22 @@ document.addEventListener('DOMContentLoaded', () => {
     botReply('Ok, all set then. Would you like to confirm booking?');
 
     inputWrapper.innerHTML = `
-      <button id='yesBtn'>Confirm</button>
-      <button id='noBtn'>Restart</button>
+      <button id='confirmBtn'>Confirm</button>
+      <button id='restartBtn'>Restart</button>
     `;
 
-    document.getElementById('yesBtn') .addEventListener('click', () => {
+    document.getElementById('confirmBtn') .addEventListener('click', () => {
       generateRequest('');
-      showMessage('Confirm', 'user');
+      userReply('Confirm');
     });
-    document.getElementById('noBtn') .addEventListener('click', () => {
+    document.getElementById('restartBtn') .addEventListener('click', () => {
       location.reload();
     });
 
     setTimeout(() => location.reload(), 300000);
   }
 
-  // the bots first question; a multiple choise question with three buttons with different alternatives
+  // the bots last comment if the user confirmed the booking
   const goodbye = () => {
     questionNumber++;
     botReply('Thank you for your booking!');
