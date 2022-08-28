@@ -20,6 +20,23 @@ const messageSound = () => {
   audio.play();
 }
 
+const typing = () => {
+  chat.innerHTML += `
+  <div class="bot-input-wrapper" id="bot-input-wrapper">
+  <div class="preload-bubble" id="preloader">
+    <ul class="bot-typing">
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul> 
+  </div>
+
+  ` 
+}
+
+const removeTyping = () => {
+  document.getElementById('preloader').style.display='none'
+}
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -39,19 +56,8 @@ const showMessage = (message, sender) => {
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot-hotel.svg" alt="Bot" />
-
-        <div class="bot-input-wrapper" id="bot-input-wrapper">
-           <div class="preload-bubble" id="preloader">
-             <ul class="bot-typing">
-               <li></li>
-               <li></li>
-               <li></li>
-             </ul> 
-           </div>
-
-           <div class="bubble bot-bubble">
+            <div class="bubble bot-bubble">
               <p class="p-bubble-msg">${message}</p>
-           </div>
         </div>
       </section>
     `
@@ -65,13 +71,8 @@ const showMessage = (message, sender) => {
 // Conversations starts here
 
 // Question 1 - Bot asks 'What is your room number'?
-function loadingDots(){
-  const preloader= document.getElementById("preloader");
-  preloader.style.display = "none";
-}
 
 const greeting = () => {
-      setTimeout((loadingDots),1500);
       showMessage("Welcome to Hotel Vosje. What is your room number?", 'bot'),2000; 
     };
   
@@ -94,6 +95,8 @@ const handleFormInput = (event) => {        // at submit this function will be i
 // The bot answers hello room #. This const will also be used as loop back selections if guest needs something else
 
 const greetingLoop = (room) => {
+  typing(); 
+  setTimeout(() => removeTyping(), 600)
   showMessage(`Hello room ${room}`, 'bot');
   setTimeout(() => helpSelection(), 600)
 }
@@ -112,7 +115,7 @@ const helpSelection = () => {
     setTimeout( ()=> {
       preloader.style.display = "none";
      }, 2000);
-    setTimeout(() => selectionAnswer('amenities'),2500);
+    setTimeout(() => selectionAnswer('amenities'),1500);
 })
 
   document.getElementById('room-service').addEventListener('click',() => {
@@ -130,6 +133,7 @@ const helpSelection = () => {
 // Question 3 - Bot asks what guest needs depending on what guest chose in helpselection
 
 const selectionAnswer = (selection) => {
+
   if (selection === 'amenities') {         // If guest needs amenities 
     showMessage(`Sure, what do you need?`, 'bot');
     inputWrapper.innerHTML = `
