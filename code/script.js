@@ -3,14 +3,11 @@ const chat = document.getElementById('chat');
 const nameInput = document.getElementById('nameInput');
 const inputWrapper = document.getElementById('inputWrapper');
 
-
+let question = 1;
 // If you need any global variables that you can use across different functions, declare them here:
 
 
 // Declare your functions after this comment
-let question = 1;
-
-
 // This function will lead to the next question
 const nextQuestion = (answer) => {
   userInput(answer)
