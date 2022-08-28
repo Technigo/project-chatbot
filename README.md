@@ -1,8 +1,6 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+We are bulding a chatbot and ours is asking questions about how you feel and suggest things to alter your mood for the better
 
 ## The problem
 
