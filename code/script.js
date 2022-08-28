@@ -47,7 +47,7 @@ const showMessage = (message, sender) => {
 // Starts here
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hi friend, what is your name?", 'bot');
+  showMessage("Hi friend 👋, what is your name?", 'bot');
 
 }
 
@@ -60,7 +60,7 @@ setTimeout(greeting, 1);
 submitButton.addEventListener("click", function(event) {
     event.preventDefault(); 
     heroName = inputField.value; //defines the heros name 
-    showMessage(`My name is ${heroName}`, "user"); 
+    showMessage(`Hello 👋, my name is ${heroName}`, "user"); 
     inputWrapper.innerHTML = "";
     //After showMessages is called, setTimout waits 1000 ms to call nameReply 
     setTimeout(nameReply, 1000);
@@ -68,7 +68,7 @@ submitButton.addEventListener("click", function(event) {
 
 /* This is the first reply from the bot */
 const nameReply = () => {
-  showMessage(`Please, ${heroName}, help me save my puppy 🐶. Here are some items you may need to succeed on this rescue mission. Choose wisely!`, "bot");
+  showMessage(`Please, ${heroName}, help me save my puppy 🐶. Here are some items you may need to succeed on this rescue mission. Choose wisely! 🧐`, "bot");
   setTimeout(itemSelection, 1000);
 }
 
@@ -124,7 +124,7 @@ const botIntersection1 = () => {
   <button class="path-button" id="mountain">Mountain 🌋</button>
   <button class="path-button" id="creek">Creek 🌊</button>
 `;
-  showMessage (`Which road do you want to take?`,"bot");
+  showMessage (`Which road do you want to take? 🚦`,"bot");
   setTimeout(pathChoice, 1000);
 } 
 
@@ -144,7 +144,7 @@ const pathChoice = () => {
       if (heroInventory.includes("water-bottle")) {
         console.log("Perfect") 
         setTimeout( () => {
-          showMessage(`Thankfully, the bottle of water 🥤 saves you from dehydration. You may proceed.`,`bot`); //
+          showMessage(`Thankfully, the bottle of water 🥤 saves you from dehydration.🎖 You may proceed.`,`bot`); //
           setTimeout( () => {showMessage(`Wohoo! 🥳`,`user`)}, 2000);  
         }, 1500);
         setTimeout(botIntersection2, 5000);
@@ -163,7 +163,7 @@ const pathChoice = () => {
       else {
         console.log("GAME OVER")
         setTimeout( () => { 
-          showMessage(`The sun burns your skin and you sweat every last drop of water 🥵. You die!`,`bot`); 
+          showMessage(`The sun burns 🔥 your skin and you sweat every last drop of water 🥵. You die! ☠️`,`bot`); 
         }, 1500);
         setTimeout(gameOver, 6000);
       }
@@ -173,7 +173,7 @@ const pathChoice = () => {
       if (heroInventory.includes("rope")) {
         console.log("Perfect") 
         setTimeout( () => { 
-          showMessage(`Using your rope 🪢 you mange to touch down on the ground softly. You may proceed!`,`bot`);   
+          showMessage(`Using your rope 🪢 you mange to touch down on the ground softly. 🎖 You may proceed!`,`bot`);   
         }, 1500);
        setTimeout( () => {showMessage(`Wohoo! 🥳`,`user`)}, 2000);
       setTimeout(botIntersection2, 5000);
@@ -191,7 +191,7 @@ const pathChoice = () => {
       else {
         console.log("GAME OVER")
         setTimeout( () => { 
-          showMessage("You lose you footing and tumble down the mountain side, crushing every bone in your body. Why didn't you choose something else to help you on this dangerous mission? You die!",`bot`); 
+          showMessage("You lose you footing and tumble down the mountain side, crushing every bone in your body. Why didn't you choose something else to help you on this dangerous mission? You die! ☠️",`bot`); 
         }, 1500);
         setTimeout(gameOver, 6000);
       }
@@ -200,7 +200,7 @@ const pathChoice = () => {
       if (heroInventory.includes("boat")) {
         console.log("Perfect") 
         setTimeout( () => {
-          showMessage(`The inflateble boat helped you to cruise peacefully down the creek. You may proceed!`,`bot`);   
+          showMessage(`The inflateble boat ⛵️ helped you to cruise peacefully down the creek 🌊. You may proceed!🎖`,`bot`);   
           setTimeout( () => {showMessage(`Wohoo! 🥳`,`user`)}, 2000);
         }, 1500);
         setTimeout(botIntersection2, 5000);
@@ -208,7 +208,7 @@ const pathChoice = () => {
       else if (heroInventory.includes("life-jacket")) {
         console.log("Loose 1hp")
         setTimeout( () => {
-          showMessage(`The life-jacket helped you stay afloat on the dangerous water. You exit the creek alive but severely injured.`,`bot`); 
+          showMessage(`The life-jacket 🦺 helped you stay afloat on the dangerous water. You exit the creek alive but severely injured. 🤕`,`bot`); 
           setTimeout( () => {showMessage(`Oh no! ❤️‍🩹 😭`,`user`)}, 2000);
           heroHp = (heroHp -1);
           console.log(heroHp);
@@ -218,7 +218,7 @@ const pathChoice = () => {
       else {
         console.log("GAME OVER")
         setTimeout( () => {
-          showMessage(`You attemt to swim along the creek but its currents are too strong and you are pulled under water to a certain death. You drown!`,`bot`); 
+          showMessage(`You attemt to swim along the creek 🌊 but its currents are too strong and you are pulled under water to a certain death. You drown! ☠️`,`bot`); 
         }, 1500);
         setTimeout(gameOver, 6000);
       }
@@ -228,10 +228,10 @@ const pathChoice = () => {
 
 const botIntersection2 = () => {
   inputWrapper.innerHTML = `
-  <button class="continue" id="continueYes">YES! Bring it on!👊🏼</button>
-  <button class="continue" id="continueNo">No, I'm too scared!🫣</button>
+  <button class="continue" id="continueYes">YES! Bring it on! 👊🏼</button>
+  <button class="continue" id="continueNo">No, I'm too scared! 🫣</button>
   `;
-  showMessage(`You can see the puppy now but its guarded by a huge dragon 🐲. Are you brave enough to continue?`, `bot`) 
+  showMessage(`You can see the puppy 🐶 now but its guarded by a huge dragon 🐲. Are you brave enough to continue?`, `bot`) 
   setTimeout(continueAdventure, 500)
 }
 
@@ -288,10 +288,10 @@ const methodChoice = () => {
       else if (heroInventory.includes("meat")) {
         console.log("Loose 1hp")
         setTimeout( () => { 
-          showMessage(`You hold out the piece of meat 🍖 to the dragon 🐲. It makes it relaxed and happy but it also bites your hand off. You loose alot of blood 🩸.`,`bot`); 
+          showMessage(`You hold out the piece of meat 🍖 to the dragon 🐲. It makes it relaxed and happy but it also bites your hand off 🍽. You loose alot of blood 🩸.`,`bot`); 
           heroHp = (heroHp -1);
           console.log(heroHp);
-          setTimeout( () => {showMessage(`Oh no! ❤️‍🩹 😭`,`user`)}, 1000);
+          setTimeout( () => {showMessage(`Ouch! ❤️‍🩹 😭`,`user`)}, 1000);
           if (heroHp === 0) {
             setTimeout(deathBy0Hp, 2000) //to make deathBy0Hp function run if hp is 0, otherwise run conclusion function. 
           }
@@ -314,7 +314,7 @@ const methodChoice = () => {
       if (heroInventory.includes("sword")) {
         console.log("Perfect") 
         setTimeout( () => { 
-          showMessage(`You pull out your sword and thrust it in to the dragons 🐲 heart, killing it. You may proceed.`,`bot`);   
+          showMessage(`You pull out your sword 🗡 and thrust it in to the dragons 🐲 heart, killing it. You may proceed.`,`bot`);   
           setTimeout( () => {showMessage(`Yay! 🥳`,`user`)}, 1000);
         }, 1500);
         setTimeout(conclusion, 7000);
@@ -323,7 +323,7 @@ const methodChoice = () => {
       else if (heroInventory.includes("shield")) {
         console.log("Loose 1hp")
         setTimeout( () => {
-          showMessage(`Using you shield you block most of the dragons attack but you still get injured. Your body is severly bruised.`,`bot`);
+          showMessage(`Using you shield 🛡 you block most of the dragons 🐲  attack but you still get injured. 🤕 Your body is severly bruised.`,`bot`);
           heroHp = (heroHp -1);
           console.log(heroHp); 
           setTimeout( () => {showMessage(`Oh, no!❤️‍🩹 😭`,`user`)}, 1000);
@@ -350,7 +350,7 @@ const methodChoice = () => {
       if (heroInventory.includes("invicibility-cloak")) {
         console.log("Perfect") 
         setTimeout( () => {
-          showMessage(`Using your invicibility cloak you sneek safely past the dragon 🐲. You may proceed.`,`bot`);   
+          showMessage(`Using your invicibility cloak 🧥 you sneek safely past the dragon 🐲. You may proceed.`,`bot`);   
           setTimeout( () => {showMessage(`Yay! 🥳`,`user`)}, 3000);
         }, 1500);
         setTimeout(conclusion, 7000);
@@ -358,7 +358,7 @@ const methodChoice = () => {
       else if (heroInventory.includes("moccasin")) {
         console.log("Loose 1hp")
         setTimeout( () => {
-          showMessage(`Thanks to your moccasin the dragon 🐲 can't hear you sneak past it. Unfortunately it sees you and severly burns you.`,`bot`); 
+          showMessage(`Thanks to your moccasin the dragon 🐲 can't hear you sneak past it 🤫. Unfortunately it sees you and severly burns you 🔥.`,`bot`); 
           setTimeout( () => {showMessage(`Oh no! ❤️‍🩹 😭`,`user`)}, 1000);
           heroHp = (heroHp -1);
           console.log(heroHp);
@@ -389,7 +389,7 @@ const conclusion = () => {
   <button class="price-button" id="treasure-button">👑</button>
   `;
 
-  showMessage(`You can now save the adorable puppy 🐶 but you also see a marvelous treasure 👑. You can only carry one of them. What will you do?`, "bot");
+  showMessage(`You can now save the adorable puppy 🐶 but you also see a marvelous treasure 👑. You can only carry one of them 🎒. What will you bring?`, "bot");
   
   let pathSelect = document.querySelectorAll(".price-button");
     pathSelect.forEach(button => button.addEventListener("click", function (event) {
@@ -402,17 +402,17 @@ const conclusion = () => {
       }
       else {
         setTimeout( () => {
-          showMessage(`That gold 👑 is irresistible! I will take take the treasure!`, "user"); 
+          showMessage(`That gold is irresistible! I will take take the treasure 👑 !`, "user"); 
           }, 1000);       
           setTimeout( () => {
-            showMessage(`You only had one job, to save the puppy 🐶! Why didn't you? ${heroName}, you are a horrible, greedy person.`,"bot")}, 3000);
+            showMessage(`You only had one job, to save the puppy 🐶! Why didn't you? ${heroName}, you are a horrible, greedy person 😡.`,"bot")}, 3000);
         setTimeout(gameOver, 7000);
       }
     }))
 }
 
 const finalScene = () => {
-  setTimeout(showMessage("Great job. The items you brought really helped you on this mission. I knew you could do it! You and the puppy get in to a waiting helicopter 🚁 and fly away to safety...","bot"), 3000)
+  setTimeout(showMessage("Great job. The items you brought 🎒 really helped you on this mission. I knew you could do it!✌️ You and the puppy 🦸‍♀️🐶 get in to a waiting helicopter 🚁 and fly away to safety...","bot"), 3000)
   setTimeout(endScreen, 8000)
 }
 
@@ -426,13 +426,14 @@ const deathBy0Hp = () => {
 const endScreen = () => {
   entireScreen.innerHTML=`
   <div class="end-content-wrapper">
-    <h1>Victory!<h1>
-    <p>You rescued the puppy and defeted the dragon! Now you and the puppy can enjoy a well deserved rest! Mission accomplished!</p>
+    <h1>🏆 Victory! 🏆<h1>
+    <p>You rescued the puppy and defeated the dragon! Now you and the puppy can enjoy a well deserved rest! Mission accomplished!</p>
     <div>
       <iframe src="https://giphy.com/embed/LRZZJtvKUb6pBASWSH" class="giphy-embed" allowFullScreen></iframe>
       <p><a href="https://giphy.com/gifs/hawaii-maui-kauai-LRZZJtvKUb6pBASWSH">via GIPHY</a></p>
     </div>
     <button class="replay-btn">Play again</button>
+    <p> This interactive story was made by Elin Segelöv and Saralie Bognandi.</p>
     </div>
     `
     let retryButton = document.querySelector(".replay-btn");
@@ -440,16 +441,15 @@ const endScreen = () => {
       event.preventDefault();
       location.reload();
     })
-  
 }
 
 // Game over function
 const gameOver = () => {
   entireScreen.innerHTML = `
   <div class="gameover-wrapper">
-    <h1 class="game-over">GAME OVER</h1>
+    <h1 class="game-over">💀 GAME OVER 💀</h1>
     <button class="retry-btn">Try again</button>
-  </div>
+  </div> 
   `
   let retryButton = document.querySelector(".retry-btn");
   retryButton.addEventListener("click", function (event) {

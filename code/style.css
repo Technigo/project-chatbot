@@ -13,7 +13,7 @@ h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: #0B486B;
   text-align: center;
 }
 
@@ -21,7 +21,7 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: #0B486B;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -157,7 +157,7 @@ button:hover {
 
 .replay-btn {
   background-color: #0B486B;
-  margin-top: 16px;
+  margin: 16px 0;
   cursor: pointer;
 }
 
