@@ -169,8 +169,8 @@ const question5 = () => {
   <button id="drinkHereBtn">Drink here</button>
   `
 
-  document.getElementById('takeAwayBtn').addEventListener('click', () => finalDecision("take away"))
-  document.getElementById('drinkHereBtn').addEventListener('click', () => finalDecision("drink here"))
+  document.getElementById("takeAwayBtn").addEventListener("click", () => finalDecision("take away"))
+  document.getElementById("drinkHereBtn").addEventListener("click", () => finalDecision("drink here"))
   ;}
 
 //Final decision and video 
