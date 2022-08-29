@@ -5,7 +5,6 @@ const chatBtn = document.getElementById("chat-button");
 const inputWrapper = document.getElementById('input-wrapper');
 const form = document.getElementById('room-form');
 const roomInput = document.getElementById('room-input'); //user writes their room
-const sendBtn = document.getElementById('send-btn'); //user writes their wake-up time
 
 
 // Toggle effect
@@ -19,6 +18,8 @@ const messageSound = () => {
   let audio = new Audio("https://notificationsounds.com/storage/sounds/file-sounds-1233-elegant.mp3")
   audio.play();
 }
+
+// Bot typing effect
 
 const typing = () => {
   chat.innerHTML += `
@@ -34,11 +35,15 @@ const typing = () => {
   ` 
 }
 
+// Removes bot typing effect
+
 const removeTyping = () => {
   document.getElementById('preloader').style.display='none'
 }
 
+
 // This function will add a chat bubble in the correct place based on who the sender is
+
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
   if (sender === 'user') {
