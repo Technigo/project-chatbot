@@ -1,4 +1,6 @@
-# Project Name
+# Movie Suggestor
+
+Made by: Emil Bergvik & Jessika Lind
 
 
 Our assignment was to create a working chat-bot from an existing base with just a few lines of code to start with.
@@ -10,5 +12,6 @@ This was our first time using JavaScript for real so it was hard at some points 
 If we had more time, we would add links to the movies in the last steps, and tried using different input methods such as selections, 
 
 ## View it live
+
 
 https://moviesuggestor.netlify.app/
