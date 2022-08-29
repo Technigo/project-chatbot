@@ -32,13 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
     chat.scrollTop = chat.scrollHeight;
   }
 
-  // Starts here
+  // Greeting start
   const greeting = () => {
     // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
     showMessage("Hello there, What's your name?", 'bot');
 
   }
-  // Eventlisteners here
+
+  // Eventlisteners 
   sendButton.addEventListener('click', (e) => {
     e.preventDefault();
     const name = nameInput.value;
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => askNextQuestion(name), 2000)
 
   })
+
   function askNextQuestion() {
     setTimeout(() => showMessage(` ${nameInput.value} , What do you want to eat today? `, 'bot'), 1000)
     sendButton.remove();
@@ -68,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showMessage(`${food}`, 'user')
     setTimeout(() => showMessage(`${food}, Nice choice! `, 'bot'), 1000);
    
-    setTimeout(()=>confirmationButton(confirm), 2000 )
+    setTimeout(()=>confirmationButton(), 2000 )
     
   }
 
