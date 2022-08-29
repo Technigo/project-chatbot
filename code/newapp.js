@@ -44,8 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     const name = nameInput.value;
     showMessage(name, 'user');
-    setTimeout(() => askNextQuestion(name), 2000)
-
+    setTimeout(() => askNextQuestion(), 2000)
   })
 
   function askNextQuestion() {
@@ -63,29 +62,23 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('pizzabtn').addEventListener('click', () => ShowFoodAlternative('Pizza'));
 
     document.getElementById('pastabtn').addEventListener('click', () => ShowFoodAlternative('Pasta'));
-
   }
 
   const ShowFoodAlternative = (food) => {
     showMessage(`${food}`, 'user')
     setTimeout(() => showMessage(`${food}, Nice choice! `, 'bot'), 1000);
-   
     setTimeout(()=>confirmationButton(), 2000 )
-    
-  }
+    }
 
   const confirmationButton = () => {
-
     showMessage(`Great! That would be 15$. Are you sure you want to order it?`, 'bot')
     inputWrapper.innerHTML = `
     <button id="yesbtn">Yes</button>
     <button id="nobtn">No</button>
     `
     document.getElementById('yesbtn').addEventListener('click', () => nextFunction('yes')
-
   )
     document.getElementById('nobtn').addEventListener('click', () => nextFunction('no'))
-
   }
 
     const nextFunction = (option) => {
@@ -96,9 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
       else {
         showMessage('bye', 'bot')
       }
-
   }
-
 
   setTimeout(greeting, 1000);
 })
