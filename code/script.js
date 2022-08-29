@@ -102,9 +102,7 @@ const noThanksChoice = (event) => {
 const byeChat = () => {
   showMessage("Sure! No problem. Have a nice day tho!", "bot");
   console.log("Ending chat"); //can be omitted
-  inputWrapper.innerHTML = `
-  <span>
-  `
+  inputWrapper.innerHTML = " "
 };
 
 //User confirming a coffee order
