@@ -5,37 +5,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const nameInput = document.getElementById('name-input');
   const sendButton = document.querySelector('.send-btn');
 
-  let questionNumber = 1
+  // let questionNumber = 1
 
-  const userResponse= ()=>{
-    showMessage ('','user')
-  }
+  // const userResponse= ()=>{
+  //   showMessage ('','user')
+  // }
 
 
-  const nextQuestion=(message) =>{
-    if(questionNumber ===1){
-      userResponse(message)
-      // nameInput.value= ''
-    setTimeout(()=>showButtons(message),1000)
-    }
-    else if(questionNumber === 2){
-      userResponse(message)
-      setTimeout(() => ShowFoodAlternative(message),1000)
-          }
-          else if(questionNumber === 3){
-            userResponse(message)
-            setTimeout(()=> showMenu(message),1000)
-          }
-          else if(questionNumber === 4){
-            userResponse(message)
-      setTimeout(() => buttonAdultChlid(message),1000) 
-          }
+  // const nextQuestion=(message) =>{
+  //   if(questionNumber ===1){
+  //     userResponse(message)
+  //     // nameInput.value= ''
+  //   setTimeout(()=>showButtons(message),1000)
+  //   }
+  //   else if(questionNumber === 2){
+  //     userResponse(message)
+  //     setTimeout(() => ShowFoodAlternative(message),1000)
+  //         }
+  //         else if(questionNumber === 3){
+  //           userResponse(message)
+  //           setTimeout(()=> showMenu(message),1000)
+  //         }
+  //         else if(questionNumber === 4){
+  //           userResponse(message)
+  //     setTimeout(() => buttonAdultChlid(message),1000) 
+  //         }
           
-          else{
-            userResponse(message)
-            setTimeout(ThankYou,1000)
-          }
-  }
+  //         else{
+  //           userResponse(message)
+  //           setTimeout(ThankYou,1000)
+  //         }
+  // }
 
 
 
@@ -70,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Starts here
   const greeting = () => {
     // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-questionNumber =1
     showMessage("Hello there, What's your name?", 'bot');
   
   }
@@ -80,50 +79,43 @@ questionNumber =1
     e.preventDefault();
     const name = nameInput.value;
     showMessage(name, 'user');
-
     setTimeout(() => askNextQuestion(name), 2000)  
   
   })
 
-
-
   function askNextQuestion() {
     setTimeout(() => showMessage(` ${nameInput.value} , What do you want to eat today? `, 'bot'), 1000)
-
  sendButton.remove();
 setTimeout(showButtons, 1000);
 
   } 
+
   const showButtons =()=>{
 
-inputWrapper.innerHTML = `
-<button id="pizzabtn">Pizza</button>
-<button id="pastabtn">Pasta</button>
-<button id="saladbtn">Salad</button>
-`
-
+    inputWrapper.innerHTML = `
+    <button id="pizzabtn">Pizza</button>
+    <button id="pastabtn">Pasta</button>
+    <button id="saladbtn">Salad</button>
+    `
     document.getElementById('pizzabtn').addEventListener('click', () => ShowFoodAlternative('Pizza')); 
 
     document.getElementById('pastabtn').addEventListener('click', () => ShowFoodAlternative('pasta'));
 
     document.getElementById('saladbtn').addEventListener('click', () => ShowFoodAlternative('salad'))
-
   } 
 
-
   const ShowFoodAlternative= (food)=>{
-    questionNumber ++
-
     showMessage(`${food}`, 'user')
     setTimeout(() => showMessage(`Nice choice! Which kind of ${food} do you want ? Select from Menu `, 'bot'), 2000);
+
+    
     showMenu()
-      
+  
      }
 
      const showMenu = (foodAlternative) =>{
-questionNumber +++
 
-showMessage(`okj, You are in the mood for ${foodAlternative}? Great! Check the Menu and choose your favorite food! `)
+    showMessage(`okj, You are in the mood for ${foodAlternative}? Great! Check the Menu and choose your favorite food! `, 'bot')
 
        if (foodAlternative =='salad'){
       inputWrapper.innerHTML = `
@@ -157,10 +149,9 @@ else{
       `
   
 }
-      //  const select = document.getElementById('select')
-      //  select.addEventListener('change', () => (select.value))
-     
-      //  buttonAdultChlid()
+       const select = document.getElementById('select')
+       select.addEventListener('change', () => (select.value))
+      // buttonAdultChlid()
    }
 
 // Adult , Child btn
@@ -179,35 +170,26 @@ else{
         .addEventListener('click', () => 
         showMessage(`A order for a child`))
 
-        // prices()
-  }
-    
-const prices= (differentPrice)=>{
-  questionNumber ++
+    showMessage('One adult will be prepared for you. That would be 15$. Are you sure you want to order it? ', 'bot')
 
-  let price
-  if (differentPrice === 'adult'){
-    price = '€15'
-  }else{
-    price = "€10"
   }
-  showMessage('One adult will be prepared for you. That would be 15$. Are you sure you want to order it? ', 'bot')
+ 
 
   //  Yes, No btn
-  inputWrapper.innerHTML = `
-    <button id="yes">Yes</button>
-    <button id="no">No</button>
-    `
-  document.getElementById('yes').addEventListener('click', () => nextFunction('yes')
+  // inputWrapper.innerHTML = `
+  //   <button id="yes">Yes</button>
+  //   <button id="no">No</button>
+  //   `
+  // document.getElementById('yes').addEventListener('click', () => nextFunction('yes')
 
-  )
-  document.getElementById('no').addEventListener('click', () => {
-    showMessage('No problem ! See u another time', 'bot')
-    //call next function with a parameter for no
-    nextFunction('no')
-  })
+  // )
+  // document.getElementById('no').addEventListener('click', () => {
+  //   showMessage('No problem ! See u another time', 'bot')
+  //   //call next function with a parameter for no
+  //   nextFunction('no')
+  // })
 
-}
+
 
   // Next function or If statment for YES or NO ! 
   const nextFunction = (option) => {
