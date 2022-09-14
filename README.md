@@ -14,4 +14,4 @@ If we had more time, we would have added more chat-interactions and something to
 
 ## View it live
 
-https://dashing-fudge-3eb833.netlify.app
+https://pt-chat-bot.netlify.app/
