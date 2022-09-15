@@ -15,3 +15,5 @@ A simple bot created with HTML, CSS and JavaScript. It's collapsable and fits we
 The most challenging this week was to figure out, and get more comfortable, using predominantly JavaScript.
 
 ## VIEW IT LIVE. https://thepepbot.netlify.app
+
+<img width="267" alt="Screenshot 2022-08-25 at 14 13 05" src="https://user-images.githubusercontent.com/105229808/190386009-d7e901c4-80de-45b3-b78e-ebdc20e93f17.png">
