@@ -123,9 +123,9 @@ const botGreeting = () => {
     event.preventDefault();
     form.submitButton.disabled = false;   //only click enter, press send btn is enabled right now//
     const name = nameInput.value
-    nameInput.value = "";
     userReply(name);
     questionGen();
+    nameInput.value = "";  //Clears the field
   });
 }
 
