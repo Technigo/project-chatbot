@@ -1,24 +1,13 @@
-# Project Name - Puppy rescue (chat-bot)
+# Project Chatbot - Puppy rescue
 
-We were tasked with creating a chat-bot and decided to do an interactive story where a hero can help to resue a puppy from a terrible dragon.
+For week one of the Technigo bootcamp (first week of the JavaScript sprint) our assignment was to create a chatbot, taking inputs in some form and posting answers depending on the input. This project was made in collaboration with Saralie Bognandi and it was our first project using using Javascript. The chatbot is guiding the user through an interactive story where a hero can help resuing a puppy from a terrible dragon.
 
-✓ How to use variables in JavaScript.
-
-✓ How to use conditionals in JavaScript.
-
-✓ Know some string methods to modify strings.
-
-✓ Understand control flow and the use of conditionals statements.
-
-✓ How to use functions in JavaScript
-
-✓ Different datatypes
 
 ## The problem
 
-For player choises we have used if/else statements and we have used javascrip to modify inner HTML of various elements. We have stored objects in an array (heroInventory) and used it to trigger different conditions for if/else statements. 
+For player choices we have used if/else statements and we have used javascrip to modify inner HTML of various elements. We have stored objects in an array (heroInventory) and used it to trigger different conditions for if/else statements. 
 
-Next step wpuld be to work on the CSS, and to get the setTimeout more correct. 
+If we had more time we would have worked more on the design, and to get the setTimeout functions more accuratly. 
 The code is very linear, flowing from top to bottom and quite repetative. We would have liked to have a more effecient structure of the code and reusability of functions. 
 
 ## View it live
