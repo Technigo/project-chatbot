@@ -7,7 +7,7 @@ const inputField = document.querySelector("#name-input");
 
 // If you need any global variables that you can use across different functions, declare them here:
 let heroName;
-let heroHp = 2
+let heroHp = 2; // Hero Health Points
 const heroInventory = [];// 2 is the nuber HP you start with
 let item1;
 let item2;
@@ -40,23 +40,17 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+  // This makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
 }
 
-// Starts here
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hi friend 👋, what is your name?", 'bot');
-
 }
 
-setTimeout(greeting, 1);
+setTimeout(greeting, 1000);
 
-// Set up your eventlisteners here
-
-
-//START OF OUR CODE
 submitButton.addEventListener("click", function(event) {
     event.preventDefault(); 
     heroName = inputField.value; //defines the heros name 
@@ -111,8 +105,6 @@ const itemSelection = () => {
       inputWrapper.innerHTML = ``;
       showMessage (`I choose ${htmlItem1} and ${htmlItem2}`, 'user');
       heroInventory.push(item1, item2); 
-      console.log(`Added ${item1, item2} to backpack`);
-      console.log("inventory", heroInventory);
       setTimeout(botIntersection1, 1000);
       }) 
 }
@@ -134,15 +126,12 @@ const pathChoice = () => {
   pathSelect.forEach(button => button.addEventListener("click", function (event) {
     event.preventDefault();
     inputWrapper.innerHTML = "";
-    console.log(this.id)
     showMessage(`I will go through the ${this.innerHTML}`, "user");
    
     // These are if-statment within an if-statement. Depending on which path the Hero chooses and what it has in it's backpack/inventory different conditions are triggered. 
     // For one road, one item is perfect, one item makes you loose 1 hp, the rest will give game over.
     if (this.id === "desert") {
-      console.log("desert")
       if (heroInventory.includes("water-bottle")) {
-        console.log("Perfect") 
         setTimeout( () => {
           showMessage(`Thankfully, the bottle of water 🥤 saves you from dehydration.🎖 You may proceed.`,`bot`); //
           setTimeout( () => {showMessage(`Wohoo! 🥳`,`user`)}, 2000);  
@@ -151,11 +140,9 @@ const pathChoice = () => {
 
       }
       else if (heroInventory.includes("umbrella")) {
-        console.log("Loose 1hp")
         setTimeout( () => { 
           showMessage(`The umbrella ☂️ saved you from the scorching sun ☀️ but you are severly dehydrated and weakened.`,`bot`); 
           heroHp = (heroHp -1);
-          console.log(heroHp);
           setTimeout( () => {showMessage(`Oh no! ❤️‍🩹 😭`,`user`)}, 2000);
         }, 1500);
         setTimeout(botIntersection2, 5000);
