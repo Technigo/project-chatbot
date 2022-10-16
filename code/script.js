@@ -148,7 +148,6 @@ const pathChoice = () => {
         setTimeout(botIntersection2, 5000);
       }
       else {
-        console.log("GAME OVER")
         setTimeout( () => { 
           showMessage(`The sun burns 🔥 your skin and you sweat every last drop of water 🥵. You die! ☠️`,`bot`); 
         }, 1500);
@@ -156,9 +155,7 @@ const pathChoice = () => {
       }
 
     } else if (this.id === "mountain") {
-      console.log("mountain")
       if (heroInventory.includes("rope")) {
-        console.log("Perfect") 
         setTimeout( () => { 
           showMessage(`Using your rope 🪢 you mange to touch down on the ground softly. 🎖 You may proceed!`,`bot`);   
         }, 1500);
@@ -166,26 +163,21 @@ const pathChoice = () => {
       setTimeout(botIntersection2, 5000);
       } 
       else if (heroInventory.includes("helmet")) {
-        console.log("Loose 1hp")
         setTimeout( () => {
           showMessage(` Halfway down you loose you footing, but thanks to your helmet eyou survived but very injured.`,`bot`);
           heroHp = (heroHp -1);
-          console.log(heroHp); 
           setTimeout( () => {showMessage(`Oh no!❤️‍🩹 😭`,`user`)}, 2000);
         }, 1500);
         setTimeout(botIntersection2, 5000);
       }
       else {
-        console.log("GAME OVER")
         setTimeout( () => { 
           showMessage("You lose you footing and tumble down the mountain side, crushing every bone in your body. Why didn't you choose something else to help you on this dangerous mission? You die! ☠️",`bot`); 
         }, 1500);
         setTimeout(gameOver, 6000);
       }
     } else {
-      console.log("creek")
       if (heroInventory.includes("boat")) {
-        console.log("Perfect") 
         setTimeout( () => {
           showMessage(`The inflateble boat ⛵️ helped you to cruise peacefully down the creek 🌊. You may proceed!🎖`,`bot`);   
           setTimeout( () => {showMessage(`Wohoo! 🥳`,`user`)}, 2000);
@@ -193,17 +185,14 @@ const pathChoice = () => {
         setTimeout(botIntersection2, 5000);
       }
       else if (heroInventory.includes("life-jacket")) {
-        console.log("Loose 1hp")
         setTimeout( () => {
           showMessage(`The life-jacket 🦺 helped you stay afloat on the dangerous water. You exit the creek alive but severely injured. 🤕`,`bot`); 
           setTimeout( () => {showMessage(`Oh no! ❤️‍🩹 😭`,`user`)}, 2000);
           heroHp = (heroHp -1);
-          console.log(heroHp);
         }, 1500);
         setTimeout(botIntersection2, 5000);
       }
       else {
-        console.log("GAME OVER")
         setTimeout( () => {
           showMessage(`You attemt to swim along the creek 🌊 but its currents are too strong and you are pulled under water to a certain death. You drown! ☠️`,`bot`); 
         }, 1500);
@@ -228,7 +217,6 @@ const continueAdventure = () => {
   continueAdventureButton.forEach(button => button.addEventListener("click", function (event) {
     event.preventDefault();
     inputWrapper.innerHTML = "";
-    console.log("continue");
     showMessage(this.innerHTML, "user");
 
     if (this.id === "continueYes") {
@@ -255,16 +243,13 @@ const methodChoice = () => {
   let pathSelect = document.querySelectorAll(".method-button");
   pathSelect.forEach(button => button.addEventListener("click", function (event) {
     event.preventDefault();
-    console.log(this.id)
     inputWrapper.innerHTML = "";
     showMessage(`${this.innerHTML} the 🐲`, "user");
   
   // These are if-statment within an if-statement. Depending on which path the Hero chooses and what it has in it's backpack/inventory different conditions are triggered. 
   // For one road, one item is perfect, one item makes you loose 1 hp, the rest will give game over.
     if (this.id === "soothe") {
-      console.log("soothe")
       if (heroInventory.includes("guitar")) {
-        console.log("Perfect") 
         setTimeout( () => {
           showMessage(`The music you play on your guitar 🎸 makes the dragon fall asleep 💤. You may proceed.`,`bot`);   
           setTimeout( () => {showMessage(`Yay 🥳`,`user`)}, 1000);
@@ -273,11 +258,9 @@ const methodChoice = () => {
       }
 
       else if (heroInventory.includes("meat")) {
-        console.log("Loose 1hp")
         setTimeout( () => { 
           showMessage(`You hold out the piece of meat 🍖 to the dragon 🐲. It makes it relaxed and happy but it also bites your hand off 🍽. You loose alot of blood 🩸.`,`bot`); 
           heroHp = (heroHp -1);
-          console.log(heroHp);
           setTimeout( () => {showMessage(`Ouch! ❤️‍🩹 😭`,`user`)}, 1000);
           if (heroHp === 0) {
             setTimeout(deathBy0Hp, 2000) //to make deathBy0Hp function run if hp is 0, otherwise run conclusion function. 
@@ -289,7 +272,6 @@ const methodChoice = () => {
       }
           
       else {
-        console.log("GAME OVER")
         setTimeout( () => { 
           showMessage(`Your attemt fails and the dragon 🐲 eats you alive. Why didn't you choose something else to help you on this dangerous mission? You die. ☠️`,`bot`); 
         }, 1500);
@@ -297,9 +279,7 @@ const methodChoice = () => {
       }
 
     } else if (this.id === "strike") {
-      console.log("strike")
       if (heroInventory.includes("sword")) {
-        console.log("Perfect") 
         setTimeout( () => { 
           showMessage(`You pull out your sword 🗡 and thrust it in to the dragons 🐲 heart, killing it. You may proceed.`,`bot`);   
           setTimeout( () => {showMessage(`Yay! 🥳`,`user`)}, 1000);
@@ -308,11 +288,9 @@ const methodChoice = () => {
       }
 
       else if (heroInventory.includes("shield")) {
-        console.log("Loose 1hp")
         setTimeout( () => {
           showMessage(`Using you shield 🛡 you block most of the dragons 🐲  attack but you still get injured. 🤕 Your body is severly bruised.`,`bot`);
           heroHp = (heroHp -1);
-          console.log(heroHp); 
           setTimeout( () => {showMessage(`Oh, no!❤️‍🩹 😭`,`user`)}, 1000);
           //to make deathBy0Hp function run if hp is 0, otherwise run conclusion function
           if (heroHp === 0) {
@@ -325,7 +303,6 @@ const methodChoice = () => {
       }
       
       else {
-        console.log("GAME OVER")
         setTimeout( () => { 
           showMessage(`Your attemt fails and the dragon 🐲 eats you alive. Why didn't you choose something else to help you on this dangerous mission? You die! ☠️`,`bot`); 
         }, 1500);
@@ -333,9 +310,7 @@ const methodChoice = () => {
       }
 
     } else {
-      console.log("sneak")
       if (heroInventory.includes("invicibility-cloak")) {
-        console.log("Perfect") 
         setTimeout( () => {
           showMessage(`Using your invicibility cloak 🧥 you sneek safely past the dragon 🐲. You may proceed.`,`bot`);   
           setTimeout( () => {showMessage(`Yay! 🥳`,`user`)}, 3000);
@@ -343,12 +318,10 @@ const methodChoice = () => {
         setTimeout(conclusion, 7000);
       }
       else if (heroInventory.includes("moccasin")) {
-        console.log("Loose 1hp")
         setTimeout( () => {
           showMessage(`Thanks to your moccasin the dragon 🐲 can't hear you sneak past it 🤫. Unfortunately it sees you and severly burns you 🔥.`,`bot`); 
           setTimeout( () => {showMessage(`Oh no! ❤️‍🩹 😭`,`user`)}, 1000);
           heroHp = (heroHp -1);
-          console.log(heroHp);
           //to make deathBy0Hp function run if hp is 0, otherwise run conclusion function
           if (heroHp === 0) {
             setTimeout(deathBy0Hp, 2000)
@@ -359,7 +332,6 @@ const methodChoice = () => {
         }, 1500);
       }
       else {
-        console.log("GAME OVER")
         setTimeout( () => {
     showMessage(`Your injuries are too severe. You die! ☠️`, 'bot');
         showMessage(`Your attemt fails and the dragon 🐲  eats you alive. Why didn't you choose something else to help you on this dangerous mission? You die! ☠️`,`bot`); 
@@ -381,7 +353,6 @@ const conclusion = () => {
   let pathSelect = document.querySelectorAll(".price-button");
     pathSelect.forEach(button => button.addEventListener("click", function (event) {
       event.preventDefault();
-      console.log(this.id)
       inputWrapper.innerHTML = "";
       if (this.id === "puppy-button") {
         showMessage(`I will rescue the puppy 🐶, of course!`, "user");
