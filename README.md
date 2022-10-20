@@ -14,6 +14,6 @@ The flow of the timing of the responses can also be improved.
 
 ## View it live
 
-https://marvelous-dieffenbachia-13d210.netlify.app/
+https://hairdresser-chatbot.netlify.app
 
 
