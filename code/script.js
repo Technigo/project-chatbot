@@ -49,7 +49,7 @@ const showMessage = (message, sender) => {
 
 // greeting from Wiledbeest Burgers
 const greeting = () => {
-  showMessage("Why hello there, welcome to Wildebeest Burgers. What's your name", 'bot');
+  showMessage("Well hello there, welcome to Wildebeest Burgers. What's your name", 'bot');
 }
 
 
