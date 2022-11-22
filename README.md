@@ -16,7 +16,7 @@ Tech focus:
 
 - How to use functions in JavaScript
 
-- Different datatypes
+- Familiarise with different datatypes
 
 ## View it live
 
