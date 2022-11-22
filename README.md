@@ -1,13 +1,22 @@
-# Project Name
+# Chatbot
+
+#1 Pair programming project
 
 Create a chatbot by pair programming using javascript
 
-## The problem
+Tech focus:
 
-1. Scetch bot script.
-2. Looked at previous students chat bot to understand & used as reference.
-3. Tested out different functions & had continous retros to understand why something worked & didn't.
-4. If we had more time we would like to look in to how to style the select list.
+- How to use variables in JavaScript.
+
+- How to use conditionals in JavaScript.
+
+- Know some string methods to modify strings.
+
+- Understand control flow and the use of conditionals statements.
+
+- How to use functions in JavaScript
+
+- Different datatypes
 
 ## View it live
 
