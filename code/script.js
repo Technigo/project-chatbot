@@ -6,8 +6,6 @@ const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('input-wrapper');
 const handleNameInput = document.getElementById('name-form');
 
-
-
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
