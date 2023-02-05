@@ -1,8 +1,7 @@
-# Project Name
+# Javascrip Chatbot
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week we will be building a chatbot. 
+The focus is to practice the JavaScript parts, but also to hook it up with the HTML.
 
 ## The problem
 
