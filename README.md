@@ -1,4 +1,4 @@
-# Project Name
+# Javascript Chatbot
 
 Replace this readme with your own information about your project.
 
