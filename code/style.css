@@ -6,22 +6,23 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url("beach.jpg");
+  background-position: center; 
 }
 
 h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color:yellow;
   text-align: center;
 }
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 30px;
   line-height: 34px;
-  color: #fff;
+  color: black;
   text-align: center;
   margin-bottom: 36px;
 }
