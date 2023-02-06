@@ -1,8 +1,8 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('input-wrapper');
-const input = document.getElementById('name-input');
-const sendButton = document.getElementById('send')
+const nameInput = document.getElementById('name-input');
+const sendBtn = document.getElementById('send')
 // If you need any global variables that you can use across different functions, declare them here:
 //This will be let variables, to be able to have different numbers on question to keep track
 
@@ -42,18 +42,26 @@ function showMessage(message, sender) {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot');
+  showMessage("Welcome, What's your name?", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
-}
-//This function is for the first reply were the name of user is included
-const replyUser1 = () => {
-  //here I call the function showMessage, were I can pass both message and that is the bot replying
-  //I want to include the answer from previous question.
-  //also i want it to be invoked after first question is answered so I need some kind of trigger
-  showMessage("Welcome and somehow get the input from previous question", 'bot');
 }
 
 // Set up your eventlisteners here
+// Initial button click 
+sendBtn.addEventListener('click', (event) => {
+  event.preventDefault()
+
+  // Store the value in a variable so we can access it after we 
+	// clear it from the input
+  const userName = nameInput.value
+  showMessage(`${userName}`,'user');
+
+  // Clears the input field
+  nameInput.value = '' 
+  //Here I will add the name of the next function. I just need to create it first.
+  //setTimeout(() => showFoodOptions(userName), 1000)
+})
+
 
 
 
