@@ -14,6 +14,7 @@ const sendButton = document.getElementById('send')
 function showMessage(message, sender) {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
+    console.log("Now the user is replying");
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
