@@ -46,21 +46,89 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-// Set up your eventlisteners here
 // Initial button click 
 sendBtn.addEventListener('click', (event) => {
   event.preventDefault()
 
   // Store the value in a variable so we can access it after we 
-	// clear it from the input
+  // clear it from the input
   const userName = nameInput.value
-  showMessage(`${userName}`,'user');
+  showMessage(`${userName}`, 'user');
 
   // Clears the input field
-  nameInput.value = '' 
-  //Here I will add the name of the next function. I just need to create it first.
-  //setTimeout(() => showFoodOptions(userName), 1000)
+  nameInput.value = ''
+  //Here I call the function where I present the dishes to choose from. I will also pass the userName
+  setTimeout(() => whatKindOfDish(userName), 1000)
 })
+
+
+//function to present the different themes of food to choose from. Pass the name entered in the greeting
+const whatKindOfDish = (msg) => {
+  showMessage(`Hello ${msg}! What kind of dish would you like to cook Today?`, 'bot');
+
+  inputWrapper.innerHTML = `
+<button id="soupBtn">Soup</button>
+<button id="pastaBtn">Pasta</button>
+<button id="stewBtn">Stew</button>
+`
+
+  document
+    .getElementById('soupBtn')
+    .addEventListener('click', () => userReply1('soup'))
+  document
+    .getElementById('pastaBtn')
+    .addEventListener('click', () => userReply1('pasta'))
+  document
+    .getElementById('stewBtn')
+    .addEventListener('click', () => userReply1('stew'))
+}
+
+const userReply1 = (type) => {
+  showMessage(`${type}`, 'user');
+  setTimeout(() => nextQuestion(type), 1000)
+}
+
+const nextQuestion = (type) => {  
+showMessage(`Ok great! So ${type} it is. What kind of ${type} would you like to make?`, "bot");
+if (type === 'soup'){
+  inputWrapper.innerHTML = `
+  <select id="select">
+    <option value="" selected disabled>⬇️ Select what type...</option>
+    <option value="spicy">Spicy</option>
+    <option value="creamy">Creamy</option>
+    <option value="green">Green</option>
+  </select>`
+}else if (type === 'pasta'){
+  inputWrapper.innerHTML = `
+  <select id="select">
+    <option value="" selected disabled>⬇️ Select what type...</option>
+    <option value="spaghetti">Spaghetti</option>
+    <option value="gnocchi">Gnocchi</option>
+    <option value="lasagne">Lasagne</option>
+  </select>`
+}else {
+  inputWrapper.innerHTML = `
+  <select id="select">
+    <option value="" selected disabled>⬇️ Select what type...</option>
+    <option value="chili">Chili</option>
+    <option value="lentil">Lentil</option>
+    <option value="curry">Curry</option>
+  </select>`
+}
+
+const select = document.getElementById('select')
+  select.addEventListener('change', () => displayRecipeLink(select.value))
+}
+
+const displayRecipeLink = (answer) => {
+if (answer === spaghetti) {
+  showMessage(`${answer} find the link here`, 'bot');
+} else {
+  showMessage("Something else", 'bot');
+}
+}  
+// Set up your eventlisteners here
+
 
 
 
