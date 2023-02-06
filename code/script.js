@@ -10,6 +10,7 @@ const chat = document.getElementById('chat');
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
+    console.log(`User is sending a message. The message is: ${message}`)
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -20,6 +21,7 @@ const showMessage = (message, sender) => {
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
+    console.log(`Bot is sending a message. The message is: ${message}`)
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
