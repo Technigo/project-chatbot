@@ -1,12 +1,14 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
-
-// If you need any global variables that you can use across different functions, declare them here:
 const form = document.getElementById('name-form')
 const inputSection = document.getElementById('input-wrapper');
 
+// If you need any global variables that you can use across different functions, declare them here:
+let myBurger=""
 // Declare your functions after this comment
 const drinkList = (burgerType) => {
+  myBurger=burgerType
+  showMessage(burgerType, "user")
   showMessage(`Great you choose ${burgerType}! What would you like to drink?`, "bot")
   showDropdownMenuInstedOfBurgerButtons()
 }
@@ -19,19 +21,45 @@ const showMenuButtonsInsteadOfForm = () => {
   document.getElementById('cheeseButton').addEventListener('click', () => drinkList("Cheese Burger"));
   document.getElementById('chickenButton').addEventListener('click', () => drinkList("Chicken Burger"));
   document.getElementById('veggieButton').addEventListener('click', () => drinkList("Veggie Burger"));
-  
 
 }
-
+const FriesYN = (value) => {
+  showMessage(value, "user")
+  showMessage("Thank you for you order!", "bot")
+  inputSection.innerHTML = ""
+}
+const showFriesButtonsInstedOfSelectDrink = () => {
+  inputSection.innerHTML = `
+  <button id="friesYes">Yes</button>
+  <button id="friesNo">No</button>
+  `
+  document.getElementById('friesYes').addEventListener('click', () => FriesYN("Yes"));
+  document.getElementById('FriesNo').addEventListener('click', () => FriesYN("No"));
+}
+const selectDrink = (option) => {
+  showMessage(option, "user")
+  showMessage(`Great you chose ${option}! Would you like some fries with your ${myBurger}?`, "bot")
+  showFriesButtonsInstedOfSelectDrink()
+}
 const showDropdownMenuInstedOfBurgerButtons = () => {
   inputSection.innerHTML = `
-  <select>  
-     <option>Water</option>
-     <option>Cola</option>
-     <option>Fanta</option>      
- </select>  
-  
+  <div class="flex drinkmenu">
+  <select id="selectDrink">  
+     <option val="water">Water</option>
+     <option val="cola">Cola</option>
+     <option val="fanta">Fanta</option>      
+ </select>
+ <button id="drinkButton">Select</button>  
+  </div>
   `
+  //Default drink is water in the select abpove so we set the option to water as well. This means that if we select the deafult then option should be water
+  let option="water"
+  let activities= document.getElementById("selectDrink")
+  activities.addEventListener("change", function() {
+    option=this.value
+  });
+
+  document.getElementById("drinkButton").addEventListener('click', () => selectDrink(option))
 }
 //CREATED THE FUNCTION sendMessage 
 const sendMessage = (event) => {
