@@ -74,6 +74,7 @@ main {
   display: flex;
   margin: 16px 8px 0 0;
   flex-shrink: 0;
+  border: 1px solid red;
 }
 
 .user-msg {
@@ -81,6 +82,7 @@ main {
   justify-content: flex-end;
   margin: 16px 0 0 8px;
   flex-shrink: 0;
+  border: 1px solid red;
 }
 
 .bot-msg img,
@@ -100,7 +102,7 @@ main {
 }
 
 .bot-bubble {
-  border-radius: 0px 26px 26px 26px;
+  border-radius: 0 26px 26px 26px;
   margin-left: 8px;
 }
 
