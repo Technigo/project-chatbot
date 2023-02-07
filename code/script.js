@@ -1,13 +1,14 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById("chat");
 const startButton = document.getElementById("start-btn");
-const mainChat = document.getElementById("main-chat");
 const textInput = document.getElementById("text-input");
 const sendButton = document.getElementById("send-btn");
-const inputForm = document.getElementById("input-form");
 const inputWrapper = document.getElementById("input-wrapper");
 
 // If you need any global variables that you can use across different functions, declare them here:
+let questionIndex = 1;
+let userName = "";
+let mood = "";
 
 // Declare your functions after this comment
 const botReply = (message) => {
@@ -16,6 +17,23 @@ const botReply = (message) => {
 
 const userReply = (message) => {
   showMessage(message, "user");
+};
+
+const stepThroughQuestions = (message) => {
+  questionIndex == 1
+    ? (userReply(message),
+      (userName = message),
+      (textInput.value = ""),
+      setTimeout(showButtons, 1000))
+    : questionIndex == 2
+    ? (userReply(
+        `I'm feeling ${message == "good" ? "real good" : "a little off"}!`
+      ),
+      (mood = message),
+      setTimeout(askForSomething, 1000))
+    : questionIndex == 3
+    ? (userReply(message), setTimeout(showButtons, 1000))
+    : null;
 };
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -47,19 +65,11 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greetUser = () => {
-  botRunning = true;
   botReply("Hello there! My name is EdBot. What should I call you?");
-
-  inputForm.addEventListener("submit", (e) => {
-    e.preventDefault;
-    userReply(textInput.value);
-    userName = textInput.value;
-    textInput.value = "";
-    setTimeout(showButtons, 1000);
-  });
 };
 
 const showButtons = () => {
+  questionIndex++;
   botReply(`Hello ${userName}! How are you?`);
   inputWrapper.innerHTML = `
   <button id="goodBtn" type="submit">Good</button>
@@ -67,33 +77,27 @@ const showButtons = () => {
 `;
 
   document.getElementById("goodBtn").addEventListener("click", () => {
-    userReply("I'm good, thank you!");
-    setTimeout(askForSomething("good"), 1000);
+    stepThroughQuestions("good");
   });
 
   document.getElementById("badBtn").addEventListener("click", () => {
-    userReply("I'm bad, thank you!");
-    setTimeout(askForSomething("bad"), 1000);
+    stepThroughQuestions("bad");
   });
 };
 
-const askForSomething = (mood) => {
-  console.log(mood);
-
+const askForSomething = () => {
+  questionIndex++;
   botReply(`${mood == "good" ? "Great" : "Sorry"} to hear that, ${userName}!`);
-
-  inputWrapper.innerHTML = `<form id="input-form" onsubmit="return false;">
-  <label for="text-input">Input</label>
-  <input id="text-input" type="text" />
-  <button id="send-btn" type="submit">Send</button>
-</form>`;
+  setTimeout(() => botReply("Do you need a little pick-me-up?"), 500);
 };
 
-// // Set up your eventlisteners here
-// startButton.addEventListener("click", () => {
-//   mainChat.classList.remove("hidden");
-//   startButton.classList.add("hidden");
-// });
+sendButton.addEventListener("click", () =>
+  stepThroughQuestions(textInput.value)
+);
+textInput.addEventListener("keypress", (event) => {
+  if (event.key === "Enter" && textInput.value)
+    stepThroughQuestions(textInput.value);
+});
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
