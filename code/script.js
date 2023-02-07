@@ -3,9 +3,6 @@ const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('input-wrapper');
 const nameInput = document.getElementById('name-input');
 const sendBtn = document.getElementById('send')
-// If you need any global variables that you can use across different functions, declare them here:
-//This will be let variables, to be able to have different numbers on question to keep track
-
 
 // Declare your functions after this comment
 
@@ -39,14 +36,13 @@ function showMessage(message, sender) {
   chat.scrollTop = chat.scrollHeight;
 }
 
-// Starts here
+// My "Conversation" fot the Chat starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Welcome, What's your name?", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-// Initial button click 
+// Initial button click, here we should get the name entered
 sendBtn.addEventListener('click', (event) => {
   event.preventDefault()
 
@@ -62,7 +58,7 @@ sendBtn.addEventListener('click', (event) => {
 })
 
 
-//function to present the different themes of food to choose from. Pass the name entered in the greeting
+//function to present the first option, the different themes of food to choose from. Pass the name entered in the greeting
 const whatKindOfDish = (msg) => {
   showMessage(`Hello ${msg}! What kind of dish would you like to cook Today?`, 'bot');
 
@@ -94,37 +90,56 @@ if (type === 'soup'){
   inputWrapper.innerHTML = `
   <select id="select">
     <option value="" selected disabled>⬇️ Select what type...</option>
-    <option value="spicy">Spicy</option>
-    <option value="creamy">Creamy</option>
-    <option value="green">Green</option>
+    <option value="Spicy">Spicy</option>
+    <option value="Creamy">Creamy</option>
+    <option value="Green">Green</option>
   </select>`
 }else if (type === 'pasta'){
   inputWrapper.innerHTML = `
   <select id="select">
     <option value="" selected disabled>⬇️ Select what type...</option>
-    <option value="spaghetti">Spaghetti</option>
-    <option value="gnocchi">Gnocchi</option>
-    <option value="lasagne">Lasagne</option>
+    <option value="Spaghetti">Spaghetti</option>
+    <option value="Gnocchi">Gnocchi</option>
+    <option value="Lasagne">Lasagne</option>
   </select>`
 }else {
   inputWrapper.innerHTML = `
   <select id="select">
     <option value="" selected disabled>⬇️ Select what type...</option>
-    <option value="chili">Chili</option>
-    <option value="lentil">Lentil</option>
-    <option value="curry">Curry</option>
+    <option value="Chili">Chili</option>
+    <option value="Lentil">Lentil</option>
+    <option value="Curry">Curry</option>
   </select>`
 }
 
 const select = document.getElementById('select')
-  select.addEventListener('change', () => displayRecipeLink(select.value))
+  select.addEventListener('change', () => userReply2(select.value))
+}
+
+const userReply2 = (type) => {
+  showMessage(`${type}`, 'user');
+  setTimeout(() => displayRecipeLink(type), 1000)
 }
 
 const displayRecipeLink = (answer) => {
-if (answer === spaghetti) {
-  showMessage(`${answer} find the link here`, 'bot');
+if (answer === 'Spicy') {
+  showMessage(`Excellent choice! Find the link here <a href="https://ohsheglows.com/2020/04/25/cozy-at-home-spicy-any-veggie-soup/">${answer} Soup</a>`, 'bot');
+} else if (answer === 'Creamy'){
+  showMessage(`Excellent choice! Find the link here <a href="https://www.inspiredtaste.net/9603/creamy-vegetable-soup-recipe/">${answer} Soup</a>`, 'bot');
+} else if ( answer === 'Green'){
+  showMessage(`Excellent choice! Find the link here <a href="https://www.recipetineats.com/immunity-boosting-green-goddess-soup-its-delish/">${answer} Soup</a>`, 'bot');
+} else if ( answer === 'Spaghetti') {
+  showMessage(`Excellent choice! Find the link here <a href="https://www.jamieoliver.com/recipes/pasta-sauce-recipes/veggie-bolognese-sauce/">${answer} Recipe!</a>`, 'bot');
+} else if ( answer === 'Gnocchi'){
+  showMessage(`Excellent choice! Find the link here <a href="https://www.gousto.co.uk/cookbook/vegetarian-recipes/mediterranean-veg-gnocchi-with-basil">${answer} Recipe!</a>`, 'bot');
+} else if ( answer === 'Lasagne'){
+  showMessage(`Excellent choice! Find the link here <a href="https://cookieandkate.com/best-vegetable-lasagna-recipe/">${answer} Recipe!</a>`, 'bot');
+} else if ( answer === 'Chili'){
+  showMessage(`Excellent choice! Find the link here <a href="https://simple-veganista.com/texas-three-bean-chili-sweet-chia/">${answer} Recipe!</a>`, 'bot');
+} else if ( answer === 'Lentil'){
+  showMessage(`Excellent choice! Find the link here <a href="https://choosingchia.com/lentil-stew/">${answer} Recipe!</a>`, 'bot');
 } else {
-  showMessage("Something else", 'bot');
+  showMessage(`Excellent choice! Find the link here <a href="https://choosingchia.com/lentil-stew/">${answer} Recipe!</a>`, 'bot');
 }
 }  
 // Set up your eventlisteners here
