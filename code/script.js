@@ -8,7 +8,7 @@ const sendBtn = document.getElementById('send')
 
 // This function will add a chat bubble in the correct place based on who the sender is
 //without the ${message} the actual message(parameter) in const greetUser will not be passed, only string message. Only the parameter 'bot' 
-function showMessage(message, sender) {
+const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
     console.log("Now the user is replying");
@@ -81,67 +81,109 @@ const whatKindOfDish = (msg) => {
 
 const userReply1 = (type) => {
   showMessage(`${type}`, 'user');
-  setTimeout(() => nextQuestion(type), 1000)
+  setTimeout(() => moreSpecificDish(type), 1000);
 }
 
-const nextQuestion = (type) => {  
-showMessage(`Ok great! So ${type} it is. What kind of ${type} would you like to make?`, "bot");
-if (type === 'soup'){
-  inputWrapper.innerHTML = `
+const moreSpecificDish = (type) => {
+  showMessage(`Ok great! So ${type} it is. What kind of ${type} would you like to make?`, "bot");
+  if (type === 'soup') {
+    inputWrapper.innerHTML = `
   <select id="select">
     <option value="" selected disabled>⬇️ Select what type...</option>
     <option value="Spicy">Spicy</option>
     <option value="Creamy">Creamy</option>
     <option value="Green">Green</option>
   </select>`
-}else if (type === 'pasta'){
-  inputWrapper.innerHTML = `
+  } else if (type === 'pasta') {
+    inputWrapper.innerHTML = `
   <select id="select">
     <option value="" selected disabled>⬇️ Select what type...</option>
     <option value="Spaghetti">Spaghetti</option>
     <option value="Gnocchi">Gnocchi</option>
     <option value="Lasagne">Lasagne</option>
   </select>`
-}else {
-  inputWrapper.innerHTML = `
+  } else {
+    inputWrapper.innerHTML = `
   <select id="select">
     <option value="" selected disabled>⬇️ Select what type...</option>
     <option value="Chili">Chili</option>
     <option value="Lentil">Lentil</option>
     <option value="Curry">Curry</option>
   </select>`
-}
+  }
 
-const select = document.getElementById('select')
-  select.addEventListener('change', () => userReply2(select.value))
+  const select = document.getElementById('select');
+  select.addEventListener('change', () => userReply2(select.value));
 }
 
 const userReply2 = (type) => {
   showMessage(`${type}`, 'user');
-  setTimeout(() => displayRecipeLink(type), 1000)
+  setTimeout(() => displayRecipeLink(type), 1000);
+  //inputWrapper.innerHTML = '';
 }
 
 const displayRecipeLink = (answer) => {
-if (answer === 'Spicy') {
-  showMessage(`Excellent choice! Find the link here <a href="https://ohsheglows.com/2020/04/25/cozy-at-home-spicy-any-veggie-soup/">${answer} Soup</a>`, 'bot');
-} else if (answer === 'Creamy'){
-  showMessage(`Excellent choice! Find the link here <a href="https://www.inspiredtaste.net/9603/creamy-vegetable-soup-recipe/">${answer} Soup</a>`, 'bot');
-} else if ( answer === 'Green'){
-  showMessage(`Excellent choice! Find the link here <a href="https://www.recipetineats.com/immunity-boosting-green-goddess-soup-its-delish/">${answer} Soup</a>`, 'bot');
-} else if ( answer === 'Spaghetti') {
-  showMessage(`Excellent choice! Find the link here <a href="https://www.jamieoliver.com/recipes/pasta-sauce-recipes/veggie-bolognese-sauce/">${answer} Recipe!</a>`, 'bot');
-} else if ( answer === 'Gnocchi'){
-  showMessage(`Excellent choice! Find the link here <a href="https://www.gousto.co.uk/cookbook/vegetarian-recipes/mediterranean-veg-gnocchi-with-basil">${answer} Recipe!</a>`, 'bot');
-} else if ( answer === 'Lasagne'){
-  showMessage(`Excellent choice! Find the link here <a href="https://cookieandkate.com/best-vegetable-lasagna-recipe/">${answer} Recipe!</a>`, 'bot');
-} else if ( answer === 'Chili'){
-  showMessage(`Excellent choice! Find the link here <a href="https://simple-veganista.com/texas-three-bean-chili-sweet-chia/">${answer} Recipe!</a>`, 'bot');
-} else if ( answer === 'Lentil'){
-  showMessage(`Excellent choice! Find the link here <a href="https://choosingchia.com/lentil-stew/">${answer} Recipe!</a>`, 'bot');
-} else {
-  showMessage(`Excellent choice! Find the link here <a href="https://choosingchia.com/lentil-stew/">${answer} Recipe!</a>`, 'bot');
+  if (answer === 'Spicy') {
+    showMessage(`Excellent choice! Find the link to recipe here <a href="https://ohsheglows.com/2020/04/25/cozy-at-home-spicy-any-veggie-soup/">${answer} Soup</a>`, 'bot');
+  } else if (answer === 'Creamy') {
+    showMessage(`Excellent choice! Find the link here <a href="https://www.inspiredtaste.net/9603/creamy-vegetable-soup-recipe/">${answer} Soup</a>`, 'bot');
+  } else if (answer === 'Green') {
+    showMessage(`Excellent choice! Find the link here <a href="https://www.recipetineats.com/immunity-boosting-green-goddess-soup-its-delish/">${answer} Soup</a>`, 'bot');
+  } else if (answer === 'Spaghetti') {
+    showMessage(`Excellent choice! Find the link here <a href="https://www.jamieoliver.com/recipes/pasta-sauce-recipes/veggie-bolognese-sauce/">${answer} Recipe!</a>`, 'bot');
+  } else if (answer === 'Gnocchi') {
+    showMessage(`Excellent choice! Find the link here <a href="https://www.gousto.co.uk/cookbook/vegetarian-recipes/mediterranean-veg-gnocchi-with-basil">${answer} Recipe!</a>`, 'bot');
+  } else if (answer === 'Lasagne') {
+    showMessage(`Excellent choice! Find the link here <a href="https://cookieandkate.com/best-vegetable-lasagna-recipe/">${answer} Recipe!</a>`, 'bot');
+  } else if (answer === 'Chili') {
+    showMessage(`Excellent choice! Find the link here <a href="https://simple-veganista.com/texas-three-bean-chili-sweet-chia/">${answer} Recipe!</a>`, 'bot');
+  } else if (answer === 'Lentil') {
+    showMessage(`Excellent choice! Find the link here <a href="https://choosingchia.com/lentil-stew/">${answer} Recipe!</a>`, 'bot');
+  } else {
+    showMessage(`Excellent choice! Find the link here <a href="https://choosingchia.com/lentil-stew/">${answer} Recipe!</a>`, 'bot');
+  }
+  setTimeout(() => areYouHappy(), 1000);
 }
-}  
+
+const areYouHappy = (answer) => {
+  showMessage('Are you happy with your recipe? 👀', 'bot');
+  inputWrapper.innerHTML = `
+  <button id="yesBtn">Yes 😋</button>
+  <button id="noBtn">No 🤢</button>
+  `
+  document
+    .getElementById('yesBtn')
+    .addEventListener('click', () => userReply3('Yes 😋'))
+  document
+    .getElementById('noBtn')
+    .addEventListener('click', () => userReply3('No 🤢'))
+}
+
+const userReply3 = (answer) => {
+  showMessage(`${answer}`, 'user');
+  setTimeout(() => happyValidation(answer), 1000);
+}
+
+const happyValidation = (answer) => {
+  if (answer === 'Yes 😋') {
+    showMessage('So nice to hear, enjoy your dinner 🌻', 'bot');
+    inputWrapper.innerHTML = '';
+  } else {
+    showMessage('Wooops, sorry to hear that! Want to give it another try? 🤞', 'bot');
+    inputWrapper.innerHTML = `
+    <button id="yesBtn">Yeees!</button>
+    <button id="noBtn">Hell No!</button>
+    `
+    document
+      .getElementById('yeesBtn')
+      .addEventListener('click', () => userReply3('Yeeees!'))
+    document
+      .getElementById('nooBtn')
+      .addEventListener('click', () => userReply3('Hell No!'))
+    
+    }
+}
+
 // Set up your eventlisteners here
 
 
