@@ -5,15 +5,17 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: 'Shadows Into Light', cursive;
+  background-image: url(./images/turtle.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: #625757;
   text-align: center;
 }
 
@@ -21,7 +23,7 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: #625757;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -33,15 +35,21 @@ p {
   margin: 0;
 }
 
+form {
+display: flex;
+width: 100%;
+align-items: center;
+}
+
 input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #DFD3C3;
+  color: #9D8F8F;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Shadows Into Light', cursive;
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -53,7 +61,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: #F4F3F3;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -83,6 +91,12 @@ main {
   flex-shrink: 0;
 }
 
+.bot-msg {
+  display: flex;
+  margin: 16px 0 0 8px;
+  flex-shrink: 0;
+}
+
 .bot-msg img,
 .user-msg img {
   width: 60px;
@@ -90,12 +104,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #9D8F8F;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #DFD3C3;
   max-width: 40%;
 }
 
@@ -120,24 +134,17 @@ main {
   align-items: center;
 }
 
-label {
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
-}
 
 button {
-  background-color: #0026ff;
-  color: white;
+  background-color: #9D8F8F;
+  color: #DFD3C3;
   border: none;
   border-radius: 4px;
   padding: 16px 40px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: 'Shadows Into Light', cursive;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -146,4 +153,11 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+footer {
+  text-align: center;
+  font-size: 18px;
+  color: #625757;
+  padding-top: 10px;
 }
