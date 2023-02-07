@@ -1,11 +1,26 @@
 // Variables that point to selected DOM elements, in this case it's the HTML element named chat. It is also called chat when its a variable in this JS document.
 const chat = document.getElementById('chat');
-//const nameInput = document.getElementById('name-input');
+const nameInput = document.getElementById('name-input');
+const form = document.getElementById('name-form')
 
 // If you need any global variables that you can use across different functions, declare them here:
 
 
 // Declare your functions after this comment
+const handleNameInput = (event) => {
+  event.preventDefault() //prevents the page from refreshing
+  //Store the value in a variable so we can access it after we clear it from the input
+  const name = nameInput.value; //input of name is stored in variable in name
+  showMessage(name, 'user'); //shows message that the user typed in
+  nameInput.value = ''; //clears form
+
+  //After 1 second, show the next question by invoking the next function. Passin the name into it to have access to the user's name if we want to use it in the next question from the bot. 
+  setTimeout(() => showFoodOptions(name), 1000);
+  
+  //I'm assuming that showFoodOptions is another function that is supposed to be triggered. 
+  
+}
+
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -44,6 +59,7 @@ const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there, What's your name?", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage("");
 }
 
 // Set up your eventlisteners here
@@ -57,7 +73,5 @@ const greetUser = () => {
 setTimeout(greetUser, 1000);
 
 
-/*form.addEventListener("submit, SendMessage);
-event.preventDefault() gör så att sidan inte laddar om*/
-
+form.addEventListener("submit", handleNameInput);
 //funktion för att visa meddelandet
