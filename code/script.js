@@ -1,14 +1,14 @@
 // Variables that point to selected DOM elements, in this case it's the HTML element named chat. It is also called chat when its a variable in this JS document.
 const chat = document.getElementById('chat');
 const nameInput = document.getElementById('name-input');
-const form = document.getElementById('name-form')
-
+const form = document.getElementById('name-form');
+const inputWrapper = document.getElementById('input-wrapper');
 // If you need any global variables that you can use across different functions, declare them here:
 
 
 // Declare your functions after this comment
 const handleNameInput = (event) => {
-  event.preventDefault() //prevents the page from refreshing
+  event.preventDefault(); //prevents the page from refreshing
   //Store the value in a variable so we can access it after we clear it from the input
   const name = nameInput.value; //input of name is stored in variable in name
   showMessage(name, 'user'); //shows message that the user typed in
@@ -20,6 +20,17 @@ const handleNameInput = (event) => {
   //I'm assuming that showFoodOptions is another function that is supposed to be triggered. 
   
 }
+
+const showFoodOptions = (name) => {
+  showMessage(`Hi ${name}! Welcome to Cake Palace, what would you like to order?`, 'bot');
+  inputWrapper.innerHTML = `
+  <button id='cake'>Cake</button>
+  <button id='iceCream'>Ice cream</button>
+  <button id='sandwich'>Sandwich</button>
+  `
+}
+
+
 
 
 // This function will add a chat bubble in the correct place based on who the sender is
