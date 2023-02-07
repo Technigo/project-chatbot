@@ -23,18 +23,23 @@ const showMenuButtonsInsteadOfForm = () => {
   document.getElementById('veggieButton').addEventListener('click', () => drinkList("Veggie Burger"));
 
 }
-const FriesYN = (value) => {
-  showMessage(value, "user")
-  showMessage("Thank you for you order!", "bot")
-  inputSection.innerHTML = ""
+const friesYN = (value) => {
+  if (value === "Yes" || value === "yes" || value === "No" || value === "no" ) {
+    showMessage(value, "user")
+    showMessage("Thank you for you order!", "bot")
+    inputSection.innerHTML = ""
+  } else {
+    showMessage("You can only type Yes or No", "bot")
+  }
+ 
 }
 const showFriesButtonsInstedOfSelectDrink = () => {
   inputSection.innerHTML = `
-  <button id="friesYes">Yes</button>
-  <button id="friesNo">No</button>
+  <input id="friesInput" type="text" />
+  <button id="friesButton" type="submit">Send</button>
   `
-  document.getElementById('friesYes').addEventListener('click', () => FriesYN("Yes"));
-  document.getElementById('FriesNo').addEventListener('click', () => FriesYN("No"));
+  let friesInputField = document.getElementById("friesInput")
+  document.getElementById('friesButton').addEventListener('click', () => friesYN(friesInputField.value));
 }
 const selectDrink = (option) => {
   showMessage(option, "user")
@@ -44,18 +49,18 @@ const selectDrink = (option) => {
 const showDropdownMenuInstedOfBurgerButtons = () => {
   inputSection.innerHTML = `
   <div class="flex drinkmenu">
-  <select id="selectDrink">  
-     <option val="water">Water</option>
-     <option val="cola">Cola</option>
-     <option val="fanta">Fanta</option>      
- </select>
- <button id="drinkButton">Select</button>  
+    <select id="selectDrink">  
+      <option val="water">Water</option>
+      <option val="cola">Cola</option>
+      <option val="fanta">Fanta</option>      
+    </select>
+    <button id="drinkButton">Select</button>  
   </div>
   `
   //Default drink is water in the select abpove so we set the option to water as well. This means that if we select the deafult then option should be water
   let option="water"
-  let activities= document.getElementById("selectDrink")
-  activities.addEventListener("change", function() {
+  let drinkmenu= document.getElementById("selectDrink")
+  drinkmenu.addEventListener("change", ()=> {
     option=this.value
   });
 
