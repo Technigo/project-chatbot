@@ -9,9 +9,14 @@ const inputWrapper = document.getElementById("input-wrapper");
 
 // If you need any global variables that you can use across different functions, declare them here:
 
-var userName = "";
-
 // Declare your functions after this comment
+const botReply = (message) => {
+  showMessage(message, "bot");
+};
+
+const userReply = (message) => {
+  showMessage(message, "user");
+};
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -43,11 +48,11 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   botRunning = true;
-  showMessage("Hello there! My name is EdBot. What should I call you?", "bot");
+  botReply("Hello there! My name is EdBot. What should I call you?");
 
   inputForm.addEventListener("submit", (e) => {
     e.preventDefault;
-    showMessage(textInput.value, "user");
+    userReply(textInput.value);
     userName = textInput.value;
     textInput.value = "";
     setTimeout(showButtons, 1000);
@@ -55,19 +60,19 @@ const greetUser = () => {
 };
 
 const showButtons = () => {
-  showMessage(`Hello ${userName}! How are you?`, "bot");
+  botReply(`Hello ${userName}! How are you?`);
   inputWrapper.innerHTML = `
   <button id="goodBtn" type="submit">Good</button>
   <button id="badBtn" type="submit">Bad</button>
 `;
 
   document.getElementById("goodBtn").addEventListener("click", () => {
-    showMessage("I'm good, thank you!", "user");
+    userReply("I'm good, thank you!");
     setTimeout(askForSomething("good"), 1000);
   });
 
   document.getElementById("badBtn").addEventListener("click", () => {
-    showMessage("I'm bad, thank you!", "user");
+    userReply("I'm bad, thank you!");
     setTimeout(askForSomething("bad"), 1000);
   });
 };
@@ -75,10 +80,7 @@ const showButtons = () => {
 const askForSomething = (mood) => {
   console.log(mood);
 
-  showMessage(
-    `${mood == "good" ? "Great" : "Sorry"} to hear that, ${userName}!`,
-    "bot"
-  );
+  botReply(`${mood == "good" ? "Great" : "Sorry"} to hear that, ${userName}!`);
 
   inputWrapper.innerHTML = `<form id="input-form" onsubmit="return false;">
   <label for="text-input">Input</label>
