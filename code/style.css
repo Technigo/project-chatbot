@@ -52,8 +52,8 @@ main {
   width: 100%;
   max-width: 700px;
   height: 600px;
-  border-radius: 30px;
-  background: #fff;
+  border-radius: 20px;
+  background: #fff3f3;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
