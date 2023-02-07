@@ -2,9 +2,53 @@
 const chat = document.getElementById('chat');
 
 // If you need any global variables that you can use across different functions, declare them here:
-
+const form = document.getElementById('name-form')
+const inputSection = document.getElementById('input-wrapper');
 
 // Declare your functions after this comment
+const drinkList = (burgerType) => {
+  showMessage(`Great you choose ${burgerType}! What would you like to drink?`, "bot")
+  showDropdownMenuInstedOfBurgerButtons()
+}
+const showMenuButtonsInsteadOfForm = () => {
+  inputSection.innerHTML = `
+  <button id="cheeseButton">Cheese Burger</button>
+  <button id="chickenButton">Chicken Burger</button>
+  <button id="veggieButton">Veggie Burger</button>
+  `
+  document.getElementById('cheeseButton').addEventListener('click', () => drinkList("Cheese Burger"));
+  document.getElementById('chickenButton').addEventListener('click', () => drinkList("Chicken Burger"));
+  document.getElementById('veggieButton').addEventListener('click', () => drinkList("Veggie Burger"));
+  
+
+}
+
+const showDropdownMenuInstedOfBurgerButtons = () => {
+  inputSection.innerHTML = `
+  <select>  
+     <option>Water</option>
+     <option>Cola</option>
+     <option>Fanta</option>      
+ </select>  
+  
+  `
+}
+//CREATED THE FUNCTION sendMessage 
+const sendMessage = (event) => {
+  //the row below prevents default functions, such as reload bot and clear input field. REMOVE THIS LINE
+  event.preventDefault()
+  //CREATED THE VARIABLE inputField WITH THE VALUE HTML ELEMENT name-input
+  let inputField = document.getElementById("name-input")
+  // BELOW WE INVOKE THE FUNCTION WITH THE VALUES inputField.value(the message that the user enters in the input field) AND user
+  showMessage(inputField.value, 'user');
+  // BELOW WE INVOKE THE FUNCTION showMessage BUT WITH A DIFFERENT MESSAGE AND THE SENDER IS THE BOT
+  showMessage(`Hello ${inputField.value}! What would you like to order today?`, "bot");
+
+  showMenuButtonsInsteadOfForm()
+  //CLEARS THE INPUTFIELD
+  inputField.value = ""
+  
+}
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -44,6 +88,8 @@ const greetUser = () => {
 
 // Set up your eventlisteners here
 
+//ADDED A EVENTLISTENER THAT INVOKE THE FUNCTION sendMessage
+form.addEventListener('submit', sendMessage);
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
