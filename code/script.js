@@ -1,5 +1,9 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
+const inputWrapper = document.getElementById('input-wrapper');
+const nameInput = document.getElementById('name-input');
+const sendButton = document.getElementById('.send-btn');
+
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -36,16 +40,26 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage("Hi! What's your name?", 'bot');
 }
 
-// Set up your eventlisteners here
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000);
+
+const handleNameInput = () => {
+  let name = nameInput.value
+  showMessage(name, 'user');
+}
+
+addEventListener('submit', (event) => {
+  event.preventDefault();
+  handleNameInput();
+  setTimeout(() => askNextQuestion(), 1000)
+})
+
+askNextQuestion() {
+  setTimeout(() => showMessage(`Let's find you the perfect plant, ${nameInput.value}! `, 'bot'))
+  inputWrapper.innerHTML=`
+  <button id="yesBtn">Yes, let's go!</button>
+  <button id="noBtn">No, I'm not ready for that commitment!</button>
+  `
+} 
