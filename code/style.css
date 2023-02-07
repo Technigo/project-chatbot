@@ -128,7 +128,7 @@ label {
   margin-right: 20px;
 }
 
-button {
+.btn-div {
   background-color: #0026ff;
   color: white;
   border: none;
