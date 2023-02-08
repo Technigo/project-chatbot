@@ -46,13 +46,13 @@ const nextQuestion = (message) => {
     showMessage(message)
     input.value = ''
     setTimeout(() => showFoodTypes(message), 1000)
-  } else if (questionNumber === 2) {
+  } else if (questionNumber ++) {
     showMessage(message)
     setTimeout(() => showMenu(message), 1000)
-  } else if (questionNumber === 3) {
+  } else if (questionNumber ++) {
     showMessage(message)
     setTimeout(() => showDishSize(message), 1000)
-  } else if (questionNumber === 4) {
+  } else if (questionNumber ++) {
     showMessage(message)
     setTimeout(() => showPrice(message), 1000)
   } else {
@@ -81,11 +81,11 @@ sendBtn.addEventListener('click', (event) => {
   // Clears the input field
   input.value = ''
   //Here I call the function where I present the dishes to choose from. I will also pass the userName
-  setTimeout(() => showFoodTypes(userName), 100)
+  setTimeout(() => showFoodTypes(userName), 1000)
 })
 
 const showFoodTypes = (userName) => {
-  questionNumber === 2
+  questionNumber ++
   showMessage(
     `Nice to meet you ${userName}. What type of food would you like to order?`, 'bot' )
 
@@ -107,7 +107,7 @@ const showFoodTypes = (userName) => {
 }
 
 const showMenu = (type) => {
-  questionNumber === 3 
+  questionNumber ++
 
   showMessage(
     `Oh so you're in the mood for ${type}? Great choice. Select something from the menu!`, 'bot')
@@ -140,9 +140,26 @@ const showMenu = (type) => {
       </select>
     `
   }
-
   const select = document.getElementById('select')
   select.addEventListener('change', () => nextQuestion(select.value))
+}
+
+const showDishSize = (dish) => {
+  questionNumber ++
+
+  showMessage(`One ${dish} coming up! Will that be for an adult or a child?`, 'bot')
+
+  inputWrapper.innerHTML = `
+    <button id="adult">👨🏽‍🦳</button>
+    <button id="child">🧒🏽</button>
+  `
+
+  document
+    .getElementById('adult')
+    .addEventListener('click', () => nextQuestion('adult'))
+  document
+    .getElementById('child')
+    .addEventListener('click', () => nextQuestion('child'))
 }
 
 // Set up your eventlisteners here
