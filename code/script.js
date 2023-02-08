@@ -4,39 +4,9 @@ const form = document.getElementById('name-form')
 const inputSection = document.getElementById('input-wrapper');
 
 // If you need any global variables that you can use across different functions, declare them here:
-let myBurger=""
+let myBurger = ""
+
 // Declare your functions after this comment
-const drinkList = (burgerType) => {
-  myBurger=burgerType
-  showMessage(burgerType, "user")
-  showMessage(`Great you choose ${burgerType}! What would you like to drink?`, "bot")
-  showDropdownMenuInstedOfBurgerButtons()
-}
-const showMenuButtonsInsteadOfForm = () => {
-  inputSection.innerHTML = 
-  `
-  <div class="burgerButtons">
-  
-  <button id="cheeseButton">Cheese Burger</button>
-  <button id="chickenButton">Chicken Burger</button>
-  <button id="veggieButton">Veggie Burger</button>
-  </div>
-  `
-  document.getElementById('cheeseButton').addEventListener('click', () => drinkList("Cheese Burger"));
-  document.getElementById('chickenButton').addEventListener('click', () => drinkList("Chicken Burger"));
-  document.getElementById('veggieButton').addEventListener('click', () => drinkList("Veggie Burger"));
-
-}
-const friesYN = (value) => {
-  if (value === "Yes" || value === "yes" || value === "No" || value === "no" ) {
-    showMessage(value, "user")
-    showMessage("Would you like to have a dip?", "bot")
-    showDipButtonsInsteadOfFries()
-  } else {
-    showMessage("You can only type Yes or No", "bot")
-  }
-
-}
 const lastMessage = (dipValue) => {
   showMessage(dipValue, "user")
   showMessage("Thank you for your order!", "bot")
@@ -59,6 +29,16 @@ const showDipButtonsInsteadOfFries = () => {
   document.getElementById('noButton').addEventListener('click', () => lastMessage("No"));
 }
 
+const friesYN = (value) => {
+  if (value === "Yes" || value === "yes" || value === "No" || value === "no" ) {
+    showMessage(value, "user")
+    showMessage("Would you like to have a dip?", "bot")
+    showDipButtonsInsteadOfFries()
+  } else {
+    showMessage("You can only type Yes or No", "bot")
+  }
+}
+
 const showFriesButtonsInstedOfSelectDrink = () => {
   inputSection.innerHTML = `
   <input id="friesInput" type="text" />
@@ -69,6 +49,7 @@ const showFriesButtonsInstedOfSelectDrink = () => {
   document.getElementById('friesButton').addEventListener('click', () => friesYN(friesInputField.value));
 
 }
+
 const selectDrink = (option) => {
   showMessage(option, "user")
   showMessage(`Great you chose ${option}! Would you like some fries with your ${myBurger}?`, "bot")
@@ -95,6 +76,30 @@ const showDropdownMenuInstedOfBurgerButtons = () => {
 
   document.getElementById("drinkButton").addEventListener('click', () => selectDrink(option))
 }
+
+const drinkList = (burgerType) => {
+  myBurger=burgerType
+  showMessage(burgerType, "user")
+  showMessage(`Great you choose ${burgerType}! What would you like to drink?`, "bot")
+  showDropdownMenuInstedOfBurgerButtons()
+}
+
+
+const showMenuButtonsInsteadOfForm = () => {
+  inputSection.innerHTML = 
+  `
+  <div class="burgerButtons">
+    <button id="cheeseButton">Cheese Burger</button>
+    <button id="chickenButton">Chicken Burger</button>
+    <button id="veggieButton">Veggie Burger</button>
+  </div>
+  `
+  document.getElementById('cheeseButton').addEventListener('click', () => drinkList("Cheese Burger"));
+  document.getElementById('chickenButton').addEventListener('click', () => drinkList("Chicken Burger"));
+  document.getElementById('veggieButton').addEventListener('click', () => drinkList("Veggie Burger"));
+
+}
+
 //CREATED THE FUNCTION sendMessage 
 const sendMessage = (event) => {
   //the row below prevents default functions, such as reload bot and clear input field. REMOVE THIS LINE
@@ -105,11 +110,9 @@ const sendMessage = (event) => {
   showMessage(inputField.value, 'user');
   // BELOW WE INVOKE THE FUNCTION showMessage BUT WITH A DIFFERENT MESSAGE AND THE SENDER IS THE BOT
   showMessage(`Hello ${inputField.value}! What would you like to order today?`, "bot");
-
   showMenuButtonsInsteadOfForm()
   //CLEARS THE INPUTFIELD
   inputField.value = ""
-  
 }
 
 // This function will add a chat bubble in the correct place based on who the sender is
