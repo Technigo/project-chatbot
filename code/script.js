@@ -5,6 +5,7 @@ const input = document.getElementById('name-input')
 const sendBtn = document.getElementById('send')
 
 // If you need any global variables that you can use across different functions, declare them here:
+let questionNumber = 1
 
 
 // Declare your functions after this comment
@@ -38,28 +39,114 @@ const sendBtn = document.getElementById('send')
     chat.scrollTop = chat.scrollHeight;
   }
 
+const nextQuestion = (message) => {
+  console.log('questionNumber', questionNumber)
+
+  if (questionNumber === 1) {
+    showMessage(message)
+    input.value = ''
+    setTimeout(() => showFoodTypes(message), 1000)
+  } else if (questionNumber === 2) {
+    userReply(message)
+    setTimeout(() => showMenu(message), 1000)
+  } else if (questionNumber === 3) {
+    userReply(message)
+    setTimeout(() => showDishSize(message), 1000)
+  } else if (questionNumber === 4) {
+    userReply(message)
+    setTimeout(() => showPrice(message), 1000)
+  } else {
+    userReply(message)
+    setTimeout(thankYou, 1000)
+  }
+} 
+
+
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there, What's your name?", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }  
+// Initial button click, here I should get the name entered
+sendBtn.addEventListener('click', (event) => {
+  event.preventDefault()
+
+  // Store the value in a variable so I can access it after we 
+  // clear it from the input
+  let userName = input.value
+  showMessage(`${userName}`, 'user');
+
+  // Clears the input field
+  input.value = ''
+  //Here I call the function where I present the dishes to choose from. I will also pass the userName
+  setTimeout(() => showFoodTypes(userName), 100)
+})
+
+const showFoodTypes = (userName) => {
+  questionNumber === 2
+  showMessage(
+    `Nice to meet you ${userName}. What type of food would you like to order?`
+  )
+
+  inputWrapper.innerHTML = `
+    <button id="pizzaBtn">Pizza</button>
+    <button id="pastaBtn">Pasta</button>
+    <button id="saladBtn">Salad</button>
+  `
+
+  document
+    .getElementById('pizzaBtn')
+    .addEventListener('click', () => nextQuestion('pizza'))
+  document
+    .getElementById('pastaBtn')
+    .addEventListener('click', () => nextQuestion('pasta'))
+  document
+    .getElementById('saladBtn')
+    .addEventListener('click', () => nextQuestion('salad'))
+}
+
+const showMenu = (type) => {
+  questionNumber === 3 
+
+  showMessage(
+    `Oh so you're in the mood for ${type}? Great choice. Select something from the menu!`
+  )
+
+  if (type === 'pizza') {
+    inputWrapper.innerHTML = `
+      <select id="select">
+        <option value="" selected disabled>👇 Select a pizza...</option>
+        <option value="margerita">Margerita</option>
+        <option value="vesuvio">Vesuvio</option>
+        <option value="peperoni">Peperoni</option>
+      </select>
+    `
+  } else if (type === 'pasta') {
+    inputWrapper.innerHTML = `
+      <select id="select">
+        <option value="" selected disabled>👇 Select a pasta...</option>
+        <option value="Carbonara">Pasta Carbonara</option>
+        <option value="Pomodoro">Pasta Pomodoro</option>
+        <option value="Frutti di Mare">Frutti di Mare</option>
+      </select>
+    `
+  } else {
+    inputWrapper.innerHTML = `
+      <select id="select">
+        <option value="" selected disabled>👇 Select a salad...</option>
+        <option value="Greek Salad">Greek Salad</option>
+        <option value="Caesar Salad">Caesar Salad</option>
+        <option value="Chicken Salad">Chicken Salad</option>
+      </select>
+    `
+  }
+
+  const select = document.getElementById('select')
+  select.addEventListener('change', () => nextQuestion(select.value))
+}
 
 // Set up your eventlisteners here
-
-const handleNameInput = (event) => {
-  event.preventDefault()
-  // Store the value in a variable so we can access it after we 
-	// clear it from the input
-  const name = nameInput.value
-  showMessage(name, 'user')
-  nameInput.value = ''
-
-  // After 1 second, show the next question by invoking the next function.
-	// passing the name into it to have access to the user's name if we want
-	// to use it in the next question from the bot.
-  setTimeout(() => showFoodOptions(name), 1000)
-}
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
