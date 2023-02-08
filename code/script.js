@@ -6,11 +6,20 @@ const inputWrapper = document.getElementById('input-wrapper');
 const sendButton = document.getElementById('send');
 
 const greetUser = () => {
-  console.log("welcome you!");
   showMessage("Welcome to your experience, what's your name?", "bot");
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   // Just to check it out, change 'bot' to 'user' here 👆
 };
+
+//funtionen med tre buttons här. här ska det vara innerhtm inget else if chat.innerhtml slut ppå section.
+
+//här kommer const handleSend event prevent deafault som står där nere.
+
+//kalla på showmessage name input och user.
+
+//kalla på gettheexperiencechoices kolla på settimeout typ 2000?
+
+//
 
 const showMessage = (msg, sender) => {
   if (sender === 'user') {
@@ -33,8 +42,24 @@ const showMessage = (msg, sender) => {
  
 };
 
-setTimeout(greetUser, 500);
 greetUser();
+
+//här vill jag hämta vad jag skriver när jag trycker på send, kalla på handleSend. här lägga till eventlistner. send button . add eventlistner. click, handle send.
+
+//gör samma grej som du gjort för tre knapparna som för sendknappen etc. gör en funktion för tre kanpparna kul du har valt paddla.
+
+const handleSend = (event) => {
+  //eventpreventdeafault googla
+  const showMessage //name-input.value för att få värdet värdet prova logga båda.
+  console.log("nina");
+  //
+
+  handleSend();//kalla på den i en settimeout getthe experinec och tom parantes.
+  // behöver bara ha som greetuser fast handlesend som pratar inte innerhtml.
+};
+//gör en ny funtion. kopiera html ska komma tre button här så en ny funktion efter den om boten ska svara ett `normnarl`svar så skriver jag samma som ovan alltså greetuser osv.
+
+
 
 
 
@@ -53,7 +78,7 @@ greetUser();
 
 
 
-// Set up your eventlisteners here
+// Set up your eventlisteners here - add eventlistner googla på det
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:

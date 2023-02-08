@@ -91,12 +91,6 @@ main {
   flex-shrink: 0;
 }
 
-.bot-msg {
-  display: flex;
-  margin: 16px 0 0 8px;
-  flex-shrink: 0;
-}
-
 .bot-msg img,
 .user-msg img {
   width: 60px;
