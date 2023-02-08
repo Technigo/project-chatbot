@@ -7,10 +7,17 @@ const inputSection = document.getElementById('input-wrapper');
 let myBurger = ""
 
 // Declare your functions after this comment
+const lastButton = () => {
+  inputSection.innerHTML = `
+  <button id="lastButton">New Order</button>`
+  document.getElementById('lastButton').addEventListener('click', () => location.reload());
+  }
+
 const lastMessage = (dipValue) => {
   showMessage(dipValue, "user")
   showMessage("Thank you for your order!", "bot")
-  inputSection.innerHTML = ""
+
+  lastButton()
 }
 const showDipButtonsInsteadOfFries = () => {
   inputSection.innerHTML = 
