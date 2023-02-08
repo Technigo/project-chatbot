@@ -3,12 +3,14 @@ const chat = document.getElementById('chat');
 const noButton = document.getElementById("no-btn");
 const inputWrapper = document.getElementById('input-wrapper');
 const chatInput = document.getElementById("chat-input");
-const datePicker = document.getElementById("travel-date");
 const sendButton = document.getElementById("send-btn");
-let questionCount = 0;
 
 // If you need any global variables that you can use across different functions, declare them here:
-
+let questionCount = 0;
+let departureCity ='';
+let arrivalCity ='';
+let travelDate = '';
+let tickets ='';
 
 // Declare your functions after this comment
 
@@ -52,7 +54,7 @@ const greetUser = () => {
     showMessage('Yes please.', 'user')
     setTimeout(() => showMessage('Great! What is your city of departure?', 'bot'), 1000);
     questionCount++;
-    console.log(questionCount);
+    console.log("greetUser",questionCount);
   })
 
   document.getElementById('no-btn').addEventListener('click',() => {
@@ -63,45 +65,95 @@ const greetUser = () => {
 console.log(questionCount);
 }
 
-const handleDepartureCity = (event) =>{
-  const departureCity = chatInput.value;
+const handleDepartureCity = () =>{
+  departureCity = chatInput.value;
   showMessage(`${departureCity}`,'user')
   chatInput.value='';
   setTimeout(() => showMessage('Nice! And where are you headed?','bot'),1000);
-  console.log(questionCount);
+  
   console.log(departureCity);
 }
 
-const handleArrivalCity = (event) =>{
-  const arrivalCity = chatInput.value;
+const handleArrivalCity = () =>{
+  arrivalCity = chatInput.value;
   showMessage(`${arrivalCity}`,'user')
   chatInput.value='';
-  setTimeout(() => showMessage(`Okay, I'll make a note of that.`,'bot'),1000);
-  setTimeout(() => showMessage(`When would you like to travel.`,'bot'),2000);
-  console.log(questionCount);
+  setTimeout(() => 
+  showMessage(`Alright. So ${departureCity} to ${arrivalCity}.`,'bot'),500);
+  
+  setTimeout(printTravelDate, 1500);
+} 
+
+const printTravelDate = () => {
+  showMessage('When would you like to travel?', 'bot')  
+  chat.innerHTML += `<input id = "date-picker" class = "date-picker" type="date"/>`
+
+    document.getElementById('date-picker').addEventListener('input',() => {
+      travelDate  = document.getElementById('date-picker').value;
+      setTimeout(() =>showMessage(`${travelDate}`,'user'),1000);      
+      console.log(travelDate);
+      setTimeout(() =>showMessage(`How many tickets would you like?`,'bot'),2000);  
+      
+      setTimeout(nextQuestion, 2500);
+    });
+ 
+  chat.scrollTop = chat.scrollHeight;   
 }
 
-const handleTravelDate = (event) =>{
-  const travelDate  = datePicker.value;
-  showMessage(`${travelDate}`,'user')
-  chatInput.value='';
-  setTimeout(() => showMessage(`Okay.`,'bot'),1000);
-  console.log(questionCount);
+const handleTicketNumbers = () =>{
+    
+    tickets = chatInput.value;
+    showMessage(`${tickets}`, 'user');
+    chatInput.value='';
+
+    setTimeout(purchaseSummary, 2000);
+  
 }
 
+const purchaseSummary = () => {
+  showMessage(`You have booked ${tickets} tickets from ${departureCity} to ${arrivalCity} on ${travelDate}`, 'bot');
+  showMessage(`In whose name shall I make this booking?`, 'bot');
+  
+  setTimeout(nextQuestion, 2500);
+}
 
-const handleChatInput = (event) => {
-  event.preventDefault();
+const handleNameInput = () => {
+  const name = chatInput.value;
+  showMessage(`${name}`, 'user');
+  setTimeout(() => showMessage(`Thank you for booking with us, ${name}!`, 'bot'),1000);
+  chatInput.value ='';
+}
+
+const nextQuestion = (event) => {
+  
   if(questionCount == 1){
+    event.preventDefault();
     handleDepartureCity();
     questionCount++;
-  } else if(questionCount == 2){
+    console.log("departureCity",questionCount);
+  }
+  
+  else if(questionCount == 2){
+    event.preventDefault();
     handleArrivalCity();
     questionCount++;
-  } else if(questionCount == 3){
-    handleTravelDate();
-    questionCount++;
+    console.log("after arrivalCity",questionCount);  
   }
+  
+  else if(questionCount == 3){
+    event.preventDefault();
+    handleTicketNumbers();
+    questionCount++;
+    console.log("after ticketnumbers",questionCount);
+  }
+
+  else if(questionCount == 4){
+    event.preventDefault();
+    handleNameInput();
+    questionCount++;
+    console.log("after nameInput",questionCount);
+  }
+  // }
   // Store the value in a variable so we can access it after we clear it from the input
   // const inputstring = chatInput.value;
   // showMessage(`You age is ${inputstring}`, 'user'); 
@@ -112,12 +164,22 @@ const handleChatInput = (event) => {
   // else
   // showMessage("You are a child!", 'bot');
   // chatInput.value = ''
+
+  // setTimeout(() => {
+
+  //   document.getElementById('date-picker').addEventListener('click',() => {
+  //     const travelDate  = document.getElementById('date-picker').value;
+  //     setTimeout(() =>showMessage(`${travelDate}`,'user'),2500);
+  //     console.log(travelDate);
+  //   });
+  // });
    
 }
 
+
 // Set up your eventlisteners here
 
-sendButton.addEventListener("click", handleChatInput);
+sendButton.addEventListener("click", nextQuestion);
 
 
 // When website loaded, chatbot asks first question.

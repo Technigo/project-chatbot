@@ -155,3 +155,11 @@ button:hover {
   width:200px;
   border-radius: 30px;
 }
+
+.date-picker{
+  margin: 16px 500px 5px 70px;
+  width:350px;
+  max-width:40%;
+  border-radius: 30px;
+  
+}
