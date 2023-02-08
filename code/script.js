@@ -17,19 +17,34 @@ const handleNameInput = (event) => {
   //After 1 second, show the next question by invoking the next function. Passin the name into it to have access to the user's name if we want to use it in the next question from the bot. 
   setTimeout(() => showFoodOptions(name), 1000);
   
-  //I'm assuming that showFoodOptions is another function that is supposed to be triggered. 
   
 }
 
 const showFoodOptions = (name) => {
   showMessage(`Hi ${name}! Welcome to Cake Palace, what would you like to order?`, 'bot');
+ //Buttons appear
   inputWrapper.innerHTML = `
-  <button id='cake'>Cake</button>
-  <button id='iceCream'>Ice cream</button>
-  <button id='sandwich'>Sandwich</button>
+  <button id='cakeBtn' value="cake">Cake</button>
+  <button id='bunBtn' value="bun">Bun</button>
+  <button id='sandwichBtn' value="sandwich">Sandwich</button>
   `
+
+  //Listen for clicks on the buttons and trigger the next function
+  document.getElementById('cakeBtn').addEventListener('click', CakeOrder)
+
+  //*****FORTSÄTT HÄRIFRÅN, FUNKTIONSNAMN SAKNAS OVAN!!!! */
+
 }
 
+//*****BUILD FUNCTON for another food choice (drop down menu)****
+const CakeOrder = () => {
+showMessage(`I want cake, please!`, 'user');
+setTimeout(() => showMessage(`Okay, you want cake. What flavour would you like?`, 'bot'), 2000);
+inputWrapper.innerHTML = `
+  ****Select MENY- HÄR****
+  `
+
+}
 
 
 
@@ -72,17 +87,15 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
   showMessage("");
 }
-
-// Set up your eventlisteners here
-
+setTimeout(greetUser, 1000);
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000);
 
-
+// Set up your eventlisteners here
+//eventlistener for the submit-button of the form. Starts the function handleNameInput
 form.addEventListener("submit", handleNameInput);
-//funktion för att visa meddelandet
+
