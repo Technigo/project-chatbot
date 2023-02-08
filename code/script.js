@@ -47,16 +47,16 @@ const nextQuestion = (message) => {
     input.value = ''
     setTimeout(() => showFoodTypes(message), 1000)
   } else if (questionNumber === 2) {
-    userReply(message)
+    showMessage(message)
     setTimeout(() => showMenu(message), 1000)
   } else if (questionNumber === 3) {
-    userReply(message)
+    showMessage(message)
     setTimeout(() => showDishSize(message), 1000)
   } else if (questionNumber === 4) {
-    userReply(message)
+    showMessage(message)
     setTimeout(() => showPrice(message), 1000)
   } else {
-    userReply(message)
+    showMessage(message)
     setTimeout(thankYou, 1000)
   }
 } 
@@ -64,6 +64,7 @@ const nextQuestion = (message) => {
 
 // Starts here
 const greetUser = () => {
+  questionNumber === 1
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there, What's your name?", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
@@ -86,8 +87,7 @@ sendBtn.addEventListener('click', (event) => {
 const showFoodTypes = (userName) => {
   questionNumber === 2
   showMessage(
-    `Nice to meet you ${userName}. What type of food would you like to order?`
-  )
+    `Nice to meet you ${userName}. What type of food would you like to order?`, 'bot' )
 
   inputWrapper.innerHTML = `
     <button id="pizzaBtn">Pizza</button>
@@ -110,8 +110,7 @@ const showMenu = (type) => {
   questionNumber === 3 
 
   showMessage(
-    `Oh so you're in the mood for ${type}? Great choice. Select something from the menu!`
-  )
+    `Oh so you're in the mood for ${type}? Great choice. Select something from the menu!`, 'bot')
 
   if (type === 'pizza') {
     inputWrapper.innerHTML = `
