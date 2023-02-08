@@ -138,9 +138,35 @@ const offerVideo = () => {
       drink == "beer" ? "hazy NEIPAs" : "cold water"
     } and ${mood == "good" ? "happy" : "sad"} days!`
   );
-  mood = "good"
-    ? botReply("https://www.youtube.com/watch?v=Ofq_nl366VM")
-    : botReply("https://www.youtube.com/watch?v=CC4I65VIoeE");
+  if (mood == "good") {
+    if (drink == "beer") {
+      inputWrapper.innerHTML = ``;
+      chat.innerHTML = `
+      <iframe id="ytplayer" type="text/html" width="640" height="360"
+  src="https://www.youtube.com/embed/Ofq_nl366VM?autoplay=1"
+  frameborder="0"></iframe>`;
+    } else {
+      inputWrapper.innerHTML = ``;
+      chat.innerHTML = `
+      <iframe id="ytplayer" type="text/html" width="640" height="360"
+  src="https://www.youtube.com/embed/bfcDfhT5mak?autoplay=1"
+  frameborder="0"></iframe>`;
+    }
+  } else {
+    if (drink == "beer") {
+      inputWrapper.innerHTML = ``;
+      chat.innerHTML = `
+      <iframe id="ytplayer" type="text/html" width="640" height="360"
+  src="https://www.youtube.com/embed/oYKwotHRdHo?autoplay=1"
+  frameborder="0"></iframe>`;
+    } else {
+      inputWrapper.innerHTML = ``;
+      chat.innerHTML = `
+      <iframe id="ytplayer" type="text/html" width="640" height="360"
+  src="https://www.youtube.com/embed/CC4I65VIoeE?autoplay=1"
+  frameborder="0"></iframe>`;
+    }
+  }
 };
 
 sendButton.addEventListener("click", () =>
