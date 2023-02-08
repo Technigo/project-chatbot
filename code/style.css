@@ -6,17 +6,11 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
-}
-
-video {
-    object-fit: cover;
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
+  background-image: url("./assets/background-small.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: #339966;
 }
 
 h1 {
@@ -36,6 +30,10 @@ h2 {
   margin-bottom: 36px;
 }
 
+h1, h2 {
+  text-shadow: 2px 2px 4px #339966;
+}
+
 p {
   font-size: 18px;
   font-weight: 600;
@@ -47,8 +45,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #E8F3E8;
+  color: #559E54;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat', sans-serif;
@@ -65,7 +63,7 @@ select:focus{
 select{
   border:none;
   border-radius: 4px;
-  color: #0026ff;
+  color: #559E54;
   font-size: 20px;
   font-weight: 600;
   height: 60px;
@@ -83,7 +81,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  backdrop-filter: blur(10px);
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -115,8 +113,10 @@ main {
 
 .bot-msg img,
 .user-msg img {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
+  background-color: #e5e9ff;
+  border-radius: 50%;
 }
 
 .bubble {
@@ -125,7 +125,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #339966;
   max-width: 40%;
 }
 
@@ -159,8 +159,8 @@ label {
 }
 
 button {
-  background-color: #0026ff;
-  color: white;
+  background-color: #92C591;
+  color: #0A3409;
   border: none;
   border-radius: 4px;
   padding: 16px 40px;
@@ -176,4 +176,24 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+a {
+  color: #0A3409;
+}
+
+a:hover {
+  color: #559E54;
+}
+
+@media (min-width: 668px) and (max-width: 1023px) {
+  body {
+  background-image: url("./assets/background-medium.jpg");
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+  background-image: url("./assets/background-large.jpg");
+  }
 }
