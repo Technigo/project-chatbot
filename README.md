@@ -1,12 +1,10 @@
-# Project Name
+# Project-Chatbot
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment was to create a chatbot with javascript, css and html. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I approached this task by start watching all attached videos about javascript. Then a coded along with Jennie creating the ground in HTML and CSS and some of the Javascript. Attached in the folder provided in github for this task there was some prewritten java-code. I wrote down with comments what I thought should be done and started to look (google) for ways to do it. I felt that I needed a wholeistic view on how to complete the code so I looked at some of the previus technigo students code and tried out different functions they had been using.
 
 ## View it live
 

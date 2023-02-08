@@ -12,11 +12,11 @@ body {
 }
 
 h1 {
-  font-weight: bold;
-  font-size: 44px;
+  font-size: 25px;
   line-height: 34px;
   color: #fff;
   text-align: center;
+  margin-top: 0;
 }
 
 h2 {
@@ -40,7 +40,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: beige;
-  color: rgb(33, 27, 88);
+  color: black;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -51,8 +51,8 @@ input {
 
 main {
   margin: 0 auto;
-  width: 100%;
-  max-width: 700px;
+  width: 80%;
+  max-width: 480px;
   height: 600px;
   border-radius: 30px;
   background: #fff;
@@ -93,10 +93,10 @@ main {
 
 .bubble {
   background: beige;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 26px;
-  padding: 16px 24px;
+  font-weight: 500;
+  font-size: 8px;
+  line-height: 8px;
+  padding: 15px;
   color: black;
   max-width: 40%;
 }
@@ -111,12 +111,12 @@ main {
   margin-right: 8px;
 }
 
-.input-wrapper {
+.input-area {
   display: flex;
   justify-content: center;
 }
 
-.input-wrapper form {
+.input-area form {
   width: 100%;
   display: flex;
   align-items: center;
@@ -152,5 +152,9 @@ button:hover {
 }
 
 .logo {
-  width: 300px;
+  width: 250px;
+}
+
+a {
+  color: black;
 }
