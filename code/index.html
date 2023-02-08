@@ -16,7 +16,7 @@
   <h2>Ask about xxxx.</h2>
   <main> <!-- main is the white part-->
     <section class="chat" id="chat"> <!--This will be populated by JS -->
-    <!--  <section class="bot-msg">
+      <!--  <section class="bot-msg">
         <img src="./assets/bot.png" alt="chat bot" />
         <div class="bubble bot-bubble">
           <p>Message</p>
@@ -32,9 +32,15 @@
     <div class="input-wrapper" id="input-wrapper">
       <!-- form will take care of input i want the user to use. Text, drop down, buttons, selects etc-->
       <form id="name-form">
+        <!--<p>Is your name Björn?</p>
+        <input type="checkbox" id="checkBox1" unchecked>
+        <label for="checkbox">yes</label>
+        <input type="checkbox" id="checkBox2" unchecked>
+        <label for="checkbox">no</label>-->
+
         <label for="name-input">Name</label>
-        <input id="name-input" type="text" />
-        <button class="send-btn" type="submit">
+        <input id="nameInput" placeholder="type here" type="text" required />
+        <button class="send-btn" id="button" type="submit" required>
           Send
         </button>
       </form>
