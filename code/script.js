@@ -17,13 +17,13 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/knight.png" alt="User" />  
       </section>
     `;
   } else if (sender === "bot") {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/wizard.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -80,10 +80,7 @@ const AdventurePicker = () => {
 };
 
 function askNextQuestion() {
-  setTimeout(
-    () => showMessage(` ${nameInput.value} , second question `, "bot"),
-    1000
-  );
+  setTimeout(() => showMessage(`${usersName}, second question `, "bot"), 1000);
   nameForm.remove();
   /*  */
   setTimeout(() => showClassOptions(), 1000);
