@@ -1,5 +1,7 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
+const form = document.getElementById('name-form')
+
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -42,6 +44,29 @@ const greetUser = () => {
 }
 
 // Set up your eventlisteners here
+
+form.addEventListener('submit', (event)=> {
+  event.preventDefault()
+// Prevents form from autorefresh
+
+const nameInput = document.getElementById('name-input').value;
+//console.log(nameInput)
+
+showMessage(nameInput, 'user');
+
+chat.innerHTML += `<section class="bot-msg">
+    <img src="assets/bot.png" alt="Bot" />
+    <div class="bubble bot-bubble">
+        <p>Nice to meet you ${nameInput}. What type of drink would you like to order?</p>
+    </div>
+</section>`;
+}
+
+// setTimeout(() => recognize(nameInput), 1000)
+
+)
+
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
