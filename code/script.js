@@ -5,6 +5,22 @@ const chat = document.getElementById('chat');
 
 
 // Declare your functions after this comment
+const handleNameInput = (event) => {
+  event.preventDefault()
+  // Store the value in a variable so we can access it after we 
+	// clear it from the input
+  const name = nameInput.value
+  showMessage(name, 'user')
+  nameInput.value = '';
+
+
+  // After 1 second, show the next question by invoking the next function.
+	// passing the name into it to have access to the user's name if we want
+	// to use it in the next question from the bot.
+  setTimeout(() => showFoodOptions(name), 1000)
+ 
+}
+
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -20,6 +36,7 @@ const showMessage = (message, sender) => {
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
+    // test: console.log("hi bot is working")
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -37,10 +54,15 @@ const showMessage = (message, sender) => {
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there, What's your name?", 'bot');
+  
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-// Set up your eventlisteners here
+
+// Set up your eventlisteners here 
+const submitButton = document.getElementById("send-btn",handleNameInput);
+
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
