@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #671e45;
 }
 
 h1 {
@@ -38,7 +38,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #6e0e37;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -95,7 +95,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #6e0842;
   max-width: 40%;
 }
 
@@ -124,12 +124,12 @@ label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  color: #801457;
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #7d1856;
   color: white;
   border: none;
   border-radius: 4px;
