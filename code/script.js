@@ -1,8 +1,12 @@
 // Variables that point to selected DOM elements
-const chat = document.getElementById('chat');
+const chat = document.getElementById("chat");
 
+const form = document.getElementById("name-input")
+const inputWrapper = document.getElementById("input-wrapper")
+const sendBtn = document.getElementById("submit")
 // If you need any global variables that you can use across different functions, declare them here:
 
+let username
 
 // Declare your functions after this comment
 
@@ -35,18 +39,36 @@ const showMessage = (message, sender) => {
 }
 
 // Starts here
-const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Do you need a vacation? Enter your name below to get started.", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
+const greetUser = (event) => { 
+  showMessage("Do you need a vacation? Enter your name below to get started.", "bot");
+  //event.preventDefault();
 }
 
-// Set up your eventlisteners here
+//Event listeners--Questions
+ 
 
+const handleNameInput = (event) => {
+  event.preventDefault(); //prevents refresh when user hits submit
+  const userName = nameInput.value; //this will store the input value 
+  //username === nameInput.value;
+  showMessage("Hello" + userName + "please choose from the options below", "user");
+  nameInput.value = ''; //clears name input to empty string
+  setTimeout (() => showMessage(`Nice to meet you ${userName}!`, 'bot'), 1000 ) 
+
+
+ nameInput.addEventListener('submit', handleNameInput)
+
+
+  // After 1 second, show the next question by invoking the next function.
+  // passing the name into it to have access to the user's name if we want
+  // to use it in the next question from the bot.
+  setTimeout(() => showFoodOptions(name), 1000);
+}
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
+
 setTimeout(greetUser, 1000);
