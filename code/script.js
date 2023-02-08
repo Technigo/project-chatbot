@@ -60,8 +60,8 @@ const showDropdownMenuInstedOfBurgerButtons = () => {
   //Default drink is water in the select abpove so we set the option to water as well. This means that if we select the deafult then option should be water
   let option="water"
   let drinkmenu= document.getElementById("selectDrink")
-  drinkmenu.addEventListener("change", ()=> {
-    option=this.value
+  drinkmenu.addEventListener("change", (event)=> {
+    option = event.target.value
   });
 
   document.getElementById("drinkButton").addEventListener('click', () => selectDrink(option))
