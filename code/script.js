@@ -1,5 +1,7 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
+const form = document.getElementById('name-form');
+const nameInput = document.getElementById('name-input');
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -33,12 +35,28 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
+
+
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there, crafter! Who do I have the pleasure of speaking with today?", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }
+
+form.addEventListener('submit', function(event){
+  event.preventDefault()
+  const username = nameInput.value
+  console.log(username)
+  showMessage(username, 'user')
+  setTimeout(() => showFirstResponse(username), 500)
+});
+
+const showFirstResponse = () => {
+  showMessage(`Hi there, ${nameInput.value}! Are you interested in getting quilting, crochet, or cross-stitch ideas?`, 'bot')
+}
+
+
 
 // Set up your eventlisteners here
 
