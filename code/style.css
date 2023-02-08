@@ -6,12 +6,12 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: rgb(30, 85, 75);
 }
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
+  font-size: 55px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -19,9 +19,9 @@ h1 {
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 30px;
   line-height: 34px;
-  color: #fff;
+  color: #db7093;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -38,7 +38,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: pink;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -90,12 +90,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #f08080;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #afeeee;
   max-width: 40%;
 }
 
@@ -129,21 +129,23 @@ label {
 }
 
 button {
-  background-color: #0026ff;
-  color: white;
+  background-color: pink;
+  color: black;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   padding: 16px 40px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
   font-family: 'Montserrat';
-  font-weight: 500;
+  font-weight: 800;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 button:hover {
-  opacity: 0.9;
+  opacity: 1,0;
+  background-color: rgb(30, 85, 75);
+  color: #f08080;
   transition: all 0.2s ease;
 }
