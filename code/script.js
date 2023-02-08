@@ -1,6 +1,12 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 
+const noButton = document.getElementById("no-btn");
+const inputWrapper = document.getElementById('input-wrapper');
+const chatInput = document.getElementById("chat-input");
+const sendButton = document.getElementById("send-btn");
+
+
 // If you need any global variables that you can use across different functions, declare them here:
 
 
@@ -36,11 +42,50 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage("Hello there, Would you like to book a train ticket?", 'bot')
+  
+  chat.innerHTML += `
+   <button id="yes-btn" class="inChatButton">Yes please</button>
+   <button id="no-btn" class="inChatButton">No thanks</button>
+  `
+  document.getElementById('yes-btn').addEventListener('click',() => {
+    showMessage('Yes please.', 'user')
+    setTimeout(() => showMessage('Great! What is your city of departure?', 'bot'), 1200);
+})
+
 }
 
+
+
+
+const handleChatInput = (event) => {
+  event.preventDefault();
+  // Store the value in a variable so we can access it after we clear it from the input
+  const inputstring = chatInput.value;
+  showMessage(`You age is ${inputstring}`, 'user'); 
+
+  const age = parseInt(inputstring);
+  if(age > 18)
+    showMessage("You are an adult!", 'bot');
+  else
+  showMessage("You are a child!", 'bot');
+
+
+  chatInput.value = ''
+
+  
+  
+}
+
+
+
+
+
+
+
 // Set up your eventlisteners here
+//yesButton.addEventListener("click", yesButtonOnClick);
+sendButton.addEventListener("click", handleChatInput);
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
@@ -49,3 +94,5 @@ const greetUser = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000);
+
+

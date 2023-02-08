@@ -147,3 +147,11 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+.inChatButton{
+  display:flex;
+  justify-content: center;
+  margin:16px 0 5px 70px;
+  width:200px;
+  border-radius: 30px;
+}
