@@ -4,6 +4,8 @@ const inputWrapper = document.getElementById('input-wrapper');
 const input = document.getElementById('answer-input');
 const sendBtn = document.getElementById('send');
 
+let questionNr = 1;
+
 // If you need any global variables that you can use across different functions, declare them here:
 
 // Declare your functions after this comment
@@ -44,16 +46,44 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
-// Starts here
-const greetUser = () => {
-  // Here we call the function showMessage, that we declared earlier 
-  // with the argument "Hello there, What's your name?" for message, 
-  // and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
+//This function makes the bot continue the conversation
+const nextQuestion = (message) => {
+
+  if (questionNr === 1) {
+    userReply(message)
+    input.value = ''
+    setTimeout(() => ShowCuisineTypes(message), 1000)
+  }
 }
 
+// Starts here
+const greetUser = () => {
+  questionNr = 1
+  showMessage("Hello there, what's your name?", 'bot');
+}
+
+const ShowCuisineTypes = (msg) => {
+  questionNr = 2
+  botReply(`Nice too meet you ${msg}! What type of cuisine would you like to explore?`)
+
+  inputWrapper.innerHTML = `
+  <button id="italianBtn">Italian</button>
+  <button id="asianBtn">Asian</button>
+  <button id="middleEasternBtn">Middle Eastern</button>
+  `
 // Set up your eventlisteners here
+  document
+  .getElementById(italianBtn)
+  .addEventListener('click', () => nextQuestion('italian'))
+  document
+  .getElementById(asianBtn)
+  .addEventListener('click', () => nextQuestion('asian'))
+  document
+  .getElementById(middleEasternBtn)
+  .addEventListener('click', () => nextQuestion('middle  eastern'))
+}
+
+
 
 
   

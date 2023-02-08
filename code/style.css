@@ -6,7 +6,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background-image: url(https://images.unsplash.com/photo-1564759224907-65b945ff0e84?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzU4Njc5MTQ&ixlib=rb-4.0.3&q=80);
+  background-image: linear-gradient(rgba(50, 16, 54, 0.5), rgba(0, 0, 0, 0)),
+  url(https://images.unsplash.com/photo-1564759224907-65b945ff0e84?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzU4Njc5MTQ&ixlib=rb-4.0.3&q=80);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -23,7 +24,7 @@ h1 {
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 34px;
   color: white;
   text-align: center;
