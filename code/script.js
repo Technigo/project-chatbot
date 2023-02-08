@@ -2,7 +2,8 @@
 const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('input-wrapper');
 const nameInput = document.getElementById('name-input');
-const sendButton = document.getElementById('.send-btn');
+const sendBtn = document.getElementById('send-btn');
+const nameForm = document.getElementById('name-form');
 
 
 // If you need any global variables that you can use across different functions, declare them here:
@@ -37,29 +38,62 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
+
+
 // Starts here
 const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hi! What's your name?", 'bot');
+  showMessage("Hi! Let's find you the perfect plant! What's your name?", 'bot')
+}
+
+const handleNameInput = (event) => {
+  event.preventDefault();
+  const name = nameInput.value;
+  showMessage(name, 'user');
+  setTimeout(() => waterQuestion(), 1000);
+}
+
+const yesAnswer = () => {
+  showMessage("I love watering, I keep drowning my plants...", 'user');
+  setTimeout(() => askNextQuestion(), 1000);
+}
+
+const noAnswer = () => {
+  showMessage("I keep forgetting to water plants!", 'user');
+  setTimeout(() => askNextQuestion(), 1000);
+}
+
+const naAnswer = () => {
+  showMessage("I can water it as much as it needs!", 'user');
+  setTimeout(() => askNextQuestion(), 1000);
 }
 
 setTimeout(greetUser, 1000);
 
-const handleNameInput = () => {
-  let name = nameInput.value
-  showMessage(name, 'user');
+
+const waterQuestion = () => {
+  showMessage(`How much light will your plant get, ${nameInput.value}? `, 'bot');
+  inputWrapper.innerHTML = `
+  <button id="noWaterBtn">No</button>
+  <button id="yesWaterBtn">A lot</button>
+  <button id="naWaterBtn">As much as it needs</button>
+  `
+  document.getElementById('yesWaterBtn').addEventListener('click', () => yesAnswer());
+  document.getElementById('noWaterBtn').addEventListener('click', () => noAnswer());
+  document.getElementById('naWaterBtn').addEventListener('click', () => naAnswer());
 }
 
-addEventListener('submit', (event) => {
-  event.preventDefault();
-  handleNameInput();
-  setTimeout(() => askNextQuestion(), 1000)
-})
 
-askNextQuestion() {
-  setTimeout(() => showMessage(`Let's find you the perfect plant, ${nameInput.value}! `, 'bot'))
-  inputWrapper.innerHTML=`
-  <button id="yesBtn">Yes, let's go!</button>
-  <button id="noBtn">No, I'm not ready for that commitment!</button>
+
+
+const askNextQuestion = () => {
+  showMessage(`How much light will your plant get, ${nameInput.value}? `, 'bot');
+  inputWrapper.innerHTML = `
+  <button id="darkBtn">It's a dark room...</button>
+  <button id="lightBtn">Sunny all day, baby!</button>
+  <button id="naBtn">I'm not sure!</button>
   `
 } 
+
+
+
+nameForm.addEventListener('submit', handleNameInput);
