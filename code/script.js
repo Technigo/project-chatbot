@@ -9,6 +9,7 @@ const inputWrapper = document.getElementById("input-wrapper");
 let questionIndex = 1;
 let userName = "";
 let mood = "";
+let drink = "";
 
 // Declare your functions after this comment
 const botReply = (message) => {
@@ -20,25 +21,29 @@ const userReply = (message) => {
 };
 
 const stepThroughQuestions = (message) => {
-  questionIndex == 1
-    ? (userReply(message),
-      (userName = message),
-      (textInput.value = ""),
-      setTimeout(showButtons, 1000))
-    : questionIndex == 2
-    ? (userReply(
-        `I'm feeling ${message == "good" ? "real good" : "a little off"}!`
-      ),
-      (mood = message),
-      setTimeout(askForSomething, 1000))
-    : questionIndex == 3
-    ? (userReply(message), setTimeout(showButtons, 1000))
-    : null;
+  if (questionIndex == 1) {
+    userReply(message);
+    userName = message;
+    textInput.value = "";
+    setTimeout(showButtons, 1000);
+  } else if (questionIndex == 2) {
+    userReply(
+      `I'm feeling ${message == "good" ? "real good" : "a little off"}!`
+    );
+    mood = message;
+    setTimeout(askForSomething, 1000);
+  } else if (questionIndex == 3) {
+    userReply(`I'll have a ${message}, thanks!`);
+    setTimeout(anythingElse, 1000);
+  } else if (questionIndex == 4) {
+    userReply(message);
+    setTimeout(offerVideo, 1000);
+  }
 };
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
+  // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
   if (sender === "user") {
     chat.innerHTML += `
       <section class="user-msg">
@@ -48,7 +53,7 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `;
-    // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
+    // the else if statement checks if the sender is a bot and if that's the case it inserts an html section inside the chat with the posted message
   } else if (sender === "bot") {
     chat.innerHTML += `
       <section class="bot-msg">
@@ -65,6 +70,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greetUser = () => {
+  nextQuestion = "showButtons";
   botReply("Hello there! My name is EdBot. What should I call you?");
 };
 
@@ -88,7 +94,53 @@ const showButtons = () => {
 const askForSomething = () => {
   questionIndex++;
   botReply(`${mood == "good" ? "Great" : "Sorry"} to hear that, ${userName}!`);
-  setTimeout(() => botReply("Do you need a little pick-me-up?"), 500);
+  setTimeout(() => botReply("Do you want something to drink?"), 500);
+  inputWrapper.innerHTML = `
+  <button id="beerBtn" type="submit">a perfectly poured hazy NEIPA</button>
+  <button id="waterBtn" type="submit">a glass of cold tap water</button>
+`;
+
+  document.getElementById("beerBtn").addEventListener("click", () => {
+    drink = "beer";
+    stepThroughQuestions("a perfectly poured hazy NEIPA");
+  });
+
+  document.getElementById("waterBtn").addEventListener("click", () => {
+    drink = "water";
+    stepThroughQuestions("a glass of cold tap water");
+  });
+};
+
+const anythingElse = () => {
+  questionIndex++;
+  botReply(`Here's your drink, ${userName}!`);
+  setTimeout(
+    () => botReply("Can I interest you in a curated YouTube-video?"),
+    500
+  );
+  inputWrapper.innerHTML = `
+  <button id="yesBtn" type="submit">That would be lovely!</button>
+  <button id="noBtn" type="submit">No thanks, I'm good!</button>
+`;
+
+  document.getElementById("yesBtn").addEventListener("click", () => {
+    stepThroughQuestions("That would be lovely!");
+  });
+
+  document.getElementById("noBtn").addEventListener("click", () => {
+    stepThroughQuestions("No thanks, I'm good!");
+  });
+};
+
+const offerVideo = () => {
+  botReply(
+    `Let me find you a video which goes well with ${
+      drink == "beer" ? "hazy NEIPAs" : "cold water"
+    } and ${mood == "good" ? "happy" : "sad"} days!`
+  );
+  mood = "good"
+    ? botReply("https://www.youtube.com/watch?v=Ofq_nl366VM")
+    : botReply("https://www.youtube.com/watch?v=CC4I65VIoeE");
 };
 
 sendButton.addEventListener("click", () =>
