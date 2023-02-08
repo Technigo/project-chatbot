@@ -1,11 +1,12 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
-const sendBtn = document.getElementById('sendBtn'); // 👈🏼 här kan du göra en "förkortning" till sendBtn
-const nameForm = document.getElementById('nameForm'); // 👈🏼 här kan du göra en "förkortning" till nameForm
+const sendBtn = document.getElementById('sendBtn');
+const nameForm = document.getElementById('nameForm');
 const nameInput =document.getElementById('nameInput')
 
 // If you need any global variables that you can use across different functions, declare them here:
 // Declare your functions after this comment
+let username // 👈🏼 FATTAR! om du vill använda username i flera funktioner kan du spara det i en global variabel
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -45,25 +46,34 @@ const greetUser = () => {
 const handleNameInput = (event) => {
   event.preventDefault()
   console.log('Här ska vi ta hand om namnet')
-  console.log(nameInput.value) // kolla in console om du ser namnet komma igenom
-  // vi måste få namnet fårn nameInput.value. men igen måste vi hitta input genom
-  // document.getElementById('nameInput') så det kan vi sätta upp högst upp, som en "shortcut"
+  console.log(nameInput.value) 
   showMessage(nameInput.value, 'user') 
-// skicka med input value och att det är user som skickar det nameInput.value är en variable så inga fnuttar där. bara fnuttar när det ska vara vanlig text
-
-  nameInput.value = '' // det här är på slutet, för att tömma inputen.
+  
+  // Save thee username for later
+  username = nameInput.value 
+//Empty input
+  nameInput.value = ''
+//Fördröjning till callback
+  setTimeout(() => firstAnswer() , 1000)
+}
 
   // Boten svarar med "Hi 'name', what a lovley day for laundry" + ny fråga  
+const firstAnswer = () => {
+  showMessage(`Hi ${username}, what a lovley day for laundry! ` ,'bot') 
+  setTimeout(() => firstQuestion() , 3000)
+}
+
+const firstQuestion = () => {
+  showMessage ('What kind of laundry will you be doing today?' , 'bot')
 }
 
 
-// Set up your eventlisteners here
-sendBtn.addEventListener('submit', handleNameInput);
-// 💡 HÄR VET INTE KODEN VAD sendBtn ÄR. DU MÅSTE GÖRA SOM HÖGST UPP MED chat
-// Jag gjorde det åt dig så kan du se hur det ser ut
 
+
+// Set up your eventlisteners here
+// sendBtn.addEventListener('submit', handleNameInput); <== behövs denna?
 nameForm.addEventListener('submit', handleNameInput);
-// Lyssna till hela form submit. Eftersom man kan använda enter på tangentbordet också. Och inte bara själva kanppen
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
