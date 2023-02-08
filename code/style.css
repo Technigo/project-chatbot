@@ -6,14 +6,14 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
-  background: #0026ff;
+  background: #e5cb7a;
 }
 
 h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: 	#450101;
   text-align: center;
 }
 
@@ -21,7 +21,7 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: 	#450101;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -36,15 +36,17 @@ p {
 input {
   box-sizing: border-box;
   border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  border-radius: 4px;
+  background: #e5cb7a;
+  color: #450101;
   padding: 16px;
   font-size: 16px;
   font-family: "Montserrat";
   font-weight: 600;
   line-height: 26px;
   flex: 1;
+  margin-right: 5px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
 }
 
 main {
@@ -95,7 +97,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: 	#450101;
   max-width: 40%;
 }
 
@@ -129,8 +131,8 @@ label {
 }
 
 button {
-  background-color: #0026ff;
-  color: white;
+  background-color: #e5cb7a;
+  color: #450101;;
   border: none;
   border-radius: 4px;
   padding: 16px 40px;
@@ -141,6 +143,7 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
@@ -151,3 +154,46 @@ button:hover {
 .flex {
   display: flex;
 }
+
+.burgerButtons button {
+  color: 	#450101;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
+
+#drinkButton {
+  margin-left: 5px;
+}
+
+.box select {
+  background-color: #e5cb7a;
+  color: #450101;
+  padding: 12px;
+  width: 250px;
+  border: none;
+  font-size: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+  border-radius: 4px;
+}
+
+.box::before {
+  content: "\f13a";
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.box:hover::before {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.box select option {
+  padding: 30px;
+}
+

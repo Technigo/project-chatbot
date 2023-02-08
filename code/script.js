@@ -13,10 +13,14 @@ const drinkList = (burgerType) => {
   showDropdownMenuInstedOfBurgerButtons()
 }
 const showMenuButtonsInsteadOfForm = () => {
-  inputSection.innerHTML = `
+  inputSection.innerHTML = 
+  `
+  <div class="burgerButtons">
+  
   <button id="cheeseButton">Cheese Burger</button>
   <button id="chickenButton">Chicken Burger</button>
   <button id="veggieButton">Veggie Burger</button>
+  </div>
   `
   document.getElementById('cheeseButton').addEventListener('click', () => drinkList("Cheese Burger"));
   document.getElementById('chickenButton').addEventListener('click', () => drinkList("Chicken Burger"));
@@ -26,29 +30,54 @@ const showMenuButtonsInsteadOfForm = () => {
 const friesYN = (value) => {
   if (value === "Yes" || value === "yes" || value === "No" || value === "no" ) {
     showMessage(value, "user")
-    showMessage("Thank you for you order!", "bot")
-    inputSection.innerHTML = ""
+    showMessage("Would you like to have a dip?", "bot")
+    showDipButtonsInsteadOfFries()
   } else {
     showMessage("You can only type Yes or No", "bot")
   }
- 
+
 }
+const lastMessage = (dipValue) => {
+  showMessage(dipValue, "user")
+  showMessage("Thank you for your order!", "bot")
+  inputSection.innerHTML = ""
+}
+const showDipButtonsInsteadOfFries = () => {
+  inputSection.innerHTML = 
+  `
+  <div class="dipButtons">
+  
+  <button id="garlicButton">Garlic</button>
+  <button id="cheeseButton">Cheese</button>
+  <button id="ketchupButton">Ketchup</button>
+  <button id="noButton">No</button>
+  </div>
+  `
+  document.getElementById('garlicButton').addEventListener('click', () => lastMessage("Garlic"));
+  document.getElementById('cheeseButton').addEventListener('click', () => lastMessage("Cheese"));
+  document.getElementById('ketchupButton').addEventListener('click', () => lastMessage("Ketchup"));
+  document.getElementById('noButton').addEventListener('click', () => lastMessage("No"));
+}
+
 const showFriesButtonsInstedOfSelectDrink = () => {
   inputSection.innerHTML = `
   <input id="friesInput" type="text" />
   <button id="friesButton" type="submit">Send</button>
   `
+
   let friesInputField = document.getElementById("friesInput")
   document.getElementById('friesButton').addEventListener('click', () => friesYN(friesInputField.value));
+
 }
 const selectDrink = (option) => {
   showMessage(option, "user")
   showMessage(`Great you chose ${option}! Would you like some fries with your ${myBurger}?`, "bot")
   showFriesButtonsInstedOfSelectDrink()
 }
+
 const showDropdownMenuInstedOfBurgerButtons = () => {
   inputSection.innerHTML = `
-  <div class="flex drinkmenu">
+  <div class="flex drinkmenu box">
     <select id="selectDrink">  
       <option val="water">Water</option>
       <option val="cola">Cola</option>
