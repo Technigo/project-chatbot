@@ -77,7 +77,7 @@ sendBtn.addEventListener('click', (event) => {
   // After 1 second, show the next question by invoking the next function.
 	// passing the name into it to have access to the user's name if we want
 	// to use it in the next question from the bot.
-  setTimeout(() => showFoodOptions(name), 1000)
+  setTimeout(() => showFoodOptions(userName), 1000)
 
 
 // When website loaded, chatbot asks first question.
