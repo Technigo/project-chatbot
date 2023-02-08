@@ -6,19 +6,22 @@ const chat = document.getElementById('chat');
 
 // Declare your functions after this comment
 const handleNameInput = (event) => {
-  event.preventDefault()
+
+  event.preventDefault();
   // Store the value in a variable so we can access it after we 
-	// clear it from the input
-  const name = nameInput.value
-  showMessage(name, 'user')
-  nameInput.value = '';
+	//   clear it from the input
+  const nameInput = document.getElementById("name-input");
+  const name = nameInput.value;
+  showMessage(name, 'user');
+  nameInput.value = "";
 
 
   // After 1 second, show the next question by invoking the next function.
 	// passing the name into it to have access to the user's name if we want
 	// to use it in the next question from the bot.
   setTimeout(() => showFoodOptions(name), 1000)
- 
+  
+
 }
 
 
@@ -60,10 +63,14 @@ const greetUser = () => {
 
 
 // Set up your eventlisteners here 
-const submitButton = document.getElementById("send-btn",handleNameInput);
+const submitButton = document.getElementById("send-btn");
+submitButton.addEventListener("click",handleNameInput);
 
+/*var button = document.getElementById("button");
 
+button.addEventListener("click", function(event){
 
+   alert(event.target);*/
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
