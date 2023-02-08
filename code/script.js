@@ -1,5 +1,8 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
+const inputwrapper = document.getElementById("input-wrapper");
+const nameform = document.getElementById("name-form");
+
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -19,10 +22,29 @@ const handleNameInput = (event) => {
   // After 1 second, show the next question by invoking the next function.
 	// passing the name into it to have access to the user's name if we want
 	// to use it in the next question from the bot.
-  setTimeout(() => showFoodOptions(name), 1000)
-  
+  setTimeout(() => showBookingOptions(name), 1000)
 
 }
+// Question 2 from bot, and the user will get option to choose.
+const showBookingOptions = () =>{
+  showMessage("Nice to meet you! Do you have a booking number?",'bot');
+  inputwrapper.innerHTML =
+  `<button id="yes" class="yes"> YES </button>
+   <button id="no" class="no"> NO </button>`
+
+   
+   document.getElementById("yes").addEventListener("click", 
+                                      yesbutton = (event) => {
+                                              showMessage("Yes, I do",'user');
+                                      });
+   document.getElementById("no").addEventListener("click",nobutton);
+}
+
+
+const nobutton = (event) => {
+  showMessage("Please go to reception",'bot');
+}
+
 
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -53,24 +75,16 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
-// Starts here
+// Starts here: Question 1 from bot to greet user.
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there, What's your name?", 'bot');
-  
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
-
 
 // Set up your eventlisteners here 
 const submitButton = document.getElementById("send-btn");
 submitButton.addEventListener("click",handleNameInput);
 
-/*var button = document.getElementById("button");
-
-button.addEventListener("click", function(event){
-
-   alert(event.target);*/
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
