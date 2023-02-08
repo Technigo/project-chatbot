@@ -9,6 +9,16 @@ body {
   background: #0026ff;
 }
 
+video {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
 h1 {
   font-weight: bold;
   font-size: 44px;
@@ -41,7 +51,7 @@ input {
   color: #0026ff;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -59,12 +69,12 @@ select{
   font-size: 20px;
   font-weight: 600;
   height: 60px;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   background: #e5e9ff;
   width: 100%;
   padding: 0 20px;
   cursor: pointer;
-   
+
 }
 
 main {
@@ -142,7 +152,7 @@ main {
 
 label {
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   color: #0026ff;
   margin-right: 20px;
@@ -157,7 +167,7 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;

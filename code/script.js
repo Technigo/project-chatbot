@@ -4,12 +4,14 @@ const inputWrapper = document.getElementById('input-wrapper');
 const nameInput = document.getElementById('name-input');
 const sendBtn = document.getElementById('send')
 
+//Global variables. I have one for userName to be able to use the value in more than first reply.
+let userName;
 // Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
 //without the ${message} the actual message(parameter) in const greetUser will not be passed, only string message. Only the parameter 'bot' 
 const showMessage = (message, sender) => {
-  // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
+  // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
   if (sender === 'user') {
     console.log("Now the user is replying");
     chat.innerHTML += `
@@ -36,19 +38,19 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
-// My "Conversation" fot the Chat starts here
+// My "Conversation" for the Chat starts here
 const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
+  // here we call the function showMessage, that we declared earlier. With the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Welcome, What's your name?", 'bot');
 }
 
-// Initial button click, here we should get the name entered
+// Initial button click, here I should get the name entered
 sendBtn.addEventListener('click', (event) => {
-  event.preventDefault()
+  event.preventDefault() //this is so the page do not reload.
 
-  // Store the value in a variable so we can access it after we 
-  // clear it from the input
-  const userName = nameInput.value
+  // Store the value in a variable so I can access it after we 
+  // clear it from the input. The variable were the value will be stored is outside of this function to be able to use it in more places. In here it get assigned
+  userName = nameInput.value
   showMessage(`${userName}`, 'user');
 
   // Clears the input field
@@ -119,7 +121,6 @@ const moreSpecificDish = (type) => {
 const userReply2 = (type) => {
   showMessage(`${type}`, 'user');
   setTimeout(() => displayRecipeLink(type), 1000);
-  //inputWrapper.innerHTML = '';
 }
 
 const displayRecipeLink = (answer) => {
@@ -128,7 +129,7 @@ const displayRecipeLink = (answer) => {
   } else if (answer === 'Creamy') {
     showMessage(`Excellent choice! Find the link here <a href="https://www.inspiredtaste.net/9603/creamy-vegetable-soup-recipe/">${answer} Soup</a>`, 'bot');
   } else if (answer === 'Green') {
-    showMessage(`Excellent choice! Find the link here <a href="https://www.recipetineats.com/immunity-boosting-green-goddess-soup-its-delish/">${answer} Soup</a>`, 'bot');
+    showMessage(`Interesting choice! Find the link here <a href="https://www.recipetineats.com/immunity-boosting-green-goddess-soup-its-delish/">${answer} Soup</a>`, 'bot');
   } else if (answer === 'Spaghetti') {
     showMessage(`Excellent choice! Find the link here <a href="https://www.jamieoliver.com/recipes/pasta-sauce-recipes/veggie-bolognese-sauce/">${answer} Recipe!</a>`, 'bot');
   } else if (answer === 'Gnocchi') {
@@ -146,7 +147,7 @@ const displayRecipeLink = (answer) => {
 }
 
 const areYouHappy = (answer) => {
-  showMessage('Are you happy with your recipe? 👀', 'bot');
+  showMessage(`Ok ${userName}, I just want to check. Are you happy with your recipe? 👀`, 'bot');
   inputWrapper.innerHTML = `
   <button id="yesBtn">Yes 😋</button>
   <button id="noBtn">No 🤢</button>
@@ -161,6 +162,7 @@ const areYouHappy = (answer) => {
 
 const userReply3 = (answer) => {
   showMessage(`${answer}`, 'user');
+  inputWrapper.innerHTML = '';
   setTimeout(() => happyValidation(answer), 1000);
 }
 
@@ -170,25 +172,41 @@ const happyValidation = (answer) => {
     inputWrapper.innerHTML = '';
   } else {
     showMessage('Wooops, sorry to hear that! Want to give it another try? 🤞', 'bot');
-    inputWrapper.innerHTML = `
-    <button id="yesBtn">Yeees!</button>
-    <button id="noBtn">Hell No!</button>
-    `
-    document
-      .getElementById('yeesBtn')
-      .addEventListener('click', () => userReply3('Yeeees!'))
-    document
-      .getElementById('nooBtn')
-      .addEventListener('click', () => userReply3('Hell No!'))
-    
-    }
+    setTimeout(() => finalCheck(), 1000);
+  }
+}
+
+const finalCheck = () => {
+  inputWrapper.innerHTML = `
+  <button id="yeesBtn">Yeees!</button>
+  <button id="nooBtn">No, thanks!</button>
+  `
+  document
+    .getElementById('yeesBtn')
+    .addEventListener('click', () => userReply4('Yeeees!'))
+  document
+    .getElementById('nooBtn')
+    .addEventListener('click', () => userReply4('No, thanks!'))
+
+  setTimeout(() => userReply4(reply), 1000);
+}
+
+const userReply4 = (reply) => {
+  showMessage(`${reply}`, 'user');
+  setTimeout(() => finalAction(reply), 1000);
+}
+
+const finalAction = (reply) => {
+  if (reply === 'Yeeees!') {
+    location.reload();
+    return false
+  } else {
+    showMessage('Ok fine, I tried! Maybe you are not even hungry 👻', 'bot')
+    inputWrapper.innerHTML = '';
+  }
 }
 
 // Set up your eventlisteners here
-
-
-
-
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
