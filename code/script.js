@@ -1,5 +1,8 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
+const inputWrapper = document.getElementById('input-wrapper')
+const input = document.getElementById('name-input')
+const sendBtn = document.getElementById('send')
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -43,6 +46,7 @@ const greetUser = () => {
 }  
 
 // Set up your eventlisteners here
+
 const handleNameInput = (event) => {
   event.preventDefault()
   // Store the value in a variable so we can access it after we 
