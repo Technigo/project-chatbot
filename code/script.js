@@ -3,6 +3,7 @@ const chat = document.getElementById('chat');
 const nameForm = document.getElementById('name-form');
 const nameInput = document.getElementById('name-input');
 const inputWrapper = document.getElementById('input-wrapper');
+const submit = document.getElementById('submit');
 const sendButton = document.getElementById('send');
 
 const greetUser = () => {
@@ -10,6 +11,53 @@ const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   // Just to check it out, change 'bot' to 'user' here 👆
 };
+
+const handleNameInput = (event) => {
+  event.preventDefault()
+  // Store the value in a variable so we can access it after we 
+	// clear it from the input
+  const name = nameInput.value
+  showMessage(`My name is ${name}.`, 'user');
+  nameInput.value = ''
+
+  // After 1 second, show the next question by invoking the next function.
+	// passing the name into it to have access to the user's name if we want
+	// to use it in the next question from the bot.
+  setTimeout(() => experienceOption(name), 1000);
+};
+
+const experienceOption = (name) => {
+  showMessage(`Nice to meet you ${name}! Which experience do you want to book?`, 'bot');
+
+  inputWrapper.innerHTML += //add three experience buttons
+`<button id="bali-btn" type="submit">Bali</button>
+<button id="bali-btn" type="submit">Iceland</button>
+<button id="bali-btn" type="submit">Hawaii</button>`
+
+document
+.getElementById('bali-btn')
+.addEventListener('click', () => {
+  showMessage('I want to go to Bali', 'user');
+  setTimeout(showMessage('Bali, what a great choice! That will be 5000€ please', 'bot'), 1000);
+  //add some code in here to add answer options for next message
+})
+document
+.getElementById('iceland-btn')
+.addEventListener('click', () => {
+  showMessage('I want to go to Iceland', 'user');
+  setTimeout(showMessage('Iceland, what a great choice! That will be 5000€ please', 'bot'), 1000);
+  //add some code in here to add answer options for next message
+  
+})
+document
+.getElementById('hawaii-btn')
+.addEventListener('click', () => {
+  showMessage('I want to go to Hawaii', 'user');
+  setTimeout(showMessage('Hawaii, what a great choice! That will be 5000€ please', 'bot'), 1000);
+  //add some code in here to add answer options for next message
+})
+};
+
 
 //funtionen med tre buttons här. här ska det vara innerhtm inget else if chat.innerhtml slut ppå section.
 
@@ -67,6 +115,7 @@ const handleSend = (event) => {
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
 
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+  chat.scrollTop = chat.scrollHeight;
 
 
 
@@ -79,6 +128,12 @@ const handleSend = (event) => {
 
 
 // Set up your eventlisteners here - add eventlistner googla på det
+form.addEventListener('submit', handleNameInput);
+form.addEventListener('submit', function(event){
+  event.preventDefault() //prevent the form from autosubmitting
+})
+
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
