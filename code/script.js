@@ -3,6 +3,7 @@ const chat = document.getElementById('chat');
 const nameInput = document.getElementById('name-input');
 const form = document.getElementById('name-form');
 const inputWrapper = document.getElementById('input-wrapper');
+
 // If you need any global variables that you can use across different functions, declare them here:
 
 
@@ -17,9 +18,9 @@ const handleNameInput = (event) => {
   //After 1 second, show the next question by invoking the next function. Passin the name into it to have access to the user's name if we want to use it in the next question from the bot. 
   setTimeout(() => showFoodOptions(name), 1000);
   
-  
 }
 
+//Show Food options
 const showFoodOptions = (name) => {
   showMessage(`Hi ${name}! Welcome to Cake Palace, what would you like to order?`, 'bot');
  //Buttons appear
@@ -30,24 +31,38 @@ const showFoodOptions = (name) => {
   `
 
   //Listen for clicks on the buttons and trigger the next function
-  document.getElementById('cakeBtn').addEventListener('click', CakeOrder)
+  document.getElementById('cakeBtn').addEventListener('click', CakeOrder); 
 
   //*****FORTSÄTT HÄRIFRÅN, FUNKTIONSNAMN SAKNAS OVAN!!!! */
 
 }
 
-//*****BUILD FUNCTON for another food choice (drop down menu)****
+//FUNCTION FOR CAKE ORDER
 const CakeOrder = () => {
-showMessage(`I want cake, please!`, 'user');
-setTimeout(() => showMessage(`Okay, you want cake. What flavour would you like?`, 'bot'), 2000);
+  showMessage(`I want cake, please!`, 'user');
+  setTimeout(() => showMessage(`Okay, you want cake. What type of cake would you like?`, 'bot'), 90);
+
 inputWrapper.innerHTML = `
-  ****Select MENY- HÄR****
+  <form id="cake-type-form">
+    <select id="cakeTaste">
+    <option value="carrotcake">Carrot cake</option>
+    <option value="cheesecake">Cheese cake</option>
+    <option value="choccake">Chocholate cake</option>
+    </select>
+    <button class="send-btn" type="submit" button id="submitcake">Submit</button>
+  </form>  
   `
+  const typeofcake = document.getElementById("cakeTaste").value;
+
+  document.getElementById('submitcake').addEventListener('click', DeliveryOrNot(typeofcake)); 
+  }
+ 
+
+//FUNKTION DELIVERY OR NOT
+const DeliveryOrNot = (typeofcake) => {
+  showMessage(`So, you want ${typeofcake} huh?`)
 
 }
-
-
-
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
@@ -64,7 +79,6 @@ const showMessage = (message, sender) => {
     
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
-    console.log("Hej")
     
     chat.innerHTML += `
       <section class="bot-msg">

@@ -47,6 +47,19 @@ input {
   flex: 1;
 }
 
+select {
+  border: 2px solid #0026ff;
+  border-radius: 4px 0 0 4px;
+  background: #e5e9ff;
+  color: #0026ff;
+  padding: 16px;
+  font-size: 16px;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  line-height: 26px;
+  flex: 1;
+}
+
 main {
   margin: 0 auto;
   width: 100%;
