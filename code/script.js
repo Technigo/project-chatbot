@@ -51,7 +51,7 @@ const nextQuestion = (message) => {
     setTimeout(() => showYear(message), 1000)
   } else if (questionNumber === 3) {
     showMessage(message)
-    setTimeout(() => showDishSize(message), 1000)
+    setTimeout(() => showEvent(message), 1000)
   } else if (questionNumber === 4) {
     showMessage(message)
     setTimeout(() => showPrice(message), 1000)
@@ -112,14 +112,15 @@ const showYear = (type) => {
   showMessage(
     `Great choice! The ${type}'s were exciting times!`, 'bot')
 
-    showMessage(
+  showMessage(
       `Where do you want to go?`, 'bot')
+    
 
   if (type === '1920') {
     inputWrapper.innerHTML = `
       <select id="select">
         <option value="" selected disabled>Take me to...</option>
-        <option value="Black Thursday">Oct 29th 1929, Wall Street, New York</option>
+        <option value="Black Thursday">Oct 24th 1929, Wall Street, New York</option>
         <option value="Steamboat Willie">Nov 18th 1928, Universal's Colony Theater, New York</option>
         <option value="Amelia Earhart">June 18th 1928, Pwil, Wales</option>
       </select>
@@ -137,41 +138,77 @@ const showYear = (type) => {
     inputWrapper.innerHTML = `
       <select id="select">
         <option value="" selected disabled>Take me to...</option>
+        <option value="Millenium ">Jan 1st 2000, London, UK</option>
         <option value="iPhone">Jan 9th 2007, San Fransisco, California</option>
-        <option value="Caesar Salad">Caesar Salad</option>
-        <option value="Chicken Salad">Chicken Salad</option>
+        <option value="Obama">Jan 20th 2009, Capitol Building, Washington D.C</option>
       </select>
     `
   }
 
-  const select = document.getElementById('select')
+  const selectElement = document.getElementById("select");
+  const selectedValue = selectElement.value;
   select.addEventListener('change', () => nextQuestion(select.value)) 
 }
 
-const showDishSize = (dish) => {
-  questionNumber++
+const showEvent = (selectedValue) => {
+  questionNumber++ 
 
 
-  if (value === 'Black Thursday') {
-    window.open("https://www.w3schools.com");
-  } else if (questionNumber === 2) {
-    showMessage(message)
-    setTimeout(() => showYear(message), 1000)
-  } else if (questionNumber === 3) {
-    showMessage(message)
-    setTimeout(() => showDishSize(message), 1000)
-  } else if (questionNumber === 4) {
-    showMessage(message)
-    setTimeout(() => showPrice(message), 1000)
-  } else {
-    showMessage(message)
-    setTimeout(thankYou, 1000)
+  if (selectedValue === "Black Thursday") {
+    window.open('https://www.youtube.com/watch?v=A53Os-DuS94');
+    input.value = ''
+    setTimeout(() => showFoodTypes(message), 1000)
+  }
+  else if (selectedValue === "Steamboat Willie") {
+    window.open('https://www.youtube.com/watch?v=BBgghnQF6E4');
+    input.value = ''
+    setTimeout(() => showFoodTypes(message), 1000)
+  }
+  else if (selectedValue === "Amelia Earhart") {
+    window.open('https://www.youtube.com/watch?v=4BgAKnpK7p4');
+    input.value = ''
+    setTimeout(() => showFoodTypes(message), 1000)
+  }
+  else if (selectedValue === "Live Aid") {
+    window.open('https://www.youtube.com/watch?v=zP120YaAL8w&list=PLGjpH5uqT5EKflp4LoMJ6FLpkNk16agsH');
+    input.value = ''
+    setTimeout(() => showFoodTypes(message), 1000)
+  }
+  else if (selectedValue === "Tank Man") {
+    window.open('https://www.youtube.com/watch?v=YeFzeNAHEhU');
+    input.value = ''
+    setTimeout(() => showFoodTypes(message), 1000)
+  }
+  else if (selectedValue === "Berlin Wall") {
+    window.open('https://www.youtube.com/watch?v=zmRPP2WXX0U');
+    input.value = ''
+    setTimeout(() => showFoodTypes(message), 1000)
+  }
+  else if (selectedValue === "iPhone") {
+    window.open('https://www.youtube.com/watch?v=VQKMoT-6XSg');
+    input.value = ''
+    setTimeout(() => showFoodTypes(message), 1000)
+  }
+  else if (selectedValue === "Millenium") {
+    window.open('https://www.youtube.com/watch?v=m4FPHa2zZrQ');
+    input.value = ''
+    setTimeout(() => showFoodTypes(message), 1000)
+  }
+  else {
+    window.open('https://www.youtube.com/watch?v=S4VoolvEsyQ');
+    input.value = ''
+    setTimeout(() => showFoodTypes(message), 1000)
   }
 
 }
 
 /*
-const showDishSize = (dish) => {
+button.onclick = () => {
+  window.open('https://javascript.info');
+};
+
+
+const showYear = (dish) => {
   questionNumber++
 
   showMessage(`One ${dish} coming up! Will that be for an adult or a child?`, 'bot')
@@ -233,3 +270,4 @@ const thankYou = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000); 
+
