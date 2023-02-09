@@ -1,15 +1,21 @@
 // (Pseudo code) Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 
+// When the website has loaded (function)
+const greetUser = () => {
+  showMessage("Hey buddy, what's your name?", 'bot');
+  //showMessage("Hey my name is Emma", 'user' )
+}
+setTimeout(greetUser, 800);
+
 // If you need any global variables that you can use across different functions, declare them here:
 
 
 // Declare your functions after this comment
 
-// This function will add a chat bubble in the correct place based on who the sender is
+// This function will add a chat bubble in the correct place based on who the sender is(two arguments handled w conditionals)
 const showMessage = (message, sender) => {
 
-  // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
@@ -21,6 +27,8 @@ const showMessage = (message, sender) => {
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
+    console.log(showMessage)
+
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -28,20 +36,12 @@ const showMessage = (message, sender) => {
           <p>${message}</p>
         </div>
       </section>
-    `
+    `;
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
-}
+};
 
-
-// Starts here
-const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hey buddy, what's your name?", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
-}
-setTimeout(greetUser, 800);
 
 // Set up your eventlisteners here
   //document.getElementById("").addEventListener("",() {
@@ -49,6 +49,8 @@ setTimeout(greetUser, 800);
 
   //});
 
+//setTimeout(functionName, timeToWait)
+//greetUser();
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
