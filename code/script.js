@@ -3,11 +3,14 @@ const chat = document.getElementById('chat');
 const nameInput = document.getElementById('name-input');
 const form = document.getElementById('name-form');
 const inputWrapper = document.getElementById('input-wrapper');
+const typeofcake = document.getElementById('cake-type');
+const cakeform = document.getElementById('cake-form');
+
 
 // If you need any global variables that you can use across different functions, declare them here:
 
 
-// Declare your functions after this comment
+//**FUNCTION** Handle name input
 const handleNameInput = (event) => {
   event.preventDefault(); //prevents the page from refreshing
   //Store the value in a variable so we can access it after we clear it from the input
@@ -20,7 +23,7 @@ const handleNameInput = (event) => {
   
 }
 
-//Show Food options
+//**FUNCTION** Show Food options
 const showFoodOptions = (name) => {
   showMessage(`Hi ${name}! Welcome to Cake Palace, what would you like to order?`, 'bot');
  //Buttons appear
@@ -31,36 +34,38 @@ const showFoodOptions = (name) => {
   `
 
   //Listen for clicks on the buttons and trigger the next function
-  document.getElementById('cakeBtn').addEventListener('click', CakeOrder); 
-
-  //*****FORTSÄTT HÄRIFRÅN, FUNKTIONSNAMN SAKNAS OVAN!!!! */
+  document.getElementById('cakeBtn').addEventListener ('click', CakeOrder); 
 
 }
 
-//FUNCTION FOR CAKE ORDER
+//**FUNCTION** Cake order select (drop down menu)
 const CakeOrder = () => {
   showMessage(`I want cake, please!`, 'user');
   setTimeout(() => showMessage(`Okay, you want cake. What type of cake would you like?`, 'bot'), 90);
-
+  
 inputWrapper.innerHTML = `
-  <form id="cake-type-form">
-    <select id="cakeTaste">
-    <option value="carrotcake">Carrot cake</option>
-    <option value="cheesecake">Cheese cake</option>
-    <option value="choccake">Chocholate cake</option>
+<form id="cake-form">
+    <select name="cake-type">
+        <option value="carrotcake">Carrotcake</option>
+        <option value="cheesecake">Cheesecake</option>
+        <option value="choccake">Chocolate cake</option>
     </select>
-    <button class="send-btn" type="submit" button id="submitcake">Submit</button>
-  </form>  
-  `
-  const typeofcake = document.getElementById("cakeTaste").value;
 
-  document.getElementById('submitcake').addEventListener('click', DeliveryOrNot(typeofcake)); 
+<button id= "cakebtn" button type="submit"> Order cake </button>
+</form>
+  `  
+
+cakebtn.addEventListener ('click', DeliveryOrNot);
   }
  
+//**FUNCTION** Deliver or not?
+const DeliveryOrNot = (cake) => {
+  showMessage(`So, you want ${cake} huh?`, 'bot')
 
-//FUNKTION DELIVERY OR NOT
-const DeliveryOrNot = (typeofcake) => {
-  showMessage(`So, you want ${typeofcake} huh?`)
+  inputWrapper.innerHTML = `
+  *********GREJER HÄR*************
+    `  
+
 
 }
 // This function will add a chat bubble in the correct place based on who the sender is
