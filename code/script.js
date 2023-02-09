@@ -5,14 +5,12 @@ const nameInput = document.getElementById('name-input');
 const sendBtn = document.getElementById('send-btn');
 const nameForm = document.getElementById('name-form');
 
-
 // If you need any global variables that you can use across different functions, declare them here:
-
 
 // Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
-const showMessage = (message, sender) => {
+function showMessage(message, sender) {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
     chat.innerHTML += `
@@ -22,7 +20,7 @@ const showMessage = (message, sender) => {
         </div>
         <img src="assets/user.png" alt="User" />  
       </section>
-    `
+    `;
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
     chat.innerHTML += `
@@ -32,19 +30,18 @@ const showMessage = (message, sender) => {
           <p>${message}</p>
         </div>
       </section>
-    `
+    `;
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
 }
 
-
-
-// Starts here
+// User greeting
 const greetUser = () => {
-  showMessage("Hi! Let's find you the perfect plant! What's your name?", 'bot')
+  showMessage("Hi! Let's find you the perfect plant! What's your name?", 'bot');
 }
 
+//Handling of username
 const handleNameInput = (event) => {
   event.preventDefault();
   const name = nameInput.value;
@@ -52,47 +49,150 @@ const handleNameInput = (event) => {
   setTimeout(() => waterQuestion(), 1000);
 }
 
-const yesAnswer = () => {
-  showMessage("I love watering, I keep drowning my plants...", 'user');
-  setTimeout(() => askNextQuestion(), 1000);
+//Question 1, user selects, triggers bots answer and question 2
+const waterQuestion = () => {
+  showMessage(`How much do you water your plants, ${nameInput.value}? `, 'bot');
+  inputWrapper.innerHTML = `
+  <button id="littleWaterBtn">A little</button>
+  <button id="lotWaterBtn">A lot!</button>
+  <button id="naWaterBtn">As needed</button>
+  `
+  document.getElementById('littleWaterBtn').addEventListener('click', () => {showMessage ("I keep forgetting to water plants!", 'user');
+  setTimeout(() => waterAnswer('littleWater'), 1000)});
+  document.getElementById('lotWaterBtn').addEventListener('click', () => {showMessage ("I love watering, I keep drowning my plants...", 'user')
+  setTimeout(() => waterAnswer('lotWater'), 1000)});
+  document.getElementById('naWaterBtn').addEventListener('click', () =>{showMessage("I water my plants like a pro!", 'user')
+  setTimeout(() => waterAnswer('naWater'), 1000)});
+
+const waterAnswer = (water) => {
+  inputWrapper.innerHTML = ``;
+  if (water === 'littleWater') {
+    showMessage ("So do I! Don't worry, we'll find you a good match.", 'bot')
+  }
+  else if (water === 'lotWater') {
+    showMessage ("It's so easy to water too much! Let's find you a plant that likes water.", 'bot')
+  }
+  else {
+    showMessage ("Wow, you're better than me! Let's find you a good plant!", 'bot')
+  }
+  setTimeout(() => lightQuestion(water), 1000);
+}
 }
 
-const noAnswer = () => {
-  showMessage("I keep forgetting to water plants!", 'user');
-  setTimeout(() => askNextQuestion(), 1000);
+
+const lightQuestion = () => {
+  showMessage(`How much light will your plant get? `, 'bot');
+  inputWrapper.innerHTML = `
+  <button id="lightBtn" value="light">Sunny all day, baby!</button>
+  <button id="darkBtn" value="dark">A dark corner</button>
+  <button id="naLightBtn" value="anyLight">Not sure!</button>
+  `
+  document.getElementById('lightBtn').addEventListener('click', () => {showMessage ("light!", 'user')
+  setTimeout(() => showPlant('littleWater'), 1000)});
+  document.getElementById('darkBtn').addEventListener('click', () => {showMessage ("dark", 'user')
+  setTimeout(() => showPlant('lotWater'), 1000)});
+  document.getElementById('naLightBtn').addEventListener('click', () =>{showMessage("pro light", 'user')
+  setTimeout(() => showPlant('nawater'), 1000)});
 }
 
-const naAnswer = () => {
-  showMessage("I can water it as much as it needs!", 'user');
-  setTimeout(() => askNextQuestion(), 1000);
+const showPlant = (water) => {
+  if (water === 'littleWater') {
+showMessage ("You should get a succulent!", 'bot')
+  }
+  else if (water === 'lotWater') {
+    showMessage ("You should get palettblad!", 'bot')
+  }
+  else if (water === 'naWater') {
+    showMessage ("You should get a pelargon", 'bot')
+  }
+else {
+  showMessage ("Nothing", 'bot')
+}
 }
 
-setTimeout(greetUser, 1000);
+/*
+//Question 1, user clicks button, triggers bot answer and question 2
+const waterQuestion = () => {
+  showMessage(`How much do you water your plants, ${nameInput.value}? `, 'bot');
+  inputWrapper.innerHTML = `
+  <button id="littleWaterBtn">A little</button>
+  <button id="lotWaterBtn">A lot!</button>
+  <button id="naWaterBtn">As needed</button>
+  `
+  document.getElementById('littleWaterBtn').addEventListener('click', () => {showMessage ("I keep forgetting to water plants!", 'user')
+  setTimeout(() => waterAnswer('littleWater'), 1000)});
+  document.getElementById('lotWaterBtn').addEventListener('click', () => {showMessage ("I love watering, I keep drowning my plants...", 'user')
+  setTimeout(() => waterAnswer('lotWater'), 1000)});
+  document.getElementById('naWaterBtn').addEventListener('click', () =>{showMessage("I water my plants like a pro!", 'user')
+  setTimeout(() => waterAnswer('naWater'), 1000)});
+
+const waterAnswer = (choice) => {
+  inputWrapper.innerHTML = ``;
+  if (choice === 'littleWater') {
+    showMessage ("So do I! Don't worry, we'll find you a good match.", 'bot')
+  }
+  else if (choice === 'lotWater') {
+    showMessage ("It's so easy to water too much! Let's find you a plant that likes water.", 'bot')
+  }
+  else {
+    showMessage ("Wow, you're better than me! Let's find you a good plant!", 'bot')
+  }
+  setTimeout(() => lightQuestion(choice), 1000);
+}
+}
+
+//Question 2, select choice, triggers bot answer
+const lightQuestion = () => {
+  showMessage("How much light will your plant get?", 'bot');
+  inputWrapper.innerHTML = `
+  <select id="lightSelector">
+  <option value="" selected disabled>👇Choose your option</option>
+  <option value="muchLight">Sunny all day, baby!</option>
+  <option value="dark">A dark corner</option>
+  <option value="naLight">I'm not sure!</option>
+  </select>
+  `
+  
+  const select = document.getElementById('lightSelector');
+  const plant = select.value;
+  select.addEventListener('change', () => showPlant(plant));
+}
+
+const showPlant = (plant, choice) => {
+  if (plant === 'muchLight' && choice === 'littleWater') {
+showMessage ("You should get a succulent!", 'bot')
+  }
+  else if (plant === 'dark') {
+    showMessage ("You should get palettblad!", 'bot')
+  }
+else {
+  showMessage ("Nothing", 'bot')
+}
+}
+
 
 
 const waterQuestion = () => {
-  showMessage(`How much light will your plant get, ${nameInput.value}? `, 'bot');
+  showMessage(`How much do you water your plants, ${nameInput.value}? `, 'bot');
   inputWrapper.innerHTML = `
-  <button id="noWaterBtn">No</button>
-  <button id="yesWaterBtn">A lot</button>
-  <button id="naWaterBtn">As much as it needs</button>
+  <select id="lightSelector">
+  <option value="" selected disabled>👇Choose your option</option>
+  <option value="littleWater">A little</option>
+  <option value="lotWater">A lot</option>
+  <option value="naWater">I'm not sure!</option>
+  </select>
   `
-  document.getElementById('yesWaterBtn').addEventListener('click', () => yesAnswer());
-  document.getElementById('noWaterBtn').addEventListener('click', () => noAnswer());
-  document.getElementById('naWaterBtn').addEventListener('click', () => naAnswer());
+  const select = document.getElementById('lightSelector');
+  const plant = select.value;
+  select.addEventListener('change', () => waterAnswer(plant))
 }
 
 
+*/
 
+//starts here
 
-const askNextQuestion = () => {
-  showMessage(`How much light will your plant get, ${nameInput.value}? `, 'bot');
-  inputWrapper.innerHTML = `
-  <button id="darkBtn">It's a dark room...</button>
-  <button id="lightBtn">Sunny all day, baby!</button>
-  <button id="naBtn">I'm not sure!</button>
-  `
-} 
+setTimeout(greetUser, 500);
 
 
 
