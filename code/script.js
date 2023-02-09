@@ -76,16 +76,10 @@ const greetUser = () => {
   questionNumber = 1
   botReply("Aloha what´s your Name?", "bot");
 
-      // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
- 
-
 };
 
 //We welcome the user (based on current time) with a delay of 1s
 setTimeout(greetUser, 1000);
-
-
-
  
 
 //Denna funktion (eventListener) gör att när användaren klickar på submit, så körs följande funktion igång. 
@@ -108,36 +102,45 @@ form.addEventListener('submit', (event) => {
 
 const recognize = (firstName) => {
 
-botReply(`elcome to the world of pinapples ${firstName}. 
-What do you need today? Fun Fact or History?`)
+botReply(`Welcome to the world of pinapples ${firstName}. What do you need today? Fun Fact or History?`)
 
 console.log(wrapper);
 
 wrapper.innerHTML =`
 <button id="fun-fact" > Fun Fact </button>
-<button id="History" > History </button>
-<button id="History" > Send me a pineapple!! </button>`
+<button id="history" > History </button>
+<button id="order" > Send me a pineapple!! </button>`;
+
+//Förstå mig bättre på eventliteners och varför det funkar nu och inte innan (hur gör man så de inte är kvar hela tiden?)
+document.getElementById('fun-fact').addEventListener('click', ()=> {
+
+  botReply("yey funfact", 'user')
+  setTimeout (() => ('fun-fact', 'bot')), 1000
+})
+document.getElementById('history').addEventListener('click' , 
+() => { botReply("history history history!")
+setTimeout(() => ('history' , 'bot')),1000  
+}) 
+document.getElementById('order').addEventListener('click' , 
+() => { botReply("Yes buy some pineapples", )
+setTimeout(() => ('order' , 'bot')),1000  
+})   
+
+//Denna kod gör att vi väntar 1s innan vi kör igång nästa funktion/fråga, efter att usern har svarat.
 
 
-document.getElementById('Fun-fact').addEventListener('click', () => {
-  userReply('Give me some fun facts')
-  inputWrapper.innerHTML = ''
-  setTimeout(() => booking('headache'), 1000);
- })
-
- document.getElementById('History').addEventListener('click', () => {
-  userReply('yey history of Pinepple')
-  inputWrapper.innerHTML = ''
-  setTimeout(() => factHis('History'), 1000);
- })
-
- document.getElementById('order').addEventListener('click', () => {
-  userReply('I need a pineapple')
-  inputWrapper.innerHTML = ''
-  setTimeout(() => order('order'), 1000);
- }) 
-    
 }
+
+
+const nextQuestion = () => {  
+  botReply( 'what did you think? you want  some history or are you ready to buy your pineapple?.')
+  
+  wrapper.innerHTML =`
+  <button id="history" > History </button>
+  <button id="order" > Send me a pineapple!! </button>`;
+}
+
+  
 
 //jag vill att man ska kunna skriva fun fact eller History och därifrån får man olika val
 //question1 if answer fun fact or history
@@ -147,10 +150,10 @@ document.getElementById('Fun-fact').addEventListener('click', () => {
 //input från user leder till val mellan name kan stå 
 //för history eller funfact som user skriver in
 
-const funH = () =>{
-  questionNumber ++
+//const funH = () =>{
+  //questionNumber ++
   
-botReply('Press one of the buttons and choose');
+//botReply('Press one of the buttons and choose');
 /*inputWrapper.innerHTML = `
         <button id="fun-fact" > Fun Fact </button>
         <button id="History" > History </button>
@@ -214,7 +217,7 @@ botReply('Press one of the buttons and choose');
     <button id="order">Yey an pineapple</button>
   `
 
-  document
+  /*document
     .getElementById('fun')
     .addEventListener('click', () => nextQuestion('fun'))
   document
@@ -222,7 +225,7 @@ botReply('Press one of the buttons and choose');
     .addEventListener('click', () => nextQuestion('histo'))
     document
     .getElementById('order')
-    .addEventListener('click', () => nextQuestion('order'))
+    .addEventListener('click', () => nextQuestion('order'))*/
 
     if (more == 'fun'){
 
@@ -281,3 +284,9 @@ const Obrigada = () => {
  
 }
 
+
+/*sendBtn.addEventListener('click', () => nextQuestion(nameInput.value))
+nameInput.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter' && nameInput.value) nextQuestion(nameInput.value)
+})
+*/
