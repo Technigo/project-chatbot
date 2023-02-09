@@ -45,6 +45,7 @@ input {
   font-weight: 600;
   line-height: 26px;
   flex: 1;
+  column-gap: auto;
 }
 
 main {
@@ -148,4 +149,8 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+#btnBig {
+  background-color: red;
 }
