@@ -58,8 +58,15 @@ const showMessage = (message, sender) => {
   }
   
   const progressFromGuess = () => {
+    inputWrapper.innerHTML = "hOWDY";
   botSay(`Let's find out if ${guess} is true! How smol are you?`, "bot");
   }
+
+  //inputWrapper.innerHTML =
+  //<button id="btnBig">A Unit</button>
+  //<button id="btnAverage">Regular</button>
+  //<button id="btnSmall">Tiny, yet brave</button>
+
   // Set up your eventlisteners here
 
   let guess = "";
@@ -72,8 +79,13 @@ const showMessage = (message, sender) => {
     showMessage(`I would say ${guess}`, "user"); 
   })
 
-  button.onclick = progressFromGuess;
+  button.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log(event);
+    setTimeout(() => progressFromGuess(), 2000)
+  })
 
+  //button.onclick = progressFromGuess;p
   ////let delay = 3000;
   //setTimeout(progressFromGuess, 3000)
   // When website loaded, chatbot asks first question.
@@ -87,4 +99,4 @@ const showMessage = (message, sender) => {
  
 
 // TO DO
-//Write inner.HTML for botmsgs. Wrap botmsgs in timer
+//Write inner.HTML for botmsgs. Wrap botmsgs in timer, or find other way to make them trigger at the right time. is it possible to put them in an array and referr to them in a trigger function?
