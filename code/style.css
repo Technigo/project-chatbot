@@ -148,3 +148,21 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+.link-area1, .link-area2 {
+  justify-content: center;
+  margin: 10px 0;
+  display: none;
+}
+
+.link-button {
+  padding: 10px 20px;
+  box-sizing: border-box;
+  width: 33%;
+}
+
+.link-button a {  
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
