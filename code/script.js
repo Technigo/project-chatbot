@@ -58,29 +58,33 @@ const waterQuestion = () => {
   <button id="naWaterBtn">As needed</button>
   `
   document.getElementById('littleWaterBtn').addEventListener('click', () => {showMessage ("I keep forgetting to water plants!", 'user');
-  setTimeout(() => waterAnswer('littleWater'), 1000)});
+  setTimeout(() => waterResponse('littleWater'), 1000)});
   document.getElementById('lotWaterBtn').addEventListener('click', () => {showMessage ("I love watering, I keep drowning my plants...", 'user')
-  setTimeout(() => waterAnswer('lotWater'), 1000)});
+  setTimeout(() => waterResponse('lotWater'), 1000)});
   document.getElementById('naWaterBtn').addEventListener('click', () =>{showMessage("I water my plants like a pro!", 'user')
-  setTimeout(() => waterAnswer('naWater'), 1000)});
+  setTimeout(() => waterResponse('anyWater'), 1000)});
 
-const waterAnswer = (water) => {
+const waterResponse = (waterAnswer) => {
   inputWrapper.innerHTML = ``;
-  if (water === 'littleWater') {
+  if (waterAnswer === 'littleWater') {
     showMessage ("So do I! Don't worry, we'll find you a good match.", 'bot')
   }
-  else if (water === 'lotWater') {
+  else if (waterAnswer === 'lotWater') {
     showMessage ("It's so easy to water too much! Let's find you a plant that likes water.", 'bot')
   }
-  else {
+  else if (waterAnswer === 'anyWater') {
     showMessage ("Wow, you're better than me! Let's find you a good plant!", 'bot')
   }
-  setTimeout(() => lightQuestion(water), 1000);
+  else {
+    showMessage ("Sorry, I didn't understand you!", 'bot')
+  }
+
+setTimeout(() => lightQuestion(waterAnswer), 1000);
 }
 }
 
 
-const lightQuestion = () => {
+const lightQuestion = (waterAnswer) => {
   showMessage(`How much light will your plant get? `, 'bot');
   inputWrapper.innerHTML = `
   <button id="lightBtn" value="light">Sunny all day, baby!</button>
@@ -88,21 +92,21 @@ const lightQuestion = () => {
   <button id="naLightBtn" value="anyLight">Not sure!</button>
   `
   document.getElementById('lightBtn').addEventListener('click', () => {showMessage ("light!", 'user')
-  setTimeout(() => showPlant('littleWater'), 1000)});
+  setTimeout(() => showPlant(waterAnswer, 'light'), 1000)});
   document.getElementById('darkBtn').addEventListener('click', () => {showMessage ("dark", 'user')
-  setTimeout(() => showPlant('lotWater'), 1000)});
+  setTimeout(() => showPlant(waterAnswer, 'dark'), 1000)});
   document.getElementById('naLightBtn').addEventListener('click', () =>{showMessage("pro light", 'user')
-  setTimeout(() => showPlant('nawater'), 1000)});
+  setTimeout(() => showPlant(waterAnswer, 'anyLight'), 1000)});
 }
 
-const showPlant = (water) => {
-  if (water === 'littleWater') {
+const showPlant = (waterAnswer, lightAnswer) => {
+  if (waterAnswer === 'littleWater' && lightAnswer === 'light') {
 showMessage ("You should get a succulent!", 'bot')
   }
-  else if (water === 'lotWater') {
+  else if (waterAnswer === 'lotWater' && lightAnswer === 'light') {
     showMessage ("You should get palettblad!", 'bot')
   }
-  else if (water === 'naWater') {
+  else if (waterAnswer === 'anyWater' && lightAnswer === 'anyLight') {
     showMessage ("You should get a pelargon", 'bot')
   }
 else {
