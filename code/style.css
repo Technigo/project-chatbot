@@ -5,8 +5,9 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: 'MS Sans Serif';
+  letter-spacing: 1px;
+  background: #018281;
 }
 
 h1 {
@@ -36,14 +37,14 @@ p {
 input {
   box-sizing: border-box;
   border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
+  border: solid 2px black;
+  background: white;
   color: #0026ff;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'MS Sans Serif';
   font-weight: 600;
-  line-height: 26px;
+  line-height: 10px;
   flex: 1;
 }
 
@@ -52,8 +53,8 @@ main {
   width: 100%;
   max-width: 700px;
   height: 600px;
-  border-radius: 30px;
   background: #fff;
+  border: 2px solid black;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -90,22 +91,20 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #eee5d2;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: black;
   max-width: 40%;
 }
 
 .bot-bubble {
-  border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
 }
 
 .user-bubble {
-  border-radius: 26px 0 26px 26px;
   margin-right: 8px;
 }
 
@@ -122,25 +121,27 @@ main {
 
 label {
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'MS Sans Serif';
   font-weight: 500;
-  color: #0026ff;
+  color: black;
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #a6a6a6;
   color: white;
   border: none;
-  border-radius: 4px;
+  border: solid 2px black;
   padding: 16px 40px;
   margin-right: 4px;
+  margin-left: 5px;
   font-size: 16px;
-  line-height: 26px;
-  font-family: 'Montserrat';
+  line-height: 10px;
+  font-family: 'MS Sans Serif';
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 2px 2px black;
 }
 
 button:hover {

@@ -110,7 +110,7 @@ const showYear = (type) => {
   questionNumber++
 
   showMessage(
-    `Great choice! ${type}'s was exciting times!`, 'bot')
+    `Great choice! The ${type}'s were exciting times!`, 'bot')
 
     showMessage(
       `Where do you want to go?`, 'bot')
@@ -118,26 +118,26 @@ const showYear = (type) => {
   if (type === '1920') {
     inputWrapper.innerHTML = `
       <select id="select">
-        <option value="" selected disabled>Where to go...</option>
-        <option value="dance">Dance in Paris</option>
-        <option value="cinema">Cinema in New York</option>
-        <option value="peperoni">Peperoni</option>
+        <option value="" selected disabled>Take me to...</option>
+        <option value="Black Thursday">Oct 29th 1929, Wall Street, New York</option>
+        <option value="Steamboat Willie">Nov 18th 1928, Universal's Colony Theater, New York</option>
+        <option value="Amelia Earhart">June 18th 1928, Pwil, Wales</option>
       </select>
     `
   } else if (type === '1980') {
     inputWrapper.innerHTML = `
       <select id="select">
-        <option value="" selected disabled>👇 Select a pasta...</option>
-        <option value="Carbonara">Pasta Carbonara</option>
-        <option value="Pomodoro">Pasta Pomodoro</option>
-        <option value="Frutti di Mare">Frutti di Mare</option>
+        <option value="" selected disabled>Take me to...</option>
+        <option value="Live Aid">July 13th 1985, Wembley, London</option>
+        <option value="Tank Man">June 5th 1989, Tiananmen Square, Bejing</option>
+        <option value="Berlin Wall">Nov 9th 1989, Berlin, Germany</option>
       </select>
     `
   } else {
     inputWrapper.innerHTML = `
       <select id="select">
-        <option value="" selected disabled>👇 Select a salad...</option>
-        <option value="Greek Salad">Greek Salad</option>
+        <option value="" selected disabled>Take me to...</option>
+        <option value="iPhone">Jan 9th 2007, San Fransisco, California</option>
         <option value="Caesar Salad">Caesar Salad</option>
         <option value="Chicken Salad">Chicken Salad</option>
       </select>
@@ -148,6 +148,29 @@ const showYear = (type) => {
   select.addEventListener('change', () => nextQuestion(select.value)) 
 }
 
+const showDishSize = (dish) => {
+  questionNumber++
+
+
+  if (value === 'Black Thursday') {
+    window.open("https://www.w3schools.com");
+  } else if (questionNumber === 2) {
+    showMessage(message)
+    setTimeout(() => showYear(message), 1000)
+  } else if (questionNumber === 3) {
+    showMessage(message)
+    setTimeout(() => showDishSize(message), 1000)
+  } else if (questionNumber === 4) {
+    showMessage(message)
+    setTimeout(() => showPrice(message), 1000)
+  } else {
+    showMessage(message)
+    setTimeout(thankYou, 1000)
+  }
+
+}
+
+/*
 const showDishSize = (dish) => {
   questionNumber++
 
@@ -198,6 +221,7 @@ const thankYou = () => {
   showMessage(`Thank you for your order! See you soon 👋🏼` , 'bot')
   inputWrapper.innerHTML = ``
 }
+*/
 
 
 // Set up your eventlisteners here
@@ -209,4 +233,3 @@ const thankYou = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000); 
-
