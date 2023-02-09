@@ -8,4 +8,4 @@ I approached this task by start watching all attached videos about javascript. T
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://cerulean-tapioca-94eec3.netlify.app/
