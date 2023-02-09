@@ -47,9 +47,10 @@ const handleNameInput = (event) => {
   const name = nameInput.value;
   showMessage(name, 'user');
   setTimeout(() => waterQuestion(), 1000);
+  inputWrapper.innerHTML = ''
 }
 
-//Question 1, user selects, triggers bots answer and question 2
+//Question 1, user clicks, triggers bot answer and question 2
 const waterQuestion = () => {
   showMessage(`How much do you water your plants, ${nameInput.value}? `, 'bot');
   inputWrapper.innerHTML = `
@@ -58,10 +59,13 @@ const waterQuestion = () => {
   <button id="naWaterBtn">As needed</button>
   `
   document.getElementById('littleWaterBtn').addEventListener('click', () => {showMessage ("I keep forgetting to water plants!", 'user');
+  inputWrapper.innerHTML = '';
   setTimeout(() => waterResponse('littleWater'), 1000)});
-  document.getElementById('lotWaterBtn').addEventListener('click', () => {showMessage ("I love watering, I keep drowning my plants...", 'user')
+  document.getElementById('lotWaterBtn').addEventListener('click', () => {showMessage ("I love watering, I keep drowning my plants...", 'user');
+  inputWrapper.innerHTML = '';
   setTimeout(() => waterResponse('lotWater'), 1000)});
-  document.getElementById('naWaterBtn').addEventListener('click', () =>{showMessage("I water my plants like a pro!", 'user')
+  document.getElementById('naWaterBtn').addEventListener('click', () =>{showMessage("I water my plants like a pro!", 'user');
+  inputWrapper.innerHTML = '';
   setTimeout(() => waterResponse('anyWater'), 1000)});
 
 const waterResponse = (waterAnswer) => {
@@ -100,11 +104,30 @@ const lightQuestion = (waterAnswer) => {
 }
 
 const showPlant = (waterAnswer, lightAnswer) => {
+  inputWrapper.innerHTML = '';
   if (waterAnswer === 'littleWater' && lightAnswer === 'light') {
 showMessage ("You should get a succulent!", 'bot')
   }
   else if (waterAnswer === 'lotWater' && lightAnswer === 'light') {
-    showMessage ("You should get palettblad!", 'bot')
+    showMessage ("You should get coleus plant!", 'bot')
+  }
+  else if (waterAnswer === 'anyWater' && lightAnswer === 'light') {
+    showMessage ("You should get a pelargon", 'bot')
+  }
+  else if (waterAnswer === 'littleWater' && lightAnswer === 'dark') {
+    showMessage ("You should get a garderobsblomma", 'bot')
+  }
+  else if (waterAnswer === 'lotWater' && lightAnswer === 'dark') {
+    showMessage ("You should get an ivy plant!", 'bot')
+  }
+  else if (waterAnswer === 'anyWater' && lightAnswer === 'dark') {
+    showMessage ("You should get a croton", 'bot')
+  }
+  else if (waterAnswer === 'littleWater' && lightAnswer === 'anyLight') {
+    showMessage ("You should get a pelargon", 'bot')
+  }
+  else if (waterAnswer === 'lotWater' && lightAnswer === 'anyLight') {
+    showMessage ("You should get a pelargon", 'bot')
   }
   else if (waterAnswer === 'anyWater' && lightAnswer === 'anyLight') {
     showMessage ("You should get a pelargon", 'bot')
@@ -112,87 +135,19 @@ showMessage ("You should get a succulent!", 'bot')
 else {
   showMessage ("Nothing", 'bot')
 }
+setTimeout(() => lastQuestion(), 1000)
 }
 
-/*
-//Question 1, user clicks button, triggers bot answer and question 2
-const waterQuestion = () => {
-  showMessage(`How much do you water your plants, ${nameInput.value}? `, 'bot');
-  inputWrapper.innerHTML = `
-  <button id="littleWaterBtn">A little</button>
-  <button id="lotWaterBtn">A lot!</button>
-  <button id="naWaterBtn">As needed</button>
-  `
-  document.getElementById('littleWaterBtn').addEventListener('click', () => {showMessage ("I keep forgetting to water plants!", 'user')
-  setTimeout(() => waterAnswer('littleWater'), 1000)});
-  document.getElementById('lotWaterBtn').addEventListener('click', () => {showMessage ("I love watering, I keep drowning my plants...", 'user')
-  setTimeout(() => waterAnswer('lotWater'), 1000)});
-  document.getElementById('naWaterBtn').addEventListener('click', () =>{showMessage("I water my plants like a pro!", 'user')
-  setTimeout(() => waterAnswer('naWater'), 1000)});
+const lastQuestion = () => {
+  showMessage ("Are you happy with your plant?", 'bot');
+  inputWrapper.innerHTML=`
+  <button id="yesBtn" value="yesBtn">Yes, I love it!</button>
+  <button id="noBtn" value="noBtn">No, I want to try again!</button>
+  `;
 
-const waterAnswer = (choice) => {
-  inputWrapper.innerHTML = ``;
-  if (choice === 'littleWater') {
-    showMessage ("So do I! Don't worry, we'll find you a good match.", 'bot')
-  }
-  else if (choice === 'lotWater') {
-    showMessage ("It's so easy to water too much! Let's find you a plant that likes water.", 'bot')
-  }
-  else {
-    showMessage ("Wow, you're better than me! Let's find you a good plant!", 'bot')
-  }
-  setTimeout(() => lightQuestion(choice), 1000);
+  document.getElementById('yesBtn').addEventListener('click', () => showMessage ("Hope you will enjoy your plant!", 'bot'));
+  document.getElementById('noBtn').addEventListener('click', () => window.location.reload());
 }
-}
-
-//Question 2, select choice, triggers bot answer
-const lightQuestion = () => {
-  showMessage("How much light will your plant get?", 'bot');
-  inputWrapper.innerHTML = `
-  <select id="lightSelector">
-  <option value="" selected disabled>👇Choose your option</option>
-  <option value="muchLight">Sunny all day, baby!</option>
-  <option value="dark">A dark corner</option>
-  <option value="naLight">I'm not sure!</option>
-  </select>
-  `
-  
-  const select = document.getElementById('lightSelector');
-  const plant = select.value;
-  select.addEventListener('change', () => showPlant(plant));
-}
-
-const showPlant = (plant, choice) => {
-  if (plant === 'muchLight' && choice === 'littleWater') {
-showMessage ("You should get a succulent!", 'bot')
-  }
-  else if (plant === 'dark') {
-    showMessage ("You should get palettblad!", 'bot')
-  }
-else {
-  showMessage ("Nothing", 'bot')
-}
-}
-
-
-
-const waterQuestion = () => {
-  showMessage(`How much do you water your plants, ${nameInput.value}? `, 'bot');
-  inputWrapper.innerHTML = `
-  <select id="lightSelector">
-  <option value="" selected disabled>👇Choose your option</option>
-  <option value="littleWater">A little</option>
-  <option value="lotWater">A lot</option>
-  <option value="naWater">I'm not sure!</option>
-  </select>
-  `
-  const select = document.getElementById('lightSelector');
-  const plant = select.value;
-  select.addEventListener('change', () => waterAnswer(plant))
-}
-
-
-*/
 
 //starts here
 
