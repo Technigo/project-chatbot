@@ -9,10 +9,6 @@ const nameInput =document.getElementById('nameInput')
 // Declare username as a global variable
 let username
 
-const userAnswer = (msg) => {
-  showMessage(msg, 'user')
-}
-
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
@@ -78,28 +74,31 @@ const colorQuestion = () => {
   <button id='whiteBtn'> White</button>
   <button id='mixedBtn'> Mixed</button>
   `
-
   document.getElementById('darkBtn')
-    .addEventListener('click', () => userAnswer('Dark'))
-    // setTimeout(() => tempQuestion()
+    .addEventListener('click', () => {
+    showMessage('Dark' , 'user')
+    setTimeout(() => tempQuestion('Dark'), 1000)})
   
     document.getElementById('whiteBtn')
-    .addEventListener('click', () => userAnswer('White'))
-    // setTimeout(() => tempQuestion()
+    .addEventListener('click', () => {
+    showMessage('White' , 'user')
+    setTimeout(() => tempQuestion('White'), 1000)})
   
     document.getElementById('mixedBtn')
-    .addEventListener('click', () => userAnswer('Mixed'))
+    .addEventListener('click', () => {
+    showMessage('Mixed' , 'user')
+    setTimeout(() => tempQuestion('Mixed'), 1000)})
 }
+
     
 const tempQuestion = (color) => {
   if (color === 'Dark') {
     showMessage (`Well ${username}, dark it is! Choose you temperature below!`, 'bot')
   } else if (color === 'White') {
-    showMessage (`Let´s do some white laundry ${username}. At what temp?`), 'bot'
+    showMessage (`Let´s do some white laundry ${username}. At what temp?`, 'bot')
   } else {
     showMessage (`WOW, that´s daring ${username}. Chose your temp and give it a try`, 'bot')
   }
-
   inputWrapper.innerHTML = `
   <select id="selectTemp">
     <option value="" selected disabled>🌡️</option>
