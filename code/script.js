@@ -43,7 +43,7 @@ const CakeOrder = () => {
   setTimeout(() => showMessage(`Okay, you want cake. What type of cake would you like?`, 'bot'), 90);
 inputWrapper.innerHTML = `
 <form id="cake-form">
-    <select name="cake-type">
+    <select id="cake-type">
         <option value="carrotcake">Carrotcake</option>
         <option value="cheesecake">Cheesecake</option>
         <option value="choccake">Chocolate cake</option>
@@ -57,7 +57,7 @@ const cakeform = document.getElementById('cake-type');
 
 cakebtn.addEventListener("click", () => { 
   const cake = cakeform.value; 
-  cosnole.log(cake);
+  console.log(cake);
   DeliveryOrNot(cake);
 });
 /*cakebtn.addEventListener ('submit', DeliveryOrNot(cake));*/
