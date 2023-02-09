@@ -1,137 +1,133 @@
-// Variables that point to selected DOM elements
-const chat = document.getElementById('chat');
-const form = document.getElementById('form')
-const formWrapper= document.getElementById('form-wrapper')
-const btn = document.getElementById('submit')
 
+const chat = document.getElementById('chat') //when I need to get this element i can use chat
+const inputWrapper = document.getElementById('input-wrapper')
+const form = document.getElementById('name-form')
+const nameInput = document.getElementById('name-input')
+const sendBtn = document.getElementById('send')
 
-// If you need any global variables that you can use across different functions, declare them here:
-
-
-// Declare your functions after this comment kolla dem och förstå dem
-let questionNumber = 0
-let userName = ""
+let questionNumber = 1
 
 const botReply = (msg) => {
-
   showMessage(msg, 'bot')
 }
 
 const userReply = (msg) => {
   showMessage(msg, 'user')
 }
-// This function will add a chat bubble in the correct place based on who the sender is
-// the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
 
-const showMessage = (msg, sender) => {
-  
+
+// This function will add a chat bubble in the correct place based on who the sender is
+//without the ${message} the actual message(parameter) in const greetUser will not be passed, only string message. Only the parameter 'bot' 
+function showMessage(message, sender) {
+  // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
+    console.log("Now the user is replying");
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
-          <p>${msg}</p>
+          <p>${message}</p>
         </div>
         <img src="assets/user.png" alt="User" />  
       </section>
-    `
-    // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
+    `;
+    // the else if statement checks if the sender is a bot and if that's the case it inserts an html section inside the chat with the posted message
   } else if (sender === 'bot') {
-    //detta ändrar htlmt inom chatten
+    console.log("Now the bot is replying");
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
-          <p>${msg}</p>
+          <p>${message}</p>
         </div>
       </section>
-    `
+    `;
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
 }
 
+/*const nextQuestion = (message) => {
+  console.log('questionNumber', questionNumber)
 
-//This function will lead to the next question
-const nxtQuestion = (answer) => {
-  usrInput(answer)
-    if (questionNumber === 1) {
-      factHis(answer)
-      input.value = ""
-    } 
-    else if (questionNumber === 2) {
-      or(answer)
-      input.value =""
-    } 
-    else if (questionNumber === 3) {
-    funHist(answer)
-      input.value =""
-    } 
-    else if (questionNumber === 4) {
-      nextQuestion(answer)
-        input.value =""
-      }
+  if (questionNumber === 1) {
+    userReply(message)
+    input.value = ''
+    setTimeout(() => showFoodTypes(message), 1000)
+  } else if (questionNumber === 2) {
+    userReply(message)
+    setTimeout(() => showMenu(message), 1000)
+  } else if (questionNumber === 3) {
+    userReply(message)
+    setTimeout(() => showDishSize(message), 1000)
+  } else if (questionNumber === 4) {
+    userReply(message)
+    setTimeout(() => showPrice(message), 1000)
+  } else {
+    userReply(message)
+    setTimeout(thankYou, 1000)
   }
+}*/
 
 
-
-
-
-
-
-// This means the greeting function will be called one second after the website is loaded.
-
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// Starts here
-
-
+//When website is loaded (we save), chatbot greets us:
+//We put in the parameter time and give it contidions. This is our input that controls which output we get.
+//We also put in the parameter timeGreetings, which is an array of greeting phrases. This becomes our output, depending on the time variable.
 const greetUser = () => {
+  questionNumber = 1
+    showMessage("Aloha what´s your Name?", "bot");
+
+      // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
+ 
+
+};
+
+//We welcome the user (based on current time) with a delay of 1s
+setTimeout(greetUser, 1000);
+
 
 
  
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot');
+
+//Denna funktion (eventListener) gör att när användaren klickar på submit, så körs följande funktion igång. 
+//Vi sätter en variabel på värdet vi får ut av firstName (från form input id i HTML) för att lättare återanvända den.
+form.addEventListener('submit', (event) => {
+  event.preventDefault()   //Hindrar från att formen autosparar innan vi har hunnit köra vår kod.
   
-  // Just to check it out, change 'bot' to 'user' here 👆
-}
-// när jag klickar på submit vill jag att chatten ska köra igång med att svara namn
+  const firstName = document.getElementById('name-input').value;
+  console.log(firstName)            //Här kollar vi att vi får ut rätt värde, kan kommentera ut sen.
 
-// Set up your eventlisteners here
-form.addEventListener('submit', (event)=> {
-  event.preventDefault() //Hindrar från att formen autosparar
-const firstName =document.getElementById('firstName').value;
-console.log(firstName)
-showMessage(firstName, 'user'); 
-} )
-setTimeout(greetUser, 1000);
+  showMessage(firstName, 'user');    //Steg 2 i koden är att vi ropar på funktionen "showMessage", där vi lägger in våra två argument (firstName, user) i parametrarna.
 
-const usrInput = (answer) => {
-  showMessage(answer, 'user');
-}
+  setTimeout(() => recognize(firstName), 1000)      //Denna kod gör att vi väntar 1s innan vi kör igång nästa funktion/fråga, efter att usern har svarat.
+})
 
 
-const factHis = () => {
-  questionNumber = 1
+//-- This function uses the first input after greetings (firstName) and adds a message from the bot containing that input. 
+//At the same time, we want to prep the input form area for the next question. We REPLACE (not add) the content in the formWrapper with new HTML.
+const recognize = (firstName) => {
+  console.log(firstName);
 
-  let userName = document.getElementById(form-Wrapper).value;
-  setTimeout(() => showMessage(
-    `Welcome to the world of pinapples ${userName}. 
-    what do you need today? Fun Fact or History?`, 'bot'), 1000)
-  
+  chat.innerHTML += `<section class="bot-msg">
+    <img src="assets/bot.png" alt="user bot" />
+    <div class="bubble bot-bubble">
+        <p>Welcome to the world of pinapples ${firstName}. 
+        what do you need today? Fun Fact or History?</p>
+    </div>
+</section>`;
+
     
-};
+}
 
 
+//jag vill att man ska kunna skriva fun fact eller History och därifrån får man olika val
+
+factHis()
 // vi får input från user leder till detta
 
 //input från user leder till val mellan
 
-const or = () => {
-  questionNumber =
+const OR = () => {
+  questionNumber++
 
   inputWrapper.innerHTML = `
     <button id="funBtn">Fun fact</button>
@@ -144,7 +140,7 @@ const or = () => {
     .getElementById('historyBtn')
     .addEventListener('click', () => nextQuestion('History'))
 }
-
+OR()
 
 
 const funHist = (type) =>{
@@ -163,8 +159,10 @@ const funHist = (type) =>{
    }
  }
 
+ funHist()
+ 
 
- const question = (more) => {
+ const NextQuestion = (more) => {
   questionNumber++
 
   botAnswer(`Do you want a new ${more} or do you wnat to order 
@@ -187,4 +185,61 @@ const funHist = (type) =>{
     document
     .getElementById('order')
     .addEventListener('click', () => nextQuestion('order'))
- }
+
+    if (more == 'fun'){
+
+
+    botAnswer("Did you know that bla bla bla bla bla bla")}
+    
+    
+  
+  else if (type === 'Histo') {
+    botAnswer("Here is some history for ya t bla bla bla bla bla bla")
+ 
+    }
+
+    else if (type === 'order') {
+      botAnswer("Yey order your own pineapple here. You can choose between a big pineapple a small pineapple and a gianormous. What size do you need")
+       
+    } 
+  }
+  
+  const order = (size) =>{
+    botAnswer( `Gracias för ordering $(size) hope to see you next time arribaaa!`)
+  }
+
+
+const lastquestion= (press) =>{
+
+botAnswer("Now you now alot about the pineapple or shall we say abacaxi or ananas or avakachi or mabe pineapa its time to order your own now!")
+
+
+inputWrapper.innerHTML = `
+    <button id="yes">yey my own Pineapple</button>
+    <button id="no">No abacaxi for me</button>
+  `
+
+  document
+    .getElementById('yes')
+    .addEventListener('click', () => nextQuestion('yes'))
+  document
+    .getElementById('no')
+    .addEventListener('click', () => nextQuestion('no'))
+
+    if (press== yes){
+    botAnswer("Yey order your own pineapple here. You can choose between a big pineapple a small pineapple and a gianormous. What size do you need")
+    //tillbaka till order
+    }
+
+    else if (press== no){
+      botAnswer(" Try again... You wont be able to leave untill you order one!")
+    //tillbaka till Yes och sen till order
+    }
+    }
+
+
+const Obrigada = () => {
+ botAnswer (`Obrigada, Dzięki your pineapple will be arriving soon`)
+ 
+}
+
