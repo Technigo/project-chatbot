@@ -9,7 +9,6 @@ const nameForm = document.getElementById('name-form');
 
 // This function will add a chat bubble in the correct place based on who the sender is
 function showMessage(message, sender) {
-  // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
@@ -19,7 +18,6 @@ function showMessage(message, sender) {
         <img src="assets/user.png" alt="User" />  
       </section>
     `;
-    // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
@@ -91,7 +89,7 @@ const waterResponse = (waterAnswer) => {
     botMessage("It's so easy to water too much! Let's find you a plant that likes water.")
   }
   else if (waterAnswer === 'anyWater') {
-    botMessage("Wow, you're better than me! Let's find you a good plant!")
+    botMessage("Wow, you're so cool! Let's find you a good plant!")
   }
 
 setTimeout(() => lightQuestion(waterAnswer), 1000);
