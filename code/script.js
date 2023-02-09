@@ -6,9 +6,9 @@ const chat = document.getElementById('chat');
 
 
 //END global variables
-// START functions
 
-// This function will add a chat bubble in the correct place based on who the sender is
+// START functions
+// function that adds a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
@@ -36,31 +36,27 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
-// START function that asks for name
-const greetUser = () => {
+//function that asks user for name
+const askName = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there!\nWelcome to the Bill Splitter.\nI will be the bot serving you today.\n May I ask, what is your name?", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-//END
-//START function that replies with name
+//this adds a delay to the askName function
+/* When website loaded, chatbot asks first question. normally we would invoke a function like this:
+  greeting()
+  But if we want to add a little delay to it, we can wrap it in a setTimeout:
+  setTimeout(functionName, timeToWaitInMilliSeconds)
+  This means the greeting function will be called 1.2 second after the website is loaded.*/
+  setTimeout(askName, 1200);
+
+//function that stores the name
+
+//function that replies foodQ with name inside IF name is given correctly, IF else it redirects to previous function
+
+// START eventlisteners
+
 
 //END
-
-//START function If name is given correctly, answer with foodQ
-
-
-//If name is not given correctly
-
-// Set up your eventlisteners here
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1200);
-
 //END functions
