@@ -1,5 +1,3 @@
-//chatbot
-
 // Variables that point to selected DOM elements
 const chat = document.getElementById("chat");
 
@@ -9,21 +7,21 @@ const chat = document.getElementById("chat");
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
+  // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === "user") {
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user-avatar.png" alt="User" />  
       </section>
     `;
-    // the else if statement checks if the sender is a bot and if that's the case it inserts an html section inside the chat with the posted message
+    // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === "bot") {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/catbot.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -37,7 +35,7 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, what's your name?", "bot");
+  showMessage("Hello there, What's your name?", "bot");
   // Just to check it out, change 'bot' to 'user' here 👆
 };
 
