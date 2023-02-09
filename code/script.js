@@ -115,178 +115,80 @@ wrapper.innerHTML =`
 document.getElementById('fun-fact').addEventListener('click', ()=> {
 
   botReply("yey funfact", 'user')
-  setTimeout (() => ('fun-fact', 'bot')), 1000
+  setTimeout (() => ('fun-fact', 'bot')), 5000
 })
 document.getElementById('history').addEventListener('click' , 
 () => { botReply("history history history!")
-setTimeout(() => ('history' , 'bot')),1000  
+setTimeout(() => ('history' , 'bot')),5000  
 }) 
 document.getElementById('order').addEventListener('click' , 
 () => { botReply("Yes buy some pineapples", )
-setTimeout(() => ('order' , 'bot')),1000  
+setTimeout(() => ('order' , 'bot')),5000  
 })   
 
 //Denna kod gör att vi väntar 1s innan vi kör igång nästa funktion/fråga, efter att usern har svarat.
-
+setTimeout(() => nextQuestion(), 5000)  
 
 }
 
 
 const nextQuestion = () => {  
+  console.log(botReply)
+
+  
   botReply( 'what did you think? you want  some history or are you ready to buy your pineapple?.')
   
   wrapper.innerHTML =`
   <button id="history" > History </button>
   <button id="order" > Send me a pineapple!! </button>`;
+
+  //Förstå mig bättre på eventliteners och varför det funkar nu och inte innan (hur gör man så de inte är kvar hela tiden?)
+  document.getElementById('history').addEventListener('click' , 
+  () => { history()
+  setTimeout(() => history(), 5000)
+  }) 
+  document.getElementById('order').addEventListener('click' , 
+  () => { botReply("Yes buy some pineapples", )
+  setTimeout(() => order(), 5000 )
+  }) 
+  
+} 
+
+const history =() => {
+
+botReply( 'HEJSAN.')
+
+wrapper.innerHTML =`
+  <button id="fun-fact" > Fun fact</button>
+  <button id="order" > Send me a pineapple!! </button>`;
+
+ /* document.getElementById('fun-fact').addEventListener('click' , 
+  () => { botReply("hej hej history!")
+  setTimeout(() => ('history' , 'bot')),1000  
+  }) 
+  document.getElementById('order').addEventListener('click' , 
+  () => { botReply("Yes buy some pineapples", )
+  setTimeout(() => ('order' , 'bot')),1000  
+  }) */
+
 }
 
+const Order =() => {
+
+  botReply( 'yo.')
   
-
-//jag vill att man ska kunna skriva fun fact eller History och därifrån får man olika val
-//question1 if answer fun fact or history
+  wrapper.innerHTML =`
+    <button id="fun-fact" > Fun fact</button>
+    <button id="order" > Send me a pineapple!! </button>`;
   
-// vi får input från user leder till detta
-
-//input från user leder till val mellan name kan stå 
-//för history eller funfact som user skriver in
-
-//const funH = () =>{
-  //questionNumber ++
+    /*document.getElementById('fun-fact').addEventListener('click' , 
+    () => { botReply("hej hej history!")
+    setTimeout(() => ('history' , 'bot')),1000  
+    }) 
+    document.getElementById('order').addEventListener('click' , 
+    () => { botReply("Yes buy some pineapples", )
+    setTimeout(() => ('order' , 'bot')),1000  
+    }) */
   
-//botReply('Press one of the buttons and choose');
-/*inputWrapper.innerHTML = `
-        <button id="fun-fact" > Fun Fact </button>
-        <button id="History" > History </button>
-        <button id="History" > Send me a pineapple!! </button>
-        
-        `
-        document.getElementById('Fun-fact').addEventListener('click', () => {
-          userReply('Give me some fun facts')
-          inputWrapper.innerHTML = ''
-          setTimeout(() => booking('headache'), 1000);
-         })
-      
-         document.getElementById('History').addEventListener('click', () => {
-          userReply('yey history of Pinepple')
-          inputWrapper.innerHTML = ''
-          setTimeout(() => factHis('History'), 1000);
-         })
-        
-         document.getElementById('order').addEventListener('click', () => {
-          userReply('I need a pineapple')
-          inputWrapper.innerHTML = ''
-          setTimeout(() => order('order'), 1000);
-         })    
-      }*/
- 
- 
-
- const factHis =(type) => {
-  botAnswer(
-    `Yey here comes some ${type}?for you!!!!`
-    )
-    questionNumber++
-  
-    inputWrapper.innerHTML = `
-      <button id="funBtn">Fun fact</button>
-      <button id="historyBtn">History of Pineapples</button>
-    `
-    document
-      .getElementById('FunBtn')
-      .addEventListener('click', () => nextQuestion('FunFact'))
-    document
-      .getElementById('historyBtn')
-      .addEventListener('click', () => nextQuestion('History'))
-  }
-
-
-
- 
-
- const NextQuestion = (more) => {
-  questionNumber++
-
-  botAnswer(`Do you want a new ${more} or do you wnat to order 
-  your own pieapple 
-  or mabey learn a little bit of history?
-  ! `)
-
-  inputWrapper.innerHTML = `
-    <button id="fun">Fun Fact again</button>
-    <button id="histo">History Again</button>
-    <button id="order">Yey an pineapple</button>
-  `
-
-  /*document
-    .getElementById('fun')
-    .addEventListener('click', () => nextQuestion('fun'))
-  document
-    .getElementById('histo')
-    .addEventListener('click', () => nextQuestion('histo'))
-    document
-    .getElementById('order')
-    .addEventListener('click', () => nextQuestion('order'))*/
-
-    if (more == 'fun'){
-
-
-    botAnswer("Did you know that bla bla bla bla bla bla")}
-    
-    
-  
-  else if (type === 'Histo') {
-    botAnswer("Here is some history for ya t bla bla bla bla bla bla")
- 
-    }
-
-    else if (type === 'order') {
-      botAnswer("Yey order your own pineapple here. You can choose between a big pineapple a small pineapple and a gianormous. What size do you need")
-       
-    } 
   }
   
-  const order = (size) =>{
-    botAnswer( `Gracias för ordering $(size) hope to see you next time arribaaa!`)
-  }
-
-
-const lastquestion= (press) =>{
-
-botAnswer("Now you now alot about the pineapple or shall we say abacaxi or ananas or avakachi or mabe pineapa its time to order your own now!")
-
-
-inputWrapper.innerHTML = `
-    <button id="yes">yey my own Pineapple</button>
-    <button id="no">No abacaxi for me</button>
-  `
-
-  document
-    .getElementById('yes')
-    .addEventListener('click', () => nextQuestion('yes'))
-  document
-    .getElementById('no')
-    .addEventListener('click', () => nextQuestion('no'))
-
-    if (press== yes){
-    botAnswer("Yey order your own pineapple here. You can choose between a big pineapple a small pineapple and a gianormous. What size do you need")
-    //tillbaka till order
-    }
-
-    else if (press== no){
-      botAnswer(" Try again... You wont be able to leave untill you order one!")
-    //tillbaka till Yes och sen till order
-    }
-    }
-
-
-const Obrigada = () => {
- botAnswer (`Obrigada, Dzięki your pineapple will be arriving soon`)
- 
-}
-
-
-/*sendBtn.addEventListener('click', () => nextQuestion(nameInput.value))
-nameInput.addEventListener('keypress', (event) => {
-  if (event.key === 'Enter' && nameInput.value) nextQuestion(nameInput.value)
-})
-*/
