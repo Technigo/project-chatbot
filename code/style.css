@@ -6,14 +6,14 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: pink;
+  background: #ffcfe5;
 }
 
 h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: #fff3f3;
   text-align: center;
 }
 
@@ -21,7 +21,7 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: #fff3f3;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -42,7 +42,7 @@ input {
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
-  font-weight: 600;
+  font-weight: 400;
   line-height: 26px;
   flex: 1;
 }
@@ -59,6 +59,7 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
 }
 
 .chat {
@@ -91,7 +92,7 @@ main {
 
 .bubble {
   background: #ffa688;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
@@ -124,12 +125,12 @@ label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  color: #ff9bc5;
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #ff9bc5;
   color: white;
   border: none;
   border-radius: 4px;
