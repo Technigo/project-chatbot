@@ -1,16 +1,17 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
-const noButton = document.getElementById("no-btn");
 const inputWrapper = document.getElementById('input-wrapper');
-const chatInput = document.getElementById("chat-input");
 const sendButton = document.getElementById("send-btn");
+
+const chatInput = document.getElementById("chat-input");
 
 // If you need any global variables that you can use across different functions, declare them here:
 let questionCount = 0;
 let departureCity ='';
 let arrivalCity ='';
 let travelDate = '';
-let tickets ='';
+let numberOfTickets ='';
+let userName ='';
 
 // Declare your functions after this comment
 
@@ -42,7 +43,7 @@ const showMessage = (message, sender) => {
 }
 
 // Starts here
-const greetUser = () => {
+const greetUserAndAskDepartureCity = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there, Would you like to book a train ticket?", 'bot')
   
@@ -53,139 +54,114 @@ const greetUser = () => {
   document.getElementById('yes-btn').addEventListener('click',() => {
     showMessage('Yes please.', 'user')
     setTimeout(() => showMessage('Great! What is your city of departure?', 'bot'), 1000);
-    questionCount++;
-    console.log("greetUser",questionCount);
-  })
+    //questionCount++;   
+    //console.log("greetUser",questionCount);
+  });
 
   document.getElementById('no-btn').addEventListener('click',() => {
     showMessage('No, thank you.', 'user')
     setTimeout(() => showMessage('Alright, have a good day then!', 'bot'), 1000);    
-})
-
-console.log(questionCount);
+  });
+  
+  
+  console.log(questionCount);
 }
 
-const handleDepartureCity = () =>{
+//Function to move to next question
+const nextQuestion = () => {
+  questionCount++;
+  if(questionCount == 1){
+    setTimeout (() => displayDepartureCityAndAskArrivalCity(), 1000);
+  }
+  
+  else if(questionCount == 2){
+    setTimeout (() => displayArrivalCity(), 1000);
+  }
+
+  else if(questionCount == 3){
+    setTimeout (() => displayDatePickerandAskTickets(), 1000);
+  }
+  
+  else if(questionCount == 4){
+    setTimeout (() => displayNumberOfTicketsAndAskName(), 1000);
+  }
+
+  else if(questionCount == 5){
+    setTimeout (() => displayName(), 1000);    
+  }
+
+  else if(questionCount == 6){
+    setTimeout (() => ticketSummaryAndThankYouMessage(), 1000);
+  }
+
+}
+
+//Departure Function
+const displayDepartureCityAndAskArrivalCity = () =>{
   departureCity = chatInput.value;
   showMessage(`${departureCity}`,'user')
   chatInput.value='';
-  setTimeout(() => showMessage('Nice! And where are you headed?','bot'),1000);
-  
-  console.log(departureCity);
+  showMessage('Nice! Where are you headed?','bot');
 }
 
-const handleArrivalCity = () =>{
+//Arrival Function
+const displayArrivalCity = () =>{
   arrivalCity = chatInput.value;
   showMessage(`${arrivalCity}`,'user')
   chatInput.value='';
   setTimeout(() => 
   showMessage(`Alright. So ${departureCity} to ${arrivalCity}.`,'bot'),500);
-  
-  setTimeout(printTravelDate, 1500);
+  nextQuestion();
 } 
 
-const printTravelDate = () => {
+//Date Function
+const displayDatePickerandAskTickets = () => {
   showMessage('When would you like to travel?', 'bot')  
   chat.innerHTML += `<input id = "date-picker" class = "date-picker" type="date"/>`
 
     document.getElementById('date-picker').addEventListener('input',() => {
       travelDate  = document.getElementById('date-picker').value;
+      
       setTimeout(() =>showMessage(`${travelDate}`,'user'),1000);      
       console.log(travelDate);
-      setTimeout(() =>showMessage(`How many tickets would you like?`,'bot'),2000);  
+      setTimeout(() =>showMessage(`How many tickets would you like?`,'bot'),2000);      
       
-      setTimeout(nextQuestion, 2500);
     });
  
   chat.scrollTop = chat.scrollHeight;   
 }
 
-const handleTicketNumbers = () =>{
-    
-    tickets = chatInput.value;
-    showMessage(`${tickets}`, 'user');
-    chatInput.value='';
-
-    setTimeout(purchaseSummary, 2000);
-  
+//Number of tickets Function
+const displayNumberOfTicketsAndAskName = () =>{    
+  numberOfTickets = chatInput.value;
+  showMessage(`${numberOfTickets}`, 'user');
+  chatInput.value='';
+  setTimeout(() => showMessage(`In whose name shall I make the booking?`, 'bot'),500);     
 }
 
-const purchaseSummary = () => {
-  showMessage(`You have booked ${tickets} tickets from ${departureCity} to ${arrivalCity} on ${travelDate}`, 'bot');
-  showMessage(`In whose name shall I make this booking?`, 'bot');
-  
-  setTimeout(nextQuestion, 2500);
-}
-
-const handleNameInput = () => {
-  const name = chatInput.value;
-  showMessage(`${name}`, 'user');
-  setTimeout(() => showMessage(`Thank you for booking with us, ${name}!`, 'bot'),1000);
+//NameInput function
+const displayName = () => {
+  userName = chatInput.value;
+  showMessage(`${userName}`, 'user');  
   chatInput.value ='';
+
+  setTimeout(nextQuestion, 1000);
 }
 
-const nextQuestion = (event) => {
-  
-  if(questionCount == 1){
-    event.preventDefault();
-    handleDepartureCity();
-    questionCount++;
-    console.log("departureCity",questionCount);
-  }
-  
-  else if(questionCount == 2){
-    event.preventDefault();
-    handleArrivalCity();
-    questionCount++;
-    console.log("after arrivalCity",questionCount);  
-  }
-  
-  else if(questionCount == 3){
-    event.preventDefault();
-    handleTicketNumbers();
-    questionCount++;
-    console.log("after ticketnumbers",questionCount);
-  }
-
-  else if(questionCount == 4){
-    event.preventDefault();
-    handleNameInput();
-    questionCount++;
-    console.log("after nameInput",questionCount);
-  }
-  // }
-  // Store the value in a variable so we can access it after we clear it from the input
-  // const inputstring = chatInput.value;
-  // showMessage(`You age is ${inputstring}`, 'user'); 
-
-  // const age = parseInt(inputstring);
-  // if(age > 18)
-  //   showMessage("You are an adult!", 'bot');
-  // else
-  // showMessage("You are a child!", 'bot');
-  // chatInput.value = ''
-
-  // setTimeout(() => {
-
-  //   document.getElementById('date-picker').addEventListener('click',() => {
-  //     const travelDate  = document.getElementById('date-picker').value;
-  //     setTimeout(() =>showMessage(`${travelDate}`,'user'),2500);
-  //     console.log(travelDate);
-  //   });
-  // });
-   
+//Summary function
+const ticketSummaryAndThankYouMessage = () => {
+  showMessage(`You have booked ${numberOfTickets} tickets from ${departureCity} to ${arrivalCity} on ${travelDate}`, 'bot');
+  setTimeout(() => showMessage(`Thank you for booking with us, ${userName}!`, 'bot'),1000);
 }
 
+//OnClick function of Send button
+const onSendClick = (event) => {
+  event.preventDefault();   
+  nextQuestion();
+} 
 
 // Set up your eventlisteners here
+sendButton.addEventListener("click", onSendClick);
 
-sendButton.addEventListener("click", nextQuestion);
-
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000);
+//greetUser message appears 1 second after page load
+setTimeout(greetUserAndAskDepartureCity, 1000);
