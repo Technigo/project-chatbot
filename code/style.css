@@ -5,30 +5,34 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: 'Varela Round', sans-serif;
+  background: #16697a;
+  background-image: url("./assets/background2.jpg");
+  
 }
 
 h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: #ffa62b;
   text-align: center;
+  text-shadow: 1px 1px 2px #03242b;
 }
 
 h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: #ffa62b;
   text-align: center;
   margin-bottom: 36px;
+  text-shadow: 1px 1px 2px #03242b;
 }
 
 p {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 28px;
   margin: 0;
 }
@@ -37,12 +41,12 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #fff3e3;
+  color: #16697a;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 600;
+  font-family: 'Varela Round';
+  font-weight: 500;
   line-height: 26px;
   flex: 1;
 }
@@ -53,7 +57,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: #fae2c2;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -66,8 +70,29 @@ main {
   display: flex;
   justify-content: flex-start;
   overflow: scroll;
+  overflow-x: hidden;
   flex-direction: column;
   padding-bottom: 16px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fff3e3; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #82c0cc; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #16697a; 
 }
 
 .bot-msg {
@@ -97,12 +122,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
-  font-weight: 600;
+  background: #fff3e3;
+  font-weight: 500;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #16697a;
   max-width: 40%;
 }
 
@@ -119,6 +144,7 @@ main {
 .input-wrapper {
   display: flex;
   justify-content: center;
+  margin: 5px;
 }
 
 .input-wrapper form {
@@ -129,22 +155,22 @@ main {
 
 label {
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Varela Round';
   font-weight: 500;
-  color: #0026ff;
+  color: #16697a;
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
-  color: white;
+  background-color: #16697a;
+  color: #fff3e3;
   border: none;
   border-radius: 4px;
   padding: 16px 40px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: 'Varela Round';
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -154,3 +180,4 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
