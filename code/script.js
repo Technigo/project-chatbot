@@ -7,8 +7,10 @@ const form = document.getElementById("form");
 const nameGreeting = document.getElementById("name-greeting");
 const inputWrapper = document.getElementById("input-wrapper");
 
+//array of order details
+const orderData = "test";
 console.log(nameGreeting);
-// Declare your functions after this comment
+
 // Input Wrapper HTML elements:
 const typeOfFoodHtml = () => {
   inputWrapper.innerHTML = `
@@ -34,23 +36,41 @@ const typeOfFlavourHtml = (flavour) => {
   <option>👇 Select a flavour...</option>
   <option id="pistachio">Pistachio</option>
   <option id="nutella">Nutella</option>
-  <option id="cheese">Cheese</option>
+  <option id="cream">Cream</option>
+</select>
+  `;
+  } else if (flavour === "sponge-cake") {
+    inputWrapper.innerHTML = `
+  <select name="flavours" id="flavours">
+  <option>👇 Select a flavour...</option>
+  <option id="orange">Orange sauce</option>
+  <option id="banana">Banana</option>
+  <option id="pear">Pear</option>
 </select>
   `;
   }
 };
 
 const shippingMethodHtml = () => {
-  inputWrapper.innerHtml = `
-  <button id="delivery" type="button" value="Delivery"> Delivery </button>
-  <button id="pickup" type="button" value="Pickup">  Pickup </button>
+  console.log("shipping method");
+  inputWrapper.innerHTML = `
+  <button id="delivery" value="Delivery" type="button"> Delivery </button>
+  <button id="pickup"  value="Pickup" type="button"> Pickup </button>
+  `;
+};
+
+const deliveryAddress = () => {
+  console.log("delivery address");
+  inputWrapper.innerHTML = `
+  <input id="delivery-address-text" type="text" />
+  <button id="delivery-address-btn" type="button">Send</button>
   `;
 };
 
 const orderConfirmationHtml = () => {
-  inputWrapper.innerHtml = `
-  <button id="confirm" type="button" value="Confirm"> Confirm </button>
-  <button id="cancel" type="button" value="Cancel">  Cancel </button>
+  inputWrapper.innerHTML = `
+  <button id="confirm" value="Confirm" type="button"> Confirm </button>
+  <button id="cancel"  value="Cancel" type="button"> Cancel </button>
   `;
 };
 
@@ -102,33 +122,93 @@ const userNameAnswer = (e) => {
   setTimeout(typeOfFoodHtml, 2000);
 };
 
-//Question 3 from bot
-const typeOfFlavourQuestion = (e) => {
-  const answer = `${e.target.value}`;
-  console.log(answer);
-  showMessage(answer, "user");
-  setTimeout(() => typeOfFlavourHtml(answer), 1000);
+//function for questions:
+const eventHandler = (e) => {
+  const selectedValue = e.target;
+  console.log(selectedValue.id);
+
+  if (
+    selectedValue.id === "donut" ||
+    selectedValue.id === "croissant" ||
+    selectedValue.id === "sponge-cake"
+  ) {
+    setTimeout(() => showMessage(selectedValue.value, "user"), 500);
+    setTimeout(() => showMessage("Select a flavour!", "bot"), 1500);
+    setTimeout(() => typeOfFlavourHtml(selectedValue.id), 1500);
+  } else if (selectedValue.id === "flavours") {
+    console.log("clicked on selector");
+    document.getElementById("flavours").addEventListener("change", () => {
+      console.log("changed to option");
+
+      setTimeout(() => showMessage(selectedValue.value, "user"), 1000);
+      setTimeout(
+        () =>
+          showMessage(
+            `Would you like to pick up your pastry in our shop or have it delivered to you?`,
+            "bot"
+          ),
+        1500
+      );
+      setTimeout(() => shippingMethodHtml(), 1500);
+    });
+  }
+  //delivery or pick up
+  else if (selectedValue.id === "delivery" || selectedValue.id === "pickup") {
+    setTimeout(() => showMessage(selectedValue.value, "user"), 500);
+    if (selectedValue.id === "delivery") {
+      setTimeout(
+        () =>
+          showMessage(
+            "Amazing! I will just need your delivery address!",
+            "bot"
+          ),
+        1000
+      );
+      setTimeout(deliveryAddress, 1000);
+    } else {
+      setTimeout(
+        () =>
+          showMessage(
+            "You are welcome to pick up your order at our shop in Stockholm!",
+            "bot"
+          ),
+        1000
+      );
+      setTimeout(
+        () => showMessage("Now please confirm your order!", "bot"),
+        1000
+      );
+      setTimeout(orderConfirmationHtml, 1000);
+    }
+  }
+  //delivery address
+  else if (selectedValue.id === "delivery-address-btn") {
+    const userAddress = document.getElementById("delivery-address-text");
+    setTimeout(() => showMessage(userAddress.value, "user"), 1000);
+    setTimeout(() => showMessage("Please confirm your order!", "bot"), 1000);
+    setTimeout(orderConfirmationHtml, 1500);
+  }
+  //confirmation
+  else if (selectedValue.id === "confirm" || selectedValue.id === "cancel") {
+    if (selectedValue.id === "confirm") {
+      setTimeout(
+        () =>
+          showMessage(
+            `Thank you for your order! Here is your order information: ${orderData}`,
+            "bot"
+          ),
+        1000
+      );
+    } else {
+      setTimeout(() => showMessage("See you at another time!", "bot"), 1000);
+    }
+  }
 };
 
 // Set up your eventlisteners here
-inputWrapper.addEventListener("click", function (e) {
-  const selectedFood = e.target;
-  if (selectedFood.id === "donut") {
-    setTimeout(() => typeOfFlavourHtml(selectedFood.id), 1000);
-    showMessage(selectedFood.value, "user");
-    showMessage("Select a flavour for your donut!", "bot");
-  } else if (selectedFood.id === "croissant") {
-    showMessage(selectedFood.value, "user");
-    typeOfFlavourHtml(selectedFood.id);
-    showMessage("Select a flavour for your croissant!", "bot");
-  } else if (selectedFood.id === "sponge-cake") {
-    showMessage(selectedFood.value, "user");
-    typeOfFlavourHtml(selectedFood.id);
-    showMessage("Select a flavour for your sponge cake!", "bot");
-  }
-});
-if (button) {
-  button.addEventListener("click", userNameAnswer);
-}
+//submit greeting form:
+form.addEventListener("submit", userNameAnswer);
+//Click&change events:
+inputWrapper.addEventListener("click", eventHandler);
 
 setTimeout(greetUser, 1000);
