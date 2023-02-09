@@ -46,13 +46,13 @@ const nextQuestion = (message) => {
     showMessage(message)
     input.value = ''
     setTimeout(() => showFoodTypes(message), 1000)
-  } else if (questionNumber ++) {
+  } else if (questionNumber === 2) {
     showMessage(message)
-    setTimeout(() => showMenu(message), 1000)
-  } else if (questionNumber ++) {
+    setTimeout(() => showYear(message), 1000)
+  } else if (questionNumber === 3) {
     showMessage(message)
     setTimeout(() => showDishSize(message), 1000)
-  } else if (questionNumber ++) {
+  } else if (questionNumber === 4) {
     showMessage(message)
     setTimeout(() => showPrice(message), 1000)
   } else {
@@ -85,43 +85,46 @@ sendBtn.addEventListener('click', (event) => {
 })
 
 const showFoodTypes = (userName) => {
-  questionNumber ++
+  questionNumber++
   showMessage(
-    `Nice to meet you ${userName}. What type of food would you like to order?`, 'bot' )
+    `Nice to meet you ${userName}. When do you want to go?`, 'bot' )
 
   inputWrapper.innerHTML = `
-    <button id="pizzaBtn">Pizza</button>
-    <button id="pastaBtn">Pasta</button>
-    <button id="saladBtn">Salad</button>
+    <button id="1920Btn">1920</button>
+    <button id="1980Btn">1980</button>
+    <button id="2000Btn">2000</button>
   `
 
   document
-    .getElementById('pizzaBtn')
-    .addEventListener('click', () => nextQuestion('pizza'))
+    .getElementById('1920Btn')
+    .addEventListener('click', () => nextQuestion('1920'))
   document
-    .getElementById('pastaBtn')
-    .addEventListener('click', () => nextQuestion('pasta'))
+    .getElementById('1980Btn')
+    .addEventListener('click', () => nextQuestion('1980'))
   document
-    .getElementById('saladBtn')
-    .addEventListener('click', () => nextQuestion('salad'))
+    .getElementById('2000Btn')
+    .addEventListener('click', () => nextQuestion('2000'))
 }
 
-const showMenu = (type) => {
-  questionNumber ++
+const showYear = (type) => {
+  questionNumber++
 
   showMessage(
-    `Oh so you're in the mood for ${type}? Great choice. Select something from the menu!`, 'bot')
+    `Great choice! ${type}'s was exciting times!`, 'bot')
 
-  if (type === 'pizza') {
+    showMessage(
+      `Where do you want to go?`, 'bot')
+
+  if (type === '1920') {
     inputWrapper.innerHTML = `
       <select id="select">
-        <option value="" selected disabled>👇 Select a pizza...</option>
-        <option value="margerita">Margerita</option>
-        <option value="vesuvio">Vesuvio</option>
+        <option value="" selected disabled>Where to go...</option>
+        <option value="dance">Dance in Paris</option>
+        <option value="cinema">Cinema in New York</option>
         <option value="peperoni">Peperoni</option>
       </select>
     `
-  } else if (type === 'pasta') {
+  } else if (type === '1980') {
     inputWrapper.innerHTML = `
       <select id="select">
         <option value="" selected disabled>👇 Select a pasta...</option>
@@ -140,12 +143,13 @@ const showMenu = (type) => {
       </select>
     `
   }
+
   const select = document.getElementById('select')
-  select.addEventListener('change', () => nextQuestion(select.value))
+  select.addEventListener('change', () => nextQuestion(select.value)) 
 }
 
 const showDishSize = (dish) => {
-  questionNumber ++
+  questionNumber++
 
   showMessage(`One ${dish} coming up! Will that be for an adult or a child?`, 'bot')
 
@@ -161,6 +165,40 @@ const showDishSize = (dish) => {
     .getElementById('child')
     .addEventListener('click', () => nextQuestion('child'))
 }
+
+const showPrice = (size) => {
+  questionNumber++
+
+  let price
+  if (size === 'adult') {
+    price = '€15'
+  } else {
+    price = '€10'
+  }
+
+  showMessage(
+    `One ${size} sized dish will be prepared for you. That'll be ${price}. Are you sure you want to order this?` , 'bot'
+  )
+
+  inputWrapper.innerHTML = `
+    <button id="restart">NO</button>
+    <button id="confirm">YES</button>
+  `
+
+  document.getElementById('restart').addEventListener('click', () => {
+    location.reload()
+    return false
+  })
+  document
+    .getElementById('confirm')
+    .addEventListener('click', () => nextQuestion('Yes!'))
+}
+
+const thankYou = () => {
+  showMessage(`Thank you for your order! See you soon 👋🏼` , 'bot')
+  inputWrapper.innerHTML = ``
+}
+
 
 // Set up your eventlisteners here
 
