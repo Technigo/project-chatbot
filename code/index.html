@@ -8,16 +8,18 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet" />
-    <title>Chat Bot</title>
+    <title>Bill Splitter</title>
   </head>
 
   <body>
-    <h1>Welcome to xxx.</h1>
-    <h2>Ask about xxxx.</h2>
+    <h1>Welcome to the <em>Bill Splitter</em>.</h1>
+    <h2>A bot that helps you do the math.</h2>
     <main>
+      <!--This chat section is where the chat messages will be rendered when you add a message as either the bot or the user-->
       <section class="chat" id="chat"></section>
-
+      <!--This div is where you can show input elements to the user - text inputs, buttons, selects, etc.-->
       <div class="input-wrapper" id="input-wrapper">
+        <!--START name form-->
         <form id="name-form">
           <label for="name-input">Name</label>
           <input id="name-input" type="text" />
@@ -25,7 +27,55 @@
             Send
           </button>
         </form>
+        <!--END-->
+        <!--START "How was the food?"-q&a form-->
+        <form id="food-form">
+          <label for="food-form">How was the food?</label>
+          <input id="food-input" type="text" />
+          <button class="send-btn" type="submit">
+            Send
+          </button>
+        </form>
+        <!--END-->
+        <!--START "How much is the bill?" aka. 'cost' q&a form-->
+        <form id="cost-form">
+          <label for="cost-form">How much is the bill?</label>
+          <input id="cost-input" type="number" />
+          <button class="send-btn" type="submit">
+            Send
+          </button>
+        </form>
+        <!--END-->
+        <!--START "How many want to split?" aka. 'number' q&a form-->
+        <form id="number-form">
+          <label for="number-form">How many want to split?</label>
+          <input id="number-input" type="number" />
+          <button class="send-btn" type="submit">
+            Send
+          </button>
+        </form>
+        <!--END-->
+        <!--START "How much do you want to tip per person (optional)?" aka. 'tip' q&a form-->
+        <form id="tip-form">
+          <label for="tip-form">How much do you want to tip per person (optional)?</label>
+          <input id="tip-input" type="number" />
+          <button class="send-btn" type="submit">
+            Send
+          </button>
+        </form>
+        <!--END-->
+        <!--(OPTIONAL) START "Would you like to start over?" q&a form-->
+        <form id="restart-form">
+          <label for="restart-form">Would you like to start over?</label>
+          <button class="send-btn" onclick="alert('Are you sure you want to restart? Click OK to continue.')" value="Start over!">
+          Yes</button>
+          <button class="send-btn" type="submit">
+            No
+          </button>
+        </form>
+        <!--END-->
       </div>
+
     </main>
 
     <script src="./script.js"></script>

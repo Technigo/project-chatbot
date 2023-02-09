@@ -1,10 +1,12 @@
-// Variables that point to selected DOM elements
+// START Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 
-// If you need any global variables that you can use across different functions, declare them here:
+//END Variables that point to selected DOM elements
+// START global variables
 
 
-// Declare your functions after this comment
+//END global variables
+// START functions
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -20,6 +22,7 @@ const showMessage = (message, sender) => {
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
+    console.log(sender === 'user')
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -33,12 +36,22 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
-// Starts here
+// START function that asks for name
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot');
+  showMessage("Hello there!\nWelcome to the Bill Splitter.\nI will be the bot serving you today.\n May I ask, what is your name?", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }
+
+//END
+//START function that replies with name
+
+//END
+
+//START function If name is given correctly, answer with foodQ
+
+
+//If name is not given correctly
 
 // Set up your eventlisteners here
 
@@ -48,4 +61,6 @@ const greetUser = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000);
+setTimeout(greetUser, 1200);
+
+//END functions

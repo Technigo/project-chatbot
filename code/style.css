@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: magenta;
 }
 
 h1 {
@@ -48,9 +48,9 @@ input {
 }
 
 main {
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
   width: 100%;
-  max-width: 700px;
+  max-width: 1000px;
   height: 600px;
   border-radius: 30px;
   background: #fff;
