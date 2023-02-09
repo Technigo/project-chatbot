@@ -1,5 +1,10 @@
 // Variables that point to selected DOM elements
-const chat = document.getElementById('chat');
+const chat = document.getElementById('chat'); 
+const nameInput = document.getElementById('name-input');
+const form = document.getElementById('name-form');
+const sendBtn = document.getElementById('send-btn');
+const main = document.getElementById('main');
+const inputWrapper = document.getElementById('input-wrapper');
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -37,13 +42,40 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello, do you like champagne?", 'bot');
+  showMessage("Hello, what is your name?", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
 
+const handleNameInput = (event) => {
+  event.preventDefault()  // prevents website refresh at submit
+  // Store the value in a variable so we can access it after we 
+	// clear it from the input
+  const name = nameInput.value
+
+  console.log(name)
+  showMessage(`${name}`, 'user') //Name the user typed in shows uo in a bubble.
+  
+  nameInput.value = '' //resets the input value, clears the field
+  
+  setTimeout(() => showMessage(`Hello ${name}, what kind of drink would you like?`, 'bot'), 1000)
+  
+  //showMessage(`Hello ${name}, what kind of drink would you like?`, 'bot');
+  // After 1 second, show the next question by invoking the next function.
+	// passing the name into it to have access to the user's name if we want
+	// to use it in the next question from the bot.
+ // setTimeout(() => showFoodOptions(name), 1000)
+}
+
+
+
+
+
 
 // Set up your eventlisteners here
+form.addEventListener('submit', handleNameInput)
+
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
