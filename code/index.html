@@ -12,16 +12,16 @@
   </head>
 
   <body>
-    <h1>Welcome to xxx.</h1>
-    <h2>Ask about xxxx.</h2>
+    <h1>Welcome to Quizzie!</h1>
+    <h2>Your online quiz bot.</h2>
     <main>
       <section class="chat" id="chat"></section>
 
       <div class="input-wrapper" id="input-wrapper">
         <form id="name-form">
-          <label for="name-input">Name</label>
-          <input id="name-input" type="text" />
-          <button class="send-btn" type="submit">
+          <label for="user-input">Name</label>
+          <input id="user-input" type="text" />
+          <button id="send" class="send-btn" type="submit" onclick = "userAnswer()">
             Send
           </button>
         </form>
