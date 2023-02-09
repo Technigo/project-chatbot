@@ -12,7 +12,7 @@ body {
 }
 
 h1 {
-  font-size: 25px;
+  font-size: 20px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -33,7 +33,7 @@ input {
   background: beige;
   color: black;
   padding: 16px;
-  font-size: 16px;
+  font-size: 12px;
   font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
@@ -85,11 +85,11 @@ main {
 .bubble {
   background: beige;
   font-weight: 500;
-  font-size: 8px;
+  font-size: 5px;
   line-height: 8px;
   padding: 15px;
   color: black;
-  max-width: 40%;
+  max-width: 46%;
 }
 
 .bot-bubble {
@@ -118,7 +118,7 @@ label {
   font-family: 'Montserrat';
   font-weight: 500;
   color: black;
-  margin-right: 20px;
+  margin-right: 5%;
 }
 
 button {
@@ -126,7 +126,7 @@ button {
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 16px 40px;
+  padding: 16px 5%;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
@@ -148,4 +148,8 @@ button:hover {
 
 a {
   color: black;
+}
+
+#name-input {
+  width: 10%;
 }
