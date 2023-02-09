@@ -2,26 +2,24 @@
 const chat = document.getElementById('chat');
 const inputwrapper = document.getElementById("input-wrapper");
 const nameform = document.getElementById("name-form");
-
+const nameinput = document.getElementById("name-input");
 
 // If you need any global variables that you can use across different functions, declare them here:
-
 
 // Declare your functions after this comment
 const handleNameInput = (event) => {
 
   event.preventDefault();
   // Store the value in a variable so we can access it after we 
-	//   clear it from the input
+  //   clear it from the input
   const nameInput = document.getElementById("name-input");
   const name = nameInput.value;
   showMessage(name, 'user');
   nameInput.value = "";
 
-
   // After 1 second, show the next question by invoking the next function.
-	// passing the name into it to have access to the user's name if we want
-	// to use it in the next question from the bot.
+  // passing the name into it to have access to the user's name if we want
+  // to use it in the next question from the bot.
   setTimeout(() => showBookingOptions(name), 1000)
 
 }
@@ -32,20 +30,19 @@ const showBookingOptions = () =>{
   `<button id="yes" class="yes"> YES </button>
    <button id="no" class="no"> NO </button>`
 
-   
-   document.getElementById("yes").addEventListener("click", 
-                                      yesbutton = (event) => {
-                                              showMessage("Yes, I do",'user');
-                                      });
+   document.getElementById("yes").addEventListener("click", yesbutton); 
    document.getElementById("no").addEventListener("click",nobutton);
 }
 
-
-const nobutton = (event) => {
-  showMessage("Please go to reception",'bot');
+const yesbutton = (event) => {
+  showMessage("Yes, I do!",'user');
+  showMessage("Here is your room card",'bot');
 }
 
-
+const nobutton = (event) => {
+  showMessage("No, I don't!",'user');
+  showMessage("Please go to reception",'bot');
+}
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -92,3 +89,5 @@ submitButton.addEventListener("click",handleNameInput);
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000);
+
+

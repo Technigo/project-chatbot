@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url("./assets/hotel.jpg");
 }
 
 h1 {
@@ -38,7 +38,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #5D3891;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -90,7 +90,7 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #E8E2E2;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
