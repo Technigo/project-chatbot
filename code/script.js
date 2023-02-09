@@ -110,6 +110,32 @@ const recognize = (firstName) => {
 
 botReply(`elcome to the world of pinapples ${firstName}. 
 What do you need today? Fun Fact or History?`)
+
+console.log(wrapper);
+
+wrapper.innerHTML =`
+<button id="fun-fact" > Fun Fact </button>
+<button id="History" > History </button>
+<button id="History" > Send me a pineapple!! </button>`
+
+
+document.getElementById('Fun-fact').addEventListener('click', () => {
+  userReply('Give me some fun facts')
+  inputWrapper.innerHTML = ''
+  setTimeout(() => booking('headache'), 1000);
+ })
+
+ document.getElementById('History').addEventListener('click', () => {
+  userReply('yey history of Pinepple')
+  inputWrapper.innerHTML = ''
+  setTimeout(() => factHis('History'), 1000);
+ })
+
+ document.getElementById('order').addEventListener('click', () => {
+  userReply('I need a pineapple')
+  inputWrapper.innerHTML = ''
+  setTimeout(() => order('order'), 1000);
+ }) 
     
 }
 
@@ -125,7 +151,7 @@ const funH = () =>{
   questionNumber ++
   
 botReply('Press one of the buttons and choose');
-inputWrapper.innerHTML = `
+/*inputWrapper.innerHTML = `
         <button id="fun-fact" > Fun Fact </button>
         <button id="History" > History </button>
         <button id="History" > Send me a pineapple!! </button>
@@ -148,7 +174,7 @@ inputWrapper.innerHTML = `
           inputWrapper.innerHTML = ''
           setTimeout(() => order('order'), 1000);
          })    
-      }
+      }*/
  
  
 
