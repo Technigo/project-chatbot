@@ -117,7 +117,7 @@ const showSizes = (type) => {
     `${type}, so yummy! Choose what size you would like:`
   ) 
 
-  if (type === 'soft serve') {
+  if (type === 'Soft serve') {
     inputWrapper.innerHTML =`
       <select id="select">
         <option value=""selected disabled>Select a size</option>
@@ -135,9 +135,12 @@ const showSizes = (type) => {
         <option value="Three">3</option>
     `
   }
+
+  const select = document.getElementById('select')
+  select.addEventListener('change', () => nextQuestion(select.value))
 }
 
-const showServingTopping = (msg) => {
+const showServingTopping = (type) => {
   questionNumber++
   botReply(`Would you like to pimp your ice-cream with a topping?`)
 
@@ -145,7 +148,6 @@ const showServingTopping = (msg) => {
     <button id="yesBtn">Yes</button>
     <button id="noBtn">No</button>
   `
-
   document
     .getElementById('yesBtn')
     .addEventListener('click', () => nextQuestion('Yes'))
@@ -154,6 +156,13 @@ const showServingTopping = (msg) => {
     .addEventListener('click', () => nextQuestion('No'))
 }
 
+const showToppingOptions = (type) => {
+  questionNumber++
+
+  botReply (
+    `Good call! Which topping would you like?`
+    ) 
+}
   
 
 
