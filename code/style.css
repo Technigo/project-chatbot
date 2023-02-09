@@ -1,6 +1,5 @@
 /* HEXcolors
 
-
 LightPink:#f0efef
 Pink: #e4d1d1
 Purple: #b9b0b0
@@ -108,14 +107,14 @@ main {
 
 .bot-bubble {
   background: #e4d1d1;
-  border-radius: 0px 26px 26px 26px;
+  border-radius: 0px 40px 40px 40px;
   margin-left: 8px;
   color: #77a8a8;
 }
 
 .user-bubble {
   background: #d9ecd0;
-  border-radius: 26px 0 26px 26px;
+  border-radius: 40px 0 40px 40px;
   margin-right: 8px;
   color: #b9b0b0;
 }

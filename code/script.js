@@ -1,12 +1,17 @@
 // Variables that point to selected DOM elements
-const chat = document.getElementById('chat');
-const sendBtn = document.getElementById('sendBtn');
-const nameForm = document.getElementById('nameForm');
-const nameInput =document.getElementById('nameInput')
+const chat = document.getElementById('chat')
+const sendBtn = document.getElementById('sendBtn')
+const nameForm = document.getElementById('nameForm')
+const nameInput =document.getElementById('nameInput') 
 
-// If you need any global variables that you can use across different functions, declare them here:
-// Declare your functions after this comment
-let username // 👈🏼 FATTAR! om du vill använda username i flera funktioner kan du spara det i en global variabel
+
+
+// Declare username as a global variable
+let username
+
+const userAnswer = (msg) => {
+  showMessage(msg, 'user')
+}
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -37,6 +42,8 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
+
+
 // Chat starting here when bot greets user
 const greetUser = () => {
   showMessage("Hi there, what´s your name?", 'bot')
@@ -47,33 +54,66 @@ const handleNameInput = (event) => {
   event.preventDefault()
   console.log('Här ska vi ta hand om namnet')
   console.log(nameInput.value) 
-  showMessage(nameInput.value, 'user') 
-  
+  showMessage(nameInput.value, 'user')
+  //setCustomValidity('Oops, you forgot this field!')
+
   // Save thee username for later
   username = nameInput.value 
 //Empty input
   nameInput.value = ''
 //Fördröjning till callback
-  setTimeout(() => firstAnswer() , 1000)
+  setTimeout(() => nameAnswer() , 1000)
 }
 
   // Boten svarar med "Hi 'name', what a lovley day for laundry" + ny fråga  
-const firstAnswer = () => {
-  showMessage(`Hi ${username}, what a lovley day for laundry! ` ,'bot') 
-  setTimeout(() => firstQuestion() , 3000)
+const nameAnswer = () => {
+  showMessage(`Hi ${username}, what a lovley day for laundry! 🧺 ` ,'bot') 
+  setTimeout(() => colorQuestion() , 2500)
 }
 
-const firstQuestion = () => {
+const colorQuestion = () => {
   showMessage ('What kind of laundry will you be doing today?' , 'bot')
+  inputWrapper.innerHTML = `
+  <button id='darkBtn'> Dark</button>
+  <button id='whiteBtn'> White</button>
+  <button id='mixedBtn'> Mixed</button>
+  `
+
+  document.getElementById('darkBtn')
+    .addEventListener('click', () => userAnswer('Dark'))
+    // setTimeout(() => tempQuestion()
+  
+    document.getElementById('whiteBtn')
+    .addEventListener('click', () => userAnswer('White'))
+    // setTimeout(() => tempQuestion()
+  
+    document.getElementById('mixedBtn')
+    .addEventListener('click', () => userAnswer('Mixed'))
 }
+    
+const tempQuestion = (color) => {
+  if (color === 'Dark') {
+    showMessage (`Well ${username}, dark it is! Choose you temperature below!`, 'bot')
+  } else if (color === 'White') {
+    showMessage (`Let´s do some white laundry ${username}. At what temp?`), 'bot'
+  } else {
+    showMessage (`WOW, that´s daring ${username}. Chose your temp and give it a try`, 'bot')
+  }
 
-
+  inputWrapper.innerHTML = `
+  <select id="selectTemp">
+    <option value="" selected disabled>🌡️</option>
+    <option value="30">30°</option>
+    <option value="40">40°</option>
+    <option value="60">60°</option>
+  </select>
+  `
+}
 
 
 // Set up your eventlisteners here
-// sendBtn.addEventListener('submit', handleNameInput); <== behövs denna?
-nameForm.addEventListener('submit', handleNameInput);
 
+nameForm.addEventListener('submit', handleNameInput);
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
@@ -82,12 +122,3 @@ nameForm.addEventListener('submit', handleNameInput);
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
   setTimeout(greetUser, 1000);
-
-
-
-  //Enter name and click button
- 
-  //Storing username for access later
-
-  //What type of laundry will you be washing today?
-  //-Dark? White? ........
