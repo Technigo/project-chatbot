@@ -5,9 +5,7 @@ const nameInput = document.getElementById('name-input');
 const sendBtn = document.getElementById('send-btn');
 const nameForm = document.getElementById('name-form');
 
-// If you need any global variables that you can use across different functions, declare them here:
-
-// Declare your functions after this comment
+// Functions
 
 // This function will add a chat bubble in the correct place based on who the sender is
 function showMessage(message, sender) {
@@ -32,9 +30,12 @@ function showMessage(message, sender) {
       </section>
     `;
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+
   chat.scrollTop = chat.scrollHeight;
 }
+
+
+
 
 // User greeting
 const greetUser = () => {
@@ -139,7 +140,7 @@ setTimeout(() => lastQuestion(), 1000)
 }
 
 const lastQuestion = () => {
-  showMessage ("Are you happy with your plant?", 'bot');
+  showMessage ("Are you happy with this recommendation?", 'bot');
   inputWrapper.innerHTML=`
   <button id="yesBtn" value="yesBtn">Yes, I love it!</button>
   <button id="noBtn" value="noBtn">No, I want to try again!</button>
