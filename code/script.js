@@ -60,9 +60,15 @@ const greetUser = () => {
 sendButton.addEventListener("click", (e) => {
   e.preventDefault();
   usersName = nameInput.value;
-  console.log(usersName);
-  showMessage(usersName, "user");
-  setTimeout(() => askNextQuestion(), 1000);
+  if (usersName === "") {
+    showMessage(
+      "what did you say, i could not hear you. Please tell me your name, friend",
+      "bot"
+    );
+  } else {
+    showMessage(usersName, "user");
+    setTimeout(() => askNextQuestion(), 1000);
+  }
 });
 
 function askNextQuestion() {
