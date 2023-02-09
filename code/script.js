@@ -76,20 +76,19 @@ const greetUser = () => {
 const showServingOptions = (msg) => {
   questionNumber++
   botReply(
-    `We are glad to serve you ${msg}. Would you like your ice-cream in a cup or cone?`
+    `We are glad to serve you ${msg}. Would you like your ice-cream in a Cup or Cone?`
   )
 
   inputWrapper.innerHTML = `
     <button id="cupBtn">&#127848</button>
     <button id="coneBtn">&#127846</button>
   `
-
   document
     .getElementById('cupBtn')
-    .addEventListener('click', () => nextQuestion ('cup'))
+    .addEventListener('click', () => nextQuestion ('Cup'))
   document
     .getElementById('coneBtn')
-    .addEventListener('click', () => nextQuestion('cone'))
+    .addEventListener('click', () => nextQuestion('Cone'))
 }
 
 const showTypes = (type) => {
@@ -99,23 +98,70 @@ const showTypes = (type) => {
     `Lovely! ${type} it is! What kind of ice-cream would you like?`
   )
 
-  if (type === 'cup') {
-    inputWrapper.innerHTML = `
-    <select id="select">
-      <option value="soft serve">Soft serve</option>
-      <option value="scoop">Scoop</option> 
-    </select>
+  inputWrapper.innerHTML = `
+  <button id="softServeBtn">Soft serve</button>
+  <button id="scoopBtn">Scoop</button>
+`
+  document
+    .getElementById('softServeBtn')
+    .addEventListener('click', () => nextQuestion('Soft serve'))
+  document
+    .getElementById('scoopBtn')
+    .addEventListener('click', () => nextQuestion('Scoop'))  
+}
+
+const showSizes = (type) => {
+  questionNumber++
+
+  botReply(
+    `${type}, so yummy! Choose what size you would like:`
+  ) 
+
+  if (type === 'soft serve') {
+    inputWrapper.innerHTML =`
+      <select id="select">
+        <option value=""selected disabled>Select a size</option>
+        <option value="small">Small</option>
+        <option value="medium">Medium</option>
+        <option value="grande">Grande</option>
+      </select>
     `
-  } else { 
+  } else {
     inputWrapper.innerHTML = `
-    <select id="select">
-      <option value="soft serve">Soft serve</option>
-      <option value="scoop">Scoop</option> 
-    </select>
+      <select id="select">
+        <option value=""selected disabled>Number of scoops</option>
+        <option value="One">1</option>
+        <option value="Two">2</option>
+        <option value="Three">3</option>
     `
   }
-  
 }
+
+const showServingTopping = (msg) => {
+  questionNumber++
+  botReply(`Would you like to pimp your ice-cream with a topping?`)
+
+  inputWrapper.innerHTML = `
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
+  `
+
+  document
+    .getElementById('yesBtn')
+    .addEventListener('click', () => nextQuestion('Yes'))
+  document
+    .getElementById('noBtn')
+    .addEventListener('click', () => nextQuestion('No'))
+}
+
+  
+
+
+
+ // botReply(
+ // `Would you like to place your order?`
+ // )
+
 
 
   sendBtn.addEventListener('click', () => nextQuestion(input.value))
