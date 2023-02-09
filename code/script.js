@@ -1,12 +1,17 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
-const form = document.getElementById('name-form')
+const form = document.getElementById('name-form');
+const inputWrapper = document.getElementById('input-wrapper');
+const sendBtn = document.getElementById('send-btn');
 
+const botReply = (msg) => {
+  showMessage(msg, 'bot')
+}
 
-// If you need any global variables that you can use across different functions, declare them here:
+const userReply = (msg) => {
+  showMessage(msg, 'user')
+}
 
-
-// Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -36,35 +41,52 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
-// Starts here
-const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there human, What's your name?", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
+const greetUser = () => {  
+  showMessage("Hello there, What's your name?", 'bot');  
 }
 
 // Set up your eventlisteners here
-
 form.addEventListener('submit', (event)=> {
-  event.preventDefault()
-// Prevents form from autorefresh
+  event.preventDefault() // Prevents form to autorefresh
 
 const nameInput = document.getElementById('name-input').value;
-//console.log(nameInput)
-
 showMessage(nameInput, 'user');
 
+// Bot greets nameInput and ask for what drink
 chat.innerHTML += `<section class="bot-msg">
     <img src="assets/bot.png" alt="Bot" />
     <div class="bubble bot-bubble">
         <p>Nice to meet you ${nameInput}. What type of drink would you like to order?</p>
     </div>
-</section>`;
-}
+</section>`
 
-// setTimeout(() => recognize(nameInput), 1000)
+inputWrapper.innerHTML = `
+<button id="colaBtn" type="submit">Cola</button>
+<button id="fantaBtn" type="submit">Fanta</button>
+<button id="spriteBtn" type="submit">Sprite</button>
+`
+//eventlisteners for choices                                
+document.getElementById('colaBtn').addEventListener('click' , () => { showMessage("I would like to order Cola", 'user') 
+}) 
+document.getElementById('fantaBtn').addEventListener('click' , () => { showMessage("I would like to order Fanta", 'user')
+}) 
+document.getElementById('spriteBtn').addEventListener('click' , () => { showMessage("I would like to order Sprite", 'user')
+})
+})
 
-)
+/*const showMenu = (type) => {
+  botReply(
+    `Oh so you're in the mood for ${type}? Great choice. Select something from the menu below!`
+  )
+  if (type === 'colaBtn')
+  inputWrapper.innerHTML = `
+  <select id="select">
+    <option value="" selected disabled>👇 Select a what kind...</option>
+    <option value="regular">Regular Cola</option>
+    <option value="zero">Cola Zero</option>
+    <option value="vanilla">Vanilla Cola</option>
+  </select>
+`*/
 
 
 
