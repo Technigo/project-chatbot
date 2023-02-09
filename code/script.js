@@ -1,8 +1,8 @@
 // (Pseudo code) Variables that point to selected DOM elements
-const chat = document.getElementById('chat');
-const inputWrapper = document.getElementById('input-wrapper');
-const input = document.getElementById('input'); 
-const sendBtn = document.getElementById('send'); 
+const chat = document.getElementById('chat')
+const inputWrapper = document.getElementById('input-wrapper')
+const input = document.getElementById('input') 
+const sendBtn = document.getElementById('send')
 
 let questionNumber = 1
 
@@ -34,13 +34,13 @@ const showMessage = (message, sender) => {
           <p>${message}</p>
         </div>
       </section>
-    `;
+    `
   }
     chat.scrollTop = chat.scrollHeight;
-};
+}
 
 const nextQuestion = (message) => {
-  console.log('questionNumber', questionNumber)
+  //console.log('questionNumber', questionNumber)
 
   if (questionNumber === 1) {
     userReply(message)
@@ -48,23 +48,18 @@ const nextQuestion = (message) => {
     setTimeout(() => showServingOptions(message), 800)
   } else if (questionNumber === 2){
     userReply(message)
-    input.value = ''
     setTimeout(() => showTypes(message), 800)
   } else if (questionNumber === 3){
     userReply(message)
-    input.value = ''
     setTimeout(() => showSizes(message), 800)
   } else if (questionNumber === 4){
     userReply(message)
-    input.value = ''
     setTimeout(() => showServingTopping(message), 800)
   } else if (questionNumber === 5){
     userReply(message)
-    input.value = ''
     setTimeout(() => showToppingOptions(message), 800)
   } else if (questionNumber === 6){
     userReply(message)
-    input.value = ''
     setTimeout(() => showPlaceOrder(message), 800)
   } else {
     userReply(message)
@@ -76,9 +71,7 @@ const nextQuestion = (message) => {
 const greetUser = () => {
   questionNumber = 1
   botReply(`Welcome to the &#127846 shop! What's your name?`)
-  //showMessage("Hey buddy, what's your name?", 'bot');
 }
-setTimeout(greetUser, 800);
 
 const showServingOptions = (msg) => {
   questionNumber++
@@ -97,15 +90,56 @@ const showServingOptions = (msg) => {
   document
     .getElementById('coneBtn')
     .addEventListener('click', () => nextQuestion('cone'))
-
 }
 
+const showTypes = (type) => {
+  questionNumber++
+
+  botReply(
+    `Lovely! ${type} it is! What kind of ice-cream would you like?`
+  )
+
+  if (type === 'cup') {
+    inputWrapper.innerHTML = `
+    <select id="select">
+      <option value="soft serve">Soft serve</option>
+      <option value="scoop">Scoop</option> 
+    </select>
+    `
+  } else { 
+    inputWrapper.innerHTML = `
+    <select id="select">
+      <option value="soft serve">Soft serve</option>
+      <option value="scoop">Scoop</option> 
+    </select>
+    `
+  }
+  
+}
+
+
+  sendBtn.addEventListener('click', () => nextQuestion(input.value))
+  input.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter' && input.value) nextQuestion(input.value)
+  })
+  
+
+
+
+
+//add values for if scoop is chosen. 1-3 scoops. 
+//add question for Would you like any toppings (Yes/No)
+//add values if toppings is chosen. Chocolate sauce, Fresh strawberries, Rainbow sprinkles, roasted almonds
+//add question "Would you like to place your order?"
+// If yes, "Thank you for your order!"
+// If no the chat will be deleted. 
+
+
 // If you need any global variables that you can use across different functions, declare them here:
-
-
 // Declare your functions after this comment
 
-
+// When website loaded, chatbot asks first question.
+setTimeout(greetUser, 800);
 
 
 // Set up your eventlisteners here
@@ -130,7 +164,7 @@ const showServingOptions = (msg) => {
 //setTimeout(functionName, timeToWait)
 //greetUser();
 
-// When website loaded, chatbot asks first question.
+
 // normally we would invoke a function like this:
 // greeting()
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:

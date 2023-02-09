@@ -20,7 +20,7 @@
 
     <main>
       <!-- section class: this will be populated with javascript later on-->
-      <section class="chat" id="chat">
+      <section class="chat" id="chat"></section>
       <!-- <section class="bot-msg">
             <img src="./assets/bot.png" alt="chat bot"/>
             <div class="bubble bot-bubble">
@@ -34,22 +34,13 @@
             </div>
             <img src="./assets/user.png" alt="user bot"/>
           </section> -->
-      </section>
-
-
-
-      <!-- form: will take care of the different inputs that we want the user to use ex: text, buttons, dropdowns-->
+            
       <div class="input-wrapper" id="input-wrapper">
-        <form id="name-form">
-          <input id="name-input" type="text" />
-          <button class="sendBtn" type="submit">
+        <input id="input" type="text" />
+          <button id="send" class="send-btn">
             Send us
-          </button>
-
-         <!-- form: add my other inputs (select buttons, submit buttons etc. Create button classes)--> 
-          
-        </form>
-      </div>
+          </button>               
+        </div>
     </main>
 
     <script src="./script.js"></script>
