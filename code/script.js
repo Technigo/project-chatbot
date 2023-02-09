@@ -93,8 +93,11 @@ const showButtons = () => {
 
 const askForSomething = () => {
   questionIndex++;
-  botReply(`${mood == "good" ? "Great" : "Sorry"} to hear that, ${userName}!`);
-  setTimeout(() => botReply("Do you want something to drink?"), 500);
+  botReply(
+    `${
+      mood == "good" ? "Great" : "Sorry"
+    } to hear that, ${userName}! Do you want something to drink?`
+  );
   inputWrapper.innerHTML = `
   <button id="beerBtn" type="submit">a perfectly poured hazy NEIPA</button>
   <button id="waterBtn" type="submit">a glass of cold tap water</button>
@@ -113,11 +116,10 @@ const askForSomething = () => {
 
 const anythingElse = () => {
   questionIndex++;
-  botReply(`Here's your drink, ${userName}!`);
-  setTimeout(
-    () => botReply("Can I interest you in a curated YouTube-video?"),
-    500
+  botReply(
+    `Here's your drink, ${userName}! Can I interest you in a curated YouTube-video?`
   );
+
   inputWrapper.innerHTML = `
   <button id="yesBtn" type="submit">That would be lovely!</button>
   <button id="noBtn" type="submit">No thanks, I'm good!</button>

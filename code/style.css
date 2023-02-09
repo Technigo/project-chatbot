@@ -54,6 +54,7 @@ input {
   font-family: "Montserrat";
   font-weight: 600;
   line-height: 26px;
+  margin: 4px;
   flex: 1;
 }
 
