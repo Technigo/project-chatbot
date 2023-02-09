@@ -50,10 +50,25 @@ const nextQuestion = (message) => {
     userReply(message)
     input.value = ''
     setTimeout(() => showTypes(message), 800)
-  }  else if (questionNumber === 3){
+  } else if (questionNumber === 3){
     userReply(message)
     input.value = ''
     setTimeout(() => showSizes(message), 800)
+  } else if (questionNumber === 4){
+    userReply(message)
+    input.value = ''
+    setTimeout(() => showServingTopping(message), 800)
+  } else if (questionNumber === 5){
+    userReply(message)
+    input.value = ''
+    setTimeout(() => showToppingOptions(message), 800)
+  } else if (questionNumber === 6){
+    userReply(message)
+    input.value = ''
+    setTimeout(() => showPlaceOrder(message), 800)
+  } else {
+    userReply(message)
+    setTimeout(thankYou, 1000)
   }
 }
 
