@@ -3,8 +3,7 @@ const chat = document.getElementById('chat');
 const nameInput = document.getElementById('name-input');
 const form = document.getElementById('name-form');
 const inputWrapper = document.getElementById('input-wrapper');
-const typeofcake = document.getElementById('cake-type');
-const cakeform = document.getElementById('cake-form');
+
 
 
 // If you need any global variables that you can use across different functions, declare them here:
@@ -42,7 +41,6 @@ const showFoodOptions = (name) => {
 const CakeOrder = () => {
   showMessage(`I want cake, please!`, 'user');
   setTimeout(() => showMessage(`Okay, you want cake. What type of cake would you like?`, 'bot'), 90);
-  
 inputWrapper.innerHTML = `
 <form id="cake-form">
     <select name="cake-type">
@@ -54,10 +52,20 @@ inputWrapper.innerHTML = `
 <button id= "cakebtn" button type="submit"> Order cake </button>
 </form>
   `  
+/*const cakeform = document.getElementById('cake-type');*/
+const cakeform = document.getElementById('cake-type');
 
-cakebtn.addEventListener ('click', DeliveryOrNot);
+cakebtn.addEventListener('click', () => { 
+  const cake = cakeform.value; 
+  DeliveryOrNot(cake);  }, false);
+
+/*cakebtn.addEventListener ('submit', DeliveryOrNot(cake));*/
   }
  
+
+
+
+
 //**FUNCTION** Deliver or not?
 const DeliveryOrNot = (cake) => {
   showMessage(`So, you want ${cake} huh?`, 'bot')
