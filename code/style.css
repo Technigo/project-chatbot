@@ -1,3 +1,15 @@
+:root {
+  --logo-name-font-family: "Rubik Gemstones", cursive;
+  --headings-font-family: "Rye", cursive;
+  --paragraph-font-family: "Newsreader", serif;
+  --border-color: #94b1aa;
+  --primary-bg-color: #94b1aa;
+  --secondary-bg-color: #e6f3f0;
+  --primary-text-color: #000;
+  --secondary-text-color: #348571;
+  --box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -5,25 +17,25 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Montserrat", sans-serif;
-  background: #0026ff;
+  background: var(--primary-bg-color);
+}
+
+h1,
+h2 {
+  font-family: var(--headings-font-family);
+  font-weight: lighter;
+  color: var(--primary-text-color);
+  text-align: center;
+  line-height: 34px;
 }
 
 h1 {
-  font-weight: bold;
   font-size: 44px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
 }
 
 h2 {
-  font-weight: bold;
   font-size: 24px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
-  margin-bottom: 36px;
+  margin-bottom: 20px;
 }
 
 p {
@@ -31,17 +43,18 @@ p {
   font-weight: 600;
   line-height: 28px;
   margin: 0;
+  font-family: var(--paragraph-font-family);
 }
 
 input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: var(--secondary-bg-color);
+  color: #000;
   padding: 16px;
   font-size: 16px;
-  font-family: "Montserrat";
+  font-family: var(--paragraph-font-family);
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -83,19 +96,32 @@ main {
   flex-shrink: 0;
 }
 
-.bot-msg img,
-.user-msg img {
-  width: 60px;
+.bot-msg img {
+  width: 100px;
   height: 60px;
 }
 
+.user-msg img {
+  width: 80px;
+  height: 60px;
+}
+
+.welcome-img {
+  display: flex;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  width: 50%;
+  height: auto;
+  border-radius: 10px;
+}
+
 .bubble {
-  background: #e5e9ff;
+  background: var(--secondary-bg-color);
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #000;
   max-width: 40%;
 }
 
@@ -122,22 +148,22 @@ main {
 
 label {
   font-size: 16px;
-  font-family: "Montserrat";
+  font-family: var(--paragraph-font-family);
   font-weight: 500;
-  color: #0026ff;
+  color: var(--primary-text-color);
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
-  color: white;
+  background-color: var(--primary-bg-color);
+  color: var(--primary-text-color);
   border: none;
   border-radius: 4px;
   padding: 16px 40px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: "Montserrat";
+  font-family: var(--paragraph-font-family);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -146,4 +172,80 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+/* borrowed */
+select {
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 300;
+  height: 60px;
+  font-family: var(--headings-font-family);
+  background: var(--primary-bg-color);
+  width: 100%;
+  padding: 0 20px;
+}
+
+/*footer*/
+.footer {
+  margin-top: 50px;
+}
+
+.logo-footer {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.logo-footer img {
+  width: 50px;
+  border-radius: 50%;
+  box-shadow: var(--box-shadow);
+  margin-top: 5px;
+}
+
+.logoTextSpan {
+  padding: 10px;
+  font-family: var(--footer-font-family);
+}
+
+.footer-icons {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.fa-linkedin,
+.fa-github {
+  font-size: 38px;
+  padding-left: 25px;
+  filter: drop-shadow(2px 4px 1px rgb(0 0 0 / 0.3));
+  text-decoration: none;
+}
+
+.fa-linkedin {
+  color: #0270ad;
+}
+
+.fa-github {
+  color: var(--primary-text-color);
+}
+
+.flex-parent footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-child footer {
+  display: inline-flex;
+}
+
+/* desktop */
+@media (min-width: 1024px) {
+  .welcome-img {
+    width: 10%;
+  }
 }
