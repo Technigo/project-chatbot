@@ -24,7 +24,7 @@ const handleNameInput = (event) => {
 
 //**FUNCTION** Show Food options
 const showFoodOptions = (name) => {
-  showMessage(`Hi ${name}! Welcome to Cake Palace, what would you like to order?`, 'bot');
+  showMessage(`Hello ${name}! What would you like to order?`, 'bot');
  //Buttons appear
   inputWrapper.innerHTML = `
   <button id='cakeBtn' value="cake">Cake</button>
@@ -34,49 +34,137 @@ const showFoodOptions = (name) => {
 
   //Listen for clicks on the buttons and trigger the next function
   document.getElementById('cakeBtn').addEventListener ('click', CakeOrder); 
+  document.getElementById('bunBtn').addEventListener ('click', BunOrder);
+  document.getElementById('sandwichBtn').addEventListener ('click', SandwichOrder); 
 
 }
 
 //**FUNCTION** Cake order select (drop down menu)
 const CakeOrder = () => {
   showMessage(`I want cake, please!`, 'user');
-  setTimeout(() => showMessage(`Okay, you want cake. What type of cake would you like?`, 'bot'), 90);
+  setTimeout(() => showMessage(`Okay, you want cake. What type of cake would you like?`, 'bot'), 800);
 inputWrapper.innerHTML = `
 <form id="cake-form">
     <select id="cake-type">
-        <option value="carrotcake">Carrotcake</option>
-        <option value="cheesecake">Cheesecake</option>
-        <option value="choccake">Chocolate cake</option>
+        <option value="carrot cake">Carrotcake</option>
+        <option value="cheese cake">Cheesecake</option>
+        <option value="chocolate cake">Chocolate cake</option>
     </select>
 
 <button id= "cakebtn"> Order cake </button>
 </form>
   `  
-/*const cakeform = document.getElementById('cake-type');*/
 const cakeform = document.getElementById('cake-type');
 
 cakebtn.addEventListener("click", () => { 
   const cake = cakeform.value; 
-  console.log(cake);
-  DeliveryOrNot(cake);
+  Delivery(cake, undefined, undefined);
 });
-/*cakebtn.addEventListener ('submit', DeliveryOrNot(cake));*/
   }
- 
+
+//**FUNCTION** Bun order select (drop down menu)
+  const BunOrder = () => {
+    showMessage(`I want a bun, please!`, 'user');
+    setTimeout(() => showMessage(`Okay, you want a bun. What type of bun would you like?`, 'bot'), 800);
+  inputWrapper.innerHTML = `
+  <form id="bun-form">
+      <select id="bun-type">
+          <option value="cinnamon bun">Cinnamon bun</option>
+          <option value="cardamom bun">Cardamom bun</option>
+          <option value="vanilla bun">Vanilla bun</option>
+      </select>
+  
+  <button id= "bunBtn"> Order bun </button>
+  </form>
+    `  
+  const bunform = document.getElementById('bun-type');
+  
+  bunBtn.addEventListener("click", () => { 
+    const bun = bunform.value; 
+    Delivery(undefined, bun, undefined);
+  });
+    }
+//**FUNCTION Sandwich order  select (drop down menu)
+    const SandwichOrder = () => {
+      showMessage(`I want a sandwich, please!`, 'user');
+      setTimeout(() => showMessage(`Okay, you want sandwich. What would you like on your sandwich?`, 'bot'), 800);
+    inputWrapper.innerHTML = `
+    <form id="sandwich-form">
+        <select id="sandwich-type">
+            <option value="chicken curry sandwich">Chicken curry topping</option>
+            <option value="cheese and ham sandwich">Ham and cheese</option>
+            <option value="cream cheese sandwich">Cream cheese</option>
+        </select>
+    
+    <button id= "sandwichBtn"> Order sandwich </button>
+    </form>
+      `  
+    const sandwichform = document.getElementById('sandwich-type');
+    
+    sandwichBtn.addEventListener("click", () => { 
+      const sandwich = sandwichform.value; 
+      Delivery(undefined, undefined, sandwich);
+    });
+      }
 
 
 
+//**FUNCTION** Delivery
+const Delivery = (cake, bun, sandwich) => {
 
-//**FUNCTION** Deliver or not?
-const DeliveryOrNot = (cake) => {
-  showMessage(`So, you want ${cake} huh?`, 'bot')
+  if (bun) {
+    showMessage(`I would like a ${bun}, please!`, 'user');
+    setTimeout(() => showMessage(`So, you want a ${bun} huh?`, 'bot'), 1000);
+  }
+  else if (cake) {
+    showMessage(`I would like ${cake}, please!`, 'user');
+    setTimeout(() => showMessage(`So, you want ${cake}!`, 'bot'), 1000);
+  }
+  else {
+    showMessage(`I would like a ${sandwich}, please!`, 'user');
+    setTimeout(() => showMessage(`So, you want a ${sandwich} huh?`, 'bot'), 1000);
+  }
+
+  setTimeout(() => showMessage(`To which adress to you want the delivery?`, 'bot'), 1800);
 
   inputWrapper.innerHTML = `
-  *********GREJER HÄR*************
-    `  
+    <form id = "delivery-adress">
+        <input type="text" input id="adress" placeholder="Please enter adress here" name="adress" required>
+      </form>
 
+      <button id= "adressBtn"> Submit </button>
+      `  
+  const userAdress = document.getElementById('adress');
+
+  adressBtn.addEventListener("click", () => { 
+    const adress = userAdress.value; 
+    GoodBye(cake, bun, sandwich, adress);
+  });
 
 }
+
+const GoodBye = (cake, bun, sandwich, adress) => {
+
+  showMessage(`${adress}`, 'user');
+
+  if (bun && adress) {
+    setTimeout(() => showMessage(`Okay, we will deliver your ${bun} to the following adress: <br> ${adress}`, 'bot'), 1000);
+  }
+
+  else if (cake && adress) {
+    setTimeout(() => showMessage(`Okay, we will deliver your ${cake} to the following adress: <br> ${adress}`, 'bot'), 1000);
+  }
+
+  else {
+    setTimeout(() => showMessage(`Okay, we will deliver your ${sandwich} to the following adress: <br> ${adress}`, 'bot'), 1000);
+  }
+
+  setTimeout(() => showMessage("Thank you for shopping at Fast Fika!", 'bot'), 1800);
+
+inputWrapper.innerHTML = ``  
+
+}
+
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
@@ -111,7 +199,7 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot');
+  showMessage("Hello welcome to Fast Fika! What's your name?", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
   showMessage("");
 }
