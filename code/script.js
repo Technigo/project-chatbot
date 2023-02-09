@@ -58,6 +58,11 @@ const nextQuestion = (message) => {
   } else if (questionNr === 2) {
     userReply(message)
     setTimeout(() => showOptions(message), 1000)
+  
+  //} else if (questionNr === 3) {
+  //userReply(message)
+  //setTimeout(() => showAdress(message), 1000)
+
   } else if (questionNr === 3) {
     userReply(message)
     setTimeout(() => HappyChoice(message), 1000)
@@ -83,7 +88,6 @@ const ShowCuisineTypes = (msg) => {
   <button id="asianBtn">Asian</button>
   <button id="middleEasternBtn">Middle Eastern</button>
   `
-// Set up your eventlisteners here
   document
     .getElementById('italianBtn')
     .addEventListener('click', () => nextQuestion('italian'))
@@ -129,8 +133,42 @@ const showOptions = (type) => {
   }
 
   const select = document.getElementById('select')
-  select.addEventListener('change', () => nextQuestion(select.value))
+  select.addEventListener('change', () =>
+  nextQuestion(select.value))
+  //showAdress(select.value)
 }
+
+//  Depending on which restaurant they choose give a different adress 
+
+//const.showAdress = (adress) => {
+//  questionNr++
+//  alert(`You're in for a treat! The restaurant is located at ${adress}`)
+
+//  if (select.value === "lanonna") {
+//    ("Fleminggatan 45, 112 32 Stockholm")
+//  } else if (select.value === "olli") {
+//    ("Jakobsbergsgatan 21, 111 44 Stockholm")
+//  } else if (select.value === "capricci") {
+//    ("Hornstulls strand 4, 117 39 Stockholm")
+
+//  } else if (select.value === "surfers") {
+//    ("Norrlandsgatan 24, 111 43 Stockholm")
+//  } else if (select.value === "apo") {
+//    ("Regeringsgatan 66, 111 39 Stockholm")
+//  } else if (select.value === "sinramen") {
+//    ("Jakobsbergsgatan 23, 111 44 Stockholm")
+
+//  } else if (select.value === "moas"){
+//    ("Roslagsgatan 6, 113 55 Stockholm")
+//  } else if (select.value === "tabbouli"){
+//    ("Tavastgatan 22, 118 24 Stockholm")
+//  } else  {
+//    ("Kungstensgatan 33, 113 57 Stockholm")
+//  }
+//}
+
+
+////////////////////
 
 const HappyChoice = (choice) => {
   questionNr++
