@@ -7,6 +7,8 @@ const input = document.getElementById('input-wrapper');
 
 // If you need any global variables that you can use across different functions, declare them here:
 
+let username = ""; // by declaring username at the top with let, will allow it to be assigned new values later in the code and reused throughout functions.
+
 // Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -48,14 +50,14 @@ const greetUser = () => {
 //This makes the submit button clickable and makes the first bubble pop up.
 form.addEventListener('submit', (event) => {
   event.preventDefault()
-  const username = nameInput.value // let and const are only available within the block where they are declared.  Cannot be used outside this function as is, and cannot be reassigned b/c const.
+  username = nameInput.value // isn't just defined locally b/c haven't reused "let", adding the declared value to the global "let username ="
   showMessage(username, 'user')
-  setTimeout(() => showBotResponseOne(username), 500) //the username in parentheses is passing off data to the next function showFirstResponse, and calling showBotResponse 500ms after the user's name shows up
+  setTimeout(() => showBotResponseOne(), 500) //calling showBotResponse 500ms after the user's name shows up
 });
 
 
 //This is where the showBotResponse function is declared - this will show the bot's response to the user's name.
-const showBotResponseOne = (username) => { //the param username is collecting the username data from previous function to be used in following function.
+const showBotResponseOne = () => { 
   showMessage(`Hi there, ${username}! Are you interested in getting quilting, crochet, or cross-stitch ideas?`, 'bot')
   input.innerHTML = `
     <button id="quilt-button">Quilting</button>
