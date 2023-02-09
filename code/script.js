@@ -95,42 +95,42 @@ const lightQuestion = (waterAnswer) => {
   <button id="darkBtn" value="dark">A dark corner</button>
   <button id="naLightBtn" value="anyLight">Not sure!</button>
   `
-  document.getElementById('lightBtn').addEventListener('click', () => {showMessage ("light!", 'user')
+  document.getElementById('lightBtn').addEventListener('click', () => {showMessage ("Sunny all day, baby!", 'user')
   setTimeout(() => showPlant(waterAnswer, 'light'), 1000)});
-  document.getElementById('darkBtn').addEventListener('click', () => {showMessage ("dark", 'user')
+  document.getElementById('darkBtn').addEventListener('click', () => {showMessage ("A dark corner...", 'user')
   setTimeout(() => showPlant(waterAnswer, 'dark'), 1000)});
-  document.getElementById('naLightBtn').addEventListener('click', () =>{showMessage("pro light", 'user')
+  document.getElementById('naLightBtn').addEventListener('click', () =>{showMessage("I'm not sure yet!", 'user')
   setTimeout(() => showPlant(waterAnswer, 'anyLight'), 1000)});
 }
 
 const showPlant = (waterAnswer, lightAnswer) => {
   inputWrapper.innerHTML = '';
   if (waterAnswer === 'littleWater' && lightAnswer === 'light') {
-showMessage ("You should get a succulent!", 'bot')
+showMessage (`You should get a succulent! <br><img src="assets/succulent.png" alt="A succulent plant">`, 'bot')
   }
   else if (waterAnswer === 'lotWater' && lightAnswer === 'light') {
-    showMessage ("You should get coleus plant!", 'bot')
+    showMessage (`You should get a coleus plant!<br><img src="assets/coleus.png" alt="a coleus plant, also called fire nettle">`, 'bot')
   }
   else if (waterAnswer === 'anyWater' && lightAnswer === 'light') {
-    showMessage ("You should get a pelargon", 'bot')
+    showMessage (`You might like a geranium! <br><img src="assets/geranium.png" alt="a potted geranium">`, 'bot')
   }
   else if (waterAnswer === 'littleWater' && lightAnswer === 'dark') {
-    showMessage ("You should get a garderobsblomma", 'bot')
+    showMessage (`You might like a ZZ plant! <br><img src="assets/zzplant.png" alt="a potted ZZ plant">`, 'bot')
   }
   else if (waterAnswer === 'lotWater' && lightAnswer === 'dark') {
-    showMessage ("You should get an ivy plant!", 'bot')
+    showMessage (`You should get an ivy plant! <br><img src="assets/ivy.png" alt="a potted ivy plant">`, 'bot')
   }
   else if (waterAnswer === 'anyWater' && lightAnswer === 'dark') {
-    showMessage ("You should get a croton", 'bot')
+    showMessage (`Try a monstera perhaps? <br><img src="assets/monstera.png" alt="a potted monstera plant">`, 'bot')
   }
   else if (waterAnswer === 'littleWater' && lightAnswer === 'anyLight') {
-    showMessage ("You should get a pelargon", 'bot')
+    showMessage (`You might like an aloe vera! <br><img src="assets/aloe.png" alt="aloe vera plant">`, 'bot')
   }
   else if (waterAnswer === 'lotWater' && lightAnswer === 'anyLight') {
-    showMessage ("You should get a pelargon", 'bot')
+    showMessage (`Try a croton plant! <br><img src="assets/croton.png" alt="croton plant">`, 'bot')
   }
   else if (waterAnswer === 'anyWater' && lightAnswer === 'anyLight') {
-    showMessage ("You should get a pelargon", 'bot')
+    showMessage (`A spider plant might be right for you! <br><img src="assets/spiderplant.png" alt="a potted spider plant">`, 'bot')
   }
 else {
   showMessage ("Nothing", 'bot')
