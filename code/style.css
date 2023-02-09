@@ -90,22 +90,22 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #ffa688;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #fff3f3;
   max-width: 40%;
 }
 
 .bot-bubble {
-  border-radius: 0px 26px 26px 26px;
+  border-radius: 0px 22px 22px 22px;
   margin-left: 8px;
 }
 
 .user-bubble {
-  border-radius: 26px 0 26px 26px;
+  border-radius: 22px 0 22px 22px;
   margin-right: 8px;
 }
 

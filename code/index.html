@@ -16,10 +16,20 @@
 
   <body>
     <h1>Welcome to the ice-cream chatbot &#127846</h1>
-    <h2>Order your favorite!</h2>
+    <h2>Order your favorite ice-cream!</h2>
+
     <main>
       <!-- section class: this will be populated with javascript later on-->
-      <section class="chat" id="chat"></section>
+      <section class="chat" id="chat">
+          <section class="user-msg">
+            <div class="bubble user-bubble">
+              <p>message</p>
+            </div>
+            <img src="./assets/user.png" alt="user bot">
+          </section>
+      </section>
+
+
 
       <!-- form: will take care of the different inputs that we want the user to use ex: text, buttons, dropdowns-->
       <div class="input-wrapper" id="input-wrapper">
@@ -29,6 +39,9 @@
           <button class="send-btn" type="submit">
             Send
           </button>
+
+         <!-- form: add my other inputs--> 
+          
         </form>
       </div>
     </main>

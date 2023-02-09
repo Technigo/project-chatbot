@@ -41,6 +41,11 @@ const greetUser = () => {
 }
 
 // Set up your eventlisteners here
+  //document.getElementById("").addEventListener("",() {
+    //get inputs 
+
+  //});
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
