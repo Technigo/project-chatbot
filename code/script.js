@@ -49,16 +49,17 @@ inputWrapper.innerHTML = `
         <option value="choccake">Chocolate cake</option>
     </select>
 
-<button id= "cakebtn" button type="submit"> Order cake </button>
+<button id= "cakebtn"> Order cake </button>
 </form>
   `  
 /*const cakeform = document.getElementById('cake-type');*/
 const cakeform = document.getElementById('cake-type');
 
-cakebtn.addEventListener('click', () => { 
+cakebtn.addEventListener("click", () => { 
   const cake = cakeform.value; 
-  DeliveryOrNot(cake);  }, false);
-
+  cosnole.log(cake);
+  DeliveryOrNot(cake);
+});
 /*cakebtn.addEventListener ('submit', DeliveryOrNot(cake));*/
   }
  
