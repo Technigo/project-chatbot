@@ -53,7 +53,6 @@ const nextQuestion = (message) => {
 
   if (questionNr === 1) {
     userReply(message)
-    input.value = ''
     setTimeout(() => ShowCuisineTypes(message), 1000)
   } else if (questionNr === 2) {
     userReply(message)
@@ -135,7 +134,7 @@ const showOptions = (type) => {
   const select = document.getElementById('select')
   select.addEventListener('change', () =>
   nextQuestion(select.value))
-  //showAdress(select.value)
+
 }
 
 //  Depending on which restaurant they choose give a different adress 
@@ -165,6 +164,7 @@ const showOptions = (type) => {
 //  } else  {
 //    ("Kungstensgatan 33, 113 57 Stockholm")
 //  }
+
 //}
 
 
