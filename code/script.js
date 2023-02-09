@@ -1,8 +1,9 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
+const form = document.getElementById('name-form');
+
 
 // If you need any global variables that you can use across different functions, declare them here:
-
 
 // Declare your functions after this comment
 
@@ -20,7 +21,6 @@ const showMessage = (message, sender) => {
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
-    console.log("hej svejs")
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -37,9 +37,32 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot');
+  showMessage("Hello on this beautiful cloudy day!", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }
+
+const firstQuestion = () => {
+  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
+  showMessage("What's the weather like?", 'bot');
+  // Just to check it out, change 'bot' to 'user' here 👆
+}
+
+/*const handleNameInput = () => {
+  let userName = nameInput.value
+  showMessage(userName, "user")
+}*/
+
+
+form.addEventListener('submit', function(event){
+  event.preventDefault()
+  const username = document.getElementById("name-input").value 
+  console.log(username, '-')  
+  showMessage(username, 'user')
+  setTimeout(() => {
+    console.log("Delayed for 1 second.");
+  }, "5000")
+firstQuestion()
+});
 
 // Set up your eventlisteners here
 
