@@ -72,13 +72,33 @@ const nextQuestion = (message) => {
   }
 }
 
-
 // When the website has loaded (function)
 const greetUser = () => {
-  showMessage("Hey buddy, what's your name?", 'bot');
-  //showMessage("Hey my name is Emma", 'user' )
+  questionNumber = 1
+  botReply(`Welcome to the &#127846 shop! What's your name?`)
+  //showMessage("Hey buddy, what's your name?", 'bot');
 }
 setTimeout(greetUser, 800);
+
+const showServingOptions = (msg) => {
+  questionNumber++
+  botReply(
+    `We are glad to serve you ${msg}. Would you like your ice-cream in a cup or cone?`
+  )
+
+  inputWrapper.innerHTML = `
+    <button id="cupBtn">&#127848</button>
+    <button id="coneBtn">&#127846</button>
+  `
+
+  document
+    .getElementById('cupBtn')
+    .addEventListener('click', () => nextQuestion ('cup'))
+  document
+    .getElementById('coneBtn')
+    .addEventListener('click', () => nextQuestion('cone'))
+
+}
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -94,8 +114,8 @@ setTimeout(greetUser, 800);
   //});
 
 
-let userName = nameInput.value
-showMessage(`${userName}`, 'user'); 
+//let userName = nameInput.value
+//showMessage(`${userName}`, 'user'); 
 
 
 //const handleNameInput = (event) => {
