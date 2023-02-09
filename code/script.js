@@ -8,9 +8,6 @@ const links1 = document.getElementById('link-area1')
 
 // If you need any global variables that you can use across different functions, declare them here:
 
-let questionCounter = 0;
-console.log(questionCounter);
-
 // Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -52,32 +49,7 @@ const handleInput = (event) => { // at submit this function will be invoked
   const message = input.value // input value will be stored in the const name 
   showMessage(`${message}`, 'user') // users answer 
   input.value = ''
-
-  questionCounter = questionCounter+1;
-  
-  console.log(questionCounter)
-  if (questionCounter === 1) {
-    setTimeout(() => question1(message), 1000)
-    console.log('question1')    
-  } else if (questionCounter === 2) {
-    setTimeout(() => question2(message), 1000)
-    console.log('question2')
-  } else if (questionCounter === 3) {
-    setTimeout(() => question3(message), 1000)
-    console.log('question3')
-  } else if (questionCounter === 4) {
-    setTimeout(() => question4(message), 1000)
-    console.log('question4')
-  } else if (questionCounter === 5) {
-    setTimeout(() => question5(message), 1000)
-    console.log('question5')
-  } else if (questionCounter === 6) {
-    setTimeout(() => question6(message), 1000)
-    console.log('question6')
-  } else {
-    setTimeout(() => question7(message), 1000)
-    console.log('question7')
-  }
+  setTimeout(() => question1(message), 1000)
 }
 
 
