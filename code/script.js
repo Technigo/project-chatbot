@@ -24,14 +24,14 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user-logo-black.png" alt="User" />  
       </section>
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/sl-logo.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -46,7 +46,8 @@ const showMessage = (message, sender) => {
 const greetUserAndAskDepartureCity = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there, Would you like to book a train ticket?", 'bot')
-  
+  chatInput.disabled = true;
+  sendButton.disabled = true;
   chat.innerHTML += `
    <button id="yes-btn" class="inChatButton">Yes please</button>
    <button id="no-btn" class="inChatButton">No thanks</button>
@@ -54,8 +55,8 @@ const greetUserAndAskDepartureCity = () => {
   document.getElementById('yes-btn').addEventListener('click',() => {
     showMessage('Yes please.', 'user')
     setTimeout(() => showMessage('Great! What is your city of departure?', 'bot'), 1000);
-    //questionCount++;   
-    //console.log("greetUser",questionCount);
+    chatInput.disabled = false;
+    sendButton.disabled = false;
   });
 
   document.getElementById('no-btn').addEventListener('click',() => {
@@ -67,8 +68,8 @@ const greetUserAndAskDepartureCity = () => {
   console.log(questionCount);
 }
 
-//Function to move to next question
-const nextQuestion = () => {
+//Function to move to next step
+const nextStep = () => {
   questionCount++;
   if(questionCount == 1){
     setTimeout (() => displayDepartureCityAndAskArrivalCity(), 1000);
@@ -101,7 +102,7 @@ const displayDepartureCityAndAskArrivalCity = () =>{
   departureCity = chatInput.value;
   showMessage(`${departureCity}`,'user')
   chatInput.value='';
-  showMessage('Nice! Where are you headed?','bot');
+  setTimeout(() =>showMessage('Nice! Where are you headed?','bot'),1000);
 }
 
 //Arrival Function
@@ -110,25 +111,27 @@ const displayArrivalCity = () =>{
   showMessage(`${arrivalCity}`,'user')
   chatInput.value='';
   setTimeout(() => 
-  showMessage(`Alright. So ${departureCity} to ${arrivalCity}.`,'bot'),500);
-  nextQuestion();
+  showMessage(`Alright. So ${departureCity} to ${arrivalCity}.`,'bot'),1000);
+  nextStep();
 } 
 
 //Date Function
 const displayDatePickerandAskTickets = () => {
-  showMessage('When would you like to travel?', 'bot')  
-  chat.innerHTML += `<input id = "date-picker" class = "date-picker" type="date"/>`
-
+  setTimeout(() =>showMessage('When would you like to travel?', 'bot'),1000); 
+  chatInput.disabled = true;
+  sendButton.disabled = true;
+  setTimeout(() => {chat.innerHTML += `<input id = "date-picker" class = "date-picker" type="date"/>`
     document.getElementById('date-picker').addEventListener('input',() => {
       travelDate  = document.getElementById('date-picker').value;
-      
       setTimeout(() =>showMessage(`${travelDate}`,'user'),1000);      
-      console.log(travelDate);
-      setTimeout(() =>showMessage(`How many tickets would you like?`,'bot'),2000);      
-      
+      setTimeout(() =>showMessage(`How many tickets would you like?`,'bot'),2000);
+      chatInput.disabled = false;    
+      sendButton.disabled = false;  
     });
+    chat.scrollTop = chat.scrollHeight; 
+  },2000);
  
-  chat.scrollTop = chat.scrollHeight;   
+  
 }
 
 //Number of tickets Function
@@ -136,7 +139,8 @@ const displayNumberOfTicketsAndAskName = () =>{
   numberOfTickets = chatInput.value;
   showMessage(`${numberOfTickets}`, 'user');
   chatInput.value='';
-  setTimeout(() => showMessage(`In whose name shall I make the booking?`, 'bot'),500);     
+  setTimeout(() => showMessage(`Let me make a note of that.`, 'bot'),500); 
+  setTimeout(() => showMessage(`And in whose name shall I make the booking?`, 'bot'),2000);     
 }
 
 //NameInput function
@@ -145,19 +149,21 @@ const displayName = () => {
   showMessage(`${userName}`, 'user');  
   chatInput.value ='';
 
-  setTimeout(nextQuestion, 1000);
+  setTimeout(nextStep, 1000);
 }
 
 //Summary function
 const ticketSummaryAndThankYouMessage = () => {
   showMessage(`You have booked ${numberOfTickets} tickets from ${departureCity} to ${arrivalCity} on ${travelDate}`, 'bot');
-  setTimeout(() => showMessage(`Thank you for booking with us, ${userName}!`, 'bot'),1000);
+  setTimeout(() => showMessage(`Thank you for booking with us, ${userName}!`, 'bot'),3000);
+  chatInput.disabled = true;
+  sendButton.disabled = true;
 }
 
 //OnClick function of Send button
 const onSendClick = (event) => {
-  event.preventDefault();   
-  nextQuestion();
+  event.preventDefault();    
+  nextStep();
 } 
 
 // Set up your eventlisteners here
