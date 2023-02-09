@@ -52,7 +52,7 @@ const greetUser = () => {
     <button id="dive-btn" type="submit">Diving</button>
     <button id="climb-btn" type="submit">Climbing</button>`;
     
-    document.getElementById('kayak-btn')
+  document.getElementById('kayak-btn')
 .addEventListener('click', () => handleActivityQuestion('Kayaking'));
 document.getElementById('dive-btn')
 .addEventListener('click', () => handleActivityQuestion('Diving'));
@@ -80,8 +80,8 @@ document.getElementById('hawaii-btn')
 const orderConfirmation = () => {
   showMessage(`Greate choice, Would you like to make a booking?`, "bot");
   inputWrapper.innerHTML =
-  `<button id "yes" value="yes">Yes please!</button>
-  <button id "no" value="no">No thanks!</button>`;
+  `<button id="yes" value="yes">Yes please!</button>
+  <button id="no" value="no">No thanks!</button>`;
 
   document.getElementById('yes')
   .addEventListener('click', () => handleOrderConfirmation('Yes please!'));
@@ -124,7 +124,7 @@ const handleActivityQuestion = (activity) => {
 
 const handleWhereQuestion = (country) => {
   yourName = inputValue.value;
-  showMessage(`I would like to ${country}`, 'user');
+  showMessage(`I want to go to ${country}`, 'user');
   inputValue.value = ``;
   setTimeout(orderConfirmation, 1000);
 };
@@ -138,7 +138,6 @@ const handleOrderConfirmation = (order) => {
 
 // Set up your eventlisteners here - 
 form.addEventListener('submit', handleInput);
-
 
 
 setTimeout(greetUser, 1000);
