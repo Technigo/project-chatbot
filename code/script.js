@@ -128,14 +128,14 @@ const useQuiltEasyHardButtons = () => {
   const quiltHardButton = document.getElementById('quilt-hard-button');
   
   quiltEasyButton.addEventListener('click', () => {
-    console.log("Quilt E");
+    // console.log("Quilt E");
     showMessage(`Easier is better!`, "user");
     
     offerEasyQuilt(); //This calls the function that responds to the users request for an easy quilt idea and provides the idea.
   });
 
   quiltHardButton.addEventListener('click', () => {
-    console.log("Quilt H");
+    // console.log("Quilt H");
     showMessage(`I want more of a challenge!`, "user");
 
     offerHardQuilt();
@@ -148,14 +148,14 @@ const useCrochetEasyHardButtons = () => {
   const crochetHardButton = document.getElementById('crochet-hard-button');
 
     crochetEasyButton.addEventListener('click', () => {
-    console.log("Crochet E");
+    // console.log("Crochet E");
     showMessage(`Easier is better!`, "user");
 
     offerEasyCrochet();
   });
 
   crochetHardButton.addEventListener('click', () => {
-    console.log("Crochet H");
+    // console.log("Crochet H");
     showMessage(`I want more of a challenge!`, "user");
 
     offerHardCrochet();
@@ -168,14 +168,14 @@ const useCrossEasyHardButtons = () => {
   const crossHardButton = document.getElementById('cross-hard-button');
 
   crossEasyButton.addEventListener('click', () => {
-    console.log("Cross-stitch E");
+    // console.log("Cross-stitch E");
     showMessage(`Easier is better!`, "user");
 
     offerEasyCross();
   });
 
   crossHardButton.addEventListener('click', () => {
-    console.log("Cross-stitch H");
+    // console.log("Cross-stitch H");
     showMessage(`I want more of a challenge!`, "user");
 
     offerHardCross();
@@ -198,6 +198,8 @@ const offerEasyQuilt = () => {
   <button id="thanks-bye">Thanks, bye!</button>
   <button id="new-idea">Nah, I want a new idea.</button>
   `
+  finalButtons(); 
+
   chat.scrollTop = chat.scrollHeight;
 }
 
@@ -215,6 +217,8 @@ const offerHardQuilt = () => {
   <button id="thanks-bye">Thanks, bye!</button>
   <button id="new-idea">Nah, I want a new idea.</button>
   `
+  finalButtons(); 
+
   chat.scrollTop = chat.scrollHeight;
 }
 
@@ -232,6 +236,8 @@ const offerEasyCrochet = () => {
   <button id="thanks-bye">Thanks, bye!</button>
   <button id="new-idea">Nah, I want a new idea.</button>
   `
+  finalButtons(); 
+
   chat.scrollTop = chat.scrollHeight;
 }
 
@@ -249,6 +255,8 @@ const offerHardCrochet = () => {
   <button id="thanks-bye">Thanks, bye!</button>
   <button id="new-idea">Nah, I want a new idea.</button>
   `
+  finalButtons(); 
+
   chat.scrollTop = chat.scrollHeight;
 }
 
@@ -266,6 +274,8 @@ const offerEasyCross = () => {
   <button id="thanks-bye">Thanks, bye!</button>
   <button id="new-idea">Nah, I want a new idea.</button>
   `
+  finalButtons(); 
+
   chat.scrollTop = chat.scrollHeight;
 }
 
@@ -283,9 +293,32 @@ const offerHardCross = () => {
   <button id="thanks-bye">Thanks, bye!</button>
   <button id="new-idea">Nah, I want a new idea.</button>
   `
+  finalButtons(); 
+
   chat.scrollTop = chat.scrollHeight;
 }
 
+const finalButtons = () => {
+
+  const thanksButton = document.getElementById('thanks-bye');
+  const newIdeaButton = document.getElementById('new-idea');
+
+  thanksButton.addEventListener('click', () => {
+    console.log('Thanks!')
+
+    //any functions for thanks button to be called go here
+  
+  })
+
+  newIdeaButton.addEventListener('click', () => {
+    console.log('New Idea')
+    
+    //any functions for new idea button go here
+    showBotResponseOne();
+  })
+
+  
+} 
 
 
 // Set up your eventlisteners here
