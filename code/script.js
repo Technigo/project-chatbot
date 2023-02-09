@@ -1,6 +1,6 @@
 
 const chat = document.getElementById('chat') //when I need to get this element i can use chat
-const inputWrapper = document.getElementById('input-wrapper')
+const wrapper = document.getElementById('input-wrapper')
 const form = document.getElementById('name-form')
 const nameInput = document.getElementById('name-input')
 const sendBtn = document.getElementById('send')
@@ -74,7 +74,7 @@ function showMessage(message, sender) {
 //We also put in the parameter timeGreetings, which is an array of greeting phrases. This becomes our output, depending on the time variable.
 const greetUser = () => {
   questionNumber = 1
-    showMessage("Aloha what´s your Name?", "bot");
+  botReply("Aloha what´s your Name?", "bot");
 
       // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
  
@@ -104,62 +104,74 @@ form.addEventListener('submit', (event) => {
 
 //-- This function uses the first input after greetings (firstName) and adds a message from the bot containing that input. 
 //At the same time, we want to prep the input form area for the next question. We REPLACE (not add) the content in the formWrapper with new HTML.
+//question0
+
 const recognize = (firstName) => {
-  console.log(firstName);
 
-  chat.innerHTML += `<section class="bot-msg">
-    <img src="assets/bot.png" alt="user bot" />
-    <div class="bubble bot-bubble">
-        <p>Welcome to the world of pinapples ${firstName}. 
-        what do you need today? Fun Fact or History?</p>
-    </div>
-</section>`;
-
+botReply(`elcome to the world of pinapples ${firstName}. 
+What do you need today? Fun Fact or History?`)
     
 }
 
-
 //jag vill att man ska kunna skriva fun fact eller History och därifrån får man olika val
-
-factHis()
+//question1 if answer fun fact or history
+  
 // vi får input från user leder till detta
 
-//input från user leder till val mellan
+//input från user leder till val mellan name kan stå 
+//för history eller funfact som user skriver in
 
-const OR = () => {
-  questionNumber++
-
-  inputWrapper.innerHTML = `
-    <button id="funBtn">Fun fact</button>
-    <button id="historyBtn">History of Pineapples</button>
-  `
-  document
-    .getElementById('FunBtn')
-    .addEventListener('click', () => nextQuestion('FunFact'))
-  document
-    .getElementById('historyBtn')
-    .addEventListener('click', () => nextQuestion('History'))
-}
-OR()
-
-
-const funHist = (type) =>{
-  botAnswer(
-   `Yey here comes some ${type}?for you!!!!`
-   )
- 
-   if (type === "FunFact") {
-     botAnswer("Did you know that bla bla bla bla bla bla")
-     
-     
-   } 
-   else if (type === 'History') {
-     botAnswer("Here is some history for ya t bla bla bla bla bla bla")
+const funH = () =>{
+  questionNumber ++
   
-   }
- }
+botReply('Press one of the buttons and choose');
+inputWrapper.innerHTML = `
+        <button id="fun-fact" > Fun Fact </button>
+        <button id="History" > History </button>
+        <button id="History" > Send me a pineapple!! </button>
+        
+        `
+        document.getElementById('Fun-fact').addEventListener('click', () => {
+          userReply('Give me some fun facts')
+          inputWrapper.innerHTML = ''
+          setTimeout(() => booking('headache'), 1000);
+         })
+      
+         document.getElementById('History').addEventListener('click', () => {
+          userReply('yey history of Pinepple')
+          inputWrapper.innerHTML = ''
+          setTimeout(() => factHis('History'), 1000);
+         })
+        
+         document.getElementById('order').addEventListener('click', () => {
+          userReply('I need a pineapple')
+          inputWrapper.innerHTML = ''
+          setTimeout(() => order('order'), 1000);
+         })    
+      }
+ 
+ 
 
- funHist()
+ const factHis =(type) => {
+  botAnswer(
+    `Yey here comes some ${type}?for you!!!!`
+    )
+    questionNumber++
+  
+    inputWrapper.innerHTML = `
+      <button id="funBtn">Fun fact</button>
+      <button id="historyBtn">History of Pineapples</button>
+    `
+    document
+      .getElementById('FunBtn')
+      .addEventListener('click', () => nextQuestion('FunFact'))
+    document
+      .getElementById('historyBtn')
+      .addEventListener('click', () => nextQuestion('History'))
+  }
+
+
+
  
 
  const NextQuestion = (more) => {
