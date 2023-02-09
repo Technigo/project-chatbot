@@ -5,6 +5,9 @@ const inputSection = document.getElementById('input-wrapper');
 
 // If you need any global variables that you can use across different functions, declare them here:
 let myBurger = ""
+let myDrink = ""
+let myFries = ""
+let myDip = ""
 
 // Declare your functions after this comment
 const lastButton = () => {
@@ -14,9 +17,14 @@ const lastButton = () => {
   }
 
 const lastMessage = (dipValue) => {
+  myDip=dipValue
   showMessage(dipValue, "user")
   showMessage("Thank you for your order!", "bot")
-
+  showMessage(`ORDER SUMMARY:<br>- ${myBurger}<br>- ${myDrink}<br>- Fries: ${myFries}<br>- ${myDip}`, "bot")
+//Clue: Before you print out the last button, you should print out from bot what the user ordered. A list of all itmes and a price at the end. Something like below:
+/*
+  - Veggie burger, Cola, Fries, Ketchup. Total price is 140 sek. 
+*/
   lastButton()
 }
 const showDipButtonsInsteadOfFries = () => {
@@ -37,7 +45,8 @@ const showDipButtonsInsteadOfFries = () => {
 }
 
 const friesYN = (value) => {
-  if (value === "Yes" || value === "yes" || value === "No" || value === "no" ) {
+  myFries=value
+  if (value === "Yes" || value === "yes" || value === "YES" || value === "No" || value === "no" || value === "NO" || value === "y" || value === "Y" || value === "n" || value === "N" ) {
     showMessage(value, "user")
     showMessage("Would you like to have a dip?", "bot")
     showDipButtonsInsteadOfFries()
@@ -57,9 +66,10 @@ const showFriesButtonsInstedOfSelectDrink = () => {
 
 }
 
-const selectDrink = (option) => {
-  showMessage(option, "user")
-  showMessage(`Great you chose ${option}! Would you like some fries with your ${myBurger}?`, "bot")
+const selectDrink = (drink) => {
+  myDrink=drink
+  showMessage(drink, "user")
+  showMessage(`Great you chose ${drink}! Would you like some fries with your ${myBurger}?`, "bot")
   showFriesButtonsInstedOfSelectDrink()
 }
 
@@ -67,9 +77,9 @@ const showDropdownMenuInstedOfBurgerButtons = () => {
   inputSection.innerHTML = `
   <div class="flex drinkmenu box">
     <select id="selectDrink">  
-      <option val="water">Water</option>
-      <option val="cola">Cola</option>
-      <option val="fanta">Fanta</option>      
+      <option val="Water">Water</option>
+      <option val="Cola">Cola</option>
+      <option val="Fanta">Fanta</option>      
     </select>
     <button id="drinkButton">Select</button>  
   </div>
