@@ -2,11 +2,10 @@
 const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById('input-wrapper')
 const input = document.getElementById('answer-input')
-const sendBtn = document.getElementById('send')
-
-let questionNumber = 1
+const form = document.getElementById('form')
 
 // If you need any global variables that you can use across different functions, declare them here:
+let questionNr = 1
 
 // Declare your functions after this comment
 const botReply = (msg) => {
@@ -157,11 +156,11 @@ const thankYou = () => {
   inputWrapper.innerHTML = ``
 }
 
-// How the bot acts when user clicks on button or responds
-sendBtn.addEventListener('click', () => nextQuestion(input.value))
-input.addEventListener('keypress', (event) => {
-  if (event.key === 'Enter' && input.value) nextQuestion(input.value)
-})
+// How the bot acts when user responds
+form.addEventListener("submit", (event) => {
+  event.preventDefault()
+  nextQuestion(input.value)
+  input.value=""})
 
 // When website loaded, chatbot asks first question.
 // This means the greeting function will be called one second after the website is loaded.
