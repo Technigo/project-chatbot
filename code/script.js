@@ -1,5 +1,6 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
+const sendBtn = document.getElementById('send');
 
 
 // If you need any global variables that you can use across different functions, declare them here:
@@ -37,25 +38,54 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greetUser = () => {
-  showMessage("Greetings stranger! Are you ready to play?", 'bot');
-}
-
-
-
-// Set up your eventlisteners here
-
+  showMessage("Greetings stranger! What's your name?", 'bot');
+};
 
 setTimeout(greetUser, 1000);
 
-//function for userAnswer
-const userAnswer = () => {
-  let userInput = document.getElementById("user-input").value;
-  showMessage(userInput, "user");
-  //clear text-field
-  document.getElementById('user-input').value=null;
+
+//user answer: name
+const userAnswer = (event) => {
+  event.preventDefault()
+  // Store the value in a variable so we can access it after we 
+	// clear it from the input
+  const name = nameInput.value
+  showMessage(name, 'user')
+  nameInput.value = null;
+  setTimeout(() => niceToMeetYou(name), 1000)
 };
 
-//prevents page from reloading
-document.getElementById("send").addEventListener("click", function(event){
-  event.preventDefault();
-});
+//launch userAnswer on submit-button
+sendBtn.addEventListener("click", userAnswer);
+
+
+const niceToMeetYou = (name) => {
+  //launch new question
+  showMessage(`Nice to meet you ${name}! Do you wanna play a little quiz?`, 'bot');
+  chat.innerHTML +=
+  `<div class="yesNoWrapper" id="yesNoWrapper">
+    <button id="yesButton" class= "yesNoButton yesButton" onclick = "q1()">Yes</button>
+    <button id="noButton" class= "yesNoButton noButton" onclick = "noPlay()">No</button>
+  </div>`;
+}
+
+//question 1 function (if yes)
+const q1 = () => {
+  showMessage("Ok, let's start with an easy one: What's the name of the Swedish Prime Minister?", 'bot');
+  chat.innerHTML +=
+  `<div class="q1Wrapper" id="q1Wrapper">
+    <button id="olof" class= "q1a1Button q1Button">Olof Palme</button>
+    <button id="magdalena" class= "q1a2Button q1Button">Magdalena Andersson</button>
+    <button id="ulf" class= "q1a2Button q1Button">Ulf Kristersson</button>
+  </div>`
+}
+
+//if answer is no make bot say "Some other time then. Have a nice day!"
+const noPlay = () => {
+  chat.innerHTML += `
+  <p>That's too bad!</p>
+  <img src="sad dog.jpg" alt="sad dog">
+  `
+};
+
+//Make if-statement: If answer is correct, give score and move to next question, else just go to next. After last question show scoreboard.

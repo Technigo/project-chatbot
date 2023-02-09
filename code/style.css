@@ -144,6 +144,42 @@ button {
 }
 
 button:hover {
-  opacity: 0.9;
+  opacity: 0.8;
   transition: all 0.2s ease;
+}
+
+
+.yesNoWrapper{
+  display: flex;
+  justify-content:space-evenly;
+  padding: 60px;
+}
+ 
+
+.yesButton{
+  background-color: rgb(33, 164, 33);
+}
+
+.noButton{
+  background-color: rgb(232, 17, 17);
+}
+
+
+.yesNoButton:active{
+    box-shadow: 1px #666;
+    transform: translateY(4px);
+}
+
+
+.q1Wrapper{
+  display: flex;
+  justify-content:space-evenly;
+  padding: 60px;
+  gap: 20px;
+}
+
+.q1Button{
+  width: 40%;
+  text-align: center;
+  background: rgb(111, 106, 215);
 }
