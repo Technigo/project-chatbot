@@ -124,7 +124,7 @@ const personalizeButtons = () => {
           showMessage("Baristas", "user")
           usertrack.play(); // This starts the usertrack(sound)
           setTimeout(() => bottrack.play(), 1000); // This starts the bottrack(sound) and delays it with 1000 millisec
-          showMessage(`Fattar helt! Kolla in den här pannan <img src="https://cdn.shopify.com/s/files/1/0556/5690/6841/products/186885537-origpic-b912cf_750x.jpg?v=1664429478">`, "bot");
+          showMessage(`Fattar helt! Kolla in den här pannan <br><img src="https://cdn.shopify.com/s/files/1/0556/5690/6841/products/186885537-origpic-b912cf_750x.jpg?v=1664429478">`, "bot");
           setTimeout(() => showMessage('<a href="https://lemmelkaffe.com/en/collections/tillbehor/products/svaertan">Svärtan</a> heter den. Kan det va något för dej?', "bot"), 1000);
           lastYesOrNo() // Starts the last Ja/nej-answer-button 
         })
