@@ -5,8 +5,12 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: montserrat;
+  font-style: normal;
+  background-image: url(./images/sebastian-unrau-sp-p7uuT0tw-unsplash.jpeg);
+  background-repeat: repeat;
+  background-size: 50%;
+  object-fit: cover;
 }
 
 h1 {
@@ -15,6 +19,9 @@ h1 {
   line-height: 34px;
   color: #fff;
   text-align: center;
+  margin: 50px 0 40px 0;
+  font-weight: 900;
+  letter-spacing: 1px;
 }
 
 h2 {
@@ -31,13 +38,14 @@ p {
   font-weight: 600;
   line-height: 28px;
   margin: 0;
+  font-weight: 500;
 }
 
 input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
+  background:  #e5f8e5;
   color: #0026ff;
   padding: 16px;
   font-size: 16px;
@@ -86,16 +94,17 @@ main {
 .bot-msg img,
 .user-msg img {
   width: 60px;
-  height: 60px;
+  height: 70px;
+  object-fit: cover;
 }
 
 .bubble {
-  background: #e5e9ff;
+  background:  #e5f8e5;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #228B22;
   max-width: 40%;
 }
 
@@ -120,16 +129,8 @@ main {
   align-items: center;
 }
 
-label {
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
-}
-
 button {
-  background-color: #0026ff;
+  background-color: #228B22;
   color: white;
   border: none;
   border-radius: 4px;

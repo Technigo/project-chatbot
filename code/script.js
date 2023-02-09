@@ -1,8 +1,15 @@
-// Variables that point to selected DOM elements
+/// Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
+const input = document.getElementById('name-input')
+const form = document.getElementById('name-form')
+const submit = document.getElementById('submit')
+const inputWrapper = document.getElementById('input-wrapper')
+const links1 = document.getElementById('link-area1')
 
 // If you need any global variables that you can use across different functions, declare them here:
 
+let questionCounter = 0;
+console.log(questionCounter);
 
 // Declare your functions after this comment
 
@@ -22,7 +29,7 @@ const showMessage = (message, sender) => {
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/my-bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -40,12 +47,63 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+const handleInput = (event) => { // at submit this function will be invoked
+  event.preventDefault() // prevents website refresh at submit
+  const message = input.value // input value will be stored in the const name 
+  showMessage(`${message}`, 'user') // users answer 
+  input.value = ''
+
+  questionCounter = questionCounter+1;
+  
+  console.log(questionCounter)
+  if (questionCounter === 1) {
+    setTimeout(() => question1(message), 1000)
+    console.log('question1')    
+  } else if (questionCounter === 2) {
+    setTimeout(() => question2(message), 1000)
+    console.log('question2')
+  } else if (questionCounter === 3) {
+    setTimeout(() => question3(message), 1000)
+    console.log('question3')
+  } else if (questionCounter === 4) {
+    setTimeout(() => question4(message), 1000)
+    console.log('question4')
+  } else if (questionCounter === 5) {
+    setTimeout(() => question5(message), 1000)
+    console.log('question5')
+  } else if (questionCounter === 6) {
+    setTimeout(() => question6(message), 1000)
+    console.log('question6')
+  } else {
+    setTimeout(() => question7(message), 1000)
+    console.log('question7')
+  }
+}
+
+
+const question1 = (message) => {
+  showMessage(`Nice to meet you ${message}! Do you have eco-anxiety?`, 'bot')
+  //3 ALTERNATIVES: YES - NO - MAYBE
+  inputWrapper.innerHTML = 
+  `<div id="optionBtns">
+  <button id="yesBtn" type="submit" value="Yes">Yes</button>
+  <button id="noBtn" type="submit" value="No">No</button>
+  <button id="maybeBtn" type="submit" value="Maybe">Maybe</button></div>`
+
+  document
+    .getElementById('yesBtn')
+    .addEventListener('click', () => question2('yes'))
+  document
+    .getElementById('noBtn')
+    .addEventListener('click', () => question2('no'))
+  document
+    .getElementById('maybeBtn')
+    .addEventListener('click', () => question2('maybe'))
+  }
+
 // Set up your eventlisteners here
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
+form.addEventListener('submit', handleInput)
+
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000);
