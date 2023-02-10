@@ -19,6 +19,12 @@ const userReply = (msg) => {
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
 
+// Sound effect
+const messageSound = () => {
+  let audio = new Audio("https://notificationsounds.com/storage/sounds/file-sounds-1233-elegant.mp3")
+  audio.play();
+}
+
 // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
   if (sender === 'user') {
     chat.innerHTML += `
@@ -41,7 +47,8 @@ const showMessage = (message, sender) => {
     `
   }
 // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-  chat.scrollTop = chat.scrollHeight
+ chat.scrollTop = chat.scrollHeight;
+ messageSound();
 }
 
 //This function makes the bot continue the conversation
