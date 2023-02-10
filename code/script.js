@@ -1,13 +1,22 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 const sendBtn = document.getElementById('send');
+const inputWrapper = document.getElementById("input-wrapper");
+const nameForm = document.getElementById("name-form");
 
 
 // If you need any global variables that you can use across different functions, declare them here:
+let score = 0;
+let questionNumber = 1;
 
 
-
-// Declare your functions after this comment
+/* // Declare your functions after this comment
+const userReply = (message) => {
+  showMessage(message, 'user')
+};
+const bot = (message) => {
+  showMessage(message, 'bot')
+}; */
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -38,9 +47,9 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greetUser = () => {
+  questionNumber = 1;
   showMessage("Greetings stranger! What's your name?", 'bot');
 };
-
 setTimeout(greetUser, 1000);
 
 
@@ -49,9 +58,9 @@ const userAnswer = (event) => {
   event.preventDefault()
   // Store the value in a variable so we can access it after we 
 	// clear it from the input
-  const name = nameInput.value
+  const name = userInput.value
   showMessage(name, 'user')
-  nameInput.value = null;
+  userInput.value = null;
   setTimeout(() => niceToMeetYou(name), 1000)
 };
 
@@ -67,6 +76,7 @@ const niceToMeetYou = (name) => {
     <button id="yesButton" class= "yesNoButton yesButton" onclick = "q1()">Yes</button>
     <button id="noButton" class= "yesNoButton noButton" onclick = "noPlay()">No</button>
   </div>`;
+  nameForm.innerHTML = "";
 }
 
 //question 1 function (if yes)
@@ -74,18 +84,58 @@ const q1 = () => {
   showMessage("Ok, let's start with an easy one: What's the name of the Swedish Prime Minister?", 'bot');
   chat.innerHTML +=
   `<div class="q1Wrapper" id="q1Wrapper">
-    <button id="olof" class= "q1a1Button q1Button">Olof Palme</button>
-    <button id="magdalena" class= "q1a2Button q1Button">Magdalena Andersson</button>
-    <button id="ulf" class= "q1a2Button q1Button">Ulf Kristersson</button>
+    <button id="olof" class= "q1a1Button q1Button" onclick = "wrongAnswer()">Olof Palme</button>
+    <button id="magdalena" class= "q1a2Button q1Button" onclick = "wrongAnswer()">Magdalena Andersson</button>
+    <button id="ulf" class= "q1a2Button q1Button" onclick = correctAnswer()>Ulf Kristersson</button>
   </div>`
 }
 
 //if answer is no make bot say "Some other time then. Have a nice day!"
 const noPlay = () => {
-  chat.innerHTML += `
-  <p>That's too bad!</p>
-  <img src="sad dog.jpg" alt="sad dog">
-  `
+  chat.innerHTML =`
+  <div class = "dogwrap">
+  <p>That's too bad :( </p>
+  <img class="dog" src="sad dog.jpg" alt="sad dog">
+  </div>
+  `;
+  nameForm.innerHTML ="";
 };
 
-//Make if-statement: If answer is correct, give score and move to next question, else just go to next. After last question show scoreboard.
+//Make if-statement: If answer is correct, give score and move to next question, else just go to next.
+const wrongAnswer = () => {
+ showMessage("Interesting choice... Next question: What is the population of Sweden?", "bot");
+ console.log(score);
+
+
+}
+
+const correctAnswer = () => {
+  score = score + 1;
+  showMessage("Alright! Next question: ", "bot");
+  console.log(score);
+}
+
+
+//Order based on question number
+
+
+/* const questionOrder = (message) => {
+  console.log('questionNumber', questionNumber);
+  if (questionNumber === 1) {
+    userReply(message)
+    input.value = ''
+    setTimeout(() => niceToMeetYou(message), 1000)
+  } else if (questionNumber === 2) {
+    userReply(message)
+    setTimeout(() => an(message), 1000)
+  } else if (questionNumber === 3) {
+    userReply(message)
+    setTimeout(() => showDishSize(message), 1000)
+  } else if (questionNumber === 4) {
+    userReply(message)
+    setTimeout(() => showPrice(message), 1000)
+  } else {
+    userReply(message)
+    setTimeout(thankYou, 1000)
+  }
+} */

@@ -183,3 +183,14 @@ button:hover {
   text-align: center;
   background: rgb(111, 106, 215);
 }
+
+ .dogwrap p {
+  font-size: 35px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.dog{
+  margin-top: 50px;
+  width: 600px;
+}
