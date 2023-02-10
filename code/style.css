@@ -17,7 +17,7 @@ h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: #F5DF4D;
   text-align: center;
 }
 
@@ -28,10 +28,6 @@ h2 {
   color: #fff;
   text-align: center;
   margin-bottom: 36px;
-}
-
-h1, h2 {
-  text-shadow: 2px 2px 4px #339966;
 }
 
 p {
@@ -46,7 +42,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #E8F3E8;
-  color: #559E54;
+  color: #FFA500;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat', sans-serif;
@@ -63,7 +59,7 @@ select:focus{
 select{
   border:none;
   border-radius: 4px;
-  color: #559E54;
+  color: #FFA500;
   font-size: 20px;
   font-weight: 600;
   height: 60px;
@@ -113,10 +109,11 @@ main {
 
 .bot-msg img,
 .user-msg img {
-  width: 50px;
-  height: 50px;
-  background-color: #e5e9ff;
+  width: 40px;
+  height: 40px;
+  background-color: #F5DF4D;
   border-radius: 50%;
+  padding: 5px;
 }
 
 .bubble {
@@ -125,7 +122,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #339966;
+  color: #B55A30;
   max-width: 40%;
 }
 
@@ -159,8 +156,8 @@ label {
 }
 
 button {
-  background-color: #92C591;
-  color: #0A3409;
+  background-color: #fdac53;
+  color: #FFFFFF;
   border: none;
   border-radius: 4px;
   padding: 16px 40px;
@@ -179,11 +176,11 @@ button:hover {
 }
 
 a {
-  color: #0A3409;
+  color: #9B2335;
 }
 
 a:hover {
-  color: #559E54;
+  color: #00A170;
 }
 
 @media (min-width: 668px) and (max-width: 1023px) {

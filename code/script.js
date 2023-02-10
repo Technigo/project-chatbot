@@ -91,7 +91,7 @@ const moreSpecificDish = (type) => {
   if (type === 'soup') {
     inputWrapper.innerHTML = `
   <select id="select">
-    <option value="" selected disabled>⬇️ Select what type...</option>
+    <option value="" selected disabled>⬇ Select what type...</option>
     <option value="Spicy">Spicy</option>
     <option value="Creamy">Creamy</option>
     <option value="Green">Green</option>
@@ -99,7 +99,7 @@ const moreSpecificDish = (type) => {
   } else if (type === 'pasta') {
     inputWrapper.innerHTML = `
   <select id="select">
-    <option value="" selected disabled>⬇️ Select what type...</option>
+    <option value="" selected disabled>⬇Select what type...</option>
     <option value="Spaghetti">Spaghetti</option>
     <option value="Gnocchi">Gnocchi</option>
     <option value="Lasagne">Lasagne</option>
@@ -107,7 +107,7 @@ const moreSpecificDish = (type) => {
   } else {
     inputWrapper.innerHTML = `
   <select id="select">
-    <option value="" selected disabled>⬇️ Select what type...</option>
+    <option value="" selected disabled>⬇Select what type...</option>
     <option value="Chili">Chili</option>
     <option value="Lentil">Lentil</option>
     <option value="Curry">Curry</option>
@@ -125,23 +125,23 @@ const userReply2 = (type) => {
 
 const displayRecipeLink = (answer) => {
   if (answer === 'Spicy') {
-    showMessage(`Excellent choice! Find the link to recipe here <a href="https://ohsheglows.com/2020/04/25/cozy-at-home-spicy-any-veggie-soup/">${answer} Soup</a>`, 'bot');
+    showMessage(`Excellent choice! Find the link to recipe here <a href="https://ohsheglows.com/2020/04/25/cozy-at-home-spicy-any-veggie-soup/" target="_blank">${answer} Soup</a>`, 'bot');
   } else if (answer === 'Creamy') {
-    showMessage(`Excellent choice! Find the link here <a href="https://www.inspiredtaste.net/9603/creamy-vegetable-soup-recipe/">${answer} Soup</a>`, 'bot');
+    showMessage(`Excellent choice! Find the link here <a href="https://www.inspiredtaste.net/9603/creamy-vegetable-soup-recipe/" target="_blank">${answer} Soup</a>`, 'bot');
   } else if (answer === 'Green') {
-    showMessage(`Interesting choice! Find the link here <a href="https://www.recipetineats.com/immunity-boosting-green-goddess-soup-its-delish/">${answer} Soup</a>`, 'bot');
+    showMessage(`Interesting choice! Find the link here <a href="https://www.recipetineats.com/immunity-boosting-green-goddess-soup-its-delish/" target="_blank">${answer} Soup</a>`, 'bot');
   } else if (answer === 'Spaghetti') {
-    showMessage(`Excellent choice! Find the link here <a href="https://www.jamieoliver.com/recipes/pasta-sauce-recipes/veggie-bolognese-sauce/">${answer} Recipe!</a>`, 'bot');
+    showMessage(`Excellent choice! Find the link here <a href="https://www.jamieoliver.com/recipes/pasta-sauce-recipes/veggie-bolognese-sauce/" target="_blank">${answer} Recipe!</a>`, 'bot');
   } else if (answer === 'Gnocchi') {
-    showMessage(`Excellent choice! Find the link here <a href="https://www.gousto.co.uk/cookbook/vegetarian-recipes/mediterranean-veg-gnocchi-with-basil">${answer} Recipe!</a>`, 'bot');
+    showMessage(`Excellent choice! Find the link here <a href="https://www.gousto.co.uk/cookbook/vegetarian-recipes/mediterranean-veg-gnocchi-with-basil" target="_blank">${answer} Recipe!</a>`, 'bot');
   } else if (answer === 'Lasagne') {
-    showMessage(`Excellent choice! Find the link here <a href="https://cookieandkate.com/best-vegetable-lasagna-recipe/">${answer} Recipe!</a>`, 'bot');
+    showMessage(`Excellent choice! Find the link here <a href="https://cookieandkate.com/best-vegetable-lasagna-recipe/" target="_blank">${answer} Recipe!</a>`, 'bot');
   } else if (answer === 'Chili') {
-    showMessage(`Excellent choice! Find the link here <a href="https://simple-veganista.com/texas-three-bean-chili-sweet-chia/">${answer} Recipe!</a>`, 'bot');
+    showMessage(`Excellent choice! Find the link here <a href="https://simple-veganista.com/texas-three-bean-chili-sweet-chia/" target="_blank">${answer} stew recipe!</a>`, 'bot');
   } else if (answer === 'Lentil') {
-    showMessage(`Excellent choice! Find the link here <a href="https://choosingchia.com/lentil-stew/">${answer} Recipe!</a>`, 'bot');
+    showMessage(`Excellent choice! Find the link here <a href="https://choosingchia.com/lentil-stew/" target="_blank">${answer} stew recipe!</a>`, 'bot');
   } else {
-    showMessage(`Excellent choice! Find the link here <a href="https://choosingchia.com/lentil-stew/">${answer} Recipe!</a>`, 'bot');
+    showMessage(`Excellent choice! Find the link here <a href="https://choosingchia.com/lentil-stew/" target="_blank">${answer} stew recipe!</a>`, 'bot');
   }
   setTimeout(() => areYouHappy(), 1000);
 }
