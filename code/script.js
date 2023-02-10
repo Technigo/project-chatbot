@@ -1,39 +1,39 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
-const inputWrapper = document.getElementById('input-wrapper')
-const input = document.getElementById('name-input')
-const sendBtn = document.getElementById('send')
+const inputWrapper = document.getElementById('input-wrapper');
+const input = document.getElementById('name-input');
+const sendBtn = document.getElementById('send');
 
 // If you need any global variables that you can use across different functions, declare them here:
-let questionNumber = 1
+let questionNumber = 1 
 
 
 // Declare your functions after this comment
 
 
 // This function will add a chat bubble in the correct place based on who the sender is
-  function showMessage(message, sender) {
-    // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
-    if (sender === 'user') {
-      chat.innerHTML += `
+const showMessage = (message, sender) => {
+  // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
+  if (sender === 'user') {
+    chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user_2.png" alt="User" />  
       </section>
-    `;
-      // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
-    } else if (sender === 'bot') {
-      chat.innerHTML += `
+    `
+    // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
+  } else if (sender === 'bot') {
+    chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bot_2.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
       </section>
-    `;
-    }
+    `
+  }
 
     // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
     chat.scrollTop = chat.scrollHeight;
@@ -45,21 +45,16 @@ const nextQuestion = (message) => {
   if (questionNumber === 1) {
     showMessage(message)
     input.value = ''
-    setTimeout(() => showFoodTypes(message), 1000)
+    setTimeout(() => showDecade(message), 1000)
   } else if (questionNumber === 2) {
     showMessage(message)
     setTimeout(() => showYear(message), 1000)
-  } else if (questionNumber === 3) {
+  } else  {
     showMessage(message)
     setTimeout(() => showEvent(message), 1000)
-  } else if (questionNumber === 4) {
-    showMessage(message)
-    setTimeout(() => showPrice(message), 1000)
-  } else {
-    showMessage(message)
-    setTimeout(thankYou, 1000)
-  }
-} 
+  } 
+  } 
+
 
 
 // Starts here
@@ -81,10 +76,10 @@ sendBtn.addEventListener('click', (event) => {
   // Clears the input field
   input.value = ''
   //Here I call the function where I present the dishes to choose from. I will also pass the userName
-  setTimeout(() => showFoodTypes(userName), 1000)
+  setTimeout(() => showDecade(userName), 1000)
 })
 
-const showFoodTypes = (userName) => {
+const showDecade = (userName) => {
   questionNumber++
   showMessage(
     `Nice to meet you ${userName}. When do you want to go?`, 'bot' )
@@ -106,8 +101,9 @@ const showFoodTypes = (userName) => {
     .addEventListener('click', () => nextQuestion('2000'))
 }
 
-const showYear = (type) => {
-  questionNumber++
+
+  const showYear = (type) => {
+    questionNumber++
 
   showMessage(
     `Great choice! The ${type}'s were exciting times!`, 'bot')
@@ -157,110 +153,41 @@ const showEvent = (selectedValue) => {
   if (selectedValue === "Black Thursday") {
     window.open('https://www.youtube.com/watch?v=A53Os-DuS94');
     input.value = ''
-    setTimeout(() => showFoodTypes(message), 1000)
   }
   else if (selectedValue === "Steamboat Willie") {
     window.open('https://www.youtube.com/watch?v=BBgghnQF6E4');
     input.value = ''
-    setTimeout(() => showFoodTypes(message), 1000)
   }
   else if (selectedValue === "Amelia Earhart") {
     window.open('https://www.youtube.com/watch?v=4BgAKnpK7p4');
     input.value = ''
-    setTimeout(() => showFoodTypes(message), 1000)
   }
   else if (selectedValue === "Live Aid") {
     window.open('https://www.youtube.com/watch?v=zP120YaAL8w&list=PLGjpH5uqT5EKflp4LoMJ6FLpkNk16agsH');
     input.value = ''
-    setTimeout(() => showFoodTypes(message), 1000)
   }
   else if (selectedValue === "Tank Man") {
     window.open('https://www.youtube.com/watch?v=YeFzeNAHEhU');
     input.value = ''
-    setTimeout(() => showFoodTypes(message), 1000)
   }
   else if (selectedValue === "Berlin Wall") {
     window.open('https://www.youtube.com/watch?v=zmRPP2WXX0U');
     input.value = ''
-    setTimeout(() => showFoodTypes(message), 1000)
   }
   else if (selectedValue === "iPhone") {
     window.open('https://www.youtube.com/watch?v=VQKMoT-6XSg');
     input.value = ''
-    setTimeout(() => showFoodTypes(message), 1000)
   }
   else if (selectedValue === "Millenium") {
     window.open('https://www.youtube.com/watch?v=m4FPHa2zZrQ');
     input.value = ''
-    setTimeout(() => showFoodTypes(message), 1000)
   }
   else {
     window.open('https://www.youtube.com/watch?v=S4VoolvEsyQ');
     input.value = ''
-    setTimeout(() => showFoodTypes(message), 1000)
   }
 
 }
-
-/*
-button.onclick = () => {
-  window.open('https://javascript.info');
-};
-
-
-const showYear = (dish) => {
-  questionNumber++
-
-  showMessage(`One ${dish} coming up! Will that be for an adult or a child?`, 'bot')
-
-  inputWrapper.innerHTML = `
-    <button id="adult">👨🏽‍🦳</button>
-    <button id="child">🧒🏽</button>
-  `
-
-  document
-    .getElementById('adult')
-    .addEventListener('click', () => nextQuestion('adult'))
-  document
-    .getElementById('child')
-    .addEventListener('click', () => nextQuestion('child'))
-}
-
-const showPrice = (size) => {
-  questionNumber++
-
-  let price
-  if (size === 'adult') {
-    price = '€15'
-  } else {
-    price = '€10'
-  }
-
-  showMessage(
-    `One ${size} sized dish will be prepared for you. That'll be ${price}. Are you sure you want to order this?` , 'bot'
-  )
-
-  inputWrapper.innerHTML = `
-    <button id="restart">NO</button>
-    <button id="confirm">YES</button>
-  `
-
-  document.getElementById('restart').addEventListener('click', () => {
-    location.reload()
-    return false
-  })
-  document
-    .getElementById('confirm')
-    .addEventListener('click', () => nextQuestion('Yes!'))
-}
-
-const thankYou = () => {
-  showMessage(`Thank you for your order! See you soon 👋🏼` , 'bot')
-  inputWrapper.innerHTML = ``
-}
-*/
-
-
 // Set up your eventlisteners here
 
 // When website loaded, chatbot asks first question.
