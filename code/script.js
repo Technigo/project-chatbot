@@ -104,7 +104,7 @@ const showRestaurant = (type) => {
 
   if (type === 'italian') {
     inputWrapper.innerHTML = `
-    <select id="select">
+    <select class="select-">
      <option value="" selected disabled>👇 Select a restaurant..</option>
      <option value="lanonna">La Nonna</option>
      <option value="olli">OLLI</option>
@@ -113,7 +113,7 @@ const showRestaurant = (type) => {
     `
   } else if (type === 'asian') {
     inputWrapper.innerHTML = `
-    <select id="select">
+    <select class="select">
     <option value="" selected disabled>👇 Select a restaurant..</option>
      <option value="surfers">Surfers</option>
      <option value="apo">APO</option>
@@ -122,7 +122,7 @@ const showRestaurant = (type) => {
     `
   } else {
     inputWrapper.innerHTML = `
-    <select id="select">
+    <select class="select">
     <option value="" selected disabled>👇 Select a restaurant..</option>
      <option value="moas">MOAS</option>
      <option value="tabbouli">Tabbouli</option>
@@ -131,9 +131,10 @@ const showRestaurant = (type) => {
     `
   }
 
-  const select = document.getElementById('select')
-  select.addEventListener('change', () =>
-  nextQuestion(select.value))
+  const allSelects = document.querySelectorAll(".select");
+  allSelects.forEach(select => select.addEventListener('change', (event) => {
+    nextQuestion(event.target.value)
+  }))
 
 }
 
@@ -143,25 +144,25 @@ const showAddress = (selectedRestaurant) => {
 
   let address;
   if (selectedRestaurant === "lanonna") {
-    ("Fleminggatan 45, 112 32 Stockholm")
+    address = "Fleminggatan 45, 112 32 Stockholm"
   } else if (selectedRestaurant === "olli") {
-    ("Jakobsbergsgatan 21, 111 44 Stockholm")
+    address = "Jakobsbergsgatan 21, 111 44 Stockholm"
   } else if (selectedRestaurant === "capricci") {
-    ("Hornstulls strand 4, 117 39 Stockholm")
+    address = "Hornstulls strand 4, 117 39 Stockholm"
 
   } else if (selectedRestaurant === "surfers") {
-    ("Norrlandsgatan 24, 111 43 Stockholm")
+    address = "Norrlandsgatan 24, 111 43 Stockholm"
   } else if (selectedRestaurant === "apo") {
-    ("Regeringsgatan 66, 111 39 Stockholm")
+    address = "Regeringsgatan 66, 111 39 Stockholm"
   } else if (selectedRestaurant === "sinramen") {
-    ("Jakobsbergsgatan 23, 111 44 Stockholm")
+    address = "Jakobsbergsgatan 23, 111 44 Stockholm"
   
   } else if (selectedRestaurant === "moas"){
-    ("Roslagsgatan 6, 113 55 Stockholm")
+    address = "Roslagsgatan 6, 113 55 Stockholm"
   } else if (selectedRestaurant === "tabbouli"){
-    ("Tavastgatan 22, 118 24 Stockholm")
+    address = "Tavastgatan 22, 118 24 Stockholm"
   } else  {
-    ("Kungstensgatan 33, 113 57 Stockholm")
+    address = "Kungstensgatan 33, 113 57 Stockholm"
   }
   
   alert(`You're in for a treat! The restaurant is located at ${address}`)
