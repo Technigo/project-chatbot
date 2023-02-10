@@ -1,11 +1,12 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 const nameInput = document.getElementById('name-input');
-const btn = document.getElementById('send-btn')
-const inputWrapper = document.getElementById('input-wrapper')
+const sendBtn = document.getElementById('send-btn');
+const inputWrapper = document.getElementById('input-wrapper');
+const moodStressedBtn = document.getElementById('mood-stressed');
+const moodHappyBtn = document.getElementById('mood-stressed')
 
 // If you need any global variables that you can use across different functions, declare them here:
-
 
 // Declare your functions after this comment
 
@@ -38,24 +39,64 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
+
+//This function deals with the name-input
+
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there! What's your name?", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
+
 }
 
-const handleNameInput = (e) => {
-  e.preventDefault()
+sendBtn.addEventListener('click', (event) => {
+  event.preventDefault()
+  console.log('User has types their name');
+  //Variable that stores the nameInput as name.
+  const name = nameInput.value
+  showMessage(`${name}`, 'user')
+  //clears input field
+  nameInput.value = ''
+  //Here, I call the next functions
+  setTimeout(() => howAreYouFeeling(name), 1500)
+})
+
+const howAreYouFeeling = (name) => {
+  showMessage(`Happy to have you here, ${name}! Are you feeling anxious or stressed today?`, 'bot')
+  inputWrapper.innerHTML = `
+      <div class="input-wrapper" id="input-wrapper">
+        <form id="name-form">
+          <button id="mood-stressed" class="mood-btn" type="submit">
+            Yes, a little.
+          </button>
+          <button id="mood-stressed" class="mood-btn" type="submit">
+            Yes, very much!
+          </button>
+          <button id="mood-happy" class="mood-btn" type="submit">
+            No, I feel calm.
+          </button>
+`
+}
+
+
+
+
+
+
+
+/*
+const handleNameInput = (e1) => {
+  e1.preventDefault()
   console.log("User has typed their name")
   const name = nameInput.value
-  showMessage(`${name}`, "user")
+  showMessage(name, "user")
   nameInput.value = ""
 }
 
 
 // Set up your eventlisteners here
-btn.addEventListener("click", handleNameInput);
+sendBtn.addEventListener("click", handleNameInput);
+*/
 
 
 setTimeout(greetUser, 1000);
