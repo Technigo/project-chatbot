@@ -128,14 +128,18 @@ const inputWrapper = document.getElementById('input-wrapper')
 const input = document.getElementById('input')
 const sendBtn = document.getElementById('send')
 
-const bottrack = new Audio('./assets/zoltartrack.mp3');
+const bottrack = new Audio('./assets/zoltartrack.mp3')
 const zoltarSound = () => {
-      bottrack.play();
-};
-const usertrack = new Audio('./assets/usertrack.mp3');
+      bottrack.play()
+}
+const usertrack = new Audio('./assets/usertrack.mp3')
 const userSound = () => {
-      usertrack.play();
-};
+      usertrack.play()
+}
+const throatsing = new Audio('./assets/introsong.mp3')
+const introSound = () => {
+      throatsing.play()
+}
 
 let questionNumber = 1
 
@@ -172,6 +176,7 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
+
 const nextQuestion = (message) => {
   console.log('questionNumber', questionNumber)
 
@@ -191,7 +196,7 @@ const nextQuestion = (message) => {
     input.value = ''
   } else {
     userReply(message)
-    setTimeout(thankYou, 1000)
+    setTimeout(thankYou(message), 1000)
   }
 }
 
@@ -203,9 +208,8 @@ const greeting = () => {
 
 const fortuneYesNo = (msg) => {
   questionNumber++
-  botReply(
-    `Well met, ${msg}! Will you tell me of your deepset desires?`
-  )
+  botReply(`Well met, ${msg}! Will you tell me of your deepset desires?`)
+  throatsing.play()
 
   inputWrapper.innerHTML = `
     <button id="yesBtn">Yes</button>
@@ -271,26 +275,58 @@ document
   .addEventListener('click', () => {nextQuestion('So...?')})
 }
 
-const showPrice = (number) => {
+const showPrice = () => {
+  questionNumber++;
+  setTimeout(
+    botReply(
+      "I hope my guidance will find you peace of mind. With that said, this is no charity."
+    ),
+    1000
+  );
+  inputWrapper.innerHTML = `
+  <input id="input" type="number" />
+  <button id="pay" class="send-btn">$ pay up</button>
+  `;
+  const money = document.getElementById("input");
+  document.getElementById("pay").addEventListener("click", () => {
+    nextQuestion(money.value);
+  });
+};
+const thankYou = (amount) => {
+  if (amount > 20) {
+    botReply(`*Takes his money, closes his eyes and sits in silence*`);
+  } else {
+    botReply(
+      `Keep you money, such an inadequate sum is not worthy of my attention`
+    );
+  }
+  inputWrapper.innerHTML = `
+  <button id="leave">Thank you, oh great Zoltar</button>`;
+  document
+    .getElementById("leave")
+    .addEventListener("click", () => setTimeout(location.reload(), 3000));
+};
+
+/* const showPrice = () => {
   questionNumber++
 
   setTimeout(botReply('I hope my guidance will find you peace of mind. With that said, this is no charity.'), 1000)
 
   inputWrapper.innerHTML = `
-  <input id="input" type="number"/>
+  <input value="input" type="number"/>
   <button id="pay" class="send-btn">$ pay up</button>
   `
-  const money = input.value
-  
-  document
-    .getElementById('pay')
-    .addEventListener('click', () => {nextQuestion()})
-}
+  const money = document.getElementById("input");
+  document.getElementById("pay").addEventListener("click", () => {
+    nextQuestion(money.value);
+  });
+} 
 
 
-const thankYou = (money) => {
 
-if (money.value > 20) {
+const thankYou = (amount) => {
+
+if (amount > 20) {
   botReply(`*Takes his money, closes his eyes and sits in silence*`)
 } else {
   botReply(`Keep you money, such an inadequate sum is not worthy of my attention`)
@@ -303,7 +339,7 @@ if (money.value > 20) {
   document
     .getElementById('leave')
     .addEventListener('click', () => setTimeout(location.reload(), 3000))
-}
+} */
 
 sendBtn.addEventListener('click', () => nextQuestion(input.value))
 input.addEventListener('keypress', (event) => {
