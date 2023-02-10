@@ -68,7 +68,7 @@ const question2 = (event) => {
   document.getElementById("tea").addEventListener("click", teaChoice);
 };
 
-//If user wants Tea
+//If user wants tea
 const teaChoice = (event) => {
   event.preventDefault();
   let teaChoice = inputWrapper.value;
@@ -99,7 +99,7 @@ const question3 = (teaChoice, coffeeChoice) => {
 };
 
  
-// 3 different choices
+// size choice
 const smallSize = (event) => {
   event.preventDefault(); 
   let smallChoice = inputWrapper.value;
