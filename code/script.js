@@ -2,7 +2,7 @@
 const chat = document.getElementById('chat');
 const userInput = document.getElementById('userInput');
 const sendBtn = document.getElementById ('sendBtn'); 
-const inputWrapper = document.getElementById ('input-wrapper'); 
+const inputWrapper = document.getElementById ('inputWrapper'); 
 const userForm = document.getElementById ('userForm') ; 
 
 // If you need any global variables that you can use across different functions, declare them here:
@@ -50,19 +50,24 @@ const showMessage = (message, sender) => {
 }
 
 const nextLine = (message) => {
+  console.log ('lineNumber', lineNumber)
 
  if (lineNumber === 1) {
-  userReply(message)
-  userInput.value = ''
-  setTimeout(() => secondLine (message))
-  console.log ('line number 1') ; 
+    userReply (message) 
+    userInput.value = ''    
+    setTimeout(() => secondLine (message), 1000)
+    console.log ('user input 1') ; 
   } else if (lineNumber === 2) {
-    secondLine (); 
-    console.log ('line number 2')
+    userReply(message)
+    userInput.value = ''    
+    console.log ('user input 2')
+    setTimeout(() => thirdLine (message), 1000)
   } else if (lineNumber === 3) {
-    thirdLine (); 
-    console.log ("line number 3")
+    userReply(message)
+    userInput.value = ''    
+    console.log ("user input 3")
   } else {
+    userReply(Message)
     console.log ("I couldn't understand your message"); 
   }
 }; 
@@ -72,7 +77,7 @@ const nextLine = (message) => {
 
 //First reply from bot 
 const firstLine = () => {
-  lineNumber = 1
+  lineNumber = 1; 
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   botReply(`Knock knock`);
 }
@@ -80,8 +85,8 @@ const firstLine = () => {
 //Answer from the user
 
 //Second reply from bot
-const secondLine = (msg) => {
-lineNumber++  
+const secondLine = () => {
+lineNumber++;  
 botReply(`Tank`);
 } 
 
@@ -104,22 +109,23 @@ botReply(`Tank`);
 
 // Set up your eventlisteners here
   //Initial button click from user, here the user enters their question. If someone hits enter works too.   
-userForm.addEventListener("submit", (event) => {
+userForm.addEventListener('submit', (event) => {
 event.preventDefault();
 console.log("form submitted");
+
 let userText = userInput.value ; 
-showMessage(`${userText}`, 'user');
-userInput.value = ''
-
-if (userText === ""){
-  botReply (`Say whaat?`); 
-  return; 
-
-
-  nextLine ()
-}; 
-
+userInput.value = '' //Clears input field after submitting
 })
+
+sendBtn.addEventListener ('click', () => nextLine(userInput.value)) 
+
+userInput.addEventListener('keypress', (event) => {
+  if (event.key === 'submit' && userInput.value) nextLine(userInput.value)
+})
+
+
+
+
 
 
 
@@ -133,6 +139,17 @@ setTimeout (firstLine, 1000)
 // This means the greeting function will be called one second after the website is loaded.
 
 /*
+
+//Detta tog jag bort för att förhindra att det kom ett extra tomt meddelande från user:     
+setTimeout(() => secondLine (message), 1000)
+
+
+if (userText === ""){
+  botReply (`Say whaat?`); 
+  return; 
+  
+  nextLine ()
+}; 
 
    sendBtn.addEventListener('click', (event) => {
 event.preventDefault(); //prevents the page to reload. 
