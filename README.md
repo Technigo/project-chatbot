@@ -1,12 +1,9 @@
 # Project Name
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Zoltar the great - project chatbot for technigo bootcamp.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Mostly I've been struggling with changing functions from buttons to number input and getting those numbers to be recieved by the next function. I checked slack for solutions and discussed with fellow classmates.
 
 ## View it live
 
