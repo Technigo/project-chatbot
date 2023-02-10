@@ -2,6 +2,8 @@
 const chat = document.getElementById('chat');
 const form = document.getElementById('name-form');
 const nameInput = document.getElementById('name-input');
+const inputWrapper = document.getElementById('input-wrapper')
+const nameForm = document.getElementById('name-form')
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -38,15 +40,56 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage that we declared earlier, with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello stanger. What's your name?.", 'bot');
+  showMessage("Hello stanger. What's your name?", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-const likeCookies = (name) => {
+const question2 = (name) => {
   // here we call the function showMessage that we declared earlier, with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage(`How do you feel about cookies ${name}?`, 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage(`Do you like cookies ${name}?`, 'bot');
+  nameForm.innerHTML = `
+  <button id='yes'> Yes, yes and Super yes!</button>`
+
+  document.getElementById('yes').addEventListener('click',superyes)
+  
 }
+
+const superyes = (event) => { 
+  showMessage(`You are in the right place!`, 'bot');
+  nameForm.innerHTML = `
+  <label for="name-input">DMs for the dark side</label>
+          <input id="name-input" type="text" />
+          <button class="send-btn" type="submit">
+            Send
+          </button>`        
+  event.preventDefault() 
+  // Store the value in a variable so we can access it after we 
+	// clear it from the input
+  
+  
+  // After 1 second, show the next question by invoking the next function.
+	// passing the name into it to have access to the user's name if we want
+	// to use it in the next question from the bot.
+  setTimeout(whichCookies, 900);
+  setTimeout(() => superyes, 1000);
+  
+}
+
+const whichCookies = () => {
+  showMessage("What's your favourite cookie?.", 'bot');
+  nameForm.innerHTML = `
+  <select id="select">
+        <option value="" selected="" disabled="">👇 Select a cookie...</option>
+        <option value="Chocolate">Chocolate cookie</option>
+        <option value="Vegan">Vegan cookie</option>
+        <option value="Rainbow">Rainbow cookie</option>
+        
+      </select>`
+  const favouriteCookie = nameInput.value
+  showMessage(favouriteCookie)
+  nameInput.value = '' 
+}
+
 
 // Set up your eventlisteners here
 const handleNameInput = (event) => { 
@@ -55,14 +98,19 @@ const handleNameInput = (event) => {
 	// clear it from the input
   const name = nameInput.value
   showMessage(name, 'user')
-  nameInput.value = ''
-
+  nameInput.value = '' 
+  
   // After 1 second, show the next question by invoking the next function.
 	// passing the name into it to have access to the user's name if we want
 	// to use it in the next question from the bot.
-  setTimeout(() => likeCookies(name), 1000);
+  setTimeout(() => question2 (name), 1000);
   
 }
+
+
+
+
+
 
 form.addEventListener('submit', handleNameInput);
 
