@@ -22,6 +22,7 @@ const showMessage = (message, sender) => {
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
+        <img src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -35,7 +36,7 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Click me!", 'bot');
+  showMessage("Hello there, What's your name?", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 

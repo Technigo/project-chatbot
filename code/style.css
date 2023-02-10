@@ -6,26 +6,28 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: black;
+  background: #0026ff;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 52px;
-  color: hotpink;
+  font-size: 44px;
+  line-height: 34px;
+  color: #fff;
   text-align: center;
 }
 
 h2 {
   font-weight: bold;
-  font-size: 32px;
-  color: hotpink;
+  font-size: 24px;
+  line-height: 34px;
+  color: #fff;
   text-align: center;
   margin-bottom: 36px;
 }
 
 p {
-  font-size: 32px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 28px;
   margin: 0;
@@ -36,9 +38,9 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: black;
+  color: #0026ff;
   padding: 16px;
-  font-size: 20px;
+  font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
@@ -49,8 +51,9 @@ main {
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
-  height: 800px;
+  height: 600px;
   border-radius: 30px;
+  background: #fff;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -59,9 +62,6 @@ main {
 }
 
 .chat {
-  background-image: url(./images/fraga.png);
-  background-size: 100%;
-  background-repeat: no-repeat;
   flex: 1;
   display: flex;
   justify-content: flex-start;
@@ -70,21 +70,10 @@ main {
   padding-bottom: 16px;
 }
 
-/*.ask {
-  display: flex;
-  justify-content: center;
-  background: transparent;
-  border: none !important;
-  font-size: ;
-  height: 50px;
-  width: 50px;
-}*/
-
 .bot-msg {
   display: flex;
   margin: 16px 8px 0 0;
   flex-shrink: 0;
-  justify-content: flex-end;
 }
 
 .user-msg {
@@ -94,18 +83,24 @@ main {
   flex-shrink: 0;
 }
 
+.bot-msg img,
+.user-msg img {
+  width: 60px;
+  height: 60px;
+}
+
 .bubble {
   background: #e5e9ff;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: hotpink;
+  color: #0026ff;
   max-width: 40%;
 }
 
 .bot-bubble {
-  border-radius: 26px 26px 26px 0px;
+  border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
 }
 
@@ -123,19 +118,18 @@ main {
   width: 100%;
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
 }
 
 label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: hotpink;
+  color: #0026ff;
   margin-right: 20px;
 }
 
-.send-btn {
-  background-color: hotpink;
+button {
+  background-color: #0026ff;
   color: white;
   border: none;
   border-radius: 4px;
@@ -149,7 +143,7 @@ label {
   transition: all 0.3s ease;
 }
 
-.send-btn:hover {
+button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
