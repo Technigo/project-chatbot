@@ -1,6 +1,7 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById("chat");
 const form = document.getElementById("form")
+const input = document.getElementById("name-input")
 const inputWrapper = document.getElementById("input-wrapper")
 const sendBtn = document.getElementById("submit")
 
@@ -36,7 +37,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greetUser = (event) => { 
-  showMessage("Do you need a vacation? Enter your name below to get started.", "bot");
+  showMessage("Do you need a vacation? Enter your Name and Email below to get started.", "bot");
 }
 
 setTimeout(greetUser, 1000);
@@ -56,8 +57,9 @@ const pickVacation = () =>{
 }
 const emailInput =()=>{
 inputWrapper.innerHTML =`
-<button id="emailInput">Email</button>`}
-
+<button id="emailbutton">Email</button>
+<input id="emailInput">Email</input>}`
+}
 //Questions
 
 
@@ -70,7 +72,7 @@ setTimeout(()=> showMessage(`Hello ${nameInput} nice to meet you. Please choose 
 nameInput.value = ""
 setTimeout(()=> buttonsFunction(), 1000)
 });
-
+  
 // clicking on buttons
 
 
@@ -93,7 +95,7 @@ pickVacation()
 else if(selectedValue.id==="Carribean"){
 console.log("iclicked on the Carribean button")
 showMessage("Carribean", "user")
-setTimeout(()=> showMessage("Good decision enter your email below so we can send you more details and soon you will be on your way to paradise. ","bot"),1000)
+setTimeout(()=> showMessage("Good decision check your inbox and soon you will be on your way to paradise. ","bot"),1000)
 pickVacation()
 inputWrapper.innerHTML = ""
 
@@ -101,48 +103,18 @@ inputWrapper.innerHTML = ""
 else if(selectedValue.id==="Maldives"){
 console.log("iclicked on the Maldives button")
 showMessage("Maldives", "user")
-setTimeout(()=> showMessage("Good decision enter your email below so we can send you more details and soon you will be on your way to paradise. ","bot"),1000)
+setTimeout(()=> showMessage("Good decision check your inbox and soon you will be on your way to paradise. ","bot"),1000)
 pickVacation()
 inputWrapper.innerHTML = ""
-emailInput()
+
 
 } 
 else if(selectedValue.id==="Swedish"){
 console.log("iclicked on the Swedish button")
 showMessage("Swedish West Coast", "user")
-setTimeout(()=> showMessage("Good decision enter your email below so we can send you more details and soon you will be on your way to paradise. ","bot"),1000)
+setTimeout(()=> showMessage("Good decision check your inbox and soon you will be on your way to paradise. ","bot"),1000)
 alert("Check our website for cheap deals on rain gear")
 inputWrapper.innerHTML = ""
-
-
 } 
+
 })
-
-
-//const emailInput = (event) => {
-  //event.preventDefault(); //prevents refreshing the page
-  //let emailInput = inputWrapper.value;
-  //showMessage(`Thank you! We will be in touch`, "bot");
-  //inputWrapper.value = "";
-  //console.log("Thank you! We will be in touch"); //can be omitted
-  //setTimeout(() => question5(coffeeAnswer), 1000);
-//};
-
-
-
-
-
-
-
- /*/ 
-
-//     setTimeout(() => showMessage("I think your mouse slipped would you like to try from the beginning?","bot"),500)
-
-//     setTimeout(() => showMessage("Lets make that dream a reality! See the menu below ","bot"),500)
- 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded*/
