@@ -26,6 +26,15 @@ h2 {
   margin-bottom: 36px;
 }
 
+h3 {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 34px;
+  color: #7d1856;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
 p {
   font-size: 18px;
   font-weight: 600;
