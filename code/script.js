@@ -1,11 +1,8 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById("chat");
-
 const form = document.getElementById("form")
 const inputWrapper = document.getElementById("input-wrapper")
 const sendBtn = document.getElementById("submit")
-
-// If you need any global variables that you can use across different functions, declare them here:
 
 // Declare your functions after this comment
 
@@ -53,13 +50,13 @@ const buttonsFunction=()=>{
 }
 const pickVacation = () =>{
   inputWrapper.innerHTML= `
-  <select class='dropdown' id="vacation-input">
-    <option name="Caribean" value="Caribean" id="Caribean">Caribean</option>
-    <option name="Maldives" value="Maldives" id="Maldives">Maldives</option>
-    <option name="Fiji" value="Fiji" id="Fiji">Fiji</option>
-  </select>
-`
+<button id='Carribean'>Carribean</button>
+<button id='Maldives'>Maldives</button>
+<button id='Swedish'>Swedish West Coast</button>`
 }
+const emailInput =()=>{
+inputWrapper.innerHTML =`
+<button id="emailInput">Email</button>`}
 
 //Questions
 
@@ -69,10 +66,9 @@ event.preventDefault ()
 const nameInput = document.getElementById("name-input").value
 console.log(nameInput)
 showMessage(nameInput, "user")
-showMessage(`Hello ${nameInput} nice to meet you.` , "bot")
-
+setTimeout(()=> showMessage(`Hello ${nameInput} nice to meet you. Please choose from the vacation options below.` , "bot"),1000)
 nameInput.value = ""
-buttonsFunction()
+setTimeout(()=> buttonsFunction(), 1000)
 });
 
 // clicking on buttons
@@ -84,85 +80,66 @@ console.log(e.target.id)
 const selectedValue=e.target
 
 if(selectedValue.id==="boring"){
-showMessage('I think your mouse slipped would you like to try from the beginning?', "bot")
+showMessage('I think your mouse slipped would you like to try again?', "bot")
+alert("Ha ha your kidding right? ")
 console.log("iclicked on the boring button")
 } 
 else if(selectedValue.id==="sun"){
 console.log("iclicked on the sun button")
-showMessage("Lets make that dream a reality! See the menu below ","bot")
+showMessage("Sun n Fun", "user")
+setTimeout(()=> showMessage("Lets make that dream a reality! See the options below ","bot"),1000)
 pickVacation()
-}
-// dropdown
-else if(selectedValue.id==="vacation-input"){
-  // change event listener
-if(selectedValue.id==="Carribean" || selectedValue.id==="Maldives" || selectedValue.id==="Fiji"){
-  console.log("vacation is selected")
-}
+} 
+else if(selectedValue.id==="Carribean"){
+console.log("iclicked on the Carribean button")
+showMessage("Carribean", "user")
+setTimeout(()=> showMessage("Good decision enter your email below so we can send you more details and soon you will be on your way to paradise. ","bot"),1000)
+pickVacation()
+inputWrapper.innerHTML = ""
 
-}
+} 
+else if(selectedValue.id==="Maldives"){
+console.log("iclicked on the Maldives button")
+showMessage("Maldives", "user")
+setTimeout(()=> showMessage("Good decision enter your email below so we can send you more details and soon you will be on your way to paradise. ","bot"),1000)
+pickVacation()
+inputWrapper.innerHTML = ""
+emailInput()
+
+} 
+else if(selectedValue.id==="Swedish"){
+console.log("iclicked on the Swedish button")
+showMessage("Swedish West Coast", "user")
+setTimeout(()=> showMessage("Good decision enter your email below so we can send you more details and soon you will be on your way to paradise. ","bot"),1000)
+alert("Check our website for cheap deals on rain gear")
+inputWrapper.innerHTML = ""
 
 
+} 
 })
 
 
+//const emailInput = (event) => {
+  //event.preventDefault(); //prevents refreshing the page
+  //let emailInput = inputWrapper.value;
+  //showMessage(`Thank you! We will be in touch`, "bot");
+  //inputWrapper.value = "";
+  //console.log("Thank you! We will be in touch"); //can be omitted
+  //setTimeout(() => question5(coffeeAnswer), 1000);
+//};
 
 
 
 
-// const botResponseOne = () => {
-//   showMessage(`Please choose from the options below`, "bot"); //bot says Hey to 'name'
-//   inputWrapper.innerHTML = `      
-//      <button id='sun'>Sun n Fun</button>
-//      <button id='boring'>Boring Vacation</button>`;
 
-  
-//   const boringBtn = document.getElementById("boring");
-//   boringBtn.addEventListener("click", (event)  => {
-//     const boringVacation = boringBtn.name;
-//     showMessage(boringVacation, "user")
-//     currentQuestion ()
+
+
+ /*/ 
+
 //     setTimeout(() => showMessage("I think your mouse slipped would you like to try from the beginning?","bot"),500)
-//     alert("wrong button")
-//   })
-  
-//   const funBtn = document.getElementById("sun");
-//   funBtn.addEventListener("click", () => {
-//     const funVacation = funBtn.name;
-//     showMessage(funVacation, "user")
-//     currentQuestion ()
+
 //     setTimeout(() => showMessage("Lets make that dream a reality! See the menu below ","bot"),500)
-//   } )
-// }
-  
-// const pickVacation = () =>{
-//   form.innerHTML= `
-//   <select class='dropdown' id="name-input">
-//     <option name="Caribean" value="Caribean" id="Caribean">Caribean</option>
-//     <option name="Maldives" value="Maldives" id="Maldives">Maldives</option>
-//     <option name="Fiji" value="Fiji" id="Fiji">Fiji</option>
-//   </select>
-//   <button class="send-btn" type="submit">Select</button>
-// `
-// showMessage("Good decision now lets get those bank details and you will be on your way to paradise.", "bot")
-// }
-
-
-
-  
-    
-
-//document.getElementById('boring').addEventListener('click', (event) => botResponseOne ('Boring Vacation'));
-//document.getElementById('sun').addEventListener('click', (event) => botResponseOne ('Sun n Fun'));
-
-
-  
-  //Event listeners
-  //nameInput.addEventListener('submit', handleNameInput) //listens to submit button, goes to textInput func.
-  //questionOne.addEventListener('submit', handleNameInput);
-
-
-  
-  
+ 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
