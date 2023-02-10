@@ -1,12 +1,19 @@
-# Project Name
+# Chatbot Happy Cloud
 
-Replace this readme with your own information about your project.
+Happy Cloud is a creative and easy built Chatbot aimed towards skydivers.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The project itself is created to learn how to use variables and conditional statements in Javascript, as well as functions and concept of string methods etc.
+
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I approched any problem by first checking material from Technigo. Then google search and/or youtube. When not being able to solve or understand, I try to compare with other codes from students, often through searching on StackOverflow. I also used Inspect + consol, but most times the errors don't make sense to me. 
+
+I started a day ahead from original plan to not fall back but ended up needing a lot of assistance from others to repeat the termonologys functions, I find that the hardest.
+
+If I had more time I would just focus on JavaScript during a few months to actually know how to even begin to study it's functions and errors, due to the difficultes of the termonology. Regarding this project I spent 8-10 hours 6 days in a row which means my discipline and determination is not an issue. 
+There are many functions I had wanted to work due to my creeative mindset but not enough time to learn the steps at this point.
+
 
 ## View it live
 

@@ -13,20 +13,30 @@ body {
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
+  font-size: 64px;
   line-height: 34px;
-  color: #fff;
+  color: #eef2bd;
   text-align: center;
 }
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 34px;
   line-height: 34px;
-  color: #fff;
+  color: #eef2bd;
   text-align: center;
   margin-bottom: 36px;
 }
+
+h4 {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 14px;
+  color: #eef2bd;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
 
 p {
   font-size: 18px;
@@ -40,10 +50,10 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #05a3a2;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'DynaPuff';
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -124,9 +134,9 @@ main {
 
 label {
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'DynaPuff';
   font-weight: 500;
-  color: #0026ff;
+  color: #05a3a2;
   margin-right: 20px;
 }
 
@@ -139,7 +149,7 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: 'DynaPuff';
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
