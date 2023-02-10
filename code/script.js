@@ -7,7 +7,7 @@ const inputValue = document.getElementById("name-input");
 // If you need any global variables that you can use across different functions, declare them here:
 let currentQuestion = 0;
 let userName = "";
-let preferredType = "";
+let favorite = "";
 const setTimeOutTime = 1200;
 
 // Declare your functions after this comment
@@ -45,8 +45,24 @@ const greetUser = () => {
   showMessage("Welcome to Cat Bot the Chat bot. What's your name?", "bot");
 };
 
-const preferredTypeQuestion = () => {
-  showMessage(`Hello ${userName}! Which type of cat do you prefer`, "user");
+const favoritePersonality = () => {
+  showMessage(
+    `Hello ${userName}! Which cat personality is your favorite?`,
+    "bot"
+  );
+  inputWrapper.innerHTML = `
+  <div id="btn">
+  <button id="cuddly" value="cuddly">Cuddly</button>
+  <button id="anti-social" value="anti-social">Antisocial</button>
+  </div>
+`;
+
+  const btn = document.getElementById("btn");
+  btn.addEventListener("click", () => handleFavoritePersonality(btn.value));
+};
+
+const preferredType = () => {
+  showMessage(`And which type of cat do you prefer`, "user");
   inputWrapper.innerHTML = `
 <select id="select"
 <option disabled selected value="">Select your favorite type of cat</option>
@@ -55,31 +71,14 @@ const preferredTypeQuestion = () => {
       <option id="long-haired-breed" value="long-haired-breed">Long-Haired Breed</option>
    </select>
 `;
-  const select = document.getElementById("select");
-  select.addEventListener("change", () => handlePreferredType(select.value));
-};
-
-const favoritePersonality = () => {
-  showMessage("And which cat personality is your favorite?", "bot");
-  inputWrapper.innerHTML = `
-  <div id="btn">
-  <button id="cuddly" value="cuddly">Cuddly</button>
-  <button id="anti-social" value="anti-social">Antisocial</button>
-  </div>
-`;
   document
-    .getElementById("cuddly")
-    .addEventListener("click", () => handleFavoritePersonality("cuddly"));
-  document
-    .getElementById("anti-social")
-    .addEventListener("click", () => handleFavoritePersonality("anti-social"));
-  const btn = document.getElementById("btn");
-  btn.addEventListener("click", () => favoritePersonality(btn.value));
+    .getElementById("select")
+    .addEventListener("change", () => handlePreferredType("select"));
 };
 
 const adopt = () => {
   showMessage(
-    "Perfect! We have found the perfect ${preferredType} cat for you. Would you like to adopt a cat?",
+    `Perfect! We have found the perfect ${favorite} cat for you. Would you like to adopt a cat?`,
     "bot"
   );
   inputWrapper.innerHTML = `
@@ -98,12 +97,58 @@ const adopt = () => {
     .addEventListener("click", () => handleAdoptACat("no"));
 };
 
-//todo:
-//Farewell message
-//Iteration through handlers
-//Handlers
+const farewellMessage = () => {
+  showMessage(`Thank you, we will be in touch, cat lover!`, "bot");
+  inputWrapper.innerHTML = ``;
+};
+
+const handleInput = (event) => {
+  event.preventDefault();
+  currentQuestion++;
+  if (currentQuestion === 1) {
+    handleUserName();
+  } else if (currentQuestion === 2) {
+    handleFavoritePersonality();
+  } else if (currentQuestion === 3) {
+    handlePreferredType();
+  } else {
+    handleAdoptACat();
+  }
+};
+
+const handleUserName = () => {
+  userName = inputValue.value;
+  showMessage(`${userName}`, "user");
+  inputValue.value = "";
+  setTimeout(favoritePersonality, setTimeOutTime);
+};
+
+const handleFavoritePersonality = () => {
+  favorite = btn.value;
+  showMessage(`My favorite cat personality is ${favorite}`, "user");
+  inputValue.value = ``;
+  setTimeout(adopt, setTimeOutTime);
+};
+
+const handlePreferredType = () => {
+  preferredType = select.value;
+  showMessage(`I prefer the ${preferredType}`, "user");
+  inputValue.value = ``;
+  setTimeout(preferredType, setTimeOutTime);
+};
+
+const handleAdoptACat = (adopt) => {
+  showMessage(adopt, "user");
+  inputValue.value = ``;
+  setTimeout(farewellMessage, setTimeOutTime);
+};
+
+//TODO:
+
+// Change undefined personality type input to favorite personality
 // Change user name input to first uppercase letter
-// Change preferred type input to favorite personality
+// Add conditionals to adoptACat()
+// Add three different farewell messages
 
 // Set up your eventlisteners here
 form.addEventListener("submit", handleInput);
