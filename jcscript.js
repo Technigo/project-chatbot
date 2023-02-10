@@ -228,3 +228,83 @@ const order =() => {
   
   }
 }*/
+
+
+
+
+
+
+
+
+
+// user replys
+const userReplyOne = () => {  
+
+  questionNumber ++
+
+
+  userReply("yey funfact")
+
+  botReply ("here is som fun fact")
+
+  botReply ("cklick on another button for something else")
+
+  wrapper.innerHTML =`
+  <button id="history" > History </button>
+  <button id="order" > Send me a pineapple!! </button>`;
+
+
+  document.getElementById('history').addEventListener('click', () => answerTwoHistory())
+  document.getElementById('order').addEventListener('click', () => ThreeOrder())
+}
+
+
+//bot replys
+// here I write fun-fact 
+const answerTwoHistory = () => {  
+  userReply ( 'so important to know the history')
+  
+  
+  botReply ('historia')
+ 
+  wrapper.innerHTML =`
+  <button id="fun-fact" > Fun Fact </button>
+
+  <button id="order" > Send me a pineapple!! </button>`;
+
+  document.getElementById('order').addEventListener('click', () => ThreeOrder())
+
+//Förstå mig bättre på eventliteners och varför det funkar nu och inte innan (hur gör man så de inte är kvar hela tiden?)
+document.getElementById('fun-fact').addEventListener('click', () => userReplyOne())
+
+  
+ 
+  } 
+  /*if (two === 'fun-fact'){
+    wrapper.innerHTML =`
+
+    ´<button id="fun-fact" > Fun Fact </button>`;
+  
+    document.getElementById('fun-fact').addEventListener('click', () => userReplyOne())
+
+  }
+*/
+
+
+
+
+
+
+
+  const ThreeOrder = () => {
+
+    userReply ("finaly I get my own Pineapple")
+   
+    botReply ('Make the order here')
+
+    //fixa en knapp för de olika storlekarna sen en form för mail
+
+
+    botReply ('Gracias')
+  }
+
