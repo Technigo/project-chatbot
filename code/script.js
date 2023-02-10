@@ -46,6 +46,10 @@ const greetUser = () => {
 
 // Initial button click, here I should get the name entered
 sendBtn.addEventListener('click', (event) => {
+  if (nameInput.value === "" || undefined) {
+    showMessage("Sorry I did not catch that, please enter your name!", 'bot')
+    event.preventDefault()
+  } else {
   event.preventDefault() //this is so the page do not reload.
 
   // Store the value in a variable so I can access it after we 
@@ -57,6 +61,7 @@ sendBtn.addEventListener('click', (event) => {
   nameInput.value = ''
   //Here I call the function where I present the dishes to choose from. I will also pass the userName
   setTimeout(() => whatKindOfDish(userName), 1000)
+  }
 })
 
 
