@@ -8,6 +8,7 @@ const input = document.getElementById('input-wrapper');
 // If you need any global variables that you can use across different functions, declare them here:
 
 let username = ""; // by declaring username at the top with let, will allow it to be assigned new values later in the code and reused throughout functions.
+let ideaimg = "";
 
 // Declare your functions after this comment
 
@@ -58,14 +59,34 @@ form.addEventListener('submit', (event) => {
 
 //This is where the showBotResponse function is declared - this will show the bot's response to the user's name.
 const showBotResponseOne = () => { 
-  showMessage(`Hi there, ${username}! Are you interested in getting quilting, crochet, or cross-stitch ideas?`, 'bot')
-  input.innerHTML = `
-    <button id="quilt-button">Quilting</button>
-    <button id="crochet-button">Crochet</button>
-    <button id="cross-button">Cross-Stitch</button>
-  `
-  showCraftButtons(); //This function lives here instead of outside of this function because it ensures that the buttons exist in the HTML before they are called.
-                      //if this was placed outside of this function, it would be called immediately, the buttons wouldn't exist yet, and the code would break.
+  if(username !== "") {
+    showMessage(`Hi there, ${username}! Are you interested in getting quilting, crochet, or cross-stitch ideas?`, 'bot')
+    input.innerHTML = `
+      <button id="quilt-button">Quilting</button>
+      <button id="crochet-button">Crochet</button>
+      <button id="cross-button">Cross-Stitch</button>
+    `
+    showCraftButtons(); //This function lives here instead of outside of this function because it ensures that the buttons exist in the HTML before they are called.
+  //                    //if this was placed outside of this function, it would be called immediately, the buttons wouldn't exist yet, and the code would break.
+
+    nameInput.value = ''
+  } else if (username == "") {
+    chat.innerHTML += `
+    <section class="bot-msg">
+      <img src="assets/bot.png" alt="Bot" />
+      <div class="bubble bot-bubble">
+        <img src="assets/uncleiroh.png" class="uncle-iroh" alt="uncle iroh"/>
+      </div>
+    </section>
+    `
+    document.getElementsByClassName("uncle-iroh")[0].onload = () =>
+    (chat.scrollTop = chat.scrollHeight)
+  
+    showMessage(`Oops! It doesn't look like you've entered your name. Who are you? And, what do YOU want?`, 'bot');
+
+    nameInput.value = '';
+  }
+    
 }
 
 
@@ -130,14 +151,12 @@ const useQuiltEasyHardButtons = () => {
   const quiltHardButton = document.getElementById('quilt-hard-button');
   
   quiltEasyButton.addEventListener('click', () => {
-    // console.log("Quilt E");
     showMessage(`Easier is better!`, "user");
     
     offerEasyQuilt(); //This calls the function that responds to the users request for an easy quilt idea and provides the idea.
   });
 
   quiltHardButton.addEventListener('click', () => {
-    // console.log("Quilt H");
     showMessage(`I want more of a challenge!`, "user");
 
     offerHardQuilt();
@@ -150,14 +169,12 @@ const useCrochetEasyHardButtons = () => {
   const crochetHardButton = document.getElementById('crochet-hard-button');
 
     crochetEasyButton.addEventListener('click', () => {
-    // console.log("Crochet E");
     showMessage(`Easier is better!`, "user");
 
     offerEasyCrochet();
   });
 
   crochetHardButton.addEventListener('click', () => {
-    // console.log("Crochet H");
     showMessage(`I want more of a challenge!`, "user");
 
     offerHardCrochet();
@@ -170,14 +187,12 @@ const useCrossEasyHardButtons = () => {
   const crossHardButton = document.getElementById('cross-hard-button');
 
   crossEasyButton.addEventListener('click', () => {
-    // console.log("Cross-stitch E");
     showMessage(`Easier is better!`, "user");
 
     offerEasyCross();
   });
 
   crossHardButton.addEventListener('click', () => {
-    // console.log("Cross-stitch H");
     showMessage(`I want more of a challenge!`, "user");
 
     offerHardCross();
@@ -192,10 +207,17 @@ const offerEasyQuilt = () => {
   <section class="bot-msg">
     <img src="assets/bot.png" alt="Bot" />
     <div class="bubble bot-bubble">
-      <img src="assets/quilteasy.jpg" class="idea-img" alt="easy quilt idea" />
+      <img src="assets/quilteasy.jpg" class="idea-img" alt="easy quilt idea"/>
     </div>
   </section>
   `
+  ideaimg = document.getElementsByClassName("idea-img");  //This seems to work because I declared the ideaimg variable in the global, and then can assign new value with each function.  This names the array so that I can then summon the final element in the array each time this runs.
+  ideaimg[ideaimg.length-1].onload = () =>
+  (chat.scrollTop = chat.scrollHeight);
+
+  // document.getElementsByClassName("idea-img")[0].onload = () => //Tried this code first, to make each image visible in the chat. Didn't work after asking for new idea because then there were multiple elements in the array, and the function only made the first element fully visible.
+  // (chat.scrollTop = chat.scrollHeight)
+
   input.innerHTML = `
   <button id="thanks-bye">Thanks, bye!</button>
   <button id="new-idea">Nah, I want a new idea.</button>
@@ -211,10 +233,14 @@ const offerHardQuilt = () => {
   <section class="bot-msg">
     <img src="assets/bot.png" alt="Bot" />
     <div class="bubble bot-bubble">
-      <img src="assets/quilthard.jpg" class="idea-img" alt="harder quilt idea" />
+      <img src="assets/quilthard.jpg" class="idea-img" alt="harder quilt idea"/>
     </div>
   </section>
   `
+  ideaimg = document.getElementsByClassName("idea-img");
+  ideaimg[ideaimg.length-1].onload = () =>
+  (chat.scrollTop = chat.scrollHeight);
+
   input.innerHTML = `
   <button id="thanks-bye">Thanks, bye!</button>
   <button id="new-idea">Nah, I want a new idea.</button>
@@ -230,10 +256,14 @@ const offerEasyCrochet = () => {
   <section class="bot-msg">
     <img src="assets/bot.png" alt="Bot" />
     <div class="bubble bot-bubble">
-      <img src="assets/crocheteasy.jpg" class="idea-img" alt="easy crochet idea" />
+      <img src="assets/crocheteasy.jpg" class="idea-img" alt="easy crochet idea"/>
     </div>
   </section>
   `
+  ideaimg = document.getElementsByClassName("idea-img");
+  ideaimg[ideaimg.length-1].onload = () =>
+  (chat.scrollTop = chat.scrollHeight);
+
   input.innerHTML = `
   <button id="thanks-bye">Thanks, bye!</button>
   <button id="new-idea">Nah, I want a new idea.</button>
@@ -253,6 +283,10 @@ const offerHardCrochet = () => {
     </div>
   </section>
   `
+  ideaimg = document.getElementsByClassName("idea-img");
+  ideaimg[ideaimg.length-1].onload = () =>
+  (chat.scrollTop = chat.scrollHeight);
+
   input.innerHTML = `
   <button id="thanks-bye">Thanks, bye!</button>
   <button id="new-idea">Nah, I want a new idea.</button>
@@ -272,6 +306,10 @@ const offerEasyCross = () => {
     </div>
   </section>
   `
+  ideaimg = document.getElementsByClassName("idea-img");
+  ideaimg[ideaimg.length-1].onload = () =>
+  (chat.scrollTop = chat.scrollHeight);
+
   input.innerHTML = `
   <button id="thanks-bye">Thanks, bye!</button>
   <button id="new-idea">Nah, I want a new idea.</button>
@@ -291,6 +329,10 @@ const offerHardCross = () => {
     </div>
   </section>
   `
+  ideaimg = document.getElementsByClassName("idea-img");
+  ideaimg[ideaimg.length-1].onload = () =>
+  (chat.scrollTop = chat.scrollHeight);
+
   input.innerHTML = `
   <button id="thanks-bye">Thanks, bye!</button>
   <button id="new-idea">Nah, I want a new idea.</button>
@@ -306,21 +348,34 @@ const finalButtons = () => {
   const newIdeaButton = document.getElementById('new-idea');
 
   thanksButton.addEventListener('click', () => {
-    console.log('Thanks!')
-
-    //any functions for thanks button to be called go here
-  
+    showMessage(`Thanks!`, "bot");
+    
+    showHappyCrafting();
+    
+    chat.scrollTop = chat.scrollHeight;
   })
 
   newIdeaButton.addEventListener('click', () => {
-    console.log('New Idea')
-    
-    //any functions for new idea button go here
-    showBotResponseOne();
+    showSecondIdea();
   })
 
-  
 } 
+
+const showHappyCrafting = () => {
+  input.innerHTML = `
+    <h1>Happy Crafting ${username}!</h1>
+  `
+}
+
+const showSecondIdea = () => {
+  showMessage(`Okay then, ${username}. Let's try again.`,"bot");
+  input.innerHTML = `
+  <button id="quilt-button">Quilting</button>
+  <button id="crochet-button">Crochet</button>
+  <button id="cross-button">Cross-Stitch</button>
+`
+showCraftButtons();
+}
 
 
 // Set up your eventlisteners here

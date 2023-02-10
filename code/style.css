@@ -121,6 +121,13 @@ main {
   max-height: 300px;
 }
 
+.bot-msg .uncle-iroh{
+  width: 100%;
+  height: 100%;
+  max-width: 150px;
+  max-height: 150px;
+}
+
 .bubble {
   background: #fff3e3;
   font-weight: 500;
@@ -179,5 +186,9 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+.input-wrapper h1{
+  color: #16697a;
 }
 
