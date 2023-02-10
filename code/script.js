@@ -1,7 +1,7 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById("input-wrapper")
-const nameInput = document.getElementById("nameInput")
+const nameInput = document.getElementById("name-input")
 const button = document.getElementById("button")
 // If you need any global variables that you can use across different functions, declare them here:
 let questionNumber = 1
@@ -64,6 +64,11 @@ const nextQuestion = (message) => {
     userSay(message)
     setTimeout(() => ifMonster(message), 1000)
   }
+  else if (questionNumber === 3) {
+    userSay(message)
+    console.log("right track")
+    setTimeout(() => finish(message), 1000)
+  }
 }
 
 
@@ -78,7 +83,7 @@ let guess = "";
 button.addEventListener('click', (event) => {
   event.preventDefault();
   console.log(event);
-  const userGuess = document.getElementById("nameInput").value;
+  const userGuess = document.getElementById("name-input").value;
   console.log(userGuess);
   guess = userGuess;
   //showMessage(`I would say ${guess}`, "user");
@@ -107,39 +112,63 @@ const whatSize = () => {
 }
 
 
-const ifMonster = (type) => {
+const ifMonster = (size) => {
   questionNumber++
   console.log("howdy");
-  botSay(`Alright alright! ${type}, huh? Tell me, if you met a monster, what would you do?`);
+  botSay(`Alright alright! ${size}, huh? Tell me, if you met a monster, what would you do?`);
 
+  if (size === "The biggest") {
+    inputWrapper.innerHTML = `
+    <radio>
+      <h5>Monster time!</h5>
+      <label><input type="radio" name="choice" id="badger" option value="fight">I fight! I win!</label>
+      <label><input type="radio" name="choice" id="hippo" option value="run">Dinner!</label>
+    `
 
-  if (type === "The biggest") {
+    document.getElementById("badger").addEventListener("click", () => nextQuestion("Bring it on!"));
+  console.log("badger")
+
+  document.getElementById("hippo").addEventListener('click', () => nextQuestion("Fear me, I'm mighty!"));
+  console.log("hippo")
+  
+
+  } else if (size === "Let's get comfy") {
     inputWrapper.innerHTML = `
-    <radio id="radio">
-      <option value="" selected disabled>Monster time!</option>
-      <input type="radio" name="choice" option value="fight">I fight! I win!</option>
-      <input type="radio" name="choice" option value="run">I run!</option>
-    </select>
+      <radio>
+      <h5>Monster time!</h5>
+      <label><input type="radio" name="choice" id="facehugger" option value="hug">I hug it 🤗</label>
+      <label><input type="radio" name="choice" id="grandma" option value="cookie">I give it cookies 🍪🍪</label>
     `
-  } else if (type === "Let's get comfy") {
-    inputWrapper.innerHTML = `
-      <select id="select">
-        <option value="" selected disabled>Monster time!</option>
-        <option value="hug">I hug it</option>
-        <option value="cookie">I give it cookkies</option>
-      </select>
-    `
+
+    
+  document.getElementById("facehugger").addEventListener("click", () => nextQuestion("Just within jumping distance..."));
+  console.log("facehugger")
+
+  document.getElementById("grandma").addEventListener('click', () => nextQuestion("Aren't you a sweetheart?"));
+  console.log("grandma")
+
   } else {
     inputWrapper.innerHTML = `
-      <select id="select">
-        <option value="" selected disabled>Monster time!</option>
-        <option value="stab">I stab!</option>
-        <option value="punch">I punch!</option>
-      </select>
+    <radio>
+    <h5>Monster time!</h5>
+    <label><input type="radio" name="choice" id="mosquito" option value="stab">I stab!</label>
+    <label><input type="radio" name="choice" id="shrimp" option value="punch">I punch!</label>
     `
   }
+
+  document.getElementById("mosquito").addEventListener("click", () => nextQuestion("Sluuurp..."))
+  console.log("mosquito")
+  document.getElementById("shrimp").addEventListener("click", () => nextQuestion("BANG"))
+  console.log("shrimp")
+  
 }
 
+const finish = (message) => {
+  questionNumber++
+  botSay(`I'll be damned! You are a`)
+  inputWrapper.innerHTML = `
+  <h3>Amazing!</h3>`
+}
 // Set up your eventlisteners here
 
 /*
@@ -178,3 +207,4 @@ setTimeout(greetUser, 1000);
 //add eventlisteners to innerhtml doesn't work.
 //copy the structure with questionnumbers from the technigo code
 //Limit the amount of characters you can type in the guess species option
+//put id's and eventlisteners on each of the radio buttons and progress to final bot answer

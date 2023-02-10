@@ -154,3 +154,8 @@ button:hover {
 #btnBig {
   background-color: red;
 }
+
+label {
+  color: black;
+}
+
