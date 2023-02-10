@@ -1,4 +1,3 @@
-
 const chat = document.getElementById('chat') //when I need to get this element i can use chat
 const wrapper = document.getElementById('input-wrapper')
 const form = document.getElementById('name-form')
@@ -46,6 +45,29 @@ function showMessage(message, sender) {
   chat.scrollTop = chat.scrollHeight;
 }
 
+/*const nextQuestion = (message) => {
+  console.log('questionNumber', questionNumber)
+
+  if (questionNumber === 1) {
+    userReply(message)
+    input.value = ''
+    setTimeout(() => showFoodTypes(message), 1000)
+  } else if (questionNumber === 2) {
+    userReply(message)
+    setTimeout(() => showMenu(message), 1000)
+  } else if (questionNumber === 3) {
+    userReply(message)
+    setTimeout(() => showDishSize(message), 1000)
+  } else if (questionNumber === 4) {
+    userReply(message)
+    setTimeout(() => showPrice(message), 1000)
+  } else {
+    userReply(message)
+    setTimeout(thankYou, 1000)
+  }
+}*/
+
+
 //When website is loaded (we save), chatbot greets us:
 //We put in the parameter time and give it contidions. This is our input that controls which output we get.
 //We also put in the parameter timeGreetings, which is an array of greeting phrases. This becomes our output, depending on the time variable.
@@ -64,12 +86,12 @@ setTimeout(greetUser, 1000);
 form.addEventListener('submit', (event) => {
   event.preventDefault()   //Hindrar från att formen autosparar innan vi har hunnit köra vår kod.
   
-  const firstQuestion = document.getElementById('name-input').value;
+  const firstName = document.getElementById('name-input').value;
   console.log(firstName)            //Här kollar vi att vi får ut rätt värde, kan kommentera ut sen.
 
   showMessage(firstName, 'user');    //Steg 2 i koden är att vi ropar på funktionen "showMessage", där vi lägger in våra två argument (firstName, user) i parametrarna.
 
-  setTimeout(() => firstQuestion(firstName), 1000)      //Denna kod gör att vi väntar 1s innan vi kör igång nästa funktion/fråga, efter att usern har svarat.
+  setTimeout(() => recognize(firstName), 1000)      //Denna kod gör att vi väntar 1s innan vi kör igång nästa funktion/fråga, efter att usern har svarat.
 })
 
 
@@ -77,9 +99,9 @@ form.addEventListener('submit', (event) => {
 //At the same time, we want to prep the input form area for the next question. We REPLACE (not add) the content in the formWrapper with new HTML.
 //question0
 
-const firstQuestion= () => {
+const recognize = (firstName) => {
 
-botReply(`Welcome to the world of pinapples ${choise}. What do you need today? Fun Fact, History or rightaway to order?`)
+botReply(`Welcome to the world of pinapples ${firstName}. What do you need today? Fun Fact or History?`)
 
 console.log(wrapper);
 
@@ -89,89 +111,120 @@ wrapper.innerHTML =`
 <button id="order" > Send me a pineapple!! </button>`;
 
 //Förstå mig bättre på eventliteners och varför det funkar nu och inte innan (hur gör man så de inte är kvar hela tiden?)
-document.getElementById('fun-fact').addEventListener('click', () => userReplyOne())
+document.getElementById('fun-fact').addEventListener('click', () => funfact())
 
 
-document.getElementById('history').addEventListener('click', () => answerTwoHistory())
-document.getElementById('order').addEventListener('click', () => ThreeOrder())
+  //setTimeout (() => ('fun-fact', 'bot'), 3000)
+  //setTimeout (() => funfact, 1000)
+
+/*document.getElementById('history').addEventListener('click' , 
+() => { botReply("history history history!")
+setTimeout(() => ('history' , 'bot'),3000  )
+}) 
+document.getElementById('order').addEventListener('click' , 
+() => { botReply("Yes buy some pineapples", )
+setTimeout(() => ('order' , 'bot'),3000)  
+})   
+
+//Denna kod gör att vi väntar 1s innan vi kör igång nästa funktion/fråga, efter att usern har svarat.
+//setTimeout(() => nextQuestion(),2000 )*/
 
 }
 
-
-
-// user replys
-const userReplyOne = () => {  
-
-  questionNumber ++
-
+// here I write fun-fact
+const funfact = () => {  
+ 
 
   userReply("yey funfact")
-
+  //Set time out
+  
   botReply ("here is som fun fact")
+  
+  botReply( 'what did you think? you want  some history or are you ready to buy your pineapple?.')
 
-  botReply ("cklick on another button for something else")
+setTimeout(() => ('user' , 'bot'),3000  )
 
+setTimeout(() => ('bot' , 'user'),3000)  
+ 
+  
   wrapper.innerHTML =`
   <button id="history" > History </button>
   <button id="order" > Send me a pineapple!! </button>`;
 
 
-  document.getElementById('history').addEventListener('click', () => answerTwoHistory())
-  document.getElementById('order').addEventListener('click', () => ThreeOrder())
+  document.getElementById('history').addEventListener('click', () => history())
+  document.getElementById('order').addEventListener('click', () => order())
+
+  /*/Förstå mig bättre på eventliteners och varför det funkar nu och inte innan (hur gör man så de inte är kvar hela tiden?)
+  document.getElementById('history').addEventListener('click' , 
+  () => { history()
+  setTimeout(() => history(), 5000)
+  }) 
+  document.getElementById('order').addEventListener('click' , 
+  () => { botReply("Yes buy some pineapples", )
+  setTimeout(() => order(), 5000 )
+  }) 
+
+  setTimeout(() => history(),2000)*/
+ 
 }
 
 
-//bot replys
-// here I write fun-fact 
-const answerTwoHistory = () => {  
-  userReply ( 'so important to know the history')
-  
-  
-  botReply ('historia')
- 
-  wrapper.innerHTML =`
-  <button id="fun-fact" > Fun Fact </button>
+const history =() => {
 
+botReply( 'history.')
+
+wrapper.innerHTML =`
+<button id="fun-fact" > Fun Fact </button>
   <button id="order" > Send me a pineapple!! </button>`;
 
-  document.getElementById('order').addEventListener('click', () => ThreeOrder())
+  document.getElementById('fun-fact').addEventListener('click', () => funfact())
+  document.getElementById('order').addEventListener('click', () => order())
 
-//Förstå mig bättre på eventliteners och varför det funkar nu och inte innan (hur gör man så de inte är kvar hela tiden?)
-document.getElementById('fun-fact').addEventListener('click', () => userReplyOne())
-
-  
+  /*document.getElementById('fun-fact').addEventListener('click' , 
+  () => { botReply("hej hej history!")
+  setTimeout(() => ('history' , 'bot'),5000 ) 
+  }) 
+  document.getElementById('order').addEventListener('click' , 
+  () => { botReply("Yes buy some pineapples", )
+  setTimeout(() => order(), 3000)
+  })
  
-  } 
-  /*if (two === 'fun-fact'){
-    wrapper.innerHTML =`
+  setTimeout(() => (order), 5000) */ 
+}
 
-    ´<button id="fun-fact" > Fun Fact </button>`;
+const order =() => {
+
+  botReply( 'yo.')
   
-    document.getElementById('fun-fact').addEventListener('click', () => userReplyOne())
+  wrapper.innerHTML =`
+  
+    <button id="order" > Send me a pineapple!! </button>`;
+  
+   /* document.getElementById('order').addEventListener('click' , 
+    () => { botReply("Yes buy some pineapples", )
+    setTimeout(() => order(), 5000) 
+    })*/
 
   }
-*/
 
 
 
 
 
+ /* const thankYou =() => {
 
-
-
-
-
-
-
-  const ThreeOrder = () => {
-
-    userReply ("finaly I get my own Pineapple")
-   
-    botReply ('Make the order here')
-
-    //fixa en knapp för de olika storlekarna sen en form för mail
-
-
-    botReply ('Gracias')
+  botReply( 'gracias')
+  
+  wrapper.innerHTML =`
+  
+    <button id="order" > Send me a pineapple!! </button>`;
+  
+    document.getElementById('order').addEventListener('click' , 
+    () => { botReply("Yes buy some pineapples", )
+    setTimeout(() => ('order' , 'bot')),1000  
+    }) 
+   // setTimeout(() => history(), 5000)  
+  
   }
-
+}*/
