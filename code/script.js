@@ -85,9 +85,9 @@ const showDecade = (userName) => {
     `Nice to meet you ${userName}. When do you want to go?`, 'bot' )
 
   inputWrapper.innerHTML = `
-    <button id="1920Btn">1920</button>
-    <button id="1980Btn">1980</button>
-    <button id="2000Btn">2000</button>
+    <button id="1920Btn">1920's</button>
+    <button id="1980Btn">1980's</button>
+    <button id="2000Btn">2000's</button>
   `
 
   document
@@ -101,16 +101,17 @@ const showDecade = (userName) => {
     .addEventListener('click', () => nextQuestion('2000'))
 }
 
-
   const showYear = (type) => {
     questionNumber++
 
   showMessage(
+    `${type}'s`, 'user')
+
+    showMessage (
     `Great choice! The ${type}'s were exciting times!`, 'bot')
 
   showMessage(
-      `Where do you want to go?`, 'bot')
-    
+    `Where do you want to go?`, 'bot')
 
   if (type === '1920') {
     inputWrapper.innerHTML = `
