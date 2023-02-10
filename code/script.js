@@ -128,14 +128,25 @@ const inputWrapper = document.getElementById('input-wrapper')
 const input = document.getElementById('input')
 const sendBtn = document.getElementById('send')
 
+const bottrack = new Audio('./assets/zoltartrack.mp3');
+const zoltarSound = () => {
+      bottrack.play();
+};
+const usertrack = new Audio('./assets/usertrack.mp3');
+const userSound = () => {
+      usertrack.play();
+};
+
 let questionNumber = 1
 
 const botReply = (msg) => {
   showMessage(msg, 'bot')
+  zoltarSound()
 }
 
 const userReply = (msg) => {
   showMessage(msg, 'user')
+  userSound()
 }
 
 const showMessage = (message, sender) => {
@@ -219,9 +230,9 @@ const showFortune = (type) => {
     inputWrapper.innerHTML = `
       <select id="select">
         <option value="" selected disabled>Tell me of...</option>
-        <option value="myFuture">my future</option>
+        <option value="future">my future</option>
         <option value="family">the fate of my family</option>
-        <option value="big">Wait, I think I just want to be big</option>
+        <option value="..wait, I just want to be big">Wait, I think I just want to be big</option>
       </select>
     `
   } else {
@@ -230,7 +241,7 @@ const showFortune = (type) => {
   }
 
   const select = document.getElementById('select')
-  select.addEventListener('change', () => nextQuestion(select.value))
+  select.addEventListener('change', () => nextQuestion('Tell me of my ' + select.value))
 }
 
 const chosenFortune = (type) => {
@@ -273,7 +284,7 @@ const showPrice = (number) => {
   
   document
     .getElementById('pay')
-    .addEventListener('click', () => {nextQuestion(money)})
+    .addEventListener('click', () => {nextQuestion()})
 }
 
 

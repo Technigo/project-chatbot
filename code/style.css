@@ -37,10 +37,10 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #f8f8f8;
+  background-image: url(assets/borer.jpg);
   color: #000000;
   padding: 16px;
-  font-size: 16px;
+  font-size: 22px;
   font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
@@ -59,11 +59,9 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  background-image: url(assets/scroll.jpg);
 }
 
-/* .chatbg {
-}
- */
 .chat {
   flex: 1;
   display: flex;
@@ -71,6 +69,7 @@ main {
   overflow: scroll;
   flex-direction: column;
   padding-bottom: 16px;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 .bot-msg {
@@ -133,7 +132,7 @@ label {
 
 button {
   background-color: #000000;
-  color: white;
+  color: rgb(255, 255, 255);
   border: none;
   border-radius: 4px;
   padding: 16px 40px;
@@ -147,8 +146,13 @@ button {
 }
 
 button:hover {
-  opacity: 0.9;
-  transition: all 0.2s ease;
+  background-color: #3f1f72;
+  opacity: 0.8;
+  transition: all 1.5s ease;
+  border-radius: 96px;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
 }
 
 .glow {
