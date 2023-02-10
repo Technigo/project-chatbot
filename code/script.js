@@ -60,27 +60,23 @@ const handleInput = (event) => {
   const msg = input.value; // input value will be stored in the const name
   showMessage(`${msg}`, "user"); // users answer
   input.value = "";
-  setTimeout(() => question1(msg), 1000);
+  setTimeout(() => ecoAnxiety(msg), 1000);
 };
 
-const question1 = (msg) => {
+const ecoAnxiety = (msg) => {
   botReply(`Nice to meet you ${msg}! Do you have eco-anxiety?`);
   //3 ALTERNATIVES: YES - NO - MAYBE
-  inputWrapper.innerHTML = `<div id="optionBtns">
-    <button id="yesBtn" type="submit" value="Yes">Yes</button>
-    <button id="noBtn" type="submit" value="No">No</button>
-    <button id="maybeBtn" type="submit" value="Maybe">Maybe</button></div>`;
+  inputWrapper.innerHTML = `
+    <button class="anxBtn" type="submit" value="Yes">Yes</button>
+    <button class="anxBtn" type="submit" value="No">No</button>
+    <button class="anxBtn" type="submit" value="Maybe">Maybe</button>`;
 
-  document
-    .getElementById("yesBtn")
-    .addEventListener("click", () => question2("Yes"));
-  document
-    .getElementById("noBtn")
-    .addEventListener("click", () => question2("No"));
-  document
-    .getElementById("maybeBtn")
-    .addEventListener("click", () => question2("Maybe"));
+  const anxOptionBtns = document.querySelectorAll(".anxBtn");
+  anxOptionBtns.forEach(button => button.addEventListener("click", () => question2(button.value)));
 };
+
+
+
 
 const question2 = (userAnswer) => {
   //IF "YES" AND "MAYBE" - RATE YOUR ANXIETY
@@ -88,56 +84,25 @@ const question2 = (userAnswer) => {
   if (userAnswer === "Yes" || userAnswer === "Maybe") {
     userReply(userAnswer);
     setTimeout(() => botReply(`Please, rate your eco-anxiety level!`), 1000);
-    setTimeout(
-      () =>
-      (inputWrapper.innerHTML = `<form id="radioContainer">
-    <input type="radio" id="radio1" name="rate" value="1">1</input>
-    <input type="radio" id="radio2" name="rate" value="2">2</input>
-    <input type="radio" id="radio3" name="rate" value="3">3</input>
-    <input type="radio" id="radio4" name="rate" value="4">4</input>
-    <input type="radio" id="radio5" name="rate" value="5">5</input></form>`),
-      1000
-    );
+    
+    setTimeout(() => (inputWrapper.innerHTML = `<form class="radioContainer">
+    <input class="rate" type="radio" name="rate" value="1">1</input>
+    <input class="rate" type="radio" name="rate" value="2">2</input>
+    <input class="rate" type="radio" name="rate" value="3">3</input>
+    <input class="rate" type="radio" id="radio4" value="4">4</input>
+    <input class="rate" type="radio" name="rate" value="5">5</input>
+    <input class="rate" type="radio" name="rate" value="6">6</input>
+    <input class="rate" type="radio" name="rate" value="7">7</input>
+    <input class="rate" type="radio" name="rate" value="8">8</input>
+    <input class="rate" type="radio" id="radio4" value="9">9</input>
+    <input class="rate" type="radio" name="rate" value="10">10</input></form>`), 1000);
+   
+  
+  setTimeout(() => 
+  document
+          .querySelectorAll(".rate")
+          .forEach(button => button.addEventListener("click", () => question3(button.value))), 1000);
 
-    setTimeout(
-      () =>
-        document
-          .getElementById("radio1")
-          .addEventListener("click", () => question3(1)),
-      1000
-    );
-
-    setTimeout(
-      () =>
-        document
-          .getElementById("radio2")
-          .addEventListener("click", () => question3(2)),
-      1000
-    );
-
-    setTimeout(
-      () =>
-        document
-          .getElementById("radio3")
-          .addEventListener("click", () => question3(3)),
-      1000
-    );
-
-    setTimeout(
-      () =>
-        document
-          .getElementById("radio4")
-          .addEventListener("click", () => question3(4)),
-      1000
-    );
-
-    setTimeout(
-      () =>
-        document
-          .getElementById("radio5")
-          .addEventListener("click", () => question3(5)),
-      1000
-    );
   } else {
     // IF NO - FOLLOW UP QUESTION - WITH THREE BUTTONS
     userReply(userAnswer);
@@ -183,35 +148,17 @@ const question3 = (value) => {
 
     setTimeout(
       () =>
-      (inputWrapper.innerHTML = `<button id="actionBtn" type="submit" value="To take action">To take action</button>
-    <button id="continueBtn" type="submit" value="Continue as usual">Continue as usual</button>
-    <button id="supportBtn" type="submit" value="Get support from others">Get support from others</button>`),
+      (inputWrapper.innerHTML = 
+        `<button class="nextStepBtn" type="submit" value="To take action">To take action</button>
+    <button class="nextStepBtn" type="submit" value="Continue as usual">Continue as usual</button>
+    <button class="nextStepBtn" type="submit" value="Get support from others">Get support from others</button>`),
       1000
     );
 
-    setTimeout(
-      () =>
-        document
-          .getElementById("actionBtn")
-          .addEventListener("click", () => question4(actionBtn.value)),
-      1000
-    );
-
-    setTimeout(
-      () =>
-        document
-          .getElementById("continueBtn")
-          .addEventListener("click", () => question4(continueBtn.value)),
-      1000
-    );
-
-    setTimeout(
-      () =>
-        document
-          .getElementById("supportBtn")
-          .addEventListener("click", () => question4(supportBtn.value)),
-      1000
-    );
+    setTimeout(() => 
+  document
+          .querySelectorAll(".nextStepBtn")
+          .forEach(button => button.addEventListener("click", () => question3(button.value))), 1000);
   }
 
   // IF RADIO-BUTTON 4-5 show message:
@@ -228,54 +175,21 @@ const question3 = (value) => {
     setTimeout(
       () =>
       (inputWrapper.innerHTML = `
-    <div>
-      <button id="polarBtn" type="submit" value="Polar ice melting">Polar ice melting</button>
-      <button id="disasterBtn" type="submit" value="Natural disasters">Natural disasters</button>
-      <button id="doingBtn" type="submit" value="Humanity is not doing enough">Humanity is not doing enough</button>
-      <button id="economyBtn" type="submit" value="Economic collapse">Economic collapse</button>
-      <button id="helplessBtn" type="submit" value="My own helplessness">My own helplessness</button>
+    <div class="worstCaseContainer" >
+      <button class="worstCaseBtn" type="submit" value="Polar ice melting">Polar ice melting</button>
+      <button class="worstCaseBtn" type="submit" value="Natural disasters">Natural disasters</button>
+      <button class="worstCaseBtn" type="submit" value="Humanity is not doing enough">Humanity is not doing enough</button>
+      <button class="worstCaseBtn" type="submit" value="Economic collapse">Economic collapse</button>
+      <button class="worstCaseBtn" type="submit" value="My own helplessness">My own helplessness</button>
     </div>`),
       1000
     );
-    setTimeout(
-      () =>
-        document
-          .getElementById("polarBtn")
-          .addEventListener("click", () => question4(polarBtn.value)),
-      1000
-    );
 
-    setTimeout(
-      () =>
-        document
-          .getElementById("disasterBtn")
-          .addEventListener("click", () => question4(disasterBtn.value)),
-      1000
-    );
+    setTimeout(() => 
+    document
+          .querySelectorAll(".worstCaseBtn")
+          .forEach(button => button.addEventListener("click", () => question4(button.value))), 1000);
 
-    setTimeout(
-      () =>
-        document
-          .getElementById("doingBtn")
-          .addEventListener("click", () => question4(doingBtn.value)),
-      1000
-    );
-
-    setTimeout(
-      () =>
-        document
-          .getElementById("economyBtn")
-          .addEventListener("click", () => question4(economyBtn.value)),
-      1000
-    );
-
-    setTimeout(
-      () =>
-        document
-          .getElementById("helplessBtn")
-          .addEventListener("click", () => question4(helplessBtn.value)),
-      1000
-    );
   } else {
     userReply(value);
     setTimeout(
@@ -297,35 +211,7 @@ const question3 = (value) => {
       1000
     );
 
-
-    setTimeout(
-      () => botReply(`Is there anything else we can help you with?`),
-      5000
-    );
-    setTimeout(
-      () =>
-      (inputWrapper.innerHTML = `
-      <button id="yesBtn2" type="submit">Yes</button>
-      <button id="noBtn2" type="submit">No</button>
-     `
-      ),
-      5000
-    );
-    setTimeout(
-      () =>
-        document
-          .getElementById("yesBtn2")
-          .addEventListener("click", () => question2("Yes")),
-      5000
-    );
-
-    setTimeout(
-      () =>
-        document
-          .getElementById("noBtn2")
-          .addEventListener("click", () => Thankyou("No")),
-      5000
-    );
+    setTimeout(() => AnythingElse(value), 2000);
   }
 };
 
@@ -336,35 +222,17 @@ const question4 = (value) => {
     setTimeout(
       () =>
       (inputWrapper.innerHTML = `
-      <button id="therapy" type="submit" value="Visit a therapist">Visit a therapist</button>
-      <button id="activist" type="submit" value="Join an activist group">Join an activist group</button>
-      <button id="party" type="submit" value="Join a political party">Join a political party</button>`),
+      <button class="takeActionBtn" type="submit" value="Visit a therapist">Visit a therapist</button>
+      <button class="takeActionBtn" type="submit" value="Join an activist group">Join an activist group</button>
+      <button class="takeActionBtn" type="submit" value="Join a political party">Join a political party</button>`
+      ),
       1000
     );
 
-    setTimeout(
-      () =>
-        document
-          .getElementById("therapy")
-          .addEventListener("click", () => question5(therapy.value)),
-      1000
-    );
-
-    setTimeout(
-      () =>
-        document
-          .getElementById("activist")
-          .addEventListener("click", () => question5(activist.value)),
-      1000
-    );
-
-    setTimeout(
-      () =>
-        document
-          .getElementById("party")
-          .addEventListener("click", () => question5(party.value)),
-      1000
-    );
+    setTimeout(() => 
+    document
+          .querySelectorAll(".takeActionBtn")
+          .forEach(button => button.addEventListener("click", () => question5(button.value))), 1000);
 
 
   } else if (value === "Continue as usual") {
@@ -383,33 +251,7 @@ const question4 = (value) => {
       2000
     );
 
-    setTimeout(
-      () => botReply(`Is there anything else we can help you with?`),
-      5000
-    );
-    setTimeout(
-      () =>
-      (inputWrapper.innerHTML =
-        `<button id="yesBtn3" type="submit">Yes</button>
-          <button id="noBtn3" type="submit">No</button>`),
-      5000
-    );
-    setTimeout(
-      () =>
-        document
-          .getElementById("yesBtn3")
-          .addEventListener("click", () => question2("Yes")),
-      10000
-    );
-
-    setTimeout(
-      () =>
-        document
-          .getElementById("noBtn3")
-          .addEventListener("click", () => Thankyou("No")),
-      10000
-    );
-
+    setTimeout(() => AnythingElse(value), 2000);
 
   } else {
     userReply(value);
@@ -420,57 +262,26 @@ const question4 = (value) => {
         ),
       1000
     );
-    SetTimeout(
-      () =>
-      (inputWrapper.innerHTML = `
-  <button id="healthBtn" type="submit">Take care of my health</button>
-  <button id="actionBtn" type="submit">To take action</button>
-  <button id="continueBtn" type="submit">Continue as usual</button>
-  <button id="supportBtn" type="submit">Get support from others</button>`),
-      1000
-    );
+   
+       inputWrapper.innerHTML = `
+      <button class="nextStepBtn" type="submit">Take care of my health</button>
+      <button class="nextStepBtn" type="submit">To take action</button>
+      <button class="nextStepBtn" type="submit">Continue as usual</button>
+      <button class="nextStepBtn" type="submit">Get support from others</button>`
 
-    setTimeout(
-      () =>
-        document
-          .getElementById("healthBtn")
-          .addEventListener("click", () => question5(healthBtn.value)),
-      1000
-    );
+ 
+    document
+          .querySelectorAll(".nextStepBtn")
+          .forEach(button => button.addEventListener("click", () => question5(button.value)));
 
-
-    setTimeout(
-      () =>
-        document
-          .getElementById("actionBtn")
-          .addEventListener("click", () => question4(actionBtn.value)),
-      1000
-    );
-
-    setTimeout(
-      () =>
-        document
-          .getElementById("continueBtn")
-          .addEventListener("click", () => question5(continueBtn.value)),
-      1000
-    );
-
-    setTimeout(
-      () =>
-        document
-          .getElementById("supportBtn")
-          .addEventListener("click", () => question4(supportBtn.value)),
-      1000
-    );
-  }
-}
+  }}
 
 const question5 = (value) => {
 
   if (value === "Take care of my health" || "Visit a therapist") {
     userReply(value)
     setTimeout(
-      () => botReply(`Here are a couple of resources to reach out to`)
+      () => botReply(`Here are a couple of resources to reach out to:`)
       ,
       1000
     );

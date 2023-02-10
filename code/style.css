@@ -163,3 +163,30 @@ a {
   text-decoration: none;
   color:white;
 }
+
+.worstCaseContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.worstCaseBtn, .takeActionBtn, .nextStepBtn {
+  padding: 10px 20px;
+  height:100px;
+}
+
+.radioContainer {
+  height:50px;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.rate {
+  text-align: left;
+  
+}
+
+input[type="radio" i] {
+margin-right: 0px;
+float:left;
+}
+
