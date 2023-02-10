@@ -1,12 +1,13 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 
+const messageSound = new Audio ("assets/pop.mp3");
 // If you need any global variables that you can use across different functions, declare them here:
 
 
 // Declare your functions after this comment
 
-// This function will add a chat bubble in the correct place based on who the sender is
+// This function will add a chat bubble in the cor srect place based on who the sender is
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
@@ -31,6 +32,10 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
+
+    //makes sound when sending a message 
+  messageSound.currentTime = 0
+  messageSound.play()
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
 }
@@ -38,7 +43,7 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot');
+  showMessage("Hello you! How can I help you?", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
