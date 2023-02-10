@@ -87,50 +87,68 @@ const userFeels = (userAnswer) => {
     userReply(userAnswer);
     setTimeout(() => userReply("I feel really great!"),500)
     inputWrapper.innerHTML = `
-    <button id = "spread" type = "submit">Spread the love</button>
-    <button id = "dayOff" type = "submit">Take the day of</button>
+      <button id = "spread" type = "submit">Spread the love</button>
+      <button id = "dayOff" type = "submit">Take the day of</button>
     `
     document.getElementById('spread').addEventListener('click' , () => { userReply("How do i contribute to the world with my happiness?")
-    setTimeout(() => facts('spread' , 'user')),1000  // calling out the next answer in a new function named facts
+    setTimeout(() => toDo('spread')),1000  // calling out the next answer in a new function named facts
     }) 
-    document.getElementById('dayOff').addEventListener('click' , () => { userReply("click for approval of day of")
-    setTimeout(() => facts('dayOff' , 'user')),1000  // calling out the next answer in a new function named facts
+    document.getElementById('dayOff').addEventListener('click' , () => { userReply("I want the day off!")
+    setTimeout(() => toDo('dayOff')),1000  // calling out the next answer in a new function named facts
     }) 
   }
-
   else if (userAnswer === 'okey') {
     setTimeout(() => botReply("Only okey? Let's make you feel great!"),500)
     userReply(userAnswer);
     setTimeout(() => userReply("Yes, I would like that!"),1000)
     setTimeout(() => botReply("Choose your prefered way"),1500)
     inputWrapper.innerHTML = `
-    <button id = "cute" type = "submit">Show me something</button>
-    <button id = "funny" type = "submit">Tell me something</button>
+      <button id = "cute" type = "submit">Show me something</button>
+      <button id = "funny" type = "submit">Tell me something</button>
     `
     document.getElementById('cute').addEventListener('click' , () => { userReply("Show me something cute")
-    setTimeout(() => facts('cute' , 'user')),1000  // calling out the next answer in a new function named facts
+    setTimeout(() => toDo('cute')),1000  // calling out the next answer in a new function named facts
     }) 
     document.getElementById('funny').addEventListener('click' , () => { userReply("Tell me a joke")
-    setTimeout(() => facts('funny' , 'user')),1000  // calling out the next answer in a new function named facts
+    setTimeout(() => toDo('funny')),1000  // calling out the next answer in a new function named facts
     }) 
   }
-
-    else if (userAnswer === 'meh') {
-      setTimeout(() => userReply("Not so good actually"),500)
-      setTimeout(() => botReply("I'm sad to hear that, I would recomend the following"),1500)
+  else if (userAnswer === 'meh') {
+    setTimeout(() => userReply("Not so good actually"),500)
+    setTimeout(() => botReply("I'm sad to hear that, I would recomend the following"),1500)
       
-      inputWrapper.innerHTML = `
+    inputWrapper.innerHTML = `
       <button id = "therapy" type = "submit">Therapy</button>
       <button id = "d-metal" type = "submit">Death metal</button>
       `
-      document.getElementById('therapy').addEventListener('click' , () => { userReply("I need that")
-      setTimeout(() => facts('therapy' , 'user')),500  // calling out the next answer in a new function named facts
-      }) 
-      document.getElementById('d-metal').addEventListener('click' , () => { userReply("Hook me up")
-      setTimeout(() => facts('d-metal' , 'user')),500  // calling out the next answer in a new function named facts
-      }) 
-     
+    document.getElementById('therapy').addEventListener('click' , () => { userReply("I need that")
+    setTimeout(() => toDo('therapy')),500  // calling out the next answer in a new function named facts
+    }) 
+    document.getElementById('d-metal').addEventListener('click' , () => { userReply("Hook me up")
+    setTimeout(() => toDo('d-metal')),500  // calling out the next answer in a new function  facts
+    }) 
 }}
+
+
+const toDo = (lastChoice) => {
+  if (lastChoice === 'spread'){
+    setTimeout(() => botReply("Say something nice to the next person you see!"),1000)
+    setTimeout(() => closure('single', 'bot')),1000  // calling out the next answer in a new function named CLOSURE
+  }
+  else if (lastChoice === 'dayOff') {
+    setTimeout(() => botReply("Here's a validation for your boss, you have earned the day off!"),1000)
+    setTimeout(() => closure('single', 'bot')),1000  // calling out the next answer in a new function named CLOSURE   
+  }
+  else if (lastChoice === 'cute') {
+    setTimeout(() => botReply("Here's a validation for your boss, you have earned the day off!"),1000)
+    setTimeout(() => closure('single', 'bot')),1000  // calling out the next answer in a new function named CLOSURE   
+  }
+  else if (lastChoice === 'funny') {
+    setTimeout(() => botReply("What do you call Batman when he skips church?"),1000)
+    setTimeout(() => botReply("..."),2000)
+    setTimeout(() => botReply("Christian Bale 🤣"),3000)
+    setTimeout(() => closure('single', 'bot')),1000  // calling out the next answer in a new function named CLOSURE   
+    }}
 
 
 // Set up your eventlisteners here
