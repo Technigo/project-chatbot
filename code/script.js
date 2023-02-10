@@ -1,5 +1,7 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById("chat");
+const name = document.getElementById("name-input");
+const sendButton = document.getElementById("send");
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -38,6 +40,21 @@ const greetUser = () => {
   showMessage("Hello there, What's your name?", "bot");
   // Just to check it out, change 'bot' to 'user' here 👆
 };
+
+// Initial button click, here I should get the name entered
+sendButton.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  // Store the value in a variable so I can access it after we
+  // clear it from the input
+  let userName = name.value;
+  showMessage(`${userName}`, "user");
+
+  // Clears the input field
+  name.value = "";
+  //Here I call the function where I present the dishes to choose from. I will also pass the userName
+  setTimeout(() => showFoodTypes(userName), 1000);
+});
 
 // Set up your eventlisteners here
 
