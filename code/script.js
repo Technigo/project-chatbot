@@ -2,9 +2,18 @@
 const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('input-wrapper');
 const nameInput = document.getElementById('name-input');
-const submit = document.getElementById('send-btn') 
+const sendBtn = document.getElementById('send-btn') 
 
 // If you need any global variables that you can use across different functions, declare them here:
+const botReply = (msg) => {
+  showMessage (msg, 'bot')
+}
+
+const userReply = (msg) => {
+  showMessage (msg, 'user')
+}
+
+
 
 
 // Declare your functions after this comment
@@ -39,14 +48,25 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Goodmorning! What's your name?", 'bot');
+  showMessage(`Hello! What's your name?`, 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+greetUser()
+
+sendBtn.addEventListener("send-btn", (event) => {
+event.preventDefault();
+
+let nameInput = nameInput.value;
+showMessage(`My name is ${nameInput}`, 'user');
+nameInput.value = ''
+
+setTimeout(() => showMessage(`Hello ${name} ! What kind of coffee do you want today?`, 'bot'), 2000);
+  
+})
 
 
 // Set up your eventlisteners here
-
 
 
 // When website loaded, chatbot asks first question.
@@ -55,4 +75,4 @@ const greetUser = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 500);
+setTimeout(greetUser, 1000);

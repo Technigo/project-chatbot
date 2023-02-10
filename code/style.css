@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #50443d;
 }
 
 h1 {
@@ -52,8 +52,8 @@ main {
   width: 100%;
   max-width: 700px;
   height: 600px;
-  border-radius: 30px;
-  background: #fff;
+  border-radius: 15px;
+  background: #ffffff;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -124,12 +124,12 @@ label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  color: #403737;
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #c27fb0;
   color: white;
   border: none;
   border-radius: 4px;
