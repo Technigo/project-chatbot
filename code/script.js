@@ -1,9 +1,9 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
+const chatInput = document.getElementById("chat-input");
 const inputWrapper = document.getElementById('input-wrapper');
 const sendButton = document.getElementById("send-btn");
 
-const chatInput = document.getElementById("chat-input");
 
 // If you need any global variables that you can use across different functions, declare them here:
 let questionCount = 0;
@@ -12,8 +12,6 @@ let arrivalCity ='';
 let travelDate = '';
 let numberOfTickets ='';
 let userName ='';
-
-// Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -31,7 +29,7 @@ const showMessage = (message, sender) => {
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/sl-logo.png" alt="Bot" />
+        <img src="assets/st-logo.jpg" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -42,31 +40,47 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
+const disableChatInputAndSendButton = () => {
+  chatInput.disabled = true;
+  sendButton.disabled = true;
+}
+
+const enableChatInputAndSendButton = () => {
+  chatInput.disabled = false;
+  sendButton.disabled = false;
+}
+
+const userResponse = (message) => {
+  showMessage(message, 'user');
+}
+
+const botResponse = (message) => {
+  showMessage(message, 'bot');
+}
+
+
 // Starts here
 const greetUserAndAskDepartureCity = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, Would you like to book a train ticket?", 'bot')
-  chatInput.disabled = true;
-  sendButton.disabled = true;
+  disableChatInputAndSendButton();  
+  botResponse("Hello there, Would you like to book a train ticket?");
+  
   chat.innerHTML += `
    <button id="yes-btn" class="inChatButton">Yes please</button>
    <button id="no-btn" class="inChatButton">No thanks</button>
   ` 
   document.getElementById('yes-btn').addEventListener('click',() => {
-    showMessage('Yes please.', 'user')
-    setTimeout(() => showMessage('Great! What is your city of departure?', 'bot'), 1000);
-    chatInput.disabled = false;
-    sendButton.disabled = false;
+    userResponse('Yes Please.')
+    setTimeout(() => botResponse('Great! What is your city of departure?'), 1000);
+    enableChatInputAndSendButton();
   });
 
   document.getElementById('no-btn').addEventListener('click',() => {
     showMessage('No, thank you.', 'user')
-    setTimeout(() => showMessage('Alright, have a good day then!', 'bot'), 1000);    
+    setTimeout(() => botResponse('Alright, have a good day then!'), 1000);    
   });
-  
-  
-  console.log(questionCount);
 }
+
 
 //Function to move to next step
 const nextStep = () => {
@@ -100,7 +114,7 @@ const nextStep = () => {
 //Departure Function
 const displayDepartureCityAndAskArrivalCity = () =>{
   departureCity = chatInput.value;
-  showMessage(`${departureCity}`,'user')
+  userResponse(`${departureCity}`);
   chatInput.value='';
   setTimeout(() =>showMessage('Nice! Where are you headed?','bot'),1000);
 }
@@ -108,56 +122,53 @@ const displayDepartureCityAndAskArrivalCity = () =>{
 //Arrival Function
 const displayArrivalCity = () =>{
   arrivalCity = chatInput.value;
-  showMessage(`${arrivalCity}`,'user')
+  userResponse(`${arrivalCity}`);
   chatInput.value='';
   setTimeout(() => 
-  showMessage(`Alright. So ${departureCity} to ${arrivalCity}.`,'bot'),1000);
+  botResponse(`Alright. So ${departureCity} to ${arrivalCity}.`),1000);
   nextStep();
 } 
 
 //Date Function
 const displayDatePickerandAskTickets = () => {
-  setTimeout(() =>showMessage('When would you like to travel?', 'bot'),1000); 
-  chatInput.disabled = true;
-  sendButton.disabled = true;
-  setTimeout(() => {chat.innerHTML += `<input id = "date-picker" class = "date-picker" type="date"/>`
+  setTimeout(() => botResponse('When would you like to travel?'),1000); 
+  disableChatInputAndSendButton();
+  setTimeout(() => {
+    chat.innerHTML += `<input id = "date-picker" class = "date-picker" type="date"/>`
     document.getElementById('date-picker').addEventListener('input',() => {
       travelDate  = document.getElementById('date-picker').value;
-      setTimeout(() =>showMessage(`${travelDate}`,'user'),1000);      
-      setTimeout(() =>showMessage(`How many tickets would you like?`,'bot'),2000);
-      chatInput.disabled = false;    
-      sendButton.disabled = false;  
+      setTimeout(() =>userResponse(`${travelDate}`),1000);      
+      setTimeout(() =>botResponse(`How many tickets would you like?`),2000);
+      enableChatInputAndSendButton(); 
     });
     chat.scrollTop = chat.scrollHeight; 
   },2000);
  
-  
 }
 
 //Number of tickets Function
 const displayNumberOfTicketsAndAskName = () =>{    
   numberOfTickets = chatInput.value;
-  showMessage(`${numberOfTickets}`, 'user');
+  userResponse(`${numberOfTickets}`);
   chatInput.value='';
-  setTimeout(() => showMessage(`Let me make a note of that.`, 'bot'),500); 
-  setTimeout(() => showMessage(`And in whose name shall I make the booking?`, 'bot'),2000);     
+  setTimeout(() => botResponse(`Let me make a note of that.`),500); 
+  setTimeout(() => botResponse(`And in whose name shall I make the booking?`),2000);     
 }
 
 //NameInput function
 const displayName = () => {
   userName = chatInput.value;
-  showMessage(`${userName}`, 'user');  
+  userResponse(`${userName}`);  
   chatInput.value ='';
 
-  setTimeout(nextStep, 1000);
+  nextStep();
 }
 
 //Summary function
 const ticketSummaryAndThankYouMessage = () => {
-  showMessage(`You have booked ${numberOfTickets} tickets from ${departureCity} to ${arrivalCity} on ${travelDate}`, 'bot');
-  setTimeout(() => showMessage(`Thank you for booking with us, ${userName}!`, 'bot'),3000);
-  chatInput.disabled = true;
-  sendButton.disabled = true;
+  botResponse(`You have booked ${numberOfTickets} tickets from ${departureCity} to ${arrivalCity} on ${travelDate}`);
+  setTimeout(() => botResponse(`Thank you for booking with us, ${userName}!`),2000);
+  disableChatInputAndSendButton();
 }
 
 //OnClick function of Send button
