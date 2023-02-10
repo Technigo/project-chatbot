@@ -90,12 +90,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: rgb(147, 193, 208);
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: rgb(147, 193, 208);
+  color: whitesmoke;
   max-width: 40%;
 }
 
