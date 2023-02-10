@@ -2,9 +2,10 @@
 const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('input-wrapper');
 const nameInput = document.getElementById('name-input');
-const sendBtn = document.getElementById('send-btn') 
+const sendBtn = document.getElementById('send-btn');
 
 // If you need any global variables that you can use across different functions, declare them here:
+
 const botReply = (msg) => {
   showMessage (msg, 'bot')
 }
@@ -14,9 +15,30 @@ const userReply = (msg) => {
 }
 
 
-
-
 // Declare your functions after this comment
+/*const nextQuestion = (message) => {
+  console.log('questionNumber', questionNumber)
+
+  if (questionNumber === 1) {
+    userReply(message)
+    input.value = ''
+    setTimeout(() => showFoodTypes(message), 1000)
+  } else if (questionNumber === 2) {
+    userReply(message)
+    setTimeout(() => showMenu(message), 1000)
+  } else if (questionNumber === 3) {
+    userReply(message)
+    setTimeout(() => showDishSize(message), 1000)
+  } else if (questionNumber === 4) {
+    userReply(message)
+    setTimeout(() => showPrice(message), 1000)
+  } else {
+    userReply(message)
+    setTimeout(thankYou, 1000)
+  }
+}*/
+
+
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -32,6 +54,7 @@ const showMessage = (message, sender) => {
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
+    console.log
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -49,21 +72,15 @@ const showMessage = (message, sender) => {
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage(`Hello! What's your name?`, 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
-}
-
-greetUser()
-
-sendBtn.addEventListener("send-btn", (event) => {
-event.preventDefault();
-
-let nameInput = nameInput.value;
-showMessage(`My name is ${nameInput}`, 'user');
-nameInput.value = ''
-
-setTimeout(() => showMessage(`Hello ${name} ! What kind of coffee do you want today?`, 'bot'), 2000);
+  }
   
-})
+inputWrapper.addEventListener("submit",(event) => {
+  event.preventDefault()
+  let name = nameInput.value
+  showMessage(`${name}`, 'user');
+  setTimeout(() => showMessage(`Hello ${name} ! What kind of coffee do you want today?`, 'bot'), 2000)
+});
+  
 
 
 // Set up your eventlisteners here
