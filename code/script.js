@@ -44,14 +44,14 @@ const greetUser = () => {
   showMessage("Welcome to your experience, what's your name?", "bot");
 };
 
-
+//Bot asks wich kind of activity
   const activityQuestion = () => {
     showMessage(`Nice to meet you ${yourName}! Which activity do you want to book?`, 'bot');
-    inputWrapper.innerHTML = //add three experience buttons
+    inputWrapper.innerHTML = //add three activity buttons
     `<button id="kayak-btn" type="submit">Kayaking</button>
     <button id="dive-btn" type="submit">Diving</button>
     <button id="climb-btn" type="submit">Climbing</button>`;
-    
+    //activity buttons should show up here
   document.getElementById('kayak-btn')
 .addEventListener('click', () => handleActivityQuestion('Kayaking'));
 document.getElementById('dive-btn')
@@ -60,14 +60,38 @@ document.getElementById('climb-btn')
 .addEventListener('click', () => handleActivityQuestion('Climbing'));
    };
 
+   //old
+  //  document
+  //  .getElementById('kayak-btn');
+  //  button.addEventListener('click', () => {
+  //    showMessage('I want to go Kayaking', 'user');
+  //    setTimeout(showMessage(`Kayaking, excellent choice!`, 'bot'), 1000);
+  //    //add some code in here to add answer options for next message
+  //  });
+  //  document
+  //  .getElementById('dive-btn');
+  //  button.addEventListener('click', () => {
+  //    showMessage('I want to go diving', 'user');
+  //    setTimeout(showMessage(`Diving, excellent choice!`, 'bot'), 1000);
+  //    //add some code in here to add answer options for next message
+     
+  //  });
+  //  document
+  //  .getElementById('climb-btn');
+  //  button.addEventListener('click', () => {
+  //    showMessage('I want to go Climbing', 'user');
+  //    setTimeout(showMessage(`Climbing, excellent choice!`, 'bot'), 1000);
+  //    //add some code in here to add answer options for next message
+  //  });
 
+//Bot asks where the activity should take place
 const whereQuestion = () => {
     showMessage(`Where do you want to go on your adventure?`, 'bot');
 inputWrapper.innerHTML = //add three where buttons
 `<button id="bali-btn" type="submit">Bali</button>
 <button id="iceland-btn" type="submit">Iceland</button>
 <button id="hawaii-btn" type="submit">Hawaii</button>`;
-
+//where buttons should show up here
 document.getElementById('bali-btn')
 .addEventListener('click', () => handleWhereQuestion('Bali'));
 document.getElementById('iceland-btn')
@@ -76,26 +100,50 @@ document.getElementById('hawaii-btn')
 .addEventListener('click', () => handleWhereQuestion('Hawaii'));
 };
 
-//Orderconfirmation
+//old
+// document
+// .getElementById('bali-btn');
+// button.addEventListener('click', () => {
+//   showMessage('I want to go to Bali', 'user');
+//   setTimeout(showMessage(`Bali, what a great choice! That will be 5000€ please`, 'bot'), 1000);
+//   //add some code in here to add answer options for next message
+// });
+// document
+// .getElementById('iceland-btn');
+// button.addEventListener('click', () => {
+//   showMessage('I want to go to Iceland', 'user');
+//   setTimeout(showMessage(`Iceland, what a great choice! That will be 5000€ please`, 'bot'), 1000);
+//   //add some code in here to add answer options for next message
+  
+// });
+// document
+// .getElementById('hawaii-btn');
+// button.addEventListener('click', () => {
+//   showMessage('I want to go to Hawaii', 'user');
+//   setTimeout(showMessage(`Hawaii, what a great choice! That will be 5000€ please`, 'bot'), 1000);
+//   //add some code in here to add answer options for next message
+// });
+
+//Orderconfirmation. last message yes or no
 const orderConfirmation = () => {
   showMessage(`Greate choice, Would you like to make a booking?`, "bot");
-  inputWrapper.innerHTML =
+  inputWrapper.innerHTML = //add two choice buttons
   `<button id="yes" value="yes">Yes please!</button>
   <button id="no" value="no">No thanks!</button>`;
-
+//yes or no buttons should show here
   document.getElementById('yes')
   .addEventListener('click', () => handleOrderConfirmation('Yes please!'));
   document.getElementById('no')
   .addEventListener('click', () => handleOrderConfirmation('No thanks!'));
 };
-//Thank you for booking with us! Have a great day!!
+//Thank you! Have a great day!!
 const lastMessage = () => {
-  showMessage(`Thank you for booking with us, have a great day!`, 'bot');
+    showMessage(`Thank you, have a great day!`, 'bot');
   inputWrapper.innerHTML =``;
-}
+};
 
-const handleInput = (event1) => {
-event1.preventDefault()
+const handleInput = (event) => {
+event.preventDefault()
 currentQuestion++
 if (currentQuestion === 1) {
   handleUserName();
@@ -129,17 +177,25 @@ const handleWhereQuestion = (country) => {
   setTimeout(orderConfirmation, 1000);
 };
 
-const handleOrderConfirmation = (order) => {
-  yourName = inputValue.value;
-  showMessage(order, 'user');
-  inputValue.value = ``;
-  setTimeout(lastMessage, 1000);
+const handleOrderConfirmation = choice => {
+  if (choice === "Yes please!") {
+    showMessage(`Great! Let's move forward with the booking process.`, "bot");
+  } else if (choice === "No thanks!") {
+    showMessage(`Okay, no problem. Have a great day!`, "bot");
+  }
 };
+
+// const handleOrderConfirmation = (order) => {
+//   yourName = inputValue.value;
+//   showMessage(order, 'user');
+//   inputValue.value = ``;
+//   setTimeout(lastMessage, 1000);
+// };
 
 // Set up your eventlisteners here - 
 form.addEventListener('submit', handleInput);
 
 
 setTimeout(greetUser, 1000);
-  // After 1 second, show the next question by invoking the next function.
+  // After 1 second the greeting function will be called.
 
