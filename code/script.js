@@ -39,18 +39,44 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUserOrder = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hi there! We hope you're hungry, our donuts are awesome! Would you like to place an order?", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage("Hi there! We hope you're hungry, our donuts are awesome!", 'bot');
+  showMessage("Would you like to place an order?", 'bot');
 }
 
-const handleUserOrder = () => {
+//Bot asks user if they would like to place an order
+//const userYesOrNo = () => {
+  
+//setTimeout (() => yesOrNo(), 500)}
 
-}
+//Yes or No-buttons for the user to click
+const yesOrNo = () => {
+  inputWrapper.innerHTML += `
+  <button class="send-btn" id="option1" type="submit">Yes</button>
+  <button class="send-btn" id="option2" type="submit">No</button>`
+  
+document
+  .getElementById("option1")
+  .addEventListener('click', () => {
+    showMessage("I would very much like to order, thanks!", 'user')
+    inputWrapper.innerHTML = ''
+    })
+
+document
+  .getElementById("option2")
+  .addEventListener('click', () => {
+    showMessage("No thanks, just having a look around!", 'user')
+    inputWrapper.innerHTML = ''
+    })
+  } 
+
+
 
 
 
 // Set up your eventlisteners here
-
+form.addEventListener('submit', (event) => {
+event.preventDefault();
+})
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
