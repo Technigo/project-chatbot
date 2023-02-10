@@ -1,6 +1,5 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById("chat");
-const form = document.getElementById("name-form");
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -36,38 +35,11 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hey there amazing human, whats your zodiac sign?", "bot");
+  showMessage("Hello there, What's your name?", "bot");
   // Just to check it out, change 'bot' to 'user' here 👆
 };
 
-const firstQuestion = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("What's the weather like?", "bot");
-  // Just to check it out, change 'bot' to 'user' here 👆
-};
-
-/*const handleNameInput = () => {
-  let userName = nameInput.value
-  showMessage(userName, "user")
-}*/
 // Set up your eventlisteners here
-
-form.addEventListener("submit", function (event) {
-  event.preventDefault();
-  const username = document.getElementById("name-input").value;
-  console.log(username, "-");
-  showMessage(username, "user");
-  setTimeout(() => {
-    console.log("Delayed for 1 second.");
-  }, "5000");
-  firstQuestion();
-});
-/*
-
-
-// Set up your eventlisteners here
-
-document.getElementById("");
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
@@ -75,5 +47,4 @@ document.getElementById("");
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-*/
 setTimeout(greetUser, 1000);
