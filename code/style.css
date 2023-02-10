@@ -5,9 +5,11 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: 'DynaPuff';
+  background-image: url('./assets/cloud-chatbot.jpeg');
+  background-size: cover;
 }
+
 
 h1 {
   font-weight: bold;
@@ -90,12 +92,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #e2edf8;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #05a3a2;
   max-width: 40%;
 }
 
@@ -129,7 +131,7 @@ label {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #05a3a2;
   color: white;
   border: none;
   border-radius: 4px;
