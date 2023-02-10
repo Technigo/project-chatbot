@@ -7,7 +7,7 @@ const inputWrapper = document.getElementById('input-wrapper');
 // If you need any global variables that you can use across different functions, declare them here:
 
 
-// Sunction handling name input
+// Function handling name input
 
 const handleNameInput = (event) => {
   event.preventDefault()
@@ -15,40 +15,141 @@ const handleNameInput = (event) => {
   showMessage(name, 'user')
   nameInput.value = ''
 
-  setTimeout(() => firstQuestion(name), 1000 )
+  setTimeout(() => likingMusic(name), 1000 )
 }
 
 //event listner method is starting function handleNameInput
 form.addEventListener("submit", handleNameInput);
 
+//starting question
+const likingMusic = (name) => {
+  showMessage(`Hi ${name}. Do you like listening to music?`, 'bot')
+  setTimeout(() => yesOrNo(), 100)
+}
+// two options to choose from
+
+const yesOrNo = () => {
+  inputWrapper.innerHTML = `
+  <button id="optionOne">YES</button>
+  <button id="optionTwo">NO</button>
+  `
+  document.getElementById('optionOne').addEventListener("click", () => {
+    showMessage(`Please hekp me choosing something`, 'user')
+    inputWrapper.innerHTML = ''
+    setTimeout (() => nextFunction('optionOne'), 100)
+  })
+
+  document.getElementById('optionTwo').addEventListener("click", () => {
+    showMessage(`Ok, it seems like there is nothing for me to do here. Good bye" 🎮 ❌`, 'user')
+    inputWrapper.innerHTML = ''
+    setTimeout (() => nextFunction('optionTwo'), 100)
+  })
+
+
+}
+
 
 //First question
+// const firstQuestion = (name) => {
+//   showMessage(`Hi nice to meet you ${name}. What kind of music do you listen to? `, 'bot');
+//   setTimeout(() => showMusicOptions(name), 1000);
+// };
 
-const firstQuestion = (name) => {
-  showMessage(`Hi nice to meet you ${name}. What kind of music do you listen to? `, 'bot')
-  setTimeout(() => showMusicOptions(name), 1000 )
-}
- // Add drop down menu to first question
-
-const showMusicOptions = () => {
-  form.innerHTML = `  
-<form id="music-genre">
-  <select id="genre-type">
-    <option value="">Please select</option>
-    <option value="Pop">POP 🎤🎤🎤 POP 🎤🎤🎤 POP 🎤🎤🎤</option>
-    <option value="Rock-Roll">ROCK-ROLL 🎸🎸🎸 ROCK-ROLL 🎸🎸🎸 ROCK-ROLL 🎸🎸🎸</option>
-    <option value="Classical">CLASSICAL 🎻🎻🎻 CLASSICAL 🎻🎻🎻 CLASSICAL 🎻🎻🎻</option>
-  </select>
-<button class="genrebtn" type="submit"> Submit! </button>
-</form>`
+// const showMusicOptions = (name) => {
+//   inputWrapper.innerHTML = `  
+// <form id="music-genre">
+//   <select id="genretype">
+//     <option value="">Please select</option>
+//     <option value="Pop">POP 🎤🎤🎤 POP 🎤🎤🎤 POP 🎤🎤🎤</option>
+//     <option value="Rock-Roll">ROCK-ROLL 🎸🎸🎸 ROCK-ROLL 🎸🎸🎸 ROCK-ROLL 🎸🎸🎸</option>
+//     <option value="Classical">CLASSICAL 🎻🎻🎻 CLASSICAL 🎻🎻🎻 CLASSICAL 🎻🎻🎻</option>
+//   </select>
+// <button id="genrebtn" class="genrebtn" type="submit"> Submit! </button>
+// </form>`;
  
-const musicGenre = document.getElementById('genre-type');
-musicGenre.addEventListener("click", () => {
-  //const genre = musicGenre.value;
-})
-}
+// const musicGenre = document.getElementById('genre-type');
+// const genreBtn = document.getElementById('genrebtn');
+
+// // genreBtn.addEventListener('submit', showMusicOptions);
+  
+//   genreBtn.addEventListener('submit', (event) => {
+//     event.preventDefault();
+//     const genre = musicGenre.value;
+//     setTimeout(() => showChoosenGenre(genre), 1000);
+//   });
+// };
+
+// let form = document.getElementById('music-genre');
+// const genretype = document.getElementById("genretype");
+// const genrebtn = document.getElementById("genrebtn");
+
+// submitButton.addEventListener("click", function(event) {
+//   event.preventDefault();
+//   const selectedOption = genretype.value;
+  
+//   switch (selectedOption) {
+//     case "Pop":
+//       console.log("You selected Option 1");
+//       break;
+//     case "Rock-Roll":
+//       console.log("You selected Option 2");
+//       break;
+//     case "Classical":
+//       console.log("You selected Option 3");
+//       break;
+//     default:
+//       console.log("Please select an option");
+//   }
+// });
+
+//function handling choosen music genre
+// const showChoosenGenre = (event) => {
+//   event.preventDefault()
+//   const option = optionInput.value
+//   showMessage(`Nice, you like listening to ${option} misuc!, 'bot`)
+//   optionInput.value = ''
+// }
+
+// const secondQuestion = (name, genre) => {
+//   // your code here
+// };
 
 
+// // ----------------------------------------------------------------------------------------------
+// const firstQuestion = (name) => {
+//   showMessage(`Hi nice to meet you ${name}. What kind of music do you listen to? `, 'bot')
+//   setTimeout(() => showMusicOptions(name), 1000 )
+// }
+//  // Add drop down menu to first question
+
+// const showMusicOptions = (name) => {
+//   form.innerHTML = `  
+// <form id="music-genre">
+//   <select id="genre-type">
+//     <option value="">Please select</option>
+//     <option value="Pop">POP 🎤🎤🎤 POP 🎤🎤🎤 POP 🎤🎤🎤</option>
+//     <option value="Rock-Roll">ROCK-ROLL 🎸🎸🎸 ROCK-ROLL 🎸🎸🎸 ROCK-ROLL 🎸🎸🎸</option>
+//     <option value="Classical">CLASSICAL 🎻🎻🎻 CLASSICAL 🎻🎻🎻 CLASSICAL 🎻🎻🎻</option>
+//   </select>
+// <button id="genrebtn" class="genrebtn" type="submit"> Submit! </button>
+// </form>`
+ 
+// const musicGenre = document.getElementById('genre-type');
+
+// document.getElementById('genrebtn').addEventListener('submit', secondQuestion);
+
+// musicGenre.addEventListener("", () => {
+//   const genre = musicGenre.value;
+// })
+// setTimeout(() => secondQuestion(genre), 1000)
+// }
+
+// // second question
+
+// const secondQuestion = () => {
+
+// }
+// ----------------------------------------------------------------------------------------------
 
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -238,6 +339,3 @@ setTimeout(greetUser, 1000);
 // // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // // setTimeout(functionName, timeToWaitInMilliSeconds)
 // // This means the greeting function will be called one second after the website is loaded.
-
-
-
