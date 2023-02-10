@@ -138,7 +138,16 @@ const Delivery = (cake, bun, sandwich) => {
 
   adressBtn.addEventListener("click", () => { 
     const adress = userAdress.value; 
+
+    //Lägg in en if-sats här?? Ifal användaren skriver inte skriver in någonting?
+
+    if (adress === '' || null || 0){
+      showMessage("You have to enter an adress! Try again.", 'bot');
+    }
+
+    else {
     GoodBye(cake, bun, sandwich, adress);
+    }
   });
 
 }
