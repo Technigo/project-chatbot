@@ -20,6 +20,18 @@ const userReply = (message) => {
   showMessage(message, "user");
 };
 
+const botLink = (message, link) => {
+  chat.innerHTML += `
+      <section class="bot-msg">
+        <img src="assets/bot.png" alt="Bot" />
+        <div class="bubble bot-bubble">
+          <a href=${link}><p>${message}</p></a>
+        </div>
+      </section>
+    `;
+  chat.scrollTop = chat.scrollHeight;
+};
+
 const stepThroughQuestions = (message) => {
   if (questionIndex == 1) {
     userReply(message);
@@ -33,7 +45,7 @@ const stepThroughQuestions = (message) => {
     mood = message;
     setTimeout(askForSomething, 1000);
   } else if (questionIndex == 3) {
-    userReply(`I'll have a ${message}, thanks!`);
+    userReply(`I'll have ${message}, thanks!`);
     setTimeout(anythingElse, 1000);
   } else if (questionIndex == 4) {
     userReply(message);
@@ -136,37 +148,33 @@ const anythingElse = () => {
 
 const offerVideo = () => {
   botReply(
-    `Let me find you a video which goes well with ${
+    `Here's a video which goes well with ${
       drink == "beer" ? "hazy NEIPAs" : "cold water"
-    } and ${mood == "good" ? "happy" : "sad"} days!`
+    } and ${mood == "good" ? "happy" : "sad"} days:`
   );
   if (mood == "good") {
     if (drink == "beer") {
-      inputWrapper.innerHTML = ``;
-      chat.innerHTML = `
-      <iframe id="ytplayer" type="text/html" width="640" height="360"
-  src="https://www.youtube.com/embed/Ofq_nl366VM?autoplay=1"
-  frameborder="0"></iframe>`;
+      botLink(
+        "a nice freestyle canoeing video to the sound of 'Lady in Red'",
+        "https://www.youtube.com/watch?v=Ofq_nl366VM"
+      );
     } else {
-      inputWrapper.innerHTML = ``;
-      chat.innerHTML = `
-      <iframe id="ytplayer" type="text/html" width="640" height="360"
-  src="https://www.youtube.com/embed/bfcDfhT5mak?autoplay=1"
-  frameborder="0"></iframe>`;
+      botLink(
+        "a video of some random Norwegian playing 'Scotland the Brave' and really disco-ing out",
+        "https://www.youtube.com/watch?v=bfcDfhT5mak"
+      );
     }
   } else {
     if (drink == "beer") {
-      inputWrapper.innerHTML = ``;
-      chat.innerHTML = `
-      <iframe id="ytplayer" type="text/html" width="640" height="360"
-  src="https://www.youtube.com/embed/oYKwotHRdHo?autoplay=1"
-  frameborder="0"></iframe>`;
+      botLink(
+        "a funky instrumental tribute to the late great MF DOOM",
+        "https://www.youtube.com/watch?v=oYKwotHRdHo"
+      );
     } else {
-      inputWrapper.innerHTML = ``;
-      chat.innerHTML = `
-      <iframe id="ytplayer" type="text/html" width="640" height="360"
-  src="https://www.youtube.com/embed/CC4I65VIoeE?autoplay=1"
-  frameborder="0"></iframe>`;
+      botLink(
+        "a one hour loop of a cockatiel singing a song from Totoro",
+        "https://www.youtube.com/watch?v=CC4I65VIoeE"
+      );
     }
   }
 };
