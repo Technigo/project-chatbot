@@ -13,7 +13,7 @@ body {
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
+  font-size: 55px;
   line-height: 34px;
   color:yellow;
   text-align: center;
@@ -38,7 +38,7 @@ p {
 input {
   box-sizing: border-box;
   border: none;
-  border-radius: 4px 0 0 4px;
+  border-radius: 8px;
   background: #e5e9ff;
   color: #0026ff;
   padding: 16px;
@@ -47,6 +47,7 @@ input {
   font-weight: 600;
   line-height: 26px;
   flex: 1;
+  border: black solid 2px;
 }
 
 main {
@@ -114,12 +115,14 @@ main {
 .input-wrapper {
   display: flex;
   justify-content: center;
+  
 }
 
 .input-wrapper form {
   width: 100%;
   display: flex;
   align-items: center;
+ 
 }
 
 label {
@@ -128,6 +131,7 @@ label {
   font-weight: 500;
   color: #0026ff;
   margin-right: 20px;
+
 }
 
 button {
