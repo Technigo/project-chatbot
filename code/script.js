@@ -76,7 +76,7 @@ const nextQuestion = (message) => {
 const greetUser = () => {
   questionNumber = 1
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  botSay("Hello! What species do you believe yourself to be?");
+  botSay("Welcome lifeform! What species do you believe yourself to be?");
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 let guess = "";
@@ -96,9 +96,10 @@ const whatSize = () => {
   botSay(`Let's find out if "${guess}" is true! How smol are you?`);
 
   inputWrapper.innerHTML = `
-<button id="btnBig">I'm a Unit</button>
+  <div class=button-wrapper>
+<button id="btnBig">I'm a UNIT</button>
 <button id="btnAverage">Come closer!</button>
-<button id="btnSmall">Tiny, yet brave</button>
+<button id="btnSmall">Tiny, yet brave</button></div>
   `
   document
     .getElementById('btnBig')
@@ -167,7 +168,7 @@ const finish = (message) => {
   questionNumber++
   botSay(`I'll be damned! You are a`)
   inputWrapper.innerHTML = `
-  <h3>Amazing!</h3>`
+  <h2>Amazing!</h2>`
 }
 // Set up your eventlisteners here
 

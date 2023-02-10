@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: rgb(50, 224, 210);
 }
 
 h1 {
@@ -26,6 +26,10 @@ h2 {
   margin-bottom: 36px;
 }
 
+h5 {
+  text-align: center;
+}
+
 p {
   font-size: 18px;
   font-weight: 600;
@@ -38,7 +42,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: black;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -54,7 +58,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  /*background: ;*/
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -69,13 +73,14 @@ main {
   overflow: scroll;
   flex-direction: column;
   padding-bottom: 16px;
+  background: #367679;
+  /*box-shadow: 15px -15px 5px 5px teal;*/
 }
 
 .bot-msg {
   display: flex;
   margin: 16px 8px 0 0;
   flex-shrink: 0;
-  border: 1px solid red;
 }
 
 .user-msg {
@@ -83,7 +88,6 @@ main {
   justify-content: flex-end;
   margin: 16px 0 0 8px;
   flex-shrink: 0;
-  border: 1px solid red;
 }
 
 .bot-msg img,
@@ -98,18 +102,20 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: black;
   max-width: 40%;
 }
 
 .bot-bubble {
   border-radius: 0 26px 26px 26px;
   margin-left: 8px;
+  background: #22d9e2;
 }
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  background: #e09248;
 }
 
 .input-wrapper {
@@ -132,10 +138,10 @@ label {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #e09248;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 50%;
   padding: 16px 40px;
   margin-right: 4px;
   font-size: 16px;
@@ -151,9 +157,10 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-#btnBig {
-  background-color: red;
-}
+/*
+#btnBig, #btnAverage, #btnSmall {
+  background-color: rgb(20, 187, 95);
+}*/
 
 label {
   color: black;
