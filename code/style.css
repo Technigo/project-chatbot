@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url(./assets/magicbg.jpg);
 }
 
 h1 {
@@ -19,9 +19,9 @@ h1 {
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 16px;
   line-height: 34px;
-  color: #fff;
+  color: #ffffff;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -37,8 +37,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #f8f8f8;
+  color: #000000;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -61,6 +61,9 @@ main {
   flex-direction: column;
 }
 
+/* .chatbg {
+}
+ */
 .chat {
   flex: 1;
   display: flex;
@@ -90,13 +93,13 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
-  font-weight: 600;
+  font-weight: 100;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #000000;
   max-width: 40%;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .bot-bubble {
@@ -129,7 +132,7 @@ label {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #000000;
   color: white;
   border: none;
   border-radius: 4px;
@@ -146,4 +149,19 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+.glow {
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #000000, 0 0 20px #5182b9, 0 0 30px #345275, 0 0 40px #214369, 0 0 50px #1c5291, 0 0 60px #5188c7, 0 0 70px #095ec0;
+  }
+  to {
+    text-shadow: 0 0 20px #be8c21, 0 0 30px #9557fa, 0 0 40px #703ec0, 0 0 50px #4c2b83, 0 0 60px #3f1f72, 0 0 70px #6321ce, 0 0 80px #7020f1;
+  }
 }
