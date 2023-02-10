@@ -85,7 +85,7 @@ const question1 = (msg) => {
 const userFeels = (userAnswer) => {
   if (userAnswer === "great") {
     userReply(userAnswer);
-    setTimeout(() => userAnswer("Oh how splendid"),1000)
+    setTimeout(() => userReply("I feel really great!"),500)
     inputWrapper.innerHTML = `
     <button id = "spread" type = "submit">Spread the love</button>
     <button id = "dayOff" type = "submit">Take the day of</button>
@@ -98,8 +98,11 @@ const userFeels = (userAnswer) => {
     }) 
   }
 
-  else if (userAnswer === "okey") {
-    setTimeout(() => botReply("Lets make you feel great"),1000)
+  else if (userAnswer === 'okey') {
+    setTimeout(() => botReply("Only okey? Let's make you feel great!"),500)
+    userReply(userAnswer);
+    setTimeout(() => userReply("Yes, I would like that!"),1000)
+    setTimeout(() => botReply("Choose your prefered way"),1500)
     inputWrapper.innerHTML = `
     <button id = "cute" type = "submit">Show me something</button>
     <button id = "funny" type = "submit">Tell me something</button>
@@ -110,48 +113,25 @@ const userFeels = (userAnswer) => {
     document.getElementById('funny').addEventListener('click' , () => { userReply("Tell me a joke")
     setTimeout(() => facts('funny' , 'user')),1000  // calling out the next answer in a new function named facts
     }) 
+  }
+
+    else if (userAnswer === 'meh') {
+      setTimeout(() => userReply("Not so good actually"),500)
+      setTimeout(() => botReply("I'm sad to hear that, I would recomend the following"),1500)
+      
+      inputWrapper.innerHTML = `
+      <button id = "therapy" type = "submit">Therapy</button>
+      <button id = "d-metal" type = "submit">Death metal</button>
+      `
+      document.getElementById('therapy').addEventListener('click' , () => { userReply("I need that")
+      setTimeout(() => facts('therapy' , 'user')),500  // calling out the next answer in a new function named facts
+      }) 
+      document.getElementById('d-metal').addEventListener('click' , () => { userReply("Hook me up")
+      setTimeout(() => facts('d-metal' , 'user')),500  // calling out the next answer in a new function named facts
+      }) 
+     
 }}
 
-/*
-  } else if (userAnswer === "okey") {
-    setTimeout(() => botReply(`Do you wanna hear something funny to brighten your day?`), 1000);
-  } else {}
-}  
-*/
-/*
-const answerTwo = (choice) => {      //answer , passing the parameter
-  if ( choice === 'romance' ) { 
-      setTimeout(() => showMessage("Ah, romance my favorite choice! Choose your category.", 'bot'),1000)
-      inputWrapper.innerHTML = `
-      <button id = "single" type = "submit">single</button>
-      <button id = "marriage" type = "submit">marriage</button>
-      `
-      document.getElementById('single').addEventListener('click' , () => { showMessage("Dying to know about singleness.", 'user')
-      setTimeout(() => facts('single' , 'user')),1000  // calling out the next answer in a new function named facts
-      }) 
-      document.getElementById('marriage').addEventListener('click' , () => { showMessage("Married facts for married people.", 'user')
-      setTimeout(() => facts('marriage' , 'user')),1000  // calling out the next answer in a new function named facts
-      }) 
-    }}
-
-                    //min kod häär om det skiter sig 
-                const userFeels = (userAnswer) => {
-                  if (userAnswer === "great") {
-                    userReply(userAnswer);
-                    setTimeout(() => botReply(`I'm happy for you!`), 1000);
-
-                  } else if (userAnswer === "okey") {
-                    setTimeout(() => botReply(`Do you wanna hear something funny to brighten your day?`), 1000);
-                  } else {}
-                }  
-                    slut på min kod
-
-    document
-.getElementById('romance')
-.addEventListener('click' , () => { showMessage("I would like to know more about romance", 'user')
-setTimeout(() => answerTwo('romance' , 'user')),1000  
-}) 
-*/
 
 // Set up your eventlisteners here
 
