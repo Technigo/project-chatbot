@@ -1,17 +1,9 @@
-// Variables that point to selected DOM elements
 const chat = document.getElementById("chat");
-
-// If you need any global variables that you can use across different functions, declare them here:
-const button = document.querySelector(".send-btn");
 const form = document.getElementById("form");
 const nameGreeting = document.getElementById("name-greeting");
 const inputWrapper = document.getElementById("input-wrapper");
 
-//array of order details
-const orderData = "test";
-console.log(nameGreeting);
-
-// Input Wrapper HTML elements:
+// Creating form elements:
 const typeOfFoodHtml = () => {
   inputWrapper.innerHTML = `
   <button id="donut" value="Donut" type="button"> Donut </button>
@@ -99,48 +91,50 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 };
 
-// Question 1 from Chatbot (greeting):
+// Greeting - Question 1:
 const greetUser = () => {
   showMessage("Hello there, What's your name?", "bot");
 };
-console.log(document.querySelector("#donut"));
-// Greeting and 2nd bot question
-const userNameAnswer = (e) => {
-  e.preventDefault();
-  showMessage(nameGreeting.value, "user");
+setTimeout(greetUser, 1000);
 
-  //Show 2nd bot question
-  setTimeout(
-    () =>
-      showMessage(
-        `Nice to meet you ${nameGreeting.value}! What type of food would you like to order?`,
-        "bot"
-      ),
-    1000
-  );
-  //Show food options:
-  setTimeout(typeOfFoodHtml, 2000);
-};
-
-//function for questions:
+//Next Questions:
 const eventHandler = (e) => {
+  e.preventDefault();
   const selectedValue = e.target;
-  console.log(selectedValue.id);
+  console.log(selectedValue);
 
-  if (
+  //Question 2:
+  if (selectedValue.id === "send-btn") {
+    showMessage(nameGreeting.value, "user");
+    nameGreeting.value = "";
+    setTimeout(
+      () =>
+        showMessage(
+          `Nice to meet you ${nameGreeting.value}! What type of pastry would you like to order?`,
+          "bot"
+        ),
+      1000
+    );
+    setTimeout(typeOfFoodHtml, 2000);
+  }
+
+  // Question 3:
+  else if (
     selectedValue.id === "donut" ||
     selectedValue.id === "croissant" ||
     selectedValue.id === "sponge-cake"
   ) {
-    setTimeout(() => showMessage(selectedValue.value, "user"), 500);
+    setTimeout(() => showMessage(selectedValue.value, "user"), 1000);
+    inputWrapper.innerHTML = ``;
     setTimeout(() => showMessage("Select a flavour!", "bot"), 1500);
-    setTimeout(() => typeOfFlavourHtml(selectedValue.id), 1500);
-  } else if (selectedValue.id === "flavours") {
-    console.log("clicked on selector");
-    document.getElementById("flavours").addEventListener("change", () => {
-      console.log("changed to option");
+    setTimeout(() => typeOfFlavourHtml(selectedValue.id), 2000);
+  }
 
+  //Question 4:
+  else if (selectedValue.id === "flavours") {
+    document.getElementById("flavours").addEventListener("change", () => {
       setTimeout(() => showMessage(selectedValue.value, "user"), 1000);
+      inputWrapper.innerHTML = ``;
       setTimeout(
         () =>
           showMessage(
@@ -152,9 +146,11 @@ const eventHandler = (e) => {
       setTimeout(() => shippingMethodHtml(), 1500);
     });
   }
-  //delivery or pick up
+
+  //Question 5:
   else if (selectedValue.id === "delivery" || selectedValue.id === "pickup") {
-    setTimeout(() => showMessage(selectedValue.value, "user"), 500);
+    setTimeout(() => showMessage(selectedValue.value, "user"), 1000);
+    inputWrapper.innerHTML = ``;
     if (selectedValue.id === "delivery") {
       setTimeout(
         () =>
@@ -165,7 +161,10 @@ const eventHandler = (e) => {
         1000
       );
       setTimeout(deliveryAddress, 1000);
-    } else {
+    }
+
+    //Question 6:
+    else {
       setTimeout(
         () =>
           showMessage(
@@ -176,39 +175,32 @@ const eventHandler = (e) => {
       );
       setTimeout(
         () => showMessage("Now please confirm your order!", "bot"),
-        1000
+        1500
       );
       setTimeout(orderConfirmationHtml, 1000);
     }
   }
-  //delivery address
+
+  //Question 7:
   else if (selectedValue.id === "delivery-address-btn") {
     const userAddress = document.getElementById("delivery-address-text");
     setTimeout(() => showMessage(userAddress.value, "user"), 1000);
+    inputWrapper.innerHTML = ``;
     setTimeout(() => showMessage("Please confirm your order!", "bot"), 1000);
     setTimeout(orderConfirmationHtml, 1500);
   }
-  //confirmation
+
+  //Last message
   else if (selectedValue.id === "confirm" || selectedValue.id === "cancel") {
     if (selectedValue.id === "confirm") {
-      setTimeout(
-        () =>
-          showMessage(
-            `Thank you for your order! Here is your order information: ${orderData}`,
-            "bot"
-          ),
-        1000
-      );
+      setTimeout(() => showMessage(`Thank you for your order!`, "bot"), 1000);
+      inputWrapper.innerHTML = ``;
     } else {
       setTimeout(() => showMessage("See you at another time!", "bot"), 1000);
+      inputWrapper.innerHTML = ``;
     }
   }
 };
 
-// Set up your eventlisteners here
-//submit greeting form:
-form.addEventListener("submit", userNameAnswer);
-//Click&change events:
-inputWrapper.addEventListener("click", eventHandler);
-
-setTimeout(greetUser, 1000);
+//Click event:
+form.addEventListener("click", eventHandler);
