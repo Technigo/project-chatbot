@@ -48,13 +48,15 @@ const question2 = (name) => {
   // here we call the function showMessage that we declared earlier, with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage(`Do you like cookies ${name}?`, 'bot');
   nameForm.innerHTML = `
+  <button id='no'> Nope </button>
   <button id='yes'> Yes, yes and Super yes!</button>`
 
   document.getElementById('yes').addEventListener('click',superyes)
-  
+  document.getElementById('no').addEventListener('click',superno)
 }
 
 const superyes = (event) => { 
+  showMessage('Super yes','user');
   showMessage(`You are in the right place!`, 'bot');
   nameForm.innerHTML = `
   <label for="name-input">DMs for the dark side</label>
@@ -71,25 +73,67 @@ const superyes = (event) => {
 	// passing the name into it to have access to the user's name if we want
 	// to use it in the next question from the bot.
   setTimeout(whichCookies, 900);
-  setTimeout(() => superyes, 1000);
+  
+}
+
+const superno = (event) => { 
+  showMessage('Nope','user');
+  setTimeout(() =>showMessage(`You say no and computer says no.`, 'bot'),1000);
+  setTimeout(() =>showMessage(`The dark side doesn't accept cookie haters.`, 'bot'),1500);
+  setTimeout(() =>showMessage(`Goodbye`, 'bot'),2000);
+  setTimeout(() =>
+  nameForm.innerHTML = `
+  <label for="name-input">DMs for the dark side are now closed</label>`,1000);
+       
+  event.preventDefault() 
+  // Store the value in a variable so we can access it after we 
+	// clear it from the input
+  
+  
+  // After 1 second, show the next question by invoking the next function.
+	// passing the name into it to have access to the user's name if we want
+	// to use it in the next question from the bot.
+  
   
 }
 
 const whichCookies = () => {
-  showMessage("What's your favourite cookie?.", 'bot');
+  showMessage("What's your favourite cookie?", 'bot');
   nameForm.innerHTML = `
   <select id="select">
-        <option value="" selected="" disabled="">👇 Select a cookie...</option>
+        <option value="" selected="" disabled=""> Select a cookie...</option>
         <option value="Chocolate">Chocolate cookie</option>
         <option value="Vegan">Vegan cookie</option>
         <option value="Rainbow">Rainbow cookie</option>
-        
       </select>`
-  const favouriteCookie = nameInput.value
-  showMessage(favouriteCookie)
-  nameInput.value = '' 
+
+  document.getElementById('select').addEventListener('change',finalAnswer)    
+  
 }
 
+const finalAnswer = (event) => {
+  //event.target.value
+  showMessage(event.target.value,'user');
+  if (event.target.value === "Chocolate") {
+  setTimeout(() =>showMessage(`${event.target.value} - great choice! The Dark Post will get you some by sunrise.`, 'bot'),1000);
+}
+
+else if (event.target.value === "Vegan") {
+  setTimeout(() =>showMessage(`${event.target.value}. Lucky for you the Dark side is inclusive.`, 'bot'),1000);
+  setTimeout(() =>showMessage('The Dark Post will get you some chocolate cookies by sunrise despite your ethical choices.', 'bot'),1200);
+}
+
+else {
+  setTimeout(() =>showMessage('This was a trick question, there is no rainbow. The Dark Post will get you some chocolate cookies by sunrise. ', 'bot'),1000);
+}
+  setTimeout(() =>showMessage('Courstesy of the Dark Side', 'bot'),1500);
+  setTimeout(() =>showMessage('Don\'t be a stranger!', 'bot'),2000);
+  setTimeout(() =>
+  nameForm.innerHTML = `
+  <label for="name-input">The dark side will be in touch</label>`,1000);
+
+
+}
 
 // Set up your eventlisteners here
 const handleNameInput = (event) => { 
