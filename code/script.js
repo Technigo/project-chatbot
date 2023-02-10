@@ -8,7 +8,9 @@ const input = document.getElementById('input-wrapper');
 // If you need any global variables that you can use across different functions, declare them here:
 
 let username = ""; // by declaring username at the top with let, will allow it to be assigned new values later in the code and reused throughout functions.
-let ideaimg = "";
+
+let wowSound = new Audio ('./assets/Wow.mp3');
+wowSound.volume = 0.1;
 
 // Declare your functions after this comment
 
@@ -24,6 +26,7 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `
+   
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
     chat.innerHTML += `
@@ -85,8 +88,7 @@ const showBotResponseOne = () => {
     showMessage(`Oops! It doesn't look like you've entered your name. Who are you? And, what do YOU want?`, 'bot');
 
     nameInput.value = '';
-  }
-    
+  } 
 }
 
 
@@ -229,6 +231,7 @@ const offerEasyQuilt = () => {
 
 const offerHardQuilt = () => {
   showMessage(`Oooo! A challenge? No problem, Boblem!`, "bot");
+ 
   chat.innerHTML += `
   <section class="bot-msg">
     <img src="assets/bot.png" alt="Bot" />
@@ -348,7 +351,7 @@ const finalButtons = () => {
   const newIdeaButton = document.getElementById('new-idea');
 
   thanksButton.addEventListener('click', () => {
-    showMessage(`Thanks!`, "bot");
+    showMessage(`Happy Crafting, ${username}!`, "bot");
     
     showHappyCrafting();
     
@@ -363,8 +366,9 @@ const finalButtons = () => {
 
 const showHappyCrafting = () => {
   input.innerHTML = `
-    <h1>Happy Crafting ${username}!</h1>
+    <h1>&#129697 &#128525 &#129526 &#128525 &#129525</h1>
   `
+  wowSound.play();
 }
 
 const showSecondIdea = () => {
