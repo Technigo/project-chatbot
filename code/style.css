@@ -149,20 +149,17 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-.link-area1, .link-area2 {
-  justify-content: center;
-  margin: 10px 0;
-  display: none;
-}
-
-.link-button {
-  padding: 10px 20px;
-  box-sizing: border-box;
-  width: 33%;
-}
-
-.link-button a {  
+.chat-link {
+  background-image: url(./images/sebastian-unrau-sp-p7uuT0tw-unsplash.jpeg);
+  background-size: contain;
+  padding:80px 10px 10px 10px;
+  margin-top: 5px;
   text-decoration: none;
-  color: white;
-  font-weight: 500;
+  color:white;
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+  color:white;
 }

@@ -4,8 +4,6 @@ const input = document.getElementById("name-input");
 const form = document.getElementById("name-form");
 const submit = document.getElementById("submit");
 const inputWrapper = document.getElementById("input-wrapper");
-const links1 = document.getElementById("link-area1");
-const links2 = document.getElementById("link-area2");
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -42,9 +40,12 @@ const showMessage = (message, sender) => {
       </section>
     `;
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+}
+
+// This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+window.setInterval(function () {
   chat.scrollTop = chat.scrollHeight;
-};
+}, 5000);
 
 // Starts here
 const greetUser = () => {
@@ -236,7 +237,6 @@ const question3 = (value) => {
     </div>`),
       1000
     );
-
     setTimeout(
       () =>
         document
@@ -281,37 +281,50 @@ const question3 = (value) => {
     setTimeout(
       () =>
         botReply(
-          `"We understand, we suggest you read one of these article which could help you understand people who suffer from climate anxiety better: <a class="test" href="http://www.google.com/page" target="_blank">Click</a> <a href="http://www.google.com/page" target="_blank">Click</a> <a href="http://www.google.com/page target="_blank">Click</a>`
+          `"We understand, we suggest you read one of these article which could help you understand people who suffer from climate anxiety better:`
         ),
       1000
     );
-    setTimeout(() => botReply((links1.style.display = "flex")), 1000);
+
+
+    setTimeout(
+      () => botReply(`
+        <button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
+        <button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
+        <button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
+      `
+      ),
+      1000
+    );
+
+
     setTimeout(
       () => botReply(`Is there anything else we can help you with?`),
-      10000
+      5000
     );
     setTimeout(
       () =>
       (inputWrapper.innerHTML = `
       <button id="yesBtn2" type="submit">Yes</button>
-      <button id="noBtn2" type="submit">No</button>`),
-      10000
+      <button id="noBtn2" type="submit">No</button>
+     `
+      ),
+      5000
     );
-    //LINK - CONTACT US
     setTimeout(
       () =>
         document
           .getElementById("yesBtn2")
-          .addEventListener("click", () => question2("yes")),
-      10000
+          .addEventListener("click", () => question2("Yes")),
+      5000
     );
 
     setTimeout(
       () =>
         document
           .getElementById("noBtn2")
-          .addEventListener("click", () => Thankyou("no")),
-      10000
+          .addEventListener("click", () => Thankyou("No")),
+      5000
     );
   }
 };
@@ -322,12 +335,38 @@ const question4 = (value) => {
     setTimeout(() => botReply(`How do you want to achieve that?`), 1000);
     setTimeout(
       () =>
-      (inputWrapper.innerHTML += `
-      <button id="" type="submit">Visit a therapist</button>
-      <button id="" type="submit">Join an activist group</button>
-      <button id="" type="submit">Join a political party</button>`),
+      (inputWrapper.innerHTML = `
+      <button id="therapy" type="submit" value="Visit a therapist">Visit a therapist</button>
+      <button id="activist" type="submit" value="Join an activist group">Join an activist group</button>
+      <button id="party" type="submit" value="Join a political party">Join a political party</button>`),
       1000
     );
+
+    setTimeout(
+      () =>
+        document
+          .getElementById("therapy")
+          .addEventListener("click", () => question5(therapy.value)),
+      1000
+    );
+
+    setTimeout(
+      () =>
+        document
+          .getElementById("activist")
+          .addEventListener("click", () => question5(activist.value)),
+      1000
+    );
+
+    setTimeout(
+      () =>
+        document
+          .getElementById("party")
+          .addEventListener("click", () => question5(party.value)),
+      1000
+    );
+
+
   } else if (value === "Continue as usual") {
     userReply(value);
     setTimeout(
@@ -337,33 +376,41 @@ const question4 = (value) => {
         ),
       1000
     );
-    setTimeout(() => botReply((links2.style.display = "flex")), 1000);
+
+    setTimeout(
+      () =>
+        botReply(`<button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>`),
+      2000
+    );
+
     setTimeout(
       () => botReply(`Is there anything else we can help you with?`),
-      10000
+      5000
     );
     setTimeout(
       () =>
-      (inputWrapper.innerHTML = `<button id="yesBtn2" type="submit">Yes</button>
-  <button id="noBtn2" type="submit">No</button>`),
-      10000
+      (inputWrapper.innerHTML =
+        `<button id="yesBtn3" type="submit">Yes</button>
+          <button id="noBtn3" type="submit">No</button>`),
+      5000
     );
-    //LINK - CONTACT US
     setTimeout(
       () =>
         document
-          .getElementById("yesBtn2")
-          .addEventListener("click", () => question2("yes")),
+          .getElementById("yesBtn3")
+          .addEventListener("click", () => question2("Yes")),
       10000
     );
 
     setTimeout(
       () =>
         document
-          .getElementById("noBtn2")
-          .addEventListener("click", () => Thankyou("no")),
+          .getElementById("noBtn3")
+          .addEventListener("click", () => Thankyou("No")),
       10000
     );
+
+
   } else {
     userReply(value);
     setTimeout(
@@ -376,20 +423,143 @@ const question4 = (value) => {
     SetTimeout(
       () =>
       (inputWrapper.innerHTML = `
-  <button id="therapyBtn" type="submit">Take care of my health</button>
+  <button id="healthBtn" type="submit">Take care of my health</button>
   <button id="actionBtn" type="submit">To take action</button>
   <button id="continueBtn" type="submit">Continue as usual</button>
   <button id="supportBtn" type="submit">Get support from others</button>`),
-      10000
+      1000
+    );
+
+    setTimeout(
+      () =>
+        document
+          .getElementById("healthBtn")
+          .addEventListener("click", () => question5(healthBtn.value)),
+      1000
+    );
+
+
+    setTimeout(
+      () =>
+        document
+          .getElementById("actionBtn")
+          .addEventListener("click", () => question4(actionBtn.value)),
+      1000
+    );
+
+    setTimeout(
+      () =>
+        document
+          .getElementById("continueBtn")
+          .addEventListener("click", () => question5(continueBtn.value)),
+      1000
+    );
+
+    setTimeout(
+      () =>
+        document
+          .getElementById("supportBtn")
+          .addEventListener("click", () => question4(supportBtn.value)),
+      1000
     );
   }
-};
+}
+
+const question5 = (value) => {
+
+  if (value === "Take care of my health" || "Visit a therapist") {
+    userReply(value)
+    setTimeout(
+      () => botReply(`Here are a couple of resources to reach out to`)
+      ,
+      1000
+    );
+
+    setTimeout(
+      () => botReply(`
+        <button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
+        <button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
+        <button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
+      `
+      ),
+      1000
+    );
+    setTimeout(() => AnythingElse(value), 2000);
+  } else if (value === "Join an activist group") {
+    userReply(value)
+    setTimeout(
+      () => botReply(`Here is some inspiration for you!`)
+      ,
+      1000
+    );
+
+    setTimeout(
+      () => botReply(`
+          <button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
+          <button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
+          <button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
+        `
+      ),
+      1000
+    );
+    setTimeout(() => AnythingElse(value), 2000);
+  } else if (value === "Join a political party") {
+    UserReply(value)
+    setTimeout(
+      () => botReply(`Here are some politacal parties working against climate change:`)
+      ,
+      1000
+    );
+
+    setTimeout(
+      () => botReply(`
+          <button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
+          <button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
+          <button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
+        `
+      ),
+      1000
+    );
+    setTimeout(() => AnythingElse(value), 2000);
+  }}
+
+const AnythingElse = (value) => {
+  setTimeout(
+    () => botReply(`Is there anything else we can help you with?`),
+    1000
+  );
+  setTimeout(
+    () =>
+    (inputWrapper.innerHTML =
+      `<button id="yesBtn3" type="submit">Yes</button>
+        <button id="noBtn3" type="submit">No</button>`),
+    1000
+  );
+  setTimeout(
+    () =>
+      document
+        .getElementById("yesBtn3")
+        .addEventListener("click", () => question2("Yes")),
+    1000
+  );
+
+  setTimeout(
+    () =>
+      document
+        .getElementById("noBtn3")
+        .addEventListener("click", () => Thankyou("No")),
+    1000
+  );
+}
 
 const Thankyou = (value) => {
   userReply(value);
   botReply(
-    `Thank you for reaching out! Feel free to contact us "link". Have a nice day!`
-  );
+    `I hope this is of any help. Please feel free to reach out to us for further questions`
+  )
+
+  inputWrapper.innerHTML = `
+  <button id="contact" type="email"><a href="mailto:email@email.de" taget="_blank">Contact us</a></button>`
 };
 
 // Set up your eventlisteners here
