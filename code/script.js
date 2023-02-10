@@ -1,25 +1,23 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
-const userInput = document.getElementById('user-input');
-const userForm = document.getElementById ('user-form'); 
+const userInput = document.getElementById('userInput');
 const sendBtn = document.getElementById ('sendBtn'); 
 const inputWrapper = document.getElementById ('input-wrapper'); 
-
-
+const userForm = document.getElementById ('userForm') ; 
 
 // If you need any global variables that you can use across different functions, declare them here:
 
+let lineNumber = 1; 
+
 const botReply = (msg) => {
-  showMessage (msg, 'bot')
+  showMessage (msg, 'bot') ; 
 }
 
 const userReply = (msg) => {
-  showMessage (msg, 'user')
+  showMessage (msg, 'user') ; 
 }
 
 // Declare your functions after this comment
-
-
 
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -51,33 +49,49 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
+const nextLine = (message) => {
 
+ if (lineNumber === 1) {
+  userReply(message)
+  userInput.value = ''
+  setTimeout(() => secondLine (message))
+  console.log ('line number 1') ; 
+  } else if (lineNumber === 2) {
+    secondLine (); 
+    console.log ('line number 2')
+  } else if (lineNumber === 3) {
+    thirdLine (); 
+    console.log ("line number 3")
+  } else {
+    console.log ("I couldn't understand your message"); 
+  }
+}; 
 
 // Starts here
 
 
 //First reply from bot 
 const firstLine = () => {
+  lineNumber = 1
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  botReply("Knock knock", 'bot');
+  botReply(`Knock knock`);
 }
 
-setTimeout (() => firstLine (), 2000)
-
+//Answer from the user
 
 //Second reply from bot
-const secondLine = () => {
-  botReply("Tank", 'bot');
+const secondLine = (msg) => {
+lineNumber++  
+botReply(`Tank`);
 } 
 
 //Answer from the user
 
-setTimeout(() => secondLine, 1000)
-
 //Third reply from bot
   const thirdLine = () => {
+  lineNumber++
     // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-    botReply("You're welcome!", 'bot');
+  botReply("You're welcome!");
   }
 
 
@@ -85,23 +99,42 @@ setTimeout(() => secondLine, 1000)
   // Here is the function for the user's input 
 
 
-// Set up your eventlisteners here
-  //Initial button click, here I should get the name entered. If someone hits enter works too.   
-sendBtn.addEventListener('click', (event) => {
-  event.preventDefault(); //prevents the page to auto save before running or code?
-  //Store the value in a variable so I can access it after we clear it from the input. 
+//Store the value in a variable so I can access it after we clear it from the input. 
 
-  let userReply = userInput.value ; 
-  showMessage(`${userReply}`, 'user');
-  userInput.value = ''
+
+// Set up your eventlisteners here
+  //Initial button click from user, here the user enters their question. If someone hits enter works too.   
+userForm.addEventListener("submit", (event) => {
+event.preventDefault();
+console.log("form submitted");
+let userText = userInput.value ; 
+showMessage(`${userText}`, 'user');
+userInput.value = ''
+
+if (userText === ""){
+  botReply (`Say whaat?`); 
+  return; 
+
+
+  nextLine ()
+}; 
+
 })
 
-setTimeout(() => firstLine, 3000)
 
 
 // When website loaded, chatbot asks first question.
+setTimeout (firstLine, 1000)
+
 // normally we would invoke a function like this:
 // greeting()
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
+
+/*
+
+   sendBtn.addEventListener('click', (event) => {
+event.preventDefault(); //prevents the page to reload. 
+
+  */
