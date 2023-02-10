@@ -8,6 +8,13 @@ const inputWrapper = document.getElementById('input-wrapper')
 // If you need any global variables that you can use across different functions, declare them here:
 
 // Declare your functions after this comment
+const botReply = (msg) => {
+  showMessage(msg, "bot");
+};
+
+const userReply = (msg) => {
+  showMessage(msg, "user");
+};
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -39,23 +46,51 @@ const showMessage = (message, sender) => {
 }
 
 // Starts here
+  // call funtion showMessage, it is declared earlier with  argument 
+  //"Hello there, What's your name?" for message, and the argument "bot" for sender
+
 const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hi pretty, what's your name?", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
+  botReply("Hi pretty, what's your name?");
 }
 
 const handleInput = (event) => { // when submiting this will be used
   event.preventDefault() // prevents chat from refreshing when submitting
-  const message = input.value // input value shall be stored in the const name 
-  showMessage(`${message}`, 'user') // users answer 
+  const msg = input.value // input value shall be stored in the const name 
+  userReply(`${msg}`) // users answer 
   input.value = ''
-  setTimeout(() => question1(message), 500)
+  setTimeout(() => question1(msg), 500)
 }
 
-const question1 = (message) => {
-  showMessage(`Nice to meet you ${message}! How are you feeling today?`, 'bot')
-}
+const question1 = (msg) => {
+  botReply(`Nice to meet you ${msg}! How are you feeling today?`)
+  //answer choices
+  inputWrapper.innerHTML = `<div id="optionBtns">
+    <button id="greatBtn" type="submit">🤩</button>
+    <button id="okBtn" type="submit">😬</button>
+    <button id="mehBtn" type="submit">🫠</button></div>`;
+
+  document
+    .getElementById("greatBtn")
+    .addEventListener("click", () => question2("great"));
+  document
+    .getElementById("okBtn")
+    .addEventListener("click", () => question2("okey"));
+  document
+    .getElementById("mehBtn")
+    .addEventListener("click", () => question2("meh"));
+};
+
+  //answer of sort
+const question2 = (userAnswer) => {
+  if (userAnswer === "great") {
+    userReply(userAnswer);
+    setTimeout(() => botReply(`I'm happy for you!`), 1000);
+
+  } else if (userAnswer === "okey") {
+    setTimeout(() => botReply(`Do you wanna hear something funny to birghten your day?`), 1000);
+  } else {}
+}  
+
 
 // Set up your eventlisteners here
 
@@ -68,5 +103,4 @@ form.addEventListener('submit', handleInput)
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 500);
-
 
