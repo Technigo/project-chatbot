@@ -41,6 +41,7 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 };
 
+// INITAL BOT GREETING! 
 const greetUser = () => {  
   showMessage("Hello there, What's your name?", 'bot');  
 };
@@ -56,7 +57,8 @@ showMessage(nameInput, 'user');
 chat.innerHTML += `<section class="bot-msg">
     <img src="assets/bot.png" alt="Bot" />
     <div class="bubble bot-bubble">
-        <p>Nice to meet you ${nameInput}. What type of drink would you like to order?</p>
+        <p>Nice to meet you ${nameInput}! 👋 <br><br>
+        What type of drink would you like to order?</p>
     </div>
 </section>`
 
@@ -66,15 +68,6 @@ inputWrapper.innerHTML = `
 <button id="spriteBtn" type="submit">Sprite</button>
 `;
 
-//eventlisteners for choices                                
-// document.getElementById('colaBtn').addEventListener('click' , () => { showMessage("I would like to order Cola", 'user') 
-// }) 
-// document.getElementById('fantaBtn').addEventListener('click' , () => { showMessage("I would like to order Fanta", 'user')
-// }) 
-// document.getElementById('spriteBtn').addEventListener('click' , () => { showMessage("I would like to order Sprite", 'user')
-// })
-
-
 let colaBtn = document.getElementById('colaBtn');
 colaBtn.addEventListener('click', () => cola())
 
@@ -83,23 +76,29 @@ fantaBtn.addEventListener('click', () => fanta())
 
 let spriteBtn = document.getElementById('spriteBtn');
 spriteBtn.addEventListener('click', () => sprite())
+
 });
 
 const cola = () => {
-  userReply(`I would love a Cola`);
-  setTimeout(() => botReply(`Great choice! Please select what kind of Cola below.`), 100)
-  
-  inputWrapper.innerHTML =
+  userReply(`I would love to order a Cola`);
+  setTimeout(() => botReply(`Great choice, Cola is amazing! Please select what kind of Cola below...`), 100)
+
+       inputWrapper.innerHTML =
         `<select id="select">
           <option value selected disabled>Select what kind of Cola 👇</option>
           <option value="regular">Regular</option>
           <option value="zero">Zero</option>
           <option value="vanilla">Vanilla</option>
         </select>
+        <button class="selectBtn" id="colaKindBtn" type="submit">OK</button>
         `
-};
+        const colaKindBtn = document.getElementById('colaKindBtn');
+        colaKindBtn.addEventListener('click', () => {
+          botReply(`Thank you for your order! Close this window and your drink will be magical teleported to you 🧙‍♂️`)
+        }
+      )};
 
-const fanta = () => {
+ const fanta = () => {
   userReply(`I would love a Fanta`);
   setTimeout(() => botReply(`Great choice! Please select what kind of Fanta below.`), 100)
   
@@ -126,7 +125,6 @@ const sprite = () => {
         </select>
         `
 };
-//selectTreatment.addEventListener('change', () => //{console.log(selectTreatment.value)})
   
   
 
