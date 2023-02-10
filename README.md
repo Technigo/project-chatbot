@@ -1,13 +1,14 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The project was to make a chatbot using javascript. Questions aske dby a 'bot' and receive input by user by using varying input methods (like buttons, dropdowns etc.) 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Drew out on paper what the flow of the chatbot would be like, what kind of questions. It took a lot of time to make sense and to figure out the couple of questions/answers. Once you got the hang of calling functions and eventlisteners, it got better. 
+
+When encountered with a problem I mostly used google, stack overflow and asked others. Explaining things to others also made it clearer for me. There were a lot of forwards and backwards with the project.
+
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://chatbot-joannaphilips.netlify.app/
