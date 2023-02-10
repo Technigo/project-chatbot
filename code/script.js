@@ -207,9 +207,46 @@ const lastYesOrNo = () => {
           setTimeout(() => bottrack.play(), 500); // This starts the bottrack(sound) and delays it with 500 millisec
           showMessage("Nej", "user") // The user message Nej and the bot replyes with the video
           showMessage(`Trisst, men här kommer nått som gör alla glada! <br><p><iframe width="100%" height="80px" src="https://www.youtube.com/embed/OhO08XZASB4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></a>`, "bot")
+          showMessage(`Eller?`, "bot")
           jaButton.remove(); // Removes Ja-button
           nejButton.remove(); // Removes Nej-button
+          realylastYesOrNo() // Starts the last Ja/nej-answer-button 
+
         }) 
+};
+
+  //-----FIFTH QUESTION BOT
+
+const realylastYesOrNo = () => {
+  inputArea.innerHTML = 
+    `<button id="jaButton" type="submit">Ja</button>
+    <button id="nejButton" type="submit">Nej</button>`
+
+//-----FIFTH ANSWER USER JA
+
+  document
+    .getElementById("jaButton")
+    .addEventListener("click", () => { // The following happens when the button is clicked
+      usertrack.play(); // This starts the usertrack(sound)
+      setTimeout(() => bottrack.play(), 1000); // This starts the bottrack(sound) and delays it with 1000 millisec
+      showMessage("Ja", "user"); // The user message Ja and the bot replyes with an message that ends the conversation
+      showMessage(`✌`, "bot");
+      jaButton.remove(); // Removes Ja-button
+      nejButton.remove(); // Removes Nej-button
+    })
+
+//-----FOURTH ANSWER USER NEJ
+
+  document
+    .getElementById("nejButton")
+    .addEventListener("click", () => { // The following happens when the button is clicked
+      usertrack.play(); // This starts the usertrack(sound)
+      setTimeout(() => bottrack.play(), 500); // This starts the bottrack(sound) and delays it with 500 millisec
+      showMessage("Nej", "user") // The user message Nej and the bot replyes with the video
+      showMessage(`🤷‍♂️`, "bot")
+      jaButton.remove(); // Removes Ja-button
+      nejButton.remove(); // Removes Nej-button
+    }) 
 };
 
 //-----------------------------------------------------------Chat Conversation Ends Here-------------------------------------------------------------------//
