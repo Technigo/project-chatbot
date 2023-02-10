@@ -63,34 +63,95 @@ const handleInput = (event) => { // when submiting this will be used
 
 const question1 = (msg) => {
   botReply(`Nice to meet you ${msg}! How are you feeling today?`)
+
   //answer choices
-  inputWrapper.innerHTML = `<div id="optionBtns">
+  inputWrapper.innerHTML = `
     <button id="greatBtn" type="submit">🤩</button>
     <button id="okBtn" type="submit">😬</button>
-    <button id="mehBtn" type="submit">🫠</button></div>`;
+    <button id="mehBtn" type="submit">🫠</button>`;
 
   document
     .getElementById("greatBtn")
-    .addEventListener("click", () => question2("great"));
+    .addEventListener("click", () => userFeels("great"));
   document
     .getElementById("okBtn")
-    .addEventListener("click", () => question2("okey"));
+    .addEventListener("click", () => userFeels("okey"));
   document
     .getElementById("mehBtn")
-    .addEventListener("click", () => question2("meh"));
+    .addEventListener("click", () => userFeels("meh"));
 };
 
   //answer of sort
-const question2 = (userAnswer) => {
+const userFeels = (userAnswer) => {
   if (userAnswer === "great") {
     userReply(userAnswer);
-    setTimeout(() => botReply(`I'm happy for you!`), 1000);
+    setTimeout(() => userAnswer("Oh how splendid"),1000)
+    inputWrapper.innerHTML = `
+    <button id = "spread" type = "submit">Spread the love</button>
+    <button id = "dayOff" type = "submit">Take the day of</button>
+    `
+    document.getElementById('spread').addEventListener('click' , () => { userReply("How do i contribute to the world with my happiness?")
+    setTimeout(() => facts('spread' , 'user')),1000  // calling out the next answer in a new function named facts
+    }) 
+    document.getElementById('dayOff').addEventListener('click' , () => { userReply("click for approval of day of")
+    setTimeout(() => facts('dayOff' , 'user')),1000  // calling out the next answer in a new function named facts
+    }) 
+  }
 
+  else if (userAnswer === "okey") {
+    setTimeout(() => botReply("Lets make you feel great"),1000)
+    inputWrapper.innerHTML = `
+    <button id = "cute" type = "submit">Show me something</button>
+    <button id = "funny" type = "submit">Tell me something</button>
+    `
+    document.getElementById('cute').addEventListener('click' , () => { userReply("Show me something cute")
+    setTimeout(() => facts('cute' , 'user')),1000  // calling out the next answer in a new function named facts
+    }) 
+    document.getElementById('funny').addEventListener('click' , () => { userReply("Tell me a joke")
+    setTimeout(() => facts('funny' , 'user')),1000  // calling out the next answer in a new function named facts
+    }) 
+}}
+
+/*
   } else if (userAnswer === "okey") {
-    setTimeout(() => botReply(`Do you wanna hear something funny to birghten your day?`), 1000);
+    setTimeout(() => botReply(`Do you wanna hear something funny to brighten your day?`), 1000);
   } else {}
 }  
+*/
+/*
+const answerTwo = (choice) => {      //answer , passing the parameter
+  if ( choice === 'romance' ) { 
+      setTimeout(() => showMessage("Ah, romance my favorite choice! Choose your category.", 'bot'),1000)
+      inputWrapper.innerHTML = `
+      <button id = "single" type = "submit">single</button>
+      <button id = "marriage" type = "submit">marriage</button>
+      `
+      document.getElementById('single').addEventListener('click' , () => { showMessage("Dying to know about singleness.", 'user')
+      setTimeout(() => facts('single' , 'user')),1000  // calling out the next answer in a new function named facts
+      }) 
+      document.getElementById('marriage').addEventListener('click' , () => { showMessage("Married facts for married people.", 'user')
+      setTimeout(() => facts('marriage' , 'user')),1000  // calling out the next answer in a new function named facts
+      }) 
+    }}
 
+                    //min kod häär om det skiter sig 
+                const userFeels = (userAnswer) => {
+                  if (userAnswer === "great") {
+                    userReply(userAnswer);
+                    setTimeout(() => botReply(`I'm happy for you!`), 1000);
+
+                  } else if (userAnswer === "okey") {
+                    setTimeout(() => botReply(`Do you wanna hear something funny to brighten your day?`), 1000);
+                  } else {}
+                }  
+                    slut på min kod
+
+    document
+.getElementById('romance')
+.addEventListener('click' , () => { showMessage("I would like to know more about romance", 'user')
+setTimeout(() => answerTwo('romance' , 'user')),1000  
+}) 
+*/
 
 // Set up your eventlisteners here
 
@@ -103,4 +164,3 @@ form.addEventListener('submit', handleInput)
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 500);
-
