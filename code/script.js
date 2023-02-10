@@ -57,11 +57,11 @@ const handleNameInput = (event) => {
   username = nameInput.value 
 //Empty input
   nameInput.value = ''
-//Fördröjning till callback
+//Callback
   setTimeout(() => nameAnswer() , 1000)
 }
 
-  // Boten svarar med "Hi 'name', what a lovley day for laundry" + ny fråga  
+  // Bot answer "Hi 'name', what a lovley day for laundry" + ny fråga  
 const nameAnswer = () => {
   showMessage(`Hi ${username}, what a lovley day for laundry! 🧺 ` ,'bot') 
   setTimeout(() => colorQuestion() , 2500)
@@ -90,15 +90,19 @@ const colorQuestion = () => {
     setTimeout(() => tempQuestion('Mixed'), 1000)})
 }
 
-    
 const tempQuestion = (color) => {
   if (color === 'Dark') {
     showMessage (`Well ${username}, dark it is! Choose you temperature below!`, 'bot')
+    setTimeout(() => tempSelection(), 1000)
   } else if (color === 'White') {
     showMessage (`Let´s do some white laundry ${username}. At what temp?`, 'bot')
+    setTimeout(() => tempSelection(), 1000)
   } else {
     showMessage (`WOW, that´s daring ${username}. Chose your temp and give it a try`, 'bot')
+    setTimeout(() => tempSelection(), 1000)
   }
+}
+const tempSelection = () => {
   inputWrapper.innerHTML = `
   <select id="selectTemp">
     <option value="" selected disabled>🌡️</option>
@@ -106,8 +110,25 @@ const tempQuestion = (color) => {
     <option value="40">40°</option>
     <option value="60">60°</option>
   </select>
-  `
+ `
+const select =
+document.getElementById('selectTemp')
+.addEventListener('change', () => {
+showMessage(selectTemp.value , 'user')})
+setTimeout(() => selectAnswer(selectTemp), 1000)
 }
+
+//const selectAnswer = (selectTemp) => {
+//  if (selectTemp === '30') {
+//    showMessage (`OK ${username}, some sensitive laundry in the making`, 'bot')
+//  } else if (selectTemp === '40') {
+//    showMessage (`That´s cool ${username}!`, 'bot')
+//  } else {
+//    showMessage(`Dirty laundry ${username}?`, 'bot')
+
+
+
+
 
 
 // Set up your eventlisteners here
