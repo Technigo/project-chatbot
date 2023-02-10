@@ -138,7 +138,7 @@ const showRestaurant = (type) => {
 }
 
 //  Depending on which restaurant they choose give a different adress
-const.showAddress = (selectedRestaurant) => {
+const showAddress = (selectedRestaurant) => {
   questionNr++
 
   let address;
