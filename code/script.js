@@ -1,5 +1,11 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
+const nameInput = document.getElementById('name-input');
+const form = document.getElementById('name-form');
+const inputWrapper = document.getElementById('input-wrapper')
+const submit = document.getElementById('submit') //Kanske inte behöver vara här
+const main = document.getElementById('main')//Kanske inte behöver vara här
+
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -29,18 +35,127 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-  chat.scrollTop = chat.scrollHeight;
+
 }
 
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage("Hey, you look like a moviestar today! What's your name?", 'bot');
+  // Just to check it out, change 'bot' to 'user' here 👆 
 }
 
+setTimeout(greetUser, 1000);
+
+
+
 // Set up your eventlisteners here
+
+
+
+// const = function Kom ihag det!
+
+
+const handleNameInput = (event) => { // at submit this function will be invoked
+ event.preventDefault() // prevents website refresh at submit
+ const name = nameInput.value // input value will be stored in the const name
+  showMessage(`My name is ${name}.`, 'user') // users answer 
+  nameInput.value = '' // clearing name input setting it to an empty string
+
+
+setTimeout (() => coffeeOptions(name) , 1000) 
+}
+
+
+
+
+
+
+//---- Second intention ----//
+ const coffeeOptions = (name) => { 
+  showMessage(`Hi ${name}! What are you up for today?`, 'bot') //sends second message from bot
+  inputWrapper.innerHTML = // add buttons
+   `<button id="espressoBtn" type="submit">Espresso</button>
+    <button id="latteBtn" type="submit">Latte</button>
+    <button id="cappuchinoBtn" type="submit">Cappuchino</button>`
+
+
+  
+//---interaction 3------//
+
+document
+  .getElementById('espressoBtn')
+  .addEventListener('click', () => {
+    showMessage('I would like an espresso, please', 'user')
+  })
+
+document
+  .getElementById('latteBtn')
+  .addEventListener('click', () => {
+    showMessage('A latte would be nice!', 'user')
+  }) 
+
+  document
+  .getElementById('cappuchinoBtn')
+  .addEventListener('click', () => {
+    showMessage('Prettyplease! A cappuchino', 'user')
+  }) 
+}
+
+const extraS = () => {
+
+  showMessage ('Would you like some extra?', 'bot')
+  inputWrapper.innerHTML =
+`<button id= "xtraShotBtn" type="submit">Xtra shot espresso</button>
+  button id= "milkBtn" type="submit">Milk</button>
+  utton id= "sugarBtn" type="submit">Sugar</button>`
+
+  document
+  .getElementById('xtraShotBtn')
+  .addEventListener('click', () => {
+    showMessage('Make it doubble!', 'user')
+  })
+
+document
+  .getElementById('milkBtn')
+  .addEventListener('click', () => {
+    showMessage('I like kows', 'user')
+  }) 
+
+  document
+  .getElementById('sugarBtn')
+  .addEventListener('click', () => {
+    showMessage('So sweet of you', 'user')
+  }) 
+}
+
+
+
+
+// Set up your eventlisteners here
+  
+ // form.addEventListener('submit', handleNameInput)
+
+
+ // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+
+  chat.scrollTop = chat.scrollHeight; 
+
+
+form.addEventListener('submit', handleNameInput)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
@@ -48,4 +163,6 @@ const greetUser = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000);
+//setTimeout(greetUser, 1000);
+
+

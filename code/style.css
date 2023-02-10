@@ -49,7 +49,7 @@ input {
 
 main {
   margin: 0 auto;
-  width: 100%;
+  width: 94%;
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
@@ -147,3 +147,10 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+.selectbtn {
+
+  display: none;
+}
+
+
