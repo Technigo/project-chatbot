@@ -224,3 +224,41 @@ appearance: none;
 .selectBtn:hover {
   background-color: #a1736b;
 }
+
+
+/*Making it a bit smaller for phones*/
+@media (max-width: 667px) {
+
+
+  body {
+    background-size: cover;
+  }
+
+  input {
+    padding: 12px;
+  }
+
+  button {
+    padding: 12px 15px;
+    font-size: 16px;
+  }
+
+  .bubble {
+    max-width: 35%;
+    padding: 16px 16px;
+    font-size: 14px;
+  }
+
+  
+select {
+  font-weight: 400;
+  height: 50px;
+  width: 60%;
+  padding: 0 10px;
+  }
+
+  .selectBtn {
+    padding: 12px 20px;
+  }
+
+}
