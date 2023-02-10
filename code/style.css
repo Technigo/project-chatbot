@@ -6,38 +6,44 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  background:#03314B;
-  
-  /* background-image: url("assets/train-inside.jpg");
+  background-color: white; 
+  background-image: url('assets/train-train.jpg');
+  background-size: cover;
   background-repeat: no-repeat;
-  background-size: 80% 70%; 
-  background-position: 20% 100%;
-  background-position-y:bottom; */
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   
 }
 
 h1 {
   font-weight: bold;
   font-size: 44px;
-  line-height: 34px;
-  color: #fff;
+  line-height: 1.6;
+  color: rgb(22, 21, 21);
   text-align: center;
   letter-spacing: 4px;
+  margin-bottom: 0;
+
+/* border:solid red; */
 }
 
 h2 {
   font-weight: bold;
   font-size: 24px;
-  line-height: 34px;
-  color: #fff;
+  line-height: 1.6;
+  color: rgb(22, 21, 21);
   text-align: center;
   margin-bottom: 36px;
+  margin-top: 0;
   letter-spacing: 2px;
+  /* border:solid red; */
 }
 
 p {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 28px;
   margin: 0;
 }
@@ -47,7 +53,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #03314B;
+  color: rgb(22, 21, 21);
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -59,19 +65,18 @@ input {
 main {
   margin: 0 auto;
   width: 100%;
-  max-width: 500px;
-  height: 600px;
+  max-width: 70%;
+  height:600px;
   border-radius: 30px;
-  background: #fff; 
-  
- 
+  /* background: white; */
+  backdrop-filter: blur(12px);
   
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  
+
 }
 
 .chat {
@@ -82,7 +87,6 @@ main {
   overflow-x: hidden;
   flex-direction: column;
   padding-bottom: 16px;
- 
 }
 
 .bot-msg {
@@ -107,11 +111,11 @@ main {
 
 .bubble {
   background: #e5e9ff;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #03314B ;
+  color: rgb(22, 21, 21);
   max-width: 40%;
 }
 
@@ -123,6 +127,8 @@ main {
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  background-color: #105bcc;
+  color: white;  
 }
 
 .input-wrapper {
@@ -136,16 +142,8 @@ main {
   align-items: center;
 }
 
-label {
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
-}
-
 button {
-  background-color: #03314B;
+  background-color: #105bcc;
   color: white;
   border: none;
   border-radius: 4px;
@@ -153,7 +151,7 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -170,6 +168,7 @@ button:hover {
   margin:16px 0 5px 70px;
   width:200px;
   border-radius: 30px;
+  font-size: 16px;
 }
 
 .date-picker{
@@ -177,12 +176,63 @@ button:hover {
   width:350px;
   max-width:40%;
   border-radius: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
   
 }
 
-/* .background-image{
+.background-image{
   width:100%;
   object-fit: cover;
   height: 50vh;
-}  */
+}  
+
+@media (max-width: 667px) {
+
+  main {     
+    height:80%;
+    padding: 20px 20px;
+  }
+
+  h1 {
+    font-size: 30px;
+    line-height: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 2px;;
+  }
+
+  h2 {
+    line-height: 20px;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    }
+
+  .bubble {
+    font-weight: 400; 
+    font-size: 10px;
+    padding: 16px 20px;
+    max-width: 60%;
+  }
+
+  input {
+    font-weight: 600;
+    line-height: 26px;
+    flex: 1;
+    width:60%;
+  }
+
+  button {
+    padding: 16px 20px;
+    margin-right: 4px;
+    font-size: 16px;
+    line-height: 26px;
+    
+  }
+
+  .inChatButton{
+    width:150px;
+    
+  }
+}
+ 
 

@@ -3,7 +3,7 @@ const chat = document.getElementById('chat');
 const chatInput = document.getElementById("chat-input");
 const inputWrapper = document.getElementById('input-wrapper');
 const sendButton = document.getElementById("send-btn");
-
+const chatForm = document.getElementById("chat-form");
 
 // If you need any global variables that you can use across different functions, declare them here:
 let questionCount = 0;
@@ -12,6 +12,9 @@ let arrivalCity ='';
 let travelDate = '';
 let numberOfTickets ='';
 let userName ='';
+let botAlertSound = new Audio("assets/bot-beep.mp3");
+let userAlertSound = new Audio("assets/user-beep.mp3");
+
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -52,18 +55,22 @@ const enableChatInputAndSendButton = () => {
 
 const userResponse = (message) => {
   showMessage(message, 'user');
+  userAlertSound.play();
 }
 
-const botResponse = (message) => {
+const botResponse = (message, disable = false) => {
   showMessage(message, 'bot');
+  
+  if(disable == false){
+    botAlertSound.play();
+  }
 }
 
-
-// Starts here
+// Starts here: Greet User when page loads 
 const greetUserAndAskDepartureCity = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   disableChatInputAndSendButton();  
-  botResponse("Hello there, Would you like to book a train ticket?");
+  botResponse("Hello there, Would you like to book a train ticket?", true);
   
   chat.innerHTML += `
    <button id="yes-btn" class="inChatButton">Yes please</button>
@@ -82,30 +89,30 @@ const greetUserAndAskDepartureCity = () => {
 }
 
 
-//Function to move to next step
+//Function to move to next step of the chat
 const nextStep = () => {
   questionCount++;
-  if(questionCount == 1){
+  if(questionCount === 1){
     setTimeout (() => displayDepartureCityAndAskArrivalCity(), 1000);
   }
   
-  else if(questionCount == 2){
+  else if(questionCount === 2){
     setTimeout (() => displayArrivalCity(), 1000);
   }
 
-  else if(questionCount == 3){
+  else if(questionCount === 3){
     setTimeout (() => displayDatePickerandAskTickets(), 1000);
   }
   
-  else if(questionCount == 4){
+  else if(questionCount === 4){
     setTimeout (() => displayNumberOfTicketsAndAskName(), 1000);
   }
 
-  else if(questionCount == 5){
+  else if(questionCount === 5){
     setTimeout (() => displayName(), 1000);    
   }
 
-  else if(questionCount == 6){
+  else if(questionCount === 6){
     setTimeout (() => ticketSummaryAndThankYouMessage(), 1000);
   }
 
@@ -116,7 +123,7 @@ const displayDepartureCityAndAskArrivalCity = () =>{
   departureCity = chatInput.value;
   userResponse(`${departureCity}`);
   chatInput.value='';
-  setTimeout(() =>showMessage('Nice! Where are you headed?','bot'),1000);
+  setTimeout(() =>botResponse('Nice! Where are you headed?'),1000);
 }
 
 //Arrival Function
@@ -143,7 +150,6 @@ const displayDatePickerandAskTickets = () => {
     });
     chat.scrollTop = chat.scrollHeight; 
   },2000);
- 
 }
 
 //Number of tickets Function
@@ -160,7 +166,6 @@ const displayName = () => {
   userName = chatInput.value;
   userResponse(`${userName}`);  
   chatInput.value ='';
-
   nextStep();
 }
 
@@ -172,13 +177,13 @@ const ticketSummaryAndThankYouMessage = () => {
 }
 
 //OnClick function of Send button
-const onSendClick = (event) => {
+const onFormSubmit = (event) => {
   event.preventDefault();    
   nextStep();
 } 
 
 // Set up your eventlisteners here
-sendButton.addEventListener("click", onSendClick);
+chatForm.addEventListener("submit", onFormSubmit);
 
 //greetUser message appears 1 second after page load
 setTimeout(greetUserAndAskDepartureCity, 1000);
