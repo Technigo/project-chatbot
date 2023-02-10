@@ -6,27 +6,28 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #698269;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
+  font-size: 50px;
   line-height: 34px;
   color: #fff;
   text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  letter-spacing: 3px;
 }
 
-h2 {
+/* h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 36px;
   line-height: 34px;
   color: #fff;
   text-align: center;
   margin-bottom: 36px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+} */
 
 p {
   font-size: 18px;
@@ -40,7 +41,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #AA5656;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -92,12 +93,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #e4e6ee;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #AA5656;
   max-width: 40%;
 }
 
@@ -126,12 +127,12 @@ label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  color: #AA5656;
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #AA5656;
   color: white;
   border: none;
   border-radius: 4px;
@@ -146,21 +147,67 @@ button {
 }
 
 #colaBtn {
-  background-color: red;
+  background-color: #B81D13;
   color: black;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 #fantaBtn {
-  background-color: yellow;
+  background-color: #EFB700;
   color: black;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 #spriteBtn {
-  background-color: green;
+  background-color: #008450;
   color: black;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+select {
+  border: none;
+  border-radius: 4px;
+  color: #AA5656;
+  font-size: 20px;
+  font-weight: 600;
+  height: 60px;
+  font-family: 'Montserrat';
+  background: #e5e9ff;
+  width: 100%;
+  padding: 0 20px;
+  cursor: pointer;
+
+  /* -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; */
+}
+
+footer {
+  color: white;
+  font-size: 5px;
+  margin: 50px;
+  text-align: center;
+}
+
+footer a {
+  text-decoration: none;
+  color: #F1DBBF;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 35px;
+  }
 }

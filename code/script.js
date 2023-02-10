@@ -6,11 +6,11 @@ const sendBtn = document.getElementById('send-btn');
 
 const botReply = (msg) => {
   showMessage(msg, 'bot')
-}
+};
 
 const userReply = (msg) => {
   showMessage(msg, 'user')
-}
+};
 
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -39,11 +39,11 @@ const showMessage = (message, sender) => {
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
-}
+};
 
 const greetUser = () => {  
   showMessage("Hello there, What's your name?", 'bot');  
-}
+};
 
 // Set up your eventlisteners here
 form.addEventListener('submit', (event)=> {
@@ -64,30 +64,71 @@ inputWrapper.innerHTML = `
 <button id="colaBtn" type="submit">Cola</button>
 <button id="fantaBtn" type="submit">Fanta</button>
 <button id="spriteBtn" type="submit">Sprite</button>
-`
+`;
+
 //eventlisteners for choices                                
-document.getElementById('colaBtn').addEventListener('click' , () => { showMessage("I would like to order Cola", 'user') 
-}) 
-document.getElementById('fantaBtn').addEventListener('click' , () => { showMessage("I would like to order Fanta", 'user')
-}) 
-document.getElementById('spriteBtn').addEventListener('click' , () => { showMessage("I would like to order Sprite", 'user')
-})
-})
+// document.getElementById('colaBtn').addEventListener('click' , () => { showMessage("I would like to order Cola", 'user') 
+// }) 
+// document.getElementById('fantaBtn').addEventListener('click' , () => { showMessage("I would like to order Fanta", 'user')
+// }) 
+// document.getElementById('spriteBtn').addEventListener('click' , () => { showMessage("I would like to order Sprite", 'user')
+// })
 
-/*const showMenu = (type) => {
-  botReply(
-    `Oh so you're in the mood for ${type}? Great choice. Select something from the menu below!`
-  )
-  if (type === 'colaBtn')
-  inputWrapper.innerHTML = `
-  <select id="select">
-    <option value="" selected disabled>👇 Select a what kind...</option>
-    <option value="regular">Regular Cola</option>
-    <option value="zero">Cola Zero</option>
-    <option value="vanilla">Vanilla Cola</option>
-  </select>
-`*/
 
+let colaBtn = document.getElementById('colaBtn');
+colaBtn.addEventListener('click', () => cola())
+
+let fantaBtn = document.getElementById('fantaBtn');
+fantaBtn.addEventListener('click', () => fanta())
+
+let spriteBtn = document.getElementById('spriteBtn');
+spriteBtn.addEventListener('click', () => sprite())
+});
+
+const cola = () => {
+  userReply(`I would love a Cola`);
+  setTimeout(() => botReply(`Great choice! Please select what kind of Cola below.`), 100)
+  
+  inputWrapper.innerHTML =
+        `<select id="select">
+          <option value selected disabled>Select what kind of Cola 👇</option>
+          <option value="regular">Regular</option>
+          <option value="zero">Zero</option>
+          <option value="vanilla">Vanilla</option>
+        </select>
+        `
+};
+
+const fanta = () => {
+  userReply(`I would love a Fanta`);
+  setTimeout(() => botReply(`Great choice! Please select what kind of Fanta below.`), 100)
+  
+  inputWrapper.innerHTML =
+        `<select id="select">
+          <option value selected disabled>Select what kind of Fanta 👇</option>
+          <option value="regular">Regular</option>
+          <option value="zero">Zero</option>
+          <option value="lemon">Lemon</option>
+        </select>
+        `
+};
+
+const sprite = () => {
+  userReply(`I would love a Sprite`);
+  setTimeout(() => botReply(`Great choice! Please select what kind of Sprite below.`), 100)
+  
+  inputWrapper.innerHTML =
+        `<select id="select">
+          <option value selected disabled>Select what kind of Sprite 👇</option>
+          <option value="regular">Regular</option>
+          <option value="zero">Zero</option>
+          <option value="cherry">Cherry</option>
+        </select>
+        `
+};
+//selectTreatment.addEventListener('change', () => //{console.log(selectTreatment.value)})
+  
+  
 
 
 // When website loaded, chatbot asks first question.
