@@ -65,13 +65,13 @@ const nextQuestion = (message) => {
     userReply(message)
     setTimeout(() => showRestaurant(message), 1000)
   
+  //} else if (questionNr === 3) {
+  //  userReply(message)
+  //  setTimeout(() => showAddress(message), 1000)
+
   } else if (questionNr === 3) {
     userReply(message)
-    setTimeout(() => showAddress(message), 1000)
-
-  } else if (questionNr === 4) {
-    userReply(message)
-    setTimeout(() => HappyChoice(message), 1000)
+    setTimeout(() => happyChoice(message), 1000)
   } else {
     userReply(message)
     setTimeout(thankYou, 1000)
@@ -82,12 +82,12 @@ const nextQuestion = (message) => {
  //Greeting and questions
 const greetUser = () => {
   questionNr = 1
-  botReply(`Hello there, what's your name?`)
+  botReply(`Hello there, what's your name?😄`)
 }
 
 const showCuisineTypes = (msg) => {
   questionNr++
-  botReply(`Nice too meet you ${msg}! What type of cuisine would you like to explore?`)
+  botReply(`Nice to meet you ${msg}! What type of cuisine would you like to explore?`)
 
   inputWrapper.innerHTML = `
   <button id="italianBtn">Italian</button>
@@ -96,91 +96,94 @@ const showCuisineTypes = (msg) => {
   `
   document
     .getElementById('italianBtn')
-    .addEventListener('click', () => nextQuestion('italian'))
+    .addEventListener('click', () => nextQuestion('Italian'))
   document
     .getElementById('asianBtn')
-    .addEventListener('click', () => nextQuestion('asian'))
+    .addEventListener('click', () => nextQuestion('Asian'))
   document
     .getElementById('middleEasternBtn')
-    .addEventListener('click', () => nextQuestion('middleeastern'))
+    .addEventListener('click', () => nextQuestion('Middle Eastern'))
 }
 
 const showRestaurant = (type) => {
   questionNr++
-  botReply(`Oh so you're in the mood for ${type}? Great choice. Select a place from the options!`)
+  botReply(`Oh so you're in the mood for ${type}? Yum..🤤`)
+  botReply(`Select a place from the options!`)
 
-  if (type === 'italian') {
+  if (type === 'Italian') {
     inputWrapper.innerHTML = `
-    <select class="select-">
-     <option value="" selected disabled>👇 Select a restaurant..</option>
-     <option value="lanonna">La Nonna</option>
-     <option value="olli">OLLI</option>
-     <option value="capricci">Capricci</option>
+    <select id="select-">
+     <option value="" selected disabled>👇 Select a restaurant.. 👇</option>
+     <option value="La Nonna">La Nonna</option>
+     <option value="OLLI">OLLI</option>
+     <option value="Capricci">Capricci</option>
     </select>
     `
-  } else if (type === 'asian') {
+  } else if (type === 'Asian') {
     inputWrapper.innerHTML = `
-    <select class="select">
-    <option value="" selected disabled>👇 Select a restaurant..</option>
-     <option value="surfers">Surfers</option>
-     <option value="apo">APO</option>
-     <option value="sinramen">Sin ramen</option>
+    <select id="select">
+    <option value="" selected disabled>👇 Select a restaurant.. 👇</option>
+     <option value="Surfers">Surfers</option>
+     <option value="APO">APO: Asian Post Office</option>
+     <option value="Sin ramen">Sin ramen</option>
     </select>
     `
   } else {
     inputWrapper.innerHTML = `
-    <select class="select">
-    <option value="" selected disabled>👇 Select a restaurant..</option>
-     <option value="moas">MOAS</option>
-     <option value="tabbouli">Tabbouli</option>
-     <option value="babeldeli">Babel Deli</option>
+    <select id="select">
+    <option value="" selected disabled>👇 Select a restaurant.. 👇</option>
+     <option value="MOAS">MOAS: Meat On A Stick</option>
+     <option value="Tabbouli">Tabbouli</option>
+     <option value="Babel Deli">Babel Deli</option>
     </select>
     `
   }
+  const select = document.getElementById('select')
+  select.addEventListener('change', () => nextQuestion(select.value))
 
-  const allSelects = document.querySelectorAll(".select");
-  allSelects.forEach(select => select.addEventListener('change', (event) => {
-    nextQuestion(event.target.value)
-  }))
+//  const allSelects = document.querySelectorAll(".select");
+//  allSelects.forEach(select => select.addEventListener('change', (event) => {
+//    nextQuestion(event.target.value)
+//  }))
 
 }
 
 //  Depending on which restaurant they choose give a different adress
-const showAddress = (selectedRestaurant) => {
-  questionNr++
+//const showAddress = (selectedRestaurant) => {
+//  questionNr++
 
-  let address;
-  if (selectedRestaurant === "lanonna") {
-    address = "Fleminggatan 45, 112 32 Stockholm"
-  } else if (selectedRestaurant === "olli") {
-    address = "Jakobsbergsgatan 21, 111 44 Stockholm"
-  } else if (selectedRestaurant === "capricci") {
-    address = "Hornstulls strand 4, 117 39 Stockholm"
+//  let address;
+//  if (selectedRestaurant === "lanonna") {
+//    address = "Fleminggatan 45, 112 32 Stockholm"
+//  } else if (selectedRestaurant === "olli") {
+//    address = "Jakobsbergsgatan 21, 111 44 Stockholm"
+//  } else if (selectedRestaurant === "capricci") {
+//    address = "Hornstulls strand 4, 117 39 Stockholm"
 
-  } else if (selectedRestaurant === "surfers") {
-    address = "Norrlandsgatan 24, 111 43 Stockholm"
-  } else if (selectedRestaurant === "apo") {
-    address = "Regeringsgatan 66, 111 39 Stockholm"
-  } else if (selectedRestaurant === "sinramen") {
-    address = "Jakobsbergsgatan 23, 111 44 Stockholm"
+//  } else if (selectedRestaurant === "surfers") {
+//    address = "Norrlandsgatan 24, 111 43 Stockholm"
+//  } else if (selectedRestaurant === "apo") {
+//    address = "Regeringsgatan 66, 111 39 Stockholm"
+//  } else if (selectedRestaurant === "sinramen") {
+//    address = "Jakobsbergsgatan 23, 111 44 Stockholm"
   
-  } else if (selectedRestaurant === "moas"){
-    address = "Roslagsgatan 6, 113 55 Stockholm"
-  } else if (selectedRestaurant === "tabbouli"){
-    address = "Tavastgatan 22, 118 24 Stockholm"
-  } else  {
-    address = "Kungstensgatan 33, 113 57 Stockholm"
-  }
+//  } else if (selectedRestaurant === "moas"){
+//    address = "Roslagsgatan 6, 113 55 Stockholm"
+//  } else if (selectedRestaurant === "tabbouli"){
+//    address = "Tavastgatan 22, 118 24 Stockholm"
+//  } else  {
+//    address = "Kungstensgatan 33, 113 57 Stockholm"
+//  }
   
-  alert(`You're in for a treat! The restaurant is located at ${address}`)
-}
+// alert(`You're in for a treat! The restaurant is located at ${address}`)
+//}
 
 
 ////////////////////
 
-const HappyChoice = (choice) => {
+const happyChoice = (choice) => {
   questionNr++
-  botReply(`Nice! Are you happy with your choice?`)
+  botReply(`You're in for a treat😍 Are you happy with your choice?`)
 
   inputWrapper.innerHTML = `
     <button id="restart">NO</button>
@@ -198,7 +201,7 @@ const HappyChoice = (choice) => {
 }
 
 const thankYou = () => {
-  botReply(`Thank you for using TheGuide! See you soon👋🏼`)
+  botReply(`Thank you for using TheGuide! Feel free to come back and explore more👋`)
   inputWrapper.innerHTML = ``
 }
 
