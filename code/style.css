@@ -5,15 +5,15 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #850E35;
+  font-family: 'Lexend', sans-serif;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
+  font-size: 54px;
   line-height: 34px;
-  color: #fff;
+  color: #FFF5E4;
   text-align: center;
 }
 
@@ -21,7 +21,7 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: #FFF5E4;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -35,26 +35,26 @@ p {
 
 input {
   box-sizing: border-box;
-  border: none;
+  border: 2px solid #FFC4C4;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #FFF5E4;
+  color: #EE6983;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Lexend', sans-serif;
   font-weight: 600;
   line-height: 26px;
   flex: 1;
 }
 
 select {
-  border: 2px solid #0026ff;
+  border: 2px solid #FFC4C4;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #FFF5E4;
+  color: #EE6983;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Lexend', sans-serif;
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -98,17 +98,17 @@ main {
 
 .bot-msg img,
 .user-msg img {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #FFC4C4;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #850E35;
   max-width: 40%;
 }
 
@@ -135,22 +135,22 @@ main {
 
 label {
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Lexend', sans-serif;
   font-weight: 500;
-  color: #0026ff;
+  color: #EE6983;
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
-  color: white;
-  border: none;
+  background-color: #FFF5E4;
+  color: #EE6983;
+  border: 2px solid #FFC4C4;
   border-radius: 4px;
   padding: 16px 40px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: 'Lexend', sans-serif;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -159,4 +159,9 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+::placeholder {
+  color: rgb(199, 199, 199);
+  font-family: 'Lexend', sans-serif;
 }
