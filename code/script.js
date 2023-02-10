@@ -87,15 +87,15 @@ const question2 = (userAnswer) => {
 
   if (userAnswer === "Yes" || userAnswer === "Maybe") {
     userReply(userAnswer);
-    setTimeout(() => botReply(`Please, rank your eco-anxiety!`), 1000);
+    setTimeout(() => botReply(`Please, rate your eco-anxiety level!`), 1000);
     setTimeout(
       () =>
       (inputWrapper.innerHTML = `<form id="radioContainer">
-    <input type="radio" id="radio1" name="rank" value="1">1</input>
-    <input type="radio" id="radio2" name="rank" value="2">2</input>
-    <input type="radio" id="radio3" name="rank" value="3">3</input>
-    <input type="radio" id="radio4" name="rank" value="4">4</input>
-    <input type="radio" id="radio5" name="rank" value="5">5</input></form>`),
+    <input type="radio" id="radio1" name="rate" value="1">1</input>
+    <input type="radio" id="radio2" name="rate" value="2">2</input>
+    <input type="radio" id="radio3" name="rate" value="3">3</input>
+    <input type="radio" id="radio4" name="rate" value="4">4</input>
+    <input type="radio" id="radio5" name="rate" value="5">5</input></form>`),
       1000
     );
 
