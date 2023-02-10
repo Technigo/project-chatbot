@@ -53,16 +53,16 @@ const nextQuestion = (message) => {
 
   if (questionNr === 1) {
     userReply(message)
-    setTimeout(() => ShowCuisineTypes(message), 1000)
+    setTimeout(() => showCuisineTypes(message), 1000)
   } else if (questionNr === 2) {
     userReply(message)
-    setTimeout(() => showOptions(message), 1000)
+    setTimeout(() => showRestaurant(message), 1000)
   
-  //} else if (questionNr === 3) {
-  //userReply(message)
-  //setTimeout(() => showAdress(message), 1000)
-
   } else if (questionNr === 3) {
+    userReply(message)
+    setTimeout(() => showAddress(message), 1000)
+
+  } else if (questionNr === 4) {
     userReply(message)
     setTimeout(() => HappyChoice(message), 1000)
   } else {
@@ -78,7 +78,7 @@ const greetUser = () => {
   botReply(`Hello there, what's your name?`)
 }
 
-const ShowCuisineTypes = (msg) => {
+const showCuisineTypes = (msg) => {
   questionNr++
   botReply(`Nice too meet you ${msg}! What type of cuisine would you like to explore?`)
 
@@ -98,7 +98,7 @@ const ShowCuisineTypes = (msg) => {
     .addEventListener('click', () => nextQuestion('middleeastern'))
 }
 
-const showOptions = (type) => {
+const showRestaurant = (type) => {
   questionNr++
   botReply(`Oh so you're in the mood for ${type}? Great choice. Select a place from the options!`)
 
@@ -137,35 +137,35 @@ const showOptions = (type) => {
 
 }
 
-//  Depending on which restaurant they choose give a different adress 
+//  Depending on which restaurant they choose give a different adress
+const.showAddress = (selectedRestaurant) => {
+  questionNr++
 
-//const.showAdress = (adress) => {
-//  questionNr++
-//  alert(`You're in for a treat! The restaurant is located at ${adress}`)
+  let address;
+  if (selectedRestaurant === "lanonna") {
+    ("Fleminggatan 45, 112 32 Stockholm")
+  } else if (selectedRestaurant === "olli") {
+    ("Jakobsbergsgatan 21, 111 44 Stockholm")
+  } else if (selectedRestaurant === "capricci") {
+    ("Hornstulls strand 4, 117 39 Stockholm")
 
-//  if (select.value === "lanonna") {
-//    ("Fleminggatan 45, 112 32 Stockholm")
-//  } else if (select.value === "olli") {
-//    ("Jakobsbergsgatan 21, 111 44 Stockholm")
-//  } else if (select.value === "capricci") {
-//    ("Hornstulls strand 4, 117 39 Stockholm")
-
-//  } else if (select.value === "surfers") {
-//    ("Norrlandsgatan 24, 111 43 Stockholm")
-//  } else if (select.value === "apo") {
-//    ("Regeringsgatan 66, 111 39 Stockholm")
-//  } else if (select.value === "sinramen") {
-//    ("Jakobsbergsgatan 23, 111 44 Stockholm")
-
-//  } else if (select.value === "moas"){
-//    ("Roslagsgatan 6, 113 55 Stockholm")
-//  } else if (select.value === "tabbouli"){
-//    ("Tavastgatan 22, 118 24 Stockholm")
-//  } else  {
-//    ("Kungstensgatan 33, 113 57 Stockholm")
-//  }
-
-//}
+  } else if (selectedRestaurant === "surfers") {
+    ("Norrlandsgatan 24, 111 43 Stockholm")
+  } else if (selectedRestaurant === "apo") {
+    ("Regeringsgatan 66, 111 39 Stockholm")
+  } else if (selectedRestaurant === "sinramen") {
+    ("Jakobsbergsgatan 23, 111 44 Stockholm")
+  
+  } else if (selectedRestaurant === "moas"){
+    ("Roslagsgatan 6, 113 55 Stockholm")
+  } else if (selectedRestaurant === "tabbouli"){
+    ("Tavastgatan 22, 118 24 Stockholm")
+  } else  {
+    ("Kungstensgatan 33, 113 57 Stockholm")
+  }
+  
+  alert(`You're in for a treat! The restaurant is located at ${address}`)
+}
 
 
 ////////////////////
