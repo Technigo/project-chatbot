@@ -118,22 +118,19 @@ main {
 
 .input-wrapper form {
   width: 100%;
+  
   display: flex;
   align-items: center;
 }
 
-.form {
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
+
 
 label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
   color: #0026ff;
-  margin-right: 20px;
+  
 }
 
 button {

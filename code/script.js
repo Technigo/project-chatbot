@@ -148,6 +148,6 @@ const whereToDrink = (whereToDrink) => {
 }
 
 
-setTimeout(greeting, 2000);
+setTimeout(greeting, 1000);
 
 
