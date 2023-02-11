@@ -109,8 +109,13 @@ const cola = () => {
           <option value="zero">Zero</option>
           <option value="lemon">Lemon</option>
         </select>
+        <button class="selectBtn" id="fantaKindBtn" type="submit">OK</button>
         `
-};
+        const fantaKindBtn = document.getElementById('fantaKindBtn');
+        fantaKindBtn.addEventListener('click', () => {
+          botReply(`Thank you for your order! Close this window and your drink will be magical teleported to you 🧙‍♂️`)
+        }
+)};
 
 const sprite = () => {
   userReply(`I would love a Sprite`);
@@ -123,6 +128,7 @@ const sprite = () => {
           <option value="zero">Zero</option>
           <option value="cherry">Cherry</option>
         </select>
+        <button class="selectBtn" id="spriteKindBtn" type="submit">OK</button>
         `
 };
   
