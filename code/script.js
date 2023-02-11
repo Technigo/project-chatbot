@@ -40,13 +40,13 @@ const showMessage = (message, sender) => {
 const greetUserOrder = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hi there! We hope you're hungry, our donuts are awesome!", 'bot');
-  setTimeout(() => userDecision(), 1000)
+  setTimeout(() => userDecision(), 800)
 }
 
 //Bot asks user if they would like to place an order
 const userDecision = () => { 
   showMessage("Would you like to place an order?", 'bot');
-  setTimeout(() => yesOrNo(), 1000)
+  setTimeout(() => yesOrNo(), 700)
 }
 
 //Yes or No-buttons for the user to click should appear
@@ -61,7 +61,7 @@ document
   .addEventListener("click", () => {
     showMessage("I would very much like to order, thanks!", 'user')
     inputWrapper.innerHTML = ''
-    setTimeout(() => orderProceed("option1"), 1000)
+    setTimeout(() => orderProceed("option1"), 1100)
     })
 
 document
@@ -69,7 +69,7 @@ document
   .addEventListener("click", () => {
     showMessage("No thanks, just having a look around!", 'user')
     inputWrapper.innerHTML = ''
-    setTimeout(() => orderProceed("option2"), 1000)
+    setTimeout(() => orderProceed("option2"), 900)
     })
 } 
 
@@ -77,20 +77,20 @@ document
 const orderProceed = (selection) => {
   if (selection === "option1") {
     showMessage("Awesome! We have them as plain or with filling and frosting. Which type would you like to order?", 'bot')
-    setTimeout(() => plainOrNot(), 1000)
+    setTimeout(() => plainOrNot(), 700)
 
 const plainOrNot = () => {
   inputWrapper.innerHTML = ` 
   <button id="plain">Plain</button>
   <button id="fillfrost">Pimped up</button>
   `
-  
+
 document
   .getElementById("plain")
   .addEventListener("click", () => {
     showMessage("I would love me some plain donuts!", 'user')
     inputWrapper.innerHTML = ''
-    setTimeout(() => XXX("plain"), 1000)
+    setTimeout(() => chooseDonuts("plain"), 800)
   })
 
 document
@@ -98,11 +98,11 @@ document
   .addEventListener("click", () => {
     showMessage("Please get me the ones that are extra everything!", 'user')
     inputWrapper.innerHTML = ''
-    setTimeout(() => XXX("fillfrost"), 1000)
+    setTimeout(() => chooseDonuts("fillfrost"), 800)
   })
 }
 }
-
+//if user clicks no then the bot answers a nice goodbye message
  else if (selection === "option2") {
     showMessage("Ok, no worries! If you change your mind, just refresh the page. ❤️", 'bot')
     setTimeout(() => inputWrapper.innerHTML= `
@@ -110,9 +110,83 @@ document
 } 
 
 }
+//If user selected plain, the bot asks how many they want to order
+const chooseDonuts = (selection) => {
+  if (selection === "plain") {
+    showMessage("Good choice, they are really tasty. How many do you want to order?", 'bot')
+    setTimeout(() => numberOfPlain(), 800)
 
+  const numberOfPlain = () => {
+    inputWrapper.innerHTML = `
+    <button id="5">5</button>
+    <button id="10">10</button>
+    <button id="20">20</button>
+    `
+  document
+  .getElementById("5")
+  .addEventListener("click", () => {
+    showMessage("5 donuts will get me through the day", 'user')
+    inputWrapper.innerHTML = ''
+    setTimeout(() => xxx("5"), 800)
+  })
 
+  document
+  .getElementById("10")
+  .addEventListener("click", () => {
+    showMessage("I think 10 donuts will be just the right amount", 'user')
+    inputWrapper.innerHTML = ''
+    setTimeout(() => xxx("10"), 800)
+  })
 
+  document
+  .getElementById("20")
+  .addEventListener("click", () => {
+    showMessage("I'm on a roll, get me 20 please!", 'user')
+    inputWrapper.innerHTML = ''
+    setTimeout(() => xxx("20"), 800)
+  })
+
+  }
+  }
+  //If user selected filling and frosting, they need to make some additional selections
+  else if (selection === "fillfrost") {
+    showMessage("Perfect, we have some different combos, please check the buttons below and choose your option", 'bot')
+    setTimeout(() => typeOfDonutCombo(), 1200)
+
+  const typeOfDonutCombo = () => {
+    inputWrapper.innerHTML = `
+    <button id="choc">Chocolate filling and frosting</button>
+    <button id="rasp">Raspberry filling and frosting</button>
+    <button id="van">Vanilla filling and chili frosting</button>
+    `
+
+    document
+  .getElementById("choc")
+  .addEventListener("click", () => {
+    showMessage("I am a chocoholic, I'll have those!", 'user')
+    inputWrapper.innerHTML = ''
+    setTimeout(() => xxx("choc"), 800)
+  })
+
+  document
+  .getElementById("rasp")
+  .addEventListener("click", () => {
+    showMessage("Raspberry feels like summer, get me those!", 'user')
+    inputWrapper.innerHTML = ''
+    setTimeout(() => xxx("rasp"), 800)
+  })
+
+  document
+  .getElementById("van")
+  .addEventListener("click", () => {
+    showMessage("The vanilla/chili combo sounds interesting, I'll try it!", 'user')
+    inputWrapper.innerHTML = ''
+    setTimeout(() => xxx("van"), 800)
+  })
+
+  }
+  }
+}
 
 
 
