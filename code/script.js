@@ -63,7 +63,7 @@ const nextQuestion = (message) => {
     setTimeout(() => showPlaceOrder(message), 800)
   } else {
     userReply(message)
-    setTimeout(thankYou, 1000)
+    setTimeout(thankYou, 800)
   }
 }
 
@@ -167,10 +167,10 @@ const showToppingOptions = (type) => {
     inputWrapper.innerHTML =`
       <select id="select">
         <option value=""selected disabled>Select a topping</option>
-        <option value="strawberries">Fresh strawberries</option>
-        <option value="sauce">Chocolate sauce</option>
-        <option value="sprinkles">Rainbow sprinkles</option>
-        <option value="cream">Whipped cream</option>
+        <option value="fresh strawberries">Fresh strawberries</option>
+        <option value="chocolate sauce">Chocolate sauce</option>
+        <option value="rainbow sprinkles">Rainbow sprinkles</option>
+        <option value="whipped cream">Whipped cream</option>
       </select>
     `
   } else {
@@ -180,46 +180,37 @@ const showToppingOptions = (type) => {
       </select>
     `
   }
-  /*const select = document.getElementById('select')
+  const select = document.getElementById('select')
   select.addEventListener('change', () => nextQuestion(select.value)) 
+}
 
-  document
-    .getElementById('orderBtn')
-    .addEventListener('click', () => nextQuestion('No'))
-  } */
-  }
-
-  /*const showPlaceOrder = (type) => {
+const showPlaceOrder = () => {
     questionNumber++
-    botReply(`Would you like to ${type} place your order?`)
+    botReply(`Would you like to place your order?`)
   
     inputWrapper.innerHTML = `
-    <button id="yesBtn">Yes</button>
-    <button id="noBtn">No</button>
+    <button id="confirm">Yes</button>
+    <button id="restart">No</button>
   `
     document
-      .getElementById('yesBtn')
-      .addEventListener('click', () => nextQuestion('Yes'))
+      .getElementById('confirm')
+      .addEventListener('click', () => nextQuestion('Yes!'))
     document
-      .getElementById('noBtn')
-      .addEventListener('click', () => nextQuestion('No'))  
+      .getElementById('restart')
+      .addEventListener('click', () => nextQuestion('No'))
   }
 
+  const thankYou = () => {
   botReply(
-    `Thank you ${msg} for your order! Pls pay at the cashier.`
-  )*/
-
+    `Thank you for your order! Pls pay at the cashier.`)
+    inputWrapper.innerHTML=``
+  }
   
   sendBtn.addEventListener('click', () => nextQuestion(input.value))
   input.addEventListener('keypress', (event) => {
     if (event.key === 'Enter' && input.value) nextQuestion(input.value)
   })
   
-
-
-
-
-//add question "Would you like to place your order?"
 // If yes, "Thank you for your order!"
 // If no the chat will be deleted. 
 
