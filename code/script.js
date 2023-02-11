@@ -6,16 +6,64 @@ const sendBtn = document.getElementById('send-btn');
 const inputWrapper = document.getElementById('input-wrapper');
 
 // If you need any global variables that you can use across different functions, declare them here:
-const botReply = (message) =>{
-showMessage (message, 'bot')
-}
-const userReply = (message) =>{
-  showMessage(message, 'user')
-}
 
 
 // Declare your functions after this comment
 
+const handleNameInput = (event) => {
+  event.preventDefault();
+  const name = nameInput.value 
+  showMessage(`Hi! My name is ${name}`, 'user');
+  nameInput.value=''
+
+  setTimeout( () => showMessage(`Hello ${name} ! What are you in the mood for today?`, 'bot'), 200);
+
+  //A choice of different food options show up here
+inputWrapper.innerHTML =
+    `<button id="Pasta" type="submit" value="Pasta">Pasta</button>
+    <button id="Salad" type="submit" value="Salad">Salad</button>
+    <button id="Meat" type="submit" value="Meat">Meat</button>`;
+
+  
+  let Pasta = document.getElementById('Pasta');
+  Pasta.addEventListener('click', () => {
+    type = "Pasta";
+    handleInput("Pasta!");
+  });
+
+  let Salad = document.getElementById('Salad');
+  Salad.addEventListener('click', () => {
+    type = "Salad";
+    handleInput("Salad!");
+  });
+
+  let Meat = document.getElementById('Meat');
+  Meat.addEventListener('click', () => {
+    type = "Meat";
+    handleInput("Meat!");
+  });
+}
+
+setTimeout(handleNameInput ,1000);
+//Depending on wich button user clicks different recipes will show up, NOT WORKING
+
+//const handleInput = (message) => {
+  //if (handleNameInput === Pasta) {showMessage("I'd like to eat Pasta tonight!",'user');
+  //setTimeout(() => ShowMessage("Fab choice! Here is a recipe for a creamy Pasta Carbonara", 'bot'), 1000);
+    
+  //} else if (handleNameInput === Salad) {showMessage("I'd like to eat Salad tonight!",'user');
+  //setTimeout(() => ShowMessage("Fab choice! Here is a recipe for a creamy Ceasar Salad", 'bot'), 1000);
+    
+  //} else (handleNameInput === Meat) {showMessage("I'd like to eat Meat tonight!",'user');
+  //setTimeout(() => ShowMessage("Fab choice! Here is a recipe for a nice brisket", 'bot'), 1000);
+  //}
+//};
+
+//If user clicks Pasta this runs
+
+//If user clicks Salad this runs
+
+//If user clicks Meat this runs
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -50,26 +98,12 @@ const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there, What's your name?", 'bot');
 }
-greetUser();
-
-
-const handleNameInput = (event) => {
-  event.preventDefault();
-  const name = nameInput.value 
-  showMessage(`My name is ${name}`, 'user');
-  nameInput.value=''
-
-  setTimeout( () => showMessage(`Hello ${name} ! What are you in the mood for today?`, 'bot'), 1000);
-}
+setTimeout(greetUser, 1000);
 
 
 // Set up your eventlisteners here
 
 userForm.addEventListener('submit', handleNameInput);
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
+
+
 
