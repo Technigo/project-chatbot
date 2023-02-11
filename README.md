@@ -1,13 +1,15 @@
 # Project Name
 
-Replace this readme with your own information about your project.
+In this project I have built a chatbot for ordering food in javascript. The goal of the project was to learn how to use variables, conditional statements and functions.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I planned my bot by writing down to questions the bot will ask and also in what way the user could answer. To find answers to my questions I used Technigos material on the subject and also google, youtube and stackoverflow.
+
+If I had more time I would add more questions to my bot.
 
 ## View it live
 
 Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://burgerbot.netlify.app
