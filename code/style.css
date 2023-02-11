@@ -118,20 +118,13 @@ main {
 
 .input-wrapper form {
   width: 100%;
-  
   display: flex;
   align-items: center;
 }
 
 
 
-label {
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  color: #0026ff;
-  
-}
+
 
 button {
   background-color: #d742c1;

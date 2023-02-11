@@ -52,7 +52,7 @@ const handleInput = (event) => {
 
 //Bot askes about the order
 const question1 = (userName) => {
-  showMessage(`Name and number: ${userName}! Are you over 20 years old?`, "bot");
+  showMessage(`Name and table number: ${userName}. Thank you. Are you over 20 years old?`, "bot");
   setTimeout(() => question2(), 1000);
 };
 
@@ -140,8 +140,8 @@ const whereToDrink = (whereToDrink) => {
     setTimeout(() => inputWrapper.innerHTML = `<span>`, 1500);
   } else { 
     setTimeout(() => inputWrapper.innerHTML = `<span>`, 0);
-    setTimeout(() => showMessage("I'm sitting here", "user"), 1000);
-    setTimeout(() => showMessage(`Please have a seat! We'll come out with your drink`, "bot"), 6000);
+    setTimeout(() => showMessage("I'm sitting here", "user"), 500);
+    setTimeout(() => showMessage(`Please have a seat! We'll come out with your drink!`, "bot"), 6000);
   }
   setTimeout(() => chat.innerHTML = `<p>Enjoy your drink!<p>`, 10000);
     setTimeout(() => inputWrapper.innerHTML = `<span>`, 15500);
