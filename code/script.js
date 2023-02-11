@@ -9,12 +9,28 @@ let questionNumber = 1
 
 // Declare your functions after this comment
 
+//Sound effects from Pixabay!
+const soundEffectBot = () => {
+  const sound = new Audio('short-woosh-109592.mp3');
+  sound.play()
+}
+const soundEffectUser = () => {
+  const sound = new Audio('short-success-sound-glockenspiel-treasure-video-game-6346.mp3');
+  sound.play()
+}
+const soundEffectFinal = () => {
+  const sound = new Audio('sport-rock-logo1-13776.mp3');
+  sound.play()
+}
+
 const botSay = (words) => {
-  showMessage(words, "bot")
+  soundEffectBot();
+  setTimeout(() => showMessage(words, "bot"), 300);
 }
 
 const userSay = (words) => {
-  showMessage(words, "user")
+  soundEffectUser();
+  setTimeout(() => showMessage(words, "user"), 300);
 }
 
 
@@ -58,16 +74,16 @@ const nextQuestion = (message) => {
     //showMessage(`I would say ${guess}`, "user");
     //input.value = ''
     console.log("question function");
-    setTimeout(() => whatSize(message), 1000)
+    setTimeout(() => whatSize(message), 1500)
   }
   else if (questionNumber === 2) {
     userSay(message)
-    setTimeout(() => ifMonster(message), 1000)
+    setTimeout(() => ifMonster(message), 1500)
   }
   else if (questionNumber === 3) {
     userSay(message)
     console.log("right track")
-    setTimeout(() => finish(message), 1000)
+    setTimeout(() => finish(message), 2000)
   }
 }
 
@@ -77,7 +93,6 @@ const greetUser = () => {
   questionNumber = 1
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   botSay("Welcome lifeform! What species do you believe yourself to be?");
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
 let guess = "";
 button.addEventListener('click', (event) => {
@@ -89,7 +104,7 @@ button.addEventListener('click', (event) => {
   //showMessage(`I would say ${guess}`, "user");
   nextQuestion();
   nameInput.value = "";
-})
+}, {once: true});
 
 const whatSize = () => {
   questionNumber++
@@ -102,14 +117,14 @@ const whatSize = () => {
 <button id="btnSmall">Tiny, yet brave</button></div>
   `
   document
-    .getElementById('btnBig')
-    .addEventListener('click', () => nextQuestion("The biggest"))
+    .getElementById("btnBig")
+    .addEventListener('click', () => nextQuestion("The biggest"), {once: true});
   document
     .getElementById('btnAverage')
-    .addEventListener('click', () => nextQuestion("Let's get comfy"))
+    .addEventListener('click', () => nextQuestion("Let's get comfy"), {once: true});
   document
     .getElementById('btnSmall')
-    .addEventListener('click', () => nextQuestion("So smol"))
+    .addEventListener('click', () => nextQuestion("So smol") , {once: true});
 }
 
 
@@ -126,10 +141,10 @@ const ifMonster = (size) => {
       <label><input type="radio" name="choice" id="hippo" option value="run">Dinner!</label>
     `
 
-    document.getElementById("badger").addEventListener("click", () => nextQuestion("Bring it on!"));
+    document.getElementById("badger").addEventListener("click", () => nextQuestion("Bring it on!"), {once: true});
   console.log("badger")
 
-  document.getElementById("hippo").addEventListener('click', () => nextQuestion("Fear me, I'm mighty!"));
+  document.getElementById("hippo").addEventListener('click', () => nextQuestion("Fear me, I'm mighty!"), {once: true});
   console.log("hippo")
   
 
@@ -142,10 +157,10 @@ const ifMonster = (size) => {
     `
 
     
-  document.getElementById("facehugger").addEventListener("click", () => nextQuestion("Just within jumping distance..."));
+  document.getElementById("facehugger").addEventListener("click", () => nextQuestion("Just within jumping distance..."), {once: true});
   console.log("facehugger")
 
-  document.getElementById("grandma").addEventListener('click', () => nextQuestion("Aren't you a sweetheart?"));
+  document.getElementById("grandma").addEventListener('click', () => nextQuestion("Aren't you a sweetheart?"), {once: true});
   console.log("grandma")
 
   } else {
@@ -155,21 +170,61 @@ const ifMonster = (size) => {
     <label><input type="radio" name="choice" id="mosquito" option value="stab">I stab!</label>
     <label><input type="radio" name="choice" id="shrimp" option value="punch">I punch!</label>
     `
-  }
-
-  document.getElementById("mosquito").addEventListener("click", () => nextQuestion("Sluuurp..."))
-  console.log("mosquito")
-  document.getElementById("shrimp").addEventListener("click", () => nextQuestion("BANG"))
-  console.log("shrimp")
   
+
+  document.getElementById("mosquito").addEventListener("click", () => nextQuestion("Sluuurp..."), {once: true});
+  console.log("mosquito")
+  document.getElementById("shrimp").addEventListener("click", () => nextQuestion("BANG"), {once: true});
+  console.log("shrimp")
+}
 }
 
-const finish = (message) => {
+
+//const speciesList = ["honey badger, hippo"];
+const finish = (monsterAnswer) => {
   questionNumber++
-  botSay(`I'll be damned! You are a`)
+  soundEffectFinal();
   inputWrapper.innerHTML = `
-  <h2>Amazing!</h2>`
+  <h2>🌟Amazing!🌟.</h2>`
+
+if (monsterAnswer === "Bring it on!") {
+ botSay(`I'll be damned, you're a honey badger! A total unit and a half!`)
+
+} else if (monsterAnswer === "Fear me, I'm mighty!") {
+  botSay(`I'll be damned! You're a majestic and competent hippo, on the road to grace and glory, positively slaying it!`)
+
+} else if (monsterAnswer === "Just within jumping distance...") {
+  botSay(`I'll be damned! You're a facehugger from the Alien movies! In cyberspace, I hope someone can hear me scream!`)
+
+} else if (monsterAnswer === "Aren't you a sweetheart?") {
+  botSay(`I'll be damned, you're a grandma! Can I have a cookie too?`)
+
+} else if (monsterAnswer === "Sluuurp...") {
+  botSay(`I'll be damned, you're a mosquito! Aren't I lucky to be a bloodless, faceless creature forever tucked away in cyberspace, safe from the likes of you yet in constant danger of whatever happens to an artificial being doomed to spend eternity in this vast expanse of simultaneous nothing and everything?`)
+
+} else if (monsterAnswer === "BANG") {
+  botSay(`I'll be damned, you're a pistol shrimp! The fastest gun in the sea!`)
 }
+}
+
+
+/*
+  inputWrapper.innerHTML = `
+  <radio>
+    <h5>Monster time!</h5>
+    <label><input type="radio" name="choice" id="badger" option value="fight">I fight! I win!</label>
+    <label><input type="radio" name="choice" id="hippo" option value="run">Dinner!</label>
+  `
+
+  document.getElementById("badger").addEventListener("click", () => nextQuestion("Bring it on!"));
+console.log("badger")
+
+document.getElementById("hippo").addEventListener('click', () => nextQuestion("Fear me, I'm mighty!"));
+console.log("hippo")
+
+*/
+
+
 // Set up your eventlisteners here
 
 /*
@@ -208,4 +263,5 @@ setTimeout(greetUser, 1000);
 //add eventlisteners to innerhtml doesn't work.
 //copy the structure with questionnumbers from the technigo code
 //Limit the amount of characters you can type in the guess species option
-//put id's and eventlisteners on each of the radio buttons and progress to final bot answer
+//put id's and eventlisteners on each of the radio buttons and progress to final bot answer.
+//If I change the variable nameInput to userGuess, the input field "name-input" will no longer clear. Why?
