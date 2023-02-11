@@ -161,7 +161,7 @@ const showSizes = (type) => {
 const showToppingOptions = (type) => {
   questionNumber++
 
-  botReply (`Good call ${type}! Which topping would you like?`)
+  botReply (`Good call! Which topping would you like?`)
     
   if (type === 'Yes') {
     inputWrapper.innerHTML =`
