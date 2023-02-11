@@ -8,7 +8,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: rgb(50, 224, 210);
+  background-image: radial-gradient(#32e0d2, #217692);
 }
 
 h1 {
@@ -39,7 +39,7 @@ h5 {
 }
 
 p {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 600;
   line-height: 28px;
   margin: 0;
@@ -66,7 +66,6 @@ main {
   max-width: 700px;
   height: 660px;
   border-radius: 30px;
-  /*background: ;*/
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -125,14 +124,16 @@ main {
 
 .bot-bubble {
   border-radius: 0 26px 26px 26px;
+  margin-top: 25px;
   margin-left: 8px;
   background: #22d9e2;
 }
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
+  margin-top: 25px;
   margin-right: 8px;
-  background: #e09248;
+  background: #f29b49;
 }
 
 .input-wrapper {

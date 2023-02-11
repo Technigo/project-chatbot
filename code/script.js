@@ -63,7 +63,7 @@ const showMessage = (message, sender) => {
     `
   }
 
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+  // This makes the chat scroll to the last message
   chat.scrollTop = chat.scrollHeight;
 }
 
@@ -72,8 +72,6 @@ const nextQuestion = (message) => {
 
   if (questionNumber === 1) {
     userSay(`I would say ${guess}`);
-    //showMessage(`I would say ${guess}`, "user");
-    //input.value = ''
     console.log("question function");
     setTimeout(() => whatSize(message), 1500)
   }
@@ -180,8 +178,6 @@ const ifMonster = (size) => {
 }
 }
 
-
-//const speciesList = ["honey badger, hippo"];
 const finish = (monsterAnswer) => {
   questionNumber++
   soundEffectFinal();
@@ -209,51 +205,6 @@ if (monsterAnswer === "Bring it on!") {
 }
 
 
-/*
-  inputWrapper.innerHTML = `
-  <radio>
-    <h5>Monster time!</h5>
-    <label><input type="radio" name="choice" id="badger" option value="fight">I fight! I win!</label>
-    <label><input type="radio" name="choice" id="hippo" option value="run">Dinner!</label>
-  `
-
-  document.getElementById("badger").addEventListener("click", () => nextQuestion("Bring it on!"));
-console.log("badger")
-
-document.getElementById("hippo").addEventListener('click', () => nextQuestion("Fear me, I'm mighty!"));
-console.log("hippo")
-
-*/
-
-
-// Set up your eventlisteners here
-
-/*
-button.addEventListener('click', (event) => {
-  event.preventDefault();
-  nameInput.value = "";
-  console.log(event);
-  setTimeout(() => progressFromGuess(), 1500)
-})
-*/
-
-/*
-document.getElementById("btnBig").addEventListener('click', (event) => {
-  event.preventDefault();
-  console.log("hey");
-  // setTimeout (() => progressFromSize(), 1500)
-})
-*/
-
-//button.onclick = progressFromGuess;p
-////let delay = 3000;
-//setTimeout(progressFromGuess, 3000)
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000);
 
 
