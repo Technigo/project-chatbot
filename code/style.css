@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #a8b3f3;
+  background: rgb(150, 87, 156);
 }
 
 h1 {
@@ -38,7 +38,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #99a1d3;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -47,48 +47,18 @@ input {
   flex: 1;
 }
 
-input:focus,
-select:focus {
-  outline: none;
-}
-
-select {
-  border: none;
-  border-radius: 4px;
-  color: #0026ff;
-  font-size: 20px;
-  font-weight: 600;
-  height: 60px;
-  font-family: 'Montserrat';
-  background: #e5e9ff;
-  width: 100%;
-  padding: 0 20px;
-  cursor: pointer;
-
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
 main {
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
   height: 600px;
-  border-radius: 30px;
-  background: #fff;
+  border-radius: 10px;
+  background: #e3cae6;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-
-}
-
-form {
-  display: flex;
-  width: 100%;
-  align-items: center;
 }
 
 .chat {
@@ -99,6 +69,8 @@ form {
   flex-direction: column;
   padding-bottom: 16px;
 }
+
+
 
 .bot-msg {
   display: flex;
@@ -125,7 +97,7 @@ form {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #8491db;
   max-width: 40%;
 }
 
@@ -147,13 +119,19 @@ form {
 .input-wrapper form {
   width: 100%;
   display: flex;
-  
+  align-items: center;
 }
 
-
+label {
+  font-size: 16px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  color: #0026ff;
+  margin-right: 20px;
+}
 
 button {
-  background-color: #0026ff;
+  background-color: #d742c1;
   color: white;
   border: none;
   border-radius: 4px;
@@ -171,3 +149,4 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+

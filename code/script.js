@@ -1,145 +1,153 @@
 // Variables that point to selected DOM elements
-const chat = document.getElementById('chat');
-const inputWrapper = document.getElementById('input-wrapper');
-const input = document.getElementById('input');
-const sendBtn = document.getElementById('send');
-const form = document.getElementById("name-form");
-
-
-// If you need any global variables that you can use across different functions, declare them here:
-let questionNumber = 1;
-
-// Declare your functions after this comment
-const botReply = (msg) => {
-  showMessage(msg, 'bot')
-}
-
-const userReply = (msg) => {
-  showMessage(msg, 'user')
-}
+const chat = document.getElementById("chat");
+const inputWrapper = document.getElementById("input-wrapper");
+const nameInput = document.getElementById("name-input");
+const nameForm = document.getElementById("name-form");
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
-  if (sender === 'user') {
-    console.log("user saying this:", message);
+  if (sender === "user") {
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="./assets/wine-bottle.png" alt="User" />  
       </section>
-    `
+    `;
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
-  } else if (sender === 'bot') {
-    console.log("bot saying this:", message);
+  } else if (sender === "bot") {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="./assets/chatbot.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
       </section>
-    `
+    `;
   }
- 
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
+};
 
-}
+// Starts here
 
-// Conversation starts here
-const greetUser = () => {
-  showMessage("Hello, enter your name please", 'bot');
-  
-}
-
-const nextQuestion = (message) => {
-  console.log('questionNumber', questionNumber)
-
-  if (questionNumber === 1) {
-    userReply(message)
-    inputvalue = ''
-    setTimeout(() => areYouOverTwenty(message), 1000)
-  } else if (questionNumber === 2) {
-    userReply(message) 
-    setTimeout(() => showWhiteOrRedWine(message), 1000)
-  } else if (questionNumber === 3) {
-    userReply(message)
-    setTimeout(() => showDifferentWines(message), 1000)
-  } else if (questionNumber === 4) {
-    userReply(message)
-    setTimeout(() => goodDoYouWantOrder(message), 1000)
-  }  else {
-      userReply(message)
-      setTimeout(thankYou, 1000)
-    }
-  }
+//Greeting
+const greeting = () => {
+  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
+  showMessage("Hello, what's your name?", "bot");
+  nameForm.addEventListener("submit", handleInput);
+};
 
 
+//User answering his name
+const handleInput = (event) => {
+  event.preventDefault(); //prevents refreshing the page
+  let userName = nameInput.value;
+  showMessage(`My name is ${userName}.`, "user");
+  nameInput.value = ""; //clears the answer field
+  setTimeout(() => question1(userName), 2000);  // goes to next question, and passes username as a prop. 
+};
+
+//Bot askes about the order
+const question1 = (userName) => {
+  showMessage(`Hello ${userName}! Are you over 20 years old?`, "bot");
+  setTimeout(() => question2(), 1000);
+};
 
 
-
-
-const areYouOverTwenty = (msg) => {
-  questionNumber++
-  botReply(`Hello ${msg}! Are you over 20 years old?`)
-
+//Bot asking to make a coffee order
+const question2 = (event) => {
   inputWrapper.innerHTML = `
-    <button id="restart">NO</button>
-    <button id="confirm">YES</button>
+  <button id="yes" type="submit" class="chat-btn">Yes</button>
+  <button id="no" type="submit" class="chat-btn">No</button>
   `
-  
-const showWhiteOrRedWine = (msg) => {
-  questionNumber++
-  botReply(`Good! Do you like red or white wine?`)
+  // when a button is clicked, an event listener "listens" to the event and invoked the corresponding function, coffe or teachoice
+  document.getElementById("yes").addEventListener("click", yesChoice);  
+  document.getElementById("no").addEventListener("click", noChoice);
+};
 
+//If user says no, I changes the question3nochoice to 2 so next question doesnt appear
+const noChoice = (event) => {
+  event.preventDefault();
+  let noChoice = inputWrapper.value;
+  showMessage("Sorry you are underaged, cannot order wine", "user");
+  inputWrapper.value = "";
+  setTimeout(() => question2(noChoice), 1000);
+};
+
+// if user is over 20 yrs
+const yesChoice = (event) => {
+  event.preventDefault(); 
+  let yesChoice = inputWrapper.value;
+  showMessage("Over 20", "user");
+  inputWrapper.value = "";
+  setTimeout(() => question3(yesChoice), 1000);
+};
+
+
+//Bot asking which red or white user wants to order
+const question3 = (yesChoice) => {
+  showMessage("Good, you are over 20, What wine do you prefer?", "bot");
   inputWrapper.innerHTML = `
-  <button id="white">White wine</button>
-  <button id="red">Red wine</button>
-`
-
-
-}
-  
-}
-
-// Set up your eventlisteners here
-sendBtn.addEventListener('submit', () => nextQuestion(input.value))
-input.addEventListener('keypress', (event) => {
-  if (event.key === 'Enter' && input.value) nextQuestion(input.value)
-})
-
-
-
-
-
-form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    console.log("form submitted");
-    showMessage (input.value, 'user')
-    showMessage (`Hello ${input.value}! Are you over 20?`, 'bot')
-    input.value = ""
-// Here is the function that adds the yes and No buttons
-    inputWrapper.innerHTML = `
-    <button id="restart">NO</button>
-    <button id="confirm">YES</button>
+  <button id="white" type="submit" class="chat-btn">White wine</button>
+  <button id="red" type="submit" class="chat-btn">Red wine</button>
   `
-//Here is function that shows buttons with red or white wine
-  showMessage (`Good! Do you like red or white wine?`, 'bot')
-  inputWrapper.innerHTML = `
-  <button id="white">White wine</button>
-  <button id="red">Red wine</button>
-`
+  document.getElementById("white").addEventListener("click", whiteWine);
+  document.getElementById("red").addEventListener("click", redWine);
+};
 
  
+// red or white choice
+const whiteWine = (event) => {
+  event.preventDefault(); 
+  let whiteChoice = inputWrapper.value;
+  showMessage(`I would prefer white wine`, "user");
+  inputWrapper.value = "";
+  setTimeout(() => question4(whiteChoice), 1000);
+};
+
+const redWine = (event) => {
+  event.preventDefault(); 
+  let redChoice = inputWrapper.value;
+  showMessage(`I would prefer red wine!`, "user");
+  inputWrapper.value = "";
+  setTimeout(() => question4(redChoice), 1000);
+};
+
+//Bot asking take away or drink here
+const question4 = (redChoice, whiteChoice, yesChoice) => {
+  showMessage("Take away or sit here?", "bot");
+  inputWrapper.innerHTML = `
+  <button id="takeAwayBtn">Take away</button>
+  <button id="drinkHereBtn">Drink here</button>
+  `
+
+  document.getElementById("takeAwayBtn").addEventListener("click", () => whereToDrink("take away"))
+  document.getElementById("drinkHereBtn").addEventListener("click", () => whereToDrink("drink here"))
+  ;}
+
+// Where to drink, take away or sit here
+// pass  redChoice, whiteChoice, yesChoice, noChoice as props for summary?? 
+const whereToDrink = (whereToDrink) => {
+
+  if (whereToDrink === "take away"){
+    setTimeout(() => inputWrapper.innerHTML = `<span>`, 0);
+    setTimeout(() => showMessage("Take away", "user"), 1000);
+    setTimeout(() => showMessage(`Please wait while your drink is being prepared`, "bot"), 1500);
+    setTimeout(() => chat.innerHTML = `<p>Thank you, come by again soon!<p>`, 4500);
+    setTimeout(() => inputWrapper.innerHTML = `<span>`, 1500);
+  } else { 
+    setTimeout(() => inputWrapper.innerHTML = `<span>`, 0);
+    setTimeout(() => showMessage("I'm sitting here", "user"), 1000);
+    setTimeout(() => showMessage(`Please have a seat! We'll come out with your drink`, "bot"), 2500);
+  }
+  setTimeout(() => chat.innerHTML = `<p>Enjoy your drink!<p>`, 15500);
+    setTimeout(() => inputWrapper.innerHTML = `<span>`, 15500);
+}
 
 
-    
-
-    
-});
+setTimeout(greeting, 2000);
 
 
-setTimeout(greetUser, 1000);
