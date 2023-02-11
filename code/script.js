@@ -31,6 +31,105 @@ const showMessage = (message, sender) => {
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
+<<<<<<< Updated upstream
+=======
+};
+
+// Bot welcome message
+const greeting = () => {
+  showMessage(`So... Who do we have here?`, "bot");
+};
+
+// This will display the first answer (user name)
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const name = nameInput.value;
+  userAnswer(`${name}`);
+  // This will keep the input box empty after user clicks send
+  nameInput.value = "";
+  setTimeout(() => animalOptions(name), 1000);
+});
+
+// 2 - Bot welcomes you to Hogwarts and asks your favourite animal
+const animalOptions = (name) => {
+  questionStep++;
+  botAnswer(`Welcome ${name} to Hogwarts!`);
+  setTimeout(
+    () =>
+      botAnswer(`In order to sort you into a house you have to answer a few questions...
+  First, what is your favourite animal?`),
+    1000
+  );
+  inputWrapper.innerHTML = `
+    <button id="lionButton">Lion 🦁</button>
+    <button id="snakeButton">Snake 🐍</button>
+    <button id="badgerButton">Badger 🦡</button>
+    <button id="eagleButton">Eagle 🦅</button>
+    `;
+  document.getElementById("lionButton").addEventListener("click", () => {
+    type = "lion";
+    handleInput("Lion!");
+  });
+  document.getElementById("snakeButton").addEventListener("click", () => {
+    type = "snake";
+    handleInput("Snake!");
+  });
+  document.getElementById("badgerButton").addEventListener("click", () => {
+    type = "snake";
+    handleInput("Badger!");
+  });
+  document.getElementById("eagleButton").addEventListener("click", () => {
+    type = "eagle";
+    handleInput("Eagle!");
+  });
+};
+
+//3 - Bot asks you to choose favourite colour
+const colourOptions = (type) => {
+  questionStep++;
+  botAnswer(
+    `Interesting! And could you tell me what your favourite colour is?`
+  );
+  inputWrapper.innerHTML = `
+  <select id = 'select'>
+  <option value='' selected disabled> Choose colour </option>
+  <option value='Red'>Red</option>
+  <option value='Green'>Green</option>
+  <option value='Yellow'>Yellow</option>
+  <option value='Blue'>Blue</option>
+  </select> `;
+  const select = document.getElementById("select");
+  select.addEventListener("change", () => handleInput(select.value));
+};
+
+//4 - Bot will place you in Hogwarts house
+const houseStatement = (colour) => {
+  questionStep++;
+  if (colour === "Green") {
+    botAnswer(`SLYTHERIN!`);
+  } else {
+    botAnswer(`Hmm... Tough call... Better put you in...`);
+    setTimeout(() => botAnswer(`SLYTHERIN!`), 2000);
+  }
+
+  //5 - You will love your new house
+  inputWrapper.innerHTML = `
+<button id="yayButton">Yay!</button>
+`;
+  document
+    .getElementById("yayButton")
+    .addEventListener("click", () =>
+      handleInput("I can't wait to become the gratest witch in the world!")
+    );
+};
+
+//6 - Bot will wish you good luck and say good bye
+function goodBye() {
+  botAnswer(`Have fun with your new slytherin friends!`);
+  setTimeout(() => botAnswer(`And watch out for nargles...`), 1200);
+  // Below clears the option to click button after once selected.
+  inputWrapper.innerHTML = ``;
+>>>>>>> Stashed changes
 }
 
 // Starts here
