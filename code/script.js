@@ -1,7 +1,6 @@
 // All the DOM selectors stored as short variables
 const chat = document.getElementById("chat");
 const formWrapper = document.getElementById('formWrapper');
-const form = document.getElementById('form');
 const messageSound = new Audio ("assets/pop.mp3");
 const timeGreetings = [`Good morning my friend! What's your name?`, `Hello my friend! What's your name?`, `Good evening my friend! What's your name?`, `I am sorry my friend, but we are closed!`];
 
@@ -95,34 +94,46 @@ const recognize = (firstName) => {
   
   
   let yogaBtn = document.getElementById('yogaBtn');
- yogaBtn.addEventListener('click',() => choiceBook)
+  yogaBtn.addEventListener('click', () => choiceBook())
   
-  let cookBtn = document.getElement('cookBtn');
- cookBtn.addEventListenerById('click',() => choiceBook)
+  let cookBtn = document.getElementById('cookBtn');
+ cookBtn.addEventListenerById('click',() => choiceBook())
   
-  let englishBtn = document.getElement('englishBtn');
-   englishBtn.addEventListenerById('click',() => choiceBook)
+  let englishBtn = document.getElementById('englishBtn');
+   englishBtn.addEventListenerById('click',() => choiceBook())
 }
 
 /*
    setTimeout(() => choiceBook(firstName), 1000) 
-}*/
+*/
 
 
 
 // Question number 3
+const choiceBook = (firstName) => {
+  chat.innerHTML += `<section class="bot-msg">
+    <img src="./bot.png" alt="user bot" />
+    <div class="bubble bot-bubble">
+        <p>Which book would you like ${firstName}?</p>
+    </div>
+</section>`;
 
-const choiceBook = (choiceBook) => {
-    showMessage(`Would you like bound or pocket book, ${firstName}?`, 'bot');
-
+  showMessage(`Would you like bound or pocket book, ${firstName}?`, 'bot');
   formWrapper.innerHTML =
         `<button id="boundBtn" type="submit" value="Bound book">Bound Book</button>
-      <button id="pocketBtn" type="submit" value="Pocket book">Pocket Book</button>`;
-     
-    
-  let boundBtn = document.getElementById('boundBtn');
-   boundBtn.addEventListener('click', )
+      <button id="pocketBtn" type="submit" value="Pocket book">Pocket Book</button>
+  <button id="neverMindBtn" type="submit" value="Changed my mind">Changed my mind</button>`
   
+  
+  let boundBtn = document.getElementById('boundBtn');
+   boundBtn.addEventListener('click',() => choiceBook())
+
   let pocketBtn = document.getElementById('pocketBtn');
-   pocketBtn.addEventListener('click', )
-}  
+   pocketBtn.addEventListener('click',() => choiceBook())
+
+  let neverMindBtn = document.getElementById('neverMindBtn');
+   neverMindBtn.addEventListener('click',() => choiceBook())
+}
+
+
+

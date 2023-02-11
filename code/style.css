@@ -3,12 +3,23 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Montserrat", sans-serif;
+  background-image: url(./assets/background.jpeg);
 }
 
 h1{
   font-size: 50px;
   color: white;
   text-align: center;
+  font-family: dante;
+}
+
+p {
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: 500;
+  font-family: dante;
+  font-size: 30px;
+  color: white;
 }
 
 main{
@@ -40,7 +51,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: blue;
+  color: red;
   padding: 16px;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
@@ -54,7 +65,7 @@ label {
 }
 
 button {
-  background: blue;
+  background: brown;
   color: white;
   border: none;
   border-radius: 10px;
@@ -68,7 +79,7 @@ button {
 }
 
 button:hover {
-  background-color: rgb(71, 98, 252);
+  background-color: rgb(252, 122, 71);
 }
 
 .user-msg {
@@ -95,7 +106,7 @@ button:hover {
   background: #e5e9ff;
   max-width: 40%;
   padding: 16px 24px;
-  color: blue;
+  color: brown;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
@@ -115,6 +126,7 @@ footer p {
   color: white;
   font-size: 12px;
   font-style: italic;
+  font-family: dante;
   margin: 30px auto;
   text-align: center;
 }
@@ -130,7 +142,10 @@ footer p {
 
 #yogaBtn,
 #cookBtn,
-#englishBtn {
+#englishBtn,
+#boundBook,
+#pocketBook,
+#neverMindBtn, {
   border-radius: 20px;
   margin: 5px;
 }
