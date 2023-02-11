@@ -92,19 +92,24 @@ const adopt = () => {
   <button id="maybe" value="maybe">I'll think about it</button>
   <button id="no" value="no">No</button>
 `;
-  document
-    .getElementById("yes")
-    .addEventListener("click", () => handleAdoptACat("Yes!"));
-  document
-    .getElementById("maybe")
-    .addEventListener("click", () => handleAdoptACat("I'll think about it"));
-  document
-    .getElementById("no")
-    .addEventListener("click", () => handleAdoptACat("No"));
+  const userResponseYes = document.getElementById("yes");
+  userResponseYes.addEventListener("click", () =>
+    handleAdoptACat(userResponseYes.value)
+  );
+
+  const userResponseMaybe = document.getElementById("maybe");
+  userResponseMaybe.addEventListener("click", () =>
+    handleAdoptACat(userResponseMaybe.value)
+  );
+
+  const userResponseNo = document.getElementById("no");
+  userResponseNo.addEventListener("click", () =>
+    handleAdoptACat(userResponseNo.value)
+  );
 };
 
-const farewellMessage = () => {
-  showMessage(`Thank you, we will be in touch, cat lover!`, "bot");
+const farewellMessage = (message) => {
+  showMessage(message, "bot");
   inputWrapper.innerHTML = ``;
 };
 
@@ -145,16 +150,32 @@ const handlePreferredType = (preferredCatType) => {
 };
 
 const handleAdoptACat = (adopt) => {
-  showMessage(adopt, "user");
-  inputValue.value = ``;
-  setTimeout(farewellMessage, setTimeOutTime);
+  if (adopt === "yes") {
+    showMessage("Yes!", "user");
+    inputValue.value = ``;
+    setTimeout(
+      farewellMessage(`Thank you, we will be in touch, cat lover!`),
+      setTimeOutTime
+    );
+  } else if (adopt === "maybe") {
+    showMessage("I'll think about it", "user");
+    inputValue.value = ``;
+    setTimeout(
+      farewellMessage(
+        `That's ok, you will learn to love cats soon, I promise!`
+      ),
+      setTimeOutTime
+    );
+  } else {
+    showMessage("No", "user");
+    inputValue.value = ``;
+    setTimeout(farewellMessage(`Ok, good bye.`), setTimeOutTime);
+  }
 };
 
 //TODO:
 
 // Change user name input to first uppercase letter
-// Add conditionals to adoptACat()
-// Add three different farewell messages
 
 // Set up your eventlisteners here
 form.addEventListener("submit", handleInput);
