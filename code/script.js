@@ -51,50 +51,56 @@ const favoritePersonality = () => {
     "bot"
   );
   inputWrapper.innerHTML = `
-  <div id="btn">
   <button id="cuddly" value="cuddly">Cuddly</button>
-  <button id="anti-social" value="anti-social">Antisocial</button>
-  </div>
+  <button id="antisocial" value="antisocial">Antisocial</button>
 `;
 
-  const btn = document.getElementById("btn");
-  btn.addEventListener("click", () => handleFavoritePersonality(btn.value));
+  const cuddly = document.getElementById("cuddly");
+  cuddly.addEventListener("click", () =>
+    handleFavoritePersonality(cuddly.value)
+  );
+
+  const antisocial = document.getElementById("antisocial");
+  antisocial.addEventListener("click", () =>
+    handleFavoritePersonality(antisocial.value)
+  );
 };
 
 const preferredType = () => {
-  showMessage(`And which type of cat do you prefer`, "user");
+  showMessage(`Which type of cat do you prefer`, "bot");
   inputWrapper.innerHTML = `
-<select id="select"
+<select id="select">
 <option disabled selected value="">Select your favorite type of cat</option>
 <option id="domestic-long-haired-cat" value="domestic-long-haired-cat">Domestic Long-Haired Cat/Non-Breed</option>
+<option id="domestic-short-haired-cat" value="domestic-short-haired-breed">Domestic Short-Haired Breed</option>
 <option id="short-haired-breed" value="short-haired-breed">Short-Haired Breed</option>
-      <option id="long-haired-breed" value="long-haired-breed">Long-Haired Breed</option>
+<option id="long-haired-breed" value="long-haired-breed">Long-Haired Breed</option>
    </select>
 `;
-  document
-    .getElementById("select")
-    .addEventListener("change", () => handlePreferredType("select"));
+  const select = document.getElementById("select");
+  select.addEventListener("change", () => handlePreferredType(select.value));
 };
 
 const adopt = () => {
   showMessage(
-    `Perfect! We have found the perfect ${favorite} cat for you. Would you like to adopt a cat?`,
+    `Great! We have found the perfect ${favorite} cat for you. 
+    Would you like to adopt a cat?`,
     "bot"
   );
   inputWrapper.innerHTML = `
   <button id="yes" value="yes">Yes!</button>
-    <button id="maybe" value="maybe">I'll think about it</button>
+  <button id="maybe" value="maybe">I'll think about it</button>
   <button id="no" value="no">No</button>
 `;
   document
     .getElementById("yes")
-    .addEventListener("click", () => handleAdoptACat("yes"));
+    .addEventListener("click", () => handleAdoptACat("Yes!"));
   document
     .getElementById("maybe")
-    .addEventListener("click", () => handleAdoptACat("maybe"));
+    .addEventListener("click", () => handleAdoptACat("I'll think about it"));
   document
     .getElementById("no")
-    .addEventListener("click", () => handleAdoptACat("no"));
+    .addEventListener("click", () => handleAdoptACat("No"));
 };
 
 const farewellMessage = () => {
@@ -102,8 +108,8 @@ const farewellMessage = () => {
   inputWrapper.innerHTML = ``;
 };
 
-const handleInput = (event) => {
-  event.preventDefault();
+const handleInput = (message) => {
+  message.preventDefault();
   currentQuestion++;
   if (currentQuestion === 1) {
     handleUserName();
@@ -117,24 +123,25 @@ const handleInput = (event) => {
 };
 
 const handleUserName = () => {
+  // console.log(`${inputValue.value}`);
   userName = inputValue.value;
   showMessage(`${userName}`, "user");
   inputValue.value = "";
   setTimeout(favoritePersonality, setTimeOutTime);
 };
 
-const handleFavoritePersonality = () => {
-  favorite = btn.value;
+const handleFavoritePersonality = (chosenFavorite) => {
+  favorite = chosenFavorite;
   showMessage(`My favorite cat personality is ${favorite}`, "user");
   inputValue.value = ``;
-  setTimeout(adopt, setTimeOutTime);
+  setTimeout(preferredType, setTimeOutTime);
 };
 
-const handlePreferredType = () => {
-  preferredType = select.value;
-  showMessage(`I prefer the ${preferredType}`, "user");
+const handlePreferredType = (preferredCatType) => {
+  console.log(`${inputValue.value}`);
+  showMessage(`I prefer the ${preferredCatType}`, "user");
   inputValue.value = ``;
-  setTimeout(preferredType, setTimeOutTime);
+  setTimeout(adopt, setTimeOutTime);
 };
 
 const handleAdoptACat = (adopt) => {
@@ -145,7 +152,6 @@ const handleAdoptACat = (adopt) => {
 
 //TODO:
 
-// Change undefined personality type input to favorite personality
 // Change user name input to first uppercase letter
 // Add conditionals to adoptACat()
 // Add three different farewell messages
