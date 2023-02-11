@@ -8,27 +8,48 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet" />
-    <title>Book Bot</title>
+    <title>Chat Bot</title>
   </head>
 
-  <body>
-    <h1>Welcome to the book bot.</h1>
-    <h2>We are here for all your book purchasing needs.</h2>
-    <main>
-      <section class="chat" id="chat"></section>
+<body>
+<h1>The book bot</h1>
+</header>
 
-      <div class="input-wrapper" id="input-wrapper">
-        <form id="name-form">
-          <label for="name-input">Name</label>
-          <input id="name-input" type="text" />
-          <button class="send-btn" type="submit">
-            Send
-          </button>
-        </form>
-      </div>
-    </main>
 
-    <script src="./script.js"></script>
-  </body>
+<main>
+    <section class="chat" id="chat">
 
+        <!--
+        <section class="bot-msg">
+            <img src="./bot.png" alt="user bot" />
+            <div class="bubble bot-bubble">
+                <p>message</p>
+            </div>
+        </section>
+
+        <section class="user-msg">
+            <div class="bubble user-bubble">
+                <p>message</p>
+            </div>
+            <img src="./user.png" alt="chat bot" />
+        </section>
+        -->
+
+    </section>
+  
+    <div id="formWrapper">
+      
+      <form id="form">
+          <label for="firstName">Name</label>
+          <input id="firstName" type="text" name="firstNname" required>
+          <button type="submit">Send</button>
+      </form>
+      
+     </div>
+</main>
+<footer>
+  <p>Thanks for visiting out chat bot :)</p>
+</footer>
+<script src="./script.js"></script>
+</body>
 </html>
