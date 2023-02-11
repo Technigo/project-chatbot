@@ -58,7 +58,7 @@ const yesOrNo = () => {
   
 document
   .getElementById("option1")
-  .addEventListener('click', () => {
+  .addEventListener("click", () => {
     showMessage("I would very much like to order, thanks!", 'user')
     inputWrapper.innerHTML = ''
     setTimeout(() => orderProceed("option1"), 1000)
@@ -66,7 +66,7 @@ document
 
 document
   .getElementById("option2")
-  .addEventListener('click', () => {
+  .addEventListener("click", () => {
     showMessage("No thanks, just having a look around!", 'user')
     inputWrapper.innerHTML = ''
     setTimeout(() => orderProceed("option2"), 1000)
@@ -78,8 +78,6 @@ const orderProceed = (selection) => {
   if (selection === "option1") {
     showMessage("Awesome! We have them as plain or with filling and frosting. Which type would you like to order?", 'bot')
     setTimeout(() => plainOrNot(), 1000)
-  }
-}
 
 const plainOrNot = () => {
   inputWrapper.innerHTML = ` 
@@ -89,7 +87,7 @@ const plainOrNot = () => {
   
 document
   .getElementById("plain")
-  .addEventListener('click', () => {
+  .addEventListener("click", () => {
     showMessage("I would love me some plain donuts!", 'user')
     inputWrapper.innerHTML = ''
     setTimeout(() => XXX("plain"), 1000)
@@ -97,20 +95,23 @@ document
 
 document
   .getElementById("fillfrost")
-  .addEventListener('click', () => {
+  .addEventListener("click", () => {
     showMessage("Please get me the ones that are extra everything!", 'user')
     inputWrapper.innerHTML = ''
     setTimeout(() => XXX("fillfrost"), 1000)
   })
 }
+}
 
-
-{ else if (selection === "option2") {
+ else if (selection === "option2") {
     showMessage("Ok, no worries! If you change your mind, just refresh the page. ❤️", 'bot')
     setTimeout(() => inputWrapper.innerHTML= `
     <p>Have a lovely day!</p>`, 1000)
 } 
+
 }
+
+
 
 
 
