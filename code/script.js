@@ -19,6 +19,8 @@ const soundEffectUser = () => {
   const sound = new Audio('short-success-sound-glockenspiel-treasure-video-game-6346.mp3');
   sound.play()
 }
+
+//this one and the other bot-effect does not work on mobile phone. WHY, oh cruel world?
 const soundEffectFinal = () => {
   const sound = new Audio('sport-rock-logo1-13776.mp3');
   sound.play()
@@ -91,7 +93,7 @@ const nextQuestion = (message) => {
 const greetUser = () => {
   questionNumber = 1
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  botSay("Welcome lifeform! Sound on please! What species do you believe yourself to be?");
+  botSay("Welcome lifeform! What species do you believe yourself to be?");
 }
 let guess = "";
 button.addEventListener('click', (event) => {
