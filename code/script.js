@@ -6,6 +6,8 @@ const sendBtn = document.getElementById('send-btn');
 const main = document.getElementById('main');
 const inputWrapper = document.getElementById('input-wrapper');
 
+
+
 // If you need any global variables that you can use across different functions, declare them here:
 
 
@@ -54,12 +56,12 @@ const handleNameInput = (event) => {
   const name = nameInput.value
 
   console.log(name)
-  showMessage(`${name}`, 'user') //Name the user typed in shows uo in a bubble.
+  showMessage(`${name}`, 'user') //Name the user typed in shows up in a bubble.
   
   nameInput.value = '' //resets the input value, clears the field
   
   setTimeout(() => showMessage(`Hello ${name}, what kind of drink would you like?`, 'bot'), 1000)
-  
+  setTimeout(() => hotOrCold(), 2000)
   //showMessage(`Hello ${name}, what kind of drink would you like?`, 'bot');
   // After 1 second, show the next question by invoking the next function.
 	// passing the name into it to have access to the user's name if we want
@@ -68,8 +70,64 @@ const handleNameInput = (event) => {
 }
 
 
+//Now I want two buttons to show på - yes and no
+
+const hotOrCold = (event) => {
+//Adds hot and cold button
+inputWrapper.innerHTML=
+`<button id="hotBtn" type="submit">Hot<button>
+<button id="coldBtn" type="submit">Cold<button>`
+console.log("buttons");
+
+//const hotBtn = document.getElementById('hotBtn')
+//const coldBtn = document.getElementById('coldBtn')
+
+document
+.getElementById('hotBtn')
+.addEventListener('click', () => {
+  showMessage ('Hot', 'user')
+  setTimeout(() =>showMessage('Hot drink it is! Please make another choice.', 'bot'), 1000)
+  setTimeout(() =>hotDrinks(),1500)
+})
 
 
+document
+.getElementById('coldBtn')
+.addEventListener('click', () => {
+  showMessage('Cold', 'user')
+  setTimeout(() =>showMessage('Cold drink it is! Please make another choice.', 'bot'), 1000)
+  setTimeout(() =>coldDrinks(),1500)
+}) 
+}
+
+
+
+
+
+const hotDrinks =(event) =>{
+  inputWrapper.innerHTML=
+  `<button id="coffeeBtn" type="submit">Coffee<button>
+<button id="theBtn" type="submit">The<button>
+<button id="ciderBtn" type="submit">Cider<button>`
+
+}
+
+
+  
+  
+  const coldDrinks = (event) => {
+    inputWrapper.innerHTML=
+  `<button id="sodaBtn" type="submit">Soda<button>
+<button id="beerBtn" type="submit">Beer<button>
+<button id="milkshakeBtn" type="submit">Milkshake<button>`
+  }
+
+
+  
+  //.addEventListener('submit', placeOrder)
+
+
+//const placeOrder = () =>{}
 
 
 // Set up your eventlisteners here
