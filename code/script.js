@@ -139,10 +139,10 @@ const userFeels = (userAnswer) => {
       <button id = "d-metal" type = "submit">Death metal</button>
       `
     document.getElementById('therapy').addEventListener('click' , () => { userReply("Some therapy would be good thanks")
-    setTimeout(() => toDo('therapy')),3000  // calling out the next answer in a new function named facts
+    setTimeout(() => toDo('therapy')),3000  
     }) 
-    document.getElementById('d-metal').addEventListener('click' , () => { userReply("Hook me up for metal")
-    setTimeout(() => toDo('d-metal')),1000  // calling out the next answer in a new function  facts
+    document.getElementById('d-metal').addEventListener('click' , () => { userReply("Hook me up with some metal🛠")
+    setTimeout(() => toDo('d-metal')),1000  
     }) 
 }}
 
@@ -154,10 +154,11 @@ const toDo = (lastChoice) => {
   }
   else if (lastChoice === 'dayOff') {
     setTimeout(() => botReply("Here's a validation for your boss, you have earned the day off!"),1000)
+    setTimeout(() => botReplyPic("https://i.pinimg.com/564x/32/a9/e3/32a9e33772eaddec23df3c319a741bdb.jpg"),1200)  
     setTimeout(() => closure()),1000    
   }
   else if (lastChoice === 'cute') {
-    setTimeout(() => botReplyPic("http://placekitten.com/200/100"),500)
+    setTimeout(() => botReplyPic("http://placekitten.com/200/200"),500)  
     setTimeout(() => closure()),800  
   }
   else if (lastChoice === 'funny') {

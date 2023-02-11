@@ -98,9 +98,14 @@ input {
   height: 60px;
 }
 
+.bot-msg a {
+  text-decoration: none;
+}
+
 .bot-img-reply {
   width: 200px!important;
-  height: 100px!important;
+  height: 200px!important;
+  border-radius: 0px 26px 26px 26px;
 }
 
 .bubble {
