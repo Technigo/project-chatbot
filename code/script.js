@@ -16,6 +16,10 @@ const userReply = (msg) => {
   showMessage(msg, "user");
 };
 
+const botReplyPic = (src) => {
+  showPicture(src);
+}
+
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
@@ -43,6 +47,18 @@ const showMessage = (message, sender) => {
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
+}
+
+const showPicture = (src) => {
+  chat.innerHTML += `
+      <section class="bot-msg">
+        <img src="assets/bot.png" alt="Bot" />
+        <div class="bubble bot-bubble">
+          <img class="bot-img-reply" src="${src}" alt="" />
+        </div>
+      </section>
+    `
+    chat.scrollTop = chat.scrollHeight;
 }
 
 // Starts here
@@ -141,8 +157,8 @@ const toDo = (lastChoice) => {
     setTimeout(() => closure()),1000    
   }
   else if (lastChoice === 'cute') {
-    setTimeout(() => botReply(`<img src="./img/sunbath.jpg" alt="very cute animal">`),1000)
-    setTimeout(() => closure()),1000  
+    setTimeout(() => botReplyPic("http://placekitten.com/200/100"),500)
+    setTimeout(() => closure()),800  
   }
   else if (lastChoice === 'funny') {
     setTimeout(() => botReply("What do you call Batman when he skips church?"),500)

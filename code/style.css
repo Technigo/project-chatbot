@@ -98,6 +98,11 @@ input {
   height: 60px;
 }
 
+.bot-img-reply {
+  width: 200px!important;
+  height: 100px!important;
+}
+
 .bubble {
   background: #e5e9ff;
   font-weight: 600;
