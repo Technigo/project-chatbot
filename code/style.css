@@ -27,7 +27,7 @@ h2 {
 }
 
 p {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 28px;
   margin: 0;
@@ -126,6 +126,7 @@ label {
   font-weight: 500;
   color: #e42915;
   margin-right: 20px;
+  margin-top: 16px;
 }
 
 button {

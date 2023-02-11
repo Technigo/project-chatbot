@@ -50,13 +50,10 @@ const nextQuestion = (message) => {
     setTimeout(() => showFoodTypes(message), 1000)
   } else if (questionNumber === 2) {
     userReply(message)
-    setTimeout(() => showMenu(message), 1000)
+    setTimeout(() => showRecipe (message), 1000)
   } else if (questionNumber === 3) {
     userReply(message)
-    setTimeout(() => showDishSize(message), 1000)
-  } else if (questionNumber === 4) {
-    userReply(message)
-    setTimeout(() => showPrice(message), 1000)
+    setTimeout(() => showRecipe(message), 1000)
   } else {
     userReply(message)
     setTimeout(thankYou, 1000)
@@ -67,9 +64,77 @@ const greeting = () => {
   questionNumber = 1
   botReply(`Howdy hungry human! What's your name?`)
 }
+
 const showFoodTypes = (msg) => {
   questionNumber++
   botReply(`Nice to meet you ${msg}! What kind of recipe are you looking for?`)
+
+  inputWrapper.innerHTML = `
+  <button id="pastaBtn">Pasta</button>
+  <button id="texmexBtn">TexMex</button>
+  <button id="pizzaBtn">Pizza</button>
+  <button id="vegBtn">Vegetarian</button>
+  ` 
+  document
+  .getElementById('pastaBtn')
+  .addEventListener('click', () => nextQuestion ('Pasta'))
+  document
+  .getElementById('texmexBtn')
+  .addEventListener('click', () => nextQuestion ('TexMex'))
+  document
+  .getElementById('pizzaBtn')
+  .addEventListener('click', () => nextQuestion ('Pizza'))
+  document
+  .getElementById('vegBtn')
+  .addEventListener('click', () => nextQuestion ('Vegetarian'))
+}
+
+const showRecipe = (food) => {
+  questionNumber++
+  
+  if (food === 'Pasta') {
+    botReply(`Pasta, huh? Molto bene!`)
+    inputWrapper.innerHTML = `
+    <form id="form">
+      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
+      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
+      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
+    </form>
+  `
+  } else if (food === 'TexMex') {
+    botReply(`TexMex, huh? Muy picante!`)
+    inputWrapper.innerHTML = `
+    <form id="form">
+      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
+      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
+      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
+    </form>
+    `
+  } else if (food === 'Pizza') {
+    botReply(`Pizza, huh? Buon appetito!`)
+    inputWrapper.innerHTML = `
+    <form id="form">
+      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
+      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
+      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
+    </form>
+    `
+  }  else {
+    botReply(`In a veggie mood? Sounds good!`)
+    inputWrapper.innerHTML = `
+    <form id="form">
+      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
+      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
+      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
+    </form>
+    `
+  }
+  const form = document.getElementById('form')
+  form.addEventListener('change', () => thankYou)
+}
+
+const thankYou = () => {
+  botReply(`Thank you for choosing Kiss the Cook-bot! Enjoy your meal!`)
 }
 // Set up your eventlisteners here}
 sendBtn.addEventListener('click', () => nextQuestion(input.value))
