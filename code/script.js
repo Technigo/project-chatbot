@@ -185,22 +185,22 @@ const finish = (monsterAnswer) => {
   <h3>🌟Amazing!🌟</h3>`
 
 if (monsterAnswer === "Bring it on!") {
- botSay(`I'll be damned, you're a honey badger! A total unit and a half! You came as ${guess} and left as honey badger, what a day!`)
+ botSay(`I'll be damned, you're a <strong>honey badger!</strong> A total unit and a half! You came as ${guess} and left as honey badger, what a day!`)
 
 } else if (monsterAnswer === "Fear me, I'm mighty!") {
-  botSay(`I'll be damned! You're a majestic and competent hippo, on the road to grace and glory, positively slaying it! You came a ${guess} and left a hippo, what a day!`)
+  botSay(`I'll be damned! You're a majestic and competent <strong>hippo</strong>, on the road to grace and glory, positively slaying it! You came as ${guess} and left as hippo, what a day!`)
 
 } else if (monsterAnswer === "Just within jumping distance...") {
-  botSay(`I'll be damned! You're a facehugger from the Alien movies! In cyberspace, I hope someone can hear me scream! You came a ${guess} and left a facehugger, what a terrible day to exist!`)
+  botSay(`I'll be damned! You're a <strong>facehugger</strong> from the Alien movies! In cyberspace, I hope someone can hear me scream! You came as ${guess} and left as facehugger, what a terrible day to exist!`)
 
 } else if (monsterAnswer === "Aren't you a sweetheart?") {
-  botSay(`I'll be damned, you're a grandma! Can I have a cookie too? You came a ${guess} and left a grandma, what a day!`)
+  botSay(`I'll be damned, you're a <strong>grandma</strong>! Can I have a cookie too? You came as ${guess} and left as grandma, what a day!`)
 
 } else if (monsterAnswer === "Sluuurp...") {
-  botSay(`I'll be damned, you're a mosquito! Aren't I lucky to be a bloodless, faceless creature forever tucked away in cyberspace, safe from the likes of you yet in constant danger of whatever happens to an artificial being doomed to spend eternity in this vast expanse of simultaneous nothing and everything?`)
+  botSay(`I'll be damned, you're a <strong>mosquito</strong>! Aren't I lucky to be a bloodless, faceless creature forever tucked away in cyberspace, safe from the likes of you yet in constant danger of whatever happens to an artificial being doomed to spend eternity in this vast expanse of simultaneous nothing and everything?`)
 
 } else if (monsterAnswer === "BANG") {
-  botSay(`I'll be damned, you're a pistol shrimp! The fastest gun in the sea! You came a ${guess} and left a pistol shrimp, just another day in the west!`)
+  botSay(`I'll be damned, you're a <strong>pistol shrimp</strong>, the fastest gun in the sea! You came as ${guess} and left as pistol shrimp, just another day in the west!`)
 }
 }
 
