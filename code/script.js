@@ -40,25 +40,28 @@ const showMessage = (message, sender) => {
 const greetUserOrder = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hi there! We hope you're hungry, our donuts are awesome!", 'bot');
-  showMessage("Would you like to place an order?", 'bot');
+  setTimeout(() => userDecision(), 1000)
 }
 
 //Bot asks user if they would like to place an order
-//const userYesOrNo = () => {
-  
-//setTimeout (() => yesOrNo(), 500)}
+const userDecision = () => { 
+  showMessage("Would you like to place an order?", 'bot');
+  setTimeout(() => yesOrNo(), 1000)
+}
 
-//Yes or No-buttons for the user to click
+//Yes or No-buttons for the user to click should appear
 const yesOrNo = () => {
-  inputWrapper.innerHTML += `
-  <button class="send-btn" id="option1" type="submit">Yes</button>
-  <button class="send-btn" id="option2" type="submit">No</button>`
+  inputWrapper.innerHTML = `
+  <button id="option1">Yes</button>
+  <button id="option2">No</button>
+  `
   
 document
   .getElementById("option1")
   .addEventListener('click', () => {
     showMessage("I would very much like to order, thanks!", 'user')
     inputWrapper.innerHTML = ''
+    setTimeout(() => orderProceed("option1"), 1000)
     })
 
 document
@@ -66,8 +69,48 @@ document
   .addEventListener('click', () => {
     showMessage("No thanks, just having a look around!", 'user')
     inputWrapper.innerHTML = ''
+    setTimeout(() => orderProceed("option2"), 1000)
     })
-  } 
+} 
+
+  //If the user clicks the yes-button, the bot continues the ordering process
+const orderProceed = (selection) => {
+  if (selection === "option1") {
+    showMessage("Awesome! We have them as plain or with filling and frosting. Which type would you like to order?", 'bot')
+    setTimeout(() => plainOrNot(), 1000)
+  }
+}
+
+const plainOrNot = () => {
+  inputWrapper.innerHTML = ` 
+  <button id="plain">Plain</button>
+  <button id="fillfrost">Pimped up</button>
+  `
+  
+document
+  .getElementById("plain")
+  .addEventListener('click', () => {
+    showMessage("I would love me some plain donuts!", 'user')
+    inputWrapper.innerHTML = ''
+    setTimeout(() => XXX("plain"), 1000)
+  })
+
+document
+  .getElementById("fillfrost")
+  .addEventListener('click', () => {
+    showMessage("Please get me the ones that are extra everything!", 'user')
+    inputWrapper.innerHTML = ''
+    setTimeout(() => XXX("fillfrost"), 1000)
+  })
+}
+
+
+{ else if (selection === "option2") {
+    showMessage("Ok, no worries! If you change your mind, just refresh the page. ❤️", 'bot')
+    setTimeout(() => inputWrapper.innerHTML= `
+    <p>Have a lovely day!</p>`, 1000)
+} 
+}
 
 
 
