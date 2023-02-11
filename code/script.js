@@ -2,6 +2,8 @@
 const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('input-wrapper');
 const form = document.getElementById('name-form');
+const submit = document.getElementById('submit')
+const nameInput = document.getElementById('name-input')
 // If you need any global variables that you can use across different functions, declare them here:
 
 
@@ -127,7 +129,7 @@ const chooseDonuts = (selection) => {
   .addEventListener("click", () => {
     showMessage("5 donuts will get me through the day", 'user')
     inputWrapper.innerHTML = ''
-    setTimeout(() => xxx("5"), 800)
+    setTimeout(() => deliverPlain("5"), 1000)
   })
 
   document
@@ -135,7 +137,7 @@ const chooseDonuts = (selection) => {
   .addEventListener("click", () => {
     showMessage("I think 10 donuts will be just the right amount", 'user')
     inputWrapper.innerHTML = ''
-    setTimeout(() => xxx("10"), 800)
+    setTimeout(() => deliverPlain("10"), 1000)
   })
 
   document
@@ -143,7 +145,7 @@ const chooseDonuts = (selection) => {
   .addEventListener("click", () => {
     showMessage("I'm on a roll, get me 20 please!", 'user')
     inputWrapper.innerHTML = ''
-    setTimeout(() => xxx("20"), 800)
+    setTimeout(() => deliverPlain("20"), 1000)
   })
 
   }
@@ -187,14 +189,79 @@ const chooseDonuts = (selection) => {
   }
   }
 }
+//If user chose a number of plain donuts, the bot answers to their choices
+const deliverPlain = (selection) => { 
+  if (selection === "5") {
+    showMessage("We agree, 5 donuts coming your way!", 'bot')
+    setTimeout(() => plainDonutsName(), 800)
+  }
 
+  else if (selection === "10") {
+    showMessage("You got it, 10 donuts coming up!", 'bot')
+    setTimeout(() => plainDonutsName(), 800)
+    }
 
+  else if (selection === "20") {
+    showMessage("Happy to keep you on that roll, 20 donuts it is!", 'bot')
+    setTimeout(() => plainDonutsName(), 800)
+  }
 
+}
+//the bot asks for the users name to finalize the order
+const plainDonutsName = () => {
+  showMessage("To complete your order, we also need your name. Please state your name in the field below, thanks!", 'bot');
+  inputWrapper.innerHTML += `
+  <input id="name-input" type="text" placeholder="type your response here"/>
+  <button class="send-btn" type="submit">Send</button>
+  `
+  document
+  .getElementById("name-input")
+  .addEventListener("click", () => {
+  showMessage("My name is ${name}.", 'user')
+  nameInput.value = ''  
+  setTimeout(() => finalQuePlain(), 900)
+  })
+
+}
+
+//const handleNameInput = (event) => {}
+
+const finalQuePlain = () => {
+  showMessage("Before you go ${name}, do you think our donut shop is great??", 'bot');
+  setTimeout(() => yayOrNay(), 700)
+} 
+
+const yayOrNay = () => {
+  inputWrapper.innerHTML = `
+  <button id="yay">Of course, it is the best!</button>
+  <button id="nay">No, it really sucks!</button>
+  `
+  
+document
+  .getElementById("yay")
+  .addEventListener("click", () => {
+    showMessage("I love it!", 'user')
+    inputWrapper.innerHTML = ''
+    setTimeout(() => orderProceed("yay"), 900)
+    })
+
+document
+  .getElementById("nay")
+  .addEventListener("click", () => {
+    showMessage("No, it sucks!", 'user')
+    inputWrapper.innerHTML = ''
+    setTimeout(() => orderProceed("nay"), 900)
+    })
+} 
 
 // Set up your eventlisteners here
 form.addEventListener('submit', (event) => {
 event.preventDefault();
+const value = document.getElementById("name-input").value;
+showMessage(value, 'user')
 })
+
+
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
