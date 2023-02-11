@@ -33,7 +33,7 @@ const showMessage = (message, sender) => {
      `
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-  chat.scrollTop = chat.scrollHeight;
+  chat.scrollTop = chat.scrollHeight
 }
 
 // Chat starting here when bot greets user
@@ -43,8 +43,6 @@ const greetUser = () => {
 //User types in Name and a massage is shown with the users name
 const handleNameInput = (event) => {
   event.preventDefault()
-  console.log('Här ska vi ta hand om namnet')
-  console.log(nameInput.value) 
   showMessage(nameInput.value, 'user')
 
   // Save the username for later
@@ -57,7 +55,7 @@ const handleNameInput = (event) => {
 }
   // Bot greets user
 const nameAnswer = () => {
-  showMessage(`Hi ${username}, what a lovley day for laundry! 🧺 ` ,'bot') 
+  showMessage(`Hi ${username}, what a lovely day for laundry! 🧺 ` ,'bot') 
   setTimeout(() => colorQuestion() , 2500)
 }
 const colorQuestion = () => {
@@ -85,13 +83,13 @@ const colorQuestion = () => {
 
 const tempQuestion = (color) => {
   if (color === 'Dark') {
-    showMessage (`Well ${username}, dark it is! Choose you temperature below!`, 'bot')
+    showMessage (`Well ${username}, dark it is! Choose your temperature below!`, 'bot')
     setTimeout(() => tempSelection(), 1000)
   } else if (color === 'White') {
     showMessage (`Let´s do some white laundry ${username}. At what temp?`, 'bot')
     setTimeout(() => tempSelection(), 1000)
   } else {
-    showMessage (`WOW, that´s daring ${username}. Chose your temp and give it a try`, 'bot')
+    showMessage (`WOW, that´s daring ${username}. Choose your temp and give it a try`, 'bot')
     setTimeout(() => tempSelection(), 1000)
   }
   inputWrapper.innerHTML =''
@@ -119,7 +117,7 @@ showMessage(selectTemp.value + '°', 'user')
     showMessage (`That´s cool ${username}!`, 'bot'), 1000)
   } else {
     setTimeout(() =>
-    showMessage (`Dirty laundry ${username}, in for washing!`, 'bot'), 1000)
+    showMessage (`Dirty laundry, in for washing ${username}!`, 'bot'), 1000)
   }
 
     inputWrapper.innerHTML =''
@@ -146,13 +144,13 @@ const tumbleQuestion = () => {
 
 const timeSet = (tumbleAnswer) => {
   if (tumbleAnswer === 'Yes') {
-    showMessage ('Washing and drying will be aprox 2 h' ,'bot')
+    showMessage ('Washing and drying will take approx. 2 h' ,'bot')
     setTimeout(() =>  
     showMessage ('Room 1' , 'bot'), 2000)
     setTimeout(() =>  
     showMessage ('Enter code: 112233' , 'bot'), 2000)
   } else {
-    showMessage ('Only washing will be aprox 1 h' ,'bot')
+    showMessage ('Only washing will take approx. 1 h' ,'bot')
     setTimeout(() =>  
     showMessage ('Room 2' , 'bot'), 2000)
     setTimeout(() =>  
@@ -169,9 +167,9 @@ const lastQuestion = () => {
   `
   document.getElementById('moreBtn')
   .addEventListener('click', () => {
-  showMessage ('Please reload the page and fill a new reques', 'bot')
+  showMessage ('Please reload the page and fill a new request!', 'bot')
   setTimeout(() =>
-  showMessage ('❗️Don´t forget to save you code❗️', 'bot'), 2000)
+  showMessage ('❗️Don´t forget to save your code❗️', 'bot'), 2000)
   setTimeout(() => end(), 2000)
 })
   document.getElementById('doneBtn')

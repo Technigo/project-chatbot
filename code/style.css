@@ -1,5 +1,4 @@
 /* HEXcolors
-
 LightPink:#f0efef
 Pink: #e4d1d1
 Purple: #b9b0b0
@@ -47,9 +46,9 @@ input {
   border-radius: 4px 0 0 4px;
   background: #e4d1d1;
   color: #77a8a8;
+  font-family: 'Bradley Hand', cursive;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -91,8 +90,7 @@ main {
   flex-shrink: 0;
 }
 
-.bot-msg img,
-.user-msg img {
+.bot-msg img, .user-msg img {
   width: 60px;
   height: 60px;
 }
@@ -103,9 +101,8 @@ main {
   line-height: 26px;
   padding: 16px 24px;
   max-width: 40%;
-  word-break: break-word;
+  white-space: wrap;
 }
-
 
 .bot-bubble {
   background: #e4d1d1;
@@ -138,10 +135,10 @@ button {
   border: none;
   border-radius: 4px;
   padding: 16px 40px;
-  margin-right: 4px;
+  margin: 20px;
+  font-family: 'Bradley Hand', cursive;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -154,7 +151,6 @@ button:hover {
 
 #selectTemp {
   font-size: 24px;
-  font-family: 'Bradley Hand', cursive;
   cursor: pointer;
   padding: 10px 40px;
   margin: 20px;
@@ -167,4 +163,15 @@ button:hover {
 #reloadBtn {
   background-color: #b9b0b0;
   color:#d9ecd0;
+}
+
+footer {
+  font-size: 12px;
+  font-family: Optima, sans-serif;
+  color: #b9b0b0;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  width: 100%;
+  text-align: center;
 }
