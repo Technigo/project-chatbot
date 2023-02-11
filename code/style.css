@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Almendra&display=swap");
+
 * {
   box-sizing: border-box;
 }
@@ -5,8 +7,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: "Almendra", serif;
+  background: #225136;
 }
 
 h1 {
@@ -41,7 +43,7 @@ input {
   color: #0026ff;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -83,8 +85,15 @@ main {
   flex-shrink: 0;
 }
 
+.story-msg {
+  display: flex;
+  margin: 16px 8px 0 0;
+  flex-shrink: 0;
+}
+
 .bot-msg img,
-.user-msg img {
+.user-msg img,
+.story-msg img {
   width: 60px;
   height: 60px;
 }
@@ -95,7 +104,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #070707;
   max-width: 40%;
 }
 
@@ -107,6 +116,13 @@ main {
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  background-color: rgb(255, 126, 126);
+}
+.story-bubble {
+  border-radius: 0px 26px 26px 26px;
+  margin-left: 8px;
+  max-width: 80%;
+  background-color: #bfa58a;
 }
 
 .input-wrapper {
@@ -122,14 +138,14 @@ main {
 
 label {
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
-  color: #0026ff;
+  color: #225136;
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #225136;
   color: white;
   border: none;
   border-radius: 4px;
@@ -137,7 +153,7 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -146,4 +162,17 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+.class {
+  width: 40%;
+  display: block;
+  text-align: center;
+}
+.input-wrapper select {
+  width: 100%;
+}
+
+select {
+  height: 100%;
 }

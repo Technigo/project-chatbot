@@ -9,6 +9,11 @@ const sendButton = document.querySelector(".send-btn");
 const stew = document.getElementById("#stew");
 
 let usersName, classChoice, questChoice, travelChoice;
+let audio = new Audio("assets/audio.mp3");
+
+const botIsWriting = () => {
+  chat.innerHTML += "Bot is wrting...";
+};
 
 const showMessage = (message, sender) => {
   if (sender === "user") {
@@ -20,6 +25,7 @@ const showMessage = (message, sender) => {
         <img src="assets/knight.png" alt="User" />  
       </section>
     `;
+    audio.play();
   } else if (sender === "bot") {
     chat.innerHTML += `
       <section class="bot-msg">
@@ -29,15 +35,17 @@ const showMessage = (message, sender) => {
         </div>
       </section>
     `;
+    audio.play();
   } else if (sender === "story") {
     chat.innerHTML += `
-      <section class="bot-msg">
-        <img src="assets/smoke.png" alt="Bot" />
-        <div class="bubble bot-bubble">
+      <section class="story-msg">
+        <img src="assets/smoke.png" alt="story" />
+        <div class="bubble story-bubble">
           <p>${message}</p>
         </div>
       </section>
     `;
+    audio.play();
   }
   // Makes the chat scroll to the last message
   chat.scrollTop = chat.scrollHeight;
@@ -45,15 +53,15 @@ const showMessage = (message, sender) => {
 
 const backgroundStory = () => {
   showMessage(
-    "In a magical land far, far, away a figure arises from the shadows, and walk into a tavern. His eyes are dark and he walks up to the innkeeper. He calls the inkeeper to him and smiles like meeting an old friend...",
+    "In a magical land far, far away, a figure arises from the shadows and walks into a tavern. His eyes are dark, and he walks up to the innkeeper. He calls the innkeeper to him and smiles like he is meeting an old friend...",
     "story"
   );
-  showMessage("The inkeeper smiles back and says:", "story");
+  showMessage("The innkeeper smiles back and says:", "story");
   setTimeout(greetUser, 1000);
 };
 
 const greetUser = () => {
-  showMessage("Hello there, What's your name?", "bot");
+  showMessage("Hello there, what's your name traveller?", "bot");
 };
 
 // Set up your eventlisteners here
@@ -62,7 +70,7 @@ sendButton.addEventListener("click", (e) => {
   usersName = nameInput.value;
   if (usersName === "") {
     showMessage(
-      "what did you say, i could not hear you. Please tell me your name, friend",
+      "What did you say? I could not hear you. Please tell me your name, friend",
       "bot"
     );
   } else {
@@ -75,7 +83,7 @@ function askNextQuestion() {
   setTimeout(
     () =>
       showMessage(
-        `${usersName}? I have heard that name before, what race are you?`,
+        `${usersName}? I have heard that name before; what race are you?`,
         "bot"
       ),
     1000
@@ -88,11 +96,12 @@ function askNextQuestion() {
 const showClassOptions = () => {
   inputWrapper.innerHTML += `
   <select id="class">
-  <option value="Human">Human</option>
+  <option value="human">Human</option>
   <option value="elf">Elf</option>
   <option value="dwarf">Dwarf</option>
   <option value="orc">Orc</option>
 </select>
+
 <button id="options-btn" type="send">Chose your class</button>
   `;
   const optionButton = document.getElementById("options-btn");
@@ -106,12 +115,12 @@ const showClassOptions = () => {
 
     setTimeout(() => {
       showMessage(
-        `Oh! So you are ${usersName} the adventures ${classChoice}?? ...Interesting...`,
+        `Oh! So you are the famous ${usersName} the adventuring ${classChoice}?? ...Interesting...`,
         "bot"
       );
       setTimeout(() => {
         showMessage(
-          "...I might have a nice adventure for you, there might be a big reward",
+          "...I might have an excellent adventure for you, and there might be a big reward...",
           "bot"
         );
         questPicker();
@@ -123,7 +132,7 @@ const showClassOptions = () => {
 const questPicker = () => {
   inputWrapper.innerHTML += `
   <button value="save-the-queen" id="quest-queen">Save the Queen</button>
-  <button value="find-the-arc" id="quest-arc">Find the lost arc</button>`;
+  <button value="find-the-arc" id="quest-arc">Find the lost Arc</button>`;
   const questQueenButton = document.getElementById("quest-queen");
   const questArcButton = document.getElementById("quest-arc");
   questQueenButton.addEventListener("click", () => {
@@ -146,10 +155,10 @@ const questPicker = () => {
     questChoice = questArcButton.value;
     questQueenButton.remove();
     questArcButton.remove();
-    showMessage(`I want to find the arc}`, "user");
+    showMessage(`I want to find the Arc`, "user");
     setTimeout(() => {
       showMessage(
-        `Oh, the great Arc of Boromir! Great choice ${classChoice}. The arc is deep in the lake of Do'rem`,
+        `Oh, the great Arc of Boromir! Great choice ${classChoice}. The Arc is deep in the lake of Do'rem`,
         "bot"
       );
       setTimeout(() => {
@@ -170,14 +179,14 @@ const travelPicker = () => {
     travelChoice = yesButton.value;
     yesButton.remove();
     noButton.remove();
-    showMessage(`${travelChoice}`, "user");
+    showMessage(`${travelChoice}, teleport me good sir!`, "user");
     endGame();
   });
   noButton.addEventListener("click", () => {
     travelChoice = noButton.value;
     yesButton.remove();
     noButton.remove();
-    showMessage(`${travelChoice}`, "user");
+    showMessage(`${travelChoice}...`, "user");
     endGame();
   });
 };
@@ -187,7 +196,7 @@ const endGame = () => {
     //Func
     if (questChoice === "save-the-queen" && travelChoice === "yes") {
       showMessage(
-        `The magical inkeeper teleports ${usersName} to the fogin land of Terra´mara where the big castle lies. Its an inpressive building with high walls. Infront of the castle a old women meets you. The queen. She thanks you for saving her but that she dosent need to be saved. You walk all the way home. Wheres a wizard when you need on? `,
+        `The magical innkeeper teleports ${usersName} to the foreign land of Terra'mara where the big castle lies. It's an impressive building with high walls. In front of the castle, an older woman meets you: The Queen. She thanks you for saving her, but she doesn't need to be saved. You walk all the way home. Where is a wizard when you need one?`,
         "story"
       );
       setTimeout(() => {
@@ -195,19 +204,25 @@ const endGame = () => {
       }, 2000);
     } else if (questChoice === "save-the-queen" && travelChoice === "no") {
       showMessage(
-        `You say "hell no!" and decide to skip this andventure altogether and start a pigfarm`,
+        `${usersName} say "hell no!" and decide to skip this andventure altogether and start a pigfarm`,
         "story"
       );
       setTimeout(() => {
-        showMessage("You lose the game...");
+        showMessage("You lose the game...", "story");
       }, 2000);
     } else if (questChoice === "find-the-arc" && travelChoice === "yes") {
-      showMessage(`quest arc yes`, "story");
+      showMessage(
+        `The wizard teleports you to the lake of Do'rem, where you find the Arc on the shoreline. Suddenly you are hit by an arrow and die a slow and painful death`,
+        "story"
+      );
       setTimeout(() => {
-        showMessage("You win the game", "story");
+        showMessage("You lose the game...", "story");
       }, 2000);
     } else if (questChoice === "find-the-arc" && travelChoice === "no") {
-      showMessage(`quest arc no`, "story");
+      showMessage(
+        `${usersName} say "hell no!" and decide to skip this andventure altogether and start a pigfarm`,
+        "story"
+      );
       setTimeout(() => {
         showMessage("You lose the game...", "story");
       }, 2000);
