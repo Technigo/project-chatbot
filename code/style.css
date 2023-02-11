@@ -192,9 +192,8 @@ button:hover {
   border-radius: 20px;
   margin: 5px;
   font-size: 14px;
-  padding: 16px 20px;
+  padding: 16px 40px;
 }
-
 
 
 select {
@@ -233,6 +232,11 @@ appearance: none;
 .selectBtn:hover {
   background-color: #a1736b;
 }
+
+#scissorLogo {
+  cursor: pointer;
+}
+
 
 #scissorLogo:hover {
   opacity: 0.6;
