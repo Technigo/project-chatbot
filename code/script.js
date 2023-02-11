@@ -31,7 +31,7 @@ const handleNameInput = (event) => {
    
   }else{
 
-    botsay = `Hi ${name}!Nice to meet you, do you have a room card?`;
+    botsay = `Hi ${name}! Nice to meet you, do you have a room card?`;
    
   };
   setTimeout(() => showMessage(botsay,"bot"), 1000);
