@@ -1,12 +1,21 @@
 # Project Name
+In the first week of Technigo web development bootcamp, the task was to create a chatbot, and in doing so practice basic Javascript concepts and syntaxes. 
 
-Replace this readme with your own information about your project.
+The goal this week was to begin learning the following:
+✓ How to use variables in JavaScript.
+✓ How to use conditionals in JavaScript.
+✓ Know some string methods to modify strings.
+✓ Understand control flow and the use of conditional statements.
+✓ How to use functions in JavaScript
+✓ Different datatypes
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+For my project, I created a chatbot for an imaginary hair salon, where you can book an appointment, but also get information on opening hours or random style advice.
 
 ## The problem
+I began creating the basic functionality, practicing the concepts of functions, eventlisteners and different variables in small fractions. Once I got comfortable with the way of thinking, I scaled up the project to integrate and include more things and got creative with the content and style. It was also very helpful to create a flow diagram, to visualize what I wanted to do with my code.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+If I had more time, I would definitely dig into refactorization of the code and make it more condense, readable and generic. I would also try to incorporate more types of user input for practice.
+
 
 ## View it live
 
