@@ -130,9 +130,9 @@ const showSizes = (type) => {
     inputWrapper.innerHTML = `
       <select id="select">
         <option value=""selected disabled>Number of scoops</option>
-        <option value="One">1</option>
-        <option value="Two">2</option>
-        <option value="Three">3</option>
+        <option value="1 scoop">1 scoop</option>
+        <option value="2 scoops">2 scoops</option>
+        <option value="3 scoops">3 scoops</option>
       </select>
     `
   }
@@ -141,10 +141,10 @@ const showSizes = (type) => {
   select.addEventListener('change', () => nextQuestion(select.value))
 }
 
-  const showServingTopping = (msg) => {
+  const showServingTopping = (type) => {
     questionNumber++
 
-    botReply(`Would you like to pimp your ice-cream (${msg}) with a topping?`)
+    botReply(`Would you like to pimp your ${type} ice-cream with a topping?`)
   
   inputWrapper.innerHTML = `
     <button id="yesBtn">Yes</button>
@@ -161,8 +161,7 @@ const showSizes = (type) => {
 const showToppingOptions = (type) => {
   questionNumber++
 
-  botReply (
-    `Good call ${msg}! Which topping would you like?`)
+  botReply (`Good call ${type}! Which topping would you like?`)
     
   if (type === 'Yes') {
     inputWrapper.innerHTML =`
@@ -174,13 +173,25 @@ const showToppingOptions = (type) => {
         <option value="cream">Whipped cream</option>
       </select>
     `
-  } //else {
-    //inputWrapper.innerHTML = ``
-  //}
+  } else {
+    inputWrapper.innerHTML =`
+    <select id="select">
+        <option value=""selected disabled>No topping for me</option>
+      </select>
+    `
+  }
+  /*const select = document.getElementById('select')
+  select.addEventListener('change', () => nextQuestion(select.value)) 
 
-  const showPlaceOrder = (type) => {
+  document
+    .getElementById('orderBtn')
+    .addEventListener('click', () => nextQuestion('No'))
+  } */
+  }
+
+  /*const showPlaceOrder = (type) => {
     questionNumber++
-    botReply(`Would you like to place your order?`)
+    botReply(`Would you like to ${type} place your order?`)
   
     inputWrapper.innerHTML = `
     <button id="yesBtn">Yes</button>
@@ -194,19 +205,10 @@ const showToppingOptions = (type) => {
       .addEventListener('click', () => nextQuestion('No'))  
   }
 
-
-
-
-    //if (type === 'Yes') {
-
-
-
   botReply(
     `Thank you ${msg} for your order! Pls pay at the cashier.`
-  )
+  )*/
 
-
-}
   
   sendBtn.addEventListener('click', () => nextQuestion(input.value))
   input.addEventListener('keypress', (event) => {
@@ -217,9 +219,6 @@ const showToppingOptions = (type) => {
 
 
 
-//add values for if scoop is chosen. 1-3 scoops. 
-//add question for Would you like any toppings (Yes/No)
-//add values if toppings is chosen. Chocolate sauce, Fresh strawberries, Rainbow sprinkles, roasted almonds
 //add question "Would you like to place your order?"
 // If yes, "Thank you for your order!"
 // If no the chat will be deleted. 
@@ -230,34 +229,3 @@ const showToppingOptions = (type) => {
 
 // When website loaded, chatbot asks first question.
 setTimeout(greetUser, 800);
-
-
-// Set up your eventlisteners here
-  //document.getElementById("").addEventListener("",() {
-    //get inputs 
-  //});
-
-
-//let userName = nameInput.value
-//showMessage(`${userName}`, 'user'); 
-
-
-//const handleNameInput = (event) => {
-  //event.preventDefault()
-
-//const name = nameInput.value
-//showMessage(name, 'user')
-
-//nameInput.value = ''
-//}
-
-//setTimeout(functionName, timeToWait)
-//greetUser();
-
-
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-
