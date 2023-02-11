@@ -21,7 +21,8 @@ const showMessage = (message, sender) => {
 
 // Sound effect
 const messageSound = () => {
-  let audio = new Audio("https://notificationsounds.com/storage/sounds/file-sounds-1233-elegant.mp3")
+  let audio = new Audio("assets/tweet-416.mp3")
+  audio.volume = 0.1;
   audio.play();
 }
 
@@ -47,8 +48,8 @@ const messageSound = () => {
     `
   }
 // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
- chat.scrollTop = chat.scrollHeight;
- messageSound();
+  chat.scrollTop = chat.scrollHeight;
+  messageSound();
 }
 
 //This function makes the bot continue the conversation
@@ -60,15 +61,11 @@ const nextQuestion = (message) => {
 
   if (questionNr === 1) {
     userReply(message)
-    setTimeout(() => showCuisineTypes(message), 1000)
+    input.value = ''
+    setTimeout(() => ShowCuisineTypes(message), 1000)
   } else if (questionNr === 2) {
     userReply(message)
-    setTimeout(() => showRestaurant(message), 1000)
-  
-  //} else if (questionNr === 3) {
-  //  userReply(message)
-  //  setTimeout(() => showAddress(message), 1000)
-
+    setTimeout(() => showOptions(message), 1000)
   } else if (questionNr === 3) {
     userReply(message)
     setTimeout(() => happyChoice(message), 1000)
@@ -85,15 +82,16 @@ const greetUser = () => {
   botReply(`Hello there, what's your name?😄`)
 }
 
-const showCuisineTypes = (msg) => {
+const ShowCuisineTypes = (msg) => {
   questionNr++
-  botReply(`Nice to meet you ${msg}! What type of cuisine would you like to explore?`)
+  botReply(`Nice too meet you ${msg}! What type of cuisine would you like to explore?`)
 
   inputWrapper.innerHTML = `
   <button id="italianBtn">Italian</button>
   <button id="asianBtn">Asian</button>
   <button id="middleEasternBtn">Middle Eastern</button>
   `
+// Set up your eventlisteners here
   document
     .getElementById('italianBtn')
     .addEventListener('click', () => nextQuestion('Italian'))
@@ -105,14 +103,14 @@ const showCuisineTypes = (msg) => {
     .addEventListener('click', () => nextQuestion('Middle Eastern'))
 }
 
-const showRestaurant = (type) => {
+const showOptions = (type) => {
   questionNr++
   botReply(`Oh so you're in the mood for ${type}? Yum..🤤`)
   botReply(`Select a place from the options!`)
 
   if (type === 'Italian') {
     inputWrapper.innerHTML = `
-    <select id="select-">
+    <select id="select">
      <option value="" selected disabled>👇 Select a restaurant.. 👇</option>
      <option value="La Nonna">La Nonna</option>
      <option value="OLLI">OLLI</option>
@@ -122,7 +120,7 @@ const showRestaurant = (type) => {
   } else if (type === 'Asian') {
     inputWrapper.innerHTML = `
     <select id="select">
-    <option value="" selected disabled>👇 Select a restaurant.. 👇</option>
+     <option value="" selected disabled>👇 Select a restaurant.. 👇</option>
      <option value="Surfers">Surfers</option>
      <option value="APO">APO: Asian Post Office</option>
      <option value="Sin ramen">Sin ramen</option>
@@ -131,55 +129,17 @@ const showRestaurant = (type) => {
   } else {
     inputWrapper.innerHTML = `
     <select id="select">
-    <option value="" selected disabled>👇 Select a restaurant.. 👇</option>
-     <option value="MOAS">MOAS: Meat On A Stick</option>
+     <option value="" selected disabled>👇 Select a restaurant.. 👇</option>
+     <option value="MOAS">M.O.A.S: Meat On A Stick</option>
      <option value="Tabbouli">Tabbouli</option>
      <option value="Babel Deli">Babel Deli</option>
     </select>
     `
   }
+
   const select = document.getElementById('select')
   select.addEventListener('change', () => nextQuestion(select.value))
-
-//  const allSelects = document.querySelectorAll(".select");
-//  allSelects.forEach(select => select.addEventListener('change', (event) => {
-//    nextQuestion(event.target.value)
-//  }))
-
 }
-
-//  Depending on which restaurant they choose give a different adress
-//const showAddress = (selectedRestaurant) => {
-//  questionNr++
-
-//  let address;
-//  if (selectedRestaurant === "lanonna") {
-//    address = "Fleminggatan 45, 112 32 Stockholm"
-//  } else if (selectedRestaurant === "olli") {
-//    address = "Jakobsbergsgatan 21, 111 44 Stockholm"
-//  } else if (selectedRestaurant === "capricci") {
-//    address = "Hornstulls strand 4, 117 39 Stockholm"
-
-//  } else if (selectedRestaurant === "surfers") {
-//    address = "Norrlandsgatan 24, 111 43 Stockholm"
-//  } else if (selectedRestaurant === "apo") {
-//    address = "Regeringsgatan 66, 111 39 Stockholm"
-//  } else if (selectedRestaurant === "sinramen") {
-//    address = "Jakobsbergsgatan 23, 111 44 Stockholm"
-  
-//  } else if (selectedRestaurant === "moas"){
-//    address = "Roslagsgatan 6, 113 55 Stockholm"
-//  } else if (selectedRestaurant === "tabbouli"){
-//    address = "Tavastgatan 22, 118 24 Stockholm"
-//  } else  {
-//    address = "Kungstensgatan 33, 113 57 Stockholm"
-//  }
-  
-// alert(`You're in for a treat! The restaurant is located at ${address}`)
-//}
-
-
-////////////////////
 
 const happyChoice = (choice) => {
   questionNr++
