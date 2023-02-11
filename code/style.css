@@ -2,6 +2,8 @@
   box-sizing: border-box;
 }
 
+
+
 body {
   margin: 0;
   padding: 0;
@@ -24,6 +26,12 @@ h2 {
   color: #fff;
   text-align: center;
   margin-bottom: 36px;
+  font-style: italic;
+}
+
+h3 {
+  font-size: 40px;
+  color: #fff;
 }
 
 h5 {

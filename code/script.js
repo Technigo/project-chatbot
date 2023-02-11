@@ -3,11 +3,12 @@ const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById("input-wrapper")
 const nameInput = document.getElementById("name-input")
 const button = document.getElementById("button")
-// If you need any global variables that you can use across different functions, declare them here:
+
+//global variables 
 let questionNumber = 1
 
 
-// Declare your functions after this comment
+
 
 //Sound effects from Pixabay!
 const soundEffectBot = () => {
@@ -185,25 +186,25 @@ const finish = (monsterAnswer) => {
   questionNumber++
   soundEffectFinal();
   inputWrapper.innerHTML = `
-  <h2>🌟Amazing!🌟.</h2>`
+  <h3>🌟Amazing!🌟</h3>`
 
 if (monsterAnswer === "Bring it on!") {
- botSay(`I'll be damned, you're a honey badger! A total unit and a half!`)
+ botSay(`I'll be damned, you're a honey badger! A total unit and a half! You came as ${guess} and left as honey badger, what a day!`)
 
 } else if (monsterAnswer === "Fear me, I'm mighty!") {
-  botSay(`I'll be damned! You're a majestic and competent hippo, on the road to grace and glory, positively slaying it!`)
+  botSay(`I'll be damned! You're a majestic and competent hippo, on the road to grace and glory, positively slaying it! You came a ${guess} and left a hippo, what a day!`)
 
 } else if (monsterAnswer === "Just within jumping distance...") {
-  botSay(`I'll be damned! You're a facehugger from the Alien movies! In cyberspace, I hope someone can hear me scream!`)
+  botSay(`I'll be damned! You're a facehugger from the Alien movies! In cyberspace, I hope someone can hear me scream! You came a ${guess} and left a facehugger, what a terrible day to exist!`)
 
 } else if (monsterAnswer === "Aren't you a sweetheart?") {
-  botSay(`I'll be damned, you're a grandma! Can I have a cookie too?`)
+  botSay(`I'll be damned, you're a grandma! Can I have a cookie too? You came a ${guess} and left a grandma, what a day!`)
 
 } else if (monsterAnswer === "Sluuurp...") {
   botSay(`I'll be damned, you're a mosquito! Aren't I lucky to be a bloodless, faceless creature forever tucked away in cyberspace, safe from the likes of you yet in constant danger of whatever happens to an artificial being doomed to spend eternity in this vast expanse of simultaneous nothing and everything?`)
 
 } else if (monsterAnswer === "BANG") {
-  botSay(`I'll be damned, you're a pistol shrimp! The fastest gun in the sea!`)
+  botSay(`I'll be damned, you're a pistol shrimp! The fastest gun in the sea! You came a ${guess} and left a pistol shrimp, just another day in the west!`)
 }
 }
 
