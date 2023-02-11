@@ -49,12 +49,19 @@ const messageSound = () => {
   }
 // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
+// Handles sound effect
   messageSound();
 }
 
+// How the bot acts when user responds
+form.addEventListener("submit", (event) => {
+  event.preventDefault()
+  nextQuestion(input.value)
+  input.value=""})
+
 //This function makes the bot continue the conversation
  // After 1 second, show the next question by invoking the next function.
- // passing the name into it to have access to the user's name if we want
+ // passing the input into it to have access to the user's answer if we want
  // to use it in the next question from the bot.
 const nextQuestion = (message) => {
   console.log('questionNr', questionNr)
@@ -75,23 +82,29 @@ const nextQuestion = (message) => {
   }
 }
 
-// Starts here
- //Greeting and questions
+// CHAT BOT STARTS HERE // CHAT BOT STARTS HERE // CHAT BOT STARTS HERE //
+
+ // GREETING //
 const greetUser = () => {
   questionNr = 1
   botReply(`Hello there, what's your name?😄`)
 }
+// When website loaded, chatbot starts with greeting.
+// This means the greeting function will be called 1,5 second after the website is loaded.
+setTimeout(greetUser, 1500)
 
+ // FIRST QUESTION //
 const ShowCuisineTypes = (msg) => {
   questionNr++
   botReply(`Nice too meet you ${msg}! What type of cuisine would you like to explore?`)
 
+ // Gives the user 3 buttons to choose cuisine
   inputWrapper.innerHTML = `
   <button id="italianBtn">Italian</button>
   <button id="asianBtn">Asian</button>
   <button id="middleEasternBtn">Middle Eastern</button>
   `
-// Set up your eventlisteners here
+ // When user clicks button "x" pass along the answer to conversation-function "nextQuestion" 
   document
     .getElementById('italianBtn')
     .addEventListener('click', () => nextQuestion('Italian'))
@@ -102,12 +115,12 @@ const ShowCuisineTypes = (msg) => {
     .getElementById('middleEasternBtn')
     .addEventListener('click', () => nextQuestion('Middle Eastern'))
 }
-
+// SECOND QUESTION //
 const showOptions = (type) => {
   questionNr++
   botReply(`Oh so you're in the mood for ${type}? Yum..🤤`)
   botReply(`Select a place from the options!`)
-
+// Depending on what cuisine type show different select list
   if (type === 'Italian') {
     inputWrapper.innerHTML = `
     <select id="select">
@@ -136,41 +149,33 @@ const showOptions = (type) => {
     </select>
     `
   }
-
+ // When user select option pass along the answer to conversation-function "nextQuestion" 
   const select = document.getElementById('select')
   select.addEventListener('change', () => nextQuestion(select.value))
 }
-
+// THIRD QUESTION //
 const happyChoice = (choice) => {
   questionNr++
   botReply(`You're in for a treat😍 Are you happy with your choice?`)
-
+  // Gives the user 2 buttons to choose yes/no
   inputWrapper.innerHTML = `
     <button id="restart">NO</button>
     <button id="confirm">YES</button>
   `
+  // When user chooses NO, restart the bot
   document
   .getElementById('restart')
   .addEventListener('click', () => {
     location.reload()
     return false
   })
+  // When user chooses YES, pass along the answer to conversation-function "nextQuestion" 
   document
     .getElementById('confirm')
     .addEventListener('click', () => nextQuestion('Yes!'))
 }
-
+// LAST MESSAGE //
 const thankYou = () => {
   botReply(`Thank you for using TheGuide! Feel free to come back and explore more👋`)
   inputWrapper.innerHTML = ``
 }
-
-// How the bot acts when user responds
-form.addEventListener("submit", (event) => {
-  event.preventDefault()
-  nextQuestion(input.value)
-  input.value=""})
-
-// When website loaded, chatbot asks first question.
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1500)
