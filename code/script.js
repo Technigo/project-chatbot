@@ -36,7 +36,7 @@ const showMessage = (message, sender) => {
 //Greeting
 const greeting = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello, what's your name?", "bot");
+  showMessage("Hello, enter your name and table number.", "bot");
   nameForm.addEventListener("submit", handleInput);
 };
 
@@ -45,14 +45,14 @@ const greeting = () => {
 const handleInput = (event) => {
   event.preventDefault(); //prevents refreshing the page
   let userName = nameInput.value;
-  showMessage(`My name is ${userName}.`, "user");
+  showMessage(`Name and table number: ${userName}.`, "user");
   nameInput.value = ""; //clears the answer field
   setTimeout(() => question1(userName), 2000);  // goes to next question, and passes username as a prop. 
 };
 
 //Bot askes about the order
 const question1 = (userName) => {
-  showMessage(`Hello ${userName}! Are you over 20 years old?`, "bot");
+  showMessage(`Name and number: ${userName}! Are you over 20 years old?`, "bot");
   setTimeout(() => question2(), 1000);
 };
 
