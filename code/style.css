@@ -13,7 +13,7 @@ h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: 	#450101;
+  color: #e5cb7a;
   text-align: center;
 }
 
@@ -21,9 +21,21 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: 	#450101;
+  color: 	#e5cb7a;
   text-align: center;
   margin-bottom: 36px;
+}
+
+#background-video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
 }
 
 p {
@@ -61,6 +73,7 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  opacity: 0.9;
 }
 
 .chat {
@@ -196,4 +209,3 @@ button:hover {
 .box select option {
   padding: 30px;
 }
-
