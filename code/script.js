@@ -8,15 +8,18 @@ const sendBtn = document.getElementById('send')
 const bottrack = new Audio('./assets/zoltartrack.mp3')
 const zoltarSound = () => {
       bottrack.play()
+      bottrack.volume = 0.2
 }
 const usertrack = new Audio('./assets/usertrack.mp3')
 const userSound = () => {
       usertrack.play()
+      usertrack.volume = 0.2
 }
 const throatsing = new Audio('./assets/introsong.mp3')
 const introSound = () => {
       throatsing.play()
-}
+      throatsing.volume = 0.2
+    }
 
 let questionNumber = 1
 
