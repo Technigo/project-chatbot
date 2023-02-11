@@ -34,5 +34,5 @@ Over to the CSS, no big add-ons on the boilerplate given to us, but with my pers
 
 ### **Links**
 
-- GitHub URL: [Github](https://github.com/Technigo/project-chatbot)
+- GitHub URL: [Github](https://github.com/dannebrob/project-chatbot)
 - Live Site URL: [Technigo-news-site](https://technigo-fantasy-chat-bot.netlify.app/)
