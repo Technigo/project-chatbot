@@ -151,17 +151,19 @@ label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  color: black;
   margin-right: 20px;
+  font-weight: bold;
 }
 
 button {
-  background-color: #e09248;
+  display: inline-block;
+  background-color: #f29b49;
   color: white;
   border: none;
   border-radius: 50%;
   padding: 16px 40px;
-  margin-right: 4px;
+  margin: 8px 4px 0 4px;
   font-size: 16px;
   line-height: 26px;
   font-family: 'Montserrat';
@@ -176,12 +178,5 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-/*
-#btnBig, #btnAverage, #btnSmall {
-  background-color: rgb(20, 187, 95);
-}*/
 
-label {
-  color: black;
-}
 
