@@ -230,7 +230,7 @@ const smellQuestion = (numberOfSounds) => {
       showMessage("Awesome! Your ears are sharp.", "bot")
     }
 
-  setTimeout(() => showMessage("Now, time to use your nose. What one smell do you notice the most?", "bot"), 900)
+  setTimeout(() => showMessage("Now, time to use your nose. What smell do you notice the most?", "bot"), 900)
   inputWrapper.innerHTML = `
    <div class="input-wrapper" id="input-wrapper">
     <form id="smell-form">
