@@ -8,9 +8,10 @@ const button = document.getElementById("button")
 let questionNumber = 1
 
 
+// for waiting msg 
+//setTimeout(() => msg.delete(), 10000)
 
-
-//Sound effects from Pixabay!
+//Sound effects from Pixabay
 const soundEffectBot = () => {
   const sound = new Audio('short-woosh-109592.mp3');
   sound.play()
@@ -20,7 +21,6 @@ const soundEffectUser = () => {
   sound.play()
 }
 
-//this one and the other bot-effect does not work on mobile phone. WHY, oh cruel world?
 const soundEffectFinal = () => {
   const sound = new Audio('sport-rock-logo1-13776.mp3');
   sound.play()
@@ -36,7 +36,31 @@ const userSay = (words) => {
   setTimeout(() => showMessage(words, "user"), 300);
 }
 
+/*
+const waitBot = (words) => {
+setTimeout(() => showMessage(words, "bot"), 300);
+console.log("snurra");
+}
+*/
 
+/*
+https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif
+ waitBot(`wait pls`).then(showMessage => {
+    showMessage.delete(3000);
+showMessage(words, "bot").then(showMessage => {
+  showMessage.delete(3000);
+ }),*/
+/*
+message.reply('Invalid command')
+  .then(msg => {
+    setTimeout(() => msg.delete(), 10000)
+  })
+
+message.channel.send(`please wait`).then(sentMessage => {
+    sentMessage.delete(5000);
+});
+}
+*/
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -75,6 +99,9 @@ const nextQuestion = (message) => {
   if (questionNumber === 1) {
     userSay(`I would say ${guess}`);
     console.log("question function");
+
+    //setTimeout(() => waitBot.delete(`wait`, "bot"), 2500)
+
     setTimeout(() => whatSize(message), 1500)
   }
   else if (questionNumber === 2) {
@@ -107,10 +134,13 @@ button.addEventListener('click', (event) => {
   nameInput.value = "";
 }, {once: true});
 
+
 const whatSize = () => {
   questionNumber++
+  console.log("big wait");
+  /*waitBot(`<img id="wait" src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"></img>`, "bot");
+  */
   botSay(`Let's find out if "${guess}" is true! How smol are you?`);
-
   inputWrapper.innerHTML = `
   <div class=button-wrapper>
 <button id="btnBig">I'm a UNIT</button>
@@ -126,7 +156,8 @@ const whatSize = () => {
   document
     .getElementById('btnSmall')
     .addEventListener('click', () => nextQuestion("So smol") , {once: true});
-}
+  }
+
 
 
 const ifMonster = (size) => {
