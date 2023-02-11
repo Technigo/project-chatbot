@@ -93,9 +93,9 @@ main {
 
 .bubble {
   background: #e5e9ff;
-  font-weight: 600;
+  font-weight: 900;
   font-size: 15px;
-  line-height: 26px;
+  line-height: 35px;
   padding: 16px 24px;
   color: #292d3f;
   max-width: 40%;
