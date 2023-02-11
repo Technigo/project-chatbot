@@ -174,9 +174,9 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-.user-bubble:first-letter {
+/* .user-bubble:first-letter {
   text-transform: uppercase;
-}
+} */
 
 /* borrowed */
 select {
