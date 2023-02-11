@@ -3,15 +3,26 @@ const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('inputWrapper');
 const input = document.getElementById('input');
 const form = document.getElementById('form');
+const scissorLogo = document.getElementById('scissorLogo');
 
 
 // If you need any global variables that you can use across different functions, declare them here:
 let date = new Date();
-let time = date.getHours();
+let hour = date.getHours();
 
 const timeGreetings = [`Good morning gorgeous! What's your name?`, `Hello there gorgeous! What's your name?`, `Good evening gorgeous! What's your name?`, `Why are you even up this hour? Get some beauty sleep please!`];
 const randomStyleAdvice = ['You would totally ROCK a bob', 'You would totally ROCK a pixi cut', 'You would totally ROCK pigtails', 'Just shave it off', 'Have you ever considered a mohawk?', 'Bangs', 'Curtain bangs', 'Mermaid hair would look great on you', 'You could totally bring back the zig-zag part', `Don’t change a thing! You are pure perfection.`, 'A bouncy blowdry', 'Luscious long locks', 'You should definitely go blonde', 'Dye your hair red', 'A glamorous up-do', 'A perm', 'I am thinking... dreadlocks', 'Uh, just wear a hat', 'You should do braids', 'Dye your hair green']
 
+
+// Variable that stores the data we get from the user to be able to present it back to the user
+let answers = {
+  name: "",
+  day: "",
+  time: "",
+  people: "",
+  phonenr: "",
+  email: "",
+};
 
 // Declare your functions after this comment
 
@@ -44,17 +55,17 @@ const botReply = (msg) => {
   setTimeout(showMessage, 1000, msg, 'bot');
 }
 const userReply = (msg) => {
-  setTimeout(showMessage, 200, msg, 'user');
+  setTimeout(showMessage, 300, msg, 'user');
 }
 
 
-const greetUser = (timeGreetings, time) => {
+const greetUser = (timeGreetings, hour) => {
 
-if (time >= 5 && time <= 10) {
+if (hour >= 5 && hour <= 10) {
     botReply(timeGreetings[0]);           //morning (dvs 5 till 10)
-} else if (time > 10 && time <= 18) {
+} else if (hour > 10 && hour <= 18) {
     botReply(timeGreetings[1]);           //hello (dvs 11 till 18)
-} else if (time > 18 && time <= 22) {
+} else if (hour > 18 && hour <= 22) {
     botReply(timeGreetings[2]);           //evening (dvs 19 till 22)
 } else {
     botReply(timeGreetings[3]);           //late (dvs 23 till 4)
@@ -67,7 +78,7 @@ if (time >= 5 && time <= 10) {
 form.addEventListener('submit', (event) => {
   event.preventDefault()
   
-  const firstName = document.getElementById('firstName').value;
+  let firstName = document.getElementById('firstName').value;
   userReply(firstName);
   recognizeName(firstName);
 })
@@ -88,10 +99,10 @@ const recognizeName = (firstName) => {
   appointmentBtn.addEventListener('click', () => bookAppointment())
 
   let openingHoursBtn = document.getElementById('openingHoursBtn');
-  openingHoursBtn.addEventListener('click', () => openingHours())
+  openingHoursBtn.addEventListener('click', () => openingHours(firstName))
 
   let styleAdviceBtn = document.getElementById('styleAdviceBtn');
-  styleAdviceBtn.addEventListener('click', () => styleAdvice())
+  styleAdviceBtn.addEventListener('click', () => styleAdvice(firstName))
 }
 
 
@@ -115,7 +126,7 @@ const bookAppointment = () => {
 }
 
 
-const openingHours = () => {
+const openingHours = (firstName) => {
 
   userReply(`Opening hours`);
   botReply(`Weekdays 10-22, 
@@ -128,11 +139,11 @@ const openingHours = () => {
       `;
 
       let backBtn = document.getElementById('backBtn');
-      backBtn.addEventListener('click', () => reloadSite())
+      backBtn.addEventListener('click', () => recognizeName(firstName))
 }
 
 
-const styleAdvice = () => {
+const styleAdvice = (firstName) => {
 userReply(`What should I do with my hair?`);
 
 console.log(`randomStyleAdvice.length`, randomStyleAdvice.length)
@@ -149,10 +160,10 @@ inputWrapper.innerHTML =
       againBtn.addEventListener('click', () => newAdvice())
 
       let backBtn2 = document.getElementById('backBtn2');
-      backBtn2.addEventListener('click', () => reloadSite())
+      backBtn2.addEventListener('click', () => recognizeName(firstName))
 }
 
-//Gice user new advice
+//Give user new advice
 const newAdvice = () => {
   userReply(`Not feeling it. Do you have another idea?`);
 
@@ -162,6 +173,8 @@ console.log(`index`, index)
 
 setTimeout(() => botReply(randomStyleAdvice[index]), 2000)
 }
+
+
 
 
 //Reloads the page
@@ -185,9 +198,10 @@ const getRandomNumber = (min, max) => {
 // ------------------> START:
 // When website loaded, chatbot asks first question.
 //We welcome the user (based on current time) with a delay of 1s. 
-setTimeout(greetUser, 1000, timeGreetings, time);
+setTimeout(greetUser, 1000, timeGreetings, hour);
 
-
+//When clicking the scissor logo, page reloads:
+scissorLogo.addEventListener('click', () => reloadSite())
 
 
 

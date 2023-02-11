@@ -225,6 +225,10 @@ appearance: none;
   background-color: #a1736b;
 }
 
+#scissorLogo:hover {
+  opacity: 0.6;
+}
+
 
 /*Making it a bit smaller for phones*/
 @media (max-width: 667px) {
