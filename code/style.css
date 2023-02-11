@@ -143,6 +143,18 @@ button {
   transition: all 0.3s ease;
 }
 
+.green-btn {
+  background-color: rgb(50, 123, 50);
+}
+
+.blue-btn {
+  background-color: rgb(35, 102, 184);
+}
+
+.red-btn {
+ background-color: rgb(240, 68, 68);
+}
+
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
