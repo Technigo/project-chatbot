@@ -72,7 +72,7 @@ const question2 = (event) => {
 const noChoice = (event) => {
   event.preventDefault();
   let noChoice = inputWrapper.value;
-  showMessage("Sorry you are underaged, cannot order wine", "user");
+  showMessage("Sorry underaged, cannot order wine", "user");
   inputWrapper.value = "";
   setTimeout(() => question2(noChoice), 1000);
 };
@@ -83,13 +83,13 @@ const yesChoice = (event) => {
   let yesChoice = inputWrapper.value;
   showMessage("Over 20", "user");
   inputWrapper.value = "";
-  setTimeout(() => question3(yesChoice), 1000);
+  setTimeout(() => question3(yesChoice), 2000);
 };
 
 
 //Bot asking which red or white user wants to order
 const question3 = (yesChoice) => {
-  showMessage("Good, you are over 20, What wine do you prefer?", "bot");
+  showMessage("Good, you are over 20! What wine do you prefer?", "bot");
   inputWrapper.innerHTML = `
   <button id="white" type="submit" class="chat-btn">White wine</button>
   <button id="red" type="submit" class="chat-btn">Red wine</button>
@@ -105,7 +105,7 @@ const whiteWine = (event) => {
   let whiteChoice = inputWrapper.value;
   showMessage(`I would prefer white wine`, "user");
   inputWrapper.value = "";
-  setTimeout(() => question4(whiteChoice), 1000);
+  setTimeout(() => question4(whiteChoice), 2000);
 };
 
 const redWine = (event) => {
@@ -113,7 +113,7 @@ const redWine = (event) => {
   let redChoice = inputWrapper.value;
   showMessage(`I would prefer red wine!`, "user");
   inputWrapper.value = "";
-  setTimeout(() => question4(redChoice), 1000);
+  setTimeout(() => question4(redChoice), 2000);
 };
 
 //Bot asking take away or drink here
@@ -129,21 +129,21 @@ const question4 = (redChoice, whiteChoice, yesChoice) => {
   ;}
 
 // Where to drink, take away or sit here
-// pass  redChoice, whiteChoice, yesChoice, noChoice as props for summary?? 
+// pass  redChoice, whiteChoice, yesChoice, noChoice  
 const whereToDrink = (whereToDrink) => {
 
   if (whereToDrink === "take away"){
     setTimeout(() => inputWrapper.innerHTML = `<span>`, 0);
     setTimeout(() => showMessage("Take away", "user"), 1000);
-    setTimeout(() => showMessage(`Please wait while your drink is being prepared`, "bot"), 1500);
-    setTimeout(() => chat.innerHTML = `<p>Thank you, come by again soon!<p>`, 4500);
+    setTimeout(() => showMessage(`Please wait while your drink is being prepared`, "bot"), 3000);
+    setTimeout(() => chat.innerHTML = `<p>Thank you, come by again soon!<p>`, 8000);
     setTimeout(() => inputWrapper.innerHTML = `<span>`, 1500);
   } else { 
     setTimeout(() => inputWrapper.innerHTML = `<span>`, 0);
     setTimeout(() => showMessage("I'm sitting here", "user"), 1000);
-    setTimeout(() => showMessage(`Please have a seat! We'll come out with your drink`, "bot"), 2500);
+    setTimeout(() => showMessage(`Please have a seat! We'll come out with your drink`, "bot"), 6000);
   }
-  setTimeout(() => chat.innerHTML = `<p>Enjoy your drink!<p>`, 15500);
+  setTimeout(() => chat.innerHTML = `<p>Enjoy your drink!<p>`, 10000);
     setTimeout(() => inputWrapper.innerHTML = `<span>`, 15500);
 }
 

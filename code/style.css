@@ -11,26 +11,26 @@ body {
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
-  line-height: 34px;
+  font-size: 30px;
+  line-height: 24px;
   color: #fff;
   text-align: center;
 }
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
-  line-height: 34px;
+  font-size: 20px;
+  line-height: 20px;
   color: #fff;
   text-align: center;
   margin-bottom: 36px;
 }
 
 p {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
-  line-height: 28px;
-  margin: 0;
+  line-height: 20px;
+ 
 }
 
 input {
@@ -40,10 +40,10 @@ input {
   background: #e5e9ff;
   color: #99a1d3;
   padding: 16px;
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Montserrat';
   font-weight: 600;
-  line-height: 26px;
+  line-height: 25px;
   flex: 1;
 }
 
@@ -53,7 +53,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 10px;
-  background: #e3cae6;
+  background: #e6d9e8;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -94,10 +94,10 @@ main {
 .bubble {
   background: #e5e9ff;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #8491db;
+  color: #292d3f;
   max-width: 40%;
 }
 
@@ -117,6 +117,12 @@ main {
 }
 
 .input-wrapper form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.form {
   width: 100%;
   display: flex;
   align-items: center;
