@@ -4,8 +4,6 @@ const sendBtn = document.getElementById('sendBtn')
 const nameForm = document.getElementById('nameForm')
 const nameInput =document.getElementById('nameInput') 
 
-
-
 // Declare username as a global variable
 let username
 
@@ -32,41 +30,36 @@ const showMessage = (message, sender) => {
           <p>${message}</p>
         </div>
       </section>
-    `
+     `
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
 }
 
-
-
 // Chat starting here when bot greets user
 const greetUser = () => {
   showMessage("Hi there, what´s your name?", 'bot')
 }
-
 //User types in Name and a massage is shown with the users name
 const handleNameInput = (event) => {
   event.preventDefault()
   console.log('Här ska vi ta hand om namnet')
   console.log(nameInput.value) 
   showMessage(nameInput.value, 'user')
-  //setCustomValidity('Oops, you forgot this field!')
 
-  // Save thee username for later
+  // Save the username for later
   username = nameInput.value 
 //Empty input
   nameInput.value = ''
 //Callback
   setTimeout(() => nameAnswer() , 1000)
+  inputWrapper.innerHTML =''
 }
-
-  // Bot answer "Hi 'name', what a lovley day for laundry" + ny fråga  
+  // Bot greets user
 const nameAnswer = () => {
   showMessage(`Hi ${username}, what a lovley day for laundry! 🧺 ` ,'bot') 
   setTimeout(() => colorQuestion() , 2500)
 }
-
 const colorQuestion = () => {
   showMessage ('What kind of laundry will you be doing today?' , 'bot')
   inputWrapper.innerHTML = `
@@ -101,7 +94,9 @@ const tempQuestion = (color) => {
     showMessage (`WOW, that´s daring ${username}. Chose your temp and give it a try`, 'bot')
     setTimeout(() => tempSelection(), 1000)
   }
+  inputWrapper.innerHTML =''
 }
+
 const tempSelection = () => {
   inputWrapper.innerHTML = `
   <select id="selectTemp">
@@ -127,12 +122,13 @@ showMessage(selectTemp.value + '°', 'user')
     showMessage (`Dirty laundry ${username}, in for washing!`, 'bot'), 1000)
   }
 
-  setTimeout(() => tumbleQuestion(), 3000)
+    inputWrapper.innerHTML =''
+    setTimeout(() => tumbleQuestion(), 3000)
 })
 }
 
 const tumbleQuestion = () => {
-  showMessage (`${username}, will you be using the tumbledryer?`, 'bot')
+  showMessage (`${username}, will you be using the dryer today?`, 'bot')
   inputWrapper.innerHTML = `
   <button id='yesBtn'> Yes</button>
   <button id='noBtn'> No</button>
@@ -150,7 +146,7 @@ const tumbleQuestion = () => {
 
 const timeSet = (tumbleAnswer) => {
   if (tumbleAnswer === 'Yes') {
-    showMessage ('Washing and tumbledrying will be aprox 2 h' ,'bot')
+    showMessage ('Washing and drying will be aprox 2 h' ,'bot')
     setTimeout(() =>  
     showMessage ('Room 1' , 'bot'), 2000)
     setTimeout(() =>  
@@ -162,23 +158,40 @@ const timeSet = (tumbleAnswer) => {
     setTimeout(() =>  
     showMessage ('Enter code: 223344' , 'bot'), 2000)
   }
-
-  setTimeout(() => lastQuestion(), 3000)
+  inputWrapper.innerHTML = ''
+  setTimeout(() => lastQuestion(), 5000)
 }
 
 const lastQuestion = () => {
+  inputWrapper.innerHTML = `
+  <button id='moreBtn'> I want to do some more washing!</button>
+  <button id='doneBtn'> I´m done for today!</button>
+  `
+  document.getElementById('moreBtn')
+  .addEventListener('click', () => {
+  showMessage ('Please reload the page and fill a new reques', 'bot')
+  setTimeout(() =>
+  showMessage ('❗️Don´t forget to save you code❗️', 'bot'), 2000)
+  setTimeout(() => end(), 2000)
+})
+  document.getElementById('doneBtn')
+  .addEventListener('click', () => {
+  inputWrapper. innerHTML =''
+  showMessage (`Happy laundry day ${username} 👋🏽`, 'bot')
+  })
+} 
 
-}
-
+const end = (choice) => {
+  inputWrapper.innerHTML = `
+  <button id='reloadBtn'> Reload chat!</button>
+  `
+  document.getElementById('reloadBtn')
+  .addEventListener('click', () => {
+    window.location.reload() })
+  }
 
 // Set up your eventlisteners here
-
 nameForm.addEventListener('submit', handleNameInput)
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
   setTimeout(greetUser, 1000)

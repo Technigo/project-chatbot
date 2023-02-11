@@ -103,7 +103,9 @@ main {
   line-height: 26px;
   padding: 16px 24px;
   max-width: 40%;
+  word-break: break-word;
 }
+
 
 .bot-bubble {
   background: #e4d1d1;
@@ -129,14 +131,6 @@ main {
   display: flex;
   align-items: center;
 }
-
-/* label {
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  color: #b9b0b0;
-  margin-right: 20px;
-} */
 
 button {
   background-color: #77a8a8;
@@ -167,5 +161,10 @@ button:hover {
   border: none;
   border-radius: 4px;
   background-color: #77a8a8;
+  color:#d9ecd0;
+}
+
+#reloadBtn {
+  background-color: #b9b0b0;
   color:#d9ecd0;
 }
