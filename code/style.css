@@ -6,14 +6,15 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url('assets/background-img.jpg');
+  background-size: cover;
 }
 
 h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: #b3b2a0;
   text-align: center;
 }
 
@@ -21,7 +22,7 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: #b3b2a0;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -33,12 +34,12 @@ p {
   margin: 0;
 }
 
-input {
+input, select {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background-color: #cacac3;
+  color: #ffffff;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -53,7 +54,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: rgb(255, 255, 255, 0.6);
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -87,26 +88,30 @@ main {
 .user-msg img {
   width: 60px;
   height: 60px;
+  border-radius:50%;
+  opacity: 80%;
 }
 
 .bubble {
-  background: #e5e9ff;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
   max-width: 40%;
+  color: #ffffff;
 }
 
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  background-color: #b4a8b2;
 }
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  color:#fff;
+  background-color: #a5ada8;
 }
 
 .input-wrapper {
@@ -120,30 +125,22 @@ main {
   align-items: center;
 }
 
-label {
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
-}
-
 button {
-  background-color: #0026ff;
+  background-color: #b3b2a0;
   color: white;
   border: none;
   border-radius: 4px;
   padding: 16px 40px;
   margin-right: 4px;
+  font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   font-family: 'Montserrat';
-  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 button:hover {
-  opacity: 0.9;
+  opacity: 0.8;
   transition: all 0.2s ease;
 }
