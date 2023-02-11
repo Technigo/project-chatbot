@@ -133,17 +133,19 @@ const showSizes = (type) => {
         <option value="One">1</option>
         <option value="Two">2</option>
         <option value="Three">3</option>
+      </select>
     `
   }
-
+  
   const select = document.getElementById('select')
   select.addEventListener('change', () => nextQuestion(select.value))
 }
 
-const showServingTopping = (type) => {
-  questionNumber++
-  botReply(`Would you like to pimp your ice-cream with a topping?`)
+  const showServingTopping = (msg) => {
+    questionNumber++
 
+    botReply(`Would you like to pimp your ice-cream (${msg}) with a topping?`)
+  
   inputWrapper.innerHTML = `
     <button id="yesBtn">Yes</button>
     <button id="noBtn">No</button>
@@ -160,19 +162,52 @@ const showToppingOptions = (type) => {
   questionNumber++
 
   botReply (
-    `Good call! Which topping would you like?`
-    ) 
+    `Good call ${msg}! Which topping would you like?`)
+    
+  if (type === 'Yes') {
+    inputWrapper.innerHTML =`
+      <select id="select">
+        <option value=""selected disabled>Select a topping</option>
+        <option value="strawberries">Fresh strawberries</option>
+        <option value="sauce">Chocolate sauce</option>
+        <option value="sprinkles">Rainbow sprinkles</option>
+        <option value="cream">Whipped cream</option>
+      </select>
+    `
+  } //else {
+    //inputWrapper.innerHTML = ``
+  //}
+
+  const showPlaceOrder = (type) => {
+    questionNumber++
+    botReply(`Would you like to place your order?`)
+  
+    inputWrapper.innerHTML = `
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
+  `
+    document
+      .getElementById('yesBtn')
+      .addEventListener('click', () => nextQuestion('Yes'))
+    document
+      .getElementById('noBtn')
+      .addEventListener('click', () => nextQuestion('No'))  
+  }
+
+
+
+
+    //if (type === 'Yes') {
+
+
+
+  botReply(
+    `Thank you ${msg} for your order! Pls pay at the cashier.`
+  )
+
+
 }
   
-
-
-
- // botReply(
- // `Would you like to place your order?`
- // )
-
-
-
   sendBtn.addEventListener('click', () => nextQuestion(input.value))
   input.addEventListener('keypress', (event) => {
     if (event.key === 'Enter' && input.value) nextQuestion(input.value)
