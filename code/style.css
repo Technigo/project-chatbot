@@ -58,6 +58,10 @@ input {
   flex: 1;
 }
 
+.input-wrapper {
+  height: 10%;
+}
+
 main {
   margin: 0 auto;
   width: 100%;
@@ -139,7 +143,6 @@ button {
   padding: 16px 40px;
   margin: 4px;
   font-size: 16px;
-  line-height: 26px;
   font-family: "Montserrat";
   font-weight: 500;
   cursor: pointer;
@@ -149,4 +152,21 @@ button {
 button:hover {
   background-color: #b1b5c9;
   transition: all 0.2s ease;
+}
+
+.ratingBtn {
+  line-height: 0px;
+  border-radius: 100%;
+}
+
+.ratingBtn:nth-child(1) {
+  background-color: green;
+}
+
+.ratingBtn:nth-child(3) {
+  background-color: yellow;
+}
+
+.ratingBtn:nth-child(5) {
+  background-color: red;
 }

@@ -50,7 +50,11 @@ const stepThroughQuestions = (message) => {
   } else if (questionIndex == 4) {
     userReply(message);
     setTimeout(offerVideo, 1000);
+  } else if (questionIndex == 5) {
+    setTimeout(handleRating, 1000);
   }
+  chat.scrollTop = chat.scrollHeight;
+  inputWrapper.innerHTML = "";
 };
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -142,23 +146,27 @@ const anythingElse = () => {
   });
 
   document.getElementById("noBtn").addEventListener("click", () => {
+    questionIndex++;
+    userReply("No thanks, I'm good!"); //a clumsy way to get the userreply to show up
+
     stepThroughQuestions("No thanks, I'm good!");
   });
 };
 
 const offerVideo = () => {
+  questionIndex++;
   botReply(
     `Here's a video which goes well with ${
       drink == "beer" ? "hazy NEIPAs" : "cold water"
     } and ${mood == "good" ? "happy" : "sad"} days:`
   );
-  if (mood == "good") {
+  if (mood == "bad") {
     if (drink == "beer") {
       botLink(
         "a nice freestyle canoeing video to the sound of 'Lady in Red'",
         "https://www.youtube.com/watch?v=Ofq_nl366VM"
       );
-    } else {
+    } else if (drink == "water") {
       botLink(
         "a video of some random Norwegian playing 'Scotland the Brave' and really disco-ing out",
         "https://www.youtube.com/watch?v=bfcDfhT5mak"
@@ -170,13 +178,43 @@ const offerVideo = () => {
         "a funky instrumental tribute to the late great MF DOOM",
         "https://www.youtube.com/watch?v=oYKwotHRdHo"
       );
-    } else {
+    } else if (drink == "water") {
       botLink(
         "a one hour loop of a cockatiel singing a song from Totoro",
         "https://www.youtube.com/watch?v=CC4I65VIoeE"
       );
     }
   }
+  setTimeout(handleRating, 1000);
+};
+
+const handleRating = () => {
+  botReply("Would you care to rate your experience with EdBot today?");
+  inputWrapper.innerHTML = `
+<button id="1" value="5" class="ratingBtn" type="submit">5</button>
+  <button id="2" value="4" class="ratingBtn" type="submit">4</button>
+  <button id="3" value="3" class="ratingBtn" type="submit">3</button>
+  <button id="4" value="2" class="ratingBtn" type="submit">2</button>
+  <button id="5" value="1" class="ratingBtn" type="submit">1</button>
+`;
+
+  document.querySelectorAll(".ratingBtn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      userReply(`I give it a ${btn.value}!`);
+
+      setTimeout(postRating(btn.value), 1000);
+    });
+  });
+};
+
+const postRating = (rating) => {
+  botReply(`Thank you. Have a nice day!`);
+
+  inputWrapper.innerHTML =
+    "<button id='submitBtn' type='submit'>I want to go again!</button>";
+  document.getElementById("submitBtn").addEventListener("click", () => {
+    location.reload();
+  });
 };
 
 sendButton.addEventListener("click", () =>
