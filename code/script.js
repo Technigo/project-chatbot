@@ -7,11 +7,7 @@ const main = document.getElementById('main');
 const inputWrapper = document.getElementById('input-wrapper');
 
 
-
-// If you need any global variables that you can use across different functions, declare them here:
-
-
-// Declare your functions after this comment
+const time = new Date().getHours();
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -44,10 +40,19 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello, what is your name?", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage((timeOfDay(), 'What is your name?'), 'bot');
 }
 
+const timeOfDay = () => {
+  if (time < 10) {
+    showMessage("Good morning!", 'bot');
+  } else if (time < 20) {
+    showMessage('Good day', 'bot');
+  } else {
+    showMessage('Good evening', 'bot');
+  }
+
+}
 
 const handleNameInput = (event) => {
   event.preventDefault()  // prevents website refresh at submit
@@ -62,15 +67,11 @@ const handleNameInput = (event) => {
   
   setTimeout(() => showMessage(`Hello ${name}, what kind of drink would you like?`, 'bot'), 1000)
   setTimeout(() => hotOrCold(), 2000)
-  //showMessage(`Hello ${name}, what kind of drink would you like?`, 'bot');
-  // After 1 second, show the next question by invoking the next function.
-	// passing the name into it to have access to the user's name if we want
-	// to use it in the next question from the bot.
- // setTimeout(() => showFoodOptions(name), 1000)
+ 
 }
 
 
-//Now I want two buttons to show på - yes and no
+//Now I want two buttons to show på - hot and cold
 
 const hotOrCold = (event) => {
 //Adds hot and cold button
@@ -79,15 +80,13 @@ inputWrapper.innerHTML=
 <button id="coldBtn" type="submit">Cold<button>`
 console.log("buttons");
 
-//const hotBtn = document.getElementById('hotBtn')
-//const coldBtn = document.getElementById('coldBtn')
 
 document
 .getElementById('hotBtn')
 .addEventListener('click', () => {
   showMessage ('Hot', 'user')
-  setTimeout(() =>showMessage('Hot drink it is! Please make another choice.', 'bot'), 1000)
-  setTimeout(() =>hotDrinks(),1500)
+  setTimeout(() =>showMessage('Hot drink it is!', 'bot'), 1000)
+  setTimeout(() =>hotDrinksList(),3000)
 })
 
 
@@ -95,56 +94,84 @@ document
 .getElementById('coldBtn')
 .addEventListener('click', () => {
   showMessage('Cold', 'user')
-  setTimeout(() =>showMessage('Cold drink it is! Please make another choice.', 'bot'), 1000)
-  setTimeout(() =>coldDrinks(),1500)
+  setTimeout(() =>showMessage('Cold drink it is!', 'bot'), 1000)
+  setTimeout(() =>coldDrinksList(),3000)
 }) 
 }
 
 
+const hotDrinksList =() => {
+  showMessage('Please choose your favorite hot drink in the list', 'bot')
 
+ inputWrapper.innerHTML=`
+  <select id="hotDrinksDropDown">
+  <option disabled selected value="">Pick a hot drink</option>
+  <option value="Coffee">Coffee</option>
+  <option value="Te">Te</option>
+  <option value="Cafe latte">Cafe Latte</option>
+  <option value="Apple cider">Apple cider</option>
+  <option value="Broth">Broth</option>
+  <option value="Hot water">Hot water</option>
+  <option value="Hot milk">Hot milk</option>
+</select>
+`
+hotDrinksDropDown.addEventListener('change', (event) => {
+  showMessage(event.target.value, 'user')
+  console.log('sending hot drink option answer')
+  placeHotOrder()
+  clearThePage()
+})
 
-
-const hotDrinks =(event) =>{
-  inputWrapper.innerHTML=
-  `<button id="coffeeBtn" type="submit">Coffee<button>
-<button id="theBtn" type="submit">The<button>
-<button id="ciderBtn" type="submit">Cider<button>`
+const placeHotOrder =()=> {
+  setTimeout(() => showMessage('Excellent choice! I will now place your order. Give me one moment', 'bot'), 1000);
+  setTimeout(() => showMessage('Your order is ready! Please come get it at the bar. Be careful it is HOT!', 'bot'), 6000);
+}
 
 }
 
 
-  
-  
-  const coldDrinks = (event) => {
-    inputWrapper.innerHTML=
-  `<button id="sodaBtn" type="submit">Soda<button>
-<button id="beerBtn" type="submit">Beer<button>
-<button id="milkshakeBtn" type="submit">Milkshake<button>`
+const coldDrinksList =() => {
+  showMessage('Please choose your favorite cold drink in the list', 'bot')
+
+ inputWrapper.innerHTML=`
+  <select id="coldDrinksDropDown">
+  <option disabled selected value="">Pick a cold drink</option>
+  <option value="Soda">Soda</option>
+  <option value="Lemonade">Lemonade</option>
+  <option value="Ice Coffee">Ica coffee</option>
+  <option value="Champagne">Champagne</option>
+  <option value="Beer">Beer</option>
+  <option value="water">Water</option>
+  <option value="Juice">Juice</option>
+</select>
+`
+
+coldDrinksDropDown.addEventListener('change', (event) => {
+  showMessage(event.target.value, 'user')
+  console.log('sending cold drink option answer')
+  placeOrder()
+  clearThePage()
+})
+
+  const placeOrder =()=> {
+    setTimeout(() => showMessage('Excellent choice! I will now place your order. Give me one moment', 'bot'), 1000);
+    setTimeout(() => showMessage('Your order is ready! Please come get it at the bar', 'bot'), 6000);
   }
 
+}    
+
+form.addEventListener('submit', handleNameInput)
+setTimeout(greetUser, 1500); 
+
+
+const clearThePage =() =>{
+  inputWrapper.innerHTML = ""
+}
+
 
   
-  //.addEventListener('submit', placeOrder)
 
 
-//const placeOrder = () =>{}
-
-
-// Set up your eventlisteners here
-form.addEventListener('submit', handleNameInput)
-
-
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1500);
-
-
-// Need a function to store the answers and in the final print out a type of Champagne.
-
+  
 
 
