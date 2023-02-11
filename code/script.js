@@ -58,10 +58,10 @@ sendBtn.addEventListener('click', (event) => {
   //clears input field
   nameInput.value = ''
   //Here, I call the next functions
-  setTimeout(() => howAreYouFeeling(name), 1500)
+  setTimeout(() => howAreYouFeeling(name), 1200)
 })
 
-//This function asks a new qustion with 3 possible answers.
+//This function asks a new qustion about mood, with 3 possible answers.
 const howAreYouFeeling = (name) => {
   showMessage(`Good to have you here, ${name}! Are you feeling anxious or stressed today?`, 'bot')
   console.log('Bot asks about mood')
@@ -80,32 +80,32 @@ const howAreYouFeeling = (name) => {
         </form>
       </div>
       `
-  //eventListeners for the 3 buttoms, each with a call to the next function
+  //eventListeners for the 3 mood buttoms, each with a call to the next function
   document
     .getElementById('little-stressed')
     .addEventListener('click', (event) => {
       event.preventDefault()
       showMessage('Yes, a little.', 'user')
-      setTimeout(() => startQuestion(), 1500)
+      setTimeout(() => startQuestion(), 1200)
   })
   document
     .getElementById('very-stressed')
     .addEventListener('click', (event) => {
       event.preventDefault()
       showMessage('Yes, very much.', 'user')
-      setTimeout(() => startQuestion(), 1500)
+      setTimeout(() => startQuestion(), 1200)
   })
   document
     .getElementById('calm')
     .addEventListener('click', (event) => {
       event.preventDefault()
       showMessage(`No, I'm calm`, 'user')
-      setTimeout(() => startQuestion(calm), 1500);
+      setTimeout(() => startQuestion(calm), 1200);
    })
      } 
 
 
-//A function for question that starts the exercise by asking for a colour.
+//A function that responds to mood-question and starts the exercise by asking for a colour.
 const startQuestion = (mood) => {
   if (mood === calm) {
     showMessage(`Happy to hear that! Let's try some grounding techniques anyways.`, 'bot')
@@ -132,13 +132,13 @@ const startQuestion = (mood) => {
      </div>
     `
   }
-
+//3 colour options
   document
     .getElementById('green-btn')
     .addEventListener('click', (event) => {
       event.preventDefault()
       showMessage("Green", "user");
-      setTimeout(() => sightQuestion("green"), 1500);
+      setTimeout(() => sightQuestion("green"), 1200);
     })
 
   document
@@ -146,7 +146,7 @@ const startQuestion = (mood) => {
     .addEventListener('click', (event) => {
       event.preventDefault()
       showMessage("Blue", "user")
-      setTimeout(() => sightQuestion("blue"), 1500);
+      setTimeout(() => sightQuestion("blue"), 1200);
     })
 
   document
@@ -154,11 +154,11 @@ const startQuestion = (mood) => {
     .addEventListener('click', (event) => {
       event.preventDefault()
       showMessage("Red", "user")
-      setTimeout(() => sightQuestion("red"), 1500);
+      setTimeout(() => sightQuestion("red"), 1200);
     }) 
 }
 
-//A function for question that activates SIGHT
+//A function that uses color-choice to ask question which activates SIGHT
 const sightQuestion = (color) => {
   showMessage(`Good choice! Look around you. How many ${color} things can you see?`, "bot");
   inputWrapper.innerHTML = `      
@@ -181,26 +181,60 @@ const sightQuestion = (color) => {
     const number = numberInput.value
     showMessage(`${number}`, "user")
     numberInput.value = ""
-    setTimeout(() => hearingQuestion(`${number}`, `${color}`), 1500)
+    setTimeout(() => hearingQuestion(`${number}`, `${color}`), 1200)
   })
   }
   
-//A function for question that activates hearing
+//A function that reacts to number of sights, and asks question that activates SOUND
 const hearingQuestion = (numberOfSights, color) => {
   if (numberOfSights == 0) {
-    showMessage(`That's okay. Maybe you can find some sounds instead. Take a moment to listen. How many different sounds do you hear right now?`, "bot")
+    showMessage(`That's okay. Maybe you can find some sounds instead. Take a moment to listen carefully. How many different sounds do you hear right now?`, "bot")
   } 
   else if (numberOfSights > 3) {
-    showMessage(`${numberOfSights}? That's is a lot of ${color} things!`, "bot")
-    setTimeout(() => showMessage("Now, take a moment to listen. How many different sounds do you hear?", "bot"), 900)
+    showMessage(`${numberOfSights}? That's a lot of ${color} things!`, "bot")
+    setTimeout(() => showMessage("Now, take a moment to listen carefully. How many different sounds do you hear?", "bot"), 900)
   }
   else {
-    showMessage(`Good. Now, take a moment to listen. How many different sounds do you hear?`, "bot")
+    showMessage(`Good. Now, take a moment to listen carefully. How many different sounds do you hear?`, "bot")
   }
   inputWrapper.innerHTML = `
    <div class="input-wrapper" id="input-wrapper">
     <form id="number-form">
       <input id="number-input" type="number"/>
+    <button id="sound-btn" class="send-btn" type="submit">
+     Send
+    </button>
+    </form>
+   </div>
+  `
+
+  //eventlistener that deals with SOUND number input
+  const numberInput = document.getElementById("number-input")
+  document
+  .getElementById("sound-btn")
+  .addEventListener('click', (event) => {
+    event.preventDefault()
+    const number = numberInput.value
+    showMessage(`${number}`, "user")
+    numberInput.value = ""
+    setTimeout(() => smellQuestion(`${number}`), 1200)
+  })
+}
+
+//a function that reacts to sound question, and asks question that activates smell
+const smellQuestion = (numberOfSounds) => {
+    if (numberOfSounds == 0) {
+      showMessage("Nice and quiet, huh?", "bot")
+    }
+    else {
+      showMessage("Awesome! Your ears are sharp.", "bot")
+    }
+
+  setTimeout(() => showMessage("Now, time to use your nose. What one smell do you notice the most?", "bot"), 900)
+  inputWrapper.innerHTML = `
+   <div class="input-wrapper" id="input-wrapper">
+    <form id="smell-form">
+      <input id="smell-input" type="text"/>
     <button id="smell-btn" class="send-btn" type="submit">
      Send
     </button>
@@ -208,36 +242,86 @@ const hearingQuestion = (numberOfSights, color) => {
    </div>
   `
 
-  //eventlistener that deals with smell input
-  const numberInput = document.getElementById("number-input")
-  document
-  .getElementById("smell-btn")
-  .addEventListener('click', (event) => {
-    event.preventDefault()
-    const number = numberInput.value
-    showMessage(`${number}`, "user")
-    numberInput.value = ""
-    setTimeout(() => smellQuestion(`${number}`), 1500)
-  })
-}
+const smellInput = document.getElementById("smell-input")
 
-//a function that reacts to sound question, and asks question that actives smell, and leads onto 
-const smellQuestion = (numberOfSounds) => {
-  showMessage(`${numberOfSounds}!!! Test`, "bot")
-  //if there are 0 sounds, say nice and quiet, huh?
-
-  //Otherwise, "awesome, your ears are sharp!"
-
-  //new message: Now, sniff the air. WHat smell do you notice most?
-
-  //New HTML: text input for most noticable smell.
-
+//event listenen for smell input
+document
+ .getElementById("smell-btn")
+ .addEventListener("click", (event) => {
+   event.preventDefault()
+   const smell = smellInput.value
+   showMessage(`${smell}`, "user")
+   smellInput.value = ""
+   setTimeout(() => selfCareQuestion(`${smell}`), 1200)
+ })
 }
 
 
 //A function that reacts to smell question, and calls question that encourages self-care
-//Bot: "Time to take big sniff of that INSERT SMELL". Take 3 deep breaths.
-//Bot: Delayed message: "Before you leave, choose what you need most"
-//Drop down menu: rest, food and water, fun, fresh air.
+const selfCareQuestion = (smell) => {
+  showMessage(`Time to take in a big sniff of ${smell}. Take 3 deep breaths.`, "bot")
+  setTimeout(() => showMessage("...and before you leave, choose what you need most right now.", "bot"), 3000)
+  inputWrapper.innerHTML = `
+  <div class="input-wrapper" id="input-wrapper">
+    <form id="name-form">
+      <button id="rest" class="care-btn" type="submit">
+        Rest
+      </button>
+      <button id="fun" class="care-btn" type="submit">
+        Fun
+      </button>
+      <button id="fresh-air" class="care-btn" type="submit">
+        Fresh air
+      </button>
+      <button id="food-water" class="care-btn" type="submit">
+       Food and water
+    </button>
+    </form>
+  </div>
+  `
+//Eventlistener to deal with self-care input.
+document
+.getElementById('rest')
+.addEventListener('click', (event) => {
+  event.preventDefault()
+  showMessage("Rest", 'user')
+  setTimeout(() => goodbye("rest"), 1200)
+})
+
+document
+.getElementById('fun')
+.addEventListener('click', (event) => {
+  event.preventDefault()
+  showMessage("Fun", 'user')
+  setTimeout(() => goodbye("fun"), 1200)
+})
+
+
+document
+.getElementById('fresh-air')
+.addEventListener('click', (event) => {
+  event.preventDefault()
+  showMessage("Fresh air", 'user')
+  setTimeout(() => goodbye("fresh air"), 1200)
+})
+
+document
+.getElementById('food-water')
+.addEventListener('click', (event) => {
+  event.preventDefault()
+  showMessage("Food and water", 'user')
+  setTimeout(() => goodbye("food and water"), 1200)
+})
+}
 
 //Response: Alright! Make "INSERT THINGS" a priority today.
+const goodbye = (selfCareActivity) => {
+  showMessage(`Alright then. Be sure to make ${selfCareActivity} a priority today! Take care 💙`, "bot")
+  inputWrapper.innerHTML = `
+  <div class="input-wrapper" id="input-wrapper">
+    <form id="name-form">
+      <button id="start-over" class="send-btn" type="submit">
+        Start over
+      </button>
+  `
+}
