@@ -1,12 +1,10 @@
-# Project Name
+# Project-chastbot
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Building a chatbot of choice.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I had some trouble with the if- and -else statements through out the project. Sometimes i got it to work, but in some cases I got to figure out an other way to solve the eprobelm..
 
 ## View it live
 
