@@ -8,7 +8,11 @@ body {
   font-family: 'Varela Round', sans-serif;
   background: #16697a;
   background-image: url("./assets/background2.jpg");
-  
+}
+
+header{
+  box-sizing: border-box;
+  margin: 0 auto;
 }
 
 h1 {
@@ -53,13 +57,12 @@ input {
 
 main {
   margin: 0 auto;
-  width: 100%;
-  max-width: 700px;
+  width: 90%;
+  max-width: 600px;
   height: 600px;
   border-radius: 30px;
   background: #fae2c2;
-  padding: 20px 24px;
-  padding-top: 0;
+  padding: 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -158,6 +161,7 @@ main {
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 label {
@@ -165,7 +169,6 @@ label {
   font-family: 'Varela Round';
   font-weight: 500;
   color: #16697a;
-  margin-right: 20px;
 }
 
 button {
@@ -173,7 +176,7 @@ button {
   color: #fff3e3;
   border: none;
   border-radius: 4px;
-  padding: 16px 40px;
+  padding: 1em;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
@@ -192,3 +195,63 @@ button:hover {
   color: #16697a;
 }
 
+footer{
+  margin-top: 15px;
+  height: 120px;
+  padding: 5px;
+}
+
+.contactme{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.contact-logo{
+  width: 40px;
+  opacity: .75;
+}
+
+.contact-logo:hover{
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+.aboutme {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  font-size: 15px;
+  margin-bottom: 10px;
+  font-family: 'Varela Round';
+  color: #ffa62b;
+  text-shadow: 1px 1px 2px #03242b;
+  text-align: center;
+}
+
+
+/* The combination of code below results in an animated background gradient.
+
+body{
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+} 
+*/

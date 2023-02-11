@@ -46,7 +46,7 @@ const showMessage = (message, sender) => {
   // Starts here - The greetUser function that is called at the end and starts the chat bot running is defined here.
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, crafter! Who do I have the pleasure of speaking with today?", 'bot');
+  showMessage("Hi there! I'm Crafty, the Idea Bot, who are you?", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -63,7 +63,7 @@ form.addEventListener('submit', (event) => {
 //This is where the showBotResponse function is declared - this will show the bot's response to the user's name.
 const showBotResponseOne = () => { 
   if(username !== "") {
-    showMessage(`Hi there, ${username}! Are you interested in getting quilting, crochet, or cross-stitch ideas?`, 'bot')
+    showMessage(`Hey, ${username}! Which craft do you want an idea for?`, 'bot')
     input.innerHTML = `
       <button id="quilt-button">Quilting</button>
       <button id="crochet-button">Crochet</button>
@@ -85,7 +85,7 @@ const showBotResponseOne = () => {
     document.getElementsByClassName("uncle-iroh")[0].onload = () =>
     (chat.scrollTop = chat.scrollHeight)
   
-    showMessage(`Oops! It doesn't look like you've entered your name. Who are you? And, what do YOU want?`, 'bot');
+    showMessage(`Oops! You didn't put a name in! Who are you? And, what do YOU want?`, 'bot');
 
     nameInput.value = '';
   } 
@@ -119,7 +119,7 @@ const showCraftButtons = () => { //once the variables and eventListeners are sto
 
 //These functions declarations will show Easy and Hard buttons for each craft option when called.
 const showQuiltEasyHardButtons = () => {
-  showMessage(`Sounds good!  Would you like a suggestion for an easier project or a harder project?`, 'bot')
+  showMessage(`Great! Do you want an easier or harder project?`, 'bot')
   input.innerHTML = `
     <button id="quilt-easy-button">Easier &#127856</button>
     <button id="quilt-hard-button">Harder &#128640</button>
@@ -128,7 +128,7 @@ const showQuiltEasyHardButtons = () => {
 }
 
 const showCrochetEasyHardButtons = () => {
-  showMessage(`Sounds good!  Would you like a suggestion for an easier project or a harder project?`, 'bot')
+  showMessage(`Great! Do you want an easier or harder project?`, 'bot')
   input.innerHTML = `
     <button id="crochet-easy-button">Easier &#127856</button>
     <button id="crochet-hard-button">Harder &#128640</button>
@@ -137,7 +137,7 @@ const showCrochetEasyHardButtons = () => {
 }
 
 const showCrossEasyHardButtons = () => {
-  showMessage(`Sounds good!  Would you like a suggestion for an easier project or a harder project?`, 'bot')
+  showMessage(`Great! Do you want an easier or harder project?`, 'bot')
   input.innerHTML = `
     <button id="cross-easy-button">Easier &#127856</button>
     <button id="cross-hard-button">Harder &#128640</button>
@@ -159,7 +159,7 @@ const useQuiltEasyHardButtons = () => {
   });
 
   quiltHardButton.addEventListener('click', () => {
-    showMessage(`I want more of a challenge!`, "user");
+    showMessage(`Something harder!`, "user");
 
     offerHardQuilt();
   });
@@ -177,7 +177,7 @@ const useCrochetEasyHardButtons = () => {
   });
 
   crochetHardButton.addEventListener('click', () => {
-    showMessage(`I want more of a challenge!`, "user");
+    showMessage(`Something harder!`, "user");
 
     offerHardCrochet();
   });
@@ -195,7 +195,7 @@ const useCrossEasyHardButtons = () => {
   });
 
   crossHardButton.addEventListener('click', () => {
-    showMessage(`I want more of a challenge!`, "user");
+    showMessage(`Something harder!`, "user");
 
     offerHardCross();
   });
@@ -230,7 +230,7 @@ const offerEasyQuilt = () => {
 }
 
 const offerHardQuilt = () => {
-  showMessage(`Oooo! A challenge? No problem, Boblem!`, "bot");
+  showMessage(`No problem, Boblem!`, "bot");
  
   chat.innerHTML += `
   <section class="bot-msg">
@@ -277,7 +277,7 @@ const offerEasyCrochet = () => {
 }
 
 const offerHardCrochet = () => {
-  showMessage(`Oooo! A challenge? No problem, Boblem!`, "bot");
+  showMessage(`No problem, Boblem!`, "bot");
   chat.innerHTML += `
   <section class="bot-msg">
     <img src="assets/bot.png" alt="Bot" />
@@ -323,7 +323,7 @@ const offerEasyCross = () => {
 }
 
 const offerHardCross = () => {
-  showMessage(`Oooo! A challenge? No problem, Boblem!`, "bot");
+  showMessage(`No problem, Boblem!`, "bot");
   chat.innerHTML += `
   <section class="bot-msg">
     <img src="assets/bot.png" alt="Bot" />
@@ -366,7 +366,7 @@ const finalButtons = () => {
 
 const showHappyCrafting = () => {
   input.innerHTML = `
-    <h1>&#129697 &#128525 &#129526 &#128525 &#129525</h1>
+    <h1>&#129697 &#129526 &#129525</h1>
   `
   wowSound.play();
 }
