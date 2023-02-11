@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: rgb(147, 193, 208);
+  background: linear-gradient(rgb(147, 193, 208), rgb(214, 230, 235));
 }
 
 h1 {
@@ -37,7 +37,7 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
+  background: rgb(223, 219, 230);
   color: rgb(147, 193, 208);
   padding: 16px;
   font-size: 16px;
@@ -120,31 +120,16 @@ main {
   align-items: center;
 }
 
-select {
-  border: none;
-  border-radius: 4px 0 0 4px;
-  width: 400px;
-  background: #e5e9ff;
-  color: rgb(147, 193, 208);
-  padding: 16px;
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 600;
-  line-height: 26px;
-  cursor: pointer;
-  appearance: none;
-}
-
 .green-btn {
-  background-color: rgb(50, 123, 50);
+  background-color: rgb(117, 170, 117);
 }
 
 .blue-btn {
-  background-color: rgb(35, 102, 184);
+  background-color: rgb(71, 130, 202);
 }
 
 .red-btn {
- background-color: rgb(240, 68, 68);
+ background-color: rgb(164, 74, 74);
 }
 
 button {
@@ -168,6 +153,12 @@ button:hover {
 }
 
 footer {
-  height: 50px;
-  background-color: rgb(147, 193, 208);
+  height: 200px;
+  background-color: linear-gradient(rgb(214, 230, 235),rgb(147, 193, 208) ) ;
+}
+
+footer img {
+  height: 140px;
+  margin: 40px auto;
+  display: block;
 }
