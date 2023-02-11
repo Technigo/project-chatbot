@@ -10,7 +10,7 @@ body {
 }
 
 h1 {
-  font-weight: bold;
+  font-weight: 400;
   font-size: 46px;
   line-height: 34px;
   color: #fff3f3;
@@ -20,6 +20,7 @@ h1 {
 h2 {
   font-weight: bold;
   font-size: 32px;
+  font-weight: lighter;
   line-height: 34px;
   color: #fff3f3;
   text-align: center;
@@ -28,7 +29,7 @@ h2 {
 
 p {
   font-size: 22px;
-  font-weight: 600;
+  font-weight: 300;
   line-height: 28px;
   margin: 0;
 }
@@ -38,7 +39,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #ffcfe5;
-  color: #0026ff;
+  color: purple;
   padding: 16px;
   font-size: 18px;
   font-family: 'Urbanist';
@@ -68,7 +69,8 @@ main {
   justify-content: flex-start;
   overflow: scroll;
   flex-direction: column;
-  padding-bottom: 16px;
+  padding-bottom: 24px;
+  padding-right: 14px;
 }
 
 .bot-msg {
@@ -139,7 +141,7 @@ button {
   font-size: 20px;
   line-height: 26px;
   font-family: 'Urbanist';
-  font-weight: bold;
+  font-weight: normal;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -150,10 +152,23 @@ button:hover {
 }
 
 select {
+  border: none;
+  border-radius: 10px;
+  height: 60px;
+  background-color: #ffcfe5;
+  color: purple;
+  font-size: 18px;
+  font-weight: normal;
+  font-family: 'Urbanist';
+  text-align: center;
+  width: 30%;
+  padding: 20px 10px 20px 10px;
+  cursor: pointer;
 
-
+  -webkit-appearance:none;
+  -moz-appearance: none;
+  appearance: none;
 }
-
 
 footer {
   color: #fff3f3;

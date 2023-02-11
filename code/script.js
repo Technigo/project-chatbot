@@ -202,7 +202,7 @@ const showPlaceOrder = () => {
 
   const thankYou = () => {
   botReply(
-    `Thank you for your order! Pls pay at the cashier. Enjoy your day!`)
+    `Thank you for your order! Pls pay at the cashier. Enjoy your day! &#9728`)
     inputWrapper.innerHTML=``
   }
   
