@@ -3,6 +3,7 @@ const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('inputWrapper');
 const input = document.getElementById('input');
 const form = document.getElementById('form');
+const form2 = document.getElementById('form2');
 const scissorLogo = document.getElementById('scissorLogo');
 
 
@@ -14,18 +15,7 @@ const timeGreetings = [`Good morning gorgeous! What's your name?`, `Hello there 
 const randomStyleAdvice = ['You would totally ROCK a bob', 'You would totally ROCK a pixi cut', 'You would totally ROCK pigtails', 'Just shave it off', 'Have you ever considered a mohawk?', 'Bangs', 'Curtain bangs', 'Mermaid hair would look great on you', 'You could totally bring back the zig-zag part', `Don’t change a thing! You are pure perfection.`, 'A bouncy blowdry', 'Luscious long locks', 'You should definitely go blonde', 'Dye your hair red', 'A glamorous up-do', 'A perm', 'I am thinking... dreadlocks', 'Uh, just wear a hat', 'You should do braids', 'Dye your hair green']
 
 
-// Variable that stores the data we get from the user to be able to present it back to the user
-let answers = {
-  name: "",
-  day: "",
-  time: "",
-  people: "",
-  phonenr: "",
-  email: "",
-};
-
-// Declare your functions after this comment
-
+// FUNCTIONS:
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
@@ -69,7 +59,7 @@ if (hour >= 5 && hour <= 10) {
     botReply(timeGreetings[2]);           //evening (dvs 19 till 22)
 } else {
     botReply(timeGreetings[3]);           //late (dvs 23 till 4)
-    botReply("Since you're already up, What's your name?");
+    botReply("Since you're already up, What's your name gorgeous?");
 }
 };
 
@@ -84,7 +74,7 @@ form.addEventListener('submit', (event) => {
 })
 
 
-//When
+
 const recognizeName = (firstName) => {
 
   botReply(`How can I help you, ${firstName}?`);
@@ -96,7 +86,7 @@ const recognizeName = (firstName) => {
 
   
   let appointmentBtn = document.getElementById('appointmentBtn');
-  appointmentBtn.addEventListener('click', () => bookAppointment())
+  appointmentBtn.addEventListener('click', () => bookAppointment(firstName))
 
   let openingHoursBtn = document.getElementById('openingHoursBtn');
   openingHoursBtn.addEventListener('click', () => openingHours(firstName))
@@ -107,22 +97,112 @@ const recognizeName = (firstName) => {
 
 
 //If user clicks on button appointmentBtn, this runs:
-const bookAppointment = () => {
+const bookAppointment = (firstName) => {
   userReply(`I'd like to make an appointment`);
-  setTimeout(() => botReply(`Great! Please select the treatment you would like to recieve below.`), 1000)
+  setTimeout(() => botReply(`Great! Please select the treatment you would like to recieve below.`), 500)
   
   inputWrapper.innerHTML =
         `<select id="selectTreatment">
-          <option value selected disabled>Select a treatment</option>
-          <option value="haircut">Haircut</option>
-          <option value="haircolor">Hair coloring</option>
-          <option value="hairstyling">Hair styling</option>
+          <option value selected disabled>Select a treatment below:</option>
+          <option value="Hair cutting">Hair cutting</option>
+          <option value="Hair coloring">Hair coloring</option>
+          <option value="Hair styling">Hair styling</option>
         </select>
-        <button class="selectBtn" id="selectTreatmentBtn" type="submit">OK</button>
+        <button class="selectBtn" id="selectTreatmentBtn" type="submit">Send</button>
         `;
   
-        const selectTreatmentBtn = document.getElementById('selectTreatmentBtn');
-  selectTreatmentBtn.addEventListener('click', () => {console.log(`${selectTreatment.value}`)})
+        let selectTreatmentBtn = document.getElementById('selectTreatmentBtn');
+        let selectedTreatment = document.getElementById('selectTreatment');
+        selectTreatmentBtn.addEventListener('click', () => bookDate(selectedTreatment, firstName))
+}
+
+const bookDate = (selectedTreatment, firstName) => {
+  //console.log(`${selectTreatment.value}`)
+  userReply(`${selectTreatment.value}`);
+  botReply(`Excellent choice ${firstName}! Which one of our available time slots would suit you best?`);
+
+  inputWrapper.innerHTML =
+        `<select id="selectDate">
+          <option value selected disabled>Available time slots:</option>
+          <option value="Today at 12.30">Today at 12.30</option>
+          <option value="Today at 16.45">Today at 16.45</option>
+          <option value="Tomorrow at 10.00">Tomorrow at 10.00</option>
+          <option value="Tomorrow at 13.30">Tomorrow at 13.30</option>
+          <option value="Tomorrow at 15.30">Tomorrow at 15.30</option>
+        </select>
+        <button class="selectBtn" id="selectDateBtn" type="submit">Send</button>
+        `;
+
+        let selectDateBtn = document.getElementById('selectDateBtn');
+        let selectedDate = document.getElementById('selectDate');
+        selectDateBtn.addEventListener('click', () => confirmBooking(selectedTreatment, selectedDate, firstName))
+
+}
+
+const confirmBooking = (selectedTreatment, selectedDate, firstName, ) => {
+    //Transform selection strings to lowercase (for use within a sentence)
+      const selectedTreatmentValue = selectedTreatment.value;
+      const selectDateValue = selectedDate.value;
+      const lowerCaseTreatment = selectedTreatmentValue.toLowerCase();
+      const lowerCaseDate = selectDateValue.toLowerCase();
+
+
+  userReply(`${selectedDate.value}`);
+  botReply(`So to confirm, ${firstName}. You would like to schedule a ${lowerCaseTreatment} session with us ${lowerCaseDate}?`);
+
+  inputWrapper.innerHTML =
+  `<button id="yesBtn" type="submit" value="Yes">Yes</button>
+  <button id="noBtn" type="submit" value="No">No</button>`
+
+  let yesBtn = document.getElementById('yesBtn');
+  yesBtn.addEventListener('click', () => toConfirm(selectedTreatment, selectedDate, firstName))
+
+  let noBtn = document.getElementById('noBtn');
+  noBtn.addEventListener('click', () => denied(firstName))
+}
+
+const toConfirm = (selectedTreatment, selectedDate, firstName) => {
+  userReply('Yes');
+  botReply(`Please supply us with your email adress for final confirmation.`);
+
+  inputWrapper.innerHTML =
+  `<form id="form2">
+            <label for="userEmail">Email</label>
+            <input id="userEmail" type="email" name="userEmail" placeholder="jane@doe.com" required>
+            <button type="submit">Send</button>
+        </form>`
+
+
+  let form2 = document.getElementById('form2');
+  form2.addEventListener('submit', (event) => {
+    event.preventDefault()
+    confirmed(selectedTreatment, selectedDate, firstName)
+  })
+}
+
+
+
+const confirmed = (selectedTreatment, selectedDate, firstName) => {
+    //Transform selection strings to lowercase (for use within a sentence)
+    const selectedTreatmentValue = selectedTreatment.value;
+    const selectDateValue = selectedDate.value;
+    const lowerCaseTreatment = selectedTreatmentValue.toLowerCase();
+    const lowerCaseDate = selectDateValue.toLowerCase();
+
+  let userEmail = document.getElementById('userEmail');
+  userReply(userEmail.value);
+
+  botReply(`Thank you ${firstName}! You are welcome ${lowerCaseDate} for ${lowerCaseTreatment} with us. Have a wonderful day!`);
+
+  inputWrapper.innerHTML = `<p class="pressScissorText">Press the scissor to reload the page!</p>`;
+}
+
+const denied = (firstName) => {
+  userReply(`No`)
+  botReply(`What a shame. Maybe next time? Have a great day!`)
+
+  inputWrapper.innerHTML = `<p class="pressScissorText">Press the scissor to reload the page!</p>`;
+
 }
 
 
@@ -130,7 +210,7 @@ const openingHours = (firstName) => {
 
   userReply(`Opening hours`);
   botReply(`Weekdays 10-22, 
-    Saturdays 11-18 & 
+    Saturdays 10-18 & 
     Sundays 11-15`)
   botReply(`Hope to see you soon!`)
 
@@ -144,15 +224,15 @@ const openingHours = (firstName) => {
 
 
 const styleAdvice = (firstName) => {
-userReply(`What should I do with my hair?`);
+  userReply(`What should I do with my hair?`);
 
-console.log(`randomStyleAdvice.length`, randomStyleAdvice.length)
-let index = getRandomNumber(0, randomStyleAdvice.length-1);
-console.log(`index`, index)
+  //console.log(`randomStyleAdvice.length`, randomStyleAdvice.length)
+  let index = getRandomNumber(0, randomStyleAdvice.length-1);
+  //console.log(`index`, index)
 
-setTimeout(() => botReply(randomStyleAdvice[index]), 1500)
+  setTimeout(() => botReply(randomStyleAdvice[index]), 1500)
 
-inputWrapper.innerHTML =
+  inputWrapper.innerHTML =
       `<button id="againBtn" type="submit" value="Again">Again plz</button>
       <button id="backBtn2" type="submit" value="Book appointment">Go back please</button>`;
 
@@ -167,14 +247,12 @@ inputWrapper.innerHTML =
 const newAdvice = () => {
   userReply(`Not feeling it. Do you have another idea?`);
 
-console.log(`randomStyleAdvice.length`, randomStyleAdvice.length)
-let index = getRandomNumber(0, randomStyleAdvice.length-1);
-console.log(`index`, index)
+  //console.log(`randomStyleAdvice.length`, randomStyleAdvice.length)
+  let index = getRandomNumber(0, randomStyleAdvice.length-1);
+  //console.log(`index`, index)
 
-setTimeout(() => botReply(randomStyleAdvice[index]), 2000)
+  setTimeout(() => botReply(randomStyleAdvice[index]), 2000)
 }
-
-
 
 
 //Reloads the page
@@ -194,28 +272,11 @@ const getRandomNumber = (min, max) => {
 
 
 
-
 // ------------------> START:
-// When website loaded, chatbot asks first question.
-//We welcome the user (based on current time) with a delay of 1s. 
+//When website loaded, chatbot asks first question. We welcome the user (based on current time) with a delay of 1s. 
 setTimeout(greetUser, 1000, timeGreetings, hour);
 
 //When clicking the scissor logo, page reloads:
 scissorLogo.addEventListener('click', () => reloadSite())
 
 
-
-/*
-
-// Starts here
-const greetUser2 = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
-}
-
-// Set up your eventlisteners here
-
-
-
-*/

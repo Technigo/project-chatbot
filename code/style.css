@@ -187,6 +187,15 @@ button:hover {
   padding: 16px 20px;
 }
 
+#yesBtn,
+#noBtn {
+  border-radius: 20px;
+  margin: 5px;
+  font-size: 14px;
+  padding: 16px 20px;
+}
+
+
 
 select {
 border: none;
@@ -227,6 +236,10 @@ appearance: none;
 
 #scissorLogo:hover {
   opacity: 0.6;
+}
+
+.pressScissorText {
+  margin: 15px 0 0 0;
 }
 
 
