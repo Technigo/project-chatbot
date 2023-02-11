@@ -11,6 +11,10 @@ const stew = document.getElementById("#stew");
 let usersName, classChoice, questChoice, travelChoice;
 let audio = new Audio("assets/audio.mp3");
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 const botIsWriting = () => {
   chat.innerHTML += "Bot is wrting...";
 };
@@ -74,7 +78,7 @@ sendButton.addEventListener("click", (e) => {
       "bot"
     );
   } else {
-    showMessage(usersName, "user");
+    showMessage(`My name is ${capitalizeFirstLetter(usersName)}`, "user");
     setTimeout(() => askNextQuestion(), 1000);
   }
 });
@@ -83,7 +87,9 @@ function askNextQuestion() {
   setTimeout(
     () =>
       showMessage(
-        `${usersName}? I have heard that name before; what race are you?`,
+        `${capitalizeFirstLetter(
+          usersName
+        )}? I have heard that name before; what race are you?`,
         "bot"
       ),
     1000
@@ -115,7 +121,9 @@ const showClassOptions = () => {
 
     setTimeout(() => {
       showMessage(
-        `Oh! So you are the famous ${usersName} the adventuring ${classChoice}?? ...Interesting...`,
+        `Oh! So you are the famous ${capitalizeFirstLetter(
+          usersName
+        )} the adventuring ${classChoice}?? ...Interesting...`,
         "bot"
       );
       setTimeout(() => {
@@ -196,7 +204,9 @@ const endGame = () => {
     //Func
     if (questChoice === "save-the-queen" && travelChoice === "yes") {
       showMessage(
-        `The magical innkeeper teleports ${usersName} to the foreign land of Terra'mara where the big castle lies. It's an impressive building with high walls. In front of the castle, an older woman meets you: The Queen. She thanks you for saving her, but she doesn't need to be saved. You walk all the way home. Where is a wizard when you need one?`,
+        `The magical innkeeper teleports ${capitalizeFirstLetter(
+          usersName
+        )} to the foreign land of Terra'mara where the big castle lies. It's an impressive building with high walls. In front of the castle, an older woman meets you: The Queen. She thanks you for saving her, but she doesn't need to be saved. You walk all the way home. Where is a wizard when you need one?`,
         "story"
       );
       setTimeout(() => {
@@ -220,7 +230,9 @@ const endGame = () => {
       }, 2000);
     } else if (questChoice === "find-the-arc" && travelChoice === "no") {
       showMessage(
-        `${usersName} say "hell no!" and decide to skip this andventure altogether and start a pigfarm`,
+        `${capitalizeFirstLetter(
+          usersName
+        )} say "hell no!" and decide to skip this andventure altogether and start a pigfarm`,
         "story"
       );
       setTimeout(() => {
