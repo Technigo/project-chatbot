@@ -42,7 +42,10 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Welcome to Cat Bot the Chat bot. What's your name?", "bot");
+  showMessage(
+    "Welcome to Cat Bot the Chat bot. What's your first name?",
+    "bot"
+  );
 };
 
 const favoritePersonality = () => {
@@ -129,7 +132,10 @@ const handleInput = (message) => {
 
 const handleUserName = () => {
   // console.log(`${inputValue.value}`);
-  userName = inputValue.value;
+  const input = inputValue.value;
+
+  const capitalized = input.charAt(0).toUpperCase() + input.slice(1);
+  userName = capitalized;
   showMessage(`${userName}`, "user");
   inputValue.value = "";
   setTimeout(favoritePersonality, setTimeOutTime);
@@ -172,10 +178,6 @@ const handleAdoptACat = (adopt) => {
     setTimeout(farewellMessage(`Ok, good bye.`), setTimeOutTime);
   }
 };
-
-//TODO:
-
-// Change user name input to first uppercase letter
 
 // Set up your eventlisteners here
 form.addEventListener("submit", handleInput);
