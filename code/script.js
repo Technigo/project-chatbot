@@ -110,30 +110,70 @@ const tempSelection = () => {
     <option value="40">40°</option>
     <option value="60">60°</option>
   </select>
- `
-const select =
+  `
+const select=
 document.getElementById('selectTemp')
 .addEventListener('change', () => {
-showMessage(selectTemp.value , 'user')})
-setTimeout(() => selectAnswer(selectTemp), 1000)
+showMessage(selectTemp.value + '°', 'user')
+
+  if (selectTemp.value === '30') {
+    setTimeout(() =>
+    showMessage (`OK ${username}, some sensitive laundry in the making!`, 'bot'), 1000)
+  } else if (selectTemp.value === '40') {
+    setTimeout(() =>
+    showMessage (`That´s cool ${username}!`, 'bot'), 1000)
+  } else {
+    setTimeout(() =>
+    showMessage (`Dirty laundry ${username}, in for washing!`, 'bot'), 1000)
+  }
+
+  setTimeout(() => tumbleQuestion(), 3000)
+})
 }
 
-//const selectAnswer = (selectTemp) => {
-//  if (selectTemp === '30') {
-//    showMessage (`OK ${username}, some sensitive laundry in the making`, 'bot')
-//  } else if (selectTemp === '40') {
-//    showMessage (`That´s cool ${username}!`, 'bot')
-//  } else {
-//    showMessage(`Dirty laundry ${username}?`, 'bot')
+const tumbleQuestion = () => {
+  showMessage (`${username}, will you be using the tumbledryer?`, 'bot')
+  inputWrapper.innerHTML = `
+  <button id='yesBtn'> Yes</button>
+  <button id='noBtn'> No</button>
+  `
+  document.getElementById('yesBtn')
+    .addEventListener('click', () => {
+    showMessage('Yes' , 'user')
+    setTimeout(() => timeSet('Yes'), 1000)})
+  
+    document.getElementById('noBtn')
+    .addEventListener('click', () => {
+    showMessage('No' , 'user')
+    setTimeout(() => timeSet('No'), 1000)})
+}
 
+const timeSet = (tumbleAnswer) => {
+  if (tumbleAnswer === 'Yes') {
+    showMessage ('Washing and tumbledrying will be aprox 2 h' ,'bot')
+    setTimeout(() =>  
+    showMessage ('Room 1' , 'bot'), 2000)
+    setTimeout(() =>  
+    showMessage ('Enter code: 112233' , 'bot'), 2000)
+  } else {
+    showMessage ('Only washing will be aprox 1 h' ,'bot')
+    setTimeout(() =>  
+    showMessage ('Room 2' , 'bot'), 2000)
+    setTimeout(() =>  
+    showMessage ('Enter code: 223344' , 'bot'), 2000)
+  }
 
+  setTimeout(() => lastQuestion(), 3000)
+}
 
+const lastQuestion = () => {
 
+}
 
 
 // Set up your eventlisteners here
 
-nameForm.addEventListener('submit', handleNameInput);
+nameForm.addEventListener('submit', handleNameInput)
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
@@ -141,4 +181,4 @@ nameForm.addEventListener('submit', handleNameInput);
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-  setTimeout(greetUser, 1000);
+  setTimeout(greetUser, 1000)
