@@ -153,5 +153,5 @@ function goodBye() {
   // Below clears the option to click button after once selected.
   inputWrapper.innerHTML = ``;
 }
-//Delaying the first bot-message
+//This function will be called one second after the website is loaded.
 setTimeout(greeting, 800);
