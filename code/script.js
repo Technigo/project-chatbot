@@ -1,38 +1,61 @@
-// Variables that point to selected DOM elements
-const chat = document.getElementById('chat');
+// All the DOM selectors stored as short variables
+const chat = document.getElementById("chat");
+const inputWrapper = document.getElementById("input-wrapper");
+const nameInput = document.getElementById("name-input");
+const form = document.getElementById("name-form");
 
-// If you need any global variables that you can use across different functions, declare them here:
+// const sendBtn = document.getElementById("send-btn")
+const audio = new Audio("drill.mp3");
 
+// Global variables, if you need any, declared here
+let questionStep = 1;
 
-// Declare your functions after this comment
+// Function to display the message on the screen both for bot and user
+const botAnswer = (inputMessage) => {
+  showMessage(inputMessage, "bot");
+};
+const userAnswer = (inputMessage) => {
+  showMessage(inputMessage, "user");
+};
+
+// Question flow functions
+const handleInput = (message) => {
+  if (questionStep === 2) {
+    userAnswer(message);
+    setTimeout(() => colourOptions(message), 800);
+  } else if (questionStep === 3) {
+    userAnswer(message);
+    setTimeout(() => houseStatement(message), 1500);
+  } else {
+    userAnswer(message);
+    setTimeout(goodBye, 1500);
+  }
+};
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
-  if (sender === 'user') {
+  if (sender === "user") {
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user-h.png" alt="User" />  
       </section>
-    `
-    // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
-  } else if (sender === 'bot') {
+    `;
+  } else if (sender === "bot") {
+    console.log("This works");
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+      <img src="assets/sorting-hat.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
       </section>
-    `
+    `;
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
-<<<<<<< Updated upstream
-=======
 };
 
 // Bot welcome message
@@ -112,7 +135,7 @@ const houseStatement = (colour) => {
     setTimeout(() => botAnswer(`SLYTHERIN!`), 2000);
   }
 
-  //5 - You will love your new house
+  //You will love your new house
   inputWrapper.innerHTML = `
 <button id="yayButton">Yay!</button>
 `;
@@ -123,28 +146,12 @@ const houseStatement = (colour) => {
     );
 };
 
-//6 - Bot will wish you good luck and say good bye
+// 5 - Bot will wish you good luck and say good bye
 function goodBye() {
   botAnswer(`Have fun with your new slytherin friends!`);
   setTimeout(() => botAnswer(`And watch out for nargles...`), 1200);
   // Below clears the option to click button after once selected.
   inputWrapper.innerHTML = ``;
->>>>>>> Stashed changes
 }
-
-// Starts here
-const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
-}
-
-// Set up your eventlisteners here
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000);
+//Delaying the first bot-message
+setTimeout(greeting, 800);
