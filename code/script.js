@@ -121,7 +121,7 @@ const validationName = (userName) => {
     audio("assets/Error-sound.mp3");
   } else {
     showMessage(userName, "user");
-    userName = "";
+    inputWrapper.innerHTML = "";
     setTimeout(
       () =>
         showMessage(
