@@ -6,10 +6,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: white; 
-  background-image: url('assets/train-train.jpg');
+  background-color: #0a47c2; 
+  /* background-image: url('assets/train-train.jpg');
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   display:flex;
   align-items: center;
   justify-content: center;
@@ -19,26 +19,23 @@ body {
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
+  font-size: 30px;
   line-height: 1.6;
-  color: rgb(22, 21, 21);
+  color: #fff;
   text-align: center;
   letter-spacing: 4px;
-  margin-bottom: 0;
-
-/* border:solid red; */
+  margin-bottom: 20px;
 }
 
 h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 1.6;
-  color: rgb(22, 21, 21);
+  color: #fff;
   text-align: center;
   margin-bottom: 36px;
-  margin-top: 0;
+  margin-top: 20px;
   letter-spacing: 2px;
-  /* border:solid red; */
 }
 
 p {
@@ -46,6 +43,56 @@ p {
   font-weight: 500;
   line-height: 28px;
   margin: 0;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width:100%;
+  justify-content: space-between;
+  margin: 0;
+  padding: 30px;
+  background-color: #0a47c2;;
+  color: white;
+  height: 80px;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: left;
+}
+
+.logo-image {
+  width: auto;
+  height: 50px;
+  margin-top:25px;
+  margin-right: 5px;
+  align-self: center;  
+  border-radius: 50%;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  padding: 0px;
+  margin-left: 20px;
+  text-align: center;
+  align-self: center;
+}
+
+.hamburger {
+  font-size: 30px;
+  user-select: none;
+}
+
+.image-container{
+  width:100%;
+}
+
+.header-image{
+  width:100%;
 }
 
 input {
@@ -64,18 +111,19 @@ input {
 
 main {
   margin: 0 auto;
-  width: 100%;
-  max-width: 70%;
-  height:600px;
+  width:70%;
+  max-width: 90%;
+  height:550px;
   border-radius: 30px;
-  /* background: white; */
+  background: white;
   backdrop-filter: blur(12px);
-  
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  position: absolute;
+  top: 35%;
 
 }
 
@@ -127,7 +175,7 @@ main {
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
-  background-color: #105bcc;
+  background-color: #0a47c2;
   color: white;  
 }
 
@@ -143,7 +191,7 @@ main {
 }
 
 button {
-  background-color: #105bcc;
+  background-color: #0a47c2;
   color: white;
   border: none;
   border-radius: 4px;
@@ -190,12 +238,14 @@ button:hover {
 @media (max-width: 667px) {
 
   main {     
-    height:80%;
+    height:650px;
     padding: 20px 20px;
+    top: 18%;
+    width: 95%;
   }
 
   h1 {
-    font-size: 30px;
+    font-size: 20px;
     line-height: 20px;
     margin-bottom: 20px;
     letter-spacing: 2px;;
@@ -206,6 +256,20 @@ button:hover {
     margin-bottom: 25px;
     letter-spacing: 2px;
     }
+
+  }
+  .navbar {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: space-between;
+      margin: 0;
+      padding: 20px;
+      background-color: #0a47c2;
+      color: white;
+      height: 80px;
+      
+  }
 
   .bubble {
     font-weight: 400; 
