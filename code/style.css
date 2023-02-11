@@ -121,15 +121,15 @@ main {
 }
 
 .green-btn {
-  background-color: rgb(117, 170, 117);
+  background-color: rgb(171, 205, 171);
 }
 
 .blue-btn {
-  background-color: rgb(71, 130, 202);
+  background-color: lightblue;
 }
 
 .red-btn {
- background-color: rgb(164, 74, 74);
+ background-color: rgb(223, 161, 170);
 }
 
 button {

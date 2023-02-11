@@ -6,14 +6,13 @@ const inputWrapper = document.getElementById('input-wrapper');
 
 
 // If you need any global variables that you can use across different functions, declare them here:
-
+let clickSound = new Audio('assets/click.wav');
 // Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
-    console.log (`the user responds with: "${message}"`)
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -24,7 +23,7 @@ const showMessage = (message, sender) => {
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html section inside the chat with the posted message
   } else if (sender === 'bot') {
-    console.log(`The bot asks: "${message}"`)
+    clickSound.play()
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/botcloud.png" alt="Bot" />
