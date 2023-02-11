@@ -91,7 +91,7 @@ const nextQuestion = (message) => {
 const greetUser = () => {
   questionNumber = 1
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  botSay("Welcome lifeform! What species do you believe yourself to be?");
+  botSay("Welcome lifeform! Sound on please! What species do you believe yourself to be?");
 }
 let guess = "";
 button.addEventListener('click', (event) => {
@@ -188,7 +188,7 @@ if (monsterAnswer === "Bring it on!") {
  botSay(`I'll be damned, you're a <strong>honey badger!</strong> A total unit and a half! You came as ${guess} and left as honey badger, what a day!`)
 
 } else if (monsterAnswer === "Fear me, I'm mighty!") {
-  botSay(`I'll be damned! You're a majestic and competent <strong>hippo</strong>, on the road to grace and glory, positively slaying it! You came as ${guess} and left as hippo, what a day!`)
+  botSay(`I'll be damned! You're a majestic and competent <strong>hippo</strong>, on the road to grace and glory, positively slaying it! You came as ${guess} and left as hippo, please take my most sincere congratulations!`)
 
 } else if (monsterAnswer === "Just within jumping distance...") {
   botSay(`I'll be damned! You're a <strong>facehugger</strong> from the Alien movies! In cyberspace, I hope someone can hear me scream! You came as ${guess} and left as facehugger, what a terrible day to exist!`)
