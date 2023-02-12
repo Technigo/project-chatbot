@@ -139,7 +139,7 @@ img #wait {
   border-radius: 26px 0 26px 26px;
   margin-top: 25px;
   margin-right: 8px;
-  background: #f29b49;
+  background: #e773eb;
 }
 
 .input-wrapper {
@@ -164,7 +164,7 @@ label {
 
 button {
   display: inline-block;
-  background-color: #f29b49;
+  background-color: #e773eb;
   color: black;
   border: none;
   border-radius: 50%;
