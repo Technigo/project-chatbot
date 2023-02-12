@@ -1,48 +1,37 @@
-* {
-  box-sizing: border-box;
-}
+
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
-}
-
-h1 {
-  font-weight: bold;
-  font-size: 44px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
+  font-family: 'Robota', sans-serif;
+  background: whitesmoke;
 }
 
 h2 {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 34px;
-  color: #fff;
+  font-weight: 350;
+  font-size: 21px;
+  line-height: 25px;
+  color: black;
   text-align: center;
   margin-bottom: 36px;
 }
 
 p {
   font-size: 18px;
-  font-weight: 600;
-  line-height: 28px;
+  font-weight: 300;
+  line-height: 25px;
   margin: 0;
 }
 
 input {
   box-sizing: border-box;
-  border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 2px solid black;
+  color: black;
   padding: 16px;
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 600;
+  font-size: 18px;
+  font-family: 'Roboto';
+  font-weight: 400;
   line-height: 26px;
   flex: 1;
 }
@@ -53,7 +42,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: whitesmoke;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -90,23 +79,20 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 17px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: black;
   max-width: 40%;
 }
 
 .bot-bubble {
-  border-radius: 0px 26px 26px 26px;
-  margin-left: 8px;
+  margin-left: 7px;
 }
 
 .user-bubble {
-  border-radius: 26px 0 26px 26px;
-  margin-right: 8px;
+  margin-right: 7px;
 }
 
 .input-wrapper {
@@ -118,32 +104,32 @@ main {
   width: 100%;
   display: flex;
   align-items: center;
+  background-color: lightgoldenrodyellow;
 }
 
-label {
+/*label {
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Roboto';
   font-weight: 500;
-  color: #0026ff;
+  color: red;
   margin-right: 20px;
-}
+}*/
 
 button {
-  background-color: #0026ff;
-  color: white;
-  border: none;
+  background-color: lightgoldenrodyellow;
+  border: solid 1px;
+  color: black;
   border-radius: 4px;
-  padding: 16px 40px;
+  padding: 20px 50px;
   margin-right: 4px;
-  font-size: 16px;
-  line-height: 26px;
-  font-family: 'Montserrat';
-  font-weight: 500;
+  font-size: 15px;
+  line-height: 10px;
+  font-family: 'Roboto';
+  font-weight: 1000;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 button:hover {
   opacity: 0.9;
-  transition: all 0.2s ease;
 }
