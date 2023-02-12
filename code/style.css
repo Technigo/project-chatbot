@@ -202,5 +202,23 @@ button:hover {
 }
 
 @media (max-width: 668px) {
+  main {
+    height: 500px;
+    padding: 10px 10px;
+    border-radius: 0;
+  }
+
+  .bot-msg img,
+  .user-msg img {
+    width: 40px;
+    height:40px;
+  }
+
+  .bubble {
+    font-weight: 600;
+    font-size: 8px;
+    padding: 10px 18px;
+    max-width: 50%;
+  }
 
 }
