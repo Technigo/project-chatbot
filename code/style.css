@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: rgb(30, 85, 75, 0.8);
+  background: rgb(30, 85, 75, 0.9);
 
 }
 
@@ -40,7 +40,7 @@ form {
   align-items: center;
 }
 
-/*
+/* muted this part since it is not needed anymore, as I removed the input field
 input {
   box-sizing: border-box;
   border: none;
@@ -132,6 +132,10 @@ then I get rid of the scroll to the side-thing*/
   display: flex;
   align-items: center;
 }
+
+/* I made the buttons smaller and wider to at least partially fix the issue that they are obstructing some of the text
+in some of the bot-bubbles when the buttons appear. I have not figured out how to make the chat scroll so far so that the
+buttons do not obstruct anything*/
 
 button {
   background-color: pink;
