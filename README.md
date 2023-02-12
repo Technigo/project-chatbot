@@ -13,3 +13,5 @@ I'm still struggling with the logic of setTimeouts though. It seems that there a
 ## View it live
 
 URL: https://antoniastravelbot.netlify.app
+
+<img width="749" alt="Skärmavbild 2023-02-12 kl  18 15 54" src="https://user-images.githubusercontent.com/95037306/218323898-4e3e921d-2254-4db0-a7d5-99fc4d68cfc2.png">
