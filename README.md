@@ -1,13 +1,14 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Week 1 project was to create a chatbot. The goal was to practice Javascript and the key takeaways frpm week 1 on the boot camp with Technigo.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I had a hard time this week and spent way too much time on trying to figure JS out, instead of building the project itself. Ended up with a "half-ready" chatbot that isn't working after question 1 - so I know I'll have a change request on this one.
+
+Right now I can't figure this out on my own so I'll need help solving the problem.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+I will deploy it on Netlify - you ca go to my Netlify here: https://app.netlify.com/sites/ylvakarlsson/overview (it will be up soon - after I've commited this to my GitHub.)
+I will fic the errors with this weeks project but I'll need help - have reached out to my classmates about it.
