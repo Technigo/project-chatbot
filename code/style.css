@@ -77,7 +77,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  backdrop-filter: blur(10px);
+  background-color: rgba(192, 192, 192, 0.5);
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
