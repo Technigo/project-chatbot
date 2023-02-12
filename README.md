@@ -1,13 +1,13 @@
 # Project Name
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment was to make a functioning chat bot. A hard assignment for someone that is seeing code for almost the first time. Hig and lows but at the same time so much fun.
 
 ## The problem
+The first way to try to tackle the solution was not the perfect and neither working for me, I kind of tried to do the project at the same time as I was watching the tutorials and not really figuring out what I was doing and why. When I got desperate one of the classmates told me to brake it down to smaller pieces and when I started doing that it started working.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+To do the assignment I read alot of homepages watched alot of sites and their code tried to apply it to mine and se what worked and what not.
+If I had more time I wold have more pictures more ways for the user to interact and also approach the problem in a different way, wich Im going to try for next week. 
+
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://meek-fenglisu-608b92.netlify.app
