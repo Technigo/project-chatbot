@@ -1,6 +1,6 @@
 # Project Name
 
-Welcome to my Chat Bot project! You will order one of three plants here and then coordiante a pick up in one of the stores in the city of Stockholm. 
+Welcome to my Chat Bot project! Here you will order one of three plants and then coordinate a pick up in one of the stores in the city of Stockholm. 
 
 ## The problem
 
