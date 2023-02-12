@@ -190,7 +190,7 @@ const notGood = (bob) => {
 }
 
 const closure = (end) => {
-  setTimeout(() => botReply("Would you like to talk more?"),3000)
+  setTimeout(() => botReply("Would you like to talk some more?"),3000)
     inputWrapper.innerHTML = `
       <button id = "yes" type = "submit">Yes, hit me.</button>
       <button id = "no" type = "submit">I'm done talking.</button>
