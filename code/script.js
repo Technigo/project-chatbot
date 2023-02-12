@@ -54,8 +54,8 @@ const favoritePersonality = () => {
     "bot"
   );
   inputWrapper.innerHTML = `
-  <button id="cuddly" value="cuddly">Cuddly</button>
-  <button id="antisocial" value="antisocial">Antisocial</button>
+  <button class="primary-button" id="cuddly" value="cuddly">Cuddly</button>
+  <button class="secondary-button" id="antisocial" value="antisocial">Antisocial</button>
 `;
 
   const cuddly = document.getElementById("cuddly");
@@ -91,9 +91,9 @@ const adopt = () => {
     "bot"
   );
   inputWrapper.innerHTML = `
-  <button id="yes" value="yes">Yes!</button>
-  <button id="maybe" value="maybe">I'll think about it</button>
-  <button id="no" value="no">No</button>
+  <button class="primary-button" id="yes" value="yes">Yes!</button>
+  <button class="secondary-button" id="maybe" value="maybe">I'll think about it</button>
+  <button class="primary-button" id="no" value="no">No</button>
 `;
   const userResponseYes = document.getElementById("yes");
   userResponseYes.addEventListener("click", () =>

@@ -6,8 +6,7 @@
   --primary-bg-color: #94b1aa;
   --secondary-bg-color: #e6f3f0;
   --primary-text-color: #000;
-  --secondary-text-color: #348571;
-  --box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  --box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 * {
@@ -17,7 +16,18 @@
 body {
   margin: 0;
   padding: 0;
-  background: var(--primary-bg-color);
+  background-image: url("./assets/code.jpg");
+  background-repeat: no-repeat center top;
+  background-size: cover;
+}
+
+.border-container {
+  background-color: #fff;
+  border: 10px outset var(--border-color);
+  margin: 0 auto;
+  margin-top: 40px;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
 }
 
 h1,
@@ -35,7 +45,7 @@ h1 {
 
 h2 {
   font-size: 24px;
-  margin-bottom: 20px;
+  margin: 20px;
 }
 
 p {
@@ -66,12 +76,17 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+}
+
+.grid-parent {
+  display: grid;
+  grid-template-columns: repeat(1, 2fr);
+  gap: 10px;
 }
 
 .chat {
@@ -81,6 +96,12 @@ main {
   overflow: scroll;
   flex-direction: column;
   padding-bottom: 16px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px 0 #000, 0 6px 20px 0 rgb(0 0 0 / 19%);
+  box-shadow: var(--box-shadow);
+  margin: 20px auto;
+  max-width: 500px;
+  padding: 30px;
 }
 
 .bot-msg {
@@ -120,9 +141,9 @@ main {
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
+  overflow-wrap: break-word;
   padding: 16px 24px;
   color: #000;
-  max-width: 40%;
 }
 
 .bot-bubble {
@@ -142,7 +163,7 @@ main {
 
 .input-wrapper form {
   width: 100%;
-  display: flex;
+  /* display: flex; */
   align-items: center;
 }
 
@@ -154,29 +175,75 @@ label {
   margin-right: 20px;
 }
 
-button {
+button,
+input {
+  display: block;
+}
+
+.send-btn {
   background-color: var(--primary-bg-color);
   color: var(--primary-text-color);
   border: none;
   border-radius: 4px;
   padding: 16px 40px;
-  margin-right: 4px;
+  margin: 5px;
   font-size: 16px;
   line-height: 26px;
   font-family: var(--paragraph-font-family);
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  box-shadow: var(--box-shadow);
+  transition: all 200ms ease;
 }
 
-button:hover {
+.send-btn:hover {
   opacity: 0.9;
-  transition: all 0.2s ease;
+  transition: all 200ms ease;
+  background: var(--secondary-bg-color);
+  color: var(--primary-text-color);
+  border: 1px solid var(--border-color);
 }
 
-/* .user-bubble:first-letter {
-  text-transform: uppercase;
-} */
+.primary-button,
+.secondary-button {
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 20px 15px;
+  margin: 10px;
+  box-shadow: var(--box-shadow);
+  transition: all 200ms ease;
+}
+
+.primary-button {
+  background: var(--primary-bg-color);
+  color: var(--primary-text-color);
+  border: none;
+}
+
+.secondary-button {
+  background: var(--secondary-bg-color);
+  color: var(--primary-text-color);
+  border: 1px solid var(--border-color);
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 20px 15px;
+  box-shadow: var(--box-shadow);
+}
+
+.primary-button:hover {
+  background: var(--secondary-bg-color);
+  color: var(--primary-text-color);
+  border: 1px solid var(--border-color);
+}
+
+.secondary-button:hover {
+  background: var(--primary-bg-color);
+  color: var(--primary-text-color);
+}
 
 /* borrowed */
 select {
@@ -194,6 +261,13 @@ select {
 /*footer*/
 .footer {
   margin-top: 50px;
+  width: 400px;
+}
+
+.footer-container {
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 20px auto 0;
 }
 
 .logo-footer {
@@ -250,6 +324,43 @@ select {
 /* desktop */
 @media (min-width: 1024px) {
   .welcome-img {
-    width: 10%;
+    width: 20%;
+  }
+
+  .border-container {
+    max-width: 50%;
+  }
+
+  .input-wrapper form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .medium-grid-item {
+    margin: 5px;
+  }
+
+  .bubble {
+    max-width: 40%;
+  }
+
+  #select {
+    max-width: fit-content;
+  }
+
+  .footer-container {
+    width: 20%;
+  }
+}
+
+/*Galaxy fold*/
+@media (min-width: 280px) and (max-width: 374px) {
+  .border-container {
+    width: 100%;
+  }
+
+  .chat {
+    padding: 0;
   }
 }

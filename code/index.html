@@ -18,26 +18,36 @@
   </head>
 
   <body>
-    <h1>Le Chat Bot</h1>
-    <img
-      src="assets/welcomecats.png"
-      alt="Illustration of cats and the text Welcome"
-      class="welcome-img"
-    />
-    <h2>Ask Cat Bot the Chat Bot</h2>
+    <div class="border-container">
+      <h1>Le Chat Bot</h1>
+      <img
+        src="assets/welcomecats.png"
+        alt="Illustration of cats and the text Welcome"
+        class="welcome-img"
+      />
+      <h2>Ask Cat Bot the Chat Bot</h2>
 
-    <main>
-      <section class="chat" id="chat"></section>
+      <main>
+        <section class="chat" id="chat"></section>
 
-      <div class="input-wrapper" id="input-wrapper">
-        <form id="name-form">
-          <label for="name-input">Ask</label>
-          <input id="name-input" type="text" />
-          <button class="send-btn" type="submit">Send</button>
-        </form>
-      </div>
-    </main>
-    <footer>
+        <div class="input-wrapper" id="input-wrapper">
+          <div class="grid-parent">
+            <form id="name-form">
+              <div class="grid-child">
+                <label for="name-input">Type Here</label>
+              </div>
+              <div class="grid-child medium-grid-item">
+                <input id="name-input" type="text" />
+              </div>
+              <div class="grid-child">
+                <button class="send-btn" type="submit">Send</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+    <footer class="footer-container">
       <div class="logo-footer">
         <img src="assets/a_cat.jpg" alt="Logo, black cat" />
         <span class="logoTextSpan">Michelle Wegler 2023</span>
