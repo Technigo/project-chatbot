@@ -3,15 +3,15 @@
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Arial', sans-serif;
+  letter-spacing: 1px;
   margin: 0;
   padding: 0;
   background: rgb(238, 230, 223);
 }
 
 h1 {
- 
-  font-weight: bold; 
+  font-weight: 
   letter-spacing: 3px;
   font-size: 44px;
   line-height: 34px;
@@ -92,9 +92,8 @@ main {
 }
 
 .bubble {
-  background: #ebe4e4;
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 
+  font-size: 18px;
   line-height: 26px;
   padding: 16px 24px;
   color: #000000;
@@ -102,11 +101,13 @@ main {
 }
 
 .bot-bubble {
+  background: #e0e0e0;
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
 }
 
 .user-bubble {
+  background: #dac1cb;
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
 }
@@ -131,16 +132,17 @@ label {
 }
 
 button {
-  background-color: #c27fb0;
-  color: white;
+  background-color: #e2d8bf;
+  color: rgb(255, 255, 255);
   border: none;
   border-radius: 4px;
   padding: 16px 40px;
   margin-right: 4px;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 26px;
   font-family: 'Montserrat' sans-serif;
   font-weight: bold;
+  letter-spacing: 2px;
   cursor: pointer;
   transition: all 0.3s ease;
 }

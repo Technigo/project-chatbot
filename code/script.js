@@ -51,16 +51,13 @@ const nextQuestion = (message) => {
     setTimeout(() => showColorOption(message), 1000)
   } else if (botQuestion === 2) {
     userReply(message)
-    setTimeout(() => showDesignMenu(message), 1000)
+    setTimeout(() => showDesign(message), 1000)
   } else if (botQuestion === 3) {
     userReply(message)
-    setTimeout(() => showPaintingSize(message), 1000)
+    setTimeout(() => showPainting(message), 1000)
   } else if (botQuestion === 4) {
     userReply(message)
-    setTimeout(() => showPrice(message), 1000)
-  } else {
-    userReply(message)
-    setTimeout(thankYou, 1000)
+    setTimeout(goodBye, 1000)
   }
 }
 
@@ -84,19 +81,19 @@ const showColorOption = (msg) => {
 
   document
     .getElementById('blackWhiteBtn')
-    .addEventListener('click', () => nextQuestion('Black and white would suit me!'))
+    .addEventListener('click', () => nextQuestion('Black and white feels right!'))
   document
     .getElementById('colorBtn')
-    .addEventListener('click', () => nextQuestion('Make my wall pop!'))
+    .addEventListener('click', () => nextQuestion('Rainbow will make my wall glow!'))
   document
     .getElementById('beigeBtn')
     .addEventListener('click', () => nextQuestion('Beige is fierce!'))
 }
 
-const showDesignMenu = (type) => {
+const showDesign = (type) => {
   botQuestion++
-  botReply(`Great choice! Wich kind of style would you like on your poster?`)
-  
+    botReply(`Great choice! Wich kind of style would you like on your poster?`)
+
   inputWrapper.innerHTML = `
   <button id="abstractBtn">Abstract</button>
   <button id="photographyBtn">Photography</button>
@@ -105,26 +102,27 @@ const showDesignMenu = (type) => {
   
   document
    .getElementById('abstractBtn')
-   .addEventListener('click', () => nextQuestion('Abstract please'))
+   .addEventListener('click', () => nextQuestion('Abstract make my mind react!'))
   document
    .getElementById('photographyBtn')
-   .addEventListener('click', () => nextQuestion('Photography'))
+   .addEventListener('click', () => nextQuestion('Photo makes my heart go go!'))
   document
    .getElementById('illustrationBtn')
-   .addEventListener('click', () => nextQuestion('Illustration'))
+   .addEventListener('click', () => nextQuestion('Illustration leads the way, hurray!'))
     
 }
 
-const showPaintingSize = () => {
+const showPainting = () => {
   botQuestion++
-  botReply(`Ok great! Just wait a second and I'll see what I can find for you..`)
+  botReply(`I feel exactly the same! Just wait a second and I'll see what I can find for you..`)
   setTimeout(() => {
-    botReply(`💭`); }, 2000);
+    botReply(`💭`); }, 4000);
   setTimeout(() => {
-      botReply(`💡`); }, 4000); 
+      botReply(`💡`); }, 5000); 
   setTimeout(() => {
-    botReply(`Maybe this poster would be a good choice for you?`);
+    botReply(`Maybe this poster would be a good choice for you? (INSERT IMG HERE DEPENDING OF WHAT CHOICES THE USER MADE)`);
   }, 6000);
+
 
   inputWrapper.innerHTML = `
     <button id="restart">Please start over</button>
