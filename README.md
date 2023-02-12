@@ -5,7 +5,7 @@ Illustrations: https://undraw.co/illustrations
   
 
 ## The problem
-To approach the problem a demo app from Technigo and previous students were used as inspiration. To understand how the chat bot could work other students' code was first implementet and then refactored with additional functions and eventlisteners. Information and code snippets from various blogs and forums were also used and some guidance was needed from a more experienced coder to solve some of the more complicated functions. 
+To approach the problem a demo app from Technigo and previous students were used as inspiration. To understand how the chat bot could work other students' code was first implementet and then refactored with additional functions and eventlisteners. Information and code snippets from various blogs and forums were also used and some guidance was needed from a more experienced coder to solve some of the more complicated functions. Future iterations of the chat bot will include a more user friendly experience for a mobile user when it comes to scrolling. 
 
 ## View it live
 https://melodic-stardust-81c7d1.netlify.app/
