@@ -26,7 +26,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/toddlerandparent.png" alt="User" />  
       </section>
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
@@ -34,7 +34,7 @@ const showMessage = (message, sender) => {
     console.log("why");
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/botballoon.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -81,14 +81,14 @@ const whatIsTheWeather = (nameInput) => {
   questionNumber++
   showMessage(`Happy to suggest some fun ideas for you and your toddler, ${nameInput}!`, "bot");
   setTimeout(() =>
-    showMessage(`First can you tell me, what's the weather like today?`, "bot"), 500);
+    showMessage(`Firstly can you tell me: what's the weather like today?`, "bot"), 500);
 
 
 //BUTTONS THAT SHOW WEATHER OPTIONS
   inputWrapper.innerHTML = `
-    <button id="sunnyBtn">Sunny</button>
-    <button id="cloudyBtn">Cloudy</button>
-    <button id="rainyBtn">Rainy</button>
+    <button id="sunnyBtn">Sunny ☀️ </button>
+    <button id="cloudyBtn">Cloudy ☁️ </button>
+    <button id="rainyBtn">Rainy ☔ </button>
 `
 clickWeatherButtons();  //once I have defined the button action function, I can call it here.
 
@@ -130,16 +130,16 @@ setTimeout(() => showActivities(), 1000)
   //NB I didn't need to add 'type' as I declared it in line 15 and in each of the button sections
 const showActivities = () => {
   questionNumber++ 
-  showMessage(`Got it! Here are some fun toddler ideas you might like to try on a ${type} day.`, "bot") //here the reply is undefined instead of showing the selected type
+  showMessage(`Got it! Here are some fun toddler ideas you might like to try on a ${type} day:`, "bot") //here the reply is undefined instead of showing the selected type
   
 //First button
 if (type==='sunny') {
   inputWrapper.innerHTML = `
       <select id="select">
         <option value="" selected disabled>👇 Select an activity...</option>
-        <option value="go to the beach">Go to the beach</option>
-        <option value="take a splash in the local pool">Take a splash in the local pool</option>
-        <option value="have a picnic outside">Have a picnic outside</option>
+        <option value="go to the beach">Go to the beach 🏖️ </option>
+        <option value="take a splash in the local pool">Take a splash in the local pool 💦 </option>
+        <option value="have a picnic outside">Have a picnic outside 🍰 </option>
       </select>
     `
 //Second button
@@ -147,9 +147,9 @@ if (type==='sunny') {
     inputWrapper.innerHTML = `
       <select id="select">
       <option value="" selected disabled>👇 Select an activity...</option>
-        <option value="go on a bike ride together">Go on a bike ride together</option>
-        <option value="visit the local playground">Visit the local playground</option>
-        <option value="check out animals at the farm">Check out animals at the farm</option>
+        <option value="go on a bike ride together">Go on a bike ride together 🚲</option>
+        <option value="play football in the park">Play football in the park ⚽ </option>
+        <option value="check out animals at the farm">Check out animals at the farm 🐄 </option>
       </select>
     `
 //Third button
@@ -157,9 +157,9 @@ if (type==='sunny') {
     inputWrapper.innerHTML = `
       <select id="select">
         <option value="" selected disabled>👇 Select an activity...</option>
-        <option value="bake some cookies">Bake some cookies</option>
-        <option value="do some finger painting">Do some finger painting</option>
-        <option value="build a model railway">Build a model railway</option>
+        <option value="bake some cookies">Bake some cookies 🍪 </option>
+        <option value="do some finger painting">Do some finger painting 🎨 </option>
+        <option value="build a model railway">Build a model railway 🚂 </option>
       </select>
     `
   }
@@ -204,7 +204,7 @@ document
 
 const thankYou = () => {
   showMessage(`Sounds great!`, "user"); 
-  setTimeout(() => showMessage(`Happy days! Have fun! 👋🏼`, "bot"), 1000);
+  setTimeout(() => showMessage(`Happy days! Have fun! 🎉`, "bot"), 1000);
   inputWrapper.innerHTML = ``
 }
 
