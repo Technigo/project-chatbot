@@ -15,7 +15,8 @@ const userReply = (msg) => {
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
+ 
+// the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
@@ -25,9 +26,8 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `
-    // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
+// the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
-    // add a console.log here to see when it's being logged and not
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -37,7 +37,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+// This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
 };
 
@@ -79,9 +79,10 @@ spriteBtn.addEventListener('click', () => sprite())
 
 });
 
+// User choose Cola
 const cola = () => {
   userReply(`I would love to order a Cola`);
-  setTimeout(() => botReply(`Great choice, Cola is amazing! Please select what kind of Cola below...`), 100)
+  setTimeout(() => botReply(`Great choice, Cola is amazing! Please select what kind of Cola below...`), 1000)
 
        inputWrapper.innerHTML =
         `<select id="select">
@@ -94,13 +95,14 @@ const cola = () => {
         `
         const colaKindBtn = document.getElementById('colaKindBtn');
         colaKindBtn.addEventListener('click', () => {
-          botReply(`Thank you for your order! Close this window and your drink will be magical teleported to you 🧙‍♂️`)
+          botReply(`Thank you for your Cola-order! Close this window and your drink will be magical teleported to you 🧙‍♂️`)
         }
       )};
 
+// User choose Fanta
  const fanta = () => {
   userReply(`I would love a Fanta`);
-  setTimeout(() => botReply(`Great choice! Please select what kind of Fanta below.`), 100)
+  setTimeout(() => botReply(`Great choice! Please select what kind of Fanta below.`), 1000)
   
   inputWrapper.innerHTML =
         `<select id="select">
@@ -113,13 +115,14 @@ const cola = () => {
         `
         const fantaKindBtn = document.getElementById('fantaKindBtn');
         fantaKindBtn.addEventListener('click', () => {
-          botReply(`Thank you for your order! Close this window and your drink will be magical teleported to you 🧙‍♂️`)
+          botReply(`Thank you for your Fanta-order! Close this window and your drink will be magical teleported to you 🧙‍♂️`)
         }
 )};
 
+// User choose Sprite
 const sprite = () => {
   userReply(`I would love a Sprite`);
-  setTimeout(() => botReply(`Great choice! Please select what kind of Sprite below.`), 100)
+  setTimeout(() => botReply(`Great choice! Please select what kind of Sprite below.`), 1000)
   
   inputWrapper.innerHTML =
         `<select id="select">
@@ -130,15 +133,17 @@ const sprite = () => {
         </select>
         <button class="selectBtn" id="spriteKindBtn" type="submit">OK</button>
         `
-};
+        const SpriteKindBtn = document.getElementById('spriteKindBtn');
+        spriteKindBtn.addEventListener('click', () => {
+          botReply(`Thank you for your Sprite-order! Close this window and your drink will be magical teleported to you 🧙‍♂️`)
+        }
+)};
   
   
-
-
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 100);
+setTimeout(greetUser, 1000);
