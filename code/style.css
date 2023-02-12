@@ -26,6 +26,10 @@ h2 {
   margin-bottom: 36px;
 }
 
+h3 {
+  margin-bottom: 10px;
+}
+
 p {
   font-size: 18px;
   font-weight: 600;
@@ -144,18 +148,9 @@ button {
 }
 
 button:hover {
-  opacity: 0.8;
+  opacity: 0.7;
   transition: all 0.2s ease;
 }
-
-
-.yesNoWrapper{
-  display: flex;
-  justify-content:space-evenly;
-  padding: 60px;
-  margin: 20px 0;
-}
- 
 
 .yesButton{
   background-color: rgb(33, 164, 33);
@@ -166,24 +161,9 @@ button:hover {
 }
 
 
-.yesNoButton:active{
+button:active{
     box-shadow: 1px #666;
     transform: translateY(4px);
-}
-
-
-.q1Wrapper{
-  display: flex;
-  justify-content:space-evenly;
-  padding: 60px;
-  margin: 20px 0;
-  gap: 20px;
-}
-
-.q1Button{
-  width: 40%;
-  text-align: center;
-  background: rgb(111, 106, 215);
 }
 
  .dogwrap p {
@@ -197,8 +177,12 @@ button:hover {
   width: 600px;
 }
 
-/* .scoreboard{
-  background-color: rgba(31, 6, 220, 0.7);
-  height: 100%;
-  margin-top: 10px;
-} */
+.scoreboard{
+  color: #0026ff;
+  background: #e5e9ff;
+  text-align: center;
+  width: 80%;
+  align-self: center;
+  border-radius: 4px;
+  display: inline;
+}
