@@ -8,4 +8,4 @@ I watched the videos, the code along, took notes and did practices. I talked to 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://super-rugelach-9b1724.netlify.app/
