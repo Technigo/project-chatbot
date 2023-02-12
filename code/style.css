@@ -178,32 +178,29 @@ video {
 }
 
 @media (max-width: 667px) {
-
-  main {     
-    height:650px;
+  main {
+    height: 650px;
     padding: 20px 20px;
     top: 18%;
     width: 95%;
+    max-width: 95%;
   }
 
   h1 {
     font-size: 20px;
     line-height: 20px;
     margin-bottom: 20px;
-    letter-spacing: 2px;;
+    letter-spacing: 2px;
   }
 
   h2 {
     line-height: 20px;
     margin-bottom: 25px;
     letter-spacing: 2px;
-    }
-
-
   }
 
   .bubble {
-    font-weight: 400; 
+    font-weight: 400;
     font-size: 10px;
     padding: 16px 20px;
     max-width: 60%;
@@ -213,7 +210,7 @@ video {
     font-weight: 600;
     line-height: 26px;
     flex: 1;
-    width:60%;
+    width: 60%;
   }
 
   button {
@@ -221,7 +218,5 @@ video {
     margin-right: 4px;
     font-size: 16px;
     line-height: 26px;
-
   }
-
 }
