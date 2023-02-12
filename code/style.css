@@ -123,8 +123,8 @@ input {
 }
 
 .bot-img-reply {
-  width: 200px!important;
-  height: 200px!important;
+  width: 100%!important;
+  height: 100%!important;
   border-radius: 0px 26px 26px 26px;
 }
 
@@ -187,4 +187,8 @@ button:hover {
   transition: all 1s ease;
   border-radius: 90px;
   background-color: #0c2913;
+}
+
+@media (max-width: 668px) {
+
 }
