@@ -47,8 +47,8 @@ p {
 
 input {
   box-sizing: border-box;
-  border: none;
-  border-radius: 4px 0 0 4px;
+  border: 2px solid #442245;
+  border-radius: 6px;
   background: #e5e9ff;
   color: black;
   padding: 16px;
@@ -125,7 +125,7 @@ img #wait {
   padding: 16px 12px;
   color: black;
   max-width: 40%;
-  box-shadow: 5px 5px 5px 5px black;
+  box-shadow: 5px 5px 5px 5px #442245;;
 }
 
 .bot-bubble {
@@ -166,8 +166,8 @@ button {
   display: inline-block;
   background-color: #e773eb;
   color: black;
-  border: none;
-  border-radius: 50%;
+  border: 2px solid #442245;
+  Border-radius: 50%;
   padding: 16px 40px;
   margin: 8px 4px 0 4px;
   font-size: 16px;
@@ -176,7 +176,7 @@ button {
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 3px 3px 3px 3px teal;
+  box-shadow: 2px 2px 3px 2px #442245;;
 }
 
 button:hover {
