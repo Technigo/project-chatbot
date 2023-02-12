@@ -11,8 +11,11 @@ let userName = "";
 let mood = "";
 let drink = "";
 
+const chime = new Audio("./assets/chime.wav");
+
 // Declare your functions after this comment
 const botReply = (message) => {
+  chime.play();
   showMessage(message, "bot");
 };
 
@@ -23,7 +26,7 @@ const userReply = (message) => {
 const botLink = (message, link) => {
   chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bot.jpg" alt="Bot" />
         <div class="bubble bot-bubble">
           <a href=${link}><p>${message}</p></a>
         </div>
@@ -73,7 +76,7 @@ const showMessage = (message, sender) => {
   } else if (sender === "bot") {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bot.jpg" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -204,7 +207,7 @@ const handleRating = () => {
     btn.addEventListener("click", (e) => {
       userReply(`I give it a ${btn.value}!`);
 
-      setTimeout(postRating(btn.value), 1000);
+      setTimeout(() => postRating(btn.value), 1000);
     });
   });
 };
