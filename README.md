@@ -1,4 +1,5 @@
 # Project Name
+Sprint 1 week 1
 The assignment was to make a functioning chat bot. A hard assignment for someone that is seeing code for almost the first time. Hig and lows but at the same time so much fun.
 
 ## The problem
