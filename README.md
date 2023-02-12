@@ -1,13 +1,13 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+I reated a chatbot where young people can talk about their climate anxiety.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started off by making the chatbot being driven by the SetTimeOut method but then changed my mind, as I wanted to try the nextQuestion and question counter method. 
+
+My intention was start of the chat with full page and button and animation as the chatbot was typing, but I didn't have time to do that. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://eclectic-alfajores-99a972.netlify.app/
