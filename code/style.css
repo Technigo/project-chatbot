@@ -184,5 +184,13 @@ button:hover {
   transition: all 0.2s ease;
 }
 
+@media screen and (max-width: 667px) {
 
+  .bubble {
+    max-width: 70%;
+  }
 
+  .chat {
+    background-position: center;
+  }
+}
