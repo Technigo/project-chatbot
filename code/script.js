@@ -12,19 +12,19 @@ const time = date.getHours();
 console.log(time);
 
 
-const greetUser = (timeGreetings, time) => {
-  
-if (time >= 5 && time <= 10) {
-    showMessage(timeGreetings[0], "bot");           //Morning (5 to 10)
-} else if (time > 10 && time <= 18) {
-        showMessage(timeGreetings[1], "bot");       //Hello (11 to 18)
-} else if (time > 18 && time <= 22) {
-    showMessage(timeGreetings[2], "bot");           //Evening (19 to 22)
-} else {
-    showMessage(timeGreetings[3], "bot");           //Late (23 to 4)
+function greetUser(timeGreetings, time) {
+
+  if (time >= 5 && time <= 10) {
+    showMessage(timeGreetings[0], "bot"); //Morning (5 to 10)
+  } else if (time > 10 && time <= 18) {
+    showMessage(timeGreetings[1], "bot"); //Hello (11 to 18)
+  } else if (time > 18 && time <= 22) {
+    showMessage(timeGreetings[2], "bot"); //Evening (19 to 22)
+  } else {
+    showMessage(timeGreetings[3], "bot"); //Late (23 to 4)
     showMessage("Anyways, since you're up. What's your name?", "bot");
+  }
 }
-};
 
 //1 second delay for greeting
 setTimeout(greetUser, 1000, timeGreetings, time);
@@ -118,7 +118,7 @@ const choiceBook = (firstName) => {
     </div>
 </section>`;
 
-  showMessage(`Would you like bound or pocket book, ${firstName}?`, 'bot');
+  showMessage(`Would you like bound, pocket book or did you change your mind?`, 'bot');
   formWrapper.innerHTML =
         `<button id="boundBtn" type="submit" value="Bound book">Bound Book</button>
       <button id="pocketBtn" type="submit" value="Pocket book">Pocket Book</button>
@@ -126,14 +126,27 @@ const choiceBook = (firstName) => {
   
   
   let boundBtn = document.getElementById('boundBtn');
-   boundBtn.addEventListener('click',() => choiceBook())
+   boundBtn.addEventListener('click',() => thankYou())
 
   let pocketBtn = document.getElementById('pocketBtn');
-   pocketBtn.addEventListener('click',() => choiceBook())
+   pocketBtn.addEventListener('click',() => thankYou())
 
   let neverMindBtn = document.getElementById('neverMindBtn');
-   neverMindBtn.addEventListener('click',() => choiceBook())
+   neverMindBtn.addEventListener('click',() => thankYou())
 }
 
+//Question number 4
+
+const thankYou = () => {
+
+  chat.innerHTML += `<section class="bot-msg">
+  <img src="./bot.png" alt="user bot" />
+  <div class="bubble bot-bubble">
+      <p>Thank you for your purchase! We will ship out right away.</p>
+  </div>
+</section>`;
 
 
+showMessage(`Thank you for your purchase! We will ship out right away.`, 'bot');
+
+}
