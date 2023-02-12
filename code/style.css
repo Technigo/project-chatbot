@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,200;0,300;0,400;1,410;1,500&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -5,15 +7,24 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #671e45;
+  font-family: 'Josefin Sans', sans-serif;
+  background: linear-gradient(-20deg, #075100, #fb66e2, #018123, #fc56e9);
+    background-size: 200% 300%;
+    animation: gradient 10s ease infinite;
+    height: 8S0vh;
+}
+@keyframes gradient {
+  50% {
+    background-position: 50% 80%;
+  }
 }
 
 h1 {
   font-weight: bold;
   font-size: 44px;
-  line-height: 34px;
-  color: #fff;
+  font-weight: 500;
+  line-height: 30px;
+  color: #ff8bff;
   text-align: center;
 }
 
@@ -21,7 +32,7 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: #ff8bff;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -30,7 +41,7 @@ h3 {
   font-weight: bold;
   font-size: 18px;
   line-height: 34px;
-  color: #7d1856;
+  color: #ff8bff;
   text-align: center;
   margin-bottom: 8px;
 }
@@ -40,6 +51,7 @@ p {
   font-weight: 600;
   line-height: 28px;
   margin: 0;
+  color: #0c2913;
 }
 
 main {
@@ -48,7 +60,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: #ffffff6a;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -61,10 +73,10 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #6e0e37;
+  color: #ff8bff;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Josefin Sans';
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -92,6 +104,12 @@ input {
   flex-shrink: 0;
 }
 
+#greatBtn, 
+#okBtn,
+#mehBtn {
+  font-size: 25px;
+}
+
 .bot-msg img,
 .user-msg img {
   width: 60px;
@@ -100,6 +118,8 @@ input {
 
 .bot-msg a {
   text-decoration: none;
+  color: #ff8bff;
+  font-weight: 500;
 }
 
 .bot-img-reply {
@@ -114,7 +134,7 @@ input {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #6e0842;
+  color: #193718;
   max-width: 40%;
 }
 
@@ -141,14 +161,14 @@ input {
 
 label {
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Josefin Sans';
   font-weight: 500;
-  color: #801457;
+  color: #ff8bff;
   margin-right: 20px;
 }
 
 button {
-  background-color: #7d1856;
+  background-color: #ff8bff;
   color: white;
   border: none;
   border-radius: 4px;
@@ -156,13 +176,15 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: 'Josefin Sans';
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
 }
 
 button:hover {
   opacity: 0.9;
-  transition: all 0.2s ease;
+  transition: all 1s ease;
+  border-radius: 90px;
+  background-color: #0c2913;
 }

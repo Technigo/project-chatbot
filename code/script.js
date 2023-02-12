@@ -8,6 +8,7 @@ const inputWrapper = document.getElementById('input-wrapper')
 // If you need any global variables that you can use across different functions, declare them here:
 
 // Declare your functions after this comment
+//botReply + userReply to make it a little bit easier
 const botReply = (msg) => {
   showMessage(msg, "bot");
 };
@@ -15,10 +16,11 @@ const botReply = (msg) => {
 const userReply = (msg) => {
   showMessage(msg, "user");
 };
-
+//To get picture inside the chat, could have done this better but it'll stay for now
 const botReplyPic = (src) => {
   showPicture(src);
 }
+
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -30,7 +32,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/bill.png" alt="User" />  
       </section>
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
@@ -38,7 +40,7 @@ const showMessage = (message, sender) => {
     console.log("Bot is asking something")
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bob.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -49,6 +51,7 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
+//calls botReplyPic, unessecary to make two funtions to do this but let's stick with it for now. 
 const showPicture = (src) => {
   chat.innerHTML += `
       <section class="bot-msg">
@@ -60,10 +63,6 @@ const showPicture = (src) => {
     `
     chat.scrollTop = chat.scrollHeight;
 }
-
-// Starts here
-  // call funtion showMessage, it is declared earlier with  argument 
-  //"Hello there, What's your name?" for message, and the argument "bot" for sender
 
 const greetUser = () => {
   botReply("Hi pretty, what's your name?");
@@ -78,12 +77,12 @@ const handleInput = (event) => { // when submiting this will be used
 }
 
 const question1 = (msg) => {
-  botReply(`Nice to meet you ${msg}! How are you feeling today?`)
+  botReply(`Nice to meet you ${msg}! I'm Bob, how are you feeling today?`)
 
   //answer choices
   inputWrapper.innerHTML = `
     <button id="greatBtn" type="submit">🤩</button>
-    <button id="okBtn" type="submit">😬</button>
+    <button id="okBtn" type="submit">😏</button>
     <button id="mehBtn" type="submit">🫠</button>`;
 
   document
@@ -97,7 +96,7 @@ const question1 = (msg) => {
     .addEventListener("click", () => userFeels("meh"));
 };
 
-  //answer of sort
+  //next set of answer choices
 const userFeels = (userAnswer) => {
   if (userAnswer === "great") {
     userReply(userAnswer);
@@ -146,7 +145,7 @@ const userFeels = (userAnswer) => {
     }) 
 }}
 
-
+//the last set of answers
 const toDo = (lastChoice) => {
   if (lastChoice === 'spread'){
     setTimeout(() => botReply("Say something nice to the next person you see!"),1000)
@@ -154,12 +153,13 @@ const toDo = (lastChoice) => {
   }
   else if (lastChoice === 'dayOff') {
     setTimeout(() => botReply("Here's a validation for your boss, you have earned the day off!"),1000)
-    setTimeout(() => botReplyPic("https://i.pinimg.com/564x/32/a9/e3/32a9e33772eaddec23df3c319a741bdb.jpg"),1200)  
+    setTimeout(() => botReplyPic("https://i.pinimg.com/564x/da/e9/22/dae92223b20fe33a9171d118a0bfa616.jpg"),1200)  
     setTimeout(() => closure()),1000    
   }
   else if (lastChoice === 'cute') {
-    setTimeout(() => botReplyPic("http://placekitten.com/200/200"),500)  
+    setTimeout(() => botReplyPic("https://i.pinimg.com/564x/51/87/35/518735c4536cebf175a9fcbab40a88df.jpg"),500)  
     setTimeout(() => closure()),800  
+    //"http://placekitten.com/200/200" reminder
   }
   else if (lastChoice === 'funny') {
     setTimeout(() => botReply("What do you call Batman when he skips church?"),500)
@@ -168,19 +168,19 @@ const toDo = (lastChoice) => {
     setTimeout(() => closure('funny2')),3000  
     }
   else if (lastChoice === 'therapy') {
-    setTimeout(() => botReply("Remember, life isn't about the moments that take your breath away..."), 1000);
+    setTimeout(() => botReply("Remember, life isn't about the moments that takes your breath away..."), 1000);
     setTimeout(() => botReply("That's asthma, you're thinking of asthma."), 2500);
     setTimeout(() => closure('funny2')),3000 
   }
   else if (lastChoice === 'd-metal') {
-      setTimeout(() => botReply(`I suggest you listen to this, <a href="https://youtu.be/e6f9bjBT-DM">Click here</a>`),1000);
-      setTimeout(() => notGood()),3000 
+      setTimeout(() => botReply(`I suggest you listen to this, <a href="https://youtu.be/e6f9bjBT-DM">click here</a>`),1000);
+      setTimeout(() => notGood(), 2000); 
     }}
 
 const notGood = (bob) => {
-  setTimeout(() => botReply("You don't like metal?"), 2000)
+  setTimeout(() => botReply("You don't like metal?"), 500)
   inputWrapper.innerHTML = `
-      <button id = "yes" type = "submit">ofc I do.</button>`
+      <button id = "yes" type = "submit">Ofc I do</button>`
     document.getElementById('yes')
     .addEventListener('click' , () => { userReply("METAL is the best!!!")
     setTimeout(() => botReply("Ok... You should maybe leave this chat and go outside! Have a marvelous day tough guy!🤘🏻")),1500 
@@ -230,5 +230,4 @@ form.addEventListener('submit', handleInput)
 setTimeout(greetUser, 500);
 
 
-//const element = document.getElementById("theLast")
-//element.remove("yes");
+//element.remove("yes");  reminder, i could use this to remove a funtion
