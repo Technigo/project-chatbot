@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'MS Sans Serif';
+  font-family: monospace;
   letter-spacing: 1px;
   background: #018281;
 }
@@ -42,7 +42,7 @@ input {
   color: black;
   padding: 16px;
   font-size: 16px;
-  font-family: 'MS Sans Serif';
+  font-family: monospace;
   font-weight: 600;
   line-height: 10px;
   flex: 1;
@@ -51,7 +51,7 @@ input {
 #select {
   width: 100%;
   height: 50px;
-  font-family: 'MS Sans Serif';
+  font-family: monospace;
   font-size: 16px;
 }
 
@@ -128,7 +128,7 @@ main {
 
 label {
   font-size: 16px;
-  font-family: 'MS Sans Serif';
+  font-family: monospace;
   font-weight: 500;
   color: black;
   margin-right: 20px;
@@ -145,7 +145,7 @@ button {
   margin-left: 5px;
   font-size: 16px;
   line-height: 10px;
-  font-family: 'MS Sans Serif';
+  font-family: monospace;
   font-weight: bold;
   letter-spacing: 1px;
   cursor: pointer;
@@ -156,4 +156,16 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+footer {
+  background-color: #00026a;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  margin-top: 200px;
+  text-align: center;
+  color: white;
+  font-family: monospace;
+  padding: 15px;
 }
