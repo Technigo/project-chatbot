@@ -75,13 +75,11 @@ const greetUser = () => {
 
 const showServingOptions = (msg) => {
   questionNumber++
-  botReply(
-    `We are glad to serve you ${msg}. Would you like your ice-cream in a Cup or Cone?`
-  )
+  botReply(`We are glad to serve you ${msg}. Would you like your ice-cream in a Cup or Cone?`)
 
   inputWrapper.innerHTML = `
-    <button id="cupBtn">&#127848</button>
-    <button id="coneBtn">&#127846</button>
+    <button id="cupBtn">🍨</button>
+    <button id="coneBtn">🍦</button>
   `
   document
     .getElementById('cupBtn')
@@ -94,9 +92,7 @@ const showServingOptions = (msg) => {
 const showTypes = (type) => {
   questionNumber++
 
-  botReply(
-    `Lovely! ${type} it is! What kind of ice-cream would you like?`
-  )
+  botReply(`Lovely! ${type} it is! What kind of ice-cream would you like?`)
 
   inputWrapper.innerHTML = `
   <button id="softServeBtn">Soft serve</button>
@@ -114,8 +110,7 @@ const showSizes = (type) => {
   questionNumber++
 
   botReply(
-    `${type}, so yummy! Choose what size you would like:`
-  ) 
+    `${type}, so yummy! Choose what size you would like`) 
 
   if (type === 'Soft serve') {
     inputWrapper.innerHTML =`
@@ -129,7 +124,7 @@ const showSizes = (type) => {
   } else {
     inputWrapper.innerHTML = `
       <select id="select">
-        <option value=""selected disabled>Number of scoops</option>
+        <option value=""selected disabled>Number of scoops 🥄</option>
         <option value="1 scoop">1 scoop</option>
         <option value="2 scoops">2 scoops</option>
         <option value="3 scoops">3 scoops</option>
@@ -137,56 +132,43 @@ const showSizes = (type) => {
     `
   }
   
-  const select = document.getElementById('select')
-  select.addEventListener('change', () => nextQuestion(select.value))
+const select = document.getElementById('select')
+select.addEventListener('change', () => nextQuestion(select.value))
 }
 
-  const showServingTopping = (type) => {
-    questionNumber++
-
-    botReply(`Would you like to pimp your ${type} ice-cream with a topping?`)
-  
-  inputWrapper.innerHTML = `
-    <button id="yesBtn">Yes</button>
-    <button id="noBtn">No</button>
-  `
-  document
-    .getElementById('yesBtn')
-    .addEventListener('click', () => nextQuestion('Yes'))
-  document
-    .getElementById('noBtn')
-    .addEventListener('click', () => nextQuestion('No'))
-}
-
-const showToppingOptions = (type) => {
+const showServingTopping = (type) => {
   questionNumber++
 
-  botReply (`Good call! Which topping would you like?`)
-    
-  if (type === 'Yes') {
-    inputWrapper.innerHTML =`
-      <select id="select">
-        <option value=""selected disabled>Select a topping</option>
-        <option value="fresh strawberries">Fresh strawberries</option>
-        <option value="chocolate sauce">Chocolate sauce</option>
-        <option value="rainbow sprinkles">Rainbow sprinkles</option>
-        <option value="whipped cream">Whipped cream</option>
-      </select>
-    `
-  } else {
-    inputWrapper.innerHTML =`
+  botReply(`Add a free topping to your ${type} ice-cream. It's on the house 🎉`)
+      
+  inputWrapper.innerHTML = `
     <select id="select">
-        <option value=""selected disabled>No topping for me</option>
-      </select>
-    `
-  }
-  const select = document.getElementById('select')
-  select.addEventListener('change', () => nextQuestion(select.value)) 
+      <option value=""selected disabled>Select a topping</option>
+      <option value="fresh strawberries">Fresh strawberries</option>
+      <option value="chocolate sauce">Chocolate sauce</option>
+      <option value="rainbow sprinkles">Rainbow sprinkles</option>
+      <option value="whipped cream">Whipped cream</option>
+      <option value="no topping">No topping</option>
+    </select>
+  `
+const select = document.getElementById('select')
+select.addEventListener('change', () => nextQuestion(select.value))
 }
 
 const showPlaceOrder = () => {
-    questionNumber++
-    botReply(`Would you like to place your order?`)
+  questionNumber++
+
+  botReply(`Alrigthy, are you ready to place your order?`)
+    
+  inputWrapper.innerHTML = `
+    <button id="confirm">Yes</button>
+    <button id="restart">No</button>
+`
+const select = document.getElementById('select')
+select.addEventListener('change', () => nextQuestion(select.value)) 
+}
+
+   /*
   
     inputWrapper.innerHTML = `
     <button id="confirm">Yes</button>
@@ -202,9 +184,9 @@ const showPlaceOrder = () => {
 
   const thankYou = () => {
   botReply(
-    `Thank you for your order! Pls pay at the cashier. Enjoy your day! &#9728`)
+    `Thank you for your order! Pls pay at the cashier. Enjoy your day! ☀️`)
     inputWrapper.innerHTML=``
-  }
+  }*/
   
   sendBtn.addEventListener('click', () => nextQuestion(input.value))
   input.addEventListener('keypress', (event) => {
