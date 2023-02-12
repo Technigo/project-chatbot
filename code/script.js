@@ -50,17 +50,17 @@ sendBtn.addEventListener('click', (event) => {
     showMessage("Sorry I did not catch that, please enter your name!", 'bot')
     event.preventDefault()
   } else {
-  event.preventDefault() //this is so the page do not reload.
+    event.preventDefault() //this is so the page do not reload.
 
-  // Store the value in a variable so I can access it after we 
-  // clear it from the input. The variable were the value will be stored is outside of this function to be able to use it in more places. In here it get assigned
-  userName = nameInput.value
-  showMessage(`${userName}`, 'user');
+    // Store the value in a variable so I can access it after we 
+    // clear it from the input. The variable were the value will be stored is outside of this function to be able to use it in more places. In here it get assigned
+    userName = nameInput.value
+    showMessage(`${userName}`, 'user');
 
-  // Clears the input field
-  nameInput.value = ''
-  //Here I call the function where I present the dishes to choose from. I will also pass the userName
-  setTimeout(() => whatKindOfDish(userName), 1000)
+    // Clears the input field
+    nameInput.value = ''
+    //Here I call the function where I present the dishes to choose from. I will also pass the userName
+    setTimeout(() => whatKindOfDish(userName), 1000)
   }
 })
 

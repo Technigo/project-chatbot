@@ -52,12 +52,12 @@ input {
 }
 
 input:focus,
-select:focus{
-  outline:none;
+select:focus {
+  outline: none;
 }
 
-select{
-  border:none;
+select {
+  border: none;
   border-radius: 4px;
   color: #FFA500;
   font-size: 20px;
@@ -185,12 +185,12 @@ a:hover {
 
 @media (min-width: 668px) and (max-width: 1023px) {
   body {
-  background-image: url("./assets/background-medium.jpg");
+    background-image: url("./assets/background-medium.jpg");
   }
 }
 
 @media (min-width: 1024px) {
   body {
-  background-image: url("./assets/background-large.jpg");
+    background-image: url("./assets/background-large.jpg");
   }
 }
