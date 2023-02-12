@@ -206,7 +206,7 @@ const randomTeaClicked = (event) => {
     9000
   );
   inputWrapper.innerHTML = `
-  <button id="newOrder" value="">Make new order! 😍</button>
+  <button id="newOrder" value="">Make a new order! 😍</button>
   `;
 
   document.querySelector("#newOrder").addEventListener("click", refresh);
@@ -224,7 +224,7 @@ const mostPopularClicked = (event) => {
     9000
   );
   inputWrapper.innerHTML = `
-  <button id="newOrder" value="">Make new order! 😍</button>
+  <button id="newOrder" value="">Make a new order! 😍</button>
   `;
 
   document.querySelector("#newOrder").addEventListener("click", refresh);
@@ -387,7 +387,7 @@ const handleInput4 = (event) => {
     9000
   );
   inputWrapper.innerHTML = `
-  <button id="newOrder" value="">Make new order! 😍</button>
+  <button id="newOrder" value="">Make a new order! 😍</button>
   `;
 
   document.querySelector("#newOrder").addEventListener("click", refresh);
