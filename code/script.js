@@ -7,10 +7,6 @@ const button = document.getElementById("button")
 //global variables 
 let questionNumber = 1
 
-
-// for waiting msg 
-//setTimeout(() => msg.delete(), 10000)
-
 //Sound effects from Pixabay
 const soundEffectBot = () => {
   const sound = new Audio('short-woosh-109592.mp3');

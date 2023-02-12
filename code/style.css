@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background-image: radial-gradient(#32e0d2, #217692);
+  background-image: radial-gradient(#08f7e3, #217692);
 }
 
 h1 {
@@ -42,6 +42,14 @@ p {
   line-height: 28px;
   margin: 0;
 }
+
+footer p {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 0;
+  margin-top: 20PX;
+}
+
 
 input {
   box-sizing: border-box;
