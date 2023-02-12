@@ -39,6 +39,7 @@ const showMessage = (message, sender) => {
     chat.scrollTop = chat.scrollHeight;
   }
 
+  // The schedule for the whole script
 const nextQuestion = (message) => {
   console.log('questionNumber', questionNumber)
 
@@ -79,6 +80,7 @@ sendBtn.addEventListener('click', (event) => {
   setTimeout(() => showDecade(userName), 1000)
 })
 
+//Greets you and give you three decades to choose between
 const showDecade = (userName) => {
   questionNumber++
   showMessage(
@@ -101,6 +103,7 @@ const showDecade = (userName) => {
     .addEventListener('click', () => nextQuestion('2000'))
 }
 
+  //Drop down menu with different dates depending on which decade you picked in the previous step
   const showYear = (type) => {
     questionNumber++
 
@@ -109,9 +112,11 @@ const showDecade = (userName) => {
 
     showMessage (
     `Great choice! The ${type}'s were exciting times!`, 'bot')
-
-  showMessage(
-    `Where do you want to go?`, 'bot')
+    
+    setTimeout(() => {
+      showMessage(
+          `Where do you want to go?`, 'bot')
+      }, 1500);      
 
   if (type === '1920') {
     inputWrapper.innerHTML = `
@@ -147,6 +152,8 @@ const showDecade = (userName) => {
   select.addEventListener('change', () => nextQuestion(select.value)) 
 }
 
+//Here you get redirected to Youtube that shows you a video from the specific date/event you selected
+//Wanted this to be a popup directly in the chat. Also found a bug that it doesn't seem to work on Safari or when you have popup-blockers
 const showEvent = (selectedValue) => {
   questionNumber++ 
 
