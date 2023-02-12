@@ -80,6 +80,14 @@ form.addEventListener('submit', (event) => {
 const recognize = (firstName) => {
   console.log(firstName);
 
+  chat.innerHTML += `<section class="bot-msg">
+    <img src="./bot.png" alt="user bot" />
+    <div class="bubble bot-bubble">
+        <p>How can I help you ${firstName}?</p>
+    </div>
+</section>`;
+
+
   showMessage(`What a beautiful name, ${firstName}! Which book would you like?`, 'bot');
 
         console.log(formWrapper);
