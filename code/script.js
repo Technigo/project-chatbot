@@ -2,7 +2,7 @@
 const chat = document.getElementById("chat");
 const formWrapper = document.getElementById('formWrapper');
 const messageSound = new Audio ("assets/pop.mp3");
-const timeGreetings = [`Good morning my friend! What's your name?`, `Hello my friend! What's your name?`, `Good evening my friend! What's your name?`, `I am sorry my friend, but we are closed!`];
+const timeGreetings = [`Good morning and welcome to my book store! What's your name?`, `Hello and welcome to my book store! What's your name?`, `Good evening and welcome to my book store! What's your name?`, `I am sorry my friend, but we are closed!`];
 
 // Variable for date & time.
 
@@ -22,7 +22,7 @@ function greetUser(timeGreetings, time) {
     showMessage(timeGreetings[2], "bot"); //Evening (19 to 22)
   } else {
     showMessage(timeGreetings[3], "bot"); //Late (23 to 4)
-    showMessage("Anyways, since you're up. What's your name?", "bot");
+    showMessage("Anyways, since you're up, welcome to my book store! What's your name?", "bot");
   }
 }
 
@@ -38,12 +38,12 @@ if (sender === 'user') {
     <div class="bubble user-bubble">
         <p>${msg}</p>
     </div>
-    <img src="./user.png" alt="chat bot" />
+    <img src="assets/user.png" alt="chat bot" />
 </section>`;
 } 
 else if (sender === 'bot') {
     chat.innerHTML += `<section class="bot-msg">
-    <img src="./bot.png" alt="user bot" />
+    <img src="assets/bot.png" alt="user bot" />
     <div class="bubble bot-bubble">
         <p>${msg}</p>
     </div>
@@ -80,12 +80,7 @@ form.addEventListener('submit', (event) => {
 const recognize = (firstName) => {
   console.log(firstName);
 
-  chat.innerHTML += `<section class="bot-msg">
-    <img src="./bot.png" alt="user bot" />
-    <div class="bubble bot-bubble">
-        <p>Which book would you like?</p>
-    </div>
-</section>`;
+  showMessage(`What a beautiful name! Which book would you like?`, 'bot');
 
         console.log(formWrapper);
     formWrapper.innerHTML = 
@@ -104,22 +99,11 @@ const recognize = (firstName) => {
     englishBtn.addEventListener('click', () => choices())
 }
 
-/*
-   setTimeout(() => choiceBook(firstName), 1000) 
-*/
-
-
 
 // Question number 3
 const choices = (msg) => {
-  chat.innerHTML += `<section class="bot-msg">
-    <img src="./bot.png" alt="user bot" />
-    <div class="bubble bot-bubble">
-        <p>Which book would you like ?</p>
-    </div>
-</section>`;
 
-  showMessage(`Love that you're into learning, what would you prefer`, 'bot');
+  showMessage(`Wow, love that your in to learning stuff! What else?`, 'bot');
   
   formWrapper.innerHTML =
         `<button id="boundBtn">Bound Book</button>
@@ -135,6 +119,7 @@ const choices = (msg) => {
   let neverMindBtn = document.getElementById('neverMindBtn');
   neverMindBtn.addEventListener('click', () => changedMind())
 
+
 }
 
 
@@ -142,28 +127,16 @@ const choices = (msg) => {
 
 const thankYou = () => {
 
-  chat.innerHTML += `<section class="bot-msg">
-  <img src="./bot.png" alt="user bot" />
-  <div class="bubble bot-bubble">
-      <p>Thank you for your purchase! We will ship out right away.</p>
-  </div>
-</section>`;
-
-
-showMessage(`Thank you for your purchase! We will ship out right away.`, 'bot');
-
+showMessage(`Thank you for your purchase! Here it is!`, 'bot');
+formWrapper.innerHTML = `
+    <h3>Come back soon!</h3>
+    `
 }
 
 const changedMind = () => {
 
-  chat.innerHTML += `<section class="bot-msg">
-  <img src="./bot.png" alt="user bot" />
-  <div class="bubble bot-bubble">
-      <p>Thank you for your purchase! We will ship out right away.</p>
-  </div>
-</section>`;
-
-
-showMessage(`Okay... Never mind then`, 'bot');
-  
+showMessage(`Geez... Why am I even here?`, 'bot');
+formWrapper.innerHTML = `
+    <h3>Now, get outta here!</h3>
+    `
 }
