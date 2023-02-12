@@ -132,7 +132,7 @@ const ifMonster = (size) => {
     <radio>
       <h5>Monster time!</h5>
       <label><input type="radio" name="choice" id="badger" option value="fight">I fight! I win!</label>
-      <label><input type="radio" name="choice" id="hippo" option value="run">Dinner!</label>
+      <label><input type="radio" name="choice" id="hippo" option value="run">Dinner time!</label>
     `
 
     document.getElementById("badger").addEventListener("click", () => nextQuestion("Bring it on!"), {once: true});
@@ -187,7 +187,7 @@ if (monsterAnswer === "Bring it on!") {
   botSay(`I'll be damned, you're a <strong>mosquito</strong>! Aren't I lucky to be a bloodless, faceless creature forever tucked away in cyberspace, safe from the likes of you yet in constant danger of whatever happens to an artificial being doomed to spend eternity in this vast expanse of simultaneous nothing and everything?`)
 
 } else if (monsterAnswer === "BANG!") {
-  botSay(`I'll be damned, you're a <strong>pistol shrimp</strong>, the fastest gun in the sea! You came as ${guess} and left as pistol shrimp, just another day in the west!`)
+  botSay(`I'll be damned, you're a <strong>pistol shrimp</strong>, the fastest gun in the sea! You came as ${guess} and left as pistol shrimp, g'day to you! 🤠`)
 }
 }
 

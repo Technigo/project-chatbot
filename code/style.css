@@ -10,9 +10,12 @@ body {
 }
 
 h1 {
+  font-family: 'Poppins', sans-serif;
   font-weight: bold;
-  font-size: 44px;
-  line-height: 34px;
+  font-style: italic;
+  letter-spacing: -0.05rem;
+  font-size: 50px;
+  line-height: 56px;
   color: #fff;
   text-align: center;
 }
@@ -28,7 +31,8 @@ h2 {
 }
 
 h3 {
-  font-size: 40px;
+  font-family: 'Lobster', cursive;
+  font-size: 45px;
   color: #fff;
 }
 
@@ -46,7 +50,8 @@ p {
 footer p {
   text-align: center;
   font-size: 12px;
-  margin-top: 20PX;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 
@@ -54,7 +59,7 @@ input {
   box-sizing: border-box;
   border: 2px solid #442245;
   border-radius: 6px;
-  background: #e5e9ff;
+  background:#e773ebd2;
   color: black;
   padding: 16px;
   font-size: 16px;
@@ -63,6 +68,7 @@ input {
   line-height: 26px;
   flex: 1;
   column-gap: auto;
+  margin-top: 12px;
 }
 
 main {
@@ -85,6 +91,8 @@ main {
   overflow:auto;
   flex-direction: column;
   padding-bottom: 16px;
+  border: 2px solid #442245;
+  border-radius: 10px;
   background: #367679;
   background-image: linear-gradient(rgba(148, 38, 117, 0.243), rgba(20, 212, 226, 0.243)), url(https://images.pexels.com/photos/6601811/pexels-photo-6601811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
   
@@ -177,7 +185,7 @@ button {
   margin: 8px 4px 0 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: 'Poppins', sans-serif;
   font-weight: bold;
   text-shadow: 1px 1px 0 #ef19f7;
   cursor: pointer;
@@ -185,11 +193,15 @@ button {
   box-shadow: 2px 2px 3px 2px #442245;;
 }
 
-.bot-msg img:hover,
+.bot-msg img:hover {
+  filter: brightness(1.25);
+  transition: all 0.3s ease;
+}
+
 .user-msg img:hover,
 button:hover {
   filter: brightness(1.35);
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 @media screen and (max-width: 667px) {

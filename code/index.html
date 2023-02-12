@@ -2,18 +2,20 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"  />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./style.css" />
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:ital,wght@1,900&display=swap" rel="stylesheet"> 
   <title>The Species-ifyer</title>
 </head>
 
 <body>
   <h1>Welcome to the Species-ifyer!</h1>
-  <h2>-Feeling a little unsure of your species lately?-</h2>
+  <h2>-Feeling a little unsure of your species alignment lately?-</h2>
   <h2>Fret not! Ask spec-bot!</h2>
   <main>
     <section class="chat" id="chat">
@@ -22,7 +24,7 @@
       <form id="name-form">
         <label for="name-input">I am:</label>
         <!-- can't get "minlength" or "required" to work for the input field-->
-        <input id="name-input" placeholder="type here"  type="text" minlength="2"  maxlength="25" required />
+        <input id="name-input" placeholder="type here"   minlength="2" maxlength="25" type="text" required />
         <button class="send-btn" id="button" type="submit">
           Send
         </button>
