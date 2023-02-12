@@ -3,8 +3,8 @@ const chat = document.getElementById('chat');
 const nameInput = document.getElementById('name-input');
 const form = document.getElementById('name-form');
 const inputWrapper = document.getElementById('input-wrapper')
-const submit = document.getElementById('submit') //Kanske inte behöver vara här
-const main = document.getElementById('main')//Kanske inte behöver vara här
+const submit = document.getElementById('submit') 
+const main = document.getElementById('main')
 
 
 // If you need any global variables that you can use across different functions, declare them here:
@@ -144,7 +144,7 @@ form.addEventListener('submit', handleNameInput)
 
   chat.scrollTop = chat.scrollHeight; 
 
-
+//Well, this is as far as I come for now i guess..... 
 
 
 
