@@ -10,7 +10,7 @@ body {
   /* background: #0026ff; */
   background-image: url(assets/boba-background2.jpg);
   background-size: cover;
-  height: 100vh;
+  background-repeat: repeat;
 }
 
 h1 {
