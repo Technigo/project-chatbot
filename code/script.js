@@ -186,7 +186,8 @@ input.addEventListener('keypress', (event) => {
 // When website loaded, chatbot asks first question.
 setTimeout(greetUser, 800);
 
-//Tried to add a looping sound element.
-/*let backgroundaudio = new Audio('/audio/song.mp3');
-backgroundaudio.volume = 0.2;
-backgroundaudio.play();*/
+/*Tried to add a looping sound element.
+let myAudio = document.querySelector('#audio') 
+myAudio.play(); 
+myAudio.volume = 0.2;*/ 
+
