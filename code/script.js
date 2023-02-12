@@ -4,7 +4,6 @@ const userInput = document.getElementById('userInput');
 const sendBtn = document.getElementById ('sendBtn'); 
 const inputWrapper = document.getElementById ('inputWrapper'); 
 const userForm = document.getElementById ('userForm') ; 
-
 // If you need any global variables that you can use across different functions, declare them here:
 
 let lineNumber = 1; 
@@ -23,31 +22,35 @@ const userReply = (msg) => {
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
-  if (sender === 'user') {
+   if (sender === 'user') {
     console.log("The user is asking a question")
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/useremoji.png" alt="User" />  
       </section>
     `
-    // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
+    // the else if statement checks if the sender is a bot and if that's the case it inserts an html section inside the chat with the posted message
   } else if (sender === 'bot') {
     console.log ("The bot is writing")
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/botemoji.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
       </section>
     `
-  }
+  
+}
+
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
 }
+
+//This function makes the questions and answers appear in the correct order. 
 
 const nextLine = (message) => {
   console.log ('lineNumber', lineNumber)
@@ -56,21 +59,41 @@ const nextLine = (message) => {
     userReply (message) 
     userInput.value = ''    
     setTimeout(() => secondLine (message), 1000)
-    console.log ('user input 1') ; 
   } else if (lineNumber === 2) {
     userReply(message)
     userInput.value = ''    
-    console.log ('user input 2')
-    setTimeout(() => thirdLine (message), 1000)
+    setTimeout(() => thirdLine (message), 1000) ; 
   } else if (lineNumber === 3) {
     userReply(message)
     userInput.value = ''    
-    console.log ("user input 3")
+    setTimeout(() => fourthLine (message), 1000) ; 
+  } else if (lineNumber === 4) {
+    userReply(message)
+    userInput.value = '' 
+    setTimeout(() => fifthLine (message), 1000) ; 
+     } else if (lineNumber === 5) {
+    userReply(message)
+    userInput.value = '' 
+    setTimeout(() => sixthLine (message), 1000) ; 
+  } else if (lineNumber === 6) {
+    userReply(message)
+    userInput.value = ''    
+    setTimeout(() => seventhLine (message), 1000) ; 
+  } else if (lineNumber === 7) {
+    userReply(message)
+    userInput.value = ''    
+    setTimeout(() => eighthLine (message), 1000) ; 
+  } else if (lineNumber === 8) {
+    userReply(message)
+    userInput.value = ''    
+    setTimeout(() => ninthLine (message), 1000) ; 
   } else {
-    userReply(Message)
-    console.log ("I couldn't understand your message"); 
-  }
+    userReply (message)
+    userInput.value=""
+    setTimeout(() => tenthLine (message), 1000) ; 
+
 }; 
+}
 
 // Starts here
 
@@ -78,53 +101,88 @@ const nextLine = (message) => {
 //First reply from bot 
 const firstLine = () => {
   lineNumber = 1; 
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  botReply(`Knock knock`);
+  botReply(`Knock, knock.`);
 }
-
-//Answer from the user
 
 //Second reply from bot
 const secondLine = () => {
 lineNumber++;  
-botReply(`Tank`);
+botReply(`Tank.`);
 } 
-
-//Answer from the user
 
 //Third reply from bot
   const thirdLine = () => {
   lineNumber++
-    // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  botReply("You're welcome!");
+  botReply(`You're welcome!`);
+  setTimeout(() => botReply (`Knock, knock.`), 2000) ; 
   }
 
+  //Fourth reply from bot 
+  const fourthLine = () => {
+    lineNumber++;  
+    botReply(`Boo.`);
+  }
+  
+  //Fitfh reply from bot 
+  const fifthLine = () => {
+    lineNumber++;  
+    botReply(`Don't cry!`);
+    setTimeout(() => botReply (`Knock, knock.`), 2000) ; 
+  }
 
+  //Sixth reply from bot 
+    const sixthLine = () => {
+    lineNumber++;  
+    botReply(`Ash.`);
+  }
+  
+  //Seventh reply from bot 
+  const seventhLine = () => {
+    lineNumber++;  
+    botReply(`Sounds like you have a cold.`);
+    setTimeout(() => botReply (`Knock, knock.`), 2000) ; 
+  }
+  
+  //Eighth reply from bot 
+  const eighthLine = () => {
+    lineNumber++;  
+    botReply(`Who.`);
+  }
 
-  // Here is the function for the user's input 
+  //Ninth reply from bot 
+  const ninthLine = () => {
+    lineNumber++;  
+    botReply(`What are you? An owl?`);
+    setTimeout(() => botReply (`That's all I have for today.`), 2000) ; 
+    setTimeout(() => botReply (`I hope you enjoyed it!`), 3000) ;
+  }
 
+  //Tenth reply from bot that I'll use if I have more time to work on the bot. 
+  const tenthLine = () => {
+    lineNumber++;  
+    botReply(`Say whaaaat?`);
+  }
+
+// Here is the function for the user's input 
+
+// Set up your eventlisteners here
+  //Initial button click from user, here the user enters their question. If someone hits enter it works too.   
+userForm.addEventListener('submit', (event) => {
+event.preventDefault();
 
 //Store the value in a variable so I can access it after we clear it from the input. 
 
-
-// Set up your eventlisteners here
-  //Initial button click from user, here the user enters their question. If someone hits enter works too.   
-userForm.addEventListener('submit', (event) => {
-event.preventDefault();
-console.log("form submitted");
-
 let userText = userInput.value ; 
 userInput.value = '' //Clears input field after submitting
+
 })
 
+//Makes the chat bot move on to the next line.
 sendBtn.addEventListener ('click', () => nextLine(userInput.value)) 
 
 userInput.addEventListener('keypress', (event) => {
   if (event.key === 'submit' && userInput.value) nextLine(userInput.value)
-})
-
-
-
+  }); 
 
 
 
@@ -153,5 +211,5 @@ if (userText === ""){
 
    sendBtn.addEventListener('click', (event) => {
 event.preventDefault(); //prevents the page to reload. 
-
-  */
+}
+  */ 
