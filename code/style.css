@@ -43,10 +43,10 @@ input {
   background: #e5e9ff;
   color: #3A4036;
   padding: 16px;
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
-  line-height: 26px;
+  line-height: 20px;
   flex: 1;
 }
 
@@ -114,6 +114,7 @@ main {
 }
 
 .input-wrapper {
+  width: 100%;
   display: flex;
   justify-content: center;
 }
@@ -125,9 +126,9 @@ main {
 }
 
 label {
-  font-size: 16px;
+  font-size: 14px;
   color: #3A4036;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 button {
@@ -135,10 +136,10 @@ button {
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 16px 40px;
+  padding: 10px 20px;
   margin-right: 4px;
-  font-size: 16px;
-  line-height: 26px;
+  font-size: 12px;
+  line-height: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -146,4 +147,27 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+@media (min-width: 668px) {
+
+  button {
+    background-color: #3A4036;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 16px 40px;
+    margin-right: 4px;
+    font-size: 16px;
+    line-height: 26px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+ 
+  label {
+    font-size: 16px;
+    color: #3A4036;
+    margin-right: 20px;
+  }
+
 }
