@@ -64,11 +64,10 @@ select {
   border-radius: 4px;
   background: whitesmoke;
   color: black;
-  padding: 16px;
+  padding: 7px;
   font-size: 16px;
   font-family: "Poppins";
   font-weight: 600;
-  line-height: 26px;
   margin: 4px;
   flex: 1;
 }
