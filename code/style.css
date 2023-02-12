@@ -3,28 +3,73 @@
 }
 
 body {
+  min-height: 100vh; /* This now allows content to be min-height of 100% and bigger. vh - Relative to 1% of the height of the viewport */ 
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #fef3ef;
+  background-image: url(background-funky.jpg);
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover;
+  position: relative; 
+  cursor: none;
+}
+
+.plant-logo {
+  height: 65px;
+}
+
+.final-image {
+
+  padding-top: 15px;
+
 }
 
 h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: rgba(249, 238, 223, 0.859);
   text-align: center;
+  text-shadow: 
+  1px 1px 25px rgb(231, 4, 248);
+}
+
+h1 span {
+  background-color: rgba(254, 201, 126, 0.859);
+  padding: 5px
+}
+
+h2 span {
+  
+  padding-left: 32px;
+  padding-right: 32px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  background-color: rgba(0, 100, 15, 0.859);
+  
 }
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 38px;
   line-height: 34px;
   color: #fff;
   text-align: center;
   margin-bottom: 36px;
+  /* below the blinking effect */
+  animation-name: blink_text;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  
 }
+@keyframes blink_text {
+  0% {color: rgb(246, 175, 75)}
+  50% {color: rgb(242, 195, 246)}
+  100% {color: rgb(246, 175, 75)}
+}
+
 
 p {
   font-size: 18px;
@@ -33,12 +78,20 @@ p {
   margin: 0;
 }
 
+.final {
+  text-align: center;
+  color: rgb(0, 100, 15);
+  font-weight: 300;
+  padding: 5px;
+}
+
+
 input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background:  rgba(242, 195, 246, 0.482);
+  color: rgba(0, 100, 15);
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -90,12 +143,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background:rgba(242, 195, 246, 0.96);
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #ffffff;
   max-width: 40%;
 }
 
@@ -124,12 +177,12 @@ label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  color: #000000;
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color:  rgba(0, 100, 15);
   color: white;
   border: none;
   border-radius: 4px;
@@ -146,4 +199,40 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+/* The css below is used for the custom cursor effect, also for the links which may appear in the future. JS functions are under 'global variables' */
+
+.cursor {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  
+}
+
+.outer {
+  border: 2px solid #f704ff;
+
+}
+
+.inner {
+  background:#0e00002e;
+  transition: 250ms ease-out;
+}
+
+a {
+  cursor: none;
+}
+
+.cursor.hover {
+  transform: translate(-50%, -50%) scale(4);
+  transition: transform 250ms ease-out;
+}
+
+.inner.hover {
+  background: white;
+  mix-blend-mode: difference;
 }

@@ -8,18 +8,20 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet" />
-    <title>Chat Bot</title>
+    <title>Funky Plant Store 🌱 Chat Bot</title>
   </head>
 
   <body>
-    <h1>Welcome to xxx.</h1>
-    <h2>Ask about xxxx.</h2>
+    
+
+    <h1><span>Welcome to Funky Plant Store</span></h1>
+    <h2><span> 🌱 Order your new plant today 🌱</span></h2>
     <main>
       <section class="chat" id="chat"></section>
 
       <div class="input-wrapper" id="input-wrapper">
         <form id="name-form">
-          <label for="name-input">Name</label>
+          <label for="name-input"><img class="plant-logo" src="assets/philodendron.png" alt="Cute plant picture"></label>
           <input id="name-input" type="text" />
           <button class="send-btn" type="submit">
             Send
@@ -28,7 +30,11 @@
       </div>
     </main>
 
+    <div class="cursor outer"></div>
+    <div class="cursor inner"></div>
+
     <script src="./script.js"></script>
   </body>
 
 </html>
+
