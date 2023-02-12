@@ -2,10 +2,12 @@
 const chat = document.getElementById('chat')
 const sendBtn = document.getElementById('sendBtn')
 const nameForm = document.getElementById('nameForm')
-const nameInput =document.getElementById('nameInput') 
+const nameInput = document.getElementById('nameInput') 
 
 // Declare username as a global variable
 let username
+let errorSound = new Audio('assets/error.mp3')
+let soundDone = new Audio ('assets/success.mp3')
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -175,6 +177,7 @@ const lastQuestion = () => {
   document.getElementById('doneBtn')
   .addEventListener('click', () => {
   inputWrapper. innerHTML =''
+  soundDone.play ()
   showMessage (`Happy laundry day ${username} 👋🏽`, 'bot')
   })
 } 
@@ -183,6 +186,7 @@ const end = (choice) => {
   inputWrapper.innerHTML = `
   <button id='reloadBtn'> Reload chat!</button>
   `
+  errorSound.play()
   document.getElementById('reloadBtn')
   .addEventListener('click', () => {
     window.location.reload() })
