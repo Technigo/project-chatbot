@@ -3,7 +3,6 @@ const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('input-wrapper');
 const form = document.getElementById('name-form');
 const submit = document.getElementById('submit')
-const nameInput = document.getElementById('name-input')
 
 // If you need any global variables that you can use across different functions, declare them here:
 // Declare your functions after this comment
@@ -47,7 +46,7 @@ const greetUserOrder = () => {
 //Bot asks user if they would like to place an order
 const userDecision = () => { 
   showMessage("Would you like to place an order?", 'bot');
-  setTimeout(() => yesOrNo(), 700)
+  setTimeout(() => yesOrNo(), 600)
 }
 
 //Yes or No-buttons for the user to click should appear
@@ -62,7 +61,7 @@ document
   .addEventListener("click", () => {
     showMessage("I would very much like to order, thanks!", 'user')
     inputWrapper.innerHTML = ''
-    setTimeout(() => orderProceed("option1"), 1100)
+    setTimeout(() => orderProceed("option1"), 1000)
     })
 
 document
@@ -70,7 +69,7 @@ document
   .addEventListener("click", () => {
     showMessage("No thanks, just having a look around!", 'user')
     inputWrapper.innerHTML = ''
-    setTimeout(() => orderProceed("option2"), 900)
+    setTimeout(() => orderProceed("option2"), 800)
     })
 } 
 
@@ -91,7 +90,7 @@ document
   .addEventListener("click", () => {
     showMessage("I would love me some plain donuts!", 'user')
     inputWrapper.innerHTML = ''
-    setTimeout(() => chooseDonuts("plain"), 800)
+    setTimeout(() => chooseDonuts("plain"), 1000)
   })
 
 document
@@ -99,7 +98,7 @@ document
   .addEventListener("click", () => {
     showMessage("Please get me the ones that are extra everything!", 'user')
     inputWrapper.innerHTML = ''
-    setTimeout(() => chooseDonuts("fillfrost"), 800)
+    setTimeout(() => chooseDonuts("fillfrost"), 1000)
   })
   }}
 
@@ -165,7 +164,7 @@ document
   .addEventListener("click", () => {
     showMessage("I am a chocoholic, I'll have those!", 'user')
     inputWrapper.innerHTML = ''
-    setTimeout(() => filledOrdering("choc"), 800)
+    setTimeout(() => filledOrdering("choc"), 1100)
   })
 
 document
@@ -173,7 +172,7 @@ document
   .addEventListener("click", () => {
     showMessage("Raspberry feels like summer, get me those!", 'user')
     inputWrapper.innerHTML = ''
-    setTimeout(() => filledOrdering("rasp"), 800)
+    setTimeout(() => filledOrdering("rasp"), 1100)
   })
 
 document
@@ -181,7 +180,7 @@ document
   .addEventListener("click", () => {
     showMessage("The vanilla/chili combo sounds interesting, I'll try it!", 'user')
     inputWrapper.innerHTML = ''
-    setTimeout(() => filledOrdering("van"), 800)
+    setTimeout(() => filledOrdering("van"), 1100)
   })
   }}
 }
@@ -262,7 +261,7 @@ const deliverFilled = (selection) => {
 //the bot asks for prefered delivery time for plain donuts and gives options
 const plainDonutsTime = () => {
   showMessage("Please select your prefered delivery time today, thanks!", 'bot');
-  setTimeout(() => delTimePlain(), 900)
+  setTimeout(() => delTimePlain(), 1100)
   }
 
 const delTimePlain = () => {
@@ -285,7 +284,7 @@ document
   .addEventListener("click", () => {
     showMessage("I can wait 1-2 hours", 'user')
     inputWrapper.innerHTML = ''
-    setTimeout(() => finalQuePlain("delivery2"), 900)
+    setTimeout(() => finalQuePlain("delivery2"), 1000)
     })
 
 document
@@ -293,7 +292,7 @@ document
   .addEventListener("click", () => {
     showMessage("I can wait 2-3 hours", 'user')
     inputWrapper.innerHTML = ''
-    setTimeout(() => finalQuePlain("delivery3"), 900)
+    setTimeout(() => finalQuePlain("delivery3"), 1000)
     })
   } 
 
@@ -323,7 +322,7 @@ document
   .addEventListener("click", () => {
     showMessage("I can wait 1-2 hours", 'user')
     inputWrapper.innerHTML = ''
-    setTimeout(() => finalQueFilled("delfill2"), 900)
+    setTimeout(() => finalQueFilled("delfill2"), 1000)
     })
 
 document
@@ -331,7 +330,7 @@ document
   .addEventListener("click", () => {
     showMessage("I can wait 2-3 hours", 'user')
     inputWrapper.innerHTML = ''
-    setTimeout(() => finalQueFilled("delfill3"), 900)
+    setTimeout(() => finalQueFilled("delfill3"), 1000)
     })
   } 
 
@@ -339,29 +338,29 @@ document
 const finalQuePlain = (selection) => {
   if (selection === "delivery1") { 
     showMessage("Thank you for ordering our plain donuts! We will deliver ASAP! Before you go, do you agree that our donut shop is great?", 'bot');
-    setTimeout(() => yayOrNay(), 700)
+    setTimeout(() => yayOrNay(), 900)
   }
 
   else if (selection === "delivery2", "delivery3") {
     showMessage("Thank you for ordering our plain donuts, we will deliver according to your selected time frame. Before you go though, please let us know if you think our donut shop is amazing!", 'bot')
-    setTimeout(() => yayOrNay(), 700)
+    setTimeout(() => yayOrNay(), 900)
   }
 } 
 
 //bot asks for feedback when ordering filled donuts
 const finalQueFilled = (selection) => {
-  if (selection === "delivery1") { 
+  if (selection === "delfill1") { 
     showMessage("Thank you for ordering our filled donuts! We will deliver ASAP! Before you go, do you agree that our donut shop is great?", 'bot');
-    setTimeout(() => yayOrNay(), 700)
+    setTimeout(() => yayOrNay(), 900)
   }
 
-  else if (selection === "delivery2", "delivery3") {
+  else if (selection === "delfill2", "delfill3") {
     showMessage("Thank you for ordering our filled donuts, we will deliver according to your selected time frame. Before you go though, please let us know if you think our donut shop is amazing!", 'bot')
-    setTimeout(() => yayOrNay(), 700)
+    setTimeout(() => yayOrNay(), 900)
   }
 } 
 //Feedback on the donut shop - options
-//Saying that it sucks should render an invalid answer
+//Saying that it sucks should render a pop-up answer about answer invalid, as well as a message
 const yayOrNay = () => {
   inputWrapper.innerHTML = `
     <button id="yay">Of course, it is the best!</button>
@@ -373,7 +372,7 @@ document
   .addEventListener("click", () => {
     showMessage("I love it!", 'user')
     inputWrapper.innerHTML = ''
-    setTimeout(() => trueOrFalse("yay"), 900)
+    setTimeout(() => trueOrFalse("yay"), 1000)
   })
 
 document
@@ -381,7 +380,7 @@ document
   .addEventListener("click", () => {
     showMessage("I'm a banana!", 'user')
     inputWrapper.innerHTML = ''
-    setTimeout(() => trueOrFalse("nay"), 900)
+    setTimeout(() => trueOrFalse("nay"), 1000)
   })
 } 
 
