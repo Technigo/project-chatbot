@@ -94,19 +94,44 @@ Meat.addEventListener('click', (event) => {
 });
 }
 
-
-
 const FoodChoice = (WhatToEat) => {
-  // Shows in console.log, how to put bot value on message function? 
+  
   if (WhatToEat === 'Pasta') {
-    showMessage("Don't forget to cook the spagetthi al dente!", 'bot');
+    showMessage("Don't forget to cook the spagetthi al dente! Are you satisfied with our dinner suggestion?", 'bot');
   } else if (WhatToEat === 'Salad') {
-    showMessage("Don't forget to put anchovies in the salad dressing!", 'bot')
+    showMessage("Don't forget to put anchovies in the salad dressing! Are you satisfied with our dinner suggestion?", 'bot')
   } else if (WhatToEat === 'Meat') {
-    showMessage("Make sure you give the brisket the time it needs in the oven!", 'bot')
+    showMessage("Make sure you give the brisket the time it needs in the oven! Are you satisfied with our dinner suggestion?", 'bot')
   }
+  
+  inputWrapper.innerHTML =
+  `<button id="yes" type="submit" value="yes">Yes</button>
+  <button id="no" type="submit" value="no">No</button>`;
+
+let yes = document.getElementById('yes');
+yes.addEventListener('click', (event) => {
+  event.preventDefault();
+  showMessage("Yes, I'm satisfied!", 'user')
+  showMessage("Great! Have a nice meal!", 'bot');
+  inputWrapper.style.display = 'none';
+});
+
+let no = document.getElementById('no');
+no.addEventListener('click', (event) => {
+  event.preventDefault();
+  showMessage("No, I would like to eat something else...", 'user')
+  showMessage("Okay, let me know if you need any more suggestions.", 'bot');
+  inputWrapper.style.display = 'none';
+});
+
+inputWrapper.style.display = 'block';
+chat.scrollTop = chat.scrollHeight;
 }
 
+chat.scrollTop = chat.scrollHeight;
+  //Eventlisteners for the previous buttons - these should call for the next function as well
+
+ 
 // Set up your eventlisteners here
 
 userForm.addEventListener('submit', handleNameInput);
