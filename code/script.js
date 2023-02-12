@@ -29,7 +29,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/friend.png" alt="User" />  
       </section>
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
@@ -37,7 +37,7 @@ const showMessage = (message, sender) => {
     console.log('bot is typing')
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bully.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -131,8 +131,8 @@ const lunchMoney = (event) => {
     <select id="select">
           <option value="" selected="" disabled="">Select your fate...</option>
           <option value="Cry">*Start crying*</option>
-          <option value="Tattle"*Run and tell someone*</option>
-          <option value="Fight"*Raise your fist in retaliation*</option>
+          <option value="Tattle">*Run and tell someone*</option>
+          <option value="Fight">*Raise your fist in retaliation*</option>
     </select>`
 
       document.getElementById('select').addEventListener('change', Ending)
@@ -158,6 +158,8 @@ else {
   inputWrapper.innerHTML = `
   <label for ="name-input">You have been knocked out by BullyBot</label>`,1000);
 
+  let punch = new Audio('assets/umph-47201.mp3')
+  punch.play();
 
 }
 

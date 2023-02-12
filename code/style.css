@@ -6,7 +6,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #4d20a1;
+  background: linear-gradient(to right,#b31010, #000000, #4c6828, #0b0b0c);
+  width: 100%;
 }
 
 h1 {
@@ -95,7 +96,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #2600ff;
+  color: #5900ff;
   max-width: 40%;
 }
 
