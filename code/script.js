@@ -55,7 +55,7 @@ const showMessage = (message, sender) => {
 const showPicture = (src) => {
   chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bob.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <img class="bot-img-reply" src="${src}" alt="" />
         </div>
