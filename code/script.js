@@ -1,6 +1,4 @@
 
-/* I didnt have the time to put the right text (will do that in due time, 
-  I didnt get the setTimeout to work, everytime i tried i just mede the bot to stop working*/
 
 
 const chat = document.getElementById('chat') 
@@ -87,16 +85,20 @@ form.addEventListener('submit', (event) => {
 
 const firstQuestion= (firstName) => {
 
+ botReply (`Welcome to the world of pinapples ${firstName}. What do you need today? Fun Fact, History or  order the pineapple?`)
 
-botReply(`Welcome to the world of pinapples ${firstName}. What do you need today? Fun Fact, History or rightaway to order?`)
-botReply ('First of all did you know that : The top of a pineapple, after cleaning and drying, can be planted in soil and a new plant will grow. ')
 
-console.log(wrapper);
+setTimeout ( () =>
+botReply ('First of all did you know that : The top of a pineapple, after cleaning and drying, can be planted in soil and a new plant will grow. '), 500)
+
+
+
+
 
 wrapper.innerHTML =`
 <button id="fun-fact" > Fun Fact </button>)
 <button id="history" > History </button>
-<button id="order" > Send me a pineapple!! </button>`;
+<button id="order" > Send me a pineapple!! </button>`
 
 //why has this eventlistneer started to show up as a bubble?
 document.getElementById('fun-fact').addEventListener('click', () => userReplyOne('fun'))
@@ -112,10 +114,16 @@ const userReplyOne = (chooseOne) => {
 if (chooseOne === 'fun'){
 
 
-userReply ("yey funfact")
-botReply  ("Did you know that a pineapple is not an apple, or pine? It’s actually a berry!")
+  setTimeout ( 
+    () =>
+  userReply ("yey funfact"), 1000)
 
-botReply ("Are you ready to order your pineapple? or do you need a little bit of history first?"), 
+  setTimeout ( () =>
+  
+  botReply  ("Did you know that a pineapple is not an apple, or pine? It’s actually a berry!"), 1000)
+
+  setTimeout ( () =>
+  botReply ("Are you ready to order your pineapple? or do you need a little bit of history first?"), 1000)
 
   wrapper.innerHTML =`
 
@@ -132,12 +140,15 @@ botReply ("Are you ready to order your pineapple? or do you need a little bit of
 }
 else if (chooseOne === "history") {
 
-userReply('so important to know the history')
+  setTimeout ( () =>
+  userReply('so important to know the history'), 1500)
 
-botReply ("The pineapple plant is a tropical fruit that is indigenous to South America. Originally coming from the area between southern Brazil and Paraguay.")
+  setTimeout ( () =>
+  botReply ("The pineapple plant is a tropical fruit that is indigenous to South America. Originally coming from the area between southern Brazil and Paraguay."), 1500)
 
 
- botReply ("Are you ready to order your pineapple? or mabey read some funfacts first?")
+  setTimeout ( () =>
+  botReply ("Are you ready to order your pineapple? or mabey read some funfacts first?"), 1000),
 
   wrapper.innerHTML = `
 
@@ -160,9 +171,11 @@ answerTwo = (type) => {
   console.log ('working1')
   if (type === 'historyEnd'){
 
- botReply(`More history for the people: The pineapple spread throughout South America, the Caribbean, Central America and Mexico, where it was cultivated by the Mayas and the Aztecs. Columbus came across the pineapple in 1493 and took it back to Europe.`)
+    setTimeout ( () =>
+    botReply(`More history for the people: The pineapple spread throughout South America, the Caribbean, Central America and Mexico, where it was cultivated by the Mayas and the Aztecs. Columbus came across the pineapple in 1493 and took it back to Europe.`), 1500)
 
- botReply ('Are you ready to order your pineapple?')
+    setTimeout ( () =>
+    botReply ('Are you ready to order your pineapple?'), 1000)
 
   wrapper.innerHTML =`
   <button id="order" > Yes </button>
@@ -175,11 +188,14 @@ answerTwo = (type) => {
 } else if ( type === 'funFactTwo' ){
   console.log('vid fun fact nr 2')
 
-userReply ('More pineapples to the people')
-botReply ('Pineapples were such a status symbol in 18th century England that you could rent one for the evening to take to a party.')
+  setTimeout ( () =>
+  userReply ('More pineapples to the people'), 2000)
+  setTimeout ( () =>
+  botReply ('Pineapples were such a status symbol in 18th century England that you could rent one for the evening to take to a party.'), 1000)
 
 
-  botReply ('Are you ready to order your pineapple?')
+  setTimeout ( () =>
+  botReply ('Are you ready to order your pineapple?'), 1000)
 
   wrapper.innerHTML =`
 <button id="order" > Yes </button>
@@ -192,13 +208,14 @@ document.getElementById('order').addEventListener('click', () => answerThree("or
 }}
 
 const answerThree = (fin) => {
-  console.log ('working2SLUT')
 
  if (fin === 'order') {
 
-  userReply ("Of course I want to order! finaly I get my own Pineapple")
+  setTimeout ( () =>
+  userReply ("Of course I want to order! finaly I get my own Pineapple"), 1000)
    
-    botReply ('Perfect choose your size here.')
+  setTimeout ( () =>
+  botReply ('Perfect choose your size here.'), 1000)
 
     //fixa en knapp för de olika storlekarna sen en form för mail
 wrapper. innerHTML = `
@@ -217,12 +234,17 @@ wrapper. innerHTML = `
    }
 const select = document.getElementById('select')
 select.addEventListener('change', () => endForm(select.value))
+
+
+
+
 }
 
     
-    // button for leave
+    // This wont work?
   const endForm = (pineapple) => {
-botReply (`Yey thanx for orderinge a ${pineapple } write your name and e mail and we will send you information on where to get your happy pineapple`)
+    setTimeout ( () =>
+    botReply (`Yey thanx for orderinge a ${pineapple } write your name and e mail and we will send you information on where to get your happy pineapple`), 1000)
 
 wrapper.innerHTML=
 `<form>
@@ -238,8 +260,11 @@ document.getElementById('email').addEventListener('click', () => thankYou())
 document.getElementById('button').addEventListener('click', () => thankYou())
 } 
 
+//these wont work!
 const thankYou =() => {
-botReply ("Pineapples are international symbols of welcome and are a symbolic way of saying “you are perfect” when presented to someone.")
-botReply ('Thank you for ordering hope to see you again!')
+  setTimeout ( () =>
+  botReply ("Pineapples are international symbols of welcome and are a symbolic way of saying “you are perfect” when presented to someone."), 1000)
+setTimeout ( () =>
+botReply ('Thank you for ordering hope to see you again!'), 1000)
 
 }
