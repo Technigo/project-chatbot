@@ -25,7 +25,7 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `
-    // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
+// the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
@@ -40,7 +40,6 @@ const showMessage = (message, sender) => {
 }
 
 const nextQuestion = (message) => {
-  //console.log('questionNumber', questionNumber)
 
   if (questionNumber === 1) {
     userReply(message)
@@ -57,13 +56,10 @@ const nextQuestion = (message) => {
     setTimeout(() => showServingTopping(message), 800)
   } else if (questionNumber === 5){
     userReply(message)
-    setTimeout(() => showToppingOptions(message), 800)
-  } else if (questionNumber === 6){
-    userReply(message)
     setTimeout(() => showPlaceOrder(message), 800)
   } else {
     userReply(message)
-    setTimeout(thankYou, 800)
+    setTimeout(thankYou, 1500)
   }
 }
 
@@ -97,7 +93,7 @@ const showTypes = (type) => {
   inputWrapper.innerHTML = `
   <button id="softServeBtn">Soft serve</button>
   <button id="scoopBtn">Scoop</button>
-`
+  `
   document
     .getElementById('softServeBtn')
     .addEventListener('click', () => nextQuestion('Soft serve'))
@@ -110,7 +106,7 @@ const showSizes = (type) => {
   questionNumber++
 
   botReply(
-    `${type}, so yummy! Choose what size you would like`) 
+    `${type}, so yummy! Choose what size you would like.`) 
 
   if (type === 'Soft serve') {
     inputWrapper.innerHTML =`
@@ -144,11 +140,11 @@ const showServingTopping = (type) => {
   inputWrapper.innerHTML = `
     <select id="select">
       <option value=""selected disabled>Select a topping</option>
-      <option value="fresh strawberries">Fresh strawberries</option>
-      <option value="chocolate sauce">Chocolate sauce</option>
-      <option value="rainbow sprinkles">Rainbow sprinkles</option>
-      <option value="whipped cream">Whipped cream</option>
-      <option value="no topping">No topping</option>
+      <option value="Fresh strawberries">Fresh strawberries</option>
+      <option value="Chocolate sauce">Chocolate sauce</option>
+      <option value="Rainbow sprinkles">Rainbow sprinkles</option>
+      <option value="Whipped cream">Whipped cream</option>
+      <option value="No topping today">No topping</option>
     </select>
   `
 const select = document.getElementById('select')
@@ -158,47 +154,39 @@ select.addEventListener('change', () => nextQuestion(select.value))
 const showPlaceOrder = () => {
   questionNumber++
 
-  botReply(`Alrigthy, are you ready to place your order?`)
+  botReply(`Alrighty, are you ready to place your order?`)
     
   inputWrapper.innerHTML = `
     <button id="confirm">Yes</button>
     <button id="restart">No</button>
-`
-const select = document.getElementById('select')
-select.addEventListener('change', () => nextQuestion(select.value)) 
+  `
+// If yes, "Thank you for your order!"
+  document
+    .getElementById('confirm')
+    .addEventListener('click', () => nextQuestion('Yes!'))
+
+// If no the chat will be deleted.    
+  document
+    .getElementById('restart').addEventListener('click', () => {
+      location.reload()
+      return false
+    })
 }
 
-   /*
+const thankYou = () => {
+  botReply(`Thank you for your order! Pls pay at the cashier. Enjoy your day! ☀️`)
+  inputWrapper.innerHTML=``
+}
   
-    inputWrapper.innerHTML = `
-    <button id="confirm">Yes</button>
-    <button id="restart">No</button>
-  `
-    document
-      .getElementById('confirm')
-      .addEventListener('click', () => nextQuestion('Yes!'))
-    document
-      .getElementById('restart')
-      .addEventListener('click', () => nextQuestion('No'))
-  }
-
-  const thankYou = () => {
-  botReply(
-    `Thank you for your order! Pls pay at the cashier. Enjoy your day! ☀️`)
-    inputWrapper.innerHTML=``
-  }*/
-  
-  sendBtn.addEventListener('click', () => nextQuestion(input.value))
-  input.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter' && input.value) nextQuestion(input.value)
-  })
-  
-// If yes, "Thank you for your order!"
-// If no the chat will be deleted. 
-
-
-// If you need any global variables that you can use across different functions, declare them here:
-// Declare your functions after this comment
+sendBtn.addEventListener('click', () => nextQuestion(input.value))
+input.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter' && input.value) nextQuestion(input.value)
+})
 
 // When website loaded, chatbot asks first question.
 setTimeout(greetUser, 800);
+
+//Tried to add a looping sound element.
+/*let backgroundaudio = new Audio('/audio/song.mp3');
+backgroundaudio.volume = 0.2;
+backgroundaudio.play();*/

@@ -20,7 +20,7 @@ h1 {
 h2 {
   font-weight: bold;
   font-size: 32px;
-  font-weight: lighter;
+  font-weight: 300;
   line-height: 34px;
   color: #fff3f3;
   text-align: center;
@@ -61,6 +61,25 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+}
+
+select {
+  border: none;
+  border-radius: 10px;
+  height: 60px;
+  background-color: #ffcfe5;
+  color: purple;
+  font-size: 18px;
+  font-weight: normal;
+  font-family: 'Urbanist';
+  text-align: center;
+  width: 30%;
+  padding: 20px 10px 20px 10px;
+  cursor: pointer;
+
+  -webkit-appearance:none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .chat {
@@ -149,25 +168,6 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
-}
-
-select {
-  border: none;
-  border-radius: 10px;
-  height: 60px;
-  background-color: #ffcfe5;
-  color: purple;
-  font-size: 18px;
-  font-weight: normal;
-  font-family: 'Urbanist';
-  text-align: center;
-  width: 30%;
-  padding: 20px 10px 20px 10px;
-  cursor: pointer;
-
-  -webkit-appearance:none;
-  -moz-appearance: none;
-  appearance: none;
 }
 
 footer {
