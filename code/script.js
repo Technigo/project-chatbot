@@ -165,7 +165,7 @@ const ifMonster = (size) => {
     `
 
   document.getElementById("mosquito").addEventListener("click", () => nextQuestion("Sluuurp..."), {once: true});
-  document.getElementById("shrimp").addEventListener("click", () => nextQuestion("BANG"), {once: true});
+  document.getElementById("shrimp").addEventListener("click", () => nextQuestion("BANG!"), {once: true});
 }
 }
 
@@ -196,7 +196,7 @@ if (monsterAnswer === "Bring it on!") {
 }
 
 
-setTimeout(greetUser, 1000);
+setTimeout(greetUser, 200);
 
 
 

@@ -2,8 +2,6 @@
   box-sizing: border-box;
 }
 
-
-
 body {
   margin: 0;
   padding: 0;
@@ -125,19 +123,19 @@ img #wait {
   padding: 16px 12px;
   color: black;
   max-width: 40%;
-  box-shadow: 5px 5px 5px 5px #442245;;
+  box-shadow: 5px 7px 10px 6px #442245;;
 }
 
 .bot-bubble {
   border-radius: 0 26px 26px 26px;
-  margin-top: 25px;
+  margin-top: 28px;
   margin-left: 8px;
   background: #22d9e2;
 }
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
-  margin-top: 25px;
+  margin-top: 28px;
   margin-right: 8px;
   background: #e773eb;
 }
@@ -174,6 +172,7 @@ button {
   line-height: 26px;
   font-family: 'Montserrat';
   font-weight: bold;
+  text-shadow: 1px 1px 0 #ef19f7;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 2px 2px 3px 2px #442245;;
