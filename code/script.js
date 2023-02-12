@@ -7,8 +7,6 @@ const sendBtn = document.getElementById('send');
 const select = document.getElementById('select')
 
 // If you need any global variables that you can use across different functions, declare them here:
-
-
 // Declare your functions after this comment
 
 let questionNumber = 1;
@@ -16,10 +14,9 @@ let userName = '';
 let type = '';
 let value = '';
 
-
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
+  // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
@@ -29,7 +26,7 @@ const showMessage = (message, sender) => {
         <img src="assets/toddlerandparent.png" alt="User" />  
       </section>
     `
-    // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
+    // the else if statement checks if the sender is a bot and if that's the case it inserts an html section inside the chat with the posted message
   } else if (sender === 'bot') {
     console.log("why");
     chat.innerHTML += `
@@ -62,10 +59,9 @@ const showMessage = (message, sender) => {
     setTimeout(() => chooseActivity(message), 1000)
   } else {
     showMessage(message)
-    setTimeout(thankYou, 1000)
+    setTimeout(haveFun, 1000)
   }
 }
-
 
 // CHATBOT STARTS HERE
 const greetUser = () => {
@@ -95,7 +91,6 @@ clickWeatherButtons();  //once I have defined the button action function, I can 
 
 }//I end whatIsTheWeather here.
 
-// Event listners for my buttons. I included them within the const whatIsTheWeather block. Otherwise it seemed to break the code.
 
 const clickWeatherButtons = () => {
 
@@ -103,8 +98,8 @@ sunnyBtn = document.getElementById('sunnyBtn')
 sunnyBtn.addEventListener('click', (event) => {
   event.preventDefault()
   type = 'sunny';
-showMessage(`It's sunny today in my local area!`, "user")  //call function for whatever action should happen when button is clicked, "user"
-setTimeout(() => showActivities(), 1000) //line 82 //setTimeout (() => showActivities(), 500)
+showMessage(`It's sunny today in my local area!`, "user")  
+setTimeout(() => showActivities(), 1000) 
 })
 
 cloudyBtn = document.getElementById('cloudyBtn')
@@ -127,12 +122,12 @@ setTimeout(() => showActivities(), 1000)
 //clickWeatherButtons section ends here 
 
   //BOT RESPPONSE
-  //NB I didn't need to add 'type' as I declared it in line 15 and in each of the button sections
+  //NB I didn't need to add 'type' to brackets in line 126 as I declared it in line 15 and in each of the button sections
 const showActivities = () => {
   questionNumber++ 
-  showMessage(`Got it! Here are some fun toddler ideas you might like to try on a ${type} day:`, "bot") //here the reply is undefined instead of showing the selected type
+  showMessage(`Got it! Here are some fun toddler ideas you might like to try on a ${type} day:`, "bot") 
   
-//First button
+//FIRST SET OF OPTIONS
 if (type==='sunny') {
   inputWrapper.innerHTML = `
       <select id="select">
@@ -142,7 +137,7 @@ if (type==='sunny') {
         <option value="have a picnic outside">Have a picnic outside 🍰 </option>
       </select>
     `
-//Second button
+//SECOND SET OF OPTIONS
   } else if (type==='cloudy') {
     inputWrapper.innerHTML = `
       <select id="select">
@@ -152,7 +147,7 @@ if (type==='sunny') {
         <option value="check out animals at the farm">Check out animals at the farm 🐄 </option>
       </select>
     `
-//Third button
+//THIRD SET OF OPTIONS
   } else {
     inputWrapper.innerHTML = `
       <select id="select">
@@ -164,8 +159,8 @@ if (type==='sunny') {
     `
   }
 
-  // chooseActivity (); 
-  // activate later?
+  // ChooseActivity(); NB here I thought I needed to do as above, but it stops working with this function called
+  
 
 const select = document.getElementById('select')
   
@@ -174,11 +169,10 @@ const select = document.getElementById('select')
   //NB Couldn't get (select.value) to show so I had to use a different method below
 }
 
-
 const chooseActivity = (select) => {
   questionNumber++
   showMessage(`We'd like to ${select}!`, "user"); // This isn't technically how I want to 
-  //write it but I couldn't get line 182 to work
+  //write it but I couldn't get line 168 to work with select.value showing the response
   
 
   //THIRD QUESTION
@@ -189,72 +183,30 @@ const chooseActivity = (select) => {
   <button id="confirm">Sounds great!</button>
 
 `
-
+//When user chooses restart it goes back to beginning
 document
   .getElementById('restart').addEventListener('click', () => {
     location.reload()
     return false
   })
-  // When user chooses YES, pass along the answer to conversation-function "nextQuestion" 
+  // When user chooses confirm, conversation moves forward
   document
     .getElementById('confirm')
-    .addEventListener('click', () => nextQuestion('Yes!'))
+    .addEventListener('click', () => nextQuestion('Sounds great!')) //This should show the words but it doesn't
 
 }
 
-const thankYou = () => {
+//FINAL MESSAGE 
+const haveFun = () => {
   showMessage(`Sounds great!`, "user"); 
   setTimeout(() => showMessage(`Happy days! Have fun! 🎉`, "bot"), 1000);
   inputWrapper.innerHTML = ``
 }
 
-
-
-
-
-
-
-
-//select.addEventListener('click', (event) => {
-//   event.preventDefault()
- 
-// const select
-
-
-
-
-
-// const showActivity = () =>
-//   questionNumber++
-
-
-// const selectActivityButtons = () => {
-
-//   sunnyBtn = document.getElementById('sunnyBtn')
-//   sunnyBtn.addEventListener('click', (event) => {
-//     event.preventDefault()
-//     type = 'sunny';
-//   showMessage(`It's sunny today in my local area!`, "user")  //call function for whatever action should happen when button is clicked, "user"
-//   setTimeout(() => showActivities(), 1000) //line 82 //setTimeout (() => showActivities(), 500)
-//   })
-// }
-
-
-
-// // Set up your eventlisteners here:
-// // This listens out for the name:
+// Set up your eventlisteners here:
+// This listens out for the name:
 form.addEventListener('submit', (event) => {
   event.preventDefault()
-
-
-
-
-  
-//form.addEventListener('submit',() = {
-//
-//})
-//This listens out for...
-//sendBtn.addEventListener('click', () => nextQuestion(type))
 
 
   // Store the value in a variable so I can access it after we 
