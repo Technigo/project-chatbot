@@ -165,7 +165,7 @@ label {
 button {
   display: inline-block;
   background-color: #f29b49;
-  color: white;
+  color: black;
   border: none;
   border-radius: 50%;
   padding: 16px 40px;
@@ -173,7 +173,7 @@ button {
   font-size: 16px;
   line-height: 26px;
   font-family: 'Montserrat';
-  font-weight: 500;
+  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 3px 3px 3px 3px teal;

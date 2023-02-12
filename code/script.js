@@ -23,7 +23,7 @@ const soundEffectUser = () => {
 
 const soundEffectFinal = () => {
   const sound = new Audio('sport-rock-logo1-13776.mp3');
-  sound.play()
+  //sound.play()
 }
 
 const botSay = (words) => {
