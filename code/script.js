@@ -80,7 +80,7 @@ form.addEventListener('submit', (event) => {
 const recognize = (firstName) => {
   console.log(firstName);
 
-  showMessage(`What a beautiful name! Which book would you like?`, 'bot');
+  showMessage(`What a beautiful name, ${firstName}! Which book would you like?`, 'bot');
 
         console.log(formWrapper);
     formWrapper.innerHTML = 
@@ -97,13 +97,15 @@ const recognize = (firstName) => {
   
     let englishBtn = document.getElementById('englishBtn');
     englishBtn.addEventListener('click', () => choices())
+
+  
 }
 
 
 // Question number 3
 const choices = (msg) => {
 
-  showMessage(`Wow, love that your in to learning stuff! What else?`, 'bot');
+  showMessage(`Wow, love that your into learning stuff! What else?`, 'bot');
   
   formWrapper.innerHTML =
         `<button id="boundBtn">Bound Book</button>
