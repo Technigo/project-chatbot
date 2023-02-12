@@ -4,41 +4,50 @@
 
 body {
   margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: 'Montserrat';
+  /*background-color: rgb(37, 5, 37);*/
+  background-image: url(assets/fortune.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  line-height: 30px;
+
+  /*background: linear-gradient( #080300, #dacbc4);*/
 }
 
 h1 {
-  font-weight: bold;
+  font-weight: lighter;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.63);
   text-align: center;
+  font-family: "Metamorphous";
+  padding-top: 50px;
+  padding-bottom: 30px;
 }
 
 h2 {
-  font-weight: bold;
-  font-size: 24px;
+  font-weight: lighter;
+  font-size: 20px;
   line-height: 34px;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.822);
   text-align: center;
   margin-bottom: 36px;
+  font-family: "Grenze Gotisch";
 }
-
 p {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
-  line-height: 28px;
   margin: 0;
+  
 }
 
 input {
   box-sizing: border-box;
   border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  border-radius: 10px ;
+  background: #fcfcfcd8;
+  color: #523801;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -48,12 +57,19 @@ input {
 }
 
 main {
-  margin: 0 auto;
+  margin: 250px auto;
   width: 100%;
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+
+  background: rgba(156, 120, 53, 0.28);
+  border-radius: 60px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -87,16 +103,30 @@ main {
 .user-msg img {
   width: 60px;
   height: 60px;
+  border-radius: 30px;
+}
+
+video {
+border-radius: 20px;
 }
 
 .bubble {
-  background: #e5e9ff;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 26px;
+  background: rgba(255, 243, 255, 0.288);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(12.9px);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+}
+
+.user-bubble p,
+.bot-bubble p {
+  font-family: 'Montserrat';
+  color: rgba(245, 245, 245, 0.918);
   padding: 16px 24px;
-  color: #0026ff;
-  max-width: 40%;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
 }
 
 .bot-bubble {
@@ -124,16 +154,23 @@ label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  color: #ab82b8;
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+ 
+  background: rgba(255, 255, 255, 0.41);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12.9px);
+  -webkit-backdrop-filter: blur(12.9px);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+
   color: white;
   border: none;
-  border-radius: 4px;
-  padding: 16px 40px;
+  border-radius: 10px;
+  padding: 16px 18px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
@@ -147,3 +184,48 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+#chosenFortune {
+  color: #fff3d9e1;
+  font-family: "Metamorphous";
+  font-size: 30px;
+  text-align: center;
+  line-height: 52px;
+  padding-top: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.dropDown {
+
+  background: rgba(255, 255, 255, 0.41);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12.9px);
+  -webkit-backdrop-filter: blur(12.9px);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-right: 4px;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+  transition: all 0.2s ease;
+}
+
+
+
+
+
+
+
