@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat";
 }
 
 #videoBackground {
@@ -28,8 +28,9 @@ h1 {
 }
 
 h2 {
-  font-weight: bold;
+  font-style: oblique;
   font-size: 20px;
+  font-weight: none;
   line-height: 10px;
   color: #fff;
   text-align: center;
@@ -38,17 +39,26 @@ h2 {
 
 p {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 28px;
   margin: 0;
+  font-family: Noteworthy, light;
+}
+
+.bot-font {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 28px;
+  margin: 0;
+  font-family: "Courier New", Courier, thin;
 }
 
 input {
   box-sizing: border-box;
   border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  border-radius: 5px;
+  background-color: #fed4c5;
+  color: #481620;
   padding: 16px;
   font-size: 16px;
   font-family: "Montserrat";
@@ -100,12 +110,10 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 13px 15px;
-  color: #0026ff;
   max-width: 40%;
 }
 
@@ -113,12 +121,16 @@ main {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
   margin-top: 40px;
+  background: #e7fce2;
+  color: #988f2a;
 }
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
   margin-top: 40px;
+  background: #fff1fe;
+  color: #89043d;
 }
 
 .input-wrapper {
@@ -137,13 +149,13 @@ label {
   font-size: 16px;
   font-family: "Montserrat";
   font-weight: 500;
-  color: #0026ff;
   margin-right: 20px;
+  border: solid white;
 }
 
 .send-btn {
-  background-color: #0026ff;
-  color: white;
+  background-color: #e07a5f;
+  color: #481620;
   border: none;
   border-radius: 5px;
   padding: 16px 35px;
@@ -152,57 +164,61 @@ label {
   font-size: 16px;
   line-height: 26px;
   font-family: "Montserrat";
-  font-weight: 450;
+  font-weight: bold;
+  font-style: oblique;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .sentinel-btn {
-  background-color: #0026ff;
-  color: white;
+  background-color: #e07a5f;
+  color: #481620;
   border: none;
   border-radius: 4px;
   padding: 16px 20px;
   margin-right: 4px;
   font-size: 14px;
+  font-weight: bold;
   line-height: 26px;
   font-family: "Montserrat";
-  font-weight: 500;
+  font-style: oblique;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .kyrgyzstan-btn {
-  background-color: #0026ff;
-  color: white;
+  background-color: #e07a5f;
+  color: #481620;
   border: none;
   border-radius: 4px;
   padding: 16px 20px;
   margin-right: 4px;
   font-size: 14px;
+  font-weight: bold;
   line-height: 26px;
   font-family: "Montserrat";
-  font-weight: 500;
+  font-style: oblique;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 .dmz-btn {
-  background-color: #0026ff;
-  color: white;
+  background-color: #e07a5f;
+  color: #481620;
   border: none;
   border-radius: 4px;
   padding: 16px 20px;
   margin-right: 4px;
   font-size: 14px;
+  font-weight: bold;
   line-height: 26px;
   font-family: "Montserrat";
-  font-weight: 500;
+  font-style: oblique;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 button:hover {
-  opacity: 0.9;
+  opacity: 0.8;
   transition: all 0.2s ease;
   cursor: pointer;
 }
@@ -210,12 +226,12 @@ button:hover {
 select {
   border: none;
   border-radius: 4px;
-  color: #0026ff;
+  background-color: #e07a5f;
+  color: #481620;
   font-size: 20px;
   font-weight: 600;
   height: 60px;
   font-family: "Montserrat";
-  background: #e5e9ff;
   width: 100%;
   padding: 0 20px;
   cursor: pointer;

@@ -48,7 +48,7 @@ const showMessage = (message, sender) => {
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
-          <p>${message}</p>
+          <p class="bot-font">${message}</p>
         </div>
       </section>
     `;
