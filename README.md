@@ -3,6 +3,9 @@
 Replace this readme with your own information about your project.
 
 Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Background photo: Mitchell Luo, Unsplash, https://unsplash.com/photos/FWoq_ldWlNQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText
+Illustrations: https://undraw.co/illustrations
+  
 
 ## The problem
 
