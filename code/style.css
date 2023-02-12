@@ -129,7 +129,7 @@ label {
   margin-right: 20px;
 }
 
-.button {
+.send-btn {
   background-color: #0026ff;
   color: white;
   border: none;
@@ -191,4 +191,19 @@ label {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+select {
+  border: none;
+  border-radius: 4px;
+  color: #0026ff;
+  font-size: 20px;
+  font-weight: 600;
+  height: 60px;
+  font-family: "Montserrat";
+  background: #e5e9ff;
+  width: 100%;
+  padding: 0 20px;
+  cursor: pointer;
 }

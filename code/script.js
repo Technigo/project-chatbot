@@ -68,12 +68,9 @@ const nextQuestion = (message) => {
   } else if (questionNumber === 3) {
     userReply(message);
     setTimeout(() => lifeInsurance(message), 600);
-  } else if (questionNumber === 4) {
-    userReply(message);
-    setTimeout(() => showPrice(message), 600);
   } else {
     userReply(message);
-    setTimeout(thankYou, 600);
+    setTimeout(lastMessage, 600);
   }
 };
 
@@ -161,50 +158,39 @@ const lifeInsurance = (waytotravel) => {
     `${waytotravel}? That's kinda weird but ok... have you updated your will and life insurance?`
   );
   inputWrapper.innerHTML = `
-    <button id="yes">Yes</button>
-    <button id="no">No</button>
+    <button class="send-btn" id="yes">Yes</button>
+    <button class="send-btn" id="no">No</button>
   `;
+  document.getElementById("yes").addEventListener("click", () => lastMessage());
   document
-    .getElementById("adult")
-    .addEventListener("click", () => nextQuestion("adult"));
-  document
-    .getElementById("child")
-    .addEventListener("click", () => nextQuestion("child"));
+    .getElementById("no")
+    .addEventListener("click", () => noWilllifeinsurance());
 };
 
-const showPrice = (size) => {
-  questionNumber++;
-
-  let price;
-  if (size === "adult") {
-    price = "€15";
-  } else {
-    price = "€10";
-  }
-
+const noWilllifeinsurance = () => {
   botReply(
-    `One ${size} sized dish will be prepared for you. That'll be ${price}. Are you sure you want to order this?`
+    `You haven't? I strongly suggest you get your things in order before planning a trip with me. 😬`
   );
-
   inputWrapper.innerHTML = `
-    <button id="restart">NO</button>
-    <button id="confirm">YES</button>
-  `;
+  <button class="send-btn" id="restart">I understand</button>`;
 
   document.getElementById("restart").addEventListener("click", () => {
     location.reload();
     return false;
   });
-  document
-    .getElementById("confirm")
-    .addEventListener("click", () => nextQuestion("Yep!"));
 };
 
-const thankYou = () => {
+const lastMessage = () => {
   botReply(
     `Then everything seems to be in order! That'll be four million euros. I only accept cash. "Safe" Travels!`
   );
-  inputWrapper.innerHTML = ``;
+  inputWrapper.innerHTML = `
+  <button class="send-btn" id="restart">Thank you!</button>`;
+
+  document.getElementById("restart").addEventListener("click", () => {
+    location.reload();
+    return false;
+  });
 };
 
 // Set up your eventlisteners here
@@ -216,10 +202,6 @@ button.addEventListener("click", () => nextQuestion(input.value));
 input.addEventListener("keypress", (event) => {
   if (event.key === "Enter" && input.value) nextQuestion(input.value);
 });
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
+
+//The first message from the bot will load 0,6 seconds after the page has loaded.
 setTimeout(greetUser, 600);
