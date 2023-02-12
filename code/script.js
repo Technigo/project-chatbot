@@ -87,10 +87,10 @@ const question1 = (msg) => {
 
   document
     .getElementById("greatBtn")
-    .addEventListener("click", () => userFeels("great"));
+    .addEventListener("click", () => userFeels("Great"));
   document
     .getElementById("okBtn")
-    .addEventListener("click", () => userFeels("okey"));
+    .addEventListener("click", () => userFeels("Okey"));
   document
     .getElementById("mehBtn")
     .addEventListener("click", () => userFeels("meh"));
@@ -98,7 +98,7 @@ const question1 = (msg) => {
 
   //next set of answer choices
 const userFeels = (userAnswer) => {
-  if (userAnswer === "great") {
+  if (userAnswer === "Great") {
     userReply(userAnswer);
     setTimeout(() => userReply("I feel really great!"),500)
     setTimeout(() => botReply("How splendid, what do you want to do now?"),1000)
@@ -113,7 +113,7 @@ const userFeels = (userAnswer) => {
     setTimeout(() => toDo('dayOff')),1000  // calling out the next answer in a new function named facts
     }) 
   }
-  else if (userAnswer === 'okey') {
+  else if (userAnswer === 'Okey') {
     setTimeout(() => botReply("Only okey? Let's make you feel great!"),500)
     userReply(userAnswer);
     setTimeout(() => userReply("Yes, I would like that!"),1000)
