@@ -19,10 +19,10 @@ let userAnswers = {
 
 const userSound = new Audio("assets/beep_sms.mp3");
 
-const openModal = function () {
-  document.querySelector(".modal").classList.remove("hidden");
-  document.querySelector(".overlay").classList.remove("hidden");
+const refresh = function () {
+  location.reload();
 };
+
 // userSound.play();
 
 // Declare your functions after this comment
@@ -62,10 +62,7 @@ const greetUser = () => {
     "Hello there and welcome. My name is Boba The Bot, what's yours?",
     "bot"
   );
-  // showMessage(
-  //   (innerHTML = "<img src='assets/typing.gif' width='400px' height='70px'>"),
-  //   "bot"
-  // );
+
   showMessage("Don't be chai!", "bot");
 
   // Just to check it out, change 'bot' to 'user' here 👆
@@ -151,6 +148,12 @@ const question2 = (userMood) => {
       <button id="randomBtn">Tea of the day!</button>
       <button id="mostPopularBtn">Our best-selling tea!</button>
       `;
+    document
+      .getElementById("randomBtn")
+      .addEventListener("click", randomTeaClicked);
+    document
+      .getElementById("mostPopularBtn")
+      .addEventListener("click", mostPopularClicked);
   } else if (userAnswers.mood === "") {
     showMessage(`Sorry, I didn't catch that`, "bot");
   } else {
@@ -188,6 +191,42 @@ const question2 = (userMood) => {
   // setTimeout(() => question2(userName), 1000);
 };
 
+const randomTeaClicked = (event) => {
+  event.preventDefault(); //prevents refreshing the page
+  showMessage(
+    `You're a gambler ${userAnswers.name}! your random order is Taro tea with tapioca topping, and it's being prepared with love by the Tealicious Lab. See you soon!`,
+    "bot"
+  );
+  setTimeout(
+    () =>
+      (chat.innerHTML = `<h3>Have a good day now!</h3><video src="assets/BubbleTea Commercial video.mp4" width=80% height="552" muted autoplay loop></video>`),
+    9000
+  );
+  inputWrapper.innerHTML = `
+  <button id="newOrder" value="">Make new order! 😍</button>
+  `;
+
+  document.querySelector("#newOrder").addEventListener("click", refresh);
+};
+
+const mostPopularClicked = (event) => {
+  event.preventDefault(); //prevents refreshing the page
+  showMessage(
+    `What's popular is popular for a reason ${userAnswers.name}! our most popular is Black Milk tea with tapioca topping, and it's being prepared with love by the Tealicious Lab. See you soon!`,
+    "bot"
+  );
+  setTimeout(
+    () =>
+      (chat.innerHTML = `<h3>Have a good day now!</h3><video src="assets/BubbleTea Commercial video.mp4" width=80% height="552" muted autoplay loop></video>`),
+    9000
+  );
+  inputWrapper.innerHTML = `
+  <button id="newOrder" value="">Make new order! 😍</button>
+  `;
+
+  document.querySelector("#newOrder").addEventListener("click", refresh);
+};
+
 const handleInput3 = (event) => {
   event.preventDefault(); //prevents refreshing the page
   //userAnswers.order = chatInput.value;
@@ -208,9 +247,11 @@ const question3 = () => {
   inputWrapper.innerHTML = `
       <button id="option1" value="Tapioca pearls">Tapioca pearls</button>
       <button id="option2" value="Jellies">Jellies</button>
-      <button id="option2" value="Popping bubbles">Popping bubbles</button>
+      <button id="option3" value="Popping bubbles">Popping bubbles</button>
       `;
   document.getElementById("option1").addEventListener("click", option1Clicked);
+  document.getElementById("option2").addEventListener("click", option2Clicked);
+  document.getElementById("option3").addEventListener("click", option3Clicked);
 };
 
 const option1Clicked = (event) => {
@@ -231,22 +272,76 @@ const option1Clicked = (event) => {
   setTimeout(() => question4(), 5000);
 };
 
+const option2Clicked = (event) => {
+  event.preventDefault();
+  userAnswers.toppings = option2.value;
+  console.log(userAnswers.toppings);
+  showMessage(userAnswers.toppings, "user");
+  setTimeout(() => {
+    showMessage("...", "bot");
+  }, 300);
+  setTimeout(() => {
+    showMessage(
+      "Fan va gött! funfact: Our jellies are made from coconut meat (konjar).",
+      "bot"
+    );
+  }, 1000);
+
+  setTimeout(() => question4(), 5000);
+};
+
+const option3Clicked = (event) => {
+  event.preventDefault();
+  userAnswers.toppings = option3.value;
+  console.log(userAnswers.toppings);
+  showMessage(userAnswers.toppings, "user");
+  setTimeout(() => {
+    showMessage("...", "bot");
+  }, 300);
+  setTimeout(() => {
+    showMessage(
+      "Nice! funfact: Popping bubbles are made from a trendy new way of cooking called 'Molecular Gastronomy'.",
+      "bot"
+    );
+  }, 1000);
+
+  setTimeout(() => question4(), 5000);
+};
+
 const question4 = () => {
   showMessage("How many spoons of toppings would you like?", "bot");
 
   inputWrapper.innerHTML = `
       <button id="option1Spoon" value="1 spoon">1 spoon!</button>
-      <button id="option2Spoon" value="2 spoon">2 spoons! (+ 10 Kr)</button>
+      <button id="option2Spoon" value="2 spoons">2 spoons! (+ 10 Kr)</button>
       `;
 
   document
     .getElementById("option1Spoon")
     .addEventListener("click", option1SpoonClicked);
+  document
+    .getElementById("option2Spoon")
+    .addEventListener("click", option2SpoonClicked);
 };
 
 const option1SpoonClicked = (event) => {
   event.preventDefault();
   userAnswers.spoons = option1Spoon.value;
+  console.log(userAnswers.spoons);
+  showMessage(userAnswers.spoons, "user");
+  setTimeout(() => {
+    showMessage("...", "bot");
+  }, 600);
+
+  setTimeout(() => {
+    showMessage(`${userAnswers.spoons} it is!`, "bot");
+  }, 800);
+  setTimeout(() => question5(), 3000);
+};
+
+const option2SpoonClicked = (event) => {
+  event.preventDefault();
+  userAnswers.spoons = option2Spoon.value;
   console.log(userAnswers.spoons);
   showMessage(userAnswers.spoons, "user");
   setTimeout(() => {
@@ -283,7 +378,16 @@ const handleInput4 = (event) => {
     `Thanks a lot for your order ${userAnswers.name}, your ${userAnswers.order} with ${userAnswers.spoons} of ${userAnswers.toppings} topping is being prepared with love by the Tealicious Lab. See you soon!`,
     "bot"
   );
-  document.querySelector(".send-btn").addEventListener("click", openModal);
+  setTimeout(
+    () =>
+      (chat.innerHTML = `<h3>Have a good day now!</h3> <video src="assets/BubbleTea Commercial video.mp4" width=80% height="552" muted autoplay loop></video>`),
+    9000
+  );
+  inputWrapper.innerHTML = `
+  <button id="newOrder" value="">Make new order! 😍</button>
+  `;
+
+  document.querySelector("#newOrder").addEventListener("click", refresh);
 
   //userAnswers.order = chatInput.value;
   // userAnswers.order = teaSelect.value;

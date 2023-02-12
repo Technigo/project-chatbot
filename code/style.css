@@ -8,7 +8,7 @@ body {
   padding: 0;
   font-family: "Montserrat", sans-serif;
   background: #0026ff;
-  background-image: url(assets/boba-background.jpg);
+  background-image: url(assets/boba-background2.jpg);
 }
 
 h1 {
@@ -30,6 +30,13 @@ h2 {
   margin-bottom: 36px;
 }
 
+h3 {
+  font-family: "Pacifico", cursive;
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 36px;
+}
+
 p {
   font-size: 18px;
   font-weight: 600;
@@ -42,7 +49,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: rgb(163, 77, 67);
   padding: 16px;
   font-size: 16px;
   font-family: "Montserrat";
@@ -52,8 +59,8 @@ input {
 }
 
 main {
-  margin: 0 auto;
-  width: 100%;
+  margin: auto;
+  width: 90%;
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
@@ -94,12 +101,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: rgb(253, 176, 167);
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: white;
   max-width: 40%;
 }
 
@@ -114,12 +121,13 @@ main {
 }
 
 .input-wrapper {
+  width: 100%;
   display: flex;
   justify-content: center;
 }
 
 .input-wrapper form {
-  width: 100%;
+  width: 95%;
   display: flex;
   align-items: center;
 }
@@ -133,7 +141,7 @@ label {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: rgb(253, 176, 167);
   color: white;
   border: none;
   border-radius: 4px;
@@ -157,7 +165,11 @@ button:hover {
   width: 100%;
 }
 
-.hidden {
+video {
+  align-self: center;
+}
+
+/* .hidden {
   display: none;
 }
 
@@ -185,4 +197,4 @@ button:hover {
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(3px);
   z-index: 5;
-}
+} */
