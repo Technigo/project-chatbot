@@ -108,8 +108,10 @@ const question2 = (userMood) => {
   console.log(typeof userAnswers.mood);
   if (
     userAnswers.mood == "good" ||
+    userAnswers.mood == "very good" ||
     userAnswers.mood == "great" ||
-    userAnswers.mood == "amazing"
+    userAnswers.mood == "amazing" ||
+    userAnswers.mood == "fantastic"
   ) {
     showMessage(`That's great to hear!`, "bot");
     showMessage(
@@ -137,6 +139,7 @@ const question2 = (userMood) => {
     //   `;
   } else if (
     userAnswers.mood === "bad" ||
+    userAnswers.mood == "not great" ||
     userAnswers.mood === "not good" ||
     userAnswers.mood === "not so good"
   ) {
