@@ -154,19 +154,14 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-.ratingBtn {
-  line-height: 0px;
-  border-radius: 100%;
-}
-
 .ratingBtn:nth-child(1) {
-  background-color: green;
+  background-color: lightgreen;
 }
 
 .ratingBtn:nth-child(3) {
-  background-color: yellow;
+  background-color: lightyellow;
 }
 
 .ratingBtn:nth-child(5) {
-  background-color: red;
+  background-color: lightcoral;
 }

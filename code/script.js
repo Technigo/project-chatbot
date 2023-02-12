@@ -189,7 +189,9 @@ const offerVideo = () => {
 };
 
 const handleRating = () => {
-  botReply("Would you care to rate your experience with EdBot today?");
+  botReply(
+    "Thank you for using EdBot! Would you care to rate your experience with EdBot today?"
+  );
   inputWrapper.innerHTML = `
 <button id="1" value="5" class="ratingBtn" type="submit">5</button>
   <button id="2" value="4" class="ratingBtn" type="submit">4</button>
