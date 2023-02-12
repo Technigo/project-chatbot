@@ -3,17 +3,19 @@
 }
 
 body {
+  font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #50443d;
+  background: rgb(238, 230, 223);
 }
 
 h1 {
-  font-weight: bold;
+ 
+  font-weight: bold; 
+  letter-spacing: 3px;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: rgb(46, 41, 41); 
   text-align: center;
 }
 
@@ -37,11 +39,10 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #ffffff;
+  color: #000000;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -52,8 +53,8 @@ main {
   width: 100%;
   max-width: 700px;
   height: 600px;
-  border-radius: 15px;
-  background: #ffffff;
+  border-radius: 30px;
+  background: rgb(250, 246, 242);
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -87,15 +88,16 @@ main {
 .user-msg img {
   width: 60px;
   height: 60px;
+  border-radius: 30%;
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #ebe4e4;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #000000;
   max-width: 40%;
 }
 
@@ -122,9 +124,9 @@ main {
 
 label {
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
-  color: #403737;
+  color: #080808;
   margin-right: 20px;
 }
 
@@ -135,10 +137,10 @@ button {
   border-radius: 4px;
   padding: 16px 40px;
   margin-right: 4px;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 26px;
-  font-family: 'Montserrat';
-  font-weight: 500;
+  font-family: 'Montserrat' sans-serif;
+  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
 }

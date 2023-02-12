@@ -1,95 +1,185 @@
-// Variables that point to selected DOM elements
-const chat = document.getElementById('chat');
-const inputWrapper = document.getElementById('input-wrapper');
-const nameInput = document.getElementById('name-input');
-const sendBtn = document.getElementById('send-btn');
+// All the DOM selectors stored as short variables
+const chat = document.getElementById('chat')
+const inputWrapper = document.getElementById('input-wrapper')
+const input = document.getElementById('input')
+const sendBtn = document.getElementById('send')
 
-// If you need any global variables that you can use across different functions, declare them here:
+let botQuestion = 1
 
 const botReply = (msg) => {
-  showMessage (msg, 'bot')
+  showMessage(msg, 'bot')
 }
 
 const userReply = (msg) => {
-  showMessage (msg, 'user')
+  showMessage(msg, 'user')
 }
 
-
-// Declare your functions after this comment
-/*const nextQuestion = (message) => {
-  console.log('questionNumber', questionNumber)
-
-  if (questionNumber === 1) {
-    userReply(message)
-    input.value = ''
-    setTimeout(() => showFoodTypes(message), 1000)
-  } else if (questionNumber === 2) {
-    userReply(message)
-    setTimeout(() => showMenu(message), 1000)
-  } else if (questionNumber === 3) {
-    userReply(message)
-    setTimeout(() => showDishSize(message), 1000)
-  } else if (questionNumber === 4) {
-    userReply(message)
-    setTimeout(() => showPrice(message), 1000)
-  } else {
-    userReply(message)
-    setTimeout(thankYou, 1000)
-  }
-}*/
-
-
-
-// This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/shillyshallyuser.png" alt="User" />  
       </section>
     `
-    // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
-    console.log
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/shillyshallybot.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
       </section>
     `
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-  chat.scrollTop = chat.scrollHeight;
+  chat.scrollTop = chat.scrollHeight
+}
+
+const nextQuestion = (message) => {
+  console.log('questionNumber', botQuestion)
+
+  if (botQuestion === 1) {
+    userReply(message)
+    input.value = ''
+    setTimeout(() => showColorOption(message), 1000)
+  } else if (botQuestion === 2) {
+    userReply(message)
+    setTimeout(() => showDesignMenu(message), 1000)
+  } else if (botQuestion === 3) {
+    userReply(message)
+    setTimeout(() => showPaintingSize(message), 1000)
+  } else if (botQuestion === 4) {
+    userReply(message)
+    setTimeout(() => showPrice(message), 1000)
+  } else {
+    userReply(message)
+    setTimeout(thankYou, 1000)
+  }
 }
 
 // Starts here
-const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage(`Hello! What's your name?`, 'bot');
-  }
+const greeting = () => {
+  botQuestion = 1
+  botReply(`Welcome! I'm Artsy, what's your name?`)
+}
+
+const showColorOption = (msg) => {
+  botQuestion++
+  botReply(
+    `Hello ${msg}! What colors would you prefer on your poster?`
+  )
+
+  inputWrapper.innerHTML = `
+    <button id="blackWhiteBtn">Black & White</button>
+    <button id="colorBtn">Color explosion</button>
+    <button id="beigeBtn">Beige & Nature</button>
+  `
+
+  document
+    .getElementById('blackWhiteBtn')
+    .addEventListener('click', () => nextQuestion('Black and white would suit me!'))
+  document
+    .getElementById('colorBtn')
+    .addEventListener('click', () => nextQuestion('Make my wall pop!'))
+  document
+    .getElementById('beigeBtn')
+    .addEventListener('click', () => nextQuestion('Beige is fierce!'))
+}
+
+const showDesignMenu = (type) => {
+  botQuestion++
+  botReply(`Great choice! What kind of art do you like?`)
   
-inputWrapper.addEventListener("submit",(event) => {
-  event.preventDefault()
-  let name = nameInput.value
-  showMessage(`${name}`, 'user');
-  setTimeout(() => showMessage(`Hello ${name} ! What kind of coffee do you want today?`, 'bot'), 2000)
-});
+  inputWrapper.innerHTML = `
+  <button id="abstractBtn">Abstract</button>
+  <button id="photographyBtn">Photography</button>
+  <button id="illustrationBtn">Illustration</button>
+  ` 
   
+  document
+   .getElementById('abstractBtn')
+   .addEventListener('click', () => nextQuestion('Abstract please'))
+  document
+   .getElementById('photographyBtn')
+   .addEventListener('click', () => nextQuestion('Photography'))
+  document
+   .getElementById('illustrationBtn')
+   .addEventListener('click', () => nextQuestion('Illustration'))
+    
+  
+  const select = document.getElementById('click')
+  select.addEventListener('change', () => nextQuestion(select.value))
+}
 
 
-// Set up your eventlisteners here
+const showPosters = (style) => {
+  botQuestion++
+  botReply(`Ok! I will se what I can find...`)
 
+  inputWrapper.innerHTML = `
+   
+  `
+
+  document
+    .getElementById('adult')
+    .addEventListener('click', () => nextQuestion('adult'))
+  document
+    .getElementById('child')
+    .addEventListener('click', () => nextQuestion('child'))
+}
+
+const showPrice = (posteroption) => {
+  botQuestion++
+  botReply (`What do you think about this poster?`)
+
+  /*let posteroption
+  if (choices === 'blackWhiteBtn', 'abstractBtn') {
+    posteroption = 'En bild'
+  } else if (choices === 'blackWhiteBtn', 'photographyBtn') {
+    posteroption = 'En annan bild'
+  } else if (choices === 'blackWhiteBtn', 'illustration'){
+    posteroption = 'Bild3'
+  } else if (choices === 'colorBtn', 'abstractBtn') {
+    posteroption = 'Bild4'
+  } else if (choices === 'colorBtn', 'photographyBtn') {
+    posteroption = 'Bild5'
+  } else if (choices === 'colorBtn', 'illustration',) {
+    posteroption = 'bild6'
+  } else if (choices === 'beigeBtn', 'abstractBtn'){
+    posteroption = 'bild7'
+  } else if (choices === 'beigeBtn', 'photographyBtn'){
+    posteroption = 'bild8'
+  } else {
+    posteroption = 'bild9'
+  }*/
+
+
+  inputWrapper.innerHTML = `
+    <button id="restart">Start over</button>
+    <button id="confirm">Add to cart</button>
+  `
+
+  document.getElementById('restart').addEventListener('click', () => {
+    location.reload()
+    return false
+  })
+  document
+    .getElementById('confirm')
+    .addEventListener('click', () => nextQuestion('Yes!'))
+}
+
+const goodBye = () => {
+  botReply(`I'm glad you found something you liked! Thank you for your order and
+  welcome back!`)
+  inputWrapper.innerHTML = ``
+}
+
+sendBtn.addEventListener('click', () => nextQuestion(input.value))
+input.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter' && input.value) nextQuestion(input.value)
+})
 
 // When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000);
+setTimeout(greeting, 1000)
