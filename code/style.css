@@ -46,6 +46,18 @@ h3 {
   margin-bottom: 8px;
 }
 
+.end-txt a {
+  text-decoration: none;
+  color: #ff8bff;
+  font-weight: 500;
+  padding-bottom: 30px;
+}
+
+.end-txt:hover a {
+  color: #0c2913;
+  font-weight: 300;
+}
+
 p {
   font-size: 18px;
   font-weight: 600;
@@ -133,7 +145,7 @@ input {
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
-  padding: 16px 24px;
+  padding: 16px 20px;
   color: #193718;
   max-width: 40%;
 }
