@@ -83,11 +83,13 @@ const greetUserAndAskDepartureCity = () => {
   });
 
   document.getElementById('no-btn').addEventListener('click',() => {
-    showMessage('No, thank you.', 'user')
+    userResponse('No, thank you.');
     setTimeout(() => botResponse('Alright, have a good day then!'), 1000);    
   });
-}
 
+  chat.scrollTop = chat.scrollHeight;
+  
+}
 
 //Function to move to next step of the chat
 const nextStep = () => {
@@ -113,9 +115,13 @@ const nextStep = () => {
   }
 
   else if(questionCount === 6){
-    setTimeout (() => ticketSummaryAndThankYouMessage(), 1000);
+    setTimeout (() => ticketSummary(), 1000);
   }
-
+  else if(questionCount === 7){
+    setTimeout (() => confirmOrRestartBooking(), 1000);
+  }
+ 
+ 
 }
 
 //Departure Function
@@ -154,11 +160,18 @@ const displayDatePickerandAskTickets = () => {
 
 //Number of tickets Function
 const displayNumberOfTicketsAndAskName = () =>{    
-  numberOfTickets = chatInput.value;
-  userResponse(`${numberOfTickets}`);
-  chatInput.value='';
-  setTimeout(() => botResponse(`Let me make a note of that.`),500); 
-  setTimeout(() => botResponse(`And in whose name shall I make the booking?`),2000);     
+  numberOfTickets = Number.parseInt(chatInput.value);
+  if(Number.isNaN(numberOfTickets)) {
+    questionCount--;
+    chatInput.value='';
+    botResponse(`Please enter a valid number.`);
+  }
+  else{
+    userResponse(`${numberOfTickets}`);
+    chatInput.value='';
+    setTimeout(() => botResponse(`Let me make a note of that.`),500); 
+    setTimeout(() => botResponse(`And in whose name shall I make the booking?`),2000); 
+  }  
 }
 
 //NameInput function
@@ -170,11 +183,37 @@ const displayName = () => {
 }
 
 //Summary function
-const ticketSummaryAndThankYouMessage = () => {
+const ticketSummary = () => {
   botResponse(`You have booked ${numberOfTickets} tickets from ${departureCity} to ${arrivalCity} on ${travelDate}`);
-  setTimeout(() => botResponse(`Thank you for booking with us, ${userName}!`),2000);
   disableChatInputAndSendButton();
+  travelDate.value = '';  
+  nextStep();
 }
+
+//Confirm Booking function
+const confirmOrRestartBooking = () => {
+  botResponse(`Please confirm or book another journey`);
+
+  chat.innerHTML += `
+  <button id="restart-btn" class="inChatButton">Book a Ticket</button>
+  <button id="confirm-btn" class="inChatButton">Confirm Booking</button>  
+ ` 
+ document.getElementById('restart-btn').addEventListener('click',() => {
+  userResponse(`I'd like to make another booking.`);
+  setTimeout(() => {
+    document.location.reload();
+  }, 3000);
+})
+ 
+ document.getElementById('confirm-btn').addEventListener('click',() => {
+   userResponse('Confirm Booking')
+   setTimeout(() => botResponse(`Thank you for booking with us, ${userName}!`),1000);
+   setTimeout(() => botResponse(`Feel free to <a href="mailto:support@stockholmtrains.se"><strong> contact us</strong></a> for any inquiries.`),2000);
+ })
+
+ chat.scrollTop = chat.scrollHeight;
+}
+
 
 //OnClick function of Send button
 const onFormSubmit = (event) => {
