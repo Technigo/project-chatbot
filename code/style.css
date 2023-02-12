@@ -75,11 +75,11 @@ main {
   flex: 1;
   display: flex;
   justify-content: flex-start;
-  overflow: scroll;
+  overflow:auto;
   flex-direction: column;
   padding-bottom: 16px;
   background: #367679;
-  background-image: url(https://images.pexels.com/photos/6601811/pexels-photo-6601811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-image: linear-gradient(rgba(148, 38, 117, 0.243), rgba(20, 212, 226, 0.243)), url(https://images.pexels.com/photos/6601811/pexels-photo-6601811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
   
 }
 
