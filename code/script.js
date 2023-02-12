@@ -470,4 +470,4 @@ submit.addEventListener("click", () => nextQuestion(input.value));
 form.addEventListener("submit", submitForm);
 
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000);
+setTimeout(helloUser, 1000);
