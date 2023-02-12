@@ -42,11 +42,12 @@ p {
 }
 
 input {
+  height:80%;
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
   background:  #e5f8e5;
-  color: #0026ff;
+  color: #228B22;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -61,7 +62,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: rgb(255, 255, 255);
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -93,8 +94,8 @@ main {
 
 .bot-msg img,
 .user-msg img {
-  width: 60px;
-  height: 70px;
+  width: 54px;
+  height: 75px;
   object-fit: cover;
 }
 
@@ -121,12 +122,14 @@ main {
 .input-wrapper {
   display: flex;
   justify-content: center;
+  height: 70px;
 }
 
 .input-wrapper form {
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 button {
@@ -142,6 +145,7 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  height:80%;
 }
 
 button:hover {
@@ -152,16 +156,11 @@ button:hover {
 .chat-link {
   background-image: url(./images/sebastian-unrau-sp-p7uuT0tw-unsplash.jpeg);
   background-size: contain;
-  padding:80px 10px 10px 10px;
+  padding:50px 10px 10px 10px;
   margin-top: 5px;
   text-decoration: none;
   color:white;
   font-weight: 700;
-}
-
-a {
-  text-decoration: none;
-  color:white;
 }
 
 .worstCaseContainer {
@@ -169,24 +168,87 @@ a {
   justify-content: center;
 }
 
-.worstCaseBtn, .takeActionBtn, .nextStepBtn {
+.worstCaseBtn {
+  padding: 10px;
+    height: 100%;
+    font-weight: 700;
+    color: #e5f8e5;
+    text-shadow: 1px 1px black;
+    margin-right: 4px;
+}
+
+.worstCaseBtn:hover {
+  height: 100px;
+}
+
+.takeActionBtn, .nextStepBtn, #nextStepBtn1, .nextStepBtn23 {
   padding: 10px 20px;
-  height:100px;
+  height:100%;
+  margin-right: 4px;
+}
+
+
+#noSelect, #usalSelect {
+  height:80%;
+  border: none;
+  border-radius: 4px;
+  color:  #228B22;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'Montserrat';
+  background: #e5f8e5;
+  width: 100%;
+  padding: 0 20px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .radioContainer {
-  height:50px;
-  justify-content: flex-start;
-  align-items: stretch;
+  justify-content: center;
+  padding: 0 10px;
+  border-radius: 4px;
 }
+
 
 .rate {
-  text-align: left;
-  
+  cursor: pointer;
 }
 
-input[type="radio" i] {
-margin-right: 0px;
-float:left;
+label {
+  font-weight: 700;
+  color: #228B22;
 }
 
+  #worstCaseBtn1 {
+  background-image: url(./images/anders-jilden-PXdBkNF8rlk-unsplash.jpeg);
+  background-size: contain;
+}
+
+#worstCaseBtn2 {
+  background-image: url(./images/matt-palmer-kbTp7dBzHyY-unsplash.jpeg);
+  background-size: contain;
+}
+
+#worstCaseBtn3 {
+  background-image: url(./images/john-middelkoop-97NjFpxA5DA-unsplash.jpeg);
+  background-size: cover;
+}
+
+#worstCaseBtn4 {
+  background-image: url(./images/jasmin-sessler-DR2jtLy8Fe4-unsplash.jpeg);
+  background-size: contain;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height:80%;
+}
