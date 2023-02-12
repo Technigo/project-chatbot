@@ -6,7 +6,7 @@ const nameForm = document.getElementById("name-form");
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
+  // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
   if (sender === "user") {
     chat.innerHTML += `
       <section class="user-msg">
@@ -57,13 +57,13 @@ const question1 = (userName) => {
 };
 
 
-//Bot asking to make a coffee order
+//Bot asking if user is over 20
 const question2 = (event) => {
   inputWrapper.innerHTML = `
   <button id="yes" type="submit" class="chat-btn">Yes</button>
   <button id="no" type="submit" class="chat-btn">No</button>
   `
-  // when a button is clicked, an event listener "listens" to the event and invoked the corresponding function, coffe or teachoice
+  // when a button is clicked, an event listener "listens" to the event and invoked the corresponding function
   document.getElementById("yes").addEventListener("click", yesChoice);  
   document.getElementById("no").addEventListener("click", noChoice);
 };
@@ -87,7 +87,7 @@ const yesChoice = (event) => {
 };
 
 
-//Bot asking which red or white user wants to order
+//Bot asking red or white user wants to order
 const question3 = (yesChoice) => {
   showMessage("Good, you are over 20! What wine do you prefer?", "bot");
   inputWrapper.innerHTML = `
@@ -132,6 +132,7 @@ const question4 = (redChoice, whiteChoice, yesChoice) => {
 // pass  redChoice, whiteChoice, yesChoice, noChoice  
 const whereToDrink = (whereToDrink) => {
 
+// Here you choose how long it takes for the messages to pop up  
   if (whereToDrink === "take away"){
     setTimeout(() => inputWrapper.innerHTML = `<span>`, 0);
     setTimeout(() => showMessage("Take away", "user"), 500);
@@ -147,7 +148,7 @@ const whereToDrink = (whereToDrink) => {
     setTimeout(() => inputWrapper.innerHTML = `<span>`, 15500);
 }
 
-
+// First message
 setTimeout(greeting, 1000);
 
 
