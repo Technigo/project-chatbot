@@ -12,8 +12,8 @@ const botArtChoice = [`Black, white and abstract`, `Black, white and photography
 
 ////Calling for user and bot reply in the chat bubbles.
 const botReply = (msg) => {
-  showMessage(msg, 'bot')
-}
+   showMessage(msg, 'bot')
+};
 const userReply = (msg) => {
   showMessage(msg, 'user')
 }
@@ -67,7 +67,7 @@ const nextQuestion = (message) => {
 // Starts here
 const greeting = () => {
   botQuestion = 1
-  botReply(`Welcome! I'm Artsy, what's your name?`)
+  botReply(`Welcome! I'm Artsie, what's your name?`)
 }
 
 const showColorOption = (msg) => {
@@ -78,7 +78,7 @@ const showColorOption = (msg) => {
 
   inputWrapper.innerHTML = `
     <button id="blackWhiteBtn">Black & White</button>
-    <button id="colorBtn">Color explosion</button>
+    <button id="colorBtn">Color explosion!</button>
     <button id="beigeBtn">Beige & Nature</button>
   `
 
@@ -117,46 +117,14 @@ const showDesignMenu = (type) => {
 
 const showPaintingSize = () => {
   botQuestion++
-  botReply(`Ok great! Just wait a second and I'll see what I can find for you.`)
-
-  inputWrapper.innerHTML = `
-    <button id="adult">👨🏽‍🦳</button>
-    <button id="child">🧒🏽</button>
-  `
-
-  document
-    .getElementById('adult')
-    .addEventListener('click', () => nextQuestion('adult'))
-  document
-    .getElementById('child')
-    .addEventListener('click', () => nextQuestion('child'))
-}
-
-const posterOption = () => {
-  botQuestion = 5
-  botReply (`What do you think about this poster?`)
-
-  /*let posteroption
-  if (choices === 'blackWhiteBtn', 'abstractBtn') {
-    posteroption = 'En bild'
-  } else if (choices === 'blackWhiteBtn', 'photographyBtn') {
-    posteroption = 'En annan bild'
-  } else if (choices === 'blackWhiteBtn', 'illustration'){
-    posteroption = 'Bild3'
-  } else if (choices === 'colorBtn', 'abstractBtn') {
-    posteroption = 'Bild4'
-  } else if (choices === 'colorBtn', 'photographyBtn') {
-    posteroption = 'Bild5'
-  } else if (choices === 'colorBtn', 'illustration',) {
-    posteroption = 'bild6'
-  } else if (choices === 'beigeBtn', 'abstractBtn'){
-    posteroption = 'bild7'
-  } else if (choices === 'beigeBtn', 'photographyBtn'){
-    posteroption = 'bild8'
-  } else {
-    posteroption = 'bild9'
-  }*/
-
+  botReply(`Ok great! Just wait a second and I'll see what I can find for you..`)
+  setTimeout(() => {
+    botReply(`💭`); }, 2000);
+  setTimeout(() => {
+      botReply(`💡`); }, 4000); 
+  setTimeout(() => {
+    botReply(`Maybe this poster would be a good choice for you?`);
+  }, 6000);
 
   inputWrapper.innerHTML = `
     <button id="restart">Please start over</button>
@@ -172,10 +140,11 @@ const posterOption = () => {
     .addEventListener('click', () => nextQuestion('Yes!'))
 }
 
+
+
 const goodBye = () => {
   botReply(`I'm glad you found something you liked! Thank you for your order and
   welcome back!`)
-  inputWrapper.innerHTML = ``
 }
 
 sendBtn.addEventListener('click', () => nextQuestion(input.value))
