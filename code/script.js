@@ -134,7 +134,7 @@ const whereToDrink = (whereToDrink) => {
 
   if (whereToDrink === "take away"){
     setTimeout(() => inputWrapper.innerHTML = `<span>`, 0);
-    setTimeout(() => showMessage("Take away", "user"), 1000);
+    setTimeout(() => showMessage("Take away", "user"), 500);
     setTimeout(() => showMessage(`Please wait while your drink is being prepared`, "bot"), 3000);
     setTimeout(() => chat.innerHTML = `<p>Thank you, come by again soon!<p>`, 8000);
     setTimeout(() => inputWrapper.innerHTML = `<span>`, 1500);
