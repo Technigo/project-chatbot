@@ -41,7 +41,7 @@ const greeting = () => {
 };
 
 
-//User answering his name
+//User answering their name
 const handleInput = (event) => {
   event.preventDefault(); //prevents refreshing the page
   let userName = nameInput.value;
@@ -50,7 +50,7 @@ const handleInput = (event) => {
   setTimeout(() => question1(userName), 1000);  // goes to next question, and passes username as a prop. 
 };
 
-//Bot askes about the order
+//Bot asking about the order
 const question1 = (userName) => {
   showMessage(`Hello ${userName}! What would you like to drink?`, "bot");
   setTimeout(() => question2(), 1000);

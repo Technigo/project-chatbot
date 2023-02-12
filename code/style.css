@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: grey;
+  background: #b37218;
 }
 
 h1 {
@@ -129,7 +129,7 @@ label {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #b37218;
   color: white;
   border: none;
   border-radius: 4px;
