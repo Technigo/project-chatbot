@@ -4,27 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon2.png" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <title>Chat Bot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <title>Tealicious Lounge</title>
   </head>
 
   <body>
-    <h1>Welcome to xxx.</h1>
-    <h2>Ask about xxxx.</h2>
+    <h1>Welcome to Tealicious Lab</h1>
+    <h2>MAKE YOUR ORDER NOW!</h2>
     <main>
       <section class="chat" id="chat"></section>
 
       <div class="input-wrapper" id="input-wrapper">
-        <form id="name-form">
-          <label for="name-input"></label>
-          <input id="name-input" type="text" />
+        <form id="chat-form">
+          <label for="chat-input"></label>
+          <input id="chat-input" type="text" />
           <button class="send-btn" type="submit">Send</button>
         </form>
       </div>
     </main>
+    <div class="modal hidden">
+      <button class="close-modal">&times;</button>
+      <h3>THANK YOU! 😍</h3>
+      <p>
+        You will be notified about your order soon! As a thank you, use
+        BOBABOT23 to get 50% discount on your next order! ☕
+      </p>
+    </div>
+    <div class="overlay hidden"></div>
 
     <script src="./script.js"></script>
   </body>
