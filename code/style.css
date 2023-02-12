@@ -153,6 +153,7 @@ button:hover {
   display: flex;
   justify-content:space-evenly;
   padding: 60px;
+  margin: 20px 0;
 }
  
 
@@ -175,6 +176,7 @@ button:hover {
   display: flex;
   justify-content:space-evenly;
   padding: 60px;
+  margin: 20px 0;
   gap: 20px;
 }
 
@@ -194,3 +196,9 @@ button:hover {
   margin-top: 50px;
   width: 600px;
 }
+
+/* .scoreboard{
+  background-color: rgba(31, 6, 220, 0.7);
+  height: 100%;
+  margin-top: 10px;
+} */
