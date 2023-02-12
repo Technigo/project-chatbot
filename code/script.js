@@ -379,7 +379,7 @@ document
 document
   .getElementById("nay")
   .addEventListener("click", () => {
-    showMessage("It sucks!", 'user')
+    showMessage("I'm a banana!", 'user')
     inputWrapper.innerHTML = ''
     setTimeout(() => trueOrFalse("nay"), 900)
   })
@@ -387,15 +387,16 @@ document
 
 const trueOrFalse = (selection) => { 
   if (selection === "yay") {
-    showMessage("Welcome back anytime!💕")
+    showMessage("Welcome back anytime!💕", 'bot')
     setTimeout(() => inputWrapper.innerHTML= `
     <p>Have a lovely day!</p>`, 1000)
   }
 
   else if  (selection === "nay") {
-
+    alert("Sorry, your selected option is invalid.. 🙈🍩🙈")
+    setTimeout(() => inputWrapper.innerHTML= `
+    <p>Have a lovely day!</p>`, 1000)
   }
-
 }
 
 // Set up your eventlisteners here
