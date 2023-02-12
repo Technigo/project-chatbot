@@ -14,4 +14,4 @@ I'm still struggling with the logic of setTimeouts though. It seems that there a
 
 URL: https://antoniastravelbot.netlify.app
 
-<center><img width="749" alt="Skärmavbild 2023-02-12 kl  18 15 54" src="https://user-images.githubusercontent.com/95037306/218323898-4e3e921d-2254-4db0-a7d5-99fc4d68cfc2.png"></center>
+<img width="749" alt="screenshot of chatbot project" src="https://user-images.githubusercontent.com/95037306/218323898-4e3e921d-2254-4db0-a7d5-99fc4d68cfc2.png">
