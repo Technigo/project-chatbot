@@ -1,6 +1,6 @@
 # Project Name
 
-This week the task was to build a chatbot. The focus was on practicing the JavaScript parts, but also to hook it up with the HTML. The Chatbot could be about whatever you wanted it to be.
+This week the task was to build a chatbot. The focus was on practicing the JavaScript parts, but also to hook it up with the HTML. The Chatbot could be about whatever you wanted.
 
 ## The problem
 
