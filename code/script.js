@@ -69,36 +69,44 @@ const WhatToEat = (name) => {
 let Pasta = document.getElementById('Pasta');
 Pasta.addEventListener('click', (event) => {
   event.preventDefault()
-  showMessage("Fab choice! Here is a recipe for a creamy Pasta Carbonara", 'bot')
+  showMessage("Pasta sounds good!", 'user')
+  showMessage("Pasta it is! I think you would enjoy a creamy Pasta Carbonara", 'bot')
   setTimeout(() => FoodChoice(event.target.value), 1200)
+  inputWrapper.style.display = 'none';
 });
 
 let Salad = document.getElementById('Salad');
 Salad.addEventListener('click', (event) => {
   event.preventDefault()
-  showMessage("Fab choice! Here is a recipe for a delish Ceasar salad", 'bot')
+  showMessage("Salad sounds good!", 'user')
+  showMessage("So, a salad. You would probably enjoy a creamy Ceasar Salad.", 'bot')
   setTimeout(() => FoodChoice(event.target.value), 1200)
+  inputWrapper.style.display = 'none';
 });
 
 let Meat = document.getElementById('Meat');
 Meat.addEventListener('click', (event) => {
   event.preventDefault()
-  showMessage("Fab choice! Here is a recipe for a tender brisket", 'bot')
+  showMessage("Meat sounds good!", 'user')
+  showMessage("Meat! You should make yourself a tender brisket", 'bot')
   setTimeout(() => FoodChoice(event.target.value), 1200)
+  inputWrapper.style.display = 'none';
 });
-
 }
+
+
 
 const FoodChoice = (WhatToEat) => {
   // Shows in console.log, how to put bot value on message function? 
   if (WhatToEat === 'Pasta') {
-    showMessage("https://www.jocooks.com/recipes/creamy-carbonara/", 'bot');
+    showMessage("Don't forget to cook the spagetthi al dente!", 'bot');
   } else if (WhatToEat === 'Salad') {
-    showMessage("https://natashaskitchen.com/caesar-salad-recipe/", 'bot')
+    showMessage("Don't forget to put anchovies in the salad dressing!", 'bot')
   } else if (WhatToEat === 'Meat') {
-    showMessage("https://www.recipetineats.com/slow-cooker-beef-brisket-with-bbq-sauce/", 'bot')
+    showMessage("Make sure you give the brisket the time it needs in the oven!", 'bot')
   }
 }
+
 // Set up your eventlisteners here
 
 userForm.addEventListener('submit', handleNameInput);
