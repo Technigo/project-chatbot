@@ -56,7 +56,7 @@ const nextQuestion = (message) => {
     setTimeout(() => showRecipe(message), 1000)
   } else {
     userReply(message)
-    setTimeout(thankYou, 1000)
+    setTimeout(thankYou, 5000)
   }
 }
 // Starts here
@@ -93,48 +93,40 @@ const showRecipe = (food) => {
   questionNumber++
   
   if (food === 'Pasta') {
-    botReply(`Pasta, huh? Molto bene!`)
+    botReply(`Pasta, huh? Molto bene! Please click on the dish you'd like to try.`)
     inputWrapper.innerHTML = `
-    <form id="form">
-      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
-      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
-      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
-    </form>
-  `
+    <button id="carBtn"><a href="https://www.simplyrecipes.com/recipes/spaghetti_alla_carbonara/" target="_blank">Pasta Carbonara</a></button>
+    <button id="fetBtn"><a href="https://www.simplyrecipes.com/recipes/fettuccine_with_creamy_tomato_italian_sausage_sauce/" target="_blank">Pasta Fettuccine</a></button>
+    <button id="penBtn"><a href="https://www.simplyrecipes.com/penne-alla-vodka-recipe-5324148/" target="_blank">Pasta Penne</a></button>
+    `
   } else if (food === 'TexMex') {
-    botReply(`TexMex, huh? Muy picante!`)
+    botReply(`TexMex, huh? Muy picante! Please click on the dish you'd like to try.`)
     inputWrapper.innerHTML = `
-    <form id="form">
-      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
-      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
-      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
-    </form>
+    <button id="taqBtn"><a href="https://www.simplyrecipes.com/recipes/baked_chicken_taquitos/" target="_blank">Taquitos</a></button>
+    <button id="tacBtn"><a href="https://www.simplyrecipes.com/recipes/bbq_pulled_jackfruit_tacos/" target="_blank">Tacos</a></button>
+    <button id="chiBtn"><a href="https://www.simplyrecipes.com/recipes/moms_chili_beans/" target="_blank">Chili Beans with Rice</a></button>
     `
   } else if (food === 'Pizza') {
-    botReply(`Pizza, huh? Buon appetito!`)
+    botReply(`Pizza, huh? Buon appetito! Please click on the dish you'd like to try.`)
     inputWrapper.innerHTML = `
-    <form id="form">
-      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
-      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
-      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
-    </form>
+    <button id="pepBtn"><a href="https://www.simplyrecipes.com/heart-shaped-pepperoni-pizza-recipe-6835896/" target="_blank">Heart-shaped Pepperoni Pizza</a></button>
+    <button id="musBtn"><a href="https://www.simplyrecipes.com/recipes/homemade_pizza/" target="_blank">Pizza with mushrooms</a></button>
+    <button id="hawBtn"><a href="https://www.simplyrecipes.com/recipes/hawaiian_pizza_with_cauliflower_crust/" target="_blank">Pizza Hawaii</a></button>
     `
-  }  else {
-    botReply(`In a veggie mood? Sounds good!`)
+// Had an else here, but then the next question kept skipping to this option
+  } else if (food === 'Vegetarian'){
+    botReply(`In a veggie mood? Sounds good! Please click on the dish you'd like to try.`)
     inputWrapper.innerHTML = `
-    <form id="form">
-      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
-      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
-      <input type="image" src="./images/bot.png" alt= "Pasta" width= "48px" height= "48px"></input>
-    </form>
+    <button id="burBtn"><a href="https://www.simplyrecipes.com/black-bean-smash-burgers-recipe-6979384/" target="_blank">Veggie Burger</a></button>
+    <button id="souBtn"><a href="https://www.simplyrecipes.com/sweet-and-sour-cabbage-soup-recipe-6835442/" target="_blank">Sweet-and-sour Cabbage Soup</a></button>
+    <button id="nooBtn"><a href="https://www.simplyrecipes.com/recipes/thai_noodle_salad_with_peanut_sauce/" target="_blank">Thai Noodle Salad</a></button>
     `
   }
-  const form = document.getElementById('form')
-  form.addEventListener('change', () => thankYou)
 }
-
+// Didn't succeed in calling this event
 const thankYou = () => {
   botReply(`Thank you for choosing Kiss the Cook-bot! Enjoy your meal!`)
+  inputWrapper.innerHTML = ``
 }
 // Set up your eventlisteners here}
 sendBtn.addEventListener('click', () => nextQuestion(input.value))

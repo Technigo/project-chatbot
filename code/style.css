@@ -114,12 +114,6 @@ main {
   justify-content: center;
 }
 
-.input-wrapper form {
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
 label {
   font-size: 16px;
   font-family: 'Montserrat';
@@ -129,7 +123,7 @@ label {
   margin-top: 16px;
 }
 
-button {
+.send-btn {
   background-color: #ebc165;
   color: white;
   border: none;
@@ -137,6 +131,31 @@ button {
   padding: 16px 40px;
   margin-right: 4px;
   font-size: 16px;
+  line-height: 26px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.send-btn:hover {
+  opacity: 0.9;
+  transition: all 0.2s ease;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+button {
+  background-color: antiquewhite;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 40px;
+  margin-right: 4px;
+  font-size: 14px;
   line-height: 26px;
   font-family: 'Montserrat';
   font-weight: 500;
