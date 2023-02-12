@@ -15,13 +15,9 @@ const userReply = (msg) => {
   showMessage(msg, "user");
 };
 
-const submitForm = (event) => {
-  event.preventDefault();
+const btnRemoveOnClick = () => {
+	inputWrapper.innerHTML = ''
 };
-
-/*const btnRemove = () => {
-  inputWrapper.button.remove();
-}*/
 
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
@@ -54,23 +50,30 @@ const nextQuestion = (message) => {
 	if (questionCounter === 1) {
 		userReply(message);
 		input.value = "";
+		btnRemoveOnClick (false);
 		setTimeout(() => ecoAnxietyOptions(message), 1000);
 	} else if (questionCounter === 2) {
 		userReply(message);
+		btnRemoveOnClick(true);
 		setTimeout(() => rateAnxiety(message), 1000);
 	} else if (questionCounter === 3) {
 		userReply(message);
+		btnRemoveOnClick(true);
 		setTimeout(() => nextStepOptions(message), 1000);
 	} else if (questionCounter === 4) {
 		userReply(message);
+		btnRemoveOnClick(true);
 		setTimeout(() => takeActionOptions(message), 1000);
 	} else if (questionCounter === 5) {
 		userReply(message);
+		btnRemoveOnClick(true);
 		setTimeout(() => finalStep(message), 1000);
 	} else if (questionCounter === 6) {
 		userReply(message);
+		btnRemoveOnClick(true);
 		setTimeout(() => anythingElse(message), 1000);
 	} else {
+		btnRemoveOnClick(true);
 		userReply(message);
 		setTimeout(thankYou, 1000);
 	}
@@ -79,11 +82,14 @@ const nextQuestion = (message) => {
 const helloUser = () => {
 	questionCounter = 1;
 	botReply(`Hello there, What's your name?`);
+	form.addEventListener("submit", (event) => {
+		event.preventDefault()
+	});
 };
 
 const ecoAnxietyOptions = (name) => {
 	questionCounter++;
-	botReply(`Nice to meet you ${name}! Do you have eco-anxiety?`);
+	botReply(`Nice to meet you ${name}! Do you have climate anxiety?`);
 	//3 ALTERNATIVES: YES - NO - MAYBE
 
 	setTimeout(() => delayHTML(), 1000);
@@ -107,7 +113,7 @@ const rateAnxiety = (userResponse) => {
 
   	if (userResponse === "Yes" || userResponse === "Maybe") {
     //IF "YES" AND "MAYBE" - RATE YOUR ANXIETY
-    botReply(`Please, rate your eco-anxiety level!`);
+    botReply(`Please, rate your climate anxiety level!`);
 
     setTimeout(() => delayHTML(), 1000);
     const delayHTML = () => {
@@ -134,11 +140,11 @@ const rateAnxiety = (userResponse) => {
 			button.addEventListener("click", () => nextQuestion(button.value))
 			);
 
-		document
+		/*document
 			.getElementById("radioRatingBtns")
 			.addEventListener("click", () => {
 			radioRatingBtns.remove();
-			});
+			});*/
 	};
 	} else {
     // IF NO - FOLLOW UP QUESTION - WITH THREE BUTTONS
@@ -196,7 +202,7 @@ const nextStepOptions = (rating) => {
 	} else if (rating > 6 && rating <= 10) {
 	// IF RADIO-BUTTON 7-10 show message:
     botReply(`You have severe anxiety.`);
-    setTimeout(() => botReply(`It's harsh.`), 1000);
+    setTimeout(() => botReply(`That's tough!`), 1000);
     setTimeout(() => botReply(`But you are not alone.`), 2000);
     setTimeout(() =>botReply(`A study published by The Lancet found that 59% of children and young adults ages 16 to 25 are very or extremely worried about climate change.`), 3000);
     setTimeout(() => botReply(`What are you the most worried about?`), 6000);
@@ -307,7 +313,8 @@ const takeActionOptions = (nextStep) => {
 
     const delayHTML = () => {
 		inputWrapper.innerHTML = `
-			<form id="nextStepBtns" class="nextStepConatainer"><button id="nextStepBtn1" type="button" Value="Take care of my health">Take care of my health</button>
+			<form id="nextStepBtns" class="nextStepConatainer">
+				<button id="nextStepBtn1" type="button" Value="Take care of my health">Take care of my health</button>
 				<button class="nextStepBtn23" type="button" Value="To take action">To take action</button>
 				<button class="nextStepBtn23" type="button" Value="Continue as usual">Continue as usual</button>
 			</form>
@@ -467,7 +474,7 @@ const thankYou = (value) => {
 // Set up your eventlisteners here
 submit.addEventListener("click", () => nextQuestion(input.value));
 
-form.addEventListener("submit", submitForm);
+inputWrapper.addEventListener("click", btnRemoveOnClick);
 
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(helloUser, 1000);

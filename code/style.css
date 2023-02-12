@@ -8,18 +8,17 @@ body {
   font-family: montserrat;
   font-style: normal;
   background-image: url(./images/sebastian-unrau-sp-p7uuT0tw-unsplash.jpeg);
-  background-repeat: repeat;
-  background-size: 50%;
+  background-repeat: no-repeat;
+  background-size: 100%, cover;
   object-fit: cover;
 }
 
 h1 {
-  font-weight: bold;
-  font-size: 44px;
+  font-size: 30px;
   line-height: 34px;
-  color: #fff;
+  color: #e5f8e5;
   text-align: center;
-  margin: 50px 0 40px 0;
+  margin: 11px 0 11px 0;
   font-weight: 900;
   letter-spacing: 1px;
 }
@@ -36,7 +35,7 @@ h2 {
 p {
   font-size: 18px;
   font-weight: 600;
-  line-height: 28px;
+  line-height: 25px;
   margin: 0;
   font-weight: 500;
 }
@@ -61,7 +60,6 @@ main {
   width: 100%;
   max-width: 700px;
   height: 600px;
-  border-radius: 30px;
   background: rgb(255, 255, 255);
   padding: 20px 24px;
   padding-top: 0;
@@ -94,8 +92,8 @@ main {
 
 .bot-msg img,
 .user-msg img {
-  width: 54px;
-  height: 75px;
+  width: 48px;
+  height: 65px;
   object-fit: cover;
 }
 
@@ -106,7 +104,7 @@ main {
   line-height: 26px;
   padding: 16px 24px;
   color: #228B22;
-  max-width: 40%;
+  max-width: 90%;
 }
 
 .bot-bubble {
@@ -137,10 +135,10 @@ button {
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 16px 40px;
-  margin-right: 4px;
+  padding: 0px 35px;
+  margin-right: 1px;
   font-size: 16px;
-  line-height: 26px;
+  line-height: 20px;
   font-family: 'Montserrat';
   font-weight: 500;
   cursor: pointer;
@@ -168,25 +166,18 @@ button:hover {
   justify-content: center;
 }
 
-.worstCaseBtn {
-  padding: 10px;
-    height: 100%;
-    font-weight: 700;
-    color: #e5f8e5;
-    text-shadow: 1px 1px black;
-    margin-right: 4px;
-}
-
-.worstCaseBtn:hover {
-  height: 100px;
-}
-
-.takeActionBtn, .nextStepBtn, #nextStepBtn1, .nextStepBtn23 {
-  padding: 10px 20px;
+.takeActionBtn, .nextStepBtn, #nextStepBtn1, .nextStepBtn23, #nextStepBtn1, .nextStepBtn23 {
   height:100%;
+  padding: 3px 5px;
+  margin-right: 4px;
+  overflow-wrap: break-word; 
+}
+
+.worstCaseBtn {
+  padding: 5px;
+  height: 100%;
   margin-right: 4px;
 }
-
 
 #noSelect, #usalSelect {
   height:80%;
@@ -207,10 +198,9 @@ button:hover {
 
 .radioContainer {
   justify-content: center;
-  padding: 0 10px;
+  padding: 0 0;
   border-radius: 4px;
 }
-
 
 .rate {
   cursor: pointer;
@@ -219,26 +209,6 @@ button:hover {
 label {
   font-weight: 700;
   color: #228B22;
-}
-
-  #worstCaseBtn1 {
-  background-image: url(./images/anders-jilden-PXdBkNF8rlk-unsplash.jpeg);
-  background-size: contain;
-}
-
-#worstCaseBtn2 {
-  background-image: url(./images/matt-palmer-kbTp7dBzHyY-unsplash.jpeg);
-  background-size: contain;
-}
-
-#worstCaseBtn3 {
-  background-image: url(./images/john-middelkoop-97NjFpxA5DA-unsplash.jpeg);
-  background-size: cover;
-}
-
-#worstCaseBtn4 {
-  background-image: url(./images/jasmin-sessler-DR2jtLy8Fe4-unsplash.jpeg);
-  background-size: contain;
 }
 
 a {
@@ -251,4 +221,86 @@ a {
   cursor: pointer;
   transition: all 0.3s ease;
   height:80%;
+}
+
+@media (min-width:667px) {
+
+  body {
+    background-repeat: repeat;
+    background-size: 50%, contain;
+  }
+
+  h1 {
+    font-size: 44px;
+    margin: 50px 0 40px 0;
+    color: #fff;
+  }
+
+  main {
+    border-radius: 30px;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .bubble {
+    max-width: 40%;
+  }
+
+  .bot-msg img,
+  .user-msg img {
+    width: 54px;
+    height: 75px;
+  }
+
+  button {
+    padding: 16px 40px;
+    margin-right: 4px;
+    line-height: 26px;
+  }
+
+  .radioContainer {
+    justify-content: center;
+    padding: 0 10px;
+  }
+
+    #worstCaseBtn1 {
+    background-image: url(./images/anders-jilden-PXdBkNF8rlk-unsplash.jpeg);
+    background-size: contain;
+  }
+
+  #worstCaseBtn2 {
+    background-image: url(./images/matt-palmer-kbTp7dBzHyY-unsplash.jpeg);
+    background-size: contain;
+  }
+
+  #worstCaseBtn3 {
+    background-image: url(./images/john-middelkoop-97NjFpxA5DA-unsplash.jpeg);
+    background-size: cover;
+  }
+
+  #worstCaseBtn4 {
+    background-image: url(./images/jasmin-sessler-DR2jtLy8Fe4-unsplash.jpeg);
+    background-size: contain;
+  }
+
+  .worstCaseBtn {
+    padding: 10px;
+    font-weight: 700;
+    color: #e5f8e5;
+    text-shadow: 1px 1px black;
+    margin-right: 8px;
+    font-weight: 900;
+  }
+
+  .worstCaseBtn:hover {
+    height: 100px;
+  }
+
+  .takeActionBtn, .nextStepBtn, #nextStepBtn1, .nextStepBtn23, #nextStepBtn1, .nextStepBtn23, .worstCaseBtn {
+    padding: 10px 20px;
+    margin-right: 8px;
+  }
 }
