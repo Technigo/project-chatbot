@@ -215,7 +215,7 @@ const randomTeaClicked = (event) => {
   setTimeout(
     () =>
       (chat.innerHTML = `<h3>Have a good day now!</h3><video src="assets/BubbleTea Commercial video.mp4" width=80% height="552" muted autoplay loop playsinline></video>`),
-    9000
+    7000
   );
   inputWrapper.innerHTML = `
   <button id="newOrder" value="">Make a new order! 😍</button>
@@ -234,7 +234,7 @@ const mostPopularClicked = (event) => {
   setTimeout(
     () =>
       (chat.innerHTML = `<h3>Have a good day now!</h3><video src="assets/BubbleTea Commercial video.mp4" width=80% height="552" muted autoplay loop playsinline></video>`),
-    9000
+    7000
   );
   inputWrapper.innerHTML = `
   <button id="newOrder" value="">Make a new order! 😍</button>
@@ -405,7 +405,7 @@ const handleInput4 = (event) => {
   setTimeout(
     () =>
       (chat.innerHTML = `<h3>Have a good day now!</h3> <video src="assets/BubbleTea Commercial video.mp4" width=80% height="552" muted autoplay loop playsinline></video>`),
-    9000
+    8000
   );
   inputWrapper.innerHTML = `
   <button id="newOrder" value="">Make a new order! 😍</button>
