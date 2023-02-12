@@ -172,6 +172,13 @@ button:hover {
   transition: all 0.2s ease;
 }
 
+.ratingBtns {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: center;
+}
+
 .ratingBtn:nth-child(1) {
   background-color: lightgreen;
 }
@@ -200,4 +207,89 @@ a {
 
 a:visited {
   color: black;
+}
+
+@media (max-width: 375px) {
+  main {
+    margin: 0 auto;
+    width: 86%;
+    max-width: 560px;
+    height: 500px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  select,
+  input {
+    width: 85%;
+    margin: 0;
+  }
+
+  #text-input {
+    width: 100%;
+  }
+
+  .input-wrapper {
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    height: 20%;
+    margin: 0;
+  }
+  button {
+    padding: 7px;
+  }
+  .yesBtn,
+  .noBtn {
+    height: 20%;
+  }
+  .ratingBtns {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: center;
+  }
+  .ratingBtn {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 870px) {
+  select,
+  input {
+    width: 85%;
+    margin: 0;
+    padding: 7px;
+  }
+
+  #text-input {
+    width: 100%;
+  }
+
+  .input-wrapper {
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    height: 20%;
+    margin: 0;
+  }
+  .yesBtn,
+  .noBtn {
+    height: 20%;
+  }
+  .ratingBtns {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex: 1;
+  }
+  .ratingBtn {
+    padding: 20px;
+  }
 }

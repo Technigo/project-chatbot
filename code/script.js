@@ -191,11 +191,13 @@ const handleRating = () => {
     "Thank you for using EdBot! Would you care to rate your experience with EdBot today?"
   );
   inputWrapper.innerHTML = `
+  <div class="ratingBtns">
               <button id="1" value="5" class="ratingBtn" type="submit">5</button>
               <button id="2" value="4" class="ratingBtn" type="submit">4</button>
               <button id="3" value="3" class="ratingBtn" type="submit">3</button>
               <button id="4" value="2" class="ratingBtn" type="submit">2</button>
               <button id="5" value="1" class="ratingBtn" type="submit">1</button>
+              </div>
 `;
 
   document.querySelectorAll(".ratingBtn").forEach((btn) => {
