@@ -1,18 +1,13 @@
 // Variables that point to selected DOM elements 
 const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('input-wrapper');
-const input = document.getElementById('answer-input');
+const userInput = document.getElementById('user-input');
 const sendBtn = document.getElementById('send');
 
+// If you need any global variables that you can use across different functions, declare them here:
 let questionNumber = 1
 
-const message = input.value
-
-// If you need any global variables that you can use across different functions, declare them here:
-
 // Declare your functions after this comment
-
-
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
@@ -42,127 +37,168 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
+const showBotReply = (message) => {
+  showMessage(message, 'bot')
+}
+
+const showUserReply = (message) => {
+  showMessage(message, 'user')
+}
+
+// Flow of question functions
 const nextQuestion = (message) => {
-  console.log('questionNumber', questionNumber)
 
   if (questionNumber === 1) {
-    showMessage(message, 'user')
-    input.value = ''
-    //setTimeout(() => showFoodTypes(message), 1000)
+    showUserReply(message)
+    setTimeout(() => showBeverageTypes(message), 1000)
   } else if (questionNumber === 2) {
-    showMessage(message, 'user')
-    setTimeout(() => showMenu(message), 1000)
+    showUserReply(message)
+    setTimeout(() => showFlavors(message), 1000)
   } else if (questionNumber === 3) {
-    showMessage(message, 'user')
-    setTimeout(() => showDishSize(message), 1000)
+    showUserReply(message)
+    setTimeout(() => showFikaBread(message), 1000)
   } else if (questionNumber === 4) {
-    showMessage(message, 'user')
-    setTimeout(() => showPrice(message), 1000)
+    showUserReply(message)
+    setTimeout(() => showPaymentOptions(message), 1000)
   } else {
-    showMessage(message, 'user')
-    setTimeout(thankYou, 1000)
+    showUserReply(message)
+    setTimeout(goodbye, 1000)
   }
 } 
 
 // Starts here
 
-
-  // Here we call the function showMessage, that we declared earlier 
-  // with the argument "Hello there, What's your name?" for message, 
-  // and the argument "bot" for sender
+  // Here we call the function showMessage, that we declared earlier with the argument "Hello there, what's your name?" for message, and the argument "bot" for sender
   const greetUser = () => {
   questionNumber = 1
-  showMessage("Hello there, what's your name?", 'bot');
+  showBotReply("Hello! I'm the Fika Bot. What's your name?");
 }
 
-  // Initial button click, here I should get the name entered
   sendBtn.addEventListener('click', (event) => {
-  event.preventDefault()
-
-  // Store the value in a variable so I can access it after we 
-  // clear it from the input
-  const userName = input.value
-  showMessage(`${userName}`, 'user');
-  input.value = '' // Clears the input field
+    event.preventDefault()
+    const userName = userInput.value // Store the value in a variable so I can access it after we clear it from the input
+    showUserReply(`${userName}`);
+    userInput.value = '' // Clears the input field
   
-  // Here I call the function where I present the dishes to choose from. I will also pass the userName
-  // After 1 second, show the next question by invoking the next function.
-	// passing the name into it to have access to the user's name if we want
-	// to use it in the next question from the bot.
-  setTimeout(() => showFoodTypes(userName), 1000)
-  
+    // Here I call the function where I present the dishes to choose from. I will also !! PASS THE userName !!
+    // After 1 second, show the next question by invoking the next function.
+	  // passing the name into it to have access to the user's name if we want
+	  // to use it in the next question from the bot.
+    setTimeout(() => showBeverageTypes(userName), 1000) 
 })
 
 
-
 // A function that shows food types
-const showFoodTypes = (message) => {
+const showBeverageTypes = (message) => {
+  console.log("Question number", questionNumber)
   questionNumber = 2
-  showMessage(
-    `Nice to meet you ${message}. What type of food would you like to order?`, 'bot'
+  showBotReply(
+    `Welcome ${message}. Would you like to order something to drink?`
   )
 
   inputWrapper.innerHTML = `
-    <button id="pizzaBtn">Pizza</button>
-    <button id="pastaBtn">Pasta</button>
-    <button id="saladBtn">Salad</button>
+    <button id="coffeeBtn">Coffee</button>
+    <button id="teaBtn">Tea</button>
+    <button id="juiceBtn">Juice</button>
   `
 
-  document
-    .getElementById('pizzaBtn')
-    .addEventListener('click', () => nextQuestion('Pizza'))
-  document
-    .getElementById('pastaBtn')
-    .addEventListener('click', () => nextQuestion('Pasta'))
-  document
-    .getElementById('saladBtn')
-    .addEventListener('click', () => nextQuestion('Salad'))
+  document.getElementById('coffeeBtn').addEventListener('click', () => nextQuestion('coffee'))
+  document.getElementById('teaBtn').addEventListener('click', () => nextQuestion('tea'))
+  document.getElementById('juiceBtn').addEventListener('click', () => nextQuestion('juice'))
 }
 
 
-const showMenu = (type) => {
-  questionNumber++
+const showFlavors = (type) => {
+  console.log("Question number", questionNumber)
+  questionNumber = 3
 
- showMessage(
-    `Oh so you're in the mood for ${type}? Great choice. Select something from the menu!`, 'bot'
+  showBotReply(
+    `Great choice. What kind of ${type} would you like?`
   )
 
-  if (type === 'pizza') {
+  if (type === 'coffee') {
     inputWrapper.innerHTML = `
       <select id="select">
-        <option value="" selected disabled>👇 Select a pizza...</option>
-        <option value="margerita">Margerita</option>
-        <option value="vesuvio">Vesuvio</option>
-        <option value="peperoni">Peperoni</option>
+        <option value="" selected disabled>⬇ Select your coffee...</option>
+        <option value="espresso">Espresso</option>
+        <option value="cappuccino">Cappuccino</option>
+        <option value="latte">Latte</option>
       </select>
     `
-  } else if (type === 'pasta') {
+  } else if (type === 'tea') {
     inputWrapper.innerHTML = `
       <select id="select">
-        <option value="" selected disabled>👇 Select a pasta...</option>
-        <option value="Carbonara">Pasta Carbonara</option>
-        <option value="Pomodoro">Pasta Pomodoro</option>
-        <option value="Frutti di Mare">Frutti di Mare</option>
+        <option value="" selected disabled>⬇ Select your tea...</option>
+        <option value="earlgrey">Earl Grey</option>
+        <option value="rooibos">Rooibos</option>
+        <option value="herbal">Herbal</option>
       </select>
     `
   } else {
     inputWrapper.innerHTML = `
       <select id="select">
-        <option value="" selected disabled>👇 Select a salad...</option>
-        <option value="Greek Salad">Greek Salad</option>
-        <option value="Caesar Salad">Caesar Salad</option>
-        <option value="Chicken Salad">Chicken Salad</option>
+        <option value="" selected disabled>⬇ Select a juice...</option>
+        <option value="orange juice">Orange juice</option>
+        <option value="apple juice">Apple juice</option>
+        <option value="carrot juice">Carrot juice</option>
       </select>
     `
   }
-
+  
   const select = document.getElementById('select')
   select.addEventListener('change', () => nextQuestion(select.value))
 }
 
+const showFikaBread = (beverage) => {
+  console.log("Question number", questionNumber)
+  questionNumber = 4
+
+  showBotReply(`One ${beverage} coming up! What would you like to have with it?`)
+
+  inputWrapper.innerHTML = `
+    <button id="cherry-pie">Cherry pie</button>
+    <button id="cinnamon-bun">Cinnamon bun</button>
+    <button id="brownie">Brownie</button>
+  `
+
+  document.getElementById('cherry-pie').addEventListener('click', () => nextQuestion('Cherry pie'))
+  document.getElementById('cinnamon-bun').addEventListener('click', () => nextQuestion('Cinnamon bun'))
+  document.getElementById('brownie').addEventListener('click', () => nextQuestion('Brownie'))
+}
+
+const showPaymentOptions = (cake) => {
+  console.log("Question number", questionNumber)
+  questionNumber = 5
+
+  
+  showBotReply(
+    `Great! ${cake} is my favourite. That'll be 99 kr. Do you wanna pay with card or cash?`
+  )
 
 
-// Set up your eventlisteners here
+  inputWrapper.innerHTML = `
+    <button id="card">Card</button>
+    <button id="cash">Cash</button>
+  `
+
+  document.getElementById('card').addEventListener('click', () => nextQuestion('Card'))
+  document.getElementById('cash').addEventListener('click', () => nextQuestion('Cash'))
+
+  
+
+}
+
+
+const goodbye = () => {
+
+  showBotReply(`Thank you, your order will be ready soon. Find a cozy place to sit and we'll bring you your fika!`)
+  inputWrapper.innerHTML = ``
+}
+
+
+// Set up your eventlisteners here. Don't understand why they should be down here?
+
+
   
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
@@ -170,4 +206,5 @@ const showMenu = (type) => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1500);
+// Why is this at the bottom of the page?
+setTimeout(greetUser, 1000);
