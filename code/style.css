@@ -19,12 +19,13 @@ body {
 }
 
 h1 {
-  margin-top: 35px;
+  margin-top: 20px;
   font-weight: bold;
   font-size: 44px;
-  line-height: 5px;
+  line-height: 40px;
   color: #fff;
   text-align: center;
+  margin-bottom: -5px;
 }
 
 h2 {
@@ -37,8 +38,8 @@ h2 {
   margin-bottom: 35px;
 }
 
-p {
-  font-size: 16px;
+.user-font {
+  font-size: 17px;
   font-weight: 500;
   line-height: 28px;
   margin: 0;
@@ -142,7 +143,6 @@ main {
   width: 90%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
 }
 
 label {
@@ -175,9 +175,9 @@ label {
   color: #481620;
   border: none;
   border-radius: 4px;
-  padding: 16px 20px;
+  padding: 16px 10px;
   margin-right: 4px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
   line-height: 26px;
   font-family: "Montserrat";
@@ -191,9 +191,9 @@ label {
   color: #481620;
   border: none;
   border-radius: 4px;
-  padding: 16px 20px;
+  padding: 16px 10px;
   margin-right: 4px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
   line-height: 26px;
   font-family: "Montserrat";
@@ -206,9 +206,9 @@ label {
   color: #481620;
   border: none;
   border-radius: 4px;
-  padding: 16px 20px;
+  padding: 16px 10px;
   margin-right: 4px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
   line-height: 26px;
   font-family: "Montserrat";

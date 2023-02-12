@@ -34,7 +34,7 @@ const showMessage = (message, sender) => {
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
-          <p>${message}</p>
+          <p class="user-font">${message}</p>
         </div>
         <img src="assets/user.png" alt="User" />  
       </section>
@@ -64,13 +64,13 @@ const nextQuestion = (message) => {
   if (questionNumber === 1) {
     userReply(`${message}!!!!`);
     input.value = "";
-    setTimeout(() => whichDestination(message), 900);
+    setTimeout(() => whichDestination(message), 1000);
   } else if (questionNumber === 2) {
     userReply(message);
-    setTimeout(() => meansOftravel(message), 800);
+    setTimeout(() => meansOftravel(message), 1000);
   } else if (questionNumber === 3) {
     userReply(message);
-    setTimeout(() => lifeInsurance(message), 800);
+    setTimeout(() => lifeInsurance(message), 1000);
   } else {
     userReply(message);
     setTimeout(lastMessage, 1000);
@@ -208,4 +208,4 @@ input.addEventListener("keypress", (event) => {
 });
 
 //The first message from the bot will load 0,6 seconds after the page has loaded.
-setTimeout(greetUser, 800);
+setTimeout(greetUser, 1000);
