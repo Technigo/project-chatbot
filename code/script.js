@@ -4,16 +4,21 @@ const inputWrapper = document.getElementById('input-wrapper')
 const input = document.getElementById('input')
 const sendBtn = document.getElementById('send')
 
+
+//GLOBAL 
 let botQuestion = 1
 
+const botArtChoice = [`Black, white and abstract`, `Black, white and photography`, `Black and white illustration`, `Color and abstract`, `Color and `];
+
+////Calling for user and bot reply in the chat bubbles.
 const botReply = (msg) => {
   showMessage(msg, 'bot')
 }
-
 const userReply = (msg) => {
   showMessage(msg, 'user')
 }
 
+// This function will add a chat bubble in the correct place based on who the sender is.
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     chat.innerHTML += `
@@ -90,7 +95,7 @@ const showColorOption = (msg) => {
 
 const showDesignMenu = (type) => {
   botQuestion++
-  botReply(`Great choice! What kind of art do you like?`)
+  botReply(`Great choice! Wich kind of style would you like on your poster?`)
   
   inputWrapper.innerHTML = `
   <button id="abstractBtn">Abstract</button>
@@ -108,18 +113,15 @@ const showDesignMenu = (type) => {
    .getElementById('illustrationBtn')
    .addEventListener('click', () => nextQuestion('Illustration'))
     
-  
-  const select = document.getElementById('click')
-  select.addEventListener('change', () => nextQuestion(select.value))
 }
 
-
-const showPosters = (style) => {
+const showPaintingSize = () => {
   botQuestion++
-  botReply(`Ok! I will se what I can find...`)
+  botReply(`Ok great! Just wait a second and I'll see what I can find for you.`)
 
   inputWrapper.innerHTML = `
-   
+    <button id="adult">👨🏽‍🦳</button>
+    <button id="child">🧒🏽</button>
   `
 
   document
@@ -130,8 +132,8 @@ const showPosters = (style) => {
     .addEventListener('click', () => nextQuestion('child'))
 }
 
-const showPrice = (posteroption) => {
-  botQuestion++
+const posterOption = () => {
+  botQuestion = 5
   botReply (`What do you think about this poster?`)
 
   /*let posteroption
@@ -157,8 +159,8 @@ const showPrice = (posteroption) => {
 
 
   inputWrapper.innerHTML = `
-    <button id="restart">Start over</button>
-    <button id="confirm">Add to cart</button>
+    <button id="restart">Please start over</button>
+    <button id="confirm">Yes, add to cart!</button>
   `
 
   document.getElementById('restart').addEventListener('click', () => {
