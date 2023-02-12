@@ -46,6 +46,7 @@ const greetUser = () => {
     "Welcome to Cat Bot the Chat bot. What's your first name?",
     "bot"
   );
+  chat.scrollTop = chat.scrollHeight;
 };
 
 const favoritePersonality = () => {
@@ -67,6 +68,7 @@ const favoritePersonality = () => {
   antisocial.addEventListener("click", () =>
     handleFavoritePersonality(antisocial.value)
   );
+  chat.scrollTop = chat.scrollHeight;
 };
 
 const preferredType = () => {
@@ -82,6 +84,7 @@ const preferredType = () => {
 `;
   const select = document.getElementById("select");
   select.addEventListener("change", () => handlePreferredType(select.value));
+  chat.scrollTop = chat.scrollHeight;
 };
 
 const adopt = () => {
@@ -109,11 +112,13 @@ const adopt = () => {
   userResponseNo.addEventListener("click", () =>
     handleAdoptACat(userResponseNo.value)
   );
+  chat.scrollTop = chat.scrollHeight;
 };
 
 const farewellMessage = (message) => {
   showMessage(message, "bot");
   inputWrapper.innerHTML = ``;
+  chat.scrollTop = chat.scrollHeight;
 };
 
 const handleInput = (message) => {
