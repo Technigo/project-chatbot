@@ -14,11 +14,11 @@ let questionNumber = 1
 //Sound effects from Pixabay
 const soundEffectBot = () => {
   const sound = new Audio('short-woosh-109592.mp3');
-  sound.play()
+  //sound.play()
 }
 const soundEffectUser = () => {
   const sound = new Audio('short-success-sound-glockenspiel-treasure-video-game-6346.mp3');
-  sound.play()
+  //sound.play()
 }
 
 const soundEffectFinal = () => {
