@@ -8,4 +8,4 @@ Testing the right amount of seconds for the set Timeout function was the biggest
 
 ## View it live
 
-<a href=""> Check my Chat Bot here!</a>>  
+Check my Chat Bot <a href="https://hilarious-hamster-3a8eeb.netlify.app"> here</a>.
