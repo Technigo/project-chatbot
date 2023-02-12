@@ -189,13 +189,13 @@ answerTwo = (type) => {
   console.log('vid fun fact nr 2')
 
   setTimeout ( () =>
-  userReply ('More pineapples to the people'), 2000)
+  userReply ('More pineapples to the people'), 1000)
   setTimeout ( () =>
   botReply ('Pineapples were such a status symbol in 18th century England that you could rent one for the evening to take to a party.'), 1000)
 
 
   setTimeout ( () =>
-  botReply ('Are you ready to order your pineapple?'), 1000)
+  botReply ('Are you ready to order your pineapple?'), 1500)
 
   wrapper.innerHTML =`
 <button id="order" > Yes </button>
