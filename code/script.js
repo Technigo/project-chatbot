@@ -23,12 +23,16 @@ const userReply = (message) => {
   showMessage(message, "user");
 };
 
+/* I had problems making the bot give out a link, 
+so I did a whole new function just for it to be able to
+post a link with text, not just an url */
+
 const botLink = (message, link) => {
   chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.jpg" alt="Bot" />
         <div class="bubble bot-bubble">
-          <a href=${link}><p>${message}</p></a>
+          <a href=${link} target="_blank"><p>${message}</p></a>
         </div>
       </section>
     `;
@@ -91,6 +95,7 @@ const showMessage = (message, sender) => {
 const greetUser = () => {
   nextQuestion = "showButtons";
   botReply("Hello there! My name is EdBot. What should I call you?");
+  // I wanted to make the bot ask the question again if you didn't enter anything, but I couldn't do it :(
 };
 
 const showButtons = () => {
@@ -118,25 +123,31 @@ const askForSomething = () => {
     } to hear that, ${userName}! Do you want something to drink?`
   );
   inputWrapper.innerHTML = `
-  <button id="beerBtn" type="submit">a perfectly poured hazy NEIPA</button>
-  <button id="waterBtn" type="submit">a glass of cold tap water</button>
+  <select id="drinkSelector">
+  <option value="beer">a perfectly poured hazy NEIPA</option>
+  <option value="beer">a tall glass of citrus-y wheat beer</option>
+  <option value="water">a festive glass of sparkling water with a slice of lemon</option>
+  <option value="water">a glass of cold tap water</option>
+  </select>
+  <button id="drinkBtn" type="submit">Cheers!</button>
+
 `;
 
-  document.getElementById("beerBtn").addEventListener("click", () => {
-    drink = "beer";
-    stepThroughQuestions("a perfectly poured hazy NEIPA");
-  });
-
-  document.getElementById("waterBtn").addEventListener("click", () => {
-    drink = "water";
-    stepThroughQuestions("a glass of cold tap water");
+  document.getElementById("drinkBtn").addEventListener("click", () => {
+    const drinkSelector = document.getElementById("drinkSelector");
+    drink = drinkSelector.value;
+    const drinkText = drinkSelector.options[drinkSelector.selectedIndex].text;
+    // got the drinkText thing from https://stackoverflow.com/questions/5913/getting-the-text-from-a-drop-down-box/5947#5947
+    stepThroughQuestions(drinkText);
   });
 };
 
 const anythingElse = () => {
   questionIndex++;
   botReply(
-    `Here's your drink, ${userName}! Can I interest you in a curated YouTube-video?`
+    `Here's your drink, ${userName}! ${
+      drink == "beer" ? "🍺" : "🚰"
+    } Can I interest you in a curated YouTube-video?`
   );
 
   inputWrapper.innerHTML = `
@@ -160,7 +171,7 @@ const offerVideo = () => {
   questionIndex++;
   botReply(
     `Here's a video which goes well with ${
-      drink == "beer" ? "hazy NEIPAs" : "cold water"
+      drink == "beer" ? "a glass of beer" : "a glass of water"
     } and ${mood == "good" ? "happy" : "sad"} days:`
   );
   if (mood == "bad") {

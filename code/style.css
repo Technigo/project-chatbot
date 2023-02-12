@@ -58,6 +58,21 @@ input {
   flex: 1;
 }
 
+select {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px;
+  background: whitesmoke;
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  font-family: "Poppins";
+  font-weight: 600;
+  line-height: 26px;
+  margin: 4px;
+  flex: 1;
+}
+
 .input-wrapper {
   height: 10%;
 }
@@ -181,9 +196,7 @@ button:hover {
 
 a {
   text-decoration: underline;
-}
-
-a:hover {
+  color: black;
 }
 
 a:visited {
