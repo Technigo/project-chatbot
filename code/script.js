@@ -7,63 +7,7 @@ const inputWrapper = document.getElementById('input-wrapper');
 
 // If you need any global variables that you can use across different functions, declare them here:
 
-
 // Declare your functions after this comment
-
-const handleNameInput = (event) => {
-  event.preventDefault();
-  const name = nameInput.value 
-  showMessage(`Hi! My name is ${name}`, 'user');
-  nameInput.value=''
-
-  setTimeout( () => showMessage(`Hello ${name} ! What are you in the mood for today?`, 'bot'), 200);
-
-  //A choice of different food options show up here
-inputWrapper.innerHTML =
-    `<button id="Pasta" type="submit" value="Pasta">Pasta</button>
-    <button id="Salad" type="submit" value="Salad">Salad</button>
-    <button id="Meat" type="submit" value="Meat">Meat</button>`;
-
-  
-  let Pasta = document.getElementById('Pasta');
-  Pasta.addEventListener('click', () => {
-    type = "Pasta";
-    handleInput("Pasta!");
-  });
-
-  let Salad = document.getElementById('Salad');
-  Salad.addEventListener('click', () => {
-    type = "Salad";
-    handleInput("Salad!");
-  });
-
-  let Meat = document.getElementById('Meat');
-  Meat.addEventListener('click', () => {
-    type = "Meat";
-    handleInput("Meat!");
-  });
-}
-
-setTimeout(handleNameInput ,1000);
-//Depending on wich button user clicks different recipes will show up, NOT WORKING
-
-//const handleInput = (message) => {
-  //if (handleNameInput === Pasta) {showMessage("I'd like to eat Pasta tonight!",'user');
-  //setTimeout(() => ShowMessage("Fab choice! Here is a recipe for a creamy Pasta Carbonara", 'bot'), 1000);
-    
-  //} else if (handleNameInput === Salad) {showMessage("I'd like to eat Salad tonight!",'user');
-  //setTimeout(() => ShowMessage("Fab choice! Here is a recipe for a creamy Ceasar Salad", 'bot'), 1000);
-    
-  //} else (handleNameInput === Meat) {showMessage("I'd like to eat Meat tonight!",'user');
-  //setTimeout(() => ShowMessage("Fab choice! Here is a recipe for a nice brisket", 'bot'), 1000);
-  //}
-//};
-
-//If user clicks Pasta this runs
-
-//If user clicks Salad this runs
-
-//If user clicks Meat this runs
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -74,7 +18,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user2.png" alt="User" />  
       </section>
     `
 
@@ -82,7 +26,7 @@ const showMessage = (message, sender) => {
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bot2.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -93,7 +37,6 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
-// Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there, What's your name?", 'bot');
@@ -101,6 +44,61 @@ const greetUser = () => {
 setTimeout(greetUser, 1000);
 
 
+const handleNameInput = (event) => {
+  event.preventDefault();
+  const name = nameInput.value 
+  showMessage(`Hi! My name is ${name}`, 'user');
+  nameInput.value=''
+
+  setTimeout( () => showMessage(`Hello ${name}! What are you in the mood for today?`, 'bot'), 800);
+
+  setTimeout(() => WhatToEat(name), 1200)
+}
+//Here I call the next function
+
+const WhatToEat = (name) => {
+
+  //A choice of different food options show up here
+  inputWrapper.innerHTML =
+  `<button id="Pasta" type="submit" value="Pasta">Pasta</button>
+  <button id="Salad" type="submit" value="Salad">Salad</button>
+  <button id="Meat" type="submit" value="Meat">Meat</button>`;
+
+  //Eventlisteners for the previous buttons - these should call for the next function as well
+
+let Pasta = document.getElementById('Pasta');
+Pasta.addEventListener('click', (event) => {
+  event.preventDefault()
+  showMessage("Fab choice! Here is a recipe for a creamy Pasta Carbonara", 'bot')
+  setTimeout(() => FoodChoice(event.target.value), 1200)
+});
+
+let Salad = document.getElementById('Salad');
+Salad.addEventListener('click', (event) => {
+  event.preventDefault()
+  showMessage("Fab choice! Here is a recipe for a delish Ceasar salad", 'bot')
+  setTimeout(() => FoodChoice(event.target.value), 1200)
+});
+
+let Meat = document.getElementById('Meat');
+Meat.addEventListener('click', (event) => {
+  event.preventDefault()
+  showMessage("Fab choice! Here is a recipe for a tender brisket", 'bot')
+  setTimeout(() => FoodChoice(event.target.value), 1200)
+});
+
+}
+
+const FoodChoice = (WhatToEat) => {
+  // Shows in console.log, how to put bot value on message function? 
+  if (WhatToEat === 'Pasta') {
+    showMessage("https://www.jocooks.com/recipes/creamy-carbonara/", 'bot');
+  } else if (WhatToEat === 'Salad') {
+    showMessage("https://natashaskitchen.com/caesar-salad-recipe/", 'bot')
+  } else if (WhatToEat === 'Meat') {
+    showMessage("https://www.recipetineats.com/slow-cooker-beef-brisket-with-bbq-sauce/", 'bot')
+  }
+}
 // Set up your eventlisteners here
 
 userForm.addEventListener('submit', handleNameInput);
