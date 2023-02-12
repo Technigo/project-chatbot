@@ -7,21 +7,23 @@ const button = document.getElementById("send-btn");
 
 /* This is the changeable variable for in which order the questions come,
 so that the conversation runs consecutively (questionNumber = 1; first, 
-then QuestionNumber++ (2) follows it, then ++ again (3), and so on). 
-It's not a global variable, as it has the keyword "let". */
+then QuestionNumber++ (2) follows it, then ++ again (3), and so on). Below I 
+also have all my audios as variables. */
 let questionNumber = 1;
-
-// Declare your functions after this comment!
+const botAudio = new Audio("assets/botsound.mp3");
+const userAudio = new Audio("assets/usersound.mp3");
 
 /*These functions are shortcuts for the showMessage function which specifies
 if it's the user or the bot talking. That way you can just invoke
 the function botReply or userReply and not have to go the whole showMessage ("user")-route. */
 const botReply = (msg) => {
   showMessage(msg, "bot");
+  botAudio.play();
 };
 
 const userReply = (msg) => {
   showMessage(msg, "user");
+  userAudio.play();
 };
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -37,6 +39,7 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `;
+
     /* The else if statement checks if the sender is a bot and if that's
     the case it inserts this html senction inside the chat with the posted message, so that the 
     chat bubble is to the left. */
@@ -61,16 +64,16 @@ const nextQuestion = (message) => {
   if (questionNumber === 1) {
     userReply(`${message}!!!!`);
     input.value = "";
-    setTimeout(() => whichDestination(message), 600);
+    setTimeout(() => whichDestination(message), 900);
   } else if (questionNumber === 2) {
     userReply(message);
-    setTimeout(() => meansOftravel(message), 600);
+    setTimeout(() => meansOftravel(message), 800);
   } else if (questionNumber === 3) {
     userReply(message);
-    setTimeout(() => lifeInsurance(message), 600);
+    setTimeout(() => lifeInsurance(message), 800);
   } else {
     userReply(message);
-    setTimeout(lastMessage, 600);
+    setTimeout(lastMessage, 1000);
   }
 };
 
@@ -177,12 +180,13 @@ const noWilllifeinsurance = () => {
   document.getElementById("restart").addEventListener("click", () => {
     location.reload();
     return false;
+    buttonAudio.play();
   });
 };
 
 const lastMessage = () => {
   botReply(
-    `Then everything seems to be in order! That'll be four million euros. I only accept cash. "Safe" Travels!`
+    `Then everything seems to be in order! That'll be four million euros. I only accept cash. "Safe" travels!`
   );
   inputWrapper.innerHTML = `
   <button class="send-btn" id="restart">Thank you!</button>`;
@@ -204,4 +208,4 @@ input.addEventListener("keypress", (event) => {
 });
 
 //The first message from the bot will load 0,6 seconds after the page has loaded.
-setTimeout(greetUser, 600);
+setTimeout(greetUser, 800);

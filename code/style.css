@@ -6,7 +6,16 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
-  background: #9fa9e2;
+}
+
+#videoBackground {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
 }
 
 h1 {
@@ -52,7 +61,7 @@ main {
   margin: 0 auto;
   width: 90%;
   max-width: 700px;
-  height: 600px;
+  height: 550px;
   border-radius: 30px;
   background: #fff;
   padding: 20px 24px;
@@ -103,11 +112,13 @@ main {
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  margin-top: 40px;
 }
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  margin-top: 40px;
 }
 
 .input-wrapper {
@@ -116,9 +127,10 @@ main {
 }
 
 .input-wrapper form {
-  width: 100%;
+  width: 90%;
   display: flex;
   align-items: center;
+  justify-content: space-around;
 }
 
 label {
@@ -133,13 +145,14 @@ label {
   background-color: #0026ff;
   color: white;
   border: none;
-  border-radius: 4px;
-  padding: 16px 40px;
+  border-radius: 5px;
+  padding: 16px 35px;
   margin-right: 4px;
+  margin-left: 5px;
   font-size: 16px;
   line-height: 26px;
   font-family: "Montserrat";
-  font-weight: 500;
+  font-weight: 450;
   cursor: pointer;
   transition: all 0.3s ease;
 }
