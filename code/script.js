@@ -236,8 +236,8 @@ const nextStepOptions = (rating) => {
     setTimeout(() => botReply(`To understand people with eco-anxiety better`), 4000);
 
     setTimeout(() => botReply(`
-        <button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
-        <button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
+        <button class="chat-link" onclick=" window.open('https://earth.org/what-is-climate-anxiety/','_blank')">What is climate anxiety?#1</button>
+        <button class="chat-link" onclick=" window.open('https://utforskasinnet.se/att-drabbas-av-klimatangest-vad-ar-det-egentligen/','_blank')">What is climate anxiety?#2</button>
     `), 5000);
 
     setTimeout(() => botReply(`Do you get it now?`), 10000);
@@ -343,8 +343,8 @@ const finalStep = (finalDecision) => {
     setTimeout(() => botReply(`Hold on`), 1000);
     setTimeout(() => botReply(`Here are some therapists working with climate anxiety`), 3000);
     setTimeout(() => botReply(`
-              <button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
-              <button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
+              <button class="chat-link" onclick=" window.open('https://bokapsykolog.se/klimatangest/','_blank')">Book a psykologist</button>
+              <button class="chat-link" onclick=" window.open('https://www.klimatpsykologerna.se/pageom/','_blank')">Climate therapists</button>
             `), 5000);
 	setTimeout(() => botReply(`Do you feel better now?`), 10000);
     
@@ -368,9 +368,9 @@ const finalStep = (finalDecision) => {
     setTimeout(() => botReply(`Here are some links to activist groups in Sweden`), 4000);
 
     setTimeout(() => botReply(`
-		<button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
-		<button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
-		<button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
+		<button class="chat-link" onclick=" window.open('https://extinctionrebellion.se/','_blank')">Extinction Rebellion</button>
+		<button class="chat-link" onclick=" window.open('https://xn--auroramlet-75a.se/','_blank')">Aurora</button>
+		<button class="chat-link" onclick=" window.open('https://klimataktion.se//','_blank')">Klimataktion</button>
     `), 5000);
 
     setTimeout(() => botReply(`So will you do it?`), 10000);
@@ -395,9 +395,9 @@ const finalStep = (finalDecision) => {
     setTimeout(() => botReply(`Here are some politacal parties focused on the environment`), 3000);
 
     setTimeout(() => botReply(`
-                <button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
-                <button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
-                <button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>
+                <button class="chat-link" onclick=" window.open('https://sv.wikipedia.org/wiki/Gr%C3%B6na_partier/','_blank')">Green parties in Europe</button>
+                <button class="chat-link" onclick=" window.open('https://europeangreens.eu/','_blank')">European Greens</button>
+                <button class="chat-link" onclick=" window.open('https://www.riksdagen.se/sv/ledamoter-partier/miljopartiet/','_blank')">The Green Party</button>
     `), 4000);
 
     setTimeout(() => botReply(`So will you become politician now?`), 10000);
@@ -420,7 +420,7 @@ const finalStep = (finalDecision) => {
     botReply(`I see.`);
     setTimeout(() => botReply(`The climate crisis affects many people's psychological wellbeing.`), 1000);
     setTimeout(() => botReply(`Maybe this article could help you find some new perspectives.`), 3000);
-    setTimeout(() => botReply(`<button class="chat-link" onclick=" window.open('https://www.naturskyddsforeningen.se/','_blank')">Naturskyddsforeningen</button>`),5000);
+		setTimeout(() => botReply(`<button class="chat-link" onclick=" window.open('https://www.health.harvard.edu/blog/is-climate-change-keeping-you-up-at-night-you-may-have-climate-anxiety-202206132761/','_blank')">Harvard Health</button>`),5000);
 
     setTimeout(() => botReply(`Do you feel more enlightened now?`), 10000);
 
