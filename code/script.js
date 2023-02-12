@@ -23,22 +23,6 @@ const userReply = (message) => {
   showMessage(message, "user");
 };
 
-/* I had problems making the bot give out a link, 
-so I did a whole new function just for it to be able to
-post a link with text, not just an url */
-
-const botLink = (message, link) => {
-  chat.innerHTML += `
-      <section class="bot-msg">
-        <img src="assets/bot.jpg" alt="Bot" />
-        <div class="bubble bot-bubble">
-          <a href=${link} target="_blank"><p>${message}</p></a>
-        </div>
-      </section>
-    `;
-  chat.scrollTop = chat.scrollHeight;
-};
-
 const stepThroughQuestions = (message) => {
   if (questionIndex == 1) {
     userReply(message);
@@ -169,36 +153,36 @@ const anythingElse = () => {
 
 const offerVideo = () => {
   questionIndex++;
-  botReply(
-    `Here's a video which goes well with ${
-      drink == "beer" ? "a glass of beer" : "a glass of water"
-    } and ${mood == "good" ? "happy" : "sad"} days:`
-  );
+
   if (mood == "bad") {
     if (drink == "beer") {
-      botLink(
-        "a nice freestyle canoeing video to the sound of 'Lady in Red'",
-        "https://www.youtube.com/watch?v=Ofq_nl366VM"
-      );
+      (youTubeLinkText =
+        "a nice freestyle canoeing video to the sound of 'Lady in Red'"),
+        (youTubeLinkUrl = "https://www.youtube.com/watch?v=Ofq_nl366VM");
     } else if (drink == "water") {
-      botLink(
-        "a video of some random Norwegian playing 'Scotland the Brave' and really disco-ing out",
-        "https://www.youtube.com/watch?v=bfcDfhT5mak"
-      );
+      (youTubeLinkText =
+        "a video of some random Norwegian playing 'Scotland the Brave' and really disco-ing out"),
+        (youTubeLinkUrl = "https://www.youtube.com/watch?v=bfcDfhT5mak");
     }
   } else {
     if (drink == "beer") {
-      botLink(
-        "a funky instrumental tribute to the late great MF DOOM",
-        "https://www.youtube.com/watch?v=oYKwotHRdHo"
-      );
+      (youTubeLinkText =
+        "a funky instrumental tribute to the late great MF DOOM"),
+        (youTubeLinkUrl = "https://www.youtube.com/watch?v=oYKwotHRdHo");
     } else if (drink == "water") {
-      botLink(
-        "a one hour loop of a cockatiel singing a song from Totoro",
-        "https://www.youtube.com/watch?v=CC4I65VIoeE"
-      );
+      (youTubeLinkText =
+        "a one hour loop of a cockatiel singing a song from Totoro"),
+        (youTubeLinkUrl = "https://www.youtube.com/watch?v=CC4I65VIoeE");
     }
   }
+
+  botReply(
+    `Here's a video which goes well with ${
+      drink == "beer" ? "a glass of beer" : "a glass of water"
+    } and ${
+      mood == "good" ? "happy" : "sad"
+    } days: <a href=${youTubeLinkUrl} target="_blank">${youTubeLinkText}</a>`
+  );
   setTimeout(handleRating, 1000);
 };
 
@@ -207,11 +191,11 @@ const handleRating = () => {
     "Thank you for using EdBot! Would you care to rate your experience with EdBot today?"
   );
   inputWrapper.innerHTML = `
-<button id="1" value="5" class="ratingBtn" type="submit">5</button>
-  <button id="2" value="4" class="ratingBtn" type="submit">4</button>
-  <button id="3" value="3" class="ratingBtn" type="submit">3</button>
-  <button id="4" value="2" class="ratingBtn" type="submit">2</button>
-  <button id="5" value="1" class="ratingBtn" type="submit">1</button>
+              <button id="1" value="5" class="ratingBtn" type="submit">5</button>
+              <button id="2" value="4" class="ratingBtn" type="submit">4</button>
+              <button id="3" value="3" class="ratingBtn" type="submit">3</button>
+              <button id="4" value="2" class="ratingBtn" type="submit">2</button>
+              <button id="5" value="1" class="ratingBtn" type="submit">1</button>
 `;
 
   document.querySelectorAll(".ratingBtn").forEach((btn) => {
