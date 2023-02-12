@@ -36,7 +36,7 @@ var fortunes = [
 // here are the sound efect link
 
 const chatSound = () => {
-  let audio = new Audio("chatTone.mp3")
+  let audio = new Audio("./assets/magic.mp3")
   audio.play();
 }
 
