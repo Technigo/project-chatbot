@@ -49,12 +49,6 @@ setTimeout(greetUser, 1000);
 
 
 
-// Set up your eventlisteners here
-
-
-
-// const = function Kom ihag det!
-
 
 const handleNameInput = (event) => { // at submit this function will be invoked
  event.preventDefault() // prevents website refresh at submit
@@ -79,32 +73,35 @@ setTimeout (() => coffeeOptions(name) , 1000)
     <button id="latteBtn" type="submit">Latte</button>
     <button id="cappuchinoBtn" type="submit">Cappuchino</button>`
 
-
-  
-//---interaction 3------//
-
 document
   .getElementById('espressoBtn')
-  .addEventListener('click', () => {
-    showMessage('I would like an espresso, please', 'user')
-  })
+  .addEventListener('click', () => { 
+  showMessage('I would like an espresso, please', 'user')
+   extraS ('extraS')
+    })
 
 document
   .getElementById('latteBtn')
   .addEventListener('click', () => {
     showMessage('A latte would be nice!', 'user')
+    extraS ('extraS')
   }) 
 
   document
   .getElementById('cappuchinoBtn')
   .addEventListener('click', () => {
     showMessage('Prettyplease! A cappuchino', 'user')
+    extraS ('extraS')
   }) 
+
+setTimeout (() => extraS , 1000) ;
 }
+//--- Third intention ---//
 
-const extraS = () => {
+const extraS = (option) => {
 
-  showMessage ('Would you like some extra?', 'bot')
+
+showMessage ('Would you like some extra', 'bot')
   inputWrapper.innerHTML =
 `<button id= "xtraShotBtn" type="submit">Xtra shot espresso</button>
   button id= "milkBtn" type="submit">Milk</button>
@@ -119,7 +116,7 @@ const extraS = () => {
 document
   .getElementById('milkBtn')
   .addEventListener('click', () => {
-    showMessage('I like kows', 'user')
+    showMessage('Just a splash, please', 'user')
   }) 
 
   document
@@ -127,14 +124,20 @@ document
   .addEventListener('click', () => {
     showMessage('So sweet of you', 'user')
   }) 
+
+
 }
+const youareDone = (name) => {
+showMessage (` ${name} , your order is ready to pick up. Have a nice day!` , 'bot' )
+}
+
 
 
 
 
 // Set up your eventlisteners here
   
- // form.addEventListener('submit', handleNameInput)
+form.addEventListener('submit', handleNameInput)
 
 
  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
@@ -142,7 +145,8 @@ document
   chat.scrollTop = chat.scrollHeight; 
 
 
-form.addEventListener('submit', handleNameInput)
+
+
 
 
 
