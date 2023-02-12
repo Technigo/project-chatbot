@@ -1,12 +1,10 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Second project for the Technigo web development bootcamp. A simple interactive chatbot made with HTML, CSS and JavaScript. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The chatbot had a starter code with a conditional statement answering to whether it was the bot or the user typing. I approached to problem by adding more inputs and messages from the bot. I finished the project by adding a conditional statement to the output value of what month the user picked in the month-input, and making the website responsive.
 
 ## View it live
 

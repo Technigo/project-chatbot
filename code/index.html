@@ -9,24 +9,32 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet" />
     <title>Chat Bot</title>
+    <link rel="icon" href="icons8-chatbot-24 (1).png">
   </head>
 
   <body>
-    <h1>Welcome to xxx.</h1>
-    <h2>Ask about xxxx.</h2>
+    <h1>Magazine archive
+      <img src="icons8-magazine-50.png" alt="Magazine icon" />
+    </h1>
+    <h2>Order previous editions of our magazines</h2>
     <main>
       <section class="chat" id="chat"></section>
 
       <div class="input-wrapper" id="input-wrapper">
         <form id="name-form">
           <label for="name-input">Name</label>
-          <input id="name-input" type="text" />
-          <button class="send-btn" type="submit">
+          <input id="name-input" type="text" placeholder="Enter your name here..." required />
+          <button id="send-btn" class="send-btn" type="submit">
             Send
           </button>
         </form>
       </div>
     </main>
+
+    <footer>
+      <h3>By Camilla Cronqvist</h3>
+      <h4>Technigo student 2023</h4>
+    </footer>
 
     <script src="./script.js"></script>
   </body>
