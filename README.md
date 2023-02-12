@@ -1,13 +1,15 @@
 # Project Name
 
-Replace this readme with your own information about your project.
+A chat-bot for the Week 1 Sprint for Technigo.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Exercise in, among other things, using if-clauses.
+
+Decided to make the actual function of my chatbot very light-hearted, and instead focusing on coding it.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I had some trouble refactoring, but I looked at some old code which gave me inspiration for the stepThroughQuestions-function. In the future I would probably make it another way, maybe with a nextQuestion string which refers to a question for the bot. That way you could step back and skip steps in an easier way.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+It is deployed at https://comforting-squirrel-aa5ada.netlify.app/
