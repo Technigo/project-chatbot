@@ -8,4 +8,4 @@ The chatbot had a starter code with a conditional statement answering to whether
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://sprightly-phoenix-71884e.netlify.app/
