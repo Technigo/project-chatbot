@@ -1,13 +1,9 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Simple chat-bot with multiple-choice questions. Tracking question number for launching next question. Also tracking score presented at end of quiz.
 
 ## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started of making the basic functions and order work in a liniar model. When that was set up, I rewrote the code to launch next question with an if/else-statement.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
