@@ -122,10 +122,10 @@ const userFeels = (userAnswer) => {
       <button id = "cute" type = "submit">Show me something</button>
       <button id = "funny" type = "submit">Tell me something</button>
     `
-    document.getElementById('cute').addEventListener('click' , () => { userReply("Show me something cute")
+    document.getElementById('cute').addEventListener('click' , () => { userReply("Show me something cute!")
     setTimeout(() => toDo('cute')),1000  // calling out the next answer in a new function named facts
     }) 
-    document.getElementById('funny').addEventListener('click' , () => { userReply("Tell me a joke")
+    document.getElementById('funny').addEventListener('click' , () => { userReply("Tell me a joke!")
     setTimeout(() => toDo('funny')),1000  // calling out the next answer in a new function named facts
     }) 
   }
@@ -137,7 +137,7 @@ const userFeels = (userAnswer) => {
       <button id = "therapy" type = "submit">Therapy</button>
       <button id = "d-metal" type = "submit">Death metal</button>
       `
-    document.getElementById('therapy').addEventListener('click' , () => { userReply("Some therapy would be good thanks")
+    document.getElementById('therapy').addEventListener('click' , () => { userReply("Some therapy would be good thanks...")
     setTimeout(() => toDo('therapy')),3000  
     }) 
     document.getElementById('d-metal').addEventListener('click' , () => { userReply("Hook me up with some metal🛠")
@@ -152,7 +152,7 @@ const toDo = (lastChoice) => {
     setTimeout(() => closure()),1000 
   }
   else if (lastChoice === 'dayOff') {
-    setTimeout(() => botReply("Here's a validation for your boss, you have earned the day off!"),1000)
+    setTimeout(() => botReply("Here's a validation to show your boss: You have earned the day off!"),1000)
     setTimeout(() => botReplyPic("https://i.pinimg.com/564x/da/e9/22/dae92223b20fe33a9171d118a0bfa616.jpg"),1200)  
     setTimeout(() => closure()),1000    
   }
@@ -182,8 +182,8 @@ const notGood = (bob) => {
   inputWrapper.innerHTML = `
       <button id = "yes" type = "submit">Ofc I do</button>`
     document.getElementById('yes')
-    .addEventListener('click' , () => { userReply("METAL is the best!!!")
-    setTimeout(() => botReply("Ok... You should maybe leave this chat and go outside! Have a marvelous day tough guy!🤘🏻")),1500 
+    .addEventListener('click' , () => { userReply("METAL is the best!!! 🤟🏻")
+    setTimeout(() => botReply("Ok... maybe you should leave this chat and go outside instead! Have a marvelous day tough guy!🤘🏻")),1500 
     setTimeout(() => bye('end')),2000  
     })
     
@@ -196,7 +196,7 @@ const closure = (end) => {
       <button id = "no" type = "submit">I'm done talking.</button>
       `
   document.getElementById('yes')
-  .addEventListener('click' , () => { userReply("What else can should I do?")
+  .addEventListener('click' , () => { userReply("What else should I do?")
   setTimeout(() => botReply("You should leave this chat and go outside! Have a marvelous day and show that beautiful smile of yours!")),1500 
   setTimeout(() => bye('end')),2000  
   })
