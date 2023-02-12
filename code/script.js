@@ -83,24 +83,25 @@ const recognize = (firstName) => {
   chat.innerHTML += `<section class="bot-msg">
     <img src="./bot.png" alt="user bot" />
     <div class="bubble bot-bubble">
-        <p>Which book would you like ${firstName}?</p>
+        <p>Which book would you like?</p>
     </div>
 </section>`;
 
         console.log(formWrapper);
-    formWrapper.innerHTML = `<button id="yogaBtn">How to Yoga book</button>
+    formWrapper.innerHTML = 
+    `<button id="yogaBtn">How to Yoga book</button>
     <button id="cookBtn">How to cook book</button>
     <button id="englishBtn">Learn English book</button>`;
   
   
-  let yogaBtn = document.getElementById('yogaBtn');
-  yogaBtn.addEventListener('click', () => choiceBook())
+    let yogaBtn = document.getElementById('yogaBtn');
+    yogaBtn.addEventListener('click', () => choices())
   
-  let cookBtn = document.getElementById('cookBtn');
- cookBtn.addEventListenerById('click',() => choiceBook())
+    let cookBtn = document.getElementById('cookBtn');
+    cookBtn.addEventListener('click', () => choices())  
   
-  let englishBtn = document.getElementById('englishBtn');
-   englishBtn.addEventListenerById('click',() => choiceBook())
+    let englishBtn = document.getElementById('englishBtn');
+    englishBtn.addEventListener('click', () => choices())
 }
 
 /*
@@ -110,30 +111,32 @@ const recognize = (firstName) => {
 
 
 // Question number 3
-const choiceBook = (firstName) => {
+const choices = (msg) => {
   chat.innerHTML += `<section class="bot-msg">
     <img src="./bot.png" alt="user bot" />
     <div class="bubble bot-bubble">
-        <p>Which book would you like ${firstName}?</p>
+        <p>Which book would you like ?</p>
     </div>
 </section>`;
 
-  showMessage(`Would you like bound, pocket book or did you change your mind?`, 'bot');
-  formWrapper.innerHTML =
-        `<button id="boundBtn" type="submit" value="Bound book">Bound Book</button>
-      <button id="pocketBtn" type="submit" value="Pocket book">Pocket Book</button>
-  <button id="neverMindBtn" type="submit" value="Changed my mind">Changed my mind</button>`
+  showMessage(`Love that you're into learning, what would you prefer`, 'bot');
   
+  formWrapper.innerHTML =
+        `<button id="boundBtn">Bound Book</button>
+      <button id="pocketBtn">Pocket Book</button>
+  <button id="neverMindBtn">Changed my mind</button>`
   
   let boundBtn = document.getElementById('boundBtn');
-   boundBtn.addEventListener('click',() => thankYou())
+  boundBtn.addEventListener('click', () => thankYou())
 
   let pocketBtn = document.getElementById('pocketBtn');
-   pocketBtn.addEventListener('click',() => thankYou())
+  pocketBtn.addEventListener('click', () => thankYou())  
 
   let neverMindBtn = document.getElementById('neverMindBtn');
-   neverMindBtn.addEventListener('click',() => changedMind())
+  neverMindBtn.addEventListener('click', () => changedMind())
+
 }
+
 
 //Question number 4
 
@@ -161,6 +164,6 @@ const changedMind = () => {
 </section>`;
 
 
-showMessage(`Okay... Never mind then!`, 'bot');
+showMessage(`Okay... Never mind then`, 'bot');
   
 }
