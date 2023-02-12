@@ -36,9 +36,10 @@ p {
 form {
   display: flex;
   width: 100%;
-  align-items:center;
+  align-items: center;
 }
 
+/*
 input {
   box-sizing: border-box;
   border: none;
@@ -52,6 +53,7 @@ input {
   line-height: 26px;
   flex: 1;
 }
+*/
 
 main {
   margin: 0 auto;
@@ -67,8 +69,8 @@ main {
   flex-direction: column;
 }
 
-/* I realized that if I choose overflow auto instead of overflow scroll, in the chat, then I get rid of the scroll to the side-thng and it makes
-no difference on my buttons overflowing the chat*/
+/* I realized that if I choose overflow auto instead of overflow scroll, in the chat, 
+then I get rid of the scroll to the side-thing*/
 
 .chat {
   flex: 1;
@@ -144,6 +146,7 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
   overflow: hidden;
+  width: 100%;
 }
 
 button:hover {
