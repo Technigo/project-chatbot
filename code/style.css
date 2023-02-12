@@ -163,7 +163,6 @@ main {
 
 .input-wrapper form {
   width: 100%;
-  /* display: flex; */
   align-items: center;
 }
 
@@ -245,7 +244,6 @@ input {
   color: var(--primary-text-color);
 }
 
-/* borrowed */
 select {
   border: none;
   border-radius: 4px;
