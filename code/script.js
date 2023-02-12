@@ -132,7 +132,7 @@ const choiceBook = (firstName) => {
    pocketBtn.addEventListener('click',() => thankYou())
 
   let neverMindBtn = document.getElementById('neverMindBtn');
-   neverMindBtn.addEventListener('click',() => thankYou())
+   neverMindBtn.addEventListener('click',() => changedMind())
 }
 
 //Question number 4
@@ -149,4 +149,18 @@ const thankYou = () => {
 
 showMessage(`Thank you for your purchase! We will ship out right away.`, 'bot');
 
+}
+
+const changedMind = () => {
+
+  chat.innerHTML += `<section class="bot-msg">
+  <img src="./bot.png" alt="user bot" />
+  <div class="bubble bot-bubble">
+      <p>Thank you for your purchase! We will ship out right away.</p>
+  </div>
+</section>`;
+
+
+showMessage(`Okay... Never mind then!`, 'bot');
+  
 }
