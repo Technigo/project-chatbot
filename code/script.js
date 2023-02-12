@@ -89,6 +89,7 @@ const firstQuestion= (firstName) => {
 
 
 botReply(`Welcome to the world of pinapples ${firstName}. What do you need today? Fun Fact, History or rightaway to order?`)
+botReply ('First of all did you know that : The top of a pineapple, after cleaning and drying, can be planted in soil and a new plant will grow. ')
 
 console.log(wrapper);
 
@@ -112,7 +113,7 @@ if (chooseOne === 'fun'){
 
 
 userReply ("yey funfact")
-botReply  ("here is som fun fact")
+botReply  ("Did you know that a pineapple is not an apple, or pine? It’s actually a berry!")
 
 botReply ("Are you ready to order your pineapple? or do you need a little bit of history first?"), 
 
@@ -132,6 +133,8 @@ botReply ("Are you ready to order your pineapple? or do you need a little bit of
 else if (chooseOne === "history") {
 
 userReply('so important to know the history')
+
+botReply ("The pineapple plant is a tropical fruit that is indigenous to South America. Originally coming from the area between southern Brazil and Paraguay.")
 
 
  botReply ("Are you ready to order your pineapple? or mabey read some funfacts first?")
@@ -157,7 +160,7 @@ answerTwo = (type) => {
   console.log ('working1')
   if (type === 'historyEnd'){
 
- botReply(`yey u cose history`)
+ botReply(`More history for the people: The pineapple spread throughout South America, the Caribbean, Central America and Mexico, where it was cultivated by the Mayas and the Aztecs. Columbus came across the pineapple in 1493 and took it back to Europe.`)
 
  botReply ('Are you ready to order your pineapple?')
 
@@ -173,7 +176,8 @@ answerTwo = (type) => {
   console.log('vid fun fact nr 2')
 
 userReply ('More pineapples to the people')
-botReply ('funfunfun')
+botReply ('Pineapples were such a status symbol in 18th century England that you could rent one for the evening to take to a party.')
+
 
   botReply ('Are you ready to order your pineapple?')
 
@@ -194,7 +198,7 @@ const answerThree = (fin) => {
 
   userReply ("Of course I want to order! finaly I get my own Pineapple")
    
-    botReply ('Perfect choose your size here')
+    botReply ('Perfect choose your size here.')
 
     //fixa en knapp för de olika storlekarna sen en form för mail
 wrapper. innerHTML = `
@@ -205,7 +209,7 @@ wrapper. innerHTML = `
     <option value="" selected disabled>--What kind of pineapple do you want=?--</option>
     <option value="Gianormous">Gianormous</option>
     <option value="Medium Pineapple">Not to big</option>
-    <option value="Small Pineapple">Smallr</option>
+    <option value="Small Pineapple">Small</option>
     <option value=" Piña colada">Piña colada</option>
     <option value="frozen pineapple">Frozen </option>
     <option value=" at a beach">At a beach</option>
@@ -223,7 +227,7 @@ botReply (`Yey thanx for orderinge a ${pineapple } write your name and e mail an
 wrapper.innerHTML=
 `<form>
 
-<input id="email" name="email" type="email" required >
+<input id="email" name="email" type="email" required placeholder= "e-mail">
 
 
 <button id="button" > Send </button>
@@ -235,6 +239,7 @@ document.getElementById('button').addEventListener('click', () => thankYou())
 } 
 
 const thankYou =() => {
+botReply ("Pineapples are international symbols of welcome and are a symbolic way of saying “you are perfect” when presented to someone.")
 botReply ('Thank you for ordering hope to see you again!')
 
 }
