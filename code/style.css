@@ -42,7 +42,7 @@ input {
   background: #ffffff;
   color: #000000;
   padding: 16px;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -124,7 +124,7 @@ main {
 }
 
 label {
-  font-size: 16px;
+  font-size: 20px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   color: #080808;

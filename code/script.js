@@ -5,7 +5,7 @@ const input = document.getElementById('input')
 const sendBtn = document.getElementById('send')
 
 
-//GLOBAL 
+//Global
 let botQuestion = 1
 
 const botArtChoice = [`Black, white and abstract`, `Black, white and photography`, `Black and white illustration`, `Color and abstract`, `Color and `];
@@ -42,19 +42,20 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
+
 const nextQuestion = (message) => {
   console.log('questionNumber', botQuestion)
 
   if (botQuestion === 1) {
     userReply(message)
     input.value = ''
-    setTimeout(() => showColorOption(message), 1000)
+    setTimeout(() => showColorOption(message), 1500)
   } else if (botQuestion === 2) {
     userReply(message)
-    setTimeout(() => showDesign(message), 1000)
+    setTimeout(() => showDesign(message), 1500)
   } else if (botQuestion === 3) {
     userReply(message)
-    setTimeout(() => showPainting(message), 1000)
+    setTimeout(() => showPainting(message), 1500)
   } else if (botQuestion === 4) {
     userReply(message)
     setTimeout(goodBye, 1000)
