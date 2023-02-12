@@ -6,18 +6,22 @@ const inputWrapper = document.querySelector("#input-wrapper");
 
 // If you need any global variables that you can use across different functions, declare them here:
 
+//Alexander: This is an object that will be used to store all
+
 let userAnswers = {
   name: "",
   mood: "",
   drink: "",
   toppings: "",
   spoons: "",
-  Location: "",
-  phonenr: "",
   email: "",
 };
 
+//Alexander: this is a message sound, I chose to only have the user input make a sound to not be too noisy
+
 const userSound = new Audio("assets/beep_sms.mp3");
+
+//Alexander: This function is used to refresh at the end of the Chatbot to place another order
 
 const refresh = function () {
   location.reload();
@@ -76,13 +80,15 @@ const handleInput1 = (event) => {
     userAnswers.name = chatInput.value;
     console.log(userAnswers.name);
     showMessage(`${userAnswers.name}`, "user");
-    showMessage(`Hey ${userAnswers.name}`, "bot");
+    showMessage(`Hey ${userAnswers.name}!`, "bot");
     console.log("Handle input name given");
     chatInput.value = ""; //erases the answer field
     showMessage(`...`, "bot");
     setTimeout(() => question1(userAnswers.name), 1000);
   }
 };
+
+//Alexander: Chatbot asking about user's mood
 
 const question1 = (userName) => {
   showMessage(`So ${userAnswers.name}! How are you today?`, "bot");
@@ -103,15 +109,18 @@ const handleInput2 = (event) => {
   setTimeout(() => question2(), 1000);
 };
 
+//Alexander: Chatbot handling user's mood and starting order process
+
 const question2 = (userMood) => {
   console.log(userAnswers.mood);
   console.log(typeof userAnswers.mood);
+  console.log(userAnswers.mood.toLowerCase()); //Alexander: to check if toLowerCase is working as intended
   if (
-    userAnswers.mood == "good" ||
-    userAnswers.mood == "very good" ||
-    userAnswers.mood == "great" ||
-    userAnswers.mood == "amazing" ||
-    userAnswers.mood == "fantastic"
+    userAnswers.mood.toLowerCase() == "good" ||
+    userAnswers.mood.toLowerCase() == "very good" ||
+    userAnswers.mood.toLowerCase() == "great" ||
+    userAnswers.mood.toLowerCase() == "amazing" ||
+    userAnswers.mood.toLowerCase() == "fantastic"
   ) {
     showMessage(`That's great to hear!`, "bot");
     showMessage(
@@ -137,11 +146,13 @@ const question2 = (userMood) => {
     //   <button id="taroBtn">Taro!</button>
     //   <button id="thaiBtn">Thai tea!</button>
     //   `;
+
+    ////Alexander: This is if the user is not feeling great, they will choose between two buttons, randomized or most popular
   } else if (
-    userAnswers.mood === "bad" ||
-    userAnswers.mood == "not great" ||
-    userAnswers.mood === "not good" ||
-    userAnswers.mood === "not so good"
+    userAnswers.mood.toLowerCase() === "bad" ||
+    userAnswers.mood.toLowerCase() == "not great" ||
+    userAnswers.mood.toLowerCase() === "not good" ||
+    userAnswers.mood.toLowerCase() === "not so good"
   ) {
     showMessage(
       `Sorry to hear that but I think we might just have the right thing to cheer you up!`,
@@ -194,6 +205,7 @@ const question2 = (userMood) => {
   // setTimeout(() => question2(userName), 1000);
 };
 
+//Alexander: If the user clicks on random order. The code is not finished but I didn't want to complicated it by coding a randomizer but it's possible.
 const randomTeaClicked = (event) => {
   event.preventDefault(); //prevents refreshing the page
   showMessage(
@@ -212,6 +224,7 @@ const randomTeaClicked = (event) => {
   document.querySelector("#newOrder").addEventListener("click", refresh);
 };
 
+//Alexander: If the user clicks on the most popular order, which is a fixed order updaed in the code directly
 const mostPopularClicked = (event) => {
   event.preventDefault(); //prevents refreshing the page
   showMessage(
@@ -230,6 +243,7 @@ const mostPopularClicked = (event) => {
   document.querySelector("#newOrder").addEventListener("click", refresh);
 };
 
+//Alexander: This is the next step after choosing your drink of choice.
 const handleInput3 = (event) => {
   event.preventDefault(); //prevents refreshing the page
   //userAnswers.order = chatInput.value;
@@ -245,6 +259,7 @@ const handleInput3 = (event) => {
   setTimeout(() => question3(), 2000);
 };
 
+//Alexander: User chooses their topping of choice
 const question3 = () => {
   showMessage("What kind of tealicious toppings are you craving?", "bot");
   inputWrapper.innerHTML = `
@@ -256,6 +271,8 @@ const question3 = () => {
   document.getElementById("option2").addEventListener("click", option2Clicked);
   document.getElementById("option3").addEventListener("click", option3Clicked);
 };
+
+//Alexander: When the option of drink is clicked, the user will get a fun fact to match the option made
 
 const option1Clicked = (event) => {
   event.preventDefault();
@@ -311,6 +328,7 @@ const option3Clicked = (event) => {
   setTimeout(() => question4(), 5000);
 };
 
+//Alexander: This gives the option to choose the quantity of toppings
 const question4 = () => {
   showMessage("How many spoons of toppings would you like?", "bot");
 
@@ -357,6 +375,7 @@ const option2SpoonClicked = (event) => {
   setTimeout(() => question5(), 3000);
 };
 
+//Alexander: User is asked to enter their email
 const question5 = () => {
   showMessage(
     "Please enter your email, you'll get a notification once it's ready to pick up!",
@@ -372,6 +391,8 @@ const question5 = () => {
   document.getElementById("email").addEventListener("submit", handleInput4);
   //   .addEventListener("click", option1SpoonClicked);
 };
+
+//Alexander: Chatbot prints a confirmation message with the user's name and order
 
 const handleInput4 = (event) => {
   event.preventDefault(); //prevents refreshing the page
