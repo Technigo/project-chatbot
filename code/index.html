@@ -12,15 +12,23 @@
   </head>
 
   <body>
-    <h1>Welcome to xxx.</h1>
-    <h2>Ask about xxxx.</h2>
+    <div class="video-container">
+      <video autoplay loop muted>
+        <source
+          src="/code/assets/pexels-apoorv-srivastava-5338469.mp4"
+          type="video/mp4"
+        />
+      </video>
+    </div>
+    <h1>Daily affirmation 🦄</h1>
+    <h2>What will be your personal mantra for the day?</h2>
     <main>
       <section class="chat" id="chat"></section>
 
       <div class="input-wrapper" id="input-wrapper">
         <form id="name-form">
           <label for="name-input">Name</label>
-          <input id="name-input" type="text" />
+          <input id="name-input" type="text" required />
           <button class="send-btn" id="send" type="submit">Send</button>
         </form>
       </div>

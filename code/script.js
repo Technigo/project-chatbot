@@ -55,27 +55,59 @@ sendButton.addEventListener("click", (event) => {
   userName = name.value;
   showMessage(`${userName}`, "user");
   name.value = ""; // clear it from the input
-  setTimeout(() => askZodiacSigns(), 1000); //Here I call the function where I present the dishes to choose from. I will also pass the userName
+  setTimeout(() => askZodiacSigns(), 1000); //calls the function askZodiac
 });
 
+/* sendButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  userName = name.value;
+  showMessage(`${userName}`, "user");
+  name.value = ""; // clear it from the input
+  setTimeout(() => nextQuestion(), 1000); //calls the function askZodiac
+}); */
+
+//Here I call the function where I welcome the user and ask them to tell me their zodiac sign
 const askZodiacSigns = () => {
   console.log("this works");
   showMessage(
     `Welcome ${userName} happy youre here! What's your zodiac sign?`,
     "bot"
   );
+};
+sendButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  userName = name.value;
+  showMessage(`${userName}`, "bot");
+  name.value = ""; // clear it from the input
+  setTimeout(() => nextQuestion(), 1000); //calls the function askZodiac
+});
 
+/* ---------Attempt to add next question with getElementById (not working) -----------------*/
+
+/* const nextQuestion = () => {
+  console.log("next question works!");
+  showMessage("next question is working", bot);
+    setTimeout(() => nextQuestion(), 1000); //calls the function neqtQuestion
+    name.value = ""; // clear it from the input
+  };
   inputWrapper.innerHTML = `
- <form id="zodiac-form">
-          <label for="zodiac-form">Zodiac</label>
+  <form id="zodiac-form">
+          <label for="zodiac-form">Zodiac</label> 
           <input id="zodiac-input" type="text" />
           <button class="send-btn" id="send" type="submit">Send</button>
+          <p> something </p>
         </form>
-   `;
-};
+   `; */
+// ----------------------------------- Attempt end
 
-//
-//
+/* 
+const nextQuestion = () => {
+  showMessage(`OMG youre a ${userName}`, "bot");
+  userName = name.value;
+  name.value = ""; // clear it from the input
+  setTimeout(() => nextQuestion(), 1000); //calls the function askZodiac
+}; */
+
 //  //declare variable using "input-wrapper" from HTML - this can go at the top of the page
 //  //Then write the code to change the HTML in Javascript
 

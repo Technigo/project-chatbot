@@ -6,7 +6,33 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
-  background: #0026ff;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(218, 9, 204, 0.5)),
+    url()
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.video-container {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+}
+
+video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
 }
 
 h1 {
@@ -15,6 +41,7 @@ h1 {
   line-height: 34px;
   color: #fff;
   text-align: center;
+  
 }
 
 h2 {
@@ -141,6 +168,21 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+/* #testBtn {
+  background-color: pink;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 40px;
+  margin-right: 4px;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: "Montserrat";
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease; */
 }
 
 button:hover {
