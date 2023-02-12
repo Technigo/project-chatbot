@@ -1,13 +1,11 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+I made a chatbot with a conversation between a bot and a user based on ideas for toddler activities. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I approached the problem through studying an example chatbot and generating ideas for my own. I then planned the different questions and answers I wanted to have.  I used Javascript. If I had more time I would try to use better techniques to get my code to run the way I want it to. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+sparkly-fudge-0d91e4.netlify.app
