@@ -82,13 +82,14 @@ main {
 input {
   box-sizing: border-box;
   border: none;
-  border-radius: 4px 0 0 4px;
+  border-radius: 4px;
+  margin-right: 12px;
   background: #e5e9ff;
   color: #ff8bff;
   padding: 16px;
   font-size: 16px;
   font-family: 'Josefin Sans';
-  font-weight: 600;
+  font-weight: 500;
   line-height: 26px;
   flex: 1;
 }
@@ -182,7 +183,7 @@ button {
   background-color: #ff8bff;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 16px 40px;
   margin-right: 4px;
   font-size: 16px;
@@ -214,6 +215,7 @@ button:hover {
     padding-top: 20px;
   }
 
+
   .bot-msg img,
   .user-msg img {
     width: 40px;
@@ -225,6 +227,21 @@ button:hover {
     font-size: 8px;
     padding: 10px 18px;
     max-width: 50%;
+  }
+
+  input {
+    border-radius: 6px;
+    padding: 9.5px;
+    font-size: 16px;
+    line-height: 20px;
+    margin-right: 6px;
+  }
+
+  button {
+    border-radius: 6px;
+    padding: 10px 18px;
+    margin-right: 4px;
+    line-height: 20px;
   }
 
 }
