@@ -6,7 +6,6 @@ const nameInput = document.getElementById("name-input");
 const submitButton = document.getElementById("send-btn");
 
 
-
 // If you need any global variables that you can use across different functions, declare them here:
 
 // Declare your functions after this comment
@@ -65,7 +64,6 @@ const nobutton = (event) => {
   setTimeout(() =>idOption(), 1000);  
 }
 
-
 // question 3 from bot.
 const idOption = () => {
   showMessage("Please choose your valid identity document!", 'bot');
@@ -91,7 +89,6 @@ const docSubmitButton = (event) => {
   event.preventDefault();
   
 }
-
 
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -138,6 +135,7 @@ submitButton.addEventListener("click", handleNameInput);
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000);
+
 
 
 
