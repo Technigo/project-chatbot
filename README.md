@@ -1,12 +1,10 @@
-# Project Name
+# Project Chatbot
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+I wanted to do a chatbot that gives the user generated affirmations and be a guide in how to use affirmations. I originally aimed to also offer the user to calculate their personal life path number (by adding their birth day digits until its a single digit). And after that link to where they could read more about what each number means according to the ancient mythology of numerology. These funcions id like to develop more as i get to learn more Javascript and get more familliar how to handle the event listeners.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started out by trying out different ways of using the inner html just to understand how the work flow works in Javascript. I struggled a lot with figuring out in which order to write code in the JS-file to make the answer and input being run in the right order.
 
 ## View it live
 
