@@ -4,9 +4,6 @@ const inputWrapper = document.getElementById("input-wrapper");
 const nameInput = document.getElementById("name-input");
 const form = document.getElementById("name-form");
 
-// const sendBtn = document.getElementById("send-btn")
-const audio = new Audio("drill.mp3");
-
 // Global variables, if you need any, declared here
 let questionStep = 1;
 
