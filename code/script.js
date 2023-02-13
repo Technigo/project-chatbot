@@ -41,7 +41,6 @@ const showMessage = (message, sender) => {
       </section>
     `;
   } else if (sender === "bot") {
-    console.log("This works");
     chat.innerHTML += `
       <section class="bot-msg">
       <img src="assets/sorting-hat.png" alt="Bot" />
