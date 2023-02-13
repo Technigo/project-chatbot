@@ -15,10 +15,6 @@ const userReply = (msg) => {
   showMessage(msg, "user");
 };
 
-const btnRemoveOnClick = () => {
-	inputWrapper.innerHTML = ''
-};
-
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === "user") {
@@ -50,30 +46,23 @@ const nextQuestion = (message) => {
 	if (questionCounter === 1) {
 		userReply(message);
 		input.value = "";
-		btnRemoveOnClick (false);
 		setTimeout(() => ecoAnxietyOptions(message), 1000);
 	} else if (questionCounter === 2) {
 		userReply(message);
-		btnRemoveOnClick(true);
 		setTimeout(() => rateAnxiety(message), 1000);
 	} else if (questionCounter === 3) {
 		userReply(message);
-		btnRemoveOnClick(true);
 		setTimeout(() => nextStepOptions(message), 1000);
 	} else if (questionCounter === 4) {
 		userReply(message);
-		btnRemoveOnClick(true);
 		setTimeout(() => takeActionOptions(message), 1000);
 	} else if (questionCounter === 5) {
 		userReply(message);
-		btnRemoveOnClick(true);
 		setTimeout(() => finalStep(message), 1000);
 	} else if (questionCounter === 6) {
 		userReply(message);
-		btnRemoveOnClick(true);
 		setTimeout(() => anythingElse(message), 1000);
 	} else {
-		btnRemoveOnClick(true);
 		userReply(message);
 		setTimeout(thankYou, 1000);
 	}
@@ -102,9 +91,15 @@ const ecoAnxietyOptions = (name) => {
 			</div>
 		`;
 
-    document
-		.querySelectorAll(".anxBtn")
-		.forEach((button) => button.addEventListener("click", () => nextQuestion(button.value)));
+		document
+			.querySelectorAll(".anxBtn")
+			.forEach((button) => button.addEventListener("click", () => nextQuestion(button.value)));
+
+		document
+			.getElementById("anxContainer")
+			.addEventListener("click", () => {
+			anxContainer.remove();
+			});
   	};
 };
 
@@ -139,12 +134,6 @@ const rateAnxiety = (userResponse) => {
 			.forEach((button) =>
 			button.addEventListener("click", () => nextQuestion(button.value))
 			);
-
-		/*document
-			.getElementById("radioRatingBtns")
-			.addEventListener("click", () => {
-			radioRatingBtns.remove();
-			});*/
 	};
 	} else {
     // IF NO - FOLLOW UP QUESTION - WITH THREE BUTTONS
@@ -191,12 +180,6 @@ const nextStepOptions = (rating) => {
 			.forEach((button) =>
 			button.addEventListener("click", () => nextQuestion(button.value))
 			);
-
-		document
-			.getElementById("nextStepContainer")
-			.addEventListener("click", () => {
-			nextStepContainer.remove();
-			});
     };
   
 	} else if (rating > 6 && rating <= 10) {
@@ -222,12 +205,8 @@ const nextStepOptions = (rating) => {
 		document
 			.querySelectorAll(".worstCaseBtn")
 			.forEach((button) => button.addEventListener("click", () => nextQuestion(button.value)));
-
-		document.getElementById("worstCaseBtns").addEventListener("click", () => {
-			worstCaseBtns.remove();
-		});
-    };
-	
+		};
+    
 	} else {
     inputWrapper.innerHTML = "";
     botReply(`I understand!`);
@@ -279,11 +258,6 @@ const takeActionOptions = (nextStep) => {
 			.querySelectorAll(".takeActionBtn")
 			.forEach((button) => button.addEventListener("click", () => nextQuestion(button.value)));
 
-		document
-			.getElementById("takeActionContainer")
-			.addEventListener("click", () => {
-			takeActionContainer.remove();
-		});
     };
 	} else if (nextStep === "Continue as usual") {
     botReply(`Alright`);
@@ -327,10 +301,6 @@ const takeActionOptions = (nextStep) => {
 		document
 			.querySelectorAll(".nextStepBtn23")
 			.forEach((button) => button.addEventListener("click", () => takeActionOptions(button.value)));
-
-    	document.getElementById("nextStepBtns").addEventListener("click", () => {
-        nextStepBtns.remove();
-      	});
     };
   }
 };
@@ -471,10 +441,23 @@ const thankYou = (value) => {
 		`), 1000);
 };
 
-// Set up your eventlisteners here
-submit.addEventListener("click", () => nextQuestion(input.value));
 
-inputWrapper.addEventListener("click", btnRemoveOnClick);
+const btnRemoveOnClick = () => {
+	if (questionCounter === 2 || questionCounter === 3 || questionCounter === 4 || questionCounter === 5 || questionCounter === 6)
+		inputWrapper.onclick = () => {
+		inputWrapper.innerHTML = '';
+	};
+};
+
+// Set up your eventlisteners here
+
+//Tried some stuff out but it didn't work
+/*inputWrapper.onclick = () => {
+	inputWrapper.innerHTML = ''
+	
+inputWrapper.addEventListener("click", btnRemoveOnClick);}*/
+
+submit.addEventListener("click", () => nextQuestion(input.value));
 
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(helloUser, 1000);

@@ -159,6 +159,7 @@ button:hover {
   text-decoration: none;
   color:white;
   font-weight: 700;
+  width: 100%;
 }
 
 .worstCaseContainer {
@@ -166,7 +167,7 @@ button:hover {
   justify-content: center;
 }
 
-.takeActionBtn, .nextStepBtn, #nextStepBtn1, .nextStepBtn23, #nextStepBtn1, .nextStepBtn23 {
+.takeActionBtn, .nextStepBtn, #nextStepBtn1, .nextStepBtn23, #nextStepBtn1, .nextStepBtn23, .politicsBtn, .willBtn, .betterBtn {
   height:100%;
   padding: 3px 5px;
   margin-right: 4px;
@@ -204,6 +205,7 @@ button:hover {
 
 .rate {
   cursor: pointer;
+  accent-color: #228B22;
 }
 
 label {
@@ -221,6 +223,7 @@ a {
   cursor: pointer;
   transition: all 0.3s ease;
   height:80%;
+  font-weight: 700;
 }
 
 @media (min-width:667px) {
@@ -259,6 +262,8 @@ a {
     padding: 16px 40px;
     margin-right: 4px;
     line-height: 26px;
+    font-weight: 700;
+
   }
 
   .radioContainer {
@@ -299,8 +304,14 @@ a {
     height: 100px;
   }
 
-  .takeActionBtn, .nextStepBtn, #nextStepBtn1, .nextStepBtn23, #nextStepBtn1, .nextStepBtn23, .worstCaseBtn {
+  .takeActionBtn, .nextStepBtn, .nextStepBtn23, .nextStepBtn23, .worstCaseBtn, .politicsBtn, .willBtn, .betterBtn {
     padding: 10px 20px;
     margin-right: 8px;
   }
+
+#nextStepBtn1, #nextStepBtn1, #anythingBtns, #contact {
+    height:100%;
+    padding: 10px 20px;
+    margin-right: 8px;
+}
 }
