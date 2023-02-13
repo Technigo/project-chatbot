@@ -376,7 +376,7 @@ const finalStep = (finalDecision) => {
     const delayHTML = () => {
       	inputWrapper.innerHTML = `
 			<form class="politicsConatainer">
-				<button class="politicsBtn" type="button" Value="Yes, I already have a proposal on how to decrease air traffic!">Yes, I already have a proposal on how to limit air traffic!</button>
+				<button class="politicsBtn" type="button" Value="Yes, I will limit air traffic!">Yes, I will limit air traffic!</button>
 				<button class="politicsBtn" type="button" Value="No, it's not going to happen">No, it's not going to happen</button>
 			</form>
 		`;
