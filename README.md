@@ -4,7 +4,7 @@ I wanted to do a chatbot that gives the user generated affirmations and be a gui
 
 ## The problem
 
-I started out by trying out different ways of using the inner html just to understand how the work flow works in Javascript. I struggled a lot with figuring out in which order to write code in the JS-file to make the answer and input being run in the right order.
+I started out by trying out different ways of using the inner html just to understand how the work flow works in Javascript. I struggled a lot with figuring out in which order to write code in the JS-file to make the answer and input being run in the right order. Just the process of grasping how to control the workflow in the eventlisteners took 99% of the work i did throughout the week. And i just barely figured it out when deploying the site. With that said, this chatbot still is in the very embryo state as we speak.
 
 ## View it live
 
