@@ -1,13 +1,13 @@
-# Project Name
+# Chat-bot
+To build a chat-bot, The focus is to practice the JavaScript parts,also to hook it up with the HTML.(practice conditionals, variables,functions)
 
-Replace this readme with your own information about your project.
+
 
 Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+missunderstood the task, can not to make one function work. so it is very importmant to read task carefully.
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://h-hotelchatbot.netlify.app/
