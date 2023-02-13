@@ -1,14 +1,15 @@
-// Variables that point to selected DOM elements
+// Variables that point to selected DOM elements (declaring variables)
 const chat = document.getElementById("chat");
 const name = document.getElementById("name-input");
 const sendButton = document.getElementById("send");
 const inputWrapper = document.getElementById("input-wrapper");
+const nameForm = document.getElementById("name-form");
 
 // If you need any global variables that you can use across different functions, declare them here:
 
 let questionNumber = 1;
 
-let userName = "";
+let userName = ""; //this means that i want userNamne to be available in any of our functions (and not only in the funciotn where it is declared)
 
 // Declare your functions after this comment
 
@@ -52,52 +53,75 @@ const greetUser = () => {
 // Initial button click, here I should get the name entered
 sendButton.addEventListener("click", (event) => {
   event.preventDefault();
-  userName = name.value;
+  userName = name.value; //username is here reassigned to mean what we want it to mean in this specific function
   showMessage(`${userName}`, "user");
   name.value = ""; // clear it from the input
   setTimeout(() => askZodiacSigns(), 1000); //calls the function askZodiac
 });
 
-/* sendButton.addEventListener("click", (event) => {
-  event.preventDefault();
-  userName = name.value;
-  showMessage(`${userName}`, "user");
-  name.value = ""; // clear it from the input
-  setTimeout(() => nextQuestion(), 1000); //calls the function askZodiac
-}); */
-
 //Here I call the function where I welcome the user and ask them to tell me their zodiac sign
 const askZodiacSigns = () => {
   console.log("this works");
   showMessage(
-    `Welcome ${userName} happy youre here! What's your zodiac sign?`,
+    `OMG ${userName} is my favourite name in the whole world 🥳!! What's your zodiac sign?`,
     "bot"
   );
+  setTimeout(() => nextQuestion(), 1000); //calls the function nextQuestion
 };
+
+const nextQuestion = () => {
+  //this function is whats defining what we meen with the function nextQuestion
+  console.log("next question works!");
+  /*  showMessage(´next question is working´ , "user"); */
+
+  inputWrapper.innerHTML = `
+  <form id="zodiac-form">
+          <label for="zodiac-form">Zodiac</label> 
+          <input id="zodiac-input" type="text" />
+          <button class="send-btn" id="send-zodiacform" type="submit">Send</button>
+  </form>
+   `;
+  botZodiacReply();
+};
+
+//This is all one and the same funciton (botZodiacReply)
+
+const botZodiacReply = () => {
+  console.log("bot reply works");
+  const zodiacForm = document.getElementById("zodiac-form"); //declaring the variables for the form
+  const zodiacInput = document.getElementById("zodiac-input"); //declaring the variables for the input of the form
+  const sendZodiacForm = document.getElementById("send-zodiacform"); //declaring the variables for the input of the send zodiac form (button)
+
+  sendZodiacForm.addEventListener("click", (event) => {
+    event.preventDefault();
+    console.log("zodiac buttton is working");
+    const zodiacSign = zodiacInput.value;
+    showMessage(
+      `Oh fantasctic! ${zodiacSign} are amazing at doing affirmation work 🌟 So you are basically half way there 😉!`,
+      "bot"
+    );
+    zodiacInput.value = ""; // clear it from the input
+  });
+};
+
+/* 
 sendButton.addEventListener("click", (event) => {
   event.preventDefault();
   userName = name.value;
   showMessage(`${userName}`, "bot");
   name.value = ""; // clear it from the input
-  setTimeout(() => nextQuestion(), 1000); //calls the function askZodiac
-});
+  setTimeout(() => nextQuestion(), 1000); //calls the function next
+}); */
+
+/* const nextQuestion = () => {
+  showMessage(´next question!´ , "bot"
+  );
+}; */
+/* nameForm.addEventListener('submit', (event) => {
+  event.preventDefault()   //Hindrar från att formen autosparar innan vi har hunnit köra vår kod. */
 
 /* ---------Attempt to add next question with getElementById (not working) -----------------*/
 
-/* const nextQuestion = () => {
-  console.log("next question works!");
-  showMessage("next question is working", bot);
-    setTimeout(() => nextQuestion(), 1000); //calls the function neqtQuestion
-    name.value = ""; // clear it from the input
-  };
-  inputWrapper.innerHTML = `
-  <form id="zodiac-form">
-          <label for="zodiac-form">Zodiac</label> 
-          <input id="zodiac-input" type="text" />
-          <button class="send-btn" id="send" type="submit">Send</button>
-          <p> something </p>
-        </form>
-   `; */
 // ----------------------------------- Attempt end
 
 /* 

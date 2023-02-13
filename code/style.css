@@ -36,16 +36,17 @@ video {
 }
 
 h1 {
-  font-weight: bold;
+  
   font-size: 44px;
   line-height: 34px;
   color: #fff;
   text-align: center;
+
   
 }
 
 h2 {
-  font-weight: bold;
+  
   font-size: 24px;
   line-height: 34px;
   color: #fff;
@@ -59,6 +60,10 @@ p {
   line-height: 28px;
   margin: 0;
 }
+
+.header-text {
+  text-align: center;
+} 
 
 input {
   box-sizing: border-box;
@@ -86,6 +91,7 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(134deg, #3941d2, #a6484854);
 }
 
 .chat {
@@ -151,7 +157,7 @@ label {
   font-size: 16px;
   font-family: "Montserrat";
   font-weight: 500;
-  color: #0026ff;
+  color: white;
   margin-right: 20px;
 }
 
