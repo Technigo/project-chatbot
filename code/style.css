@@ -130,6 +130,16 @@ main {
   justify-content: center;
 }
 
+input[type=text]:focus-visible {
+  outline: none;
+  background-color: #d4f0d4;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+}
+
 button {
   background-color: #228B22;
   color: white;
