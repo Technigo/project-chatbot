@@ -137,7 +137,7 @@ input[type=text]:focus-visible {
 
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
-    transition: background-color 600000s 0s, color 600000s 0s;
+  transition: background-color 600000s 0s, color 600000s 0s;
 }
 
 button {
@@ -207,6 +207,10 @@ button:hover {
   appearance: none;
 }
 
+select:focus-visible {
+  outline: none;
+}
+
 .radioContainer {
   justify-content: center;
   padding: 0 0;
@@ -233,7 +237,7 @@ a {
   cursor: pointer;
   transition: all 0.3s ease;
   height:80%;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 @media (min-width:667px) {
@@ -323,8 +327,15 @@ a {
     margin-right: 8px;
   }
 
-#nextStepBtn1, #nextStepBtn1, #anythingBtns, #contact {
+#nextStepBtn1, #nextStepBtn1, #contact {
     padding: 10px 20px;
     margin-right: 8px;
 }
+
+#anythingYes, #anythingNo {
+  height: 100%;
+  padding: 16px 40px;
+  margin-right: 8px;
+}
+
 }
