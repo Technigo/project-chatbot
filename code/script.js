@@ -365,7 +365,7 @@ const finalStep = (finalDecision) => {
     setTimeout(() => botReply(`Here are some politacal parties focused on the environment`), 3000);
 
     setTimeout(() => botReply(`
-                <button class="chat-link" onclick=" window.open('https://sv.wikipedia.org/wiki/Gr%C3%B6na_partier/','_blank')">Green parties in Europe</button>
+                <button class="chat-link" onclick=" window.open('https://en.wikipedia.org/wiki/European_Green_Party/','_blank')">Green parties in Europe</button>
                 <button class="chat-link" onclick=" window.open('https://europeangreens.eu/','_blank')">European Greens</button>
                 <button class="chat-link" onclick=" window.open('https://www.riksdagen.se/sv/ledamoter-partier/miljopartiet/','_blank')">The Green Party</button>
     `), 4000);
