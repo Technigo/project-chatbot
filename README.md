@@ -8,4 +8,4 @@ I started out by trying out different ways of using the inner html just to under
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://radiant-raindrop-6805bd.netlify.app/
