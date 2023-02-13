@@ -49,6 +49,8 @@ const greetUser = () => {
   chat.scrollTop = chat.scrollHeight;
 };
 
+//Bot says hello to user and asks the user which their favorite animal is by providing a choice of buttons.
+//The value from the button choice is stored in the global variable Favorite.
 const favoritePersonality = () => {
   showMessage(
     `Hello ${userName}! Which cat personality is your favorite?`,
@@ -71,15 +73,16 @@ const favoritePersonality = () => {
   chat.scrollTop = chat.scrollHeight;
 };
 
+//Bot asks which type of cat the user prefers by providing a list of choices. The value is stored.
 const preferredType = () => {
   showMessage(`Which type of cat do you prefer`, "bot");
   inputWrapper.innerHTML = `
 <select id="select">
 <option disabled selected value="">Select your favorite type of cat</option>
-<option id="domestic-long-haired-cat" value="domestic-long-haired-cat">Domestic Long-Haired Cat/Non-Breed</option>
-<option id="domestic-short-haired-cat" value="domestic-short-haired-breed">Domestic Short-Haired Breed</option>
-<option id="short-haired-breed" value="short-haired-breed">Short-Haired Breed</option>
-<option id="long-haired-breed" value="long-haired-breed">Long-Haired Breed</option>
+<option id="domestic-long-haired-cat" value="Domestic Long-Haired Cat/Non-Breed">Domestic Long-Haired Cat/Non-Breed</option>
+<option id="domestic-short-haired-cat" value="Domestic Short-Haired Breed">Domestic Short-Haired Breed</option>
+<option id="short-haired-breed" value="Short-Haired Breed">Short-Haired Breed</option>
+<option id="long-haired-breed" value="Long-Haired Breed">Long-Haired Breed</option>
    </select>
 `;
   const select = document.getElementById("select");
@@ -87,6 +90,8 @@ const preferredType = () => {
   chat.scrollTop = chat.scrollHeight;
 };
 
+//The bot shows the user their previous choice of favorite animal and asks if the user
+//would like to adopt a cat by providing a choice of buttons.
 const adopt = () => {
   showMessage(
     `Great! We have found the perfect ${favorite} cat for you. 
@@ -121,6 +126,7 @@ const farewellMessage = (message) => {
   chat.scrollTop = chat.scrollHeight;
 };
 
+//Handles the order of which function to run.
 const handleInput = (message) => {
   message.preventDefault();
   currentQuestion++;
@@ -135,10 +141,12 @@ const handleInput = (message) => {
   }
 };
 
+//Handles the user input for user name.
 const handleUserName = () => {
   // console.log(`${inputValue.value}`);
   const input = inputValue.value;
 
+  //Changes user input of the first letter to uppercase.
   const capitalized = input.charAt(0).toUpperCase() + input.slice(1);
   userName = capitalized;
   showMessage(`${userName}`, "user");
@@ -146,6 +154,7 @@ const handleUserName = () => {
   setTimeout(favoritePersonality, setTimeOutTime);
 };
 
+//Shows user's choice of favorite cat personality in a string.
 const handleFavoritePersonality = (chosenFavorite) => {
   favorite = chosenFavorite;
   showMessage(`My favorite cat personality is ${favorite}`, "user");
@@ -153,6 +162,7 @@ const handleFavoritePersonality = (chosenFavorite) => {
   setTimeout(preferredType, setTimeOutTime);
 };
 
+////Shows user's preference of type of cat in a string.
 const handlePreferredType = (preferredCatType) => {
   console.log(`${inputValue.value}`);
   showMessage(`I prefer the ${preferredCatType}`, "user");
@@ -160,6 +170,7 @@ const handlePreferredType = (preferredCatType) => {
   setTimeout(adopt, setTimeOutTime);
 };
 
+//Conditionals run different functions and messages based on the user's button choices yes, maybe or no.
 const handleAdoptACat = (adopt) => {
   if (adopt === "yes") {
     showMessage("Yes!", "user");
