@@ -5,9 +5,6 @@ const nameform = document.getElementById("name-form");
 const nameInput = document.getElementById("name-input");
 const submitButton = document.getElementById("send-btn");
 
-
-// If you need any global variables that you can use across different functions, declare them here:
-
 // Declare your functions after this comment
 const handleNameInput = (event) => {
   
