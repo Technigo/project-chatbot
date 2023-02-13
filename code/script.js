@@ -19,12 +19,12 @@ const handleNameInput = (event) => {
   showMessage(name, 'user');
   nameInput.value = "";
 
-  // creat if...else to practice
+  // creat if...else to practice conditionals
   let botsay="";
   if(name === "Mr.P"){
     
     botsay = `Hi! ${name}! Nice to meet you, Do you have a reservation!`;
-    //another way to setTimeout, but I think hard for people to read. so create a variable botsay.
+    //another way to setTimeout, but I think it's hard for people to read. so create a variable botsay.
     ////setTimeout(()=>showMessage(`Hi ${name}! You don't need a room card`,"bot"),1000);
   
   }else if(name === "Zlatan"){
@@ -89,7 +89,7 @@ const docSubmitButton = (event) => {
  
   showMessage("Thank you for your booking! GoodBye!", "bot");
   event.preventDefault();
-
+  
 }
 
 
