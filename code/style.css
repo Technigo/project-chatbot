@@ -187,13 +187,14 @@ video {
   }
 
   h1 {
-    font-size: 20px;
+    font-size: 25px;
     line-height: 20px;
     margin-bottom: 20px;
     letter-spacing: 2px;
   }
 
   h2 {
+    font-size: 15px;
     line-height: 20px;
     margin-bottom: 25px;
     letter-spacing: 2px;
