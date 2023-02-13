@@ -263,7 +263,11 @@ a {
     margin-right: 4px;
     line-height: 26px;
     font-weight: 700;
+    height:100%;
+  }
 
+  #submit,  #name-input {
+    height:80%;
   }
 
   .radioContainer {
@@ -310,7 +314,6 @@ a {
   }
 
 #nextStepBtn1, #nextStepBtn1, #anythingBtns, #contact {
-    height:100%;
     padding: 10px 20px;
     margin-right: 8px;
 }
