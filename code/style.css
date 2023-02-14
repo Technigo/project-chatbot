@@ -142,7 +142,7 @@ main {
 .input-wrapper form {
   display: flex;
   box-sizing: border-box;
-  height: 70px;
+  height: 60px;
 }
 
 input[type=text]:focus-visible {
@@ -236,6 +236,7 @@ select:focus-visible {
   border-radius: 4px;
   align-items: center;
   box-sizing: border-box;
+  width:80%;
 }
 
 .rate {
