@@ -13,7 +13,6 @@ let userName;
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
   if (sender === 'user') {
-    console.log("Now the user is replying");
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -24,7 +23,6 @@ const showMessage = (message, sender) => {
     `;
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html section inside the chat with the posted message
   } else if (sender === 'bot') {
-    console.log("Now the bot is asking a question");
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot-image.png" alt="Bot" />
@@ -46,17 +44,15 @@ const greetUser = () => {
 
 // Initial button click, here I should get the name entered
 sendBtn.addEventListener('click', (event) => {
+  event.preventDefault() 
   if (nameInput.value === "" || undefined) {
     showMessage("Sorry I did not catch that, please enter your name!", 'bot')
     event.preventDefault()
   } else {
-    event.preventDefault() //this is so the page do not reload.
-
-    // Store the value in a variable so I can access it after we 
-    // clear it from the input. The variable were the value will be stored is outside of this function to be able to use it in more places. In here it get assigned
+    // Store the value in a variable so I can access it after we clear it from the input. 
+    // The variable were the value will be stored is outside of this function to be able to use it in more places. In here it get assigned
     userName = nameInput.value
     showMessage(`${userName}`, 'user');
-
     // Clears the input field
     nameInput.value = ''
     //Here I call the function where I present the dishes to choose from. I will also pass the userName
@@ -211,7 +207,7 @@ const finalAction = (reply) => {
   }
 }
 
-// Set up your eventlisteners here
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
