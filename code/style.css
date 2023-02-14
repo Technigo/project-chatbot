@@ -234,6 +234,8 @@ select:focus-visible {
   justify-content: center;
   padding: 0 0;
   border-radius: 4px;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .rate {
@@ -245,7 +247,6 @@ label {
   font-weight: 700;
   color: #228B22;
   font-size: 15px;
-  align-self: center;
   margin: 0 2px;
 }
 
