@@ -307,12 +307,13 @@ a {
   }
 
   .radioContainer {
-    justify-content: center;
-    padding: 0 10px;
+    justify-content: stretch;
+    align-items: stretch;
   }
 
 label {
   display: block;
+  align-self: center;
   font-weight: 700;
   color: #228B22;
   font-size: 16px;
