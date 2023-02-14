@@ -149,7 +149,7 @@ setTimeout(() => lastQuestion(), 1000);
 }
 
 const lastQuestion = () => {
-  botReply("Are you happy with this recommendation?");
+  botMessage("Are you happy with this recommendation?");
   inputWrapper.innerHTML=`
   <button id="yesBtn" value="yes">Yes, I love it!</button>
   <button id="noBtn" value="no">No, I want to try again!</button>
