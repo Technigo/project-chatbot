@@ -10,4 +10,4 @@ If I had more time I would definitely add more jokes, make the chatbot send a me
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://theknockknockmachine.netlify.app/
