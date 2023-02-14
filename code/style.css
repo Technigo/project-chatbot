@@ -244,10 +244,6 @@ select:focus-visible {
 
 label {
   display: none;
-  font-weight: 700;
-  color: #228B22;
-  font-size: 15px;
-  margin: 0 2px;
 }
 
 a {
@@ -315,7 +311,7 @@ a {
     padding: 0 10px;
   }
 
-  label {
+label {
   display: block;
   font-weight: 700;
   color: #228B22;
