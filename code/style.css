@@ -1,149 +1,105 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
+  background-color: rgb(211, 181, 198);
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  margin: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 h1 {
-  font-weight: bold;
   font-size: 44px;
-  line-height: 34px;
-  color: #fff;
+  color: rgb(255, 251, 251);
   text-align: center;
+  text-shadow: 3px 3px #4b3a48;
+}
+section#chat {
+  overflow-x:hidden;
 }
 
-h2 {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
-  margin-bottom: 36px;
+main {
+  background: rgb(180, 141, 164);
+  width: 100%;
+  max-width: 700px;
+  height: 600px;
+  margin: auto;
+  border-radius: 40px;
+  padding: 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-bottom: 20px;
 }
 
-p {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 28px;
-  margin: 0;
+form {
+  display: flex;
+  width: 100%;
+  align-items: center;
 }
 
 input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: white;
+  color: black;
   padding: 16px;
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 600;
-  line-height: 26px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 100px;
+  font-size: 14px;
+  line-height: 24px;
   flex: 1;
-}
-
-main {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 700px;
-  height: 600px;
-  border-radius: 30px;
-  background: #fff;
-  padding: 20px 24px;
-  padding-top: 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-}
-
-.chat {
-  flex: 1;
-  display: flex;
-  justify-content: flex-start;
-  overflow: scroll;
-  flex-direction: column;
-  padding-bottom: 16px;
-}
-
-.bot-msg {
-  display: flex;
-  margin: 16px 8px 0 0;
-  flex-shrink: 0;
-}
-
-.user-msg {
-  display: flex;
-  justify-content: flex-end;
-  margin: 16px 0 0 8px;
-  flex-shrink: 0;
-}
-
-.bot-msg img,
-.user-msg img {
-  width: 60px;
-  height: 60px;
-}
-
-.bubble {
-  background: #e5e9ff;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 26px;
-  padding: 16px 24px;
-  color: #0026ff;
-  max-width: 40%;
-}
-
-.bot-bubble {
-  border-radius: 0px 26px 26px 26px;
-  margin-left: 8px;
-}
-
-.user-bubble {
-  border-radius: 26px 0 26px 26px;
-  margin-right: 8px;
-}
-
-.input-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.input-wrapper form {
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-label {
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
-  color: white;
+  background-color: rgb(211, 181, 198);
+  color: black;
   border: none;
   border-radius: 4px;
   padding: 16px 40px;
-  margin-right: 4px;
-  font-size: 16px;
-  line-height: 26px;
-  font-family: 'Montserrat';
-  font-weight: 500;
+  font-size: 100;
+  font-weight: 14;
+  line-height: 26x;
+  margin: 5px;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
-button:hover {
-  opacity: 0.9;
-  transition: all 0.2s ease;
+.chat {
+  overflow: scroll;
+}
+.user-msg {
+  display: flex;
+  flex-shrink: 0;
+  margin: 16px 0 0 8px;
+  /* border: 1px solid red; */
+  justify-content: flex-end;
+}
+.bot-msg {
+  display: flex;
+  flex-shrink: 0;
+  margin: 16px 0 0 8px;
+}
+
+.user-msg img,
+.bot-msg img {
+  width: 40px;
+  height: 40px;
+}
+
+.bubble {
+  background: rgb(247, 244, 246);
+  max-width: 40%;
+  padding: 16px 24px;
+  color: black;
+  font-weight: 100px;
+  font-size: 15px;
+  line-height: 26px;
+}
+
+.user-bubble {
+  border-radius: 24px 0 24px 24px;
+  margin-right: 8px;
+}
+.bot-bubble {
+  border-radius: 0 24px 24px 24px;
+  margin-left: 8px;
 }
