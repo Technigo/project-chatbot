@@ -114,7 +114,7 @@ const showRecipe = (food) => {
     <button id="hawBtn"><a href="https://www.simplyrecipes.com/recipes/hawaiian_pizza_with_cauliflower_crust/" target="_blank">Pizza Hawaii</a></button>
     `
 // Had an else here, but then the next question kept skipping to this option
-  } else if (food === 'Vegetarian'){
+  } else if (food === 'Vegetarian') {
     botReply(`In a veggie mood? Sounds good! Please click on the dish you'd like to try.`)
     inputWrapper.innerHTML = `
     <button id="burBtn"><a href="https://www.simplyrecipes.com/black-bean-smash-burgers-recipe-6979384/" target="_blank">Veggie Burger</a></button>
