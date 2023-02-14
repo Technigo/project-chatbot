@@ -18,8 +18,6 @@ The focus is to practice the JavaScript parts listed below, but also to hook it 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
-
 I was studying multiple example chatbots and generating ideas for my own bot. 
 Then i planned the different choices/answers/questions and where them will lead the user.
 If I had more time I would try to implement some more styling and a better "end" to the conversation.
