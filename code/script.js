@@ -201,7 +201,7 @@ const nextStepOptions = (rating) => {
 			<form class="worstCaseContainer" id="worstCaseBtns">
 				<button class="worstCaseBtn" id="worstCaseBtn1" type="button" value="polar ice melting">Polar ice melting</button>
 				<button class="worstCaseBtn" id="worstCaseBtn2" type="button" value="natural disasters">Natural disasters</button>
-				<button class="worstCaseBtn" id="worstCaseBtn3" type="button" value="numanity itself">Humanity itself</button>
+				<button class="worstCaseBtn" id="worstCaseBtn3" type="button" value="humanity itself">Humanity itself</button>
 				<button class="worstCaseBtn" id="worstCaseBtn4" type="button" value="economic collapse">Economic collapse</button>
 			</form>
 		`;
@@ -320,7 +320,7 @@ const finalStep = (finalDecision) => {
 		setTimeout(() => botReply(`Hold on`), 1000);
 		setTimeout(() => botReply(`Here are some therapists working with climate anxiety`), 3000);
 		setTimeout(() => botReply(`
-              <button class="chat-link" onclick=" window.open('https://bokapsykolog.se/klimatangest/','_blank')">Book a psykologist</button>
+              <button class="chat-link" onclick=" window.open('https://bokapsykolog.se/klimatangest/','_blank')">Book a psychologist</button>
               <button class="chat-link" onclick=" window.open('https://www.klimatpsykologerna.se/pageom/','_blank')">Climate therapists</button>
             `), 5000);
 		setTimeout(() => botReply(`Do you feel better now?`), 10000);
@@ -444,7 +444,9 @@ const thankYou = (value) => {
 	botReply(`Thank you! Please, feel free to reach out to us if you have further questions`);
 
 	setTimeout(() => (inputWrapper.innerHTML = `
-  			<button id="contact" class="contactUs" type="email"><a href="mailto:email@email.de" taget="_blank">Contact us</a></button>
+			<form>
+  				<button id="contact" class="contactUs" type="email"><a href="mailto:email@email.de" taget="_blank">Contact us</a></button>
+			</form>
 		`), 1000);
 };
 
