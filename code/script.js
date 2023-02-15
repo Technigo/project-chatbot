@@ -18,10 +18,9 @@ const userSound = () => {
 const throatsing = new Audio('./assets/introsong.mp3')
 const introSound = () => {
       throatsing.play()
-      throatsing.volume = 0.2
+      throatsing.volume = 0.1
     }
 
-let questionNumber = 1
 
 //Bot/user reply with sounds shortened function
 const botReply = (msg) => {
@@ -134,7 +133,7 @@ const showFortune = (type) => {
 const chosenFortune = (type) => {
   questionNumber++
   
-  if (type === 'myFuture') {
+  if (type === 'future') {
     setTimeout(botReply(
       `*Excessive flipping of cards*
       ...There's yet more work to be done for you,
