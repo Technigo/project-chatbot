@@ -121,25 +121,25 @@ const showFortune = (type) => {
         <option value="..wait, I just want to be big">Wait, I think I just want to be big</option>
       </select>
     `
+    const select = document.getElementById('select')
+  select.addEventListener('change', () => nextQuestion('Tell me of my ' + select.value))
   } else {
     botReply('Very well, be gone then.'),
     setTimeout(location.reload(), 3000)
   }
 
-  const select = document.getElementById('select')
-  select.addEventListener('change', () => nextQuestion('Tell me of my ' + select.value))
 }
 
 const chosenFortune = (type) => {
   questionNumber++
   
-  if (type === 'future') {
+  if (type === "future") {
     setTimeout(botReply(
       `*Excessive flipping of cards*
       ...There's yet more work to be done for you,
       I see greatness at the cost of great strife...
       `), 1000)
-  } else if (type === 'family') {
+  } else if (type === "family") {
     setTimeout(botReply(
       `*Closes his eyes, turns his head facing upwards hymning something eerie while rubbing his crystal ball*
       ...Hmmm...your family...You must nurture all relationships. 
