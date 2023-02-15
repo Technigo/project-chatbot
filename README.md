@@ -7,4 +7,4 @@ Mostly I've been struggling with changing functions from buttons to number input
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://zoltarchatbot.netlify.app/
