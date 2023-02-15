@@ -121,13 +121,14 @@ const showFortune = (type) => {
         <option value="..wait, I just want to be big">Wait, I think I just want to be big</option>
       </select>
     `
-    const select = document.getElementById('select')
-  select.addEventListener('change', () => nextQuestion('Tell me of my ' + select.value))
   } else {
     botReply('Very well, be gone then.'),
     setTimeout(location.reload(), 3000)
   }
 
+  const select = document.getElementById('select')
+  select.addEventListener('change', () => nextQuestion(select.value))
+  console.log(select.value)
 }
 
 const chosenFortune = (type) => {
