@@ -5,8 +5,10 @@ const form = document.getElementById("name-form");
 const submit = document.getElementById("submit");
 const inputWrapper = document.getElementById("input-wrapper");
 
+//the varible questionCounter starts on 1;
 let questionCounter = 1;
 
+//Functions to write what the bot and user say in shorter code
 const botReply = (msg) => {
 	showMessage(msg, "bot");
 };
@@ -37,15 +39,20 @@ const showMessage = (message, sender) => {
       </section>
     `;
 	}
+	//To make the chat scroll down when there are new messages
 	chat.scrollTop = chat.scrollHeight;
 };
 
+//A function to count the questions and send to the next to next question based on that counting
 const nextQuestion = (message) => {
 	console.log("questionCounter", questionCounter);
 
 	if (questionCounter === 1) {
+		//user message will be display in the chat bubble (makes code shorter)
 		userReply(message);
+		//will display the user's name as a response to the helloUser function
 		input.value = "";
+		//Disables the function btnRemoveOnClick (in the end of the document) as I don't want the inputWrapper to be cleared after helloUser
 		btnRemoveOnClick(false);
 		setTimeout(() => ecoAnxietyOptions(message), 1000);
 	} else if (questionCounter === 2) {
@@ -69,20 +76,24 @@ const nextQuestion = (message) => {
 	}
 };
 
+//The first message which show up when user enters the page
 const helloUser = () => {
 	questionCounter = 1;
 	botReply(`Hello there, What's your name?`);
+	//disables the page to be renewed when user puts in their name
 	form.addEventListener("submit", (event) => {
 		event.preventDefault()
 	});
 };
 
+//2nd question from bot - carries the name value into the next question
 const ecoAnxietyOptions = (name) => {
 	questionCounter++;
 	botReply(`Nice to meet you ${name}! Do you have climate anxiety?`);
+	
 	//3 ALTERNATIVES: YES - NO - MAYBE
-
 	setTimeout(() => delayHTML(), 1000);
+	//Delays the buttons to show + applies the same timout on the eventListener below (to make the code shorter)
 	const delayHTML = () => {
 		inputWrapper.innerHTML = `
 			<form id="anxContainer">
@@ -91,26 +102,21 @@ const ecoAnxietyOptions = (name) => {
 				<button id="anxBtn3" class="anxBtn" type="submit" value="Maybe">Maybe</button>
 			</form>
 		`;
-
+		//Depending on which button the user clicks on, that value is sent to next question, and displays which next question depending on that value
 		document
 			.querySelectorAll(".anxBtn")
 			.forEach((button) => button.addEventListener("click", () => nextQuestion(button.value)));
-
-		document
-			.getElementById("anxContainer")
-			.addEventListener("click", () => {
-				anxContainer.remove();
-			});
 	};
 };
 
+//3rd question
 const rateAnxiety = (userResponse) => {
 	questionCounter++;
 
 	if (userResponse === "Yes" || userResponse === "Maybe") {
 		//IF "YES" AND "MAYBE" - RATE YOUR ANXIETY
 		botReply(`Please, rate your climate anxiety level!`);
-
+		//Delays the radio buttons (+ same time out on eventListener below)
 		setTimeout(() => delayHTML(), 1000);
 		const delayHTML = () => {
 			inputWrapper.innerHTML = `
@@ -135,7 +141,7 @@ const rateAnxiety = (userResponse) => {
 				.forEach((button) =>
 					button.addEventListener("click", () => nextQuestion(button.value))
 				);
-
+			//Prevents the btnRemoveOnClick function at the end of the document from being invoked
 			inputWrapper.onclick = btnRemoveOnClick(); return false;
 		};
 	} else {
@@ -161,9 +167,10 @@ const rateAnxiety = (userResponse) => {
 	}
 };
 
+//4th question
 const nextStepOptions = (rating) => {
 	questionCounter++;
-	// IF RADIO-BUTTON 1-3 show message:
+	// IF RADIO-BUTTON 1-6 show messages:
 	if (rating <= 6) {
 		botReply(`You have mild to moderate anxiety.`);
 		setTimeout(() => botReply(`I'm sorry to hear that.`), 1000);
@@ -185,9 +192,8 @@ const nextStepOptions = (rating) => {
 					button.addEventListener("click", () => nextQuestion(button.value))
 				);
 		};
-
+	// IF RADIO-BUTTON 7-10 show messages:
 	} else if (rating > 6 && rating <= 10) {
-		// IF RADIO-BUTTON 7-10 show message:
 		botReply(`You have severe anxiety.`);
 		setTimeout(() => botReply(`That's tough!`), 1000);
 		setTimeout(() => botReply(`But you are not alone.`), 2000);
@@ -212,7 +218,7 @@ const nextStepOptions = (rating) => {
 		};
 
 	} else {
-		inputWrapper.innerHTML = "";
+	//When the user replied "no" and then picked a reason for not being worried in the "nextStepOptions"-option, display these messages:
 		botReply(`I understand!`);
 		setTimeout(() => botReply(`Hang on for a little bit!`), 1000);
 		setTimeout(() => botReply(`I have something you could read.`), 3000);
@@ -221,7 +227,7 @@ const nextStepOptions = (rating) => {
 		setTimeout(() => botReply(`
         <button class="chat-link" onclick=" window.open('https://earth.org/what-is-climate-anxiety/','_blank')">What is climate anxiety?#1</button>
         <button class="chat-link" onclick=" window.open('https://utforskasinnet.se/att-drabbas-av-klimatangest-vad-ar-det-egentligen/','_blank')">What is climate anxiety?#2</button>
-    `), 5000);
+    	`), 5000);
 
 		setTimeout(() => botReply(`Do you get it now?`), 10000);
 
@@ -233,7 +239,7 @@ const nextStepOptions = (rating) => {
 				<button class="getItBtn" type="button" Value="No, still don't get it">No, still don't get it</button>
 			</form>
 		`;
-
+			//Send to anythingElse question at the end
 			document
 				.querySelectorAll(".getItBtn")
 				.forEach((button) => button.addEventListener("click", () => anythingElse(button.value)));
@@ -241,9 +247,10 @@ const nextStepOptions = (rating) => {
 	}
 };
 
+//5th question
 const takeActionOptions = (nextStep) => {
 	questionCounter++;
-
+	//If answer to prevous question was "To take action" OR "Get support from others", show these messages:
 	if (nextStep === "To take action" || nextStep === "Get support from others") {
 		botReply(`Sounds good`);
 		setTimeout(() => botReply(`How do you want to get started?`), 1000);
@@ -263,6 +270,7 @@ const takeActionOptions = (nextStep) => {
 				.forEach((button) => button.addEventListener("click", () => nextQuestion(button.value)));
 
 		};
+	//If answer to prevous question was "Continue as usual", show these messages:
 	} else if (nextStep === "Continue as usual") {
 		botReply(`Alright`);
 		setTimeout(() => botReply(`Why is that?`), 1000);
@@ -284,7 +292,7 @@ const takeActionOptions = (nextStep) => {
 			inputWrapper.onclick = btnRemoveOnClick(); return false;
 			
 		};
-
+	//If the user clicked a button as a response to "What are you the most worried about?" in the previous question section, show these messages:
 	} else {
 		botReply(`I hear you!`);
 		setTimeout(() => botReply(`The ${nextStep} is super worrying. Maybe you should prioritize your health?`), 2000);
@@ -300,11 +308,12 @@ const takeActionOptions = (nextStep) => {
 				<button class="nextStepBtn23" type="button" Value="Continue as usual">Continue as usual</button>
 			</form>
 		`;
-
+			//If the user picked clicks "Take care of my health" send to nextQuestion (finalStep)
 			document
 				.getElementById("nextStepBtn1")
 				.addEventListener("click", () => nextQuestion("Take care of my health"));
 
+			//If the user picked clicks "Take action"/"Countinue" resend to question 5(takeActionOptions) - but here something goes really wrong, a bug - as the questionCounter/nextQuestion function is activated javascript can't go backwards in the counting, I didn't have time to figure out the syntax on how to go backwards.
 			document
 				.querySelectorAll(".nextStepBtn23")
 				.forEach((button) => button.addEventListener("click", () => takeActionOptions(button.value)));
@@ -312,9 +321,10 @@ const takeActionOptions = (nextStep) => {
 	}
 };
 
+//6th question
 const finalStep = (finalDecision) => {
 	questionCounter++;
-
+	//If answer to prevous question was "Take care of my health" OR "Visit a therapist", show these messages:
 	if (finalDecision === "Take care of my health" || finalDecision === "Visit a therapist") {
 		botReply(`Alright`);
 		setTimeout(() => botReply(`Hold on`), 1000);
@@ -338,7 +348,7 @@ const finalStep = (finalDecision) => {
 				.querySelectorAll(".betterBtn")
 				.forEach((button) => button.addEventListener("click", () => nextQuestion(button.value)));
 		};
-
+	//If answer to prevous question was "Join an activist group", show these messages:
 	} else if (finalDecision === "Join an activist group") {
 		botReply(`Interesting!`);
 		setTimeout(() => botReply(`Just a second...`), 1000);
@@ -365,7 +375,7 @@ const finalStep = (finalDecision) => {
 				.querySelectorAll(".willBtn")
 				.forEach((button) => button.addEventListener("click", () => nextQuestion(button.value)));
 		};
-
+	//If answer to prevous question was "Join a political party", show these messages:
 	} else if (finalDecision === "Join a political party") {
 		botReply(`Yes! Why not?`);
 		setTimeout(() => botReply(`Just a second...`), 1000);
@@ -394,6 +404,7 @@ const finalStep = (finalDecision) => {
 		};
 
 	} else {
+	//If user "select your reason..." for continue as usual in previous question, show these messages:
 		botReply(`I see.`);
 		setTimeout(() => botReply(`The climate crisis affects many people's psychological wellbeing.`), 1000);
 		setTimeout(() => botReply(`Maybe this article could help you find some new perspectives.`), 3000);
@@ -417,6 +428,7 @@ const finalStep = (finalDecision) => {
 	}
 };
 
+// 7th question - Final question 
 const anythingElse = (anythingResponse) => {
 	botReply(`Is there anything else we can help you with?`);
 
@@ -440,6 +452,7 @@ const anythingElse = (anythingResponse) => {
 	};
 };
 
+// Final message from bot with contact information
 const thankYou = (value) => {
 	botReply(`Thank you! Please, feel free to reach out to us if you have further questions`);
 
@@ -450,16 +463,19 @@ const thankYou = (value) => {
 		`), 1000);
 };
 
-// Set up your eventlisteners here
-
+// A functions which removes buttons on click - it is deactivated on certain buttons, radio buttons and selections(bc selection don't work otherwise). I wanted to put this function at the top of the document but didn't dare in case of a bug. It works if stays here.
 const btnRemoveOnClick = () => {
 	inputWrapper.onclick = () => {
-		inputWrapper.innerHTML = '';
+	inputWrapper.innerHTML = '';
 	}
 }	
 
+// Set up your eventlisteners here
+
+//Eventlistener invoking the btnRemove function on row 466
 inputWrapper.addEventListener("click", btnRemoveOnClick);
 
+//Makes sure the the user's name will be in the chat bubble as a response to helloUser
 submit.addEventListener("click", () => nextQuestion(input.value));
 
 // This means the greeting function will be called one second after the website is loaded.
