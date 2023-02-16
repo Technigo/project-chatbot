@@ -3,10 +3,10 @@
 }
 
 body {
-  margin: 20;
+  margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #ec58d3;
+  background: #efe2d0;
 }
 
 .wrapper {
@@ -18,7 +18,7 @@ body {
 
 .title {
   width: 450px;
-  max-width: 100%
+  max-width: 100%;
   padding: 16px;
 }
 
@@ -26,15 +26,16 @@ h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: rgb(216, 107, 115);
   text-align: center;
+  font-family: 'Lobster', cursive;
 }
 
 h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: rgb(255, 255, 255);
   text-align: center;
   margin-bottom: 36px;
 }
@@ -49,9 +50,9 @@ p {
 input {
   box-sizing: border-box;
   border: none;
-  border-radius: 4px 0 0 4px;
+  border-radius: 4px 4px 4px 4px;
   background: #e5e9ff;
-  color: #ec58d3;
+  color: #070706;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -64,10 +65,9 @@ main {
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
-  height: 600px;
-  border-radius: 30px;
+  height: 530px;
+  border-radius: 20px;
   background: #fff;
-  padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
@@ -99,40 +99,37 @@ main {
 
 .bot-msg img,
 .user-msg img {
-  width: 60px;
-  height: 60px;
+  height: 50px;
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #71b9b9;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #ec58d3;
-  max-width: 40%;
+  color: #475665;
+  max-width: 260px;
 }
 
 .bot-bubble {
-  border-radius: 0px 26px 26px 26px;
+  border-radius: 5px 26px 26px 26px;
   margin-left: 8px;
 }
 
 .user-bubble {
-  border-radius: 26px 0 26px 26px;
+  border-radius: 26px 5px 26px 26px;
   margin-right: 8px;
+  background: #9fd6cc;
 }
-
-/* might add more to the input wrapper if time */
 
 .input-wrapper {
   width: 100%;
   display: flex;
-  display: none;
   padding: 10px;
-  border-top: 3px solid #e5e9ff;
+  border-top: 3px solid #efe2d0;
   gap: 10px;
-  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .active {
@@ -140,22 +137,8 @@ main {
   justify-content: center;
 }
 
-.input-wrapper form {
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-label {
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  color: #ec58d3;
-  margin-right: 20px;
-}
-
 button {
-  background-color: #ec58d3;
+  background-color: #e4a140;
   color: white;
   border: none;
   border-radius: 4px;
@@ -175,7 +158,7 @@ button:hover {
 }
 
 .flavor-boxes {
-  color: red
+  color: #0026ff;
 }
 
 select#sprinkles {
