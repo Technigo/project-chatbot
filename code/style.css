@@ -275,6 +275,10 @@ a {
     flex-direction: row;
   }
 
+  main {
+    background: rgba(255, 255, 255, 0.9);
+  }
+  
   .bot-logo {
     width: 69px;
     height: 97px;
