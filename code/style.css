@@ -7,7 +7,10 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Montserrat", sans-serif;
+  font-style: normal;
   background-image: url(./assets/library.jpeg);
+  background-size: 100%, cover;
+  object-fit: cover;
 }
 
 h1{
@@ -29,7 +32,7 @@ p {
 main{
   background-color: white;
   width: 90%;
-  max-width: 800px;
+  max-width: 900px;
   height: 500px;
   margin: 0 auto;
   border-radius: 30px;
