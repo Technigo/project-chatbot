@@ -161,7 +161,7 @@ const Delivery = (cake, bun, sandwich) => {
 const GoodBye = (cake, bun, sandwich, adress) => {
 
   showMessage(`${adress}`, 'user');
-
+debugger;
   if (bun && adress) {
     setTimeout(() => showMessage(`Okay, we will deliver your ${bun} to the following adress: <br> ${adress}`, 'bot'), 1000);
   }
