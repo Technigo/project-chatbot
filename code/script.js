@@ -122,7 +122,10 @@ const choiceMag = (magazine) => {
     replyUser(`${formatDate}`);
 
     if (date.getMonth() === 0 || date.getMonth() === 3 || date.getMonth() === 6 || date.getMonth() === 9) {
-      replyBot(`Excellent choice`);
+      replyBot(`So sorry, we seem to be out of stock of the ${formatDate} edition of ${magazine}. Please pick another edition`);
+      
+      } else {
+        replyBot(`Excellent choice`);
       setTimeout(() => replyBot(`Then we will be happy to send you a copy of the ${formatDate} edition of ${magazine}`), 1500);
 
       setTimeout(() => {
@@ -135,9 +138,7 @@ const choiceMag = (magazine) => {
         alert("Thank you for your order 🚀");
         window.location.reload();
         });
-        }, 3500); 
-      } else {
-        replyBot(`So sorry, we seem to be out of stock of the ${formatDate} edition of ${magazine}. Please pick another edition`);
+        }, 3500);
      };
   });
 };
