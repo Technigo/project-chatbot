@@ -13,3 +13,5 @@ Their webpage is on swedish so the conversation with the lemmings are to (sorry)
 ## View it live
 
 https://cerulean-tapioca-94eec3.netlify.app/
+
+![chatbot](https://user-images.githubusercontent.com/121789853/220186634-86bbe13c-3ec2-4f26-94b1-584268921195.png)
