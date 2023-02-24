@@ -89,7 +89,7 @@ const greeting = () => {
 
 const fortuneYesNo = (msg) => {
   questionNumber++
-  botReply(`Well met, ${msg}! Will you tell me of your deepset desires?`)
+  botReply(`Well met, ${msg}! Will you tell me of your deepest desires?`)
   // had to insert introsound here due to browsers blocking .play on page load without user interaction
   throatsing.play()
 
