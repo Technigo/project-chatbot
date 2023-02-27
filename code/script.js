@@ -1,17 +1,19 @@
-// START Variables that point to selected DOM elements
-const chat = document.getElementById('chat');
+// Variables that point to selected DOM elements
+const chat = document.getElementById('chat')
+const inputWrapper = document.getElementById("input-wrapper")
+const nameInput = document.getElementById("name-input")
+const button = document.getElementById("button")
 
-//END Variables that point to selected DOM elements
-// START global variables
+// Global variables
+let questionNumber = 1
 
+// Functions
 
-//END global variables
-
-// START functions
-// function that adds a chat bubble in the correct place based on who the sender is
+// Function that adds a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
+    console.log(message)
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -22,7 +24,7 @@ const showMessage = (message, sender) => {
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
-    console.log(sender === 'user')
+    console.log(message)
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -36,27 +38,25 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
-//function that asks user for name
-const askName = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there!\nWelcome to the Bill Splitter.\nI will be the bot serving you today.\n May I ask, what is your name?", 'bot');
-  // Just to check it out, change 'bot' to 'user' here 👆
+const nextQuestion = (message) => {
+  console.log('questionNumber', questionNumber)
+  
+  if (questionNumber === 1) {
+    userSay(`My name is ${userName}, nice to meet you!`)
+    setTimeout(() => whatName(message), 1500)
+  }
+  else if (questionNumber === 2) {
+    userSay(message)
+    setTimeout(() => )
+  }
+ 
 }
 
-//this adds a delay to the askName function
-/* When website loaded, chatbot asks first question. normally we would invoke a function like this:
-  greeting()
-  But if we want to add a little delay to it, we can wrap it in a setTimeout:
-  setTimeout(functionName, timeToWaitInMilliSeconds)
-  This means the greeting function will be called 1.2 second after the website is loaded.*/
-  setTimeout(askName, 1200);
-
-//function that stores the name
-
-//conditional if input is left empty
-
-// START eventlisteners
+// This function adds a delay to the askName function
+// setTimeout(functionName, timeToWaitInMilliSeconds)
+setTimeout(askName, 1200);
 
 
-//END
-//END functions
+// This conditional is invoked if input is left empty
+
+// Eventlisteners
