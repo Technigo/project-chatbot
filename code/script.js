@@ -53,7 +53,7 @@ const askName = () => {
 
 //function that stores the name
 
-//function that replies foodQ with name inside IF name is given correctly, IF else it redirects to previous function
+//conditional if input is left empty
 
 // START eventlisteners
 
