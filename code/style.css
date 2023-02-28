@@ -75,6 +75,7 @@ main {
 }
 
 .chat {
+  /*background-color: #070706;*/
   flex: 1;
   display: flex;
   justify-content: flex-start;
@@ -113,6 +114,7 @@ main {
 }
 
 .bot-bubble {
+  background: #a5a1e8;
   border-radius: 5px 26px 26px 26px;
   margin-left: 8px;
 }
@@ -120,16 +122,23 @@ main {
 .user-bubble {
   border-radius: 26px 5px 26px 26px;
   margin-right: 8px;
-  background: #9fd6cc;
+  background: #6989ec;
 }
 
 .input-wrapper {
+  background: #46a7ec;
   width: 100%;
   display: flex;
   padding: 10px;
   border-top: 3px solid #efe2d0;
   gap: 10px;
   flex-wrap: wrap;
+}
+
+.input-wrapper div select {
+  font-size: larger;
+  border: solid black 1px;
+  margin: 20px;
 }
 
 .active {
@@ -155,20 +164,6 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
-}
-
-.flavor-boxes {
-  color: #0026ff;
-}
-
-select#sprinkles {
-  font-family: Montserrat;
-  color: #ac5e44;
-  background: #efcd9d;
-  border: none;
-  height: 60px;
-  border-radius: 10px;
-  padding: 16px;
 }
 
 .checkbox-form {
@@ -259,3 +254,25 @@ button#refresh-button {
 .hide {
   display: none;
 }
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #ff9500 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #ff9500;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+  }

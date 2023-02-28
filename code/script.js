@@ -5,10 +5,12 @@ const sendBtn = document.getElementById('send-btn');
 const nameForm = document.getElementById('name-form');
 const nameInput = document.getElementById('name-input');
 const inputWrapper = document.getElementById('input-wrapper');
+const popup = document.getElementById('popup');
+let userAnsweredSecondQuestion = false;
 
 
 // If you need any global variables that you can use across different functions, declare them here:
-let typeOfCandy, goodOrBad, sprikels, other;
+//let typeOfCandy
 
 // const obj {
 //   typeOfCandy: '',
@@ -30,6 +32,7 @@ let typeOfCandy, goodOrBad, sprikels, other;
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
   if (sender === 'user') {
+    //*KOM IHÅG ATT LÄGGA IN BILDER PÅ GODIS i img source nedan*//
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -61,51 +64,136 @@ const greetUser = () => {
 }
 sendBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  userName = nameInput.value;
+  let userName = nameInput.value;
   if (userName === "") {
     showMessage('Please enter your name', 'bot');
   } else {
     showMessage(`${userName}`, 'user');
     showMessage(`Hello ${userName}, which one is your favorite type of candy?`, 'bot');
     nameForm.remove()
-    showOptions()
+    showCandyOptions()
     setTimeout(()=>{secondQuestion() },5000)
   }
 })
 
 //Second Question
 const secondQuestion = () => {
-  showMessage("Chocolate or Liqorice?", 'bot');
+  if (userAnsweredSecondQuestion === false) {
+
+    showMessage("Please choose - Chocolate or Licorice?", 'bot');
+  }
 }
 //This shows the options for the chocolate or licorice buttons
-const showOptions = () => {
+const showCandyOptions = () => {
 inputWrapper.innerHTML +=`<div><button id="chocolate-btn" value="chocolate">Chocolate</button>
 <button id="licorice-btn" value="licorice">Licorice</button></div>`;
 const chocolateBtn = document.getElementById('chocolate-btn');
 const licoriceBtn = document.getElementById('licorice-btn');
 chocolateBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  typeOfCandy = chocolateBtn.value;
+  userAnsweredSecondQuestion = true;
+  let typeOfCandy = chocolateBtn.value;
   console.log(typeOfCandy);
   showMessage(`I chose ${typeOfCandy}`, 'user');
   chocolateBtn.remove()
   licoriceBtn.remove()
-  setTimeout(()=>{thirdQuestion()},1000)
+  showChocolateOptions()
+  setTimeout(()=>{thirdQuestion(typeOfCandy)},1000)
 })
 licoriceBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  typeOfCandy = licoriceBtn.value;
+  userAnsweredSecondQuestion = true;
+  let typeOfCandy = licoriceBtn.value;
   console.log(typeOfCandy);
   showMessage(`I chose ${typeOfCandy}`, 'user');
   chocolateBtn.remove()
   licoriceBtn.remove()
-  setTimeout(()=>{thirdQuestion()},1000)
+  showLicoriceOptions()
+  setTimeout(()=>{thirdQuestion(typeOfCandy)},1000)
  })
+}
+const showChocolateOptions = () => {
+  inputWrapper.innerHTML = `<div>
+  <select id="input-chocolate-type" name="chocolate">
+    <option value="Dark Chocolate">Dark chocolate</option>
+    <option value="Milk Chocolate">Milk chocolate</option>
+    <option value="White Chocolate">White chocolate</option>
+  </select>
+  <button id="chocolate-option-btn" type="submit">Choose</button>
+</div>`;
+  const chocolateOptionBtn = document.getElementById('chocolate-option-btn')
+  chocolateOptionBtn.addEventListener('click', (e) => {
+    let candySubtype = document.getElementById("input-chocolate-type").value
+    showMessage(`I feel like having ${candySubtype} today!`, 'user');
+    console.log(`${candySubtype}`)
+    placeOrderMessage(candySubtype)
+    showOrderOptions(candySubtype)
+  })
+}
+
+const showLicoriceOptions = () => {
+  inputWrapper.innerHTML = `<div>
+  <select id="input-licorice-type" name="licorice">
+    <option value="Salty Licorice">Salty licorice</option>
+    <option value="Sweet Licorice">Sweet licorice</option>
+    <option value="Mixed Licorice">Mix of sweet and salt licorice</option>
+  </select>
+  <button id="licorice-option-btn" type="submit">Choose</button>
+</div>`;
+const licoriceOptionBtn = document.getElementById('licorice-option-btn')
+  licoriceOptionBtn.addEventListener('click', (e) => {
+    let candySubtype = document.getElementById("input-licorice-type").value
+    showMessage(`I feel like having ${candySubtype} today!`, 'user');
+    console.log(`${candySubtype}`)
+    placeOrderMessage(candySubtype)
+    showOrderOptions(candySubtype)
+  })
 }
 
 
-const thirdQuestion = () => {
+const thirdQuestion = (typeOfCandy) => {
   showMessage(`Woooow you also love ${typeOfCandy}! Great choice!`, 'bot');
+  showMessage(`Pick your favorite kind of ${typeOfCandy} in the list!`, 'bot');
+}
+
+const placeOrderMessage = (candySubtype) => {
+  showMessage(`Let's help you place your order for ${candySubtype}.`, 'bot');
+  
+}
+
+const showOrderOptions = (candySubtype) => {
+  inputWrapper.innerHTML = `<div>
+  <select id="input-amount-to-order" name="order-amount-picker">
+    <option value="500 g">500 grams</option>
+    <option value="1,5 kg">1,5 kilograms</option>
+    <option value="5 kg">5 kilograms</option>
+  </select>
+  <button id="order-option-btn" type="submit">Place order</button>
+</div>`;
+  const orderOptionBtn = document.getElementById('order-option-btn')
+  orderOptionBtn.addEventListener('click', (e) => {
+    let orderAmount = document.getElementById("input-amount-to-order").value
+    showMessage(`I want ${orderAmount}, please!`, 'user');
+    console.log(`${orderAmount}`)
+    question4PhoneNo(candySubtype, orderAmount)
+  })
+}
+
+//Bot Order confirmation - Phone Number
+const question4PhoneNo = (candySubtype, orderAmount) => {
+  showMessage(`Please type your phone number so we can let you know when your order is ready!`, 'bot')
+  inputWrapper.innerHTML = `
+  <form id="phone-form">
+  <input type="tel" class="phone-number" name="phone" maxlength="12" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
+  <button type="submit" id="confirm-btn">Confirm</button>
+  <button id="cancel-btn" onClick="window.location.reload();">Cancel</button>
+  </form>
+  `;
+  document.getElementById("confirm-btn").addEventListener("click", (e) => {
+    e.preventDefault()
+    popup.classList.toggle('hide');
+  })
+  console.log(candySubtype,orderAmount)
 }
 // Set up your eventlisteners here
 
@@ -117,4 +205,3 @@ const thirdQuestion = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000);
-
