@@ -150,6 +150,7 @@ const licoriceOptionBtn = document.getElementById('licorice-option-btn')
   })
 }
 
+//Third question
 
 const thirdQuestion = (typeOfCandy) => {
   showMessage(`Woooow you also love ${typeOfCandy}! Great choice!`, 'bot');
@@ -196,6 +197,7 @@ const question4PhoneNo = (candySubtype, orderAmount) => {
   console.log(candySubtype,orderAmount)
 }
 // Set up your eventlisteners here
+//my eventlisteners are in the code instead of one place - this might be wrong but I'm not sure...
 
 
 // When website loaded, chatbot asks first question.

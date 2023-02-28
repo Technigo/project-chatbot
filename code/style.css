@@ -1,3 +1,5 @@
+/*Left to fix: More styling, colors etc - will come back to this */
+
 * {
   box-sizing: border-box;
 }
@@ -166,7 +168,7 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-.checkbox-form {
+/* .checkbox-form {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -178,7 +180,7 @@ button:hover {
   padding: 13px;
   background: antiquewhite;
   border-radius: 16px;
-}
+} */
 
 #phone-form {
   display: flex;
@@ -193,7 +195,7 @@ button:hover {
   margin-left: 48px;
 }
 
-/* Confirm Popup */
+/* Confirmation Popup */
 
 .popup-overlay {
   position: absolute;
@@ -209,7 +211,8 @@ button:hover {
 
 .popup-container {
   max-width: 420px;
-  background: #6cb5b6;
+ /* background: #6cb5b6;*/
+  background: #46a7ec;
   text-align: center;
   padding: 25px;
   margin: 0 16px;
