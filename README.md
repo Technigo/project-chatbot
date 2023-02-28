@@ -1,6 +1,6 @@
 # Project Name
 
-Week 1 project was to create a chatbot. The goal was to practice Javascript and the key takeaways frpm week 1 on the boot camp with Technigo.
+Week 1 project was to create a chatbot. The goal was to practice Javascript and the key takeaways from week 1 on the boot camp with Technigo.
 
 ## The problem
 
