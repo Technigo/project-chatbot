@@ -8,7 +8,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #efe2d0;
+  background: #f7d5ef;
 }
 
 .wrapper {
@@ -28,7 +28,7 @@ h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: rgb(216, 107, 115);
+  color: #f733c6;
   text-align: center;
   font-family: 'Lobster', cursive;
 }
@@ -37,7 +37,7 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: rgb(255, 255, 255);
+  color: #f381d7;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -51,7 +51,7 @@ p {
 
 input {
   box-sizing: border-box;
-  border: none;
+  border: solid black 1px;
   border-radius: 4px 4px 4px 4px;
   background: #e5e9ff;
   color: #070706;
@@ -106,7 +106,7 @@ main {
 }
 
 .bubble {
-  background: #71b9b9;
+  background: #f733c6;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
@@ -116,7 +116,7 @@ main {
 }
 
 .bot-bubble {
-  background: #a5a1e8;
+  background: #f381d7;
   border-radius: 5px 26px 26px 26px;
   margin-left: 8px;
 }
@@ -124,18 +124,19 @@ main {
 .user-bubble {
   border-radius: 26px 5px 26px 26px;
   margin-right: 8px;
-  background: #6989ec;
+  background: #d5a8f8;
 }
 
 .input-wrapper {
-  background: #46a7ec;
+  background-color: #f733c6;
   width: 100%;
   display: flex;
   padding: 10px;
   border-top: 3px solid #efe2d0;
   gap: 10px;
   flex-wrap: wrap;
-}
+  align-content: space-around;
+  }
 
 .input-wrapper div select {
   font-size: larger;
@@ -149,12 +150,12 @@ main {
 }
 
 button {
-  background-color: #e4a140;
-  color: white;
-  border: none;
-  border-radius: 4px;
+  background-color: #f381d7;
+  color: black;
+  border: solid black 2 px;
+  border-radius: 25px;
   padding: 16px 40px;
-  margin-right: 4px;
+  margin-right: 6px;
   font-size: 16px;
   line-height: 26px;
   font-family: 'Montserrat';
@@ -262,7 +263,7 @@ button#refresh-button {
   /* Firefox */
   * {
     scrollbar-width: auto;
-    scrollbar-color: #ff9500 #ffffff;
+    scrollbar-color: #f733c6 #ffffff;
   }
 
   /* Chrome, Edge, and Safari */
@@ -275,7 +276,24 @@ button#refresh-button {
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: #ff9500;
+    background-color: #f733c6;
     border-radius: 10px;
     border: 3px solid #ffffff;
   }
+
+  /*MEDIA QUERIES*/
+  @media screen and (max-width: 481px) {
+  body {
+    background-color: blue; /*this will be deleted once the media queries are fixed*/
+  }
+
+h1 {
+  font-size: 30px;
+  /* display: flex;
+  align-items: baseline;
+  padding: 15px; */
+}
+
+h2 {
+  font-size: 15px;
+}}

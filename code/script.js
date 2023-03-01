@@ -12,18 +12,26 @@ let userAnsweredSecondQuestion = false;
 // If you need any global variables that you can use across different functions, declare them here:
 //let typeOfCandy
 
-// const obj {
-//   typeOfCandy: '',
-//   goodOrBad: "",
-//   sprikels: "",
-//   other: ""
-// }
-// showMessage(`Woooow you also love ${typeOfCandy}! Great choice!`, 'bot');
-// showMessage(`Woooow you also love ${obj.typeOfCandy}! Great choice!`, 'bot');
-
-
-
 // Declare your functions after this comment
+// loading animation
+const showLoading = () => {
+  chat.innerHTML += `
+  <div class="fa-1x loading">
+    <i class="fa-solid fa-circle fa-bounce"></i>
+    <i class="fa-solid fa-circle fa-bounce" style="--fa-animation-delay: 0.2s"></i>
+    <i class="fa-solid fa-circle fa-bounce" style="--fa-animation-delay: 0.4s"></i>
+  </div>
+  `;
+  chat.scrollTop = chat.scrollHeight;
+};
+
+// removes loading animation
+const removeLoading = () => {
+  const elements = document.getElementsByClassName('loading');
+  Array.from(elements).forEach((el) => {
+    el.parentNode.removeChild(el);
+  });
+};
 
 //Removes the chocolate or licorice buttons
 
@@ -151,7 +159,6 @@ const licoriceOptionBtn = document.getElementById('licorice-option-btn')
 }
 
 //Third question
-
 const thirdQuestion = (typeOfCandy) => {
   showMessage(`Woooow you also love ${typeOfCandy}! Great choice!`, 'bot');
   showMessage(`Pick your favorite kind of ${typeOfCandy} in the list!`, 'bot');
