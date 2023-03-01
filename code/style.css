@@ -30,7 +30,7 @@ h1 {
   line-height: 34px;
   color: #f733c6;
   text-align: center;
-  font-family: 'Lobster', cursive;
+  font-family: 'Tilt Neon', cursive;
 }
 
 h2 {
@@ -135,13 +135,17 @@ main {
   border-top: 3px solid #efe2d0;
   gap: 10px;
   flex-wrap: wrap;
-  align-content: space-around;
+  justify-content: space-around;
   }
 
+
 .input-wrapper div select {
+  background-color: #f7d5ef;
   font-size: larger;
   border: solid black 1px;
-  margin: 20px;
+  border-radius: 15px;
+  margin: 25px;
+  padding: 10px;
 }
 
 .active {
@@ -213,7 +217,8 @@ button:hover {
 .popup-container {
   max-width: 420px;
  /* background: #6cb5b6;*/
-  background: #46a7ec;
+  background: #f7d5ef;
+  border: solid #f733c6 2px;
   text-align: center;
   padding: 25px;
   margin: 0 16px;
@@ -229,11 +234,11 @@ button:hover {
 
 .popup-container p,
 .popup-container h3 {
-  color: white;
+  color: #f733c6;
 }
 
 i.fas.fa-check {
-  background: #f7bfc5;
+  background: #f733c6;;
   padding: 30px;
   border-radius: 60px;
   font-size: 30px;
@@ -245,14 +250,17 @@ i.fas.fa-check {
 }
 
 h3 {
-  color: #2a2622;
-  font-family: 'Lobster', cursive;
-  font-size: 30px;
+ color: #2a2622;
+ font-family: 'Tilt Neon', cursive;
+ font-size: 30px;
 }
 
 button#refresh-button {
   margin-top: 50px;
-  background-color: #497879;
+  border: solid #f733c6 2px;
+  color: #f7d5ef;
+  font-weight: bold;
+  background-color: #f733c6;
 }
 
 .hide {

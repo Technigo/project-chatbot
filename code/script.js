@@ -8,6 +8,9 @@ const inputWrapper = document.getElementById('input-wrapper');
 const popup = document.getElementById('popup');
 let userAnsweredSecondQuestion = false;
 
+//SOUND FOR MESSAGE// 
+const msgSound = new Audio('assets/chatpop.mp3');
+msgSound.volume = 0.6;
 
 // If you need any global variables that you can use across different functions, declare them here:
 //let typeOfCandy
@@ -46,14 +49,14 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user2.png" alt="User" />  
       </section>
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html section inside the chat with the posted message
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bot2.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -80,7 +83,8 @@ sendBtn.addEventListener('click', (e) => {
     showMessage(`Hello ${userName}, which one is your favorite type of candy?`, 'bot');
     nameForm.remove()
     showCandyOptions()
-    setTimeout(()=>{secondQuestion() },5000)
+    setTimeout(()=>{secondQuestion() },5000);
+    showLoading(); /*NEW*/
   }
 })
 
@@ -106,7 +110,9 @@ chocolateBtn.addEventListener('click', (e) => {
   chocolateBtn.remove()
   licoriceBtn.remove()
   showChocolateOptions()
-  setTimeout(()=>{thirdQuestion(typeOfCandy)},1000)
+  setTimeout(()=>{thirdQuestion(typeOfCandy)},1000);
+  showLoading(); /*NEW*/
+  
 })
 licoriceBtn.addEventListener('click', (e) => {
   e.preventDefault();
@@ -117,7 +123,8 @@ licoriceBtn.addEventListener('click', (e) => {
   chocolateBtn.remove()
   licoriceBtn.remove()
   showLicoriceOptions()
-  setTimeout(()=>{thirdQuestion(typeOfCandy)},1000)
+  setTimeout(()=>{thirdQuestion(typeOfCandy)},1000);
+  showLoading();/*NEW*/
  })
 }
 const showChocolateOptions = () => {
@@ -136,6 +143,8 @@ const showChocolateOptions = () => {
     console.log(`${candySubtype}`)
     placeOrderMessage(candySubtype)
     showOrderOptions(candySubtype)
+    showLoading(); /*NEW*/
+
   })
 }
 
@@ -155,6 +164,8 @@ const licoriceOptionBtn = document.getElementById('licorice-option-btn')
     console.log(`${candySubtype}`)
     placeOrderMessage(candySubtype)
     showOrderOptions(candySubtype)
+    showLoading(); /*NEW*/
+    
   })
 }
 
