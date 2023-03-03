@@ -43,7 +43,6 @@ const removeLoading = () => {
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
   if (sender === 'user') {
-    //*KOM IHÅG ATT LÄGGA IN BILDER PÅ GODIS i img source nedan*//
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -68,30 +67,36 @@ const showMessage = (message, sender) => {
 }
 
 // Starts here
+showLoading();
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there, What's your name?", 'bot');
+  removeLoading();
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 sendBtn.addEventListener('click', (e) => {
   e.preventDefault();
   let userName = nameInput.value;
   if (userName === "") {
+    showLoading();
     showMessage('Please enter your name', 'bot');
+    removeLoading();   
   } else {
+    showLoading();
     showMessage(`${userName}`, 'user');
     showMessage(`Hello ${userName}, which one is your favorite type of candy?`, 'bot');
     nameForm.remove()
+    removeLoading();
     showCandyOptions()
     setTimeout(()=>{secondQuestion() },5000);
-    showLoading(); /*NEW*/
+    /*showLoading(); /*NEW*/
   }
 })
 
 //Second Question
 const secondQuestion = () => {
   if (userAnsweredSecondQuestion === false) {
-
+    removeLoading();
     showMessage("Please choose - Chocolate or Licorice?", 'bot');
   }
 }
@@ -110,10 +115,12 @@ chocolateBtn.addEventListener('click', (e) => {
   chocolateBtn.remove()
   licoriceBtn.remove()
   showChocolateOptions()
-  setTimeout(()=>{thirdQuestion(typeOfCandy)},1000);
-  showLoading(); /*NEW*/
+  setTimeout(()=>{thirdQuestion(typeOfCandy)},2000);
+  /*showLoading(); /*NEW*/
   
 })
+removeLoading();
+
 licoriceBtn.addEventListener('click', (e) => {
   e.preventDefault();
   userAnsweredSecondQuestion = true;
@@ -127,6 +134,7 @@ licoriceBtn.addEventListener('click', (e) => {
   showLoading();/*NEW*/
  })
 }
+
 const showChocolateOptions = () => {
   inputWrapper.innerHTML = `<div>
   <select id="input-chocolate-type" name="chocolate">
@@ -160,22 +168,25 @@ const showLicoriceOptions = () => {
 const licoriceOptionBtn = document.getElementById('licorice-option-btn')
   licoriceOptionBtn.addEventListener('click', (e) => {
     let candySubtype = document.getElementById("input-licorice-type").value
+    removeLoading();
     showMessage(`I feel like having ${candySubtype} today!`, 'user');
     console.log(`${candySubtype}`)
     placeOrderMessage(candySubtype)
     showOrderOptions(candySubtype)
-    showLoading(); /*NEW*/
+    // showLoading(); /*NEW*/
     
   })
 }
 
 //Third question
 const thirdQuestion = (typeOfCandy) => {
+  removeLoading();
   showMessage(`Woooow you also love ${typeOfCandy}! Great choice!`, 'bot');
   showMessage(`Pick your favorite kind of ${typeOfCandy} in the list!`, 'bot');
 }
 
 const placeOrderMessage = (candySubtype) => {
+  removeLoading();
   showMessage(`Let's help you place your order for ${candySubtype}.`, 'bot');
   
 }
@@ -192,6 +203,7 @@ const showOrderOptions = (candySubtype) => {
   const orderOptionBtn = document.getElementById('order-option-btn')
   orderOptionBtn.addEventListener('click', (e) => {
     let orderAmount = document.getElementById("input-amount-to-order").value
+    removeLoading();
     showMessage(`I want ${orderAmount}, please!`, 'user');
     console.log(`${orderAmount}`)
     question4PhoneNo(candySubtype, orderAmount)
@@ -224,4 +236,4 @@ const question4PhoneNo = (candySubtype, orderAmount) => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000);
+setTimeout(greetUser, 1500);
