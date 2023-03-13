@@ -14,51 +14,50 @@ let input = document.getElementById("input");
 const botAnswers = {
     greeting:  "Greetings stranger! What's your name?",
     wannaPlay: `Nice to meet you ${name}! Do you wanna play a little quiz?`,
-    question1: "Awesome! Let's start with an easy one: What's the name of the Swedish Prime Minister?",
+    question1: "Awesome! Let's start... What's the name of the Swedish Prime Minister?",
     question2: "Interesting choice... Next question: What is the population size of Sweden?",
     question3: "What's the name of the highest mountain in Sweden?",
     question4: "What's the fourth largest city in Sweden?",
     question5: "What's the name of the Swedish king?",
-    scoreReport: "Thank you for playing. This is your score...",
+    scoreReport: "Thank you for playing! This is your score...",
     };
 
 
 //hmtl modifications for different questions
 const htmlMod = {
   modWannaPlay: `
-  <div id = "yesNoWrapper class= "yesNo">
-   <button id="yesButton" class= "yesNoButton yesButton">Yes</button>
-   <button id="noButton" class= "yesNoButton noButton">No</button>
-  </div>`,
+   <button id="yesButton" class= "yesno-button yes-button">Yes</button>
+   <button id="noButton" class= "yesno-button no-button">No</button>
+  `,
   modNoPlay: `
   <div class = "dogwrap">
   <img class="dog" src="sad dog.jpg" alt="sad dog">
   </div>
   `,
-  modQ1: `<button id="olof" class= "q1a1Button q1Button">Olof Palme</button>
-  <button id="magdalena" class= "q1a2Button q1Button">Magdalena Andersson</button>
-  <button id="ulf" class= "q1a2Button q1Button">Ulf Kristersson</button>
+  modQ1: `<button id="olof" class="question-button">Olof Palme</button>
+  <button id="magdalena" class="question-button">Magdalena Andersson</button>
+  <button id="ulf" class="question-button">Ulf Kristersson</button>
 </div>`,
   modQ2: `
-  <button id="8,2" class= "q1a1Button q1Button">8,2 million</button>
-  <button id="10,4" class= "q1a2Button q1Button">10,4 million</button>
-  <button id="13,6" class= "q1a2Button q1Button">13,6 million</button>
+  <button id="8,2" class="question-button">8,2 million</button>
+  <button id="10,4" class="question-button">10,4 million</button>
+  <button id="13,6" class="question-button">13,6 million</button>
   </div>`,
 
   modQ3: `
-  <button id="kebne" class= "q1a1Button q1Button">Kebnekaise</button>
-  <button id="åre" class= "q1a2Button q1Button">Åreskutan</button>
-  <button id="hammarby" class= "q1a2Button q1Button">Hammarbybacken</button>
+  <button id="kebne" class="question-button">Kebnekaise</button>
+  <button id="åre" class="question-button">Åreskutan</button>
+  <button id="hammarby" class="question-button">Hammarbybacken</button>
   </div>`,
   modQ4: `
-  <button id="linköping" class= "q1a1Button q1Button">Linköping</button>
-  <button id="uppsala" class= "q1a2Button q1Button">Uppsala</button>
-  <button id="örebro" class= "q1a2Button q1Button">Örebro</button>
+  <button id="linköping" class="question-button">Linköping</button>
+  <button id="uppsala" class="question-button">Uppsala</button>
+  <button id="örebro" class="question-button">Örebro</button>
   </div>`,
   modQ5: `
-  <button id="GustavVasa" class= "q1a1Button q1Button">Gustav Vasa</button>
-  <button id="KarlXII" class= "q1a2Button q1Button">Karl XII</button>
-  <button id="CarlXVIGustaf" class= "q1a2Button q1Button">Carl XVI Gustaf</button>
+  <button id="GustavVasa" class="question-button">Gustav Vasa</button>
+  <button id="KarlXII" class="question-button">Karl XII</button>
+  <button id="CarlXVIGustaf" class="question-button">Carl XVI Gustaf</button>
   </div>`,
   modScoreBoard: "",
 }
@@ -99,7 +98,7 @@ const htmlMod = {
     } else if (sender === 'bot') {
       chat.innerHTML += `
         <section class="bot-msg">
-          <img src="assets/bot.png" alt="Bot" />
+          <img class="horse" src="./dalahast.jpg" alt="Dala horse" />
           <div class="bubble bot-bubble">
             <p>${message}</p>
           </div>
@@ -248,7 +247,7 @@ const q3 = () => {
 
 //Scoreboard
 const scoreBoard = () => {
-    console.log(`this is your score: ${score}`);
+    console.log(`Your score: ${score}`);
     showMessage(botAnswers.scoreReport, "bot");
     setTimeout(() => {
       inputWrapper.innerHTML =`
@@ -257,7 +256,7 @@ const scoreBoard = () => {
           <p>You scored: ${score}</p>
       </div>
       `
-    }, 1000);
+    }, 500);
   
 }
 

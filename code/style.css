@@ -6,14 +6,15 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url("./northern\ light.jpg");
+  background-color:#0026ff;
 }
 
 h1 {
   font-weight: bold;
   font-size: 44px;
   line-height: 34px;
-  color: #fff;
+  color: #42dd6e;
   text-align: center;
 }
 
@@ -23,7 +24,7 @@ h2 {
   line-height: 34px;
   color: #fff;
   text-align: center;
-  margin-bottom: 36px;
+  margin-bottom: 20px;
 }
 
 h3 {
@@ -53,9 +54,9 @@ input {
 
 main {
   margin: 0 auto;
-  width: 90%;
+  width: 100%;
   max-width: 700px;
-  height: 600px;
+  height: 560px;
   border-radius: 30px;
   background: #fff;
   padding: 20px 24px;
@@ -69,7 +70,7 @@ main {
   flex: 1;
   display: flex;
   justify-content: flex-start;
-  overflow: scroll;
+  overflow-y: scroll;
   flex-direction: column;
   padding-bottom: 16px;
 }
@@ -116,6 +117,7 @@ main {
 .input-wrapper {
   display: flex;
   justify-content: center;
+  margin-top: 29px;
 }
 
 .input-wrapper form {
@@ -137,8 +139,8 @@ button {
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 16px 40px;
-  margin-right: 4px;
+  padding: 16px 20px;
+  margin: 5px;
   font-size: 16px;
   line-height: 26px;
   font-family: 'Montserrat';
@@ -152,63 +154,66 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-.yesButton{
+.yes-button{
   background-color: rgb(33, 164, 33);
 }
 
-.noButton{
+.no-button{
   background-color: rgb(232, 17, 17);
 }
-
 
 button:active{
     box-shadow: 1px #666;
     transform: translateY(4px);
 }
 
- .dogwrap p {
-  font-size: 35px;
-  text-align: center;
-  margin-top: 30px;
-}
 
 .dog{
   margin-top: 50px;
-  width: 600px;
+  width: 80%;
+  display: block;
+  margin: 10px auto;
 }
 
 .scoreboard{
   color: #0026ff;
-  background: #e5e9ff;
+  background: #7eec9d;
   text-align: center;
   width: 80%;
   align-self: center;
   border-radius: 4px;
   display: inline;
+  padding: 10px 5px 20px 5px;
+  box-shadow: 5px 4px 22px -10px black
 }
 
 
  @media (max-width: 667px){
 
+  body{
+    overflow: hidden;
+  }
+
   h1{
     font-size: 30px;
-    margin-top: 10px;;
   }
+
   h2{
     font-size: 20px;
-    margin: 0 0 5px 0;
+    margin-bottom: 5px;
   }
   
   main{
     border-radius: 0;
     width: 100%;
+    height: 560px;
   }
 
   .input-wrapper form{
-    max-width: 90%;
+    max-width: 100%;
     justify-content: center;
   }
-
+ 
   input{
     padding: 16px 0px;
   }
@@ -220,6 +225,11 @@ button:active{
   label{
     margin-right: 10px;
   }
+
+.question-button{
+  font-size: 14px;
+  padding: 10px 10px;
+}
 
 }
 
