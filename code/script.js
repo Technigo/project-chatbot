@@ -123,7 +123,7 @@ const showFortune = (type) => {
     `
   } else {
     botReply('Very well, be gone then.'),
-    setTimeout(location.reload(), 3000)
+    setTimeout(window.location.reload.bind(window.location), 1500);
   }
 
   const select = document.getElementById('select')
@@ -187,7 +187,7 @@ const thankYou = (amount) => {
   <button id="leave">Thank you, oh great Zoltar</button>`;
   document
     .getElementById("leave")
-    .addEventListener("click", () => setTimeout(location.reload(), 3000));
+    .addEventListener("click", () => setTimeout(window.location.reload.bind(window.location), 1500));
 };
 
 sendBtn.addEventListener('click', () => nextQuestion(input.value))
