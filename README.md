@@ -12,3 +12,6 @@ When encountered with a problem I mostly used google, stack overflow and asked o
 ## View it live
 
 https://chatbot-joannaphilips.netlify.app/
+
+## Image credits
+Banner image credits: SL Trains - https://sl.se/en/in-english/
