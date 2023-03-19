@@ -1,9 +1,11 @@
 // Variables that point to selected DOM elements (declaring variables)
 const chat = document.getElementById("chat");
-const name = document.getElementById("name-input");
+const userInput = document.getElementById("user-input");
+const label = document.getElementById("input-label");
 const sendButton = document.getElementById("send");
 const inputWrapper = document.getElementById("input-wrapper");
-const nameForm = document.getElementById("name-form");
+const inputForm = document.getElementById("inputForm");
+const buttonForm = document.getElementById("buttonForm"); //fångar upp buttonform
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -51,12 +53,15 @@ const greetUser = () => {
 // Store the value in a variable so I can access it after we
 
 // Initial button click, here I should get the name entered
-sendButton.addEventListener("click", (event) => {
+sendButton.addEventListener("click", function clickHandler(event) {
   event.preventDefault();
-  userName = name.value; //username is here reassigned to mean what we want it to mean in this specific function
+  userName = userInput.value; //username is here reassigned to mean what we want it to mean in this specific function
   showMessage(`${userName}`, "user");
-  name.value = ""; // clear it from the input
-  setTimeout(() => askZodiacSigns(), 1000); //calls the function askZodiac
+  userInput.value = ""; // clear it from the input
+  setTimeout(() => { 
+    askZodiacSigns();
+    sendButton.removeEventListener("click", clickHandler)
+  }, 1000); //calls the function askZodiac
 });
 
 //Here I call the function where I welcome the user and ask them to tell me their zodiac sign
@@ -66,21 +71,17 @@ const askZodiacSigns = () => {
     `OMG ${userName} is my favourite name in the whole world 🥳!! What's your zodiac sign?`,
     "bot"
   );
-  setTimeout(() => nextQuestion(), 1000); //calls the function nextQuestion
+  setTimeout(() => zodiacQuestion(), 1000); //calls the function nextQuestion
 };
 
-const nextQuestion = () => {
-  //this function is whats defining what we meen with the function nextQuestion
+const zodiacQuestion = () => {
+  //this function is whats defining what we mean with the function nextQuestion
   console.log("next question works!");
   /*  showMessage(´next question is working´ , "user"); */
 
-  inputWrapper.innerHTML = `
-  <form id="zodiac-form">
-          <label for="zodiac-form">Zodiac</label> 
-          <input id="zodiac-input" type="text" />
-          <button class="send-btn" id="send-zodiacform" type="submit">Send</button>
-  </form>
-   `;
+
+  label.innerText = "Zodiac";
+
   botZodiacReply();
 };
 
@@ -88,74 +89,81 @@ const nextQuestion = () => {
 
 const botZodiacReply = () => {
   console.log("bot reply works");
-  const zodiacForm = document.getElementById("zodiac-form"); //declaring the variables for the form
-  const zodiacInput = document.getElementById("zodiac-input"); //declaring the variables for the input of the form
-  const sendZodiacForm = document.getElementById("send-zodiacform"); //declaring the variables for the input of the send zodiac form (button)
 
-  sendZodiacForm.addEventListener("click", (event) => {
+  sendButton.addEventListener("click", function clickHandler(event) {
     event.preventDefault();
     console.log("zodiac buttton is working");
-    const zodiacSign = zodiacInput.value;
-    showMessage(
-      `Oh fantasctic! ${zodiacSign} are amazing at doing affirmation work 🌟 So you are basically half way there 😉!`,
-      "bot"
-    );
-    zodiacInput.value = ""; // clear it from the input
+    const zodiacSign = userInput.value
+    showMessage(`${zodiacSign}`, "user");
+    userInput.value = ""; // clear it from the input
+    
+    setTimeout(() => {
+      showMessage(
+        `Oh fantasctic! ${zodiacSign} are amazing at doing affirmation work 🌟 So you are basically half way there 😉!`,
+        "bot"
+      );
+
+      sendButton.removeEventListener("click", clickHandler)
+
+      threeQuestion()
+    }, 1000); //calls the function askZodiac
   });
+  //next function goes here down
+  
 };
 
-/* 
-sendButton.addEventListener("click", (event) => {
-  event.preventDefault();
-  userName = name.value;
-  showMessage(`${userName}`, "bot");
-  name.value = ""; // clear it from the input
-  setTimeout(() => nextQuestion(), 1000); //calls the function next
-}); */
+const threeQuestion = () => {
+  //this function is whats defining what we mean with the function nextQuestion
+  console.log("three question works!");
+  /*  showMessage(´next question is working´ , "user"); */
 
-/* const nextQuestion = () => {
-  showMessage(´next question!´ , "bot"
-  );
-}; */
-/* nameForm.addEventListener('submit', (event) => {
-  event.preventDefault()   //Hindrar från att formen autosparar innan vi har hunnit köra vår kod. */
 
-/* ---------Attempt to add next question with getElementById (not working) -----------------*/
+  buttonForm.classList.remove("hidden")
+  inputForm.classList.add("hidden")
 
-// ----------------------------------- Attempt end
+};
 
-/* 
-const nextQuestion = () => {
-  showMessage(`OMG youre a ${userName}`, "bot");
-  userName = name.value;
-  name.value = ""; // clear it from the input
-  setTimeout(() => nextQuestion(), 1000); //calls the function askZodiac
-}; */
+const button1 = document.getElementById("button1"); //fångar upp button1
 
-//  //declare variable using "input-wrapper" from HTML - this can go at the top of the page
-//  //Then write the code to change the HTML in Javascript
+button1.addEventListener('click', function button1ClickHandler(e) {
+  e.preventDefault()
 
-//   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
+  generateCardBaseOnCategory("cat1")
 
-// sendButton.addEventListener("click", (event) => {
-//   event.preventDefault();
+})
 
-//   // Store the value in a variable so I can access it after we
-//   // clear it from the input
-//   let answer = name.value;
-//   showMessage(`${answer}`, "user");
+const button2 = document.getElementById("button2"); //fångar upp button2
 
-//   // Clears the input field
-//   name.value = "";
-//   //Here I call the function where I present the dishes to choose from. I will also pass the userName
-// });
+button2.addEventListener('click', function button2ClickHandler(e) {
+  e.preventDefault()
+  generateCardBaseOnCategory("cat2")
+  
+})
 
-// Set up your eventlisteners here
+const button3 = document.getElementById("button3"); //fångar upp button3
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
+button3.addEventListener('click', function button3ClickHandler(e) {
+  e.preventDefault()
+  generateCardBaseOnCategory("cat3")
+  
+})
+
+const generateCardBaseOnCategory = (category) => {
+  console.log(category)
+
+  if(category === "cat1")
+  {
+
+  } else if (category === "cat2") {
+
+  } else if (category === "cat3") {
+
+  }
+
+  showMessage(`You picked ${category}`, "bot");
+
+  buttonForm.classList.add("hidden") //hides the buttons 
+}
+
+
 setTimeout(greetUser, 1000);

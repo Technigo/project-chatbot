@@ -27,10 +27,15 @@
       <section class="chat" id="chat"></section>
 
       <div class="input-wrapper" id="input-wrapper">
-        <form id="name-form">
-          <label for="name-input">Name</label>
-          <input id="name-input" type="text" required />
+        <form id="inputForm">
+          <label for="user-input" id="input-label">Name</label>
+          <input id="user-input" type="text" required />
           <button class="send-btn" id="send" type="submit">Send</button>
+        </form>
+        <form id="buttonForm" class="hidden">
+          <button class="send-btn" id="button1" type="submit">Knapptext 1</button>
+          <button class="send-btn" id="button2" type="submit">Knapptext 2</button>
+          <button class="send-btn" id="button3" type="submit">Knapptext 3</button>
         </form>
       </div>
     </main>

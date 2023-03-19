@@ -6,8 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(218, 9, 204, 0.5)),
-    url()
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(218, 9, 204, 0.5));
   height: 400px;
   background-position: center;
   background-repeat: no-repeat;
@@ -79,6 +78,8 @@ input {
   flex: 1;
 }
 
+
+
 main {
   margin: 0 auto;
   width: 100%;
@@ -109,6 +110,8 @@ main {
   flex-shrink: 0;
 }
 
+
+
 .user-msg {
   display: flex;
   justify-content: flex-end;
@@ -132,6 +135,8 @@ main {
   max-width: 40%;
 }
 
+
+
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
@@ -149,8 +154,7 @@ main {
 
 .input-wrapper form {
   width: 100%;
-  display: flex;
-  align-items: center;
+  text-align: center;
 }
 
 label {
@@ -188,10 +192,16 @@ button {
   font-family: "Montserrat";
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease; */
-}
+  transition: all 0.3s ease;
+}*/
 
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+
+
+.hidden {
+  display: none;
 }
