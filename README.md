@@ -8,9 +8,4 @@ I approached the problem through studying an example chatbot and generating idea
 
 ## View it live
 
-<<<<<<< HEAD
-
 https://fiona-klacar-project-chatbot.netlify.app/
-=======
-sparkly-fudge-0d91e4.netlify.app
->>>>>>> 2c8f2d3c3cebf51e2fb0f9d7a09876d6e8cf2fce
