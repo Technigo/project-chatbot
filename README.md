@@ -1,9 +1,6 @@
 # Chat-bot
+
 To build a chat-bot, The focus is to practice the JavaScript parts,also to hook it up with the HTML.(practice conditionals, variables,functions)
-
-
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
 
