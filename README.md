@@ -1,7 +1,12 @@
-# Project Chatbot
+## View it live
+https://cookies-chatbot.netlify.app/
 
-Built a small chatbot with diverse interactions.
+## Project Brief
+Build a chatbot. The focus is to practice the JavaScript parts, but also to hook it up with the HTML. 
 
-# View it live
-
-https://imaginative-melba-02d250.netlify.app/
+## Project requirements 
+- [x] Use variables in JavaScript.
+- [x] Use conditionals in JavaScript.
+- [x] Find some string methods to modify strings.
+- [x] Use control flow and conditional statements.
+- [x] Use functions in JavaScript

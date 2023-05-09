@@ -9,6 +9,7 @@ body {
   background: black;
 }
 
+
 h1 {
   font-weight: bold;
   font-size: 44px;
@@ -168,4 +169,14 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+
+@media (max-width:750px) {
+  .main{
+    max-width: 90%;
+  }
+  #name-form input{
+    max-width: 50%;
+  }
+
 }
