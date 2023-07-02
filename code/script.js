@@ -5,6 +5,235 @@ const nameInput = document.getElementById('name-input');
 const sendBtn = document.getElementById('send-btn');
 const nameForm = document.getElementById('name-form');
 
+// Plant array
+const plants = [
+  {
+    name: "aglaonema",
+    image: "assets/aglaonema.svg",
+    waterCondition: "littleWater",
+    lightCondition: "dark",
+    beginner: false
+  },
+  {
+    name: "aloe vera",
+    image: "assets/aloe.svg",
+    waterCondition: "littleWater",
+    lightCondition: "light",
+    beginner: true
+  },
+  {
+    name: "alocasia",
+    image: "assets/alocasia.svg",
+    waterCondition: "anyWater",
+    lightCondition: "light",
+    beginner: false
+  },
+  {
+    name: "begonia",
+    image: "assets/begonia.svg",
+    waterCondition: "anyWater",
+    lightCondition: "light",
+    beginner: true
+  },
+  {
+    name: "birds nest fern",
+    image: "assets/birdsnest.svg",
+    waterCondition: "anyWater",
+    lightCondition: "dark",
+    beginner: false
+  },
+  {
+    name: "bromelia",
+    image: "assets/bromelia.svg",
+    waterCondition: "littleWater",
+    lightCondition: "light",
+    beginner: false
+  },
+  {
+    name: "cactus",
+    image: "assets/cactus.svg",
+    waterCondition: "littleWater",
+    lightCondition: "light",
+    beginner: true
+  },
+  {
+    name: "calathea",
+    image: "assets/calathea.svg",
+    waterCondition: "lotWater",
+    lightCondition: "dark",
+    beginner: false
+  },
+  {
+    name: "coleus",
+    image: "assets/coleus.svg",
+    waterCondition: "lotWater",
+    lightCondition: "light",
+    beginner: true
+  },
+  {
+    name: "coral cactus",
+    image: "assets/coralcactus.svg",
+    waterCondition: "littleWater",
+    lightCondition: "light",
+    beginner: false
+  },
+  {
+    name: "croton plant",
+    image: "assets/crotonplant.svg",
+    waterCondition: "lotWater",
+    lightCondition: "light",
+    beginner: false
+  },
+  {
+    name: "dieffenbach seguine",
+    image: "assets/dieffenbachseguine.svg",
+    waterCondition: "lotWater",
+    lightCondition: "dark",
+    beginner: true
+  },
+  {
+    name: "dracaena fragrans",
+    image: "assets/dracaenafragrans.svg",
+    waterCondition: "anyWater",
+    lightCondition: "anyLight",
+    beginner: true
+  },
+  {
+    name: "fern",
+    image: "assets/fern.svg",
+    waterCondition: "lotWater",
+    lightCondition: "dark",
+    beginner: false
+  },
+  {
+    name: "geranium",
+    image: "assets/geraniumplant.svg",
+    waterCondition: "anyWater",
+    lightCondition: "light",
+    beginner: true
+  },
+  {
+    name: "golden pothos",
+    image: "assets/goldenphotos.svg",
+    waterCondition: "anyWater",
+    lightCondition: "anyLight",
+    beginner: true
+  },
+  {
+    name: "ivy plant",
+    image: "assets/ivyplant.svg",
+    waterCondition: "lotWater",
+    lightCondition: "dark",
+    beginner: false
+  },
+  {
+    name: "money plant",
+    image: "assets/moneyplant.svg",
+    waterCondition: "anyWater",
+    lightCondition: "anyLight",
+    beginner: true
+  },
+  {
+    name: "monstera",
+    image: "assets/monstera.svg",
+    waterCondition: "anyWater",
+    lightCondition: "dark",
+    beginner: true
+  },
+  {
+    name: "orchid",
+    image: "assets/orchid.svg",
+    waterCondition: "littleWater",
+    lightCondition: "anyLight",
+    beginner: false
+  },
+  {
+    name: "oxalis",
+    image: "assets/oxalis.svg",
+    waterCondition: "lotWater",
+    lightCondition: "anyLight",
+    beginner: false
+  },
+  {
+    name: "parlor palm",
+    image: "assets/parlorpalm.svg",
+    waterCondition: "lotWater",
+    lightCondition: "anyLight",
+    beginner: true
+  },
+  {
+    name: "peperomia",
+    image: "assets/peperomia.svg",
+    waterCondition: "anyWater",
+    lightCondition: "dark",
+    beginner: true
+  },
+  {
+    name: "red stemmed dracaena",
+    image: "assets/redstemmeddracaena.svg",
+    waterCondition: "anyWater",
+    lightCondition: "dark",
+    beginner: true
+  },
+  {
+    name: "snake plant",
+    image: "assets/snakeplant.svg",
+    waterCondition: "littleWater",
+    lightCondition: "dark",
+    beginner: true
+  },
+  {
+    name: "spider plant",
+    image: "assets/spiderplant.svg",
+    waterCondition: "anyWater",
+    lightCondition: "anyLight",
+    beginner: true
+  },
+  {
+    name: "succulent",
+    image: "assets/succulent.svg",
+    waterCondition: "littleWater",
+    lightCondition: "light",
+    beginner: true
+  },
+  {
+    name: "strelitzia",
+    image: "assets/strelitzia.svg",
+    waterCondition: "lotWater",
+    lightCondition: "anyLight",
+    beginner: false
+  },
+  {
+    name: "umbrella plant",
+    image: "assets/umbrellaplant.svg",
+    waterCondition: "anyWater",
+    lightCondition: "anyLight",
+    beginner: true
+  },
+  {
+    name: "fig",
+    image: "assets/weepingfig.svg",
+    waterCondition: "anyWater",
+    lightCondition: "anyLight",
+    beginner: true
+  },
+  {
+    name: "yucca plant",
+    image: "assets/yucca.svg",
+    waterCondition: "littleWater",
+    lightCondition: "anyLight",
+    beginner: true
+  },
+  {
+    name: "ZZ plant",
+    image: "assets/zzplant.svg",
+    waterCondition: "littleWater",
+    lightCondition: "dark",
+    beginner: true
+  }
+]
+
+
 // Functions
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -101,7 +330,7 @@ setTimeout(() => lightQuestion(waterAnswer), 1000);
 const lightQuestion = (waterAnswer) => {
   botMessage(`So, how will you place your plant?`);
   inputWrapper.innerHTML = `
-  <select id="lightSelector">
+  <select class="light-selector" id="lightSelector">
   <option value="" selected disabled>Please choose...</option>
   <option id="lightSel" value="light">☀️ Sunny</option>
   <option id="darkSel" value="dark">🌑 Dark</option>
@@ -110,43 +339,42 @@ const lightQuestion = (waterAnswer) => {
   `
 
   const select = document.getElementById('lightSelector');
-  select.addEventListener('change', () => setTimeout(() => showPlant(waterAnswer, select.value), 1000));
+  select.addEventListener('change', () => setTimeout(() => difficultyQuestion(waterAnswer, select.value), 1000));
 }
 
-const showPlant = (waterAnswer, lightAnswer) => {
+const difficultyQuestion = (waterAnswer, lightAnswer) => {
+  botMessage("Are you a beginner with plants?")
+  inputWrapper.innerHTML = `
+  <button id="yesBtn">Yes!</button>
+  <button id="noBtn">No!</button>
+  `
+  document
+  .getElementById('yesBtn').addEventListener('click', () => {userMessage("Yes, I need a beginner plant!");
   inputWrapper.innerHTML = '';
-  if (waterAnswer === 'littleWater' && lightAnswer === 'light') {
-    botMessage(`You should get a succulent! <br><img src="assets/succulent.png" alt="A succulent plant">`)
-  }
-  else if (waterAnswer === 'lotWater' && lightAnswer === 'light') {
-    botMessage (`In that case, try a coleus plant! <br><img src="assets/coleus.png" alt="a coleus plant, also called fire nettle">`)
-  }
-  else if (waterAnswer === 'anyWater' && lightAnswer === 'light') {
-    botMessage (`You might like a geranium! <br><img src="assets/geranium.png" alt="a potted geranium">`)
-  }
-  else if (waterAnswer === 'littleWater' && lightAnswer === 'dark') {
-    botMessage (`You might like a ZZ plant! <br><img src="assets/zzplant.png" alt="a potted ZZ plant">`)
-  }
-  else if (waterAnswer === 'lotWater' && lightAnswer === 'dark') {
-    botMessage (`You should get an ivy plant! <br><img src="assets/ivy.png" alt="a potted ivy plant">`)
-  }
-  else if (waterAnswer === 'anyWater' && lightAnswer === 'dark') {
-    botMessage (`Try a monstera perhaps? <br><img src="assets/monstera.png" alt="a potted monstera plant">`)
-  }
-  else if (waterAnswer === 'littleWater' && lightAnswer === 'anyLight') {
-    botMessage (`You might like an aloe vera! <br><img src="assets/aloe.png" alt="aloe vera plant">`)
-  }
-  else if (waterAnswer === 'lotWater' && lightAnswer === 'anyLight') {
-    botMessage (`Try a croton plant! <br><img src="assets/croton.png" alt="croton plant">`)
-  }
-  else if (waterAnswer === 'anyWater' && lightAnswer === 'anyLight') {
-    botMessage (`A spider plant might be right for you! <br><img src="assets/spiderplant.png" alt="a potted spider plant">`)
-  }
-else {
-  botMessage ("I think something went wrong, please reset!")
+  setTimeout(() => showPlant(waterAnswer, lightAnswer, true), 1000)});
+  document
+  .getElementById('noBtn').addEventListener('click', () => {userMessage("No, give me a challenge!");
+  inputWrapper.innerHTML = '';
+  setTimeout(() => showPlant(waterAnswer, lightAnswer, false), 1000)});
 }
-setTimeout(() => lastQuestion(), 1000);
-}
+
+const showPlant = (waterAnswer, lightAnswer, beginner) => {
+  inputWrapper.innerHTML = '';
+
+const matchingPlants = plants.filter(plant => plant.waterCondition === waterAnswer && plant.lightCondition === lightAnswer && plant.beginner === beginner);
+  
+if (matchingPlants.length > 0) {
+    const randomIndex = Math.floor(Math.random() * matchingPlants.length);
+    const selectedPlant = matchingPlants[randomIndex];
+    
+    botMessage(`You should get a ${selectedPlant.name}! <br><img src="${selectedPlant.image}" alt="${selectedPlant.name}">`);
+  } else {
+    botMessage("I couldn't find a matching plant. Please try again with different conditions.");
+  }
+
+  setTimeout(() => lastQuestion(), 1000);
+};
+
 
 const lastQuestion = () => {
   botMessage("Are you happy with this recommendation?");

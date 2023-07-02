@@ -76,6 +76,7 @@ main {
   overflow: scroll;
   flex-direction: column;
   padding-bottom: 16px;
+  padding-top: 8px;
 }
 
 .bot-msg {
@@ -120,6 +121,7 @@ main {
 .input-wrapper {
   display: flex;
   justify-content: center;
+  padding-top: 8px;
 }
 
 .input-wrapper form {
@@ -154,16 +156,15 @@ button:hover {
   transition: all 0.2s ease;
 }
 
+.light-selector {
+  background-color: #565e51;
+  color: white;
+}
+
 @media (min-width: 668px) {
 
   button {
-    background-color: #3A4036;
-    color: white;
-    border: none;
-    border-radius: 4px;
     padding: 16px 40px;
-    margin-right: 4px;
-    font-size: 16px;
     line-height: 26px;
     cursor: pointer;
     transition: all 0.3s ease;
