@@ -57,13 +57,13 @@ submitButton.addEventListener("click", function(event) {
     showMessage(`Hello 👋, my name is ${heroName}`, "user"); 
     inputWrapper.innerHTML = "";
     //After showMessages is called, setTimout waits 1000 ms to call nameReply 
-    setTimeout(nameReply, 1000);
+    setTimeout(nameReply, 1200);
   })
 
 /* This is the first reply from the bot */
 const nameReply = () => {
   showMessage(`Please, ${heroName}, help me save my puppy 🐶. Here are some items you may need to succeed on this rescue mission. Choose wisely! 🧐`, "bot");
-  setTimeout(itemSelection, 1000);
+  setTimeout(itemSelection, 2000);
 }
 
 
@@ -105,7 +105,7 @@ const itemSelection = () => {
       inputWrapper.innerHTML = ``;
       showMessage (`I choose ${htmlItem1} and ${htmlItem2}`, 'user');
       heroInventory.push(item1, item2); 
-      setTimeout(botIntersection1, 1000);
+      setTimeout(botIntersection1, 1200);
       }) 
 }
 
@@ -117,7 +117,7 @@ const botIntersection1 = () => {
   <button class="path-button" id="creek">Creek 🌊</button>
 `;
   showMessage (`Which road do you want to take? 🚦`,"bot");
-  setTimeout(pathChoice, 1000);
+  setTimeout(pathChoice, 2000);
 } 
 
 // Display buttons for path choice
@@ -134,69 +134,69 @@ const pathChoice = () => {
       if (heroInventory.includes("water-bottle")) {
         setTimeout( () => {
           showMessage(`Thankfully, the bottle of water 🥤 saves you from dehydration.🎖 You may proceed.`,`bot`); //
-          setTimeout( () => {showMessage(`Wohoo! 🥳`,`user`)}, 2000);  
-        }, 1500);
-        setTimeout(botIntersection2, 5000);
+          setTimeout( () => {showMessage(`Wohoo! 🥳`,`user`)}, 3500);  
+        }, 1800);
+        setTimeout(botIntersection2, 8000);
 
       }
       else if (heroInventory.includes("umbrella")) {
         setTimeout( () => { 
-          showMessage(`The umbrella ☂️ saved you from the scorching sun ☀️ but you are severly dehydrated and weakened.`,`bot`); 
+          showMessage(`The umbrella ☂️ saved you from the scorching sun ☀️ but you are severly dehydrated and weakened. Lose 1 hp.`,`bot`); 
           heroHp = (heroHp -1);
-          setTimeout( () => {showMessage(`Oh no! ❤️‍🩹 😭`,`user`)}, 2000);
-        }, 1500);
-        setTimeout(botIntersection2, 5000);
+          setTimeout( () => {showMessage(`Oh no! ❤️‍🩹`,`user`)}, 3500);
+        }, 1800);
+        setTimeout(botIntersection2, 8000);
       }
       else {
         setTimeout( () => { 
           showMessage(`The sun burns 🔥 your skin and you sweat every last drop of water 🥵. You die! ☠️`,`bot`); 
-        }, 1500);
-        setTimeout(gameOver, 6000);
+        }, 1800);
+        setTimeout(gameOver, 8000);
       }
 
     } else if (this.id === "mountain") {
       if (heroInventory.includes("rope")) {
         setTimeout( () => { 
           showMessage(`Using your rope 🪢 you mange to touch down on the ground softly. 🎖 You may proceed!`,`bot`);   
-        }, 1500);
-       setTimeout( () => {showMessage(`Wohoo! 🥳`,`user`)}, 2000);
-      setTimeout(botIntersection2, 5000);
+        }, 1800);
+       setTimeout( () => {showMessage(`Wohoo! 🥳`,`user`)}, 3500);
+      setTimeout(botIntersection2, 8000);
       } 
       else if (heroInventory.includes("helmet")) {
         setTimeout( () => {
-          showMessage(` Halfway down you loose you footing, but thanks to your helmet eyou survived but very injured.`,`bot`);
+          showMessage(` Halfway down you loose you footing, but thanks to your helmet eyou survived but very injured. Lose 1 hp.`,`bot`);
           heroHp = (heroHp -1);
-          setTimeout( () => {showMessage(`Oh no!❤️‍🩹 😭`,`user`)}, 2000);
-        }, 1500);
-        setTimeout(botIntersection2, 5000);
+          setTimeout( () => {showMessage(`Oh no!❤️‍🩹`,`user`)}, 3500);
+        }, 1800);
+        setTimeout(botIntersection2, 8000);
       }
       else {
         setTimeout( () => { 
           showMessage("You lose you footing and tumble down the mountain side, crushing every bone in your body. Why didn't you choose something else to help you on this dangerous mission? You die! ☠️",`bot`); 
-        }, 1500);
-        setTimeout(gameOver, 6000);
+        }, 1800);
+        setTimeout(gameOver, 8000);
       }
     } else {
       if (heroInventory.includes("boat")) {
         setTimeout( () => {
           showMessage(`The inflateble boat ⛵️ helped you to cruise peacefully down the creek 🌊. You may proceed!🎖`,`bot`);   
-          setTimeout( () => {showMessage(`Wohoo! 🥳`,`user`)}, 2000);
-        }, 1500);
-        setTimeout(botIntersection2, 5000);
+          setTimeout( () => {showMessage(`Wohoo! 🥳`,`user`)}, 3500);
+        }, 1800);
+        setTimeout(botIntersection2, 8000);
       }
       else if (heroInventory.includes("life-jacket")) {
         setTimeout( () => {
-          showMessage(`The life-jacket 🦺 helped you stay afloat on the dangerous water. You exit the creek alive but severely injured. 🤕`,`bot`); 
-          setTimeout( () => {showMessage(`Oh no! ❤️‍🩹 😭`,`user`)}, 2000);
+          showMessage(`The life-jacket 🦺 helped you stay afloat on the dangerous water. You exit the creek alive but severely injured. 🤕 Lose 1 hp.`,`bot`); 
+          setTimeout( () => {showMessage(`Oh no! ❤️‍🩹`,`user`)}, 3500);
           heroHp = (heroHp -1);
-        }, 1500);
-        setTimeout(botIntersection2, 5000);
+        }, 1800);
+        setTimeout(botIntersection2, 8000);
       }
       else {
         setTimeout( () => {
           showMessage(`You attemt to swim along the creek 🌊 but its currents are too strong and you are pulled under water to a certain death. You drown! ☠️`,`bot`); 
-        }, 1500);
-        setTimeout(gameOver, 6000);
+        }, 1800);
+        setTimeout(gameOver, 8000);
       }
     } 
   }))
@@ -207,8 +207,8 @@ const botIntersection2 = () => {
   <button class="continue" id="continueYes">YES! Bring it on! 👊🏼</button>
   <button class="continue" id="continueNo">No, I'm too scared! 🫣</button>
   `;
-  showMessage(`You can see the puppy 🐶 now but its guarded by a huge dragon 🐲. Are you brave enough to continue?`, `bot`) 
-  setTimeout(continueAdventure, 500)
+  showMessage(`You can see the puppy now but its guarded by a huge dragon 🐶 🐲. Are you brave enough to continue?`, `bot`) 
+  setTimeout(continueAdventure, 2000)
 }
 
 // Makes buttons visible for next step
@@ -220,13 +220,13 @@ const continueAdventure = () => {
     showMessage(this.innerHTML, "user");
 
     if (this.id === "continueYes") {
-       setTimeout(methodChoice, 1000);
+       setTimeout(methodChoice, 2000);
 
     } else {
       setTimeout( () => {
         showMessage("Coward!😡 Come back when you are ready!", "bot")
-        , 1000});
-        setTimeout (gameOver, 2000);
+        , 2000});
+        setTimeout (gameOver, 4000);
     }
   }))
 } 
@@ -252,21 +252,21 @@ const methodChoice = () => {
       if (heroInventory.includes("guitar")) {
         setTimeout( () => {
           showMessage(`The music you play on your guitar 🎸 makes the dragon fall asleep 💤. You may proceed.`,`bot`);   
-          setTimeout( () => {showMessage(`Yay 🥳`,`user`)}, 1000);
-        }, 1500);
-      setTimeout(conclusion, 3000);
+          setTimeout( () => {showMessage(`Yay 🥳`,`user`)}, 3000);
+        }, 1800);
+      setTimeout(conclusion, 8000);
       }
 
       else if (heroInventory.includes("meat")) {
         setTimeout( () => { 
-          showMessage(`You hold out the piece of meat 🍖 to the dragon 🐲. It makes it relaxed and happy but it also bites your hand off 🍽. You loose alot of blood 🩸.`,`bot`); 
+          showMessage(`You hold out the piece of meat 🍖 to the dragon 🐲. It makes it relaxed and happy but it also bites your hand off 🍽. You loose alot of blood 🩸. Lose 1 hp`,`bot`); 
           heroHp = (heroHp -1);
-          setTimeout( () => {showMessage(`Ouch! ❤️‍🩹 😭`,`user`)}, 1000);
+          setTimeout( () => {showMessage(`Ouch! ❤️‍🩹`,`user`)}, 4000);
           if (heroHp === 0) {
-            setTimeout(deathBy0Hp, 2000) //to make deathBy0Hp function run if hp is 0, otherwise run conclusion function. 
+            setTimeout(deathBy0Hp, 6000) //to make deathBy0Hp function run if hp is 0, otherwise run conclusion function. 
           }
           else {
-            setTimeout(conclusion, 2000);
+            setTimeout(conclusion, 6000);
           }
         }, 1500);
       }
@@ -275,29 +275,29 @@ const methodChoice = () => {
         setTimeout( () => { 
           showMessage(`Your attemt fails and the dragon 🐲 eats you alive. Why didn't you choose something else to help you on this dangerous mission? You die. ☠️`,`bot`); 
         }, 1500);
-        setTimeout(gameOver, 8000);
+        setTimeout(gameOver, 6000);
       }
 
     } else if (this.id === "strike") {
       if (heroInventory.includes("sword")) {
         setTimeout( () => { 
           showMessage(`You pull out your sword 🗡 and thrust it in to the dragons 🐲 heart, killing it. You may proceed.`,`bot`);   
-          setTimeout( () => {showMessage(`Yay! 🥳`,`user`)}, 1000);
+          setTimeout( () => {showMessage(`Yay! 🥳`,`user`)}, 4000);
         }, 1500);
-        setTimeout(conclusion, 7000);
+        setTimeout(conclusion, 6000);
       }
 
       else if (heroInventory.includes("shield")) {
         setTimeout( () => {
-          showMessage(`Using you shield 🛡 you block most of the dragons 🐲  attack but you still get injured. 🤕 Your body is severly bruised.`,`bot`);
+          showMessage(`Using you shield 🛡 you block most of the dragons 🐲 attack but you still get injured. 🤕 Your body is severly bruised. Lose 1 hp.`,`bot`);
           heroHp = (heroHp -1);
-          setTimeout( () => {showMessage(`Oh, no!❤️‍🩹 😭`,`user`)}, 1000);
+          setTimeout( () => {showMessage(`Oh, the pain! ❤️‍🩹`,`user`)}, 4000);
           //to make deathBy0Hp function run if hp is 0, otherwise run conclusion function
           if (heroHp === 0) {
-            setTimeout(deathBy0Hp, 3000)
+            setTimeout(deathBy0Hp, 6000)
           }
           else {
-            setTimeout(conclusion, 5000);
+            setTimeout(conclusion, 6000);
           }
         }, 1500);
       }
@@ -306,37 +306,37 @@ const methodChoice = () => {
         setTimeout( () => { 
           showMessage(`Your attemt fails and the dragon 🐲 eats you alive. Why didn't you choose something else to help you on this dangerous mission? You die! ☠️`,`bot`); 
         }, 1500);
-        setTimeout(gameOver, 10000);
+        setTimeout(gameOver, 6000);
       }
 
     } else {
       if (heroInventory.includes("invicibility-cloak")) {
         setTimeout( () => {
           showMessage(`Using your invicibility cloak 🧥 you sneek safely past the dragon 🐲. You may proceed.`,`bot`);   
-          setTimeout( () => {showMessage(`Yay! 🥳`,`user`)}, 3000);
+          setTimeout( () => {showMessage(`Hehe, sucker! 🥳`,`user`)}, 3000);
         }, 1500);
         setTimeout(conclusion, 7000);
       }
       else if (heroInventory.includes("moccasin")) {
         setTimeout( () => {
-          showMessage(`Thanks to your moccasin the dragon 🐲 can't hear you sneak past it 🤫. Unfortunately it sees you and severly burns you 🔥.`,`bot`); 
-          setTimeout( () => {showMessage(`Oh no! ❤️‍🩹 😭`,`user`)}, 1000);
+          showMessage(`Thanks to your moccasin the dragon 🐲 can't hear you sneak past it 🤫. Unfortunately it sees you and severly burns you 🔥. Lose 1 hp.`,`bot`); 
+          setTimeout( () => {showMessage(`I'm melting! ❤️‍🩹`,`user`)}, 4000);
           heroHp = (heroHp -1);
           //to make deathBy0Hp function run if hp is 0, otherwise run conclusion function
           if (heroHp === 0) {
-            setTimeout(deathBy0Hp, 2000)
+            setTimeout(deathBy0Hp, 6000)
           }
           else {
-            setTimeout(conclusion, 2000);
+            setTimeout(conclusion, 6000);
           }
         }, 1500);
       }
       else {
         setTimeout( () => {
-    showMessage(`Your injuries are too severe. You die! ☠️`, 'bot');
-        showMessage(`Your attemt fails and the dragon 🐲  eats you alive. Why didn't you choose something else to help you on this dangerous mission? You die! ☠️`,`bot`); 
-        }, 1500);
-        setTimeout(gameOver, 8000);
+          showMessage(`Your injuries are too severe. You die! ☠️`, 'bot');
+          showMessage(`Your attemt fails and the dragon 🐲  eats you alive. Why didn't you choose something useful to helt you on this dangerous mission? You die! ☠️`,`bot`); 
+          }, 1500);
+        setTimeout(gameOver, 6000);
       }
     } 
   }))
@@ -356,15 +356,15 @@ const conclusion = () => {
       inputWrapper.innerHTML = "";
       if (this.id === "puppy-button") {
         showMessage(`I will rescue the puppy 🐶, of course!`, "user");
-        setTimeout(finalScene, 2000)
+        setTimeout(finalScene, 500)
       }
       else {
         setTimeout( () => {
           showMessage(`That gold is irresistible! I will take take the treasure 👑 !`, "user"); 
-          }, 1000);       
+          }, 500);       
           setTimeout( () => {
-            showMessage(`You only had one job, to save the puppy 🐶! Why didn't you? ${heroName}, you are a horrible, greedy person 😡.`,"bot")}, 3000);
-        setTimeout(gameOver, 7000);
+            showMessage(`You only had one job, to save the puppy 🐶! Why didn't you? ${heroName}, you are a horrible, greedy person 😡.`,"bot")}, 4000);
+        setTimeout(gameOver, 8000);
       }
     }))
 }
@@ -377,7 +377,7 @@ const finalScene = () => {
 const deathBy0Hp = () => {
   if(heroHp === 0) {
     showMessage(`Your injuries are too severe. You die! ☠️`, 'bot');
-    setTimeout(gameOver, 3000);
+    setTimeout(gameOver, 3500);
   }
 }
 
