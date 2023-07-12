@@ -1,6 +1,6 @@
 # Sunny Destination Chatbot
 
-Week 1 Technigo Bootcamp <br>
+### Week 1 Technigo Bootcamp 
 This project was to build a chat bot using HTML and Javascript. The idea was to begin to understand variables, conditionals and functionals in Javascript as well as understanding the control flow of conditional statments.  
 
 ## The problem
