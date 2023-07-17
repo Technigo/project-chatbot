@@ -89,7 +89,7 @@ const handleNameInput = (event) => {
 
 Commit and push your changes*.*
 
-### Iteration 04 - Optional 
+### Iteration 04  
 
 Now you have a solid base for your bot, and the beginnings of a control flow from questions and answers, it's just to keep building up your event functions which then invoke the next question function, and to figure out the flow of your code.
 
@@ -105,6 +105,13 @@ We want you to practice conditionals, so it's time to add some if...else stateme
 
 Check our live example bot and try out a few different answers to see the differences you get in the replies from the bot.
 
+## Stretch Goals
+
+So you’ve completed the blue level? Great job! Make sure you've committed and pushed a version of your project before starting on the stretch goals. Remember that the stretch goals are optional.
+
+- Work on your CSS skills, and change the styling.
+- How is the user answering the questions? Choose the form elements that you think fit the purpose best.
+  
 
 
 
