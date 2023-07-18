@@ -110,4 +110,3 @@ So you’ve completed the blue level? Great job! Make sure you've committed and 
 
 - Work on your CSS skills, and change the styling.
 - How is the user answering the questions? Choose the form elements that you think fit the purpose best.
-- TEST
