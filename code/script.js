@@ -7,13 +7,13 @@ const button = document.getElementById("button")
 // Global variables
 let questionNumber = 1
 
-// Functions
+// Declare your functions after this comment
 
-// Function that adds a chat bubble in the correct place based on who the sender is
+// This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
-    console.log(message)
+    console.log("User")
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -24,7 +24,7 @@ const showMessage = (message, sender) => {
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
-    console.log(message)
+    console.log("Bot")
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -38,25 +38,19 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
-const nextQuestion = (message) => {
-  console.log('questionNumber', questionNumber)
-  
-  if (questionNumber === 1) {
-    userSay(`My name is ${userName}, nice to meet you!`)
-    setTimeout(() => whatName(message), 1500)
-  }
-  else if (questionNumber === 2) {
-    userSay(message)
-    setTimeout(() => )
-  }
- 
+// Starts here
+const greetUser = () => {
+  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
+  showMessage("Hello there! What's your name?", 'bot');
+  // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-// This function adds a delay to the askName function
+// Set up your eventlisteners here
+
+// When website loaded, chatbot asks first question.
+// normally we would invoke a function like this:
+// greeting()
+// But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
-setTimeout(askName, 1200);
-
-
-// This conditional is invoked if input is left empty
-
-// Eventlisteners
+// This means the greeting function will be called one second after the website is loaded.
+setTimeout(greetUser, 1500);
