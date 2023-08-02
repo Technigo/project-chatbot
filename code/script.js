@@ -1,11 +1,9 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById("input-wrapper")
-const nameInput = document.getElementById("name-input")
-const button = document.getElementById("button")
+const nameInput = document.getElementById("input")
+const greetBtn = document.getElementById("greet-btn")
 
-// Global variables
-let questionNumber = 1
 
 // Declare your functions after this comment
 
@@ -27,13 +25,14 @@ const showMessage = (message, sender) => {
     console.log("Bot")
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/cat.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
       </section>
     `
   }
+
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
 }
@@ -41,16 +40,10 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there! What's your name?", 'bot');
+  showMessage("Maow?", 'bot');
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
 // Set up your eventlisteners here
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1500);
+setTimeout(greetUser, 2000)
