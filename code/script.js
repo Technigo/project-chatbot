@@ -10,11 +10,10 @@ const petmoreBtn = document.getElementById("petmore-btn")
 const pictureBtn = document.getElementById("picture-btn")
 const forfeitBtn = document.getElementById("forfeit-btn")
 const moreloveBtn = document.getElementById("morelove-btn")
-
-
-
-
-
+const meowlong = document.getElementById("meowlong")
+const meowshort = document.getElementById("meowshort")
+const purrlong = document.getElementById("purrlong")
+const purrbreath = document.getElementById("purrbreath")
 
 
 // Declare your functions after this comment
@@ -67,14 +66,19 @@ const showMessage = (message, sender, displayRandomImage) => {
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Meow?", 'bot');
-  setTimeout(() => {
-    showMessage("<p style='font-style: italic;'>Oh snap! I seem to have woken Bob from a nap. What to do?</p>", 'user');
-  }, 2000);
+  // Add an event listener to play the sound when the message starts playing
+  meowshort.addEventListener("play", () => {
+    setTimeout(() => {
+      showMessage("<p style='font-style: italic;'>Oh snap! I seem to have woken Bob up from a nap.</p>", 'user');
+    }, 3000)
+  });
+  // Play the sound
+  meowshort.play();
   setTimeout(() => {
     // show buttons
     greetBtn.removeAttribute('hidden');
     ignoreBtn.removeAttribute('hidden');
-  }, 3000)
+  }, 4000)
   
   // Just to check it out, change 'bot' to 'user' here 👆
 }
@@ -99,10 +103,10 @@ const greetBob = () => {
     showMessage("You smell...", 'bot');
   }, 6000);
   setTimeout(() => {
-    showMessage("...like friend!", 'bot');
+    showMessage("...like friend😻", 'bot');
   }, 8000);
   setTimeout(() => {
-    showMessage("Gimme love😻", 'bot');
+    showMessage("Gimme love?", 'bot');
   }, 9000);
   setTimeout(() => {
     petBtn.removeAttribute('hidden');
@@ -124,7 +128,7 @@ const ignoreBob = () => {
   pullawayBtn.setAttribute('hidden', true);
   showMessage("You know what? I don't even like cats.", 'user');
   setTimeout(() => {
-    showMessage("Bob feels sad now. 😿 He rolls up into a ball and goes back to sleep.", 'bot');
+    showMessage("Bob feels sad now. 😿 He curls up into a ball and goes back to sleep.", 'bot');
   }, 1000);
   setTimeout(() => {
     showReloadBtn();
@@ -136,59 +140,64 @@ const petBob = () => {
   // Hide the buttons after the user has made their choice
   petBtn.setAttribute('hidden', true);
   pullawayBtn.setAttribute('hidden', true);
-  showMessage("Alright, here you go buddy!", 'user');
-  setTimeout(() => {
-    showMessage("<p style='font-style: italic;'>purrr...</p>", 'bot');
-  }, 1000);
+  purrlong.addEventListener("play", () => {
+    setTimeout(() => {
+      showMessage("<p style='font-style: italic;'>purrr...</p>", 'bot');
+    }, 1000);
+  });
+  purrlong.play();
   setTimeout(() => {
     showMessage("<p style='font-style: italic;'>What a cute kitty🥹</p>", 'user');
-  }, 3000);
+  }, 7000);
   setTimeout(() => {
     petmoreBtn.removeAttribute('hidden');
     pullawayBtn.removeAttribute('hidden');
     chat.scrollTop = chat.scrollHeight;
-  }, 5000);
+  }, 9000);
 }
 
 const moreLove = () => {
   petmoreBtn.setAttribute('hidden', true);
   pullawayBtn.setAttribute('hidden', true);
-  showMessage("Here, have some more", 'user');
   setTimeout(() => {
     showMessage("<p style='font-style: italic;'>purrrpurrpurrr...</p>", 'bot');
-  }, 1000);
-  setTimeout(() => {
-    showMessage("<p style='font-style: italic;'>licks hand</p>", 'bot');
-  }, 2000);
-  setTimeout(() => {
-    showMessage("<p style='font-style: italic;'>OMG🥹</p>", 'user');
-  }, 3000);
-  setTimeout(() => {
-    showMessage("I think we have a bond", 'user');
-  }, 4000);
-  setTimeout(() => {
-    showMessage("I must snap picture", 'user');
-  }, 5000);
-  setTimeout(() => {
-    showMessage("<p style='font-style: italic;'>pulls out phone</p>", 'user');
-  }, 6000);
-  setTimeout(() => {
-    showMessage("Meeeooooow! Why u stop?", 'bot');
-  }, 8000);
-  setTimeout(() => {
-    showMessage("<p style='font-style: italic;'>looks angry</p>", 'bot');
-  }, 9000);
-  setTimeout(() => {
-    showMessage("<p style='font-style: italic;'>Hmm, he doesn't seem to like when I stop petting him...</p>", 'user');
-  }, 10000);
-  setTimeout(() => {
-    showMessage("What to do?", 'user');
-  }, 12000);
-  setTimeout(() => {
-    pictureBtn.removeAttribute('hidden');
-    forfeitBtn.removeAttribute('hidden');
-    chat.scrollTop = chat.scrollHeight;
-  }, 13000)
+  purrbreath.addEventListener("ended", () => {
+      setTimeout(() => {
+        showMessage("<p style='font-style: italic;'>licks hand</p>", 'bot');
+        setTimeout(() => {
+          showMessage("<p style='font-style: italic;'>OMG🥹</p>", 'user');
+          setTimeout(() => {
+            showMessage("I think we have a bond", 'user');
+            setTimeout(() => {
+              showMessage("I must snap picture", 'user');
+              setTimeout(() => {
+                showMessage("<p style='font-style: italic;'>pulls out phone</p>", 'user');
+                setTimeout(() => {
+                  showMessage("Meeeooooow! Why u stop?", 'bot');
+                  meowlong.addEventListener("ended", () => {
+                    setTimeout(() => {
+                      showMessage("<p style='font-style: italic;'>looks angry</p>", 'bot');
+                      setTimeout(() => {
+                        showMessage("<p style='font-style: italic;'>Hmm, he doesn't seem to like when I stop...</p>", 'user');
+                        setTimeout(() => {
+                          pictureBtn.removeAttribute('hidden');
+                          forfeitBtn.removeAttribute('hidden');
+                          chat.scrollTop = chat.scrollHeight;
+                        }, 1000);
+                      }, 1000);
+                    }, 1000);
+                  }, 1000);
+                });
+                meowlong.play();
+              }, 1000);
+            }, 1000);
+          }, 1000);
+        }, 1000);
+      }, 1000);
+    }, 1000);
+  });
+
+  purrbreath.play();
 }
 
 const imageUrls = [
@@ -236,8 +245,26 @@ const takePic = () => {
 const tooMuchLove = () => {
   moreloveBtn.setAttribute('hidden', true);
   ignoreBtn.setAttribute('hidden', true);
-  showMessage("Sorry to have annoyed you little friend", 'user');
-  
+  showMessage("<p style='font-style: italic;'>bites hand</p>", 'bot');
+  setTimeout(() => {
+    showMessage("Aooooow! F*ck", 'user');
+  }, 1000);
+  setTimeout(() => {
+    showMessage("You prick", 'user');
+  }, 2000);
+  setTimeout(() => {
+    showMessage("I thought we were friends", 'user');
+  }, 3000);
+  setTimeout(() => {
+    showMessage("<p style='font-style: italic;'>pulls away hand</p>", 'user');
+  }, 4000);
+  setTimeout(() => {
+    showMessage("Bob has had enough of humans for another day. 😼 He licks his paw, curls up into a ball and goes back to sleep.", 'bot');
+  }, 5000);
+  setTimeout(() => {
+    showReloadBtn();
+    chat.scrollTop = chat.scrollHeight;
+  }, 6000);
 }
 
 const noPic = () => {
@@ -245,11 +272,16 @@ const noPic = () => {
   forfeitBtn.setAttribute('hidden', true);
   showMessage("Okay then, I give up, no picture...", 'user');
   setTimeout(() => {
+    showMessage("Sorry to have annoyed you little kittle", 'user');
+  }, 1000);
+  setTimeout(() => {
     showMessage("...", 'bot');
+  }, 2000)
+  setTimeout(() => {
     moreloveBtn.removeAttribute('hidden');
     ignoreBtn.removeAttribute('hidden');
     chat.scrollTop = chat.scrollHeight;
-  }, 2000);
+  }, 4000);
 }
 
 // Set up your eventlisteners here
