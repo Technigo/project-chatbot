@@ -90,14 +90,9 @@ main {
   flex-shrink: 0;
 }
 
-.avatar {
+.user-msg img, .bot-msg img {
   width: 60px;
   height: 60px;
-}
-
-.catpic {
-  width: 200px;
-  height: 200px;
 }
 
 .bubble {
