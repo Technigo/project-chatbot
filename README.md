@@ -1,13 +1,32 @@
-# Project Name
+# Project Chatbot 
 
-Replace this readme with your own information about your project.
+During week one of Technigo's web development bootcamp our task was to create a simple chatbot.
+By doing so we got the chance to practice basic Javascript concepts and syntaxes.
+I decided to create a moodboster called Bob with a mission to spark som joy or make the user a little bit happier.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Learning goals for this project:
 
-## The problem
+✓ How to use variables in JavaScript.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+✓ How to use conditionals in JavaScript.
+
+✓ Know some string methods to modify strings.
+
+✓ Understand control flow and the use of conditional statements.
+
+✓ How to use functions in JavaScript
+
+✓ Different datatypes
+
+
+## 🚨 The problem
+
+I began by working on basic functionality to practice utilizing functions, event listeners and different variables.
+As I gained a better grasp of the fundamentals, I gradually expanded the scope to include more options and integrate more 
+creative elements. Styling the components was extra enjoyable and I created my own Bob character and a user icon in an attempt to enhance the overall visual coherence.
+
+With more time at hand, I would have delved deeper into exploring additional user inputs, as well as introducing a wider range of details and variations to enrich the range of possible answers. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://flourishing-begonia-4f3673.netlify.app

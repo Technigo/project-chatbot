@@ -19,6 +19,10 @@ body {
   }
 }
 
+a {
+  text-decoration: none;
+}
+
 h1 {
   font-size: 50px;
   font-weight: 500;
@@ -26,6 +30,7 @@ h1 {
   color: #ff8bff;
   text-align: center;
   padding-top: 30px;
+  text-decoration: none;
 }
 
 h2 {
