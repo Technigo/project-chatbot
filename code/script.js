@@ -87,6 +87,8 @@ const handleAction = () => {
     }
   } else if (currentState === "takePic") {
     takePic();
+    currentState = "tryAgain";
+    actionBtn.textContent = "Try again";
   } else if (currentState === "tryAgain") {
     tryAgain();
   }
@@ -144,15 +146,16 @@ const petHead = () => {
   setTimeout(() => {
     purrbreath.play();
     purrbreath.addEventListener("play", () => {
-      showMessage("<p style='font-style: italic;'>purrpurrpurrrpurr...</p>", 'bot');
+      showMessage("<p style='font-style: italic;'>purrpurr...</p>", 'bot');
     });
   }, 2000)
   setTimeout(() => {
-    showMessage("What a cute kitty!",'user');
-  }, 8000)
+    showMessage("What a cutie",'user');
+  }, 10000)
   setTimeout(() => {
     actionBtn.removeAttribute('hidden');
-  }, 10000)
+    lastClickedButton = null;
+  }, 12000)
   chat.scrollTop = chat.scrollHeight;
 }
 
@@ -178,6 +181,7 @@ const bellyRubs = () => {
   setTimeout(() => {
     chat.scrollTop = chat.scrollHeight;
     actionBtn.removeAttribute('hidden');
+    lastClickedButton = null;
   }, 10000)
 }
 
@@ -209,11 +213,22 @@ const takePic = () => {
     camerashutter.addEventListener("play", () => {
       showMessage("Tadaaa",'user', true);
     });
-  }, 5000)
+  }, 3000)
+  setTimeout(() => {
+    meowlong.play();
+    meowlong.addEventListener("play", () => {
+      showMessage("Meow!", 'bot');
+    });
+  }, 5000);
+  setTimeout(() => {
+    actionBtn.removeAttribute('hidden');
+    chat.scrollTop = chat.scrollHeight;
+  }, 7000);
 }
 
 // Try again
 const tryAgain = () => {
   // reload window
   window.location.reload();
+  lastClickedButton = null;
 }
