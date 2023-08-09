@@ -8,42 +8,37 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet" />
-    <title>CodeBuddy</title>
+      <audio id="meowlong" src="assets/Audio/ES_Cat Meow 5 - SFX Producer.mp3"></audio>
+      <audio id="meowshort" src="assets/Audio/ES_Cat Meow 6 - SFX Producer.mp3"></audio>
+      <audio id="purrlong" src="assets/Audio/ES_Cat Purr Long - SFX Producer.mp3"></audio>
+      <audio id="purrbreath" src="assets/Audio/ES_Cat Purr Breath Loop - SFX Producer.mp3"></audio>
+    <title>Cat Bot</title>
   </head>
 
   <body>
-    <h1>Welcome to CodeBuddy!</h1>
-    <h2>A bot that will help you through any code-related clouds blocking the fun.</h2>
+    <h1>Welcome, human.</h1>
+    <h2>Below lives Bob the cat bot. Say hello!</h2>
     <main>
       <section class="chat" id="chat"></section>
       <div class="input-wrapper" id="input-wrapper">
-        <form id="userinput-form">
-          <label for="user-input">
-            <select id="user-input">
-              <option value="" disabled selected>Select an option</option>
-              <option value="option1">I want help debugging</option>
-              <option value="option">I want help with Git</option>
-              <option value="option3">I want help with time management</option>
-              <option value="option4">I want help with UX/UI</option>
-              <option value="option5">I want help with learning new technologies.</option>
-              <option value="option6">I want help with security vunerabilities.</option>
-              <option value="option7">I want help writing documentation.</option>
-              <!-- Add more options as needed -->
-            </select>
-          </label>
-          <label for="sub-options" id="sub-options-label" hidden>Select a sub-option:
-            <select id="sub-options" hidden>
-              <!-- Sub-options will be dynamically added here -->
-            </select>
-          </label>
-          <button type="submit">Submit</button>
+        <form id="form">
+          <button id="greet-btn" type="button" hidden>Greet</button>
+          <button id="morelove-btn" type="button" hidden>More love</button>
+          <button id="ignore-btn" type="button" hidden>Ignore</button>
+          <button id="picture-btn" type="button" hidden>Make picture</button>
+          <button id="forfeit-btn" type="button" hidden>Forfeit</button>
+          <button id="pet-btn" type="button" hidden>Pet</button>
+          <button id="petmore-btn" type="button" hidden>Pet more</button>
+          <button id="pullaway-btn" type="button" hidden>Pull away</button>
         </form>
       </div>
     </main>
     <footer>
       <h3>This bot was built by August Aquilon, student of the Technigo web development bootcamp spring 2023</h3>
       <h3>
-        <a target="_blank" href="https://icons8.com/icon/37628/bot">Bot</a> and <a target="_blank" href="https://icons8.com/icon/3225/user">User</a> icons by <a target="_blank" href="https://icons8.com">Icons8</a></h3>
+        <a target="_blank" href="https://icons8.com/icon/33901/cat-profile">Cat</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+      </h3>
+      <h3><a target="_blank" href="https://icons8.com/icon/3225/user">User</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></h3>
     </footer>
     <script src="./script.js"></script>
   </body>
