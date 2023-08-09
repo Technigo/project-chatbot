@@ -9,7 +9,7 @@ body {
   padding: 0;
   font-family: 'Josefin Sans', sans-serif;
   background: linear-gradient(-20deg, #075100, #fb66e2, #018123, #fc56e9);
-    background-size: 200% 300%;
+  background-size: 200% 300%;
     animation: gradient 10s ease infinite;
     height: 8S0vh;
 }
