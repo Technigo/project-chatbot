@@ -6,6 +6,7 @@ const meowlong = document.getElementById("meowlong");
 const meowshort = document.getElementById("meowshort");
 const purrlong = document.getElementById("purrlong");
 const purrbreath = document.getElementById("purrbreath");
+const camerashutter = document.getElementById("camerashutter");
 
 // Pause the audio elements initially
 meowlong.pause();
@@ -72,67 +73,87 @@ const handleAction = () => {
   } else if (currentState === "petBob") {
     petBob();
     actionBtn.textContent = "Pet head";
-    currentState = "bellyRubs";
-  } else if (currentState === "bellyRubs") {
-    bellyRubs();
-    // change button
-    actionBtn.textContent = "Take pic";
-    currentState = "takePic";
+    currentState = "petHeadOrBellyRubs";
+  } else if (currentState === "petHeadOrBellyRubs") {
+    // Handle transition based on which button was clicked
+    if (lastClickedButton === "actionBtn") {
+      petHead();
+      actionBtn.textContent = "Take pic";
+      currentState = "takePic";
+    } else if (lastClickedButton === "altActionBtn") {
+      bellyRubs();
+      actionBtn.textContent = "Try again";
+      currentState = "tryAgain";
+    }
   } else if (currentState === "takePic") {
     takePic();
+  } else if (currentState === "tryAgain") {
+    tryAgain();
   }
 }
 
-// Attach event listener to the single button
-actionBtn.addEventListener("click", handleAction);
+// Attach event listener to the buttons
+actionBtn.addEventListener("click", () => {
+  lastClickedButton = "actionBtn";
+  handleAction();});
+altActionBtn.addEventListener("click", () => {
+    lastClickedButton = "altActionBtn";
+    handleAction();});
 
 // Greet Bob
 const greetBob = () => {
   // hide button
   actionBtn.setAttribute("hidden", true);
   showMessage("👋", 'user');
-  // Play the sound after a 1-second delay
+  // Play the sound after 2s delay
   setTimeout(() => {
     meowshort.play();
     // After the sound has played, show the "Meow?" message
     meowshort.addEventListener("play", () => {
       showMessage("Meow?", 'bot');
     });
-  }, 2000);
-  // Show button after 2s
+  }, 1500);
+  // Show button after 4s delay
   setTimeout(() => {
     actionBtn.removeAttribute('hidden');
-  }, 4000)
+  }, 3500)
 }
 
 // Pet Bob
 const petBob = () => {
-  // hide button
   actionBtn.setAttribute("hidden", true);
   showMessage("🫳", 'user');
-  // add event listener to play sounds when message appears
-  purrlong.addEventListener("play", () => {
+  setTimeout(() => {
+    purrlong.play();
+    purrlong.addEventListener("play", () => {
     showMessage("<p style='font-style: italic;'>purrr...</p>", 'bot');
-  })
-  // Play the sound
-  purrlong.play();
-  // Show buttons after sound
+    });
+  }, 2000)
   setTimeout(() => {
     actionBtn.removeAttribute('hidden'); // pet head
     altActionBtn.removeAttribute('hidden'); // give belly rubs
-  }, 6000)
+  }, 8000)
 }
 
+// Pet head
 const petHead = () => {
   // hide buttons
   actionBtn.setAttribute("hidden", true);
   altActionBtn.setAttribute("hidden", true);
-  // play sound
-  purrbreath.addEventListener("play", () => {
-    showMessage("<p style='font-style: italic;'>purrpurrpurrrpurr</p>", 'bot');
-  })
-  // Play the sound
-  purrbreath.play();
+  showMessage("🫳", 'user');
+  setTimeout(() => {
+    purrbreath.play();
+    purrbreath.addEventListener("play", () => {
+      showMessage("<p style='font-style: italic;'>purrpurrpurrrpurr...</p>", 'bot');
+    });
+  }, 2000)
+  setTimeout(() => {
+    showMessage("What a cute kitty!",'user');
+  }, 8000)
+  setTimeout(() => {
+    actionBtn.removeAttribute('hidden');
+  }, 10000)
+  chat.scrollTop = chat.scrollHeight;
 }
 
 // Give belly rubs
@@ -140,11 +161,24 @@ const bellyRubs = () => {
   // hide buttons
   actionBtn.setAttribute("hidden", true);
   altActionBtn.setAttribute("hidden", true);
+  showMessage("🫳", 'user');
   // Bite!
-  // Show button after 2s
   setTimeout(() => {
+    meowlong.play();
+    meowlong.addEventListener("play", () => {
+      showMessage("Meow!", 'bot');
+    });
+  }, 2000);
+  setTimeout(()=> {
+    showMessage("<p style='font-style: italic;'>bites hand</p", 'bot');
+  }, 6000)
+  setTimeout(()=> {
+    showMessage("Ow🩸", 'user');
+  }, 7000)
+  setTimeout(() => {
+    chat.scrollTop = chat.scrollHeight;
     actionBtn.removeAttribute('hidden');
-  }, 4000)
+  }, 10000)
 }
 
 // picture array
@@ -170,5 +204,16 @@ const getRandomImageUrl = () => {
 const takePic = () => {
   // hide button
   actionBtn.setAttribute("hidden", true);
-  showMessage("Tadaaa",'user', true);
+  setTimeout(() => {
+    camerashutter.play();
+    camerashutter.addEventListener("play", () => {
+      showMessage("Tadaaa",'user', true);
+    });
+  }, 5000)
+}
+
+// Try again
+const tryAgain = () => {
+  // reload window
+  window.location.reload();
 }
