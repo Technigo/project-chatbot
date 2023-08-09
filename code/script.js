@@ -1,18 +1,12 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
-const input = document.getElementById('name-input') //trying to figure this out
-const form = document.getElementById('name-form')
-const submit = document.getElementById('submit')
-const inputWrapper = document.getElementById('input-wrapper')
-
-// If you need any global variables that you can use across different functions, declare them here:
+const input = document.getElementById('name-input'); //trying to figure this out
+const form = document.getElementById('name-form');
+const submit = document.getElementById('submit');
+const inputWrapper = document.getElementById('input-wrapper');
 const bobRestart = document.getElementById('bobRestart');
 
-bobRestart.addEventListener('click', function(event) {
-  event.preventDefault(); // Prevent the default link behavior
-  console.log("Bob is clicked to restart page!");
-});
-
+// If you need any global variables that you can use across different functions, declare them here:
 
 // Declare your functions after this comment
 //botReply + userReply to make it a little bit easier
@@ -223,7 +217,12 @@ const closure = (end) => {
     `
     }
 
-
+    bobRestart.addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent the default link behavior
+      console.log("Bob is clicked to restart page!");
+      location.reload(); // Reload the page
+    });
+    
 
 // Set up your eventlisteners here
 
