@@ -6,6 +6,13 @@ const submit = document.getElementById('submit')
 const inputWrapper = document.getElementById('input-wrapper')
 
 // If you need any global variables that you can use across different functions, declare them here:
+const bobRestart = document.getElementById('bobRestart');
+
+bobRestart.addEventListener('click', function(event) {
+  event.preventDefault(); // Prevent the default link behavior
+  console.log("Bob is clicked to restart page!");
+});
+
 
 // Declare your functions after this comment
 //botReply + userReply to make it a little bit easier
@@ -16,6 +23,7 @@ const botReply = (msg) => {
 const userReply = (msg) => {
   showMessage(msg, "user");
 };
+
 //To get picture inside the chat, could have done this better but it'll stay for now
 const botReplyPic = (src) => {
   showPicture(src);

@@ -2,7 +2,7 @@
 
 During week one of Technigo's web development bootcamp our task was to create a simple chatbot.
 By doing so we got the chance to practice basic Javascript concepts and syntaxes.
-I decided to create a moodboster called Bob with a mission to spark som joy or make the user a little bit happier.
+I decided to create a moodboster called Bob with a mission to spark some joy and hopefully make the user a little bit happier.
 
 Learning goals for this project:
 
