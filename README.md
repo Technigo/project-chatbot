@@ -12,6 +12,54 @@ Describe how you approached to problem, and what tools and techniques you used t
 
 Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
 
+## Navigation the repo
+
+### code/index.html
+
+In `code/index.html`, you'll find we've set up a small amount of code for you. The main things you'll need to focus on are:
+
+```html
+<section class="chat" id="chat"></section>
+```
+
+This is where the chat messages will be rendered when you add a message as either the bot or the user.
+
+```html
+<div class="input-wrapper" id="input-wrapper">
+  <form id="name-form">
+    <label for="name-input">Name</label>
+    <input id="name-input" type="text" />
+    <button class="send-btn" type="submit">Send</button>
+  </form>
+</div>
+```
+
+This is where you can show input elements to the user - text inputs, buttons, selects, etc. We have started with a form with an input and a button so that the user can write their name as the answer to the first question of our bot, but as you present new questions, you'll need to select this `.input-wrapper` div and replace its content with your new inputs.
+
+### coce/index.js
+
+Next up, in `code/script.js`, we've prepared the initial code to make the bot ask the 'what's your name' question.
+
+The `showMessage` function takes two arguments - the message, and the sender. You can pass any text as the message and either 'user' or 'bot' as the sender. Depending on which sender you choose, it'll build up some HTML and append it to the 'chat' div with a different image and class name.
+
+The `greetUser` function sends a message as the bot asking for your name.
+
+Then, at the bottom, we use `setTimeout` to make the browser invoke the `greetUser` function after 1 second (1000ms)
+
+You can see the `showMessage` function in action. Open up `code/index.html` in Chrome and open up the console panel of the developer tools. In the console, you can invoke this `sendMessage` function yourself. Type the following (and hit the return key to finish) to send a message as the bot:
+
+```jsx
+showMessage("Hey there, I'm a bot", "bot");
+```
+
+You should now see a new message in the list. 🙌 Now try sending a message as the user:
+
+```jsx
+showMessage("I am totally human", "user");
+```
+
+**Awesome**. Now it's time to start writing some code!
+
 # Iterations
 
 ### Iteration 01
@@ -98,7 +146,7 @@ Add a few more questions and answers to your bot.
 
 Commit and push your changes.
 
-### Iteration 05 - Optional
+### Iteration 05
 
 We want you to practice conditionals, so it's time to add some if...else statements to your bot. For example, if the user types an invalid answer they should be prompted with a message that says: _"That's not a valid answer"_ or something similar.
 
