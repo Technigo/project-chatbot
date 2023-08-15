@@ -36,7 +36,7 @@ This is where the chat messages will be rendered when you add a message as eithe
 
 This is where you can show input elements to the user - text inputs, buttons, selects, etc. We have started with a form with an input and a button so that the user can write their name as the answer to the first question of our bot, but as you present new questions, you'll need to select this `.input-wrapper` div and replace its content with your new inputs.
 
-### coce/index.js
+### code/index.js
 
 Next up, in `code/script.js`, we've prepared the initial code to make the bot ask the 'what's your name' question.
 
