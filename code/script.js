@@ -1,5 +1,5 @@
 // Variables that point to selected DOM elements
-const chat = document.getElementById('chat');
+const chat = document.getElementById('chat')
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -30,13 +30,13 @@ const showMessage = (message, sender) => {
     `
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-  chat.scrollTop = chat.scrollHeight;
+  chat.scrollTop = chat.scrollHeight
 }
 
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot');
+  showMessage("Hello there, What's your name?", 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -48,4 +48,4 @@ const greetUser = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000);
+setTimeout(greetUser, 1000)
