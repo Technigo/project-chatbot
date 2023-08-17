@@ -60,9 +60,9 @@ showMessage("I am totally human", "user");
 
 **Awesome**. Now it's time to start writing some code!
 
-# Iterations
+# Steps
 
-### Iteration 01
+### Step 01
 
 The `greetUser` function sends a message as the bot asking for your name. This is the "start" of the bot.
 
@@ -93,7 +93,7 @@ Also try to understand what is happening in the `<p>` tag above. what happens if
 
 When you feel like you understand the code and have added the console.logs, commit and push those changes to GitHub. Remember to write short but descriptive commit messages.
 
-### Iteration 02
+### Step 02
 
 Now it's time to plan and make a decision about what kind of bot you want to build. Put a name to the bot in the HTML. As a default the bot will greet you with _"Hello there, What's your name?"_ Make sure to change this to whatever you want your bot to say.
 
@@ -101,7 +101,7 @@ Also think about **when** you want the greeting to happen. Maybe instead of invo
 
 Again, commit and push your changes.
 
-### Iteration 03
+### Step 03
 
 The chatbot isn't that fun if you can't interact with it. Get the first user answer to appear and get the conversation with the bot started.
 
@@ -136,7 +136,7 @@ const handleNameInput = (event) => {
 
 Commit and push your changes*.*
 
-### Iteration 04
+### Step 04
 
 Now you have a solid base for your bot, and the beginnings of a control flow from questions and answers, it's just to keep building up your event functions which then invoke the next question function, and to figure out the flow of your code.
 
@@ -146,7 +146,7 @@ Add a few more questions and answers to your bot.
 
 Commit and push your changes.
 
-### Iteration 05
+### Step 05
 
 We want you to practice conditionals, so it's time to add some if...else statements to your bot. For example, if the user types an invalid answer they should be prompted with a message that says: _"That's not a valid answer"_ or something similar.
 
