@@ -11,10 +11,12 @@ body {
 
 h1 {
   font-weight: bold;
-  font-size: 28px;
-  line-height: 34px;
+  font-size: 48px;
+  line-height: 50px;
   color: #fff;
   text-align: center;
+  margin: 50px 0 50px 0;
+  
 }
 
 h2 {
@@ -32,6 +34,26 @@ p {
   line-height: 28px;
   margin: 0;
 }
+main {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 700px;
+  height: 600px;
+  border-radius: 30px;
+  background: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* overflow: scroll; */
+}
+form{
+  display:flex;
+  width:100%;
+  align-items: center;
+
+}
 
 input {
   box-sizing: border-box;
@@ -41,45 +63,28 @@ input {
   color: #0026ff;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat',sans-serif;
   font-weight: 600;
   line-height: 26px;
-  flex: 1;
+  flex:1
 }
 
-main {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 700px;
-  height: 600px;
-  border-radius: 30px;
-  background: #fff;
-  padding: 20px 24px;
-  padding-top: 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-}
 
-.chat {
-  flex: 1;
-  display: flex;
-  justify-content: flex-start;
+/* .chat {
   overflow: scroll;
-  flex-direction: column;
-  padding-bottom: 16px;
 }
+  */
 
 .bot-msg {
   display: flex;
-  margin: 16px 8px 0 0;
+  margin: 16px 0 0 8px ;
   flex-shrink: 0;
 }
 
 .user-msg {
   display: flex;
   justify-content: flex-end;
-  margin: 16px 0 0 8px;
+  margin: 16px 8px 0 0 ;
   flex-shrink: 0;
 }
 
@@ -109,16 +114,6 @@ main {
   margin-right: 8px;
 }
 
-.input-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.input-wrapper form {
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
 
 label {
   font-size: 16px;

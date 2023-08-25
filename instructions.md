@@ -4,7 +4,8 @@
 
 In `code/index.html`, you'll find we've set up a small amount of code for you. The main things you'll need to focus on are:
 
-```html
+```
+html
 <section class="chat" id="chat"></section>
 ```
 
