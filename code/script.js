@@ -1,26 +1,19 @@
 // Start here
+// const { name } = require("ejs");
 // Variables that point to selected DOM elements
 const chat = document.getElementById("chat");
+const btn = document.querySelector("button");
+const nameInput = document.getElementById("name-input");
+const form = document.getElementById("name-form");
+// console.log(form[1]);
 
-//  When website loaded, chatbot asks first question.
-const greetUser = () => {
-  // console.log(`Welcome Stranger!`);
-  showMessage("Hello there, What's your name?", "bot");
-  // show message.the message should be from the bot
-};
-
+// Step 1 and Step 2
+// When website loaded, chatbot asks first question.
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (msg, sender) => {
-  // console.log("MESSAGE IS:", msg);
-  // console.log("SENDER IS:", sender);
-  if (sender === "user") {
-    chat.innerHTML += `<section class="user-msg">
-  <div class="bubble user-bubble">
-    <p>${msg}</p>
-  </div>
-  <img src="assets/user.png" alt="user bot"/>
-  </section>`;
-  } else if (sender === "bot") {
+  console.log("MESSAGE IS:", msg);
+  console.log("SENDER IS:", sender);
+  if (sender === "bot") {
     chat.innerHTML += `<section class="bot-msg">
     <img src="assets/bot.png" alt="chat bot"/>
     <div class="bubble bot-bubble">
@@ -28,32 +21,58 @@ const showMessage = (msg, sender) => {
     </div>
     </section>
     `;
+  } else if (sender === "user") {
+    chat.innerHTML += `<section class="user-msg">
+  <div class="bubble user-bubble">
+    <p>${msg}</p>
+  </div>
+  <img src="assets/user.png" alt="user bot"/>
+  </section>`;
   }
+  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+  chat.scrollTop = chat.scrollHeight;
 };
-
+const greetUser = () => {
+  // console.log(`Welcome Stranger!`);
+  showMessage(`Hello there, What's your name?`, `bot`);
+  // show message.the message should be from the bot
+};
 setTimeout(greetUser, 1000);
 // greetUser()
 
-// Step 1
+// Step 3
+//Add EventListener, when user click the button, then show user's message
+btn.addEventListener("click", function (event) {
+  event.preventDefault();
+  const userName = nameInput.value;
+  showMessage(`${userName}`, `user`);
+  nameInput.value = "";
+  // Show the next message
+  const showFoodOption = () => {
+    showMessage(
+      `Nice to meet you ${userName}! 😁 What type of food would you like to order?`,
+      `bot`
+    );
+  };
+  setTimeout(showFoodOption, 1000);
+  const createFoodButton = () => {
+    form.innerHTML = `
+    <button id="pizza" type="submit">Pizza</button>
+    <button id="pasta" type="submit">Pasta</button>
+    <button id="salad" type="submit">Salad</button>
+    `;
+  };
+  setTimeout(createFoodButton, 1000);
+});
 
-// a function that takes care of displaying the message
+// Step 4
+// Add FoodOption Button
+
 // // If you need any global variables that you can use across different functions, declare them here:
-
-// // Declare your functions after this comment
 
 //   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
 //   chat.scrollTop = chat.scrollHeight
 // }
 
-//   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-//   showMessage("Hello there, What's your name?", 'bot')
-//   // Just to check it out, change 'bot' to 'user' here 👆
-// }
-
-// // Set up your eventlisteners here
-
-// normally we would invoke a function like this:
-
 // // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // // setTimeout(functionName, timeToWaitInMilliSeconds)
-// // This means the greeting function will be called one second after the website is loaded.
