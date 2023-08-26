@@ -1,42 +1,65 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById("chat");
+const userInput = document.getElementById("name-input");
+const sendChatBtn = document.getElementById("send-btn");
 
 // If you need any global variables that you can use across different functions, declare them here:
 
-const sendChatBtn = document.querySelector(".send-btn");
-const chatInput = document.querySelector("#name-input");
-
-//Messages typed by the user
-let userMessage;
-
 // Declare your functions after this comment
 
-const handleChat = () => {};
+const sendMessage = (event) => {
+  event.preventDefault();
+  const userMessage = userInput.value.trim();
+
+  if (userMessage !== "") {
+    showMessage(userMessage, "user");
+    userInput.value = "";
+  }
+};
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
+  const messageDiv = document.createElement("div");
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === "user") {
     console.log("user");
-    chat.innerHTML += `
-      <section class="user-msg">
-        <div class="bubble user-bubble">
-          <p>${message}</p>
-        </div>
-        <img src="assets/user.png" alt="User" />  
-      </section>
-    `;
+    messageDiv.innerHTML = `<section class="user-msg">
+    <div class="bubble user-bubble">
+      <p>${message}</p>
+    </div>
+    <img src="assets/user.png" alt="User" />  
+  </section>
+`;
+    chat.appendChild(messageDiv);
+    // chat.innerHTML += `
+    //   <section class="user-msg">
+    //     <div class="bubble user-bubble">
+    //       <p>${message}</p>
+    //     </div>
+    //     <img src="assets/user.png" alt="User" />
+    //   </section>
+    // `;
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === "bot") {
-    console.log("bot");
-    chat.innerHTML += `
-      <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
-        <div class="bubble bot-bubble">
-          <p>${message}</p>
-        </div>
-      </section>
-    `;
+    console.log(`${message}`);
+    messageDiv.innerHTML = `
+    <section class="bot-msg">
+    <img src="assets/bot.png" alt="Bot" />
+    <div class="bubble user-bubble">
+      <p>${message}</p>
+    </div>
+  </section>
+`;
+    chat.appendChild(messageDiv);
+
+    // chat.innerHTML += `
+    //   <section class="bot-msg">
+    //     <img src="assets/bot.png" alt="Bot" />
+    //     <div class="bubble bot-bubble">
+    //       <p>${message}</p>
+    //     </div>
+    //   </section>
+    // `;
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
@@ -53,6 +76,12 @@ const greetUser = () => {
 };
 
 // Set up your eventlisteners here
+sendChatBtn.addEventListener("click", sendMessage);
+userInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    sendMessage();
+  }
+});
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
