@@ -3,7 +3,15 @@ const chat = document.getElementById("chat");
 
 // If you need any global variables that you can use across different functions, declare them here:
 
+const sendChatBtn = document.querySelector(".send-btn");
+const chatInput = document.querySelector("#name-input");
+
+//Messages typed by the user
+let userMessage;
+
 // Declare your functions after this comment
+
+const handleChat = () => {};
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -37,12 +45,14 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", "bot");
+  showMessage(
+    "Hello there, my name is Anna the bot. Do you know who I am?",
+    "bot"
+  );
   // Just to check it out, change 'bot' to 'user' here 👆
 };
 
 // Set up your eventlisteners here
-
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
