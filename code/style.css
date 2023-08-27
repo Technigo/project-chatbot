@@ -79,6 +79,10 @@ main {
   border: #fff 1px solid;
 }
 
+.description {
+  text-align: center;
+}
+
 .chat {
   flex: 1;
   display: flex;
