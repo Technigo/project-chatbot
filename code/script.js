@@ -1,4 +1,4 @@
-// Variables that point to selected DOM elements
+// Variables that point to selected DOM elements //tryout
 const chat = document.getElementById('chat')
 
 // If you need any global variables that you can use across different functions, declare them here:
