@@ -5,16 +5,18 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: "Montserrat", sans-serif;
+  background: #fecaca;
 }
 
 h1 {
-  font-weight: bold;
-  font-size: 28px;
-  line-height: 34px;
+  /* font-weight: bold; */
+  font-size: 60px;
+  font-family: "Abril Fatface";
+  line-height: 10px;
   color: #fff;
   text-align: center;
+  margin-top: 80px;
 }
 
 h2 {
@@ -41,7 +43,7 @@ input {
   color: #0026ff;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -59,6 +61,22 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+}
+
+.start-page {
+  margin: 80px auto 0;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.start-page span {
+  text-align: center;
+  color: #fff;
+  font-size: 28px;
+  font-family: "Abril Fatface";
+  border: #fff 1px solid;
 }
 
 .chat {
@@ -122,7 +140,7 @@ main {
 
 label {
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   color: #0026ff;
   margin-right: 20px;
@@ -137,7 +155,7 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -146,4 +164,19 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+main {
+  display: none;
+}
+
+.start-img {
+  width: 500px;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.start-img:hover {
+  filter: opacity(0.9);
 }
