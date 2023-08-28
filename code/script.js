@@ -5,6 +5,9 @@ const sendChatBtn = document.getElementById("send-btn");
 
 // If you need any global variables that you can use across different functions, declare them here:
 
+let hasAskedForName = false;
+let userName = "";
+
 // Declare your functions after this comment
 
 const sendMessage = (event) => {
@@ -15,13 +18,21 @@ const sendMessage = (event) => {
 
   if (userMessage !== "") {
     showMessage(userMessage, "user");
-    messageResponse(userMessage);
+    if (!hasAskedForName) {
+      messageResponse(userMessage, "user");
+    } else {
+      messageResponse(userMessage);
+    }
     userInput.value = "";
   }
+
+  let nameTag = document.getElementById("name-label");
+  nameTag.innerHTML = "Message";
 };
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
+  //Creates an element that will be displayed in the chat
   const messageDiv = document.createElement("div");
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === "user") {
@@ -67,22 +78,27 @@ const showMessage = (message, sender) => {
 };
 
 // Starts here
-const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage(
-    "Hello there, my name is Anna the bot. Do you know who I am?",
-    "bot"
-  );
-  // Just to check it out, change 'bot' to 'user' here 👆
-};
+// const greetUser = () => {
+//   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
+//   showMessage("Hello there, what is your name?", "bot");
+//   // Just to check it out, change 'bot' to 'user' here 👆
+// };
 
 const messageResponse = (message) => {
-  const annaSongLink = "https://www.youtube.com/watch?v=1XK5-n4rR7Q";
-  let botResponse = "I'm just a simple bot, not a protocol droid.";
-  if (message.toLowerCase().includes("protocol droid")) {
+  let botResponse = "Remember; I'm just a simple bot, not a protocol droid.";
+
+  if (!hasAskedForName) {
+    userName = message;
+    botResponse = `Nice to meet you, ${userName}! How can I assist you today?`;
+    hasAskedForName = true;
+  } else if (message.toLowerCase().includes("hello")) {
+    botResponse = `Hello again, ${userName}! How can I assist you today?`;
+  } else if (message.toLowerCase().includes("protocol droid")) {
     botResponse = "A protocol droid, yes. You know, like C3PO from Star Wars?";
   } else if (message.toLowerCase().includes("how are you?")) {
     botResponse = "Thanks for asking! I'm good, but I'm still a bot.";
+  } else if (message.toLowerCase().includes("hello")) {
+    botResponse = "Welcome, my name is Anna the bot. Do you know who I am?";
   } else if (message.toLowerCase().includes("who are you?")) {
     botResponse =
       'Let me educate you. Watch this <a href="https://www.youtube.com/watch?v=1XK5-n4rR7Q" target="_blank">video</a>';
@@ -112,4 +128,7 @@ userInput.addEventListener("keydown", (event) => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 500);
+
+//setTimeout(greetUser, 500);
+
+showMessage("Hello there, what is your name?", "bot");
