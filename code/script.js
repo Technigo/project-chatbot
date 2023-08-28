@@ -8,11 +8,14 @@ const sendChatBtn = document.getElementById("send-btn");
 // Declare your functions after this comment
 
 const sendMessage = (event) => {
+  //Prevents chat from defaulting when message is sent
   event.preventDefault();
+
   const userMessage = userInput.value.trim();
 
   if (userMessage !== "") {
     showMessage(userMessage, "user");
+    messageResponse(userMessage);
     userInput.value = "";
   }
 };
@@ -22,7 +25,6 @@ const showMessage = (message, sender) => {
   const messageDiv = document.createElement("div");
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === "user") {
-    console.log("user");
     messageDiv.innerHTML = `<section class="user-msg">
     <div class="bubble user-bubble">
       <p>${message}</p>
@@ -41,7 +43,6 @@ const showMessage = (message, sender) => {
     // `;
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === "bot") {
-    console.log(`${message}`);
     messageDiv.innerHTML = `
     <section class="bot-msg">
     <img src="assets/bot.png" alt="Bot" />
@@ -73,6 +74,19 @@ const greetUser = () => {
     "bot"
   );
   // Just to check it out, change 'bot' to 'user' here 👆
+};
+
+const messageResponse = (message) => {
+  let botResponse = "I'm just a simple bot, not a protocol droid.";
+  if (message.toLowerCase().includes("protocol droid")) {
+    botResponse = "A protocol droid, yes. You know, like C3PO from Star Wars?";
+  } else if (message.toLowerCase().includes("how are you?")) {
+    botResponse = "Thanks for asking! I'm good, but I'm still a bot.";
+  }
+
+  setTimeout(() => {
+    showMessage(botResponse, "bot");
+  }, 500);
 };
 
 // Set up your eventlisteners here
