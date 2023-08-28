@@ -1,14 +1,16 @@
-// Variables that point to selected DOM elements
-const chat = document.getElementById('chat')
+// VARIABLES THAT POINT TO SELECTED DOM ELEMENTS
+const chat = document.getElementById('chat');
+const submitBtn = document.getElementById('submit-btn');
+const inputField = document.getElementById('name-input');
 
-// If you need any global variables that you can use across different functions, declare them here:
 
+// GLOBAL VARIABLES
+let userAnswer = ""; // stores users answer in a variable globally for use anywhere
 
-// Declare your functions after this comment
-
+// FUNCTIONS
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
+  // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
@@ -33,19 +35,36 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
-const greetUser = () => {
+const sayHello = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there, What's your name?", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
-}
+};
 
-// Set up your eventlisteners here
+const greetUserByName = () => {
+  showMessage(`It's nice to meet you ${userAnswer}! Would you like a movie recommendation for tonight 😃?`, 'bot')
+};
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000)
+// "clickingPreventsDefault" prevents the default form from submitting
+// Function to send the form. It runs the function showMessage, so that whatever the user has typed is shown in the user part of the bot. 
+const submitForm = (clickingPreventsDefault) => {
+  clickingPreventsDefault.preventDefault();
+  // gets the text (value) written in the input field and stores it in a the global variable userAnswer
+  userAnswer = inputField.value;
+  showMessage(`${userAnswer}`, 'user');
+  setTimeout(() => greetUserByName(), 850)
+  // clears the inputfield after enter is pressed or the submit button has been clicked
+  inputField.value = "";
+};
+
+/*if (formWasSubmitted === true) {
+  showMessage('Welcome! Would you like some movie recommendations?', 'bot');
+}*/
+
+
+// EVENT LISTENERS
+submitBtn.addEventListener("click", submitForm);
+
+
+// MISC
+// The greeting function will be called one second after the website is loaded.
+setTimeout(sayHello, 1000);
