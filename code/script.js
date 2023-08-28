@@ -1,5 +1,6 @@
 // VARIABLES THAT POINT TO SELECTED DOM ELEMENTS
 const chat = document.getElementById('chat');
+const form = document.getElementById('name-form');
 const submitBtn = document.getElementById('submit-btn');
 const inputField = document.getElementById('name-input');
 
@@ -37,11 +38,17 @@ const showMessage = (message, sender) => {
 
 const sayHello = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot')
+  showMessage("Hello there, I'm the Movie-tips Bot. What's your name?", 'bot')
 };
 
 const greetUserByName = () => {
-  showMessage(`It's nice to meet you ${userAnswer}! Would you like a movie recommendation for tonight 😃?`, 'bot')
+  showMessage(`It's nice to meet you ${userAnswer}! Would you like a movie recommendation for tonight 😃?`, 'bot');
+  inputField.remove();
+  submitBtn.remove();
+  form.innerHTML += `
+      <button id="submit-btn" class="send-btn answer-btn" type="submit" value="yes">Yes please 😍</button>
+      <button id="submit-btn" class="send-btn answer-btn" type="submit" value="no">No 👎</button>
+    `
 };
 
 // "clickingPreventsDefault" prevents the default form from submitting
