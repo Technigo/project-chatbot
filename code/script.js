@@ -62,6 +62,12 @@ const handleNameInput = (event) => {
       choiceBtn2.style.display = 'block';
       inputWrapper.style.display = 'none';
 
+      choiceBtn1.onclick = () => {
+        showMessage(`mmm, yellow snacks!`, 'bot');
+      };
+      choiceBtn2.onclick = () => {
+        showMessage(`mmm, blue snacks!`, 'bot');
+      };
 
       setTimeout(() => showFoodOptions(name), 1000);
     }, 1500)
@@ -71,8 +77,10 @@ const handleNameInput = (event) => {
 nameInput.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     handleNameInput(event);
+
   }
 });
+
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
