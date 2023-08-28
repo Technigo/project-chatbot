@@ -1,6 +1,9 @@
 // Variables that point to selected DOM elements 
 const chat = document.getElementById('chat')
+const inputWrapper = document.getElementById('input-wrapper')
 const nameInput = document.getElementById('name-input')
+const choiceBtn1 = document.getElementById('choiceBtn1')
+const choiceBtn2 = document.getElementById('choiceBtn2')
 // If you need any global variables that you can use across different functions, declare them here:
 
 
@@ -53,9 +56,15 @@ const handleNameInput = (event) => {
     nameInput.value = "";
 
     // After 1 second, show the next question by invoking the next function.
-    // passing the name into it to have access to the user's name if we want
-    // to use it in the next question from the bot.
-    setTimeout(() => showFoodOptions(name), 2000);
+    setTimeout(() => {
+      showMessage(`So, ${name} what would you like to order today?`, 'bot');
+      choiceBtn1.style.display = 'block';
+      choiceBtn2.style.display = 'block';
+      inputWrapper.style.display = 'none';
+
+
+      setTimeout(() => showFoodOptions(name), 1000);
+    }, 1500)
   }, 1000);
 };
 // Set up your eventlisteners here
