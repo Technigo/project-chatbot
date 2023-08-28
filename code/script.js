@@ -77,16 +77,26 @@ const greetUser = () => {
 };
 
 const messageResponse = (message) => {
+  const annaSongLink = "https://www.youtube.com/watch?v=1XK5-n4rR7Q";
   let botResponse = "I'm just a simple bot, not a protocol droid.";
   if (message.toLowerCase().includes("protocol droid")) {
     botResponse = "A protocol droid, yes. You know, like C3PO from Star Wars?";
   } else if (message.toLowerCase().includes("how are you?")) {
     botResponse = "Thanks for asking! I'm good, but I'm still a bot.";
+  } else if (message.toLowerCase().includes("who are you?")) {
+    botResponse =
+      'Let me educate you. Watch this <a href="https://www.youtube.com/watch?v=1XK5-n4rR7Q" target="_blank">video</a>';
   }
 
   setTimeout(() => {
     showMessage(botResponse, "bot");
+    botMessageSound();
   }, 500);
+};
+
+const botMessageSound = () => {
+  const botSound = document.getElementById("botSound");
+  botSound.play();
 };
 
 // Set up your eventlisteners here
