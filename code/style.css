@@ -1,3 +1,14 @@
+:root {
+  --shodow-white: 0 4px 6px -1px rgba(239, 237, 237, 0.25);
+  --shodow-lg: 0 10px 15px -3px rgba(254, 215, 170, 0.5);
+  --font-display: "Abril Fatface";
+  --color-light: #fed7aa;
+  --color-dark: #c2410c;
+  --font-sm: 18px;
+  --font-md: 24px;
+  --font-xxl: 60px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -6,30 +17,26 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
-  background: #fecaca;
+  background: url(./assets/art.jpg);
+  background-size: 50%;
 }
 
 h1 {
   /* font-weight: bold; */
-  font-size: 60px;
-  font-family: "Abril Fatface";
+  font-size: var(--font-xxl);
+  font-family: var(--font-display);
   line-height: 10px;
   color: #fff;
   text-align: center;
-  margin-top: 80px;
-}
-
-h2 {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
-  margin-bottom: 36px;
+  margin: 80px auto 40px;
+  backdrop-filter: invert(80%);
+  width: fit-content;
+  padding: 36px;
+  border: #fff 1px solid;
 }
 
 p {
-  font-size: 18px;
+  font-size: var(--font-sm);
   font-weight: 600;
   line-height: 28px;
   margin: 0;
@@ -39,10 +46,10 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
-  padding: 16px;
-  font-size: 16px;
+  background: var(--color-light);
+  color: var(--color-dark);
+  padding: 14px;
+  font-size: var(--font-sm);
   font-family: "Montserrat";
   font-weight: 600;
   line-height: 26px;
@@ -50,7 +57,7 @@ input {
 }
 
 main {
-  margin: 0 auto;
+  margin: 20px auto 0;
   width: 100%;
   max-width: 700px;
   height: 600px;
@@ -63,26 +70,58 @@ main {
   flex-direction: column;
 }
 
+/* The initial page */
+.start-img {
+  width: 400px;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+  box-shadow: var(--shodow-white);
+}
+
+.start-img:hover {
+  filter: opacity(0.9);
+}
+
+.img-box {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.right-img {
+  width: 250px;
+}
+
+.center-img {
+  width: 500px;
+}
+
 .start-page {
-  margin: 80px auto 0;
+  margin: 20px auto 0;
   width: fit-content;
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 20px;
 }
 
 .start-page span {
+  width: fit-content;
+  margin: 0 auto 100px;
+  padding: 2px 5px;
   text-align: center;
   color: #fff;
-  font-size: 28px;
-  font-family: "Abril Fatface";
+  font-size: var(--font-lg);
+  font-family: var(--font-display);
   border: #fff 1px solid;
+  backdrop-filter: invert(80%);
 }
 
 .description {
   text-align: center;
+  color: #fff;
 }
 
+/* Chat page */
 .chat {
   flex: 1;
   display: flex;
@@ -112,12 +151,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: var(--color-light);
   font-weight: 600;
-  font-size: 16px;
+  font-size: var(--font-sm);
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: var(--color-dark);
   max-width: 40%;
 }
 
@@ -143,23 +182,23 @@ main {
 }
 
 label {
-  font-size: 16px;
-  font-family: "Montserrat";
+  font-size: var(--font-sm);
+  font-family: var(--font-display);
   font-weight: 500;
-  color: #0026ff;
+  color: var(--color-dark);
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: var(--color-dark);
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 16px 40px;
+  padding: 14px 40px;
   margin-right: 4px;
-  font-size: 16px;
+  font-size: var(--font-sm);
   line-height: 26px;
-  font-family: "Montserrat";
+  font-family: var(--font-display);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -174,13 +213,22 @@ main {
   display: none;
 }
 
-.start-img {
-  width: 500px;
-  transition: all 0.3s ease;
-  border-radius: 2px;
-  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.25);
+select {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border: 1px solid var(--color-dark);
+  box-shadow: var(--shodow-lg);
+  font-size: var(--font-sm);
+  padding-left: 5px;
+  font-family: var(--font-display);
+  border-radius: 5px;
 }
 
-.start-img:hover {
-  filter: opacity(0.9);
+select:focus {
+  outline: 3px solid var(--color-dark);
+}
+
+.icon {
+  font-size: 40px;
 }

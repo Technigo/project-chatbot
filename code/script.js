@@ -198,8 +198,8 @@ const createSelectBox = () => {
 const createAdultChild = () => {
   inputWrapper.innerHTML = `
   <div class="ask-container">
-  <button id="adult" type="submit">🧑</button>
-  <button id="child" type="submit">🧒</button>
+  <button id="adult" type="submit" class="icon">🧑</button>
+  <button id="child" type="submit" class="icon">🧒</button>
   </div> 
   `;
 
@@ -245,8 +245,10 @@ const createYesNo = () => {
 const validateYesNo = (choice) => {
   if (choice === "yes") {
     showMessage("Thank you for your Order!", "bot");
+    inputWrapper.innerHTML = "";
   } else {
     showMessage("No problem. You can come back anytime!", "bot");
+    inputWrapper.innerHTML = "";
   }
 };
 
@@ -288,6 +290,7 @@ const greetUser = () => {
 // Set up your eventlisteners here
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 // click to go to a form page
+
 startImg.addEventListener("click", (e) => {
   e.preventDefault();
   startPage.style.display = "none";
