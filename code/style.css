@@ -147,7 +147,3 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
-
-.answer-btn {
-  width: 100%;
-}
