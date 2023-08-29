@@ -10,16 +10,18 @@ const chat = document.getElementById('chat')
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
+    console.log(sender); //Step 1 - added to check value
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
-          <p>${message}</p>
+          <p>${message}</p> 
         </div>
         <img src="assets/user.png" alt="User" />  
       </section>
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
+    console.log(sender); //Step 1 - added to check value, if we remove the ${} from line 29 it displays the word message
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -48,4 +50,5 @@ const greetUser = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000)
+
+setTimeout(greetUser, 1000) //Step 1 - played around with the value
