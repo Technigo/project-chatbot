@@ -46,33 +46,14 @@ const handleNameInput = (event) => {
     showMessage(`Hello ${name} nice to meet you!`, 'bot');
     nameInput.value = "";
 
-    // If Btn1 is pressed, dysplay:
-    const handlechoiceBtn1 = (event, name) => {
-      event.preventDefault();
-      showMessage(`mmm, yellow snacks!`, 'bot');
-
-      setTimeout(() => {
-        showMessage(`So, I guess you like yellow snacks, huh?`, 'bot');
-      }, 2000);
-    };
-
-    // else if Btn2 is pressed, dysplay:
-    const handlechoiceBtn2 = (event, name) => {
-      event.preventDefault();
-      showMessage(`mmm, blue snacks!`, 'bot');
-
-      setTimeout(() => {
-        showMessage(`So, I guess you like blue snacks, huh?`, 'bot');
-      }, 2000);
-    };
-
-
+    // Function asking questions dispaying Btn1, Btn2 as a block elements.
     setTimeout(() => {
       showMessage(`So, ${name} what would you like to order today?`, 'bot');
       choiceBtn1.style.display = 'block';
       choiceBtn2.style.display = 'block';
       inputWrapper.style.display = 'none';
 
+      // Functions hides Btn1, Btn2 after clicking it..
       choiceBtn1.onclick = (event) => {
         handlechoiceBtn1(event, name);
         choiceBtn1.style.display = 'none';
@@ -84,6 +65,25 @@ const handleNameInput = (event) => {
         choiceBtn1.style.display = 'none';
         choiceBtn2.style.display = 'none';
         inputWrapper.style.display = 'block';
+      };
+      // Functions answer if Btn1:
+      const handlechoiceBtn1 = (event, name) => {
+        event.preventDefault();
+        showMessage(`mmm, yellow snacks!`, 'bot');
+
+        setTimeout(() => {
+          showMessage(`So ${name}, I guess you like yellow snacks, huh?`, 'bot');
+        }, 2000);
+      };
+
+      // Functions answer if Btn2:
+      const handlechoiceBtn2 = (event, name) => {
+        event.preventDefault();
+        showMessage(`mmm, blue snacks!`, 'bot');
+
+        setTimeout(() => {
+          showMessage(`So ${name}, I guess you like blue snacks, huh?`, 'bot');
+        }, 2000);
       };
     }, 1500);
   }, 1000);
