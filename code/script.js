@@ -42,7 +42,7 @@ const showMessage = (message, sender) => {
 
 const greetUser = () => {
   // here we call the function showMessage
-  showMessage("Hello there, What's your name?", 'bot')
+  showMessage("Welcome to dreamhoster.net, your service provider for professional hosting. What services are you interested in?", 'bot')
 }
 // ------------------------------------------
 // eventlisteners
