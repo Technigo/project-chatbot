@@ -2,6 +2,7 @@
 const chat = document.getElementById('chat');
 const nameForm = document.getElementById('name-form');
 const nameInput = document.getElementById('name-input');
+const inputWrapper = document.getElementById('input-wrapper');
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -46,20 +47,38 @@ const greetUser = () => {
 
 // CHANGE This function saves the text entered in the nameInput variable as a new variable (name) and invokes the showMessage function to render it in the chat. After that, it clears the input field.
 const handleNameInput = (event) => { 
-  event.preventDefault()
+  event.preventDefault();
   const name = nameInput.value
-  showMessage(name, 'user')
+  showMessage(name, 'user');
   nameInput.value = ''
   // Change this. After 1 second, it renders the next question by invoking the next function. We're taking the 'name' variable with us to the next function.
-  setTimeout(() => intro(name), 1000)
-}
+  setTimeout(() => intro(name), 1000);
+};
 
 //Change this.This function displays a bot message in response to the handleNameInput function above and invokes the next question/function.
 const intro = (name) => {
   showMessage (`Hi ${name}! Do you want to learn some Danish?`, 'bot');
-  setTimeout(showYesNoBtn, 1000)
+  setTimeout(showYesNobtn, 1000);
 }
 
+const showYesNobtn = () => {
+  inputWrapper.innerHTML = `
+  <button id="yesBtn">Sure!</button>
+  <button id="noBtn">No thanks.</button>
+  `
+  document.getElementById('yesBtn').addEventListener('click', () => userReply('Sure!'));
+  document.getElementById('noBtn').addEventListener('click', () => userReply('No thanks.'));
+}
+//Add comment
+const userReply = (userReply) => {
+  if (userReply === 'Sure!') {
+    showMessage(`Sure!`, 'user')
+    //settimeout?
+  } else if (userReply === 'No thanks.') {
+    showMessage(`No thanks.`, 'user')
+    //setTimeout(sayGoodbye, 1000)?
+  }
+ }
 // Set up your eventlisteners here
 nameForm.addEventListener('submit', handleNameInput);
 
