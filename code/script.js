@@ -7,9 +7,10 @@ const input = document.getElementById('name-input');
 
 
 // Declare your functions after this comment
-function test(submitEvent) {
+function sayHi(submitEvent) {
   submitEvent.preventDefault();
   showMessage(input.value, "user");
+  showMessage(`Hello ${input.value}! What would you like to drink today? `, "bot")
   input.value = "";
 }
 
@@ -50,7 +51,7 @@ const greetUser = () => {
 
 
 // Set up your eventlisteners here
-document.getElementById('name-form').addEventListener('submit', test);
+document.getElementById('name-form').addEventListener('submit', sayHi);
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
