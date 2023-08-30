@@ -1,17 +1,25 @@
 // Variables that point to selected DOM elements
-const chat = document.getElementById('chat');
-
-const input = document.getElementById('name-input');
+const chat = document.getElementById("chat");
 
 // If you need any global variables that you can use across different functions, declare them here:
-
+const nameInput = document.getElementById("name-input");
+const nameInputWrapper = document.getElementById("input-wrapper");
+const sodaChoiceWrapper = document.getElementById("soda-choice");
+const subChoiceWrapper = document.getElementById("sub-choice");
+const sodaSizeWrapper = document.getElementById("soda-size");
 
 // Declare your functions after this comment
-function sayHi(submitEvent) {
+const sayHi = (submitEvent) => {
   submitEvent.preventDefault();
-  showMessage(input.value, "user");
-  showMessage(`Hello ${input.value}! What would you like to drink today? `, "bot")
-  input.value = "";
+
+  showMessage(nameInput.value, "user");
+
+  showMessage(`Hello ${nameInput.value}! What would you like to drink today? `, "bot");
+
+  nameInput.value = "";
+
+  nameInputWrapper.style.display = "none"
+  sodaChoiceWrapper.style.display = "block"
 }
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -47,8 +55,6 @@ const greetUser = () => {
   showMessage("Hello there soda lover, what's your name?", 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
-
-
 
 // Set up your eventlisteners here
 document.getElementById('name-form').addEventListener('submit', sayHi);
