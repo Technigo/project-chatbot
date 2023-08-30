@@ -68,6 +68,7 @@ main {
   overflow: scroll;
   flex-direction: column;
   padding-bottom: 16px;
+  background-color: #37a24d;
 }
 
 .bot-msg {
