@@ -1,5 +1,9 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat')
+const nameInput = document.getElementById('name-input')
+const sendBtn = document.getElementById('send-btn')
+
+console.log(nameInput)
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -38,7 +42,7 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("So how can I help you?", 'bot')
+  showMessage("Hi! I can help you find the perfect gift for anyone. <br><br>Please start by telling me your name.", 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -51,3 +55,13 @@ const greetUser = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000)
+
+const userReply = (name) => {
+  showMessage (name, 'user')
+}
+
+setTimeout(userReply("Emmy"), 2000)
+
+//sendBtn.addEventListener("click", userReply(nameInput))
+
+console.log (nameInput)
