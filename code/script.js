@@ -1,10 +1,17 @@
 // Variables that point to selected DOM elements
-const chat = document.getElementById('chat')
+const chat = document.getElementById('chat');
+
+const input = document.getElementById('name-input');
 
 // If you need any global variables that you can use across different functions, declare them here:
 
 
 // Declare your functions after this comment
+function test(submitEvent) {
+  submitEvent.preventDefault();
+  showMessage(input.value, "user");
+  input.value = "";
+}
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -40,7 +47,10 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+
+
 // Set up your eventlisteners here
+document.getElementById('name-form').addEventListener('submit', test);
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
