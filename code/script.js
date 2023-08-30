@@ -11,6 +11,11 @@ const pizzaMenue = document.getElementById("pizza-menue");
 const pastaMenue = document.getElementById("pasta-menue");
 const saladMenue = document.getElementById("salad-menue");
 const addBtns = document.getElementById("add-btns");
+const sendBtn = document.getElementById("send");
+const minusBtn = document.getElementById("minus");
+const plusBtn = document.getElementById("plus");
+const sideBtns = document.getElementById("side-btns");
+
 
 btnsEl.style.display = "none";
 nameFormEl.style.display = "flex";
@@ -18,6 +23,7 @@ pizzaMenue.style.display = "none";
 pastaMenue.style.display = "none";
 saladMenue.style.display = "none";
 addBtns.style.display = "none";
+sideBtns.style.display = "none";
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -63,14 +69,22 @@ const greetUser = () => {
 btn.addEventListener("click" , (e) => {
   e.preventDefault();
 
-  message = nameInput.value;
-  showMessage(`${message}` , 'user');
-  clearInput();
-  setTimeout(() => {
-    showMessage(`Nice to meet you ${message}.what type of food would you like to order?` , 'bot')
-    btnsEl.style.display = "flex";
-    nameFormEl.style.display = "none";
-  },1000);
+  const enterName = nameInput.value.trim();
+  
+  if(enterName !== ""){
+    message = nameInput.value;
+    showMessage(enterName , 'user');
+    clearInput();
+    setTimeout(() => {
+      showMessage(`Nice to meet you ${enterName}.what type of food would you like to order?` , 'bot')
+      btnsEl.style.display = "flex";
+      nameFormEl.style.display = "none";
+    },1000);
+
+  }else{
+    alert("Inavlid Name , please enter your name")
+  }
+ 
 
 });
 
@@ -84,6 +98,8 @@ const clearInput = () =>{
 // greeting()
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
+
+let selectedFood = ""
 pizzaBtn.addEventListener("click" , () =>{
   showMessage(`Pizza` , 'user');
   btnsEl.style.display = "none";
@@ -102,6 +118,7 @@ pizzaBtn.addEventListener("click" , () =>{
       setTimeout(() =>{
         showMessage("please choose how many Margarita Pizaa would you like?" , 'bot');
         addBtns.style.display = "flex";
+        selectedFood = "Margarita Pizaa";
 
       },1000)
     }else if (valueOptionPizza === "Pepperoni"){
@@ -109,14 +126,15 @@ pizzaBtn.addEventListener("click" , () =>{
       setTimeout(() =>{
         showMessage("please choose how many Pepperoni Pizaa would you like?" , 'bot');
         addBtns.style.display = "flex";
+        selectedFood = "Pepperoni Pizaa";
 
       },1000)
     }else if (valueOptionPizza === "Hawaian"){
       showMessage("Hawaian" , 'user');
       setTimeout(() =>{
-        showMessage("please choose how many hawaian Pizaa would you like?" , 'bot');
+        showMessage("please choose how many Hawaian Pizaa would you like?" , 'bot');
         addBtns.style.display = "flex";
-
+        selectedFood = "Hawaian Pizaa";
       },1000)
     }
    displayNone();
@@ -142,6 +160,7 @@ pastaBtn.addEventListener("click" , () =>{
       setTimeout(() =>{
         showMessage("please choose how many Carbonara Pasta would you like?" , 'bot');
         addBtns.style.display = "flex";
+        selectedFood = "Carbonara Pasta";
 
       },1000)
     }else if (valueOptionPasta === "Alfredo"){
@@ -149,6 +168,7 @@ pastaBtn.addEventListener("click" , () =>{
       setTimeout(() =>{
         showMessage("please choose how many Alfredo Pasta would you like?" , 'bot');
         addBtns.style.display = "flex";
+        selectedFood = "Alfredo Pasta";
 
       },1000)
     }else if (valueOptionPasta === "Pesto"){
@@ -156,6 +176,7 @@ pastaBtn.addEventListener("click" , () =>{
       setTimeout(() =>{
         showMessage("please choose how many Pesto Pasta would you like?" , 'bot');
         addBtns.style.display = "flex";
+        selectedFood = "Pesto Pasta";
 
       },1000)
     }
@@ -168,7 +189,7 @@ saladBtn.addEventListener("click" , () =>{
   showMessage(`Salad` , 'user');
   btnsEl.style.display = "none";
   setTimeout(()=>{
-    showMessage(`oh so you are in the mood for Pizza? Great choice! please select something from menue `, 'bot')
+    showMessage(`oh so you are in the mood for Salad? Great choice! please select something from menue `, 'bot')
     saladMenue.style.display = "flex";
     pizzaMenue.style.display = "none";
     pastaMenue.style.display = "none";
@@ -183,6 +204,7 @@ saladBtn.addEventListener("click" , () =>{
       setTimeout(() =>{
         showMessage("please choose how many Ceasar Salad would you like?" , 'bot');
         addBtns.style.display = "flex";
+        selectedFood = "Ceasar Salad";
 
       },1000)
     }else if (valueOptionSalad === "Greek"){
@@ -190,13 +212,15 @@ saladBtn.addEventListener("click" , () =>{
       setTimeout(() =>{
         showMessage("please choose how many Greek Salad would you like?" , 'bot');
         addBtns.style.display = "flex";
+        selectedFood = "Greek Salad";
 
       },1000)
-    }else if (valueOptionPizza === "Cobb"){
+    }else if (valueOptionSalad === "Cobb"){
       showMessage("Cobb" , 'user');
       setTimeout(() =>{
         showMessage("please choose how many Cobb Salad would you like?" , 'bot');
         addBtns.style.display = "flex";
+        selectedFood = "Cobb Salad";
 
       },1000)
     }
@@ -210,7 +234,48 @@ function displayNone(){
   pastaMenue.style.display = "none";
   saladMenue.style.display = "none";
 
-}
+};
+let counter = 0;
+
+  plusBtn.addEventListener("click" , ()=>{
+    counter++;
+    sendBtn.innerHTML = `${counter}-Send`;
+    sendBtn.disabled = false;
+
+  });
+  minusBtn.addEventListener("click" , ()=>{
+    if(counter > 0){
+      counter--;
+      sendBtn.innerHTML = `${counter}-Send`;
+
+    }else if(counter < 1){
+      sendBtn.disabled = true;
+      alert("Oops! You have to choose at least one.");
+    }else if(counter === 0){
+      sendBtn.innerHTML = `Send`;
+      sendBtn.disabled = true;
+      alert("Oops! You have to choose at least one.");
+    }
+   
+  });
+    
+    sendBtn.addEventListener("click" , ()=>{
+      showMessage(`${counter}` , 'user');
+      addBtns.style.display = "none";
+      setTimeout(()=>{
+        showMessage(`You have choosen ${counter} - ${selectedFood}. would you like to add some sides?`, 'bot');
+        sideBtns.style.display = "flex";
+      },1000);
+      
+     
+    });
+
+   
+
+  
+
+  
+
 
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000)

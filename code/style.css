@@ -162,14 +162,18 @@ button:hover {
   color: darkblue;
 
 }
-#add-btns{
+#plus , #minus , #send {
   justify-content: center;
   align-items: center;
   margin-top: 20px;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 24px;
   transition: all .3s;
 }
-#add-btns:active{
+#plus:active , #minus:active , #send:active {
   transform: scale(.7);
+}
+#add-btns , #side-btns{
+  justify-content: center;
+  align-items: center;
 }
