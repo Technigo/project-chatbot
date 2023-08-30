@@ -10,8 +10,6 @@ const chat = document.getElementById('chat')
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
   if (sender === 'user') {
-    //The sender 'user' won't show in the console log since it's 'bot' that is in the showMessage with the greeting. If you were to change 'bot' to 'user' in showMessage, 'user' would show as the sender in the console log.
-    console.log(sender)
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -22,16 +20,11 @@ const showMessage = (message, sender) => {
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html section inside the chat with the posted message
   } else if (sender === 'bot') {
-    //Since the message in showMessage has the sender 'bot' the showMessage's message will show in the console log. 
-    console.log(message) 
-    console.log(sender)
-
-    //If removing the ${}, the message in <p> doesn't change since it's no longer an embedded variable, therefore in the chat bubble it just says 'message'.
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
-          <p>message</p>
+          <p>${message}</p>
         </div>
       </section>
     `
@@ -43,7 +36,7 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot')
+  showMessage("Hey there Traveller! Now it's time to go on a virtual trip to a foreign country and explore it! What can I call you? Please enter your name so we can get to know each other!", 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
