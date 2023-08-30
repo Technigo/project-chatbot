@@ -8,6 +8,9 @@ const choiceBtn2 = document.getElementById('choiceBtn2');
 const yesBtn = document.getElementById('yesBtn');
 const noBtn = document.getElementById('noBtn');
 const dropDown = document.getElementById('dropDown');
+const notGoodBtn = document.getElementById('notGoodBtn');
+const okayBtn = document.getElementById('okayBtn');
+const goodBtn = document.getElementById('goodBtn');
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -92,11 +95,15 @@ const handleNameInput = (event) => {
         }, 2000);
       };
 
-      // confirm if user is over 18
-
+      // confirm age, if not display unvalid option
       const handleResponse = (response, name) => {
         showMessage(`${response}!`, 'user');
-        showMessage(`Amazing!`, 'bot');
+        if (response === `yes`) {
+          showMessage(`Amazing!`, 'bot');
+        } else {
+          showMessage(`You need to think about your age! Please reload this page and start from the beginning`, 'bot');
+          throw new Error(`Invalid age option`);
+        }
 
         // dropdown menu
         setTimeout(() => {
@@ -110,9 +117,51 @@ const handleNameInput = (event) => {
 
       // Event listener dropDown
       dropDown.addEventListener('change', (event) => {
-        const selectedOption = event.target.value;
-        showMessage(`So, you ordered ${selectedOption}`, 'user');
+        const selectedOption = dropDown.options[dropDown.selectedIndex].text;
+        showMessage(`${selectedOption}`, 'user');
+
+        setTimeout(() => {
+          showMessage(`You ordered ${selectedOption}`, 'bot');
+          dropDown.style.display = 'none';
+          inputWrapper.style.display = 'block';
+          yesBtn.style.display = 'none';
+          noBtn.style.display = 'none';
+
+          //Rate purchase
+          setTimeout(() => {
+            showMessage(`How would you rate your purchase?`, 'bot');
+            inputWrapper.style.display = 'none';
+            notGoodBtn.style.display = 'block';
+            okayBtn.style.display = 'block';
+            goodBtn.style.display = 'block';
+
+            notGoodBtn.onclick = () => handleReview('Bad', name);
+            okayBtn.onclick = () => handleReview('Okay', name);
+            goodBtn.onclick = () => handleReview('Good', name);
+
+          }, 1000);
+
+        }, 2000);
+
       });
+
+      const handleReview = (review, name) => {
+        showMessage(`${review}!`, 'user');
+
+        //Rate purchase answer
+        setTimeout(() => {
+          if (review === 'Bad') {
+            showMessage(`This is not good!`, 'bot');
+          } else if (review === 'Okay') {
+            showMessage(`Okay is not good enouth!`, 'bot');
+          } else if (review === 'Good') {
+            showMessage(`We are glad you are happy with your order!`, 'bot');
+
+          }
+        }, 1000);
+      };
+
+
 
     }, 1500);
   }, 1000);

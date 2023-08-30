@@ -155,7 +155,10 @@ button:hover {
 #choiceBtn1,
 #choiceBtn2,
 #yesBtn,
-#noBtn {
+#noBtn,
+#notGoodBtn,
+#okayBtn,
+#goodBtn {
   display: none;
   width: 50%;
   background-color: blue;
