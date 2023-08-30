@@ -100,17 +100,38 @@ document.getElementById('sausage').addEventListener('click', () => showSausageMe
 }
 const showSausageMessage = () => {
   showMessage(`You chose Sausage. In danish it's called "pølse".`, 'bot');
+  setTimeout(() => askAnotherWord(), 1000); // Wait for 1 second and then ask
   // Add your logic for displaying information about Sausage here
 }
 
 const showMilkMessage = () => {
   showMessage(`You chose Milk. In danish it's called "melk".`, 'bot');
+  setTimeout(() => askAnotherWord(), 1000);
   // Add your logic for displaying information about Milk here
 }
 
 const showButterMessage = () => {
   showMessage(`You chose Butter. In danish it's called "smør".`, 'bot');
+  setTimeout(() => askAnotherWord(), 1000);
 }
+
+const askAnotherWord = () => {
+  showMessage(`Do you want to learn another word?`, 'bot');
+  inputWrapper.innerHTML = `
+    <button id="yesLearnAnother">Yes</button>
+    <button id="noLearnAnother">No</button>
+  `;
+
+  document.getElementById('yesLearnAnother').addEventListener('click', () => startLearning());
+  document.getElementById('noLearnAnother').addEventListener('click', () => sayGoodbye());
+}
+
+const startLearning = () => {
+  showMessage(`Great! Let's learn another word.`, 'bot');
+  inputWrapper.innerHTML = ``;
+  setTimeout(() => question2(), 1000);
+}
+
 
 
 // Set up your eventlisteners here
