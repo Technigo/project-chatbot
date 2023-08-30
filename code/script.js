@@ -1,5 +1,6 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat')
+const nameInput = document.getElementById('name-input')
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -43,12 +44,34 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+
+
 // Set up your eventlisteners here
 
+
+const handleNameInput = (event) => {
+  event.preventDefault();
+  // Store the value in a variable so we can access it after we
+  // clear it from the input
+  const name = nameInput.value;
+  showMessage(name, "user");
+  nameInput.value = "";
+
+  // After 1 second, show the next question by invoking the next function.
+  // passing the name into it to have access to the user's name if we want
+  // to use it in the next question from the bot.
+  setTimeout(() => showFoodOptions(name), 1000);
+};
+const showFoodOptions = (name) => {
+  console.log("showFoodOptions called with name:", name);
+  // Tu dodaj kod związany z opcjami jedzenia i reakcjami na wybór użytkownika
+};
+const nameForm = document.getElementById('name-form');
+nameForm.addEventListener('submit', handleNameInput);
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 100)
+setTimeout(greetUser, 500)
