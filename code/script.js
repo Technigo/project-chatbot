@@ -7,6 +7,7 @@ const choiceBtn1 = document.getElementById('choiceBtn1');
 const choiceBtn2 = document.getElementById('choiceBtn2');
 const yesBtn = document.getElementById('yesBtn');
 const noBtn = document.getElementById('noBtn');
+const dropDown = document.getElementById('dropDown');
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -55,9 +56,6 @@ const handleNameInput = (event) => {
     showMessage(`Hello ${name} nice to meet you!`, 'bot');
     nameInput.value = "";
 
-
-
-
     // Function asking questions dispaying Btn1, Btn2 as a block elements.
     setTimeout(() => {
       showMessage(`So, ${name} how old are you?`, 'bot');
@@ -78,6 +76,7 @@ const handleNameInput = (event) => {
         choiceBtn2.style.display = 'none';
         inputWrapper.style.display = 'block';
       };
+
       // Functions answer if Btn1:
       const handlechoiceBtn1 = (event, name) => {
         event.preventDefault();
@@ -111,7 +110,13 @@ const handleNameInput = (event) => {
         noBtn.style.display = 'none';
         inputWrapper.style.display = 'block';
         showMessage(`Yes!`, 'user');
-        // Your logic here
+
+        setTimeout(() => {
+          showMessage(`So, ${name} what did you order?`, 'bot');
+          dropDown.style.display = 'block';
+          inputWrapper.style.display = 'none';
+        }, 1000);
+
       };
 
       // Event handler for the "No" button
@@ -120,7 +125,10 @@ const handleNameInput = (event) => {
         noBtn.style.display = 'none';
         inputWrapper.style.display = 'block';
         showMessage(`No!`, 'user');
-        // Your logic here
+
+        setTimeout(() => {
+          showMessage(`So, ${name} what did you order?`, 'bot');
+        }, 1000);
       };
 
       yesBtn.onclick = handleYes;
