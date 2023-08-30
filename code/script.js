@@ -1,5 +1,9 @@
 // Variables that point to selected DOM elements
-const chat = document.getElementById('chat')
+const chat = document.getElementById('chat');
+const inputWrapper = document.getElementById('input-wrapper');
+const nameForm = document.getElementById('name-form');
+const nameInput = document.getElementById('name-input');
+const sendBtn = document.getElementsByClassName('send-btn');
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -36,21 +40,38 @@ const showMessage = (message, sender) => {
 // Starts here
 
 const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, what's your name?", 'bot');
-};
-
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  //message should be from the bot as a greeting
-const answerName = () => {
-  showMessage("Hello, it's ${name}", 'user');
+  showMessage("Hi I'm Buddy the elf, who do I have the pleasure of speaking to?", "bot")
 }
 
 
+const handleNameInput = event => {
+  event.preventDefault();
+  userName = nameInput.value; 
+  nameInput.value = "";
+  showMessage(`I'm ${userName}! Nice to meet you`, "user");
+  setTimeout(reply, 1000);
+}
+
+
+nameForm.addEventListener("submit", handleNameInput);
+
+function reply () {
+  showMessage(`What's your craving today ${userName}?`, 'bot');
+}
+setTimeout(reply, 1000)
+
+
+  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
+  //message should be from the bot as a greeting
+//const answerName = () => {
+  //showMessage("Hello, it's ${name}", 'user');
+//}
+
+
 // Set up your eventlisteners here
-const questionFood = () => {;
-  showMessage("What are you in the mood to eat?", "bot")
-};
+//const questionFood = () => {;
+  //showMessage("What are you in the mood to eat?", "bot")
+//};
  // Set up your eventlisteners here
  //Pizza/pasta/salad
 
@@ -79,7 +100,7 @@ const questionFood = () => {;
    //const endMessage
    //showMessage ("Magical choice! You chose a ... style .... for the sum of.... Do ypu want to place an order?")
 
-   eventlisteners
+   //eventlisteners
    //yes/no
 
    //const Orderdone
