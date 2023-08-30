@@ -1,5 +1,7 @@
 // Variables that point to selected DOM elements
-const chat = document.getElementById('chat')
+const chat = document.getElementById('chat');
+const nameForm = document.getElementById("name-form");
+const nameInput = document.getElementById("name-input");
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -8,8 +10,9 @@ const chat = document.getElementById('chat')
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
+  // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
   if (sender === 'user') {
+    console.log("The user said something")
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -18,8 +21,9 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `
-    // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
+    // the else if statement checks if the sender is a bot and if that's the case it inserts an html section inside the chat with the posted message
   } else if (sender === 'bot') {
+    console.log("The bot said something")
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -40,7 +44,20 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+const handleNameInput = (event) => {
+  event.preventDefault()
+  const name = nameInput.value
+  showMessage(name, 'user')
+  nameInput.value = ''
+  setTimeout(() => intro(name), 1000)
+}
+
+const intro = (name) => {
+  showMessage (`Hi my message hehe`, `bot`);
+  setTimeout(showYesNoBtn, 1000) 
+}
 // Set up your eventlisteners here
+nameForm.addEventListener("submit", handleNameInput);
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
