@@ -56,86 +56,67 @@ const handleNameInput = (event) => {
     showMessage(`Hello ${name} nice to meet you!`, 'bot');
     nameInput.value = "";
 
-    // Function asking questions dispaying Btn1, Btn2 as a block elements.
+    // Function asking for age, displaying Btn1, Btn2 as a block elements.
     setTimeout(() => {
       showMessage(`So, ${name} how old are you?`, 'bot');
       choiceBtn1.style.display = 'block';
       choiceBtn2.style.display = 'block';
       inputWrapper.style.display = 'none';
 
-      // Functions hides Btn1, Btn2 after clicking it..
+      // hides buttons after clicking it
       choiceBtn1.onclick = (event) => {
-        handlechoiceBtn1(event, name);
+        handlechoiceBtn(event, name, 'under 18');
         choiceBtn1.style.display = 'none';
         choiceBtn2.style.display = 'none';
         inputWrapper.style.display = 'block';
       };
       choiceBtn2.onclick = (event) => {
-        handlechoiceBtn2(event, name);
+        handlechoiceBtn(event, name, 'over 18');
         choiceBtn1.style.display = 'none';
         choiceBtn2.style.display = 'none';
         inputWrapper.style.display = 'block';
       };
 
-      // Functions answer if Btn1:
-      const handlechoiceBtn1 = (event, name) => {
+      // Functions answer if under 18:
+      const handlechoiceBtn = (event, name, ageGroup) => {
         event.preventDefault();
-        showMessage(`I'm under 18!`, 'user');
+        showMessage(`I'm ${ageGroup}!`, 'user');
 
         setTimeout(() => {
-          showMessage(`So ${name}, you are under 18 years old, is this correct?`, 'bot');
+          showMessage(`So ${name}, you are ${ageGroup}, is this correct?`, 'bot');
           yesBtn.style.display = 'block';
           noBtn.style.display = 'block';
           inputWrapper.style.display = 'none';
-
+          yesBtn.onclick = () => handleResponse('yes', name);
+          noBtn.onclick = () => handleResponse('no', name);
         }, 2000);
       };
 
-      // Functions answer if Btn2:
-      const handlechoiceBtn2 = (event, name) => {
-        event.preventDefault();
-        showMessage(`I'm over 18!`, 'user');
+      // confirm if user is over 18
 
+      const handleResponse = (response, name) => {
+        showMessage(`${response}!`, 'user');
+        showMessage(`Amazing!`, 'bot');
+
+        // dropdown menu
         setTimeout(() => {
-          showMessage(`So ${name}, you are over 18 years old, is this correct?`, 'bot');
-          yesBtn.style.display = 'block';
-          noBtn.style.display = 'block';
-          inputWrapper.style.display = 'none';
-        }, 2000);
-      };
-
-      // Functions hides Btn3, Btn4 after clicking it.
-      const handleYes = () => {
-        yesBtn.style.display = 'none';
-        noBtn.style.display = 'none';
-        inputWrapper.style.display = 'block';
-        showMessage(`Yes!`, 'user');
-
-        setTimeout(() => {
-          showMessage(`So, ${name} what did you order?`, 'bot');
+          showMessage(`So, ${name} what did you order ? `, 'bot');
           dropDown.style.display = 'block';
           inputWrapper.style.display = 'none';
-        }, 1000);
-
-      };
-
-      // Event handler for the "No" button
-      const handleNo = () => {
-        yesBtn.style.display = 'none';
-        noBtn.style.display = 'none';
-        inputWrapper.style.display = 'block';
-        showMessage(`No!`, 'user');
-
-        setTimeout(() => {
-          showMessage(`So, ${name} what did you order?`, 'bot');
+          yesBtn.style.display = 'none';
+          noBtn.style.display = 'none';
         }, 1000);
       };
 
-      yesBtn.onclick = handleYes;
-      noBtn.onclick = handleNo;
+      // Event listener dropDown
+      dropDown.addEventListener('change', (event) => {
+        const selectedOption = event.target.value;
+        showMessage(`So, you ordered ${selectedOption}`, 'user');
+      });
 
     }, 1500);
   }, 1000);
+
 };
 // Event listener, when user press enter.
 nameInput.addEventListener('keydown', (event) => {
