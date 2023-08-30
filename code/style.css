@@ -7,14 +7,17 @@ body {
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   background-image: url("https://media.istockphoto.com/id/1313418058/photo/vegetarian-dishes.jpg?b=1&s=612x612&w=0&k=20&c=gOqPXrpOqud60Q4GPAHP4i4hVs3x79FZ66R_YngjmAM=");
+  opacity: .9;
+  box-sizing: border-box;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 28px;
+  font-size: 48px;
   line-height: 34px;
   color: #fff;
   text-align: center;
+  margin: 50px 0;
 }
 
 h2 {
@@ -27,7 +30,7 @@ h2 {
 }
 
 p {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 28px;
   margin: 0;
@@ -40,7 +43,7 @@ input {
   background: #e5e9ff;
   color: #0026ff;
   padding: 16px;
-  font-size: 16px;
+  font-size: 22px;
   font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
@@ -51,7 +54,7 @@ main {
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
-  height: 600px;
+  height: 700px;
   border-radius: 30px;
   background: #fff;
   padding: 20px 24px;
@@ -87,12 +90,20 @@ main {
 .user-msg img {
   width: 60px;
   height: 60px;
+  
+  border-radius: 50%;
+}
+.bot-msg img{
+  border: 4px solid rgb(238, 115, 8);
+}
+.user-msg img{
+  border: 4px solid blue;
 }
 
 .bubble {
   background: #e5e9ff;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 26px;
   line-height: 26px;
   padding: 16px 24px;
   color: #0026ff;
@@ -120,13 +131,7 @@ main {
   align-items: center;
 }
 
-label {
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
-}
+
 
 button {
   background-color: #0026ff;
@@ -135,15 +140,16 @@ button {
   border-radius: 4px;
   padding: 16px 40px;
   margin-right: 4px;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 26px;
   font-family: 'Montserrat';
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-size: bold;
 }
 
 button:hover {
-  opacity: 0.9;
+  opacity: 0.7;
   transition: all 0.2s ease;
 }

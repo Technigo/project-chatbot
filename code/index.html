@@ -12,18 +12,40 @@
   </head>
 
   <body>
-    <h1>Welcome to xxx.</h1>
+    <h1>Welcome to pizzaria chatbot</h1>
     <main>
       <section class="chat" id="chat"></section>
 
       <div class="input-wrapper" id="input-wrapper">
         <form id="name-form">
-          <label for="name-input">Name</label>
           <input id="name-input" type="text" />
-          <button class="send-btn" type="submit">
+          <button id="btn" class="send-btn" type="submit">
             Send
           </button>
         </form>
+        <div id="buttons">
+          <button id="pizzabtn" class="send-btn" type="submit">Pizza</button>
+          <button id="pastabtn" class="send-btn" type="submit">Pasta</button>
+          <button id="saladbtn" class="send-btn" type="submit">Salad</button>
+        </div>
+        
+          <select name="menue" id="pizza-menue">
+            <option value="Margarita">Margarita</option>
+            <option value="Pepperoni">Pepperoni</option>
+            <option value="Hawaian">Hawaian</option>
+          </select>
+          <select name="menue" id="pasta-menue">
+            <option value="Margarita">Margarita</option>
+            <option value="Pepperoni">Pepperoni</option>
+            <option value="Hawaian">Hawaian</option>
+          </select>
+          <select name="menue" id="salad-menue">
+            <option value="Margarita">Margarita</option>
+            <option value="Pepperoni">Pepperoni</option>
+            <option value="Hawaian">Hawaian</option>
+          </select>
+          
+        
       </div>
     </main>
 
