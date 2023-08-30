@@ -1,5 +1,7 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat')
+const nameForm = document.getElementById('name-form')
+const nameInput = document.getElementById('name-input')
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -7,7 +9,7 @@ const chat = document.getElementById('chat')
 // Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
-const showMessage = (message, sender) => {
+function showMessage(message, sender) {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
     chat.innerHTML += `
@@ -20,6 +22,9 @@ const showMessage = (message, sender) => {
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
+
+    console.log("Current message:", message);
+
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -48,4 +53,4 @@ const greetUser = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000)
+setTimeout(greetUser, 500)
