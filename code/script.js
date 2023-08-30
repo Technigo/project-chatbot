@@ -73,12 +73,46 @@ const showYesNobtn = () => {
 const userReply = (userReply) => {
   if (userReply === 'Sure!') {
     showMessage(`Sure!`, 'user')
-    //settimeout?
+    setTimeout(() => question2(), 1000);
   } else if (userReply === 'No thanks.') {
     showMessage(`No thanks.`, 'user')
-    //setTimeout(sayGoodbye, 1000)?
+    setTimeout(sayGoodbye, 1000)
   }
- }
+}
+
+//If the user clicks on "No thanks." this happens
+const sayGoodbye = () => {
+  showMessage (`Alright. See you another time! :(`, 'bot');
+  inputWrapper.innerHTML = ``;
+}
+
+//If the user clicks on "Sure!" this happens
+const question2 = () => {
+  showMessage(`Nice! What word would you like to learn?`, "bot");
+  inputWrapper.innerHTML = `
+  <button id="sausage">Sausage</button>
+  <button id="milk">Milk</button>
+  <button id="butter">Butter</button>
+`;
+document.getElementById('sausage').addEventListener('click', () => showSausageMessage());
+  document.getElementById('milk').addEventListener('click', () => showMilkMessage());
+  document.getElementById('butter').addEventListener('click', () => showButterMessage());
+}
+const showSausageMessage = () => {
+  showMessage(`You chose Sausage. In danish it's called "pølse".`, 'bot');
+  // Add your logic for displaying information about Sausage here
+}
+
+const showMilkMessage = () => {
+  showMessage(`You chose Milk. In danish it's called "melk".`, 'bot');
+  // Add your logic for displaying information about Milk here
+}
+
+const showButterMessage = () => {
+  showMessage(`You chose Butter. In danish it's called "smør".`, 'bot');
+}
+
+
 // Set up your eventlisteners here
 nameForm.addEventListener('submit', handleNameInput);
 
