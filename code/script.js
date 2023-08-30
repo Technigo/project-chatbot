@@ -1,5 +1,7 @@
 // Variables that point to selected DOM elements
-const chat = document.getElementById('chat')
+const chat = document.getElementById('chat');
+const nameForm = document.getElementById('name-form');
+const nameInput = document.getElementById("name-input");
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -10,6 +12,7 @@ const chat = document.getElementById('chat')
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
+    // console.log(showMessage("hello user",'bot'));
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -34,6 +37,7 @@ const showMessage = (message, sender) => {
 }
 
 // Starts here
+
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there, What's your name?", 'bot')
@@ -41,6 +45,22 @@ const greetUser = () => {
 }
 
 // Set up your eventlisteners here
+// Get user input with getElementById
+// Trigger event listner when user press enter
+nameInput.addEventListener("keydown", function (event) {
+  if (event.key === "Enter"){
+    let userName = nameInput.value;
+    showMessage(userName, 'user');
+    nameInput.value = ""; //empty the input field
+    event.preventDefault(); //I spent almost half a day to figure out why the reply won't stay there, Google save my life
+  }  
+});
+
+// Bot replies with user name and ask the next question
+const foodChoice = () => {
+  showMessage(`Nice to meet you${userName}. What type of food would you like to order?`, 'bot')
+}
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
@@ -49,3 +69,4 @@ const greetUser = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000)
+
