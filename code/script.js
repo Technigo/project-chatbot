@@ -8,8 +8,10 @@ const chat = document.getElementById('chat')
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
+  // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
   if (sender === 'user') {
+    //The sender 'user' won't show in the console log since it's 'bot' that is in the showMessage with the greeting. If you were to change 'bot' to 'user' in showMessage, 'user' would show as the sender in the console log.
+    console.log(sender)
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -18,13 +20,18 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `
-    // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
+    // the else if statement checks if the sender is a bot and if that's the case it inserts an html section inside the chat with the posted message
   } else if (sender === 'bot') {
+    //Since the message in showMessage has the sender 'bot' the showMessage's message will show in the console log. 
+    console.log(message) 
+    console.log(sender)
+
+    //If removing the ${}, the message in <p> doesn't change since it's no longer an embedded variable, therefore in the chat bubble it just says 'message'.
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
-          <p>${message}</p>
+          <p>message</p>
         </div>
       </section>
     `
