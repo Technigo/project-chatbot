@@ -37,11 +37,29 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage("Ciao, What's your name?", 'bot')
 }
 
 // Set up your eventlisteners here
+const nameForm = document.getElementById('name-form');
 
+nameForm.addEventListener('submit', function(event) {
+  event.preventDefault();
 
-setTimeout(greetUser, 1000)
+  const nameInput = document.getElementById('userName');
+  const userName = nameInput.value;
+
+  console.log('UserName:', 'user');
+
+    nameInput.value = '';
+});
+nameForm.addEventListener('submit', function(event) {
+event.preventDefault();
+
+const nameInput = document.getElementById('name-input');
+const userName = nameInput.value;
+
+showMessage(userName, 'user');
+nameInput.value = '';
+});
+setTimeout(greetUser, 1000);
