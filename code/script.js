@@ -98,13 +98,37 @@ function showOptions(options) {
     button.className = 'send-btn';
     button.textContent = option;
     button.addEventListener('click', () => {
-      showMessage(`You selected ${option}.`, 'user');
+      showMessage(`You selected ${option}.`, 'bot');
     });
     inputWrapper.appendChild(button);
   });
 }
+function age(choice) {
+  showMessage(`Amazing order ${userName}, do you want an adult sized portion for 150 SEK or kids size for 100 SEK?`, 'bot');
+  inputWrapper.innerHTML = `
+  <button class="send-btn" id="adult">Adult</button>
+  <button class="send-btn" id="kid">Kid</button>
+`;
 
+const ageButtons = inputWrapper.querySelectorAll('.send-btn');
+ageButtons.forEach(button => {
+  button.addEventListener('click', (event) => {
+    const selectedFood = event.target.id;
+    showMessage(`You chose ${selectedFood} size, we are about to wrap ypur order.`, 'bot');
+    handleSpecificFoodChoice(selectedFood);
+  });
+});
+}
 
+function handleSpecificage(choice) {
+  inputWrapper.innerHTML = '';
+
+  if (choice === 'adult') {
+    showMessage(`The price for ${option}`is 150 SEK}, 'bot');
+  } else if (choice === 'kid') {
+    showMessage(``The price for ${option}`is 10 SEK}, 'bot');
+  }
+}
   setTimeout(greetUser, 500)
 
 
@@ -117,29 +141,6 @@ function showOptions(options) {
   // Handle the user's food choice here
   // You can continue the conversation based on the selected choice
 
-
-// Set up your eventlisteners here
-//const questionFood = () => {;
-  //showMessage("What are you in the mood to eat?", "bot")
-//};
- // Set up your eventlisteners here
- //Pizza/pasta/salad
-
- //const responseSelectedFood
- //showMessage("What kind of selectedFood do ypu want to eat?", 'bot') 
-
-// eventlisteners depending on choice above
- //subtype = prompt ('Select the type of pizza you want: 1 - Margherita 2 - Veggie 3 - Nutella Please enter the number of your choice:');
- //subtypeName = ["Margherita", "Veggie", "Nutella"];
-// break;
-// case "Pasta":
-  // subtype = prompt ('Select the type of pizza you want: 1 - Shrimppasta 2 - Veggiepasta 3 - Elf style pasta Please enter the number of your choice:');
-  // subtypeName = ["Shrimp", "Veggie", "Elf style"];
-  // break;
-   //case "Salad":
-   //  subtype = prompt ('Select the type of pizza you want: 1 - Shrimpsalad 2 - Greeksalad 3 - Tomatosalad Please enter the number of your choice:');
-   //  subtypeName = ["Shrimp", "Greek", "Tomato"];
-   //  break;
 
    //const responsesubType
    //showMessag("Amazing! Do you want an adultsizepizza or a kids size portion?")
