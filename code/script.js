@@ -12,56 +12,66 @@ const orderConfirmationWrapper = document.getElementById("orderConfirmation");
 let sodaChoice = "";
 
 // Declare your functions after this comment
-const sayHi = (submitEvent) => {
+const submitName = (submitEvent) => {
   submitEvent.preventDefault();
 
   showMessage(nameInput.value, "user");
 
-  showMessage(`Hello ${nameInput.value}! What would you like to drink today? `, "bot");
+  setTimeout(() => {
+    showMessage(`Hello ${nameInput.value}! What would you like to drink today? `, "bot");
 
-  nameInput.value = "";
+    nameInput.value = "";
 
-  nameInputWrapper.style.display = "none"
-  sodaChoiceWrapper.style.display = "block"
+    nameInputWrapper.style.display = "none"
+    sodaChoiceWrapper.style.display = "block"
+  }, 500);
 }
 
 const makeSodaChoice = (soda) => {
   sodaChoice = soda;
   showMessage(soda, "user");
 
-  showMessage(`Great choice! You are craving ${soda}! Would you like regular or zero ${soda}?`, "bot");
+  setTimeout(() => {
+    showMessage(`Great choice! You are craving ${soda}! Would you like regular or zero ${soda}?`, "bot");
 
-  sodaChoiceWrapper.style.display = "none";
-  subChoiceWrapper.style.display = "block";
+    sodaChoiceWrapper.style.display = "none";
+    subChoiceWrapper.style.display = "block";
+  }, 500);
 }
 
 const makeSubChoice = (subChoice) => {
   showMessage(subChoice, "user");
 
-  showMessage(`You have chosen ${subChoice}. What size would you like - small, medium or large?`, "bot");
+  setTimeout(() => {
+    showMessage(`You have chosen ${subChoice}. What size would you like - small, medium or large?`, "bot");
 
-  subChoiceWrapper.style.display = "none";
-  sodaSizeWrapper.style.display = "block";
+    subChoiceWrapper.style.display = "none";
+    sodaSizeWrapper.style.display = "block";
+  }, 500);
 }
 
 const makeSizeChoice = (size) => {
   showMessage(size, "user");
 
-  showMessage(`You have chosen ${size}. Are you sure you want to order?`, "bot");
+  setTimeout(() => {
+    showMessage(`You have chosen ${size}. Are you sure you want to order?`, "bot");
 
-  sodaSizeWrapper.style.display = "none";
-  orderConfirmationWrapper.style.display = "block";
+    sodaSizeWrapper.style.display = "none";
+    orderConfirmationWrapper.style.display = "block";
+  }, 500);
 }
 
 const orderConfirmation = (confirmationMessage) => {
   showMessage(confirmationMessage, "user");
 
-  if (confirmationMessage === "Yes") {
-    showMessage(`Great, we will prepare your ${sodaChoice}!`, "bot");
-  } else {
-    showMessage(`No problem, hope you will come back and order another time!`, "bot");
-  }
-  orderConfirmationWrapper.style.display = "none";
+  setTimeout(() => {
+    if (confirmationMessage === "Yes") {
+      showMessage(`Great, we will prepare your ${sodaChoice}!`, "bot");
+    } else {
+      showMessage(`No problem, hope you will come back and order another time!`, "bot");
+    }
+    orderConfirmationWrapper.style.display = "none";
+  }, 500);
 }
 
 
@@ -100,7 +110,6 @@ const greetUser = () => {
 }
 
 // Set up your eventlisteners here
-document.getElementById('name-form').addEventListener('submit', sayHi);
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
