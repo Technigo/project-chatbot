@@ -47,7 +47,7 @@ setTimeout(greetUser, 1000);
 
 // Add event listener to input form to handle name input
 inputForm.addEventListener("submit", (event) => {
-  // Prevent form submission
+  // Prevents the form from actually submitting and refreshing the page
   event.preventDefault();
   
   // Get user input
@@ -71,7 +71,7 @@ const questionAboutFlavour = (userName) => {
   // Remove the input field and send button
   inputForm.remove();  
   
-  // Change from input field to buttons
+  // Replace input field with buttons for flavours
   inputWrapper.innerHTML += `
     <button id="chocolate" value="Chocolate flavour">Chocolate</button>
     <button id="strawberry" value="Strawberry flavour">Strawberry</button>
@@ -91,46 +91,112 @@ const questionAboutFlavour = (userName) => {
     setTimeout(() => questionAboutNumberOfScoops(), 1000);
   };
 
-  // Add event listener to click on buttons so bot shows confirmation message
-  chocolateButton.addEventListener("click", () => {
-    showMessage(`${chocolateButton.value} is a great choice!`, "bot");
-    moveToScoopQuestion();
-  });
+  // Function to add event listener to click on buttons so bot shows confirmation message
+  const flavourConfirmation = (button) => {
+    button.addEventListener("click", () => {
+      showMessage(`${button.value} is a really great choice!`, "bot");
+      moveToScoopQuestion();
+    });
+  }
 
-  strawberryButton.addEventListener("click", () => {
-    showMessage(`${strawberryButton.value} is a great choice!`, "bot");
-    moveToScoopQuestion();
-  });
-
-  vanillaButton.addEventListener("click", () => {
-    showMessage(`${vanillaButton.value} is a great choice!`, "bot");
-    moveToScoopQuestion();
-  });
+  // Invoke the functions with buttons
+  flavourConfirmation(chocolateButton);
+  flavourConfirmation(strawberryButton);
+  flavourConfirmation(vanillaButton);
 }
 
 //------------QUESTION 3-------------
 // Bot shows options for the number of scoops upon receiving user's choice of flavour
 const questionAboutNumberOfScoops = () => {
-  showMessage(`How many scoops would you like to have?`, "bot");
+  showMessage("How many scoops would you like to have?", "bot");
 
-  // Change from buttons to drop-down list
+  // Create drop-down list with options
   inputWrapper.innerHTML += `
     <select name="scoops" id="scoops">
       <option value="select-one" selected disabled>Select one option...</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
+      <option value="One">One</option>
+      <option value="Two">Two</option>
+      <option value="Three">Three</option>
     </select>
     `;
   
   // Store user's choice in a variable
-  // const selectedNumberOfScoops = document.getElementsByTagName("option");
-  // const scoops = document.getElementById("scoops");
+  const scoops = document.getElementById("scoops");
 
-  // // Add event listener to change of the option in the drop-down list
-  // for (i = 0; i < selectedNumberOfScoops.length; i++) {
-  //   scoops.addEventListener("change", () => {
-  //     showMessage(`${selectedNumberOfScoops[i].value} scoop(s), got it!`);
-  //   });
-  // }
+  // Add event listener to change of the option in the drop-down list
+  scoops.addEventListener("change", () => {
+    showMessage(`${scoops.value} scoop(s), got it!`, "bot");
+    
+    // Clear the dropdown list and move to next question
+    scoops.remove();
+    setTimeout(() => questionAboutToppings(), 1000);
+  });
+}
+
+//------------QUESTION 4-------------
+// Bot shows options for toppings upon receiving user's answer about number of scoops
+const questionAboutToppings = () => {
+  showMessage("What about toppings? Would you like to add some?", "bot");
+
+  // Create buttons for toppings
+  inputWrapper.innerHTML += `
+    <button id="sprinkles" value="Sprinkles">Sprinkles</button>
+    <button id="sauce" value="Chocolate sauce">Chocolate sauce</button>
+    <button id="fruit" value="Fresh fruit">Fresh fruit</button>
+    `;
+  
+  // Store the buttons in variables
+  const sprinklesButton = document.getElementById("sprinkles");
+  const sauceButton = document.getElementById("sauce");
+  const fruitButton = document.getElementById("fruit");
+
+  // Function to clear the buttons and move to the next question
+  const moveToLastQuestion = () => {
+    sprinklesButton.remove();
+    sauceButton.remove();
+    fruitButton.remove();
+    setTimeout(() => questionAboutConfirmation(), 1000);
+  };
+
+  // Function to add event listener to click on buttons so bot shows confirmation message
+  const toppingConfirmation = (button) => {
+    button.addEventListener("click", () => {
+      showMessage(`${button.value} it is!`, "bot");
+      moveToLastQuestion();
+    });
+  }
+
+  // Invoke the functions with buttons
+  toppingConfirmation(sprinklesButton);
+  toppingConfirmation(sauceButton);
+  toppingConfirmation(fruitButton);
+}
+
+//------------QUESTION 5-------------
+// Bot asks for final confirmation of the whole order
+const questionAboutConfirmation = () => {
+  showMessage("Great! Would you like to confirm your order?", "bot");
+
+  // Create buttons for toppings
+  inputWrapper.innerHTML += `
+    <button id="yes" value="yes">Yes</button>
+    <button id="no" value="no">No</button>
+    `;
+  
+  // Store the buttons in variables
+  const yesButton = document.getElementById("yes");
+  const noButton = document.getElementById("no");
+  
+  // Add event listener to the button
+  yesButton.addEventListener("click", () => {
+    showMessage("Thank you. Your ice cream is being prepared. Have a great day!");
+    yesButton.remove();
+    noButton.remove();
+  });
+
+  noButton.addEventListener("click", () => {
+    showMessage("No problem. Go back and order any time!");
+    yesButton.remove();
+    noButton.remove();
+  })
 }
