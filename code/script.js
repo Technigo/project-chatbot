@@ -37,11 +37,85 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Konnichiwa Globetrotter! How can I assist you today?", 'bot')
+  showMessage("Konnichiwa Globetrotter! I'm the Travel Bot, what is your name?", 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
 // Set up your eventlisteners here
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+const nameForm = document.getElementById('name-form');
+const nameInput = document.getElementById('name-input');
+
+nameForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const userName = nameInput.value;
+  
+  showMessage(`${userName}`, 'user');
+  
+  setTimeout(() => {
+    const botResponse = `Nice to meet you ${userName}! How can I assist you today? Please choose an option:
+    1. Banana.
+    2. Apple.
+    3. London.`;
+    showMessage(botResponse, 'bot');
+  }, 1000);
+
+  nameInput.value = '';
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+
+
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
@@ -49,4 +123,4 @@ const greetUser = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 500)
+setTimeout(greetUser, 1000)
