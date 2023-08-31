@@ -230,3 +230,4 @@ setTimeout(serviceOffers, 1000);
 // needs as well delay, otherwise displayed before greeting
 
 //  ...Rest called inside predecessing function
+
