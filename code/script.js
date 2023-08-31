@@ -88,50 +88,71 @@ const sayGoodbye = () => {
 
 //If the user clicks on "Sure!" this happens
 const question2 = () => {
-  showMessage(`Nice! What word would you like to learn?`, "bot");
+  showMessage(`What word would you like to learn?`, "bot");
   inputWrapper.innerHTML = `
   <button id="sausage">Sausage</button>
   <button id="milk">Milk</button>
   <button id="butter">Butter</button>
 `;
-document.getElementById('sausage').addEventListener('click', () => showSausageMessage());
+  document.getElementById('sausage').addEventListener('click', () => showSausageMessage());
   document.getElementById('milk').addEventListener('click', () => showMilkMessage());
   document.getElementById('butter').addEventListener('click', () => showButterMessage());
 }
-const showSausageMessage = () => {
-  showMessage(`You chose Sausage. In danish it's called "pølse".`, 'bot');
-  setTimeout(() => askAnotherWord(), 1000); // Wait for 1 second and then ask
-  // Add your logic for displaying information about Sausage here
+
+const showSausageMessage = (selectedWord) => {
+  showMessage('Sausage!', 'user');
+//add comment
+  setTimeout(() => {
+    showMessage(`In Danish, it's called "pølse"`, 'bot');
+    setTimeout(() => askAnotherWord(selectedWord), 1000);
+  }, 1000);
 }
 
-const showMilkMessage = () => {
-  showMessage(`You chose Milk. In danish it's called "melk".`, 'bot');
-  setTimeout(() => askAnotherWord(), 1000);
-  // Add your logic for displaying information about Milk here
+const showMilkMessage = (selectedWord) => {
+  showMessage('Milk!', 'user');
+//add comment
+  setTimeout(() => {
+    showMessage(`In Danish, it's called "melk".`, 'bot');
+    setTimeout(() => askAnotherWord(selectedWord), 1000);
+  }, 1000);
 }
 
-const showButterMessage = () => {
-  showMessage(`You chose Butter. In danish it's called "smør".`, 'bot');
-  setTimeout(() => askAnotherWord(), 1000);
+const showButterMessage = (selectedWord) => {
+  showMessage('Butter!', 'user');
+  setTimeout(() => {
+     showMessage(`In danish it's called "smør".`, 'bot');
+     setTimeout(() => askAnotherWord(selectedWord), 1000);
+}, 1000);
 }
 
-const askAnotherWord = () => {
+const askAnotherWord = (selectedWord) => {
   showMessage(`Do you want to learn another word?`, 'bot');
+  setTimeout(() => { 
   inputWrapper.innerHTML = `
     <button id="yesLearnAnother">Yes</button>
     <button id="noLearnAnother">No</button>
   `;
 
-  document.getElementById('yesLearnAnother').addEventListener('click', () => startLearning());
-  document.getElementById('noLearnAnother').addEventListener('click', () => sayGoodbye());
+  document.getElementById('yesLearnAnother').addEventListener('click', () => handleLearnAnotherWordResponse(true, selectedWord));
+  document.getElementById('noLearnAnother').addEventListener('click', () => handleLearnAnotherWordResponse(false, selectedWord));
+}, 1000); // Wait for 1 second and then ask
 }
 
-const startLearning = () => {
-  showMessage(`Great! Let's learn another word.`, 'bot');
-  inputWrapper.innerHTML = ``;
-  setTimeout(() => question2(), 1000);
-}
+const handleLearnAnotherWordResponse = (userResponse, selectedWord) => {
+  // Express the user's response
+  showMessage(`${userResponse ? 'Yes' : 'No'}!`, 'user');
 
+  // Wait for a moment before displaying the bot's response
+  setTimeout(() => {
+    if (userResponse) {
+      showMessage(`Great! Let's learn another word.`, 'bot');
+      setTimeout(() => question2(), 1000); // Wait for 1 second and then ask
+    } else {
+      showMessage(`Alright. See you another time! :(`, 'bot');
+      inputWrapper.innerHTML = ``;
+    }
+  }, 1000); // Wait for 1 second and then respond
+}
 
 
 // Set up your eventlisteners here
