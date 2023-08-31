@@ -17,7 +17,11 @@ const plusBtn = document.getElementById("plus");
 const sideBtns = document.getElementById("side-btns");
 const noSideBtn = document.getElementById("noside");
 const sizeBtns = document.getElementById("size-btns");
-const lastBtns = document.getElementById("last-btns")
+const lastBtns = document.getElementById("last-btns");
+const friesBtn = document.getElementById("fries");
+const garlicBtn = document.getElementById("garlic");
+const sweetBtn = document.getElementById("sweet");
+
 
 
 let childBtn;
@@ -119,7 +123,9 @@ const clearInput = () =>{
 
 
 
-let selectedFood = ""
+let selectedFood = "";
+let selectedSide = "";
+
 pizzaBtn.addEventListener("click" , () =>{
   showMessage(`Pizza` , 'user');
   btnsEl.style.display = "none";
@@ -267,6 +273,7 @@ function displayNone(){
 let counter = 0;
 let totalPrice = 0;
 
+
   plusBtn.addEventListener("click" , ()=>{
     counter++;
     sendBtn.innerHTML = `${counter}-Send`;
@@ -305,41 +312,94 @@ let totalPrice = 0;
     });
    
     noSideBtn.addEventListener("click" , ()=>{
-      showMessage("No, I'm fine" , 'user');
       sideBtns.style.display = "none";
       setTimeout(()=>{
         showMessage("what size would you like your food to be? Adult size or child size?" , 'bot');
-         sizeBtns.innerHTML += `<button id="adult" class="send-btn" type="submit">Adult👱🏻‍♂️</button><button id="child"class="send-btn" type="submit">Child👶🏼</button>`;
-         adultBtn = document.getElementById("adult");
-         childBtn = document.getElementById("child");
-   
-         childBtn.addEventListener("click" , ()=>{
-           showMessage("Child size" , 'user');
-           sizeBtns.style.display = "none";
-           let childTotalPrice = totalPrice - 20
-           setTimeout(()=>{
-             showMessage(`Your order will be ${counter}-${selectedFood} Child size and the price would be ${childTotalPrice} SEK ` , 'bot')
-             showConfirm()
-           },1000);
-   
-         });
-   
-         adultBtn.addEventListener("click" , ()=>{
-           showMessage("Adult size" , 'user');
-           sizeBtns.style.display = "none";
-           setTimeout(()=>{
-             showMessage(`Your order will be ${counter}-${selectedFood} Adult size and the price would be ${totalPrice} SEK ` , 'bot')
-             showConfirm()
-           },1000);
-
-         });
+        ageSize()
       },1000);
-     
-
-
-     
-
     });
+
+    friesBtn.addEventListener("click" , ()=>{
+      showMessage("French Fries" , 'user');
+      sideBtns.style.display = "none";
+      setTimeout(()=>{
+        showMessage("what size would you like your food to be? Adult size or child size?" , 'bot');
+        selectedSide = "French Fries";
+        ageSizeWithSide();
+      },1000);
+    });
+    garlicBtn.addEventListener("click" , ()=>{
+      showMessage("Garlic Bread" , 'user');
+      sideBtns.style.display = "none";
+      setTimeout(()=>{
+        showMessage("what size would you like your food to be? Adult size or child size?" , 'bot');
+        selectedSide = "Garlic Bread";
+        ageSizeWithSide();
+      },1000);
+    });
+    sweetBtn.addEventListener("click" , ()=>{
+      showMessage("Mashed Sweet Potato" , 'user');
+      sideBtns.style.display = "none";
+      setTimeout(()=>{
+        showMessage("what size would you like your food to be? Adult size or child size?" , 'bot');
+        selectedSide = "Mashed Sweet Potato";
+        ageSizeWithSide();
+      },1000);
+    });
+
+    const ageSize = ()=>{
+      sizeBtns.innerHTML += `<button id="adult" class="send-btn" type="submit">Adult👱🏻‍♂️</button><button id="child"class="send-btn" type="submit">Child👶🏼</button>`;
+      adultBtn = document.getElementById("adult");
+      childBtn = document.getElementById("child");
+
+      childBtn.addEventListener("click" , ()=>{
+        showMessage("Child size" , 'user');
+        sizeBtns.style.display = "none";
+        let childTotalPrice = totalPrice - 20
+        setTimeout(()=>{
+          showMessage(`Your order will be ${counter}-${selectedFood} Child size and the price would be ${childTotalPrice} SEK ` , 'bot')
+          showConfirm()
+        },1000);
+
+      });
+
+      adultBtn.addEventListener("click" , ()=>{
+        showMessage("Adult size" , 'user');
+        sizeBtns.style.display = "none";
+        setTimeout(()=>{
+          showMessage(`Your order will be ${counter}-${selectedFood} Adult size and the price would be ${totalPrice} SEK ` , 'bot')
+          showConfirm()
+        },1000);
+
+      });
+    } 
+    const ageSizeWithSide = ()=>{
+      sizeBtns.innerHTML += `<button id="adult" class="send-btn" type="submit">Adult👱🏻‍♂️</button><button id="child"class="send-btn" type="submit">Child👶🏼</button>`;
+      adultBtn = document.getElementById("adult");
+      childBtn = document.getElementById("child");
+
+      childBtn.addEventListener("click" , ()=>{
+        showMessage("Child size" , 'user');
+        sizeBtns.style.display = "none";
+        let childTotalPrice = totalPrice - 20
+        setTimeout(()=>{
+          showMessage(`Your order will be ${counter}-${selectedFood} Child size with one ${selectedSide}  and the price would be ${childTotalPrice + sidePrice} SEK ` , 'bot')
+          showConfirm()
+        },1000);
+
+      });
+
+      adultBtn.addEventListener("click" , ()=>{
+        showMessage("Adult size" , 'user');
+        sizeBtns.style.display = "none";
+        setTimeout(()=>{
+          showMessage(`Your order will be ${counter}-${selectedFood} Adult size with one ${selectedSide}  and the price would be ${totalPrice + sidePrice} SEK ` , 'bot')
+          showConfirm()
+        },1000);
+
+      });
+
+    }
   
     
 
