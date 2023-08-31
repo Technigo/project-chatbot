@@ -22,14 +22,22 @@ const sayHi = (submitEvent) => {
   sodaChoiceWrapper.style.display = "block"
 }
 
-makeSodaChoice = (sodaChoice) => {
+const makeSodaChoice = (sodaChoice) => {
   showMessage(sodaChoice, "user");
 
   showMessage(`Great choice! You are craving ${sodaChoice}! Would you like regular or zero ${sodaChoice}?`, "bot");
 
-  nameInputWrapper.style.display = "none";
   sodaChoiceWrapper.style.display = "none";
   subChoiceWrapper.style.display = "block";
+}
+
+const makeSubChoice = (subChoice) => {
+  showMessage(subChoice, "user");
+
+  showMessage(`You have chosen ${subChoice}. Would you like a small, medium och large ${subChoice}?`);
+
+  subChoiceWrapper.style.display = "none";
+  sodaSizeWrapper.style.display = "block";
 }
 
 

@@ -27,18 +27,18 @@
     </div>
 
     <div id="soda-choice" class="center" style="display: none;">
-      <button onclick="makeSodaChoice('coke')">Coke</button>
+      <button onclick="makeSodaChoice('Coke')">Coke</button>
       <button onclick="makeSodaChoice('Fanta')">Fanta</button>
       <button onclick="makeSodaChoice('Sprite')">Sprite</button>
     </div>
 
     <div id="sub-choice" class="center" style="display: none;">
-      <button>Regular</button>
-      <button>Zero</button>
+      <button onclick="makeSubChoice('Regular')">Regular</button>
+      <button onclick="makeSubChoice('Zero')">Zero</button>
     </div>
 
     <div id="soda-size" class="center" style="display: none;">
-      <select>
+      <select onchange="makeSizeChoice">
         <option value="Small">Small</option>
         <option value="Medium">Medium</option>
         <option value="Large">Large</option>
