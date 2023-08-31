@@ -1,4 +1,6 @@
+"use strict";
 // Variables that point to selected DOM elements
+
 const chat = document.getElementById("chat");
 const input = document.getElementById("name-input");
 const sendBtn = document.querySelector(".send-btn");
