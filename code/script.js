@@ -15,15 +15,19 @@ let sodaChoice = "";
 const submitName = (submitEvent) => {
   submitEvent.preventDefault();
 
-  showMessage(nameInput.value, "user");
-
   setTimeout(() => {
-    showMessage(`Hello ${nameInput.value}! What would you like to drink today? `, "bot");
+    if (nameInput.value === "") {
+      showMessage(`I´m a poor robot and I can´t make drinks for anyone who doesn´t have a name. Please enter a name.`, "bot");
+    } else {
+      showMessage(`Hello ${nameInput.value}! What would you like to drink today? `, "bot");
 
-    nameInput.value = "";
+      showMessage(nameInput.value, "user");
 
-    nameInputWrapper.style.display = "none"
-    sodaChoiceWrapper.style.display = "block"
+      nameInput.value = "";
+
+      nameInputWrapper.style.display = "none";
+      sodaChoiceWrapper.style.display = "block";
+    }
   }, 500);
 }
 
