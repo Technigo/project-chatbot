@@ -297,6 +297,11 @@ let totalPrice = 0;
   });
     
     sendBtn.addEventListener("click" , ()=>{
+      if(counter === 0){
+        sendBtn.disabled = true;
+        alert("Oops! You have to choose at least one.");
+        return
+      }
       showMessage(`${counter}` , 'user');
       addBtns.style.display = "none";
       
@@ -355,7 +360,7 @@ let totalPrice = 0;
       childBtn.addEventListener("click" , ()=>{
         showMessage("Child size" , 'user');
         sizeBtns.style.display = "none";
-        let childTotalPrice = totalPrice - 20
+        let childTotalPrice = totalPrice - 20;
         setTimeout(()=>{
           showMessage(`Your order will be ${counter}-${selectedFood} Child size and the price would be ${childTotalPrice} SEK ` , 'bot')
           showConfirm()
