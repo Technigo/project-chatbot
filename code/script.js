@@ -137,31 +137,27 @@ function handleSpecificAge(choice) {
   } else if (choice === 'kid') {
     showMessage(`The price for kid size is 100 SEK.`, 'bot');
     confirmOrder('Pizza', 'Kid');
-}
+  } 
 }
 
 function confirmOrder(foodChoice, sizeChoice) {
-  showMessage(`Here's your order summary, ${userName}:<br>Food: ${foodChoice}<br>Size: ${sizeChoice}`, 'bot');
+  showMessage(`Here's your order, ${userName}:<br>You want ${foodChoice}<br>Portion size ${sizeChoice}`, 'bot');
 
   inputWrapper.innerHTML = `
-    <button class="send-btn" id="confirm">Confirm</button>
-    <button class="send-btn" id="cancel">Cancel</button>
+    <button class="send-btn" id="confirm">I'm ready to order</button>
+    <button class="send-btn" id="cancel">No, I changed my mind</button>
   `;
 
-  const confirmButton = document.getElementById('confirm');
-  const cancelButton = document.getElementById('cancel');
-
-  confirmButton.addEventListener('click', () => {
-    showMessage('Your order has been confirmed. Thank you!', 'bot');
-    inputWrapper.innerHTML = ''; 
-  });
-
-  cancelButton.addEventListener('click', () => {
-    showMessage('Your order has been canceled.', 'bot');
-    inputWrapper.innerHTML = ''; 
-  });
-}
-
+    confirmButton.addEventListener('click', () => {
+      showMessage('Your order has been confirmed. Thank you for choosing us!', 'bot');
+      inputWrapper.innerHTML = ''; 
+    });
+  
+    cancelButton.addEventListener('click', () => {
+      showMessage('Your order has been canceled. Feel free to order again later.', 'bot');
+      inputWrapper.innerHTML = ''; 
+    });
+  }
 
 
   setTimeout(greetUser, 500)
