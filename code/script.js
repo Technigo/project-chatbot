@@ -4,6 +4,7 @@ const chat = document.getElementById("chat");
 const btn = document.querySelector("button");
 const nameInput = document.getElementById("name-input");
 const form = document.getElementById("name-form");
+const sound = document.getElementById("clickSound");
 
 // Step 1 and Step 2
 // When website loaded, chatbot asks first question.
@@ -13,18 +14,19 @@ const showMessage = (msg, sender) => {
   console.log("SENDER IS:", sender);
   if (sender === "bot") {
     chat.innerHTML += `<section class="bot-msg">
-    <img src="assets/bot.png" alt="chat bot"/>
+    <img src="assets/bot.svg" alt="chat bot"/>
     <div class="bubble bot-bubble">
       <p>${msg}</p>
     </div>
     </section>
     `;
   } else if (sender === "user") {
+    sound.play();
     chat.innerHTML += `<section class="user-msg">
   <div class="bubble user-bubble">
     <p>${msg}</p>
   </div>
-  <img src="assets/user.png" alt="user bot"/>
+  <img src="assets/user.svg" alt="user bot"/>
   </section>`;
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
@@ -44,7 +46,7 @@ const handleNameinput = (event) => {
   const userName = nameInput.value;
   showMessage(`My name is ${userName}`, `user`);
   nameInput.value = ""; //clear nameInput's value
-  setTimeout(() => askFoodType(userName), 1000);
+  setTimeout(() => askFoodType(userName), 1500);
 };
 
 btn.addEventListener("click", handleNameinput);
@@ -57,12 +59,12 @@ const askFoodType = (userName) => {
   );
   form.innerHTML = `
    <button id="pizzaBtn" type="submit" value="pizza">Pizza</button>
-   <button id="pastaBtn" type="submit" value="pasta">Pasta</button>
+   <button id="sweet" type="submit" value="sweet">Sweet</button>
    <button id="saladBtn" type="submit" value="salad">Salad</button>
    `;
 
   document.getElementById("pizzaBtn").addEventListener("click", foodOptions);
-  document.getElementById("pastaBtn").addEventListener("click", foodOptions);
+  document.getElementById("sweet").addEventListener("click", foodOptions);
   document.getElementById("saladBtn").addEventListener("click", foodOptions);
 };
 
@@ -85,13 +87,13 @@ const foodOptions = (event) => {
               <option value="Vesuvio">Vesuvio</option>
       </select>
       `;
-  } else if (type === "pasta") {
+  } else if (type === "sweet") {
     form.innerHTML = `
     <select id="Option">
             <option value=""  disabled selected>👇Please choose one:</option>
-            <option value="Pasta Carbonarn">Pasta Carbonara</option>
-            <option value="Pasta Pomodoro">Pasta Pomodoro</option>
-            <option value="Frutti Di Mare">Frutti di Mare</option>
+            <option value="Pastries">Pastries</option>
+            <option value="Smulpaj">Smulpaj</option>
+            <option value="Kladdkaka">Kladdkaka</option>
     </select>
     `;
   } else {
@@ -106,6 +108,7 @@ const foodOptions = (event) => {
   }
   document.getElementById("Option").addEventListener("change", finalOption);
 };
+
 // // confirm the final option
 const finalOption = (event) => {
   showMessage(`${event.target.value}`, `user`);
