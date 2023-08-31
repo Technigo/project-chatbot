@@ -15,6 +15,11 @@ const sendBtn = document.getElementById("send");
 const minusBtn = document.getElementById("minus");
 const plusBtn = document.getElementById("plus");
 const sideBtns = document.getElementById("side-btns");
+const noSideBtn = document.getElementById("noside");
+const sizeBtns = document.getElementById("size-btns");
+const adultBtns = document.getElementById("adult");
+const childBtns = document.getElementById("child");
+
 
 
 btnsEl.style.display = "none";
@@ -269,6 +274,18 @@ let counter = 0;
       
      
     });
+    noSideBtn.addEventListener("click" , ()=>{
+      showMessage("No, I'm fine" , 'user');
+      sideBtns.style.display = "none";
+      setTimeout(()=>{
+        showMessage("what size would you like your food to be? Adult size or child size?" , 'bot')
+      },1000);
+      sizeBtns.innerHTML += `<button id ="adult" class="send-btn" type="submit">Adult👱🏻‍♂️</button><button id ="child"class="send-btn" type="submit">Child👶🏼</button>`;
+
+
+    });
+   
+
 
    
 

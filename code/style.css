@@ -53,8 +53,8 @@ input {
 main {
   margin: 0 auto;
   width: 100%;
-  max-width: 700px;
-  height: 700px;
+  max-width: 800px;
+  height: 800px;
   border-radius: 30px;
   background: #fff;
   padding: 20px 24px;
@@ -162,18 +162,23 @@ button:hover {
   color: darkblue;
 
 }
-#plus , #minus , #send {
+#plus , #minus , #send, #size-btns ,#side-btns{
+  display: flex;
   justify-content: center;
-  align-items: center;
   margin-top: 20px;
   font-weight: bold;
   font-size: 24px;
   transition: all .3s;
 }
-#plus:active , #minus:active , #send:active {
+#plus:active , #minus:active , #send:active , #adult:active ,#child:active{
   transform: scale(.7);
 }
-#add-btns , #side-btns{
+#add-btns{
   justify-content: center;
   align-items: center;
+}
+
+#noside{
+  background-color: orange;
+  
 }
