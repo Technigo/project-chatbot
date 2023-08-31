@@ -1,5 +1,9 @@
 // Variables that point to selected DOM elements
-const chat = document.getElementById('chat')
+const chat = document.getElementById('chat');
+const form = document.getElementById('name-form');
+const nameInput = document.getElementById('name-input');
+const submitBtn = document.getElementsByClassName("send-btn");
+
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -28,17 +32,50 @@ const showMessage = (message, sender) => {
         </div>
       </section>
     `
-  }
+  } 
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
 
 // Starts here
+//First greeting
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there, What's your name?", 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
+/* ----- User enters name ------ */
+const handleNameInput = (event) => {
+  event.preventDefault(); //prevents the form from reloading after clicking the button
+  const name = nameInput.value;
+  showMessage(name, "user"); 
+  nameInput.value = ""; //clears the input field after bubble appears
+
+  /*----- bot response ------ */
+  setTimeout(() => {
+  const botResponse = `Nice to meet you ${name}! Are you ready to test your knowledge?`;
+  showMessage(botResponse, "bot");
+}, 1000)
+
+  createButton(); // calling yes&no buttons
+
+  nameInput.remove(); // removes input fiels
+  submitBtn[0].style.display = "none"; // hides submitt button
+}; 
+
+
+form.addEventListener("submit", handleNameInput);
+
+
+ //creating the Yes/No buttons
+ const createButton = () => {
+  form.innerHTML += `
+  <button class="yesBtn" type="submit">Yes</button>
+  <button class="noBtn" type="submit">No</button>`
+}
+
+
+
 
 // Set up your eventlisteners here
 
@@ -49,3 +86,4 @@ const greetUser = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000)
+
