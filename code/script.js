@@ -62,6 +62,20 @@ const botQuestion3 = (yesOrNo) => {
     //remove the text input bar
     const removeInputVar = document.querySelector("#name-input");
     removeInputVar.remove();
+    //add a dropdown select bar
+    const addDropdownQ3 = document.createElement("select") //create a dynamic element with a class name to link in CSS
+    addDropdownQ3.classname = "q3-dropdown-select"
+    const parent = document.querySelector("#input-wrapper")
+    parent.innerHTML = `
+    <select name="q3-dropdown-select" id="q3-dropdown-select" required>
+    <option selected="selected">&#128071 Select a Continent here</option>
+    <option value="africa">Africa</option>
+    <option value="asia">Asia</option>
+    <option value="europe">Europe</option>
+  </select>
+    `
+    console.log(addDropdownQ3)
+    return addDropdownQ3;
     //the 3 buttons for location options goes here
 
     //   form.innerHTML += `
