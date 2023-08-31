@@ -1,8 +1,11 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat')
+const form = document.getElementById('name-form');
+const submitBtn = document.getElementById('submit-btn');
+const inputField = document.getElementById('name-input');
 
 // If you need any global variables that you can use across different functions, declare them here:
-
+let userAnswer = "";
 
 // Declare your functions after this comment
 
@@ -34,10 +37,31 @@ const showMessage = (message, sender) => {
 }
 
 // Starts here
-const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+const greeting = (name) => {
+  showMessage("Welcome to the Icecream dream! What's your name?", 'bot')
+}
+
+
+  //Here you need to invoke the next function
+const handleNameInput = event => {
+  event.preventDefault();
+  userName = nameInput.value;
+  nameInput.value = "";
+  showUserMessage(`${userName}`, `user`);
+    setTimeout(reply, 300);
+}
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const userMessage = inputField.value;
+  showMessage(userMessage, 'user');
+  inputField.value = '';
+  setTimeout(icecream, 300);
+})
+
+const icecream = userName => {
+  showMessage(`Nice to meet you, ${userName}! What would you like to order today?`, 'bot');
+ setTimeout(showMessage, 300);
 }
 
 // Set up your eventlisteners here
@@ -48,4 +72,4 @@ const greetUser = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000)
+setTimeout(greeting, 300)
