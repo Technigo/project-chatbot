@@ -62,12 +62,12 @@ const handleNameInput = event => {
 nameForm.addEventListener('submit', handleNameInput);
 
 const reply = () => {
-  showMessage(`I think you need a riddle to relax your mind ${userName}. Choose a riddle by clicking on one of them below:`, 'bot');
+  showMessage(`I think you need a riddle to relax your mind ${userName}. Choose a riddle by clicking on one of the apples below:`, 'bot');
 
 
   nameForm.innerHTML = `
-      <button class="options" id='oneBtn'>One</button>
-      <button class="options" id='twoBtn'>Two</button>
+      <button class="options" id='oneBtn'>🍏</button>
+      <button class="options" id='twoBtn'>🍎</button>
     `
 
   document.getElementById('oneBtn')
@@ -81,7 +81,7 @@ const reply = () => {
 
 const riddleOption = option => {
   if (option === "one") {
-    showMessage('Riddle 1: I am used for styling, look and feel. Colors, layout, make it real. In files separate, my rules align. Junior dev, what am I, in web design?', 'bot')
+    showMessage('🍏: I am used for styling, look and feel. Colors, layout, make it real. In files separate, my rules align. Junior dev, what am I, in web design?', 'bot')
 
     nameForm.innerHTML = `
     <button class="options" id='htmlBtn'>HTML</button>
@@ -94,7 +94,7 @@ const riddleOption = option => {
       .addEventListener('click', () => riddleOption('two'))
   }
   else if (option === "two") {
-    showMessage('Riddle 2 I bring interactivity, make things fun. With functions and events, the job has begun. In the browser realm, where actions play smart. Junior dev can you name this part?', 'bot')
+    showMessage('🍎: I bring interactivity, make things fun. With functions and events, the job has begun. In the browser realm, where actions play smart. Junior dev can you name this part?', 'bot')
 
     nameForm.innerHTML = `
       <button class="options" id='jsBtn'>JavaScript</button>
