@@ -37,9 +37,10 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello you! My name is Bob the Bot. What's your name?", 'bot')
+  showMessage("Hello you! My name is Bob the Bot. Who are you?", 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
+
 
 // Set up your eventlisteners here
 
@@ -51,10 +52,18 @@ const greetUser = () => {
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000)
 
-//Bot: whats your favorite smell?
-//user: it's:
-//Oh cool! so your favorite smell is {$smell}!
-//Bot: do you want to know my favorite smell?
-//buttons: yes/no
-//if yes: tell smell
-//if no: want to know something else?
+//add a button called "fancy a quiz?" to start the chatbot.
+//start with the question about the name.
+//user input: name.
+//bot: hello {$Name}. I hope your up for a quiz in random facts! lets start, shall we?
+//buttons, yes or no.
+//if yes: Bot: great! first question!
+//if no: okay, maybe another time then. Bye bye for now. Don't forget that you're beautiful <3
+//first question: la la la
+//two button ansers, right or wrong.
+//if right: You're right {$Name}!
+//if wrong: oh no, unfortunately thats not correct {$Name}.
+//second question..
+//Make 5 questions.
+//Sum up the points.
+
