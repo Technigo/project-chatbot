@@ -20,6 +20,7 @@ const showMessage = (message, sender) => {
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
+    console.log("It workssss!");
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -36,7 +37,7 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot')
+  showMessage("Hello you! My name is Bob the Bot. What's your name?", 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -49,3 +50,11 @@ const greetUser = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000)
+
+//Bot: whats your favorite smell?
+//user: it's:
+//Oh cool! so your favorite smell is {$smell}!
+//Bot: do you want to know my favorite smell?
+//buttons: yes/no
+//if yes: tell smell
+//if no: want to know something else?
