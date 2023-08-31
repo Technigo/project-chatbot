@@ -1,4 +1,4 @@
-// Variables that point to selected DOM elements
+
 const chat = document.getElementById('chat');
 const btn = document.getElementById("btn");
 const nameInput = document.getElementById("name-input");
@@ -17,8 +17,15 @@ const plusBtn = document.getElementById("plus");
 const sideBtns = document.getElementById("side-btns");
 const noSideBtn = document.getElementById("noside");
 const sizeBtns = document.getElementById("size-btns");
-const adultBtns = document.getElementById("adult");
-const childBtns = document.getElementById("child");
+const lastBtns = document.getElementById("last-btns")
+
+
+let childBtn;
+let adultBtn;
+let price;
+let confirmBtn;
+let ignoreBtn;
+
 
 
 
@@ -30,14 +37,28 @@ saladMenue.style.display = "none";
 addBtns.style.display = "none";
 sideBtns.style.display = "none";
 
-// If you need any global variables that you can use across different functions, declare them here:
+const pizzaPrice = {
+  Margarita: 120,
+  Pepperoni: 150,
+  Hawaian: 160
+}
+const pastaPrice = {
+  Carbonara: 110,
+  Alfredo: 180,
+  Pesto: 100
+
+}
+const saladPrice = {
+  Ceasar: 90,
+  Greek: 85,
+  Cobb: 70,
+}
+const sidePrice = 20;
 
 
-// Declare your functions after this comment
 
-// This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
+ 
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
@@ -58,19 +79,18 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+ 
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
+
 const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
+  
   showMessage("Hello there, What's your name?", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+
 }
 
 
-// Set up your eventlisteners here
 btn.addEventListener("click" , (e) => {
   e.preventDefault();
 
@@ -97,12 +117,7 @@ const clearInput = () =>{
   nameInput.value = "";
 }
 
-// When website loaded, chatbot asks first question.
 
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
 
 let selectedFood = ""
 pizzaBtn.addEventListener("click" , () =>{
@@ -124,6 +139,7 @@ pizzaBtn.addEventListener("click" , () =>{
         showMessage("please choose how many Margarita Pizaa would you like?" , 'bot');
         addBtns.style.display = "flex";
         selectedFood = "Margarita Pizaa";
+        price = pizzaPrice.Margarita
 
       },1000)
     }else if (valueOptionPizza === "Pepperoni"){
@@ -132,6 +148,7 @@ pizzaBtn.addEventListener("click" , () =>{
         showMessage("please choose how many Pepperoni Pizaa would you like?" , 'bot');
         addBtns.style.display = "flex";
         selectedFood = "Pepperoni Pizaa";
+        price = pizzaPrice.Pepperoni
 
       },1000)
     }else if (valueOptionPizza === "Hawaian"){
@@ -140,6 +157,7 @@ pizzaBtn.addEventListener("click" , () =>{
         showMessage("please choose how many Hawaian Pizaa would you like?" , 'bot');
         addBtns.style.display = "flex";
         selectedFood = "Hawaian Pizaa";
+        price = pizzaPrice.Hawaian
       },1000)
     }
    displayNone();
@@ -166,6 +184,7 @@ pastaBtn.addEventListener("click" , () =>{
         showMessage("please choose how many Carbonara Pasta would you like?" , 'bot');
         addBtns.style.display = "flex";
         selectedFood = "Carbonara Pasta";
+        price = pastaPrice.Carbonara
 
       },1000)
     }else if (valueOptionPasta === "Alfredo"){
@@ -174,6 +193,7 @@ pastaBtn.addEventListener("click" , () =>{
         showMessage("please choose how many Alfredo Pasta would you like?" , 'bot');
         addBtns.style.display = "flex";
         selectedFood = "Alfredo Pasta";
+        price = pastaPrice.Alfredo
 
       },1000)
     }else if (valueOptionPasta === "Pesto"){
@@ -182,6 +202,7 @@ pastaBtn.addEventListener("click" , () =>{
         showMessage("please choose how many Pesto Pasta would you like?" , 'bot');
         addBtns.style.display = "flex";
         selectedFood = "Pesto Pasta";
+        price = pastaPrice.Pesto
 
       },1000)
     }
@@ -210,6 +231,7 @@ saladBtn.addEventListener("click" , () =>{
         showMessage("please choose how many Ceasar Salad would you like?" , 'bot');
         addBtns.style.display = "flex";
         selectedFood = "Ceasar Salad";
+        price = saladPrice.Ceasar
 
       },1000)
     }else if (valueOptionSalad === "Greek"){
@@ -218,6 +240,7 @@ saladBtn.addEventListener("click" , () =>{
         showMessage("please choose how many Greek Salad would you like?" , 'bot');
         addBtns.style.display = "flex";
         selectedFood = "Greek Salad";
+        price = saladPrice.Greek
 
       },1000)
     }else if (valueOptionSalad === "Cobb"){
@@ -226,6 +249,7 @@ saladBtn.addEventListener("click" , () =>{
         showMessage("please choose how many Cobb Salad would you like?" , 'bot');
         addBtns.style.display = "flex";
         selectedFood = "Cobb Salad";
+        price = saladPrice.Cobb
 
       },1000)
     }
@@ -241,6 +265,7 @@ function displayNone(){
 
 };
 let counter = 0;
+let totalPrice = 0;
 
   plusBtn.addEventListener("click" , ()=>{
     counter++;
@@ -267,26 +292,82 @@ let counter = 0;
     sendBtn.addEventListener("click" , ()=>{
       showMessage(`${counter}` , 'user');
       addBtns.style.display = "none";
+      
+      totalPrice = price * counter
+
+      
       setTimeout(()=>{
-        showMessage(`You have choosen ${counter} - ${selectedFood}. would you like to add some sides?`, 'bot');
+        showMessage(`You have choosen ${counter} - ${selectedFood}.The total price will be ${totalPrice} SEK. would you like to add some sides? it wil be 20 SEK extra`, 'bot');
         sideBtns.style.display = "flex";
       },1000);
       
      
     });
+   
     noSideBtn.addEventListener("click" , ()=>{
       showMessage("No, I'm fine" , 'user');
       sideBtns.style.display = "none";
       setTimeout(()=>{
-        showMessage("what size would you like your food to be? Adult size or child size?" , 'bot')
-      },1000);
-      sizeBtns.innerHTML += `<button id ="adult" class="send-btn" type="submit">Adult👱🏻‍♂️</button><button id ="child"class="send-btn" type="submit">Child👶🏼</button>`;
+        showMessage("what size would you like your food to be? Adult size or child size?" , 'bot');
+         sizeBtns.innerHTML += `<button id="adult" class="send-btn" type="submit">Adult👱🏻‍♂️</button><button id="child"class="send-btn" type="submit">Child👶🏼</button>`;
+         adultBtn = document.getElementById("adult");
+         childBtn = document.getElementById("child");
+   
+         childBtn.addEventListener("click" , ()=>{
+           showMessage("Child size" , 'user');
+           sizeBtns.style.display = "none";
+           let childTotalPrice = totalPrice - 20
+           setTimeout(()=>{
+             showMessage(`Your order will be ${counter}-${selectedFood} Child size and the price would be ${childTotalPrice} SEK ` , 'bot')
+             showConfirm()
+           },1000);
+   
+         });
+   
+         adultBtn.addEventListener("click" , ()=>{
+           showMessage("Adult size" , 'user');
+           sizeBtns.style.display = "none";
+           setTimeout(()=>{
+             showMessage(`Your order will be ${counter}-${selectedFood} Adult size and the price would be ${totalPrice} SEK ` , 'bot')
+             showConfirm()
+           },1000);
 
+         });
+      },1000);
+     
+
+
+     
 
     });
-   
+  
+    
 
 
+const showConfirm = ()=>{
+  lastBtns.innerHTML += `<button id="confirm" class="send-btn" type="submit">Confirm</button><button id="ignore" class="send-btn" type="submit">Ignore</button>`;
+  confirmBtn = document.getElementById("confirm");
+  ignoreBtn = document.getElementById("ignore");
+
+
+  confirmBtn.addEventListener("click" , ()=>{
+ 
+   showMessage("Confirm" , 'user');
+   lastBtns.style.display = "none";
+   setTimeout(()=>{
+     showMessage("Thank you for choosing us, your meal will be prepared soon." , 'bot')
+   },1000);
+ });
+
+ ignoreBtn.addEventListener("click" , ()=>{
+  lastBtns.style.display = "none";
+  setTimeout(()=>{
+    showMessage("Thank you for visiting us, maybe next time.bye" , 'bot')
+
+  },1000);
+
+});
+}
    
 
   
@@ -294,5 +375,5 @@ let counter = 0;
   
 
 
-// This means the greeting function will be called one second after the website is loaded.
+
 setTimeout(greetUser, 1000)

@@ -162,7 +162,7 @@ button:hover {
   color: darkblue;
 
 }
-#plus , #minus , #send, #size-btns ,#side-btns{
+#plus , #minus , #send, #size-btns ,#side-btns , #last-btns{
   display: flex;
   justify-content: center;
   margin-top: 20px;
@@ -170,7 +170,7 @@ button:hover {
   font-size: 24px;
   transition: all .3s;
 }
-#plus:active , #minus:active , #send:active , #adult:active ,#child:active{
+#plus:active , #minus:active , #send:active , #adult:active ,#child:active , #confirm:active , #ignore:active{
   transform: scale(.7);
 }
 #add-btns{
