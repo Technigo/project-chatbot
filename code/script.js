@@ -425,6 +425,7 @@ const showConfirm = ()=>{
  });
 
  ignoreBtn.addEventListener("click" , ()=>{
+  showMessage("Igonore" , 'user');
   lastBtns.style.display = "none";
   setTimeout(()=>{
     showMessage("Thank you for visiting us, maybe next time.bye" , 'bot')
