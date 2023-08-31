@@ -7,10 +7,13 @@ const inputSection = document.getElementById('input-wrapper');
 let myPizza = ""
 let mySize = ""
 
+// Containing two message, the user selection and confirmation from bot
 const selectSize = (size) => {
 mySize=size
 showMessage(size, 'user')
-showMessage(`Super Mario, you took the ${size} for your ${myPizza}`, 'bot')
+showMessage(`Super Mario, you took the ${size} size for your ${myPizza}`, 'bot')
+
+showConfirmationMenu()
 }
 
 const showDropdownMenuInsteadOfPizzaButtons = () => {
@@ -25,14 +28,37 @@ const showDropdownMenuInsteadOfPizzaButtons = () => {
   </div>
   `
 
-//Default size is medium in the select above so we set the option to medium as well. This means that if we select the default then option should be medium.
+  //Default size is medium in the select above so we set the option to medium as well. This means that if we select the default then option should be medium.
 
-/*let option="medium"
-let sizeList= document.getElementById('selectSize')
-sizeList.addEventListener('change', (event)=> {option = event.target.value});
-}*/
+  /*let option="medium"
+  let sizeList= document.getElementById('selectSize')
+  sizeList.addEventListener('change', (event)=> {option = event.target.value});
+  }*/
 
-document.getElementById("sizeButton").addEventListener('click', () => selectSize(option))
+  option = document.getElementById('selectSize')
+  document.getElementById('sizeButton').addEventListener('click', () => selectSize(option.value))
+}
+
+const showConfirmationMenu = () => {
+  inputSection.innerHTML = `
+  <div class="confirmationOption">
+  <button id="acceptButton">Accept</button>
+  <button id="declineButton">Decline</button>
+  </div>
+  `
+
+  document.getElementById('acceptButton').addEventListener('click', () => confirmOrder())
+  document.getElementById('declineButton').addEventListener('click', () => declineOrder())
+}
+
+const confirmOrder = () => {
+  inputSection.innerHTML = ``
+  showMessage(`Great your pizza will be ready in 15 min`, 'bot')
+}
+
+const declineOrder = () => {
+  inputSection.innerHTML = ``
+  showMessage(`Hope you have a great`, 'bot')
 }
 
 const pizzaSize = (pizzaSizes) => {
@@ -55,7 +81,7 @@ const showMenuButtonsInsteadOfForm = () => {
 `
 document.getElementById('MargheritaButton').addEventListener('click', () => pizzaSize("Margherita"));
 document.getElementById('FungiButton').addEventListener('click', () => pizzaSize("Fungi"));
-document.getElementById('CapricciosaButton"').addEventListener('click', () => pizzaSize("Capricciosa"));
+document.getElementById('CapricciosaButton').addEventListener('click', () => pizzaSize("Capricciosa"));
 }
 
 // Declare your functions after this comment
@@ -127,4 +153,4 @@ const greetUser = () => {
 
 form.addEventListener('submit', sendMessage);
 
-setTimeout(greetUser, 1000);
+setTimeout(greetUser, 700);
