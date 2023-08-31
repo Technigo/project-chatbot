@@ -5,6 +5,8 @@ const nameForm = document.getElementById('name-form');
 const nameInput = document.getElementById('name-input');
 const sendBtn = document.getElementsByClassName('send-btn');
 
+let userName = '';
+
 // If you need any global variables that you can use across different functions, declare them here:
 
 
@@ -55,17 +57,38 @@ const handleNameInput = event => {
 
 nameForm.addEventListener("submit", handleNameInput);
 
-function reply () {
-  showMessage(`What's your craving today ${userName}?`, 'bot');
+function reply() {
+  showMessage(`What's your craving today, ${userName}?`, 'bot');
+ 
+  inputWrapper.innerHTML = `
+    <button class="send-btn" id="pizza">Pizza</button>
+    <button class="send-btn" id="pasta">Pasta</button>
+    <button class="send-btn" id="salad">Salad</button>
+  `;
+
+ 
+  const foodButtons = inputWrapper.querySelectorAll('.send-btn');
+  foodButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+      const selectedFood = event.target.id;
+      showMessage(`Excellent choice! You selected ${selectedFood}.`, 'bot');
+      handleUserInput(selectedFood); 
+      inputWrapper.innerHTML = ''; 
+    });
+  });
 }
-setTimeout(reply, 1000)
 
 
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  //message should be from the bot as a greeting
-//const answerName = () => {
-  //showMessage("Hello, it's ${name}", 'user');
-//}
+
+
+
+
+
+
+
+
+  // Handle the user's food choice here
+  // You can continue the conversation based on the selected choice
 
 
 // Set up your eventlisteners here
