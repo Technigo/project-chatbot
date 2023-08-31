@@ -5,7 +5,6 @@ const nameInput = document.getElementById('name-input')
 const sendBtn = document.getElementsByClassName('send-btn')
 // If you need any global variables that you can use across different functions, declare them here:
 
-
 // Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -55,41 +54,62 @@ const greetUser = () => {
 const handleNameInput = event => {
   event.preventDefault();
   userName = nameInput.value;
-  nameInput.value = "";
+  nameInput.value = '';
   showMessage(`${userName}`, "user");
   setTimeout(reply, 1500);
-  userName.remove();
 }
 
-nameForm.addEventListener("submit", handleNameInput);
+nameForm.addEventListener('submit', handleNameInput);
 
 const reply = () => {
   showMessage(`I think you need a riddle to relax your mind ${userName}. Choose a riddle by clicking on one of them below:`, 'bot');
 
-  {
+
+  nameForm.innerHTML = `
+      <button class="options" id='oneBtn'>One</button>
+      <button class="options" id='twoBtn'>Two</button>
+    `
+
+  document.getElementById('oneBtn')
+    .addEventListener('click', () => riddleOption('one'))
+
+
+  document.getElementById('twoBtn')
+    .addEventListener('click', () => riddleOption('two'))
+}
+
+
+const riddleOption = option => {
+  if (option === "one") {
+    showMessage('Riddle 1: I am used for styling, look and feel. Colors, layout, make it real. In files separate, my rules align. Junior dev, what am I, in web design?', 'bot')
+
     nameForm.innerHTML = `
-      <button class="options" id="oneBtn">One</button>
-      <button class="options" id="twoBtn">Two</button>
-    `;
+    <button class="options" id='htmlBtn'>HTML</button>
+    <button class="options" id='cssBtn'>CSS</button>
+  `
 
-    document.getElementById('oneBtn')
+    document.getElementById('htmlBtn')
       .addEventListener('click', () => riddleOption('one'))
+    document.getElementById('cssBtn')
+      .addEventListener('click', () => riddleOption('two'))
+  }
+  else if (option === "two") {
+    showMessage('Riddle 2 I bring interactivity, make things fun. With functions and events, the job has begun. In the browser realm, where actions play smart. Junior dev can you name this part?', 'bot')
 
+    nameForm.innerHTML = `
+      <button class="options" id='jsBtn'>JavaScript</button>
+      <button class="options" id='htmlBtn'>HTML</button>
+    `
 
-    document.getElementById('twoBtn')
+    document.getElementById('jsBtn')
+      .addEventListener('click', () => riddleOption('one'))
+    document.getElementById('htmlBtn')
       .addEventListener('click', () => riddleOption('two'))
 
   }
-
-  const riddleOption = option => {
-    if (option === "one") {
-      showMessage('eget-komihåg: riddle 1: I am used for styling, look and feel. Colors, layout, make it real. In files separate, my rules align, Junior dev, what am I, in web design?', 'bot')
-    }
-    else if (option === "two") {
-      showMessage('eget-komihåg: riddle 2 I bring interactivity, make things fun, With functions and events, the job has begun. In the browser realm, where actions play smart,Junior dev, can you name this part?', 'bot')
-    }
-  }
 }
+
+
 
 // Store the value in a variable so we can access it after we
 // clear it from the input
@@ -107,5 +127,4 @@ const reply = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1500)
-setTimeout(reply, 1500)
-setTimeout(riddleOption, 1500)
+
