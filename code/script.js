@@ -54,7 +54,7 @@ const handleNameInput = (event) => {
   const name = nameInput.value;
   showMessage(`${name}`, 'user');
 
-  // function displaying the name of the user
+  // displaying the name of the user
   setTimeout(() => {
     showMessage(`Hello ${name} nice to meet you!`, 'bot');
     nameInput.value = "";
@@ -123,14 +123,15 @@ const handleNameInput = (event) => {
         //calling showMessage function, hiding btn
         setTimeout(() => {
           showMessage(`You ordered ${selectedOption}`, 'bot');
-          dropDown.style.display = 'none';
-          inputWrapper.style.display = 'block';
+          dropDown.style.display = 'block';
+          inputWrapper.style.display = 'none';
           yesBtn.style.display = 'none';
           noBtn.style.display = 'none';
 
           //Rate purchase
           setTimeout(() => {
             showMessage(`How would you rate your purchase?`, 'bot');
+            dropDown.style.display = 'none';
             inputWrapper.style.display = 'none';
             notGoodBtn.style.display = 'block';
             okayBtn.style.display = 'block';
