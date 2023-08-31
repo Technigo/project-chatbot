@@ -37,7 +37,7 @@ const showMessage = (message, sender) => {
 };
 
 
-// Function greets the user, asking for name.
+// Function greets the user, the showMessage function is being called, asking for name.
 const greetUser = () => {
   showMessage(`Hello there, welcome to the evaluation sheet! 
   We are really happy that you take your time to answer some questions
@@ -54,12 +54,12 @@ const handleNameInput = (event) => {
   const name = nameInput.value;
   showMessage(`${name}`, 'user');
 
-  // Function displaying the name of the user in a ShowMessage.
+  // function displaying the name of the user
   setTimeout(() => {
     showMessage(`Hello ${name} nice to meet you!`, 'bot');
     nameInput.value = "";
 
-    // Function asking for age, displaying Btn1, Btn2 as a block elements.
+    // showMessage being called, asking for age, displaying Btn1, Btn2 as a block elements.
     setTimeout(() => {
       showMessage(`So, ${name} how old are you?`, 'bot');
       choiceBtn1.style.display = 'block';
@@ -68,19 +68,19 @@ const handleNameInput = (event) => {
 
       // hides buttons after clicking it
       choiceBtn1.onclick = (event) => {
-        handlechoiceBtn(event, name, 'under 18');
+        handlechoiceBtn(event, name, 'under 18'); //string under 18 passed as an argument to ageGroup
         choiceBtn1.style.display = 'none';
         choiceBtn2.style.display = 'none';
         inputWrapper.style.display = 'block';
       };
       choiceBtn2.onclick = (event) => {
-        handlechoiceBtn(event, name, 'over 18');
+        handlechoiceBtn(event, name, 'over 18');//string over 18 passed as an argument to ageGroup
         choiceBtn1.style.display = 'none';
         choiceBtn2.style.display = 'none';
         inputWrapper.style.display = 'block';
       };
 
-      // Functions answer if under 18:
+      // Functions answer. Let ageGroup parameter take on over/under 18 value. Calling showMessage function
       const handlechoiceBtn = (event, name, ageGroup) => {
         event.preventDefault();
         showMessage(`I'm ${ageGroup}!`, 'user');
@@ -95,13 +95,13 @@ const handleNameInput = (event) => {
         }, 2000);
       };
 
-      // confirm age, if not display unvalid option
+      // function confirm age, if not display unvalid option
       const handleResponse = (response, name) => {
         showMessage(`${response}!`, 'user');
         if (response === `yes`) {
           showMessage(`Amazing!`, 'bot');
         } else {
-          showMessage(`You need to think about your age! Please reload this page and start from the beginning`, 'bot');
+          showMessage(`This is a huge error. You need to think about your age! Please reload this page and start from the beginning`, 'bot');
           throw new Error(`Invalid age option`);
         }
 
@@ -115,11 +115,12 @@ const handleNameInput = (event) => {
         }, 1000);
       };
 
-      // Event listener dropDown
+      // Event listener dropDown menu
       dropDown.addEventListener('change', (event) => {
-        const selectedOption = dropDown.options[dropDown.selectedIndex].text;
+        const selectedOption = dropDown.options[dropDown.selectedIndex].text; //implement the index of dropdown, and provide the selectedOption with text content. adds the text from the selected option
         showMessage(`${selectedOption}`, 'user');
 
+        //calling showMessage function, hiding btn
         setTimeout(() => {
           showMessage(`You ordered ${selectedOption}`, 'bot');
           dropDown.style.display = 'none';
@@ -148,14 +149,14 @@ const handleNameInput = (event) => {
       const handleReview = (review, name) => {
         showMessage(`${review}!`, 'user');
 
-        //Rate purchase answer
+        //Rate purchase answer, calling review function when clicking the button 
         setTimeout(() => {
           if (review === 'Bad') {
-            showMessage(`This is not good!`, 'bot');
+            showMessage(`${name}, this is not good!`, 'bot');
           } else if (review === 'Okay') {
-            showMessage(`Okay is not good enouth!`, 'bot');
+            showMessage(`${name}, okay is not good enouth!`, 'bot');
           } else if (review === 'Good') {
-            showMessage(`We are glad you are happy with your order!`, 'bot');
+            showMessage(`${name}, we are glad you are happy with your order!`, 'bot');
 
           }
         }, 1000);
