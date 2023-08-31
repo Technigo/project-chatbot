@@ -12,6 +12,8 @@ It was really hard do get going with this one! It wasn't until I watched Jenny's
 
 I was trying to reach the text the user had typed into the input (in this case the users name), but found that very tricky. I tried making the variable that stored the value global, but it still wouldn't log it on testing. The problem was that the answer was logged within a function, and making the variable global didn't work because Javascript loads asynchronously = the submitForm function had not finished executing when I tried to access it. After a while I figured I could just create a new function for showing the answer to the name-input and then calling that within the function submitForm instead - and that worked. 
 
+I got really stuck, after the first interaction. So when trying to get going after having created the new buttons for Yes and No, there was a lot of trial and error and testing. I don't really remember what finally made me solve it, but I think it had something to do with me not getting the hang of eventlisteners properly. Once I found the question on StackOverflow regarding how to trigger a new question (https://stackoverflowteams.com/c/technigo/questions/3407) it sort of landed into place - even if I then also noticed I was doing basically everything except for one thing right.
+
 ## View it live
 
 https://project-chatbot-lauralyckholm.netlify.app/
