@@ -5,6 +5,13 @@ const inputSection = document.getElementById('input-wrapper');
 
 // If you need any global variables that you can use across different functions, declare them here:
 let myPizza = ""
+let mySize = ""
+
+const selectSize = (size) => {
+mySize=size
+showMessage(size, 'user')
+showMessage(`Super Mario, you took the ${size} for your ${myPizza}`, 'bot')
+}
 
 const showDropdownMenuInsteadOfPizzaButtons = () => {
   inputSection.innerHTML = `
@@ -20,15 +27,18 @@ const showDropdownMenuInsteadOfPizzaButtons = () => {
 
 //Default size is medium in the select above so we set the option to medium as well. This means that if we select the default then option should be medium.
 
-let option="medium"
+/*let option="medium"
 let sizeList= document.getElementById('selectSize')
 sizeList.addEventListener('change', (event)=> {option = event.target.value});
+}*/
+
+document.getElementById("sizeButton").addEventListener('click', () => selectSize(option))
 }
 
 const pizzaSize = (pizzaSizes) => {
   myPizza=pizzaSizes
   showMessage(pizzaSizes, 'user')
-  showMessage(`Fantastico, you choose ${pizzaSizes}! What size would you like ${myPizza}?`, 'bot');
+  showMessage(`Fantastico, you choose ${pizzaSizes}! What size would you like?`, 'bot');
 
  //This function invokes the function showDropdownMenuInsteadOfPizzaButton(the list you can choose size from)
  showDropdownMenuInsteadOfPizzaButtons()
