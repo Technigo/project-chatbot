@@ -9,7 +9,7 @@ const sendBtn = document.getElementsByClassName('send-btn')
 // Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
-function showMessage(message, sender) {
+const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
     chat.innerHTML += `
@@ -51,20 +51,49 @@ const greetUser = () => {
 
 
 // Set up your eventlisteners here
-//When name is input by user. Local function.
+//When name is input by user with local function and connected to global function.
 const handleNameInput = event => {
   event.preventDefault();
   userName = nameInput.value;
   nameInput.value = "";
   showMessage(`${userName}`, "user");
   setTimeout(reply, 1500);
+  userName.remove();
 }
 
 nameForm.addEventListener("submit", handleNameInput);
 
-function reply() {
-  showMessage(`I think you need a riddle to relax your mind ${userName}. <br>Type: <br>1 for yes <br>2 for no`, 'bot');
+const reply = () => {
+  showMessage(`I think you need a riddle to relax your mind ${userName}. Chose a riddle by clicking on one of them below:`, 'bot');
+
+  if (!nameForm.querySelector('.options')) {
+    nameForm.innerHTML = `
+      <button class="options" id="oneBtn">One</button>
+      <button class="options" id="twoBtn">Two</button>
+    `;
+
+    document.getElementById('oneBtn')
+      .addEventListener('click', () => riddleOption('one'))
+
+
+    document.getElementById('twoBtn')
+      .addEventListener('click', () => riddleOption('two'))
+
+  }
+
+  const riddleOption = option => {
+    if (option === "one") {
+      showMessage('Good choice...riddle 1!', 'bot')
+    }
+    else if (option === "two") {
+      showMessage('Yeay...riddle 2!', 'bot')
+    }
+  }
 }
+
+
+
+
 // Store the value in a variable so we can access it after we
 // clear it from the input
 
