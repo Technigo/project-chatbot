@@ -1,3 +1,7 @@
+https://github.com/colognia/Technigo-project3-project-chatbot
+
+https://colognia.github.io/Technigo-project3-project-chatbot/
+
 # Project Name
 
 Replace this readme with your own information about your project.
