@@ -1,5 +1,10 @@
 // Variables that point to selected DOM elements
-const chat = document.getElementById('chat')
+const chat = document.getElementById('chat');
+const submit = document.getElementsByClassName('submit');
+const nameInput = document.getElementById('nameInput');
+const nameForm = document.getElementById('nameForm');
+
+
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -40,7 +45,25 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+const userNameInput = event => {
+  event.preventDefault()
+  userName = nameInput.value;
+  nameInput.value = "";
+  showMessage(`${userName}`, 'user');
+  setTimeout(reply, 500);
+}
+
+const reply = () => {
+  showMessage(`Hello ${userName}! Welcome to Hot Java Coffee.
+  What would you like today?`, 'bot');
+}
+
+
+
 // Set up your eventlisteners here
+
+nameForm.addEventListener("submit", userNameInput);
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
