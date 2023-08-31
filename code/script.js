@@ -2,6 +2,7 @@
 const chat = document.getElementById('chat');
 const inputField = document.getElementById('name-input');
 const sendBtn = document.getElementById('send-btn');
+const formInputField = document.getElementById('name-form');
 
 // FUNCTIONS are declared below
 
@@ -67,8 +68,27 @@ const handleNameInput = (event) => {
   // passing the name into it to have access to the user's name if we want to use it in the next question from the bot.
   // To pass parameter values to a function, that is itself passed as a parameter to another function, use an "anonymous function" () => {}
   // Meaning, when a function is a parameter and needs a parameter itself, you need to use an anonymous function
-  setTimeout(() => handleFoodOptions(name), 1000);
+  setTimeout(() => handleBobaBaseOptions(name), 1000);
 };
+
+// Function that give drink options to the user.
+const handleBobaBaseOptions = (name) => {
+
+
+showMessage(`Let's start building your Boba drink ${name}!
+What kind of tea do you wanna have?`, 'bot') 
+
+  // add food options
+  // add ${name}. add parameters if you wanna use them within the function
+formInputField.innerHTML = `<div class="bobaBaseOptions">
+<button id="matcha" type="submit">Matcha</button>
+<button id="blackTea" type="submit">Black Tea</button>
+<button id="OolongTea" type="submit">Oolong Tea</button>
+</>
+`
+  clearInputField();
+};
+
 
 // EVENTLISTENERS
 
@@ -80,4 +100,4 @@ sendBtn.addEventListener('click', handleNameInput);
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 100)
+setTimeout(greetUser, 500)

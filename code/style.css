@@ -155,3 +155,10 @@ button:hover {
     opacity: 0.9;
     transition: all 0.2s ease;
 }
+
+.bobaBaseOptions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
