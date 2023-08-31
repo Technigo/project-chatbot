@@ -6,7 +6,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url("./images/map-colorful.jpg");
+  background-size: cover;
+  /*background: #0026ff;*/
 }
 
 h1 {
@@ -147,3 +149,4 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
