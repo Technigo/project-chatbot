@@ -53,12 +53,33 @@ const botQuestion2 = (name) => {
   showMessage(`Welcome, ${usersName}. Are you interested in booking a mystery flight with us today? Type YES or NO`, 'bot');
 }
 
-const botQuestion3 = (userAnswered) => {
-  console.assert.log("we have entered question 2 function")
+const botQuestion3 = (yesOrNo) => {
+  console.log("we have entered question 3 function")
+  console.log(usersName)
+  if (usersName === "yes") {
+    showMessage(`Fantastic! &#128578 We have a few questions for you that will help us choose the best destination for your flight.`, 'bot')
+    showMessage(`Where would you rather go?`, 'bot');
+    //remove the text input bar
+    const removeInputVar = document.querySelector("#name-input");
+    removeInputVar.remove();
+    //the 3 buttons for location options goes here
+
+    //   form.innerHTML += `
+    //   <section class="bot-msg">
+    //     <img src="assets/bot.png" alt="Bot" />
+    //     <div class="bubble bot-bubble">
+    //       <p>${message}</p>
+    //     </div>
+    //   </section>
+    // `
+
+  } else if (usersName === "no") {
+    showMessage(`We hope you visit again soon, Good bye`, 'bot');
+  } else {
+    showMessage(`I don't understand your answer &#129335`, 'bot')
+    showMessage(`Please reload the page and try chatting with us again`, 'bot')
+  }
 }
-
-
-
 // Set up your eventlisteners here
 
 //listen for when form is submitted (button or 'enter pressed)
@@ -73,9 +94,9 @@ logSubmit = (event) => {
   nameSubmitted.value = "";
   questionCount = 1 + questionCount
   console.log(`Question count:`, questionCount)
-  if (questionCount = 1) {
+  if (questionCount == 1) {
     setTimeout(botQuestion2, 1000); //I had problems with where to put this, got help from a code snippet in our Slack :-)
-  } else if (questionCount = 2) {
+  } else if (questionCount == 2) {
     setTimeout(botQuestion3, 1000);
   }
 }
