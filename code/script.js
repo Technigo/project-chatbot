@@ -59,7 +59,7 @@ nameForm.addEventListener("submit", handleNameInput);
 
 function reply() {
   showMessage(`What's your craving today, ${userName}?`, 'bot');
- 
+
   inputWrapper.innerHTML = `
     <button class="send-btn" id="pizza">Pizza</button>
     <button class="send-btn" id="pasta">Pasta</button>
@@ -72,11 +72,15 @@ function reply() {
     button.addEventListener('click', (event) => {
       const selectedFood = event.target.id;
       showMessage(`Excellent choice! You selected ${selectedFood}.`, 'bot');
-      handleUserInput(selectedFood); 
-      inputWrapper.innerHTML = ''; 
+      handleFoodChoice(selectedFood);
+      inputWrapper.innerHTML = '';
     });
   });
 }
+
+
+
+
 
 
 
