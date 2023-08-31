@@ -3,6 +3,7 @@ const chat = document.getElementById('chat')
 const nameInput = document.getElementById('name-input')
 const sendBtn = document.getElementById('send-btn')
 const nameForm = document.getElementById('name-form')
+const inputWrapper = document.getElementById('input-wrapper')
 // If you need any global variables that you can use across different functions, declare them here:
 
 
@@ -53,7 +54,11 @@ const greetUser = () => {
 setTimeout(greetUser, 1000)
 
 askForGender = (name) => {
-  showMessage(`Nice to meet you ${name}!`, "bot")
+  showMessage(`Nice to meet you ${name}! <br><br> Are you looking for a gift for a gentleman or a lady?`, "bot")
+  nameForm.remove()
+  inputWrapper.innerHTML =  `<button class="send-btn" id="pizza">👩‍🦰</button>
+  <button class="send-btn" id="pizza">🧔</button>`
+  console.log(inputWrapper.innerHTML)
 }
 
 const handleNameInput = (event) => { 
@@ -61,7 +66,9 @@ const handleNameInput = (event) => {
   const name = nameInput.value
   console.log(name)
   showMessage(name, "user")
-  nameForm.reset()
+  //nameForm.reset()
+  nameInput.value = ""; 
+
 
   setTimeout(() => askForGender(name), 1000);
 }
