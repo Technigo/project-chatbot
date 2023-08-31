@@ -44,7 +44,7 @@ const showMessage = (message, sender) => {
 
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there happy developer, what's your name?", 'bot')
+  showMessage("Bonjour developer student, what's your name?", 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -81,7 +81,7 @@ const reply = () => {
 
 const riddleOption = option => {
   if (option === "one") {
-    showMessage('🍏: I am used for styling, look and feel. Colors, layout, make it real. In files separate, my rules align. Junior dev, what am I, in web design?', 'bot')
+    showMessage('🍏: I am used for styling, look and feel. Colors and layout make it real. In files separate, my rules align. Junior dev, what am I, in web design?', 'bot')
 
     nameForm.innerHTML = `
     <button class="options" id='htmlBtn'>HTML</button>
