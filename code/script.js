@@ -6,9 +6,6 @@ const inputWrapper = document.getElementById('input-wrapper');
 // If you need any global variables that you can use across different functions, declare them here:
 let userName = '';
 
-const handleRestaurantChoice = (choice) => {
-  showMessage(`You have chosen ${choice}, thats my favorite restaurant to! 🤩 now its time to chose your favorite dish!`)
-};
 
 // Declare your functions after this comment
 
@@ -47,51 +44,73 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-// Question 2
+// Function to ask the user to choose their favorite restaurant
 const askFavoriteRestaurant = () => {
-showMessage(`Hi ${userName} ,Where would you like to eat today?`, 'bot');
+  showMessage(`Hi ${userName}, choose your favorite restaurant!`, 'bot');
 
-//Clearing the input form.
-inputWrapper.innerHTML = '';
-
-// Adding buttons for choices
-const buttonContainer = document.createElement('div');
-buttonContainer.classList.add('bubble', 'bot-bubble');
-buttonContainer.innerHTML = `
-<button class="restaurant-btn" data-choice="Mille lire" >Mille lire</button>
-<button class="restaurant-btn" data-choice="Kasai">Kasai</button>
-<button class="restaurant-btn" data-choice="Surfers">Surfers</button>
+  const buttonContainer = document.createElement('div');
+  buttonContainer.classList.add('bubble', 'bot-bubble', 'button-container');
+  buttonContainer.innerHTML = `
+    <button class="restaurant-btn" data-choice="Mille lire">Mille lire</button>
+    <button class="restaurant-btn" data-choice="Kasai">Kasai</button>
+    <button class="restaurant-btn" data-choice="Surfers">Surfers</button>
   `;
 
   const botMessageSection = document.createElement('section');
   botMessageSection.classList.add('bot-msg');
-  botMessageSection.innerHTML = `
-  <img src="assets/bot.png" alt="Bot" />
-  `;
   botMessageSection.appendChild(buttonContainer);
 
+  const botImage = document.createElement('img');
+  botImage.src = 'assets/bot.png';
+  botImage.alt = 'Bot';
+  botMessageSection.appendChild(botImage);
+
+  buttonContainer.addEventListener('click', handleRestaurantButtonClick);
+
   chat.appendChild(botMessageSection);
-
-
-
-// Set up your eventlisteners here
-
-// Eventlistener for the restaurantbuttons
-buttonContainer.addEventListener('click', handleRestaurantButtonClick);
 };
 
-const handleRestaurantButtonClick = (event) => {
-  const choice = event.target.getAttribute('data-choice');
-  showMessage(`you have chosen ${choice} thats my favorite restaurant to! 🤩 Now it's time to choose your favorite dish!`);
-};
-
-// eventlistener for the nameform
+// Event listener for the name form submission
 nameForm.addEventListener('submit', (e) => {
   e.preventDefault();
   userName = nameInput.value;
-  inputWrapper.innerHTML ='';
+  inputWrapper.innerHTML = '';
   setTimeout(askFavoriteRestaurant, 800);
 });
+
+// Event listener for when a restaurant button is clicked
+const handleRestaurantButtonClick = (event) => {
+  const choice = event.target.getAttribute('data-choice');
+  handleRestaurantChoice(choice);
+};
+
+// Function to handle the user's restaurant choice
+const handleRestaurantChoice = (choice) => {
+  showMessage(`You have chosen ${choice}, that's my favorite restaurant too! Now it's time to choose your favorite dish!`, 'bot');
+  
+  const dishOptions = {
+    'Mille lire': ['Antipasto', 'Margherita', 'Napoli'],
+    'Surfers': ['Bang bang ji zi', 'Sishuan Liang Mian', 'Beef Shui Zhu'],
+    'Kasai': ['Crispy tempura roll', 'Truffle mushroom roll', 'Sashimi moriawase']
+  };
+
+  const dishButtons = dishOptions[choice].map(dish => `<button class="dish-btn" data-dish="${dish}">${dish}</button>`).join('');
+  showMessage(`Please choose your favorite dish: ${dishButtons}`, 'bot');
+
+  chat.removeEventListener('click', handleRestaurantButtonClick);
+  chat.addEventListener('click', handleDishButtonClick);
+};
+
+// Function to handle the user's dish button click
+const handleDishButtonClick = (event) => {
+  const dishButton = event.target.closest('.dish-btn');
+  
+  if (dishButton) {
+    const dish = dishButton.getAttribute('data-dish');
+    showMessage(`You have chosen ${dish}. Please choose the serving size:`, 'bot');
+  }
+};
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
