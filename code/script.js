@@ -44,12 +44,18 @@ const greetUser = () => {
 const handleNameInput = (event) => {
   event.preventDefault();
   const name = nameInput.value;
-  showMessage(name, 'user'); //User stod med ""
+  if (name === '') {
+    showMessage('You must enter a valid name, please try again' , 'bot')
+  } else {
+    showMessage(name, 'user'); //User stod med ""
   username = nameInput.value;
   nameInput.value = ''; //Stod med ""
 
   setTimeout(() => travelOption(nameInput.value), 1500);
   inputWrapper.innerHTML =''
+  }
+
+  
 }
 
 // Bot greets user
@@ -72,8 +78,9 @@ const travelOption = () => {
   
     document.getElementById('netherlands')
     .addEventListener('click', () => {
-    showMessage('The Netherlands' , 'user')
-    setTimeout(() => activityQuestion('The Netherlands'), 1000)})
+      showMessage('The Netherlands' , 'user')      
+      setTimeout(() => activityQuestion('The Netherlands'), 1000)
+    })
 }
 
 //Här klistrar jag in en switch att testa med
@@ -94,13 +101,16 @@ const travelOption = () => {
       activity = ["Cigar activity", "Veteran car activity", "Salsa activity"]
 
       inputWrapper.innerHTML = `
-      <select id="activityChoice">
+      <select id="activityChoiceSelect">
         <option value="" selected disabled>Choose an activity</option>
         <option value="1">Cigar activity</option>
         <option value="2">Veteran car activity</option>
         <option value="3">Salsa activity</option>
       </select>
       `
+
+      //LÄGG TILL PÅ DE ANDRA CASEN + CSS-BILDER
+      document.getElementById("body").className = "cuba"
 
       console.log('inputWrapper.innerHTML changed (cuba)');
 
@@ -110,7 +120,7 @@ const travelOption = () => {
       activity = ["Make pasta activity", "Wineyard activity", "tango activity"]
 
       inputWrapper.innerHTML = `
-      <select id="activityChoice">
+      <select id="activityChoiceSelect">
         <option value="" selected disabled>Choose an activity</option>
         <option value="1">Make pasta activity</option>
         <option value="2">Wineyard activity</option>
@@ -126,7 +136,7 @@ const travelOption = () => {
       activity = ["tulips activity", "Windmill activity", "Stream activity"]
 
       inputWrapper.innerHTML = `
-      <select id="activityChoice">
+      <select id="activityChoiceSelect">
         <option value="" selected disabled>Choose an activity</option>
         <option value="1">Tulips activity</option>
         <option value="2">Windmill activity</option>
@@ -142,11 +152,10 @@ const travelOption = () => {
 
   console.log('set activitychoice listener');
   
-  const select=document.getElementById('activityChoice')
+  const activityChoiceSelect=document.getElementById('activityChoiceSelect')
 
-  select.addEventListener('change', () => {
-    console.log(select.value)
-    const activityChoice = parseInt(select.value)
+  activityChoiceSelect.addEventListener('change', () => {
+    const activityChoice = parseInt(activityChoiceSelect.value)
     console.log(activityChoice)
     selectedActivity = activity[activityChoice - 1] 
     console.log(selectedActivity)
@@ -179,12 +188,12 @@ const confirmationActivity = () => {
 
 const happyAnswer = (happyAnswer) => {
   if (happyAnswer === 'Yes') {
-    showMessage ('Awesome!' ,'bot')
+    showMessage ('Awesome! We will contact you for further information.' ,'bot')
   } else {
-    showMessage ('So sorry to hear that' ,'bot')
+    showMessage ('So sorry to hear that, the booking will be cancelled. Hope to see you again for a new booking in the future.' ,'bot')
   }
   inputWrapper.innerHTML = ''
-  setTimeout(() => confirmationQuestion(), 500)
+  //TA BORT OM INTE NÅGON NY FRÅGA  setTimeout(() => confirmationQuestion(), 500)
 }
 
 
