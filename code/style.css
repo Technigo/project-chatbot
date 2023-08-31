@@ -53,8 +53,8 @@ input {
 main {
   margin: 0 auto;
   width: 100%;
-  max-width: 800px;
-  height: 800px;
+  max-width: 650px;
+  height: 600px;
   border-radius: 30px;
   background: #fff;
   padding: 20px 24px;
@@ -138,10 +138,10 @@ button {
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 16px 40px;
+  padding: 12px 30px;
   margin-right: 4px;
-  font-size: 26px;
-  line-height: 26px;
+  font-size: 22px;
+  line-height: 22px;
   font-family: 'Montserrat';
   font-weight: 500;
   cursor: pointer;
@@ -154,7 +154,7 @@ button:hover {
   transition: all 0.2s ease;
 }
 #pizza-menue , #pasta-menue , #salad-menue{
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
   width: 100%;
   padding: 15px;
@@ -167,7 +167,7 @@ button:hover {
   justify-content: center;
   margin-top: 20px;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 20px;
   transition: all .3s;
 }
 #plus:active , #minus:active , #send:active , #adult:active ,#child:active , #confirm:active , #ignore:active{
