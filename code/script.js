@@ -79,10 +79,42 @@ function reply() {
 }
 
 
+function handleFoodChoiceButtons(choice) {
+  if (choice === 'pizza') {
+    showMessage(`What type of pizza would you like?`, 'bot');
+    inputWrapper.innerHTML = `
+      <button class="send-btn" id="margherita">Margherita</button>
+      <button class="send-btn" id="shrimp">Shrimps Ahoy</button>
+      <button class="send-btn" id="veggie">Vegan Delight</button>
+    `;
+  } else if (choice === 'pasta') {
+    showMessage(`What type of pasta would you like?`, 'bot');
+    inputWrapper.innerHTML = `
+      <button class="send-btn" id="shrimp">Shrimp</button>
+      <button class="send-btn" id="meat">Meat Me in Napoli</button>
+      <button class="send-btn" id="elf">Buddy the Elf Special</button>
+    `;
+  } else if (choice === 'salad') {
+    showMessage(`What type of salad would you like?`, 'bot');
+    inputWrapper.innerHTML = `
+      <button class="send-btn" id="shrimp">Shrimp</button>
+      <button class="send-btn" id="greek">Greek</button>
+      <button class="send-btn" id="tomato">You Say Tomato</button>
+    `;
+  }
+
+  const foodChoiceButtons = inputWrapper.querySelectorAll('.send-btn');
+  foodChoiceButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+      const selectedFoodChoice = event.target.id;
+      showMessage(`You selected ${selectedFoodChoice}.`, 'bot');
+      inputWrapper.innerHTML = '';
+    });
+  });
+}
 
 
-
-
+  setTimeout(greetUser, 500)
 
 
 
@@ -140,5 +172,3 @@ function reply() {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-
-setTimeout(greetUser, 500)
