@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #c5f1ff;
+  background: #6a8e99;
 }
 
 h1 {
@@ -26,7 +26,17 @@ h2 {
   margin-bottom: 36px;
 }
 
+h3 {
+  font-weight: bold;
+  font-size: 17px;
+  line-height: 34px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 36px;
+}
+
 p {
+  color: #000000;
   font-size: 18px;
   font-weight: 600;
   line-height: 28px;
@@ -38,7 +48,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #000000;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -95,7 +105,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #000000;
   max-width: 40%;
 }
 
@@ -124,12 +134,12 @@ label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  color: #000000;
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #6a8e99;
   color: white;
   border: none;
   border-radius: 4px;
@@ -161,7 +171,7 @@ button:hover {
 #goodBtn {
   display: none;
   width: 50%;
-  background-color: blue;
+  background-color: #6a8e99;
   color: white;
   border: none;
   border-radius: 4px;

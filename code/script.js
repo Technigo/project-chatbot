@@ -1,3 +1,4 @@
+
 // Variables that point to selected DOM elements 
 const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('input-wrapper');
@@ -24,6 +25,7 @@ const showMessage = (message, sender) => {
       </section>
     `;
   } else if (sender === 'bot') {
+    console.log(globalThis)//what should i console log? 
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -101,13 +103,12 @@ const handleNameInput = (event) => {
         if (response === `yes`) {
           showMessage(`Amazing!`, 'bot');
         } else {
-          showMessage(`This is a huge error. You need to think about your age! Please reload this page and start from the beginning`, 'bot');
-          throw new Error(`Invalid age option`);
+          location.reload();
         }
 
         // dropdown menu
         setTimeout(() => {
-          showMessage(`So, ${name} what did you order ? `, 'bot');
+          showMessage(`So, ${name} which medicine did you order from us? `, 'bot');
           dropDown.style.display = 'block';
           inputWrapper.style.display = 'none';
           yesBtn.style.display = 'none';
@@ -128,6 +129,7 @@ const handleNameInput = (event) => {
           yesBtn.style.display = 'none';
           noBtn.style.display = 'none';
 
+
           //Rate purchase
           setTimeout(() => {
             showMessage(`How would you rate your purchase?`, 'bot');
@@ -137,7 +139,7 @@ const handleNameInput = (event) => {
             okayBtn.style.display = 'block';
             goodBtn.style.display = 'block';
 
-            notGoodBtn.onclick = () => handleReview('Bad', name);
+            notGoodBtn.onclick = () => handleReview('Not good', name);
             okayBtn.onclick = () => handleReview('Okay', name);
             goodBtn.onclick = () => handleReview('Good', name);
 
@@ -152,12 +154,28 @@ const handleNameInput = (event) => {
 
         //Rate purchase answer, calling review function when clicking the button 
         setTimeout(() => {
-          if (review === 'Bad') {
-            showMessage(`${name}, this is not good!`, 'bot');
+          if (review === 'Not good') {
+            showMessage(`${name}, this is not good!
+            We will evaluate the product.
+            Thank you for sharing your opinion with us.`, 'bot');
+            notGoodBtn.style.display = 'none';
+            okayBtn.style.display = 'none';
+            goodBtn.style.display = 'none';
+
           } else if (review === 'Okay') {
-            showMessage(`${name}, okay is not good enouth!`, 'bot');
+            showMessage(`${name}, okay is not good enouth!
+            We will evaluate the product.
+            Thank you for sharing your opinion with us.`, 'bot');
+            notGoodBtn.style.display = 'none';
+            okayBtn.style.display = 'none';
+            goodBtn.style.display = 'none';
+
           } else if (review === 'Good') {
-            showMessage(`${name}, we are glad you are happy with your order!`, 'bot');
+            showMessage(`${name}, we are glad you are happy with your order!
+            Hope to see you again soon!`, 'bot');
+            notGoodBtn.style.display = 'none';
+            okayBtn.style.display = 'none';
+            goodBtn.style.display = 'none';
 
           }
         }, 1000);
