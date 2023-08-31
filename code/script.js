@@ -4,6 +4,7 @@ const chat = document.getElementById('chat')
 // If you need any global variables that you can use across different functions, declare them here:
 
 
+
 // Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is

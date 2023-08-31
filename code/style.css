@@ -6,14 +6,14 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #61ba79;
 }
 
 h1 {
   font-weight: bold;
   font-size: 28px;
   line-height: 34px;
-  color: #fff;
+  color: #175725;
   text-align: center;
 }
 
@@ -21,7 +21,7 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: #36914b;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -38,7 +38,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #36914b;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -95,7 +95,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #36914b;
   max-width: 40%;
 }
 
@@ -124,12 +124,12 @@ label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  color: #ccd9cf;
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #a3d9b1;
   color: white;
   border: none;
   border-radius: 4px;
