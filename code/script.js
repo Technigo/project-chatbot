@@ -5,9 +5,6 @@ const inputForm = document.getElementById("input-form");
 const sendButton = document.querySelector("send-btn");
 const nameInput = document.getElementById("name-input");
 
-// If you need any global variables that you can use across different functions, declare them here:
-
-
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
@@ -35,11 +32,20 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
+//Functions for bot response and user response
+const botResponse = (msg) => {
+  showMessage(msg, "bot");
+}
+
+const userResponse = (msg) => {
+  showMessage(msg, "user");
+}
+
 //------------QUESTION 1-------------
 // Greeting function from the bot
 const greetUser = () => {
-  // call the function showMessage with the argument "Hello there! What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there! What's your name?", "bot");
+  // call the function for bot response the argument "Hello there! What's your name?" 
+  botResponse("Hello there! What's your name?");
 }
 
 // When website loaded, chatbot asks first question. Greeting function will be called one second after the website is loaded.
@@ -54,7 +60,7 @@ inputForm.addEventListener("submit", (event) => {
   const userName = nameInput.value;
 
   // Display the user's name
-  showMessage(`${userName}`, "user");
+  userResponse(`${userName}`);
 
   // Clear input field after a message has been sent
   nameInput.value = "";
@@ -66,12 +72,12 @@ inputForm.addEventListener("submit", (event) => {
 //------------QUESTION 2-------------
 // Bot shows flavour options upon receiving user's name
 const questionAboutFlavour = (userName) => {
-  showMessage(`Time to treat you some icecream, ${userName}. Which flavour would you like to test today?`, "bot");
+  botResponse(`Time to treat yourself some icecream, ${userName}. Which flavour would you like to test today?`);
 
   // Remove the input field and send button
   inputForm.remove();  
   
-  // Replace input field with buttons for flavours
+  // Display buttons for flavours
   inputWrapper.innerHTML += `
     <button id="chocolate" value="Chocolate flavour">Chocolate</button>
     <button id="strawberry" value="Strawberry flavour">Strawberry</button>
@@ -91,10 +97,11 @@ const questionAboutFlavour = (userName) => {
     setTimeout(() => questionAboutNumberOfScoops(), 1000);
   };
 
-  // Function to add event listener to click on buttons so bot shows confirmation message
+  // Function to add event listener to click on buttons so user's choice is displayed and bot shows confirmation message
   const flavourConfirmation = (button) => {
     button.addEventListener("click", () => {
-      showMessage(`${button.value} is a really great choice!`, "bot");
+      userResponse(`I would love to have ${button.value}!`);
+      setTimeout(botResponse(`${button.value} is a really great choice!`), 1000);
       moveToScoopQuestion();
     });
   }
@@ -108,7 +115,7 @@ const questionAboutFlavour = (userName) => {
 //------------QUESTION 3-------------
 // Bot shows options for the number of scoops upon receiving user's choice of flavour
 const questionAboutNumberOfScoops = () => {
-  showMessage("How many scoops would you like to have?", "bot");
+  botResponse("How many scoops would you like to have?");
 
   // Create drop-down list with options
   inputWrapper.innerHTML += `
@@ -123,9 +130,10 @@ const questionAboutNumberOfScoops = () => {
   // Store user's choice in a variable
   const scoops = document.getElementById("scoops");
 
-  // Add event listener to change of the option in the drop-down list
+  // Add event listener to change of the option in the drop-down list so user's choice is displayed and bot shows confirmation message
   scoops.addEventListener("change", () => {
-    showMessage(`${scoops.value} scoop(s), got it!`, "bot");
+    userResponse(`${scoops.value} scoop(s) please!`);
+    setTimeout(botResponse(`${scoops.value} scoop(s), got it!`), 1000);
     
     // Clear the dropdown list and move to next question
     scoops.remove();
@@ -136,7 +144,7 @@ const questionAboutNumberOfScoops = () => {
 //------------QUESTION 4-------------
 // Bot shows options for toppings upon receiving user's answer about number of scoops
 const questionAboutToppings = () => {
-  showMessage("What about toppings? Would you like to add some?", "bot");
+  botResponse("What about toppings? Would you like to add some?");
 
   // Create buttons for toppings
   inputWrapper.innerHTML += `
@@ -158,10 +166,11 @@ const questionAboutToppings = () => {
     setTimeout(() => questionAboutConfirmation(), 1000);
   };
 
-  // Function to add event listener to click on buttons so bot shows confirmation message
+  // Function to add event listener to click on buttons so user's choice is displayed and bot shows confirmation message
   const toppingConfirmation = (button) => {
     button.addEventListener("click", () => {
-      showMessage(`${button.value} it is!`, "bot");
+      userResponse(`${button.value} please. That's my favourite!`);
+      setTimeout(botResponse(`${button.value} it is!`, "bot"), 1000);
       moveToLastQuestion();
     });
   }
@@ -175,28 +184,38 @@ const questionAboutToppings = () => {
 //------------QUESTION 5-------------
 // Bot asks for final confirmation of the whole order
 const questionAboutConfirmation = () => {
-  showMessage("Great! Would you like to confirm your order?", "bot");
+  botResponse("Great! Would you like to confirm your order?");
 
   // Create buttons for toppings
   inputWrapper.innerHTML += `
-    <button id="yes" value="yes">Yes</button>
-    <button id="no" value="no">No</button>
+    <button id="yes" value="Yes">Yes</button>
+    <button id="no" value="No">No</button>
     `;
   
   // Store the buttons in variables
   const yesButton = document.getElementById("yes");
   const noButton = document.getElementById("no");
   
-  // Add event listener to the button
+  // Reload the page after an amout of timeout
+  const reloadSite = (timeoutPeriod) => {
+    setTimeout("location.reload(true);", timeoutPeriod);
+  }
+
+  // Add event listener to the buttons so user's choice is displayed and bot shows confirmation message
   yesButton.addEventListener("click", () => {
-    showMessage("Thank you. Your ice cream is being prepared. Have a great day!");
+    userResponse(`${yesButton.value} please! Can\'t wait!`);
+    setTimeout(botResponse("Thank you. Your ice cream is being prepared. Have a great day!"), 1000);
     yesButton.remove();
     noButton.remove();
+    reloadSite(3000);
   });
 
   noButton.addEventListener("click", () => {
-    showMessage("No problem. Go back and order any time!");
+    userResponse(`${noButton.value}, sorry. I changed my mind.`);
+    setTimeout(botResponse("No problem. Go back and order any time!"), 1000);
     yesButton.remove();
     noButton.remove();
+    reloadSite(3000);
   })
 }
+
