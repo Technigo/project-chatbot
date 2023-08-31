@@ -55,6 +55,7 @@ const handleNameInput = event => {
 
 nameForm.addEventListener("submit", handleNameInput);
 
+
 function reply() {
   showMessage(`What's your craving today, ${userName}?`, 'bot');
 
@@ -93,42 +94,76 @@ function handleSpecificFoodChoice(choice) {
 }
 
 function showOptions(options) {
+  inputWrapper.innerHTML = '';
+
   options.forEach(option => {
     const button = document.createElement('button');
     button.className = 'send-btn';
     button.textContent = option;
     button.addEventListener('click', () => {
       showMessage(`You selected ${option}.`, 'bot');
+      age();
     });
     inputWrapper.appendChild(button);
   });
 }
-function age(choice) {
-  showMessage(`Amazing order ${userName}, do you want an adult sized portion for 150 SEK or kids size for 100 SEK?`, 'bot');
-  inputWrapper.innerHTML = `
-  <button class="send-btn" id="adult">Adult</button>
-  <button class="send-btn" id="kid">Kid</button>
-`;
 
-const ageButtons = inputWrapper.querySelectorAll('.send-btn');
-ageButtons.forEach(button => {
-  button.addEventListener('click', (event) => {
-    const selectedFood = event.target.id;
-    showMessage(`You chose ${selectedFood} size, we are about to wrap ypur order.`, 'bot');
-    handleSpecificFoodChoice(selectedFood);
+function age() {
+  showMessage(`Amazing order ${userName}, do you want an adult-sized portion for 150 SEK or kids size for 100 SEK?`, 'bot');
+  inputWrapper.innerHTML = ''; // Clear previous content
+
+  const ageButtons = document.createElement('div');
+  ageButtons.innerHTML = `
+    <button class="send-btn" id="adult">Adult</button>
+    <button class="send-btn" id="kid">Kid</button>
+  `;
+  inputWrapper.appendChild(ageButtons);
+
+  const ageButtonElements = ageButtons.querySelectorAll('.send-btn');
+  ageButtonElements.forEach(button => {
+    button.addEventListener('click', (event) => {
+      const selectedSize = event.target.id;
+      showMessage(`You chose ${selectedSize} size.`, 'bot');
+      handleSpecificAge(selectedSize);
+    });
   });
-});
 }
 
-function handleSpecificage(choice) {
+function handleSpecificAge(choice) {
   inputWrapper.innerHTML = '';
 
   if (choice === 'adult') {
-    showMessage(`The price for ${option}`is 150 SEK}, 'bot');
+    showMessage(`The price for adult size is 150 SEK.`, 'bot');
   } else if (choice === 'kid') {
-    showMessage(``The price for ${option}`is 10 SEK}, 'bot');
-  }
+    showMessage(`The price for kid size is 100 SEK.`, 'bot');
+    confirmOrder('Pizza', 'Kid');
 }
+}
+
+function confirmOrder(foodChoice, sizeChoice) {
+  showMessage(`Here's your order summary, ${userName}:<br>Food: ${foodChoice}<br>Size: ${sizeChoice}`, 'bot');
+
+  inputWrapper.innerHTML = `
+    <button class="send-btn" id="confirm">Confirm</button>
+    <button class="send-btn" id="cancel">Cancel</button>
+  `;
+
+  const confirmButton = document.getElementById('confirm');
+  const cancelButton = document.getElementById('cancel');
+
+  confirmButton.addEventListener('click', () => {
+    showMessage('Your order has been confirmed. Thank you!', 'bot');
+    inputWrapper.innerHTML = ''; 
+  });
+
+  cancelButton.addEventListener('click', () => {
+    showMessage('Your order has been canceled.', 'bot');
+    inputWrapper.innerHTML = ''; 
+  });
+}
+
+
+
   setTimeout(greetUser, 500)
 
 
