@@ -1,3 +1,6 @@
+//This was a struggle, I still don't get what I did right but I did it. I was thinking 
+//of doing a christmas thing first but decided to do the pzza continued
+
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('input-wrapper');
@@ -139,7 +142,7 @@ function handleSpecificAge(choice) {
     confirmOrder('Pizza', 'Kid');
   } 
 }
-
+//This one, gaaa, if I change Food to Choice of food the code stops working. Why? Makes no sense? It's just a showmessage
 function confirmOrder(foodChoice, sizeChoice) {
   showMessage(`Here's your order summary, ${userName}:<br>Food: ${foodChoice}<br>Size: ${sizeChoice}`, 'bot');
 
