@@ -58,12 +58,12 @@ const handleNameInput = (event) => {
 
   // displaying the name of the user
   setTimeout(() => {
-    showMessage(`Hello ${name} nice to meet you!`, 'bot');
+    showMessage(`${name}, we want to know what you think about our products!`, 'bot');
     nameInput.value = "";
 
     // showMessage being called, asking for age, displaying Btn1, Btn2 as a block elements.
     setTimeout(() => {
-      showMessage(`So, ${name} how old are you?`, 'bot');
+      showMessage(`But first, how old are you ${name} ?`, 'bot');
       choiceBtn1.style.display = 'block';
       choiceBtn2.style.display = 'block';
       inputWrapper.style.display = 'none';
@@ -80,6 +80,7 @@ const handleNameInput = (event) => {
         choiceBtn1.style.display = 'none';
         choiceBtn2.style.display = 'none';
         inputWrapper.style.display = 'block';
+
       };
 
       // Functions answer. Let ageGroup parameter take on over/under 18 value. Calling showMessage function
@@ -94,7 +95,7 @@ const handleNameInput = (event) => {
           inputWrapper.style.display = 'none';
           yesBtn.onclick = () => handleResponse('yes', name);
           noBtn.onclick = () => handleResponse('no', name);
-        }, 2000);
+        }, 1000);
       };
 
       // function confirm age, if not display unvalid option
@@ -103,7 +104,10 @@ const handleNameInput = (event) => {
         if (response === `yes`) {
           showMessage(`Amazing!`, 'bot');
         } else {
-          location.reload();
+          showMessage(`You need to think about your age. This page will be automatically reloaded.`, 'bot');
+          setTimeout(() => {
+            location.reload();
+          }, 2999);
         }
 
         // dropdown menu
@@ -113,7 +117,7 @@ const handleNameInput = (event) => {
           inputWrapper.style.display = 'none';
           yesBtn.style.display = 'none';
           noBtn.style.display = 'none';
-        }, 1000);
+        }, 3000);
       };
 
       // Event listener dropDown menu
@@ -143,7 +147,7 @@ const handleNameInput = (event) => {
             okayBtn.onclick = () => handleReview('Okay', name);
             goodBtn.onclick = () => handleReview('Good', name);
 
-          }, 1000);
+          }, 2000);
 
         }, 2000);
 
@@ -177,14 +181,18 @@ const handleNameInput = (event) => {
             okayBtn.style.display = 'none';
             goodBtn.style.display = 'none';
 
+            setTimeout(() => {
+              location.reload();
+            }, 5000);
+
           }
         }, 1000);
       };
 
 
 
-    }, 1500);
-  }, 1000);
+    }, 2000);
+  }, 2000);
 
 };
 // Event listener, when user press enter.
