@@ -2,9 +2,7 @@
 const chat = document.getElementById('chat')
 const nameInput = document.getElementById('name-input')
 const sendBtn = document.getElementById('send-btn')
-
-console.log(nameInput)
-
+const nameForm = document.getElementById('name-form')
 // If you need any global variables that you can use across different functions, declare them here:
 
 
@@ -14,7 +12,6 @@ console.log(nameInput)
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
-    console.log (message, sender)
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -25,7 +22,6 @@ const showMessage = (message, sender) => {
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
-    console.log (message, sender)
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -56,12 +52,19 @@ const greetUser = () => {
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000)
 
-const userReply = (name) => {
-  showMessage (name, 'user')
+askForGender = (name) => {
+  showMessage(`Nice to meet you ${name}!`, "bot")
 }
 
-setTimeout(userReply("Emmy"), 2000)
+const handleNameInput = (event) => { 
+  event.preventDefault(); 
+  const name = nameInput.value
+  console.log(name)
+  showMessage(name, "user")
+  nameForm.reset()
 
-//sendBtn.addEventListener("click", userReply(nameInput))
+  setTimeout(() => askForGender(name), 1000);
+}
 
-console.log (nameInput)
+nameForm.addEventListener ('submit', handleNameInput)
+
