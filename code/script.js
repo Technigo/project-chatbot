@@ -64,9 +64,9 @@ const handleNameInput = event => {
 nameForm.addEventListener("submit", handleNameInput);
 
 const reply = () => {
-  showMessage(`I think you need a riddle to relax your mind ${userName}. Chose a riddle by clicking on one of them below:`, 'bot');
+  showMessage(`I think you need a riddle to relax your mind ${userName}. Choose a riddle by clicking on one of them below:`, 'bot');
 
-  if (!nameForm.querySelector('.options')) {
+  {
     nameForm.innerHTML = `
       <button class="options" id="oneBtn">One</button>
       <button class="options" id="twoBtn">Two</button>
@@ -83,16 +83,13 @@ const reply = () => {
 
   const riddleOption = option => {
     if (option === "one") {
-      showMessage('Good choice...riddle 1!', 'bot')
+      showMessage('eget-komihåg: riddle 1: I am used for styling, look and feel. Colors, layout, make it real. In files separate, my rules align, Junior dev, what am I, in web design?', 'bot')
     }
     else if (option === "two") {
-      showMessage('Yeay...riddle 2!', 'bot')
+      showMessage('eget-komihåg: riddle 2 I bring interactivity, make things fun, With functions and events, the job has begun. In the browser realm, where actions play smart,Junior dev, can you name this part?', 'bot')
     }
   }
 }
-
-
-
 
 // Store the value in a variable so we can access it after we
 // clear it from the input
@@ -109,4 +106,6 @@ const reply = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 500)
+setTimeout(greetUser, 1500)
+setTimeout(reply, 1500)
+setTimeout(riddleOption, 1500)
