@@ -6,8 +6,13 @@
   --color-dark: #c2410c;
   --font-sm: 18px;
   --font-md: 24px;
+  --font-lg: 30px;
   --font-xxl: 60px;
 }
+
+/****************************************************/
+/* General styling */
+/****************************************************/
 
 * {
   box-sizing: border-box;
@@ -15,20 +20,19 @@
 
 body {
   margin: 0;
-  padding: 0;
+  padding: 20px auto 50px;
   font-family: "Montserrat", sans-serif;
   background: url(./assets/art.jpg);
   background-size: 50%;
 }
 
 h1 {
-  /* font-weight: bold; */
   font-size: var(--font-xxl);
   font-family: var(--font-display);
   line-height: 10px;
   color: #fff;
   text-align: center;
-  margin: 80px auto 40px;
+  margin: 20px auto;
   backdrop-filter: invert(80%);
   width: fit-content;
   padding: 36px;
@@ -48,7 +52,7 @@ input {
   border-radius: 4px 0 0 4px;
   background: var(--color-light);
   color: var(--color-dark);
-  padding: 14px;
+  padding: 13px;
   font-size: var(--font-sm);
   font-family: "Montserrat";
   font-weight: 600;
@@ -57,21 +61,25 @@ input {
 }
 
 main {
-  margin: 20px auto 0;
+  margin: 14px auto 80px;
   width: 100%;
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
   background: #fff;
-  padding: 20px 24px;
+  padding: 20px 24px 10px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
 
-/* The initial page */
+/****************************************************/
+/* The start page */
+/****************************************************/
+
 .start-img {
+  cursor: pointer;
   width: 400px;
   transition: all 0.3s ease;
   border-radius: 5px;
@@ -88,14 +96,6 @@ main {
   gap: 30px;
 }
 
-.right-img {
-  width: 250px;
-}
-
-.center-img {
-  width: 500px;
-}
-
 .start-page {
   margin: 20px auto 0;
   width: fit-content;
@@ -110,7 +110,7 @@ main {
   padding: 2px 5px;
   text-align: center;
   color: #fff;
-  font-size: var(--font-lg);
+  font-size: var(--font-md);
   font-family: var(--font-display);
   border: #fff 1px solid;
   backdrop-filter: invert(80%);
@@ -121,14 +121,15 @@ main {
   color: #fff;
 }
 
+/****************************************************/
 /* Chat page */
+/****************************************************/
 .chat {
   flex: 1;
   display: flex;
   justify-content: flex-start;
   overflow: scroll;
   flex-direction: column;
-  padding-bottom: 16px;
 }
 
 .bot-msg {
@@ -171,6 +172,7 @@ main {
 }
 
 .input-wrapper {
+  padding-top: 10px;
   display: flex;
   justify-content: center;
 }
@@ -179,6 +181,7 @@ main {
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 label {
@@ -194,7 +197,7 @@ button {
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 14px 40px;
+  padding: 12px 40px;
   margin-right: 4px;
   font-size: var(--font-sm);
   line-height: 26px;
@@ -209,10 +212,6 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-main {
-  display: none;
-}
-
 select {
   width: 100%;
   height: 50px;
@@ -223,6 +222,7 @@ select {
   padding-left: 5px;
   font-family: var(--font-display);
   border-radius: 5px;
+  cursor: pointer;
 }
 
 select:focus {
@@ -230,5 +230,27 @@ select:focus {
 }
 
 .icon {
-  font-size: 40px;
+  font-size: 32px;
+}
+
+/* This is for hiding main when the page loads */
+
+main {
+  display: none;
+}
+
+.music-container {
+  margin: 0 auto;
+  width: fit-content;
+}
+.music-container h3 {
+  font-size: var(--font-sm);
+  color: #fff;
+}
+.music-container button {
+  font-weight: 300;
+  padding: 5px 10px;
+  background-color: #facc15;
+  border: 1px solid #fff;
+  margin-right: 20px;
 }
