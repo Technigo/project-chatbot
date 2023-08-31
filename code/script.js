@@ -42,9 +42,8 @@ const showMessage = (message, sender) => {
 // Starts here
 
 const greetUser = () => {
-  showMessage("Hi I'm Buddy the elf, who do I have the pleasure of speaking to?", "bot")
-}
-
+  showMessage("Hi I'm Buddy the elf, who do I have the pleasure of speaking to?", "bot");
+};
 
 const handleNameInput = event => {
   event.preventDefault();
@@ -52,8 +51,7 @@ const handleNameInput = event => {
   nameInput.value = "";
   showMessage(`I'm ${userName}! Nice to meet you`, "user");
   setTimeout(reply, 1000);
-}
-
+};
 
 nameForm.addEventListener("submit", handleNameInput);
 
@@ -66,50 +64,43 @@ function reply() {
     <button class="send-btn" id="salad">Salad</button>
   `;
 
- 
   const foodButtons = inputWrapper.querySelectorAll('.send-btn');
   foodButtons.forEach(button => {
     button.addEventListener('click', (event) => {
       const selectedFood = event.target.id;
       showMessage(`Excellent choice! You selected ${selectedFood}.`, 'bot');
-      handleFoodChoice(selectedFood);
-      inputWrapper.innerHTML = '';
+      handleSpecificFoodChoice(selectedFood);
     });
   });
 }
 
+function handleSpecificFoodChoice(choice) {
+  inputWrapper.innerHTML = '';
 
-function handleFoodChoiceButtons(choice) {
   if (choice === 'pizza') {
     showMessage(`What type of pizza would you like?`, 'bot');
-    inputWrapper.innerHTML = `
-      <button class="send-btn" id="margherita">Margherita</button>
-      <button class="send-btn" id="shrimp">Shrimps Ahoy</button>
-      <button class="send-btn" id="veggie">Vegan Delight</button>
-    `;
+    const pizzaOptions = ['Margherita', 'Shrimps Ahoy', 'Vegan Delight'];
+    showOptions(pizzaOptions);
   } else if (choice === 'pasta') {
     showMessage(`What type of pasta would you like?`, 'bot');
-    inputWrapper.innerHTML = `
-      <button class="send-btn" id="shrimp">Shrimp</button>
-      <button class="send-btn" id="meat">Meat Me in Napoli</button>
-      <button class="send-btn" id="elf">Buddy the Elf Special</button>
-    `;
+    const pastaOptions = ['Shrimp', 'Meat Me in Napoli', 'Buddy the Elf Special'];
+    showOptions(pastaOptions);
   } else if (choice === 'salad') {
     showMessage(`What type of salad would you like?`, 'bot');
-    inputWrapper.innerHTML = `
-      <button class="send-btn" id="shrimp">Shrimp</button>
-      <button class="send-btn" id="greek">Greek</button>
-      <button class="send-btn" id="tomato">You Say Tomato</button>
-    `;
+    const saladOptions = ['Shrimp', 'Greek', 'You Say Tomato'];
+    showOptions(saladOptions);
   }
+}
 
-  const foodChoiceButtons = inputWrapper.querySelectorAll('.send-btn');
-  foodChoiceButtons.forEach(button => {
-    button.addEventListener('click', (event) => {
-      const selectedFoodChoice = event.target.id;
-      showMessage(`You selected ${selectedFoodChoice}.`, 'bot');
-      inputWrapper.innerHTML = '';
+function showOptions(options) {
+  options.forEach(option => {
+    const button = document.createElement('button');
+    button.className = 'send-btn';
+    button.textContent = option;
+    button.addEventListener('click', () => {
+      showMessage(`You selected ${option}.`, 'user');
     });
+    inputWrapper.appendChild(button);
   });
 }
 
