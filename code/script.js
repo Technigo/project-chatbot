@@ -27,15 +27,12 @@ makeSodaChoice = (sodaChoice) => {
 
   showMessage(`Great choice! You are craving ${sodaChoice}! Would you like regular or zero ${sodaChoice}?`, "bot");
 
-
-  onclick = "makeSodaChoice('Coke')";
-  onclick = "makeSodaChoice('Fanta')";
-  onclick = "makeSodaChoice('Sprit')";
-
   nameInputWrapper.style.display = "none";
   sodaChoiceWrapper.style.display = "none";
   subChoiceWrapper.style.display = "block";
 }
+
+
 
 
 // This function will add a chat bubble in the correct place based on who the sender is
