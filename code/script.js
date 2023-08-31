@@ -7,6 +7,9 @@ const nameInputWrapper = document.getElementById("input-wrapper");
 const sodaChoiceWrapper = document.getElementById("soda-choice");
 const subChoiceWrapper = document.getElementById("sub-choice");
 const sodaSizeWrapper = document.getElementById("soda-size");
+const orderConfirmationWrapper = document.getElementById("orderConfirmation");
+
+let sodaChoice = "";
 
 // Declare your functions after this comment
 const sayHi = (submitEvent) => {
@@ -22,10 +25,11 @@ const sayHi = (submitEvent) => {
   sodaChoiceWrapper.style.display = "block"
 }
 
-const makeSodaChoice = (sodaChoice) => {
-  showMessage(sodaChoice, "user");
+const makeSodaChoice = (soda) => {
+  sodaChoice = soda;
+  showMessage(soda, "user");
 
-  showMessage(`Great choice! You are craving ${sodaChoice}! Would you like regular or zero ${sodaChoice}?`, "bot");
+  showMessage(`Great choice! You are craving ${soda}! Would you like regular or zero ${soda}?`, "bot");
 
   sodaChoiceWrapper.style.display = "none";
   subChoiceWrapper.style.display = "block";
@@ -34,13 +38,31 @@ const makeSodaChoice = (sodaChoice) => {
 const makeSubChoice = (subChoice) => {
   showMessage(subChoice, "user");
 
-  showMessage(`You have chosen ${subChoice}. Would you like a small, medium och large ${subChoice}?`);
+  showMessage(`You have chosen ${subChoice}. What size would you like - small, medium or large?`, "bot");
 
   subChoiceWrapper.style.display = "none";
   sodaSizeWrapper.style.display = "block";
 }
 
+const makeSizeChoice = (size) => {
+  showMessage(size, "user");
 
+  showMessage(`You have chosen ${size}. Are you sure you want to order?`, "bot");
+
+  sodaSizeWrapper.style.display = "none";
+  orderConfirmationWrapper.style.display = "block";
+}
+
+const orderConfirmation = (confirmationMessage) => {
+  showMessage(confirmationMessage, "user");
+
+  if (confirmationMessage === "Yes") {
+    showMessage(`Great, we will prepare your ${sodaChoice}!`, "bot");
+  } else {
+    showMessage(`No problem, hope you will come back and order another time!`, "bot");
+  }
+  orderConfirmationWrapper.style.display = "none";
+}
 
 
 // This function will add a chat bubble in the correct place based on who the sender is
