@@ -1,9 +1,9 @@
 // Variables that point to selected DOM elements
-const chat = document.getElementById('chat')
-const inputWrapper = document.getElementById(`input-wrapper`)
-const reportForm = document.getElementById(`report-form`)
-const userInput = document.getElementById(`user-input`)
-const sendBtn = document.getElementById(`send-btn`)
+const chat = document.getElementById('chat');
+const inputWrapper = document.getElementById(`input-wrapper`);
+const reportForm = document.getElementById(`report-form`);
+const userInput = document.getElementById(`user-input`);
+const sendBtn = document.getElementById(`send-btn`);
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -11,7 +11,10 @@ const sendBtn = document.getElementById(`send-btn`)
 // Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
+
 const showMessage = (message, sender) => {
+  
+
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
     chat.innerHTML += `
@@ -39,14 +42,11 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Welcome to report error messages about our municipal streest! Do you want to make a report?", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
-}
 
-const handleUserAnswer = () => {
-  const userAnswer = document.getElementById('user-input').value;
-  showMessage("${userInput}", 'user', reply, 500);
+  showMessage("Welcome to report error messages about our municipal streets! Do you want to make a report?", 'bot');
+};
+
+
 
   
   // Display the user's answer in the chat
@@ -57,22 +57,37 @@ const handleUserAnswer = () => {
 
 
 
+const handleUserAnswer = event => {
+  event.preventDefault ();
+  const userAnswer = userInput.value.trim().toLowerCase();
+  showMessage(userAnswer, 'user');
+  setTimeout(() => {
+
+  if (userAnswer === 'yes') {
+    showMessage("Svar", 'bot');
+    
+  } else if (userAnswer === 'no') {
+    showMessage("OK!", 'bot');
+
+  } else { showMessage("I'm sorry, I didn't understand your response. Please answer with 'yes' or 'no'.", 'bot');
+  }
+  reply();
+}, 500);
+};
 // Set up your eventlisteners here
 reportForm.addEventListener("submit", handleUserAnswer);
 
 
-};
+
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
-function reply () {
-  showMessage("What do you want to report?")
-}
+
  
-  setTimeout((reply) => {
-    showMessage("Thank you for your answer!", 'bot');
-  }, 500);
+  //setTimeout((reply) => {
+    //showMessage("Thank you for your answer!", 'bot');
+  //}, 500);
 // greeting()
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 650)
+
