@@ -134,8 +134,8 @@ const confirmPriceRange = (priceRange) => {
   //Bot replying to alternative 1
  if (priceRange === 'range-1') {
   selectedPriceRange = "10 to 50€"
-  showMessage(`Is that all?`, 'bot')
-  setTimeout(() => showMessage(`That's fine, I'm sure we'll come up with something nice!`, 'bot'), 2000)
+  showMessage(`Is that all you can afford?`, 'bot')
+  setTimeout(() => showMessage(`Oh, that's fine, I'm sure we'll come up with something nice!`, 'bot'), 2000)
   //Bot replying to alternative 2
  } else if (priceRange === 'range-2') {
   selectedPriceRange = "50 to 100€"
