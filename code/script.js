@@ -16,6 +16,8 @@ const goodBtn = document.getElementById('goodBtn');
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
+  console.log("MESSAGE IS:", message); //console.log messages 
+  console.log("SENDER IS:", sender);
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
@@ -26,7 +28,7 @@ const showMessage = (message, sender) => {
       </section>
     `;
   } else if (sender === 'bot') {
-    console.log(globalThis)//what should i console log? 
+
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -101,7 +103,7 @@ const handleNameInput = (event) => {
         }, 1000);
       };
 
-      // function confirm age, if not display unvalid option
+      // function confirm age, if not confimed display unvalid option
       const handleResponse = (response, name) => {
         showMessage(`${response}!`, 'user');
         if (response === `yes`) {
@@ -110,7 +112,7 @@ const handleNameInput = (event) => {
           showMessage(`You need to think about your age. This page will be automatically reloaded.`, 'bot');
           setTimeout(() => {
             location.reload();
-          }, 2999);
+          }, 2998);
         }
 
         // dropdown menu
@@ -169,6 +171,10 @@ const handleNameInput = (event) => {
             okayBtn.style.display = 'none';
             goodBtn.style.display = 'none';
 
+            setTimeout(() => {
+              location.reload();
+            }, 5000);
+
           } else if (review === 'Okay') {
             showMessage(`${name}, okay is not good enouth!
             We will evaluate the product.
@@ -176,6 +182,10 @@ const handleNameInput = (event) => {
             notGoodBtn.style.display = 'none';
             okayBtn.style.display = 'none';
             goodBtn.style.display = 'none';
+
+            setTimeout(() => {
+              location.reload();
+            }, 5000);
 
           } else if (review === 'Good') {
             showMessage(`${name}, we are glad you are happy with your order!
