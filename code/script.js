@@ -60,7 +60,7 @@ inputForm.addEventListener("submit", (event) => {
   const userName = nameInput.value;
 
   // Display the user's name
-  userResponse(`${userName}`);
+  userResponse(`Hello! I am ${userName}.`);
 
   // Clear input field after a message has been sent
   nameInput.value = "";
