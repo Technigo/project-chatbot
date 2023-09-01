@@ -1,13 +1,12 @@
-# Project Name
+# Buddys pizzeroa
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+I made a prolongment to the pizzaproject where the goal was to make a more userfriendly interface  with a chatbot.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I looked thorugh the internet and then went through google. If I had more time I would refine som of the elements, like the wording. But it's working even thiugh it's not great.
+ I would also add more setTimeOut and maybe a cool sundeffect like a jingle bell.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://mellow-souffle-455932.netlify.app/
