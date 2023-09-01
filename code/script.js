@@ -304,12 +304,12 @@ const goodByeMessage = () => {
 
 // 0. greeting user
 setTimeout(greetUser, 1000)
-//  Fkt with () would mean execute right away, aber soll erst nach event ausgeführt werden
+//  Fkt with () would mean execute right away, shall only be executed after event (here after initail page load, may be slow)
 
 
 // 1a. show service options
 setTimeout(serviceOffers, 1000);
 // needs as well delay, otherwise displayed before greeting
 
-//  ...Rest called inside predecessing function
+//  ...Rest called inside preceding function
 
