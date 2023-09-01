@@ -152,17 +152,15 @@ button:hover {
   display: none !important;
 }
 
-
 select {
   appearance: none;
+  flex: 1;
   background: #e5e9ff;
   color: #0026ff;
   font-family: 'Montserrat';
   font-weight: 500;
   border: none;
-  width: 100%;
   cursor: pointer;
   border-radius: 0.25rem;
-  align-items: center;
   text-align: center;
 }

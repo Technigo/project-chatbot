@@ -5,7 +5,8 @@ const nameInput = document.getElementById("name-input");
 const btn = document.getElementById("send-btn");
 // Find all the food choice button
 const foodBtn = document.getElementById("foodChoice");
-const dropDown = document.getElementById("subChoice")
+const subFoodChoice = document.getElementById("subFoodChoice")
+
 // If you need any global variables that you can use across different functions, declare them here:
 // Bot replies with user name and ask the next question
 // Problem : how to stop showing bot response at once from the beginnin 
@@ -82,9 +83,6 @@ const nameMsg = (event) => {
   currerntQuestion++;
 };
 
-// const v = (event) => {
-//   console.log(event);
-// };
 //show message according to the user's choice
 const displayFood = (event) => {
   switch (event.target.id) {
@@ -98,20 +96,32 @@ const displayFood = (event) => {
       showMessage("salad", "user");
       break;
   }
+  //Display different message and menu according to user'schoice
   let selectedChoice = event.target.id;
   setTimeout(() => {
     if (selectedChoice === 'pizza') {
       showMessage("Oh so you're in the mood for pizza? Great choice. Select something from the menu!", "bot")
       foodChoice.classList.add("hidden")
+      subPizza.classList.remove("hidden")
     }
     else if (selectedChoice === 'pasta') {
       showMessage("Oh so you're in the mood for pasta? Great choice. Select something from the menu!", "bot")
       foodChoice.classList.add("hidden")
+      subPasta.classList.remove("hidden")
     }
     else if (selectedChoice === 'salad') {
       showMessage("Oh so you're in the mood for salad? Great choice. Select something from the menu!", "bot")
       foodChoice.classList.add("hidden")
+      subSalad.classList.remove("hidden")
     }
+
+    const displaySubChoice = (event) => {
+      switch ()
+    }
+    }
+
+
+
 
   }, 1000)
 

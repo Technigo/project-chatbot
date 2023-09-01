@@ -24,22 +24,43 @@
           Send
         </button>
       </form>
+    </div>
+    <section class="foodChoice input-wrapper hidden" id="foodChoice">
+      <button id="pizza">Pizza</button>
+      <button id="pasta">pasta</button>
+      <button id="salad">salad</button>
+    </section>
 
-      <section class="foodChoice input-wrapper hidden" id="foodChoice">
-        <button id="pizza">Pizza</button>
-        <button id="pasta">pasta</button>
-        <button id="salad">salad</button>
+    <div class="subFoodChoice" id="subFoodChoice">
+      <section class="subPizza input-wrapper hidden" id="subPizza">
+        <label for="dropdownPizza"></label>
+        <select name="dropdownPizza" id="dropdownPizza">
+          <option value="">Select a pizza</option>
+          <option value="hawaiian">Signature Hawaiian</option>
+          <option value="nodic">Nodic Smoked Salmon Pizza</option>
+          <option value="kabab">Kabab Pizza</option>
+          <option value="kimchi">Kimchi BBQ Chicken Pizza</option>
+        </select>
       </section>
 
-      <section class="subChoice input-wrapper hidden" id="subChoice">
-        <label for="subSalad"></label>
-        <select name="subSalad" id="subSalad">
+      <section class="subPasta input-wrapper hidden" id="subPasta">
+        <label for="dropdownPasta"></label>
+        <select name="dropdownPasta" id="dropdownPasta">
+          <option value="">Select a pasta</option>
+          <option value="spicy">Spicy Garlic Butter Linguini</option>
+          <option value="teriyaki">Spaghetti Chicken Teriyaki</option>
+          <option value="taco">Cheesy Taco Pasta Bake</option>
+        </select>
+      </section>
+
+      <section class="subSalad input-wrapper hidden" id="subSalad">
+        <label for="dropdownSalad"></label>
+        <select name="dropdownSalad" id="dropdownSalad">
           <option value="">Select a salad</option>
-          <option value="tropical">Tropical Mango Salad</option>
+          <option value="mango">Tropical Mango Salad</option>
           <option value="viet">Vietnamese Rice Noodle Salad with Chicken</option>
           <option value="caesar">Caesar Salad with BBQ chicken</option>
         </select>
-
       </section>
     </div>
   </main>
