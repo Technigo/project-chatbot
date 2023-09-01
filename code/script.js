@@ -3,9 +3,8 @@ const chat = document.getElementById('chat')
 const nameForm = document.getElementById('name-form')
 const nameInput = document.getElementById('name-input')
 
-// If you need any global variables that you can use across different functions, declare them here:
-
-// Declare your functions after this comment
+// Global variable to prevent the chat-bubbles to start over
+let run = true;
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -34,7 +33,7 @@ const showMessage = (message, sender) => {
     `
   }
 
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+  // Makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
 
@@ -48,21 +47,27 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
+//Global setTimeout for the Greeting
+setTimeout(greetUser, 800)
+
 // Set up your eventlisteners here
-//When name is input by user with local function and connected to global function.
+//When name is input by user.
 const handleNameInput = event => {
   event.preventDefault();
-  userName = nameInput.value;
-  nameInput.value = '';
-  showMessage(`${userName}`, "user");
-  setTimeout(reply, 800);
+
+  if (run) {
+    userName = nameInput.value;
+    nameInput.value = '';
+    showMessage(`${userName}`, "user");
+    setTimeout(reply, 800);
+  }
 }
 
 nameForm.addEventListener('submit', handleNameInput);
 
+
 const reply = () => {
   showMessage(`I think you need a riddle to relax your mind ${userName}. Choose a riddle by clicking on one of the apples below:`, 'bot');
-
 
   nameForm.innerHTML = `
       <button class="options" id='oneBtn'>🍏</button>
@@ -71,6 +76,7 @@ const reply = () => {
 
   document.getElementById('oneBtn')
     .addEventListener('click', () => riddleOption('one'))
+
 
 
   document.getElementById('twoBtn')
@@ -115,33 +121,32 @@ const greenWrongAnswer = () => {
   showMessage('HTML', 'user')
   showMessage('Almost! Correct answer is CSS. Thanks for playing with me! Good luck on your studies, you are awesome!', 'bot')
   showMessage('<img src="https://cdn.pixabay.com/photo/2020/05/02/09/59/pup-5120625_1280.jpg" alt="Happy dog" style="width: 225px; height: auto;" />', 'bot');
+  run = false;
 }
 
 const greenCorrectAnswer = () => {
   showMessage('CSS', 'user')
   showMessage('CSS is correct! Thanks for playing with me! Good luck on your studies, you are awesome!', 'bot')
   showMessage('<img src="https://cdn.pixabay.com/photo/2020/05/02/09/59/pup-5120625_1280.jpg" alt="Happy dog" style="width: 225px; height: auto;" />', 'bot');
+  run = false;
+
 }
 
 const redCorrectAnswer = () => {
   showMessage('JavaScript', 'user')
   showMessage('Good job! JavaScript is the correct answer! Good luck on your studies, you are awesome!', 'bot')
   showMessage('<img src="https://cdn.pixabay.com/photo/2020/05/02/09/59/pup-5120625_1280.jpg" alt="Happy dog" style="width: 225px; height: auto;" />', 'bot');
+  run = false;
+
 }
 
 const redWrongAnswer = () => {
   showMessage('HTML', 'user')
   showMessage('Naaah, correct answer is JavaScript. Good luck on your studies, you are awesome!', 'bot')
   showMessage('<img src="https://cdn.pixabay.com/photo/2020/05/02/09/59/pup-5120625_1280.jpg" alt="Happy dog" style="width: 225px; height: auto;" />', 'bot');
+  run = false;
+
 }
 
 
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 800)
 
