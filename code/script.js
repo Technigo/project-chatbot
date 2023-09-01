@@ -72,33 +72,59 @@ const askForGender = (name) => {
   //Adding eventlisteners to gender buttons
   document.getElementById('lady-btn')
     .addEventListener('click', () => {
-      //User message comes up
+      //User reply comes up
       showMessage("It's for a lady", "user")
       //Invokes bot's next message
-      setTimeout(() => confirmGender('lady'), 1000)
+      setTimeout(() => confirmGender('lady', name), 1000)
     })
   document.getElementById('gentleman-btn')
     .addEventListener('click', () => {
+      //User reply comes up
       showMessage("It's for a gentleman", "user")
-      setTimeout(() => confirmGender ('gentleman'), 1000)
+      //Invokes bot's next message
+      setTimeout(() => confirmGender ('gentleman', name), 1000)
     })
-
 }
 
-const confirmGender = (gender) => {
+const confirmGender = (gender, name) => {
   //if it's a lady the bot will confirm this
   if (gender === "lady") {
     showMessage (`${name}, I'm sure we'll find her a lovely gift!`, 'bot')
-    //invoking bot's next message
-    setTimeout(() => askPriceRange)
-
+    //invoking bot's next message about price
+    setTimeout(() => askPriceRange(), 1000)
+    //if it's a gentleman the bot will confirm this
   } else if (gender === "gentleman") {
     showMessage (`${name}, I'm sure we'll find him a lovely gift!`, 'bot')
+     //invoking bot's next message about price
+     setTimeout(() => askPriceRange(), 1000)
   }
 }
 
-const askPriceRange = (priceRange) => {
-//Change inner wrapper html!
+const askPriceRange = () => {
+  showMessage (`So, how much can this special gift cost?`, 'bot')
+  //Drop down window with three options will show up
+  inputWrapper.innerHTML =`
+    <select id="price-select">
+    <option value="">--Please choose a price range--</option>
+    <option id="range-1" value="range-1">20-200kr</option>
+    <option id="range-2" value="range-2">201-1000kr</option>
+    <option id="range-3" value="range-3">1001-3000kr</option>
+    </select>
+    `; 
+  //Adding eventlisteners to options
+  document.getElementById('price-select')
+    .addEventListener('change', () => {
+      //User reply comes up
+      showMessage("I can only afford this much.", "user")
+      //Invokes bot's next message
+      setTimeout(() => confirmPriceRange('range-1'), 1000)
+    })
+}
+
+const confirmPriceRange = (priceRange) => {
+ if (priceRange === 'range-1') {
+  showMessage(`Is that all?`)
+ }
 }
 
 
