@@ -186,8 +186,43 @@ const confirmAllChoices = () => {
   <button class="confirm-btn" id="yes-btn" value='yes'>Yes</button>
   <button class="confirm-btn" id="no-btn" value='no'>No</button>
   `; 
+  //Adding eventlisteners to choice buttons
+  document.getElementById('yes-btn')
+    .addEventListener('click', () => {
+      //User reply comes up
+      showMessage("Yes, you got it right!", "user")
+      //Invokes bot's next message
+      setTimeout(() => reactConfirmation("yes"), 1000)
+    })
+  document.getElementById('no-btn')
+    .addEventListener('click', () => {
+      //User reply comes up
+      showMessage("No, you got it wrong.", "user")
+      //Invokes bot's next message
+      setTimeout(() => reactConfirmation ("no"), 1000)
+    })
 }
 
+const reactConfirmation = (answer) => {
+switch(answer) {
+  case "yes":
+  console.log ("Ill give you this suggestion")
+  setTimeout(() => suggestion (), 1000)
+  break
+  case "no":
+  showMessage("Sorry about that. Reload the page and try again.", 'bot')
+  inputWrapper.remove() //Removing the buttons to make the chat look closed.
+  break
+}
+}
+
+const suggestion = () => {
+  if (gender === "lady" && selectedPriceRange === "20 to 200kr" && selectedColour === "Red") {
+    showMessage("How about a beautiful bouquet of red roses?", 'bot');
+  } else {
+    showMessage("I couldn't find any specific suggestion based on your criteria.", 'bot');
+  }
+}
 
 // Set up your eventlisteners here
 nameForm.addEventListener ('submit', handleNameInput)
