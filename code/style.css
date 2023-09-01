@@ -65,7 +65,7 @@ main {
   flex: 1;
   display: flex;
   justify-content: flex-start;
-  overflow: scroll;
+  overflow-y: scroll;
   flex-direction: column;
   padding-bottom: 16px;
 }
@@ -148,4 +148,15 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-/*lägg till styling på drop down
+#gameChoiceSelect {
+  border: none;
+  border-radius: 4px;
+  padding: 10px 40px;
+  margin: 20px;
+  font-size: 16px;
+  color:black;
+  background-color: #e5e9ff;
+  cursor: pointer;
+  width: 100%;
+  
+}

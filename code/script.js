@@ -1,7 +1,4 @@
-// Variables that point to selected DOM elements
 const chat = document.getElementById('chat')
-
-// If you need any global variables that you can use across different functions, declare them here:
 const inputWrapper = document.getElementById('input-wrapper')
 const nameInput = document.getElementById('name-input')
 const sendButton = document.getElementById('send-btn')
@@ -30,13 +27,15 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
-  // This makes the chat scroll to the last message when there are too many to be shown in the chat box
-  chat.scrollTop = chat.scrollHeight
+
+  // This makes the chat scroll to the last message when there are too many to be shown in the chat box. When I put it in a setTimeout-function I can delay the load time so the whole bubble shows.
+  setTimeout(() => {
+      chat.scrollTop = chat.scrollHeight
+  }, 200)
 }
 
 // Starts here
 const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello gamer, what's your name?", 'bot')
 }
 
@@ -46,17 +45,23 @@ const handleNameInput = (event) => {
 
   //Save name for later
   const name = nameInput.value;
-  showMessage(name, 'user');
-  username = nameInput.value;
-  nameInput.value = '';
 
-  setTimeout(() => gameOption(nameInput.value), 1000);
-  inputWrapper.innerHTML =''
+  //Checks if the input field is empty. If it is, notify the user to write something.
+  if (name === '') {
+    showMessage("You need to write something, even if it's your Discord-ID 😉" , 'bot')
+  } else {
+    showMessage(name, 'user');
+    username = nameInput.value;
+    nameInput.value = '';
+
+    setTimeout(() => gameOption(nameInput.value), 1200);
+    inputWrapper.innerHTML =''
+  }
+
 };
 
-
 const gameOption = () => {
-  showMessage(`Hi ${username}, which game category do you like?` ,'bot') 
+  showMessage(`Hi ${username}, which game category would you like to play today?` ,'bot') 
   inputWrapper.innerHTML = `
   <button id='detectiveGames'>Detective Games</button>
   <button id='fantasy'>Fantasy</button>
@@ -65,17 +70,17 @@ const gameOption = () => {
     document.getElementById('detectiveGames')
     .addEventListener('click', () => {
     showMessage('Detective Games' , 'user')
-    setTimeout(() => gameQuestion('Detective Games'), 1000)})
+    setTimeout(() => gameQuestion('Detective Games'), 1500)})
   
     document.getElementById('fantasy')
     .addEventListener('click', () => {
     showMessage('Fantasy' , 'user')
-    setTimeout(() => gameQuestion('Fantasy'), 1000)})
+    setTimeout(() => gameQuestion('Fantasy'), 1500)})
   
     document.getElementById('openWorld')
     .addEventListener('click', () => {
     showMessage('Open world' , 'user')
-    setTimeout(() => gameQuestion('Open world'), 1000)})
+    setTimeout(() => gameQuestion('Open world'), 1500)})
 }
 
   let game = ""
@@ -83,10 +88,7 @@ const gameOption = () => {
   let selectedGame = ""
   
   const gameQuestion = (selectedGameOption) => {
-    showMessage(`Cool, ${selectedGameOption}, that's an awesome category! Choose a game from our library 👇` , 'bot')
-
-    console.log(`gameQuestion executed ${selectedGameOption}`);
-    
+    showMessage(`Cool, ${selectedGameOption}, that has some very cool games! Choose a game to download from our library below 👇.` , 'bot')
 
     switch (selectedGameOption) {
     case "Detective Games": 
@@ -94,65 +96,49 @@ const gameOption = () => {
     game = ["Sherlock Holmes", "Detroit: Become Human", "Disco Elysium"]
 
       inputWrapper.innerHTML = `
-      <select id="gameChoice">
-        <option value="" selected disabled>Choose a game 👇</option>
+      <select id="gameChoiceSelect">
+        <option value="" selected disabled>Choose a game below 🎮</option>
         <option value="1">Sherlock Holmes</option>
         <option value="2">Detroit: Become Human</option>
         <option value="3">Disco Elysium</option>
       </select>
       `
-      console.log('inputWrapper.innerHTML changed (detectiveGames)');
-
       break
     case "Fantasy": 
       
       game = ["Final Fantasy", "Forspoken", "Harry Potter - Hogwarts Legacy"]
 
       inputWrapper.innerHTML = `
-      <select id="gameChoice">
-        <option value="" selected disabled>Choose a game</option>
+      <select id="gameChoiceSelect">
+        <option value="" selected disabled>Choose a game below 🎮</option>
         <option value="1">Final Fantasy</option>
         <option value="2">Forspoken</option>
         <option value="3">Harry Potter - Hogwarts Legacy</option>
       </select>
       `
-      console.log('inputWrapper.innerHTML changed (fantasy)');
-
       break
     case "Open world": 
       
     game = ["Assassin's Creed", "Red Dead Redemption", "We Happy Few"]
 
       inputWrapper.innerHTML = `
-      <select id="gameChoice">
-        <option value="" selected disabled>Choose a game</option>
+      <select id="gameChoiceSelect">
+        <option value="" selected disabled>Choose a game below 🎮</option>
         <option value="1">Assassin's Creed</option>
         <option value="2">Red Dead Redemption</option>
         <option value="3">We Happy Few</option>
       </select>
       `
-      console.log('inputWrapper.innerHTML changed (openWorld)');
-
       break
       process.exit(1)
   }
-
-  console.log('set gameChoice listener');
   
   //Drop down menu
-  //const select=document.getElementById('gameChoice')
   const gameChoiceSelect = document.getElementById('gameChoiceSelect')
 
-  //select.addEventListener('change', () => {
-    //console.log(select.value)
-    //const gameChoice = parseInt(select.value)
   gameChoiceSelect.addEventListener('change', () => {
     const gameChoice = parseInt(gameChoiceSelect.value)
-    console.log(gameChoice)
     selectedGame = game[gameChoice - 1] 
-    console.log(selectedGame)
-        
-    
     showMessage(selectedGame , 'user')
 
     inputWrapper.innerHTML =''
@@ -180,13 +166,12 @@ const verifyGame = () => {
 
 const response = (response) => {
   if (response === 'Yes') {
-    showMessage ('Awesome! Enjoy your game!' ,'bot')
+    showMessage ('Awesome! A download link will soon be provided to you. Enjoy your game!' ,'bot')
   } else {
-    showMessage ("That's too bad. I hope you'll be back soon!" ,'bot')
+    showMessage ("It's ok to change your mind. We hope to see back here soon!" ,'bot')
   }
   inputWrapper.innerHTML = ''
 }
-
 
 // Set up your eventlisteners here
   nameForm.addEventListener('submit', handleNameInput)
