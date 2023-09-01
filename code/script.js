@@ -5,7 +5,7 @@ const nameInput = document.getElementById('name-input');
 const inputWrapper = document.getElementById('input-wrapper');
 // If you need any global variables that you can use across different functions, declare them here:
 let userName = '';
-let dishOptions = {};
+let chosenDish = '';
 
 // Declare your functions after this comment
 
@@ -37,109 +37,81 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
 const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Welcome to Gotlands restaurant guide!, What's your name?", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage("Welcome to Gotlands restaurant guide! What's your name?", 'bot');
 }
-
-// Function to ask the user to choose their favorite restaurant
-const askFavoriteRestaurant = () => {
-  showMessage(`Hi ${userName}, choose your favorite restaurant!`, 'bot');
-
-  const buttonContainer = document.createElement('div');
-  buttonContainer.classList.add('bubble', 'bot-bubble', 'button-container');
-  buttonContainer.innerHTML = `
-    <button class="restaurant-btn" data-choice="Mille lire">Mille lire</button>
-    <button class="restaurant-btn" data-choice="Kasai">Kasai</button>
-    <button class="restaurant-btn" data-choice="Surfers">Surfers</button>
-  `;
-
-  const botMessageSection = document.createElement('section');
-  botMessageSection.classList.add('bot-msg');
-  botMessageSection.appendChild(buttonContainer);
-
-  const botImage = document.createElement('img');
-  botImage.src = 'assets/bot.png';
-  botImage.alt = 'Bot';
-  botMessageSection.appendChild(botImage);
-
-  buttonContainer.addEventListener('click', handleRestaurantButtonClick);
-
-  chat.appendChild(botMessageSection);
-};
 
 // Event listener for the name form submission
 nameForm.addEventListener('submit', (e) => {
   e.preventDefault();
   userName = nameInput.value;
   inputWrapper.innerHTML = '';
-  setTimeout(askFavoriteRestaurant, 800);
+  showMessage(`My name is ${userName}`, 'user');
+  setTimeout(askFavoriteRestaurant, 1000);
 });
 
-// Event listener for when a restaurant button is clicked
+// Function to ask the user to choose their favorite restaurant
+const askFavoriteRestaurant = () => {
+  showMessage(`Hi ${userName}, You look hungry I can help you get something to eat! `, 'bot');
+
+  setTimeout(() => {
+  const restaurantButtons = `
+    <button class="restaurant-btn" data-choice="Mille lire">Mille lire</button>
+    <button class="restaurant-btn" data-choice="Kasai">Kasai</button>
+    <button class="restaurant-btn" data-choice="Surfers">Surfers</button>
+  `;
+
+  showMessage(`Please select your favorite restaurant:<br>${restaurantButtons}`, 'bot');
+  document.querySelectorAll('.restaurant-btn').forEach(button => {
+    button.addEventListener('click', handleRestaurantButtonClick);
+  });
+}, 1200); // 1-second delay
+}
+
+// Event handler for when a restaurant button is clicked
 const handleRestaurantButtonClick = (event) => {
   const choice = event.target.getAttribute('data-choice');
+  chosenDish = ''; // Reset the chosen dish
   handleRestaurantChoice(choice);
-};
+}
 
 // Function to handle the user's restaurant choice
 const handleRestaurantChoice = (choice) => {
-  showMessage(`You have chosen ${choice}, that's my favorite restaurant too! Now it's time to choose your favorite dish!`, 'bot');
+  showMessage(`You have chosen ${choice}, that's my favorite restaurant too! Now, what dish would you like to order?`, 'bot');
   
- dishOptions = {
+  setTimeout(() => {
+  const dishOptions = {
     'Mille lire': ['Antipasto', 'Margherita', 'Napoli'],
     'Surfers': ['Bang bang ji zi', 'Sishuan Liang Mian', 'Beef Shui Zhu'],
     'Kasai': ['Crispy tempura roll', 'Truffle mushroom roll', 'Sashimi moriawase']
   };
 
   const dishButtons = dishOptions[choice].map(dish => `<button class="dish-btn" data-dish="${dish}">${dish}</button>`).join('');
-  showMessage(`Please choose your favorite dish: ${dishButtons}`, 'bot');
-
+  showMessage(`Please choose your favorite dish:<br>${dishButtons}`, 'bot');
   
-  chat.addEventListener('click', (event) => handleDishButtonClick(event, choice)); // Pass choice as an argument
-};
+  document.querySelectorAll('.dish-btn').forEach(button => {
+    button.addEventListener('click', handleDishButtonClick);
+  });
+}, 1200); // 1-second delay
+}
 
-
-// Function to handle the user's dish button click
+// Event handler for when a dish button is clicked
 const handleDishButtonClick = (event) => {
-  const dishButton = event.target.closest('.dish-btn');
+  const dish = event.target.getAttribute('data-dish');
+  chosenDish = dish;
+
   
-  if (dishButton) {
-    const dish = dishButton.getAttribute('data-dish');
-    const options = dishOptions[choice][dish]; // Get serving size options for the selected dish
-    
-    // Create a dropdown select menu for serving size
-    const selectMenu = document.createElement('select');
-    selectMenu.id = 'size-select';
-    
-    // Populate the select menu with options
-    options.forEach(option => {
-      const optionElement = document.createElement('option');
-      optionElement.value = option;
-      optionElement.textContent = `${option} (${option === 'Normal' ? 21 : 12} Euro)`;
-      selectMenu.appendChild(optionElement);
-    });
-    
-    showMessage(`You have chosen ${dish}. Please select the serving size:`, 'bot');
-    chat.appendChild(selectMenu);
+showMessage(`I would like to have a ${dish}`, `user`)
+    // Simulate a delay before bot's response
+    setTimeout(() => {
+      // Bot's response
+      showMessage(`Your order is being prepared and will be ready in about 20 minutes! Enjoy your meal, ${userName}!`, 'bot');
+    }, 1200); // Add a 1-second delay before the bo
+  
 
-    // Add event listener for the dropdown menu
-    selectMenu.addEventListener('change', handleSizeSelect);
-  }
-};
-
-const handleSizeSelect = (event) => {
-  const selectedSize = event.target.value;
-  showMessage(`You have chosen ${selectedSize}. Enjoy your meal!`, 'bot');
-};
-
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 800)
+setTimeout(() => {
+  showMessage(`Thank you, Bob bot, for your help! It's gonna be delicious! 😄`, 'user');
+}, 1200);
+}
+// When the website loads, start the interaction after a delay
+setTimeout(greetUser, 1000);

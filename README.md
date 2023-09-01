@@ -1,12 +1,10 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assingment is to buid a bot and practice DOM manupilation and building functions.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started to plan my questions from the bot and then i built the question one by one and added buttons so the user could make some choices. I had a lot of problems with getting the buttons to work correctly, used AI as a mentor to guide me thru trouble shooting.
 
 ## View it live
 
