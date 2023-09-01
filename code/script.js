@@ -3,7 +3,8 @@ const chat = document.getElementById('chat');
 const nameForm = document.getElementById('name-form');
 const nameInput = document.getElementById("name-input");
 const btn = document.getElementById("send-btn");
-const foodChoice = document.getElementById("foodChoice");
+// Find all the food choice button
+const foodBtn = document.getElementById("foodChoice");
 
 // If you need any global variables that you can use across different functions, declare them here:
 // Bot replies with user name and ask the next question
@@ -81,11 +82,29 @@ const nameMsg = (event) => {
   currerntQuestion++;
 }
 
-const v = (event) => {
-  console.log(event);
+// const v = (event) => {
+//   console.log(event);
+// };
+//show message according to the user's choice
+
+
+// Loop through the buttons and add a click to event listener to each button
+
+const displayChoice = (event) => {
+  switch (event.target.id) {
+    case 'pizza':
+      showMessage("pizza", "user");
+      break;
+    case 'salad':
+      showMessage("salad", "user");
+      break;
+    case 'pasta':
+      showMessage("pasta", "user");
+      break;
+  }
 };
 
-foodChoice.querySelectorAll('button').forEach(button => button.addEventListener("click", v));
+foodBtn.querySelectorAll('button').forEach(button => button.addEventListener("click", displayChoice));
 
 
 
