@@ -3,11 +3,10 @@ const chat = document.getElementById('chat');
 const nameForm = document.getElementById('name-form');
 const nameInput = document.getElementById('name-input');
 const inputWrapper = document.getElementById('input-wrapper');
-// If you need any global variables that you can use across different functions, declare them here:
+
+//Global variables
 let userName = '';
 let chosenDish = '';
-
-// Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -65,13 +64,13 @@ const askFavoriteRestaurant = () => {
   document.querySelectorAll('.restaurant-btn').forEach(button => {
     button.addEventListener('click', handleRestaurantButtonClick);
   });
-}, 1200); // 1-second delay
+}, 1200); // 1,2-second delay
 }
 
 // Event handler for when a restaurant button is clicked
 const handleRestaurantButtonClick = (event) => {
   const choice = event.target.getAttribute('data-choice');
-  chosenDish = ''; // Reset the chosen dish
+  chosenDish = ''; // Resets the chosen dish
   handleRestaurantChoice(choice);
 }
 
@@ -102,11 +101,11 @@ const handleDishButtonClick = (event) => {
 
   
 showMessage(`I would like to have a ${dish}`, `user`)
-    // Simulate a delay before bot's response
+   
     setTimeout(() => {
       // Bot's response
       showMessage(`Your order is being prepared and will be ready in about 20 minutes! Enjoy your meal, ${userName}!`, 'bot');
-    }, 1200); // Add a 1-second delay before the bo
+    }, 1200); // 1,2-second 
   
 
 setTimeout(() => {
