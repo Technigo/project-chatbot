@@ -1,13 +1,12 @@
-# Project Name
+# Chat-bot
 
-Replace this readme with your own information about your project.
+Project during web. developer bootcamp. The project was to building a functional chatbot interface using JavaScript.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Problems were solved by having sessions with my team, Stack, class material and chatGPT. Had particulary one problem with the bot repeating one of the questions. Eventually this was solved by adding a global variable. Lots of time was put in to solve the issue which took time from developing the bot further. Next step would be to add more questions, try out a dropdown list, improve the design and play around with sound effects.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://project-chatbot-idah-collin.netlify.app/

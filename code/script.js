@@ -96,6 +96,7 @@ const riddleOption = option => {
 
     document.getElementById('htmlBtn')
       .addEventListener('click', () => greenWrongAnswer('greenHtml'))
+
     document.getElementById('cssBtn')
       .addEventListener('click', () => greenCorrectAnswer('greenCss'))
   }
@@ -122,6 +123,15 @@ const greenWrongAnswer = () => {
   showMessage('Almost! Correct answer is CSS. Thanks for playing with me! Good luck on your studies, you are awesome!', 'bot')
   showMessage('<img src="https://cdn.pixabay.com/photo/2020/05/02/09/59/pup-5120625_1280.jpg" alt="Happy dog" style="width: 225px; height: auto;" />', 'bot');
   run = false;
+  //Added to prevent the buttons to appear again.
+  const htmlBtn = document.getElementById('htmlBtn');
+  if (htmlBtn) {
+    htmlBtn.remove();
+  }
+  const cssBtn = document.getElementById('cssBtn');
+  if (cssBtn) {
+    cssBtn.remove();
+  }
 }
 
 const greenCorrectAnswer = () => {
@@ -129,7 +139,15 @@ const greenCorrectAnswer = () => {
   showMessage('CSS is correct! Thanks for playing with me! Good luck on your studies, you are awesome!', 'bot')
   showMessage('<img src="https://cdn.pixabay.com/photo/2020/05/02/09/59/pup-5120625_1280.jpg" alt="Happy dog" style="width: 225px; height: auto;" />', 'bot');
   run = false;
-
+  //Added to prevent the buttons to appear again.
+  const htmlBtn = document.getElementById('htmlBtn');
+  if (htmlBtn) {
+    htmlBtn.remove();
+  }
+  const cssBtn = document.getElementById('cssBtn');
+  if (cssBtn) {
+    cssBtn.remove();
+  }
 }
 
 const redCorrectAnswer = () => {
@@ -137,7 +155,15 @@ const redCorrectAnswer = () => {
   showMessage('Good job! JavaScript is the correct answer! Good luck on your studies, you are awesome!', 'bot')
   showMessage('<img src="https://cdn.pixabay.com/photo/2020/05/02/09/59/pup-5120625_1280.jpg" alt="Happy dog" style="width: 225px; height: auto;" />', 'bot');
   run = false;
-
+  //Added to prevent the buttons to appear again.
+  const jsBtn = document.getElementById('jsBtn');
+  if (jsBtn) {
+    jsBtn.remove();
+  }
+  const htmlBtn = document.getElementById('htmlBtn');
+  if (htmlBtn) {
+    htmlBtn.remove();
+  }
 }
 
 const redWrongAnswer = () => {
@@ -145,7 +171,15 @@ const redWrongAnswer = () => {
   showMessage('Naaah, correct answer is JavaScript. Good luck on your studies, you are awesome!', 'bot')
   showMessage('<img src="https://cdn.pixabay.com/photo/2020/05/02/09/59/pup-5120625_1280.jpg" alt="Happy dog" style="width: 225px; height: auto;" />', 'bot');
   run = false;
-
+  //Added to prevent the buttons to appear again.
+  const jsBtn = document.getElementById('jsBtn');
+  if (jsBtn) {
+    jsBtn.remove();
+  }
+  const htmlBtn = document.getElementById('htmlBtn');
+  if (htmlBtn) {
+    htmlBtn.remove();
+  }
 }
 
 
