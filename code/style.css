@@ -12,20 +12,21 @@ body {
 }
 
 body.cuba {
-  background-image: url("./images/map.jpg");
+  background-image: url("./images/cuba.jpg");
+  background-position: 65% 30%;
 }
 
 body.italy {
-  background-image: url("./images/map.jpg");
+  background-image: url("./images/italy.jpg");
 }
 
 body.netherlands {
-  background-image: url("./images/map.jpg");
+  background-image: url("./images/the-netherlands.jpg");
 }
 
 h1 {
   font-weight: bold;
-  font-size: 28px;
+  font-size: 32px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -64,10 +65,11 @@ input {
 main {
   margin: 0 auto;
   width: 100%;
-  max-width: 700px;
+  max-width: 600px;
   height: 600px;
   border-radius: 30px;
   background: #fff;
+  opacity: 0.93;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -104,12 +106,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #cccc99; /*#e5e9ff*/
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: darkolivegreen; /*#0026ff*/
   max-width: 40%;
 }
 
@@ -143,12 +145,12 @@ label {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: darkolivegreen;
   color: white;
   border: none;
   border-radius: 4px;
   padding: 16px 40px;
-  margin-right: 4px;
+  margin: 0 4px;
   font-size: 16px;
   line-height: 26px;
   font-family: 'Montserrat';
@@ -164,13 +166,34 @@ button:hover {
 
 /*STYLA DROPDOWNEN!*/
 #activityChoiceSelect {
-  font-size: 18px;
+  font-size: 22px;
   cursor: pointer;
   padding: 10px 40px;
   margin: 20px;
   border: none;
   border-radius: 4px;
-  background-color: orange;
-  color:black;
+  background-color: darkolivegreen;
+  color:white;
 }
 
+footer {
+  display: flex;
+  flex-direction: column;
+  color:#ffffff;
+  font-size: 12px; 
+  background-color: orange;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+}
+
+.copyright img {
+  width: 30px;
+}
+
+footer a:link, a:visited {
+  font-size: 20px;
+  color: #ffffff;
+}
