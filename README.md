@@ -8,4 +8,4 @@ Getting hold of DOM-elements with getElementById, inserting new elements in the 
 
 ## View it live
 
-gift-suggester-chatbot.netlify.app
+https://gift-suggester-chatbot.netlify.app
