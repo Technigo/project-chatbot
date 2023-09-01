@@ -202,10 +202,10 @@ const confirmAllChoices = () => {
     })
 }
 
+//The bot gives suggestion, alt. says sorry depending on user says yes/no
 const reactConfirmation = (answer) => {
 switch(answer) {
   case "yes":
-  console.log ("Ill give you this suggestion")
   setTimeout(() => suggestion (), 1000)
   break
   case "no":
@@ -215,24 +215,87 @@ switch(answer) {
 }
 }
 
-const suggestion = () => {
-  if (gender === "lady" && selectedPriceRange === "10 to 50€" && selectedColour === "Yellow") 
-    {showMessage("How about a vibrant yellow mug? It can brighten her mornings with her favorite hot beverage.", 'bot')
-  } else if (gender === "lady" && selectedPriceRange === "10 to 50€" && selectedColour === "Green")       {showMessage("How about a potted green succulent? It is a low-maintenance and aesthetically pleasing gift.", 'bot');
-  } else if (gender === "lady" && selectedPriceRange === "10 to 50€" && selectedColour === "Yellow")
-  {showMessage ("How about a yellow toaster? It can add a pop of color to her kitchen.", 'bot')
-  } else if (gender === "lady" && selectedPriceRange === "50 to 100€" && selectedColour === "Green")
-  {showMessage ("How about a soft green throw blanket? It could add comfort and style to her home.", 'bot')
-  } else if (gender === "gentleman" && selectedPriceRange === "10 to 50€" && selectedColour === "Yellow") 
-  {showMessage ("How about a yellow baseball cap with a cool design or logo? This could be a practical and fashionable accessory.", 'bot')
-  } else if (gender === "gentleman" && selectedPriceRange === "10 to 50€" && selectedColour === "Green") 
-  {showMessage ("How about a green-themed notebook or journal? Those are great for jotting down thoughts, notes, or sketches.", 'bot')
-  } else if (gender === "gentleman" && selectedPriceRange === "50 to 100€" && selectedColour === "Yellow") 
-  {showMessage ("How about a yellow hoodie? It could be a comfortable and trendy addition to his casual wardrobe.", 'bot')
-  } else if (gender === "gentleman" && selectedPriceRange === "50 to 100€" && selectedColour === "Green") 
-  {showMessage ("How about a green backpack? Especially a durable and stylish one - it can be practical for everyday use or travel.", 'bot')
-  }
+// const suggestion = () => {
+//   if (gender === "lady" && selectedPriceRange === "10 to 50€" && selectedColour === "Yellow") 
+//     {showMessage("How about a vibrant yellow mug? It can brighten her mornings with her favorite hot beverage.", 'bot')
+//   } else if (gender === "lady" && selectedPriceRange === "10 to 50€" && selectedColour === "Green")       {showMessage("How about a potted green succulent? It is a low-maintenance and aesthetically pleasing gift.", 'bot');
+//   } else if (gender === "lady" && selectedPriceRange === "10 to 50€" && selectedColour === "Yellow")
+//   {showMessage ("How about a yellow toaster? It can add a pop of color to her kitchen.", 'bot')
+//   } else if (gender === "lady" && selectedPriceRange === "50 to 100€" && selectedColour === "Green")
+//   {showMessage ("How about a soft green throw blanket? It could add comfort and style to her home.", 'bot')
+//   } else if (gender === "gentleman" && selectedPriceRange === "10 to 50€" && selectedColour === "Yellow") 
+//   {showMessage ("How about a yellow baseball cap with a cool design or logo? This could be a practical and fashionable accessory.", 'bot')
+//   } else if (gender === "gentleman" && selectedPriceRange === "10 to 50€" && selectedColour === "Green") 
+//   {showMessage ("How about a green-themed notebook or journal? Those are great for jotting down thoughts, notes, or sketches.", 'bot')
+//   } else if (gender === "gentleman" && selectedPriceRange === "50 to 100€" && selectedColour === "Yellow") 
+//   {showMessage ("How about a yellow hoodie? It could be a comfortable and trendy addition to his casual wardrobe.", 'bot')
+//   } else if (gender === "gentleman" && selectedPriceRange === "50 to 100€" && selectedColour === "Green") 
+//   {showMessage ("How about a green backpack? Especially a durable and stylish one - it can be practical for everyday use or travel.", 'bot')
+//   }
   
+// }
+
+
+//The bots suggestions based on users choices
+const suggestion = () => {
+  let suggestionMessage = '';
+
+  if (gender === 'lady') {
+    if (selectedPriceRange === '10 to 50€') {
+      if (selectedColour === 'Yellow') {
+        suggestionMessage = "How about a vibrant yellow mug? It can brighten her mornings with her favorite hot beverage.";
+      } else if (selectedColour === 'Green') {
+        suggestionMessage = "How about a potted green succulent? It is a low-maintenance and aesthetically pleasing gift.";
+      }
+    } else if (selectedPriceRange === '50 to 100€') {
+      if (selectedColour === 'Yellow') {
+        suggestionMessage = "How about a yellow toaster? It can add a pop of color to her kitchen.";
+      } else if (selectedColour === 'Green') {
+        suggestionMessage = "How about a soft green throw blanket? It could add comfort and style to her home.";
+      }
+    }
+  } else if (gender === 'gentleman') {
+    if (selectedPriceRange === '10 to 50€') {
+      if (selectedColour === 'Yellow') {
+        suggestionMessage = "How about a yellow baseball cap with a cool design or logo? This could be a practical and fashionable accessory.";
+      } else if (selectedColour === 'Green') {
+        suggestionMessage = "How about a green-themed notebook or journal? Those are great for jotting down thoughts, notes, or sketches.";
+      }
+    } else if (selectedPriceRange === '50 to 100€') {
+      if (selectedColour === 'Yellow') {
+        suggestionMessage = "How about a yellow hoodie? It could be a comfortable and trendy addition to his casual wardrobe.";
+      } else if (selectedColour === 'Green') {
+        suggestionMessage = "How about a green backpack? Especially a durable and stylish one - it can be practical for everyday use or travel.";
+      }
+    }
+  }
+
+  if (suggestionMessage) {
+    showMessage(suggestionMessage, 'bot');
+  } 
+  //Bot asks if good suggestion
+  setTimeout(() => askSuggestConfirm (), 2000)
+};
+
+const askSuggestConfirm = () => {
+  showMessage(`Are you pleased with this suggestion, ${name}? `, 'bot')
+
+  //Buttons with confirmation choice appears
+  inputWrapper.innerHTML =`
+  <button class="confirm-sugg-btn" id="sugg-yes-btn" value='yes'>Yes</button>
+  <button class="confirm-sugg-btn" id="sugg-no-btn" value='no'>No</button>
+  `; 
+
+  document.getElementById('sugg-yes-btn')
+    .addEventListener('click', () => {
+      //User reply comes up
+      showMessage("Yes, thanks for the help!", "user")
+    })
+  document.getElementById('sugg-no-btn')
+    .addEventListener('click', () => {
+      //User reply comes up
+      showMessage("No, I don't think that's a very suitable gift.", "user")
+    })
 }
 
 // Set up your eventlisteners here
