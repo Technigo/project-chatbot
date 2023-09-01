@@ -13,6 +13,7 @@ const notGoodBtn = document.getElementById('notGoodBtn');
 const okayBtn = document.getElementById('okayBtn');
 const goodBtn = document.getElementById('goodBtn');
 
+
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
@@ -35,6 +36,7 @@ const showMessage = (message, sender) => {
       </section>
     `;
   }
+
   chat.scrollTop = chat.scrollHeight;
 };
 
@@ -44,6 +46,7 @@ const greetUser = () => {
   showMessage(`Hello there, welcome to the evaluation sheet! 
   We are really happy that you take your time to answer some questions
   in order for us to improve our service.`, 'bot');
+
   setTimeout(() => {
     showMessage(` First of all, what's your name?`, 'bot');
   }, 4000);
