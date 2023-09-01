@@ -3,7 +3,10 @@ const chat = document.getElementById('chat');
 const form = document.getElementById("name-form");
 const nameInput = document.getElementById("name-input");
 const startButton = document.getElementById("start-btn");
-
+const music = document.getElementById("music");
+const inputWrapper = document.getElementById("input-wrapper")
+const main = document.getElementById("main")
+const body = document.getElementById("body")
 // If you need any global variables that you can use across different functions, declare them here:
 
 
@@ -19,15 +22,16 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="https://thenounproject.com/api/private/icons/2401070/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0" alt="User" />  
       </section>
     `
+    
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html section inside the chat with the posted message
   } else if (sender === 'bot') {
     console.log("The bot said something")
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="https://thenounproject.com/api/private/icons/6018841/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -39,10 +43,19 @@ const showMessage = (message, sender) => {
 }
 
 // Starts here
+//this is the startscreen, not showing the chat
+const startScreen = () => {
+main.style.display = 'none'
+
+}
+startScreen()
+
 
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot')
+  main.style.display = 'flex'
+  showMessage("Welcome to Trivia Quiz Bot!! What's your name, contestant?", 'bot');
+  
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -52,9 +65,17 @@ const handleNameInput = (event) => {
   const name = nameInput.value;
   nameInput.value = '';
   showMessage (`${name}`, `user`)
-  showMessage (`Hi ${name}`, `bot`);
-  setTimeout(pizzaOption, 1000);
+  showMessage (`${name}, are you ready for your first question?`, `bot`);
+  
+  setTimeout(ready, 1000);
   }
+const ready = () => {
+  inputWrapper.innerHTML =`
+    <button class="yesReady" id="yesBtn">YES</button>
+    <button class="noReady" id="noBtn">NO</button>
+    `
+
+}
 
 const pizzaOption = () => {
 
@@ -109,7 +130,9 @@ const byeBye = () => {
 form.addEventListener("submit", (handleNameInput));
 startButton.addEventListener('click', function() {
   setTimeout (greetUser, 500);
-  startButton.style.display = 'none'; });
+  startButton.style.display = 'none';
+  music.play(); 
+});
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
