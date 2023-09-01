@@ -30,26 +30,32 @@ let favArtist = "";
 let favType = "";
 let yesOrNo = "";
 
+// Here is an array that stores all the info about chat (messages, input type, question choices....)
+// The first question has been already placed in the initial event handler. Therefore, array starts from question number 2.
 const questions = [
   {
+    /***************************QUESTION 2*******************************/
     message: "Which genre of art do you like the most?",
     option: "button",
     id: ["mordern", "impressionism", "pop"],
     isNested: false,
     choice: ["Modern", "Impressionism", "Pop"],
+    // Here is the next function that will triger in createInputField()
     nextHandler: function (event) {
       event.preventDefault();
       favType = event.target.id;
-      console.log(favType);
       validateType(favType);
       showUserInput(favType);
       form.innerHTML = "";
+      //   currentIndex is organizing the order of questions.
       currentIndex++;
+      //   this will trigers next step
       createInputFields(questions[currentIndex].option);
     },
   },
 
   {
+    /***************************QUESTION 3*******************************/
     message: "Who is your favorite artist?",
     option: "select",
     default: "Select an artist",
@@ -78,7 +84,6 @@ const questions = [
     ],
     nextHandler: function (event) {
       event.preventDefault();
-      console.log(favType);
       favArtist = event.target.value;
       showUserInput(favArtist);
       validateMuseum(favArtist);
@@ -88,6 +93,7 @@ const questions = [
     },
   },
   {
+    /***************************QUESTION 4*******************************/
     message: "Are you an adult or a child?",
     option: "button",
     id: ["adult", "child"],
@@ -101,7 +107,8 @@ const questions = [
       price = age === "adult" ? 20 : 10;
       form.innerHTML = "";
       currentIndex++;
-      console.log(age, favArtist, favType, yourMuseum);
+      //    I need this function bc of js runtime problem...all variables I need to show the next message are global scop and decleared with let.
+      // So it should be mutable. However, it stores initial values and cannot reasign. So I need to call this function to reasign all the variables I need.
       const confirmationMessage = questions[currentIndex].createMessage(
         favType,
         favArtist,
@@ -113,6 +120,7 @@ const questions = [
     },
   },
   {
+    /***************************QUESTION 5*******************************/
     createMessage: function (type, artist, museum, age, price) {
       const message = `You chose ${type} art and ${artist} as your favorite artist!/n I recommend ${museum}. One ${age} ticket will cost you ${price} euro. Are you happy with this?`;
       console.log(message);
@@ -136,10 +144,13 @@ const questions = [
   },
 ];
 
+// ////////////////////////////////////////////////////////////////////////////////////////
+// This is to open a form element that was hidden at the initial page.
 const showForm = () => {
   main.style.display = "flex";
 };
 
+// Here I validate user's choices for artist and museums
 const validateType = (type) => {
   if (type === "modern") {
     artistArr = ["Pablo Picasso", "Marcel Duchamp", "Marc Chagall"];
@@ -197,13 +208,21 @@ const validateMuseum = (artist) => {
   yourMuseum;
 };
 
+// This is the most important function that triggers almost all the actions in this app.
+// createing input elements based on input type parameter, and
+
 function createInputFields(inputType, specialmessage) {
-  console.log(favType, yourMuseum);
+  // special message is only from the 5th question that I could not reasign so that I created a function to a proper message.
+
   if (specialmessage) {
     showBotInput(specialmessage);
   } else {
     showBotInput(questions[currentIndex].message);
   }
+
+  //   this validate if input field needs button or select. select was only used in question 3. So I wrote html just for the questin.
+  // So if I need to extend more questions, this needs to be changed.
+  // Button part is reuseable.
   if (inputType === "button") {
     // create a div to pass buttons. Also addting a class name
     const buttonBox = document.createElement("div");
@@ -242,6 +261,8 @@ function createInputFields(inputType, specialmessage) {
     });
   }
 }
+
+// Here controls when messages should be appeared. I chose 500s for user inputs, and 1000s for bot inputs.
 
 function showUserInput(message) {
   setTimeout(showMessage, 500, message, "user");
@@ -308,6 +329,7 @@ sendBtn.addEventListener("click", (event) => {
   return;
 });
 
+// //////////////////////////////////////////////////////////////////////////////////////////
 // This is for a background music. A user can choose which music, by cliking one of buttons under h1.
 const backMusicBtns = document.querySelectorAll(".music-container button");
 
