@@ -5,7 +5,7 @@ const nameInput = document.getElementById("name-input");
 const btn = document.getElementById("send-btn");
 // Find all the food choice button
 const foodBtn = document.getElementById("foodChoice");
-
+const dropDown = document.getElementById("subChoice")
 // If you need any global variables that you can use across different functions, declare them here:
 // Bot replies with user name and ask the next question
 // Problem : how to stop showing bot response at once from the beginnin 
@@ -80,31 +80,47 @@ const nameMsg = (event) => {
   nameInput.value = "";
   ;
   currerntQuestion++;
-}
+};
 
 // const v = (event) => {
 //   console.log(event);
 // };
 //show message according to the user's choice
-
-
-// Loop through the buttons and add a click to event listener to each button
-
-const displayChoice = (event) => {
+const displayFood = (event) => {
   switch (event.target.id) {
     case 'pizza':
       showMessage("pizza", "user");
       break;
-    case 'salad':
-      showMessage("salad", "user");
-      break;
     case 'pasta':
       showMessage("pasta", "user");
       break;
+    case 'salad':
+      showMessage("salad", "user");
+      break;
   }
-};
+  let selectedChoice = event.target.id;
+  setTimeout(() => {
+    if (selectedChoice === 'pizza') {
+      showMessage("Oh so you're in the mood for pizza? Great choice. Select something from the menu!", "bot")
+      foodChoice.classList.add("hidden")
+    }
+    else if (selectedChoice === 'pasta') {
+      showMessage("Oh so you're in the mood for pasta? Great choice. Select something from the menu!", "bot")
+      foodChoice.classList.add("hidden")
+    }
+    else if (selectedChoice === 'salad') {
+      showMessage("Oh so you're in the mood for salad? Great choice. Select something from the menu!", "bot")
+      foodChoice.classList.add("hidden")
+    }
 
-foodBtn.querySelectorAll('button').forEach(button => button.addEventListener("click", displayChoice));
+  }, 1000)
+
+};
+// Loop through the buttons and add a click to event listener to each button
+foodBtn.querySelectorAll('button').forEach(button => button.addEventListener("click", displayFood));
+
+
+
 
 
 
