@@ -117,9 +117,11 @@ const handleNameInput = (event) => {
           showMessage(`Amazing!`, 'bot');
         } else {
           showMessage(`You need to think about your age. This page will be automatically reloaded.`, 'bot');
+          yesBtn.style.display = 'none';
+          noBtn.style.display = 'none';
           setTimeout(() => {
             location.reload();
-          }, 2999);
+          }, 2995);
         }
 
         // dropdown menu
@@ -129,7 +131,7 @@ const handleNameInput = (event) => {
           inputWrapper.style.display = 'none';
           yesBtn.style.display = 'none';
           noBtn.style.display = 'none';
-        }, 3000);
+        }, 3300);
       };
 
       // Event listener dropDown menu

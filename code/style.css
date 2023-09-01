@@ -183,24 +183,9 @@ button:hover {
 
 }
 
-.ageBtn1,
-.ageBtn2 {
-  display: block;
-  width: 50%;
-  background-color: #4c7b89;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 16px 40px;
-  margin-right: 4px;
-  font-size: 16px;
-  line-height: 26px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
 
+.ageBtn1,
+.ageBtn2,
 .yesBtn,
 .noBtn,
 .notGoodBtn,
