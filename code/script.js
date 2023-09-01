@@ -44,9 +44,11 @@ const showMessage = (message, sender) => {
 };
 
 
-// Function greets the user, the showMessage function is being called, asking for name.
+
+// When button is clicked, chatbot asks first question.
 startBtn.onclick = (greetUser, event) => {
 
+  // showMessage function is being called, greets the user.
   showMessage(`Hello there, welcome to the evaluation sheet! 
     We are really happy that you take your time to answer some questions
     in order for us to improve our service.`, 'bot');
@@ -227,5 +229,5 @@ nameInput.addEventListener('keydown', (event) => {
   }
 });
 
-// When website loaded, chatbot asks first question.
-//setTimeout(greetUser, 1000);
+
+
