@@ -54,7 +54,7 @@ startBtn.onclick = (greetUser, event) => {
 
   setTimeout(() => {
     showMessage(` First of all, what's your name?`, 'bot');
-  }, 1000);
+  }, 4000);
 
 }
 
@@ -214,7 +214,7 @@ const handleNameInput = (event) => {
 
 
 
-    }, 2000);
+    }, 3000);
   }, 2000);
 
 };

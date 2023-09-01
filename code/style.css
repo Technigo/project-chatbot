@@ -6,7 +6,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #6a8e99;
+  background-image: url("https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2260&q=80");
+
 }
 
 h1 {
@@ -54,7 +55,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.3);
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -130,7 +131,7 @@ label {
 }
 
 button {
-  background-color: #6a8e99;
+  background-color: #4c7b89;
   color: white;
   border: none;
   border-radius: 4px;
@@ -166,7 +167,7 @@ button:hover {
   transform: translate(-50%, -50%);
   display: block;
   width: 300px;
-  background-color: #6a8e99;
+  background-color: #4c7b89;
   color: white;
   border: none;
   border-radius: 4px;
@@ -190,7 +191,7 @@ button:hover {
 .goodBtn {
   display: none;
   width: 50%;
-  background-color: #6a8e99;
+  background-color: #4c7b89;
   color: white;
   border: none;
   border-radius: 4px;
@@ -207,7 +208,7 @@ button:hover {
 .dropDown {
   display: none;
   width: 100%;
-  background-color: #6a8e99;
+  background-color: #4c7b89;
   color: white;
   border: none;
   border-radius: 4px;
