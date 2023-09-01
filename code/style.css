@@ -149,8 +149,36 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-.foodChoice {
+.choiceBtn {
   display: flex;
+
+}
+
+.startBtnContainer {
+  display: relative;
+}
+
+.startBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 300px;
+  background-color: #6a8e99;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 40px;
+  margin-right: 4px;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
 }
 
 .ageBtn1,

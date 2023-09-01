@@ -12,6 +12,7 @@ const dropDown = document.getElementById('dropDown');
 const notGoodBtn = document.getElementById('notGoodBtn');
 const okayBtn = document.getElementById('okayBtn');
 const goodBtn = document.getElementById('goodBtn');
+const startBtn = document.getElementById('startBtn');
 
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -44,19 +45,25 @@ const showMessage = (message, sender) => {
 
 
 // Function greets the user, the showMessage function is being called, asking for name.
-const greetUser = () => {
+startBtn.onclick = (greetUser, event) => {
+
   showMessage(`Hello there, welcome to the evaluation sheet! 
-  We are really happy that you take your time to answer some questions
-  in order for us to improve our service.`, 'bot');
+    We are really happy that you take your time to answer some questions
+    in order for us to improve our service.`, 'bot');
+  startBtn.style.display = 'none';
 
   setTimeout(() => {
     showMessage(` First of all, what's your name?`, 'bot');
-  }, 4000);
-};
+  }, 1000);
+
+}
+
+
 
 // Function storing the name of the user.
 const handleNameInput = (event) => {
   event.preventDefault();
+
 
   const name = nameInput.value;
   showMessage(`${name}`, 'user');
@@ -219,4 +226,4 @@ nameInput.addEventListener('keydown', (event) => {
 });
 
 // When website loaded, chatbot asks first question.
-setTimeout(greetUser, 1000);
+//setTimeout(greetUser, 1000);
