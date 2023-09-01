@@ -5,7 +5,7 @@ const nameInput = document.getElementById('name-input');
 const inputWrapper = document.getElementById('input-wrapper');
 // If you need any global variables that you can use across different functions, declare them here:
 let userName = '';
-
+let dishOptions = {};
 
 // Declare your functions after this comment
 
@@ -88,7 +88,7 @@ const handleRestaurantButtonClick = (event) => {
 const handleRestaurantChoice = (choice) => {
   showMessage(`You have chosen ${choice}, that's my favorite restaurant too! Now it's time to choose your favorite dish!`, 'bot');
   
-  const dishOptions = {
+ dishOptions = {
     'Mille lire': ['Antipasto', 'Margherita', 'Napoli'],
     'Surfers': ['Bang bang ji zi', 'Sishuan Liang Mian', 'Beef Shui Zhu'],
     'Kasai': ['Crispy tempura roll', 'Truffle mushroom roll', 'Sashimi moriawase']
@@ -97,9 +97,10 @@ const handleRestaurantChoice = (choice) => {
   const dishButtons = dishOptions[choice].map(dish => `<button class="dish-btn" data-dish="${dish}">${dish}</button>`).join('');
   showMessage(`Please choose your favorite dish: ${dishButtons}`, 'bot');
 
-  chat.removeEventListener('click', handleRestaurantButtonClick);
-  chat.addEventListener('click', handleDishButtonClick);
+  
+  chat.addEventListener('click', (event) => handleDishButtonClick(event, choice)); // Pass choice as an argument
 };
+
 
 // Function to handle the user's dish button click
 const handleDishButtonClick = (event) => {
@@ -107,8 +108,31 @@ const handleDishButtonClick = (event) => {
   
   if (dishButton) {
     const dish = dishButton.getAttribute('data-dish');
-    showMessage(`You have chosen ${dish}. Please choose the serving size:`, 'bot');
+    const options = dishOptions[choice][dish]; // Get serving size options for the selected dish
+    
+    // Create a dropdown select menu for serving size
+    const selectMenu = document.createElement('select');
+    selectMenu.id = 'size-select';
+    
+    // Populate the select menu with options
+    options.forEach(option => {
+      const optionElement = document.createElement('option');
+      optionElement.value = option;
+      optionElement.textContent = `${option} (${option === 'Normal' ? 21 : 12} Euro)`;
+      selectMenu.appendChild(optionElement);
+    });
+    
+    showMessage(`You have chosen ${dish}. Please select the serving size:`, 'bot');
+    chat.appendChild(selectMenu);
+
+    // Add event listener for the dropdown menu
+    selectMenu.addEventListener('change', handleSizeSelect);
   }
+};
+
+const handleSizeSelect = (event) => {
+  const selectedSize = event.target.value;
+  showMessage(`You have chosen ${selectedSize}. Enjoy your meal!`, 'bot');
 };
 
 
