@@ -323,7 +323,7 @@ function showNewbies(newbies) {
 /* ------------- END INTERACTION ------------- */
 // An extra message for when the user chooses to end the chat.
 const endChat = () => {
-  setTimeout(showMessage(`Feel free to close down the window when ever you are ready to pop the pop-corn 🤓`, "bot"), 1000);
+  setTimeout(showMessage(`Press <b>CMD+R</b> to get a new tip, or feel free to close down the window when ever you are ready to pop the pop-corn 🤓`, "bot"), 1000);
   form.remove(); // all form elements are removed to make the chat look closed
 };
 
