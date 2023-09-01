@@ -153,13 +153,13 @@ button:hover {
   display: flex;
 }
 
-#choiceBtn1,
-#choiceBtn2,
-#yesBtn,
-#noBtn,
-#notGoodBtn,
-#okayBtn,
-#goodBtn {
+.ageBtn1,
+.ageBtn2,
+.yesBtn,
+.noBtn,
+.notGoodBtn,
+.okayBtn,
+.goodBtn {
   display: none;
   width: 50%;
   background-color: #6a8e99;

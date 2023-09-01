@@ -4,8 +4,8 @@ const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('input-wrapper');
 const nameInput = document.getElementById('name-input');
 const ageInput = document.getElementById('name-input');
-const choiceBtn1 = document.getElementById('choiceBtn1');
-const choiceBtn2 = document.getElementById('choiceBtn2');
+const ageBtn1 = document.getElementById('ageBtn1');
+const ageBtn2 = document.getElementById('ageBtn2');
 const yesBtn = document.getElementById('yesBtn');
 const noBtn = document.getElementById('noBtn');
 const dropDown = document.getElementById('dropDown');
@@ -69,27 +69,27 @@ const handleNameInput = (event) => {
     // showMessage being called, asking for age, displaying Btn1, Btn2 as a block elements.
     setTimeout(() => {
       showMessage(`But first, how old are you ${name} ?`, 'bot');
-      choiceBtn1.style.display = 'block';
-      choiceBtn2.style.display = 'block';
+      ageBtn1.style.display = 'block';
+      ageBtn2.style.display = 'block';
       inputWrapper.style.display = 'none';
 
       // hides buttons after clicking it
-      choiceBtn1.onclick = (event) => {
-        handlechoiceBtn(event, name, 'under 18'); //string under 18 passed as an argument to ageGroup
-        choiceBtn1.style.display = 'none';
-        choiceBtn2.style.display = 'none';
+      ageBtn1.onclick = (event) => {
+        handleageBtn(event, name, 'under 18'); //string under 18 passed as an argument to ageGroup
+        ageBtn1.style.display = 'none';
+        ageBtn2.style.display = 'none';
         inputWrapper.style.display = 'block';
       };
-      choiceBtn2.onclick = (event) => {
-        handlechoiceBtn(event, name, 'over 18');//paramter string over 18 passed as an argument to ageGroup
-        choiceBtn1.style.display = 'none';
-        choiceBtn2.style.display = 'none';
+      ageBtn2.onclick = (event) => {
+        handleageBtn(event, name, 'over 18');//paramter string over 18 passed as an argument to ageGroup
+        ageBtn1.style.display = 'none';
+        ageBtn2.style.display = 'none';
         inputWrapper.style.display = 'block';
 
       };
 
       // Functions answer. Let ageGroup parameter take on over/under 18 value. Calling showMessage function
-      const handlechoiceBtn = (event, name, ageGroup) => {
+      const handleageBtn = (event, name, ageGroup) => {
         event.preventDefault();
         showMessage(`I'm ${ageGroup}!`, 'user');
 
@@ -158,10 +158,10 @@ const handleNameInput = (event) => {
 
       });
 
+      //Rate purchase answer, calling review function when clicking the button 
       const handleReview = (review, name) => {
-        showMessage(`${review}!`, 'user');
+        showMessage(`${review}`, 'user');
 
-        //Rate purchase answer, calling review function when clicking the button 
         setTimeout(() => {
           if (review === 'Not good') {
             showMessage(`${name}, this is not good!
