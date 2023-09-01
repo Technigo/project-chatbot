@@ -111,19 +111,26 @@ const askPriceRange = () => {
     <option id="range-3" value="range-3">1001-3000kr</option>
     </select>
     `; 
-  //Adding eventlisteners to options
+  //Adding eventlisteners to option range 1
   document.getElementById('price-select')
-    .addEventListener('change', () => {
+    .addEventListener('change', (event) => {
+      //Storing the value of the event target
+      const selectedPriceRange = event.target.value
       //User reply comes up
-      showMessage("I can only afford this much.", "user")
+      showMessage("This is what I can afford.", "user")
       //Invokes bot's next message
-      setTimeout(() => confirmPriceRange('range-1'), 1000)
+      setTimeout(() => confirmPriceRange(selectedPriceRange), 1000)
     })
 }
 
 const confirmPriceRange = (priceRange) => {
  if (priceRange === 'range-1') {
-  showMessage(`Is that all?`)
+  showMessage(`Is that all?`, 'bot')
+  setTimeout(() => showMessage(`That's fine, I'm sure we'll come up with something!`, 'bot'), 2000)
+ } else if (priceRange === 'range-2') {
+  showMessage (`Excellent. I'm sure we can find something nice for your friend.`, 'bot')
+ } else if(priceRange === 'range-3'){
+  showMessage (`Amazing! It must be quite a special friend!`, 'bot')
  }
 }
 
