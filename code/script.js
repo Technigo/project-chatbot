@@ -102,6 +102,7 @@ const serviceOffers = () => {
       // without timeout confirmation too late
       // calling next question - 1b
     }
+    // DEAR EVALUATOR, I HAD NO CLUE HOW TO PULL OUT THE COND.STATEMENT AND OUTSOURCE IT SOMEWHERE ELSE... :(
     // console.log(serviceChoice);
     selectionConfirmation();
 
@@ -256,7 +257,7 @@ const invoiceMessage = () => {
 const offerDeveloper = () => {
   showMessage(`
   Do you need some help creating your website?<br>
-  We have commited junior developers at hand.
+  We have commited junior developers from Technigo at hand.
   `, "bot");
 
   // create 2 buttons
@@ -293,7 +294,7 @@ const goodByeMessage = () => {
   if (developerOption == "yes") {
     showMessage(`Great! We get in touch with you soon to connect you! Good bye!`, "bot");
   } else {
-    showMessage(`Ìf you need help later, just+ get back to us. Good bye!`, "bot");
+    showMessage(`Ìf you need help later, just get back to us. Good bye!`, "bot");
   }
   document.getElementById("assistance-wrapper").style.display = "none";
   // let vanish buttons

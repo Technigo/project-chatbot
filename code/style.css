@@ -6,15 +6,29 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  /* background: #0026ff; */
+  background-color: rgb(12, 19, 35);
+  background-image: url(assets/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
+section#chat {
+  overflow-x: hidden;
+}
+
+/* removes horizontal scrollbar */
 
 h1 {
   font-weight: bold;
-  font-size: 28px;
+  /* font-size: 28px;*/
+  font-size: 32px;
   line-height: 34px;
   color: #fff;
   text-align: center;
+  margin: 3vh;
+  letter-spacing: .3em;
+  text-shadow: 0 0 7px rgb(189, 254, 255);
 }
 
 h2 {
@@ -37,7 +51,8 @@ main {
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
-  height: 600px;
+  /* height: 600px; */
+  height: 80vh;
   border-radius: 30px;
   background: #fff;
   padding: 20px 24px;
@@ -45,6 +60,10 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  background-image: url(assets/chatbackground.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: 10px double rgb(48, 164, 221);
 }
 
 
@@ -63,8 +82,10 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  /* background: #e5e9ff; */
+  background-color: hsl(200, 72%, 95%);
+  /* color: #0026ff; */
+  color: rgb(15, 50, 78);
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -95,12 +116,14 @@ input {
 }
 
 .bubble {
-  background: #e5e9ff;
+  /* background: #e5e9ff; */
+  background-color: rgb(189, 254, 255);
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  /* color: #0026ff; */
+  color: rgb(15, 45, 73);
   max-width: 60%;
 }
 
@@ -129,17 +152,20 @@ label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  /* color: #0026ff; */
+  color: rgb(15, 50, 78);
   margin-right: 20px;
   ;
 }
 
 button {
-  background-color: #0026ff;
+  /* background-color: #0026ff; */
+  background-color: rgb(15, 50, 78);
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 16px 40px;
+  /* padding: 16px 40px; */
+  padding: 1em 1.3em;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
@@ -152,4 +178,34 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+/* footer */
+#footerdiv {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: left;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.8em;
+}
+
+div#footerdiv p {
+  display: inline-block;
+  padding: 10px;
+  color: white;
+  font-size: 1rem;
+  text-shadow: none;
+}
+
+a,
+a:visited {
+  color: rgb(189, 254, 255);
+}
+
+/* @ media */
+@media (max-width: 700px) {
+  main {
+    max-height: 700px;
+  }
 }
