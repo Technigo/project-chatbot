@@ -313,6 +313,16 @@ const backMusicBtns = document.querySelectorAll(".music-container button");
 
 backMusicBtns.forEach((el) => {
   const audio = document.createElement("audio");
+
+  function soundMusic(el, src) {
+    el.addEventListener("click", () => {
+      if (!audio.paused) {
+        audio.pause();
+      } else {
+        startMusic(src);
+      }
+    });
+  }
   const startMusic = (music) => {
     audio.setAttribute("src", music);
     audio.setAttribute("loop", "loop");
@@ -321,29 +331,11 @@ backMusicBtns.forEach((el) => {
   };
 
   if (el.classList.contains("jazz")) {
-    el.addEventListener("click", () => {
-      if (!audio.paused) {
-        audio.pause();
-      } else {
-        startMusic("./assets/audio/piano.mp3");
-      }
-    });
+    soundMusic(el, "./assets/audio/piano.mp3");
   } else if (el.classList.contains("chill")) {
-    el.addEventListener("click", () => {
-      if (!audio.paused) {
-        audio.pause();
-      } else {
-        startMusic("./assets/audio/classic.mp3");
-      }
-    });
+    soundMusic(el, "./assets/audio/classic.mp3");
   } else {
-    el.addEventListener("click", () => {
-      if (!audio.paused) {
-        audio.pause();
-      } else {
-        startMusic("./assets/audio/techno.mp3");
-      }
-    });
+    soundMusic(el, "./assets/audio/techno.mp3");
   }
 });
 
