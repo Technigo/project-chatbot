@@ -13,7 +13,8 @@ const notGoodBtn = document.getElementById('notGoodBtn');
 const okayBtn = document.getElementById('okayBtn');
 const goodBtn = document.getElementById('goodBtn');
 const startBtn = document.getElementById('startBtn');
-
+var pop;
+pop = new Audio('pop.mp3');
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -51,10 +52,12 @@ startBtn.onclick = (greetUser, event) => {
   showMessage(`Hello there, welcome to the evaluation sheet! 
     We are really happy that you take your time to answer some questions
     in order for us to improve our service.`, 'bot');
+  pop.play();
   startBtn.style.display = 'none';
 
   setTimeout(() => {
     showMessage(` First of all, what's your name?`, 'bot');
+    pop.play();
   }, 4000);
 
 }
@@ -65,15 +68,17 @@ const handleNameInput = (event) => {
 
   const name = nameInput.value;
   showMessage(`${name}`, 'user');
+  pop.play();
 
   // displaying the name of the user
   setTimeout(() => {
     showMessage(`${name}, we want to know what you think about our products!`, 'bot');
     nameInput.value = "";
-
+    pop.play();
     // showMessage being called, asking for age, displaying ageBtn as a block elements.
     setTimeout(() => {
       showMessage(`But first, how old are you ${name} ?`, 'bot');
+      pop.play();
       ageBtn1.style.display = 'block';
       ageBtn2.style.display = 'block';
       inputWrapper.style.display = 'none';
@@ -97,9 +102,10 @@ const handleNameInput = (event) => {
       const handleageBtn = (event, name, ageGroup) => {
         event.preventDefault();
         showMessage(`I'm ${ageGroup}!`, 'user');
-
+        pop.play();
         setTimeout(() => {
           showMessage(`So ${name}, you are ${ageGroup}, is this correct?`, 'bot');
+          pop.play();
           yesBtn.style.display = 'block';
           noBtn.style.display = 'block';
           inputWrapper.style.display = 'none';
@@ -111,10 +117,13 @@ const handleNameInput = (event) => {
       // function confirm age, if not confimed display unvalid option
       const handleResponse = (response, name) => {
         showMessage(`${response}!`, 'user');
+        pop.play();
         if (response === `yes`) {
           showMessage(`Amazing!`, 'bot');
+          pop.play();
         } else {
           showMessage(`You need to think about your age. This page will be automatically reloaded.`, 'bot');
+          pop.play();
           yesBtn.style.display = 'none';
           noBtn.style.display = 'none';
 
@@ -127,6 +136,7 @@ const handleNameInput = (event) => {
         // dropdown menu
         setTimeout(() => {
           showMessage(`So, ${name} which medicine did you order from us? `, 'bot');
+          pop.play();
           dropDown.style.display = 'block';
           inputWrapper.style.display = 'none';
           yesBtn.style.display = 'none';
@@ -138,10 +148,11 @@ const handleNameInput = (event) => {
       dropDown.addEventListener('change', (event) => {
         const selectedOption = dropDown.options[dropDown.selectedIndex].text; //implement the index of dropdown, and provide the selectedOption with text content. adds the text from the selected option
         showMessage(`${selectedOption}`, 'user');
-
+        pop.play();
         //calling showMessage function, hiding btn
         setTimeout(() => {
           showMessage(`You ordered ${selectedOption}`, 'bot');
+          pop.play();
           dropDown.style.display = 'block';
           inputWrapper.style.display = 'none';
           yesBtn.style.display = 'none';
@@ -150,6 +161,7 @@ const handleNameInput = (event) => {
           //Rate purchase
           setTimeout(() => {
             showMessage(`How would you rate your purchase?`, 'bot');
+            pop.play();
             dropDown.style.display = 'none';
             inputWrapper.style.display = 'none';
             notGoodBtn.style.display = 'block';
@@ -160,6 +172,7 @@ const handleNameInput = (event) => {
             okayBtn.onclick = () => handleReview('Okay', name);
             goodBtn.onclick = () => handleReview('Good', name);
 
+
           }, 2000);
 
         }, 2000);
@@ -169,12 +182,13 @@ const handleNameInput = (event) => {
       //Rate purchase answer, calling review function when clicking the button 
       const handleReview = (review, name) => {
         showMessage(`${review}`, 'user');
-
+        pop.play();
         setTimeout(() => {
           if (review === 'Not good') {
             showMessage(`${name}, this is not good!
             We will evaluate the product.
             Thank you for sharing your opinion with us.`, 'bot');
+            pop.play();
             notGoodBtn.style.display = 'none';
             okayBtn.style.display = 'none';
             goodBtn.style.display = 'none';
@@ -188,6 +202,7 @@ const handleNameInput = (event) => {
             showMessage(`${name}, okay is not good enouth!
             We will evaluate the product.
             Thank you for sharing your opinion with us.`, 'bot');
+            pop.play();
             notGoodBtn.style.display = 'none';
             okayBtn.style.display = 'none';
             goodBtn.style.display = 'none';
@@ -200,6 +215,7 @@ const handleNameInput = (event) => {
           } else if (review === 'Good') {
             showMessage(`${name}, we are glad you are happy with your order!
             Hope to see you again soon!`, 'bot');
+            pop.play();
             notGoodBtn.style.display = 'none';
             okayBtn.style.display = 'none';
             goodBtn.style.display = 'none';
