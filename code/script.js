@@ -276,7 +276,7 @@ const suggestion = () => {
   //Bot asks if good suggestion
   setTimeout(() => askSuggestConfirm (), 2000)
 };
-
+  //Function for bot asking if the suggestion is good
 const askSuggestConfirm = () => {
   showMessage(`Are you pleased with this suggestion, ${name}? `, 'bot')
 
@@ -286,27 +286,39 @@ const askSuggestConfirm = () => {
   <button class="confirm-sugg-btn" id="sugg-no-btn" value='no'>No</button>
   `; 
 
+  //Adding eventhandlers to the confirmation buttons
   document.getElementById('sugg-yes-btn')
     .addEventListener('click', () => {
       //User reply comes up
       showMessage("Yes, thanks for the help!", "user")
+      //Invoking the bots reply
+      setTimeout(() => reactSuggestConfirm ("yes"), 1000)
     })
   document.getElementById('sugg-no-btn')
     .addEventListener('click', () => {
       //User reply comes up
       showMessage("No, I don't think that's a very suitable gift.", "user")
+      //invoking the bots reply
+      setTimeout(() => reactSuggestConfirm ("no"), 1000)
     })
 }
+
+//Function for bots reply and goodbye message
+const reactSuggestConfirm = (answer) => {
+  switch(answer) {
+    case "yes":
+    showMessage("I'm so happy I could help you! Welcome back anytime!", 'bot')
+    break
+    case "no":
+    showMessage("Sorry about that. Welcome back anytime!", 'bot')
+    break
+  }
+  //Removing the buttons to make the chat look closed.
+  inputWrapper.remove() 
+  }
 
 // Set up your eventlisteners here
 nameForm.addEventListener ('submit', handleNameInput)
 
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000)
-
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
