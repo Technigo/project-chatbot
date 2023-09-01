@@ -6,10 +6,59 @@ const submitBtn = document.getElementById('submit-btn');
 const inputField = document.getElementById('name-input');
 //let pop = new Audio("./assets/pop.mp3"); // Sound effect to the chat
 
-
-
 // GLOBAL VARIABLES
 let userAnswer = ""; // stores users answer in a variable globally for use anywhere
+let selectedGenre = ""; // stores selected genre in a variable globally for use anywhere
+
+// GLOBAL OBJECTS
+// Stores the different movie-choices in an object for easier handling further down.
+const oldiesObject = {
+  Action: [
+    "Die Hard (1988)",
+    "Indiana Jones and the Last Crusade (1989)",
+    "Terminator 2: Judgment Day (1991)",
+    "Lethal Weapon (1987)",
+    "RoboCop (1987)"
+  ],
+  Comedy: [
+    "Ferris Bueller's Day Off (1986)",
+    "Back to the Future (1985)",
+    "The Princess Bride (1987)",
+    "Planes, Trains & Automobiles (1987)",
+    "Beetlejuice (1988)"
+  ],
+  Drama: [
+    "The Shawshank Redemption (1994)",
+    "Schindler's List (1993)",
+    "Pulp Fiction (1994)",
+    "Forrest Gump (1994)",
+    "The Silence of the Lambs (1991)"
+  ]
+};
+
+const newbiesObject = {
+  Action: [
+    "Mad Max: Fury Road (2015)",
+    "John Wick: Chapter 3 - Parabellum (2019)",
+    "Avengers: Endgame (2019)",
+    "Spider-Man: No Way Home (2021)",
+    "Dune (2021)"
+  ],
+  Comedy: [
+    "Jojo Rabbit (2019)",
+    "Borat Subsequent Moviefilm (2020)",
+    "The French Dispatch (2021)",
+    "Free Guy (2021)",
+    "Don't Look Up (2021)"
+  ],
+  Drama: [
+    "Joker (2019)",
+    "1917 (2019)",
+    "Nomadland (2020)",
+    "The Trial of the Chicago 7 (2020)",
+    "The Power of the Dog (2021)"
+  ]
+};
 
 // FUNCTIONS
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -135,11 +184,16 @@ const submitForm = (clickingPreventsDefault) => {
 
 /* ------------- SECOND INTERACTION ------------- */
 const greetUser = () => {
-  // Once the user has entered their name, they are shown a greeting message. The field and button in the form are removed to make room for yes and no buttons, which are then inserted with the createButtons function.
-  showMessage(`Nice to meet you ${userAnswer}! Would you like a movie tip for tonight 😃?`, 'bot');
-  inputField.remove();
-  submitBtn.remove();
-  OptInQuestion();
+  // First of all, the bot checks for an input, if it is NOT empty, it will ask if the user wants a movie tip.
+  if (userAnswer !== "") {
+    // Once the user has entered their name, they are shown a greeting message. The field and button in the form are removed to make room for yes and no buttons, which are then inserted with the createButtons function.
+    showMessage(`Nice to meet you ${userAnswer}! Would you like a movie tip for tonight 😃?`, 'bot');
+    inputField.remove();
+    submitBtn.remove();
+    OptInQuestion();
+  } else {
+    showMessage(`Please enter a name so that I can assist you with a hint of personal touch! 🤓`, 'bot');
+  }
 };
 
 /* ------------- THIRD INTERACTION ------------- */
@@ -170,7 +224,7 @@ const OptInQuestion = () => {
 /* ------------- FOURTH INTERACTION ------------- */
 // Creates the select dropdown with different genre-options
 const chooseGenre = () => {
-  createSelectMenu("Drama", "Sci-fi", "Thriller");
+  createSelectMenu("Action", "Comedy", "Drama");
   // Declares a varaible for the select element to be used when getting the text content of it further down
   const selectDropDown = document.querySelector('.select-menu');
 
@@ -178,7 +232,7 @@ const chooseGenre = () => {
   const checkValue = () => {
     // This variable needs to be inside of the checkValue function, if it's outside of it, the code hasn't had time to "store" the value yet, and therefore it returns an error
     const genre = selectDropDown[selectDropDown.selectedIndex].text;
-    //const botSentence = showMessage(`${genre} is a great choice! Would you like to see an oldie but a goodie, or a newer movie?`, "bot");
+    selectedGenre = genre; // selectedGenre is the same as genre
 
     const optionInteraction = () => {
       showMessage(`${genre}`, "user");
@@ -186,6 +240,7 @@ const chooseGenre = () => {
       selectDropDown.value = " ";
       setTimeout(() => selectDropDown.remove(), 1000);
     }
+
     optionInteraction();
     setTimeout(() => createButtons("🧓🏻", "btn-one", "🍼", "btn-two"), 1000);
     setTimeout(() => oldieOrNewbie(), 1000);
@@ -194,33 +249,52 @@ const chooseGenre = () => {
 
 };
 
+/* ------------- FIFTH INTERACTION ------------- */
+// Lets user select from an old movie or a new movie
 function oldieOrNewbie() {
   const oldie = document.getElementById("btn-one");
   const newbie = document.getElementById("btn-two");
 
+  // This part is for the older movies.
   oldie.addEventListener("click", () => {
     showMessage("Oldie please 🧓🏻", "user");
-    setTimeout(() => showMessage(`Of course ${userAnswer}! Here is a list of movies for you to choose from 🥰`, "bot"), 1000);
-    setTimeout(() => showOldies(), 2000);
+    // The selectedGenre retrieves the oldies list that we want to display, based on the users answer
+    const oldiesByGenre = oldiesObject[selectedGenre];
+
+    // If the selected genre is in the list it displays an answer to the user, otherwise it sends an error
+    if (oldiesByGenre) {
+      setTimeout(() => showMessage(`Of course ${userAnswer}! Here is a list of movies for you to choose from 🥰`, "bot"), 1000);
+      setTimeout(() => showOldies(oldiesByGenre), 2000);
+    } else {
+      showMessage(`I'm sorry, but there are no oldies available for the selected genre.`, "bot");
+    }
     oldie.remove();
     newbie.remove();
     setTimeout(() => endChat(), 4000);
   });
 
+  // This part is for the newer movies.
   newbie.addEventListener("click", () => {
     showMessage("Newbie please 🍼", "user");
-    setTimeout(() => showMessage(`Of course ${userAnswer}! Here is a list of movies for you to choose from 🥰`, "bot"), 1000);
-    setTimeout(() => showNewbies(), 2000);
+    const newbiesByGenre = newbiesObject[selectedGenre];
+
+    if (newbiesByGenre) {
+      setTimeout(() => showMessage(`Of course ${userAnswer}! Here is a list of movies for you to choose from 🥰`, "bot"), 1000);
+      setTimeout(() => showOldies(newbiesByGenre), 2000);
+    } else {
+      showMessage(`I'm sorry, but there are no oldies available for the selected genre.`, "bot");
+    }
     oldie.remove();
     newbie.remove();
     setTimeout(() => endChat(), 4000);
   });
 };
 
-function showOldies() {
-  createList("my-list", "The top 5 best classical movies:");
+/* ------------- SIXT INTERACTION ------------- */
+// Shows a list of films based on the selected genre and old/new movie
+function showOldies(oldies) {
+  createList("my-list", "The top 5 best movies based on your wishes:");
   const list = document.getElementById("my-list");
-  const oldies = ["The Godfather", "Casablanca", "Gone with the wind", "The Wizard of Oz", "West Side Story"];
 
   for (let i = 0; i < oldies.length; ++i) {
     let li = document.createElement('li');
@@ -232,10 +306,9 @@ function showOldies() {
   lastListItem.scrollIntoView();
 }
 
-function showNewbies() {
-  createList("my-list", "The top 5 best new movies:");
+function showNewbies(newbies) {
+  createList("my-list", "The top 5 best movies based on your wishes:");
   const list = document.getElementById("my-list");
-  const newbies = ["Oppenheimer", "Spider-Man: Across the Spider-Verse", "Top Gun: Maverick", "Barbie", "The Father"];
 
   for (let i = 0; i < newbies.length; ++i) {
     let li = document.createElement('li');
@@ -247,13 +320,12 @@ function showNewbies() {
   lastListItem.scrollIntoView();
 }
 
+/* ------------- END INTERACTION ------------- */
 // An extra message for when the user chooses to end the chat.
 const endChat = () => {
   setTimeout(showMessage(`Feel free to close down the window when ever you are ready to pop the pop-corn 🤓`, "bot"), 1000);
   form.remove(); // all form elements are removed to make the chat look closed
 };
-
-
 
 // EVENT LISTENERS
 submitBtn.addEventListener("click", submitForm);
