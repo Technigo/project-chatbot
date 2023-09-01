@@ -166,3 +166,15 @@ button:hover {
   font-size: 25px;
 
 }
+#red-btn {
+  background-color: red;
+}
+
+#yellow-btn {
+  background-color: rgb(255, 213, 0);
+}
+
+#green-btn {
+  background-color: green;
+}
+

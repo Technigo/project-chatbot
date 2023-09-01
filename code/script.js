@@ -6,7 +6,7 @@ const nameForm = document.getElementById('name-form')
 const inputWrapper = document.getElementById('input-wrapper')
 
 // If you need any global variables that you can use across different functions, declare them here:
-
+let name = ""; 
 
 // Declare your functions after this comment
 
@@ -49,7 +49,7 @@ const greetUser = () => {
 const handleNameInput = (event) => { 
   event.preventDefault(); 
   //name saved for later
-  const name = nameInput.value
+  name = nameInput.value
   console.log(name)
   //the users name pops up as a message
   showMessage(name, "user")
@@ -62,9 +62,7 @@ const handleNameInput = (event) => {
 const askForGender = (name) => {
   //Bot's welcome message with name pops up. Asks for gender.
   showMessage(`Nice to meet you ${name}! <br><br> Are you looking for a gift for a gentleman or a lady?`, "bot")
-  //The input form is removed
-  nameForm.remove()
-  //Instead buttons with gender choice appears
+  //Buttons with gender choice appears
   inputWrapper.innerHTML =`
   <button class="gender-btn" id="lady-btn">👩‍🦰</button>
   <button class="gender-btn" id="gentleman-btn">🧔</button>
@@ -73,31 +71,29 @@ const askForGender = (name) => {
   document.getElementById('lady-btn')
     .addEventListener('click', () => {
       //User reply comes up
-      showMessage("It's for a lady", "user")
+      showMessage("It's for a lady.", "user")
       //Invokes bot's next message
-      setTimeout(() => confirmGender('lady', name), 1000)
+      setTimeout(() => confirmGender('lady'), 1000)
     })
   document.getElementById('gentleman-btn')
     .addEventListener('click', () => {
       //User reply comes up
-      showMessage("It's for a gentleman", "user")
+      showMessage("It's for a gentleman.", "user")
       //Invokes bot's next message
-      setTimeout(() => confirmGender ('gentleman', name), 1000)
+      setTimeout(() => confirmGender ('gentleman'), 1000)
     })
 }
 
-const confirmGender = (gender, name) => {
+const confirmGender = (gender) => {
   //if it's a lady the bot will confirm this
   if (gender === "lady") {
     showMessage (`${name}, I'm sure we'll find her a lovely gift!`, 'bot')
-    //invoking bot's next message about price
-    setTimeout(() => askPriceRange(), 1000)
     //if it's a gentleman the bot will confirm this
   } else if (gender === "gentleman") {
     showMessage (`${name}, I'm sure we'll find him a lovely gift!`, 'bot')
-     //invoking bot's next message about price
-     setTimeout(() => askPriceRange(), 1000)
   }
+  //invoking bot's next message about price
+  setTimeout(() => askPriceRange(), 1000)
 }
 
 const askPriceRange = () => {
@@ -124,17 +120,75 @@ const askPriceRange = () => {
 }
 
 const confirmPriceRange = (priceRange) => {
+  //Bot replying to alternative 1
  if (priceRange === 'range-1') {
   showMessage(`Is that all?`, 'bot')
   setTimeout(() => showMessage(`That's fine, I'm sure we'll come up with something!`, 'bot'), 2000)
+  //Bot replying to alternative 2
  } else if (priceRange === 'range-2') {
   showMessage (`Excellent. I'm sure we can find something nice for your friend.`, 'bot')
+  //Bot replying to alternative 3
  } else if(priceRange === 'range-3'){
   showMessage (`Amazing! It must be quite a special friend!`, 'bot')
  }
+ //Invoking question about colour
+ setTimeout(() => askColour(), 2000)
 }
 
+const askColour = () => {
+  //Bot asks about colour
+  showMessage (`My next question, ${name}, is what colour the gift should have?`, 'bot')
+  //Buttons with colour choice appears
+  inputWrapper.innerHTML =`
+  <button class="colour-btn" id="red-btn" value='Red'>Red</button>
+  <button class="colour-btn" id="yellow-btn" value='Yellow'>Yellow</button>
+  <button class="colour-btn" id="green-btn" value='Green'>Green</button>
+  `; 
 
+  //Adding eventlisteners to colour buttons
+  document.getElementsByClassName('colour-btn')
+        .addEventListener('click', (event) => {
+          //Storing colour value
+          const selectedColour = event.target.value
+          console.log (selectedColour)
+          //User reply comes up
+          showMessage(`${selectedColour}, please`, 'user')
+          //Invokes bot's next message
+          setTimeout(()=> confirmColour(selectedColour), 1000)
+        })
+  // document.getElementById('red-btn')
+  //    .addEventListener('click', (event) => {
+  //     //Storing colour value
+  //     const selectedColour = event.target.value
+  //     console.log(selectedColour)
+  //     //User reply comes up
+  //     showMessage(`${selectedColour}, please.`, "user")
+  //     //Invokes bot's next message
+  //     setTimeout(() => confirmColour(selectedColour), 1000)
+  //    })
+  // document.getElementById('yellow-btn')
+  //   .addEventListener('click', (event) => {
+  //     //Storing colour value
+  //   const selectedColour = event.target.value
+  //   console.log(selectedColour)
+  //    //User reply comes up
+  //   showMessage(`${selectedColour}, please.`, "user")
+  //     //Invokes bot's next message
+  //    setTimeout(() => confirmColour (selectedColour), 1000)
+  //   })
+  //   document.getElementById('green-btn')
+  //   .addEventListener('click', (event) => {
+  //     //Storing colour value
+  //   const selectedColour = event.target.value
+  //   console.log(selectedColour)
+  //    //User reply comes up
+  //   showMessage(`${selectedColour}, please.`, "user")
+  //     //Invokes bot's next message
+  //    setTimeout(() => confirmColour (selectedColour), 1000)
+  //   })
+}
+
+//const confirmColour () => {}
 
 
 // Set up your eventlisteners here
