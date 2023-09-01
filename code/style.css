@@ -122,7 +122,7 @@ main {
 }
 
 /* new styling for the select input for Question 3 */
-#q3-dropdown {
+#q4-dropdown {
   width: 100%;
   font-size: 18px;
   font-family: 'Montserrat';
@@ -131,7 +131,7 @@ main {
 }
 
 /* new styling for the select options for Question 3 */
-#q3-dropdown option {
+#q4-dropdown option {
   width: 100%;
   font-size: 18px;
   font-family: 'Montserrat';

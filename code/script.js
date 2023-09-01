@@ -7,6 +7,8 @@ let userAnswered = false;
 let usersName = "Jane Doe";
 let questionCount = 0;
 let continentSelected = "Africa";
+let areaOptions = "Himalayas";
+
 
 // Declare your functions after this comment
 
@@ -75,16 +77,14 @@ const botQuestion3 = (yesOrNo) => {
    <button id="asia" value="asia">Asia</button>
    <button id="europe" value="europe">Europe</button>
     `
+    //event listener for when user clicks on their selected button
     q3Buttons.addEventListener("click", function (whichButton) {
       if (whichButton.target.value == "africa") {
         continentSelected = "Africa"
-        //call next question
       } else if (whichButton.target.value == "asia") {
         continentSelected = "Asia"
-        //call next question
       } else if (whichButton.target.value == "europe") {
         continentSelected = "Europe"
-        //call next question
       }
       // Store the Continent choice so we can access it after we clear it from the input
       console.log("continent selected is:", continentSelected);
@@ -98,28 +98,77 @@ const botQuestion3 = (yesOrNo) => {
     showMessage(`Please reload the page and try chatting with us again`, 'bot')
   }
 }
+
 const botQuestion4 = (continent) => {
   showMessage(`${continentSelected} is a great choice! 	&#128512`, 'bot');
-  showMessage(`There are so many amazing countries to visit in ${continentSelected} , so let's narrow it down...`, 'bot');
+  showMessage(`There are so many amazing countries to visit in ${continentSelected}, so let's narrow it down...`, 'bot');
   showMessage(`What area in ${continentSelected} most interests you?`, 'bot');
 
-}
+  questionCount = 3
+  //create 3 dropdown selections based on continent choice
+  if (continentSelected === "Africa") {
+    const areaOptions = document.getElementById("input-wrapper")
+    areaOptions.innerHTML = `
+    <select class="element select medium" id="q4-dropdown" name="q4-dropdown">
+      <option selected="selected">&#128071 Select an area of interest here</option>
+      <option value="westAfrica">West Africa and the Sahara</option>
+      <option value="eastAfrica">East Africa and the Serengeti</option>
+      <option value="SouthAfrica">Southern Africa, Namib Desert, and The Cape of Good Hope</option>
+    </select>
+  `
+    //event listener for when user clicks makes their selection on the dropdown menu
+    areaOptions.addEventListener("change", function (whichSelection) {
+      console.log(whichSelection.target.value)
+      // console.log("area of interest selected is:", areaOptions);
+      //   if (whichSelection.target.value == "") {
+      //     areaSelected = "Africa"
+      //     console.log()
+      //   } else if (whichButton.target.value == "asia") {
+      //     areaSelected = "Asia"
+      //   } else if (whichButton.target.value == "europe") {
+      //     areaSelected = "Europe"
+      //   }
+      // //Store the Continent choice so we can access it after we clear it from the input
+      // showMessage(`${areaSelected}`, 'user');
+      // setTimeout(botQuestion5, 1000);
+    })
 
+  } else if (continentSelected === "Asia") {
+    const areaOptions = document.getElementById("input-wrapper")
+    areaOptions.innerHTML = `
+  <select class="element select medium" id="q4-dropdown" name="q4-dropdown">
+    <option selected="selected">&#128071 Select an area of interest here</option>
+    <option value="middleEast">The Middle East and Central Asia</option>
+    <option value="Himalayas">The Indian subcontinent, China, and the Himalayas</option>
+    <option value="seAsia">South East Asia</option>
+  </select>
+`
+  } else if (continentSelected === "Europe") {
+    const areaOptions = document.getElementById("input-wrapper")
+    areaOptions.innerHTML = `
+<select class="element select medium" id="q4-dropdown" name="q4-dropdown">
+  <option selected="selected">&#128071 Select an area of interest here</option>
+  <option value="britishIsles">The British Isles</option>
+  <option value="scandinavia">Scandinavia, The Baltic and North Seas</option>
+  <option value="theAlps">Central Uplands, The Alps and the Mediterranean</option>
+</select>
+`
+  }
+
+
+} //end of botQuestion4 function
+//
+//
+//
+//
+//
+//
 //
 //
 //
 // Set up your eventlisteners here
 
-// const buttonTest = document.getElementById("send-btn");
-// const formTest = document.getElementById("name-form");
-// const SelectDivTest = document.getElementById("q3-dropdown-selec");
-
-// formTest.addEventListener("submit", function (e) {
-//   e.preventDefault(); // Prevents the form from actually submitting and refreshing the page
-//   alert("Form was submitted!");
-// });
-
-//listen for when form is submitted(button or 'enter pressed)
+//listen for when form is submitted(submit button or enter is pressed)
 logSubmit = (event) => {
   console.log(`Question count inside logsubmit:`, questionCount)
   event.preventDefault();
