@@ -7,6 +7,7 @@ const inputWrapper = document.getElementById('input-wrapper')
 
 // If you need any global variables that you can use across different functions, declare them here:
 let name = ""; 
+let gender = ""; 
 
 // Declare your functions after this comment
 
@@ -70,17 +71,22 @@ const askForGender = (name) => {
   //Adding eventlisteners to gender buttons
   document.getElementById('lady-btn')
     .addEventListener('click', () => {
+      //redeclaring global variable "gender"
+      gender = "lady"
+      console.log(gender)
       //User reply comes up
       showMessage("It's for a lady.", "user")
       //Invokes bot's next message
-      setTimeout(() => confirmGender('lady'), 1000)
+      setTimeout(() => confirmGender(gender), 1000)
     })
   document.getElementById('gentleman-btn')
     .addEventListener('click', () => {
+      //redeclaring global variable "gender"
+      gender = "gentleman"
       //User reply comes up
       showMessage("It's for a gentleman.", "user")
       //Invokes bot's next message
-      setTimeout(() => confirmGender ('gentleman'), 1000)
+      setTimeout(() => confirmGender (gender), 1000)
     })
 }
 
@@ -145,50 +151,33 @@ const askColour = () => {
   <button class="colour-btn" id="green-btn" value='Green'>Green</button>
   `; 
 
-  //Adding eventlisteners to colour buttons
+  //Adding eventlisteners to colour buttons using for...of loop
+  const allColourButtons =
   document.getElementsByClassName('colour-btn')
-        .addEventListener('click', (event) => {
+      for (const colourButton of allColourButtons){
+        colourButton.addEventListener('click', (event) => {
           //Storing colour value
           const selectedColour = event.target.value
           console.log (selectedColour)
           //User reply comes up
-          showMessage(`${selectedColour}, please`, 'user')
+          showMessage(`${selectedColour}, please.`, 'user')
           //Invokes bot's next message
           setTimeout(()=> confirmColour(selectedColour), 1000)
         })
-  // document.getElementById('red-btn')
-  //    .addEventListener('click', (event) => {
-  //     //Storing colour value
-  //     const selectedColour = event.target.value
-  //     console.log(selectedColour)
-  //     //User reply comes up
-  //     showMessage(`${selectedColour}, please.`, "user")
-  //     //Invokes bot's next message
-  //     setTimeout(() => confirmColour(selectedColour), 1000)
-  //    })
-  // document.getElementById('yellow-btn')
-  //   .addEventListener('click', (event) => {
-  //     //Storing colour value
-  //   const selectedColour = event.target.value
-  //   console.log(selectedColour)
-  //    //User reply comes up
-  //   showMessage(`${selectedColour}, please.`, "user")
-  //     //Invokes bot's next message
-  //    setTimeout(() => confirmColour (selectedColour), 1000)
-  //   })
-  //   document.getElementById('green-btn')
-  //   .addEventListener('click', (event) => {
-  //     //Storing colour value
-  //   const selectedColour = event.target.value
-  //   console.log(selectedColour)
-  //    //User reply comes up
-  //   showMessage(`${selectedColour}, please.`, "user")
-  //     //Invokes bot's next message
-  //    setTimeout(() => confirmColour (selectedColour), 1000)
-  //   })
+
+      }
 }
 
-//const confirmColour () => {}
+const confirmColour = (colour) => {
+  //Bot confirming colour choice
+  showMessage(`${colour} is definitely a great choice!`, 'bot')
+   //Invoking confirmation of all choices
+ setTimeout(() => confirmAllChoices(name, gender, priceRange, colour), 2000)
+}
+
+const confirmAllChoices = (name, gender, priceRange, colour) => {
+  showMessage(`So, ${name} is it correct that you want to find a ${colour} gift for a ${gender} in the price range of ${priceRange}? `)
+}
 
 
 // Set up your eventlisteners here
