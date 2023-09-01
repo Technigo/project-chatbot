@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #235784;
 }
 
 h1 {
@@ -33,21 +33,8 @@ p {
   margin: 0;
 }
 
-input {
-  box-sizing: border-box;
-  border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
-  padding: 16px;
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 600;
-  line-height: 26px;
-  flex: 1;
-}
-
 main {
+  /* for responsiveness(3 first lines) */
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
@@ -59,12 +46,14 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .chat {
   flex: 1;
   display: flex;
   justify-content: flex-start;
+  /* to add a scroll when the chat overflows while keeping same height */
   overflow: scroll;
   flex-direction: column;
   padding-bottom: 16px;
@@ -77,9 +66,11 @@ main {
 }
 
 .user-msg {
+  /* we want the whole user-msg to take the horizontal space but content at the end - bot-msg and user-msg doesn't blend on one line */
   display: flex;
   justify-content: flex-end;
   margin: 16px 0 0 8px;
+  /* for it to not shrink on small screens */
   flex-shrink: 0;
 }
 
@@ -95,30 +86,37 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #36626a;
   max-width: 40%;
 }
 
 .bot-bubble {
+  /* border-radius set to 0 at top-left corner */
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  background: rgb(247, 236, 191);
 }
 
 .user-bubble {
+  /* border-radius set to 0 at top left-corner */
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  background: #e5e9ff;
 }
 
-.input-wrapper {
+.input-container {
   display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
   justify-content: center;
 }
 
-.input-wrapper form {
+/* .input-container form {
   width: 100%;
   display: flex;
   align-items: center;
-}
+} */
 
 label {
   font-size: 16px;
@@ -128,8 +126,29 @@ label {
   margin-right: 20px;
 }
 
+form {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+input {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  background: #e5e9ff;
+  color: #0026ff;
+  padding: 16px;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  line-height: 26px;
+  flex: 1;
+}
+
+/* multiple buttons looking different (submit, select) afterwards if wanted */
 button {
-  background-color: #0026ff;
+  background-color: #588d9c;
   color: white;
   border: none;
   border-radius: 4px;
@@ -137,7 +156,7 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
