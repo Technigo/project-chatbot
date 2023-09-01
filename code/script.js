@@ -5,11 +5,13 @@ const sendBtn = document.getElementById('send-btn')
 const nameForm = document.getElementById('name-form')
 const inputWrapper = document.getElementById('input-wrapper')
 
+
 // If you need any global variables that you can use across different functions, declare them here:
 let name = ""; 
 let gender = ""; 
 let selectedPriceRange = ""; 
 let selectedColour = "";
+let select = ""; 
 
 // Declare your functions after this comment
 
@@ -104,16 +106,17 @@ const confirmGender = (gender) => {
 }
 
 const askPriceRange = () => {
-  showMessage (`So, how much can this special gift cost?`, 'bot')
+  showMessage (`So, how much is this special gift supposed to cost?`, 'bot')
   //Drop down window with three options will show up
   inputWrapper.innerHTML =`
     <select id="price-select">
     <option value="">--Please choose a price range--</option>
-    <option id="range-1" value="range-1">20-200kr</option>
-    <option id="range-2" value="range-2">201-1000kr</option>
-    <option id="range-3" value="range-3">1001-3000kr</option>
+    <option id="range-1" value="range-1">10-50€</option>
+    <option id="range-2" value="range-2">50-100€</option>
     </select>
     `; 
+    select = document.getElementById("price-select")
+  const priceRangeBtns = inputWrapper.innerHTML
   //Adding eventlisteners to option range 1
   document.getElementById('price-select')
     .addEventListener('change', (event) => {
@@ -121,6 +124,7 @@ const askPriceRange = () => {
       selectedPriceRange = event.target.value
       //User reply comes up
       showMessage("This is what I can afford.", "user")
+      select.remove() //Removing the buttons to make the chat look closed.
       //Invokes bot's next message
       setTimeout(() => confirmPriceRange(selectedPriceRange), 1000)
     })
@@ -129,20 +133,16 @@ const askPriceRange = () => {
 const confirmPriceRange = (priceRange) => {
   //Bot replying to alternative 1
  if (priceRange === 'range-1') {
-  selectedPriceRange = "20 to 200kr"
+  selectedPriceRange = "10 to 50€"
   showMessage(`Is that all?`, 'bot')
-  setTimeout(() => showMessage(`That's fine, I'm sure we'll come up with something!`, 'bot'), 2000)
+  setTimeout(() => showMessage(`That's fine, I'm sure we'll come up with something nice!`, 'bot'), 2000)
   //Bot replying to alternative 2
  } else if (priceRange === 'range-2') {
-  selectedPriceRange = "201 to 1000kr"
-  showMessage (`Excellent. I'm sure we can find something nice for your friend.`, 'bot')
-  //Bot replying to alternative 3
- } else if(priceRange === 'range-3'){
-  selectedPriceRange = "1001 to 3000kr"
+  selectedPriceRange = "50 to 100€"
   showMessage (`Amazing! It must be quite a special friend!`, 'bot')
- }
+ } 
  //Invoking question about colour
- setTimeout(() => askColour(), 2000)
+ setTimeout(() => askColour(), 3000)
 }
 
 const askColour = () => {
@@ -150,7 +150,6 @@ const askColour = () => {
   showMessage (`My next question, ${name}, is what colour the gift should have?`, 'bot')
   //Buttons with colour choice appears
   inputWrapper.innerHTML =`
-  <button class="colour-btn" id="red-btn" value='Red'>Red</button>
   <button class="colour-btn" id="yellow-btn" value='Yellow'>Yellow</button>
   <button class="colour-btn" id="green-btn" value='Green'>Green</button>
   `; 
@@ -217,11 +216,23 @@ switch(answer) {
 }
 
 const suggestion = () => {
-  if (gender === "lady" && selectedPriceRange === "20 to 200kr" && selectedColour === "Red") {
-    showMessage("How about a beautiful bouquet of red roses?", 'bot');
-  } else {
-    showMessage("I couldn't find any specific suggestion based on your criteria.", 'bot');
+  if (gender === "lady" && selectedPriceRange === "10 to 50€" && selectedColour === "Yellow") 
+    {showMessage("How about a vibrant yellow mug? It can brighten her mornings with her favorite hot beverage.", 'bot')
+  } else if (gender === "lady" && selectedPriceRange === "10 to 50€" && selectedColour === "Green")       {showMessage("How about a potted green succulent? It is a low-maintenance and aesthetically pleasing gift.", 'bot');
+  } else if (gender === "lady" && selectedPriceRange === "10 to 50€" && selectedColour === "Yellow")
+  {showMessage ("How about a yellow toaster? It can add a pop of color to her kitchen.", 'bot')
+  } else if (gender === "lady" && selectedPriceRange === "50 to 100€" && selectedColour === "Green")
+  {showMessage ("How about a soft green throw blanket? It could add comfort and style to her home.", 'bot')
+  } else if (gender === "gentleman" && selectedPriceRange === "10 to 50€" && selectedColour === "Yellow") 
+  {showMessage ("How about a yellow baseball cap with a cool design or logo? This could be a practical and fashionable accessory.", 'bot')
+  } else if (gender === "gentleman" && selectedPriceRange === "10 to 50€" && selectedColour === "Green") 
+  {showMessage ("How about a green-themed notebook or journal? Those are great for jotting down thoughts, notes, or sketches.", 'bot')
+  } else if (gender === "gentleman" && selectedPriceRange === "50 to 100€" && selectedColour === "Yellow") 
+  {showMessage ("How about a yellow hoodie? It could be a comfortable and trendy addition to his casual wardrobe.", 'bot')
+  } else if (gender === "gentleman" && selectedPriceRange === "50 to 100€" && selectedColour === "Green") 
+  {showMessage ("How about a green backpack? Especially a durable and stylish one - it can be practical for everyday use or travel.", 'bot')
   }
+  
 }
 
 // Set up your eventlisteners here
