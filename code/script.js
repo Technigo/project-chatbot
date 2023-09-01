@@ -21,6 +21,7 @@ const showMessage = (message, sender) => {
       </section>
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
+    // Not sure if I have fully understood the benefits of console.log and the ways it can be used - so here it is used to mirror the chatlog.
   } else if (sender === 'bot') {
     console.log(sender);
     console.log(message);
@@ -41,7 +42,7 @@ const showMessage = (message, sender) => {
 // BOT Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot')
+  showMessage("Hello traveller! What's your name?", 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -51,4 +52,4 @@ const greetUser = () => {
 // normally we would invoke a function like this:
 // greeting()
 // Function (message) Delay: setTimeout(functionName, timeToWaitInMilliSeconds)
-setTimeout(greetUser, 1000)
+setTimeout(greetUser, 2000)
