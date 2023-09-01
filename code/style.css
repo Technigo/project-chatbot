@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: hsl(36, 83%, 64%);
 }
 
 h1 {
@@ -33,6 +33,7 @@ p {
   margin: 0;
 }
 
+/*RESPONSE INPUT BAR - user writes answer*/
 input {
   box-sizing: border-box;
   border: none;
@@ -47,6 +48,7 @@ input {
   flex: 1;
 }
 
+/*WHITE CHATBOX*/
 main {
   margin: 0 auto;
   width: 100%;
@@ -56,11 +58,13 @@ main {
   background: #fff;
   padding: 20px 24px;
   padding-top: 0;
+  /*MAKES SURE THINGS HAVE TO FIT INSIDE THE BOX*/
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
 
+/*CHAT BUBBLES AND MESSAGES STYLING START*/
 .chat {
   flex: 1;
   display: flex;
@@ -128,6 +132,7 @@ label {
   margin-right: 20px;
 }
 
+/*SEND BUTTON*/
 button {
   background-color: #0026ff;
   color: white;
