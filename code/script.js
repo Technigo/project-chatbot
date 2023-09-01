@@ -4,6 +4,9 @@ const chat = document.getElementById('chat');
 const form = document.getElementById('name-form');
 const submitBtn = document.getElementById('submit-btn');
 const inputField = document.getElementById('name-input');
+//let pop = new Audio("./assets/pop.mp3"); // Sound effect to the chat
+
+
 
 // GLOBAL VARIABLES
 let userAnswer = ""; // stores users answer in a variable globally for use anywhere
@@ -11,6 +14,10 @@ let userAnswer = ""; // stores users answer in a variable globally for use anywh
 // FUNCTIONS
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
+  // For adding a sound effect to the bot
+  /*pop.oncanplay = () => {
+    pop.play();
+  };*/
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
   if (sender === 'user') {
     chat.innerHTML += `
@@ -39,7 +46,7 @@ const showMessage = (message, sender) => {
 const sayHello = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage(
-    "Hello there, I'm the Movie Bot. What's your name?", 'bot'
+    "Hi there! 👋 I'm your Movie Tips Assistant. What's your name?", 'bot'
   );
 };
 
@@ -76,8 +83,8 @@ const createSelectMenu = (option1, option2, option3) => {
         box-sizing: border-box;
         border: none;
         border-radius: 4px;
-        background: #e5e9ff;
-        color: #0026ff;
+        background: #EFEDEF;
+        color: #CD4F5C;
         padding: 16px;
         font-size: 16px;
         font-family: 'Montserrat';
@@ -242,7 +249,7 @@ function showNewbies() {
 
 // An extra message for when the user chooses to end the chat.
 const endChat = () => {
-  setTimeout(showMessage(`You can no close the window 🤓`, "bot"), 1000);
+  setTimeout(showMessage(`Feel free to close down the window when ever you are ready to pop the pop-corn 🤓`, "bot"), 1000);
   form.remove(); // all form elements are removed to make the chat look closed
 };
 

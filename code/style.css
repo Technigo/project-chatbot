@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #CD4F5C;
 }
 
 h1 {
@@ -37,8 +37,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #EFEDEF;
+  color: #CD4F5C;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -59,6 +59,9 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  box-shadow: 8px 8px 5px 0px rgba(157, 72, 79, 0.75);
+  /*-webkit-box-shadow: 10px 10px 5px 0px rgba(190, 87, 95, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(190, 87, 95, 0.75);*/
 }
 
 .chat {
@@ -90,12 +93,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #EFEDEF;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #CD4F5C;
   max-width: 40%;
 }
 
@@ -124,12 +127,12 @@ label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  color: #CD4F5C;
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #CD4F5C;
   color: white;
   border: none;
   border-radius: 4px;
