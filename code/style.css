@@ -13,14 +13,17 @@ body {
 body.cuba {
   background-image: url("./images/cuba.jpg");
   background-position: 65% 30%;
+  transition: .2s ease;
 }
 
 body.italy {
   background-image: url("./images/italy.jpg");
+  transition: .2s ease;
 }
 
 body.netherlands {
   background-image: url("./images/the-netherlands.jpg");
+  transition: .2s ease;
 }
 
 h1 {

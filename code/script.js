@@ -6,6 +6,8 @@ const inputWrapper = document.getElementById('input-wrapper')
 const nameInput = document.getElementById('name-input')
 const sendButton = document.getElementById('send-btn')
 const nameForm = document.getElementById('name-form')
+let username = ""
+//let selectedTravelOption = ""
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -31,7 +33,9 @@ const showMessage = (message, sender) => {
     `
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-  chat.scrollTop = chat.scrollHeight
+  setTimeout(() => { 
+    chat.scrollTop = chat.scrollHeight
+  }, 200)
 }
 
 // Starts here
@@ -48,10 +52,10 @@ const handleNameInput = (event) => {
     showMessage('I really want to know your name, please try again! ✏️', 'bot')
   } else {
     showMessage(name, 'user'); //User stod med ""
-    username = nameInput.value;
+    username = name;
     nameInput.value = ''; //Stod med ""
 
-    setTimeout(() => travelOption(nameInput.value), 1250);
+    setTimeout(() => travelOption(), 1250);
     inputWrapper.innerHTML = ''
   }
 
@@ -69,19 +73,19 @@ const travelOption = () => {
   document.getElementById('cuba')
     .addEventListener('click', () => {
       showMessage('I want to go to Cuba!', 'user')
-      setTimeout(() => activityQuestion('Cuba'), 1000)
+      setTimeout(() => activityQuestion('Cuba'), 800)
     })
 
   document.getElementById('italy')
     .addEventListener('click', () => {
       showMessage('Take me to Italy!', 'user')
-      setTimeout(() => activityQuestion('Italy'), 1000)
+      setTimeout(() => activityQuestion('Italy'), 800)
     })
 
   document.getElementById('netherlands')
     .addEventListener('click', () => {
       showMessage('I want to explore The Netherlands!', 'user')
-      setTimeout(() => activityQuestion('The Netherlands'), 1000)
+      setTimeout(() => activityQuestion('The Netherlands'), 800)
     })
 }
 
@@ -155,7 +159,6 @@ const activityQuestion = (selectedTravelOption) => {
       console.log('inputWrapper.innerHTML changed (netherlands)');
 
       break
-      process.exit(1)
   }
 
   console.log('set activitychoice listener');
@@ -196,16 +199,15 @@ const confirmationActivity = () => {
     })
 }
 
-const happyAnswer = (happyAnswer) => {
-  if (happyAnswer === 'Yes') {
-    showMessage('Awesome! Then get your virtual passport ready because we leave in 15 minutes! See ya soon!', 'bot')
+const happyAnswer = (userResponse) => {
+  if (userResponse === 'Yes') {
+    showMessage(`Awesome! Then get your virtual passport ready ${username}, because we leave in 15 minutes! See ya soon!`, 'bot')
   } else {
-    showMessage('So sorry to hear that, your virtual vacay will be cancelled. Hope to see you here again for a new virtual trip in the future!', 'bot')
+    showMessage(`So sorry to hear that, your virtual vacay will be cancelled. Hope to see you here again for a new virtual trip in the future!`, 'bot')
   }
   inputWrapper.innerHTML = '' //Makes the yes and no button to disappear so the bot conversation ends
   //TA BORT OM INTE NÅGON NY FRÅGA  setTimeout(() => confirmationQuestion(), 500)
 }
-
 
 // Set up your eventlisteners here
 nameForm.addEventListener('submit', handleNameInput)
