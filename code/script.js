@@ -215,7 +215,7 @@ const handleNameInput = (event) => {
 
 
     }, 3000);
-  }, 2000);
+  }, 1000);
 
 };
 // Event listener, when user press enter.
