@@ -8,6 +8,7 @@ const sodaChoiceWrapper = document.getElementById("soda-choice");
 const subChoiceWrapper = document.getElementById("sub-choice");
 const sodaSizeWrapper = document.getElementById("soda-size");
 const orderConfirmationWrapper = document.getElementById("orderConfirmation");
+const audio = new Audio("assets/notification.mp3")
 
 let sodaChoice = "";
 
@@ -19,9 +20,10 @@ const submitName = (submitEvent) => {
     if (nameInput.value === "") {
       showMessage(`I´m a poor robot and I can´t make drinks for anyone who doesn´t have a name. Please enter a name.`, "bot");
     } else {
+      showMessage(nameInput.value, "user");
       showMessage(`Hello ${nameInput.value}! What would you like to drink today? `, "bot");
 
-      showMessage(nameInput.value, "user");
+
 
       nameInput.value = "";
 
@@ -93,6 +95,7 @@ const showMessage = (message, sender) => {
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
+    audio.play();
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
