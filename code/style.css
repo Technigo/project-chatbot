@@ -121,12 +121,29 @@ main {
   align-items: center;
 }
 
+/* new styling for the select input for Question 3 */
+#q3-dropdown {
+  width: 100%;
+  font-size: 18px;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  padding: 16px 40px;
+}
+
+/* new styling for the select options for Question 3 */
+#q3-dropdown option {
+  width: 100%;
+  font-size: 18px;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  padding: 16px 40px;
+}
+
 label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
   color: #131d22;
-  ;
   margin-right: 20px;
 }
 
