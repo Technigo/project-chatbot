@@ -147,3 +147,31 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+/* Style the select element to match the input field */
+select {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  background: #e5e9ff;
+  color: #0026ff;
+  padding: 16px;
+  font-size: 16px;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  line-height: 26px;
+  flex: 1;
+}
+
+/* Apply the same styles to the select element when it's focused */
+select:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+/* Style the dropdown arrow icon */
+/* Note: This may not work consistently across all browsers */
+select::-ms-expand {
+  display: none;
+}
