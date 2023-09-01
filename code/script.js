@@ -1,7 +1,8 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat')
 const nameInput = document.getElementById('name-input')
-
+const nameForm = document.getElementById('name-form');
+const inputWrapper = document.getElementById('input-wrapper')
 
 // If you need any global variables that you can use across different functions, declare them here:
 // Declare your functions after this comment
@@ -42,72 +43,54 @@ const greetUser = () => {
   showMessage("Hello there, What's your name?", 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
-//--------------------
+
+
+
+//--------------------NAME AND CHOICE FOOD--------------------------//
+
 // Set up your eventlisteners here
 const handleNameInput = (event) => {
   event.preventDefault();
   // Store the value in a variable so we can access it after we
   // clear it from the input
   const name = nameInput.value;
-  if (name === '1' || name === '2' || name === '3') {
-    handleFoodChoice(name);
-  } else {
-    console.log("I m the function");
-    showMessage(name, "user");
-    nameInput.value = "";
-     // After 1 second, show the next question by invoking the next function.
-    // passing the name into it to have access to the user's name if we want
-    // to use it in the next question from the bot.
-    setTimeout(() => showFoodOptions(name), 1000);
-  }
+  console.log(`Helo`, name)
+  showMessage(`Hej, my name is  ${ name }`, "user");
+  nameInput.value = "";
+  // After 1 second, show the next question by invoking the next function.
+  // passing the name into it to have access to the user's name if we want
+  // to use it in the next question from the bot.
+  setTimeout( showFoodOptions(name), 1000);
 };
 
 const showFoodOptions = (name) => {
   console.log('showFoodOptions is being called with name:', name);
   showMessage(`Nice to meet you, ${name}! What kind of food would you like?`, 'bot');
-  showMessage('Please choose one of the following options:Write a number', 'bot', 1000);
-  showMessage('1. Pizza  2. Salad  3. Macaroni', 'bot', 2000);
-};
-
-const handleFoodChoice = (choice) => {
-  //event.preventDefault();
-  console.log('handleFoodChoice', choice); 
-  console.log('User choice:', choice); 
-  if (choice === '1') {
-    showMessage('I chose Pizza!', 'user');
-  } else if (choice === '2') {
-    showMessage('I chose Salad!', 'user');
-  } else if (choice === '3') {
-    showMessage('I chose Pasta!', 'user');
-  } else {
-    showMessage('Invalid choice. Please choose a valid option.', 'user');
-  }
+  inputWrapper.innerHTML = `
+  <button class="send-btn" type="submit">Pizza</button>
+  <button class="send-btn" type="submit">Pasta</button>
+  <button class="send-btn" type="submit"> Salad</button>
+`
 };
 
 
-const nameForm = document.getElementById('name-form');
+
 nameForm.addEventListener('submit', handleNameInput);
 
 
 
 
 
-const handleTypeofFood = (pizzaType, pastaType, SaladType) => {
-  console.log('User choice:', pizzaType, pastaType, SaladType); 
-  if ('1' === pizzaType) {
-    console.log('handleTypeofFood'); 
-    showMessage('You chose Pizza!', 'bot')
-  }else if ('I chose Pasta!' === pastaType){
-    showMessage('You chose Salad', 'bot')
-  }else if ('I chose Salad!' === SaladType){
-    showMessage('You chose Pasta!', 'bot')
-  }
-  
-}
 
-const typOfFood = document.getElementById('name-form');
-typOfFood.addEventListener('submit',handleTypeofFood);
 
+
+//--------------------CHOICE FOOD  AND CHOICE TYPE OF FOOD--------------------------//
+
+const showTypeOfFood = (name) => {
+  console.log('showTypeOfFood is being called with name:', name);
+  showMessage(`Great you choose pizza. Now please select witch one pizza do you`, 'bot');
+  showMessage('Choose a type of Pizza 1 - Margherita 2 - Pepperoni 3 - Vegetarian', 'bot', 2000);
+};
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
