@@ -8,4 +8,4 @@ I started to plan my questions from the bot and then i built the question one by
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://bobtherestaurantbot.netlify.app/
