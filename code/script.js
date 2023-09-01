@@ -81,7 +81,7 @@ const handleNameInput = (event) => {
         inputWrapper.style.display = 'block';
       };
       choiceBtn2.onclick = (event) => {
-        handlechoiceBtn(event, name, 'over 18');//string over 18 passed as an argument to ageGroup
+        handlechoiceBtn(event, name, 'over 18');//paramter string over 18 passed as an argument to ageGroup
         choiceBtn1.style.display = 'none';
         choiceBtn2.style.display = 'none';
         inputWrapper.style.display = 'block';
@@ -112,7 +112,7 @@ const handleNameInput = (event) => {
           showMessage(`You need to think about your age. This page will be automatically reloaded.`, 'bot');
           setTimeout(() => {
             location.reload();
-          }, 2998);
+          }, 2999);
         }
 
         // dropdown menu
@@ -171,6 +171,7 @@ const handleNameInput = (event) => {
             okayBtn.style.display = 'none';
             goodBtn.style.display = 'none';
 
+            //Reload the page after 5s
             setTimeout(() => {
               location.reload();
             }, 5000);
@@ -183,6 +184,7 @@ const handleNameInput = (event) => {
             okayBtn.style.display = 'none';
             goodBtn.style.display = 'none';
 
+            //Reload the page after 5s
             setTimeout(() => {
               location.reload();
             }, 5000);
@@ -194,6 +196,7 @@ const handleNameInput = (event) => {
             okayBtn.style.display = 'none';
             goodBtn.style.display = 'none';
 
+            //Reload the page after 5s
             setTimeout(() => {
               location.reload();
             }, 5000);
