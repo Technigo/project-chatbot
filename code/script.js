@@ -8,6 +8,8 @@ const inputWrapper = document.getElementById('input-wrapper')
 // If you need any global variables that you can use across different functions, declare them here:
 let name = ""; 
 let gender = ""; 
+let selectedPriceRange = ""; 
+let selectedColour = "";
 
 // Declare your functions after this comment
 
@@ -73,7 +75,6 @@ const askForGender = (name) => {
     .addEventListener('click', () => {
       //redeclaring global variable "gender"
       gender = "lady"
-      console.log(gender)
       //User reply comes up
       showMessage("It's for a lady.", "user")
       //Invokes bot's next message
@@ -116,8 +117,8 @@ const askPriceRange = () => {
   //Adding eventlisteners to option range 1
   document.getElementById('price-select')
     .addEventListener('change', (event) => {
-      //Storing the value of the event target
-      const selectedPriceRange = event.target.value
+      //Storing the value of the event target by redeclaring global variabel
+      selectedPriceRange = event.target.value
       //User reply comes up
       showMessage("This is what I can afford.", "user")
       //Invokes bot's next message
@@ -128,13 +129,16 @@ const askPriceRange = () => {
 const confirmPriceRange = (priceRange) => {
   //Bot replying to alternative 1
  if (priceRange === 'range-1') {
+  selectedPriceRange = "20 to 200kr"
   showMessage(`Is that all?`, 'bot')
   setTimeout(() => showMessage(`That's fine, I'm sure we'll come up with something!`, 'bot'), 2000)
   //Bot replying to alternative 2
  } else if (priceRange === 'range-2') {
+  selectedPriceRange = "201 to 1000kr"
   showMessage (`Excellent. I'm sure we can find something nice for your friend.`, 'bot')
   //Bot replying to alternative 3
  } else if(priceRange === 'range-3'){
+  selectedPriceRange = "1001 to 3000kr"
   showMessage (`Amazing! It must be quite a special friend!`, 'bot')
  }
  //Invoking question about colour
@@ -156,15 +160,14 @@ const askColour = () => {
   document.getElementsByClassName('colour-btn')
       for (const colourButton of allColourButtons){
         colourButton.addEventListener('click', (event) => {
-          //Storing colour value
-          const selectedColour = event.target.value
+          //Storing colour value by redeclaring global variabel
+          selectedColour = event.target.value
           console.log (selectedColour)
           //User reply comes up
           showMessage(`${selectedColour}, please.`, 'user')
           //Invokes bot's next message
           setTimeout(()=> confirmColour(selectedColour), 1000)
         })
-
       }
 }
 
@@ -172,11 +175,17 @@ const confirmColour = (colour) => {
   //Bot confirming colour choice
   showMessage(`${colour} is definitely a great choice!`, 'bot')
    //Invoking confirmation of all choices
- setTimeout(() => confirmAllChoices(name, gender, priceRange, colour), 2000)
+  setTimeout(() => confirmAllChoices(), 2000)
 }
 
-const confirmAllChoices = (name, gender, priceRange, colour) => {
-  showMessage(`So, ${name} is it correct that you want to find a ${colour} gift for a ${gender} in the price range of ${priceRange}? `)
+const confirmAllChoices = () => {
+  showMessage(`So, ${name}, is it correct that you want to find a ${selectedColour.toLocaleLowerCase()} gift for a ${gender} in the price range of ${selectedPriceRange}? `, 'bot')
+
+  //Buttons with confirmation choice appears
+  inputWrapper.innerHTML =`
+  <button class="confirm-btn" id="yes-btn" value='yes'>Yes</button>
+  <button class="confirm-btn" id="no-btn" value='no'>No</button>
+  `; 
 }
 
 
