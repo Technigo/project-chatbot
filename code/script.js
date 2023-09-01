@@ -58,9 +58,9 @@ const askFoodType = (userName) => {
     `bot`
   );
   form.innerHTML = `
-   <button id="pizzaBtn" type="submit" value="pizza">Pizza</button>
-   <button id="sweet" type="submit" value="sweet">Sweet</button>
-   <button id="saladBtn" type="submit" value="salad">Salad</button>
+   <button id="pizzaBtn" value="pizza">Pizza</button>
+   <button id="sweet" value="sweet">Sweet</button>
+   <button id="saladBtn" value="salad">Salad</button>
    `;
 
   document.getElementById("pizzaBtn").addEventListener("click", foodOptions);
@@ -74,10 +74,12 @@ const foodOptions = (event) => {
   event.preventDefault();
   const type = event.target.value;
   showMessage(`${type}`, `user`);
+
   showMessage(
     `Oh so you're in the mood for ${type} choice. Select something from the menu!`,
     `bot`
   );
+
   if (type === "pizza") {
     form.innerHTML = `
       <select id="Option">
@@ -157,8 +159,12 @@ const yesNoChoice = (event) => {
     showMessage(`Yes`, `user`);
     showMessage(`Thank you for your order! See you soon👋`, `bot`);
     form.innerHTML = ``;
+    setTimeout(() => {
+      location.reload();
+    }, 1500);
   } else {
-    location.reload(); //restat here, back to the top
-    return false;
+    setTimeout(() => {
+      location.reload();
+    }, 1500); //restat here, back to the top
   }
 };
