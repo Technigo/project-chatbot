@@ -7,7 +7,6 @@ body {
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   background-size: cover;
-  /*background: #0026ff;*/
   background-image: url("./images/map-colorful.jpg");
 }
 
@@ -26,7 +25,7 @@ body.netherlands {
 
 h1 {
   font-weight: bold;
-  font-size: 32px;
+  font-size: 38px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -34,7 +33,7 @@ h1 {
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -53,7 +52,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: darkslateblue;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -65,8 +64,9 @@ input {
 main {
   margin: 0 auto;
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
   height: 600px;
+  border: 2px solid orange;
   border-radius: 30px;
   background: #fff;
   opacity: 0.93;
@@ -106,12 +106,12 @@ main {
 }
 
 .bubble {
-  background: #cccc99; /*#e5e9ff*/
+  background: #cccc99;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: darkolivegreen; /*#0026ff*/
+  color: darkolivegreen;
   max-width: 40%;
 }
 
@@ -123,6 +123,8 @@ main {
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  background: darkolivegreen;
+  color: #cccc99;
 }
 
 .input-wrapper {
@@ -140,12 +142,12 @@ label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  color: darkslateblue;
   margin-right: 20px;
 }
 
 button {
-  background-color: darkolivegreen;
+  background-color: darkslateblue;
   color: white;
   border: none;
   border-radius: 4px;
@@ -164,15 +166,14 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-/*STYLA DROPDOWNEN!*/
 #activityChoiceSelect {
   font-size: 22px;
   cursor: pointer;
-  padding: 10px 40px;
+  padding: 10px 10px;
   margin: 20px;
   border: none;
   border-radius: 4px;
-  background-color: darkolivegreen;
+  background-color: darkslateblue;
   color:white;
 }
 

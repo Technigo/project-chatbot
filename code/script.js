@@ -37,7 +37,7 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hey there Traveller! Join me on a virtual trip to a foreign country and let's explore it! Please enter your name so I know what to call my new travel buddy!", 'bot')
+  showMessage("Hey there Traveller, I'm Botlynn! Join me on a virtual trip to a foreign country and let's explore it! Please enter your name so I know what to call my new travel buddy!", 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -45,24 +45,24 @@ const handleNameInput = (event) => {
   event.preventDefault();
   const name = nameInput.value;
   if (name === '') {
-    showMessage('You must enter a valid name, please try again', 'bot')
+    showMessage('I really want to know your name, please try again! ✏️', 'bot')
   } else {
     showMessage(name, 'user'); //User stod med ""
     username = nameInput.value;
     nameInput.value = ''; //Stod med ""
 
-    setTimeout(() => travelOption(nameInput.value), 1500);
+    setTimeout(() => travelOption(nameInput.value), 1250);
     inputWrapper.innerHTML = ''
   }
 
 
 }
 
-// Bot greets user
+// Bot greeting
 const travelOption = () => {
   showMessage(`Hi ${username}, so nice to have you onboard on this trip! Which of the lovely countries do you want to visit? 🧭`, 'bot')
   inputWrapper.innerHTML = `
-  <button id='cuba'>Cuba ⛱️</button>
+  <button id='cuba'>Cuba 💃</button>
   <button id='italy'>Italy 🍕</button>
   <button id='netherlands'>The Netherlands 🌷</button>
   `
@@ -74,13 +74,13 @@ const travelOption = () => {
 
   document.getElementById('italy')
     .addEventListener('click', () => {
-      showMessage('I want to go to Italy!', 'user')
+      showMessage('Take me to Italy!', 'user')
       setTimeout(() => activityQuestion('Italy'), 1000)
     })
 
   document.getElementById('netherlands')
     .addEventListener('click', () => {
-      showMessage('I want to go to The Netherlands!', 'user')
+      showMessage('I want to explore The Netherlands!', 'user')
       setTimeout(() => activityQuestion('The Netherlands'), 1000)
     })
 }
@@ -92,7 +92,7 @@ let selectedActivity = ""
 //let selectedTravelOption = ""
 
 const activityQuestion = (selectedTravelOption) => {
-  showMessage(`Wow, ${selectedTravelOption}, what an amazing choice! What activity would you like to participate in?`, 'bot')
+  showMessage(`Wow, ${selectedTravelOption}! What a great choice! Which of our lovely activities would you like to join?`, 'bot')
 
   console.log(`activityQuestion executed ${selectedTravelOption}`);
 
@@ -100,14 +100,14 @@ const activityQuestion = (selectedTravelOption) => {
   switch (selectedTravelOption) {
     case "Cuba":
 
-      activity = ["Cigar activity", "Veteran car activity", "Salsa activity"]
+      activity = ["to visit the tobacco farm", "to explore Havana", "to go to Buena Vista Social Club"]
 
       inputWrapper.innerHTML = `
       <select id="activityChoiceSelect">
         <option value="" selected disabled>Choose one of our amazing activities!</option>
-        <option value="1">Cigar activity</option>
-        <option value="2">Veteran car activity</option>
-        <option value="3">Salsa activity</option>
+        <option value="1">Learn about the cigar-making process at a tobacco farm in Vuelta Abajo</option>
+        <option value="2">Visit Havana and admire the architecture, vintage cars and vibrant street life</option>
+        <option value="3">Catch a live show at the venue Buena Vista Social Club in Havana</option>
       </select>
       `
 
@@ -119,14 +119,14 @@ const activityQuestion = (selectedTravelOption) => {
       break
     case "Italy":
 
-      activity = ["Make pasta activity", "Wineyard activity", "tango activity"]
+      activity = ["to go to Sorrento Cooking School", "to experience the Tuscany vineyard tour", "to watch the performance at the Milan Opera"]
 
       inputWrapper.innerHTML = `
       <select id="activityChoiceSelect">
         <option value="" selected disabled>Choose one of our amazing activities!</option>
-        <option value="1">Make pasta activity</option>
-        <option value="2">Wineyard activity</option>
-        <option value="3">tango activity</option>
+        <option value="1">Learn to cook traditional italian dishes at Sorrento Cooking School</option>
+        <option value="2">Go on a vineyard tour in stunning Tuscany</option>
+        <option value="3">See an opera performance at La Scala in Milan</option>
       </select>
       `
 
@@ -138,14 +138,14 @@ const activityQuestion = (selectedTravelOption) => {
       break
     case "The Netherlands":
 
-      activity = ["tulips activity", "Windmill activity", "Stream activity"]
+      activity = ["to see the Keukenhof Gardens", "to explore the Kinderdijk Windmills", "to go for a canal tour in Amsterdam"]
 
       inputWrapper.innerHTML = `
       <select id="activityChoiceSelect">
         <option value="" selected disabled>Choose one of our amazing activities!</option>
-        <option value="1">Tulips activity</option>
-        <option value="2">Windmill activity</option>
-        <option value="3">Stream activity</option>
+        <option value="1">Visit Keukenhof Gardens - one of the most iconic flower gardens in the world</option>
+        <option value="2">Visit the UNESCO World Heritage site Kinderdijk Windmills</option>
+        <option value="3">Go for a scenic canal tour in Amsterdam</option>
       </select>
       `
 
@@ -168,8 +168,8 @@ const activityQuestion = (selectedTravelOption) => {
     selectedActivity = activity[activityChoice - 1]
     console.log(selectedActivity)
 
-
-    showMessage(selectedActivity, 'user')
+    //Keep it as showMessage(selectedActivity, 'user') ??
+    showMessage(`Hmm, so many good ones! But I decided I want ${selectedActivity}!`, 'user')
 
     inputWrapper.innerHTML = ''
     setTimeout(() => confirmationActivity(), 1000)
@@ -198,9 +198,9 @@ const confirmationActivity = () => {
 
 const happyAnswer = (happyAnswer) => {
   if (happyAnswer === 'Yes') {
-    showMessage('Awesome! We will contact you for further information.', 'bot')
+    showMessage('Awesome! Then get your virtual passport ready because we leave in 15 minutes! See ya soon!', 'bot')
   } else {
-    showMessage('So sorry to hear that, the booking will be cancelled. Hope to see you again for a new booking in the future.', 'bot')
+    showMessage('So sorry to hear that, your virtual vacay will be cancelled. Hope to see you here again for a new virtual trip in the future!', 'bot')
   }
   inputWrapper.innerHTML = '' //Makes the yes and no button to disappear so the bot conversation ends
   //TA BORT OM INTE NÅGON NY FRÅGA  setTimeout(() => confirmationQuestion(), 500)
