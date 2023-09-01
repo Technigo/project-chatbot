@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #afb6da;
+  background:#fa83f6;
 }
 
 h1 {
@@ -67,8 +67,11 @@ main {
   justify-content: flex-start;
   overflow: scroll;
   flex-direction: column;
-  padding-bottom: 16px;
+  padding: 16px;
+  margin: 20px;
   background-color: #37a24d;
+  border-radius:30px ;
+  
 }
 
 .bot-msg {
