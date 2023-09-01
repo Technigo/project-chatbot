@@ -18,7 +18,7 @@ const startBtn = document.getElementById('startBtn');
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   console.log("MESSAGE IS:", message); //console.log messages 
-  console.log("SENDER IS:", sender);
+  console.log("SENDER IS:", sender); //console.log messages
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
@@ -44,7 +44,6 @@ const showMessage = (message, sender) => {
 };
 
 
-
 // When button is clicked, chatbot asks first question.
 startBtn.onclick = (greetUser, event) => {
 
@@ -60,12 +59,9 @@ startBtn.onclick = (greetUser, event) => {
 
 }
 
-
-
 // Function storing the name of the user.
 const handleNameInput = (event) => {
   event.preventDefault();
-
 
   const name = nameInput.value;
   showMessage(`${name}`, 'user');
@@ -75,7 +71,7 @@ const handleNameInput = (event) => {
     showMessage(`${name}, we want to know what you think about our products!`, 'bot');
     nameInput.value = "";
 
-    // showMessage being called, asking for age, displaying Btn1, Btn2 as a block elements.
+    // showMessage being called, asking for age, displaying ageBtn as a block elements.
     setTimeout(() => {
       showMessage(`But first, how old are you ${name} ?`, 'bot');
       ageBtn1.style.display = 'block';
@@ -84,7 +80,7 @@ const handleNameInput = (event) => {
 
       // hides buttons after clicking it
       ageBtn1.onclick = (event) => {
-        handleageBtn(event, name, 'under 18'); //string under 18 passed as an argument to ageGroup
+        handleageBtn(event, name, 'under 18'); //parameter string under 18 passed as an argument to ageGroup
         ageBtn1.style.display = 'none';
         ageBtn2.style.display = 'none';
         inputWrapper.style.display = 'block';
@@ -121,6 +117,8 @@ const handleNameInput = (event) => {
           showMessage(`You need to think about your age. This page will be automatically reloaded.`, 'bot');
           yesBtn.style.display = 'none';
           noBtn.style.display = 'none';
+
+          //reload page
           setTimeout(() => {
             location.reload();
           }, 2995);
@@ -148,7 +146,6 @@ const handleNameInput = (event) => {
           inputWrapper.style.display = 'none';
           yesBtn.style.display = 'none';
           noBtn.style.display = 'none';
-
 
           //Rate purchase
           setTimeout(() => {
