@@ -102,7 +102,6 @@ main {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  display: none;
 }
 
 .start-page span {
@@ -237,7 +236,7 @@ select:focus {
 /* This is for hiding main when the page loads */
 
 main {
-  /* display: none; */
+  display: none;
 }
 
 .music-container {
