@@ -136,6 +136,20 @@ label {
     margin-right: 20px;
 }
 
+.bobaPearlWrapper {
+    width: 100%;
+    display: flex;
+    gap: 16px;
+}
+
+#bobaPearlOptions {
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-weight: 600;
+    padding: 3px;
+    border-radius: 5px;
+}
+
 button {
     background-color: #8a70d1;
     color: white;

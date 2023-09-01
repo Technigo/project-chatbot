@@ -1,8 +1,17 @@
+"use strict";
+
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 const inputField = document.getElementById('name-input');
 const sendBtn = document.getElementById('send-btn');
 const formInputField = document.getElementById('name-form');
+
+const drinkOption = {
+  teaBase: ["Matcha", "Black Tea", "Oolong Tea"],
+  bobaPearlOption: ["Tapioca Pearls", "Brown Sugar Pearls", "Grass Jelly", "Coffee Jelly"],
+  drinkSize: ["Regular", "Large"],
+};
+
 
 // FUNCTIONS are declared below
 
@@ -14,7 +23,7 @@ const clearInputField = () => {
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
+  // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
     console.log('Message is:', message);
     console.log('Sender is:', sender);
@@ -26,7 +35,7 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `
-      // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
+    // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
     console.log('Message is:', message);
     console.log('Sender is:', sender);
@@ -71,28 +80,128 @@ const handleNameInput = (event) => {
   setTimeout(() => handleBobaBaseOptions(name), 1000);
 };
 
-// Function that give drink options to the user.
+// Function that gives drink options to the user.
 const handleBobaBaseOptions = (name) => {
 
+  showMessage(`Let's start creating your Boba drink ${name}!
+What kind of tea do you want to have?`, 'bot')
 
-showMessage(`Let's start building your Boba drink ${name}!
-What kind of tea do you wanna have?`, 'bot') 
+  formInputField.innerHTML = `
+  <div class="bobaBaseOptions">
+    <button id="matcha" type="submit">Matcha</button>
+    <button id="blackTea" type="submit">Black Tea</button>
+    <button id="oolongTea" type="submit">Oolong Tea</button>
+  </div>`
 
-  // add food options
-  // add ${name}. add parameters if you wanna use them within the function
-formInputField.innerHTML = `<div class="bobaBaseOptions">
-<button id="matcha" type="submit">Matcha</button>
-<button id="blackTea" type="submit">Black Tea</button>
-<button id="OolongTea" type="submit">Oolong Tea</button>
-</>
-`
-  clearInputField();
+  // Variables for buttons
+  const matchaBtn = document.getElementById('matcha');
+  const blackTeaBtn = document.getElementById('blackTea');
+  const oolongTeaBtn = document.getElementById('oolongTea');
+
+  let teaBaseOption = "";
+
+  //Eventlisteners for buttons
+  matchaBtn.addEventListener('click', () => {
+    // get the value from the buttons instead
+    let teaBaseOption = drinkOption.teaBase[0];
+    showMessage(teaBaseOption, "user");
+  });
+  blackTeaBtn.addEventListener('click', () => {
+    let teaBaseOption = drinkOption.teaBase[1];
+    showMessage(teaBaseOption, "user");
+  });
+  oolongTeaBtn.addEventListener('click', () => {
+    let teaBaseOption = drinkOption.teaBase[2];
+    showMessage(teaBaseOption, "user");
+  });
+
+  setTimeout(() => handleBobaPearls(teaBaseOption), 1000);
 };
+
+const handleBobaPearls = (teaBaseOption) => {
+
+  showMessage(`Great! For your ${teaBaseOption}, what type of boba pearls do you wanna add?`, 'bot');
+
+  formInputField.innerHTML = `
+  <div class="bobaPearlWrapper">
+    <p>Choose your boba pearl option</p>
+    <select name="bobaPearlOptions" id="bobaPearlOptions" required>
+      <option value="" disabled selected>--</option>
+      <option id="tapiokaPearl" value="tapiokaPearl">Tapioka Pearls</option>
+      <option id="brownSugarPearl" value="brownSugarPearl">Brown Sugar Pearls</option>
+      <option id="grassJelly" value="Jelly">Grass Jelly</option> 
+      <option id="coffeeJelly" value="coffeeJelly">Coffee Jelly</option>   
+      </select>
+  </div>`;
+
+  // Variables for select
+  const tapiokaPearlOption = document.getElementById('tapiokaPearl');
+  const brownSugarPearlOption = document.getElementById('brownSugarPearl');
+  const grassJellyOption = document.getElementById('grassJelly');
+  const coffeeJellyOption = document.getElementById('coffeeJelly');
+
+  //Eventlisteners for drop-down menu
+  tapiokaPearlOption.addEventListener('click', () => {
+    let teaPearlOption = drinkOption.bobaPearlOption[0];
+    showMessage(teaPearlOption, "user");
+  });
+  brownSugarPearlOption.addEventListener('click', () => {
+    let teaPearlOption = drinkOption.bobaPearlOption[1];
+    showMessage(teaPearlOption, "user");
+  });
+  grassJellyOption.addEventListener('click', () => {
+    let teaPearlOption = drinkOption.bobaPearlOption[2];
+    showMessage(teaPearlOption, "user");
+  });
+  coffeeJellyOption.addEventListener('click', () => {
+    let teaPearlOption = drinkOption.bobaPearlOption[3];
+    showMessage(teaPearlOption, "user");
+  });
+
+  setTimeout(() => handleBobaDrinkSize(), 1000);
+
+};
+
+const handleBobaDrinkSize = () => {
+
+  showMessage(`Nice! Which size do you want to choose?`, 'bot');
+
+  formInputField.innerHTML = `
+  <div class="bobaDrinkSize">
+    <button id="regularSize" type="submit">Regular (500 mL)</button>
+    <button id="largeSize" type="submit">Large (700 mL)</button>
+  </div>`
+
+  // Variables for buttons
+  const regularSizeBtn = document.getElementById('regularSize');
+  const largeSizeBtn = document.getElementById('largeSize');
+
+  let drinkSizeOption = "";
+
+  //Eventlisteners for buttons
+  regularSizeBtn.addEventListener('click', () => {
+    let drinkSizeOption = drinkOption.drinkSize[0];
+    showMessage(drinkSizeOption, "user");
+  });
+  largeSizeBtn.addEventListener('click', () => {
+    let drinkSizeOption = drinkOption.drinkSize[1];
+    showMessage(drinkSizeOption, "user");
+  });
+
+  setTimeout(() => handleOrderConfirmation(drinkSizeOption), 1000);
+
+};
+
+// const handleOrderConfirmation (drinkSizeOption) => {
+
+// };
 
 
 // EVENTLISTENERS
 
 sendBtn.addEventListener('click', handleNameInput);
+
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
