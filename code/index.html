@@ -12,22 +12,68 @@
   </head>
 
   <body>
-    <h1>Welcome to xxx.</h1>
+    <h1>Welcome to pizzaria chatbot</h1>
     <main>
       <section class="chat" id="chat"></section>
 
       <div class="input-wrapper" id="input-wrapper">
         <form id="name-form">
-          <label for="name-input">Name</label>
           <input id="name-input" type="text" />
-          <button class="send-btn" type="submit">
+          <button id="btn" class="send-btn" type="submit">
             Send
           </button>
         </form>
+        <div id="buttons">
+          <button id="pizzabtn" class="send-btn" type="submit">Pizza</button>
+          <button id="pastabtn" class="send-btn" type="submit">Pasta</button>
+          <button id="saladbtn" class="send-btn" type="submit">Salad</button>
+        </div>
+        
+        
+          <select name="menue" id="pizza-menue">
+            <option value="select-pizza" selected>select a pizaa👇</option>
+            <option value="Margarita">Margarita 120 SEK</option>
+            <option value="Pepperoni">Pepperoni 150 SEK</option>
+            <option value="Hawaian">Hawaian 160 SEK</option>
+          </select>
+          <select name="menue" id="pasta-menue">
+            <option value="select-pasta" selected>select a pasta👇</option>
+            <option value="Carbonara">Carbonara 110 SEK</option>
+            <option value="Alfredo">Alfredo 180 SEK</option>
+            <option value="Pesto">Pesto 100 SEK</option>
+          </select>
+          <select name="menue" id="salad-menue">
+            <option value="select-salad" selected>select a salad👇</option>
+            <option value="Ceasar">Ceasar 90 SEK</option>
+            <option value="Greek">Greek 85 SEK</option>
+            <option value="Cobb">Cobb 70 SEK</option>
+          </select>
+          
+        
       </div>
+      <div id="add-btns">
+        <button id="minus" class="send-btn" type="submit">-</button>
+        <button id="send" class="send-btn" type="submit">1-Send</button>
+        <button id="plus" class="send-btn" type="submit">+</button>
+        
+        
+
+      </div>
+      <div id="side-btns">
+        <button id="fries" class="send-btn" type="submit">French Fries</button>
+        <button id="garlic" class="send-btn" type="submit">Garlic Bread</button>
+        <button id="sweet" class="send-btn" type="submit">Mashed Sweet Potato</button>
+        <button id="noside" class="send-btn" type="submit">No,i'm fine</button>
+
+      </div>
+      <div id="size-btns">
+
+      </div>
+      <div id="last-btns"></div>
+    
     </main>
 
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
   </body>
 
 </html>
