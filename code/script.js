@@ -2,9 +2,15 @@
 const chat = document.getElementById('chat');
 const nameForm = document.getElementById('name-form');
 const nameInput = document.getElementById("name-input");
+const btn = document.getElementById("send-btn");
+const foodChoice = document.getElementById("foodChoice");
 
 // If you need any global variables that you can use across different functions, declare them here:
-
+// Bot replies with user name and ask the next question
+// Problem : how to stop showing bot response at once from the beginnin 
+// Possible solution, add question number so the bot can keep track of the current questions
+// Declare the current question so we can use operator ++ to tell the bot we need to move on to the next question
+let currerntQuestion = 1;
 
 // Declare your functions after this comment
 
@@ -43,23 +49,46 @@ const greetUser = () => {
   showMessage("Hello there, What's your name?", 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
-
+setTimeout(greetUser, 1000);
 // Set up your eventlisteners here
 // Get user input with getElementById
-// Trigger event listner when user press enter
-nameInput.addEventListener("keydown", function (event) {
-  if (event.key === "Enter"){
-    let userName = nameInput.value;
-    showMessage(userName, 'user');
-    nameInput.value = ""; //empty the input field
-    event.preventDefault(); //I spent almost half a day to figure out why the reply won't stay there, Google save my life
-  }  
-});
+// Trigger event listener when user click the button "submit"
+btn.addEventListener("click", (event) => {
+  nameMsg(event);
+})
+// Trigger event listenner when user press enter
+nameInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter")
+    nameMsg(event);
+})
 
-// Bot replies with user name and ask the next question
-const foodChoice = () => {
-  showMessage(`Nice to meet you${userName}. What type of food would you like to order?`, 'bot')
+const nameMsg = (event) => {
+  //I spent almost half a day to figure out why the reply won't stay there, Google save my life
+  event.preventDefault();
+  // get user input
+  let userName = nameInput.value;
+  showMessage(userName, 'user');
+  setTimeout(() => {
+    showMessage("stuff", "bot")
+    // Hide the answer field after display the user name and ready for the next quesition 
+    nameForm.classList.add("hidden")
+    // Show the buttons after the answer field is hidden 
+    foodChoice.classList.remove("hidden")
+  }, 1000)
+  //empty the input field
+  nameInput.value = "";
+  ;
+  currerntQuestion++;
 }
+
+const v = (event) => {
+  console.log(event);
+};
+
+foodChoice.querySelectorAll('button').forEach(button => button.addEventListener("click", v));
+
+
+
 
 
 // When website loaded, chatbot asks first question.
@@ -68,5 +97,5 @@ const foodChoice = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000)
+
 
