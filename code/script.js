@@ -69,7 +69,7 @@ const nameMsg = (event) => {
   let userName = nameInput.value;
   showMessage(userName, 'user');
   setTimeout(() => {
-    showMessage("stuff", "bot")
+    showMessage(`Nice to meet you ${userName}. What type of food would you like to order?`, "bot")
     // Hide the answer field after display the user name and ready for the next quesition 
     nameForm.classList.add("hidden")
     // Show the buttons after the answer field is hidden 
