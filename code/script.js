@@ -15,7 +15,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <h1>👤</h1>
       </section>
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
@@ -23,7 +23,7 @@ const showMessage = (message, sender) => {
     console.log('Bot message:', message);
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <h1>🤖</h1>
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -46,48 +46,84 @@ const greetUser = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
 const nameForm = document.getElementById('name-form');
 const nameInput = document.getElementById('name-input');
 
+let userName;
+
 nameForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  const userName = nameInput.value;
-  
-  showMessage(`${userName}`, 'user');
-  
-  setTimeout(() => {
-    const botResponse = `Nice to meet you ${userName}! How can I assist you today? Please choose an option:
-    1. Banana.
-    2. Apple.
-    3. London.`;
-    showMessage(botResponse, 'bot');
-  }, 1000);
 
+  if(userName == null){
+  userName = nameInput.value;
+  showMessage(userName, 'user');
   nameInput.value = '';
-});
+
+  setTimeout(() => {
+    const botMessage = `Hello ${userName}! Hope you're well!`;
+    showMessage(botMessage, 'bot');
+  }, 500);
+
+  setTimeout(() => {
+    const botMessage = `This is what I can do for you: 
+<p>1 - Book a flight</p>
+<p>2 - Book a hotel</p>
+<p>3 - Book a rental car</p>`;
+    showMessage(botMessage, 'bot');
+
+    setTimeout(() => {
+      const botMessage = `Please enter a number from 1 to 3 to select an option.`;
+      showMessage(botMessage, 'bot');
+    }, 500);
+  }, 2000);
+} else{
+    const userChoice = nameInput.value;
+    showMessage(nameInput.value,'user')
+    nameInput.value = '';
+    let botReply = '';
+    switch (userChoice) {
+      case '1':
+        botReply = `Great! I have booked a one-way ticket for you to Samarkand, Uzbekistan. Total price €1439. The details will be sent via email. Have a nice trip! ✈️`;
+        break;
+      case '2':
+        botReply = `Good choice! A single room at City Inn Lodge in Botswana awaits you. I have booked 14 nights with breakfast included. Total price €2279. I wish you a pleasant stay! 🏨`;
+        break;
+      case '3':
+        botReply = `Perfect! A Ford Escape (or similar) is waiting for you in Cheyenne, ID. 9 days rental including free miles and insurance. Total price $1203. Get ready for some inspired driving! 🚗`;
+        break;
+      default:
+        botReply = `Invalid choice. Please select a number from 1 to 3.`;
+    }
+
+    setTimeout(() => {
+      showMessage(botReply, 'bot');
+    }, 2000);
+
+    setTimeout(() => {
+      const botMessage = `Thank you for using the AI Travel Robot, see you another time, ${userName}. Bye!`;
+      showMessage(botMessage, 'bot');
+    }, 7000);
+
+    setTimeout(() => {
+      const botMessage = `<i>--- OFFLINE ---</i>`;
+      showMessage(botMessage, 'bot');
+    }, 7000);
+
+  }
+  });
+
+const handleUserInput = (event) => {
+  if (event.key === 'Enter') {
+    const userMessage = nameInput.value;
+    showMessage(userMessage, 'user');
+    nameInput.value = '';
+
+    const botReply = generateBotReply(userMessage);
+    setTimeout(() => {
+      showMessage(botReply, 'bot');
+    }, 500);
+  }
+};
 
 
 
@@ -95,24 +131,6 @@ nameForm.addEventListener('submit', (event) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
 
 
 
