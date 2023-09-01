@@ -270,7 +270,7 @@ function displayNone(){
   saladMenue.style.display = "none";
 
 };
-let counter = 0;
+let counter = 1;
 let totalPrice = 0;
 
 
@@ -281,27 +281,22 @@ let totalPrice = 0;
 
   });
   minusBtn.addEventListener("click" , ()=>{
-    if(counter > 0){
+    if(counter > 1){
       counter--;
       sendBtn.innerHTML = `${counter}-Send`;
 
-    }else if(counter < 1){
+    }else{
       sendBtn.disabled = true;
       alert("Oops! You have to choose at least one.");
-    }else if(counter === 0){
-      sendBtn.innerHTML = `Send`;
-      sendBtn.disabled = true;
-      alert("Oops! You have to choose at least one.");
+
     }
+      
+
    
   });
     
     sendBtn.addEventListener("click" , ()=>{
-      if(counter === 0){
-        sendBtn.disabled = true;
-        alert("Oops! You have to choose at least one.");
-        return
-      }
+
       showMessage(`${counter}` , 'user');
       addBtns.style.display = "none";
       
