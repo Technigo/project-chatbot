@@ -2,7 +2,7 @@
 const chat = document.getElementById('chat')
 const nameForm = document.getElementById('name-form')
 const nameInput = document.getElementById('name-input')
-const sendBtn = document.getElementsByClassName('send-btn')
+
 // If you need any global variables that you can use across different functions, declare them here:
 
 // Declare your functions after this comment
@@ -48,7 +48,6 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
-
 // Set up your eventlisteners here
 //When name is input by user with local function and connected to global function.
 const handleNameInput = event => {
@@ -56,7 +55,7 @@ const handleNameInput = event => {
   userName = nameInput.value;
   nameInput.value = '';
   showMessage(`${userName}`, "user");
-  setTimeout(reply, 1500);
+  setTimeout(reply, 800);
 }
 
 nameForm.addEventListener('submit', handleNameInput);
@@ -78,9 +77,10 @@ const reply = () => {
     .addEventListener('click', () => riddleOption('two'))
 }
 
-
+//Different options of riddles that occurs depending on apple-choice
 const riddleOption = option => {
   if (option === "one") {
+    showMessage('🍏', 'user')
     showMessage('🍏: I am used for styling, look and feel. Colors and layout make it real. In files separate, my rules align. Junior dev, what am I, in web design?', 'bot')
 
     nameForm.innerHTML = `
@@ -89,11 +89,12 @@ const riddleOption = option => {
   `
 
     document.getElementById('htmlBtn')
-      .addEventListener('click', () => riddleOption('one'))
+      .addEventListener('click', () => greenWrongAnswer('greenHtml'))
     document.getElementById('cssBtn')
-      .addEventListener('click', () => riddleOption('two'))
+      .addEventListener('click', () => greenCorrectAnswer('greenCss'))
   }
   else if (option === "two") {
+    showMessage('🍎', 'user')
     showMessage('🍎: I bring interactivity, make things fun. With functions and events, the job has begun. In the browser realm, where actions play smart. Junior dev can you name this part?', 'bot')
 
     nameForm.innerHTML = `
@@ -102,22 +103,38 @@ const riddleOption = option => {
     `
 
     document.getElementById('jsBtn')
-      .addEventListener('click', () => riddleOption('one'))
+      .addEventListener('click', () => redCorrectAnswer('redJs'))
     document.getElementById('htmlBtn')
-      .addEventListener('click', () => riddleOption('two'))
+      .addEventListener('click', () => redWrongAnswer('redHtml'))
 
   }
 }
 
+//Depending on the answer of the riddles, one of these functions will start:
+const greenWrongAnswer = () => {
+  showMessage('HTML', 'user')
+  showMessage('Almost! Correct answer is CSS. Thanks for playing with me! Good luck on your studies, you are awesome!', 'bot')
+  showMessage('<img src="https://cdn.pixabay.com/photo/2020/05/02/09/59/pup-5120625_1280.jpg" alt="Happy dog" style="width: 225px; height: auto;" />', 'bot');
+}
 
+const greenCorrectAnswer = () => {
+  showMessage('CSS', 'user')
+  showMessage('CSS is correct! Thanks for playing with me! Good luck on your studies, you are awesome!', 'bot')
+  showMessage('<img src="https://cdn.pixabay.com/photo/2020/05/02/09/59/pup-5120625_1280.jpg" alt="Happy dog" style="width: 225px; height: auto;" />', 'bot');
+}
 
-// Store the value in a variable so we can access it after we
-// clear it from the input
+const redCorrectAnswer = () => {
+  showMessage('JavaScript', 'user')
+  showMessage('Good job! JavaScript is the correct answer! Good luck on your studies, you are awesome!', 'bot')
+  showMessage('<img src="https://cdn.pixabay.com/photo/2020/05/02/09/59/pup-5120625_1280.jpg" alt="Happy dog" style="width: 225px; height: auto;" />', 'bot');
+}
 
+const redWrongAnswer = () => {
+  showMessage('HTML', 'user')
+  showMessage('Naaah, correct answer is JavaScript. Good luck on your studies, you are awesome!', 'bot')
+  showMessage('<img src="https://cdn.pixabay.com/photo/2020/05/02/09/59/pup-5120625_1280.jpg" alt="Happy dog" style="width: 225px; height: auto;" />', 'bot');
+}
 
-// After 1 second, show the next question by invoking the next function.
-// passing the name into it to have access to the user's name if we want
-// to use it in the next question from the bot.
 
 
 // When website loaded, chatbot asks first question.
@@ -126,5 +143,5 @@ const riddleOption = option => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1500)
+setTimeout(greetUser, 800)
 
