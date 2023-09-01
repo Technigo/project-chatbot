@@ -67,7 +67,7 @@ const handleNameInput = (event) => {
   showMessage (`${name}`, `user`)
   showMessage (`${name}, are you ready for your first question?`, `bot`);
   
-  setTimeout(ready, 1000);
+  ready();
   }
 const ready = () => {
   inputWrapper.innerHTML =`
@@ -75,25 +75,45 @@ const ready = () => {
     <button class="noReady" id="noBtn">NO</button>
     `
 
-}
-
-const pizzaOption = () => {
-
-    showMessage (`What pizza would you like?`, 'bot')
+  document.getElementById('yesBtn')
+  .addEventListener('click', (noSubmit) => {
+    noSubmit.preventDefault();
+    readyReply ('YES')
+    setTimeout(firstQuestion, 1000)
+  })
   
-    form.innerHTML = `
-      <button class="options" id="margheritaBtn">margherita</button>
-      <button class="options" id="vesuvioBtn">vesuvio</button>
-      <button class="options" id="funghiBtn">funghi</button>
+  document.getElementById('noBtn')
+  .addEventListener('click', (noSubmit) => {
+    noSubmit.preventDefault(); 
+    readyReply ('NO')
+    showMessage(`Sorry to hear that, Let's refresh!`, 'bot')
+    setTimeout(() => {window.location.reload()},4000)
+  })
+
+
+  
+}
+const readyReply = (yesNoAnswer) => {
+  showMessage(yesNoAnswer,'user')
+  inputWrapper.innerHTML = ''
+}
+const firstQuestion = () => {
+
+    showMessage (`What is the Capital of France?`, 'bot')
+  
+    inputWrapper.innerHTML = `
+      <button class="options" id="parisBtn">Paris</button>
+      <button class="options" id="germanyBtn">Germany</button>
+      <button class="options" id="italyBtn">Italy</button>
   `
-  document.getElementById('margheritaBtn')
-  .addEventListener('click', (noSubmit) => {noSubmit.preventDefault(); selectedPizza ('margherita')})
+  document.getElementById('parisBtn')
+  .addEventListener('click', (noSubmit) => {noSubmit.preventDefault(); selectedPizza ('Paris')})
   setTimeout(selectedPizza, 1000)
-  document.getElementById('vesuvioBtn')
-  .addEventListener('click', (noSubmit) => {noSubmit.preventDefault(); selectedPizza ('vesuvio')})
+  document.getElementById('germanyBtn')
+  .addEventListener('click', (noSubmit) => {noSubmit.preventDefault(); selectedPizza ('Germany')})
   setTimeout(selectedPizza, 1000)
-  document.getElementById('funghiBtn')
-  .addEventListener('click', (noSubmit) => {noSubmit.preventDefault(); selectedPizza ('funghi')})
+  document.getElementById('italyBtn')
+  .addEventListener('click', (noSubmit) => {noSubmit.preventDefault(); selectedPizza ('Italy')})
   setTimeout(selectedPizza, 1000)
 }
 
