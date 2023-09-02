@@ -16,4 +16,4 @@ If I had more time I would have liked to show the user that the bot is processin
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://project-chatbot-susanne.netlify.app/
