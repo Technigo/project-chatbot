@@ -20,7 +20,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/icons8-acorn-100.png" alt="User" />  
       </section>
     `
    
@@ -28,7 +28,7 @@ const showMessage = (message, sender) => {
     console.log("botMessageSent")
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/icons8-tree-100.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -46,7 +46,7 @@ const handleNameInput = (event) => {
   event.preventDefault();
 
   const userName = nameInput.value; 
-  showMessage(`For sure, my name is ${userName}`, `user`);
+  showMessage(`My name is ${userName}!`, `user`);
   nameInput.value = "";
   setTimeout(() => treeType(userName), 1000);
 };
@@ -76,6 +76,7 @@ document.getElementById(`pear`)
       setTimeout(() => confirmTreeType (treeChoice), 1000)
     })
 }
+// Se om det går att få till username nedan, varför funkar den inte globalt? Kolla Jennie-videon och om det inte funkar, skriv readme etc, ta bort taggen på username och lämna in
 
 const confirmTreeType = (treeChoice) => {
   if (treeChoice === "apple") {
