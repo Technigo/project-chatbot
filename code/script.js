@@ -3,6 +3,8 @@
 const chat = document.getElementById('chat');
 const nameInput = document.getElementById('name-input');
 const nameForm = document.getElementById('name-form');
+const activityBtn = document.getElementById('input-wrapper')
+const sendButton = document.getElementById('send-btn')
 
 // // If you need any global variables that you can use across different functions, declare them here:
 let userName = '';
@@ -46,6 +48,7 @@ const greetUser = () => {
 setTimeout(greetUser, 1000);
 
 const handleNameInput = (event) => {
+  console.log("event");
   event.preventDefault();
   userName = nameInput.value;
   nameInput.value = "";
@@ -56,8 +59,38 @@ const handleNameInput = (event) => {
 nameForm.addEventListener("submit", handleNameInput);
 
 function reply() {
-  showMessage(`Are you hungry, ${userName}?`, 'bot');
+  console.log("reply");
+  showMessage(`Are you hungry, ${userName}? please choose your food.`, 'bot');
+
+  //This inject the buttons to the htlm
+  activityBtn.innerHTML = `
+<button class="send-btn" id="pizza">Pizza</button>
+<button class="send-btn" id="pasta">Pasta</button>
+<button class="send-btn" id="pizza">Salad</button>
+
+`;
+
+  const foodButtons = activityBtn.querySelectorAll('.send-btn');
+  console.log("foodbuttons");
+  foodButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+      const selectedfood = event.target.id;
+      showMessage(`Amazing! You've selected ${selectedfood}`, 'bot');
+    });
+  });
 }
+
+// Set up your eventlisteners here
+
+function foodChoice(choice) {
+  console.log("foodchoice");
+  activityBtn.innerHTML = '';
+
+  if (choice)
+
+}
+
+
 
 
 
@@ -73,7 +106,7 @@ function reply() {
 // to use it in the next question from the bot.
 
 
-// Set up your eventlisteners here
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
