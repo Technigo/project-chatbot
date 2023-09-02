@@ -8,7 +8,9 @@ let usersName = "Jane Doe";
 let questionCount = 0;
 let continentSelected = "Africa";
 let areaOptions = "Himalayas";
-let areaChoice = "does this change?";
+let areaChoice = "";
+let numOfPax;
+
 
 
 // Declare your functions after this comment
@@ -52,7 +54,6 @@ const greetUser = () => {
   showMessage("To get us started, what is your name?", 'bot');
   console.log(`question count is:`, questionCount)
 }
-
 
 //ask user if they are interested in a flight, yes/no answer
 const botQuestion2 = (name) => {
@@ -121,7 +122,7 @@ const botQuestion4 = (continent) => {
     areaOptions.innerHTML = `
 <select id="q4-dropdown">
   <option value="" selected disabled>&#128071 Select an area of interest here</option>
-  <option value="britishIsles">The British Isles</option>
+  <option value="britishIsles">The British Isles, and Ireland</option>
   <option value="scandinavia">Scandinavia, The Baltic and North Seas</option>
   <option value="theAlps">Central Uplands, The Alps and the Mediterranean</option>
 </select>
@@ -147,33 +148,91 @@ const botQuestion4 = (continent) => {
         console.log("area Choice is:", areaChoice);
         setTimeout(botQuestion5, 1000);
         break;
+      case "britishIsles":
+        showMessage(`The British Isles, and Ireland`, 'user');
+        console.log("area Choice is:", areaChoice);
+        setTimeout(botQuestion5, 1000);
+        break;
+      case "scandinavia":
+        showMessage(`Scandinavia, The Baltic and North Sea`, 'user');
+        console.log("area Choice is:", areaChoice);
+        setTimeout(botQuestion5, 1000);
+        break;
+      case "theAlps":
+        showMessage(`Centra; Uplands, The Alps and the Mediterranean`, 'user');
+        console.log("area Choice is:", areaChoice);
+        setTimeout(botQuestion5, 1000);
+        break;
     }
 
-  }, { once: true });  //function only used once
+  }, { once: true });  //function only used once, I don't know if this works?
 
 } //end of botQuestion4
 
 const botQuestion5 = () => {
   console.log("botQuestion5 function is entered")
   showMessage(`We have some amazing locations in this area`, 'bot');
-  showMessage(`How many tickets do you require?`, 'bot');
+  showMessage(`Please choose the date you wish to travel`, 'bot');
 
-  //re-create the input field we started with
-  const inputReturns = document.getElementById("input-wrapper")
-  inputReturns.innerHTML = `
-  <form id="name-form">
-  <input id="name-input" type="text" placeholder="Type here...." autofocus="autofocus" />
-  <button class="send-btn" type="submit">
-    Send
-  </button>
-</form>
-`
+  //create date input field to choose date
+  const chooseDate = document.getElementById("input-wrapper")
+  chooseDate.innerHTML = `
+    <input type="date" id="trip-start" name="trip-start" value="2023-09-03" min="2023-09-03" max="2024-12-31" />
+    `
+  //event listener for when user clicks on their selected date
+  chooseDate.addEventListener("change", function (whichButton) {
+    let usersDate = document.getElementById("trip-start").value;
+    console.log(usersDate)
+    showMessage(`${usersDate}`, 'user');
+    setTimeout(botQuestion6, 1000);
+
+
+  })
+} //end of botQuestion5 function
+
+
+const botQuestion6 = () => {
+  console.log("entered confirmation question")
+  showMessage(`Our team now have enough information to prepare some options for you`, 'bot');
+  showMessage(`Would you like as to procceed?`, 'bot');
+
+  //create 2 buttons - for confirmation (YES or NO)
+  const q6Buttons = document.getElementById("input-wrapper")
+  q6Buttons.innerHTML = `
+ <button id="yesBtn" value="yes">YES</button>
+ <button id="noBtn" value="no">NO</button>
+  `
+  //event listener for when user clicks on their selected button
+  q6Buttons.addEventListener("click", function (q6Buttons) {
+    if (q6Buttons.target.value == "yes") {
+      let userConfirmation = "yes"
+      showMessage(`${userConfirmation}`, 'user');
+      showMessage(`Great! You should receive an email from us shortly`, 'bot');
+      showMessage(`Your reference number is : 34534212`, 'bot');
+      showMessage(`Thank you for visiting us, and happy flying`, 'bot');
+      setTimeout(botQuestion7, 1000);
+    } else if (q6Buttons.target.value === "no") {
+      let userConfirmation = "no"
+      showMessage(`${userConfirmation}`, 'user');
+      showMessage(`You're request has been cancelled`, 'bot');
+      showMessage(`We hope you visit again soon, Good bye`, 'bot');
+      setTimeout(botQuestion7, 1000);
+    }
+  })
 }
 
-
-//
-//
-//
+const botQuestion7 = () => {
+  console.log("we have entered botQuestion7")
+  const areaOptions = document.getElementById("input-wrapper")
+  areaOptions.innerHTML = `
+    <form id="name-form">
+    <input id="name-input" type="text" placeholder="Type here...." autofocus="autofocus" />
+    <button class="send-btn" type="submit">
+      Send
+    </button>
+  </form>
+  `
+}
 //
 //
 //
