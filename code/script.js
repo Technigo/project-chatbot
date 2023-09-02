@@ -257,6 +257,9 @@ const handleNoButtonClick = () => {
   // Display the bot's response
   showMessage("I see, you're already a plant expert. It was nice having you here. Come back whenever you want!", 'bot');
 
+   // Take away input field and buttons
+   inputWrapper.innerHTML = '';
+
   // After a brief delay, reset the chat from the beginning
   setTimeout(() => resetChat(), 3000);
 };
