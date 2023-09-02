@@ -37,7 +37,7 @@ const questions = [
     /***************************QUESTION 2*******************************/
     message: "Which genre of art do you like the most?",
     option: "button",
-    id: ["mordern", "impressionism", "pop"],
+    id: ["modern", "impressionism", "pop"],
     isNested: false,
     choice: ["Modern", "Impressionism", "Pop"],
     // Here is the next function that will triger in createInputField()
