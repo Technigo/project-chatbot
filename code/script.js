@@ -2,6 +2,7 @@
 const chat = document.getElementById("chat");
 const nameInput = document.getElementById("name-input");
 const nameForm = document.getElementById("name-form");
+const button = document.getElementsByClassName("send-btn");
 // If you need any global variables that you can use across different functions, declare them here:
 // Declare your functions after this comment
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -35,7 +36,6 @@ const showMessage = (message, sender) => {
 };
 // Starts here
 const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello you! My name is Bob the Bot. Who are you?", "bot");
 };
 const handleNameInput = (event) => {
@@ -43,28 +43,40 @@ const handleNameInput = (event) => {
   userName = nameInput.value;
   nameInput.value = "";
   showMessage(`My name's ${userName}.`, "user");
-  //setTimeout(reply, 1000)
-  // After 1 second, show the next question by invoking the next function.
-  // passing the name into it to have access to the user's name if we want
-  // to use it in the next question from the bot.
-  //setTimeout(() => showFoodOptions(name), 1000);
+  setTimeout(reply, 1000);
 };
 
-const question1 = (event) => {
+const reply = () => {
   showMessage(`Welcome ${userName}! Do you feel up for a quiz about random facts? Type Yes, or No`, "bot");
+}
+
+const firstquestion = (userResponse) => {
+  showMessage()
+  if (userResponse === "Yes") {
+    showMessage(`Great! Lets start!`, "bot")
+
+  } else if (userResponse === "No") {
+    showMessage(`Okey, maybe another time then! Have a great day`, "bot")
+
+  } else {
+    showMessage(`I didn't quite get that. Please try again`, "bot");
+  }
 }
 
 // Set up your eventlisteners here
 nameForm.addEventListener("submit", (event) => {
   handleNameInput(event);
+  AbortSignal;
 });
 
-//question1.addEventListener("submit", (event) => {
-//console.log("first question");
+//this eventListener is what's wrong!!!!!!!!!!!!!!!!!!!
+//button.addEventListener("click", () => {
+//let userResponse = .value.trim().toLowerCase();
+//firstquestion(userResponse);
+
 //});
 
-//const submit = document.getElementById("button");
-//const showMessage = () => {}
+
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
@@ -77,7 +89,7 @@ setTimeout(greetUser, 1000);
 //add a button called "fancy a quiz?" to start the chatbot.
 //start with the question about the name.
 //user input: name.
-//bot: hello {$Name}. I hope your up for a quiz in random facts! lets start, shall we?
+//bot: hello {$Name}. I hope youre up for a quiz in random facts! lets start, shall we?
 //buttons, yes or no.
 //if yes: Bot: great! first question!
 //if no: okay, maybe another time then. Bye bye for now. Don't forget that you're beautiful <3
