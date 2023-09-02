@@ -106,7 +106,7 @@ const showPlantQuestion = (name) => {
 //Show some facts depending on the users choice
 const showFactsQuestion = (selectedOption) => {
   // Display the bot's question with "Yes" and "No" buttons
-  showMessage(`Would you like to hear some facts about ${selectedOption}?`, 'bot');
+  showMessage(`Would you like to hear some facts about ${selectedOption}s?`, 'bot');
 
   // Create "Yes" and "No" buttons
   const yesButton = document.createElement('button');
@@ -134,7 +134,7 @@ const showFactsQuestion = (selectedOption) => {
 
 const showAdviceQuestion = (selectedOption) => {
   // Display the bot's question with "Yes" and "No" buttons
-  showMessage(`Would you like to hear some care tips for ${selectedOption}?`, 'bot');
+  showMessage(`Would you like to hear some care tips for ${selectedOption}s?`, 'bot');
 
   // Create "Yes" and "No" buttons
   const yesButton = document.createElement('button');
