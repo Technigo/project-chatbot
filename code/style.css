@@ -147,3 +147,14 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+
+/* Hide the main element initially */
+.chatbot {
+  display: none;
+}
+
+/* js classes */
+.ticketBtnContainer {
+  display: none;
+}
