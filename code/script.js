@@ -68,7 +68,7 @@ const nameMsg = (event) => {
   //I spent almost half a day to figure out why the reply won't stay there, Google save my life
   event.preventDefault();
   // get user input
-  let userName = nameInput.value;
+  const userName = nameInput.value;
   showMessage(userName, 'user');
   setTimeout(() => {
     showMessage(`Nice to meet you ${userName}. What type of food would you like to order?`, "bot")
@@ -82,6 +82,8 @@ const nameMsg = (event) => {
   ;
   currerntQuestion++;
 };
+
+
 
 //show message according to the user's choice
 const displayFood = (event) => {
@@ -97,7 +99,7 @@ const displayFood = (event) => {
       break;
   }
   //Display different message and menu according to user'schoice
-  let selectedChoice = event.target.id;
+  const selectedChoice = event.target.id;
   setTimeout(() => {
     if (selectedChoice === 'pizza') {
       showMessage("Oh so you're in the mood for pizza? Great choice. Select something from the menu!", "bot")
@@ -115,19 +117,46 @@ const displayFood = (event) => {
       subSalad.classList.remove("hidden")
     }
 
-    const displaySubChoice = (event) => {
-      switch ()
-    }
+    const finalChoice = (event) => {
+      showMessage(event.target.selectedOptions[0].innerText, 'user');
     }
 
+    subFoodChoice.querySelectorAll('select').forEach(select => select.addEventListener("input", finalChoice));
 
+    //Try to simplify the code by selecting the dropdown menu as array 
+    // const finalChoice = () => {
+    //   for (var i = 0; i < subPizza.options.length; i++) {
+    //     if (subPizza.options[i].value === "hawaiian") {
+    //       // Set the "selected" attribute to true for the desired option
+    //       subPizza.options[i].selected = true;
+    //       showMessage("hi", "user");
+    //       break; // Exit the loop once the option is selected
+    //     }
+    //   }
+    // }
+
+    // function finalChoice(optionValue) {
+    //   // Find the index of the desired option
+    //   var optionIndex = Array.from(finalChoice.options).findIndex(option => option.value === optionValue);
+
+    //   // Check if the option was found
+    //   if (optionIndex !== -1) {
+    //     // Set the "selected" attribute to true for the desired option
+    //     finalChoice.selectedIndex = optionIndex;
+    //     showMessage
+    //   } else {
+    //     console.log("Option not found");
+    //   }
+    // }
 
 
   }, 1000)
 
 };
-// Loop through the buttons and add a click to event listener to each button
 foodBtn.querySelectorAll('button').forEach(button => button.addEventListener("click", displayFood));
+
+// Loop through the buttons and add a click to event listener to each button
+
 
 
 
