@@ -1,6 +1,7 @@
 
 // If you need any global variables that you can use across different functions, declare them here:
 let treeChoice = "";
+let userName = "";
 
 // Declare your functions after this comment
 const chat = document.getElementById("chat");
@@ -37,15 +38,8 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// const botResponse = (msg) => {
-//   showMessage(msg, 'bot');
-// }
-// const userResponse = (msg) => {
-//   showMessage(msg, 'user');
-// }
-
 const greetUser = () => {
-  showMessage(`Hi friend of Trees, can we get your name, please?`, `bot`);
+  showMessage(`Hi friend of Trees! Please enter your name below`, `bot`);
 };
 
 const handleNameInput = (event) => {
@@ -60,7 +54,7 @@ const handleNameInput = (event) => {
 nameForm.addEventListener("submit", handleNameInput);
 
 const treeType = (userName) => {
-  showMessage(`Nice to meet you, ${userName}! <br><br> 
+  showMessage(`Nice to meet you ${userName}! <br><br> 
   What tree would you like in your garden?`, `bot`);
  inputWrapper.innerHTML =`
     <button class="send-btn" id="apple">Apple</button>
@@ -72,26 +66,26 @@ document.getElementById(`apple`)
     .addEventListener(`click`, () => {
       treeChoice = "apple"
       showMessage("I want an Apple-tree!", `user`)
-      setTimeout(() => confirmTreeType(treeChoice), 1000)
+      setTimeout(() => confirmTreeType (treeChoice), 1000)
     })
 
 document.getElementById(`pear`)
     .addEventListener(`click`, () => {
       treeChoice = "pear"
       showMessage("I want a Pear-tree!", `user`)
-      setTimeout(() => confirmTreeType(treeChoice), 1000)
+      setTimeout(() => confirmTreeType (treeChoice), 1000)
     })
 }
+
 const confirmTreeType = (treeChoice) => {
   if (treeChoice === "apple") {
-    showMessage (`An Apple-tree is an excellent choice, ${userName}!`, `bot`)
+    showMessage (`An Apple-tree is an excellent choice ${userName}!`, `bot`)
   } else if (treeChoice === "pear") {
-    showMessage (`A Pear-tree is an excellent choice, ${userName}!`, `bot`)
+    showMessage (`A Pear-tree is an excellent choice ${userName}!`, `bot`)
   } 
-  
+ 
   }
 
-// setTimeout(() => ciderLemonade)
 
 
 
