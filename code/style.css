@@ -6,14 +6,15 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url(./assets/background.jpg);
+  background-color: darkgrey;
 }
 
 h1 {
   font-weight: bold;
   font-size: 28px;
   line-height: 34px;
-  color: #fff;
+  color: #e74311;
   text-align: center;
 }
 
@@ -129,7 +130,7 @@ label {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #e74311;
   color: white;
   border: none;
   border-radius: 4px;
@@ -154,9 +155,8 @@ button:hover {
   padding: 10px 40px;
   margin: 20px;
   font-size: 16px;
-  color:black;
+  color:blue;
   background-color: #e5e9ff;
   cursor: pointer;
   width: 100%;
-  
 }

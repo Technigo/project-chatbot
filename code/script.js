@@ -28,7 +28,7 @@ const showMessage = (message, sender) => {
     `
   }
 
-  // This makes the chat scroll to the last message when there are too many to be shown in the chat box. When I put it in a setTimeout-function I can delay the load time so the whole bubble shows.
+  // This makes the chat scroll to the last message when there are too many to be shown in the chat box. When I put it in a setTimeout-function I can delay the load time so the whole bubble shows instead of breaking it off early.
   setTimeout(() => {
       chat.scrollTop = chat.scrollHeight
   }, 200)
@@ -36,7 +36,7 @@ const showMessage = (message, sender) => {
 
 // Starts here
 const greetUser = () => {
-  showMessage("Hello gamer, what's your name?", 'bot')
+  showMessage("Hello gamer, what do you call yourself?", 'bot')
 }
 
 //The user enters their name and the chat is started
@@ -48,7 +48,7 @@ const handleNameInput = (event) => {
 
   //Checks if the input field is empty. If it is, notify the user to write something.
   if (name === '') {
-    showMessage("You need to write something, even if it's your Discord-ID 😉" , 'bot')
+    showMessage("You need to write something, even if it's your ID on Discord 😉" , 'bot')
   } else {
     showMessage(name, 'user');
     username = nameInput.value;
@@ -60,6 +60,7 @@ const handleNameInput = (event) => {
 
 };
 
+//This block dispalys three buttons for the user to click on
 const gameOption = () => {
   showMessage(`Hi ${username}, which game category would you like to play today?` ,'bot') 
   inputWrapper.innerHTML = `
@@ -83,57 +84,54 @@ const gameOption = () => {
     setTimeout(() => gameQuestion('Open world'), 1500)})
 }
 
-  let game = ""
-  let gameChoice = ""
-  let selectedGame = ""
+//This block displays different games to choose from dependig on what the user chose in the last block.
+let game = ""
+let gameChoice = ""
+let selectedGame = ""
   
-  const gameQuestion = (selectedGameOption) => {
-    showMessage(`Cool, ${selectedGameOption}, that has some very cool games! Choose a game to download from our library below 👇.` , 'bot')
+const gameQuestion = (selectedGameOption) => {
+  showMessage(`Cool, ${selectedGameOption}, that has some very cool games! Choose a game from our library below 👇` , 'bot')
 
-    switch (selectedGameOption) {
-    case "Detective Games": 
-      
+  switch (selectedGameOption) {
+  case "Detective Games": 
     game = ["Sherlock Holmes", "Detroit: Become Human", "Disco Elysium"]
-
       inputWrapper.innerHTML = `
-      <select id="gameChoiceSelect">
-        <option value="" selected disabled>Choose a game below 🎮</option>
-        <option value="1">Sherlock Holmes</option>
-        <option value="2">Detroit: Become Human</option>
-        <option value="3">Disco Elysium</option>
-      </select>
+        <select id="gameChoiceSelect">
+         <option value="" selected disabled>Choose a game below 🎮</option>
+         <option value="1">Sherlock Holmes</option>
+         <option value="2">Detroit: Become Human</option>
+         <option value="3">Disco Elysium</option>
+       </select>
       `
-      break
-    case "Fantasy": 
-      
-      game = ["Final Fantasy", "Forspoken", "Harry Potter - Hogwarts Legacy"]
+    break
 
+  case "Fantasy": 
+    game = ["Final Fantasy", "Forspoken", "Harry Potter - Hogwarts Legacy"]
       inputWrapper.innerHTML = `
-      <select id="gameChoiceSelect">
-        <option value="" selected disabled>Choose a game below 🎮</option>
-        <option value="1">Final Fantasy</option>
-        <option value="2">Forspoken</option>
-        <option value="3">Harry Potter - Hogwarts Legacy</option>
-      </select>
+         <select id="gameChoiceSelect">
+          <option value="" selected disabled>Choose a game below 🎮</option>
+          <option value="1">Final Fantasy</option>
+          <option value="2">Forspoken</option>
+          <option value="3">Harry Potter - Hogwarts Legacy</option>
+        </select>
       `
-      break
-    case "Open world": 
-      
+    break
+
+  case "Open world": 
     game = ["Assassin's Creed", "Red Dead Redemption", "We Happy Few"]
-
       inputWrapper.innerHTML = `
-      <select id="gameChoiceSelect">
-        <option value="" selected disabled>Choose a game below 🎮</option>
-        <option value="1">Assassin's Creed</option>
-        <option value="2">Red Dead Redemption</option>
-        <option value="3">We Happy Few</option>
-      </select>
+        <select id="gameChoiceSelect">
+          <option value="" selected disabled>Choose a game below 🎮</option>
+         <option value="1">Assassin's Creed</option>
+         <option value="2">Red Dead Redemption</option>
+         <option value="3">We Happy Few</option>
+       </select>
       `
-      break
+    break
       process.exit(1)
   }
   
-  //Drop down menu
+  //Drop down menu to show
   const gameChoiceSelect = document.getElementById('gameChoiceSelect')
 
   gameChoiceSelect.addEventListener('change', () => {
@@ -144,9 +142,9 @@ const gameOption = () => {
     inputWrapper.innerHTML =''
     setTimeout(() => verifyGame(), 1000)
     })
-  }
+}
 
-
+//This block provides the confirmation buttons for the users choice in the drop down
 const verifyGame = () => {
   showMessage (`${username}, are you happy with your choice?`, 'bot')
   inputWrapper.innerHTML = `
@@ -164,11 +162,12 @@ const verifyGame = () => {
     setTimeout(() => response('Nah'), 1000)})
 }
 
+//Depending on what the users response was in the previous block (verifyGame) the bot shows a message accordingly.
 const response = (response) => {
   if (response === 'Yes') {
-    showMessage ('Awesome! A download link will soon be provided to you. Enjoy your game!' ,'bot')
+    showMessage ('Awesome! The game will load soon. Have fun!' ,'bot')
   } else {
-    showMessage ("It's ok to change your mind. We hope to see back here soon!" ,'bot')
+    showMessage ("I'm sorry to hear that. I stopped the download of the game. Hope you change your mind and will be playing with us soon!" ,'bot')
   }
   inputWrapper.innerHTML = ''
 }
