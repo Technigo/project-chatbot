@@ -6,6 +6,14 @@ Start by briefly describing the assignment in a sentence or two. Keep it short a
 
 ## The problem
 
+the onchange event also works on <select> elements
+https://www.w3schools.com/jsref/event_onchange.asp
+
+Had to include addEventListener "select" in the respective functions to invoke them
+Had to use anonymous function to be able to invoke summarisingMessage passing arguments
+document.getElementById('catamaran-time-slot').addEventListener('change', ((event) => {
+      summarisingMessage(event, waterActivity)
+
 Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
 
 ## View it live
