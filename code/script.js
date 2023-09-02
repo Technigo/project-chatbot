@@ -67,12 +67,12 @@ const serviceOffers = () => {
 
   // create 3 buttons
   document.getElementById("input-wrapper").innerHTML = `
-  <div id="services-wrapper" style="display: flex">
+  <div id="services-wrapper" style="display: flex; justify-content: space-evenly">
     <button id="domain" value="domain">Domain<br>registration:<br>15 credits / year</button>
     <button id="hosting" value="hosting">Hosting:<br>5  credits / month</button>
     <button id="domainAndHosting" value="domainAndHosting">Registration<br>and Hosting:<br>15% discount</button>
   </div>`;
-  // additional div for targeting content and serving as flex container, input-wrapper needs to ramain
+  // additional div for targeting content and serving as flex container, input-wrapper needs to ramain. css-styling only possible here inline, not in css file.
   // do not nest ""
 
   const servicesWrapper = document.getElementById("services-wrapper");
