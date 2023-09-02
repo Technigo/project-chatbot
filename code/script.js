@@ -4,7 +4,7 @@ const form = document.getElementById('name-form');
 const nameInput = document.getElementById('name-input');
 const submitBtn = document.getElementsByClassName('send-btn');
 const inputWrapper = document.getElementById('input-wrapper');
-
+const startBtn = document.getElementById('startBtn');
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -202,7 +202,7 @@ const answThree = (answThree) => {
       showMessage(`What is 2 + 2?`, 'bot')
   } else if (answThree === "four") {
       showMessage(`4`, 'user')
-      showMessage(`You genius, that's correct!`, 'bot')
+      showMessage(`You're a genius, that's correct!`, 'bot')
       setTimeout(() => finish(), 1500); //only this answer calls for the next function
   }
 }
@@ -220,8 +220,11 @@ const finish = (finish) => {
 }
 
 
+
+startBtn.addEventListener('click', () => setTimeout(greetUser, 1000));
 form.addEventListener("submit", handleNameInput);
-setTimeout(greetUser, 1000)
+
+
 
 // Set up your eventlisteners here
 

@@ -144,10 +144,16 @@ button {
 
 }
 
+.start-button {
+  display: flex;
+  align-items: center;
+  border: solid white 1px;
+  margin: 20px auto;
+}
+
 .firstBtns {
   width: 100%;
 }
-
 
 button:hover {
   opacity: 0.9;
