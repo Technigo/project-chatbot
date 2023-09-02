@@ -12,9 +12,9 @@ let userName = "";
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage(`Why hello there, may i ask you your name?`, 'bot')
-  //handleNameInput();
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
+
+//Store the users name and pass it through showMessage function which posts message to user bubble
 const handleNameInput = (event) => {
   event.preventDefault();
   // Store the value in a variable so we can access it after we
@@ -26,11 +26,21 @@ const handleNameInput = (event) => {
   // After 1 second, show the next question by invoking the next function.
   // passing the name into it to have access to the user's name if we want
   // to use it in the next question from the bot.
-  setTimeout(reply(userName), 1000);
+  setTimeout(hangout(userName), 1000);
 };
 
-const reply = (userName) => {
-  showMessage(`What are you up to today, ${userName}? Care to have some company?`, 'bot');
+const hangout = (userName) => {
+  showMessage(`What are you up to today, ${userName}? Want to hang out?`, 'bot');
+  wrapper.innerHTML = `
+  <button id="no" type="submit" value="No">No, thank you</button>
+  <button id="yes" type="submit" value="Yes">I'd love to!</button>
+  `
+}
+
+const age = () => {
+  if (userAge <= 18) {
+    showMessage
+  }
 }
 
 
@@ -63,11 +73,9 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-
-
 // Set up your eventlisteners here
 nameSubmit.addEventListener('submit', handleNameInput);
-
+wrapper.addEventListener('submit', age);
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
