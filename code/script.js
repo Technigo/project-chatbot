@@ -6,12 +6,12 @@ const inputWrapper = document.getElementById('input-wrapper');
 const inputField = document.getElementById('name-input');
 const sendBtn = document.getElementById('send-btn');
 const formInputField = document.getElementById('name-form');
+
 let teaBaseOption = "";
 let teaPearlOption = "";
 let drinkSizeOption = "";
 let totalOrderPrice = "";
 let customerName = "";
-
 
 const drinkOption = {
   teaBase: ["Matcha", "Black Tea", "Oolong Tea"],
@@ -21,33 +21,35 @@ const drinkOption = {
 };
 
 
-// FUNCTIONS are declared below
+// FUNCTIONS
 
-// Function to clear the input field
-// Since the input field needs to be cleared after every input I created a function for this.
+// Function to clear the input field.
 const clearInputField = () => {
   inputField.value = "";
 };
 
-
+/* Function to remove all child elements from a specified parent element. 
+"While" loop that continues as long as the inputWrapper element has child nodes. 
+The hasChildNodes() method checks if the inputWrapper element has any child nodes.
+inputWrapper.removeChild(inputWrapper.firstChild) inside the while loop removes the first child node/element of the parent element and does this iteratively until there are no more child nodes left.
+*/
 function removeChildrenFunction() {
   while (inputWrapper.hasChildNodes()) {
     inputWrapper.removeChild(inputWrapper.firstChild);
   }
 };
 
+// Function that causes the page to refresh.
 const reloadPage = () => {
   setTimeout(() => {
     location.reload();
   }, 5000);
 };
 
-// This function will add a chat bubble in the correct place based on who the sender is
+// This function will add a chat bubble in the correct place based on who the sender is (user/bot).
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
-    console.log('Message is:', message);
-    console.log('Sender is:', sender);
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -58,8 +60,6 @@ const showMessage = (message, sender) => {
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
-    console.log('Message is:', message);
-    console.log('Sender is:', sender);
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -69,14 +69,12 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+  // Properties that makes the chat scroll to the last message when there are too many to be shown in the chat box.
   chat.scrollTop = chat.scrollHeight
 }
 
 // Function to greet the user
-// The function showMessage is called with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
 const greetUser = () => {
-
   showMessage("Hi, welcome to the BubblePop Café!", 'bot')
   setTimeout(() => {
     showMessage("First things first. Who is this order for?", 'bot');
@@ -84,18 +82,13 @@ const greetUser = () => {
   sendBtn.addEventListener('click', handleNameInput);
 }
 // Function for the name input from the user
-
 const handleNameInput = (event) => {
   event.preventDefault();
 
-  // the dot . means that we're accessing an attribute/method of the variable left of the dot.
-  // Here we are accessing the value that exists in the input element with the id "name-input". 
-
+  // Accessing the value that exists within the input element with the id "name-input", and storing the name input from the user in a variable.
   customerName = inputField.value;
 
-
-  // If the function that is being called was defined with parameters, like showMessage = (message, sender), they need to be added when said function is called/used.
-  // the showMessage function is called and passes on the arguments name (which is the value of the input field) and the sender (which depends on the if statement).
+  // If the user doesn't enter a name a pop-up dialogue will be displayed asking the user to enter a name. If they enter their name the showMessage function will pass on two arguments; the value of the inputfield (the user's name) and who the sender is (user).
   if (customerName === "") {
     alert(`Oops! Looks like you missed entering your name. Could you please provide it for your order?`);
   } else {
@@ -104,10 +97,8 @@ const handleNameInput = (event) => {
     //Function that clears the input field.
     clearInputField();
 
-    // After 1 second, show the next question by invoking the next function.
-    // passing the name into it to have access to the user's name if we want to use it in the next question from the bot.
-    // To pass parameter values to a function, that is itself passed as a parameter to another function, use an "anonymous function" () => {}
-    // Meaning, when a function is a parameter and needs a parameter itself, you need to use an anonymous function
+    // the setTimeout function sets a timer to execute the code inside, which is the next question, after a delay of 1000 milliseconds (1 second). It passes on the customerName variable.
+    // To pass parameter values to a function, that is itself passed as a parameter to another function, use an "anonymous function" () => {}. In other words, when a function is a parameter and needs a parameter itself, you need to use an anonymous function.
     setTimeout(() => handleBobaBaseOptions(customerName), 1000);
   };
 };
@@ -117,39 +108,48 @@ const handleNameInput = (event) => {
 const handleBobaBaseOptions = (customerName) => {
 
   removeChildrenFunction();
+
   showMessage(`Let's start creating your Boba drink ${customerName}!
   What kind of tea do you want to have?`, 'bot');
 
+  // Addition of three buttons for tea choices.
   inputWrapper.innerHTML += `
     <button id="matcha" type="submit">Matcha</button>
     <button id="blackTea" type="submit">Black Tea</button>
     <button id="oolongTea" type="submit">Oolong Tea</button>
   `;
 
+  // Variables that store references to the three added buttons. 
+  const matchaBtn = document.getElementById('matcha');
+  const blackTeaBtn = document.getElementById('blackTea');
+  const oolongTeaBtn = document.getElementById('oolongTea');
 
-  //Eventlisteners for buttons
-  document.getElementById('matcha').addEventListener('click', () => {
+  //Eventlisteners for the buttons. 
+  matchaBtn.addEventListener('click', () => {
     teaBaseOption = drinkOption.teaBase[0];
     showMessage(`I want to order ${teaBaseOption.toLowerCase()}.`, "user");
     setTimeout(() => handleBobaPearls(teaBaseOption), 1000);
   });
-  document.getElementById('blackTea').addEventListener('click', () => {
+  blackTeaBtn.addEventListener('click', () => {
     teaBaseOption = drinkOption.teaBase[1];
     showMessage(`I want to order ${teaBaseOption.toLowerCase()}.`, "user");
     setTimeout(() => handleBobaPearls(teaBaseOption), 1000);
   });
-  document.getElementById('oolongTea').addEventListener('click', () => {
+  oolongTeaBtn.addEventListener('click', () => {
     teaBaseOption = drinkOption.teaBase[2];
     showMessage(`I want to order ${teaBaseOption.toLowerCase()}.`, "user");
     setTimeout(() => handleBobaPearls(teaBaseOption), 1000);
   });
 };
 
-
+// Function that adds a drop-down menu with different toppings to choose between
 const handleBobaPearls = (teaBaseOption) => {
-  removeChildrenFunction();
-  showMessage(`Great! For your ${teaBaseOption.toLowerCase()}, what type of boba pearls do you want to add?`, 'bot');
 
+  removeChildrenFunction();
+
+  showMessage(`Great! For your ${teaBaseOption.toLowerCase()}, what type of topping do you want to add?`, 'bot');
+
+  // adds a drop-down menu
   inputWrapper.innerHTML += `
     <select name="bobaPearlOptions" class="bobaPearlOptions" id="bobaPearlOptions" required>
       <option value="" disabled selected>--Select one option--</option>
@@ -160,11 +160,10 @@ const handleBobaPearls = (teaBaseOption) => {
     </select>
   `;
 
-  // For the drop-down menu I tried different approaces and here's the progression of how I went about this.
+  // For the drop-down menu I tried different approaches and here's the progression of how I went about this.
   // I'm saving it here for learning purposes.
-
-  // This iteration gives the values of the option elements as an output which is not what I want since the text of the values is written in a way that doesn't look nice. I could rewrite the values in a way that would look better such as Tapioka Pearl but I wanted to see if I could find a way to target the text of the option element.
-  /* Eventlisteners for drop-down menu
+  /* The first iteration gives the values of the option elements as an output which is not what I want since the text of the values is written in a way that doesn't look nice. I could rewrite the values in a way that would look better such as Tapioka Pearl but I wanted to see if I could find a way to target the text of the option element.
+   Eventlisteners for drop-down menu
     bobaPearlOptions.addEventListener('change', () => {
       teaPearlOption = bobaPearlOptions.value;
       showMessage(teaPearlOption, "user");
@@ -172,7 +171,7 @@ const handleBobaPearls = (teaBaseOption) => {
     });
   */
 
-  /* For this iteration I tried a switch statement and while this worked and gave me the innerText of the option I wanted to see if it could be optimised and shortened.
+  /* For the second iteration I tried a switch statement and while this worked and gave me the innerText of the option I wanted to see if it could be optimised and shortened.
   The switch statement is checking the value of bobaPearlOptions.value against the values of the different options. The variable teaPearlOption is assigned with the innerText of the selected option. 
   const tapiokaPearlOption = document.getElementById('tapiokaPearl');
   const brownSugarPearlOption = document.getElementById('brownSugarPearl');
@@ -199,14 +198,12 @@ const handleBobaPearls = (teaBaseOption) => {
   });
   */
 
-  // This is the iteration I chose after some research on Stackoverflow. It is very concise and if the dropdown menu changes I don't have to update at multiple places so it's easier to maintain and scale.
-
+  // This is the iteration I chose after some research on Stackoverflow. It is very concise and if the dropdown menu options change I don't have to update at multiple places so it's easier to maintain and scale.
   const bobaPearlOptions = document.getElementById('bobaPearlOptions');
   bobaPearlOptions.addEventListener('change', (event) => {
-    /*
-    (event) represents the 'change' event that occurred on the bobaPearlOptions element.
+    /*(event) represents the 'change' event that occurred on the bobaPearlOptions element.
     event.target refers to the element that triggered the event, which, in this case, is the bobaPearlOptions <select> element. It's the element that the user interacted with.
-    event.target.selectedOptions is an HTMLCollection of all the <option> elements that are currently selected within the <select> element. 
+    event.target.selectedOptions is a collection of all the <option> elements that are currently selected within the <select> element. 
     By adding [0] we are specifying that we're only interested in the first selected option.
     event.target.selectedOptions[0].text retrieves the text content of the first selected <option> element. 
     */
@@ -216,22 +213,27 @@ const handleBobaPearls = (teaBaseOption) => {
   });
 };
 
+// Function that adds two button with choices for drink size.
 const handleBobaDrinkSize = () => {
   removeChildrenFunction();
   showMessage(`Nice! Which size do you want to choose?`, 'bot');
 
+  // Adds two buttons
   inputWrapper.innerHTML += `
     <button id="regularSize" type="submit">Regular (500 mL)  -  50 kr</button>
     <button id="largeSize" type="submit">Large (700 mL)  -  60kr</button>`;
 
+  const regularDrinkSize = document.getElementById('regularSize');
+  const largeDrinkSize = document.getElementById('largeSize');
+
   //Eventlisteners for buttons
-  document.getElementById('regularSize').addEventListener('click', () => {
+  regularDrinkSize.addEventListener('click', () => {
     drinkSizeOption = drinkOption.drinkSize[0];
     totalOrderPrice = drinkOption.drinkPrice[0];
     showMessage(`I want a ${drinkSizeOption.toLowerCase()} size drink.`, "user");
     setTimeout(() => handleOrderConfirmation(), 1000);
   });
-  document.getElementById('largeSize').addEventListener('click', () => {
+  largeDrinkSize.addEventListener('click', () => {
     drinkSizeOption = drinkOption.drinkSize[1];
     totalOrderPrice = drinkOption.drinkPrice[1];
     showMessage(`I want a ${drinkSizeOption.toLowerCase()} size drink.`, "user");
@@ -239,17 +241,16 @@ const handleBobaDrinkSize = () => {
   });
 };
 
-
-
-
+// Function to ask the user for a confirmation.
 const handleOrderConfirmation = () => {
+
   removeChildrenFunction();
 
   showMessage(`Nice ${customerName}! You have chosen a ${drinkSizeOption.toLowerCase()} size ${teaBaseOption.toLowerCase()} with ${teaPearlOption.toLowerCase()}!
   That will be ${totalOrderPrice} kr.`, "bot");
   setTimeout(() => {
     showMessage(`Would you like to confirm your order?`, "bot");
-  }, 500);
+  }, 800);
 
   inputWrapper.innerHTML += `
     <button id="positiveOrderConfirmation" type="submit">Yes</button>
@@ -263,13 +264,8 @@ const handleOrderConfirmation = () => {
     showMessage(`No Problem! Looking forward to seeing you again!`, "bot");
     reloadPage();
   });
-
 };
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
+// When the website is loaded, the chatbot asks the first question with a delay of a half second but using this function:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 500)
