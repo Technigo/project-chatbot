@@ -95,16 +95,34 @@ const showPlantQuestion = (name) => {
     showMessage(`${selectedOption}`, 'user');
 
     // After displaying the selected option, show the advice question
-    setTimeout(() => showAdviceQuestion(name), 1000);
+    setTimeout(() => showFactsQuestion(selectedOption), 1000);
   });
 
   // Make sure to scroll to the new message
   chat.scrollTop = chat.scrollHeight;
 };
 
+const showFactsQuestion = (selectedOption) => {
+  // Now, you can directly use the selectedOption in this function
+  if (selectedOption === "Orchid") {
+    showMessage(`Did you know that Orchids are one of the largest families of flowering plants, with over 25,000 documented species? They have a unique pollination method where some orchids mimic the appearance and scent of female insects to attract pollinators. Cool, right?`, 'bot');
+  } else if (selectedOption === "Monstera") {
+    showMessage(`Did you know that Monstera plants are famous for their distinctive split leaves, earning them the nickname "Swiss Cheese Plant." These splits, or fenestrations, are thought to help the plant in its natural habitat by allowing wind and rain to pass through while reducing the risk of damage during storms. Aren't they intelligent?`, 'bot');
+  } else if (selectedOption === "Echeveria") {
+    showMessage(`Did you know that Echeverias are known for their striking rosette-shaped foliage and belong to the succulent family? Another fun fact is that some varieties can change color in response to sunlight, temperature, and stress, making them quite fascinating to observe.`, 'bot');
+  } else {
+    showMessage(`Oops. Try again!`, 'bot');
+  }
+}
+
+
+
+
+
+
 
 const showAdviceQuestion = () => {
-  showMessage("Do you want advice on how to take care of this plant?", 'bot');
+  showMessage("Do you know how to take care of this plant?", 'bot');
 
   // Create a "Yes" button for advice
   const yesButton = document.createElement('button');
