@@ -1,13 +1,14 @@
 # Project Name
 
-Replace this readme with your own information about your project.
+The assignment was to create a chatbot interface using JavaScript, HTML and CSS. 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+My chatbot is called The GameBot. It starts with asking for the users name and then puts out three questions for the user to answer. The js-code includes functions and conditional statements. I also used the DOM to add come HTML code inside of the js-file. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The biggest problem was to get started. I used Technigo material to understand how to use functions and the DOM. After that I used material on YouTube and other websites to get a deeper understanding of the different steps. I a also took some help from my team members and looked att their code to progress. 
+
+If I had more time i would try out adding a dropdown. I did add one at first but couldn't quite figure out how to use them in the bot. 
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Try out my GameBot here: https://chatbot-the-game-inna.netlify.app !
