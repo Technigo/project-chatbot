@@ -7,6 +7,7 @@ const btn = document.getElementById("send-btn");
 const foodBtn = document.getElementById("foodChoice");
 const subFoodChoice = document.getElementById("subFoodChoice")
 
+
 // If you need any global variables that you can use across different functions, declare them here:
 // Bot replies with user name and ask the next question
 // Problem : how to stop showing bot response at once from the beginnin 
@@ -97,7 +98,7 @@ const displayFood = (event) => {
     case 'salad':
       showMessage("salad", "user");
       break;
-  }
+  };
   //Display different message and menu according to user'schoice
   const selectedChoice = event.target.id;
   setTimeout(() => {
@@ -115,15 +116,45 @@ const displayFood = (event) => {
       showMessage("Oh so you're in the mood for salad? Great choice. Select something from the menu!", "bot")
       foodChoice.classList.add("hidden")
       subSalad.classList.remove("hidden")
-    }
+    };
 
+    //use event.target to get the inner text instead of creating an group of "if else statement"
     const finalChoice = (event) => {
       showMessage(event.target.selectedOptions[0].innerText, 'user');
-    }
+      subFoodChoice.classList.add("hidden")
+      setTimeout(() => {
+        showMessage(`One ${event.target.selectedOptions[0].innerText} coming up! Will that be for an adult or a child?`, "bot");
+        adultOrKid.classList.remove("hidden")
+      }, 1000)
+    };
 
     subFoodChoice.querySelectorAll('select').forEach(select => select.addEventListener("input", finalChoice));
 
-    //Try to simplify the code by selecting the dropdown menu as array 
+  }, 1000)
+};
+
+foodBtn.querySelectorAll('button').forEach(button => button.addEventListener("click", displayFood));
+
+// Loop through the buttons and add a click to event listener to each button
+
+
+
+
+
+
+
+
+
+// When website loaded, chatbot asks first question.
+// normally we would invoke a function like this:
+// greeting()
+// But if we want to add a little delay to it, we can wrap it in a setTimeout:
+// setTimeout(functionName, timeToWaitInMilliSeconds)
+// This means the greeting function will be called one second after the website is loaded.
+
+
+   // ------------------ DISCARDED CODE --------------------------------
+    //Try to simplify the code by selecting the dropdown menu as array
     // const finalChoice = () => {
     //   for (var i = 0; i < subPizza.options.length; i++) {
     //     if (subPizza.options[i].value === "hawaiian") {
@@ -148,28 +179,3 @@ const displayFood = (event) => {
     //     console.log("Option not found");
     //   }
     // }
-
-
-  }, 1000)
-
-};
-foodBtn.querySelectorAll('button').forEach(button => button.addEventListener("click", displayFood));
-
-// Loop through the buttons and add a click to event listener to each button
-
-
-
-
-
-
-
-
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-
-
