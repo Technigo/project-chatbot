@@ -1,5 +1,5 @@
 // Variables that point to selected DOM elements
-const chat = document.getElementById('chat')
+const chat = document.getElementById('chat');
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -7,6 +7,7 @@ const chat = document.getElementById('chat')
 // Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
+//showMessage function takes arguments "message" and "sender".
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
@@ -15,14 +16,17 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user-icon.png" alt="User" />  
       </section>
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
+
+    console.log(message)
+
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bot-icon.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -33,11 +37,11 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
+// Start of the bot
+// Function that send a message
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage("Hello there, What's your name?", 'bot');
 }
 
 // Set up your eventlisteners here
@@ -48,4 +52,7 @@ const greetUser = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000)
+
+// Browser invokes the greetUser function
+// setTimeout(greetUser, 300);
+greetUser ();
