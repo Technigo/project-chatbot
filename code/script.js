@@ -9,6 +9,7 @@ const formInputField = document.getElementById('name-form');
 let teaBaseOption = "";
 let teaPearlOption = "";
 let drinkSizeOption = "";
+let customerName = "";
 
 
 const drinkOption = {
@@ -31,6 +32,12 @@ function removeChildrenFunction() {
   while (inputWrapper.hasChildNodes()) {
     inputWrapper.removeChild(inputWrapper.firstChild);
   }
+};
+
+const reloadPage = () => {
+  setTimeout(() => {
+    location.reload();
+  }, 5000);
 };
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -77,6 +84,7 @@ const handleNameInput = (event) => {
   // the dot . means that we're accessing an attribute/method of the variable left of the dot.
   // Here we are accessing the value that exists in the input element with the id "name-input". 
   const name = inputField.value;
+  customerName = name;
 
   // If the function that is being called was defined with parameters, like showMessage = (message, sender), they need to be added when said function is called/used.
   // the showMessage function is called and passes on the arguments name (which is the value of the input field) and the sender (which depends on the if statement).
@@ -129,9 +137,8 @@ const handleBobaBaseOptions = (name) => {
 
 
 const handleBobaPearls = (teaBaseOption) => {
-  showMessage(`Great! For your ${teaBaseOption}, what type of boba pearls do you want to add?`, 'bot');
-
   removeChildrenFunction();
+  showMessage(`Great! For your ${teaBaseOption}, what type of boba pearls do you want to add?`, 'bot');
 
   inputWrapper.innerHTML += `
     <select name="bobaPearlOptions" class="bobaPearlOptions" id="bobaPearlOptions" required>
@@ -142,91 +149,105 @@ const handleBobaPearls = (teaBaseOption) => {
       <option id="coffeeJelly" value="coffeeJelly">Coffee Jelly</option>   
     </select>
   `;
- 
-// For the drop-down menu I tried different approaces and here's the progression of how I went about this.
-// I'm saving it here for learning purposes.
 
-// This iteration gives the values of the option elements as an output which is not what I want since the text of the values is written in a way that doesn't look nice. I could rewrite the values in a way that would look better such as Tapioka Pearl but I wanted to see if I could find a way to target the text of the option element.
-/* Eventlisteners for drop-down menu
+  // For the drop-down menu I tried different approaces and here's the progression of how I went about this.
+  // I'm saving it here for learning purposes.
+
+  // This iteration gives the values of the option elements as an output which is not what I want since the text of the values is written in a way that doesn't look nice. I could rewrite the values in a way that would look better such as Tapioka Pearl but I wanted to see if I could find a way to target the text of the option element.
+  /* Eventlisteners for drop-down menu
+    bobaPearlOptions.addEventListener('change', () => {
+      teaPearlOption = bobaPearlOptions.value;
+      showMessage(teaPearlOption, "user");
+      setTimeout(() => handleBobaDrinkSize(), 1000);
+    });
+  */
+
+  /* For this iteration I tried a switch statement and while this worked and gave me the innerText of the option I wanted to see if it could be optimised and shortened.
+  The switch statement is checking the value of bobaPearlOptions.value against the values of the different options. The variable teaPearlOption is assigned with the innerText of the selected option. 
+  const tapiokaPearlOption = document.getElementById('tapiokaPearl');
+  const brownSugarPearlOption = document.getElementById('brownSugarPearl');
+  const grassJellyOption = document.getElementById('grassJelly');
+  const coffeeJellyOption = document.getElementById('coffeeJelly');
+  
   bobaPearlOptions.addEventListener('change', () => {
-    teaPearlOption = bobaPearlOptions.value;
+    switch (bobaPearlOptions.value) {
+      case tapiokaPearlOption.value:
+        teaPearlOption = tapiokaPearlOption.innerText;
+        break;
+      case brownSugarPearlOption.value:
+        teaPearlOption = brownSugarPearlOption.innerText;
+        break;
+      case grassJellyOption.value:
+        teaPearlOption = grassJellyOption.innerText;
+        break;
+      default:
+        teaPearlOption = coffeeJellyOption.innerText;
+        break;
+    };  
     showMessage(teaPearlOption, "user");
     setTimeout(() => handleBobaDrinkSize(), 1000);
   });
-*/
+  */
 
-/* For this iteration I tried a switch statement and while this worked and gave me the innerText of the option I wanted to see if it could be optimised and shortened.
-The switch statement is checking the value of bobaPearlOptions.value against the values of the different options. The variable teaPearlOption is assigned with the innerText of the selected option. 
-const tapiokaPearlOption = document.getElementById('tapiokaPearl');
-const brownSugarPearlOption = document.getElementById('brownSugarPearl');
-const grassJellyOption = document.getElementById('grassJelly');
-const coffeeJellyOption = document.getElementById('coffeeJelly');
+  // This is the iteration I chose after some research on Stackoverflow. It is very concise and if the dropdown menu changes I don't have to update at multiple places so it's easier to maintain and scale.
 
-bobaPearlOptions.addEventListener('change', () => {
-  switch (bobaPearlOptions.value) {
-    case tapiokaPearlOption.value:
-      teaPearlOption = tapiokaPearlOption.innerText;
-      break;
-    case brownSugarPearlOption.value:
-      teaPearlOption = brownSugarPearlOption.innerText;
-      break;
-    case grassJellyOption.value:
-      teaPearlOption = grassJellyOption.innerText;
-      break;
-    default:
-      teaPearlOption = coffeeJellyOption.innerText;
-      break;
-  };  
-  showMessage(teaPearlOption, "user");
-  setTimeout(() => handleBobaDrinkSize(), 1000);
-});
-*/
-
-// This is the iteration I chose after some research on Stackoverflow. It is very concise and if the dropdown menu changes I don't have to update at multiple places so it's easier to maintain and scale.
-
-const bobaPearlOptions = document.getElementById('bobaPearlOptions');
-bobaPearlOptions.addEventListener('change', (event) => {
-  /*
-(event) represents the 'change' event that occurred on the bobaPearlOptions element.
-event.target refers to the element that triggered the event, which, in this case, is the bobaPearlOptions <select> element. It's the element that the user interacted with.
-event.target.selectedOptions is an HTMLCollection of all the <option> elements that are currently selected within the <select> element. 
-By adding [0] we are specifying that we're only interested in the first selected option.
-event.target.selectedOptions[0].text retrieves the text content of the first selected <option> element. 
-*/
-  teaPearlOption = event.target.selectedOptions[0].text;
-  showMessage(teaPearlOption, "user");
-  setTimeout(() => handleBobaDrinkSize(), 1000);
-});
+  const bobaPearlOptions = document.getElementById('bobaPearlOptions');
+  bobaPearlOptions.addEventListener('change', (event) => {
+    /*
+    (event) represents the 'change' event that occurred on the bobaPearlOptions element.
+    event.target refers to the element that triggered the event, which, in this case, is the bobaPearlOptions <select> element. It's the element that the user interacted with.
+    event.target.selectedOptions is an HTMLCollection of all the <option> elements that are currently selected within the <select> element. 
+    By adding [0] we are specifying that we're only interested in the first selected option.
+    event.target.selectedOptions[0].text retrieves the text content of the first selected <option> element. 
+    */
+    teaPearlOption = event.target.selectedOptions[0].text;
+    showMessage(teaPearlOption, "user");
+    setTimeout(() => handleBobaDrinkSize(), 1000);
+  });
 };
 
 const handleBobaDrinkSize = () => {
-
+  removeChildrenFunction();
   showMessage(`Nice! Which size do you want to choose?`, 'bot');
 
-  removeChildrenFunction();
-
   inputWrapper.innerHTML += `
-    <button id="regularSize" type="submit">Regular (500 mL)</button>
-    <button id="largeSize" type="submit">Large (700 mL)</button>`;
+    <button id="regularSize" type="submit">Regular (500 mL)  -  50 kr</button>
+    <button id="largeSize" type="submit">Large (700 mL)  -  60kr</button>`;
 
   //Eventlisteners for buttons
   document.getElementById('regularSize').addEventListener('click', () => {
     drinkSizeOption = drinkOption.drinkSize[0];
     showMessage(drinkSizeOption, "user");
+    setTimeout(() => handleOrderConfirmation(), 1000);
   });
   document.getElementById('largeSize').addEventListener('click', () => {
     drinkSizeOption = drinkOption.drinkSize[1];
     showMessage(drinkSizeOption, "user");
+    setTimeout(() => handleOrderConfirmation(), 1000);
   });
-
-  // setTimeout(() => handleOrderConfirmation(drinkSizeOption), 1000);
-
 };
 
-// const handleOrderConfirmation (drinkSizeOption) => {
 
-// };
+const handleOrderConfirmation = () => {
+  removeChildrenFunction();
 
+  showMessage(`Nice ${customerName}! you have chosen a ${drinkSizeOption.toLowerCase()} size ${teaBaseOption.toLowerCase()} with ${teaPearlOption.toLowerCase()}!`, "bot");
+  showMessage(`Would you like to confirm your order?`, "bot");
+
+  inputWrapper.innerHTML += `
+    <button id="positiveOrderConfirmation" type="submit">Yes</button>
+    <button id="negativeOrderConfirmation" type="submit">No</button>`;
+
+  document.getElementById('positiveOrderConfirmation').addEventListener('click', () => {
+    showMessage(`Awesome! We're whipping up your order now. Enjoy your boba!`, "bot");
+    reloadPage();
+  });
+  document.getElementById('negativeOrderConfirmation').addEventListener('click', () => {
+    showMessage(`No Problem! Looking forward to seeing you again!`, "bot");
+    reloadPage();
+  });
+
+};
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
