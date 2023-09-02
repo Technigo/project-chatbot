@@ -20,11 +20,11 @@ To tackle this project, we utilized the following approach and technologies:
 
 - **Order Workflow**: The chatbot guides users through an order workflow, allowing them to select pizza types (pizza, pasta, salad), subtypes, specify if it's for a child or adult, and confirm the order.
 
-- **Deployment**: The project can be viewed live [here](#) (https://stenlisuryadinata.github.io/project-chatbot/code/index.html).
+- **Deployment**: The project can be viewed live [here](https://stenlisuryadinata.github.io/project-chatbot/code/index.html).
 
 ## Usage
 
-1. Open the deployed [Pizzaria Technigo ChatBot](#) in your web browser.
+1. Open the deployed [Pizzaria Technigo ChatBot](https://stenlisuryadinata.github.io/project-chatbot/code/index.html) in your web browser.
 
 2. You'll be greeted with a welcome message from the chatbot.
 
