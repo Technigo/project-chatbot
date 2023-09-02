@@ -64,11 +64,11 @@ const handleNameInput = (event) => {
 };
 
 // Define an array of plant options
-const plantOptions = ["🪴", "Orchid", "Fiddle Leaf Fig", "Bromeliad"];
+const plantOptions = ["🪴", "Orchid", "Monstera", "Echeveria"];
 
 const showPlantQuestion = (name) => {
   // Display the bot's question
-  showMessage(`Nice to have you here today ${name}! What kind of plant are you looking for?`, 'bot');
+  showMessage(`Nice to have you here today ${name}! What kind of plant do you need help with?`, 'bot');
 
   // Create a new select element
   const select = document.createElement('select');
@@ -116,6 +116,11 @@ const showAdviceQuestion = () => {
   noButton.textContent = 'No';
   noButton.id = 'no-advice-button';
 
+  // Add event listeners to the "Yes" and "No" buttons
+  yesButton.addEventListener('click', () => handleYesButtonClick());
+  noButton.addEventListener('click', () => handleNoButtonClick());
+
+
   // Replace the selected option message with the "Yes" and "No" buttons for advice
   inputWrapper.innerHTML = '';
   inputWrapper.appendChild(yesButton);
@@ -125,12 +130,26 @@ const showAdviceQuestion = () => {
   chat.scrollTop = chat.scrollHeight;
 };
 
+
+
+const handleYesButtonClick = () => {
+  showMessage("This is what you need to think about", 'bot');
+};
+
+const handleNoButtonClick = () => {
+  showMessage("No worries, I understand that you're already a plant expert!", 'bot');
+};
+
 // Set up your eventlisteners here
 
 // Add an event listener for the form submission
 form.addEventListener('submit', handleNameInput);
 
 
+
+//Echeveria: Provide well-draining soil and plenty of sunlight. Water sparingly, allowing the soil to dry out between watering.
+//Orchid: Place in bright, indirect light and water when the potting mix feels dry to the touch. Mist the leaves occasionally for humidity.
+//Monstera: Keep in bright, indirect light and allow the soil to dry moderately between waterings. Clean the leaves regularly to prevent dust buildup.
 
 
 // When website loaded, chatbot asks first question.
