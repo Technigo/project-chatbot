@@ -6,24 +6,33 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-    background: #8a70d1;
+    background-image: url('assets/background-image.jpg');
+    background-size: cover;
 }
 
 h1 {
-    font-weight: bold;
-    font-size: 28px;
-    line-height: 34px;
+    font-family: 'ADLaM Display', cursive;
+    font-size: calc(26px + 3vw);
     color: #fff;
     text-align: center;
+    text-shadow: 1px 1px 5px #9178d3, 0 0 3em #5737ae, 0 0 0.2em #442b88;
 }
 
-h2 {
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 34px;
-    color: #fff;
-    text-align: center;
-    margin-bottom: 36px;
+
+main {
+    margin: 0 auto;
+    width: 100%;
+    /* It will never be bigger then 700px. When the screen gets smaller than 700px in width it will just take up 100% of the width*/
+    max-width: 700px;
+    height: 600px;
+    border-radius: 30px;
+    background: rgb(255, 255, 255, 0.8);
+    padding: 20px 24px;
+    padding-top: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
 }
 
 p {
@@ -34,36 +43,29 @@ p {
 }
 
 
-/* stop here */
-
 input {
     box-sizing: border-box;
     border: none;
     border-radius: 4px 0 0 4px;
     background: #e5e9ff;
-    color: #8a70d1;
+    color: #5738ad;
     padding: 16px;
     font-size: 16px;
     font-family: 'Montserrat';
     font-weight: 600;
     line-height: 26px;
-    flex: 1;  /* the input will grow as much as it can and the button will take up what's left */
+    flex: 1;
+    /* the input will grow as much as it can and the button will take up what's left */
 }
 
-main {
-    margin: 0 auto;
-    width: 100%;
-    /* It will never be bigger then 700px. When the screen gets smaller than 700px in width it will just take up 100% of the width*/
-    max-width: 700px;
-    height: 600px;
-    border-radius: 30px;
-    background: #fff;
-    padding: 20px 24px;
-    padding-top: 0;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+input::placeholder {
+    /*This is a CSS selector that targets the placeholder text of all HTML <input> elements.*/
+    color: #8a70d1;
+}
 
+#name-form input:focus {
+    outline: none;
+    box-shadow: 0 0 5px #9178d3, 0 0 1em #9178d3, 0 0 0.5em #e8f1d2;
 }
 
 .chat {
@@ -72,6 +74,8 @@ main {
     justify-content: flex-start;
     overflow: scroll;
     /* to make it so you can scroll*/
+    overflow-x: hidden;
+    /*Hides the scroll bar on the x-axis*/
     flex-direction: column;
     padding-bottom: 16px;
 }
@@ -103,7 +107,7 @@ main {
     font-size: 16px;
     line-height: 26px;
     padding: 16px 24px;
-    color: #8a70d1;
+    color: #8165cd;
     max-width: 40%;
 }
 
@@ -128,28 +132,27 @@ main {
     align-items: center;
 }
 
-label {
+/* label {
     font-size: 16px;
     font-family: 'Montserrat';
     font-weight: 500;
     color: #8a70d1;
     margin-right: 20px;
-}
-
-.bobaPearlWrapper {
-    width: 100%;
-    display: flex;
-    gap: 16px;
-}
+} */
 
 .bobaPearlOptions {
     width: 100%;
     margin: 0 100px;
     font-family: 'Montserrat';
     font-size: 16px;
+    line-height: 26px;
     font-weight: 600;
-    padding: 3px;
+    padding: 16px 20px;
+    border: none;
+    outline: none;
     border-radius: 5px;
+    background: #e5e9ff;
+    color: #5738ad;
 }
 
 button {

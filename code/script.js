@@ -7,19 +7,26 @@ const inputField = document.getElementById('name-input');
 const sendBtn = document.getElementById('send-btn');
 const formInputField = document.getElementById('name-form');
 
+// Variables where the user's choices will be stored.
 let teaBaseOption = "";
 let teaPearlOption = "";
 let drinkSizeOption = "";
 let totalOrderPrice = "";
 let customerName = "";
+let price = "";
 
+// Information about the different drink choices
 const drinkOption = {
   teaBase: ["Matcha", "Black Tea", "Oolong Tea"],
   bobaPearlOption: ["Tapioca Pearls", "Brown Sugar Pearls", "Grass Jelly", "Coffee Jelly"],
   drinkSize: ["Regular", "Large"],
-  drinkPrice: ["50", "60"],   // Regular size (sek), Large size (sek)
 };
 
+const teaPrices = {  // in sek
+  matchaTeaPrice: [45],
+  blackTeaPrice: [40],
+  oolongTeaPrice: [43],
+}
 
 // FUNCTIONS
 
@@ -75,7 +82,7 @@ const showMessage = (message, sender) => {
 
 // Function to greet the user
 const greetUser = () => {
-  showMessage("Hi, welcome to the BubblePop Café!", 'bot')
+  showMessage("Hi, welcome to The BubblePop Café!", 'bot')
   setTimeout(() => {
     showMessage("First things first. Who is this order for?", 'bot');
   }, 500);
@@ -127,16 +134,19 @@ const handleBobaBaseOptions = (customerName) => {
   //Eventlisteners for the buttons. 
   matchaBtn.addEventListener('click', () => {
     teaBaseOption = drinkOption.teaBase[0];
+    price = teaPrices.matchaTeaPrice[0];
     showMessage(`I want to order ${teaBaseOption.toLowerCase()}.`, "user");
     setTimeout(() => handleBobaPearls(teaBaseOption), 1000);
   });
   blackTeaBtn.addEventListener('click', () => {
     teaBaseOption = drinkOption.teaBase[1];
+    price = teaPrices.blackTeaPrice[0];
     showMessage(`I want to order ${teaBaseOption.toLowerCase()}.`, "user");
     setTimeout(() => handleBobaPearls(teaBaseOption), 1000);
   });
   oolongTeaBtn.addEventListener('click', () => {
     teaBaseOption = drinkOption.teaBase[2];
+    price = teaPrices.oolongTeaPrice[0];
     showMessage(`I want to order ${teaBaseOption.toLowerCase()}.`, "user");
     setTimeout(() => handleBobaPearls(teaBaseOption), 1000);
   });
@@ -208,6 +218,7 @@ const handleBobaPearls = (teaBaseOption) => {
     event.target.selectedOptions[0].text retrieves the text content of the first selected <option> element. 
     */
     teaPearlOption = event.target.selectedOptions[0].text;
+    price += 5; // Price increase for adding toppings.
     showMessage(`I want to add ${teaPearlOption.toLowerCase()} to my ${teaBaseOption.toLowerCase()}.`, "user");
     setTimeout(() => handleBobaDrinkSize(), 1000);
   });
@@ -220,8 +231,8 @@ const handleBobaDrinkSize = () => {
 
   // Adds two buttons
   inputWrapper.innerHTML += `
-    <button id="regularSize" type="submit">Regular (500 mL)  -  50 kr</button>
-    <button id="largeSize" type="submit">Large (700 mL)  -  60kr</button>`;
+    <button id="regularSize" type="submit">Regular (500 mL)</button>
+    <button id="largeSize" type="submit">Large (700 mL)</button>`;
 
   const regularDrinkSize = document.getElementById('regularSize');
   const largeDrinkSize = document.getElementById('largeSize');
@@ -229,13 +240,13 @@ const handleBobaDrinkSize = () => {
   //Eventlisteners for buttons
   regularDrinkSize.addEventListener('click', () => {
     drinkSizeOption = drinkOption.drinkSize[0];
-    totalOrderPrice = drinkOption.drinkPrice[0];
+    totalOrderPrice = price;
     showMessage(`I want a ${drinkSizeOption.toLowerCase()} size drink.`, "user");
     setTimeout(() => handleOrderConfirmation(), 1000);
   });
   largeDrinkSize.addEventListener('click', () => {
     drinkSizeOption = drinkOption.drinkSize[1];
-    totalOrderPrice = drinkOption.drinkPrice[1];
+    totalOrderPrice = Math.round(price *= 1.2); // This function rounds to the nearest integer, with half-values rounding to the nearest even integer (round half to even).
     showMessage(`I want a ${drinkSizeOption.toLowerCase()} size drink.`, "user");
     setTimeout(() => handleOrderConfirmation(), 1000);
   });
@@ -258,7 +269,7 @@ const handleOrderConfirmation = () => {
 
   document.getElementById('positiveOrderConfirmation').addEventListener('click', () => {
     showMessage(`Awesome! We're whipping up your order now. Enjoy your boba!`, "bot");
-    reloadPage();
+    reloadPage(); // this function reloads the page after 5 seconds.
   });
   document.getElementById('negativeOrderConfirmation').addEventListener('click', () => {
     showMessage(`No Problem! Looking forward to seeing you again!`, "bot");
