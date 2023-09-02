@@ -37,7 +37,7 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #eaf7ed;
+  background: #f8e7f3;
   color: #a2378c;
   padding: 16px;
   font-size: 16px;
@@ -61,6 +61,16 @@ main {
   flex-direction: column;
 }
 
+select{
+
+  padding: 14px;
+  background-color: #a2378c;
+  color: #f8e7f3;
+  font-size: 18px;
+}
+label{
+  align-self:center
+}
 .chat {
   flex: 1;
   display: flex;

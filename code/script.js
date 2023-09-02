@@ -3,10 +3,8 @@ const chat = document.getElementById('chat')
 const nameInput = document.getElementById('name-input')
 const nameForm = document.getElementById('name-form');
 const inputWrapper = document.getElementById('input-wrapper')
+const sendBtn = document.getElementById('send-btn')
 
-// If you need any global variables that you can use across different functions, declare them here:
-// Declare your functions after this comment
-// This function will add a chat bubble in the correct place based on who the sender is 
 
 
 //------------------------------MESSAGE ON CHAT ---------//
@@ -39,9 +37,7 @@ const showMessage = (message, sender) => {
 // -------------------------SHOW THE FIRST MESSAGE HALLO---------------//
 // Starts here
 const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there, What's your name?", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
 }
 
 
@@ -50,51 +46,99 @@ const greetUser = () => {
 
 // Set up your eventlisteners here
 const handleNameInput = (event) => {
-  event.preventDefault();
-  // Store the value in a variable so we can access it after we
-  // clear it from the input
+  event.preventDefault(); //prevents calling other functions that listen for submit
   const name = nameInput.value;
-  console.log(`Helo`, name)
   showMessage(`Hej, my name is  ${ name }`, "user");
-  nameInput.value = "";
-  // After 1 second, show the next question by invoking the next function.
-  // passing the name into it to have access to the user's name if we want
-  // to use it in the next question from the bot.
+  nameInput.value = ""; // clear the text field
   setTimeout( showFoodOptions(name), 1000);
 };
 
+nameForm.addEventListener('submit', handleNameInput); // we sign up for the submit event on the form- the handleNameInput function will be called
+
+
 const showFoodOptions = (name) => {
-  console.log('showFoodOptions is being called with name:', name);
+  
   showMessage(`Nice to meet you, ${name}! What kind of food would you like?`, 'bot');
   inputWrapper.innerHTML = `
-  <button class="send-btn" type="submit">Pizza</button>
-  <button class="send-btn" type="submit">Pasta</button>
-  <button class="send-btn" type="submit"> Salad</button>
+  <button class="send-btn" id="pizza" type="submit">Pizza</button>
+  <button class="send-btn" id="pasta" type="submit">Pasta</button>
+  <button class="send-btn" id="salad" type="submit">Salad</button>
 `
-};
-
-
-
-nameForm.addEventListener('submit', handleNameInput);
-
-
-
-
-
 
 
 
 //--------------------CHOICE FOOD  AND CHOICE TYPE OF FOOD--------------------------//
 
-const showTypeOfFood = (name) => {
-  console.log('showTypeOfFood is being called with name:', name);
-  showMessage(`Great you choose pizza. Now please select witch one pizza do you`, 'bot');
-  showMessage('Choose a type of Pizza 1 - Margherita 2 - Pepperoni 3 - Vegetarian', 'bot', 2000);
+const foodButton = inputWrapper.querySelectorAll('.send-btn') // finds all elements with class "send-btn"
+foodButton.forEach (button => {
+  button.addEventListener('click', (event) => {
+    const selectedFood = event.target.id;
+    showMessage(`I choose ${selectedFood}`, 'user');
+    showMessage(`Good choice! You selected ${selectedFood}.`, 'bot');
+    showTypeOfFood(selectedFood);
+    console.log("Click",foodButton)
+  });
+});
 };
+
+  
+
+
+
+//-------------show type of food ------------------------------------////
+const showTypeOfFood = (choice) => {
+  
+  if (choice === 'pizza') {
+    showMessage(`What type of pizza would you like?`, 'bot');
+    inputWrapper.innerHTML = `
+    <label for="pizza-select">Select your pizza:</label>
+    <select id="pizza-select" class="send-select">
+      <option value="Margherita">Margherita</option>
+      <option value="Pepperoni">Pepperoni</option>
+      <option value="Hawaiian">Hawaiian</option>
+    </select>
+    `
+  } else if
+    (choice === 'pasta') {
+    showMessage(`What type of pasta would you like?`, 'bot');
+    inputWrapper.innerHTML = `
+    <label for="pasta-select">Select your pasta:</label>
+    <select id="pasta-select" class="send-select">
+      <option value="Spaghetti">Spaghetti</option>
+      <option value="Alfredo">Alfredo</option>
+      <option value="Penne">Penne</option>
+    </select>
+    `
+  } else if
+    (choice === 'salad') {
+    showMessage(`What type of salad would you like?`, 'bot');
+    inputWrapper.innerHTML = `
+    <label for="salad-select">Select your salad:</label>
+    <select id="salad-select" class="send-select">
+      <option value="Caesar">Caesar</option>
+      <option value="Greek">Greek</option>
+      <option value="Garden">Garden</option>
+    </select>
+    `
+  } else {
+    showMessage(`You need chose again`, 'bot');
+  }
+}
+
+//----------------- After select type of pizza,pasta or salad now you need select age----------//
+
+
+const chooseAge = () => {
+  showMessage(`One ${selectedFood}coming up! But before cormfirm please wrtie your age `, 'user');
+}
+
+
+
+
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
 // greeting()
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 500)
+  setTimeout(greetUser, 500);
