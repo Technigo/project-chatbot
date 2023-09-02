@@ -1,14 +1,17 @@
-// Variables that point to selected DOM elements
-const chat = document.getElementById('chat')
 
 // If you need any global variables that you can use across different functions, declare them here:
 
 
 // Declare your functions after this comment
+const chat = document.getElementById("chat");
+const inputWrapper = document.getElementById("input-wrapper");
+const nameInput = document.getElementById("name-input");
+const sendButton = document.querySelector("send-btn");
+const nameForm = document.getElementById("name-form");
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
+  // setTimeout(showMessage, 800)
   if (sender === 'user') {
     console.log("userMessageSent")
     chat.innerHTML += `
@@ -19,7 +22,7 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `
-    // the else if statement checks if the sender is a bot and if that's the case it inserts an html section inside the chat with the posted message
+   
   } else if (sender === 'bot') {
     console.log("botMessageSent")
     chat.innerHTML += `
@@ -31,25 +34,47 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
-const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("This isn't the bot you're looking for", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
-}
+// const botResponse = (msg) => {
+//   showMessage(msg, 'bot');
+// }
+// const userResponse = (msg) => {
+//   showMessage(msg, 'user');
+// }
 
 const greetUser = () => {
-showMessage("This isn't the bot you were looking for", 'user')
+  showMessage(`Hi friends of Trees, can we get your name, please?`, `bot`);
+};
+
+const handleNameInput = (event) => {
+  event.preventDefault();
+
+  const userName = nameInput.value; 
+  showMessage(`For sure, my name is ${userName}`, `user`);
+  nameInput.value = "";
+  setTimeout(() => showTreeOptions(userName), 800);
+};
+
+nameForm.addEventListener("submit", handleNameInput);
+
+function replyBot() {
+  showMessage(`Nice to meet you, ${userName}! What tree would you like in your garden?`, 'bot');
+ inputWrapper.innerHTML = `
+    <button class="send-btn" id="apple">Apple-Tree</button>
+    <button class="send-btn" id="birch">Birch-Tree</button>
+    <button class="send-btn" id="plum">Plum-Tree</button>
+  `;
+
+  const treeButtons = inputWrapper.querySelectorAll('send-btn');
+    treeButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+      const selectedTree = event.target.id;
+      showMessage(`Excellent choice! You selected ${selectedTree}.`, 'bot');
+      handleSpecificFoodChoice(selectedFood);
+    });
+  });
 }
-// Set up your eventlisteners here
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
+// This is where the code starts to run
 setTimeout(greetUser, 800)
