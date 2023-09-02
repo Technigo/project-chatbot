@@ -86,7 +86,19 @@ function foodChoice(choice) {
   console.log("foodchoice");
   activityBtn.innerHTML = '';
 
-  if (choice)
+  if (choice === 'pizza') {
+    showMessage(`Which pizza would you like to order?`, 'bot')
+    const pizzaOptions = ['Napolitana', 'Margeritha', 'Bianca'];
+    showOptions(pizzaOptions);
+  } else if (choice === 'pasta') {
+    showMessage(`Which pasta would you like to order?`, 'bot')
+    const pastaOptions = ['Cacio e Pepe', 'Vongole', 'Carbonara'];
+    showOptions(pastaOptions);
+  } else if (choice === 'salad') {
+    showMessage(`Which salad would you like to order?`, 'bot')
+    const saladOptions = ['Pomodoro e basilico', 'Buratta', 'Melon e Peperoncino'];
+    showOptions(saladOptions);
+  }
 
 }
 
