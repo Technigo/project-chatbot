@@ -9,6 +9,7 @@ const formInputField = document.getElementById('name-form');
 let teaBaseOption = "";
 let teaPearlOption = "";
 let drinkSizeOption = "";
+let totalOrderPrice = "";
 let customerName = "";
 
 
@@ -16,6 +17,7 @@ const drinkOption = {
   teaBase: ["Matcha", "Black Tea", "Oolong Tea"],
   bobaPearlOption: ["Tapioca Pearls", "Brown Sugar Pearls", "Grass Jelly", "Coffee Jelly"],
   drinkSize: ["Regular", "Large"],
+  drinkPrice: ["50", "60"],   // Regular size (sek), Large size (sek)
 };
 
 
@@ -74,41 +76,49 @@ const showMessage = (message, sender) => {
 // Function to greet the user
 // The function showMessage is called with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
 const greetUser = () => {
-  showMessage("Hi, what's your name?", 'bot')
-}
 
+  showMessage("Hi, welcome to the BubblePop Café!", 'bot')
+  setTimeout(() => {
+    showMessage("First things first. Who is this order for?", 'bot');
+  }, 500);
+  sendBtn.addEventListener('click', handleNameInput);
+}
 // Function for the name input from the user
+
 const handleNameInput = (event) => {
   event.preventDefault();
 
   // the dot . means that we're accessing an attribute/method of the variable left of the dot.
   // Here we are accessing the value that exists in the input element with the id "name-input". 
-  const name = inputField.value;
-  customerName = name;
+
+  customerName = inputField.value;
+
 
   // If the function that is being called was defined with parameters, like showMessage = (message, sender), they need to be added when said function is called/used.
   // the showMessage function is called and passes on the arguments name (which is the value of the input field) and the sender (which depends on the if statement).
-  showMessage(name, "user");
+  if (customerName === "") {
+    alert(`Oops! Looks like you missed entering your name. Could you please provide it for your order?`);
+  } else {
+    showMessage(customerName, "user");
 
-  //Function that clears the input field.
-  clearInputField();
+    //Function that clears the input field.
+    clearInputField();
 
-  // After 1 second, show the next question by invoking the next function.
-  // passing the name into it to have access to the user's name if we want to use it in the next question from the bot.
-  // To pass parameter values to a function, that is itself passed as a parameter to another function, use an "anonymous function" () => {}
-  // Meaning, when a function is a parameter and needs a parameter itself, you need to use an anonymous function
-  setTimeout(() => handleBobaBaseOptions(name), 1000);
+    // After 1 second, show the next question by invoking the next function.
+    // passing the name into it to have access to the user's name if we want to use it in the next question from the bot.
+    // To pass parameter values to a function, that is itself passed as a parameter to another function, use an "anonymous function" () => {}
+    // Meaning, when a function is a parameter and needs a parameter itself, you need to use an anonymous function
+    setTimeout(() => handleBobaBaseOptions(customerName), 1000);
+  };
 };
 
-sendBtn.addEventListener('click', handleNameInput);
 
 // Function that gives drink options to the user.
-const handleBobaBaseOptions = (name) => {
-
-  showMessage(`Let's start creating your Boba drink ${name}!
-  What kind of tea do you want to have?`, 'bot');
+const handleBobaBaseOptions = (customerName) => {
 
   removeChildrenFunction();
+  showMessage(`Let's start creating your Boba drink ${customerName}!
+  What kind of tea do you want to have?`, 'bot');
 
   inputWrapper.innerHTML += `
     <button id="matcha" type="submit">Matcha</button>
@@ -120,17 +130,17 @@ const handleBobaBaseOptions = (name) => {
   //Eventlisteners for buttons
   document.getElementById('matcha').addEventListener('click', () => {
     teaBaseOption = drinkOption.teaBase[0];
-    showMessage(teaBaseOption, "user");
+    showMessage(`I want to order ${teaBaseOption.toLowerCase()}.`, "user");
     setTimeout(() => handleBobaPearls(teaBaseOption), 1000);
   });
   document.getElementById('blackTea').addEventListener('click', () => {
     teaBaseOption = drinkOption.teaBase[1];
-    showMessage(teaBaseOption, "user");
+    showMessage(`I want to order ${teaBaseOption.toLowerCase()}.`, "user");
     setTimeout(() => handleBobaPearls(teaBaseOption), 1000);
   });
   document.getElementById('oolongTea').addEventListener('click', () => {
     teaBaseOption = drinkOption.teaBase[2];
-    showMessage(teaBaseOption, "user");
+    showMessage(`I want to order ${teaBaseOption.toLowerCase()}.`, "user");
     setTimeout(() => handleBobaPearls(teaBaseOption), 1000);
   });
 };
@@ -138,7 +148,7 @@ const handleBobaBaseOptions = (name) => {
 
 const handleBobaPearls = (teaBaseOption) => {
   removeChildrenFunction();
-  showMessage(`Great! For your ${teaBaseOption}, what type of boba pearls do you want to add?`, 'bot');
+  showMessage(`Great! For your ${teaBaseOption.toLowerCase()}, what type of boba pearls do you want to add?`, 'bot');
 
   inputWrapper.innerHTML += `
     <select name="bobaPearlOptions" class="bobaPearlOptions" id="bobaPearlOptions" required>
@@ -201,7 +211,7 @@ const handleBobaPearls = (teaBaseOption) => {
     event.target.selectedOptions[0].text retrieves the text content of the first selected <option> element. 
     */
     teaPearlOption = event.target.selectedOptions[0].text;
-    showMessage(teaPearlOption, "user");
+    showMessage(`I want to add ${teaPearlOption.toLowerCase()} to my ${teaBaseOption.toLowerCase()}.`, "user");
     setTimeout(() => handleBobaDrinkSize(), 1000);
   });
 };
@@ -217,22 +227,29 @@ const handleBobaDrinkSize = () => {
   //Eventlisteners for buttons
   document.getElementById('regularSize').addEventListener('click', () => {
     drinkSizeOption = drinkOption.drinkSize[0];
-    showMessage(drinkSizeOption, "user");
+    totalOrderPrice = drinkOption.drinkPrice[0];
+    showMessage(`I want a ${drinkSizeOption.toLowerCase()} size drink.`, "user");
     setTimeout(() => handleOrderConfirmation(), 1000);
   });
   document.getElementById('largeSize').addEventListener('click', () => {
     drinkSizeOption = drinkOption.drinkSize[1];
-    showMessage(drinkSizeOption, "user");
+    totalOrderPrice = drinkOption.drinkPrice[1];
+    showMessage(`I want a ${drinkSizeOption.toLowerCase()} size drink.`, "user");
     setTimeout(() => handleOrderConfirmation(), 1000);
   });
 };
 
 
+
+
 const handleOrderConfirmation = () => {
   removeChildrenFunction();
 
-  showMessage(`Nice ${customerName}! you have chosen a ${drinkSizeOption.toLowerCase()} size ${teaBaseOption.toLowerCase()} with ${teaPearlOption.toLowerCase()}!`, "bot");
-  showMessage(`Would you like to confirm your order?`, "bot");
+  showMessage(`Nice ${customerName}! You have chosen a ${drinkSizeOption.toLowerCase()} size ${teaBaseOption.toLowerCase()} with ${teaPearlOption.toLowerCase()}!
+  That will be ${totalOrderPrice} kr.`, "bot");
+  setTimeout(() => {
+    showMessage(`Would you like to confirm your order?`, "bot");
+  }, 500);
 
   inputWrapper.innerHTML += `
     <button id="positiveOrderConfirmation" type="submit">Yes</button>
