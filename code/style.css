@@ -207,4 +207,10 @@ a:visited {
   main {
     max-height: 700px;
   }
+
+  button {
+    line-height: 1.3em;
+    font-size: 13px;
+    padding: .3em 1.3em;
+  }
 }
