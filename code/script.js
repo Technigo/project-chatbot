@@ -4,7 +4,7 @@ const chat = document.getElementById('chat');
 const form = document.getElementById('name-form');
 const submitBtn = document.getElementById('submit-btn');
 const inputField = document.getElementById('name-input');
-//let pop = new Audio("./assets/pop.mp3"); // Sound effect to the chat
+let soundEffect = new Audio('assets/pop.mp3'); // Sound effect to the chat
 
 // GLOBAL VARIABLES
 let userAnswer = ""; // stores users answer in a variable globally for use anywhere
@@ -64,11 +64,9 @@ const newbiesObject = {
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // For adding a sound effect to the bot
-  /*pop.oncanplay = () => {
-    pop.play();
-  };*/
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
   if (sender === 'user') {
+    //soundEffect.play(); // I removed the sound effect here, it felt more logical to only show it when the Bot answers. 
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -79,6 +77,7 @@ const showMessage = (message, sender) => {
     `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
+    soundEffect.play();
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -96,7 +95,7 @@ const sayHello = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage(
     "Hi there! 👋 I'm your Movie Tips Assistant. What's your name?", 'bot'
-  );
+  )
 };
 
 /* ------------- Function to create buttons ------------- */
@@ -168,6 +167,88 @@ function insertStyle(code) {
   document.getElementsByTagName("head")[0].appendChild(style);
 };
 
+/* --------------------------------------- */
+const typingStyle = `.typingIndicatorContainer {
+    display: flex;
+    flex: none;
+    align-items: flex-end;
+    margin: $spacing4 0;
+  }
+  
+  .typingIndicatorBubble {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 40px;
+    margin: 0px 8px;
+    background-color: #f0f1f1;
+    border-radius: 12px;
+  }
+  
+  .typingIndicatorBubbleDot {
+    width: 4px;
+    height: 4px;
+    margin-right: 4px;
+    background-color: #57585a;
+    border-radius: 50%;
+    animation-name: bounce;
+    animation-duration: 1.3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  
+  .typingIndicatorBubbleDot:first-of-type {
+    margin: 0px 4px;
+  }
+  
+  .typingIndicatorBubbleDot:nth-of-type(2) {
+    animation-delay: 0.15s;
+  }
+  
+  .typingIndicatorBubbleDot:nth-of-type(3) {
+    animation-delay: 0.3s;
+  }
+  
+  @keyframes bounce {
+    0%,
+    60%,
+    100% {
+      transform: translateY(0);
+    }
+    30% {
+      transform: translateY(-4px);
+    }
+  }
+  `
+
+const addTypingIndicatorHtml = () => {
+  chat.innerHTML +=
+    `<div class="typingIndicatorContainer">
+      <div class="typingIndicatorBubble">
+        <div class="typingIndicatorBubbleDot"></div>
+        <div class="typingIndicatorBubbleDot"></div>
+        <div class="typingIndicatorBubbleDot"></div>
+      </div>
+    </div>
+    `
+}
+
+const showTypingIndicator = () => {
+  addTypingIndicatorHtml(); // Create the HTML for the typing indicator
+  insertStyle(typingStyle); // Adds styling to the typing-indicator
+  chat.scrollTop = chat.scrollHeight; // Scroll to the bottom to show the indicator
+};
+
+const removeTypingIndicator = () => {
+  const typingIndicator = document.querySelector('.typingIndicatorContainer');
+  if (typingIndicator) {
+    typingIndicator.remove();
+  }
+};
+
+/* --------------------------------------- */
+
 
 /* ------------- FIRST INTERACTION ------------- */
 // "clickingPreventsDefault" prevents the default form from submitting
@@ -179,7 +260,10 @@ const submitForm = (clickingPreventsDefault) => {
   showMessage(`${userAnswer}`, 'user');
   // clears the inputfield after enter is pressed or the submit button has been clicked
   inputField.value = "";
-  setTimeout(() => greetUser(), 1000)
+  showTypingIndicator(); // Display the typing indicator
+  setTimeout(() => removeTypingIndicator(), 2000);
+  setTimeout(() => greetUser(), 2000);
+
 };
 
 /* ------------- SECOND INTERACTION ------------- */

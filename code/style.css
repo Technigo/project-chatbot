@@ -15,6 +15,7 @@ h1 {
   line-height: 34px;
   color: #fff;
   text-align: center;
+  padding: 1rem;
 }
 
 h2 {
@@ -52,7 +53,6 @@ main {
   width: 100%;
   max-width: 700px;
   height: 600px;
-  border-radius: 30px;
   background: #fff;
   padding: 20px 24px;
   padding-top: 0;
@@ -60,8 +60,8 @@ main {
   display: flex;
   flex-direction: column;
   box-shadow: 8px 8px 5px 0px rgba(157, 72, 79, 0.75);
-  /*-webkit-box-shadow: 10px 10px 5px 0px rgba(190, 87, 95, 0.75);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(190, 87, 95, 0.75);*/
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(157, 72, 79, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(157, 72, 79, 0.75);
 }
 
 .chat {
@@ -99,7 +99,7 @@ main {
   line-height: 26px;
   padding: 16px 24px;
   color: #CD4F5C;
-  max-width: 40%;
+  max-width: 100%;
 }
 
 .bot-bubble {
@@ -149,4 +149,16 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+@media screen and (min-width: 500px) {
+  .bubble {
+    max-width: 40%;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  main {
+    border-radius: 30px;
+  }
 }
