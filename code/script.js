@@ -1,6 +1,6 @@
 
 // If you need any global variables that you can use across different functions, declare them here:
-
+let treeChoice = "";
 
 // Declare your functions after this comment
 const chat = document.getElementById("chat");
@@ -45,7 +45,7 @@ const showMessage = (message, sender) => {
 // }
 
 const greetUser = () => {
-  showMessage(`Hi friends of Trees, can we get your name, please?`, `bot`);
+  showMessage(`Hi friend of Trees, can we get your name, please?`, `bot`);
 };
 
 const handleNameInput = (event) => {
@@ -54,27 +54,55 @@ const handleNameInput = (event) => {
   const userName = nameInput.value; 
   showMessage(`For sure, my name is ${userName}`, `user`);
   nameInput.value = "";
-  setTimeout(() => showTreeOptions(userName), 800);
+  setTimeout(() => treeType(userName), 1000);
 };
 
 nameForm.addEventListener("submit", handleNameInput);
 
-function replyBot() {
-  showMessage(`Nice to meet you, ${userName}! What tree would you like in your garden?`, 'bot');
- inputWrapper.innerHTML = `
-    <button class="send-btn" id="apple">Apple-Tree</button>
-    <button class="send-btn" id="birch">Birch-Tree</button>
-    <button class="send-btn" id="plum">Plum-Tree</button>
+const treeType = (userName) => {
+  showMessage(`Nice to meet you, ${userName}! <br><br> 
+  What tree would you like in your garden?`, `bot`);
+ inputWrapper.innerHTML =`
+    <button class="send-btn" id="apple">Apple</button>
+    <button class="send-btn" id="pear">Pear</button>
   `;
+// Ovanför är svaret på user-svaret av namn - och följaktligen även frågan om vilket träd user vill välja. Nedan följer kopplingen till att user trycker på knappen och user's svar som confirmerar valet för tryckaren.
 
-  const treeButtons = inputWrapper.querySelectorAll('send-btn');
-    treeButtons.forEach(button => {
-    button.addEventListener('click', (event) => {
-      const selectedTree = event.target.id;
-      showMessage(`Excellent choice! You selected ${selectedTree}.`, 'bot');
-      handleSpecificFoodChoice(selectedFood);
-    });
-  });
+document.getElementById(`apple`)
+    .addEventListener(`click`, () => {
+      treeChoice = "apple"
+      showMessage("I want an Apple-tree!", `user`)
+      setTimeout(() => confirmTreeType(treeChoice), 1000)
+    })
+
+document.getElementById(`pear`)
+    .addEventListener(`click`, () => {
+      treeChoice = "pear"
+      showMessage("I want a Pear-tree!", `user`)
+      setTimeout(() => confirmTreeType(treeChoice), 1000)
+    })
 }
+const confirmTreeType = (treeChoice) => {
+  if (treeChoice === "apple") {
+    showMessage (`An Apple-tree is an excellent choice, ${userName}!`, `bot`)
+  } else if (treeChoice === "pear") {
+    showMessage (`A Pear-tree is an excellent choice, ${userName}!`, `bot`)
+  } 
+  
+  }
+
+// setTimeout(() => ciderLemonade)
+
+
+
+//   const treeButtons = inputWrapper.querySelectorAll('send-btn');
+//     treeButtons.forEach(button => {
+//     button.addEventListener('click', (event) => {
+//       const selectedTree = event.target.id;
+//       showMessage(`Excellent choice! You selected ${selectedTree}.`, 'bot');
+//       handleSpecificFoodChoice(selectedFood);
+//     });
+//   });
+// }
 // This is where the code starts to run
 setTimeout(greetUser, 800)
