@@ -20,7 +20,7 @@ To tackle this project, we utilized the following approach and technologies:
 
 - **Order Workflow**: The chatbot guides users through an order workflow, allowing them to select pizza types (pizza, pasta, salad), subtypes, specify if it's for a child or adult, and confirm the order.
 
-- **Deployment**: The project can be viewed live [here](#) (Insert the link to the deployed project).
+- **Deployment**: The project can be viewed live [here](#) (https://stenlisuryadinata.github.io/project-chatbot/code/index.html).
 
 ## Usage
 
