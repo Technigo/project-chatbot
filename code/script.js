@@ -51,16 +51,18 @@ const greetUser = () => {
 
 const handleNameInput = (event) => {
   event.preventDefault();
-  // Store the value in a variable so we can access it after we
-  // clear it from the input
   const name = nameInput.value;
-  showMessage(name, "user");
-  nameInput.value = "";
 
-  // After 1 second, show the next question by invoking the next function.
-  // passing the name into it to have access to the user's name if we want
-  // to use it in the next question from the bot.
-  setTimeout(() => showPlantQuestion(name), 1000);
+  // Check if the name is valid (not empty and contains only letters)
+  if (!name || !/^[a-zA-Z]+$/.test(name)) {
+    // Display an error message to the user
+    showMessage("Please enter a valid name.", 'bot');
+  } else {
+    // Valid name, proceed with the conversation
+    showMessage(name, "user");
+    nameInput.value = "";
+    setTimeout(() => showPlantQuestion(name), 1000);
+  }
 };
 
 // Define an array of plant options
