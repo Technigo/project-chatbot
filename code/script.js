@@ -6,6 +6,7 @@ const nameInput = document.getElementById('name-input')
 
 // If you need any global variables that you can use across different functions, declare them here:
 let userName = "";
+let hangoutReply = "";
 
 // Declare your functions after this comment
 // Starts here
@@ -26,22 +27,43 @@ const handleNameInput = (event) => {
   // After 1 second, show the next question by invoking the next function.
   // passing the name into it to have access to the user's name if we want
   // to use it in the next question from the bot.
-  setTimeout(hangout(userName), 1000);
+  setTimeout(hangoutOffer(userName), 1000);
 };
 
-const hangout = (userName) => {
+const hangoutOffer = (userName) => {
   showMessage(`What are you up to today, ${userName}? Want to hang out?`, 'bot');
   wrapper.innerHTML = `
-  <button id="no" type="submit" value="No">No, thank you</button>
-  <button id="yes" type="submit" value="Yes">I'd love to!</button>
+  <div id ="hangoutChoices">
+  <button id="no" type="submit" value="no">No, thank you</button>
+  <button id="yes" type="submit" value="yes">I'd love to!</button>
+  </div>
   `
+
+  document.getElementById('no').addEventListener('click', () => {
+    showMessage('No', 'user')
+    // Also add some code in here to add answer options for next message
+  })
+  document.getElementById('yes').addEventListener('click', () => {
+    showMessage('Yes', 'user')
+    showMessage('Fantastic! What time can i pick you up? 5 or 6?', 'bot')
+    // Also add some code in here to add answer options for next message
+  })
+
 }
 
-const age = () => {
-  if (userAge <= 18) {
-    showMessage
+
+
+/*const handleHangout = (event) => {
+
+  event.preventDefault();
+  hangoutChoice = event.target.hangoutChoices.value;
+  if (hangoutChoice === 'yes') {
+    showMessage(`Cool, I'll bring my whole family`, 'bot');
+  } else if (hangoutChoice === 'no') {
+    showMessage(`Okay then, maybe another time!`, 'bot');
   }
 }
+*/
 
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -75,7 +97,8 @@ const showMessage = (message, sender) => {
 
 // Set up your eventlisteners here
 nameSubmit.addEventListener('submit', handleNameInput);
-wrapper.addEventListener('submit', age);
+
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
