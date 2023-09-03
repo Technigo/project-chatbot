@@ -56,7 +56,7 @@ const reloadPage = () => {
 // Function for bot sounds
 const playAudio = () => {
   const notificationSound = document.getElementById('notificationSound');
-  notificationSound.volume = 0.7; // Set the volume to 70%
+  notificationSound.volume = 0.6; // Set the volume to 60%
   notificationSound.play();
 };
 
@@ -169,46 +169,8 @@ const handleBobaPearls = (teaBaseOption) => {
       <option id="coffeeJelly" value="coffeeJelly">Coffee Jelly</option>   
     </select>
   `;
-  // For the drop-down menu I tried different approaches and here's the progression of how I went about this.
-  // I'm saving it here for learning purposes and if I wanna reuse them in the future.
-  /* The first iteration gives the values of the option elements as an output which is not what I want since the text of the values is written in a way that doesn't look nice. 
-  I could rewrite the values in a way that would look better such as Tapioka Pearl but I wanted to see if I could find a way to target the text of the option element.
-   Eventlisteners for drop-down menu
-    bobaPearlOptions.addEventListener('change', () => {
-      teaPearlOption = bobaPearlOptions.value;
-      showMessage(teaPearlOption, "user");
-      setTimeout(() => handleBobaDrinkSize(), 1000);
-    });
-  */
-  /* For the second iteration I tried a switch statement and while this worked and gave me the innerText of the option I wanted to see if it could be optimised and shortened.
-  The switch statement is checking the value of bobaPearlOptions.value against the values of the different options. The variable teaPearlOption is assigned with the innerText of the selected option. 
-  const tapiokaPearlOption = document.getElementById('tapiokaPearl');
-  const brownSugarPearlOption = document.getElementById('brownSugarPearl');
-  const grassJellyOption = document.getElementById('grassJelly');
-  const coffeeJellyOption = document.getElementById('coffeeJelly');
   
-  bobaPearlOptions.addEventListener('change', () => {
-    switch (bobaPearlOptions.value) {
-      case tapiokaPearlOption.value:
-        teaPearlOption = tapiokaPearlOption.innerText;
-        break;
-      case brownSugarPearlOption.value:
-        teaPearlOption = brownSugarPearlOption.innerText;
-        break;
-      case grassJellyOption.value:
-        teaPearlOption = grassJellyOption.innerText;
-        break;
-      default:
-        teaPearlOption = coffeeJellyOption.innerText;
-        break;
-    };  
-    showMessage(teaPearlOption, "user");
-    setTimeout(() => handleBobaDrinkSize(), 1000);
-  });
-  */
-
-  // This is the iteration I chose after some research on Stackoverflow. 
-  // It is very concise and if the dropdown menu options change I don't have to update at multiple places so it's easier to maintain and scale.
+  // Drop-down menu with different choices.
   const bobaPearlOptions = document.getElementById('bobaPearlOptions');
   /* Explanation to event.target.selectedOptions[0].text; 
     (event) represents the 'change' event that occurred on the bobaPearlOptions element.
@@ -231,7 +193,7 @@ const handleBobaDrinkSize = () => {
   showMessage(`Nice! Which size do you want to choose?`, 'bot');
   // Adds two buttons
   inputWrapper.innerHTML += `
-    <button id="regularSize" type="submit">Regular (500 mL)"</button>
+    <button id="regularSize" type="submit">Regular (500 mL)</button>
     <button id="largeSize" type="submit">Large (700 mL)</button>`;
   const regularDrinkSize = document.getElementById('regularSize');
   const largeDrinkSize = document.getElementById('largeSize');
