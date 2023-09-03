@@ -1,7 +1,6 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 
-
 // If you need any global variables that you can use across different functions, declare them here:
 let userAnswered = false;
 let usersName = "Jane Doe";
@@ -9,9 +8,9 @@ let questionCount = 0;
 let continentSelected = "Africa";
 let areaOptions = "Himalayas";
 let areaChoice = "";
-let numOfPax;
 
-// Declare your functions after this comment
+//---------------- Declare your functions after this comment -------------------------//
+
 
 //----------This function will add a chat bubble in the correct place based on who the sender is-----//
 const showMessage = (message, sender) => {
@@ -62,7 +61,7 @@ const botQuestion1 = () => {
 
 const botQuestion2 = (name) => {
   console.log("You have entered Question 2 function"); //reference for me to help me track the flow
-  showMessage(`Welcome!, ${usersName}. Are you interested in booking a mystery flight with us today?`, 'bot');
+  showMessage(`Welcome!, ${usersName}. Are you interested in finding out more about booking a mystery flight with us today?`, 'bot');
   showMessage(`Type YES or NO`, 'bot');
   //event listener for this question is logSubmit
 }
@@ -177,6 +176,7 @@ const botQuestion4 = (continent) => {
   }, { once: true });  //function only used once
 }
 
+
 //---------------- Bot Question 5 - Date to travel -------------------------//
 
 const botQuestion5 = () => {
@@ -200,6 +200,7 @@ const botQuestion5 = () => {
   })
 }
 
+
 //---------------- Bot Question 6 - Confirmation to proceed -------------------------//
 
 const botQuestion6 = () => {
@@ -222,19 +223,24 @@ const botQuestion6 = () => {
       showMessage(`Great! You should receive an email from us shortly`, 'bot');
       showMessage(`Your reference number is : 34534212`, 'bot');
       showMessage(`Thank you for visiting us, and happy flying`, 'bot');
-      setTimeout(botQuestion7, 1000);
+      setTimeout(botChatEnd, 1000);
     } else if (q6Buttons.target.value === "no") {
       let userConfirmation = "no"
       showMessage(`${userConfirmation}`, 'user');
       showMessage(`You're request has been cancelled`, 'bot');
       showMessage(`We hope you visit again soon, Good bye`, 'bot');
-      setTimeout(botQuestion7, 1000);
+      setTimeout(botChatEnd, 1000);
     }
   })
 }
 
-const botQuestion7 = () => {
-  console.log("we have entered botQuestion7")
+
+//---------------- Bot Chat End -------------------------//
+
+const botChatEnd = () => {
+  console.log("You have entered the end function"); //reference for me to help me track the flow
+
+  //remove buttons and re-create the input field so it looks the same as beginning
   const areaOptions = document.getElementById("input-wrapper")
   areaOptions.innerHTML = `
     <form id="name-form">
@@ -244,19 +250,18 @@ const botQuestion7 = () => {
     </button>
   </form>
   `
+  //site will reload when user types any input into the text and presses the submit button
 }
-//
-//
-// Set up your eventlisteners here
 
-//listen for when form is submitted(submit button or enter is pressed)
-logSubmit = (event) => {
-  console.log(`Question count inside logsubmit:`, questionCount)
-  event.preventDefault();
-  // Store the value in a variable so we can access it after we
-  // clear it from the input
+// Set up your eventlisteners here - I have ONLY ONE event listener OUTSIDE my functions. The following is suggested in the instructions.md...I could use it to validate the first 2 questions (that use the input text bar) but after that I have eventlisteners in each function to handle events from buttons, date, and dropdown menu. I don't think this is neat code, but it works.
+
+//---------------- Event Listener for Input text, Question 1 and 2 only -------------------------//
+
+logSubmit = (event) => {  //listen for when form is submitted (submit button or enter is pressed)
+  console.log(`Question count inside logsubmit:`, questionCount) //reference for me to help me track the flow, I had issues with this
+
+  event.preventDefault(); //still trying to understand how this works
   const nameSubmitted = document.getElementById("name-input")
-  console.log(nameSubmitted.value)
   usersName = nameSubmitted.value;
   showMessage(`${usersName}`, 'user');
   nameSubmitted.value = "";
@@ -275,11 +280,7 @@ logSubmit = (event) => {
 const form = document.getElementById("name-form");
 form.addEventListener("submit", logSubmit);
 
-
-
 //----- First function - When the website is loaded, the chatbot asks first question, after a 1 second delay ------//
+
 setTimeout(botQuestion1, 1000) //Step 1 - played around with the value
 
-// After 1 second, show the next question by invoking the next function.
-// passing the name into it to have access to the user's name if we want
-// to use it in the next question from the bot.
