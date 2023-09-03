@@ -8,6 +8,7 @@ const sodaChoiceWrapper = document.getElementById("soda-choice");
 const subChoiceWrapper = document.getElementById("sub-choice");
 const sodaSizeWrapper = document.getElementById("soda-size");
 const orderConfirmationWrapper = document.getElementById("orderConfirmation");
+const restartWrapper = document.getElementById("restart");
 const audio = new Audio("assets/notification.mp3")
 
 let sodaChoice = "";
@@ -77,9 +78,19 @@ const orderConfirmation = (confirmationMessage) => {
       showMessage(`No problem, hope you will come back and order another time!`, "bot");
     }
     orderConfirmationWrapper.style.display = "none";
+    restartWrapper.style.display = "block";
+
   }, 700);
 }
 
+const restart = () => {
+  setTimeout(() => {
+    showMessage(`Lets start over again - what´s your name soda lover?`, "bot");
+
+    restartWrapper.style.display = "none";
+    nameInputWrapper.style.display = "block";
+  }, 700);
+}
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
