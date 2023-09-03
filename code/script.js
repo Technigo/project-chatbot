@@ -137,10 +137,51 @@ const handleButtonClick = (animalName) => {
     yesButton.addEventListener("click", () => {
       // Handle user's "Yes" choice
       showMessage("Okey, sure!", "bot");
-      // Call a function to present the animal options again
-      presentAnimalOptions();
-    });
 
+      const dropdownHTML = `
+      <select id="animal-dropdown">
+        <option value=""></option>
+        <option value="Platypus">Platypus</option>
+        <option value="Mantis Shrimp">Mantis Shrimp</option>
+      </select>
+    `;
+
+      // Append the drop-down menu to the chat
+      chat.innerHTML += `
+      <section class="bot-msg">
+      <img src="assets/icons8-cat-94.png" alt="Bot" />
+      <div class="bubble bot-bubble">
+        <p>${dropdownHTML}</p>
+      </div>
+    </section>
+    `;
+
+      // Now, add an event listener to handle selection
+      const animalDropdown = document.getElementById("animal-dropdown");
+      animalDropdown.addEventListener("change", function () {
+        const selectedAnimal = animalDropdown.value;
+        if (selectedAnimal === "Platypus") {
+          // Display information about the Platypus
+          showMessage(
+            `The platypus is native to Australia and is known for its unique appearance. It's a semi-aquatic mammal that lays eggs, making it one of the very few monotremes in the world.
+          Platypuses have a duck-bill, webbed feet, and lay leathery eggs, combining characteristics of birds, reptiles, and mammals.
+          They are excellent swimmers and use electrolocation to detect prey in the water.`,
+            "bot"
+          );
+          showPlatypusInfo();
+        } else if (selectedAnimal === "Mantis Shrimp") {
+          // Display information about the Mantis Shrimp
+          showMessage(
+            `The mantis shrimp is a marine crustacean known for its incredible visual system and powerful claw strikes.
+          They have the most complex eyes in the animal kingdom, capable of seeing polarized light and a wide range of colors.
+          Their claw strikes are one of the fastest movements in the animal kingdom, powerful enough to break glass aquarium walls.
+          `,
+            "bot"
+          );
+          showMantisShrimpInfo();
+        }
+      });
+    });
     const noButton = animalButtons.querySelector("#no");
     noButton.addEventListener("click", () => {
       // Handle user's "No" choice
@@ -151,19 +192,4 @@ const handleButtonClick = (animalName) => {
   }, 1000);
 };
 
-// Show the options again
-
-// Ask if the user wants to know about the other animals
-
-// Call greetUser to start the conversation
-//greetUser();
-
-// Add code here to progress the app to the next question
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-//setTimeout(functionName, timeToWaitInMilliSeconds);
-// This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 500);
