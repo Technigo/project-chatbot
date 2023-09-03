@@ -69,7 +69,7 @@ nameForm.addEventListener("submit", (event) => {
   AbortSignal;
 });
 
-//this eventListener is what's wrong!!!!!!!!!!!!!!!!!!!
+//this eventListener is what's wrong!!!!!!!!!!!!!!!!
 //button.addEventListener("click", () => {
 //let userResponse = .value.trim().toLowerCase();
 //firstquestion(userResponse);
