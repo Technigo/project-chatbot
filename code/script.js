@@ -1,111 +1,109 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat')
 
-// If you need any global variables that you can use across different functions, declare them here:
+// Global variables to use across different functions
 const inputWrapper = document.getElementById('input-wrapper')
 const nameInput = document.getElementById('name-input')
 const sendButton = document.getElementById('send-btn')
 const nameForm = document.getElementById('name-form')
-let username = ""
-//let selectedTravelOption = ""
+let username = ''
+let activityChoice = ''
+let activity = ''
+let selectedActivity = ''
+let soundWelcome = new Audio('assets/welcome.mp3')
+let soundDone = new Audio('assets/done.mp3')
+let soundConfirm = new Audio('assets/success.mp3')
+let soundDecline = new Audio('assets/fiasco.mp3')
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
+  // The if statement checks if the sender is 'user' and if that's the case it inserts an HTML section inside the chat with the posted message
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/bot.png" alt="User" />  
       </section>
     `
-    // the else if statement checks if the sender is a bot and if that's the case it inserts an html section inside the chat with the posted message
+    // The else if statement checks if the sender is a bot and if that's the case it inserts an HTML section inside the chat with the posted message
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="images/glad-bot.jpg" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
       </section>
     `
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-  setTimeout(() => { 
+  // Scrolls to the last message in the chat box, with a timeout function so the entire chat message has time to load
+  setTimeout(() => {
     chat.scrollTop = chat.scrollHeight
   }, 200)
 }
 
-// Starts here
+// Initial greeting message from bot, asking for the user's name
 const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hey there Traveller, I'm Botlynn! Join me on a virtual trip to a foreign country and let's explore it! Please enter your name so I know what to call my new travel buddy!", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+  showMessage(`Hey there Traveller, I'm Botlynn! Join me on a virtual trip to a foreign country and let's explore it! Please enter your name so I know what to call my new travel buddy!`, 'bot')
+  soundWelcome.play()
 }
 
+// User types in name, otherwise the bot asks for the name again to be able to proceed
 const handleNameInput = (event) => {
-  event.preventDefault();
-  const name = nameInput.value;
+  event.preventDefault()
+  const name = nameInput.value
   if (name === '') {
-    showMessage('I really want to know your name, please try again! ✏️', 'bot')
+    showMessage(`I really want to know your name, please try again! ✏️`, 'bot')
   } else {
-    showMessage(name, 'user'); //User stod med ""
-    username = name;
-    nameInput.value = ''; //Stod med ""
-
-    setTimeout(() => travelOption(), 1250);
+    showMessage(name, 'user')
+    username = name
+    nameInput.value = ''
+    setTimeout(() => travelOption(), 1000)
     inputWrapper.innerHTML = ''
   }
-
-
 }
 
-// Bot greeting
+// Bot welcomes the user by name and present three buttons with countries to choose from
 const travelOption = () => {
-  showMessage(`Hi ${username}, so nice to have you onboard on this trip! Which of the lovely countries do you want to visit? 🧭`, 'bot')
+  showMessage(`Welcome ${username}, so nice to have you onboard on this trip! Which of the lovely countries would you like to visit? 🧭`, 'bot')
   inputWrapper.innerHTML = `
   <button id='cuba'>Cuba 💃</button>
   <button id='italy'>Italy 🍕</button>
   <button id='netherlands'>The Netherlands 🌷</button>
   `
+
+  // Three different messages from the user depending on which country they choose. The chosen country will go into the next function in the activityQuestion 
   document.getElementById('cuba')
     .addEventListener('click', () => {
-      showMessage('I want to go to Cuba!', 'user')
-      setTimeout(() => activityQuestion('Cuba'), 800)
+      showMessage(`I want to go to Cuba!`, 'user')
+      setTimeout(() => activityQuestion('Cuba'), 1000)
     })
 
   document.getElementById('italy')
     .addEventListener('click', () => {
-      showMessage('Take me to Italy!', 'user')
-      setTimeout(() => activityQuestion('Italy'), 800)
+      showMessage(`Take me to Italy!`, 'user')
+      setTimeout(() => activityQuestion('Italy'), 1000)
     })
 
   document.getElementById('netherlands')
     .addEventListener('click', () => {
-      showMessage('I want to explore The Netherlands!', 'user')
-      setTimeout(() => activityQuestion('The Netherlands'), 800)
+      showMessage(`I want to explore The Netherlands!`, 'user')
+      setTimeout(() => activityQuestion('The Netherlands'), 1000)
     })
 }
 
-//Här klistrar jag in en switch att testa med
-let activityChoice = ""
-let activity = ""
-let selectedActivity = ""
-//let selectedTravelOption = ""
+// Variables that will be used in the activityQuestion TA BORT OM ALLT FUNKAR
 
+
+// User is presented with a dropdown menu with three different activities to chose from depending on which country was chosen previously
 const activityQuestion = (selectedTravelOption) => {
-  showMessage(`Wow, ${selectedTravelOption}! What a great choice! Which of our lovely activities would you like to join?`, 'bot')
-
-  console.log(`activityQuestion executed ${selectedTravelOption}`);
-
+  showMessage(`Wow, ${selectedTravelOption}! What a great choice! Which of our amazing activities would you like to join?`, 'bot')
 
   switch (selectedTravelOption) {
-    case "Cuba":
-
-      activity = ["to visit the tobacco farm", "to explore Havana", "to go to Buena Vista Social Club"]
-
+    case 'Cuba':
+      activity = ['to visit the tobacco farm', 'to explore Havana', 'to go to Buena Vista Social Club']
       inputWrapper.innerHTML = `
       <select id="activityChoiceSelect">
         <option value="" selected disabled>Choose one of our amazing activities!</option>
@@ -114,17 +112,12 @@ const activityQuestion = (selectedTravelOption) => {
         <option value="3">Catch a live show at the venue Buena Vista Social Club in Havana</option>
       </select>
       `
-
-      //Makes the background-image change when chosing Cuba by activating body.cuba in the CSS
-      document.getElementById("body").className = "cuba"
-
-      console.log('inputWrapper.innerHTML changed (cuba)');
-
+      // Changes the background-image to a new image when choosing Cuba, by activating body.cuba in the CSS
+      document.getElementById('body').className = 'cuba'
       break
-    case "Italy":
 
-      activity = ["to go to Sorrento Cooking School", "to experience the Tuscany vineyard tour", "to watch the performance at the Milan Opera"]
-
+    case 'Italy':
+      activity = ['to go to Sorrento Cooking School', 'to experience the Tuscany vineyard tour', 'to watch the performance at the Milan Opera']
       inputWrapper.innerHTML = `
       <select id="activityChoiceSelect">
         <option value="" selected disabled>Choose one of our amazing activities!</option>
@@ -133,17 +126,12 @@ const activityQuestion = (selectedTravelOption) => {
         <option value="3">See an opera performance at La Scala in Milan</option>
       </select>
       `
-
-      //Makes the background-image change when chosing Italy by activating body.italy in the CSS
-      document.getElementById("body").className = "italy"
-
-      console.log('inputWrapper.innerHTML changed (italy)');
-
+      // Changes the background-image to a new image when choosing Italy, by activating body.italy in the CSS
+      document.getElementById('body').className = 'italy'
       break
-    case "The Netherlands":
 
-      activity = ["to see the Keukenhof Gardens", "to explore the Kinderdijk Windmills", "to go for a canal tour in Amsterdam"]
-
+    case 'The Netherlands':
+      activity = ['to see the Keukenhof Gardens', 'to explore the Kinderdijk Windmills', 'to go for a canal tour in Amsterdam']
       inputWrapper.innerHTML = `
       <select id="activityChoiceSelect">
         <option value="" selected disabled>Choose one of our amazing activities!</option>
@@ -152,35 +140,38 @@ const activityQuestion = (selectedTravelOption) => {
         <option value="3">Go for a scenic canal tour in Amsterdam</option>
       </select>
       `
-
-      //Makes the background-image change when chosing The Netherlands by activating body.netherlands in the CSS
-      document.getElementById("body").className = "netherlands"
-
-      console.log('inputWrapper.innerHTML changed (netherlands)');
-
+      // Changes the background-image to a new image when choosing The Netherlands, by activating body.netherlands in the CSS
+      document.getElementById('body').className = 'netherlands'
       break
   }
 
-  console.log('set activitychoice listener');
-
+  // Sorts out in the switch's array which activity is chosen, and is presented by a reply from the user
   const activityChoiceSelect = document.getElementById('activityChoiceSelect')
-
   activityChoiceSelect.addEventListener('change', () => {
     const activityChoice = parseInt(activityChoiceSelect.value)
-    console.log(activityChoice)
     selectedActivity = activity[activityChoice - 1]
-    console.log(selectedActivity)
-
-    //Keep it as showMessage(selectedActivity, 'user') ??
     showMessage(`Hmm, so many good ones! But I decided I want ${selectedActivity}!`, 'user')
-
     inputWrapper.innerHTML = ''
-    setTimeout(() => confirmationActivity(), 1000)
+    setTimeout(() => confirmationActivity(selectedTravelOption), 1000)
   })
 }
 
+// Bot tells the user it's finalizing the different requests the user has made, a function that is used in confirmationActivity
+function simulateProcessing(callback) {
+  showMessage(`Finalizing your requests...`, 'bot')
+  // Simulate a delay of 2 seconds
+  setTimeout(function () {
+    showMessage(`Processing complete! ✔️`, 'bot')
+    soundDone.play()
+    // Call the provided callback function to continue with the next action
+    if (typeof callback === 'function') {
+      callback()
+    }
+  }, 3000)
+}
 
-const confirmationActivity = () => {
+// The bot asks the user if it's happy with the booking, by requesting the user press the 'yes' or 'no' button
+const confirmationActivity = (selectedTravelOption) => {
   showMessage(`Perfect, ${username}! Are you happy with your choice?`, 'bot')
   inputWrapper.innerHTML = `
   <button id='yesButton'>Yes</button>
@@ -188,34 +179,54 @@ const confirmationActivity = () => {
   `
   document.getElementById('yesButton')
     .addEventListener('click', () => {
-      showMessage('Yes', 'user')
-      setTimeout(() => happyAnswer('Yes'), 1000)
+      showMessage(`Yes`, 'user')
+      // Start processing simulation and continues with finalQuestion
+      simulateProcessing(() => {
+        finalQuestion('Yes', selectedTravelOption)
+      })
     })
 
   document.getElementById('noButton')
     .addEventListener('click', () => {
-      showMessage('No', 'user')
-      setTimeout(() => happyAnswer('No'), 1000)
+      showMessage(`No`, 'user')
+      // Start processing simulation and continues with finalQuestion
+      simulateProcessing(() => {
+        finalQuestion('No')
+      })
     })
 }
 
-const happyAnswer = (userResponse) => {
+// Final question that wraps up the conversation with the bot, the bot icon is changed to a happy or sad Botlynn depending on the user's answer
+const finalQuestion = (userResponse, selectedTravelOption) => {
   if (userResponse === 'Yes') {
-    showMessage(`Awesome! Then get your virtual passport ready ${username}, because we leave in 15 minutes! See ya soon!`, 'bot')
+    const message = `Awesome! Then get your virtual passport ready ${username}, because we leave in 15 minutes! See ya soon in ${selectedTravelOption}!`
+    chat.innerHTML += `
+      <section class="bot-msg">
+        <img src="images/happy-bot.jpg" alt="Happy Bot" />
+        <div class="bubble bot-bubble">
+          <p>${message}</p>
+        </div>
+      </section>
+    `
+    soundConfirm.play()
   } else {
-    showMessage(`So sorry to hear that, your virtual vacay will be cancelled. Hope to see you here again for a new virtual trip in the future!`, 'bot')
+    const message = `So sorry to hear that, your virtual vacay will be cancelled. Hope to see you here again for a new virtual trip in the future!`
+    chat.innerHTML += `
+      <section class="bot-msg">
+        <img src="images/sad-bot.jpg" alt="Sad Bot" />
+        <div class="bubble bot-bubble">
+          <p>${message}</p>
+        </div>
+      </section>
+    `
+    soundDecline.play()
   }
-  inputWrapper.innerHTML = '' //Makes the yes and no button to disappear so the bot conversation ends
-  //TA BORT OM INTE NÅGON NY FRÅGA  setTimeout(() => confirmationQuestion(), 500)
+  // Makes the yes and no button disappear so the chatbot conversation ends
+  inputWrapper.innerHTML = ''
 }
 
 // Set up your eventlisteners here
 nameForm.addEventListener('submit', handleNameInput)
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
+// The greeting function will be called one second after the website is loaded
 setTimeout(greetUser, 1000)

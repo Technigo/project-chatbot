@@ -7,7 +7,8 @@ body {
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   background-size: cover;
-  background-image: url("./images/map-colorful.jpg");
+  background-image: url("./images/holiday.jpg");
+  background-position: 50% 50%;
 }
 
 body.cuba {
@@ -18,6 +19,7 @@ body.cuba {
 
 body.italy {
   background-image: url("./images/italy.jpg");
+  background-position: 50% 20%;
   transition: .2s ease;
 }
 
@@ -55,7 +57,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: darkslateblue;
+  color: #483d8b;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -69,7 +71,7 @@ main {
   width: 100%;
   max-width: 800px;
   height: 600px;
-  border: 2px solid orange;
+  border: 2px solid #ffa500;
   border-radius: 30px;
   background: #fff;
   opacity: 0.93;
@@ -114,7 +116,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: darkolivegreen;
+  color: #556b2f;
   max-width: 40%;
 }
 
@@ -126,7 +128,7 @@ main {
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
-  background: darkolivegreen;
+  background: #556b2f;
   color: #cccc99;
 }
 
@@ -145,13 +147,13 @@ label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: darkslateblue;
+  color: #483d8b;
   margin-right: 20px;
 }
 
 button {
-  background-color: darkslateblue;
-  color: white;
+  background-color: #483d8b;
+  color: #fff;
   border: none;
   border-radius: 4px;
   padding: 16px 40px;
@@ -176,16 +178,16 @@ button:hover {
   margin: 20px;
   border: none;
   border-radius: 4px;
-  background-color: darkslateblue;
-  color:white;
+  background-color: #483d8b;
+  color:#fff;
 }
 
 footer {
   display: flex;
   flex-direction: column;
-  color:#ffffff;
+  color:#fff;
   font-size: 12px; 
-  background-color: orange;
+  background-color: #ffa500;
   width: 100%;
   text-align: center;
   padding: 10px;
@@ -199,5 +201,5 @@ footer {
 
 footer a:link, a:visited {
   font-size: 20px;
-  color: #ffffff;
+  color: #fff;
 }
