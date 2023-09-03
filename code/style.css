@@ -12,7 +12,7 @@ body {
 
 h1 {
     font-family: 'ADLaM Display', cursive;
-    font-size: calc(26px + 3vw);
+    font-size: calc(26px + 3vw); /* calc(26px + 3vw): calculates the font size by adding a fixed value of 26px to a value that's based on a % of the viewport width, in this case 3%. The font size will never be smaller than 26px.*/
     color: #fff;
     text-align: center;
     text-shadow: 1px 1px 5px #9178d3, 0 0 3em #5737ae, 0 0 0.2em #442b88;
@@ -22,8 +22,7 @@ h1 {
 main {
     margin: 0 auto;
     width: 100%;
-    /* It will never be bigger then 700px. When the screen gets smaller than 700px in width it will just take up 100% of the width*/
-    max-width: 700px;
+    max-width: 700px;     /* It will never be bigger then 700px. When the screen gets smaller than 700px in width it will just take up 100% of the width*/
     height: 600px;
     border-radius: 30px;
     background: rgb(255, 255, 255, 0.8);
@@ -36,7 +35,8 @@ main {
 }
 
 p {
-    font-size: 18px;
+    /* font-size: 18px; */
+    font-size: calc(16px + 0.1vw); /* Makes the font size responsive */
     font-weight: 600;
     line-height: 28px;
     margin: 0;
@@ -45,7 +45,7 @@ p {
 
 input {
     box-sizing: border-box;
-    border: none;
+    border: 0.1px solid #ded8f3;
     border-radius: 4px 0 0 4px;
     background: #e5e9ff;
     color: #5738ad;
@@ -54,8 +54,7 @@ input {
     font-family: 'Montserrat';
     font-weight: 600;
     line-height: 26px;
-    flex: 1;
-    /* the input will grow as much as it can and the button will take up what's left */
+    flex: 1; /* the input will grow as much as it can and the button will take up what's left */
 }
 
 input::placeholder {
@@ -72,10 +71,8 @@ input::placeholder {
     flex: 1;
     display: flex;
     justify-content: flex-start;
-    overflow: scroll;
-    /* to make it so you can scroll*/
-    overflow-x: hidden;
-    /*Hides the scroll bar on the x-axis*/
+    overflow: scroll; /* to make it so you can scroll*/
+    overflow-x: hidden; /*Hides the scroll bar on the x-axis*/
     flex-direction: column;
     padding-bottom: 16px;
 }
@@ -103,6 +100,7 @@ input::placeholder {
 
 .bubble {
     background: #e5e9ff;
+    /* border: 0.1px solid #ded8f3; */
     font-weight: 600;
     font-size: 16px;
     line-height: 26px;
@@ -148,7 +146,7 @@ input::placeholder {
     line-height: 26px;
     font-weight: 600;
     padding: 16px 20px;
-    border: none;
+    border: 0.1px solid #ded8f3;
     outline: none;
     border-radius: 5px;
     background: #e5e9ff;
