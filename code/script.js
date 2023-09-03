@@ -2,10 +2,7 @@
 const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('input-wrapper');
 
-
 // If you need any global variables that you can use across different functions, declare them here:
-
-
 // Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -17,7 +14,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user1.png" alt="User" />  
+        <img src="assets/user.jpeg" alt="User" />  
       </section>
     `;
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
@@ -36,9 +33,10 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
+
 // Starts here
 const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
+  console.log("Hi user!")
   showMessage("Hello there, What's your name?", 'bot')
 }
 
@@ -57,26 +55,99 @@ document.getElementById('name-form').addEventListener('submit', function(event) 
   updateInput('cake');
 });
 
+const showCakeOptions = (userName) => {
+  console.log("Cake options")
+  // Send a bot message to the chat
+  showMessage(userName, 'user');
+  showMessage();
 
-const handleNameInput = (event) => {
+  // Update the input section with the cake options
+  updateInput('cake');
+}
+
+const updateInput = (step) => {
+  const inputWrapper = document.getElementById('input-wrapper');
+  let htmlContent = '';
+
+  switch (step) {
+      case 'cake':
+          htmlContent = `
+              <div id="cake-buttons">
+                  <button onclick="handleCakeChoice('Cheesecake')">Cheesecake</button>
+                  <button onclick="handleCakeChoice('Carrot Cake')">Carrot Cake</button>
+                  <button onclick="handleCakeChoice('Strawberry Cake')">Strawberry Cake</button>
+              </div>
+          `;
+          break;
+
+      case 'people':
+            htmlContent = `
+                <form id="people-form" onsubmit="handlePeopleCount(event)">
+                  <input type="number" name="peopleCount" placeholder="Enter number of people" required>
+                  <button type="submit">Submit</button>
+                </form>
+              `;
+              break;
+        
+            case 'confirmOrder':
+              htmlContent = `
+                <div id="confirm-buttons">
+                  <button onclick="handleOrderConfirmation('yes')">Yes</button>
+                  <button onclick="handleOrderConfirmation('no')">No</button>
+                </div>
+              `;
+              break;
+
+  }
+
+  inputWrapper.innerHTML = htmlContent;
+}
+
+const handleCakeChoice = (cake) => {
+  // Display the user's cake choice in the chat
+  showMessage(cake, 'user');
+  // Continue the conversation based on the user's cake choice
+  showMessage(`Great choice! How many people will be eating?`, 'bot');
+  // Proceed to ask about the number of people
+  updateInput('people');
+
+ }
+
+
+const handlePeopleCount = (event) => {
   event.preventDefault();
-  // Store the value in a variable so we can access it after we
-  // clear it from the input
-  const name = nameInput.value;
-  showMessage(name, "user");
-  nameInput.value = "";
+  
+  const peopleCount = event.target[0].value;
+  
+  showMessage(peopleCount, 'user');
+  showMessage(`Thank you! That will be for ${peopleCount} people. Would you like to confirm your order?`, 'bot');
+  
+  updateInput('confirmOrder');
 
-  // After 1 second, show the next question by invoking the next function.
-  // passing the name into it to have access to the user's name if we want
-  // to use it in the next question from the bot.
-  setTimeout(() => showCakeOptions(name), 2000);
-};
+}
 
-showMessage();
+const handleOrderConfirmation = (confirmation) => {
+  if (confirmation === 'yes') {
+    showMessage('Yes', 'user');
+    showMessage('Thank you for your order! We are processing it now.', 'bot');
+    inputWrapper.innerHTML = '';
+  } else {
+    showMessage('No', 'user');
+    showMessage('No worries! Let us know if you change your mind.', 'bot');
+    inputWrapper.innerHTML = '';
+  }
 
-setTimeout(greetUser, 2000)
 
-//const showCakeOptions = (name) => 
+}
+
+
+setTimeout(greetUser, 1000);
+
+
+
+
+
+
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
