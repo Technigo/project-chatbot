@@ -40,7 +40,7 @@ body {
 
 .ticket-btn {
   background-image: linear-gradient(to right, #f6d365 0%, orange 51%, #f6d365 100%);
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: 5px;
@@ -137,8 +137,8 @@ main {
 
 .bot-msg img,
 .user-msg img {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
 }
 
 .bubble {
