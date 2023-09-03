@@ -48,8 +48,6 @@ const greetUser = () => {
 // Set up your eventlisteners here
 
 
-
-
 // Listen for the form submission event
 nameForm.addEventListener('submit', (event) => {
   event.preventDefault(); // Prevent the form from submitting
@@ -138,15 +136,6 @@ const handleUserInput = (event) => {
     }, 2000);
   }
 };
-
-
-
-
-
-
-
-
-
 
 
 // When website loaded, chatbot asks first question.
