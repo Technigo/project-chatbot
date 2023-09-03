@@ -68,9 +68,16 @@ select{
   color: #f8e7f3;
   font-size: 18px;
 }
-label{
-  align-self:center
+img{
+  border: 2px solid #fff;
+  border-radius: 50%;
 }
+footer{
+ text-align: center;
+ padding: 20px;
+ color: rgb(93, 90, 90);
+}
+
 .chat {
   flex: 1;
   display: flex;
@@ -111,11 +118,13 @@ label{
   padding: 16px 24px;
   color:  #a2378c;
   max-width: 40%;
+ 
 }
 
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  
 }
 
 .user-bubble {
@@ -141,6 +150,7 @@ label {
   font-weight: 500;
   color: #a2378c;
   margin-right: 20px;
+  align-self:center
 }
 
 button {

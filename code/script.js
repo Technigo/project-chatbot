@@ -1,3 +1,5 @@
+"use strict"
+
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat')
 const nameInput = document.getElementById('name-input')
@@ -5,9 +7,8 @@ const nameForm = document.getElementById('name-form');
 const inputWrapper = document.getElementById('input-wrapper')
 const sendBtn = document.getElementById('send-btn')
 
+//------------------------------ MESSAGE ON CHAT ------------------------------//
 
-
-//------------------------------MESSAGE ON CHAT ---------//
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === 'user') {
@@ -30,27 +31,26 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
+  
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
 
-// -------------------------SHOW THE FIRST MESSAGE HALLO---------------//
-// Starts here
+//------------------------------ SHOW THE FIRST MESSAGE HALLO ------------------------------//
 const greetUser = () => {
   showMessage("Hello there, What's your name?", 'bot')
 }
 
+//------------------------------ NAME AND CHOICE FOOD ------------------------------//
 
-
-//--------------------NAME AND CHOICE FOOD--------------------------//
-
-// Set up your eventlisteners here
 const handleNameInput = (event) => {
   event.preventDefault(); //prevents calling other functions that listen for submit
   const name = nameInput.value;
   showMessage(`Hej, my name is  ${ name }`, "user");
   nameInput.value = ""; // clear the text field
-  setTimeout( showFoodOptions(name), 1000);
+  setTimeout(() => {
+    showFoodOptions(name);
+  }, 1000);
 };
 
 nameForm.addEventListener('submit', handleNameInput); // we sign up for the submit event on the form- the handleNameInput function will be called
@@ -64,7 +64,7 @@ const showFoodOptions = (name) => {
   <button class="send-btn" id="pasta" type="submit">Pasta</button>
   <button class="send-btn" id="salad" type="submit">Salad</button>
 `
-//--------------------CHOICE FOOD  AND CHOICE TYPE OF FOOD--------------------------//
+//------------------------------ CHOICE FOOD  AND CHOICE TYPE OF FOOD ------------------------------//
 
 const foodButton = inputWrapper.querySelectorAll('.send-btn') // finds all elements with class "send-btn"
 foodButton.forEach (button => {
@@ -72,12 +72,15 @@ foodButton.forEach (button => {
     const selectedFood = event.target.id;
     showMessage(`I choose ${selectedFood}`, 'user');
     showMessage(`Good choice! You selected ${selectedFood}.`, 'bot');
-    showTypeOfFood(selectedFood);
+    setTimeout(() => {
+      showTypeOfFood(selectedFood); 
+    }, 1000);
   });
 });
 };
 
-//-------------show type of food ------------------------------------////
+//------------------------------ show type of food ------------------------------//
+
 const showTypeOfFood = (choice) => {
   
   if (choice === 'pizza') {
@@ -123,14 +126,16 @@ const showTypeOfFood = (choice) => {
     const selectedTypeOfFood = event.target.value;
     showMessage(` ${selectedTypeOfFood}.`, 'user');
     showMessage(`You choose : ${selectedTypeOfFood}.`, 'bot');
-    selectAge(selectedTypeOfFood);
+    setTimeout(() => {
+      selectAge(selectedTypeOfFood); 
+    }, 1000);
   });
 }
 
-//----------------- Select age ----------//
+//------------------------------ Select age ------------------------------//
 
 const selectAge = () => {
-  showMessage(`Will it be for a child or an adult?`, 'bot');
+  showMessage(`Will that be for an adult or a child?`, 'bot');
   inputWrapper.innerHTML = `
   <button class="send-btn" id="Adult" type="submit">Adult</button>
   <button class="send-btn" id="Child" type="submit">Child</button>
@@ -145,13 +150,15 @@ ageButton.forEach (button => {
     } else {
       showMessage(`You selected ${selectedAge}.  It will be 100 SEK`, 'bot');
     }
-    confirmOrder(selectedAge);
+    setTimeout(() => {
+      confirmOrder(selectedAge);
+    }, 1000);
   });
 });
 }
 
+//------------------------------ CONFIRM ORDER ------------------------------//
 
-//--------CONFIRM ORDER-------------
 const confirmOrder = () => {
   showMessage(`Would you like to confirm your order? (yes/no)`, 'bot')
   inputWrapper.innerHTML = `
@@ -174,10 +181,4 @@ confirmButton.forEach (button => {
 });
 }
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-  setTimeout(greetUser, 1000);
+setTimeout(greetUser, 1000);
