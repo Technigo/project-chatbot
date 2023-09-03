@@ -1,13 +1,19 @@
-# Project Name
+# Project Chatbot
+## Introduction
 
-Replace this readme with your own information about your project.
+This repository contains the code for a boba shop bot, my interactive chatbot project. I designed this chatbot to help customers personalize their boba tea orders. With this bot, users can choose their tea base, toppings, and drink size, and receive an order confirmation.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+## Steps
+To create the bot, I utilized HTML, CSS, and JavaScript. 
 
-## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Here's how I approached the project:
+HTML Structure: Was provided by Technigo
+CSS: I updated the styling to fit my project as well as updating the responsive design.
+JavaScript Logic: I implemented JavaScript to handle user interactions, process selections, and to generate responses.
+Audio Feedback: I added audio notifications to enhance the user experience and provide feedback.
+User Interaction: Users can engage with the bot by selecting options presented through buttons and dropdown menus.
+Order Calculation: I programmed the bot to calculate the total order price based on user choices.
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Here's the deployed site: 
+[Chatbot project](https://the-bubblepop-cafe.netlify.app/)
