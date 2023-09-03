@@ -12,9 +12,11 @@ I got really stuck after the first interaction. So when trying to get going afte
 
 Once I got further into the code I realized that it all looked very messy. My functions where very long and it was like I walked deeper and deeper into a labyrinth, and I din't know how to get out of it. That's when the reusability of functions actually clicked into place. Attending the Q&A with Diego, where he once more went trough parameters and arguments made that part click for me, and I decided that evening to try and break down my code into smaller chunks. Oh the joy when everything still worked the way it should! I was expecially proud of the createButtons function where I used the parameters in both the text AND the id - killing to flies in one go so to speak. 
 
-With more time I would like to add an API to the bot, so that the generated answers are really generated and not hard-coded. I would also like to add a "start over" and "quit"-button at the end instead of prompting the user to shut down the window. I tried creating a restartChat function but it was a bit too tricky and my time ran out.
+The CSS and HTML for the typingIndicator are pretty much copied over from here: https://codesandbox.io/s/chat-typing-indicator-demo-ehneh?file=/index.html
+I changed the color to my own, and instead of putting it in the HTML and CSS i created functions and variables for it to create everything dynamically in the script instead.
+I though about adding the typingIndicator code into a new scrip for a cleaner look - but maybe next time. 
 
-I added a little media-query at the bottom of the CSS, plus some other styling for better mobile compatibility.
+With more time I would like to add an API to the bot, so that the generated answers are really generated and not hard-coded. I would also like to add a "start over" and "quit"-button at the end instead of prompting the user to shut down the window. I tried creating a restartChat function but it was a bit too tricky and my time ran out.
 
 ## View it live
 

@@ -91,6 +91,19 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
+const showTypingIndicator = () => {
+  addTypingIndicatorHtml(); // Creates the HTML for the typing indicator
+  insertStyle(typingStyle); // Adds styling to the typing-indicator
+  chat.scrollTop = chat.scrollHeight; // Scroll to the bottom to show the indicator
+};
+
+const removeTypingIndicator = () => {
+  const typingIndicator = document.querySelector('.typingIndicatorContainer');
+  if (typingIndicator) {
+    typingIndicator.remove();
+  }
+};
+
 const sayHello = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage(
@@ -156,7 +169,19 @@ const createList = (listID, headingText) => {
         </div>
     </section>
 `
-  //chat.scrollTop = chat.scrollHeight;
+}
+
+/* ------------- Function to create a typing indicator divs in html ------------- */
+const addTypingIndicatorHtml = () => {
+  chat.innerHTML +=
+    `<div class="typingIndicatorContainer">
+      <div class="typingIndicatorBubble">
+        <div class="typingIndicatorBubbleDot"></div>
+        <div class="typingIndicatorBubbleDot"></div>
+        <div class="typingIndicatorBubbleDot"></div>
+      </div>
+    </div>
+    `
 }
 
 /* ------------- Function for adding style ------------- */
@@ -168,6 +193,7 @@ function insertStyle(code) {
 };
 
 /* --------------------------------------- */
+// Here I decided to add the "code" into a variable instead of straight into the argument of insertStyle, for a cleaner code since there is a LOT of it :) 
 const typingStyle = `.typingIndicatorContainer {
     display: flex;
     flex: none;
@@ -182,7 +208,7 @@ const typingStyle = `.typingIndicatorContainer {
     width: 52px;
     height: 40px;
     margin: 0px 8px;
-    background-color: #f0f1f1;
+    background-color: #EFEDEF;
     border-radius: 12px;
   }
   
@@ -190,7 +216,7 @@ const typingStyle = `.typingIndicatorContainer {
     width: 4px;
     height: 4px;
     margin-right: 4px;
-    background-color: #57585a;
+    background-color: #CD4F5C;
     border-radius: 50%;
     animation-name: bounce;
     animation-duration: 1.3s;
@@ -220,35 +246,7 @@ const typingStyle = `.typingIndicatorContainer {
       transform: translateY(-4px);
     }
   }
-  `
-
-const addTypingIndicatorHtml = () => {
-  chat.innerHTML +=
-    `<div class="typingIndicatorContainer">
-      <div class="typingIndicatorBubble">
-        <div class="typingIndicatorBubbleDot"></div>
-        <div class="typingIndicatorBubbleDot"></div>
-        <div class="typingIndicatorBubbleDot"></div>
-      </div>
-    </div>
-    `
-}
-
-const showTypingIndicator = () => {
-  addTypingIndicatorHtml(); // Create the HTML for the typing indicator
-  insertStyle(typingStyle); // Adds styling to the typing-indicator
-  chat.scrollTop = chat.scrollHeight; // Scroll to the bottom to show the indicator
-};
-
-const removeTypingIndicator = () => {
-  const typingIndicator = document.querySelector('.typingIndicatorContainer');
-  if (typingIndicator) {
-    typingIndicator.remove();
-  }
-};
-
-/* --------------------------------------- */
-
+  `;
 
 /* ------------- FIRST INTERACTION ------------- */
 // "clickingPreventsDefault" prevents the default form from submitting
@@ -282,18 +280,20 @@ const greetUser = () => {
 
 /* ------------- THIRD INTERACTION ------------- */
 const OptInQuestion = () => {
-  createButtons("Yes, please 😍", "btn-one", "No 👎", "btn-two");
+  createButtons("Yes 😍", "btn-one", "No 👎", "btn-two");
   // stores buttons-elements in variables.
   let btnOne = document.getElementById("btn-one");
   let btnTwo = document.getElementById("btn-two");
 
   // This peace of code (and the one below) handle what will happen when clicking one of the buttons.
   btnOne.addEventListener("click", () => {
-    showMessage("Yes, please 😍", "user"); // A duplicate of what is written in the button as a message in the chat from the user
-    setTimeout(() => showMessage(`Amazing! What genre would you be interested in? 🍿`, "bot"), 1000); // An answer from the bot, with a follow-up question
+    showMessage("Yes 😍", "user"); // A duplicate of what is written in the button as a message in the chat from the user
+    setTimeout(() => showMessage(`Amazing! What genre would you be interested in? 🍿`, "bot"), 2000); // An answer from the bot, with a follow-up question
     btnOne.remove(); // Yes-button gets removed to make room for the select with options that comes further down
     btnTwo.remove(); // No-button gets removed to make room for the select with options that comes further down
-    setTimeout(() => chooseGenre(), 999) // Here I put 999 milliseconds, otherwise the selectdropdown was palced above the text to choose genre. This needed to come just a millisecond before for everything to look good!
+    showTypingIndicator(); // Display the typing indicator
+    setTimeout(() => removeTypingIndicator(), 2000);
+    setTimeout(() => chooseGenre(), 1999) // Here I put 999 milliseconds, otherwise the selectdropdown was palced above the text to choose genre. This needed to come just a millisecond before for everything to look good!
   })
 
   btnTwo.addEventListener("click", () => {
@@ -301,7 +301,9 @@ const OptInQuestion = () => {
     setTimeout(() => showMessage(`I understand, I hope you'll have an amazing night!`, "bot"), 1000);
     btnOne.remove();
     btnTwo.remove();
-    setTimeout(() => endChat(), 1000)
+    showTypingIndicator(); // Display the typing indicator
+    setTimeout(() => removeTypingIndicator(), 2000);
+    setTimeout(() => endChat(), 2000)
   })
 };
 
@@ -311,6 +313,7 @@ const chooseGenre = () => {
   createSelectMenu("Action", "Comedy", "Drama");
   // Declares a varaible for the select element to be used when getting the text content of it further down
   const selectDropDown = document.querySelector('.select-menu');
+  chat.scrollTop = chat.scrollHeight; // Scroll to the bottom to show the indicator
 
   // Function to check what genre the user has chosen.
   const checkValue = () => {
@@ -320,14 +323,16 @@ const chooseGenre = () => {
 
     const optionInteraction = () => {
       showMessage(`${genre}`, "user");
-      setTimeout(() => showMessage(`${genre} is a great choice! Would you like to see an oldie but a goodie, or a newer movie?`, "bot"), 1000);
+      showTypingIndicator(); // Display the typing indicator
+      setTimeout(() => removeTypingIndicator(), 2000);
+      setTimeout(() => showMessage(`${genre} is a great choice! Would you like to see an oldie but a goodie, or a newer movie?`, "bot"), 2000);
       selectDropDown.value = " ";
-      setTimeout(() => selectDropDown.remove(), 1000);
+      setTimeout(() => selectDropDown.remove(), 2000);
     }
 
     optionInteraction();
-    setTimeout(() => createButtons("🧓🏻", "btn-one", "🍼", "btn-two"), 1000);
-    setTimeout(() => oldieOrNewbie(), 1000);
+    setTimeout(() => createButtons("🧓🏻", "btn-one", "🍼", "btn-two"), 2000);
+    setTimeout(() => oldieOrNewbie(), 2000);
   }
   selectDropDown.addEventListener("change", checkValue); // on the change of a select option, the code for checkValue is invoked.
 
@@ -347,14 +352,16 @@ function oldieOrNewbie() {
 
     // If the selected genre is in the list it displays an answer to the user, otherwise it sends an error
     if (oldiesByGenre) {
-      setTimeout(() => showMessage(`Of course ${userAnswer}! Here is a list of movies for you to choose from 🥰`, "bot"), 1000);
-      setTimeout(() => showOldies(oldiesByGenre), 2000);
+      showTypingIndicator(); // Display the typing indicator
+      setTimeout(() => removeTypingIndicator(), 2000);
+      setTimeout(() => showMessage(`Of course ${userAnswer}! Here is a list of movies for you to choose from 🥰`, "bot"), 2000);
+      setTimeout(() => showOldies(oldiesByGenre), 3000);
     } else {
       showMessage(`I'm sorry, but there are no oldies available for the selected genre.`, "bot");
     }
     oldie.remove();
     newbie.remove();
-    setTimeout(() => endChat(), 4000);
+    setTimeout(() => endChat(), 5000);
   });
 
   // This part is for the newer movies.
@@ -363,14 +370,16 @@ function oldieOrNewbie() {
     const newbiesByGenre = newbiesObject[selectedGenre];
 
     if (newbiesByGenre) {
-      setTimeout(() => showMessage(`Of course ${userAnswer}! Here is a list of movies for you to choose from 🥰`, "bot"), 1000);
-      setTimeout(() => showOldies(newbiesByGenre), 2000);
+      showTypingIndicator(); // Display the typing indicator
+      setTimeout(() => removeTypingIndicator(), 2000);
+      setTimeout(() => showMessage(`Of course ${userAnswer}! Here is a list of movies for you to choose from 🥰`, "bot"), 2000);
+      setTimeout(() => showOldies(newbiesByGenre), 3000);
     } else {
       showMessage(`I'm sorry, but there are no oldies available for the selected genre.`, "bot");
     }
     oldie.remove();
     newbie.remove();
-    setTimeout(() => endChat(), 4000);
+    setTimeout(() => endChat(), 5000);
   });
 };
 
