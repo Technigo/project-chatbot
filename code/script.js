@@ -38,7 +38,6 @@ const showMessage = (message, sender) => {
 
 
 //Conversation starts here. First greet from bot 
-
 const greetUser = () => {
   showMessage("Bonjour developer student, what's your name?", 'bot')
 }
@@ -55,7 +54,7 @@ const handleNameInput = event => {
     userName = nameInput.value;
     nameInput.value = '';
     showMessage(`${userName}`, "user");
-    setTimeout(reply, 800);
+    setTimeout(reply, 1000);
   }
 }
 
@@ -117,7 +116,7 @@ const riddleOption = option => {
 const greenWrongAnswer = () => {
   showMessage('HTML', 'user')
   showMessage('Almost! Correct answer is CSS. Thanks for playing with me! Good luck on your studies, you are awesome!', 'bot')
-  showMessage('<img src="https://cdn.pixabay.com/photo/2020/05/02/09/59/pup-5120625_1280.jpg" alt="Happy dog" style="width: 225px; height: auto;" />', 'bot');
+  showMessage('<img src="https://cdn.pixabay.com/photo/2023/07/13/08/26/ai-generated-8124187_1280.jpg" alt="Happy dog" style="width: 225px; height: auto;" />', 'bot');
   //Added to prevent the reply function to start over.
   run = false;
   //Added to prevent the buttons to appear again.
@@ -134,7 +133,7 @@ const greenWrongAnswer = () => {
 const greenCorrectAnswer = () => {
   showMessage('CSS', 'user')
   showMessage('CSS is correct! Thanks for playing with me! Good luck on your studies, you are awesome!', 'bot')
-  showMessage('<img src="https://cdn.pixabay.com/photo/2020/05/02/09/59/pup-5120625_1280.jpg" alt="Happy dog" style="width: 225px; height: auto;" />', 'bot');
+  showMessage('<img src="https://cdn.pixabay.com/photo/2023/07/13/08/26/ai-generated-8124187_1280.jpg" alt="Happy robot dog" style="width: 225px; height: auto;" />', 'bot');
   //Added to prevent the reply function to start over.
   run = false;
   //Added to prevent the buttons to appear again.
@@ -151,7 +150,7 @@ const greenCorrectAnswer = () => {
 const redCorrectAnswer = () => {
   showMessage('JavaScript', 'user')
   showMessage('Good job! JavaScript is the correct answer! Thanks for playing with me! Good luck on your studies, you are awesome!', 'bot')
-  showMessage('<img src="https://cdn.pixabay.com/photo/2020/05/02/09/59/pup-5120625_1280.jpg" alt="Happy dog" style="width: 225px; height: auto;" />', 'bot');
+  showMessage('<img src="https://cdn.pixabay.com/photo/2023/07/13/08/26/ai-generated-8124187_1280.jpg" alt="Happy dog" style="width: 225px; height: auto;" />', 'bot');
   //Added to prevent the reply function to start over.
   run = false;
   //Added to prevent the buttons to appear again.
@@ -168,7 +167,7 @@ const redCorrectAnswer = () => {
 const redWrongAnswer = () => {
   showMessage('HTML', 'user')
   showMessage('Naaah, correct answer is JavaScript. Thanks for playing with me! Good luck on your studies, you are awesome!', 'bot')
-  showMessage('<img src="https://cdn.pixabay.com/photo/2020/05/02/09/59/pup-5120625_1280.jpg" alt="Happy dog" style="width: 225px; height: auto;" />', 'bot');
+  showMessage('<img src="https://cdn.pixabay.com/photo/2023/07/13/08/26/ai-generated-8124187_1280.jpg" alt="Happy dog" style="width: 225px; height: auto;" />', 'bot');
   //Added to prevent the reply function to start over.
   run = false;
   //Added to prevent the buttons to appear again.

@@ -7,13 +7,16 @@ body {
   padding: 0;
   font-family: 'Papyrus', fantasy;
   background: #0a74316c;
+  background-size: cover;
+  background-image: url("https://cdn.pixabay.com/photo/2016/03/23/14/55/matrix-1274888_1280.png");
+  background-attachment: fixed;
 }
 
 h1 {
   font-weight: bold;
   font-size: 40px;
   line-height: 34px;
-  color: #e9e7e7;
+  color: #016a1f;
   text-align: center;
 }
 
@@ -21,7 +24,7 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: #1729f3;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -52,7 +55,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 35px;
-  background: #ebffd9;
+  background: #81ee81;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -89,7 +92,7 @@ main {
 }
 
 .bubble {
-  background: #b1debe77;
+  background: #3cc33c;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
@@ -123,7 +126,7 @@ label {
   font-size: 16px;
   font-family: 'Papyrus', fantasy;
   font-weight: 500;
-  color: #0c7d1f;
+  color: #0044ff;
   margin-right: 20px;
 }
 
