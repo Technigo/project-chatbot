@@ -92,7 +92,7 @@ const hotelActivity = () => {
   document.getElementById('boathouse').addEventListener('click', activityConfirmation);
   document.getElementById('diner').addEventListener('click', activityConfirmation);
 
-  // old code - to understand the refactoring
+  // old code saved- to understand the refactoring/currying
   // const spaBtn = document.getElementById('spa')
   // const golfBtn = document.getElementById('golf')
   // const boathouseBtn = document.getElementById('boathouse')
@@ -108,6 +108,7 @@ const hotelActivity = () => {
 // Function to confirm chosen activity
 const activityConfirmation = (event) => {
   event.preventDefault();
+  //targeting the value of the clicked button (event)
   activitySelection = event.target.value;
   showMessage(`Option chosen : ${activitySelection}`, "user");
   showMessage(`Do you confirm your ${activitySelection} choice, ${userName}?`, "bot")
@@ -134,7 +135,8 @@ const confirmationAnswer = (event) => {
   // }, 1000);
 
   if (answer === "yes") {
-    showMessage(`Great!  Let's proceed.`, "bot");
+    showMessage(`${answer}`, "user")
+    setTimeout(() => { showMessage(`Great!  Let's proceed.`, "bot"); }, 1500)
     //Call function based on activitySelection when answer is yes
     activityBtn.innerHTML = "";
 
@@ -182,10 +184,11 @@ const confirmationAnswer = (event) => {
       document.getElementById('italian').addEventListener('click', restaurantBooking);
       document.getElementById('buffet').addEventListener('click', restaurantBooking);
       document.getElementById('indian').addEventListener('click', restaurantBooking);
-
-    } else {
-      showMessage(`For further help, please call the reception 08 124 9669`, "bot")
     }
+    //  else {
+    //   showMessage(`For further help, please call the reception 08 124 9669`, "bot")
+    // }
+
     //part 2- if user does not confirm (answer is no)
   } else {
     showMessage(`This page will reload automatically in 2s`, "bot");
@@ -197,9 +200,8 @@ const confirmationAnswer = (event) => {
 }
 
 //Iteration 6
-
 // part 1- Spa alternatives
-const spaBooking = (event, spaActivity) => {
+const spaBooking = (event) => { // TODO : remove spaActivity, it is never used in invocations therefor 
   event.preventDefault();
   activityBtn.innerHTML = "";
   spaActivity = event.target.value;
@@ -213,8 +215,8 @@ const spaBooking = (event, spaActivity) => {
       <label for="foot-time-slot"></label>
         <select id= "foot-time-slot">
           <option value="" selected disabled>Select:</option>
-          <option value="morning">11 - 11:30 a.m.</option>
-          <option value="afternoon">2 - 2:30 p.m.</option>
+          <option value="11 - 11:30 a.m.">11 - 11:30 a.m.</option>
+          <option value="2 - 2:30 p.m.">2 - 2:30 p.m.</option>
         </select>`
     document.getElementById('foot-time-slot').addEventListener('change', ((event) => {
       summarisingMessage(event, spaActivity)
@@ -229,8 +231,8 @@ const spaBooking = (event, spaActivity) => {
       <label for="reiki-time-slot"></label>
         <select id= "reiki-time-slot">
           <option value="" selected disabled>Select:</option>
-          <option value="morning">8 - 9 a.m.</option>
-          <option value="afternoon">4:30 - 5:30 p.m.</option>
+          <option value="8 - 9 a.m.">8 - 9 a.m.</option>
+          <option value="4:30 - 5:30 p.m.">4:30 - 5:30 p.m.</option>
         </select>`
     document.getElementById('reiki-time-slot').addEventListener('change', ((event) => {
       summarisingMessage(event, spaActivity)
@@ -244,8 +246,8 @@ const spaBooking = (event, spaActivity) => {
       <label for="oil-time-slot"></label>
         <select id= "oil-time-slot">
           <option value="" selected disabled>Selected:</option>
-          <option value="morning">9:30 - 10:30 a.m.</option>
-          <option value="evening">3 - 4 p.m.</option>
+          <option value="9:30 - 10:30 a.m.">9:30 - 10:30 a.m.</option>
+          <option value="3 - 4 p.m.">3 - 4 p.m.</option>
         </select>`
     document.getElementById('oil-time-slot').addEventListener('change', ((event) => {
       summarisingMessage(event, spaActivity)
@@ -255,7 +257,7 @@ const spaBooking = (event, spaActivity) => {
 
 //Iteration 6
 //part 2 - Golf alternatives
-const golfCourseTime = (event, golfCourse) => {
+const golfCourseTime = (event) => {
   event.preventDefault();
   activityBtn.innerHTML = ""; // erasing previous buttons
   golfCourse = event.target.value;
@@ -268,8 +270,8 @@ const golfCourseTime = (event, golfCourse) => {
       <label for="practice-time-slot"></label>
         <select id= "practice-time-slot">
           <option value="" selected disabled>Select:</option>
-          <option value="morning">7 - 9 a.m.</option>
-          <option value="afternoon">2 - 4 p.m.</option>
+          <option value="7 - 9 a.m.">7 - 9 a.m.</option>
+          <option value="2 - 4 p.m.">2 - 4 p.m.</option>
         </select>`
     document.getElementById('practice-time-slot').addEventListener('change', ((event) => {
       summarisingMessage(event, golfCourse)
@@ -283,8 +285,8 @@ const golfCourseTime = (event, golfCourse) => {
       <label for="nine-time-slot"></label>
         <select id= "nine-time-slot">
           <option value="" selected disabled>Select:</option>
-          <option value="morning">7 - 10 a.m.</option>
-          <option value="afternoon">2 - 5 p.m.</option>
+          <option value="7 - 10 a.m.">7 - 10 a.m.</option>
+          <option value="2 - 5 p.m.">2 - 5 p.m.</option>
         </select>`
     document.getElementById('nine-time-slot').addEventListener('change', ((event) => {
       summarisingMessage(event, golfCourse)
@@ -298,8 +300,8 @@ const golfCourseTime = (event, golfCourse) => {
       <label for="eighteen-time-slot"></label>
         <select id= "eighteen-time-slot">
           <option value="" selected disabled>Select:</option>
-          <option value="morning">07:00 - 12:00</option>
-          <option value="afternoon">13:00 - 18:00</option>
+          <option value="07:00 - 12:00">07:00 - 12:00</option>
+          <option value="13:00 - 18:00">13:00 - 18:00</option>
         </select>`
     document.getElementById('eighteen-time-slot').addEventListener('change', ((event) => {
       summarisingMessage(event, golfCourse)
@@ -311,7 +313,7 @@ const golfCourseTime = (event, golfCourse) => {
 //Iteration 6
 
 //Part 3 - Boat House alternatives
-const boatHouseGroup = (event, waterActivity) => {
+const boatHouseGroup = (event) => {
   event.preventDefault();
   activityBtn.innerHTML = ""; // erasing previous buttons
   waterActivity = event.target.value;
@@ -324,8 +326,8 @@ const boatHouseGroup = (event, waterActivity) => {
       <label for="kite-time-slot"></label>
         <select id= "kite-time-slot">
           <option value="" selected disabled>Select:</option>
-          <option value="morning">10 - 11 a.m.</option>
-          <option value="afternoon">2 - 3 p.m.</option>
+          <option value="10 - 11 a.m.">10 - 11 a.m.</option>
+          <option value="2 - 3 p.m.">2 - 3 p.m.</option>
         </select>`
     document.getElementById('kite-time-slot').addEventListener('change', ((event) => {
       summarisingMessage(event, waterActivity)
@@ -339,8 +341,8 @@ const boatHouseGroup = (event, waterActivity) => {
       <label for="glassbottom-time-slot"></label>
         <select id= "glassbottom-time-slot">
           <option value="" selected disabled>Select:</option>
-          <option value="morning">10 - 11 a.m.</option>
-          <option value="afternoon">1 - 2 p.m.</option>
+          <option value="10 - 11 a.m.">10 - 11 a.m.</option>
+          <option value="1 - 2 p.m.">1 - 2 p.m.</option>
         </select>`
     document.getElementById('glassbottom-time-slot').addEventListener('change', ((event) => {
       summarisingMessage(event, waterActivity)
@@ -353,8 +355,8 @@ const boatHouseGroup = (event, waterActivity) => {
       <label for="catamaran-time-slot"></label>
         <select id= "catamaran-time-slot">
           <option value="" selected disabled>Select:</option>
-          <option value="morning">8 a.m.</option>
-          <option value="afternoon">1 p.m.</option>
+          <option value="8 a.m.">8 a.m.</option>
+          <option value="1 p.m.">1 p.m.</option>
         </select>`
     document.getElementById('catamaran-time-slot').addEventListener('change', ((event) => {
       summarisingMessage(event, waterActivity)
@@ -366,38 +368,37 @@ const boatHouseGroup = (event, waterActivity) => {
 //Iteration 6
 
 //Part 4 - Diner reservations at different restaurants
-const restaurantBooking = (event, dinerType) => {
+const restaurantBooking = (event) => {
   event.preventDefault();
   activityBtn.innerHTML = ""; // erasing previous buttons
   dinerType = event.target.value;
+  // Closure to avoid repetition of same button creation for diner sitting times
   const addingBtn = () => {
     nameForm.innerHTML += `
     <label for="restaurant-time-slot"></label>
       <select id= "restaurant-time-slot">
         <option value="" selected disabled>Select:</option>
-        <option value="first service">5 - 7.30 p.m.</option>
-        <option value="second service">8 - 9.30 p.m.</option>
+        <option value="first service:5 - 7.30 p.m.">5 - 7.30 p.m.</option>
+        <option value="second service:8 - 9.30 p.m.">8 - 9.30 p.m.</option>
       </select>
       `
   }
   //1st alternative
   if (dinerType === "italian") {
     showMessage(`${dinerType} restaurant`, "user")
-    showMessage(`The ${dinerType} restaurant is situated on the beach front.  Book your sitting time:`, "bot")
-    // Closure to avoid repetition of same button creation
-
+    showMessage(`The ${dinerType} restaurant is situated on the beach front.  Please book your sitting time:`, "bot")
     addingBtn()
 
     //2nd alternative
   } else if (dinerType === "buffet") {
     showMessage(`International ${dinerType}`, "user")
-    showMessage(`The International ${dinerType} restaurant offers different themes everyday.  Book your sitting time:`, "bot")
+    showMessage(`The International ${dinerType} restaurant offers different themes everyday.  Please book your sitting time:`, "bot")
     addingBtn()
 
     //3rd alternative
   } else if (dinerType === "indian") {
     showMessage(`${dinerType} restaurant`, "user")
-    showMessage(`The ${dinerType} restaurant offers you a beautiful mountain range sight.  Book your sitting time: `, "bot")
+    showMessage(`The ${dinerType} restaurant offers you a beautiful mountain range sight.  Please book your sitting time: `, "bot")
     addingBtn()
   }
   document.getElementById('restaurant-time-slot').addEventListener('change', ((event) => {
@@ -407,9 +408,9 @@ const restaurantBooking = (event, dinerType) => {
 
 //Message summarising the booked activity
 const summarisingMessage = (event, bookedActivity) => {
+  event.preventDefault();
   nameForm.innerHTML = "";
   const timeSlot = event.target.value
-  event.preventDefault();
   showMessage(`${timeSlot}`, "user")
   showMessage(`Thank you ${userName}, we have booked the activity "${bookedActivity}" during the ${timeSlot}`, "bot");
   showMessage(`A confirmation message will be sent to you on your device through our downloaded hotel app.`, "bot");
@@ -426,9 +427,6 @@ const summarisingMessage = (event, bookedActivity) => {
 // This means the greeting function will be called 1s=1000ms after the website is loaded.
 setTimeout(greetUser, 1000);
 
-
-// This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-chat.scrollTop = chat.scrollHeight
 
 // setTimeout(showName, 2000) 
 sendButton.addEventListener('click', showName);
