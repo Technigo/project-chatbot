@@ -69,19 +69,16 @@ const handleNameInput = (event) => {
   event.preventDefault(); // Prevents the chat to reload.
   const name = nameInput.value; // Stores the value in a variable for easy access after we clear it from the input.
   showMessage(name, "user");
-  nameInput.value = ""; //clears the input field after bubble appears
+  nameInput.value = ""; // Clears the input field after message shows.
 
   // After 1 second, show the next question by invoking the next function. Passing the name into it to have access to the user's name if we want to use it in the next question from the bot.
   setTimeout(() => movie(name), 1000);
 }
 
 // ----- Set up your eventlisteners here -----
-
 // When ticket button is clicked, bot greets and asks first question.
 ticketBtn.addEventListener("click", botPopUp);
 nameForm.addEventListener("submit", handleNameInput);
-
-
 
 
 // normally we would invoke a function like this:
