@@ -1,18 +1,22 @@
 "use strict";
-// Variables that point to selected DOM elements
 
+// import { questions } from "./question-two";
 const chat = document.getElementById("chat");
 const input = document.getElementById("name-input");
 const sendBtn = document.querySelector(".send-btn");
 const form = document.getElementById("name-form");
+
 const startImg = document.querySelector(".start-img");
 const startPage = document.querySelector(".start-page");
 const main = document.querySelector(".main");
 const inputWrapper = document.querySelector(".input-wrapper");
 
-// If you need any global variables that you can use across different functions, declare them here:
-const user = "user";
 const bot = "bot";
+const user = "user";
+
+// If you need any global variables that you can use across different functions, declare them here:
+
+let currentIndex = 0;
 
 let artistArr = [];
 let artMuseum = [];
@@ -20,39 +24,148 @@ let artMuseumArr = [];
 
 let userName = "";
 let age = "";
-let price = 0;
-let artist = "";
+let price = 10;
+let yourMuseum = "";
+let favArtist = "";
+let favType = "";
+let yesOrNo = "";
 
-//////////////////////////////////////////////////////////////////////////////////
-// Funtions
-/////////////////////////////////////////////////////////////////////////////////
+// Here is an array that stores all the info about chat (messages, input type, question choices....)
+// The first question has been already placed in the initial event handler. Therefore, array starts from question number 2.
+const questions = [
+  {
+    /***************************QUESTION 2*******************************/
+    message: "Which genre of art do you like the most?",
+    option: "button",
+    id: ["modern", "impressionism", "pop"],
+    isNested: false,
+    choice: ["Modern", "Impressionism", "Pop"],
+    // Here is the next function that will triger in createInputField()
+    nextHandler: function (event) {
+      event.preventDefault();
+      favType = event.target.id;
+      validateType(favType);
+      showUserInput(favType);
+      form.innerHTML = "";
+      //   currentIndex is organizing the order of questions.
+      currentIndex++;
+      //   this will trigers next step
+      createInputFields(questions[currentIndex].option);
+    },
+  },
 
-// start page to main form page. Main form will be appeared with this function. display("none")=>display("flex")
+  {
+    /***************************QUESTION 3*******************************/
+    message: "Who is your favorite artist?",
+    option: "select",
+    default: "Select an artist",
+    isNested: true,
+    choice: [
+      {
+        artistArr: ["Pablo Picasso", "Marcel Duchamp", "Marc Chagall"],
+        museumArr: [
+          "Berggruen Museum",
+          "Musée d’Art moderne de Paris",
+          "Marc Chagall National Museum",
+        ],
+      },
+      {
+        artistArr: ["Claude Monet", "Édouard Manet", "Gustave Caillebotte"],
+        museumArr: [
+          "Fondation Monet in Giverny",
+          "Musées d'Orsay et de l'Orangerie",
+          "Musée d'Orsay",
+        ],
+      },
+      {
+        artistArr: ["Yayoi Kusama", "Andy Warhol", "Dmitri Vrubel"],
+        museumArr: ["Louisiana Museum of Modern Art", "TATE", "the Berlin Wall"],
+      },
+    ],
+    nextHandler: function (event) {
+      event.preventDefault();
+      favArtist = event.target.value;
+      showUserInput(favArtist);
+      validateMuseum(favArtist);
+      form.innerHTML = "";
+      currentIndex++;
+      return createInputFields(questions[currentIndex].option);
+    },
+  },
+  {
+    /***************************QUESTION 4*******************************/
+    message: "Are you an adult or a child?",
+    option: "button",
+    id: ["adult", "child"],
+    class: "icon",
+    choice: ["🧑", "🧒"],
+    isNested: false,
+    nextHandler: function (event) {
+      event.preventDefault();
+      age = event.target.id;
+      showUserInput(age);
+      price = age === "adult" ? 20 : 10;
+      form.innerHTML = "";
+      currentIndex++;
+      //    I need this function bc of js runtime problem...all variables I need to show the next message are global scop and decleared with let.
+      // So it should be mutable. However, it stores initial values and cannot reasign. So I need to call this function to reasign all the variables I need.
+      const confirmationMessage = questions[currentIndex].createMessage(
+        favType,
+        favArtist,
+        yourMuseum,
+        age,
+        price
+      );
+      return createInputFields(questions[currentIndex].option, confirmationMessage);
+    },
+  },
+  {
+    /***************************QUESTION 5*******************************/
+    createMessage: function (type, artist, museum, age, price) {
+      const message = `You chose ${type} art and ${artist} as your favorite artist! I recommend ${museum}. One ${age} ticket will cost you ${price} euro. Are you happy with this?`;
+      return message;
+    },
+    option: "button",
+    choice: ["Yes", "No"],
+    id: ["yes", "no"],
+    isNested: false,
+    nextHandler: function (event) {
+      yesOrNo = event.target.id;
+      showUserInput(yesOrNo);
+      if (yesOrNo === "yes") {
+        showBotInput("Have a good time at the museum!🥳💫");
+        inputWrapper.innerHTML = "";
+      } else {
+        showBotInput("No problem. Have a good day 👋");
+        inputWrapper.innerHTML = "";
+      }
+    },
+  },
+];
+
+// ////////////////////////////////////////////////////////////////////////////////////////
+// This is to open a form element that was hidden at the initial page.
 const showForm = () => {
   main.style.display = "flex";
 };
 
-/* After a user chose a genre, this function will be called to deciede artists and museums. 
-Then, select element will be appear to decide a favorite artist.
-From an user's artist choice, bot will guide an user the best museum for an user.
-*/
-
+// Here I validate user's choices for artist and museums
 const validateType = (type) => {
-  if (type === "Modern") {
+  if (type === "modern") {
     artistArr = ["Pablo Picasso", "Marcel Duchamp", "Marc Chagall"];
     artMuseumArr = [
       "Berggruen Museum",
       "Musée d’Art moderne de Paris",
       "Marc Chagall National Museum",
     ];
-  } else if (type === "Impressionism") {
+  } else if (type === "impressionism") {
     artistArr = ["Claude Monet", "Édouard Manet", "Gustave Caillebotte"];
     artMuseumArr = [
       "Fondation Monet in Giverny",
       "Musées d'Orsay et de l'Orangerie",
       "Musée d'Orsay",
     ];
-  } else if (type === "Pop") {
+  } else if (type === "pop") {
     artistArr = ["Yayoi Kusama", "Andy Warhol", "Dmitri Vrubel"];
     artMuseumArr = ["Louisiana Museum of Modern Art", "TATE", "the Berlin Wall"];
   }
@@ -62,211 +175,127 @@ const validateMuseum = (artist) => {
   switch (artist) {
     // Modern artist
     case "Pablo Picasso":
-      artMuseum = artMuseumArr[0];
+      yourMuseum = artMuseumArr[0];
       break;
     case "Marcel Duchamp":
-      artMuseum = artMuseumArr[1];
+      yourMuseum = artMuseumArr[1];
       break;
     case "Marc Chagall":
-      artMuseum = artMuseumArr[2];
+      yourMuseum = artMuseumArr[2];
       break;
     // Impressionism artists
     case "Claude Monet":
-      artMuseum = artMuseumArr[0];
+      yourMuseum = artMuseumArr[0];
       break;
     case "Édouard Manet":
-      artMuseum = artMuseumArr[1];
+      yourMuseum = artMuseumArr[1];
       break;
     case "Gustave Caillebotte":
-      artMuseum = artMuseumArr[2];
+      yourMuseum = artMuseumArr[2];
       break;
     // Pop artists
     case "Yayoi Kusama":
-      artMuseum = artMuseumArr[0];
+      yourMuseum = artMuseumArr[0];
       break;
     case "Andy Warhol":
-      artMuseum = artMuseumArr[1];
+      yourMuseum = artMuseumArr[1];
       break;
     case "Dmitri Vrubel":
-      artMuseum = artMuseumArr[2];
+      yourMuseum = artMuseumArr[2];
       break;
   }
-  return artMuseum;
+  yourMuseum;
 };
 
-// validate a user's choice
+// This is the most important function that triggers almost all the actions in this app.
+// createing input elements based on input type parameter, and
 
-const validateYesNo = (choice) => {
-  if (choice === "Yes") {
-    showMessage("Have a good time at the museum!🥳💫", bot);
-    inputWrapper.innerHTML = "";
+function createInputFields(inputType, specialmessage) {
+  // special message is only from the 5th question that I could not reasign so that I created a function to a proper message.
+
+  if (specialmessage) {
+    showBotInput(specialmessage);
   } else {
-    showMessage("No problem. Have a good day 👋", bot);
-    inputWrapper.innerHTML = "";
+    showBotInput(questions[currentIndex].message);
   }
-};
 
-//////////////////////////////////////////////////////////////////////////////////
-// Create HTML and handle events
-/////////////////////////////////////////////////////////////////////////////////
+  //   this validate if input field needs button or select. select was only used in question 3. So I wrote html just for the question.
+  // So if I need to extend more questions, this needs to be changed.
+  // Button part is reuseable.
 
-//////// question number 2
+  if (inputType === "button") {
+    // create a div to pass buttons. Also addting a class name
+    const buttonBox = document.createElement("div");
+    buttonBox.classList.add("ask-container");
 
-const genreEventHandler = (event, genre) => {
-  event.preventDefault();
-  validateType(genre);
-  setTimeout(showMessage, 500, genre, user);
-  setTimeout(showMessage, 1000, "Who is your favorite artist?", bot);
-  form.remove();
-  setTimeout(createSelectBox, 1000);
-};
+    // get a button content from questions arr
 
-const createBtns = () => {
-  form.innerHTML = `
-  <button id="modern" type="submit">Modern</button>
-  <button id="impressionism" type="submit">Impressionism</button>
-  <button id="pop" type="submit">Pop</button>
-  `;
-  inputWrapper.appendChild(form);
+    buttonBox.innerHTML = `${questions[currentIndex].choice.map(
+      (el, i) => ` <button id=${questions[currentIndex].id[i]}>${el}</button>`
+    )}`;
 
-  document.getElementById("modern").addEventListener("click", (event) => {
-    clickSound(event);
-    genreEventHandler(event, "Modern");
-  });
+    form.appendChild(buttonBox);
+    // Here I picked button elements that I need to add event handlers
+    const buttons = document.querySelectorAll("button");
 
-  document.getElementById("impressionism").addEventListener("click", (event) => {
-    clickSound(event);
-    genreEventHandler(event, "Impressionism");
-  });
+    buttons.forEach((el, i) => {
+      el.addEventListener("click", (event) => {
+        event.preventDefault();
+        clickSound(event);
+        questions[currentIndex].nextHandler(event);
+      });
+    });
+  } else if (inputType === "select") {
+    const selectEl = document.createElement("select");
+    selectEl.setAttribute("id", "select");
+    selectEl.innerHTML = `
+        <option default>Select an Artist</option>
+        <option id="artist1">${artistArr[0]}</option>
+        <option id="artist2">${artistArr[1]}</option>
+        <option id="artist3">${artistArr[2]}</option>
+    `;
+    form.appendChild(selectEl);
+    selectEl.addEventListener("change", (event) => {
+      event.preventDefault();
+      clickSound(event);
 
-  document.getElementById("pop").addEventListener("click", (event) => {
-    clickSound(event);
-    genreEventHandler(event, "Pop");
-  });
-};
+      questions[currentIndex].nextHandler(event);
+    });
+  }
+}
 
-// f question number 3
-const createSelectBox = () => {
-  form.innerHTML = `
-  <select id="select">
-  <option default>select an artist</option>
-  <option id="artist1">${artistArr[0]}</option>
-  <option id="artist2">${artistArr[1]}</option>
-  <option id="artist3">${artistArr[2]}</option>
-  </select>
-  `;
+// Here controls when messages should be appeared. I chose 500s for user inputs, and 1000s for bot inputs.
 
-  inputWrapper.appendChild(form);
+function showUserInput(message) {
+  setTimeout(showMessage, 500, message, "user");
+}
 
-  document.getElementById("select").addEventListener("change", (event) => {
-    clickSound(event);
-    // Get an artist's name and
-    artist = event.target.value;
-
-    // Based on an artist name, validateMuseum function points out a museum for a user.
-    const museum = validateMuseum(artist);
-    setTimeout(showMessage, 500, artist, user);
-    setTimeout(showMessage, 800, `${museum} is for you! `, bot);
-    setTimeout(showMessage, 1000, "Are you an adult or a child?", bot);
-
-    // Ask the next question and create next form element. Also old element is removed.
-    setTimeout(createAdultChild, 1400);
-
-    form.remove();
-  });
-};
-
-// question number 4////////////////////////////////////////////////////
-
-const ageEventHandler = (event, old) => {
-  event.preventDefault();
-  age = old;
-  price = old === "Child" ? 10 : 20;
-  setTimeout(showMessage, 500, old, user);
-  setTimeout(createYesNo, 1400);
-  setTimeout(
-    showMessage,
-    1000,
-    `You can find ${artist}'s paintings at ${artMuseum}.\n One ${age} ticket costs ${price} euro.`,
-    bot
-  );
-  form.remove();
-};
-
-const createAdultChild = () => {
-  form.innerHTML = `
-  <div class="ask-container">
-  <button id="adult" type="submit" class="icon">🧑</button>
-  <button id="child" type="submit" class="icon">🧒</button>
-  </div> 
-  `;
-  inputWrapper.appendChild(form);
-
-  // When a user clicked, this eventlistener calls. Messages will be displayed,
-  // and create new form element for next question. Then old element will be removed.
-  document.getElementById("adult").addEventListener("click", (event) => {
-    clickSound(event);
-    ageEventHandler(event, "Adult");
-  });
-
-  document.getElementById("child").addEventListener("click", (event) => {
-    clickSound(event);
-    ageEventHandler(event, "Child");
-  });
-};
-
-//  question number 5/////////////////////////////////////////////////////
-const yesNoEventHandler = (event, input) => {
-  event.preventDefault();
-
-  setTimeout(showMessage, 400, input, user);
-  setTimeout(validateYesNo, 1000, input);
-  form.remove();
-};
-const createYesNo = () => {
-  form.innerHTML = `
-  <div class="ask-container">
-  <button id="yes" type="submit">Yes</button>
-  <button id="no" type="submit">no</button>
-  </div> 
-  `;
-  inputWrapper.appendChild(form);
-
-  // When a user chose Yes/No, then message will show and then validateYesNo function will call to validate a user's answer.
-  // Then, message from bot will show based on a user's choice.
-  document.getElementById("yes").addEventListener("click", (event) => {
-    clickSound(event);
-    yesNoEventHandler(event, "Yes");
-  });
-
-  document.getElementById("no").addEventListener("click", (event) => {
-    clickSound(event);
-    yesNoEventHandler(event, "No");
-  });
-};
+function showBotInput(message) {
+  setTimeout(showMessage, 1000, message, "bot");
+}
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
   if (sender === user) {
     chat.innerHTML += `
-      <section class="user-msg">
-        <div class="bubble user-bubble">
-          <p>${message}</p>
-        </div>
-        <img src="assets/user.png" alt=user />  
-      </section>
-    `;
+        <section class="user-msg">
+          <div class="bubble user-bubble">
+            <p>${message}</p>
+          </div>
+          <img src="assets/user.png" alt=user />  
+        </section>
+      `;
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === bot) {
     chat.innerHTML += `
-      <section class="bot-msg">
-        <img src="assets/bot.png" alt=bot />
-        <div class="bubble bot-bubble">
-          <p>${message}</p>
-        </div>
-      </section>
-    `;
+        <section class="bot-msg">
+          <img src="assets/bot.png" alt=bot />
+          <div class="bubble bot-bubble">
+            <p>${message}</p>
+          </div>
+        </section>
+      `;
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
@@ -290,39 +319,34 @@ startImg.addEventListener("click", (event) => {
   setTimeout(showForm, 200);
 });
 
-// first step // send user name
+setTimeout(greetUser, 1000);
+
 sendBtn.addEventListener("click", (event) => {
   event.preventDefault();
   clickSound(event);
   userName = input.value;
-  setTimeout(showMessage, 400, userName, user);
-  form.remove();
-  setTimeout(
-    showMessage,
-    1200,
-    `Nice to meet you ${userName}. Which genre of art do you like the most?`,
-    bot
-  );
-  setTimeout(createBtns, 1000);
+  showUserInput(userName);
+  form.innerHTML = "";
+  createInputFields(questions[currentIndex].option);
+  return;
 });
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000);
-
-// ////////////////////////////////////////////////////////////////////////////
-// Strech Goals
-// ////////////////////////////////////////////////////////////////////////////
-
+// //////////////////////////////////////////////////////////////////////////////////////////
 // This is for a background music. A user can choose which music, by cliking one of buttons under h1.
 const backMusicBtns = document.querySelectorAll(".music-container button");
 
 backMusicBtns.forEach((el) => {
   const audio = document.createElement("audio");
+
+  function soundMusic(el, src) {
+    el.addEventListener("click", () => {
+      if (!audio.paused) {
+        audio.pause();
+      } else {
+        startMusic(src);
+      }
+    });
+  }
   const startMusic = (music) => {
     audio.setAttribute("src", music);
     audio.setAttribute("loop", "loop");
@@ -331,29 +355,11 @@ backMusicBtns.forEach((el) => {
   };
 
   if (el.classList.contains("jazz")) {
-    el.addEventListener("click", () => {
-      if (!audio.paused) {
-        audio.pause();
-      } else {
-        startMusic("./assets/audio/piano.mp3");
-      }
-    });
+    soundMusic(el, "./assets/audio/piano.mp3");
   } else if (el.classList.contains("chill")) {
-    el.addEventListener("click", () => {
-      if (!audio.paused) {
-        audio.pause();
-      } else {
-        startMusic("./assets/audio/classic.mp3");
-      }
-    });
+    soundMusic(el, "./assets/audio/classic.mp3");
   } else {
-    el.addEventListener("click", () => {
-      if (!audio.paused) {
-        audio.pause();
-      } else {
-        startMusic("./assets/audio/techno.mp3");
-      }
-    });
+    soundMusic(el, "./assets/audio/techno.mp3");
   }
 });
 
