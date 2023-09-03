@@ -3,21 +3,15 @@ const chat = document.getElementById('chat');
 const nameForm = document.getElementById('name-form');
 const nameInput = document.getElementById('name-input');
 const btn = document.getElementById('send-btn');
-// Find all the food choice button
 const foodBtn = document.getElementById('foodChoice');
 const subFoodChoice = document.getElementById('subFoodChoice')
 const portionPrice = document.getElementById('adultOrChild')
 const confirm = document.getElementById('confirm')
 
-// If you need any global variables that you can use across different functions, declare them here:
-// Bot replies with user name and ask the next question
-// Problem : how to stop showing bot response at once from the beginnin 
-// Possible solution, add question number so the bot can keep track of the current questions
 // Declare the current question so we can use operator ++ to tell the bot we need to move on to the next question
 let currerntQuestion = 1;
 
 // Declare your functions after this comment
-
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
@@ -47,24 +41,12 @@ const showMessage = (message, sender) => {
 }
 
 // Starts here
-
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there, What's your name?", 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 setTimeout(greetUser, 1000);
-// Set up your eventlisteners here
-// Get user input with getElementById
-// Trigger event listener when user click the button "submit"
-btn.addEventListener("click", (event) => {
-  nameMsg(event);
-})
-// Trigger event listenner when user press enter
-nameInput.addEventListener("keydown", (event) => {
-  if (event.key === "Enter")
-    nameMsg(event);
-})
 
 const nameMsg = (event) => {
   //I spent almost half a day to figure out why the reply won't stay there, Google save my life
@@ -81,7 +63,6 @@ const nameMsg = (event) => {
   }, 1000)
   //empty the input field
   nameInput.value = "";
-  ;
   currerntQuestion++;
 };
 
@@ -98,11 +79,12 @@ const displayFood = (event) => {
       showMessage("salad", "user");
       break;
   };
+
   //Display different message and menu according to user'schoice
   const selectedChoice = event.target.id;
+  //assign price to the menu
   let price;
   setTimeout(() => {
-
     if (selectedChoice === 'pizza') {
       showMessage("Oh so you're in the mood for pizza? Great choice. Select something from the menu!", "bot")
       foodChoice.classList.add("hidden")
@@ -121,17 +103,15 @@ const displayFood = (event) => {
       subSalad.classList.remove("hidden")
       price = 120;
     };
-
   }, 1000)
 
-  //use event.target to get the inner text instead of creating an group of "if else statement"
+  //use event.target to get user's selection from the dropdown list instead of a block of long redundant code 
   const finalChoice = (event) => {
     showMessage(event.target.selectedOptions[0].innerText, 'user');
     subFoodChoice.classList.add("hidden")
     setTimeout(() => {
       showMessage(`One ${event.target.selectedOptions[0].innerText} coming up! Will that be for an adult or a child?`, "bot")
       adultOrChild.classList.remove("hidden")
-
       chat.scrollTop = chat.scrollHeight
     }, 1000)
 
@@ -140,10 +120,10 @@ const displayFood = (event) => {
       showMessage(event.target.id, "user");
       switch (event.target.id) {
         case 'child':
-          showMessage(`One child sized dish will be prepared for you. That'll be ${childPrice}. Are you sure you want to order this?`, "bot");
+          showMessage(`One child sized dish will be prepared for you. That'll be ${childPrice}kr. Are you sure you want to order this?`, "bot");
           break;
         case 'adult':
-          showMessage(`One adult sized dish will be prepared for you. That'll be ${price}. Are you sure you want to order this?`, "bot");
+          showMessage(`One adult sized dish will be prepared for you. That'll be ${price}kr. Are you sure you want to order this?`, "bot");
           break;
       };
       adultOrChild.classList.add("hidden")
@@ -156,26 +136,32 @@ const displayFood = (event) => {
 
 const yesno = (event) => {
   showMessage(event.target.id, "user");
-  switch (event.target.id) {
-    case 'yes':
-      showMessage("Thank you for your order! See you soon 👋🏼", "bot");
-      break;
-    case 'no':
-      showMessage("Ok! Please refresh and order again! ", "bot");
-      break;
-  }
+  setTimeout(() => {
+    switch (event.target.id) {
+      case 'yes':
+        showMessage("Thank you for your order! See you soon 👋🏼", "bot");
+        break;
+      case 'no':
+        showMessage("Ok! Please refresh and order again! ", "bot");
+        break;
+    }
+  }, 1000)
 }
+
+// Set up your eventlisteners here
+// Trigger event listener when user click the button "submit"
+btn.addEventListener("click", (event) => {
+  nameMsg(event);
+})
+// Trigger event listenner when user press enter
+nameInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter")
+    nameMsg(event);
+})
 confirm.querySelectorAll('button').forEach(button => button.addEventListener("click", yesno));
 foodBtn.querySelectorAll('button').forEach(button => button.addEventListener("click", displayFood));
 
 // Loop through the buttons and add a click to event listener to each button
-
-
-
-
-
-
-
 
 
 // When website loaded, chatbot asks first question.
