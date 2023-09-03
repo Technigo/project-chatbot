@@ -1,12 +1,13 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 const nameForm = document.getElementById('name-form');
-const nameInput = document.getElementById("name-input");
-const btn = document.getElementById("send-btn");
+const nameInput = document.getElementById('name-input');
+const btn = document.getElementById('send-btn');
 // Find all the food choice button
-const foodBtn = document.getElementById("foodChoice");
-const subFoodChoice = document.getElementById("subFoodChoice")
-
+const foodBtn = document.getElementById('foodChoice');
+const subFoodChoice = document.getElementById('subFoodChoice')
+const portionPrice = document.getElementById('adultOrChild')
+const confirm = document.getElementById('confirm')
 
 // If you need any global variables that you can use across different functions, declare them here:
 // Bot replies with user name and ask the next question
@@ -84,8 +85,6 @@ const nameMsg = (event) => {
   currerntQuestion++;
 };
 
-
-
 //show message according to the user's choice
 const displayFood = (event) => {
   switch (event.target.id) {
@@ -101,38 +100,72 @@ const displayFood = (event) => {
   };
   //Display different message and menu according to user'schoice
   const selectedChoice = event.target.id;
+  let price;
   setTimeout(() => {
+
     if (selectedChoice === 'pizza') {
       showMessage("Oh so you're in the mood for pizza? Great choice. Select something from the menu!", "bot")
       foodChoice.classList.add("hidden")
       subPizza.classList.remove("hidden")
+      price = 110;
     }
     else if (selectedChoice === 'pasta') {
       showMessage("Oh so you're in the mood for pasta? Great choice. Select something from the menu!", "bot")
       foodChoice.classList.add("hidden")
       subPasta.classList.remove("hidden")
+      price = 130;
     }
     else if (selectedChoice === 'salad') {
       showMessage("Oh so you're in the mood for salad? Great choice. Select something from the menu!", "bot")
       foodChoice.classList.add("hidden")
       subSalad.classList.remove("hidden")
+      price = 120;
     };
-
-    //use event.target to get the inner text instead of creating an group of "if else statement"
-    const finalChoice = (event) => {
-      showMessage(event.target.selectedOptions[0].innerText, 'user');
-      subFoodChoice.classList.add("hidden")
-      setTimeout(() => {
-        showMessage(`One ${event.target.selectedOptions[0].innerText} coming up! Will that be for an adult or a child?`, "bot");
-        adultOrKid.classList.remove("hidden")
-      }, 1000)
-    };
-
-    subFoodChoice.querySelectorAll('select').forEach(select => select.addEventListener("input", finalChoice));
 
   }, 1000)
-};
 
+  //use event.target to get the inner text instead of creating an group of "if else statement"
+  const finalChoice = (event) => {
+    showMessage(event.target.selectedOptions[0].innerText, 'user');
+    subFoodChoice.classList.add("hidden")
+    setTimeout(() => {
+      showMessage(`One ${event.target.selectedOptions[0].innerText} coming up! Will that be for an adult or a child?`, "bot")
+      adultOrChild.classList.remove("hidden")
+
+      chat.scrollTop = chat.scrollHeight
+    }, 1000)
+
+    let childPrice = price / 2;
+    const confirmation = (event) => {
+      showMessage(event.target.id, "user");
+      switch (event.target.id) {
+        case 'child':
+          showMessage(`One child sized dish will be prepared for you. That'll be ${childPrice}. Are you sure you want to order this?`, "bot");
+          break;
+        case 'adult':
+          showMessage(`One adult sized dish will be prepared for you. That'll be ${price}. Are you sure you want to order this?`, "bot");
+          break;
+      };
+      adultOrChild.classList.add("hidden")
+      confirm.classList.remove("hidden")
+    }
+    portionPrice.querySelectorAll('button').forEach(button => button.addEventListener("click", confirmation));
+  }
+  subFoodChoice.querySelectorAll('select').forEach(select => select.addEventListener("input", finalChoice));
+}
+
+const yesno = (event) => {
+  showMessage(event.target.id, "user");
+  switch (event.target.id) {
+    case 'yes':
+      showMessage("Thank you for your order! See you soon 👋🏼", "bot");
+      break;
+    case 'no':
+      showMessage("Ok! Please refresh and order again! ", "bot");
+      break;
+  }
+}
+confirm.querySelectorAll('button').forEach(button => button.addEventListener("click", yesno));
 foodBtn.querySelectorAll('button').forEach(button => button.addEventListener("click", displayFood));
 
 // Loop through the buttons and add a click to event listener to each button
