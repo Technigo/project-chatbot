@@ -131,13 +131,19 @@ const questions = [
     isNested: false,
     nextHandler: function (event) {
       yesOrNo = event.target.id;
+      console.log("The last message");
       showUserInput(yesOrNo);
+      console.log(this.nextHandler);
+      console.log(event.target);
       if (yesOrNo === "yes") {
         showBotInput("Have a good time at the museum!🥳💫");
         inputWrapper.innerHTML = "";
+
+        event.currentTarget.removeEventListener("click", this.nextHandler);
       } else {
         showBotInput("No problem. Have a good day 👋");
         inputWrapper.innerHTML = "";
+        event.currentTarget.removeEventListener("click", this.nextHandler);
       }
     },
   },
@@ -212,7 +218,7 @@ const validateMuseum = (artist) => {
 
 function createInputFields(inputType, specialmessage) {
   // special message is only from the 5th question that I could not reasign so that I created a function to a proper message.
-
+  console.log("The input creator");
   if (specialmessage) {
     showBotInput(specialmessage);
   } else {
@@ -236,7 +242,7 @@ function createInputFields(inputType, specialmessage) {
 
     form.appendChild(buttonBox);
     // Here I picked button elements that I need to add event handlers
-    const buttons = document.querySelectorAll("button");
+    const buttons = document.querySelectorAll("#input-wrapper button");
 
     buttons.forEach((el, i) => {
       el.addEventListener("click", (event) => {
@@ -335,25 +341,29 @@ sendBtn.addEventListener("click", (event) => {
 // This is for a background music. A user can choose which music, by cliking one of buttons under h1.
 const backMusicBtns = document.querySelectorAll(".music-container button");
 
+const audio = document.createElement("audio");
+
+function soundMusic(el, src) {
+  console.log("The sound music");
+  el.addEventListener("click", () => {
+    if (!audio.paused) {
+      audio.pause();
+    } else {
+      startMusic(src);
+    }
+  });
+}
+
+const startMusic = (music) => {
+  console.log("The start musice");
+  audio.setAttribute("src", music);
+  audio.setAttribute("loop", "loop");
+  audio.volume = 0.1;
+  audio.play();
+};
+
 backMusicBtns.forEach((el) => {
-  const audio = document.createElement("audio");
-
-  function soundMusic(el, src) {
-    el.addEventListener("click", () => {
-      if (!audio.paused) {
-        audio.pause();
-      } else {
-        startMusic(src);
-      }
-    });
-  }
-  const startMusic = (music) => {
-    audio.setAttribute("src", music);
-    audio.setAttribute("loop", "loop");
-    audio.volume = 0.1;
-    audio.play();
-  };
-
+  console.log("The foreach");
   if (el.classList.contains("jazz")) {
     soundMusic(el, "./assets/audio/piano.mp3");
   } else if (el.classList.contains("chill")) {
@@ -366,6 +376,7 @@ backMusicBtns.forEach((el) => {
 // This function is called when something is clicked. And then this will make a clicking sound.
 
 function clickSound(event) {
+  console.log("The click sound");
   event.preventDefault();
   const audio = document.createElement("audio");
   audio.setAttribute("src", "./assets/audio/click-sound.wav");
