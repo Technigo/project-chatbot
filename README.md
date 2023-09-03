@@ -41,4 +41,5 @@ I would try to start off with a button, dropdown menu, get back to an input bar,
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://mc-chatbot-project.netlify.app/
+
