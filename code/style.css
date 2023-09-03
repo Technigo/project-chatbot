@@ -60,6 +60,7 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  background-image: url("../cakeshop.jpg");
 }
 
 .chat {

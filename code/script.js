@@ -2,8 +2,6 @@
 const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('input-wrapper');
 
-// If you need any global variables that you can use across different functions, declare them here:
-// Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -51,7 +49,7 @@ document.getElementById('name-form').addEventListener('submit', function(event) 
   showMessage(`Nice to meet you, ${name}! What kind of cake would you like to order?`, 'bot');
 
   event.target[0].value = "";
-
+//This invokes the next step
   updateInput('cake');
 });
 
@@ -129,7 +127,7 @@ const handlePeopleCount = (event) => {
 const handleOrderConfirmation = (confirmation) => {
   if (confirmation === 'yes') {
     showMessage('Yes', 'user');
-    showMessage('Thank you for your order! We are processing it now.', 'bot');
+    showMessage('Thank you for your order! We are processing it now 🎂', 'bot');
     inputWrapper.innerHTML = '';
   } else {
     showMessage('No', 'user');
@@ -143,15 +141,3 @@ const handleOrderConfirmation = (confirmation) => {
 
 setTimeout(greetUser, 1000);
 
-
-
-
-
-
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
