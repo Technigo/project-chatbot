@@ -1,13 +1,11 @@
-# Project Name
+# Project chatbot
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The asigment was to create a chatbot with functions we learn in week2. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The problem was to understand how to invoke or call functions, hor to connect them, I solve it by asking a lot of questions to chatCGT and youtube, google and more. This is the hardest project so far. I try different functions and moved around codes, they finally worked.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://amazing-longma-56bf43.netlify.app
