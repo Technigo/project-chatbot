@@ -75,3 +75,20 @@ nameForm.addEventListener("submit", function (event) {
 //setTimeout(functionName, timeToWaitInMilliSeconds);
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 500);
+
+const handleUserResponse = (message) => {
+  showMessage(message, "user");
+  const userName = nameInput.value; // Defines userName
+  setTimeout(() => {
+    showMessage(
+      `Nice to meet you ${userName}. Which of this animals would you like to learn more about? `,
+      "bot"
+    );
+  }, 500);
+}; //sets timeout for the bots answer
+nameForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  const userName = nameInput.value;
+  handleUserResponse(`My name is ${userName}`);
+  nameInput.value = "";
+});
