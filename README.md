@@ -1,6 +1,4 @@
-# Project Name
-
-AI Travel Bot
+# Project Chatbot
 
 The task was to extend the code in a chatbot. To create an interaction between user and bot.
 
@@ -11,4 +9,4 @@ As usual, it was an exercise in trial and error for me. Searched google for code
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://serene-chaja-f0dfbf.netlify.app
