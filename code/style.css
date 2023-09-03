@@ -6,12 +6,32 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-size: cover;
+  background-image: url("./images/holiday.jpg");
+  background-position: 50% 50%;
+  margin-bottom: 120px;
+}
+
+body.cuba {
+  background-image: url("./images/cuba.jpg");
+  background-position: 65% 30%;
+  transition: .2s ease;
+}
+
+body.italy {
+  background-image: url("./images/italy.jpg");
+  background-position: 50% 20%;
+  transition: .2s ease;
+}
+
+body.netherlands {
+  background-image: url("./images/the-netherlands.jpg");
+  transition: .2s ease;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 28px;
+  font-size: 24px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -19,7 +39,7 @@ h1 {
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 16px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -27,7 +47,7 @@ h2 {
 }
 
 p {
-  font-size: 18px;
+  font-size: 12px;
   font-weight: 600;
   line-height: 28px;
   margin: 0;
@@ -38,8 +58,8 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
-  padding: 16px;
+  color: #483d8b;
+  padding: 12px;
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 600;
@@ -50,11 +70,13 @@ input {
 main {
   margin: 0 auto;
   width: 100%;
-  max-width: 700px;
+  max-width: 800px;
   height: 600px;
+  border: 2px solid #ffa500;
   border-radius: 30px;
   background: #fff;
-  padding: 20px 24px;
+  opacity: 0.93;
+  padding: 20px 10px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
@@ -90,12 +112,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #cccc99;
   font-weight: 600;
-  font-size: 16px;
+  /*font-size: 12px;*/
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #556b2f;
   max-width: 40%;
 }
 
@@ -107,6 +129,8 @@ main {
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  background: #556b2f;
+  color: #cccc99;
 }
 
 .input-wrapper {
@@ -121,21 +145,21 @@ main {
 }
 
 label {
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
+  color: #483d8b;
+  margin-right: 10px;
 }
 
 button {
-  background-color: #0026ff;
-  color: white;
+  background-color: #483d8b;
+  color: #fff;
   border: none;
   border-radius: 4px;
-  padding: 16px 40px;
-  margin-right: 4px;
-  font-size: 16px;
+  padding: 12px 30px;
+  margin: 0 4px;
+  font-size: 14px;
   line-height: 26px;
   font-family: 'Montserrat';
   font-weight: 500;
@@ -146,4 +170,74 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+#activityChoiceSelect {
+  font-size: 22px;
+  cursor: pointer;
+  padding: 10px 10px;
+  margin: 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #483d8b;
+  color: #fff;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  font-size: 12px;
+  background-color: #ffa500;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+}
+
+.copyright img {
+  width: 30px;
+}
+
+footer a:link,
+a:visited {
+  font-size: 20px;
+  color: #fff;
+}
+
+@media (min-width: 668px) {
+  body {
+    margin-bottom: 0;
+  }
+
+  h1 {
+    font-size: 38px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  input {
+    padding: 16px;
+  }
+
+  main {
+    padding: 20px 24px;
+  }
+
+  label {
+    font-size: 16px;
+    margin-right: 20px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 16px 40px;
+  }
 }
