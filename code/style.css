@@ -1,149 +1,249 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-image: url('assets/background-image.jpg');
+    background-size: cover;
 }
 
 h1 {
-  font-weight: bold;
-  font-size: 28px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
+    font-family: 'ADLaM Display', cursive;
+    font-size: calc(26px + 3vw);
+    /* calc(26px + 3vw): calculates the font size by adding a fixed value of 26px to a value that's based on a % of the viewport width, in this case 3%. The font size will never be smaller than 26px.*/
+    color: #fff;
+    text-align: center;
+    text-shadow: 1px 1px 5px #9178d3, 0 0 3em #5737ae, 0 0 0.2em #442b88;
 }
 
-h2 {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
-  margin-bottom: 36px;
+
+main {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 700px;
+    /* It will never be bigger then 700px. When the screen gets smaller than 700px in width it will just take up 100% of the width*/
+    height: 600px;
+    border-radius: 30px;
+    background: rgb(255, 255, 255, 0.8);
+    padding: 20px 24px;
+    padding-top: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
 }
 
 p {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 28px;
-  margin: 0;
+    /* font-size: 18px; */
+    font-size: calc(16px + 0.1vw);
+    /* Makes the font size responsive */
+    font-weight: 600;
+    line-height: 28px;
+    margin: 0;
 }
+
 
 input {
-  box-sizing: border-box;
-  border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
-  padding: 16px;
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 600;
-  line-height: 26px;
-  flex: 1;
+    box-sizing: border-box;
+    border: 0.1px solid #ded8f3;
+    border-radius: 4px 0 0 4px;
+    background: #e5e9ff;
+    color: #5738ad;
+    padding: 16px;
+    font-size: 16px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    line-height: 26px;
+    flex: 1;
+    /* the input will grow as much as it can and the button will take up what's left */
 }
 
-main {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 700px;
-  height: 600px;
-  border-radius: 30px;
-  background: #fff;
-  padding: 20px 24px;
-  padding-top: 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
+input::placeholder {
+    /*This is a CSS selector that targets the placeholder text of all HTML <input> elements.*/
+    color: #8a70d1;
+}
+
+#name-form input:focus {
+    outline: none;
+    box-shadow: 0 0 5px #9178d3, 0 0 1em #9178d3, 0 0 0.5em #e8f1d2;
 }
 
 .chat {
-  flex: 1;
-  display: flex;
-  justify-content: flex-start;
-  overflow: scroll;
-  flex-direction: column;
-  padding-bottom: 16px;
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    overflow: scroll;
+    /* to make it so you can scroll*/
+    overflow-x: hidden;
+    /*Hides the scroll bar on the x-axis*/
+    flex-direction: column;
+    padding-bottom: 16px;
 }
 
 .bot-msg {
-  display: flex;
-  margin: 16px 8px 0 0;
-  flex-shrink: 0;
+    display: flex;
+    margin: 16px 8px 0 0;
+    flex-shrink: 0;
+    /*so it doesn't shrink */
 }
 
 .user-msg {
-  display: flex;
-  justify-content: flex-end;
-  margin: 16px 0 0 8px;
-  flex-shrink: 0;
+    display: flex;
+    justify-content: flex-end;
+    margin: 16px 0 0 8px;
+    flex-shrink: 0;
+    /*so it doesn't shrink */
 }
 
 .bot-msg img,
 .user-msg img {
-  width: 60px;
-  height: 60px;
+    width: 60px;
+    height: 60px;
 }
 
 .bubble {
-  background: #e5e9ff;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 26px;
-  padding: 16px 24px;
-  color: #0026ff;
-  max-width: 40%;
+    background: #e5e9ff;
+    /* border: 0.1px solid #ded8f3; */
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 26px;
+    padding: 16px 24px;
+    color: #8165cd;
+    max-width: 40%;
 }
 
 .bot-bubble {
-  border-radius: 0px 26px 26px 26px;
-  margin-left: 8px;
+    border-radius: 0px 26px 26px 26px;
+    margin-left: 8px;
 }
 
 .user-bubble {
-  border-radius: 26px 0 26px 26px;
-  margin-right: 8px;
+    border-radius: 26px 0 26px 26px;
+    margin-right: 8px;
 }
 
 .input-wrapper {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .input-wrapper form {
-  width: 100%;
-  display: flex;
-  align-items: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
-label {
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
+/* label {
+    font-size: 16px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    color: #8a70d1;
+    margin-right: 20px;
+} */
+
+.bobaPearlOptions {
+    width: 100%;
+    margin: 0 100px;
+    font-family: 'Montserrat';
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 600;
+    padding: 16px 20px;
+    border: 0.1px solid #ded8f3;
+    outline: none;
+    border-radius: 5px;
+    background: #e5e9ff;
+    color: #5738ad;
 }
 
 button {
-  background-color: #0026ff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 16px 40px;
-  margin-right: 4px;
-  font-size: 16px;
-  line-height: 26px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
+    background-color: #8a70d1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 16px 40px;
+    margin-right: 4px;
+    font-size: 16px;
+    line-height: 26px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 button:hover {
-  opacity: 0.9;
-  transition: all 0.2s ease;
+    opacity: 0.9;
+    transition: all 0.2s ease;
+}
+
+#name-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+/*Mobile viewport*/
+@media (max-width: 667px) {
+    main {
+        border-radius: 0px;
+    }
+
+    .bubble {
+        max-width: 70%;
+        margin-bottom: 20px;
+    }
+
+    input {
+        margin-left: 10px;
+    }
+
+    .send-btn {
+        margin-right: 10px;
+    }
+
+
+    #matcha {
+
+        min-height: 58px;
+        margin-left: 10px;
+        font-size: 16px;
+        padding: 16px 30px;
+    }
+
+    #blackTea {
+        min-height: 58px;
+        font-size: 16px;
+        line-height: 17px;
+        padding: 16px 30px;
+    }
+
+    #oolongTea {
+        min-height: 58px;
+        margin-right: 10px;
+        font-size: 16px;
+        line-height: 17px;
+        padding: 16px 30px;
+    }
+
+    .bobaPearlOptions {
+        width: 100%;
+        margin: 0 0;
+    }
+    #regularSize {
+        min-height: 58px;
+        font-size: 16px;
+        line-height: 17px;
+        padding: 16px 50px;
+
+    } 
+    #largeSize {
+        min-height: 58px;
+        font-size: 16px;
+        line-height: 17px;
+        padding: 16px 50px;
+    }
 }
