@@ -56,7 +56,7 @@ const reloadPage = () => {
 // Function for bot sounds
 const playAudio = () => {
   const notificationSound = document.getElementById('notificationSound');
-  notificationSound.volume = 0.5; // Set the volume to 50%
+  notificationSound.volume = 0.7; // Set the volume to 70%
   notificationSound.play();
 };
 
@@ -89,7 +89,7 @@ const showMessage = (message, sender) => {
 }
 
 // Function to greet the user
-// I tried to add audio for the greetUser function but it's not working. After some googling it might be due to audio autoplay restrictions. It works for the other functions so it should work here as well. One way to get around this is to add a start button so the user interacts with the webpage. I might do this in the future.
+// I tried to add audio for the greetUser function but it's not working. The console.log says the user didn't interact with the page and I read that there are audio autoplay restrictions. One way of fixing this in the future is to add something like a start button.
 const greetUser = () => {
   playAudio();
   showMessage("Hi, welcome to The BubblePop Café!", 'bot')
@@ -231,7 +231,7 @@ const handleBobaDrinkSize = () => {
   showMessage(`Nice! Which size do you want to choose?`, 'bot');
   // Adds two buttons
   inputWrapper.innerHTML += `
-    <button id="regularSize" type="submit">Regular (500 mL)</button>
+    <button id="regularSize" type="submit">Regular (500 mL)"</button>
     <button id="largeSize" type="submit">Large (700 mL)</button>`;
   const regularDrinkSize = document.getElementById('regularSize');
   const largeDrinkSize = document.getElementById('largeSize');
