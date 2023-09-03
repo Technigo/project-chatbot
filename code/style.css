@@ -7,6 +7,9 @@ body {
   padding: 0;
   font-family: 'Chonburi', sans-serif;
   background-image: url(https://img.freepik.com/free-photo/3d-wooden-table-looking-out-smoky-room_1048-12585.jpg?w=740&t=st=1693560853~exp=1693561453~hmac=8a44218a8e19cea63c12f2356ce43fd40c74be6d9e4f3c0a3293f749d620f908);
+  background-position: center;
+  background-repeat: repeat-y;
+  background-size: cover;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -26,7 +29,7 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fbf7ee;
+  color: #ffffff;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -42,8 +45,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #faedf1;
-  color: #99022c;
+  background: #ffffff;
+  color: #ffbf00;
   padding: 16px;
   font-size: 16px;
   font-family: 'Chonburi';
@@ -58,7 +61,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fbf7ee;
+  background: #ffffff;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -92,15 +95,18 @@ main {
 .user-msg img {
   width: 60px;
   height: 60px;
+  border: solid 2px #ffbf00;
+  border-radius: 20px;
 }
 
 .bubble {
-  background: #faedf1;
+  background: #ffffff;
+  border: solid 2px #ffbf00;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #99022c;
+  color: #ffbf00;
   max-width: 40%;
 }
 
@@ -129,12 +135,12 @@ label {
   font-size: 16px;
   font-family: 'Chonburi';
   font-weight: 500;
-  color: #99022c;
+  color: #ffbf00;
   margin-right: 20px;
 }
 
 button {
-  background-color: #99022c;
+  background-color: #ffbf00;
   color: #fbf7ee;
   border: none;
   border-radius: 4px;
@@ -154,5 +160,17 @@ button:hover {
 }
 
 .start-button {
-  margin: 40px;
+  margin: 70px;
+}
+
+select {
+  border: none;
+  border-radius: 5px;
+  color: #ffbf00;
+  font-size: 20px;
+  height: 50px;
+  font-family: "Chonburi";
+  background: #fbf7ee;
+  width: 100%;
+  padding: 0 20px;
 }
