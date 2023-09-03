@@ -39,32 +39,33 @@ const hangoutOffer = (userName) => {
   </div>
   `
 
-  document.getElementById('no').addEventListener('click', () => {
-    showMessage('No', 'user')
-    // Also add some code in here to add answer options for next message
-  })
-  document.getElementById('yes').addEventListener('click', () => {
-    showMessage('Yes', 'user')
-    showMessage('Fantastic! What time can i pick you up? 5 or 6?', 'bot')
-    // Also add some code in here to add answer options for next message
-  })
+  document.getElementById('no').addEventListener('click', handleAgeInput);
+
+  document.getElementById('yes').addEventListener('click', handleTimeInput);
 
 }
+const handleTimeInput = (event) => {
+  showMessage('I would love to!', 'user');
+  showMessage('Fantastic! What time can i pick you up? 5 or 6?', 'bot');
+}
 
-
-
-/*const handleHangout = (event) => {
-
+const handleAgeInput = (event) => {
+  showMessage('No', 'user');
   event.preventDefault();
-  hangoutChoice = event.target.hangoutChoices.value;
-  if (hangoutChoice === 'yes') {
-    showMessage(`Cool, I'll bring my whole family`, 'bot');
-  } else if (hangoutChoice === 'no') {
-    showMessage(`Okay then, maybe another time!`, 'bot');
-  }
-}
-*/
+  // Store the value in a variable so we can access it after we
+  // clear it from the input
+  userAge = nameInput.value;
 
+  if (userAge < 40) {
+    showMessage(`How young! Enjoy your youth, take care!`, 'bot');
+  } else if (userAge >= 40 && userAge > 2) {
+    showMessage(`How nice to have lived so much life, take care!`, 'bot');
+  } else {
+    showMessage('Oy! Babies cannot type on computers. Try again.');
+  }
+
+  nameInput.value = "";
+};
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {

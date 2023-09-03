@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #C291A4;
 }
 
 h1 {
@@ -38,7 +38,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #C291A4;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -95,18 +95,20 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #C291A4;
   max-width: 40%;
 }
 
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  color: #e75480;
 }
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  color: #592693;
 }
 
 .input-wrapper {
@@ -124,12 +126,12 @@ label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  color: #E1AD9D;
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #E1AD9D;
   color: white;
   border: none;
   border-radius: 4px;
