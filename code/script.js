@@ -1,8 +1,10 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat')
+const nameForm = document.getElementById('name-form');
+const nameInput = document.getElementById('name-input');
 
 // If you need any global variables that you can use across different functions, declare them here:
-
+let userName;
 
 // Declare your functions after this comment
 
@@ -37,7 +39,7 @@ const showMessage = (message, sender) => {
 // Starts here
 const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Konnichiwa Globetrotter! I'm the Travel Bot, what is your name?", 'bot')
+  showMessage("Konnichiwa Globetrotter! I'm an AI Travel Bot, what is your name?", 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆
 }
 
@@ -46,10 +48,10 @@ const greetUser = () => {
 
 
 
-const nameForm = document.getElementById('name-form');
-const nameInput = document.getElementById('name-input');
+// const nameForm = document.getElementById('name-form');
+// const nameInput = document.getElementById('name-input');
 
-let userName;
+// let userName;
 
 nameForm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -74,8 +76,8 @@ nameForm.addEventListener('submit', (event) => {
     setTimeout(() => {
       const botMessage = `Please enter a number from 1 to 3 to select an option.`;
       showMessage(botMessage, 'bot');
-    }, 500);
-  }, 2000);
+    }, 2000);
+  }, 4000);
 } else{
     const userChoice = nameInput.value;
     showMessage(nameInput.value,'user')
@@ -97,17 +99,22 @@ nameForm.addEventListener('submit', (event) => {
 
     setTimeout(() => {
       showMessage(botReply, 'bot');
-    }, 2000);
+    }, 6000);
 
     setTimeout(() => {
-      const botMessage = `Thank you for using the AI Travel Robot, see you another time, ${userName}. Bye!`;
+      const botMessage = `Thank you for using AI Travel Bot, see you another time, ${userName}. Bye!`;
       showMessage(botMessage, 'bot');
     }, 7000);
+
+    setTimeout(() => {
+      const botMessage = `<i>--- CRITICAL SERVER ERROR 36T56DUxPFIXVf XHNOJ420f3C5 ---</i>`;
+      showMessage(botMessage, 'bot');
+    }, 9000);
 
     setTimeout(() => {
       const botMessage = `<i>--- OFFLINE ---</i>`;
       showMessage(botMessage, 'bot');
-    }, 7000);
+    }, 9000);
 
   }
   });
@@ -121,7 +128,7 @@ const handleUserInput = (event) => {
     const botReply = generateBotReply(userMessage);
     setTimeout(() => {
       showMessage(botReply, 'bot');
-    }, 500);
+    }, 2000);
   }
 };
 

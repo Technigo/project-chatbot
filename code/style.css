@@ -6,12 +6,12 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #00008B;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 72px;
+  font-size: 82px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -37,8 +37,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #FFF0F5;
+  color: #00008B;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -90,22 +90,22 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #D8BFD8;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #00008B;
   max-width: 40%;
 }
 
 .bot-bubble {
-  border-radius: 0px 26px 26px 26px;
+  border-radius: 0px 46px 46px 46px;
   margin-left: 8px;
 }
 
 .user-bubble {
-  border-radius: 26px 0 26px 26px;
+  border-radius: 46px 0 46px 46px;
   margin-right: 8px;
 }
 
@@ -129,7 +129,7 @@ label {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #6A5ACD;
   color: white;
   border: none;
   border-radius: 4px;
