@@ -1,13 +1,13 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This project was to create a chatbot using mainly js and some html and css.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I thought this project was quite complex and hard to get from time to time. I had to reset my mind many times so see the logic in this and not overthink stuff. 
+I´ve been using both chatGPT and Google to get the needed information. 
+If I had more time I would have reviewed my code and see how I could do it better and also spend some time to understand exactly what I have achieved in this project.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://chatbot-week2-amanda.netlify.app/
