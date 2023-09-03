@@ -8,6 +8,8 @@ let userName;
 
 // Declare your functions after this comment
 
+
+
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
@@ -48,24 +50,22 @@ const greetUser = () => {
 
 
 
-// const nameForm = document.getElementById('name-form');
-// const nameInput = document.getElementById('name-input');
-
-// let userName;
-
+// Listen for the form submission event
 nameForm.addEventListener('submit', (event) => {
-  event.preventDefault();
+  event.preventDefault(); // Prevent the form from submitting
 
-  if(userName == null){
-  userName = nameInput.value;
-  showMessage(userName, 'user');
-  nameInput.value = '';
+  if(userName == null){ // Check if userName is not already set
+  userName = nameInput.value; // Set userName from the input field
+  showMessage(userName, 'user'); // Display user name
+  nameInput.value = ''; // Clear the input field
 
+  // Display a welcome message from the bot after a short delay
   setTimeout(() => {
-    const botMessage = `Hello ${userName}! Hope you're well!`;
+    const botMessage = `Hello ${userName}! Let's see the world!`;
     showMessage(botMessage, 'bot');
   }, 500);
 
+  // User options after a delay
   setTimeout(() => {
     const botMessage = `This is what I can do for you: 
 <p>1 - Book a flight</p>
@@ -73,16 +73,19 @@ nameForm.addEventListener('submit', (event) => {
 <p>3 - Book a rental car</p>`;
     showMessage(botMessage, 'bot');
 
+  // Instruct the user to select an option
     setTimeout(() => {
       const botMessage = `Please enter a number from 1 to 3 to select an option.`;
       showMessage(botMessage, 'bot');
     }, 2000);
   }, 4000);
 } else{
-    const userChoice = nameInput.value;
-    showMessage(nameInput.value,'user')
-    nameInput.value = '';
+    const userChoice = nameInput.value; // Get user choice
+    showMessage(nameInput.value,'user') // Display user choice
+    nameInput.value = ''; // Clear the input field
     let botReply = '';
+
+  // Bot reply based on user choice
     switch (userChoice) {
       case '1':
         botReply = `Great! I have booked a one-way ticket for you to Samarkand, Uzbekistan. Total price €1439. The details will be sent via email. Have a nice trip! ✈️`;
@@ -97,10 +100,12 @@ nameForm.addEventListener('submit', (event) => {
         botReply = `Invalid choice. Please select a number from 1 to 3.`;
     }
 
+  // Bot reply after a delay
     setTimeout(() => {
       showMessage(botReply, 'bot');
     }, 6000);
 
+  // Closing message and additional messages  
     setTimeout(() => {
       const botMessage = `Thank you for using AI Travel Bot, see you another time, ${userName}. Bye!`;
       showMessage(botMessage, 'bot');
@@ -119,12 +124,14 @@ nameForm.addEventListener('submit', (event) => {
   }
   });
 
+// Function to handle user input when Enter is pressed
 const handleUserInput = (event) => {
   if (event.key === 'Enter') {
     const userMessage = nameInput.value;
     showMessage(userMessage, 'user');
     nameInput.value = '';
 
+// Generate and display a bot reply after a delay    
     const botReply = generateBotReply(userMessage);
     setTimeout(() => {
       showMessage(botReply, 'bot');
