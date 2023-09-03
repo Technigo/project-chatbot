@@ -1,27 +1,23 @@
 // Variables that point to selected DOM elements
-const chat = document.getElementById('chat')
+const chat = document.getElementById('chat');
 const nameForm = document.getElementById('name-form');
+//const emailForm = document.getElementById('email-form');
 const nameInput = document.getElementById('name-input');
-const sendBtn = document.getElementById('send-btn')
-const inputWrapper = document.getElementById('input-wrapper')
+const sendBtn = document.getElementById('send-btn');//
+const inputWrapper = document.getElementById('input-wrapper');
+
+
 // If you need any global variables that you can use across different functions, declare them here:
 
-
-
+//let userEmail = '';
 let userName = '';
-let name = "";
-const choise = "";
-const buyOrBrowse = "";
-let selectedShopping = "";
+const choice = '';
+const yourPrice = '';
 // Declare your functions after this comment
 
-
-
-
-
-// This function will add a chat bubble in the correct place based on who the sender is
+// This function will add a chat bubble in the correct place based on who the sender is. I think?
 const showMessage = (message, sender) => {
-  // the if statement checks if the sender is 'user' and if that's the case it inserts an html senction inside the chat with the posted message
+
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
@@ -31,8 +27,8 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `
-    // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
-  } else if (sender === 'bot') {
+  }
+  else if (sender === 'bot') {
     console.log(sender);
     console.log(message);
     chat.innerHTML += `
@@ -60,100 +56,186 @@ const userNameInput = event => {
   event.preventDefault();
   //I think the name is saved for later, but is it saved globally?
   userName = nameInput.value;
-  //name input is reset?
   nameInput.value = "";
-  //makes the users name pops up as a message
   showMessage(` ${userName}`, "user");
-  //bot will ask for a choise to be made after 0,5 sek.
   setTimeout(() => reply(userName), 500);
   setTimeout(() => askForChoise(), 1200);
 };
 
+
+//Bot's welcome message with username pops up. Asks user to make a choise.
 function reply(firstReply) {
   showMessage(`Welcome to 'Elbines-Plants' ${userName}!`, 'bot')
 }
 
-const askForChoise = (name) => {
-  //Bot's welcome message with username pops up. Asks user to make a choise.
-  showMessage(`What would you like to explore today?`, 'bot')
-  //Buttons with test choice will appear
+//I wanted a delay between the messages, thats why they are in two functions
+const askForChoise = (YesNo) => {
+  //Do I need to type anything in ()?
+  showMessage(`We can help you by selecting some options for you based on your preferences. <br><br> Would you like to continue?`, 'bot')
+  //Buttons Yes No  will appear
 
-
-  inputWrapper.innerHTML = `
-    <button class="send-btn" id="Green Plants">Green Plants</button>
-    <button class="send-btn" id="Flowers">Flowers</button>
-    <button class="send-btn" id="Plant Supplies">Plant Supplies</button>
+  inputWrapper.innerHTML = //(When) shoud i use value (or class) instead of ID?
+    `
+    <button class="send-btn" id="Yes">YES</button> 
+    <button class="send-btn" id="No">NO</button>
     `;
 
   //Adding eventlisteners to buttons
-  const plantButtons = inputWrapper.querySelectorAll('.send-btn');
-  plantButtons.forEach(button => {
+  const choiseButtons = inputWrapper.querySelectorAll('.send-btn');
+  choiseButtons.forEach(button => {
     button.addEventListener('click', (event) => {
-      const chosenPlantType = event.target.id
-      console.log(chosenPlantType)
-      showMessage(`You have chosen ${chosenPlantType}.`, 'bot')
-
-      if (chosenPlantType === "Green Plants") {
-        showMessage(`To clarify ${userName}, would you like to buy a plant or just browse?`, 'bot')
-      }
-      else if (chosenPlantType === "Flowers") {
-        showMessage(`To clarify ${userName}, would you like to buy flowers or just browse?`, 'bot')
-      }
-      else if (chosenPlantType === "Plant Supplies") {
-        showMessage(`To clarify ${userName}, would you like to buy plant supplies or just browse?`, 'bot')
-
-      }
-      //this will remove the buttons after making a choise, and just show the messages
-
-      setTimeout(() => askShopSty(), 0)
-
-
+      const choicIsMade = event.target.id
+      //console.log(choicIsMade)
+      showMessage(`${choicIsMade}`, 'user')
+      handleYesNoChoice(choicIsMade); //DID NOT WORK WITHOUT THIS
+      //setTimeout(handleYesNoChoice, 1000)
+      //setTimeout(() => handleYesNoChoice(choicIsMade), 1000)
     })
+  })
+  chat.scrollTop = chat.scrollHeight
+}
 
-    //NOT WORKING setTimeout(() => chosenPlantType(), 3000)
+
+function handleYesNoChoice(choice) {
+  inputWrapper.innerHTML = ''
+
+
+  if (choice === 'Yes') {
+    showMessage(`Please select a catagory from below:`, 'bot')
+    const plantCategory = ['Green Plants', 'Flowers', 'Plant Supplies']
+    showOptionsPlantCat(plantCategory)
+  } else if (choice === 'No') {
+    showMessage(`Ok, I understand. Feel free to browse our webpage. If you need help be sure to ask!`, 'bot')
+  }
+  chat.scrollTop = chat.scrollHeight
+}
+
+function showOptionsPlantCat(options) {
+  inputWrapper.innerHTML = '';
+
+  options.forEach(option => {
+    const button = document.createElement('button');
+    button.className = 'send-btn';
+    button.textContent = option;
+    button.addEventListener('click', () => {
+      showMessage(`You have selected ${option}.`, 'bot');
+      setTimeout(() => askPriceRange(option), 500)
+      //So I can use selected oprion in the next function
+    });
+    inputWrapper.appendChild(button);
+  });
+}
+
+function askPriceRange(option) {
+  showMessage(`What is your price range for ${option}:`, 'bot')
+
+
+  //Drop down menu 
+  inputWrapper.innerHTML = `
+  <select id="price-select">
+  <option value="">Please choose an option:</option>
+  <option value="PriceRange1">From 100 - 300,- </option>
+  <option value="PriceRange2">From 300 - 500,- </option>
+  <option value="PriceRange3">From 500 - 1000,- </option>
+  <option value="PriceRange4">1000,- and up </option>
+  </select>
+  `;
+
+  select = document.getElementById("price-select")
+
+  const priceSelected = document.getElementById('price-select')
+    //Adding eventlisteners to option range 1
+
+    .addEventListener('change', (event) => {
+      //Storing the value of the event target by redeclaring global variabel
+      selectedPriRan = event.target.value
+
+
+      //User reply comes up
+      select.remove() //Removing the buttons to make the chat look closed.
+      //Invokes bot's next message
+      setTimeout(() => confirmPriceRange(priceSelected), 500)
+    })
+}
+
+const confirmPriceRange = (priceRange) => {
+  //Bot replying to alternative 1
+  if (selectedPriRan === 'PriceRange1') {
+    selectedPriRan = "100 - 300kr"
+    showMessage(`I'm thinking between ${selectedPriRan}`, 'user')
+    setTimeout(() => showMessage(`Great! I will select some great options (in the price range ${selectedPriRan}) for you. I hope you love them as much as I do!`, 'bot'), 700)
+  }
+  else if
+    (selectedPriRan === 'PriceRange2') {
+    selectedPriRan = "300 - 500kr"
+    showMessage(`I'm thinking between ${selectedPriRan}`, 'user')
+    setTimeout(() => showMessage(`How fun! I will select some great options (in the price range ${selectedPriRan}) for you. I hope you love them as much as I do!`, 'bot'), 700)
+  }
+  else if
+    (selectedPriRan === 'PriceRange3') {
+    selectedPriRan = "500 - 1000kr"
+    showMessage(`I'm thinking between ${selectedPriRan}`, 'user')
+    setTimeout(() => showMessage(`How exciting! I will select some great options (in the price range ${selectedPriRan}) for you. I hope you love them as much as I do!`, 'bot'), 700)
+  }
+  else if
+    (selectedPriRan === 'PriceRange4') {
+    selectedPriRan = "1000kr and up"
+    showMessage(`I'm thinking between ${selectedPriRan}`, 'user')
+    setTimeout(() => showMessage(`Wow, now we're talking! I will select some amazing options (in the price range ${selectedPriRan}) for you. I just know you'll love them!`, 'bot'), 700)
+  }
+  /*
+  
+      //Bot replying to alternative 2
+    } else if (priceRange === 'range-2') {
+      selectedPriceRange = "50 to 100€"
+      showMessage(`Amazing! It must be quite a special friend!`, 'bot')
+    }*/
+
+  //Invoking question about colour
+  setTimeout(() => lastStepBtn(), 1000)
+}
+
+
+const lastStepBtn = () => {
+
+  //event listener for this question is logSubmit
+  //setTimeout(lastStep, 1000);
+
+
+  inputWrapper.innerHTML = //(When) shoud i use value (or class) instead of ID?
+    `
+    <button class="send-btn" id="pick-up">PICK UP</button> 
+    <button class="send-btn" id="delivery">DELIVERY</button>
+    `;
+  chat.scrollTop = chat.scrollHeight
+
+  const confirmBtndelivery = inputWrapper.querySelectorAll('.send-btn');
+  confirmBtndelivery.forEach(button => {
+    button.addEventListener('click', (event) => {
+      let delPickUpchoise = event.target.id
+      console.log(delPickUpchoise)
+      inputWrapper.innerHTML = '' //clear buttons
+
+      if (delPickUpchoise === `pick-up`) {
+        delPickUpchoise = "pick up"
+        showMessage(`I want to ${delPickUpchoise} myself.`, 'user')
+        showMessage(`We will arrange that for you!`, `bot`)
+        showMessage(`Just one last thing:<br><br>I will need your e-mail and your full name so that I can send you the options I selected for you. <br><br> Hold on just a little longer!`, 'bot')
+      }
+      else if (delPickUpchoise === `delivery`) {
+        delPickUpchoise = "delivery"
+        showMessage(`I would like a ${delPickUpchoise}.`, 'user')
+        showMessage(`We will arrange that for you!`, `bot`)
+        showMessage(`Just one last thing:<br><br>I will need your e-mail and your full name so that I can send you the options I selected for you.<br><br> Hold on just a little longer!`, 'bot')
+      }
+    })
   })
 }
 
-//.remove() Couldn't figure out this function. where and how to use it to remove buttons without messing up the code
-
-const askShopSty = () => {
-
-  //Buttons with colour choice appears
-
-  inputWrapper.innerHTML = `
-      <button class="send-btn" id="buy-btn">BUY</button>
-      <button class="send-btn" id="browse-btn">BROWSE</button>
-      `;
-
-  //Adding eventlisteners to colour buttons using for...of loop
-  const allShoppingButtons =
-    document.getElementsByClassName('shopping-btn')
-  for (const shoppingButton of allShoppingButtons) {
-    shoppingButton.addEventListener('click', (event) => {
-
-      selectedShopping = event.target.value
-      console.log(selectedShopping)
-      //User reply, do i need this? 
-
-      //showMessage(`${selectedShopping}, please.`, 'user')
-      setTimeout(() => confirmShopping(selectedShopping), 1000)
-    })
-  }
-}
-
-
-
-
-
-
 // Set up your eventlisteners here
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
 nameForm.addEventListener('submit', userNameInput)
+//emailForm.addEventListener('submit', enterEmailInput)
 
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 500)
