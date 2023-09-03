@@ -7,13 +7,13 @@ const nameInput = document.getElementById('name-input')
 const sendButton = document.getElementById('send-btn')
 const nameForm = document.getElementById('name-form')
 let username = ''
-let activityChoice = ''
 let activity = ''
 let selectedActivity = ''
-let soundWelcome = new Audio('assets/welcome.mp3')
-let soundDone = new Audio('assets/done.mp3')
-let soundConfirm = new Audio('assets/success.mp3')
-let soundDecline = new Audio('assets/fiasco.mp3')
+let activityChoice = ''
+const soundWelcome = new Audio('assets/welcome.mp3')
+const soundDone = new Audio('assets/done.mp3')
+const soundConfirm = new Audio('assets/success.mp3')
+const soundDecline = new Audio('assets/fiasco.mp3')
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -47,7 +47,7 @@ const showMessage = (message, sender) => {
 // Initial greeting message from bot, asking for the user's name
 const greetUser = () => {
   showMessage(`Hey there Traveller, I'm Botlynn! Join me on a virtual trip to a foreign country and let's explore it! Please enter your name so I know what to call my new travel buddy!`, 'bot')
-  soundWelcome.play()
+    soundWelcome.play()
 }
 
 // User types in name, otherwise the bot asks for the name again to be able to proceed
@@ -93,9 +93,6 @@ const travelOption = () => {
       setTimeout(() => activityQuestion('The Netherlands'), 1000)
     })
 }
-
-// Variables that will be used in the activityQuestion TA BORT OM ALLT FUNKAR
-
 
 // User is presented with a dropdown menu with three different activities to chose from depending on which country was chosen previously
 const activityQuestion = (selectedTravelOption) => {
@@ -163,7 +160,6 @@ function simulateProcessing(callback) {
   setTimeout(function () {
     showMessage(`Processing complete! ✔️`, 'bot')
     soundDone.play()
-    // Call the provided callback function to continue with the next action
     if (typeof callback === 'function') {
       callback()
     }

@@ -9,6 +9,7 @@ body {
   background-size: cover;
   background-image: url("./images/holiday.jpg");
   background-position: 50% 50%;
+  margin-bottom: 120px;
 }
 
 body.cuba {
@@ -30,7 +31,7 @@ body.netherlands {
 
 h1 {
   font-weight: bold;
-  font-size: 38px;
+  font-size: 24px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -38,7 +39,7 @@ h1 {
 
 h2 {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -46,7 +47,7 @@ h2 {
 }
 
 p {
-  font-size: 18px;
+  font-size: 12px;
   font-weight: 600;
   line-height: 28px;
   margin: 0;
@@ -58,7 +59,7 @@ input {
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
   color: #483d8b;
-  padding: 16px;
+  padding: 12px;
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 600;
@@ -75,7 +76,7 @@ main {
   border-radius: 30px;
   background: #fff;
   opacity: 0.93;
-  padding: 20px 24px;
+  padding: 20px 10px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
@@ -113,7 +114,7 @@ main {
 .bubble {
   background: #cccc99;
   font-weight: 600;
-  font-size: 16px;
+  /*font-size: 12px;*/
   line-height: 26px;
   padding: 16px 24px;
   color: #556b2f;
@@ -144,11 +145,11 @@ main {
 }
 
 label {
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Montserrat';
   font-weight: 500;
   color: #483d8b;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 button {
@@ -156,9 +157,9 @@ button {
   color: #fff;
   border: none;
   border-radius: 4px;
-  padding: 16px 40px;
+  padding: 12px 30px;
   margin: 0 4px;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 26px;
   font-family: 'Montserrat';
   font-weight: 500;
@@ -179,14 +180,14 @@ button:hover {
   border: none;
   border-radius: 4px;
   background-color: #483d8b;
-  color:#fff;
+  color: #fff;
 }
 
 footer {
   display: flex;
   flex-direction: column;
-  color:#fff;
-  font-size: 12px; 
+  color: #fff;
+  font-size: 12px;
   background-color: #ffa500;
   width: 100%;
   text-align: center;
@@ -199,7 +200,44 @@ footer {
   width: 30px;
 }
 
-footer a:link, a:visited {
+footer a:link,
+a:visited {
   font-size: 20px;
   color: #fff;
+}
+
+@media (min-width: 668px) {
+  body {
+    margin-bottom: 0;
+  }
+
+  h1 {
+    font-size: 38px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  input {
+    padding: 16px;
+  }
+
+  main {
+    padding: 20px 24px;
+  }
+
+  label {
+    font-size: 16px;
+    margin-right: 20px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 16px 40px;
+  }
 }
