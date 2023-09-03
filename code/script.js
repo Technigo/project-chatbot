@@ -1,18 +1,16 @@
 
-// If you need any global variables that you can use across different functions, declare them here:
 let treeChoice = "";
-let userName = "";
 
-// Declare your functions after this comment
+// I don't use all these functions but leave some for possible future work
+
 const chat = document.getElementById("chat");
 const inputWrapper = document.getElementById("input-wrapper");
 const nameInput = document.getElementById("name-input");
 const sendButton = document.querySelector("send-btn");
 const nameForm = document.getElementById("name-form");
 
-// This function will add a chat bubble in the correct place based on who the sender is
+
 const showMessage = (message, sender) => {
-  // setTimeout(showMessage, 800)
   if (sender === 'user') {
     console.log("userMessageSent")
     chat.innerHTML += `
@@ -37,10 +35,14 @@ const showMessage = (message, sender) => {
   }
   chat.scrollTop = chat.scrollHeight
 }
+//The start-greeting from the bot
 
 const greetUser = () => {
   showMessage(`Hi friend of Trees! Please enter your name below`, `bot`);
 };
+setTimeout(greetUser, 800)
+
+//The name-input from the user and subsequent reply
 
 const handleNameInput = (event) => {
   event.preventDefault();
@@ -53,14 +55,17 @@ const handleNameInput = (event) => {
 
 nameForm.addEventListener("submit", handleNameInput);
 
+//Bot-reply on name-input and follow up question on choice of trees with button options
+
 const treeType = (userName) => {
-  showMessage(`Nice to meet you ${userName}! <br><br> 
+  showMessage(`Nice to greet you ${userName}! <br><br> 
   What tree would you like in your garden?`, `bot`);
  inputWrapper.innerHTML =`
     <button class="send-btn" id="apple">Apple</button>
     <button class="send-btn" id="pear">Pear</button>
   `;
-// Ovanför är svaret på user-svaret av namn - och följaktligen även frågan om vilket träd user vill välja. Nedan följer kopplingen till att user trycker på knappen och user's svar som confirmerar valet för tryckaren.
+
+// User choose tree by clicking button which invokes a user reply after their choice
 
 document.getElementById(`apple`)
     .addEventListener(`click`, () => {
@@ -76,28 +81,14 @@ document.getElementById(`pear`)
       setTimeout(() => confirmTreeType (treeChoice), 1000)
     })
 }
-// Se om det går att få till username nedan, varför funkar den inte globalt? Kolla Jennie-videon och om det inte funkar, skriv readme etc, ta bort taggen på username och lämna in
+// Bot confirms the choice with an encouraging response
 
 const confirmTreeType = (treeChoice) => {
   if (treeChoice === "apple") {
-    showMessage (`An Apple-tree is an excellent choice ${userName}!`, `bot`)
+    showMessage (`An Apple-tree is an excellent choice!`, `bot`)
   } else if (treeChoice === "pear") {
-    showMessage (`A Pear-tree is an excellent choice ${userName}!`, `bot`)
+    showMessage (`A Pear-tree is an excellent choice!`, `bot`)
   } 
  
   }
 
-
-
-
-//   const treeButtons = inputWrapper.querySelectorAll('send-btn');
-//     treeButtons.forEach(button => {
-//     button.addEventListener('click', (event) => {
-//       const selectedTree = event.target.id;
-//       showMessage(`Excellent choice! You selected ${selectedTree}.`, 'bot');
-//       handleSpecificFoodChoice(selectedFood);
-//     });
-//   });
-// }
-// This is where the code starts to run
-setTimeout(greetUser, 800)
