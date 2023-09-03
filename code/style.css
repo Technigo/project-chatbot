@@ -5,8 +5,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: hsl(36, 83%, 64%);
+  font-family: Montserrat;
+  background: #9d8369;
 }
 
 h1 {
@@ -39,7 +39,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #9d8369;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -55,7 +55,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: #e7d0c0;
   padding: 20px 24px;
   padding-top: 0;
   /*MAKES SURE THINGS HAVE TO FIT INSIDE THE BOX*/
@@ -94,12 +94,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #9d8369;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #eeeff3;
   max-width: 40%;
 }
 
@@ -128,13 +128,13 @@ label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  color: #74593e;
   margin-right: 20px;
 }
 
 /*SEND BUTTON*/
 button {
-  background-color: #0026ff;
+  background-color: #74593e;
   color: white;
   border: none;
   border-radius: 4px;
