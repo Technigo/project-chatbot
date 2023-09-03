@@ -7,9 +7,10 @@ const nameInputWrapper = document.getElementById("input-wrapper");
 const sodaChoiceWrapper = document.getElementById("soda-choice");
 const subChoiceWrapper = document.getElementById("sub-choice");
 const sodaSizeWrapper = document.getElementById("soda-size");
-const orderConfirmationWrapper = document.getElementById("orderConfirmation");
+const orderConfirmationWrapper = document.getElementById("order-confirmation");
 const restartWrapper = document.getElementById("restart");
-const audio = new Audio("assets/notification.mp3")
+const audio = new Audio("assets/notification.mp3");
+const defaultDelay = 700;
 
 let sodaChoice = "";
 
@@ -24,14 +25,12 @@ const submitName = (submitEvent) => {
       showMessage(nameInput.value, "user");
       showMessage(`Hello ${nameInput.value}! What would you like to drink today? `, "bot");
 
-
-
       nameInput.value = "";
 
       nameInputWrapper.style.display = "none";
       sodaChoiceWrapper.style.display = "block";
     }
-  }, 700);
+  }, defaultDelay);
 }
 
 const makeSodaChoice = (soda) => {
@@ -43,7 +42,7 @@ const makeSodaChoice = (soda) => {
 
     sodaChoiceWrapper.style.display = "none";
     subChoiceWrapper.style.display = "block";
-  }, 700);
+  }, defaultDelay);
 }
 
 const makeSubChoice = (subChoice) => {
@@ -54,7 +53,7 @@ const makeSubChoice = (subChoice) => {
 
     subChoiceWrapper.style.display = "none";
     sodaSizeWrapper.style.display = "block";
-  }, 700);
+  }, defaultDelay);
 }
 
 const makeSizeChoice = (size) => {
@@ -65,7 +64,7 @@ const makeSizeChoice = (size) => {
 
     sodaSizeWrapper.style.display = "none";
     orderConfirmationWrapper.style.display = "block";
-  }, 700);
+  }, defaultDelay);
 }
 
 const orderConfirmation = (confirmationMessage) => {
@@ -77,10 +76,10 @@ const orderConfirmation = (confirmationMessage) => {
     } else {
       showMessage(`No problem, hope you will come back and order another time!`, "bot");
     }
+
     orderConfirmationWrapper.style.display = "none";
     restartWrapper.style.display = "block";
-
-  }, 700);
+  }, defaultDelay);
 }
 
 const restart = () => {
@@ -89,7 +88,7 @@ const restart = () => {
 
     restartWrapper.style.display = "none";
     nameInputWrapper.style.display = "block";
-  }, 700);
+  }, defaultDelay);
 }
 
 // This function will add a chat bubble in the correct place based on who the sender is
@@ -135,4 +134,4 @@ const greetUser = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 700)
+setTimeout(greetUser, defaultDelay)
