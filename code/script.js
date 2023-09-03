@@ -30,7 +30,7 @@ const submitName = (submitEvent) => {
       nameInputWrapper.style.display = "none";
       sodaChoiceWrapper.style.display = "block";
     }
-  }, 500);
+  }, 700);
 }
 
 const makeSodaChoice = (soda) => {
@@ -38,11 +38,11 @@ const makeSodaChoice = (soda) => {
   showMessage(soda, "user");
 
   setTimeout(() => {
-    showMessage(`Great choice! You are craving ${soda}! Would you like regular or zero ${soda}?`, "bot");
+    showMessage(`Great choice! You are craving ${soda}! Would you like regular ${soda} or ${soda} Zero ?`, "bot");
 
     sodaChoiceWrapper.style.display = "none";
     subChoiceWrapper.style.display = "block";
-  }, 500);
+  }, 700);
 }
 
 const makeSubChoice = (subChoice) => {
@@ -53,7 +53,7 @@ const makeSubChoice = (subChoice) => {
 
     subChoiceWrapper.style.display = "none";
     sodaSizeWrapper.style.display = "block";
-  }, 500);
+  }, 700);
 }
 
 const makeSizeChoice = (size) => {
@@ -64,7 +64,7 @@ const makeSizeChoice = (size) => {
 
     sodaSizeWrapper.style.display = "none";
     orderConfirmationWrapper.style.display = "block";
-  }, 500);
+  }, 700);
 }
 
 const orderConfirmation = (confirmationMessage) => {
@@ -77,7 +77,7 @@ const orderConfirmation = (confirmationMessage) => {
       showMessage(`No problem, hope you will come back and order another time!`, "bot");
     }
     orderConfirmationWrapper.style.display = "none";
-  }, 500);
+  }, 700);
 }
 
 
@@ -124,4 +124,4 @@ const greetUser = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 500)
+setTimeout(greetUser, 700)
