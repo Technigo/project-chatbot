@@ -76,7 +76,6 @@ foodButton.forEach (button => {
     showMessage(`I choose ${selectedFood}`, 'user');
     showMessage(`Good choice! You selected ${selectedFood}.`, 'bot');
     showTypeOfFood(selectedFood);
-    console.log("Click",foodButton)
   });
 });
 };
@@ -91,8 +90,8 @@ const showTypeOfFood = (choice) => {
   if (choice === 'pizza') {
     showMessage(`What type of pizza would you like?`, 'bot');
     inputWrapper.innerHTML = `
-    <label for="pizza-select">Select your pizza:</label>
-    <select id="pizza-select" class="send-select">
+    <label for="food-select">Select your pizza:</label>
+    <select id="food-select" class="send-select">
       <option value="Margherita">Margherita</option>
       <option value="Pepperoni">Pepperoni</option>
       <option value="Hawaiian">Hawaiian</option>
@@ -102,8 +101,8 @@ const showTypeOfFood = (choice) => {
     (choice === 'pasta') {
     showMessage(`What type of pasta would you like?`, 'bot');
     inputWrapper.innerHTML = `
-    <label for="pasta-select">Select your pasta:</label>
-    <select id="pasta-select" class="send-select">
+    <label for="food-select">Select your pasta:</label>
+    <select id="food-select" class="send-select">
       <option value="Spaghetti">Spaghetti</option>
       <option value="Alfredo">Alfredo</option>
       <option value="Penne">Penne</option>
@@ -113,8 +112,8 @@ const showTypeOfFood = (choice) => {
     (choice === 'salad') {
     showMessage(`What type of salad would you like?`, 'bot');
     inputWrapper.innerHTML = `
-    <label for="salad-select">Select your salad:</label>
-    <select id="salad-select" class="send-select">
+    <label for="food-select">Select your salad:</label>
+    <select id="food-select" class="send-select">
       <option value="Caesar">Caesar</option>
       <option value="Greek">Greek</option>
       <option value="Garden">Garden</option>
@@ -123,17 +122,28 @@ const showTypeOfFood = (choice) => {
   } else {
     showMessage(`You need chose again`, 'bot');
   }
+  const foodSelect = inputWrapper.querySelector('#food-select');
+  foodSelect.addEventListener('change', (event) => {
+    const selectedTypeOfFood = event.target.value;
+    showMessage(` ${selectedTypeOfFood}.`, 'user');
+    showMessage(`You choose : ${selectedTypeOfFood}.`, 'bot');
+  });
 }
 
-//----------------- After select type of pizza,pasta or salad now you need select age----------//
+//----------------- Select age ----------//
 
-
-const chooseAge = () => {
-  showMessage(`One ${selectedFood}coming up! But before cormfirm please wrtie your age `, 'user');
+const selectAge = () => {
+  switch (true) {
+    case ageChoice >= 18:
+      orderMessage = `You've ordered a adult size. That will be 130 SEK`;
+      break;
+      case ageChoice < 18:
+        orderMessage = `You've ordered a child size. That will be 100 SEK`;
+        break;
+    default:
+      orderMessage = `Invalid choice. Please specify your age'.`;
+    }
 }
-
-
-
 
 // When website loaded, chatbot asks first question.
 // normally we would invoke a function like this:
@@ -141,4 +151,4 @@ const chooseAge = () => {
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-  setTimeout(greetUser, 500);
+  setTimeout(greetUser, 1000);
