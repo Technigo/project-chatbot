@@ -11,11 +11,9 @@ let areaOptions = "Himalayas";
 let areaChoice = "";
 let numOfPax;
 
-
-
 // Declare your functions after this comment
 
-// This function will add a chat bubble in the correct place based on who the sender is
+//----------This function will add a chat bubble in the correct place based on who the sender is-----//
 const showMessage = (message, sender) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
   if (sender === 'user') {
@@ -43,36 +41,44 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
+
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
   return (userAnswered);
 }
-// Starts here - these are the bot's questions
-const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
+
+
+//---------------- Bot Question 1 - Ask for the user's name -------------------------//
+
+const botQuestion1 = () => {
+  console.log("You have entered Question 1 function"); //reference for me to help me track the flow
   showMessage("Welcome to Mayhem Mystery Flights &#9992", 'bot');
   showMessage("To get us started, what is your name?", 'bot');
-  console.log(`question count is:`, questionCount)
+  //event listener for this question is logSubmit
 }
 
-//ask user if they are interested in a flight, yes/no answer
+
+//---------------- Bot question 2 - Are you interested in booking a flight -------------------------//
+
 const botQuestion2 = (name) => {
-  console.log("botQuestion2 function is entered")
-  showMessage(`Welcome, ${usersName}. Are you interested in booking a mystery flight with us today?`, 'bot');
+  console.log("You have entered Question 2 function"); //reference for me to help me track the flow
+  showMessage(`Welcome!, ${usersName}. Are you interested in booking a mystery flight with us today?`, 'bot');
   showMessage(`Type YES or NO`, 'bot');
+  //event listener for this question is logSubmit
 }
 
-//ask user which 3 continents they are interested in
-const botQuestion3 = (yesOrNo) => {
-  console.log("we have entered question 3 function")
 
-  if (usersName === "yes") {
-    showMessage(`Fantastic! &#128578 We have a few questions that will help us choose the best destination for your flight.`, 'bot')
+//---------------- Bot Question 3 - Choose destination continent -------------------------//
+
+const botQuestion3 = (yesOrNo) => {
+  console.log("You have entered Question 3 function"); //reference for me to help me track the flow
+  let userEntersYN = usersName.toLowerCase(); //changes user input into all lowercase so it can be verified
+
+  if (userEntersYN === "yes") {
+    showMessage(`Fantastic! &#128578 We have a few questions that will help us choose the best destination for your flight.`, 'bot');
     showMessage(`Where would you rather go?`, 'bot');
 
-    questionCount = 2
-
-    //create 3 buttons - africa, asia, europe
+    //remove input bar and create 2 buttons - Africa and Asia
     const q3Buttons = document.getElementById("input-wrapper")
     q3Buttons.innerHTML = `
    <button id="africa" value="africa">Africa</button>
@@ -92,7 +98,7 @@ const botQuestion3 = (yesOrNo) => {
         setTimeout(botQuestion4, 1000);
       }
     })
-  } else if (usersName === "no") {
+  } else if (userEntersYN === "no") {
     showMessage(`We hope you visit again soon, Good bye`, 'bot');
   } else {
     showMessage(`I don't understand your answer &#129335`, 'bot')
@@ -100,12 +106,15 @@ const botQuestion3 = (yesOrNo) => {
   }
 }
 
+
+//---------------- Bot Question 4 - Drop down select to choose an area -------------------------//
+
 const botQuestion4 = (continent) => {
+  console.log("You have entered Question 4 function"); //reference for me to help me track the flow
   showMessage(`${continentSelected} is a great choice! 	&#128512`, 'bot');
   showMessage(`There are so many amazing countries to visit in ${continentSelected}, so let's narrow it down...`, 'bot');
   showMessage(`What area in ${continentSelected} most interests you?`, 'bot');
 
-  questionCount = 3
   //create 3 dropdown selections based on continent choice
   if (continentSelected === "Africa") {
     const areaOptions = document.getElementById("input-wrapper")
@@ -120,16 +129,17 @@ const botQuestion4 = (continent) => {
   } else if (continentSelected === "Europe") {
     const areaOptions = document.getElementById("input-wrapper")
     areaOptions.innerHTML = `
-<select id="q4-dropdown">
-  <option value="" selected disabled>&#128071 Select an area of interest here</option>
-  <option value="britishIsles">The British Isles, and Ireland</option>
-  <option value="scandinavia">Scandinavia, The Baltic and North Seas</option>
-  <option value="theAlps">Central Uplands, The Alps and the Mediterranean</option>
-</select>
+    <select id="q4-dropdown">
+      <option value="" selected disabled>&#128071 Select an area of interest here</option>
+      <option value="britishIsles">The British Isles, and Ireland</option>
+      <option value="scandinavia">Scandinavia, The Baltic and North Seas</option>
+      <option value="theAlps">Central Uplands, The Alps and the Mediterranean</option>
+    </select>
 `
   }
-  const areaOptionsSelect = document.getElementById('q4-dropdown')
+  const areaOptionsSelect = document.getElementById('q4-dropdown') //I'm not sure why I need this and can't remember why I put it here
 
+  //event listener for when user changes/selects one of the dropdown options
   areaOptionsSelect.addEventListener("change", function () {
     const areaChoice = areaOptionsSelect.value;
     switch (areaChoice) {
@@ -159,42 +169,44 @@ const botQuestion4 = (continent) => {
         setTimeout(botQuestion5, 1000);
         break;
       case "theAlps":
-        showMessage(`Centra; Uplands, The Alps and the Mediterranean`, 'user');
+        showMessage(`Central Uplands, The Alps and the Mediterranean`, 'user');
         console.log("area Choice is:", areaChoice);
         setTimeout(botQuestion5, 1000);
         break;
     }
+  }, { once: true });  //function only used once
+}
 
-  }, { once: true });  //function only used once, I don't know if this works?
-
-} //end of botQuestion4
+//---------------- Bot Question 5 - Date to travel -------------------------//
 
 const botQuestion5 = () => {
-  console.log("botQuestion5 function is entered")
+  console.log("You have entered Question 5 function"); //reference for me to help me track the flow
   showMessage(`We have some amazing locations in this area`, 'bot');
-  showMessage(`Please choose the date you wish to travel`, 'bot');
+  showMessage(`Please use the date picker on the right to choose the date you wish to travel`, 'bot');
 
   //create date input field to choose date
   const chooseDate = document.getElementById("input-wrapper")
   chooseDate.innerHTML = `
     <input type="date" id="trip-start" name="trip-start" value="2023-09-03" min="2023-09-03" max="2024-12-31" />
     `
-  //event listener for when user clicks on their selected date
+  //document.getElementById("name-input").readOnly = true; My attempt at getting the input field for the date working. At this stage the date field only works when the user users the date picker and NOT when they enter a date into the input field//
+
+  //event listener for when user input's date
   chooseDate.addEventListener("change", function (whichButton) {
     let usersDate = document.getElementById("trip-start").value;
     console.log(usersDate)
     showMessage(`${usersDate}`, 'user');
     setTimeout(botQuestion6, 1000);
-
-
   })
-} //end of botQuestion5 function
+}
 
+//---------------- Bot Question 6 - Confirmation to proceed -------------------------//
 
 const botQuestion6 = () => {
-  console.log("entered confirmation question")
+  console.log("You have entered Question 6 function"); //reference for me to help me track the flow
   showMessage(`Our team now have enough information to prepare some options for you`, 'bot');
-  showMessage(`Would you like as to procceed?`, 'bot');
+  showMessage(`We will leave you with a reference number that will help you access more details for your journey`, 'bot');
+  setTimeout(showMessage(`Would you like as to procceed?`, 'bot'), 1000); //this setTimeout doesn't seem to work?
 
   //create 2 buttons - for confirmation (YES or NO)
   const q6Buttons = document.getElementById("input-wrapper")
@@ -202,7 +214,7 @@ const botQuestion6 = () => {
  <button id="yesBtn" value="yes">YES</button>
  <button id="noBtn" value="no">NO</button>
   `
-  //event listener for when user clicks on their selected button
+  //event listener for when user clicks on their selected button (YES or NO)
   q6Buttons.addEventListener("click", function (q6Buttons) {
     if (q6Buttons.target.value == "yes") {
       let userConfirmation = "yes"
@@ -235,10 +247,6 @@ const botQuestion7 = () => {
 }
 //
 //
-//
-//
-//
-//
 // Set up your eventlisteners here
 
 //listen for when form is submitted(submit button or enter is pressed)
@@ -258,6 +266,8 @@ logSubmit = (event) => {
   } else if (questionCount == 1) {
     questionCount = 2;
     setTimeout(botQuestion3, 1000);
+
+    //----after Question 3 this function is no longer used, I have added eventlisteners INSIDE the functons for further questions as I could not work out how to call this one again when using buttons, date, or select dropdown as inout. I realise this isn't a good flow (Q1 and Q2 share their eventlistener which is outside their function) but this is how I got it to work :-)-----//
   }
 }
 
@@ -265,8 +275,10 @@ logSubmit = (event) => {
 const form = document.getElementById("name-form");
 form.addEventListener("submit", logSubmit);
 
-// When website loaded, chatbot asks first question.
-setTimeout(greetUser, 1000) //Step 1 - played around with the value
+
+
+//----- First function - When the website is loaded, the chatbot asks first question, after a 1 second delay ------//
+setTimeout(botQuestion1, 1000) //Step 1 - played around with the value
 
 // After 1 second, show the next question by invoking the next function.
 // passing the name into it to have access to the user's name if we want
