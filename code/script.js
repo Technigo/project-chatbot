@@ -67,7 +67,7 @@ const showName = (event) => {
 //part 1
 //bot replies back using message proposing activities
 const proposeActivity = () => {
-  showMessage(`Welcome to our hotel Le Shandrani, ${userName}!`, "bot")
+  showMessage(`Welcome to our hotel Le Banian, ${userName}!`, "bot")
   showMessage(`This booking service is offered to you directly from your room, at your leisure.`, "bot")
   setTimeout(() => { showMessage(`Which activity would you like to book today?`, "bot"); }, 2000)
   setTimeout(hotelActivity, 3000);
@@ -295,7 +295,7 @@ const golfCourseTime = (event) => {
     //3rd golf alternative
   } else if (golfCourse === "Eighteen holes") {
     showMessage(`${golfCourse}`, "user");
-    setTimeout(() => { showMessage(`Welcome dearest ${userName} to our ${golfCourse} golf course!  Please reserve your lodge:`, "bot"); }, 1000)
+    setTimeout(() => { showMessage(`Dearest ${userName}, be prepared for our ${golfCourse} golf course!  Please reserve your lodge:`, "bot"); }, 1000)
     nameForm.innerHTML += `
       <label for="eighteen-time-slot"></label>
         <select id= "eighteen-time-slot">
@@ -416,7 +416,7 @@ const summarisingMessage = (event, bookedActivity) => {
   showMessage(`${timeSlot}`, "user");
   setTimeout(() => { showMessage(`Thank you ${userName}, we have booked your activity "${bookedActivity}" for ${timeSlot}`, "bot"); }, 1000)
   setTimeout(() => { showMessage(`A confirmation message will be sent to you on your device through our downloaded hotel app.`, "bot"); }, 2000)
-  setTimeout(() => { showMessage(`Enjoy your stay at Le Shandrani!`, "bot"); }, 3000);
+  setTimeout(() => { showMessage(`Enjoy your stay at Le Banian!`, "bot"); }, 3000);
   setTimeout(restartingPage, 4000);
 }
 
