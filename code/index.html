@@ -8,28 +8,53 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet" />
-  <title>Chat Bot</title>
+  <title>Elbiines plantshop</title>
 </head>
 
-<body>
-  <h1>Welcome to Elbines-Plants</h1>
-  <main>
-    <section class="chat" id="chat"></section>
 
+
+</iframe>
+
+<body>
+  <h1>Welcome to Elbines Plants.</h1>
+  <header>
+    <button id="js-chat-toggle" class="chat fas fa-comment-dots fa-7x embed-responsive" data-toggle="tooltip"
+      data-placement="top" title="Chat with us!" style="">
+      Chat with us!
     </button>
-    </form>
+  </header>
+  <div class="chat-container" id="js-chat-container">
+    <iframe id="chat-iframe" class="embed-responsive-item" seamless </div>
+    </iframe>
+    <main>
+      <section class="chat" id="chat"></section>
+
+      <div class="input-wrapper" id="input-wrapper">
+
+        <form id="name-form">
+          <label for="name-input"></label>
+          <input id="name-input" type="text" placeholder="Type here...." autofocus="autofocus" />
+          <button class="send-btn" type="submit">
+            Send
+          </button>
+
+        </form>
+      </div>
+      <!--
     <div class="input-wrapper" id="input-wrapper">
-      <form id="name-form">
-        <!-- <label for="name-input">Type</label>-->
-        <input id="name-input" type="text" placeholder="Type here...." autofocus="autofocus" />
-        <button class=" send-btn" type="submit">
+      <form id="email-form">
+        <label for="email-input">Name</label>
+        <input id="email-input" type="text" />
+        <button class="send-btn" type="submit">
           Send
         </button>
       </form>
     </div>
-  </main>
+  -->
 
-  <script src="./script.js"></script>
+    </main>
+
+    <script src="./script.js"></script>
 </body>
 
 </html>

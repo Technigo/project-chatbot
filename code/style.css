@@ -182,3 +182,23 @@ button:hover {
   transition: all 0.2s ease;
   color: #25281b;
 }
+
+.chat-container {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  right: 30px;
+  width: 650px;
+  overflow: hidden;
+}
+
+.chat-container.open {
+  display: block;
+
+}
+
+.chat-container iframe {
+  width: 100%;
+  border: none;
+  overflow: hidden;
+}

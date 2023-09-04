@@ -5,7 +5,11 @@ const nameForm = document.getElementById('name-form');
 const nameInput = document.getElementById('name-input');
 const sendBtn = document.getElementById('send-btn');//
 const inputWrapper = document.getElementById('input-wrapper');
+//const chatToggle = document.getElementById('js-chat-toggle');
+//const chatContainer = document.getElementById('js-chat-container')
 
+const chatToggle = document.getElementById('js-chat-toggle');
+const chatContainer = document.getElementById('js-chat-container')
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -13,6 +17,7 @@ const inputWrapper = document.getElementById('input-wrapper');
 let userName = '';
 const choice = '';
 const yourPrice = '';
+
 // Declare your functions after this comment
 
 // This function will add a chat bubble in the correct place based on who the sender is. I think?
@@ -234,8 +239,14 @@ const lastStepBtn = () => {
 
 // Set up your eventlisteners here
 
+
 nameForm.addEventListener('submit', userNameInput)
 //emailForm.addEventListener('submit', enterEmailInput)
 
+chatToggle.addEventListener('click', function () {
+  chatContainer.classList.toggle('open')
+})
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 500)
+
+//font, emoji, colors, background photo
