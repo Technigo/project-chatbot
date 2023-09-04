@@ -1,12 +1,10 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+A chat-bot project where I've made a little beautybot. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Uhm all of it was a problem?? I started over probably 50 times due to it worked, then it didn't and it all got messy etc. Then I just stuck to using only "const" which made it work. 
 
 ## View it live
 
