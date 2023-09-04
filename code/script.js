@@ -24,7 +24,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user1.png" alt="User" />  
       </section>
     `
   }
@@ -33,7 +33,7 @@ const showMessage = (message, sender) => {
     console.log(message);
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bot1.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -219,14 +219,14 @@ const lastStepBtn = () => {
       if (delPickUpchoise === `pick-up`) {
         delPickUpchoise = "pick up"
         showMessage(`I want to ${delPickUpchoise} myself.`, 'user')
-        showMessage(`We will arrange that for you!`, `bot`)
-        showMessage(`Just one last thing:<br><br>I will need your e-mail and your full name so that I can send you the options I selected for you. <br><br> Hold on just a little longer!`, 'bot')
+        showMessage(`I will arrange that for you!`, `bot`)
+        showMessage(`Just one last thing:<br><br>I will need your e-mail and your full name so that I can send you the options I selected for you.`, 'bot')
       }
       else if (delPickUpchoise === `delivery`) {
         delPickUpchoise = "delivery"
         showMessage(`I would like a ${delPickUpchoise}.`, 'user')
-        showMessage(`We will arrange that for you!`, `bot`)
-        showMessage(`Just one last thing:<br><br>I will need your e-mail and your full name so that I can send you the options I selected for you.<br><br> Hold on just a little longer!`, 'bot')
+        showMessage(`I will arrange that for you!`, `bot`)
+        showMessage(`Just one last thing:<br><br>I will need your e-mail and your full name so that I can send you the options I selected for you.`, 'bot')
       }
     })
   })
