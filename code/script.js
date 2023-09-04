@@ -4,6 +4,7 @@ const wrapper = document.getElementById('input-wrapper')
 const nameSubmit = document.getElementById('name-form')
 const nameInput = document.getElementById('name-input')
 
+
 // If you need any global variables that you can use across different functions, declare them here:
 let userName = "";
 let hangoutReply = "";
@@ -21,6 +22,8 @@ const handleNameInput = (event) => {
   // Store the value in a variable so we can access it after we
   // clear it from the input
   userName = nameInput.value;
+
+
   showMessage(`${userName}`, 'user');
   nameInput.value = "";
 
@@ -28,44 +31,62 @@ const handleNameInput = (event) => {
   // passing the name into it to have access to the user's name if we want
   // to use it in the next question from the bot.
   setTimeout(hangoutOffer(userName), 1000);
-};
+}
+
+const ageQuestion = (userName) => {
+  showMessage('How old are you, ${userName}', 'bot');
+  youngButton.style.display = 'block';
+  oldButton.style.display = 'block';
+  wrapper.style.display = 'none';
+  youngButton.onclick = () => handleTooYoung();
+  oldButton.onclick = () => hangoutOffer();
+}
+
+const handleTooYoung = () => {
+  showMessage(`Young you are! Enjoy your youth!`, 'bot'), 2000);
+  yesButton.style.display = 'none';
+  noButton.style.display = 'none';
+  youngButton.style.display = 'none';
+  oldButton.style.display = 'none';
+  wrapper.style.display = 'none';
+  yesButton.onclick = () => handleTimeInput();
+  noButton.onclick = () => handleGoodbye();
+}
 
 const hangoutOffer = (userName) => {
-  showMessage(`What are you up to today, ${userName}? Want to hang out?`, 'bot');
-  wrapper.innerHTML = `
-  <div id ="hangoutChoices">
-  <button id="no" type="submit" value="no">No, thank you</button>
-  <button id="yes" type="submit" value="yes">I'd love to!</button>
-  </div>
-  `
-
-  document.getElementById('no').addEventListener('click', handleAgeInput);
-
-  document.getElementById('yes').addEventListener('click', handleTimeInput);
+  setTimeout(showMessage(`I'm also an old person, ${userName}! Want to hang out?`, 'bot'), 2000);
+  yesButton.style.display = 'block';
+  noButton.style.display = 'block';
+  wrapper.style.display = 'none';
+  yesButton.onclick = () => handleTimeInput();
+  noButton.onclick = () => handleGoodbye();
 
 }
-const handleTimeInput = (event) => {
+const handleTimeInput = () => {
   showMessage('I would love to!', 'user');
-  showMessage('Fantastic! What time can i pick you up? 5 or 6?', 'bot');
+  showMessage('Fantastic! I am available from 17, does that work ? ', 'bot');
+  yesButton.style.display = 'block';
+  noButton.style.display = 'block';
+  wrapper.style.display = 'none';
+  yesButton.onclick = () => handleSeeYouLater();
+  noButton.onclick = () => handleGoodbye();
 }
 
-const handleAgeInput = (event) => {
+const handleGoodbye = () => {
   showMessage('No', 'user');
-  event.preventDefault();
-  // Store the value in a variable so we can access it after we
-  // clear it from the input
-  userAge = nameInput.value;
+  showMessage('Maybe another time then! Hope you have a great day and you can tell me all about it later. Bye!', 'bot');
+  yesButton.style.display = 'none';
+  noButton.style.display = 'none';
+  wrapper.style.display = 'none';
+}
 
-  if (userAge < 40) {
-    showMessage(`How young! Enjoy your youth, take care!`, 'bot');
-  } else if (userAge >= 40 && userAge > 2) {
-    showMessage(`How nice to have lived so much life, take care!`, 'bot');
-  } else {
-    showMessage('Oy! Babies cannot type on computers. Try again.');
-  }
-
-  nameInput.value = "";
-};
+const handleSeeYouLater = () => {
+  showMessage('Yes', 'user');
+  showMessage('Great, see you then!', 'bot');
+  yesButton.style.display = 'none';
+  noButton.style.display = 'none';
+  wrapper.style.display = 'none';
+}
 
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -73,24 +94,24 @@ const showMessage = (message, sender) => {
   if (sender === 'user') {
     console.log("User is the sender.");
     chat.innerHTML += `
-      <section class="user-msg">
+    < section class="user-msg" >
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
         <img src="assets/user.png" alt="User" />  
-      </section>
-    `
+      </section >
+  `
     // the else if statement checks if the sender is a bot and if that's the case it inserts an html senction inside the chat with the posted message
   } else if (sender === 'bot') {
     console.log("Bot is the sender.");
     chat.innerHTML += `
-      <section class="bot-msg">
+  < section class="bot-msg" >
         <img src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
-      </section>
-    `
+      </section >
+  `
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight

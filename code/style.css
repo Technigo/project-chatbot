@@ -116,6 +116,27 @@ main {
   justify-content: center;
 }
 
+.buttonChoices {
+  display: flex;
+
+}
+
+.noButton,
+.yesButton,
+.youngButton,
+.oldButton {
+  display: none;
+  width: 100%;
+  background-color: #F49CAF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 40px;
+  margin-right: 4px;
+  font-size: 16px;
+  line-height: 26px;
+}
+
 .input-wrapper form {
   width: 100%;
   display: flex;
