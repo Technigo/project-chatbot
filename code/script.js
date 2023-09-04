@@ -4,8 +4,6 @@ const nameForm = document.getElementById('name-form')
 const nameInput = document.getElementById('name-input')
 const sendBtn = document.getElementById(`submit`)
 
-// Declare your functions after this comment
-
 const showMessage = (message, sender) => {  
   if (sender === 'user') {
     chat.innerHTML += `
@@ -43,11 +41,7 @@ const handleNameInput = event => {
 nameForm.addEventListener (`submit`, handleNameInput);
 
 function reply () {
-  showMessage (`Hi ${userName}, what can I help you with today?` , `bot`)
-}
+  showMessage (`Hi ${userName}, what can I help you with today?` , `bot`)}
 
-
-// Set up your eventlisteners here
-
-
+  
 setTimeout(greetUser, 1000)
