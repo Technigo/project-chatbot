@@ -30,10 +30,12 @@ const handleNameInput = (event) => {
   // After 1 second, show the next question by invoking the next function.
   // passing the name into it to have access to the user's name if we want
   // to use it in the next question from the bot.
-  setTimeout(animalQuestion(userName), 1000);
+  setTimeout(dayQuestion(userName), 1000);
 }
-const animalQuestion = (userName) => {
-  showMessage(`Are you a morning person or a night owl, ${userName}?`, 'bot');
+const dayQuestion = (userName) => {
+  setTimeout(() => {
+    showMessage(`Are you a morning person or a night owl, ${userName}?`, 'bot');
+  }, 1000);
   youngButton.style.display = 'none';
   oldButton.style.display = 'none';
   yesButton.style.display = 'none';
@@ -41,12 +43,27 @@ const animalQuestion = (userName) => {
   wrapper.style.display = 'none';
   morningButton.style.display = 'block';
   nightButton.style.display = 'block';
-  morningButton.onclick = () => ageQuestion();
-  nightButton.onclick = () => ageQuestion();
+  morningButton.onclick = () => ageQuestionMorning();
+  nightButton.onclick = () => ageQuestionNight();
 }
 
 
-const ageQuestion = (userName) => {
+const ageQuestionMorning = () => {
+  showMessage(`Morning`, 'user');
+  setTimeout(() => {
+    showMessage(`How old are you?`, 'bot');
+  }, 1000);
+  youngButton.style.display = 'block';
+  oldButton.style.display = 'block';
+  morningButton.style.display = 'none';
+  nightButton.style.display = 'none';
+  wrapper.style.display = 'none';
+  youngButton.onclick = () => handleTooYoung();
+  oldButton.onclick = () => hangoutOffer();
+}
+
+const ageQuestionNight = () => {
+  showMessage(`Night`, 'user');
   showMessage(`How old are you?`, 'bot');
   youngButton.style.display = 'block';
   oldButton.style.display = 'block';
@@ -58,6 +75,7 @@ const ageQuestion = (userName) => {
 }
 
 const handleTooYoung = () => {
+  showMessage('Young', 'user')
   showMessage(`Young you are! Enjoy your youth!`, 'bot');
   yesButton.style.display = 'none';
   noButton.style.display = 'none';
@@ -71,6 +89,7 @@ const handleTooYoung = () => {
 }
 
 const hangoutOffer = (userName) => {
+  showMessage('Old', 'user')
   setTimeout(showMessage(`I'm old too! Want to hang out?`, 'bot'), 2000);
   yesButton.style.display = 'block';
   noButton.style.display = 'block';
@@ -117,7 +136,7 @@ const showMessage = (message, sender) => {
   if (sender === 'user') {
     console.log("User is the sender.");
     chat.innerHTML += `
-    < section class="user-msg" >
+    <section class="user-msg" >
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
@@ -128,7 +147,7 @@ const showMessage = (message, sender) => {
   } else if (sender === 'bot') {
     console.log("Bot is the sender.");
     chat.innerHTML += `
-  < section class="bot-msg" >
+  <section class="bot-msg" >
         <img src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
@@ -151,4 +170,4 @@ nameSubmit.addEventListener('submit', handleNameInput);
 // But if we want to add a little delay to it, we can wrap it in a setTimeout:
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000)
+setTimeout(greetUser, 2000)
