@@ -6,9 +6,9 @@ This assignment is to create a chatbot using html, css and javascript. The chat 
 
 The hero function in this code is the showMessage function which posts the sender's message to either the bot chat or the user chat. This funciton was used in all of my handlefunctions where the bot asked the user new questions and they replied with either an input field or buttons. I used an event listener and the onclick() method for the buttons. 
 
-If i had more time i would be more creative in the content of the bot and give it more of a specific theme. 
+If i had more time i would be more creative in the content of the bot and give it more of a specific theme. I would also add a different input element like a drop down menu.
 
 
 ## View it live here:
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://64f5b5465cc9ab2afc45affc--exquisite-sunflower-e4ae9f.netlify.app/
