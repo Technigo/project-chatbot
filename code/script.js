@@ -46,7 +46,7 @@ const handleNameInput = event => {
   event.preventDefault();
   userName = nameInput.value;
   nameInput.value = "";
-  showUserMessage(`${userName}`, `user`);
+  showMessage(`${userName}`, `user`);
     setTimeout(reply, 300);
 }
 
@@ -60,7 +60,7 @@ form.addEventListener('submit', (event) => {
 })
 
 //First menu choises
-const iceCreamMenu = userName => {
+const iceCreamMenu = (userName) => {
   showMessage(`Nice to meet you! What would you like to order today?`, 'bot');
   inputWrapper.innerHTML = `
   <button class="send-btn" type="IceCream">Ice Cream</button>
@@ -69,56 +69,22 @@ const iceCreamMenu = userName => {
   `
 }
 
-//The submenu with different flavors
-const initialButtons = inputWrapper.querySelectorAll(".send-btn");
-  initialButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const iceCreamChoice = button.getAttribute("type");
-      handleButtonClick(iceCreamChoice);
-    });
-  });
+const iceCreamButtons = inputWrapper.querySelectorAll('.send-btn') // finds all elements with class "send-btn"
+iceCreamButtons.forEach (button => {
+  button.addEventListener('click', (event) => {
+    const selectedIceCream = event.target.id;
+    console.log(selectedIceCream);
+    showMessage(`${selectedIceCream}`, 'user');
+});
+})
 
-const handleButtonClick = (iceCreamChoice) => {
-  if (iceCreamMenu === "IceCream") {
-  showMessage(`Great choise! Which flavor would you like to have?`, 'bot');
-  inputWrapper.innerHTML = `
-  <button class="send-btn" type="Chocolate">Chocolate</button>
-  <button class="send-btn" type="Passion fruit">Passion fruit</button>
-  <button class="send-btn" type="Lemon">Lemon</button>
-  `
-  } 
-  
-  else if (iceCreamMenu === "SoftCream") {
+// Three different flavor choices for the user
+  const flavorOptions = (choice) => {
     showMessage(`Great choise! Which flavor would you like to have?`, 'bot');
   inputWrapper.innerHTML = `
+  <button class="send-btn" type="Chocolate">Chocolate</button>
   <button class="send-btn" type="Vanilla">Vanilla</button>
-  <button class="send-btn" type="Chocolate">Chocolate</button>
-  <button class="send-btn" type="Mix">Mix of vanilla and chocolate</button>
-  `
+  <button class="send-btn" type="Lemon">Lemon</button>`
   }
-  
-  else if (iceCreamMenu === "Milkshake") {
-    showMessage(`Great choise! Which flavor would you like to have?`, 'bot');
-  inputWrapper.innerHTML = `
-  <button class="send-btn" type="Strawberry">Strawberry</button>
-  <button class="send-btn" type="Peach">Peach</button>
-  <button class="send-btn" type="Mocha">Mocha</button>
-  `
-  }
-}
 
-//The users order confirmation
-//const orderConfirmation = () => {
- // showMessage(`Great! Your delicious ${iceCreamMenu} will be prepared for you! That will be 20 SEK. Are you sure you want to order this?`, 'bot');
- // inputWrapper.innerHTML = `
- // <button class="send-btn" type="Yes">Yes, please</button>
- // <button class="send-btn" type="No">No thank you</button>
- // `
-//}
-
-//The bots answer depending on the answer from the order confirmation
-
-//showMessage(`Thank you for your order! You will get a notice when your order is done!`, 'bot')
-//showMessage(`No worries! Welcome back another time!`, 'bot')
-
-setTimeout(greeting, 300)
+  setTimeout(greeting, 300)
