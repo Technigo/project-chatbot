@@ -6,7 +6,7 @@ I would like to extend more choices and make it more complicated to find out rea
 
 ## The problem
 
-There are two js files. Script.js is the first version and strech.js is the next.
+There are two js files. Index.js is the first version and script.js is the next.
 The reason I created the both is that the first verson was just chacing the next event handler, which made my js file very untidy and is hard to read.
 So I made the second version in which I careted an array of objects which stores all the infomation about the conversation.
 
