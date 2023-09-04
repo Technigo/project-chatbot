@@ -8,4 +8,4 @@ Uhm all of it was a problem?? I started over probably 50 times due to it worked,
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://cheerful-cranachan-1fbb9f.netlify.app/
