@@ -33,7 +33,7 @@ const handleNameInput = (event) => {
   setTimeout(animalQuestion(userName), 1000);
 }
 const animalQuestion = (userName) => {
-  showMessage(`Are you a morning person or a night person, ${userName}?`, 'bot');
+  showMessage(`Are you a morning person or a night owl, ${userName}?`, 'bot');
   youngButton.style.display = 'none';
   oldButton.style.display = 'none';
   yesButton.style.display = 'none';
