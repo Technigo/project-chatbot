@@ -30,20 +30,21 @@ const handleNameInput = (event) => {
   // After 1 second, show the next question by invoking the next function.
   // passing the name into it to have access to the user's name if we want
   // to use it in the next question from the bot.
-  setTimeout(hangoutOffer(userName), 1000);
+  setTimeout(ageQuestion(userName), 1000);
 }
 
 const ageQuestion = (userName) => {
-  showMessage('How old are you, ${userName}', 'bot');
+  showMessage(`How old are you, ${userName}?`, 'bot');
   youngButton.style.display = 'block';
   oldButton.style.display = 'block';
+
   wrapper.style.display = 'none';
   youngButton.onclick = () => handleTooYoung();
   oldButton.onclick = () => hangoutOffer();
 }
 
 const handleTooYoung = () => {
-  showMessage(`Young you are! Enjoy your youth!`, 'bot'), 2000);
+  showMessage(`Young you are! Enjoy your youth!`, 'bot');
   yesButton.style.display = 'none';
   noButton.style.display = 'none';
   youngButton.style.display = 'none';
@@ -54,9 +55,11 @@ const handleTooYoung = () => {
 }
 
 const hangoutOffer = (userName) => {
-  setTimeout(showMessage(`I'm also an old person, ${userName}! Want to hang out?`, 'bot'), 2000);
+  setTimeout(showMessage(`I'm old too! Want to hang out?`, 'bot'), 2000);
   yesButton.style.display = 'block';
   noButton.style.display = 'block';
+  youngButton.style.display = 'none';
+  oldButton.style.display = 'none';
   wrapper.style.display = 'none';
   yesButton.onclick = () => handleTimeInput();
   noButton.onclick = () => handleGoodbye();
