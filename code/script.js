@@ -30,14 +30,28 @@ const handleNameInput = (event) => {
   // After 1 second, show the next question by invoking the next function.
   // passing the name into it to have access to the user's name if we want
   // to use it in the next question from the bot.
-  setTimeout(ageQuestion(userName), 1000);
+  setTimeout(animalQuestion(userName), 1000);
+}
+const animalQuestion = (userName) => {
+  showMessage(`Are you a morning person or a night person, ${userName}?`, 'bot');
+  youngButton.style.display = 'none';
+  oldButton.style.display = 'none';
+  yesButton.style.display = 'none';
+  noButton.style.display = 'none';
+  wrapper.style.display = 'none';
+  morningButton.style.display = 'block';
+  nightButton.style.display = 'block';
+  morningButton.onclick = () => ageQuestion();
+  nightButton.onclick = () => ageQuestion();
 }
 
+
 const ageQuestion = (userName) => {
-  showMessage(`How old are you, ${userName}?`, 'bot');
+  showMessage(`How old are you?`, 'bot');
   youngButton.style.display = 'block';
   oldButton.style.display = 'block';
-
+  morningButton.style.display = 'none';
+  nightButton.style.display = 'none';
   wrapper.style.display = 'none';
   youngButton.onclick = () => handleTooYoung();
   oldButton.onclick = () => hangoutOffer();
@@ -49,6 +63,8 @@ const handleTooYoung = () => {
   noButton.style.display = 'none';
   youngButton.style.display = 'none';
   oldButton.style.display = 'none';
+  morningButton.style.display = 'none';
+  nightButton.style.display = 'none';
   wrapper.style.display = 'none';
   yesButton.onclick = () => handleTimeInput();
   noButton.onclick = () => handleGoodbye();
@@ -60,6 +76,8 @@ const hangoutOffer = (userName) => {
   noButton.style.display = 'block';
   youngButton.style.display = 'none';
   oldButton.style.display = 'none';
+  morningButton.style.display = 'none';
+  nightButton.style.display = 'none';
   wrapper.style.display = 'none';
   yesButton.onclick = () => handleTimeInput();
   noButton.onclick = () => handleGoodbye();
@@ -70,6 +88,8 @@ const handleTimeInput = () => {
   showMessage('Fantastic! I am available from 17, does that work ? ', 'bot');
   yesButton.style.display = 'block';
   noButton.style.display = 'block';
+  morningButton.style.display = 'none';
+  nightButton.style.display = 'none';
   wrapper.style.display = 'none';
   yesButton.onclick = () => handleSeeYouLater();
   noButton.onclick = () => handleGoodbye();
