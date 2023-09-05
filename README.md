@@ -11,6 +11,6 @@ If i had more time i would be more creative in the content of the bot and give i
 
 ## View it live here:
 
-Troubleshooting 
+
 
 https://64f5b5465cc9ab2afc45affc--exquisite-sunflower-e4ae9f.netlify.app/
