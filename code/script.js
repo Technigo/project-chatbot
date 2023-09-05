@@ -58,7 +58,7 @@ startBtn.onclick = (greetUser, event) => {
     showMessage(` First of all, what's your name?`, 'bot');
   }, 4000);
 
-}
+};
 
 // Function storing the name of the user.
 const handleNameInput = (event) => {
@@ -72,154 +72,144 @@ const handleNameInput = (event) => {
   setTimeout(() => {
     showMessage(`${name}, we want to know what you think about our products!`, 'bot');
     nameInput.value = "";
-
-    // showMessage being called, asking for age, displaying ageBtn as a block elements.
-    setTimeout(() => {
-      showMessage(`But first, how old are you ${name} ?`, 'bot');
-      ageBtn1.style.display = 'block';
-      ageBtn2.style.display = 'block';
-      inputWrapper.style.display = 'none';
-
-      // hides buttons after clicking it
-      ageBtn1.onclick = (event) => {
-        handleageBtn(event, name, 'under 18'); //parameter string under 18 passed as an argument to ageGroup
-        ageBtn1.style.display = 'none';
-        ageBtn2.style.display = 'none';
-        inputWrapper.style.display = 'block';
-      };
-      ageBtn2.onclick = (event) => {
-        handleageBtn(event, name, 'over 18');//paramter string over 18 passed as an argument to ageGroup
-        inputWrapper.style.display = 'block';
-
-      };
-
-      // Functions answer. Let ageGroup parameter take on over/under 18 value. Calling showMessage function
-      const handleageBtn = (event, name, ageGroup) => {
-        event.preventDefault();
-        showMessage(`I'm ${ageGroup}!`, 'user');
-
-        setTimeout(() => {
-          showMessage(`So ${name}, you are ${ageGroup}, is this correct?`, 'bot');
-          yesBtn.style.display = 'block';
-          noBtn.style.display = 'block';
-          inputWrapper.style.display = 'none';
-          yesBtn.onclick = () => handleResponse('yes', name);
-          noBtn.onclick = () => handleResponse('no', name);
-        }, 1000);
-      };
-
-      // function confirm age, if not confimed display unvalid option
-      const handleResponse = (response, name) => {
-        showMessage(`${response}!`, 'user');
-        if (response === `yes`) {
-          showMessage(`Amazing!`, 'bot');
-        } else {
-          showMessage(`You need to think about your age. This page will be automatically reloaded.`, 'bot');
-          yesBtn.style.display = 'none';
-          noBtn.style.display = 'none';
-
-          //reload page
-          setTimeout(() => {
-            location.reload();
-          }, 2995);
-        }
-
-        // dropdown menu
-        setTimeout(() => {
-          showMessage(`So, ${name} which medicine did you order from us? `, 'bot');
-          dropDown.style.display = 'block';
-          inputWrapper.style.display = 'none';
-          yesBtn.style.display = 'none';
-          noBtn.style.display = 'none';
-        }, 3300);
-      };
-
-      // Event listener dropDown menu
-      dropDown.addEventListener('change', (event) => {
-        const selectedOption = dropDown.options[dropDown.selectedIndex].text; //implement the index of dropdown, and provide the selectedOption with text content. adds the text from the selected option
-        showMessage(`${selectedOption}`, 'user');
-        //calling showMessage function, hiding btn
-        setTimeout(() => {
-          showMessage(`You ordered ${selectedOption}`, 'bot');
-          dropDown.style.display = 'block';
-          inputWrapper.style.display = 'none';
-          yesBtn.style.display = 'none';
-          noBtn.style.display = 'none';
-
-          //Rate purchase
-          setTimeout(() => {
-            showMessage(`How would you rate your purchase?`, 'bot');
-            dropDown.style.display = 'none';
-            inputWrapper.style.display = 'none';
-            notGoodBtn.style.display = 'block';
-            okayBtn.style.display = 'block';
-            goodBtn.style.display = 'block';
-
-            notGoodBtn.onclick = () => handleReview('Not good', name);
-            okayBtn.onclick = () => handleReview('Okay', name);
-            goodBtn.onclick = () => handleReview('Good', name);
-
-
-          }, 2000);
-
-        }, 2000);
-
-      });
-
-      //Rate purchase answer, calling review function when clicking the button 
-      const handleReview = (review, name) => {
-        showMessage(`${review}`, 'user');
-
-        setTimeout(() => {
-          if (review === 'Not good') {
-            showMessage(`${name}, this is not good!
-            We will evaluate the product.
-            Thank you for sharing your opinion with us.`, 'bot');
-            pop.play();
-            notGoodBtn.style.display = 'none';
-            okayBtn.style.display = 'none';
-            goodBtn.style.display = 'none';
-
-            //Reload the page after 5s
-            setTimeout(() => {
-              location.reload();
-            }, 5000);
-
-          } else if (review === 'Okay') {
-            showMessage(`${name}, okay is not good enouth!
-            We will evaluate the product.
-            Thank you for sharing your opinion with us.`, 'bot');
-            pop.play();
-            notGoodBtn.style.display = 'none';
-            okayBtn.style.display = 'none';
-            goodBtn.style.display = 'none';
-
-            //Reload the page after 5s
-            setTimeout(() => {
-              location.reload();
-            }, 5000);
-
-          } else if (review === 'Good') {
-            showMessage(`${name}, we are glad you are happy with your order!
-            Hope to see you again soon!`, 'bot');
-            notGoodBtn.style.display = 'none';
-            okayBtn.style.display = 'none';
-            goodBtn.style.display = 'none';
-
-            //Reload the page after 5s
-            setTimeout(() => {
-              location.reload();
-            }, 5000);
-
-          }
-        }, 1000);
-      };
-
-
-
-    }, 3000);
   }, 1000);
+  // showMessage being called, asking for age, displaying ageBtn as a block elements.
+  setTimeout(() => {
+    showMessage(`But first, how old are you ${name} ?`, 'bot');
+    ageBtn1.style.display = 'block';
+    ageBtn2.style.display = 'block';
+    inputWrapper.style.display = 'none';
+  }, 3000);
 
+  // hides buttons after clicking it
+  ageBtn1.onclick = (event) => {
+    handleageBtn(event, name, 'under 18'); //parameter string under 18 passed as an argument to ageGroup
+    ageBtn1.style.display = 'none';
+    ageBtn2.style.display = 'none';
+    inputWrapper.style.display = 'block';
+  };
+  ageBtn2.onclick = (event) => {
+    handleageBtn(event, name, 'over 18');//paramter string over 18 passed as an argument to ageGroup
+    inputWrapper.style.display = 'block';
+
+  };
+
+  // Functions answer. Let ageGroup parameter take on over/under 18 value. Calling showMessage function
+  const handleageBtn = (event, name, ageGroup) => {
+    event.preventDefault();
+    showMessage(`I'm ${ageGroup}!`, 'user');
+
+    setTimeout(() => {
+      showMessage(`So ${name}, you are ${ageGroup}, is this correct?`, 'bot');
+      yesBtn.style.display = 'block';
+      noBtn.style.display = 'block';
+      inputWrapper.style.display = 'none';
+      yesBtn.onclick = () => handleResponse('yes', name);
+      noBtn.onclick = () => handleResponse('no', name);
+    }, 1000);
+  };
+
+  // function confirm age, if not confimed display unvalid option
+  const handleResponse = (response, name) => {
+    showMessage(`${response}!`, 'user');
+    if (response === `yes`) {
+      showMessage(`Amazing!`, 'bot');
+    } else {
+      showMessage(`You need to think about your age. This page will be automatically reloaded.`, 'bot');
+      yesBtn.style.display = 'none';
+      noBtn.style.display = 'none';
+
+      //reload page
+      setTimeout(() => {
+        location.reload();
+      }, 2995);
+    }
+
+    // dropdown menu
+    setTimeout(() => {
+      showMessage(`So, ${name} which medicine did you order from us? `, 'bot');
+      dropDown.style.display = 'block';
+      inputWrapper.style.display = 'none';
+      yesBtn.style.display = 'none';
+      noBtn.style.display = 'none';
+    }, 3300);
+  };
+
+  // Event listener dropDown menu
+  dropDown.addEventListener('change', (event) => {
+    const selectedOption = dropDown.options[dropDown.selectedIndex].text; //implement the index of dropdown, and provide the selectedOption with text content. adds the text from the selected option
+    showMessage(`${selectedOption}`, 'user');
+    //calling showMessage function, hiding btn
+    setTimeout(() => {
+      showMessage(`You ordered ${selectedOption}`, 'bot');
+      dropDown.style.display = 'block';
+      inputWrapper.style.display = 'none';
+      yesBtn.style.display = 'none';
+      noBtn.style.display = 'none';
+
+      //Rate purchase
+      setTimeout(() => {
+        showMessage(`How would you rate your purchase?`, 'bot');
+        dropDown.style.display = 'none';
+        inputWrapper.style.display = 'none';
+        notGoodBtn.style.display = 'block';
+        okayBtn.style.display = 'block';
+        goodBtn.style.display = 'block';
+
+        notGoodBtn.onclick = () => handleReview('Not good', name);
+        okayBtn.onclick = () => handleReview('Okay', name);
+        goodBtn.onclick = () => handleReview('Good', name);
+      }, 2000);
+    }, 2000);
+  });
+
+  //Rate purchase answer, calling review function when clicking the button 
+  const handleReview = (review, name) => {
+    showMessage(`${review}`, 'user');
+
+    setTimeout(() => {
+      if (review === 'Not good') {
+        showMessage(`${name}, this is not good!
+            We will evaluate the product.
+            Thank you for sharing your opinion with us.`, 'bot');
+        pop.play();
+        notGoodBtn.style.display = 'none';
+        okayBtn.style.display = 'none';
+        goodBtn.style.display = 'none';
+
+        //Reload the page after 5s
+        setTimeout(() => {
+          location.reload();
+        }, 5000);
+
+      } else if (review === 'Okay') {
+        showMessage(`${name}, okay is not good enouth!
+            We will evaluate the product.
+            Thank you for sharing your opinion with us.`, 'bot');
+        pop.play();
+        notGoodBtn.style.display = 'none';
+        okayBtn.style.display = 'none';
+        goodBtn.style.display = 'none';
+
+        //Reload the page after 5s
+        setTimeout(() => {
+          location.reload();
+        }, 5000);
+
+      } else if (review === 'Good') {
+        showMessage(`${name}, we are glad you are happy with your order!
+            Hope to see you again soon!`, 'bot');
+        notGoodBtn.style.display = 'none';
+        okayBtn.style.display = 'none';
+        goodBtn.style.display = 'none';
+
+        //Reload the page after 5s
+        setTimeout(() => {
+          location.reload();
+        }, 5000);
+      }
+    }, 1000);
+  };
 };
 // Event listener, when user press enter.
 nameInput.addEventListener('keydown', (event) => {
