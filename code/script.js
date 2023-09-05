@@ -51,7 +51,7 @@ const greetUser = () => {
 setTimeout(greetUser, 1000);
 
 const handleNameInput = (event) => {
-  console.log("event");
+  console.log(event);
   event.preventDefault();
   userName = nameInput.value;
   nameInput.value = "";
@@ -96,13 +96,13 @@ function foodChoice(choice) {
 
 
   if (choice === 'pizza') {
-    foodOptions = ['Napolitana', 'Margeritha', 'Bianca'];
+    foodOptions = ['Select food here 👇', 'Napolitana', 'Margeritha', 'Bianca'];
     foodMessage = 'Which pizza would you like to order? Choose from the menu.';
   } else if (choice === 'pasta') {
-    foodOptions = ['Cacio e Pepe', 'Vongole', 'Carbonara'];
+    foodOptions = ['Select food here 👇', 'Cacio e Pepe', 'Vongole', 'Carbonara'];
     foodMessage = 'Which pasta would you like to order? Choose from the menu.';
   } else if (choice === 'salad') {
-    foodOptions = ['Pomodoro e basilico', 'Buratta', 'Melon e Peperoncino'];
+    foodOptions = ['Select food here 👇', 'Pomodoro e basilico', 'Buratta', 'Melon e Peperoncino'];
     foodMessage = 'Which salad would you like to order? Choose from the menu.';
   }
 
