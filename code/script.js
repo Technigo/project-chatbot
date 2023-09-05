@@ -98,6 +98,9 @@ const handleNameInput = (event) => {
   const handleageBtn = (event, name, ageGroup) => {
     event.preventDefault();
     showMessage(`I'm ${ageGroup}!`, 'user');
+    ageBtn1.style.display = 'none';
+    ageBtn2.style.display = 'none';
+    inputWrapper.style.display = 'none';
 
     setTimeout(() => {
       showMessage(`So ${name}, you are ${ageGroup}, is this correct?`, 'bot');
