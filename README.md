@@ -62,8 +62,9 @@ function used for better user experience as all messages appeared in blocks not 
 
 
 * If I had more time,
-would have liked to combine different booked activities for the day and invoking this function (time restriction and lack of knowledge for restricting conflicting timeslots as they are here passed as strings)
-take the time to think the code through locate any patterns I could have created a closure for, or simplifying the personalised messages in doing so and refactor.
+- would have liked to combine different booked activities for the day and invoking this function (time restriction and lack of knowledge for restricting conflicting timeslots as they are here passed as strings),
+- use the DOM to change background theme and bot icon mimicking a change of service accordlingly to the choices (spa, golf, boathouse and diner) made,
+- take the time to think the code through locate any patterns I could have created a closure for, or simplifying the personalised messages in doing so and refactor.
 
 
 ## View it live
