@@ -241,6 +241,10 @@ nameInput.addEventListener('keydown', (event) => {
     handleNameInput(event);
   }
 });
-
+// Event listener for when the user clicks the send button
+document.getElementById('send-button').addEventListener('click', (event) => {
+  event.preventDefault(); // Prevent form submission
+  handleNameInput(event);
+});
 
 
