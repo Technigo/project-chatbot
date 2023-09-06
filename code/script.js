@@ -65,7 +65,14 @@ const handleNameInput = (event) => {
   event.preventDefault();
 
   const name = nameInput.value;
+
+  if (name.trim() === '') {
+    alert('Please enter your name!');
+    return; // Don't proceed further if the name is empty
+  }
+
   showMessage(`${name}`, 'user');
+
 
 
   // displaying the name of the user
