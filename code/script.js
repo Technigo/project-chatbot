@@ -68,13 +68,13 @@ const handleNameInput = (event) => {
 
   //if answer is nothing
   if (name === '') {
-    alert('Please enter your name!');
+    showMessage('Please enter your name!', 'bot');
     return; // Don't proceed further if the name is empty
 
   }//if answer is non alphabetical
   const alphabeticPattern = /^[A-Za-z]+$/;
   if (!alphabeticPattern.test(name)) {
-    alert('Please enter a valid name with alphabetic characters only!');
+    showMessage(`Please enter a name with alphabetic characters only!`, 'bot');
     return; // Don't proceed further if the name contains numbers or special characters
   }
 
