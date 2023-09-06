@@ -66,9 +66,16 @@ const handleNameInput = (event) => {
 
   const name = nameInput.value;
 
+  //if answer is nothing
   if (name === '') {
     alert('Please enter your name!');
     return; // Don't proceed further if the name is empty
+
+  }//if answer is non alphabetical
+  const alphabeticPattern = /^[A-Za-z]+$/;
+  if (!alphabeticPattern.test(name)) {
+    alert('Please enter a valid name with alphabetic characters only!');
+    return; // Don't proceed further if the name contains numbers or special characters
   }
 
   showMessage(`${name}`, 'user');
