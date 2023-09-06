@@ -88,7 +88,7 @@ const showTypeOfFood = (choice) => {
     inputWrapper.innerHTML = `
     <label for="food-select">Select your pizza:</label>
     <select id="food-select" class="send-select">
-    <option disabled selected value> Select a pizza  🍕 🍝🥗 </option>
+    <option disabled selected value> Select a pizza  🍕  </option>
       <option value="Margherita">Margherita</option>
       <option value="Pepperoni">Pepperoni</option>
       <option value="Hawaiian">Hawaiian</option>
@@ -119,13 +119,13 @@ const showTypeOfFood = (choice) => {
     </select>
     `
   } else {
-    showMessage(`You need chose again`, 'bot');
+    showMessage(`You need to choose again.`, 'bot');
   }
   const foodSelect = inputWrapper.querySelector('#food-select');
   foodSelect.addEventListener('change', (event) => {
     const selectedTypeOfFood = event.target.value;
     showMessage(` ${selectedTypeOfFood}.`, 'user');
-    showMessage(`You choose : ${selectedTypeOfFood}.`, 'bot');
+    showMessage(`You chose : ${selectedTypeOfFood}.`, 'bot');
     setTimeout(() => {
       selectAge(selectedTypeOfFood); 
     }, 1000);
@@ -137,8 +137,8 @@ const showTypeOfFood = (choice) => {
 const selectAge = () => {
   showMessage(`Will that be for an adult or a child?`, 'bot');
   inputWrapper.innerHTML = `
-  <button class="send-btn" id="Adult" type="submit">Adult</button>
-  <button class="send-btn" id="Child" type="submit">Child</button>
+  <button class="send-btn" id="adult" type="submit">Adult</button>
+  <button class="send-btn" id="child" type="submit">Child</button>
 `
 const ageButton = inputWrapper.querySelectorAll('.send-btn') // finds all elements with class "send-btn"
 ageButton.forEach (button => {
@@ -146,9 +146,9 @@ ageButton.forEach (button => {
     const selectedAge = event.target.id;
     showMessage(` ${selectedAge}`, 'user');
     if (selectedAge === "Adult"){
-      showMessage(`You selected ${selectedAge}.  It will be 130 SEK`, 'bot');
+      showMessage(`You have selected that this order will be for a ${selectedAge}. That will be  130 SEK`, 'bot');
     } else {
-      showMessage(`You selected ${selectedAge}.  It will be 100 SEK`, 'bot');
+      showMessage(`You have selected that this order will be for a ${selectedAge}. That will be 100 SEK`, 'bot');
     }
     setTimeout(() => {
       confirmOrder(selectedAge);
@@ -162,15 +162,15 @@ ageButton.forEach (button => {
 const confirmOrder = () => {
   showMessage(`Would you like to confirm your order? (yes/no)`, 'bot')
   inputWrapper.innerHTML = `
-  <button class="send-btn" id="No" type="submit">No</button>
-  <button class="send-btn" id="Yes" type="submit">Yes</button>
+  <button class="send-btn" id="no" type="submit">No</button>
+  <button class="send-btn" id="yes" type="submit">Yes</button>
 `
 const confirmButton = inputWrapper.querySelectorAll('.send-btn') // finds all elements with class "send-btn"
 confirmButton.forEach (button => {
   button.addEventListener('click', (event) => {
   const selectedConfirm = event.target.id;
   showMessage(` ${selectedConfirm}`, 'user');
-  if (selectedConfirm === "Yes"){
+  if (selectedConfirm === "yes"){
     showMessage(`Thank you for your order !`, 'bot');
     inputWrapper.innerHTML = ''; 
   } else {
