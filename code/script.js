@@ -57,12 +57,29 @@ inputForm.addEventListener("submit", (event) => {
   event.preventDefault();
   
   // Get user input
-  const userName = nameInput.value;
+  const userName = nameInput.value.trim();
 
   // Display the user's name
   userResponse(`Hello! I am ${userName}.`);
 
-  // Clear input field after a message has been sent
+  // Clear the input after the user has sent the message
+  nameInput.value = "";
+
+  // Determine if the user put in a valid answer or not and create respective replies for bot
+  if (userName === "") {
+    setTimeout(botResponse("Sorry, looks like we missed your name there. Please try again."), 1000);
+    userName = nameInput.value;
+  } else if (userName.toLowerCase().includes("hello")) {
+    setTimeout(botResponse("Hello again! Could I have your name please?"), 1000);
+    userName = nameInput.value;
+  } else if (userName.toLowerCase().includes("how are you")) {
+    setTimeout(botResponse("Thanks for asking. I'm good. But could I have your name please?"), 1000);
+    userName = nameInput.value;
+  } else {
+    setTimeout(botResponse(`Nice to meet you ${userName}!`), 1000);
+  }
+
+  // Clear the input again after the user has sent the message
   nameInput.value = "";
   
   // After one second, show the next question about flavours by invoking the next function, passing the user's name into it so it appears in the next question from the bot
