@@ -5,7 +5,7 @@ const chat = document.getElementById('chat')
 const nameInput = document.getElementById('name-input')
 const nameForm = document.getElementById('name-form');
 const inputWrapper = document.getElementById('input-wrapper')
-const sendBtn = document.getElementById('send-btn')
+
 
 //------------------------------ MESSAGE ON CHAT ------------------------------//
 
