@@ -43,32 +43,21 @@ const greetUser = () => {
 
 //------------------------------ NAME AND CHOICE FOOD ------------------------------//
 
-// const handleNameInput = (event) => {
-//   event.preventDefault(); //prevents calling other functions that listen for submit
-//   const name = nameInput.value;
-//   if (name ===)
-//   showMessage(`Hej, my name is  ${ name }`, "user");
-//   nameInput.value = ""; // clear the text field
-//   setTimeout(() => {
-//     showFoodOptions(name);
-//   }, 1000);
-// };
 const handleNameInput = (event) => {
-  event.preventDefault(); // Zapobiega wywoływaniu innych funkcji nasłuchujących na zdarzenie submit
+  event.preventDefault(); // Prevents triggering other functions listening for the submit event
   const name = nameInput.value;
   
-  if (name !== "" && isNaN(name)) { // Sprawdzamy, czy pole name nie jest puste i nie zawiera samych cyfr
-    showMessage(`Hej, my name is  ${name}`, "user");
-    nameInput.value = ""; // Wyczyszczenie pola tekstowego
+  if (name !== "" && isNaN(name)) { // Check if the name field is not empty and does not contain only numbers
+    showMessage(`Hey, my name is ${name}`, "user");
+    nameInput.value = ""; // Clear the text field
     setTimeout(() => {
       showFoodOptions(name);
     }, 1000);
   } else {
-    showMessage(` "${name}" -this is not a name. Enter the correct name`, "bot");
-    // Jeśli pole name jest puste lub zawiera samą cyfrę, możesz wyświetlić odpowiedni komunikat lub podjąć inne działania.
-    console.log("Pole name jest puste lub zawiera cyfry. Proszę wprowadzić imię.");
+    showMessage(`"${name}" - this is not a name. Please enter a valid name.`, "bot"); // If the name field is empty or contains only numbers, 
   }
 };
+
 
 nameForm.addEventListener('submit', handleNameInput); // we sign up for the submit event on the form- the handleNameInput function will be called
 
