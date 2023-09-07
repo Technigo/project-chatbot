@@ -50,10 +50,17 @@ const greetUser = () => {
 
 const handleNameInput = event => {
   event.preventDefault();
-  userName = nameInput.value; 
+  userName = nameInput.value.trim(); // Remove leading/trailing spaces
   nameInput.value = "";
-  showMessage(`I'm ${userName}! Nice to meet you`, "user");
-  setTimeout(reply, 1000);
+
+  if (/^\d+$/.test(userName)) {
+    showMessage("That's not a valid answer. Please enter a name, not just numbers.", "bot");
+  } else if (userName === "") {
+    showMessage("That's not a valid answer. Please enter your name.", "bot");
+  } else {
+    showMessage(`I'm ${userName}! Nice to meet you`, "user");
+    setTimeout(reply, 1000);
+  }
 };
 
 nameForm.addEventListener("submit", handleNameInput);
@@ -142,7 +149,7 @@ function handleSpecificAge(choice) {
     confirmOrder('Pizza', 'Kid');
   } 
 }
-//This one, gaaa, if I change Food to Choice of food the code stops working. Why? Makes no sense? It's just a showmessage
+//This one, gaaa, if I change Food to Choice of food the code stops working. Why? Makes no sense? It's just a showmessage+
 function confirmOrder(foodChoice, sizeChoice) {
   showMessage(`Here's your order summary, ${userName}:<br>Food: ${foodChoice}<br>Size: ${sizeChoice}`, 'bot');
 
