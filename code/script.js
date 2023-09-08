@@ -49,8 +49,10 @@ setTimeout(greetUser, 800)
 //When name is input by user.
 const handleNameInput = event => {
   event.preventDefault();
-
-  if (run) {
+  const name = nameInput.value
+  if (name === '') {
+    showMessage(`I need to know your name to play with you! Please try again!`, 'bot')
+  } else {
     userName = nameInput.value;
     nameInput.value = '';
     showMessage(`${userName}`, "user");
