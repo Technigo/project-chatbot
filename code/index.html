@@ -19,8 +19,9 @@
     </section>
 
     <form id="name-form">
-      <!-- <label for="name-input">Name</label> -->
-      <input id="name-input" type="text" />
+      <label for="name-input" id="name">Name:</label>
+      <input type="text" id="name-input" placeholder="Tom (min. 3 characters)" pattern="(?=.*[a-z])(?=.*[A-Z]){3,}"
+        required />
       <button class="send-btn" id="send-btn" type="submit">Send</button>
     </form>
 

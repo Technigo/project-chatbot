@@ -1,5 +1,6 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat')
+const nameLabel = document.getElementById('name')
 const nameInput = document.getElementById('name-input')
 const sendButton = document.getElementById('send-btn')
 const activityBtn = document.getElementById('input-container')
@@ -25,7 +26,7 @@ const showMessage = (message, sender) => {
           <div class="bubble user-bubble">
             <p>${message}</p>
           </div>
-          <img src="./assets/user.png" alt="user bot">
+          <img src="./assets/coconut.jpg" alt="user bot">
         </section>
     `
 
@@ -33,12 +34,14 @@ const showMessage = (message, sender) => {
   } else if (sender === 'bot') {
     chat.innerHTML += `
         <section class="bot-msg" id="bot-msg">
-          <img src="./assets/bot.png" alt="chat bot">
+          <img src="./assets/frangipani.jpg" alt="chat bot">
           <div class="bubble bot-bubble">
             <p>${message}</p>
           </div>
         </section>
         `
+    const popUp = new Audio('./assets/popup.wav');
+    popUp.play();
   }
   chat.scrollTop = chat.scrollHeight
 }
@@ -49,7 +52,6 @@ const greetUser = () => {
   // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
   showMessage("Greetings dearest customer.  To proceed, please enter your name.", 'bot')
 }
-// Just to check it out, change 'bot' to 'user' here
 
 //Iteration 2
 //username pops up on chat on user's side
@@ -57,9 +59,16 @@ const showName = (event) => {
   event.preventDefault();
   // when you submit a form, the default action is to send the form data to the server and reload the page.  By calling event.preventDefault() within an event handler, you can stop the browser from performing its default action and allow you to handle the event in a custom manner.
   userName = nameInput.value;
-  showMessage(`${userName}`, "user");
+  //Coercing the customer to enter valid name of min 3 characters containing at least 1 capital and 1 small letter:
+  const regex = /(?=.*[a-z])(?=.*[A-Z]){3,}/g;
+  if (userName.match(regex)) {
+    showMessage(`${userName}`, "user");
+    setTimeout(proposeActivity, 1000);
+  }
+  else {
+    showMessage(`Invalid name.  Please try again using a min. of 3 letters (both capital and small).`, "bot")
+  }
   nameInput.value = ""; //clear nameInput's value 
-  setTimeout(proposeActivity, 1000);
 }
 
 
@@ -77,6 +86,7 @@ const proposeActivity = () => {
 //buttons showing for choosing activity
 const hotelActivity = () => {
   // clear input form
+  nameForm.removeChild(nameLabel)
   nameForm.removeChild(nameInput)
   nameForm.removeChild(sendButton)
   // buttons appear for activity choice

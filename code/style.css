@@ -121,7 +121,7 @@ label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  color: #36626a;
   margin-right: 20px;
 }
 
@@ -140,7 +140,7 @@ input {
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 26px;
   flex: 1;
 }
