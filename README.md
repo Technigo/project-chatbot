@@ -69,4 +69,6 @@ function used for better user experience as all messages appeared in blocks not 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Link to the deployed project:
+
+https://hotel-lebanian-chatbot.netlify.app/
