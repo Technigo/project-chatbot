@@ -218,7 +218,6 @@ const validateMuseum = (artist) => {
 
 function createInputFields(inputType, specialmessage) {
   // special message is only from the 5th question that I could not reasign so that I created a function to a proper message.
-  console.log("The input creator");
   if (specialmessage) {
     showBotInput(specialmessage);
   } else {
@@ -331,10 +330,13 @@ sendBtn.addEventListener("click", (event) => {
   event.preventDefault();
   clickSound(event);
   userName = input.value;
-  showUserInput(userName);
-  form.innerHTML = "";
-  createInputFields(questions[currentIndex].option);
-  return;
+  if (!userName) {
+    alert("This is not a valid answer. Please type your name.");
+  } else {
+    showUserInput(userName);
+    form.innerHTML = "";
+    createInputFields(questions[currentIndex].option);
+  }
 });
 
 // //////////////////////////////////////////////////////////////////////////////////////////

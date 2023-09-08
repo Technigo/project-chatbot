@@ -254,3 +254,197 @@ main {
   border: 1px solid #fff;
   margin-right: 20px;
 }
+
+@media (max-width: 1200px) {
+  .main {
+    margin: 12px auto 50px;
+    width: 90%;
+    max-width: 650px;
+    height: 600px;
+    padding: 20px 24px 8px;
+  }
+  h1 {
+    font-size: var(--font-lg);
+  }
+
+  .input-wrapper {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .ask-conatiner {
+    padding: 3px 6px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    margin: 12px auto 50px;
+    width: 90%;
+    max-width: 500px;
+    height: 550px;
+    padding: 10px 14px 8px;
+  }
+  p {
+    font-size: 16px;
+  }
+
+  .bot-msg {
+    margin: 12px 4px 0 0;
+  }
+
+  .user-msg {
+    margin: 10px 0 0 6px;
+  }
+
+  .bubble {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    padding: 12px 18px;
+
+    max-width: 50%;
+  }
+
+  .ask-container button {
+    padding: 6px 16px;
+    margin: 0 3px;
+  }
+
+  label {
+    font-size: 18px;
+    font-weight: 400;
+    margin-right: 16px;
+  }
+
+  input {
+    padding: 9px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  button {
+    padding: 9px 30px;
+    margin-right: 4px;
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+
+  .input-wrapper {
+    width: 90%;
+  }
+
+  select {
+    height: 40px;
+    font-size: 18px;
+    padding-left: 5px;
+  }
+}
+
+@media (max-width: 550px) {
+  body {
+    padding: 0;
+  }
+
+  h1 {
+    font-size: 24px;
+    padding: 18px 6px;
+  }
+  button {
+    padding: 6px 15px;
+    margin-right: 4px;
+    font-size: 14px;
+  }
+  .description {
+    font-size: var(--font-sm);
+    line-height: 20px;
+    font-weight: 400;
+    backdrop-filter: blur(10px);
+    width: 300px;
+    padding: 2px;
+    margin: 0 auto;
+  }
+
+  input {
+    padding: 5px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .music-container h3 {
+    margin: 10px auto;
+    font-weight: 400;
+    backdrop-filter: blur(10px);
+    width: fit-content;
+    padding: 2px;
+    font-size: 14px;
+  }
+  .music-container button {
+    padding: 3px 6px;
+  }
+
+  .start-img {
+    width: 300px;
+  }
+
+  .start-page span {
+    margin: 20px auto 50px;
+    font-size: 16px;
+  }
+
+  .main {
+    margin: 8px 0 20px;
+    max-width: none;
+    width: 100vw;
+    height: 550px;
+    padding: 10px 14px 8px;
+  }
+
+  main {
+    border-radius: 0;
+  }
+
+  .input-wrapper {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .input-wrapper form {
+    width: 90%;
+  }
+  label {
+    font-size: 14px;
+  }
+  .ask-container button {
+    padding: 3px 7px;
+  }
+
+  .ask-conatiner {
+    padding: 3px 6px;
+    width: 100%;
+  }
+
+  select {
+    font-size: 14px;
+    padding: 2px;
+    height: 30px;
+  }
+
+  .bubble {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    max-width: 65%;
+  }
+  .chat img {
+    width: 50px;
+    height: 50px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}
