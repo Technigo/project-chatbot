@@ -68,7 +68,7 @@ const handleNameInput = (event) => {
 
   //if answer is nothing
   if (name === '') {
-    showMessage('Please enter your name!', 'bot');
+    showMessage('Please enter your name in order to proceed!', 'bot');
     return; // Don't proceed further if the name is empty
 
   }//if answer is non alphabetical
@@ -189,7 +189,6 @@ const handleNameInput = (event) => {
         showMessage(`${name}, this is not good!
             We will evaluate the product.
             Thank you for sharing your opinion with us.`, 'bot');
-        pop.play();
         notGoodBtn.style.display = 'none';
         okayBtn.style.display = 'none';
         goodBtn.style.display = 'none';
@@ -203,7 +202,6 @@ const handleNameInput = (event) => {
         showMessage(`${name}, okay is not good enouth!
             We will evaluate the product.
             Thank you for sharing your opinion with us.`, 'bot');
-        pop.play();
         notGoodBtn.style.display = 'none';
         okayBtn.style.display = 'none';
         goodBtn.style.display = 'none';
