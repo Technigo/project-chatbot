@@ -1,13 +1,11 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The task was to create a chatbot using mainly javascript.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+First of all I thought the task was simply difficult. It didn't get better of the fact that I was sick and had a fever all week. So this is why I am leaving it so late, and why it's so... simple. I just want to leave anything even though I would have wanted to make it a lot more advanced if I had the time :)
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://project-chatbot-opal.vercel.app/
