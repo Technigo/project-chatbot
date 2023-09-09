@@ -48,10 +48,14 @@ const greetUser = () => {
 /* ----- User enters name ------ */
 const handleNameInput = (event) => {
   event.preventDefault() //prevents the chat to reload
-  const name = nameInput.value;
-  nameInput.value = "";    //clears the input field after bubble appears
+  const name = nameInput.value.trim();      
+    if (name === "" || name === " ") {       // prompts a message if the user leaves the input blank or only writes " "
+      alert("Please enter your name.");   
+      return;    
+    }                                     
+  nameInput.value = ""; // Clears the input field after the bubble appears
   showMessage(`${name}`, 'user');
-  setTimeout(() => greetStart(name), 1000);     //calls the next function with a delay and adds "name"
+  setTimeout(() => greetStart(name), 1000); // Calls the next function with a delay and adds "name"
 }
 
 /*----- Bot greats user ----*/
