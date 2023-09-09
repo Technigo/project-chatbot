@@ -8,4 +8,4 @@ First of all I thought the task was simply difficult. It didn't get better of th
 
 ## View it live
 
-https://comfy-sfogliatella-c6681b.netlify.app/ (I don't know why the photos of the avatar doesn't work when I deploy)
+https://project-chatbot-opal.vercel.app/
