@@ -137,10 +137,11 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
