@@ -45,7 +45,7 @@ showMessage("I am totally human", "user");
 ```
 
 **Awesome**. Now it's time to start writing some code!
-
+-----------------------------------------------------------------------------------------------
 # Steps
 
 ### Step 1 - Try out what's already there
