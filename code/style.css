@@ -155,3 +155,23 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+#option1,
+#option2,
+#option3 {
+  margin: 15px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end; /* Center the buttons horizontally */
+  align-items: flex-start; /* Align the buttons to the top of the container */
+  margin-top: 10px; /* Add margin to separate the buttons from the chatbot bubble */
+}
+
+#yes,
+#no {
+  margin: 15px;
+  position: relative;
+  left: 55px;
+}

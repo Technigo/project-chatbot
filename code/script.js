@@ -128,8 +128,10 @@ const handleButtonClick = (animalName) => {
 
     // Create buttons dynamically for the user to choose.
     animalButtons.innerHTML = `
+    <div class="button-conteiner">
       <button type="button" id="yes">Yes</button>
       <button type="button" id="no">No</button>
+      </div>
     `;
 
     // Add event listeners to the new buttons
