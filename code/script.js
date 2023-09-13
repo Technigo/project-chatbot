@@ -1,9 +1,11 @@
 // Variables that point to selected DOM elements
+
 const chat = document.getElementById('chat');
 const inputWrapper = document.querySelector(".input-wrapper");
 const entireScreen = document.querySelector("#body-id");
 const submitButton = document.querySelector(".send-btn");
 const inputField = document.querySelector("#name-input");
+
 
 // If you need any global variables that you can use across different functions, declare them here:
 let intersectionCounter = 0;
@@ -139,6 +141,7 @@ const generateChatHTML = (message, senderType, senderIcon) => `
 
 // Generating messages
 const showMessage = (message, sender) => {
+
   const senderType = sender === 'user' ? 'user' : 'bot';
   const senderIcon = sender === 'user' ? 'user' : 'bot';
 

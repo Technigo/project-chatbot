@@ -15,7 +15,7 @@ body {
 
 h1 {
   font-weight: bold;
-  font-size: 44px;
+  font-size: 28px;
   line-height: 34px;
   color: #155174;
   text-align: center;
@@ -121,6 +121,15 @@ main {
 .input-wrapper form {
   width: 100%;
   display: flex;
+  align-items: center;
+}
+
+label {
+  font-size: 16px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  color: #0026ff;
+  margin-right: 20px;
 }
 
 button {
@@ -141,6 +150,7 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+
 }
 
 .gameover-wrapper {
