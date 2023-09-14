@@ -144,10 +144,11 @@ function handleSpecificAge(choice) {
 
   if (choice === 'adult') {
     showMessage(`The price for adult size is 150 SEK.`, 'bot');
+    confirmOrder('Adult', 'Adult');
   } else if (choice === 'kid') {
     showMessage(`The price for kid size is 100 SEK.`, 'bot');
     confirmOrder('Pizza', 'Kid');
-  } 
+  }
 }
 //This one, gaaa, if I change Food to Choice of food the code stops working. Why? Makes no sense? It's just a showmessage+
 function confirmOrder(foodChoice, sizeChoice) {
