@@ -44,9 +44,14 @@ setTimeout(greetUser, 1000);
 const handleNameinput = (event) => {
   event.preventDefault();
   const userName = nameInput.value;
-  showMessage(`My name is ${userName}`, `user`);
+  if (userName !== "") {
+    showMessage(`My name is ${userName}`, `user`);
+  } else {
+    alert(`Please enter a valid User name`);
+    process.exit(1);
+  }
   nameInput.value = ""; //clear nameInput's value
-  setTimeout(() => askFoodType(userName), 1500);
+  askFoodType(userName);
 };
 
 btn.addEventListener("click", handleNameinput);
@@ -122,8 +127,8 @@ const finalOption = (event) => {
     <button id="adult" value="adult">🧑🏽</button>
     <button id="child" value="child">🧒🏼</button>
   `;
-  document.getElementById("adult").addEventListener(`click`, confirmation);
-  document.getElementById("child").addEventListener(`click`, confirmation);
+  document.getElementById("adult").addEventListener("click", confirmation);
+  document.getElementById("child").addEventListener("click", confirmation);
 };
 
 // select adult or child and create yes or no button
