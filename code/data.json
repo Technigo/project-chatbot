@@ -1,0 +1,251 @@
+[
+  {
+    "intersection": 0,
+    "question": "Please, help my get my puppy back from the evil king. Here are some items that might help you on your quest. Choose wisely!",
+    "options": [
+      {
+        "id": "firstItem",
+        "items": [ 
+          {
+            "id": "umbrella",
+            "text": "Umbrella",
+            "icon": "☂️"
+          }, 
+          {
+            "id":"water",
+            "text": "Bottle of water",
+            "icon": "🥤"
+          }, 
+          {
+            "id":"helmet",
+            "text": "Helmet",
+            "icon": "🪖"
+          }, 
+          {
+            "id":"life-jacket",
+            "text": "Life jacket",
+            "icon": "🦺"
+          }, 
+          {
+            "id":"rope",
+            "text": "Rope",
+            "icon": "🪢"
+          }, 
+          {
+            "id":"boat",
+            "text": "Inflatable boat",
+            "icon": "🛶"
+          }
+        ]
+      },
+      {
+        "id": "secondItem ",
+        "items": [ 
+          {
+            "id":"shield",
+            "text": "Shield",
+            "icon": "🛡️"
+          }, 
+          {
+            "id":"meat",
+            "text": "Piece of meat",
+            "icon": "🍗"
+          }, 
+          {
+            "id":"guitar",
+            "text": "Guitar",
+            "icon": "🎸"
+          }, 
+          {
+            "id":"sword",
+            "text": "Sword",
+            "icon": "🗡️"
+          }, 
+          {
+            "id":"moccasins",
+            "text": "Moccasins",
+            "icon": "🧦"
+          }, 
+          {
+            "id":"cloak",
+            "text": "Invisibility cloak",
+            "icon": "🧥"
+          }
+        ]
+      }
+    ],
+    "paths": []
+  },
+  {
+    "intersection": 1,
+    "question": "Which road will you take",
+    "options": [
+      {
+        "id": "desert",
+        "text": "Scorching desert",
+        "icon": "🌵"
+      },
+      {
+        "id": "mountain",
+        "text": "Steep mountain",
+        "icon": "⛰️"
+      },
+      {
+        "id": "creek",
+        "text": "Livly creek",
+        "icon": "🌊"
+      }
+    ],
+    "paths": [
+      {
+        "id": 1,
+        "name": "desert",
+        "goodItem": "water",
+        "okItem": "umbrella",
+        "goodMessage": "Thankfully, the bottle of water 🥤 saves you from dehydration.🎖 You may proceed.",
+        "okMessage": "The umbrella ☂️ saved you from the scorching sun ☀️ but you are severly dehydrated and weakened. Lose 1 hp",
+        "failMessage": "The sun burns 🔥 your skin and you sweat every last drop of water 🥵. You die! ☠️"
+      },
+      {
+        "id": 2,
+        "name": "mountain",
+        "goodItem": "rope",
+        "okItem": "helmet",
+        "goodMessage": "Using your rope 🪢 you mange to touch down on the ground softly. 🎖 You may proceed!",
+        "okMessage": "Halfway down you loose you footing, but thanks to your helmet eyou survived but very injured. Lose 1 hp.",
+        "failMessage": "You lose you footing and tumble down the mountain side, crushing every bone in your body. Why didn't you choose something else to help you on this dangerous mission? You die! ☠️"
+      },
+      {
+        "id": 1,
+        "name": "creek",
+        "goodItem": "boat",
+        "okItem": "life-jacket",
+        "goodMessage": "The inflateble boat ⛵️ helped you to cruise peacefully down the creek 🌊. You may proceed!🎖",
+        "okMessage": "The life-jacket 🦺 helped you stay afloat on the dangerous water. You exit the creek alive but severely injured. 🤕 Lose 1 hp.",
+        "failMessage": "You attemt to swim along the creek 🌊 but its currents are too strong and you are pulled under water to a certain death. You drown! ☠️"
+      }
+    ]
+  },
+  {
+    "intersection": 2,
+    "question": "You can see the puppy now but its guarded by a huge dragon 🐶 🐲. Are you brave enough to continue?",
+    "options": [
+      {
+        "id": "continue",
+        "text": "Bring it on!",
+        "icon": ""
+      },
+      {
+        "id": "resign",
+        "text": "No, I'm too scared",
+        "icon": ""
+      }
+    ],
+    "paths": [
+      {
+        "id": 1,
+        "name": "continue",
+        "goodItem": "",
+        "okItem": "",
+        "goodMessage": "I knew I could count on you!",
+        "okMessage": "",
+        "failMessage": ""
+      },
+      {
+        "id": 2,
+        "name": "resign",
+        "goodItem": "",
+        "okItem": "",
+        "goodMessage": "",
+        "okMessage": "",
+        "failMessage": "Coward!😡 Come back when you are ready!"
+      }
+    ]
+  },
+  {
+    "intersection": 3,
+    "question": "How will you try to get past the dragon 🐲? Perhaps there is someting in you backpack that can aid you.",
+    "options": [
+      {
+        "id": "soothe",
+        "text": "Soothe",
+        "icon": ""
+      },
+      {
+        "id": "attack",
+        "text": "Attack",
+        "icon": ""
+      },
+      {
+        "id": "sneak",
+        "text": "Sneak past",
+        "icon": ""
+      }
+    ],
+    "paths": [
+      {
+        "id": 1,
+        "name": "soothe",
+        "goodItem": "guitar",
+        "okItem": "meat",
+        "goodMessage": "The music you play on your guitar 🎸 makes the dragon fall asleep 💤. You may proceed.",
+        "okMessage": "You hold out the piece of meat 🍖 to the dragon 🐲. It makes it relaxed and happy but it also bites your hand off 🍽. You loose alot of blood 🩸. Lose 1 hp",
+        "failMessage": "Your attemt fails and the dragon 🐲 eats you alive. Why didn't you choose something else to help you on this dangerous mission? You die. ☠️"
+      },
+      {
+        "id": 2,
+        "name": "attack",
+        "goodItem": "sword",
+        "okItem": "shield",
+        "goodMessage": "You pull out your sword 🗡 and thrust it in to the dragons 🐲 heart, killing it. You may proceed.",
+        "okMessage": "Using you shield 🛡 you block most of the dragons 🐲 attack but you still get injured. 🤕 Your body is severly bruised. Lose 1 hp.",
+        "failMessage": "Your attemt fails and the dragon 🐲 eats you alive. Why didn't you choose something else to help you on this dangerous mission? You die! ☠️"
+      },
+      {
+        "id": 3,
+        "name": "sneak",
+        "goodItem": "cloak",
+        "okItem": "moccasins",
+        "goodMessage": "Using your invisibility cloak 🧥 you sneak safely past the dragon 🐲. You may proceed.",
+        "okMessage": "Thanks to your moccasin the dragon 🐲 can't hear you sneak past it 🤫. Unfortunately it sees you and severly burns you 🔥. Lose 1 hp.",
+        "failMessage": "Your attemt fails and the dragon 🐲  eats you alive. Why didn't you choose something useful to helt you on this dangerous mission? You die! ☠️"
+      }
+    ]
+  },
+  {
+    "intersection": 4,
+    "question": "The adorable puppy 🐶 is whithin reach but you also see a marvelous treasure 👑. You can only carry one of them. What will you bring?",
+    "options": [
+      {
+        "id": "puppy",
+        "text": "The puppy",
+        "icon": "🐶"
+      },
+      {
+        "id": "treasure",
+        "text": "The treasure",
+        "icon": "🏆"
+      }
+    ],
+    "paths": [
+      {
+        "id": 1,
+        "name": "puppy",
+        "goodItem": "",
+        "okItem": "",
+        "goodMessage": "Thank you adventurer! Thank you!",
+        "okMessage": "",
+        "failMessage": ""
+      },
+      {
+        "id": 2,
+        "name": "treasure",
+        "goodItem": "",
+        "okItem": "",
+        "goodMessage": "",
+        "okMessage": "",
+        "failMessage": "How could you chose the treasure over my precious baby?! You are a horrible, greedy person ${hero.name}!"
+      }
+    ]
+  }
+]

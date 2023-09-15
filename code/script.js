@@ -1,137 +1,32 @@
-// Variables that point to selected DOM elements
 
+// DOM selectors
 const chat = document.getElementById('chat');
+const replyForm = document.getElementById('reply-form');
 const inputWrapper = document.querySelector(".input-wrapper");
 const entireScreen = document.querySelector("#body-id");
 const submitButton = document.querySelector(".send-btn");
 const inputField = document.querySelector("#name-input");
 
-
-// If you need any global variables that you can use across different functions, declare them here:
+// Global variables
+let pathChoices;
 let intersectionCounter = 0;
-let hero = {
+const hero = {
   name: '',
   healthPoints: 2,
   inventory: []  
 }
 
-const pathChoices = [
-  {
-    intersection: 1,
-    paths: [
-      {
-        id: 1,
-        name: 'desert',
-        goodItem: 'water-bottle',
-        okItem: 'umbrella',
-        goodMessage: 'Thankfully, the bottle of water 🥤 saves you from dehydration.🎖 You may proceed.',
-        okMessage: 'The umbrella ☂️ saved you from the scorching sun ☀️ but you are severly dehydrated and weakened. Lose 1 hp',
-        failMessage: 'The sun burns 🔥 your skin and you sweat every last drop of water 🥵. You die! ☠️'
-      },
-      {
-        id: 2,
-        name: 'mountain',
-        goodItem: 'rope',
-        okItem: 'helmet',
-        goodMessage: 'Using your rope 🪢 you mange to touch down on the ground softly. 🎖 You may proceed!',
-        okMessage: 'Halfway down you loose you footing, but thanks to your helmet eyou survived but very injured. Lose 1 hp.',
-        failMessage: "You lose you footing and tumble down the mountain side, crushing every bone in your body. Why didn't you choose something else to help you on this dangerous mission? You die! ☠️"
-      },
-      {
-        id: 1,
-        name: 'creek',
-        goodItem: 'boat',
-        okItem: 'life-jacket',
-        goodMessage: 'The inflateble boat ⛵️ helped you to cruise peacefully down the creek 🌊. You may proceed!🎖',
-        okMessage: 'The life-jacket 🦺 helped you stay afloat on the dangerous water. You exit the creek alive but severely injured. 🤕 Lose 1 hp.',
-        failMessage: 'You attemt to swim along the creek 🌊 but its currents are too strong and you are pulled under water to a certain death. You drown! ☠️'
-      },
-    ]
-  },
-  {
-    intersection: 2,
-    paths: [
-      {
-        id: 1,
-        name: 'continue',
-        goodItem: '',
-        okItem: '',
-        goodMessage: 'I knew I could count on you!',
-        okMessage: '',
-        failMessage: ''
-      },
-      {
-        id: 2,
-        name: 'resign',
-        goodItem: '',
-        okItem: '',
-        goodMessage: '',
-        okMessage: '',
-        failMessage: 'Coward!😡 Come back when you are ready!'
-      }
-    ]
-  },
-  {
-    intersection: 3,
-    paths: [
-      {
-        id: 1,
-        name: 'soothe',
-        goodItem: 'guitar',
-        okItem: 'meat',
-        goodMessage: 'The music you play on your guitar 🎸 makes the dragon fall asleep 💤. You may proceed.',
-        okMessage: 'You hold out the piece of meat 🍖 to the dragon 🐲. It makes it relaxed and happy but it also bites your hand off 🍽. You loose alot of blood 🩸. Lose 1 hp',
-        failMessage: "Your attemt fails and the dragon 🐲 eats you alive. Why didn't you choose something else to help you on this dangerous mission? You die. ☠️"
-      },
-      {
-        id: 2,
-        name: 'strike',
-        goodItem: 'sword',
-        okItem: 'shield',
-        goodMessage: 'You pull out your sword 🗡 and thrust it in to the dragons 🐲 heart, killing it. You may proceed.',
-        okMessage: 'Using you shield 🛡 you block most of the dragons 🐲 attack but you still get injured. 🤕 Your body is severly bruised. Lose 1 hp.',
-        failMessage: "Your attemt fails and the dragon 🐲 eats you alive. Why didn't you choose something else to help you on this dangerous mission? You die! ☠️"
-      },
-      {
-        id: 3,
-        name: 'sneak',
-        goodItem: 'cloak',
-        okItem: 'moccasin',
-        goodMessage: 'Using your invisibility cloak 🧥 you sneek safely past the dragon 🐲. You may proceed.',
-        okMessage: "Thanks to your moccasin the dragon 🐲 can't hear you sneak past it 🤫. Unfortunately it sees you and severly burns you 🔥. Lose 1 hp.",
-        failMessage: "Your attemt fails and the dragon 🐲  eats you alive. Why didn't you choose something useful to helt you on this dangerous mission? You die! ☠️"
-      },
-    ]
-  },
-  {
-    intersection: 4,
-    paths: [
-      {
-        id: 1,
-        name: 'puppy',
-        goodItem: '',
-        okItem: '',
-        goodMessage: `Thank you! Oh ${hero.name}, thank you!`,
-        okMessage: '',
-        failMessage: ``
-      },
-      {
-        id: 2,
-        name: 'treasure',
-        goodItem: '',
-        okItem: '',
-        goodMessage: ``,
-        okMessage: '',
-        failMessage: `How could you chose the treasure over my precious baby?! You are a horrible, greedy person ${hero.name}!`
-      }
-    ]
-  },
-]
-
+fetch('data.json')
+  .then(response => response.json())
+  .then(data => {
+    pathChoices = data;
+  })
+  .catch(error => console.error('Failed to fetch JSON', error)
+);
 
 // Helper function to generate chat messages
 const generateChatHTML = (message, senderType, senderIcon) => `
-  <section class="${senderType}-msg">
+  <section class="message ${senderType}-msg">
     <img src="./src/assets/images/${senderIcon}.png" alt="${senderType}" />
     <div class="bubble ${senderType}-bubble">
       <p>${message}</p>
@@ -144,167 +39,130 @@ const showMessage = (message, sender) => {
 
   const senderType = sender === 'user' ? 'user' : 'bot';
   const senderIcon = sender === 'user' ? 'user' : 'bot';
-
   chat.innerHTML += generateChatHTML(message, senderType, senderIcon);
   
   // Makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
 };
 
-
 const greeting = () => {
   showMessage("Hi friend 👋, what is your name?", 'bot');
 }
 
-setTimeout(greeting, 1000);
+setTimeout(() => greeting(), 1000);
 
-submitButton.addEventListener("click", (event) => {
-    hero.name = inputField.value; // Sets value to heros name 
-    showMessage(`Hello 👋, my name is ${hero.name}`, "user"); 
-    inputWrapper.innerHTML = "";
+replyForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  hero.name = inputField.value; // Sets value to heros name 
+  showMessage(`Hello 👋, my name is ${hero.name}`, "user"); 
+  inputWrapper.innerHTML = "";
+  setTimeout(() => displayChoices(0), 1200);
+})
 
-    setTimeout(questGiven, 1200);
-  })
+//! ------------------------- displayChoices ---------------------------
+const displayChoices = (currentIntersection) => {
+  const intersection = pathChoices.find((item) => item.intersection === currentIntersection);
+  console.log(intersection)
+  showMessage (intersection.question,"bot");
 
-/* This is the first reply from the bot */
-const questGiven = () => {
-  showMessage(`
-    Please, ${hero.name}, help me save my puppy 🐶. 
-    Here are some items you may need to succeed on this mission. Choose wisely! 🧐`, 
-    "bot"
-  );
-  setTimeout(itemSelection, 2000);
-}
+  // Special case for rendering select element instead of buttons
+  if (intersection.intersection === 0) {
+    const firstItem = intersection.options[0].items.map((item) => {
+      return (`
+        <option value=${item.id}>${item.text}</option>
+      `)
+    })
+    const secondItem = intersection.options[1].items.map((item) => {
+      return (`
+        <option value=${item.id}>${item.text}</option>
+      `)
+    })
+    inputWrapper.innerHTML = `
+      <form id=item-form>
+        <select id="first-item">
+          <option value="" selected disabled>First item</option>
+          ${firstItem}
+        </select>
+        <select id="second-item">
+          <option value="" selected disabled>Second item</option>
+          ${secondItem}
+        </select>
+        <button type='submit' id="select-item-btn">Add to backpack</button>
+      </form>
+      `;
+    const itemForm = document.getElementById("item-form");
+    const itemList1 = document.getElementById("first-item");
+    const itemList2 = document.getElementById("second-item");
 
-// List to select items 
-const itemSelection = () => {
-  inputWrapper.innerHTML = `
-    <select id="first-item">
-      <option value="" selected disabled>👇 Select an item</option>
-      <option value="umbrella">Umbrella ☂️</option>
-      <option value="boat">Inflatable boat ⛵️</option>
-      <option value="water-bottle">Bottle of water🥤</option>
-      <option value="life-jacket">Life jacket 🦺</option>
-      <option value="helmet">Helmet ⛑</option>
-      <option value="rope">Rope 🪢</option>
-    </select>
-    
-    <select id="second-item">
-      <option value="" selected disabled>👇 Select another item</option>
-      <option value="meat">Piece of meat 🍗</option>
-      <option value="guitar">Guitar 🎸</option>
-      <option value="sword">Sword 🗡</option>
-      <option value="cloak">Invisibility cloak 🧥</option>
-      <option value="shield">Shield 🛡</option>
-      <option value="moccasin">Moccasin 🧦</option>
-    </select>
-    
-    <button id="select-item-btn">Add to backpack 🎒</button>
-  `;
-   
-  const itemList1 = document.querySelector("#first-item");
-  const itemList2 = document.querySelector("#second-item");
-  const selectItemBtn = document.querySelector("#select-item-btn");
+    itemForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      // the value of the selected option in respective list is assign to variables and added to heros inventory.
+      const firstItem = itemList1.options[itemList1.selectedIndex].value;
+      const secondItem = itemList2.options[itemList2.selectedIndex].value;
+      hero.inventory.push(firstItem, secondItem)
 
-  selectItemBtn.addEventListener("click", () => {
-    // the value of the selected option in respective list is assign to variables and added to heros inventory.
-    let firsItem = itemList1.options[itemList1.selectedIndex].value;
-    let secondItem = itemList2.options[itemList2.selectedIndex].value;
-    hero.inventory.push(firsItem, secondItem)
+      inputWrapper.innerHTML = ``;
 
-    inputWrapper.innerHTML = ``;
-    showMessage (`I choose the ${hero.inventory[0]} and the ${hero.inventory[1]}`, 'user');
-    setTimeout(() => displayChoices('path'), 1200);
+      showMessage (`I choose the ${hero.inventory[0]} and the ${hero.inventory[1]}`, 'user');
+      setTimeout(() => displayChoices(currentIntersection +1), 1200);
+      intersectionCounter++;
     }) 
-}
-//! ------------------------- DISPLAY CHOICES ---------------------------
-const displayChoices = (choiceType) => {
-  // Display buttons for path choice
-  if (choiceType === 'path') {
-    showMessage (`Which road do you want to take?`,"bot");
+  } else {
+    const allOptions = intersection.options.map((option) => {
+      return (`
+        <button class="choice-button" id=${option.id}>${option.text}</button>
+      `)
+    })
     inputWrapper.innerHTML = `
-      <button class="choice-button" id="desert">Desert 🌵</button>
-      <button class="choice-button" id="mountain">Mountain 🌋</button>
-      <button class="choice-button" id="creek">Creek 🌊</button>
-    `;
-  } else if (choiceType === 'continue') {
-    showMessage(`
-      You can see the puppy now but its guarded by a huge dragon 🐶 🐲.
-      Are you brave enough to continue?`,
-      `bot`
-    );
-    inputWrapper.innerHTML = `
-      <button class="choice-button" id="continue">Of course!</button>
-      <button class="choice-button" id="resign">No, I'm too scared!</button>
-    `;
-  } else if (choiceType === 'method') {
-    showMessage(`
-      How will you try to get past the dragon 🐲 ?
-      Remember, you still have the ${hero.inventory[1]} in your backpack.`,
-      'bot'
-    );
-    inputWrapper.innerHTML = `
-      <button class="choice-button" id="soothe">Soothe</button>
-      <button class="choice-button" id="strike">Strike</button>
-      <button class="choice-button" id="sneak">Sneak past</button>
-    `;
-  } else if (choiceType === 'savePuppy') {
-    showMessage(
-      `You can now save the adorable puppy 🐶 but you also see a marvelous treasure 👑.
-      You can only carry one of them 🎒. What will you bring?`,
-      "bot"
-    );
-    inputWrapper.innerHTML = `
-      <button class="choice-button" id="puppy">🐶</button>
-      <button class="choice-button" id="treasure">👑</button>
+      ${allOptions}
     `;
   }
-  // Add eventlistener to buttons
+  
+  // Add eventlistener to buttons and depending on the current intersection, 
+  // display user reply based on players choice.
   const choiceButtons = document.querySelectorAll(".choice-button");
   choiceButtons.forEach(button => button.addEventListener("click", (event) => {
     inputWrapper.innerHTML = "";
-
-    switch (choiceType) {
-      case 'path' :
+    switch (intersection.intersection) {
+      case 1 :
         showMessage(`I will go through the ${event.target.innerHTML}`, "user");
         break;
-      case 'continue':
+      case 2:
         showMessage(`I will ${event.target.id}`, "user");
+        console.log('svaret', event.target.id);
         break;
-      case 'method' :
+      case 3 :
         showMessage(`I will ${event.target.innerHTML} the dragon`, "user"); 
         break;
-      case 'savePuppy' :
+      case 4 :
         showMessage(`I will take the ${event.target.id} with me!`, "user"); 
-        console.log('event i puppy', event)
         break;
-
     }
-    setTimeout(() => pathChoice(event), 2000);
+    setTimeout(() => pathChoice(event.target.id), 2000);
   }))
 } 
 
-//! ------------------------- PATH CHOICES ---------------------------
-const pathChoice = (event) => {
+//! ------------------------- pathChoice ---------------------------
+const pathChoice = (id) => {
   // Finding the selected path for the current intersection
-  const currentPath = pathChoices[intersectionCounter].paths.find((path) => path.name === event.target.id)
-  console.log('path', currentPath.name)
-  
-    if (event.target.id === 'continue') {
-      showMessage(currentPath.goodMessage,`bot`); 
-    } else if (event.target.id === 'resign') {
-      showMessage(currentPath.failMessage,`bot`); 
-      setTimeout(() => gameOver(), 2000);
-    } else if (event.target.id === 'puppy') {
-      showMessage(currentPath.goodMessage,`bot`); 
-      console.log('puppy', event.target.id)
-      setTimeout(() => finalScene(), 2000)
-    } else if (event.target.id === 'treasure') {
-      console.log('treasure', event.target.id)
-      showMessage(currentPath.failMessage,`bot`); 
-      setTimeout(() => gameOver(), 2000)
-    }
- 
+  console.log('pathChoices[intersectionCounter]', pathChoices[intersectionCounter]);
+  const currentPath = pathChoices[intersectionCounter].paths.find((path) => path.name === id);
+  intersectionCounter ++;
+
+  //Special cases where we don't check for items in inventory
+  if (id === 'continue') {
+    showMessage(currentPath.goodMessage,`bot`); 
+  } else if (id === 'resign') {
+    showMessage(currentPath.failMessage,`bot`); 
+    setTimeout(() => gameOver(), 2000);
+  } else if (id === 'puppy') {
+    showMessage(currentPath.goodMessage,`bot`); 
+    setTimeout(() => finalScene(), 2000)
+  } else if (id === 'treasure') {
+    showMessage(currentPath.failMessage,`bot`); 
+    setTimeout(() => gameOver(), 2000)
+  } else {
+    //Checking for items in inventory
     if (hero.inventory.includes(currentPath.goodItem)) {
       setTimeout( () => {
         showMessage(currentPath.goodMessage,`bot`); 
@@ -312,8 +170,8 @@ const pathChoice = (event) => {
       }, 1800);
     } else if (hero.inventory.includes(currentPath.okItem)) {
       setTimeout( () => { 
-        showMessage(currentPath.okMessage,`bot`); 
         hero.healthPoints -= 1;
+        showMessage(currentPath.okMessage,`bot`); 
         console.log('hp vid ok item', hero.healthPoints)
         if (hero.healthPoints === 0) {
           setTimeout( () => {deathBy0Hp()}, 3000);
@@ -322,20 +180,22 @@ const pathChoice = (event) => {
           setTimeout( () => {showMessage(`Oh no! ❤️‍🩹`,`user`)}, 3500);
         }
       }, 1800);
-    } 
-  //! displayChoices körs ovsett. hero.hp är fortfarande 1 här
-  if (hero.healthPoints > 0 && intersectionCounter === 0) setTimeout(() => displayChoices('continue'), 8000);
-  else if (hero.healthPoints > 0 && intersectionCounter === 1) setTimeout(() => displayChoices('method'), 4000);
-  else if (hero.healthPoints > 0 && intersectionCounter === 2) setTimeout(() => displayChoices('savePuppy'), 8000);
-  else if (hero.healthPoints === 0) {
+    } else {
+      hero.healthPoints = 0;
+      showMessage(currentPath.failMessage,`bot`); 
+      setTimeout(() => deathBy0Hp(), 3000);
+    }
+  }
+
+  if (hero.healthPoints > 0 && id !== 'puppy' || id !== 'treasure') {
+    setTimeout(() => displayChoices(intersectionCounter), 8000)
+  } else if (hero.healthPoints === 0) {
     setTimeout( () => { 
       showMessage(currentPath.failMessage,`bot`); 
     }, 1800);
     setTimeout(gameOver, 8000);
   }
-  intersectionCounter ++;
 }
-
 
 const finalScene = () => {
   setTimeout(showMessage
@@ -367,19 +227,18 @@ const endScreen = () => {
     <p> This interactive story was made by Elin Segelöv and Saralie Bognandi.</p>
     </div>
     `
-    let retryButton = document.querySelector(".replay-btn");
-    retryButton.addEventListener("click", () => {
-      location.reload();
-    })
+  const retryButton = document.querySelector(".replay-btn");
+  retryButton.addEventListener("click", () => {
+    location.reload();
+  })
 }
-
 
 const gameOver = () => {
   entireScreen.innerHTML = `
-  <div class="gameover-wrapper">
-    <h1 class="game-over">💀 GAME OVER 💀</h1>
-    <button class="retry-btn">Try again</button>
-  </div> 
+    <div class="gameover-wrapper">
+      <h1 class="game-over">💀 GAME OVER 💀</h1>
+      <button class="retry-btn">Try again</button>
+    </div> 
   `
   const retryButton = document.querySelector(".retry-btn");
   retryButton.addEventListener("click", () => {
