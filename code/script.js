@@ -11,6 +11,7 @@ const confirm = document.getElementById('confirm')
 // Declare the current question so we can use operator ++ to tell the bot we need to move on to the next question
 let currerntQuestion = 1;
 
+
 // Declare your functions after this comment
 // This function will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -53,14 +54,18 @@ const nameMsg = (event) => {
   event.preventDefault();
   // get user input
   const userName = nameInput.value;
-  showMessage(userName, 'user');
-  setTimeout(() => {
-    showMessage(`Nice to meet you ${userName}. What type of food would you like to order?`, "bot")
-    // Hide the answer field after display the user name and ready for the next quesition 
-    nameForm.classList.add("hidden")
-    // Show the buttons after the answer field is hidden 
-    foodChoice.classList.remove("hidden")
-  }, 1000)
+  if (userName == "") {
+    alert("Please fill in your name :)");
+  } else {
+    showMessage(userName, 'user');
+    setTimeout(() => {
+      showMessage(`Nice to meet you ${userName}. What type of food would you like to order?`, "bot")
+      // Hide the answer field after display the user name and ready for the next quesition 
+      nameForm.classList.add("hidden")
+      // Show the buttons after the answer field is hidden 
+      foodChoice.classList.remove("hidden")
+    }, 1000)
+  }
   //empty the input field
   nameInput.value = "";
   currerntQuestion++;
@@ -140,6 +145,8 @@ const yesno = (event) => {
     switch (event.target.id) {
       case 'yes':
         showMessage("Thank you for your order! See you soon 👋🏼", "bot");
+        chat.innerHTML = "";
+        return greetUser();
         break;
       case 'no':
         showMessage("Ok! Please refresh and order again! ", "bot");
