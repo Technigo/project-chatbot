@@ -96,46 +96,70 @@ const iceCreamMenu = () => {
   });
 };
 
-const subMenu = () => {
-showMessage(`Great choise! Which flavor would you like to have?`, "bot");
-inputWrapper.innerHTML = `
+const subMenu = (selectedIceCream) => {
+  showMessage(`Great choise! Which flavor would you like to have?`, "bot");
+  inputWrapper.innerHTML = `
 <button class="send-btn" id="chocolate" type="Chocolate">Chocolate</button>
 <button class="send-btn" id="vanilla" type="Vanilla">Vanilla</button>
 <button class="send-btn" id="lemon" type="Lemon">Lemon</button>
 `;
-const iceCreamButtons = inputWrapper.querySelectorAll(".send-btn"); // finds all elements with class "send-btn"
-iceCreamButtons.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    const chosenFlavor = event.target.id;
-    console.log(chosenFlavor);
-  showMessage(`${chosenFlavor}, please`, 'user');
+  const iceCreamButtons = inputWrapper.querySelectorAll(".send-btn"); // finds all elements with class "send-btn"
+  iceCreamButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const chosenFlavor = event.target.id;
+      console.log(chosenFlavor);
+      showMessage(`${chosenFlavor}, please`, "user");
+      size(selectedIceCream, chosenFlavor);
+    });
   });
-});
-}
+};
 
-const size = () => {
-  showMessage(`Okay. Would you like a big or a small size?`, 'bot');
+const size = (selectedIceCream, chosenFlavor) => {
+  showMessage(`Okay. Would you like a big, medium or small size?`, "bot");
   inputWrapper.innerHTML = `
 <button class="send-btn" id="big" type="big">Big</button>
+<button class="send-btn" id="medium" type="medium">Medium</button>
 <button class="send-btn" id="small" type="small">Small</button>
 `;
-const sizeButtons = inputWrapper.querySelectorAll(".send-btn"); // finds all elements with class "send-btn"
-sizeButtons.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    const chosenSize = event.target.id;
-    console.log(chosenSize);
-  showMessage(`A ${chosenSize} please`, 'user');
+  const sizeButtons = inputWrapper.querySelectorAll(".send-btn"); // finds all elements with class "send-btn"
+  sizeButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const chosenSize = event.target.id;
+      console.log(chosenSize);
+      showMessage(`A ${chosenSize} please`, "user");
+      confirmation(selectedIceCream, chosenFlavor, chosenSize);
+    });
   });
-});
-}
+};
 
-if (size === "big") {
-  showMessage(`Perfect! One ${size} ${chosenFlavor} ${flavorChoises} will be prepared for you. That will be 2€. Are you sure you want to order this?`, 'bot');
-}
+const confirmation = (selectedIceCream, chosenFlavor, chosenSize) => {
+  inputWrapper.innerHTML = `
+  <button class="send-btn" id="yes" type="yes">Yes please</button>
+  <button class="send-btn" id="no" type="no">No thank you</button>
+  `;
+  const confirmationButtons = inputWrapper.querySelectorAll(".send-btn");
+  confirmationButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const confirmation = event.target.id;
+      // Pass the confirmation choice to orderConfirmation
+      orderConfirmation(selectedIceCream, confirmation);
+    });
+  });
+  showMessage(
+    `Perfect! One ${chosenSize} ${chosenFlavor} ${selectedIceCream} will be prepared for you. That will be 20 SEK. Are you sure you want to order this?`,
+    "bot"
+  );
+};
 
-else if (size === "small") {
-  showMessage(`Perfect! One ${size} ${chosenFlavor} ${flavorChoises} will be prepared for you. That will be 1€. Are you sure you want to order this?`, 'bot');
-}
-
+const orderConfirmation = (selectedIceCream, confirmation) => {
+  if (confirmation === "yes") {
+    showMessage(
+      `Thank you for your order! We'll send you a notice when your ${selectedIceCream} is done!`,
+      "bot"
+    );
+  } else if (confirmation === "no") {
+    showMessage(`No worries, welocme back any time you want!`, "bot");
+  }
+};
 
 setTimeout(greeting, 1000);
