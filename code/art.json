@@ -1,0 +1,273 @@
+{
+  "modernArts": [
+    {
+      "artType": "Realism",
+      "artists": [
+        {
+          "artist": "Gustave Courbet",
+          "museum": "Musée Gustave Courbet",
+          "url": "http://www.musee-courbet.fr/?page_id=1281&lang=en",
+          "cost": "6 Euro"
+        },
+        {
+          "artist": "Jean-François Millet",
+          "museum": "Musée Millet",
+          "url": "https://www.musee-millet.com/",
+          "cost": "5 Euro"
+        },
+        {
+          "artist": "Édouard Manet",
+          "museum": "Musée d'Orsay",
+          "url": "https://www.musee-orsay.fr/",
+          "cost": "14 Euro"
+        },
+        {
+          "artist": "Jean-Baptiste-Camille Corot",
+          "museum": "Musée d'Orsay",
+          "url": "https://www.musee-orsay.fr/",
+          "cost": "14 Euro"
+        }
+      ]
+    },
+    {
+      "artType": "Impressionism",
+      "artists": [
+        {
+          "artist": "Claude Monet",
+          "museum": "Musée Marmottan Monet",
+          "url": "https://www.marmottan.fr/",
+          "cost": "11 Euro"
+        },
+        {
+          "artist": "Pierre-Auguste Renoir",
+          "museum": "Musée de l'Orangerie",
+          "url": "https://www.musee-orangerie.fr/",
+          "cost": "12 Euro"
+        },
+        {
+          "artist": "Edgar Degas",
+          "museum": "Musée d'Orsay",
+          "url": "https://www.musee-orsay.fr/",
+          "cost": "14 Euro"
+        },
+        {
+          "artist": "Paul Cézanne",
+          "museum": "Musée d'Orsay",
+          "url": "https://www.musee-orsay.fr/",
+          "cost": "14 Euro"
+        },
+        {
+          "artist": "Olga Novokhatska",
+          "museum": "N/A",
+          "url": "",
+          "cost": "N/A"
+        }
+      ]
+    },
+    {
+      "artType": "Expressionism",
+      "artists": [
+        {
+          "artist": "Vincent van Gogh",
+          "museum": "Van Gogh Museum",
+          "url": "https://www.vangoghmuseum.nl/en",
+          "cost": "19 Euro"
+        },
+        {
+          "artist": "Henri Matisse",
+          "museum": "Musée Matisse",
+          "url": "https://www.musee-matisse-nice.org/",
+          "cost": "10 Euro"
+        },
+        {
+          "artist": "Edvard Munch",
+          "museum": "The Munch Museum",
+          "url": "https://munchmuseet.no/en/",
+          "cost": "120 NOK (Approx. 13 Euro)"
+        },
+        {
+          "artist": "Egon Schiele",
+          "museum": "Leopold Museum",
+          "url": "https://www.leopoldmuseum.org/en",
+          "cost": "15 Euro"
+        },
+        {
+          "artist": "Oskar Kokoschka",
+          "museum": "Leopold Museum",
+          "url": "https://www.leopoldmuseum.org/en",
+          "cost": "15 Euro"
+        },
+        {
+          "artist": "Wassily Kandinsky",
+          "museum": "Lenbachhaus",
+          "url": "https://www.lenbachhaus.de/en/",
+          "cost": "13 Euro"
+        }
+      ]
+    },
+    {
+      "artType": "Abstract",
+      "artists": [
+        {
+          "artist": "Vasily Kandinsky",
+          "museum": "Lenbachhaus",
+          "url": "https://www.lenbachhaus.de/en/",
+          "cost": "13 Euro"
+        },
+        {
+          "artist": "Piet Mondrian",
+          "museum": "Gemeentemuseum Den Haag",
+          "url": "https://www.denhaag.nl/en.htm",
+          "cost": "16.50 Euro"
+        },
+        {
+          "artist": "Kazimir Malevich",
+          "museum": "State Tretiakov Gallery",
+          "url": "https://www.tretyakovgallery.ru/en/",
+          "cost": "500 RUB (Approx. 6.50 Euro)"
+        },
+        {
+          "artist": "Lyubov Popova",
+          "museum": "State Tretiakov Gallery",
+          "url": "https://www.tretyakovgallery.ru/en/",
+          "cost": "500 RUB (Approx. 6.50 Euro)"
+        },
+        {
+          "artist": "Mark Rothko",
+          "museum": "National Gallery of Art",
+          "url": "https://www.nga.gov/",
+          "cost": "Free admission"
+        },
+        {
+          "artist": "Jackson Pollock",
+          "museum": "The Museum of Modern Art (MoMA)",
+          "url": "https://www.moma.org/",
+          "cost": "25 USD (Approx. 21 Euro)"
+        }
+      ]
+    },
+    {
+      "artType": "Cubism",
+      "artists": [
+        {
+          "artist": "Juan Gris",
+          "museum": "Thyssen-Bornemisza National Museum",
+          "url": "https://www.museothyssen.org/en",
+          "cost": "15 Euro"
+        },
+        {
+          "artist": "Pablo Picasso",
+          "museum": "Picasso Museum Barcelona",
+          "url": "https://www.museupicasso.bcn.cat/en/",
+          "cost": "12 Euro"
+        },
+        {
+          "artist": "Georges Braque",
+          "museum": "Centre Pompidou",
+          "url": "https://www.centrepompidou.fr/en",
+          "cost": "14 Euro"
+        },
+        {
+          "artist": "Marcel Duchamp",
+          "museum": "Philadelphia Museum of Art",
+          "url": "https://philamuseum.org/",
+          "cost": "25 USD (Approx. 21 Euro)"
+        },
+        {
+          "artist": "Albert Gleizes",
+          "museum": "Musée de l'Orangerie",
+          "url": "https://www.musee-orangerie.fr/",
+          "cost": "12 Euro"
+        },
+        {
+          "artist": "Marc Chagall",
+          "museum": "Marc Chagall National Museum",
+          "url": "https://www.musee-chagall.fr/en/home",
+          "cost": "10 Euro"
+        }
+      ]
+    },
+    {
+      "artType": "Dadaism",
+      "artists": [
+        {
+          "artist": "Hannah Höch",
+          "museum": "Berlinische Galerie",
+          "url": "https://www.berlinischegalerie.de/en/",
+          "cost": "8 Euro"
+        },
+        {
+          "artist": "Marcel Duchamp",
+          "museum": "Philadelphia Museum of Art",
+          "url": "https://philamuseum.org/",
+          "cost": "25 USD (Approx. 21 Euro)"
+        },
+        {
+          "artist": "Raoul Hausmann",
+          "museum": "Berlinische Galerie",
+          "url": "https://www.berlinischegalerie.de/en/",
+          "cost": "8 Euro"
+        },
+        {
+          "artist": "Jean Arp",
+          "museum": "Kunstmuseum Basel",
+          "url": "https://www.kunstmuseumbasel.ch/en",
+          "cost": "16 CHF (Approx. 17 Euro)"
+        },
+        {
+          "artist": "Francis Picabia",
+          "museum": "Museum of Modern Art (MoMA)",
+          "url": "https://www.moma.org/",
+          "cost": "25 USD (Approx. 21 Euro)"
+        },
+        {
+          "artist": "Man Ray",
+          "museum": "Museum of Modern Art (MoMA)",
+          "url": "https://www.moma.org/",
+          "cost": "25 USD (Approx. 21 Euro)"
+        }
+      ]
+    },
+    {
+      "artType": "Pop-Art",
+      "artists": [
+        {
+          "artist": "Richard Hamilton",
+          "museum": "Tate Modern",
+          "url": "https://www.tate.org.uk/visit/tate-modern",
+          "cost": "Free admission"
+        },
+        {
+          "artist": "Edouardo Paolozzi",
+          "museum": "Scottish National Gallery of Modern Art",
+          "url": "https://www.nationalgalleries.org/",
+          "cost": "Free admission"
+        },
+        {
+          "artist": "Andy Warhol",
+          "museum": "The Andy Warhol Museum",
+          "url": "https://www.warhol.org/",
+          "cost": "20 USD (Approx. 17 Euro)"
+        },
+        {
+          "artist": "Roy Lichtenstein",
+          "museum": "The Art Institute of Chicago",
+          "url": "https://www.artic.edu/",
+          "cost": "25 USD (Approx. 21 Euro)"
+        },
+        {
+          "artist": "Claes Oldenberg",
+          "museum": "Museum of Modern Art (MoMA)",
+          "url": "https://www.moma.org/",
+          "cost": "25 USD (Approx. 21 Euro)"
+        },
+        {
+          "artist": "Yayoi Kusama",
+          "museum": "Yayoi Kusama Museum",
+          "url": "https://yayoikusamamuseum.jp/en/",
+          "cost": "1,100 JPY (Approx. 10 USD)"
+        }
+      ]
+    }
+  ]
+}

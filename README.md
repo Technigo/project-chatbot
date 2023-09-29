@@ -17,3 +17,39 @@ I got some ideas from internet and other programmers, and experimented with func
 ## View it live
 
 This is a deployed version: https://helpful-piroshki-45c88f.netlify.app/
+
+
+------------------------------------------------------------------------------
+Things I want to change
+1, more option for art type/ artist/ museums
+2, possiblility of choosing area
+3,thinking about use other data types( Map/Set)
+4,reduse image size
+5,Think about performance
+6,Change questions
+--------------------------
+1. Which type do you like the most? -- more than 6 options
+2. Who is your favorite artist? 6 artist per each
+(3. Which area? )
+4. Adult or child
+5. Can I show google map or something too?
+6. give info about the museum.
+7. Ask if the user want to go
+
+
+ART TYPE
+
+Mordern art
+Realism, impressionism, expressionism and abstract art.
+ Realism, Impressionism, Expressionism, Cubism, Dadaism, Abstract Impressionism, and Pop Art.
+
+ REALISM
+ https://en.wikipedia.org/wiki/Realism_(art_movement)
+ Gustave Courbet,Jean-François Millet,Édouard Manet, Jean-Baptiste-Camille Corot, 
+
+ IMPRESSIONISM
+ https://www.singulart.com/en/blog/2020/06/02/10-essential-artists-impressionism/
+ Claude Monet,Pierre-Auguste Renoir,Edgar Degas,Paul Cézanne,Olga Novokhatska
+
+ EXPRESSIONISM
+ 
