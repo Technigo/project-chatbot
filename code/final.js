@@ -22,7 +22,7 @@ const types = [];
 const artistArr = [];
 const artMuseum = [];
 const artMuseumArr = [];
-const artsArr = [];
+let artsArr = [];
 const urlArr = [];
 const costs = [];
 
@@ -32,7 +32,7 @@ let yourMuseum = "";
 let favArtist = "";
 let favType = "";
 let museumUrl = "";
-const modernArtistsArr = [];
+let modernArtistsArr;
 
 const getData = async () => {
   const res = await fetch("./art.json");
@@ -55,10 +55,10 @@ const questions = [
     option: "button",
     choice: types,
     id: types,
-    nextHandler: function (e) {
-      e.preventDefault();
+    nextHandler: function (event) {
+      event.preventDefault();
 
-      favType = e.target.id;
+      favType = event.target.id;
       form.innerHTML = "";
       currentIndex++;
       //   this will trigers next step
