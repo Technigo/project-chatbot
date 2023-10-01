@@ -6,14 +6,16 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #61ba79;
+  background-image: url('./images/pexels-shvets-anna-2574489.jpg');
+  background-position: center;
+  background-size: cover;
 }
 
 h1 {
   font-weight: bold;
   font-size: 28px;
   line-height: 34px;
-  color: #175725;
+  color: whitesmoke;
   text-align: center;
 }
 
@@ -21,7 +23,7 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #36914b;
+  color: whitesmoke;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -37,8 +39,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #36914b;
+  background: #cfa8a1;
+  color: whitesmoke;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -53,7 +55,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: whitesmoke;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -67,7 +69,7 @@ main {
   justify-content: flex-start;
   overflow: scroll;
   flex-direction: column;
-  padding-bottom: 16px;
+  padding-bottom: 16px;  
 }
 
 .bot-msg {
@@ -90,18 +92,19 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #ba7165;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #36914b;
+  color: whitesmoke;
   max-width: 40%;
 }
 
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  
 }
 
 .user-bubble {
@@ -124,13 +127,13 @@ label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #ccd9cf;
+  color: #cfa8a1;
   margin-right: 20px;
 }
 
 button {
-  background-color: #a3d9b1;
-  color: white;
+  background-color: #ba7165;
+  color: whitesmoke;
   border: none;
   border-radius: 4px;
   padding: 16px 40px;

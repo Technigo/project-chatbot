@@ -28,7 +28,7 @@ const showMessage = (message, sender) => {
 }
 
 const greetUser = () => {
-  showMessage("Hello there, What's your name?", 'bot')  
+  showMessage("Hello and welcome to Linneas Restaurant, What's your name?", 'bot')  
 }
 const handleNameInput = event => {
   event.preventDefault();
@@ -40,8 +40,20 @@ const handleNameInput = event => {
 
 nameForm.addEventListener (`submit`, handleNameInput);
 
-function reply () {
-  showMessage (`Hi ${userName}, what can I help you with today?` , `bot`)}
+function reply() {
+  showMessage(`Hi ${userName}, what can I help you with today?`, 'bot');
+  document.getElementById('input-div').style.display = 'none';
+  document.getElementById('button-div').style.display = 'block';
+}
+
+
+document.getElementById('button1').addEventListener('click', () => {
+  showMessage('You clicked Button 1', 'bot');
+});
+
+document.getElementById('button2').addEventListener('click', () => {
+  showMessage('Our customer service is open between 13:55 and 14:00 on thursdays, please get back to us within opening hours', 'bot');
+});
 
   
 setTimeout(greetUser, 1000)

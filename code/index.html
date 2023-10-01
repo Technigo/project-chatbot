@@ -12,19 +12,24 @@
   </head>
 
   <body>
-    <h1>Welcome to Linneas Restaurant.</h1>
+    <h1>LINNEAS RESTAURANT</h1>
     <main>
       <section class="chat" id="chat"></section>
 
       <div class="input-wrapper" id="input-wrapper">
-        <form id="name-form">
-          <label for="name-input">Name</label>
-          <input id="name-input" type="text" />
-          <button class="send-btn" type="submit">
-            Send
-          </button>
-        </form>
-      </div>
+        <div id="input-div">
+          <form id="name-form">          
+            <input id="name-input" type="text" />
+            <button class="send-btn" type="submit">
+              Send
+            </button>
+          </form>
+        </div>
+        <div id="button-div" style="display: none;">
+          <button id="button1" class="option-btn">Order food</button>
+          <button id="button2" class="option-btn">Customer service</button>
+        </div>
+      </div>         
     </main>
 
     <script src="./script.js"></script>
