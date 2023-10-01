@@ -60,12 +60,16 @@ const handleNameInput = (event) => {
   console.log("submit")
   //Stopping the page to reload
   event.preventDefault();
-  const name = nameInput.value;
+  const name = nameInput.value.trim();
   nameInput.value = '';
-  showMessage (`${name}`, `user`)
-  showMessage (`${name}, are you ready for your first question?`, `bot`);
-  ready();
-  }
+  if (name === '') {
+    showMessage(`I'm sorry, I didn't catch that! Please try again...`, `bot`)
+
+  } else {
+    showMessage (`${name}`, `user`);
+    showMessage (`${name}, are you ready for your first question?`, `bot`);
+    ready();}
+}
 
 const ready = () => {
   //creating two buttons
@@ -100,7 +104,7 @@ const readyReply = (yesNoAnswer) => {
 const firstQuestion = () => {
 
     showMessage (`I'm sure you've heard of the Barbie movie that was released this summer?
-    Even if you haven't, everybody knows Barbi right? But what year was the first Barbiedoll released?`, 'bot')
+    Even if you haven't, everybody knows Barbie right? But what year was the first Barbie-doll released?`, 'bot')
   
     inputWrapper.innerHTML = `
       <button class="options" id="1945Btn">1945</button>
@@ -193,7 +197,7 @@ const byeBye2 = () => {
 }
 
 const byeBye3 = () => {
-  showMessage(`Sorry, that was rude. Maybe in an upgrade. Bye now!`,'bot')
+  showMessage(`Sorry, that was rude. Maybe I'll learn to count in an upgrade. Bye now!`,'bot')
 }
 
 
