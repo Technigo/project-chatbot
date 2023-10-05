@@ -62,7 +62,7 @@ document.getElementById('button1').addEventListener('click', () => {
 
 document.getElementById('submit-food').addEventListener('click', () => {
   const selectedOption = document.getElementById('food-options').value;
-  const thankYouMessage = `Thank you for ordering from us ${userName}! You are welcome to collect your food in 30 minutes. If you have any questions, please contact customer service.`;
+  const thankYouMessage = `Thank you for ordering from us ${userName}! You are welcome to collect your food from the restaurant in 30 minutes.`;
   showMessage(thankYouMessage, 'bot');
   document.getElementById('thank-you-message').style.display = 'block';
   document.getElementById('button1').style.display = 'none';

@@ -161,7 +161,7 @@ select#food-options {
   font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
-  width: 100%;
+  width: 40%;
 }
 
 select#food-options::after {
