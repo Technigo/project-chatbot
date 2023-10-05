@@ -46,9 +46,10 @@ function reply() {
   document.getElementById('button-div').style.display = 'block';
 }
 
-
 document.getElementById('button1').addEventListener('click', () => {
-  showMessage('You clicked Button 1', 'bot');
+  showMessage('Please choose a food option', 'bot');
+  document.getElementById('button-div').style.display = 'none';
+  document.getElementById('dropdown-div').style.display = 'block';
 });
 
 document.getElementById('button2').addEventListener('click', () => {
