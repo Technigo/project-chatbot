@@ -150,3 +150,39 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+select#food-options {
+  border: none;
+  border-radius: 4px;
+  background: #cfa8a1;
+  color: whitesmoke;
+  padding: 16px;
+  font-size: 16px;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  line-height: 26px;
+  width: 100%;
+}
+
+select#food-options::after {
+  content: '\25BC'; 
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: whitesmoke;
+  font-size: 18px;
+}
+
+select#food-options option {
+  background-color: #ba7165;
+  color: whitesmoke;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+
+
+
