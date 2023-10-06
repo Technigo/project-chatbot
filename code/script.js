@@ -40,14 +40,25 @@ const greetUser = () => {
   showMessage("Welcome to Gotlands restaurant guide! What's your name?", 'bot');
 }
 
-// Event listener for the name form submission
+
 nameForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  userName = nameInput.value;
-  inputWrapper.innerHTML = '';
-  showMessage(`My name is ${userName}`, 'user');
-  setTimeout(askFavoriteRestaurant, 1000);
+  userName = nameInput.value.trim(); // Trim whitespace
+
+  // Regular expression to check for valid name (only letters and spaces)
+  const namePattern = /^[A-Za-zäöåÄÖÅ\s]+$/;
+
+  // Check if the name is valid
+  if (userName && userName.length <= 50 && namePattern.test(userName)) {
+    inputWrapper.innerHTML = '';
+    showMessage(`My name is ${userName}`, 'user');
+    setTimeout(askFavoriteRestaurant, 1000);
+  } else {
+    showMessage("I didn't understand that, please enter a valid name using only letters.", 'bot');
+  }
 });
+
+
 
 // Function to ask the user to choose their favorite restaurant
 const askFavoriteRestaurant = () => {
