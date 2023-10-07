@@ -182,6 +182,9 @@ main {
 
 #name-form {
   text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .ask-container {

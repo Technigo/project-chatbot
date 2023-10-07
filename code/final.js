@@ -41,7 +41,6 @@ const getData = async () => {
   console.log(modernArtistsArr);
   const artType = modernArtistsArr.map((el) => {
     types.push(el.artType);
-    console.log(types);
   });
 };
 getData();
@@ -65,12 +64,10 @@ const questions = [
       artsArr = modernArtistsArr.find((obj) => obj.artType === favType).artists;
       console.log(artsArr);
       artsArr.forEach((el) => {
-        console.log(el);
         artMuseumArr.push(el.museum);
         artistArr.push(el.artist);
         urlArr.push(el.url);
         costs.push(el.cost);
-        console.log(artMuseumArr, artistArr);
       });
       createInputFields(questions[currentIndex].option);
       showUserInput(favType);
@@ -117,6 +114,11 @@ const questions = [
       event.preventDefault();
       showUserInput(event.target.innerHTML);
       form.innerHTML = "";
+      if (event.target.id === "no") {
+        showBotInput("Okay! Have a nice day ✨");
+        return createResetBtn();
+      }
+
       currentIndex++;
       const confirmationMessage = questions[currentIndex].createMessage(
         favType,
@@ -176,7 +178,7 @@ function createInputFields(inputType, specialmessage) {
     // create a div to pass buttons. Also addting a class name
     const buttonBox = document.createElement("div");
     buttonBox.classList.add("ask-container");
-    const styleTypeBtn = questions[currentIndex].choice === types ? "type" : console.log("no");
+    const styleTypeBtn = questions[currentIndex].choice === types ? "type" : "";
 
     // get a button content from questions arr
 
@@ -219,6 +221,18 @@ function createInputFields(inputType, specialmessage) {
       questions[currentIndex].nextHandler(event);
     });
   }
+}
+
+function createResetBtn() {
+  form.textContent = "";
+  const buttonBox = document.createElement("div");
+  buttonBox.classList.add("ask-container");
+  buttonBox.insertAdjacentHTML("beforeend", ` <button type="reset" id="resetBtn">Reset</button>`);
+  form.appendChild(buttonBox);
+
+  document.getElementById("resetBtn").addEventListener("click", () => {
+    location.reload();
+  });
 }
 
 // Here controls when messages should be appeared. I chose 500s for user inputs, and 1000s for bot inputs.
@@ -278,18 +292,22 @@ startImg.addEventListener("click", (event) => {
 
 setTimeout(greetUser, 1000);
 
-sendBtn.addEventListener("click", (event) => {
-  event.preventDefault();
-  clickSound(event);
-  userName = input.value;
-  if (!userName) {
-    alert("This is not a valid answer. Please type your name.");
-  } else {
-    showUserInput(userName);
-    form.innerHTML = "";
-    createInputFields(questions[currentIndex].option);
-  }
-});
+function init() {
+  sendBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    clickSound(event);
+    userName = input.value;
+    if (!userName) {
+      alert("This is not a valid answer. Please type your name.");
+    } else {
+      showUserInput(userName);
+      form.innerHTML = "";
+      createInputFields(questions[currentIndex].option);
+    }
+  });
+}
+
+init();
 
 // //////////////////////////////////////////////////////////////////////////////////////////
 // This is for a background music. A user can choose which music, by cliking one of buttons under h1.
