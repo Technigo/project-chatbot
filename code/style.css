@@ -45,6 +45,7 @@ input {
   font-weight: 600;
   line-height: 26px;
   flex: 1;
+  width: 100%;
 }
 
 main {
@@ -133,7 +134,7 @@ button {
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 16px 40px;
+  padding: 16px 20px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
