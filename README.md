@@ -1,13 +1,15 @@
-# Project Name
+# Project chatbot
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This project main concern is to learn more about DOM, functions and scope in js. To practice this I created a chatbot. 
+This chatbot wants to learn you some Danish words!
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Firstly I looked at other people's code and chatbots to find some inspiration to what I wanted to do. Then I tried with the code we recieved from the start and from there with help from my team, google, chat gpt and the material on notion I managed to build the code.
+If I hade more time I would:
+- Add a soundfile would be fun but felt a bit overwhelming for now.
+- Add a function that creates a validation rule that you only can pick one word and then it's removed but at the same time I think it's nice if you want to "learn" the word again during one learning session. Or maybe add a function that limits how many times you can use the loop.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://project-chatbot-jennylarsen.netlify.app/
