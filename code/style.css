@@ -148,3 +148,20 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+.hidden {
+  display: none !important;
+}
+
+select {
+  appearance: none;
+  flex: 1;
+  background: #e5e9ff;
+  color: #0026ff;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  text-align: center;
+}
