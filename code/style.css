@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #f3b9e2;
 }
 
 h1 {
@@ -38,7 +38,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #df92c8;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -96,7 +96,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #df92c8;
   max-width: 40%;
 }
 
@@ -113,6 +113,7 @@ main {
 .input-wrapper {
   display: flex;
   justify-content: center;
+  margin-top: 10px;
 }
 
 .input-wrapper form {
@@ -121,16 +122,23 @@ main {
   align-items: center;
 }
 
+.send-btn {
+  margin: 0 5px;  
+}
+
+
+
+
 label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  color: #df92c8;
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #df92c8;
   color: white;
   border: none;
   border-radius: 4px;
