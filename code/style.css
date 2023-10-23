@@ -6,7 +6,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url("https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2260&q=80");
+
 }
 
 h1 {
@@ -27,6 +28,7 @@ h2 {
 }
 
 p {
+  color: #000000;
   font-size: 18px;
   font-weight: 600;
   line-height: 28px;
@@ -38,7 +40,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #000000;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -54,7 +56,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.3);
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -88,6 +90,7 @@ main {
 .user-msg img {
   width: 60px;
   height: 60px;
+  filter: grayscale(30%);
 }
 
 .bubble {
@@ -96,7 +99,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #000000;
   max-width: 40%;
 }
 
@@ -125,12 +128,12 @@ label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  color: #000000;
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #4c7b89;
   color: white;
   border: none;
   border-radius: 4px;
@@ -147,4 +150,75 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+.choiceBtn {
+  display: flex;
+
+}
+
+.startBtnContainer {
+  display: relative;
+}
+
+.startBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 300px;
+  background-color: #4c7b89;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 40px;
+  margin-right: 4px;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ageBtn1,
+.ageBtn2,
+.yesBtn,
+.noBtn,
+.notGoodBtn,
+.okayBtn,
+.goodBtn {
+  display: none;
+  width: 50%;
+  background-color: #4c7b89;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 40px;
+  margin-right: 4px;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dropDown {
+  display: none;
+  width: 100%;
+  background-color: #4c7b89;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 40px;
+  margin-right: 4px;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
