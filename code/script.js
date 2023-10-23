@@ -1,8 +1,12 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat')
+const form = document.getElementById('name-form');
+const sendBtn = document.getElementById('send-btn');
+const inputField = document.getElementById('name-input');
+const inputWrapper = document.getElementById('input-wrapper');
 
 // If you need any global variables that you can use across different functions, declare them here:
-
+let userAnswer = "";
 
 // Declare your functions after this comment
 
@@ -34,18 +38,53 @@ const showMessage = (message, sender) => {
 }
 
 // Starts here
-const greetUser = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, What's your name?", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆
+const greeting = (name) => {
+  showMessage("Welcome to the Ice Cream dream! What's your name?", 'bot')
+}
+  //Here you need to invoke the next function
+const handleNameInput = event => {
+  event.preventDefault();
+  userName = nameInput.value;
+  nameInput.value = "";
+  showMessage(`${userName}`, `user`);
+    setTimeout(reply, 300);
 }
 
-// Set up your eventlisteners here
+//The users answer
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const userMessage = inputField.value;
+  showMessage(userMessage, 'user');
+  inputField.value = '';
+  setTimeout(iceCreamMenu, 300);
+})
 
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000)
+//First menu choises
+const iceCreamMenu = (userName) => {
+  showMessage(`Nice to meet you! What would you like to order today?`, 'bot');
+  inputWrapper.innerHTML = `
+  <button class="send-btn" type="IceCream">Ice Cream</button>
+  <button class="send-btn" type="SoftCream">Soft Cream</button>
+  <button class="send-btn" type="Milkshake">Milkshake</button>
+  `
+}
+
+const iceCreamButtons = inputWrapper.querySelectorAll('.send-btn') // finds all elements with class "send-btn"
+iceCreamButtons.forEach (button => {
+  button.addEventListener('click', (event) => {
+    const selectedIceCream = event.target.id;
+    console.log(selectedIceCream);
+    showMessage(`${selectedIceCream}`, 'user');
+});
+})
+
+// Three different flavor choices for the user
+  const flavorOptions = (choice) => {
+    showMessage(`Great choise! Which flavor would you like to have?`, 'bot');
+  inputWrapper.innerHTML = `
+  <button class="send-btn" type="Chocolate">Chocolate</button>
+  <button class="send-btn" type="Vanilla">Vanilla</button>
+  <button class="send-btn" type="Lemon">Lemon</button>`
+  }
+
+  setTimeout(greeting, 300)
