@@ -97,7 +97,7 @@ main {
   line-height: 26px;
   padding: 16px 24px;
   color: #0026ff;
-  max-width: 40%;
+  /* max-width: 40%; */
 }
 
 .bot-bubble {
@@ -147,4 +147,16 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+.button-container {
+  margin-top: 10px;
+}
+
+.restaurant-btn {
+  margin: 5px;
+}
+
+.dish-btn {
+  margin: 5px;
 }
