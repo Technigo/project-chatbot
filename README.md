@@ -1,12 +1,15 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Chatbot
+The task is to make a chatbot with some questions and answers between bot and user.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I've been using notion, stack overflow, google and chatGPT.
+I think this was really hard understanding functions and how everything relates.
+
+If I had more time I whould like to make the chat longer. Also there are some things I like to do for example didn't the test i showmessage change when I targeted the function again. I also wanted the buttons to not be in the chat.
+If I had more time I also wanted pictures for each animal in the animal info.
 
 ## View it live
 
