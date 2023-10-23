@@ -77,7 +77,7 @@ Try to add a `console.log` in the if statement to practise using the console.
 
 Also try to understand what is happening in the `<p>` tag above. what happens if you remove the `$` and the curly brackets around `message`?
 
-When you feel like you understand the code and have added the console.logs, commit and push those changes to GitHub. Remember to write short but descriptive commit messages.
+When you feel like you understand the code and have added the console.logs, commit and push those changes to GitHub. Remember to write short but descriptive commit messages. //done
 
 ### Step 2 - Have it your way 👋
 

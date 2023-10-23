@@ -6,14 +6,17 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url("flights-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 h1 {
   font-weight: bold;
   font-size: 28px;
   line-height: 34px;
-  color: #fff;
+  color: #131d22;
   text-align: center;
 }
 
@@ -38,7 +41,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #131d22;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -96,7 +99,8 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #131d22;
+  ;
   max-width: 40%;
 }
 
@@ -121,11 +125,29 @@ main {
   align-items: center;
 }
 
+/* new styling for the select input for Question 3 */
+#q4-dropdown {
+  width: 100%;
+  font-size: 18px;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  padding: 16px 40px;
+}
+
+/* new styling for the select options for Question 3 */
+#q4-dropdown option {
+  width: 100%;
+  font-size: 18px;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  padding: 16px 40px;
+}
+
 label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  color: #131d22;
   margin-right: 20px;
 }
 
