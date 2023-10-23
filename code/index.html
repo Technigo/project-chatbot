@@ -8,25 +8,35 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet" />
-    <title>Chat Bot</title>
+      <audio id="notification" src="assets/sound-effect.mp3"></audio>
+    <title>Cinema City - TicketBot</title>
   </head>
 
   <body>
-    <h1>Welcome to xxx.</h1>
-    <main>
+    <div class="wrapper">
+      <img src="assets/cinemacity.svg" alt="" class="heading">
+      <div id="ticket-btn-container">
+        <h2>Book your seat with the TicketBot</h2>
+        <div class="center-btn">
+          <button id="ticket-btn" class="ticket-btn">Tickets</button>
+        </div>
+      </div>
+    </div>
+    <main id="chatbot" class="chatbot">
+      <!-- This section shows the messages in the chat -->
       <section class="chat" id="chat"></section>
 
+      <!-- Input elements to the user (ex. text, buttons, selects) -->
       <div class="input-wrapper" id="input-wrapper">
         <form id="name-form">
-          <label for="name-input">Name</label>
+          <!-- <label for="name-input">Name</label> -->
           <input id="name-input" type="text" />
-          <button class="send-btn" type="submit">
+          <button id="send-btn" class="send-btn" type="submit">
             Send
           </button>
         </form>
       </div>
     </main>
-
     <script src="./script.js"></script>
   </body>
 
