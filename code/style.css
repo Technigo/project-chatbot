@@ -1,7 +1,27 @@
+:root {
+  --light-yellow: #fce7c6;
+  --yellow: #f6d365;
+  --gold: #f5c57f;
+  --light-red: #d94f5b;
+  --red: #83010d;
+  --dark-red: #3c0005;
+  --gradient1: linear-gradient(to right, #f6d365 0%, #ffa500 51%, #f6d365 100%);
+  --gradient2: linear-gradient(45deg, #f5c57f 51%, #fce7c6 100%);
+  --gradient3: linear-gradient(200deg, #fff 0%, #fce7c6 100%);
+  --gradient-red: linear-gradient(45deg, #d94f5b 0%, #83010d 51%, #d94f5b 100%);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: inherit;
+}
+
+*:focus {
+  outline: none;
+  border: 1px solid var(--gold);
+  box-shadow: 0 0 10px var(--dark-red);
 }
 
 img,
@@ -12,7 +32,8 @@ svg {
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
+  background-color: #000;
   background-image: url(./assets/background.png);
   background-size: cover;
   background-repeat: no-repeat;
@@ -29,71 +50,31 @@ body {
 .heading {
   width: 100%;
   max-width: 700px;
-  margin: 1rem 0;
+  margin: 2rem 0;
 }
-
-.center-btn {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-}
-
-.ticket-btn {
-  background-image: linear-gradient(to right, #f6d365 0%, orange 51%, #f6d365 100%);
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: 5px;
-  width: 17rem;
-  height: 5rem;
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.6s;
-  background-size: 200% auto;
-  color: #fff;
-  text-shadow: 0px 0px 10px rgba(0,0,0,0.6);
-  border-radius: 10rem;
-  border: none;
-}
-
-.ticket-btn:hover {
-  background-position: right center;
-  font-size: 1.6rem;
-}
-
-/*h1 {
-  font-weight: bold;
-  font-size: 28px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
-}*/
 
 h2 {
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 2rem;
+  font-weight: 600;
+  font-size: 1.3rem;
   letter-spacing: 2px;
   color: #fff;
-  margin: 2rem 0 1.5rem 0;
 }
 
 p {
-  font-size: 18px;
+  color: var(--dark-red);
   font-weight: 600;
+  font-size: 18px;
   line-height: 28px;
-  margin: 0;
 }
 
 input {
-  box-sizing: border-box;
   border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  border-radius: 4px;
+  background: var(--light-yellow);
+  color: var(--red);
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -108,30 +89,29 @@ main {
   background: #fff;
   padding: 20px 24px;
   padding-top: 0;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 0 2rem var(--gold);
 }
 
 .chat {
   flex: 1;
   display: flex;
   justify-content: flex-start;
-  overflow: scroll;
+  overflow-y: scroll;
   flex-direction: column;
-  padding-bottom: 16px;
 }
 
 .bot-msg {
   display: flex;
-  margin: 16px 8px 0 0;
+  margin: 1rem 0.5rem 0 0;
   flex-shrink: 0;
 }
 
 .user-msg {
   display: flex;
   justify-content: flex-end;
-  margin: 16px 0 0 8px;
+  margin: 1rem 0 0 0.5rem;
   flex-shrink: 0;
 }
 
@@ -142,12 +122,8 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 26px;
-  padding: 16px 24px;
-  color: #0026ff;
+  background: var(--gradient3);
+  padding: 1rem 1.5rem;
   max-width: 40%;
 }
 
@@ -164,6 +140,8 @@ main {
 .input-wrapper {
   display: flex;
   justify-content: center;
+  gap: 1rem;
+  padding-top: 1.5rem;
 }
 
 .input-wrapper form {
@@ -172,34 +150,17 @@ main {
   align-items: center;
 }
 
+form {
+  display: flex;
+  gap: 1rem;
+}
+
 label {
-  font-size: 16px;
-  font-family: 'Montserrat';
+  font-size: 1rem;
   font-weight: 500;
-  color: #0026ff;
+  color: var(--dark-red);
   margin-right: 20px;
 }
-
-.send-btn {
-  background-color: #0026ff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 16px 40px;
-  margin-right: 4px;
-  font-size: 16px;
-  line-height: 26px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  opacity: 0.9;
-  transition: all 0.2s ease;
-}
-
 
 /* Hide the main element initially */
 .chatbot {
@@ -211,3 +172,74 @@ button:hover {
   display: none;
 }
 
+/* BUTTONS */
+button {
+  background: var(--gradient-red);
+  font-size: 1rem;
+  color: #fff;
+  padding: 1rem 2.5rem;
+  letter-spacing: 1px;
+  font-weight: 800;
+  text-transform: uppercase;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.8;
+  transition: all 0.2s ease;
+}
+
+/* Send button for input */
+.send-btn {
+  margin-right: 4px;
+}
+
+/* Button options inside the chat */
+.chat-btn {
+  display: inline-flex;
+}
+
+/* Ticket button on startpage */
+.ticket-btn {
+  display: block;
+  background: var(--gradient1);
+  font-size: 1.5rem;
+  letter-spacing: 5px;
+  width: 17rem;
+  height: 5rem;
+  transition: 0.6s;
+  background-size: 200% auto;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+  border-radius: 10rem;
+}
+
+.center-btn {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.ticket-btn:hover {
+  opacity: 1;
+  background-position: right center;
+  font-size: 1.6rem;
+}
+/* BUTTONS END */
+
+/* Select styling */
+.movieOptions {
+  width: 300px;
+  font-size: 1rem;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  background: var(--gradient-red);
+  letter-spacing: 1px;
+  font-weight: 800;
+  border-radius: 4px;
+  border: none;
+}
