@@ -209,10 +209,10 @@ const deliveryStepBtn = () => {
 
       if (deliveryChoice === 'pick-up') {
         showMessage(`I want to pick up myself.`, 'user');
-        showMessage(`We can arrange that for you.`, `bot`);
+        showMessage(`Great! Orders can be picked up at our store.`, `bot`);
       } else if (deliveryChoice === 'delivery') {
         showMessage(`I would like a delivery.`, 'user');
-        showMessage(`We can arrange that for you.`, `bot`);
+        showMessage(`Perfect! We offer next-day delivery.`, `bot`);
       }
       setTimeout(emailYesNo, 1000);
     });
