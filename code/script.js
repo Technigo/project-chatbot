@@ -21,7 +21,6 @@ let answer = '';
 
 // Declare your functions after this comment
 
-// This function will add a chat bubble in the correct place based on who the sender is. I think?
 const showMessage = (message, sender) => {
 
   if (sender === 'user') {
@@ -35,8 +34,8 @@ const showMessage = (message, sender) => {
     `
   }
   else if (sender === 'bot') {
-    console.log(sender);
-    console.log(message);
+    //console.log(sender);
+    //console.log(message);
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot1.png" alt="Bot" />
@@ -49,7 +48,7 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// Starts here
+
 const capitalizeFirstLetter = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
@@ -57,20 +56,19 @@ const capitalizeFirstLetter = (str) => {
 
 const greetUser = () => {
   showMessage(`Hello there!`, 'bot')
-  showMessage(`I'm Anna, a chatbot.`, 'bot')
+  showMessage(`I'm Elbine, a chatbot.`, 'bot')
   showMessage(`What's your name?`, 'bot')
 }
 
 const userNameInput = event => {
   event.preventDefault();
-
-  //I think the name is saved for later, but is it saved globally?
-
   let userName = nameInput.value.trim()
   //trim(): to remove any leading or trailing spaces from the user's input to ensure consistent capitalization.
 
   if (userName !== "") {
     userName = capitalizeFirstLetter(userName);
+
+    nameForm.remove(); //removes imputfield after writing the name 
 
     nameInput.value = "";
     showMessage(` ${userName}`, "user");
@@ -79,19 +77,14 @@ const userNameInput = event => {
   }
 };
 
-
-//Bot's welcome message with username pops up. Asks user to make a choise.
 function reply(userName) {
   showMessage(`Welcome to 'Elbines-Plants' ${userName}!`, 'bot')
 }
 
-//I wanted a delay between the messages, thats why they are in two functions
 const askForChoise = (YesNo) => {
-  //Do I need to type anything in ()?
   showMessage(`We can help you by selecting some options for you based on your preferences. <br><br> Would you like to continue?`, 'bot')
-  //Buttons Yes No  will appear
 
-  inputWrapper.innerHTML = //(When) shoud i use value (or class) instead of ID?
+  inputWrapper.innerHTML =
     `
     <button class="send-btn" id="Yes">YES</button> 
     <button class="send-btn" id="No">NO</button>
@@ -105,8 +98,6 @@ const askForChoise = (YesNo) => {
       //console.log(choicIsMade)
       showMessage(`${choicIsMade}`, 'user')
       handleYesNoChoice(choicIsMade); //DID NOT WORK WITHOUT THIS
-      //setTimeout(handleYesNoChoice, 700)
-      //setTimeout(() => handleYesNoChoice(choicIsMade), 700)
     })
   })
   chat.scrollTop = chat.scrollHeight
@@ -135,9 +126,9 @@ function showOptionsPlantCat(options) {
     button.className = 'send-btn';
     button.textContent = option;
     button.addEventListener('click', () => {
-      showMessage(`You have selected ${option}`, 'bot');
-      setTimeout(() => askPriceRange(option), 1500)
-      //So I can use selected oprion in the next function
+      showMessage(`${option}`, 'user');
+      setTimeout(() => askPriceRange(option), 700)
+      //So I can use selected option in the next function
     });
     inputWrapper.appendChild(button);
   });
@@ -161,170 +152,138 @@ function askPriceRange(option) {
   select = document.getElementById("price-select")
 
   const priceSelected = document.getElementById('price-select')
-    //Adding eventlisteners to option range 1
 
     .addEventListener('change', (event) => {
       //Storing the value of the event target by redeclaring global variabel
       selectedPriRan = event.target.value
 
-
-      //User reply comes up
-      select.remove() //Removing the buttons to make the chat look closed.
-      //Invokes bot's next message
+      select.remove() //Removing the buttons to make the input look clean.
       setTimeout(() => confirmPriceRange(priceSelected), 700)
     })
 }
 
 const confirmPriceRange = (priceRange) => {
-  //Bot replying to alternative 1
   if (selectedPriRan === 'PriceRange1') {
     selectedPriRan = "100 - 300kr"
-    showMessage(`I'm thinking between ${selectedPriRan}`, 'user')
-    setTimeout(() => showMessage(`Great! I will select some great options (in the price range ${selectedPriRan}) for you. I hope you love them as much as I do!`, 'bot'), 800)
+    showMessage(`My price range is ${selectedPriRan}`, 'user')
+    setTimeout(() => showMessage(`Great! I will select some great options (in the price range ${selectedPriRan}) for you. I hope you love them as much as I do!`, 'bot'), 500)
   }
   else if
     (selectedPriRan === 'PriceRange2') {
     selectedPriRan = "300 - 500kr"
-    showMessage(`I'm thinking between ${selectedPriRan}`, 'user')
-    setTimeout(() => showMessage(`How fun! I will select some great options (in the price range ${selectedPriRan}) for you. I hope you love them as much as I do!`, 'bot'), 800)
+    showMessage(`My price range is  ${selectedPriRan}`, 'user')
+    setTimeout(() => showMessage(`How fun! I will select some great options (in the price range ${selectedPriRan}) for you. I hope you love them as much as I do!`, 'bot'), 500)
   }
   else if
     (selectedPriRan === 'PriceRange3') {
     selectedPriRan = "500 - 1000kr"
-    showMessage(`I'm thinking between ${selectedPriRan}`, 'user')
-    setTimeout(() => showMessage(`How exciting! I will select some great options (in the price range ${selectedPriRan}) for you. I hope you love them as much as I do!`, 'bot'), 800)
+    showMessage(`My price range is  ${selectedPriRan}`, 'user')
+    setTimeout(() => showMessage(`How exciting! I will select some great options (in the price range ${selectedPriRan}) for you. I hope you love them as much as I do!`, 'bot'), 500)
   }
   else if
     (selectedPriRan === 'PriceRange4') {
     selectedPriRan = "1000kr and up"
-    showMessage(`I'm thinking between ${selectedPriRan}`, 'user')
-    setTimeout(() => showMessage(`Wow, now we're talking! I will select some amazing options (in the price range ${selectedPriRan}) for you. I just know you'll love them!`, 'bot'), 800)
+    showMessage(`My price range is ${selectedPriRan}`, 'user')
+    setTimeout(() => showMessage(`Wow, now we're talking! I will select some amazing options (in the price range ${selectedPriRan}) for you. I just know you'll love them!`, 'bot'), 500)
   }
-  /*
-  
-      //Bot replying to alternative 2
-    } else if (priceRange === 'range-2') {
-      selectedPriceRange = "50 to 100€"
-      showMessage(`Amazing! It must be quite a special friend!`, 'bot')
-    }*/
 
-  //Invoking question about colour
-  setTimeout(() => deliveryStepBtn(), 800)
+  setTimeout(() => deliveryStepBtn(), 1300)
 }
 
 
+// how tehy want it deliviered
 const deliveryStepBtn = () => {
-
-  //event listener for this question is logSubmit
-  //setTimeout(lastStep, 700);
-
-
-  inputWrapper.innerHTML = //(When) shoud i use value (or class) instead of ID?
-    `
+  showMessage(`If you were to place an order, would you prefer pick-up or delivery?`, 'bot');
+  inputWrapper.innerHTML = `
     <button class="send-btn" id="pick-up">PICK UP</button> 
     <button class="send-btn" id="delivery">DELIVERY</button>
-    `;
-  chat.scrollTop = chat.scrollHeight
+  `;
+  chat.scrollTop = chat.scrollHeight;
 
   const confirmBtndelivery = inputWrapper.querySelectorAll('.send-btn');
   confirmBtndelivery.forEach(button => {
     button.addEventListener('click', (event) => {
-      let delPickUpchoise = event.target.id
-      console.log(delPickUpchoise)
-      inputWrapper.innerHTML = '' //clear buttons
+      let deliveryChoice = event.target.id;
+      inputWrapper.innerHTML = ''; // clean up buttons
 
-      if (delPickUpchoise === `pick-up`) {
-        delPickUpchoise = "pick up"
-        showMessage(`I want to ${delPickUpchoise} myself.`, 'user')
-        showMessage(`I will arrange that for you!`, `bot`)
-        setTimeout(emailYesNo, 700);
+      if (deliveryChoice === 'pick-up') {
+        showMessage(`I want to pick up myself.`, 'user');
+        showMessage(`We can arrange that for you.`, `bot`);
+      } else if (deliveryChoice === 'delivery') {
+        showMessage(`I would like a delivery.`, 'user');
+        showMessage(`We can arrange that for you.`, `bot`);
       }
-      else if (delPickUpchoise === `delivery`) {
-        delPickUpchoise = "delivery"
-        showMessage(`I would like a ${delPickUpchoise}.`, 'user')
-        showMessage(`I will arrange that for you!`, `bot`)
-        setTimeout(emailYesNo, 700);
-      }
+      setTimeout(emailYesNo, 1000);
+    });
+  });
+};
 
-    })
-  })
-}
-
-// 1b. enter yes no for email confimation 
+// Ask if they want an email
 const emailYesNo = () => {
-  showMessage(`Would you like us to send you an e-mail with options we have selected for you?:<br><br>Please enter Yes or No`, "bot");
-
-  // add input field
+  showMessage(`Would you like us to send you an e-mail with options based on your preferences?<br><br>Please enter Yes or No`, "bot");
   document.getElementById("input-wrapper").innerHTML = `
-   <form id="email-form">
-   <label for="email-input"></label>
-   
-   <input id="email-input" type="text" placeholder="Type here...." autofocus="autofocus" />
-   
-   <button class="send-btn" type="submitt-emailchoice">
-   Send
-   </button>
-   </form>`;
-  //<input id="email-input" type="text" /> submit
-  document.getElementById("email-form").addEventListener("submit", emailSubmit);
-  // not "click" 
-
-  chat.scrollTop = chat.scrollHeight
-}
+    <form id="yes-no-form">
+      <label for="yes-no-input"></label>
+      <input id="yes-no-input" type="text" placeholder="Type here...." autofocus="autofocus" />
+      <button class="send-btn" type="submit">Send</button>
+    </form>`;
+  document.getElementById("yes-no-form").addEventListener("submit", emailSubmit);
+  chat.scrollTop = chat.scrollHeight;
+};
 
 function emailSubmit(event) {
-  // connect to form
   event.preventDefault();
-  //console.log(document.getElementById("email-input").value);
-  emailSelection();
-}
-
-
-const emailSelection = () => {
-  chat.scrollTop = chat.scrollHeight
-  //answer.toLowerCase();
-  answer = document.getElementById("email-input").value;
-  answer = answer.toLowerCase()
-  switch (answer) {
-    case "yes":
-      answer = "Yes";
-      break;
-    case "no":
-      answer = "No";
-      break;
-    default:
-      answer = "invalid";
-    //  else for invalid
+  const userInput = document.getElementById("yes-no-input").value.trim().toLowerCase();
+  showMessage(userInput, 'user');
+  if (userInput === "yes") {
+    enterEmailForPreferences();
+  } else if (userInput === "no") {
+    setTimeout(() => showMessage("No problem, feel free to browse our site!", "bot"), 700);
+  } else {
+    setTimeout(() => showMessage("Invalid answer, please enter Yes or No.", "bot"), 700);
   }
-  // console.log(answer );
-  if (answer == "invalid") {
-    showMessage("Invalid answer, try again.", "bot");
-    setTimeout(emailYesNo, 700);
+};
+
+
+// Ask for email
+const enterEmailForPreferences = () => {
+  showMessage(`Please enter your e-mail`, "bot");
+  document.getElementById("input-wrapper").innerHTML = `
+    <form id="preferences-email-form">
+      <label for="preferences-email-input"></label>
+      <input id="preferences-email-input" type="text" placeholder="Enter your email..." required autofocus="autofocus" />
+      <button class="send-btn" type="submit">Send</button>
+    </form>`;
+  document.getElementById("preferences-email-form").addEventListener("submit", submitPreferencesEmail);
+  chat.scrollTop = chat.scrollHeight;
+};
+
+function submitPreferencesEmail(event) {
+  event.preventDefault();
+  const email = document.getElementById("preferences-email-input").value;
+  showMessage(email, 'user');
+  if (validateEmail(email)) {
+    setTimeout(() => showMessage(`Thank you! You will soon receive an email from us at ${email}.`, "bot"), 700);
+    // where can I save and later use and email like this?
+  } else {
+    setTimeout(() => showMessage("Please enter a valid email address.", "bot"), 700);
   }
-  else {
-    //setTimeout(emailConfirmation, 700);
-    setTimeout(planSelection, 700);
-  }
+};
 
-}
-
-const planSelection = () => {
-  showMessage(`${answer}, thank you`, "user");
-}
+// Validate that email is typed
+function validateEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(String(email).toLowerCase());
+};
 
 
 
-
-// Set up your eventlisteners here
-
+// Set up your eventlisteners here ??
 
 nameForm.addEventListener('submit', userNameInput)
-
 
 chatToggle.addEventListener('click', function () {
   chatContainer.classList.toggle('open')
 })
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 700)
-
-//font, emoji, colors, background photo, ikoner, emailenter
