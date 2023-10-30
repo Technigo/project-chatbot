@@ -1,3 +1,4 @@
+console.log('script.js is running');
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 const nameForm = document.getElementById('name-form');
@@ -9,7 +10,7 @@ const inputWrapper = document.getElementById('input-wrapper');
 //const chatContainer = document.getElementById('js-chat-container')
 
 const chatToggle = document.getElementById('js-chat-toggle');
-const chatContainer = document.getElementById('js-chat-container')
+const chatContainer = document.getElementById('js-chat-container');
 
 // If you need any global variables that you can use across different functions, declare them here:
 
@@ -68,7 +69,7 @@ const userNameInput = event => {
   if (userName !== "") {
     userName = capitalizeFirstLetter(userName);
 
-    nameForm.remove(); //removes imputfield after writing the name 
+    nameForm.remove(); //removes imputfield after writing the name
 
     nameInput.value = "";
     showMessage(` ${userName}`, "user");
@@ -283,7 +284,7 @@ function validateEmail(email) {
 nameForm.addEventListener('submit', userNameInput)
 
 chatToggle.addEventListener('click', function () {
-  chatContainer.classList.toggle('open')
-})
+  chatContainer.classList.toggle('open');
+});
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 700)
