@@ -31,5 +31,5 @@ https://wk2-chatbot-project-7b3823.netlify.app/
 
 ## Screenshot
 
-![Screenshot of front page](/code/images/screenshot1.png?raw=true "Screenshot of front page")
+![Screenshot of front page](/code/assets/screenshot1.png?raw=true "Screenshot of front page")
 
