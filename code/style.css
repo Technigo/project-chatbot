@@ -5,24 +5,26 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #00008B;
+  font-family: "Montserrat", sans-serif;
+  background: #333;
+  color: #e57373;
+}
+
+h1,
+h2 {
+  font-weight: bold;
+  text-align: center;
+  color: #e040fb;
 }
 
 h1 {
-  font-weight: bold;
   font-size: 82px;
   line-height: 34px;
-  color: #fff;
-  text-align: center;
 }
 
 h2 {
-  font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
-  text-align: center;
   margin-bottom: 36px;
 }
 
@@ -37,11 +39,11 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #FFF0F5;
-  color: #00008B;
+  background: #ff8a65;
+  color: #333;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -53,7 +55,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: #fafafa;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -90,12 +92,12 @@ main {
 }
 
 .bubble {
-  background: #D8BFD8;
+  background: #b2dfdb;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #00008B;
+  color: #212121;
   max-width: 40%;
 }
 
@@ -122,14 +124,14 @@ main {
 
 label {
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
-  color: #0026ff;
+  color: #4caf50;
   margin-right: 20px;
 }
 
 button {
-  background-color: #6A5ACD;
+  background-color: #ff3d00;
   color: white;
   border: none;
   border-radius: 4px;
@@ -137,7 +139,7 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
