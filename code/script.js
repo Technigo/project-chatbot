@@ -28,7 +28,7 @@ const showMessage = (message, sender) => {
 
 const greetUser = () => {
   showMessage(
-    "Konnichiwa Globetrotter! I'm a Travel Bot, what is your name?",
+    "Konnichiwa Globetrotter! I'm Travel Bot, what is your name?",
     "bot"
   );
 };
