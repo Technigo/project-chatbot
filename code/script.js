@@ -43,9 +43,12 @@ document
   .addEventListener("submit", function (event) {
     event.preventDefault();
 
-    const name = event.target[0].value;
+    const name = event.target[0].value.trim(); // I use trim() to remove whitespace
 
-    if (/\d/.test(name)) {
+    if (!name) {
+      // This checks if the name is empty after trimming
+      showMessage("That's not a valid answer. Please enter your name.", "bot");
+    } else if (/\d/.test(name)) {
       // This regex checks if the string contains any digits.
       showMessage(
         "That's not a valid answer. Please provide a name without numbers.",
