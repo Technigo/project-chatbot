@@ -3,6 +3,21 @@ const startCoffeeChatbot () => {
   showMessage('Do you want help to order a coffee? (Yes/No)', 'bot');
 };
 
+//Function to ask the second question
+const showSecondQuestion = () => {
+  showMessage('Do you prefer your coffee hot or cold? (Hot/Cold)', 'bot');
+};
+
+//Function to ask the third question
+const showThirdQuestion = () => {
+  showMessage('How many "horsepowers" do you need in your coffee?', 'bot');
+};
+
+//Function to ask the fourth question
+const showFourthQuestion = () => {
+  showMessage('Add some extra?', 'bot');
+};
+
 //Function to handle user answers 
 const handleUserAnswer = (event) => {
   event.preventDefault();
@@ -22,3 +37,8 @@ const handleUserAnswer = (event) => {
     }
   }, 500)
 };
+
+//Call the initial function when the webpage loads
+document.addEventListener('DOMContentLoaded', () => {
+  startCoffeeChatbot();
+});
