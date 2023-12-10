@@ -119,11 +119,9 @@ const handleUserAnswer = (userAnswer) => {
      //Ask second question
      setTimeout(() => showSecondQuestion(), 1000);
 
-     } else {
-      showMessage('I am sorry, I didnt understand your response. Please answer with yes or no.', 'bot');
-       // Ask the first question again
-       setTimeout(() => startCoffeeChatbot(), 1000);
-     }
+  } else if (userAnswer === 'no') {
+      showMessage('If you change your mind, you know where to find me', 'bot');
+  }
  };
 
 
@@ -139,12 +137,10 @@ const showSecondQuestion = () => {
 const handleSecondQuestionAnswer = (answer) => {
   showMessage(answer, 'user');
   // Store the answer in userPreferences
-  userPreferences.coffee = answer;
+  userPreferences.coffee = answer.toLowerCase();
 
-  if (answer === 'hot') {
+  if (userPreferences.coffee === 'hot' || userPreferences.coffee === 'cold') {
     setTimeout(() => showThirdQuestion(), 1000);
-  } else if (answer === 'cold') {
-    setTimeout(() => showFourthQuestion(), 1000);
   }
 };
 
@@ -158,15 +154,15 @@ const showThirdQuestion = () => {
 };
 
 //Function to handle the third question answer
-const handleThirdQuestionAnswer (answer) => {
+const handleThirdQuestionAnswer = (answer) => {
   showMessage(answer, 'user');
-  userPreferences.strength = answer;
+  userPreferences.strength = answer.toLowerCase();
 
-  if (answer === 'wake me up') {
-    setTimeout(() => showFourthQuestion(), 1000);
-  } else (answer === 'medium') {
-    setTimeout(() => showFourthQuestion(), 1000);
-  } else if (answer === 'caffeinefree') {
+  if (
+    userPreferences.strength === 'wake me up' ||
+    userPreferences.strength === 'medium' ||
+    userPreferences.strength === 'caffeinefree'
+  ) {
     setTimeout(() => showFourthQuestion(), 1000);
   }
 };
@@ -189,7 +185,7 @@ const handleFourthQuestionAnswer = (answer) => {
   // Provide recommendations based on user's answers
   provideCoffeeRecommendation(userPreferences.coffee, userPreferences.strength, userPreferences.extras);
 };
- 
+
 //Event listener for user interaction
 document.getElementById('coffee-form').addEventListener('submit', (event) => {
   event.preventDefault();
