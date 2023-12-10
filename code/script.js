@@ -1,11 +1,18 @@
+// Global object to store user preferences
+const userPreferences = {
+  coffee: '',
+  strength:'',
+  extras:'',
+};
+
 //Function to first question
 const startCoffeeChatbot () => {
-  showMessage('Do you want help to order a coffee? (Yes/No)', 'bot');
+  showMessage('Do you want help to order a coffee?', 'bot');
 };
 
 //Function to ask the second question
 const showSecondQuestion = () => {
-  showMessage('Do you prefer your coffee hot or cold? (Hot/Cold)', 'bot');
+  showMessage('Do you prefer your coffee hot or cold?', 'bot');
 };
 
 //Function to ask the third question
