@@ -109,7 +109,7 @@ const showThirdQuestion = () => {
     { label: 'Medium', handler: 'handleCoffeeStrength("medium")' },
     { label: 'Caffeinefree', handler: 'handleCoffeeStrength("caffeinefree")' }
   ];
-  showMessage('How many "horsepowers" do you need in your coffee?', 'bot');
+  showMessage('How many "horsepowers" do you need in your coffee?', 'bot', options);
 };
 
 //Function to ask the fourth question
@@ -119,7 +119,7 @@ const showFourthQuestion = () => {
     { label: 'Milk', handler: 'handleCoffeeExtras("milk")' },
     { label: 'No thanks', handler: 'handleCoffeeExtras("no thanks")' }
   ];
-  showMessage('Add some extra?', 'bot');
+  showMessage('Add some extra?', 'bot', options);
 };
 
 //Function to handle user answers 
@@ -141,6 +141,10 @@ const handleUserAnswer = (event) => {
     }
   }, 500)
 };
+
+//Event listener for user interaction
+document.getElementById('input-wrapper').addEventListener('submit', handleUserAnswer);
+
 
 //Call the initial function when the webpage loads
 document.addEventListener('DOMContentLoaded', () => {
