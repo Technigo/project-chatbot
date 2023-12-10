@@ -8,7 +8,6 @@ const userPreferences = {
 //Function to show messages
 const showMessage = (message, sender, options) => {
   const chat = document.getElementById('chat');
-  const userInput = document.getElementById('user-input');
 
   if (sender === 'user') {
     chat.innerHTML += `
@@ -19,20 +18,29 @@ const showMessage = (message, sender, options) => {
     </section>
   `;
   } else if (sender === 'bot') {
-    chat.innerHTML += `
-    <section class="bot-msg">
-      <img src="assets/bot.png" alt="Bot" />
-      <div class="bubble bot-bubble">
-        <p>${message}</p>
-        ${options ? options.map(option => `<button class="option-btn" onclick="${option.handler}">${option.label}</button>`).join('') : ''}
-      </div>
-    </section>
-  `;
-}
+    const botMsg = document.createElement('section');
+    botMsg.classList.add('bot-msg');
 
-// Clear user input after showing the message
-userInput.value = '';
+    botMsg.innerHTML += `
+    <img src="assets/bot.png" alt="Bot" />
+    <div class="bubble bot-bubble">
+      <p>${message}</p>
+      <div id="options-container">
+        ${options
+          ? options.map(
+              (option, index) =>
+                `<button class="option-btn" onclick="handleOptionClick('${option.value}')">${option.label}</button>`
+            )
+          : ''}
+      </div>
+    </div>
+  `;
+
+    chat.appendChild(botMsg);
+  }
 };
+
+
 
 //Function to handle user's coffee preference
 const handleCoffeePreference = (preference) => {
@@ -89,61 +97,103 @@ const provideCoffeeRecommendation = (preference, strength, extras) => {
 };
 
 //Function to ask first question
-const startCoffeeChatbot () => {
-  showMessage('Do you want help to order a coffee?', 'bot');
+const startCoffeeChatbot = () => {
+  showMessage('Do you want help to order a coffee?', 'bot', [
+   { label: 'Yes', value: 'yes' },
+   { label: 'No', value: 'no' }
+  ]);
 };
+
+// Function to handle button clicks
+const handleOptionClick = (value) => {
+  showMessage(value, 'user');
+
+// Handle the user's answer directly
+handleUserAnswer(value);
+};
+
+//Function to handle user answers 
+const handleUserAnswer = (userAnswer) => {
+  if (userAnswer === 'yes') {        
+    showMessage('Great! Lets get started.', 'bot');
+     //Ask second question
+     setTimeout(() => showSecondQuestion(), 1000);
+
+     } else {
+      showMessage('I am sorry, I didnt understand your response. Please answer with yes or no.', 'bot');
+       // Ask the first question again
+       setTimeout(() => startCoffeeChatbot(), 1000);
+     }
+ };
+
 
 //Function to ask the second question
 const showSecondQuestion = () => {
-  const options = [
-    { label: 'Hot', handler: 'handleCoffeePreference("hot")' },
-    { label: 'Cold', handler: 'handleCoffeePreference("cold")' }
-  ];
-  showMessage('Do you prefer your coffee hot or cold?', 'bot', options);
+  showMessage('Do you prefer your coffee hot or cold?', 'bot', [
+    { label: 'Hot', value: 'hot' },
+    { label: 'Cold', value: 'cold' }
+  ]);
+};
+
+//Function to handle the second question answer
+const handleSecondQuestionAnswer = (answer) => {
+  showMessage(answer, 'user');
+  // Store the answer in userPreferences
+  userPreferences.coffee = answer;
+
+  if (answer === 'hot') {
+    setTimeout(() => showThirdQuestion(), 1000);
+  } else if (answer === 'cold') {
+    setTimeout(() => showFourthQuestion(), 1000);
+  }
 };
 
 //Function to ask the third question
 const showThirdQuestion = () => {
-  const options = [
-    { label: 'Wake me up', handler: 'handleCoffeeStrength("wake me up")' },
-    { label: 'Medium', handler: 'handleCoffeeStrength("medium")' },
-    { label: 'Caffeinefree', handler: 'handleCoffeeStrength("caffeinefree")' }
-  ];
-  showMessage('How many "horsepowers" do you need in your coffee?', 'bot', options);
+  showMessage('How many "horsepowers" do you need in your coffee?', 'bot', [
+    { label: 'Wake me up', value: 'wake me up' },
+    { label: 'Medium', value: 'medium' },
+    { label: 'Caffeinefree', value: 'caffeinefree' }
+  ]);
+};
+
+//Function to handle the third question answer
+const handleThirdQuestionAnswer (answer) => {
+  showMessage(answer, 'user');
+  userPreferences.strength = answer;
+
+  if (answer === 'wake me up') {
+    setTimeout(() => showFourthQuestion(), 1000);
+  } else (answer === 'medium') {
+    setTimeout(() => showFourthQuestion(), 1000);
+  } else if (answer === 'caffeinefree') {
+    setTimeout(() => showFourthQuestion(), 1000);
+  }
 };
 
 //Function to ask the fourth question
 const showFourthQuestion = () => {
-  const options = [
-    { label: 'Sweet', handler: 'handleCoffeeExtras("sweet")' },
-    { label: 'Milk', handler: 'handleCoffeeExtras("milk")' },
-    { label: 'No thanks', handler: 'handleCoffeeExtras("no thanks")' }
-  ];
-  showMessage('Add some extra?', 'bot', options);
+  showMessage('Add some extra?', 'bot', [
+    { label: 'Sweet', value: 'sweet' },
+    { label: 'Milk', value: 'milk' },
+    { label: 'No thanks', value: 'no thanks' }
+  ]);
 };
 
-//Function to handle user answers 
-const handleUserAnswer = (event) => {
-  event.preventDefault();
-  const userAnswer = userInput.value.trim().toLowerCase();
-  showMessage(userAnswer, 'user');
+// Function to handle the fourth question answer
+const handleFourthQuestionAnswer = (answer) => {
+  showMessage(answer, 'user');
+  // Store the answer in userPreferences
+  userPreferences.extras = answer;
 
-  setTimeout(() => {
-    if (userAnswer === 'yes') {
-      showMessage('Great! Let\'s get started.', 'bot');
-    //Ask second question
-    setTimeout(() => showSecondQuestion(), 1000);
-    //End the chatbot
-    } else {
-      showMessage(''I\'m sorry, I didn\'t understand your response. Please answer with "yes" or "no".', 'bot');
-      // Ask the first question again
-      setTimeout(() => startCoffeeChatbot(), 1000);
-    }
-  }, 500)
+  // Provide recommendations based on user's answers
+  provideCoffeeRecommendation(userPreferences.coffee, userPreferences.strength, userPreferences.extras);
 };
-
+ 
 //Event listener for user interaction
-document.getElementById('input-wrapper').addEventListener('submit', handleUserAnswer);
+document.getElementById('coffee-form').addEventListener('submit', (event) => {
+  event.preventDefault();
+});
 
 
 //Call the initial function when the webpage loads
