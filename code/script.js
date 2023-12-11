@@ -54,6 +54,8 @@ const showMessage = (message, sender, options) => {
 
     chat.appendChild(botMsg);
   }
+
+  chat.scrollTop = chat.scrollHeight;
 };
 
 
@@ -200,6 +202,14 @@ const provideCoffeeRecommendation = (preference, strength, extras) => {
     recommendation = 'A classic hot latte with milk might suit your taste!';
   } else if (preference === 'cold' && strength === 'wake me up' && extras === 'sweetness') {
     recommendation = 'How about a sweetened iced coffee for a refreshing kick?';
+  } else if (preference === 'hot' && strength === 'wake me up' && extras === 'no thanks') {
+    recommendation = 'A strong black coffee to wake you up!';
+  } else if (preference === 'cold' && strength === 'medium' && extras === 'sweetness') {
+    recommendation = 'Indulge in a sweetened iced coffee!';
+  } else if (preference === 'hot' && strength === 'caffeinefree' && extras === 'no thanks') {
+    recommendation = 'Try a decaffeinated black coffee for a milder option!';
+  } else if (preference === 'cold' && strength === 'wake me up' && extras === 'no thanks') {
+    recommendation = 'An energizing black iced coffee might be your choice!';
   } else {
     recommendation = 'We have many options! Feel free to explore our menu.';
   }
