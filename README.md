@@ -4,8 +4,8 @@ The assignment was to make a chatbot and work with javascript.
 
 ## The problem
 
-I watched videos, reading materials, looked at other persons code, but I struggled a lot with the chatbot. 
+I used the learning material that was provided and also took some help from AI. 
 
 ## View it live
 
-I have'nt deployed it yet, because the chatbot doesnt work at all. 
+malin-lunde-chatbot.netlify.app
