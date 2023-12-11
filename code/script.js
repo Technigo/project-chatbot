@@ -46,7 +46,7 @@ const showMessage = (message, sender, options) => {
           ? options.map(
               (option, index) =>
                 `<button class="option-btn" onclick="handleOptionClick('${option.value}')">${option.label}</button>`
-            )
+            ).join('')
           : ''}
       </div>
     </div>
