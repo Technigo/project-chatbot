@@ -4,20 +4,17 @@
 
 html {
   background-image: url(images/calatheaO.jpg);
-  -webkit-background-size: 100%;
-  -moz-background-size: 100%;
-  -o-background-size: 100%;
-  background-size: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: ;
 }
-
-
 
 h1 {
   font-weight: 700;
@@ -39,7 +36,7 @@ h2 {
 
 p {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 28px;
   margin: 0;
 }
@@ -109,27 +106,17 @@ main {
   padding: 20px 20px;
   background-color: #f8fbef;
   color: #798161;
+  background: cover;
 }
-
-/*
-#price-select option {
-  width: 100%;
-  font-size: 18px;
-  font-family: ;
-  font-weight: 600;
-  padding: 30px 30px;
-  background-color: #f8fbef;
-  color: #798161;
-}*/
 
 .bubble {
   background: #798161;
   font-weight: 200;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 26px;
   padding: 16px 24px;
   color: rgb(247, 255, 246);
-  max-width: 40%;
+  max-width: 50%;
 }
 
 .bot-bubble {
@@ -140,6 +127,7 @@ main {
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  background: #798161ad;
 }
 
 .input-wrapper {
@@ -153,15 +141,6 @@ main {
   align-items: center;
 }
 
-/*
-label {
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  color: hotpink;
-  margin-right: 20px;
-}*/
-
 button {
   background-color: #798161;
   color: rgb(247, 255, 246);
@@ -172,7 +151,7 @@ button {
   font-size: 18px;
   line-height: 26px;
   font-family: 'Montserrat';
-  font-weight: 700;
+  font-weight: 400;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -200,4 +179,77 @@ button:hover {
   width: 100%;
   border: none;
   overflow: hidden;
+}
+
+@media (max-width: 430px) {
+  html {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+  }
+
+  main {
+    max-width: 330px;
+    height: 440px;
+  }
+
+  input {
+    padding: 16px;
+    font-size: 13px;
+  }
+
+  .chat-container {
+    width: 330px;
+  }
+
+  .bubble {
+    background: #798161;
+    font-weight: 200;
+    font-size: 11px;
+    line-height: 0px;
+    padding: 16px 24px;
+    color: rgb(247, 255, 246);
+    max-width: 60%;
+  }
+
+  .user-bubble {
+    background: #798161ad;
+  }
+
+  p {
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  button {
+    padding: 5px 20px;
+    line-height: 26px;
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  #price-select {
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: 33px;
+  }
+
+  html {
+    s -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 }
