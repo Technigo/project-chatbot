@@ -49,7 +49,6 @@ input {
   color: rgb(247, 255, 246);
   padding: 16px;
   font-size: 18px;
-  font-family: ;
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -201,7 +200,7 @@ button:hover {
   }
 
   input {
-    padding: 16px;
+    padding: 7px;
     font-size: 13px;
   }
 
@@ -246,10 +245,11 @@ button:hover {
   }
 
   html {
-    s -webkit-background-size: cover;
+    -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     background-repeat: no-repeat;
   }
+
 }
