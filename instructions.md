@@ -87,7 +87,7 @@ Also think about **when** you want the greeting to happen. Maybe instead of invo
 
 Again, commit and push your changes.
 
-### Step 3 - Get the party started 🪩
+### Step 3 - Get the party started 🪩 
 
 The chatbot isn't that fun if you can't interact with it. Get the first user answer to appear and get the conversation with the bot started.
 
