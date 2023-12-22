@@ -55,13 +55,21 @@ const handleNameInput = (event) => {
   event.preventDefault(); 
   //name saved for later
   name = nameInput.value
-  console.log(name)
-  //the users name pops up as a message
-  showMessage(name, "user")
-  //name input is reset
-  nameInput.value = ""; 
-  //after 1s bot asks for gender
-  setTimeout(() => askForGender(name), 1000);
+  if (name === "") {
+    validateName()
+    console.log("not valid")
+  } else {console.log(name)
+    //the users name pops up as a message
+    showMessage(name, "user")
+    //name input is reset
+    nameInput.value = ""; 
+    //after 1s bot asks for gender
+    setTimeout(() => askForGender(name), 1000);}
+  
+}
+
+const validateName = () => {
+  showMessage("Hey, I'm sure that's not your real name. Please tell me what your name is 😊", "bot")
 }
 
 const askForGender = (name) => {
