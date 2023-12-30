@@ -92,7 +92,7 @@ const confirmTreeType = (treeChoice) => {
   `;
     document.getElementById(`confirm`).addEventListener(`click`, () => {
       orderChoice = "confirm";
-      showMessage("I'm happy with my choice!", `user`);
+      showMessage("Apple it is!", `user`);
       inputWrapper.style.display = "none";
       setTimeout(() => confirmOrder(orderChoice), 1000);
     });
@@ -109,13 +109,13 @@ const confirmTreeType = (treeChoice) => {
       `bot`
     );
     inputWrapper.innerHTML = `
-    <button class="send-btn" id="confirm">Yes please!</button>
+    <button class="send-btn" id="confirm">Yes, I've decided on a pear-tree!</button>
     <button class="send-btn" id="back">No thank you</button>
   `;
 
     document.getElementById(`confirm`).addEventListener(`click`, () => {
       orderChoice = "confirm";
-      showMessage("I'm happy with my choice!", `user`);
+      showMessage("That's Pear-fect!", `user`);
       inputWrapper.style.display = "none";
       setTimeout(() => confirmOrder(orderChoice), 1000);
     });
