@@ -68,7 +68,7 @@ main {
   justify-content: flex-start;
   overflow: scroll;
   flex-direction: column;
-  padding-bottom: 16px;
+  padding-bottom: 40px;
 }
 
 .bot-msg {
@@ -115,6 +115,7 @@ main {
 #inputWrapper {
   display: flex;
   justify-content: center;
+  margin: 20px;
 }
 
 .input-wrapper form {
