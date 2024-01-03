@@ -1,6 +1,5 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
-const nameInput = document.getElementById('nameInput');
 const inputWrapper = document.getElementById('inputWrapper'); 
 
 // Variables to store the user's name and muscle group
@@ -42,29 +41,22 @@ const greetUser = () => {
   showMessage("Hello there. I am Sweaty, your PT-bot! What's your name?", 'bot');
 }
 
-// Function to restart the conversation
-const restartConversation = () => {
-  chat.innerHTML = ''; // Clear the chat
-  inputWrapper.innerHTML = ''; // Clear input options
-  userName = ''; // Reset the userName
-  muscleGroup = ''; // Reset the muscleGroup
-  setTimeout(greetUser, 500); // Restart the greeting
-}
-
 // User tells their name to the bot
 const userNameInput = event => {
   event.preventDefault();
-  userName = nameInput.value;
-  nameInput.value = "";
+  userName = document.getElementById('nameInput').value;
+  document.getElementById('nameInput').value = "";
   showMessage(`My name is ${userName}.`, 'user');
   setTimeout(muscleOptions, 1500);
 }
 
+// Initialize the conversation
+setTimeout(greetUser, 2000);
 document.getElementById("nameForm").addEventListener("submit", userNameInput);
 
-// Bot gives alternatives to which muscle group to train and an option to finish the workout
+// Function to choose muscle group 
 const muscleOptions = () => {
-  showMessage(`Hope you're ready to get sweaty ${userName}! What do you feel like working out today?`, 'bot');
+  showMessage(`Hope you're ready to get sweaty ${userName}! But remember that anytime you want to end the workout you can just click the "Finish"-button. So what do you feel like training today?`, 'bot');
   inputWrapper.innerHTML = `
     <button id="arms">Arms</button>
     <button id="abs">Abs</button>
@@ -93,7 +85,7 @@ const muscleOptions = () => {
 // Function to finish workout
 const finishWorkout = () => {
   showMessage("Great job today! Now get some rest and come back stronger!", 'bot');
-  inputWrapper.innerHTML = '<button id="restart">Restart</button>'; // Add Restart button
+  inputWrapper.innerHTML = '<button id="restart">Restart</button>'; 
   document.getElementById("restart").addEventListener("click", restartConversation);
 }
 
@@ -108,6 +100,7 @@ const getRandomExercise = (exerciseArray) => {
   return exerciseArray[randomIndex];
 }
 
+// Function to suggest exercises
 const exercises = () => {
   let exercise;
   if (muscleGroup === "Legs") {
@@ -118,9 +111,19 @@ const exercises = () => {
     exercise = getRandomExercise(exercisesArms);
   }
 
-  // Shows suggestion on exercise
-  showMessage(`You should do some ${exercise}! If you want more exercises or another suggestion you can just click the buttons again! Remember that anytime you want to end the workout you can just click the "Finish"-button.`, 'bot');
+  showMessage(`You should do some ${exercise}! If you want more exercises or another suggestion you can just click the buttons again!`, 'bot');
 }
 
-// Initialize the conversation
-setTimeout(greetUser, 2000);
+// Function to restart the conversation
+const restartConversation = () => {
+  chat.innerHTML = '';
+  userName = null;
+  muscleGroup = null;
+  inputWrapper.innerHTML =
+  `<form id="nameForm">
+  <input type="text" id="nameInput"/>
+  <button type="submit">Send</button>
+  </form>`;
+  document.getElementById("nameForm").addEventListener("submit", userNameInput);
+  setTimeout(greetUser, 500);
+}
