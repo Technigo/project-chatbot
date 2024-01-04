@@ -42,11 +42,19 @@ setTimeout(greetUser, 800);
 
 const handleNameInput = (event) => {
   event.preventDefault();
-
+  //Updated so the name has to have letters/characters or it gets an error message.
   const userName = nameInput.value;
-  showMessage(`My name is ${userName}!`, `user`);
-  nameInput.value = "";
-  setTimeout(() => treeType(userName), 1000);
+
+  if (userName.trim() === "") {
+    showMessage(
+      "Hmm, that's a bit mystical, even for tree-people - Please enter a valid name!",
+      "bot"
+    );
+  } else {
+    showMessage(`My name is ${userName}!`, `user`);
+    nameInput.value = "";
+    setTimeout(() => treeType(userName), 1000);
+  }
 };
 
 nameForm.addEventListener("submit", handleNameInput);
