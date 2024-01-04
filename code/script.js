@@ -25,6 +25,12 @@ let currentQuestion = 1;
 const showMessage = (message, sender, options) => {
   const chat = document.getElementById('chat');
 
+    //Hide all previous messages
+  const allMessages = document.querySelectorAll('.user-msg, .bot-msg');
+  allMessages.forEach((msg) => {
+    msg.style.display = 'none';
+  });
+
   if (sender === 'user') {
     chat.innerHTML += `
     <section class="user-msg">
@@ -54,10 +60,8 @@ const showMessage = (message, sender, options) => {
 
     chat.appendChild(botMsg);
   }
-
   chat.scrollTop = chat.scrollHeight;
 };
-
 
 // Function to handle button clicks
 const handleOptionClick = (value) => {
@@ -73,7 +77,11 @@ if (currentQuestion === 1) {
 } else if (currentQuestion === 4) {
   handleFourthQuestionAnswer(value);
 }
+
+// Increment the currentQuestion variable
+currentQuestion++;
 };
+
 
 // Function to handle the user's initial answer
 const handleUserAnswer = (userAnswer) => {
@@ -216,6 +224,20 @@ const provideCoffeeRecommendation = (preference, strength, extras) => {
 
   showMessage(recommendation, 'bot');
 
+};
+
+// Event listener for "Start Over" button
+document.getElementById('startOverBtn').addEventListener('click', () => {
+  // Reset the chatbot to the initial state
+  currentQuestion = 1;
+  clearChat();
+  startCoffeeChatbot();
+});
+
+// Function to clear the chat area
+const clearChat = () => {
+  const chat = document.getElementById('chat');
+  chat.innerHTML = ''; // Clears all messages in the chat
 };
 
 //Event listener for user interaction
