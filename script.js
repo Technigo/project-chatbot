@@ -1,12 +1,11 @@
-// Variables that point to selected DOM elements
+// Variables and DOM elements
 const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('inputWrapper'); 
 
-// Variables to store the user's name and muscle group
 let userName;
 let muscleGroup;
 
-// This function will add a chat bubble in the correct place based on who the sender is
+// A function that adds a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
     chat.innerHTML += `
@@ -28,7 +27,7 @@ const showMessage = (message, sender) => {
     `;
   }
 
-  // Use requestAnimationFrame for smoother scrolling
+  // Make scroolling smoother
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       chat.scrollTop = chat.scrollHeight;
@@ -36,25 +35,23 @@ const showMessage = (message, sender) => {
   });
 }
 
-// Function to start the conversation
+// First question
 const greetUser = () => {
   showMessage("Hello there. I am Sweaty, your PT-bot! What's your name?", 'bot');
 }
 
-// User tells their name to the bot
+// Answer to first question with validation
 const userNameInput = event => {
   event.preventDefault();
-  userName = document.getElementById('nameInput').value;
-  document.getElementById('nameInput').value = "";
-  showMessage(`My name is ${userName}.`, 'user');
-  setTimeout(muscleOptions, 1500);
-}
+  userName = document.getElementById('userNameInput').value.trim();
+  const nameRegex = /^[A-Za-z\s]+$/;
+  if (!userName.match(nameRegex) || userName === "") {
+    showMessage("Please write your real name.", 'bot');
+    return; 
+    setTimeout(muscleOptions, 1500);
+  }
 
-// Initialize the conversation
-setTimeout(greetUser, 2000);
-document.getElementById("nameForm").addEventListener("submit", userNameInput);
-
-// Function to choose muscle group 
+// Second question
 const muscleOptions = () => {
   showMessage(`Hope you're ready to get sweaty ${userName}! But remember that anytime you want to end the workout you can just click the "Finish"-button. So what do you feel like training today?`, 'bot');
   inputWrapper.innerHTML = `
@@ -62,7 +59,8 @@ const muscleOptions = () => {
     <button id="abs">Abs</button>
     <button id="legs">Legs</button>
     <button id="finishWorkout">Finish workout</button>`;
-  
+
+  // Answer to second question based on which button you click
   document.getElementById("arms").addEventListener("click", () => {
     muscleGroup = "Arms"; 
     showMessage("I love to get strong arms!", 'user');
@@ -82,25 +80,24 @@ const muscleOptions = () => {
   document.getElementById("finishWorkout").addEventListener("click", finishWorkout);
 }
 
-// Function to finish workout
+// Function to finish workout when you click the restart-button
 const finishWorkout = () => {
   showMessage("Great job today! Now get some rest and come back stronger!", 'bot');
   inputWrapper.innerHTML = '<button id="restart">Restart</button>'; 
   document.getElementById("restart").addEventListener("click", restartConversation);
 }
 
-// Arrays of exercises for each muscle group
+
 const exercisesLegs = ["squats", "lunges", "leg Press", "leg extensions", "leg curls", "hip thrusts"];
 const exercisesAbs = ["crunches", "planks", "russian twists", "leg raises", "sit-ups"];
 const exercisesArms = ["push-ups", "dips", "chins", "curls", "triceps extensions"];
 
-// Function to select a random exercise from the array
+
 const getRandomExercise = (exerciseArray) => {
   const randomIndex = Math.floor(Math.random() * exerciseArray.length);
   return exerciseArray[randomIndex];
 }
 
-// Function to suggest exercises
 const exercises = () => {
   let exercise;
   if (muscleGroup === "Legs") {
