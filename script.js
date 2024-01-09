@@ -1,102 +1,112 @@
-// Variables and DOM elements
+// Variables that point to selected DOM elements
 const chat = document.getElementById('chat');
 const inputWrapper = document.getElementById('inputWrapper'); 
 
+// Variables to store the user's name and muscle group
 let userName;
 let muscleGroup;
 
-// A function to create and append chat messages
-const createMessageElement = (message, sender) => {
-  const section = document.createElement('section');
-  section.className = sender + '-msg';
-
-  const img = document.createElement('img');
-  img.src = sender + '.png';
-  img.alt = sender.charAt(0).toUpperCase() + sender.slice(1);
-
-  const div = document.createElement('div');
-  div.className = 'bubble ' + sender + '-bubble';
-
-  const p = document.createElement('p');
-  p.textContent = message;
-
-  div.appendChild(p);
+// Function to add a chat bubble
+const showMessage = (message, sender) => {
   if (sender === 'user') {
-    section.appendChild(div);
-    section.appendChild(img);
-  } else {
-    section.appendChild(img);
-    section.appendChild(div);
+    chat.innerHTML += `
+      <section class="user-msg">
+        <div class="bubble user-bubble">
+          <p>${message}</p>
+        </div>
+        <img src="user.png" alt="User" />  
+      </section>
+    `;
+  } else if (sender === 'bot') {
+    chat.innerHTML += `
+      <section class="bot-msg">
+        <img src="bot.png" alt="Bot" />
+        <div class="bubble bot-bubble">
+          <p>${message}</p>
+        </div>
+      </section>
+    `;
   }
 
-  chat.appendChild(section);
-  chat.scrollTop = chat.scrollHeight;
-}
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      chat.scrollTop = chat.scrollHeight;
+    });
+  });
+};
 
-// A function to validate user name
-const isValidName = (name) => {
-  const nameRegex = /^[A-Za-z\s]+$/;
-  return name.match(nameRegex) && name !== "";
-}
-
-// A function to ask the first question
+// Function to start the conversation
 const greetUser = () => {
-  createMessageElement("Hello there. I am Sweaty, your PT-bot! What's your name?", 'bot');
-}
+  showMessage("Hello there. I am Sweaty, your PT-bot! What's your name?", 'bot');
+};
 
-// A function to handle user name input
-const userNameInput = (event) => {
+// User tells their name to the bot
+const userNameInput = event => {
   event.preventDefault();
-  userName = document.getElementById('userNameInput').value.trim();
-  
-  if (!isValidName(userName)) {
-    createMessageElement("Please write your real name.", 'bot');
-  } else if (userName.length > 20) {
-    createMessageElement("Name too long. Please use a shorter name.", 'bot');
-  } else if (userName.length < 3) {
-    createMessageElement("Name too short. Please use a longer name.", 'bot');
+  const inputName = document.getElementById('nameInput').value;
+
+  // Regex for validating the name: more than two letters, no numbers or symbols
+  const nameRegex = /^[A-Za-z]{3,}$/;
+
+  // Validate user name
+  if (!nameRegex.test(inputName)) {
+    showMessage("Please enter a valid name. It should be more than two letters and contain no numbers or symbols.", 'bot');
   } else {
+    userName = inputName;
+    document.getElementById('nameInput').value = "";
+    showMessage(`My name is ${userName}.`, 'user');
     setTimeout(muscleOptions, 1500);
   }
-}
+};
 
-// A function to show muscle options
+// Initialize the conversation
+setTimeout(greetUser, 2000);
+document.getElementById("nameForm").addEventListener("submit", userNameInput);
+
+// Function to choose muscle group 
 const muscleOptions = () => {
-  createMessageElement(`Hope you're ready to get sweaty ${userName}! Select a muscle group to train:`, 'bot');
+  showMessage(`Hope you're ready to get sweaty ${userName}! But remember that anytime you want to end the workout you can just click the "Finish"-button. So what do you feel like training today?`, 'bot');
   inputWrapper.innerHTML = `
     <button id="arms">Arms</button>
     <button id="abs">Abs</button>
     <button id="legs">Legs</button>
     <button id="finishWorkout">Finish workout</button>`;
-
-  // Event listeners for muscle group selection
-  document.getElementById("arms").addEventListener("click", () => handleMuscleGroupSelection("Arms"));
-  document.getElementById("abs").addEventListener("click", () => handleMuscleGroupSelection("Abs"));
-  document.getElementById("legs").addEventListener("click", () => handleMuscleGroupSelection("Legs"));
+  
+  document.getElementById("arms").addEventListener("click", () => selectMuscleGroup("Arms"));
+  document.getElementById("abs").addEventListener("click", () => selectMuscleGroup("Abs"));
+  document.getElementById("legs").addEventListener("click", () => selectMuscleGroup("Legs"));
   document.getElementById("finishWorkout").addEventListener("click", finishWorkout);
-}
+};
 
-const handleMuscleGroupSelection = (group) => {
+// Function for selecting a muscle group
+const selectMuscleGroup = (group) => {
   muscleGroup = group; 
-  createMessageElement(`Let's train ${muscleGroup} today!`, 'user');
+  showMessage(`I want to train my ${muscleGroup.toLowerCase()}.`, 'user');
   setTimeout(exercises, 1500);
-}
+};
 
-// A function to quit workout
+// Function to finish workout
 const finishWorkout = () => {
-  createMessageElement("Great job today! Now get some rest and come back stronger!", 'bot');
+  showMessage("Great job today! Now get some rest and come back stronger!", 'bot');
   inputWrapper.innerHTML = '<button id="restart">Restart</button>'; 
   document.getElementById("restart").addEventListener("click", restartConversation);
-}
+};
 
-// An exercise arrays
-const exercisesLegs = ["squats", "lunges", "leg press", "leg extensions", "leg curls", "hip thrusts"];
+// Arrays of exercises for each muscle group
+const exercisesLegs = ["squats", "lunges", "leg Press", "leg extensions", "leg curls", "hip thrusts"];
 const exercisesAbs = ["crunches", "planks", "russian twists", "leg raises", "sit-ups"];
 const exercisesArms = ["push-ups", "dips", "chins", "curls", "triceps extensions"];
 
-// A function to suggest exercises
+// Function to select a random exercise from the array
+const getRandomExercise = (exerciseArray) => {
+  const randomIndex = Math.floor(Math.random() * exerciseArray.length);
+  return exerciseArray[randomIndex];
+};
+
+// Function to suggest exercises
 const exercises = () => {
   let exercise;
+
   if (muscleGroup === "Legs") {
     exercise = getRandomExercise(exercisesLegs);
   } else if (muscleGroup === "Abs") {
@@ -104,29 +114,23 @@ const exercises = () => {
   } else if (muscleGroup === "Arms") {
     exercise = getRandomExercise(exercisesArms);
   } else {
-    createMessageElement("Please select a muscle group first.", 'bot');
+    showMessage("Please select a valid muscle group.", 'bot');
     return;
   }
 
-  createMessageElement(`You should do some ${exercise}! If you want more exercises or another suggestion, just select a muscle group again!`, 'bot');
-}
+  showMessage(`You should do some ${exercise}! If you want more exercises or another suggestion you can just click the buttons again!`, 'bot');
+};
 
-// A function to get a random exercise
-const getRandomExercise = (exerciseArray) => {
-  const randomIndex = Math.floor(Math.random() * exerciseArray.length);
-  return exerciseArray[randomIndex];
-}
-
-// A function to restart the conversation
+// Function to restart the conversation
 const restartConversation = () => {
   chat.innerHTML = '';
   userName = null;
   muscleGroup = null;
-  inputWrapper.innerHTML = 
-    `<form id="nameForm">
-       <input type="text" id="userNameInput" />
-       <button type="submit">Send</button>
-     </form>`;
+  inputWrapper.innerHTML = `
+  <form id="nameForm">
+    <input type="text" id="nameInput"/>
+    <button type="submit">Send</button>
+  </form>`;
   document.getElementById("nameForm").addEventListener("submit", userNameInput);
   setTimeout(greetUser, 500);
-}
+};
