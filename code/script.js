@@ -79,7 +79,13 @@ const sendMessage = (event) => {
 
   // Get the user's input from the name input field
   const inputField = document.getElementById('name-input');
-  const userName = inputField.value;
+  const userName = inputField.value.trim(); // Trim leading and trailing whitespaces
+
+  // If the input is empty, display an error message and exit
+  if (!userName) {
+    showMessage('Please enter a name before proceeding.', 'bot');
+    return;
+  }
 
   // Define a regular expression pattern to check for numbers
   const numberPattern = /\d/;
@@ -99,6 +105,7 @@ const sendMessage = (event) => {
   // Clear the input field
   inputField.value = '';
 };
+
 
 const showMessage = (message, sender) => {
   if (sender === 'user') {
