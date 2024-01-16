@@ -1,164 +1,170 @@
-// Variables that point to selected DOM elements
+// Element references
 const chat = document.getElementById('chat');
 const userInput = document.getElementById('name-input');
+const inputWrapper = document.getElementById('input-wrapper'); 
 const sendChatBtn = document.querySelector('.send-btn');
-const optionsContainer = document.querySelector('.options');
-const div = document.createElement('div');
-// const chatForm = document.getElementById('chat-form');
+const closeChatBtn = document.querySelector('.close-chat-btn');
 
-let userName = "";
-let foodType = "";
-let foodSubtype = "";
-// let message = "";
-// let sender = "";
-// let chatBubble = "";
-// let botBubble = "";
-// let userBubble = "";
-// let img = "";
-// let p = "";
 
+// State variables
+let state = 'GET_NAME'; 
+let userName = '';
+let pizzaType = '';
+let pizzaSubtype = '';
+
+
+// Initial states and variables
 const welcomeMessage = "Hello, what is your name?";
 
+// Start the chat with a welcome message
+const startChat = () => {
+    sendMessage(welcomeMessage);
+    state = 'GET_NAME';
+    
+
+   
+};
+
+// Send a message from the bot
 const sendBotMessage = (message) => {
     sendMessage(message, 'bot');
-}
+    
+};
 
-
+// Send a message (general function for both user and bot)
 const sendMessage = (message, sender) => {
-  const chatBubble = document.createElement('div');
-  chatBubble.classList.add(`${sender}-msg`);
-  chatBubble.innerHTML = `
-      <div class="bubble ${sender}-bubble">
-          <p>${message}</p>
-      </div>
-      <img src="assets/${sender}.png" alt="${sender}" />
-      </div>
+    const chatBubble = document.createElement('div');
+    chatBubble.classList.add(`${sender}-msg`);
+    chatBubble.innerHTML = `
+        <div class="bubble ${sender}-bubble">
+            <p>${message}</p>
+        </div>
     `;
+    chat.appendChild(chatBubble);
+    chat.scrollTop = chat.scrollHeight;
+};
 
- 
+// Show options as buttons in the input wrapper
+const showOptions = (options) => {
+    const buttons = options.map(option => 
+        `<button class="option-btn" data-value="${option}">${option}</button>`
+    ).join('');
+    inputWrapper.innerHTML = `<div>${buttons}</div>`;
+};
 
-chat.appendChild(chatBubble);
-chat.scrollTop = chat.scrollHeight;
+// Function to handle different pizza types
+const getFoodVariants = (type) => {
+    switch (type) {
+        case 'Thin Crust':
+            return ['Margherita', 'Pepperoni', 'Veggie', 'Meat Lovers'];
+        case 'Thick Crust':
+            return ['Margherita', 'Pepperoni', 'Veggie', 'Meat Lovers'];
+        default:
+            return [];
+    }
+};
 
+// Main message processing function
+const processMessage = () => {
+    const messageText = userInput.value.trim();
+    switch (state) {
+        
+        case 'GET_NAME':
+            userName = messageText;
+            if (userName) {
+                sendBotMessage(`Nice to meet you, ${userName}! What type of crust would you like for your pizza?`);
+                showOptions(['Thin Crust', 'Thick Crust']);
+                state = 'GET_PIZZA_TYPE';
+            } else {
+                sendBotMessage("Please enter your name.");
+            }
+            break;
+
+        case 'GET_PIZZA_TYPE':
+            pizzaType = messageText;
+            sendBotMessage(`Great choice, ${userName}! What toppings would you like on your ${pizzaType} pizza?`);
+            showOptions(getFoodVariants(pizzaType));
+            state = 'GET_PIZZA_SUBTYPE';
+            break;
+
+        case 'GET_PIZZA_SUBTYPE':
+            pizzaSubtype = messageText;
+            sendBotMessage(`You chose a ${pizzaType} pizza with ${pizzaSubtype}. Do you want to confirm your order?`);
+            showOptions(['Yes', 'No']);
+            state = 'WAITING_FOR_CONFIRMATION';
+            
+            break;
+
+        case 'WAITING_FOR_CONFIRMATION':
+            if (messageText.toLowerCase() === 'yes') {
+                sendBotMessage(`Thank you for your order! A delicious ${pizzaSubtype} ${pizzaType} pizza will be ready in 15 minutes.`);
+            } else {
+                sendBotMessage('Your order has been cancelled.');
+            }
+            state = 'END';
+            showCloseChatButton();
+            break;
+
+       
+
+        default:
+            break;
+            
+
+        }
+
+
+    userInput.value = '';
+};
+
+
+const showCloseChatButton = () => {
+    inputWrapper.innerHTML = `<button class="close-chat-btn">Close Chat</button>`;
+    document.querySelector('.close-chat-btn').addEventListener('click', () => {
+        closeChat();
+    });
+};
+
+const closeChat = () => {
+    setTimeout(() => {
+        chat.style.display = messageText ('Restarting the chat...')
+    }
+
+    , 4000);
+
+    location.reload();
 
 };
 
 
-const showOptions = (options) => {
-    optionsContainer.innerHTML = '';
-    options.forEach((option) => {
-        const optionButton = document.createElement('button');
-        optionButton.classList.add('option-btn');
-        optionButton.innerText = option;
-        optionButton.addEventListener('click', () => {
-            processMessage(option);
-            optionsContainer.innerHTML = '';
-        });
-        optionsContainer.appendChild(optionButton);
-    });
-}
 
-// const getUserName = () => {
-//     userName = userInput.value.trim();
-//     sendBotMessage(`Nice to meet you, ${userName}!`);
-//     sendBotMessage(`Do you want ${pizza}, ${pasta}, or ${sushi}?`);
-// }
+// Event listeners for user interactions
+inputWrapper.addEventListener('click', (event) => {
 
+    if (event.target.classList.contains('close-chat-btn')) {
 
-
-const getFoodVariants = (foodType) => {
-    switch (foodType) {
-        case 'Pizza':
-            return ['Margherita', 'Pepperoni', 'Hawaiian'];
-        case 'Pasta':
-            return ['Spaghetti Carbonara', 'Lasagna', 'Fettuccine Alfredo'];
-        case 'Sushi':
-            return ['California Roll', 'Sashimi', 'Dragon Roll'];
-        default:
-            return [];
+        closeChat();
+        
+    } else if (event.target.classList.contains('option-btn')) {
+        
+        const selectedOption = event.target.getAttribute('data-value');
+        sendMessage(selectedOption, 'user');
+        userInput.value = selectedOption; 
+        processMessage();
     }
-}
+} );
 
-const processMessage = () => {
-    const messageText = userInput.value.trim();
-  
-    if (!userName) {
-        userName = messageText;
-        sendBotMessage(`Nice to meet you, ${userName}!`);
-        sendBotMessage(`Do you want Pizza, Pasta, or Sushi?`);
-    } else if (!foodType) {
-        if (messageText.toLowerCase().includes('pizza')) {
-            foodType = 'Pizza';
-            const variants = getFoodVariants(foodType);
-            if (variants.length > 0) {
-                sendBotMessage(`Great choice, ${foodType}! Please choose a subtype: ${variants.join(', ')}.`);
-            } else {
-                sendBotMessage("I'm sorry, we currently don't have specific subtypes for pizza.");
-            }
-        } else if (messageText.toLowerCase().includes('pasta')) {
-            foodType = 'Pasta';
-            const variants = getFoodVariants(foodType);
-            if (variants.length > 0) {
-                sendBotMessage(`Great choice, ${foodType}! Please choose a subtype: ${variants.join(', ')}.`);
-            } else {
-                sendBotMessage("I'm sorry, we currently don't have specific subtypes for pasta.");
-            }
-        } else if (messageText.toLowerCase().includes('sushi')) {
-            foodType = 'Sushi';
-            const variants = getFoodVariants(foodType);
-            if (variants.length > 0) {
-                sendBotMessage(`Great choice, ${foodType}! Please choose a subtype: ${variants.join(', ')}.`);
-            } else {
-                sendBotMessage("I'm sorry, we currently don't have specific subtypes for sushi.");
-            }
-        } else {
-            sendBotMessage("Please choose a valid food option: pizza, pasta, or sushi.");
-        }
-    } else if (!foodSubtype) {
-        const variants = getFoodVariants(foodType);
-        if (variants.includes(messageText)) {
-            foodSubtype = messageText;
-            sendBotMessage(`You chose ${foodSubtype}. How old are you?`);
-        } else {
-            sendBotMessage(`Please choose a valid subtype for ${foodType}: ${variants.join(', ')}.`);
-        }
-    } else {
-        const age = parseInt(messageText);
-        if (!isNaN(age)) {
-            const price = age >= 18 ? '€20' : '€10';
-            sendBotMessage(`You are ${age} years old. Your order (${foodType} - ${foodSubtype}) costs ${price}.`);
-        } else {
-            sendBotMessage("Please enter a valid age.");
-        }
+
+userInput.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+        processMessage();
     }
-
-   
-}
+});
 
 sendChatBtn.addEventListener('click', (event) => {
     event.preventDefault();
     processMessage();
-    console.log("processmessage");
-    userInput.value = '';
 });
 
-// userInput.addEventListener('keyup', (event) => {
-//     if (event.key === 'Enter') {
-//         processMessage();
-//         userInput.value = '';
-//     }
-// });
 
-// sendChatBtn.addEventListener('submit', (event) => {
-//     event.preventDefault();
-//     processMessage(console.log("hello"));
-//     userInput.value = '';
-// });
-
-// Open up the chat with welcome message
-sendBotMessage(welcomeMessage);
-
-
-
-
-
+startChat();
