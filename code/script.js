@@ -48,14 +48,20 @@ const greetUser = () => {
 };
 setTimeout(greetUser, 1000);
 
+//Ensure that the name contains only valid characters
+
 const nameMsg = (event) => {
   //I spent almost half a day to figure out why the reply won't stay there, Google save my life
   event.preventDefault();
   // get user input
   const userName = nameInput.value;
-  if (userName == "") {
+  const isValidName = /^[a-zA-Z]+$/.test(userName);
+  if (userName === "" || !isValidName) {
     setTimeout(() => {
-      showMessage("Please fill in your name :)", "bot");
+      showMessage(
+        "Please enter a valid name using only letters of the alphabet. :)",
+        "bot"
+      );
     }, 800);
   } else {
     showMessage(userName, "user");
