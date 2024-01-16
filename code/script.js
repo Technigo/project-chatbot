@@ -49,8 +49,16 @@ const userNameInput = event => {
   event.preventDefault();
   userName = nameInput.value;
   nameInput.value = "";
-  showMessage(`I'm ${userName}.`, 'user');
-  setTimeout(drinkTypeOptions, 1500);
+
+  if (!userName || !/^[a-zA-Z]+$/.test(userName)) {
+    // Bot sends an error message if the name isn't valid
+    showMessage("I didn't quite understand that. Please enter a valid name.", 'bot');
+  } else {
+    // User proceeds to the drink type options
+    showMessage(`I'm ${userName}.`, "user");
+    nameInput.value = "";
+    setTimeout(() => drinkTypeOptions(userName), 2000);
+  };
 }
 
 document.getElementById("nameForm").addEventListener("submit", userNameInput);
@@ -60,54 +68,54 @@ const drinkTypeOptions = () => {
   showMessage(`Well hello ${userName}! The warmest of welcomes to Hot Java Coffee.
   What are you in the mood for today?`, 'bot');
   // Buttons for the different drink choices
-    inputWrapper.innerHTML = `
+  inputWrapper.innerHTML = `
     <button id="caffeLatte">Caffe Latte</button>
     <button id="flatWhite">Flat White</button>
     <button id="cappuccino">Cappuccino</button>`
 
-      document.getElementById("caffeLatte").addEventListener("click", () => {
-        drinkType = "Caffe Latte"; 
-        showMessage("I'd love a Caffe Latte!", 'user');
-        setTimeout(milkOptions, 1500);
-      });
-      document.getElementById("flatWhite").addEventListener("click", () => {
-        drinkType = "Flat White"; 
-        showMessage("Flat White is my jam!", 'user');
-        setTimeout(milkOptions, 1500);
-      });
-      document.getElementById("cappuccino").addEventListener("click", () => {
-        drinkType = "Cappuccino"; 
-        showMessage("I've never said 'no' to a Cappuccino!", 'user');
-        setTimeout(milkOptions, 1500);
-      });
+  document.getElementById("caffeLatte").addEventListener("click", () => {
+    drinkType = "Caffe Latte";
+    showMessage("I'd love a Caffe Latte!", 'user');
+    setTimeout(milkOptions, 1500);
+  });
+  document.getElementById("flatWhite").addEventListener("click", () => {
+    drinkType = "Flat White";
+    showMessage("Flat White is my jam!", 'user');
+    setTimeout(milkOptions, 1500);
+  });
+  document.getElementById("cappuccino").addEventListener("click", () => {
+    drinkType = "Cappuccino";
+    showMessage("I've never said 'no' to a Cappuccino!", 'user');
+    setTimeout(milkOptions, 1500);
+  });
 }
 
-  // When the drink is chosen, the bot asks the user which milk they want for their drink.
+// When the drink is chosen, the bot asks the user which milk they want for their drink.
 const milkOptions = () => {
   showMessage(
     `A ${drinkType}? Lovely! What kind of milk would you like us to prepare it with?`,
     'bot');
-    // Buttons for the different milk choices
-      inputWrapper.innerHTML = `
+  // Buttons for the different milk choices
+  inputWrapper.innerHTML = `
       <button id="oatMilk">Oat milk</button>
       <button id="almondMilk">Almond milk</button>
       <button id="soyMilk">Soy milk</button>`
 
-        document.getElementById("oatMilk").addEventListener("click", () => {
-          milkType = "Oat milk"; 
-          showMessage("Oat milk, please!", 'user');
-          setTimeout(confirmMilk, 1500);
-        });
-        document.getElementById("almondMilk").addEventListener("click", () => {
-          milkType = "Almond milk"; 
-          showMessage("Almond milk, please!", 'user');
-          setTimeout(confirmMilk, 1500);
-        });
-        document.getElementById("soyMilk").addEventListener("click", () => {
-          milkType = "Soy milk"; 
-          showMessage("Soy milk, please!", 'user');
-          setTimeout(confirmMilk, 1500);
-        });
+  document.getElementById("oatMilk").addEventListener("click", () => {
+    milkType = "Oat milk";
+    showMessage("Oat milk, please!", 'user');
+    setTimeout(confirmMilk, 1500);
+  });
+  document.getElementById("almondMilk").addEventListener("click", () => {
+    milkType = "Almond milk";
+    showMessage("Almond milk, please!", 'user');
+    setTimeout(confirmMilk, 1500);
+  });
+  document.getElementById("soyMilk").addEventListener("click", () => {
+    milkType = "Soy milk";
+    showMessage("Soy milk, please!", 'user');
+    setTimeout(confirmMilk, 1500);
+  });
 }
 
 // Bot confirms the choice of milk to the user
@@ -122,21 +130,21 @@ const sizeChoice = () => {
   showMessage(
     `Which drink size would you prefer today: big or small?`,
     'bot')
-    // Buttons for the drink sizes
-      inputWrapper.innerHTML = `
+  // Buttons for the drink sizes
+  inputWrapper.innerHTML = `
       <button id="bigDrink">Big</button>
       <button id="smallDrink">Small</button>`
 
-        document.getElementById("bigDrink").addEventListener("click", () => {
-          drinkSize = "Big"; 
-          showMessage("Big! I need my caffeine.", 'user');
-          setTimeout(confirmSize, 1500);
-        });
-        document.getElementById("smallDrink").addEventListener("click", () => {
-          drinkSize = "Small"; 
-          showMessage("Small. It's almost my bedtime...", 'user');
-          setTimeout(confirmSize, 1500);
-        });
+  document.getElementById("bigDrink").addEventListener("click", () => {
+    drinkSize = "Big";
+    showMessage("Big! I need my caffeine.", 'user');
+    setTimeout(confirmSize, 1500);
+  });
+  document.getElementById("smallDrink").addEventListener("click", () => {
+    drinkSize = "Small";
+    showMessage("Small. It's almost my bedtime...", 'user');
+    setTimeout(confirmSize, 1500);
+  });
 }
 
 // Bot confirms the user's choice of drink size
@@ -155,26 +163,26 @@ const confirmSize = () => {
 // User is asked to give feedback of the bot
 const feedback = () => {
   showMessage("Your drink will be ready shortly. While you wait, would you mind telling me how you liked our little interaction today?", 'bot');
-    inputWrapper.innerHTML = `
+  inputWrapper.innerHTML = `
     <button id="needsImproving">Needs improving...</button>
     <button id="wasOkay">It was okay, I guess.</button>
     <button id="lovely">I had a lovely time!</button>`
 
-      document.getElementById("needsImproving").addEventListener("click", () => {
-        userFeedback = "Needs improving..."; 
-        showMessage(`${userFeedback}`, 'user');
-        setTimeout(botResponse, 2000);
-      });
-      document.getElementById("wasOkay").addEventListener("click", () => {
-        userFeedback = "It was okay, I guess."; 
-        showMessage(`${userFeedback}`, 'user');
-        setTimeout(botResponse, 2000);
-      });
-      document.getElementById("lovely").addEventListener("click", () => {
-        userFeedback = "I had a lovely time!"; 
-        showMessage(`${userFeedback}`, 'user');
-        setTimeout(botResponse, 2000);
-      });
+  document.getElementById("needsImproving").addEventListener("click", () => {
+    userFeedback = "Needs improving...";
+    showMessage(`${userFeedback}`, 'user');
+    setTimeout(botResponse, 2000);
+  });
+  document.getElementById("wasOkay").addEventListener("click", () => {
+    userFeedback = "It was okay, I guess.";
+    showMessage(`${userFeedback}`, 'user');
+    setTimeout(botResponse, 2000);
+  });
+  document.getElementById("lovely").addEventListener("click", () => {
+    userFeedback = "I had a lovely time!";
+    showMessage(`${userFeedback}`, 'user');
+    setTimeout(botResponse, 2000);
+  });
 }
 
 // Bot responds to the user's feedback
@@ -206,4 +214,4 @@ const thankYou = () => {
 // setTimeout(functionName, timeToWaitInMilliSeconds)
 // This means the greeting function will be called one second after the website is loaded.
 
-setTimeout(greetUser, 2000);
+setTimeout(greetUser, 1500);
