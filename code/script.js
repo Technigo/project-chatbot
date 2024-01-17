@@ -72,6 +72,7 @@ function reply() {
   showMessage(`Are you hungry, ${userName}? please choose your food.`, 'bot');
 
   //This inject the buttons to the htlm
+
   inputHandle.innerHTML = `
 <button class="send-btn" id="pizza">Pizza</button>
 <button class="send-btn" id="pasta">Pasta</button>
@@ -93,7 +94,6 @@ function reply() {
 function foodChoice(choice) {
   inputHandle.innerHTML = '';
 
-  // Depending on the choice, set the food options and message
   let foodOptions, foodMessage;
   if (choice === 'pizza') {
     foodOptions = ['Napolitana', 'Margeritha', 'Bianca'];
@@ -108,11 +108,16 @@ function foodChoice(choice) {
 
   showMessage(foodMessage, 'bot');
 
-  // Dropdown menu
-
   const dropdown = document.createElement('select');
   dropdown.id = 'food-dropdown';
   dropdown.classList.add('dropdown-style');
+
+  // Add default option
+  const defaultOption = document.createElement('option');
+  defaultOption.textContent = 'Choose food here';
+  defaultOption.disabled = true;
+  defaultOption.selected = true;
+  dropdown.appendChild(defaultOption);
 
   foodOptions.forEach(option => {
     const optionElement = document.createElement('option');
@@ -123,12 +128,13 @@ function foodChoice(choice) {
 
   dropdown.addEventListener('change', (event) => {
     const selectedfood = event.target.value;
-    showMessage(`Yummy! I've chosen ${selectedfood}.`, 'user'); // User's specific choice displayed
+    showMessage(`Yummy! I've chosen ${selectedfood}.`, 'user');
     showAgeOptions(selectedfood);
   });
 
   inputHandle.appendChild(dropdown);
 }
+
 
 
 function showAgeOptions(selectedSize) {
