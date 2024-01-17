@@ -54,7 +54,7 @@ const getCurrentTimeOfDay = () => {
 // Initial greeting message from the bot
 const greetUser = () => {
   const timeOfDay = getCurrentTimeOfDay();
-  showMessage(`Good ${timeOfDay}! Welcome to Pizzeria Del Carmen. What's your name?`, 'bot');
+  showMessage(`Good ${timeOfDay}! Welcome to Pizza Double Cheese. What's your name?`, 'bot');
 };
 setTimeout(greetUser, 1000);
 
