@@ -44,45 +44,46 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 };
 
-const greetUser = () => {
-  showMessage("Hi! Welcome. What's your name?", 'bot');
+
+const getCurrentTimeOfDay = () => {
+  const hour = new Date().getHours();
+  return (hour < 12) ? 'morning' : (hour < 18) ? 'afternoon' : 'evening';
 };
 
+const greetUser = () => {
+  const timeOfDay = getCurrentTimeOfDay();
+  showMessage(`Good ${timeOfDay}! Welcome to Pizzeria Del Carmen. What's your name?`, 'bot');
+};
 setTimeout(greetUser, 1000);
 
+
 const handleNameInput = (event) => {
-  console.log(event);
+  console.log("reply", event);
   event.preventDefault();
   userName = nameInput.value;
   nameInput.value = "";
   showMessage(`I'm ${userName}! Nice to meet you!`, 'user');
-  setTimeout(reply, 1000);
+  setTimeout(reply, 1500);
 };
-
 nameForm.addEventListener("submit", handleNameInput);
 
 function reply() {
   console.log("reply");
   showMessage(`Are you hungry, ${userName}? please choose your food.`, 'bot');
 
-
-
   //This inject the buttons to the htlm
   inputHandle.innerHTML = `
 <button class="send-btn" id="pizza">Pizza</button>
 <button class="send-btn" id="pasta">Pasta</button>
 <button class="send-btn" id="salad">Salad</button>
-
 `;
 
   const foodButtons = inputHandle.querySelectorAll('.send-btn');
-  console.log("foodbuttons");
   foodButtons.forEach(button => {
     button.addEventListener('click', (event) => {
       const selectedfood = event.target.id;
-      showMessage(`Amazing! You've selected ${selectedfood}!`, 'bot');
-      foodChoice(selectedfood);
-
+      showMessage(`I would like some ${selectedfood}`, 'user'); // User's choice displayed
+      foodChoice(selectedfood); // Continue with bot response
     });
   });
 }
@@ -90,19 +91,18 @@ function reply() {
 // Set up your eventlisteners here
 
 function foodChoice(choice) {
-  console.log("foodchoice");
   inputHandle.innerHTML = '';
 
-
-
+  // Depending on the choice, set the food options and message
+  let foodOptions, foodMessage;
   if (choice === 'pizza') {
-    foodOptions = ['Select food here 👇', 'Napolitana', 'Margeritha', 'Bianca'];
+    foodOptions = ['Napolitana', 'Margeritha', 'Bianca'];
     foodMessage = 'Which pizza would you like to order? Choose from the menu.';
   } else if (choice === 'pasta') {
-    foodOptions = ['Select food here 👇', 'Cacio e Pepe', 'Vongole', 'Carbonara'];
+    foodOptions = ['Cacio e Pepe', 'Vongole', 'Carbonara'];
     foodMessage = 'Which pasta would you like to order? Choose from the menu.';
   } else if (choice === 'salad') {
-    foodOptions = ['Select food here 👇', 'Pomodoro e basilico', 'Buratta', 'Melon e Peperoncino'];
+    foodOptions = ['Pomodoro e basilico', 'Buratta', 'Melon e Peperoncino'];
     foodMessage = 'Which salad would you like to order? Choose from the menu.';
   }
 
@@ -111,26 +111,19 @@ function foodChoice(choice) {
   // Dropdown menu
 
   const dropdown = document.createElement('select');
-  console.log("select");
   dropdown.id = 'food-dropdown';
-
-
   dropdown.classList.add('dropdown-style');
 
-
   foodOptions.forEach(option => {
-    console.log("option");
     const optionElement = document.createElement('option');
     optionElement.value = option;
     optionElement.textContent = option;
     dropdown.appendChild(optionElement);
   });
 
-
   dropdown.addEventListener('change', (event) => {
-    console.log("change");
     const selectedfood = event.target.value;
-    showMessage(`Yummy! You've selected ${selectedfood}.`, 'bot');
+    showMessage(`Yummy! I've chosen ${selectedfood}.`, 'user'); // User's specific choice displayed
     showAgeOptions(selectedfood);
   });
 
@@ -156,29 +149,73 @@ function showAgeOptions(selectedSize) {
   ageButtonsElements.forEach(button => {
     button.addEventListener('click', (event) => {
       const selectedSize = event.target.id;
-      showMessage(`You've selected the ${selectedSize} option!`, 'bot');
-      ageOptions(selectedSize);
+      showMessage(`I am an ${selectedSize} and I would like a ${selectedSize} size ${selectedFood}.`, 'user'); // User's choice displayed
+      ageOptions(selectedFood, selectedSize);
     });
   });
-
 }
 
-function ageOptions(choice) {
-  console.log(ageOptions);
-  inputHandle.innerHTML = '';
+function showAgeOptions(selectedFood) {
+  showMessage(`Great ${userName}! What size of ${selectedFood} would you like to order? Are you an adult or a child?`, 'bot');
+  inputHandle.innerHTML = `
+    <button class="send-btn" id="adult">Adult</button>
+    <button class="send-btn" id="child">Child</button>
+  `;
 
-  if (choice === 'adult') {
-    showMessage(`The price for a adult size food is 15€.`, 'bot');
-  } else if (choice === 'child') {
-    showMessage(`The price for a small size food is 10€.`, 'bot');
-    orderConfirmation(choice);
-  };
-};
+  document.getElementById('adult').addEventListener('click', () => {
+    userSizeChoice('adult', selectedFood);
+  });
 
-// I have been struggling with this part a lot - I dont find the solution and the time is running out - sunday evening. 
+  document.getElementById('child').addEventListener('click', () => {
+    userSizeChoice('child', selectedFood);
+  });
+}
+
+function userSizeChoice(sizeChoice, foodChoice) {
+  showMessage(`I am an ${sizeChoice} and I would like a ${sizeChoice} size ${foodChoice}.`, 'user');
+
+  ageOptions(foodChoice, sizeChoice);
+}
+
+function ageOptions(foodChoice, sizeChoice) {
+  // This function handles the user's size choice
+  let priceMessage;
+  if (sizeChoice === 'adult') {
+    priceMessage = `The price for an adult size ${foodChoice} is 15€.`;
+  } else if (sizeChoice === 'child') {
+    priceMessage = `The price for a small size ${foodChoice} is 10€.`;
+  }
+  showMessage(priceMessage, 'bot');
+
+  setTimeout(() => {
+    askForConfirmation(foodChoice, sizeChoice);
+  }, 1500);
+}
+
+function askForConfirmation(foodChoice, selectedSize) {
+  showMessage(`Is this OK?`, 'bot');
+
+  inputHandle.innerHTML = `
+    <button class="send-btn" id="confirm-size">Yes</button>
+    <button class="send-btn" id="cancel-size">No</button>
+  `;
+
+  document.getElementById('confirm-size').addEventListener('click', () => {
+    showMessage(`Yes, that's fine.`, 'user'); // User confirms
+    orderConfirmation(foodChoice, selectedSize); // Proceed with order confirmation
+  });
+
+  document.getElementById('cancel-size').addEventListener('click', () => {
+    showMessage(`No, I want to change my order.`, 'user');
+    setTimeout(reply, 1500); // User wants to change the order
+
+  });
+}
+
+
 
 function orderConfirmation(foodChoice, selectedSize) {
-  showMessage(`This is your order, ${userName}: ${foodChoice} (${selectedSize} size).`, 'bot');
+  showMessage(`This is your order ${userName}, an ${foodChoice} for a ${selectedSize}! Enjoy!`, 'bot');
 
   inputHandle.innerHTML = ` 
     <button class="send-btn" id="confirm">Yes, I accept this order!</button>
