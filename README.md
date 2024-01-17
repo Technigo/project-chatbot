@@ -1,13 +1,9 @@
-# Project Name
+Build a Chatbot
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This project is all about building a functional chatbot interface using JavaScript, HTML, and CSS. A captivating chatbot that can interact with users, ask questions, display messages, and respond with precision. 
 
 ## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I have updated the the interaction with the user.
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://project-chatbot-evelyndelcarmen.netlify.app/
