@@ -1,4 +1,3 @@
-
 // Accessing DOM elements
 const chat = document.getElementById('chat');
 const nameInput = document.getElementById('name-input');
