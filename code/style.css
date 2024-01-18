@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: url('pizzaimg.png');
+  background: url('code/assets/pizzaimg.png');
   background-size: 300px 300px;
   background-repeat: repeat;
 }
