@@ -1,13 +1,13 @@
 # Project Name
 
-Replace this readme with your own information about your project.
+Pizza Chat Bot
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This project involves creating a chat bot that assists users in ordering a pizza by asking a series of questions.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The main challenge was to manage the state of the conversation and handle user inputs appropriately. The approach was to use a state machine concept where the chat bot's behavior is determined by its current state (e.g., asking for the user's name, asking for the type of pizza, etc.).
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://zesty-kheer-8e9d84.netlify.app/
