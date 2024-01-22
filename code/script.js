@@ -64,12 +64,15 @@ let userName = ""
 
 const handleNameInput = (event) => {
   event.preventDefault();
-  userName = nameInput.value;
-  nameInput.value = "";
-  showMessage(`Hello! My name is ${userName}`, "user");
-  // After 1 second, show the next question by invoking the next function. Passing the name into it to have access to the user's name in the next question from the bot.
-  setTimeout(() => reply1(userName), 1000)
-  setTimeout(() => reply2(), 2500)
+  userName = nameInput.value.trim();
+  if (userName) {
+    showMessage(`Hello! My name is ${userName}`, "user");
+    // After 1 second, show the next question by invoking the next function. Passing the name into it to have access to the user's name in the next question from the bot.
+    setTimeout(() => reply1(userName), 1000)
+    setTimeout(() => reply2(), 2500)
+  } else {
+    showMessage("I didn't understand that, please try again.", "bot");
+  }
 }
 
 nameForm.addEventListener("submit", handleNameInput)
@@ -99,6 +102,7 @@ function reply2() {
   activityButtons.forEach(button => {
     button.addEventListener('click', (event) => {
       const selectedActivity = event.target.id
+      showMessage(selectedActivity, 'user');
       //console.log which button was chosen
       console.log(selectedActivity)
       //message to be displayed when a button is selected and timeout for the next function
@@ -146,9 +150,11 @@ function showOptions(options) {
     const button = document.createElement('button')
     button.className = 'send-btn'
     button.textContent = option
+
     //eventlistender to receive the user response
     button.addEventListener('click', () => {
       console.log(option)
+      showMessage(option, 'user');
       showMessage(`You have selected an adventure to ${option}.`, 'bot')
       //indicate next bot reply
       setTimeout(userLevel, 1000)
@@ -180,6 +186,7 @@ function userLevel() {
     button.addEventListener('click', (event) => {
       const selectedLevel = event.target.id
       console.log(selectedLevel)
+      showMessage(selectedLevel, 'user');
       //Bot confirms choice
       showMessage(`You have selected ${selectedLevel} level. Our professional instructors will tailor the program for you!`, 'bot')
       inputWrapper.innerHTML = '' // Clear buttons
@@ -198,8 +205,8 @@ function userConfrim() {
   //ID in and name of new buttons
   const confirmButton = document.createElement('div')
   confirmButton.innerHTML = `
-  <button class="send-btn" id="confirm">Confirm Booking</button>
-  <button class="send-btn" id="cancel">Cancel Booking</button>
+  <button class="send-btn" id="confirm booking">Confirm Booking</button>
+  <button class="send-btn" id="cancel booking">Cancel Booking</button>
 `
   //buttons disappear without these - as mentioned above, I dont understand what this does - why child?:
   inputWrapper.appendChild(confirmButton)
@@ -210,6 +217,7 @@ function userConfrim() {
     button.addEventListener('click', (event) => {
       const confirmationChoice = event.target.id
       console.log(confirmationChoice)
+      showMessage(confirmationChoice, 'user');
       inputWrapper.innerHTML = '' // Clear buttons
 
       //Conditional statement based on the users button-choice - end of bot
