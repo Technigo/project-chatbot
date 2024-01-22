@@ -205,8 +205,8 @@ function userConfrim() {
   //ID in and name of new buttons
   const confirmButton = document.createElement('div')
   confirmButton.innerHTML = `
-  <button class="send-btn" id="confirm booking">Confirm Booking</button>
-  <button class="send-btn" id="cancel booking">Cancel Booking</button>
+  <button class="send-btn" id="confirm">Confirm Booking</button>
+  <button class="send-btn" id="cancel">Cancel Booking</button>
 `
   //buttons disappear without these - as mentioned above, I dont understand what this does - why child?:
   inputWrapper.appendChild(confirmButton)
