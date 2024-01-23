@@ -10,3 +10,7 @@ I looked thorugh the internet and then went through google. If I had more time I
 ## View it live
 
 https://mellow-souffle-455932.netlify.app/
+
+## 🔗 Links
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://alexandrameijaportfolio.netlify.app/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alexandra-meija-0757403b?originalSubdomain=se)
