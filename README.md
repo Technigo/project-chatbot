@@ -1,4 +1,4 @@
-# Project Name
+# Chatbot FLora
 
 Create an interactive chatbot using basic JavaScript.
 
