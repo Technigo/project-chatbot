@@ -1,4 +1,4 @@
-# Buddys pizzeroa
+# Buddys pizzeria
 
 I made a prolongment to the pizzaproject where the goal was to make a more userfriendly interface  with a chatbot.
 
@@ -12,5 +12,5 @@ I looked thorugh the internet and then went through google. If I had more time I
 https://mellow-souffle-455932.netlify.app/
 
 ## 🔗 Links
-[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://alexandrameijaportfolio.netlify.app/)
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alexandra-meija-0757403b?originalSubdomain=se)
+[portfolio]https://alexandrameijaportfolio.netlify.app/)
+[linkedin](https://www.linkedin.com/in/alexandra-meija-0757403b?originalSubdomain=se)

@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Hind', sans-serif;
   background: #f3b9e2;
 }
 
@@ -41,7 +41,7 @@ input {
   color: #df92c8;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Hind', sans-serif;
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -130,7 +130,7 @@ main {
 
 label {
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Hind', sans-serif;
   font-weight: 500;
   color: #df92c8;
   margin-right: 20px;
@@ -145,7 +145,7 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: 'Hind', sans-serif;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
