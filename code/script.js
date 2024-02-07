@@ -1,5 +1,5 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
-const chat = document.getElementById('chat');
+const chat = document.getElementById('chat')
 
 // Functions goes here 👇
 
@@ -15,7 +15,7 @@ const showMessage = (message, sender) => {
         </div>
         <img src="assets/user.png" alt="User" />  
       </section>
-    `;
+    `
     // The else if statement checks if the sender is the bot and if that's the case it inserts
     // an HTML section inside the chat with the posted message from the bot
   } else if (sender === 'bot') {
@@ -26,8 +26,8 @@ const showMessage = (message, sender) => {
           <p>${message}</p>
         </div>
       </section>
-    `;
-  };
+    `
+  }
 
   // This little thing makes the chat scroll to the last message when there are too many to
   // be shown in the chat box
