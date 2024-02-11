@@ -1,7 +1,17 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById("chat");
+const nameBtn = document.querySelector(".send-btn");
+const nameInput = document.getElementById("name-input");
+const inputWrapper = document.getElementById("input-wrapper");
 
 // Functions goes here 👇
+const handleNameInput = (event) => {
+	event.preventDefault();
+	const name = nameInput.value;
+	showMessage(name, "user");
+	nameInput.value = "";
+	setTimeout(() => showFoodOptions(name), 1000);
+};
 
 // A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -20,7 +30,6 @@ const showMessage = (message, sender) => {
 		// an HTML section inside the chat with the posted message from the bot
 	} else if (sender === "bot") {
 		console.log(message);
-		console.log(sender);
 		chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -38,13 +47,23 @@ const showMessage = (message, sender) => {
 
 // A function to start the conversation
 const greetUser = () => {
-	// Here we call the function showMessage, that we declared earlier with the argument:
-	// "Hello there, what's your name?" for message, and the argument "bot" for sender
 	showMessage("Hello there, what's your name?", "bot");
-	// Just to check it out, change 'bot' to 'user' here 👆 and see what happens
+};
+
+const showFoodOptions = (name) => {
+	//part1 Show the conversation bubble
+	showMessage(`Hi, ${name}`, "bot");
+
+	//part2 Show the food options
+	inputWrapper.innerHTML = `
+	<button id="pizzaBtn">Pizza</button>
+	<button id="pastaBtn">Pasta</button>
+	<button id="saladBtn">Salad</button>
+	`;
 };
 
 // Eventlisteners goes here 👇
+nameBtn.addEventListener("click", handleNameInput);
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
