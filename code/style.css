@@ -70,6 +70,8 @@ input::placeholder {
 }
 input:focus {
   outline: none;
+  background: #f0ece2;
+  color: #c7b198;
 }
 
 main {
@@ -143,6 +145,20 @@ main {
   width: 100%;
   display: flex;
   align-items: center;
+}
+#button-form {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+#button-form button {
+  border-radius: 20px;
+  width: 100%;
+}
+#button-form button:hover {
+  background: #c7b198;
+  color: #596e79;
 }
 
 button {

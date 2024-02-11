@@ -3,6 +3,11 @@ const chat = document.getElementById("chat")
 const sendBtn = document.getElementById("send-btn")
 const nameForm = document.getElementById("name-form")
 const nameInput = document.getElementById("name-input")
+const inputWrapper = document.getElementById("input-wrapper")
+const firstBtn = document.getElementById("first-btn")
+const secondBtn = document.getElementById("second-btn")
+const thirdBtn = document.getElementById("third-btn")
+
 // Functions goes here 👇
 
 // A function that will add a chat bubble in the correct place based on who the sender is
@@ -71,10 +76,18 @@ const handleNameInput = (event) => {
   const name = nameInput.value
   showMessage(`I'm ${name}!`, "user")
   nameInput.value = ""
-  setTimeout(() => firstChoice(name), 1000)
+  setTimeout(() => firstChoice(name), 100)
+  nameForm.remove()
+  inputWrapper.innerHTML += `
+<form id="button-form">
+        <button id="first-btn" class="first-btn" type="submit" value="SHORT">SHORT</button>
+        <button id="second-btn" class="second-btn" type="submit"value="MEDIUM">MEDIUM</button>
+        <button id="third-btn" class= "third-btn" type="submit" value="LONG">LONG</button>
+      </form>
+`
 }
 
-nameForm.onsubmit = handleNameInput
+sendBtn.onclick = handleNameInput
 
 const firstChoice = (name) => {
   showMessage(
@@ -85,29 +98,19 @@ const firstChoice = (name) => {
   )
 }
 
-// const handleNameInput = () => {
-//   let name = nameInput.value
-//   postMessageFromuser(name)
+// const handleBtnInput = () => {
+//   const choice = firstBtn.value
+//   showMessage(`I would like a Short cut ${choice}!`, `user`)
+//   firstBtn.value = ""
+//   setTimeout(() => secondChoice(choice), 1000)
 // }
+// console.log(choice)
 
-// const postMessageFromuser = (name) => {
-//   showMessage(name, `user`)
-// }
-
-// const firstChoice = (name) => {
+// firstBtn.onclick = handleBtnInput
+// const secondChoice = (choice) => {
 //   showMessage(
-//     `Nice to meet you ${name}! 👋
-//     What type of haircut would
-//     you like to have ?`,
+//     `All right, we will give you a Short ${choice} cut.
+//   Please choose which type of style you want 💇`,
 //     `bot`
 //   )
-// }
-
-// firstChoice()
-
-// const handleNameImput = (event) => {
-//   event.preventDefault();
-//   const name = nameInput.value;
-//   nameInput.value = "";
-//   showMessage(name, "user")
 // }
