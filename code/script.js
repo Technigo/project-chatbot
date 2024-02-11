@@ -13,7 +13,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/child-2707415_1280.png" alt="User" />  
       </section>
     `
     // The else if statement checks if the sender is the bot and if that's the case it inserts
@@ -21,7 +21,7 @@ const showMessage = (message, sender) => {
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/jaws-4659701_1280.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -38,7 +38,8 @@ const showMessage = (message, sender) => {
 const greetUser = () => {
   // Here we call the function showMessage, that we declared earlier with the argument:
   // "Hello there, what's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, what's your name?", 'bot')
+  showMessage(`Hi, I’m Sharky , I will help you to book your appointment  😊 
+  Let’s get started! What’s your name?`, 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 }
 

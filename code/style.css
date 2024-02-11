@@ -5,15 +5,30 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url(./assets/background\ 1.jpg);
+  background-size: cover;
+  font-family: "Comfortaa", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Schoolbell", cursive;
+  color: #596e79;
+}
+.title-container {
+  background: #f0ece2;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 700px;
+  height: 100px;
+  border-radius: 30px 30px 0 0;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 h1 {
+  color: #c7b198;
   font-weight: bold;
   font-size: 28px;
   line-height: 34px;
-  color: #fff;
+
   text-align: center;
 }
 
@@ -34,18 +49,27 @@ p {
 }
 
 input {
+  text-align: center;
   box-sizing: border-box;
   border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  border-radius: 30px 0 0 30px;
+  background: #f0ece2;
+  color: #c7b198;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Comfortaa", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Schoolbell", cursive;
   font-weight: 600;
   line-height: 26px;
   flex: 1;
   width: 100%;
+}
+input::placeholder {
+  color: #c7b198;
+}
+input:focus {
+  outline: none;
 }
 
 main {
@@ -53,8 +77,8 @@ main {
   width: 100%;
   max-width: 700px;
   height: 600px;
-  border-radius: 30px;
-  background: #fff;
+  border-radius: 0 0 30px 30px;
+  background: #596e79;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -66,7 +90,7 @@ main {
   flex: 1;
   display: flex;
   justify-content: flex-start;
-  overflow: scroll;
+  overflow-y: auto;
   flex-direction: column;
   padding-bottom: 16px;
 }
@@ -91,12 +115,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #f0ece2;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #596e79;
   max-width: 40%;
 }
 
@@ -121,24 +145,18 @@ main {
   align-items: center;
 }
 
-label {
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
-}
-
 button {
-  background-color: #0026ff;
-  color: white;
+  background-color: #f0ece2;
+  color: #c7b198;
   border: none;
-  border-radius: 4px;
+  border-radius: 0 30px 30px 0;
   padding: 16px 20px;
   margin-right: 4px;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: "Comfortaa", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Schoolbell", cursive;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
