@@ -182,3 +182,28 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+#style-choice {
+  text-align: center;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 30px;
+  background: #f0ece2;
+  color: #c7b198;
+  padding: 16px;
+  font-size: 16px;
+  font-family: "Comfortaa", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Schoolbell", cursive;
+  font-weight: 600;
+  line-height: 26px;
+  flex: 1;
+  width: 100%;
+}
+
+#style-choice :focus {
+  outline: none;
+  background: #f0ece2;
+  color: #c7b198;
+  border: none;
+}

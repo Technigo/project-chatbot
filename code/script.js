@@ -79,6 +79,7 @@ const handleNameInput = (event) => {
 
 sendBtn.onclick = handleNameInput
 let choice
+let style
 // second message from bot
 const firstChoice = (name) => {
   showMessage(
@@ -121,42 +122,89 @@ const styleSelect = (choice) => {
     `bot`
   )
 
-  let style
   inputWrapper.innerHTML = `<select id="style-choice">
   <option id="default" value="select a style" selected>↓Select a style...</option>
   <option id="curly" value="curly">Curly</option>
   <option id="straight" value="straight">Straight</option>
   <option id="wavy" value="wavy">Wavy</option></select>`
 
-  document.getElementById("curly").addEventListener("change", () => {
-    style = "curly"
-    cons
-    showMessage(`I would like a ${style} cut!`, "user")
-    setTimeout(() => genderSelect(style), 2000)
-  })
-  document.getElementById("straight").addEventListener("change", () => {
-    style = "straight"
-    showMessage(`I would like a ${style} cut!`, "user")
-    setTimeout(() => genderSelect(style), 2000)
-  })
-  document.getElementById("wavy").addEventListener("change", () => {
-    style = "wavy"
-    showMessage(`I would like a ${style} cut!`, "user")
-    setTimeout(() => genderSelect(style), 2000)
-  })
+  document
+    .getElementById("style-choice")
+    .addEventListener("change", (event) => {
+      const style = event.target.value
+      showMessage(`I would like a ${style} cut!`, "user")
+      setTimeout(() => genderSelect(style), 2000)
+    })
 }
+
+// Function to handle gender selection
 const genderSelect = (style) => {
   showMessage(
-    `Great choice! You will get your desired ${style} styling!
-  Will that be for a girl or a boy?`,
-    `bot`
+    `Great choice! You will get your desired ${style} ${choice} styling! Will that be for a girl or a boy?`,
+    "bot"
   )
+
+  let gender
+  inputWrapper.innerHTML = `<div id="button-form">
+  <button id="boy">👦🏻</button>
+  <button id="girl">👧🏻</button>
+  </div>`
+  // added event listener for the buttons on click to get the choice
+  document.getElementById("boy").addEventListener("click", () => {
+    gender = "Boy"
+    // second message from user
+    showMessage("Boy", "user")
+    setTimeout(() => confirmation(gender, style), 2500)
+  })
+  document.getElementById("girl").addEventListener("click", () => {
+    gender = "Girl"
+    showMessage("Girl", "user")
+    setTimeout(() => confirmation(gender, style), 2500)
+  })
 }
 
+const confirmation = (gender, style) => {
+  if (gender === "Boy") {
+    showMessage(
+      `Amazing! We want to confirm your appointment for a ${gender}, ${choice} cut and ${style} styling. This will cost €20.
+      Please press YES to confirm and NO to cancel.`,
+      "bot"
+    )
+  } else {
+    showMessage(
+      `Amazing! We want to confirm your appointment for a ${gender}, ${choice} cut and ${style} styling. This will cost €30.
+      Please press YES to confirm and NO to cancel.`,
+      "bot"
+    )
+  }
 
-const randomMe;
-randomMe=3
+  inputWrapper.innerHTML = `<div id="button-form">
+  <button id="YES">YES</button>
+  <button id="NO">NO</button>
+  </div>`
+  document.getElementById("YES").addEventListener("click", () => {
+    lastConfirmation = "YES"
+    // second message from user
+    showMessage("YES", "user")
+    setTimeout(() => lastMessage(lastConfirmation), 2500)
+    document.getElementById("button-form").remove()
+  })
+  document.getElementById("NO").addEventListener("click", () => {
+    lastConfirmation = "NO"
+    showMessage("NO", "user")
+    setTimeout(() => lastMessage(lastConfirmation), 2500)
+    document.getElementById("button-form").remove()
+  })
+}
 
-
-
-
+const lastMessage = (lastConfirmation) => {
+  if (lastConfirmation === "YES") {
+    showMessage(
+      `Thank you for your trust! See you soon!🌟
+  `,
+      `bot`
+    )
+  } else {
+    showMessage(`Sorry to see you go. You can always book again!`, `bot`)
+  }
+}
