@@ -8,6 +8,7 @@ const showMessage = (message, sender) => {
   // The if statement checks if the sender is the user and if that's the case it inserts
   // an HTML section inside the chat with the posted message from the user
   if (sender === 'user') {
+    console.log(`${message}`)
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -18,10 +19,11 @@ const showMessage = (message, sender) => {
     `
 
     //+= means add to it only = would exchange everything. Here we only always want to add things
-    
+
     // The else if statement checks if the sender is the bot and if that's the case it inserts
     // an HTML section inside the chat with the posted message from the bot
   } else if (sender === 'bot') {
+    console.log(`${message}`)
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -35,6 +37,7 @@ const showMessage = (message, sender) => {
   // This little thing makes the chat scroll to the last message when there are too many to
   // be shown in the chat box
   chat.scrollTop = chat.scrollHeight
+  console.log(`${message}`)
 }
 
 // A function to start the conversation
