@@ -79,6 +79,7 @@ const handleNameInput = (event) => {
 
 sendBtn.onclick = handleNameInput
 
+// second message from bot
 const firstChoice = (name) => {
   showMessage(
     `Nice to meet you ${name}!👋
@@ -86,13 +87,15 @@ const firstChoice = (name) => {
   you like to have ?`,
     `bot`
   )
+  // added the 3 buttons for choice
   inputWrapper.innerHTML = `<div id="button-form">
   <button id="short">Short</button>
   <button id="medium">Medium</button>
   <button id="long">Long</button></div>`
-
+  // added event listener for the buttons on click to get the choice
   document.getElementById("short").addEventListener("click", () => {
     choice = "Short"
+    // second message from user
     showMessage("I would like a short cut!", "user")
     setTimeout(styleSelect, 1500)
   })
@@ -109,7 +112,7 @@ const firstChoice = (name) => {
 
   console.log(choice)
 }
-
+// after function "styleSelect" the choice is undefined
 const styleSelect = (choice) => {
   showMessage(
     `All right, we will give you a ${choice} cut.
@@ -117,3 +120,4 @@ const styleSelect = (choice) => {
     `bot`
   )
 }
+
