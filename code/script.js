@@ -48,8 +48,6 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 }
 
-// Eventlisteners goes here 👇
-
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
 // To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
@@ -57,3 +55,20 @@ const greetUser = () => {
 // 1.) the function we want to delay, and 2.) the delay in milliseconds 
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 2000)
+
+// Eventlisteners goes here 👇
+
+const handleNameInput = (event) => {
+  event.preventDefault()
+  const name = nameInput.value
+  showMessage(name, "user")
+  nameInput.value = ""
+}
+
+const nameInput = document.getElementById("name-input")
+const submitButton = document.getElementById("submit-button")
+
+submitButton.addEventListener("click", handleNameInput)
+
+setTimeout(() => somekindofFuntionwhichisnext(name), 1000)
+
