@@ -1,10 +1,9 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
-
-// Added by sofia
 const inputWrapper = document.getElementById("input-wrapper") // Select the input wrapper
-const submitButton = document.querySelector("button[class='send-btn']") // Select the form
+const submitButton = document.querySelector("button[type='submit']") // Select the submit button
 const nameInput = document.getElementById("name-input") // Select the name input
+
 
 // Functions goes here 👇
 
@@ -48,12 +47,23 @@ const greetUser = () => {
 }
 
 // function to save message and send to showMessage, added by sofia
-const submitMessage = (event) => {
+
+const submitName = (event) => {
   event.preventDefault()
-  let message = nameInput.value
-  showMessage(message, "user")
-  console.log(nameInput.value)
+  let userName = nameInput.value
+  showMessage(userName, "user")
+  console.log(userName)
+  setTimeout(chooseFood(userName), 1000) // Go to next step, chooseFood
 }
+
+const chooseFood = (username) => {
+  showMessage(`What would you like to eat ${username}?`, "bot")
+}
+
+const displayFood = () => {
+  inputWrapper.removeChild() // Remove form, to be replaced by new with buttons
+}
+
 
 // Eventlisteners goes here 👇
 
@@ -66,5 +76,5 @@ const submitMessage = (event) => {
 setTimeout(greetUser, 1000)
 
 // Added by sofia
-submitButton.addEventListener("click", submitMessage, false) // Event listener for submit button
+submitButton.addEventListener("click", submitName, false) // Event listener for submit button
 //testing by trista
