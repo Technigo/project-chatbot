@@ -78,7 +78,7 @@ const handleNameInput = (event) => {
 }
 
 sendBtn.onclick = handleNameInput
-
+let choice
 // second message from bot
 const firstChoice = (name) => {
   showMessage(
@@ -88,6 +88,7 @@ const firstChoice = (name) => {
     `bot`
   )
   // added the 3 buttons for choice
+
   inputWrapper.innerHTML = `<div id="button-form">
   <button id="short">Short</button>
   <button id="medium">Medium</button>
@@ -97,17 +98,17 @@ const firstChoice = (name) => {
     choice = "Short"
     // second message from user
     showMessage("I would like a short cut!", "user")
-    setTimeout(styleSelect, 1500)
+    setTimeout(() => styleSelect(choice), 1500)
   })
   document.getElementById("medium").addEventListener("click", () => {
     choice = "Medium"
     showMessage("I would like a medium cut!", "user")
-    setTimeout(styleSelect, 1500)
+    setTimeout(() => styleSelect(choice), 1500)
   })
   document.getElementById("long").addEventListener("click", () => {
     choice = "Long"
     showMessage(`I would like a ${choice} cut!`, "user")
-    setTimeout(styleSelect, 1500)
+    setTimeout(() => styleSelect(choice), 1500)
   })
 
   console.log(choice)
@@ -119,5 +120,35 @@ const styleSelect = (choice) => {
     Please choose which type of style you want 💇`,
     `bot`
   )
-}
 
+  let style
+  inputWrapper.innerHTML = `<select id="style-choice">
+  <option id="default" value="select a style" selected>↓Select a style...</option>
+  <option id="curly" value="curly">Curly</option>
+  <option id="straight" value="straight">Straight</option>
+  <option id="wavy" value="wavy">Wavy</option></select>`
+
+  document.getElementById("curly").addEventListener("change", () => {
+    style = "curly"
+    cons
+    showMessage(`I would like a ${style} cut!`, "user")
+    setTimeout(() => genderSelect(style), 2000)
+  })
+  document.getElementById("straight").addEventListener("change", () => {
+    style = "straight"
+    showMessage(`I would like a ${style} cut!`, "user")
+    setTimeout(() => genderSelect(style), 2000)
+  })
+  document.getElementById("wavy").addEventListener("change", () => {
+    style = "wavy"
+    showMessage(`I would like a ${style} cut!`, "user")
+    setTimeout(() => genderSelect(style), 2000)
+  })
+}
+const genderSelect = (style) => {
+  showMessage(
+    `Great choice! You will get your desired ${style} styling!
+  Will that be for a girl or a boy?`,
+    `bot`
+  )
+}
