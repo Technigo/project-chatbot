@@ -199,6 +199,7 @@ button:hover {
   line-height: 26px;
   flex: 1;
   width: 100%;
+  max-width: 700px;
 }
 
 #style-choice :focus {

@@ -47,6 +47,7 @@ const showMessage = (message, sender) => {
 const greetUser = () => {
   // Here we call the function showMessage, that we declared earlier with the argument:
   // "Hello there, what's your name?" for message, and the argument "bot" for sender
+
   showMessage(
     `Hi, I'm Sharky 😊
     Let's get started!
@@ -74,7 +75,6 @@ const handleNameInput = (event) => {
   showMessage(`I'm ${name}!`, "user")
   nameInput.value = ""
   setTimeout(() => firstChoice(name), 100)
-  nameForm.remove()
 }
 
 sendBtn.onclick = handleNameInput
@@ -206,5 +206,26 @@ const lastMessage = (lastConfirmation) => {
     )
   } else {
     showMessage(`Sorry to see you go. You can always book again!`, `bot`)
+    setTimeout(resetConversation, 2000)
   }
+}
+// the name input show twice
+const resetConversation = () => {
+  chat.innerHTML = ""
+  inputWrapper.innerHTML = ""
+
+  greetUser()
+  const existingNameForm = document.getElementById("name-form")
+  if (existingNameForm) {
+    existingNameForm.remove()
+  }
+
+  inputWrapper.innerHTML += `  <form id="name-form">
+     <input
+       placeholder="--------------------------------------------------------------"
+       id="name-input"
+       type="text"
+    />
+    <button id="send-btn" class="send-btn" type="submit">→</button>
+  </form>`
 }
