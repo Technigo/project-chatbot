@@ -15,8 +15,6 @@ const handleNameInput = (event) => {
 
 // A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-	// The if statement checks if the sender is the user and if that's the case it inserts
-	// an HTML section inside the chat with the posted message from the user
 	if (sender === "user") {
 		chat.innerHTML += `
       <section class="user-msg">
@@ -26,8 +24,6 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `;
-		// The else if statement checks if the sender is the bot and if that's the case it inserts
-		// an HTML section inside the chat with the posted message from the bot
 	} else if (sender === "bot") {
 		console.log(message);
 		chat.innerHTML += `
@@ -45,6 +41,11 @@ const showMessage = (message, sender) => {
 	chat.scrollTop = chat.scrollHeight;
 };
 
+// showFoodOptions
+// handleFoodOption
+// showDishSize
+// showPrice
+
 // A function to start the conversation
 const greetUser = () => {
 	showMessage("Hello there, what's your name?", "bot");
@@ -52,7 +53,7 @@ const greetUser = () => {
 
 const showFoodOptions = (name) => {
 	//part1 Show the conversation bubble
-	showMessage(`Hi, ${name}`, "bot");
+	showMessage(`Hi, ${name}. What would you like to order?`, "bot");
 
 	//part2 Show the food options
 	inputWrapper.innerHTML = `
@@ -62,13 +63,27 @@ const showFoodOptions = (name) => {
 	`;
 };
 
+function handleFoodOption() {
+	const divFoodOptions = document.getElementById("foodOptions");
+	divFoodOptions.innerHTML = `
+  <p>Choose your piza:</p>
+  <button id="pepperoniBtn">Pepperoni</button>
+	<button id="funghiBtn">Funghi</button>`;
+}
+
+// const handleFoodOption = (event) => {
+// 	const food = document.getElementById("pizzaBtn").value;
+// 	console.log(food);
+// };
+
 // Eventlisteners goes here 👇
 nameBtn.addEventListener("click", handleNameInput);
+document.getElementById("pizzaBtn").addEventListener("click", handleFoodOption);
+// document.getElementById("pastaBtn").addEventListener("click");
+// document.getElementById("saladBtn").addEventListener("click");
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
 // To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
 // and pass along two arguments:
-// 1.) the function we want to delay, and 2.) the delay in milliseconds
-// This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000);
