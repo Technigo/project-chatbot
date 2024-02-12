@@ -56,4 +56,4 @@ const greetUser = () => {
 // and pass along two arguments:
 // 1.) the function we want to delay, and 2.) the delay in milliseconds 
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000)
+setTimeout(greetUser, 2000)
