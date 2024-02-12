@@ -16,6 +16,9 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `
+
+    //+= means add to it only = would exchange everything. Here we only always want to add things
+    
     // The else if statement checks if the sender is the bot and if that's the case it inserts
     // an HTML section inside the chat with the posted message from the bot
   } else if (sender === 'bot') {
