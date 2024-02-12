@@ -1,6 +1,11 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
 
+// Added by sofia
+const inputWrapper = document.getElementById("input-wrapper") // Select the input wrapper
+const submitButton = document.querySelector("button[class='send-btn']") // Select the form
+const nameInput = document.getElementById("name-input") // Select the name input
+
 // Functions goes here 👇
 
 // A function that will add a chat bubble in the correct place based on who the sender is
@@ -42,6 +47,14 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 }
 
+// function to save message and send to showMessage, added by sofia
+const submitMessage = (event) => {
+  event.preventDefault()
+  let message = nameInput.value
+  showMessage(message, "user")
+  console.log(nameInput.value)
+}
+
 // Eventlisteners goes here 👇
 
 // Here we invoke the first function to get the chatbot to ask the first question when
@@ -51,3 +64,6 @@ const greetUser = () => {
 // 1.) the function we want to delay, and 2.) the delay in milliseconds 
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000)
+
+// Added by sofia
+submitButton.addEventListener("click", submitMessage, false) // Event listener for submit button
