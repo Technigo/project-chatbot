@@ -4,9 +4,6 @@ const sendBtn = document.getElementById("send-btn")
 const nameForm = document.getElementById("name-form")
 const nameInput = document.getElementById("name-input")
 const inputWrapper = document.getElementById("input-wrapper")
-const firstBtn = document.getElementById("first-btn")
-const secondBtn = document.getElementById("second-btn")
-const thirdBtn = document.getElementById("third-btn")
 
 // Functions goes here 👇
 
@@ -78,13 +75,6 @@ const handleNameInput = (event) => {
   nameInput.value = ""
   setTimeout(() => firstChoice(name), 100)
   nameForm.remove()
-  inputWrapper.innerHTML += `
-<form id="button-form">
-        <button id="first-btn" class="first-btn" type="submit" value="SHORT">SHORT</button>
-        <button id="second-btn" class="second-btn" type="submit"value="MEDIUM">MEDIUM</button>
-        <button id="third-btn" class= "third-btn" type="submit" value="LONG">LONG</button>
-      </form>
-`
 }
 
 sendBtn.onclick = handleNameInput
@@ -96,21 +86,34 @@ const firstChoice = (name) => {
   you like to have ?`,
     `bot`
   )
+  inputWrapper.innerHTML = `<div id="button-form">
+  <button id="short">Short</button>
+  <button id="medium">Medium</button>
+  <button id="long">Long</button></div>`
+
+  document.getElementById("short").addEventListener("click", () => {
+    choice = "Short"
+    showMessage("I would like a short cut!", "user")
+    setTimeout(styleSelect, 1500)
+  })
+  document.getElementById("medium").addEventListener("click", () => {
+    choice = "Medium"
+    showMessage("I would like a medium cut!", "user")
+    setTimeout(styleSelect, 1500)
+  })
+  document.getElementById("long").addEventListener("click", () => {
+    choice = "Long"
+    showMessage(`I would like a ${choice} cut!`, "user")
+    setTimeout(styleSelect, 1500)
+  })
+
+  console.log(choice)
 }
 
-// const handleBtnInput = () => {
-//   const choice = firstBtn.value
-//   showMessage(`I would like a Short cut ${choice}!`, `user`)
-//   firstBtn.value = ""
-//   setTimeout(() => secondChoice(choice), 1000)
-// }
-// console.log(choice)
-
-// firstBtn.onclick = handleBtnInput
-// const secondChoice = (choice) => {
-//   showMessage(
-//     `All right, we will give you a Short ${choice} cut.
-//   Please choose which type of style you want 💇`,
-//     `bot`
-//   )
-// }
+const styleSelect = (choice) => {
+  showMessage(
+    `All right, we will give you a ${choice} cut.
+    Please choose which type of style you want 💇`,
+    `bot`
+  )
+}
