@@ -67,3 +67,4 @@ setTimeout(greetUser, 1000)
 
 // Added by sofia
 submitButton.addEventListener("click", submitMessage, false) // Event listener for submit button
+//testing by trista
