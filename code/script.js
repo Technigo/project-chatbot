@@ -152,3 +152,11 @@ const genderSelect = (style) => {
     `bot`
   )
 }
+
+
+const randomMe;
+randomMe=3
+
+
+
+
