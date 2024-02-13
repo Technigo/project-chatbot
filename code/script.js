@@ -1,8 +1,29 @@
+// Global variables
+let userName = ""
+let mainFoodChoice = ""
+
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById("input-wrapper") // Select the input wrapper
-const submitButton = document.querySelector("button[type='submit']") // Select the submit button
+
+// NAME
+const nameButton = document.querySelector("button[class='send-btn']") // Select the submit button
 const nameInput = document.getElementById("name-input") // Select the name input
+const nameForm = document.getElementById("name-form")
+
+// FOOD
+const pizzaButton = document.createElement("button")
+const pastaButton = document.createElement("button")
+const saladButton = document.createElement("button")
+const foodDiv = document.createElement("div")
+
+
+//subtypeFood
+const italianButton = document.createElement("button")
+const hawaiiButton = document.createElement("button")
+const veganButton = document.createElement("button")
+const pizzaDiv = document.createElement("div")
+
 
 
 // Functions goes here 👇
@@ -46,24 +67,73 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 }
 
-// function to save message and send to showMessage, added by sofia
-
+// function to save name and send to showMessage
 const submitName = (event) => {
   event.preventDefault()
-  let userName = nameInput.value
+  userName = nameInput.value
+  nameInput.value = ""
   showMessage(userName, "user")
-  console.log(userName)
-  setTimeout(chooseFood(userName), 1000) // Go to next step, chooseFood
+  setTimeout(() => chooseFood(userName), 1000) // Go to next step, chooseFood
 }
 
 const chooseFood = (username) => {
   showMessage(`What would you like to eat ${username}?`, "bot")
+  displayFood();
 }
 
 const displayFood = () => {
-  inputWrapper.removeChild() // Remove form, to be replaced by new with buttons
+  // Display buttons
+  foodDiv.append(pizzaButton, pastaButton, saladButton)
+  pizzaButton.textContent = "Pizza"
+  pastaButton.textContent = "Pasta"
+  saladButton.textContent = "Salad"
+
+  // Replace name form with food buttons
+  inputWrapper.replaceChild(foodDiv, nameForm) 
 }
 
+// User clicks a button with event listener
+// One of following select functions will continue
+
+const selectPizza = () => {
+  mainFoodChoice = "pizza"
+  showMessage(`${mainFoodChoice}`, "user")
+  setTimeout(() => showMessage(`You chose ${mainFoodChoice}`, "bot"), 1000)
+  setTimeout(() => displayPizzaSubtypes(), 1000) // Go to next step
+}
+
+const displayPizzaSubtypes = () => {
+  // Display buttons
+  pizzaDiv.append(italianButton, hawaiiButton, veganButton)
+  italianButton.textContent = "Italian Pizza"
+  hawaiiButton.textContent = "Hawaii Pizza"
+  veganButton.textContent = "Vegan Pizza"
+
+  // Replace Food buttons with Pizza buttons
+  inputWrapper.replaceChild(pizzaDiv, foodDiv)
+}
+
+const selectPasta = () => {
+  mainFoodChoice = "Pasta"
+  showMessage(`${mainFoodChoice}`, "user")
+  setTimeout(() => showMessage(`You chose ${mainFoodChoice}`, "bot"), 1000)
+  displayPastaSubtypes()
+}
+
+// displayPastaSubtypes
+
+const selectSalad = () => {
+  mainFoodChoice = "Salad"
+  showMessage(`${mainFoodChoice}`, "user")
+  setTimeout(() => showMessage(`You chose ${mainFoodChoice}`, "bot"), 1000)
+  displaySaladSubtypes()
+}
+
+// displaySaladSubtypes
+
+const selectParty = () => {
+console.log(`Ask for party size with input type range`)
+}
 
 // Eventlisteners goes here 👇
 
@@ -75,6 +145,24 @@ const displayFood = () => {
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000)
 
-// Added by sofia
-submitButton.addEventListener("click", submitName, false) // Event listener for submit button
-//testing by trista
+// Name
+nameButton.addEventListener("click", submitName) // Event listener for submit button
+
+// Food
+pizzaButton.addEventListener("click", selectPizza) // 
+pastaButton.addEventListener("click", selectPasta) // 
+saladButton.addEventListener("click", selectSalad) // 
+
+//Pizza
+italianButton.addEventListener("click", () => selectParty()) // 
+// hawaiiButton.addEventListener("click", ) // 
+// veganButton.addEventListener("click", ) // 
+
+
+// greetUser
+// submitName
+// chooseFood
+// displayFood
+// selectPizza || selectPasta || selectSalad
+// displayPizzaSubtypes || displayPastaSubtypes || displaySaladSubtypes
+
