@@ -26,16 +26,15 @@ const showMessage = (message, sender) => {
     `;
 	}
 
-	// This little thing makes the chat scroll to the last message when there are too many to
-	// be shown in the chat box
+	/* This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box */
 	chat.scrollTop = chat.scrollHeight;
 };
 
-// A function to start the conversation
+//START OF THE ACTUAL CHAT
+// Asking for name
 const greetUser = () => {
 	showMessage("Hello there, what's your name?", "bot");
 };
-
 setTimeout(greetUser, 1000);
 
 const handleNameInput = (event) => {
@@ -76,15 +75,14 @@ const handleFoodOptions = (event) => {
 	//part1 Define the sub menu
 	const pizzaMenu = () => {
 		inputWrapper.innerHTML = `
-                <select id="select">
-                    <option value="" disabled selected>--SELECT ONE ITEM--</option>
-                    <option value="margherita" name="pizza-Margherita" id="margherita">Margherita</option>
-                    <option value="funghi" name="pizza-Funghi" id="funghi">Funghi</option>
-                    <option value="pepperoni" name="pizza-Pepperoni" id="pepperoni">Pepperoni</option>
-                </select>
-            `;
+        <select id="select">
+        <option value="" disabled selected>--SELECT ONE ITEM--</option>
+        <option value="margherita" name="pizza-Margherita" id="margherita">Margherita</option>
+    	<option value="funghi" name="pizza-Funghi" id="funghi">Funghi</option>
+  		<option value="pepperoni" name="pizza-Pepperoni" id="pepperoni">Pepperoni</option>
+    </select>
+    `;
 	};
-
 	const pastaMenu = () => {
 		inputWrapper.innerHTML = `
         <select id="select">
@@ -95,7 +93,6 @@ const handleFoodOptions = (event) => {
     </select>
 	`;
 	};
-
 	const saladMenu = () => {
 		inputWrapper.innerHTML = `
         <select id="select">
@@ -114,24 +111,20 @@ const handleFoodOptions = (event) => {
 	switch (userMainOption) {
 		case "pizza":
 			mainFood = "pizza";
-			setTimeout(pizzaMenu, 1000);
 			break;
 
 		case "pasta":
 			mainFood = "pasta";
-			setTimeout(pastaMenu, 1000);
 			break;
 
 		case "salad":
 			mainFood = "salad";
-			setTimeout(saladMenu, 1000);
 			break;
 
 		default:
 			showMessage(`Something seems to be wrong!`, "bot");
 			break;
 	}
-
 	console.log(mainFood);
 
 	//part3 Show the conversation bubble
@@ -142,6 +135,5 @@ const handleFoodOptions = (event) => {
 	setTimeout(confirmMainFood, 1000);
 };
 
-const subFood = document.getElementById("select");
-
-console.log(select.value);
+const subFoodChoice = document.getElementById("select");
+console.log();
