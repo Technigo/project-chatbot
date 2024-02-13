@@ -1,5 +1,8 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
+const nameInput = document.getElementById('name-input')
+const button = document.getElementById('button')
+const nameForm = document.getElementById("name-form");
 
 // Functions goes here 👇
 
@@ -39,11 +42,26 @@ const showMessage = (message, sender) => {
 const greetUser = () => {
   // Here we call the function showMessage, that we declared earlier with the argument:
   // "Hello there, what's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, what's your name?", 'user')
-  // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
+  showMessage("Hey, I'm Math-ew, the mathbot. Welcome to my wonderful world of math. What's your name?", 'bot')
+nameForm.addEventListener("submit", handInput);
 }
 
+
 // Eventlisteners goes here 👇
+const nameInputEvent = () => {
+let userName = nameInput.value;
+button.onsubmit = () =>{
+console.log (userName);
+showMessage(`${userName}`, 'user')}
+}
+
+ 
+const handInput = (input) => {
+input.preventDefault(); 
+let userName = nameInput.value;
+showMessage(`${userName}`, "user");
+nameInput.value = ""; };
+
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
