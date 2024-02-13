@@ -150,6 +150,7 @@ main {
   display: flex;
   justify-content: space-between;
   padding: 20px;
+  width: 100%;
 }
 
 #button-form button {
@@ -197,14 +198,7 @@ button:hover {
   font-family: "Schoolbell", cursive;
   font-weight: 600;
   line-height: 26px;
-  flex: 1;
-  width: 100%;
   max-width: 700px;
-}
-
-#style-choice :focus {
-  outline: none;
-  background: #f0ece2;
-  color: #c7b198;
-  border: none;
+  width: 100%;
+  flex: 1;
 }

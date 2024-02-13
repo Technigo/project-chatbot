@@ -206,7 +206,7 @@ const lastMessage = (lastConfirmation) => {
     )
   } else {
     showMessage(`Sorry to see you go. You can always book again!`, `bot`)
-    setTimeout(resetConversation, 2000)
+    setTimeout(resetConversation, 2500)
   }
 }
 // the name input show twice
