@@ -1,6 +1,26 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
 
+const customer = document.getElementById('name-input')
+// const sendButton = document.getElementsByClassName('send-btn')
+
+const sendButton = document.getElementById('send-btn')
+
+customer.value = "";
+
+
+
+ 
+  sendButton.addEventListener('click', (event) => {
+    event.preventDefault()
+    console.log("test")
+    console.log(customer.value)
+
+    customer.value = "";
+  })
+
+
+
 // Functions goes here 👇
 
 // A function that will add a chat bubble in the correct place based on who the sender is
@@ -35,15 +55,18 @@ const showMessage = (message, sender) => {
   // This little thing makes the chat scroll to the last message when there are too many to
   // be shown in the chat box
   chat.scrollTop = chat.scrollHeight
+
+
 }
 
 // A function to start the conversation
 const greetUser = () => {
   // Here we call the function showMessage, that we declared earlier with the argument:
   // "Hello there, what's your name?" for message, and the argument "bot" for sender
-  showMessage("Hi, my name is Ida", 'user')
+  showMessage("Hello, Happy Fat Tuesday! What's your name?", 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 }
+
 
 // Eventlisteners goes here 👇
 
