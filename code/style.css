@@ -152,3 +152,15 @@ button:hover {
 #food-category{
   display: none;
 }
+
+#sub-pizza{
+  display: none;
+}
+
+#sub-salad{
+  display: none;
+}
+
+#sub-kebab{
+  display: none;
+}

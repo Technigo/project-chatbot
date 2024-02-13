@@ -9,6 +9,10 @@ const pizzaButton = document.getElementById("pizza-button");
 const saladButton = document.getElementById("salad-button");
 const kebabButton = document.getElementById("kebab-button");
 
+const subPizza = document.getElementById("sub-pizza");
+const subSalad = document.getElementById("sub-salad");
+const subKebab = document.getElementById("sub-kebab");
+
 // Functions goes here 👇
 
 // A function that will add a chat bubble in the correct place based on who the sender is
@@ -61,9 +65,15 @@ const foodOptions = (name) => {
 };
 
 //Skapa stor CS för alla val ex if pizza....alt, els if sallad osv
-const pizzaOptions = (category) => {
+const subOptions = (category) => {
   showMessage(`You chose ${category}`, "bot");
+  foodCategory.style.display = "none";
 
+  if (category == "pizza"){
+    subPizza.style.display = "flex";
+  } else if (category == "salad"){
+    subSalad.style.display = "flex";
+  } else { subKebab.style.display = "flex"};
 }
 
 //Store name for future use. 
@@ -81,9 +91,24 @@ const handleNameInput = (event) => {
 
 // Eventlisteners goes here 👇
 sendButton.onclick = handleNameInput;
-pizzaButton.onclick = pizzaOptions("pizza"); 
-kebabButton.onclick = pizzaOptions("kebab"); 
+//pizzaButton.addEventListener("click", pizzaOptions("pizza")); 
+// kebabButton.onclick = pizzaOptions("kebab"); 
 
+pizzaButton.addEventListener('click', 
+    function() {
+        subOptions('pizza');
+    }
+);
+saladButton.addEventListener('click', 
+function() {
+    subOptions('salad');
+}
+);
+kebabButton.addEventListener('click', 
+    function() {
+        subOptions('kebab');
+    }
+);
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
