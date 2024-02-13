@@ -68,7 +68,7 @@ Try to add a `console.log` in the if statement to practise using the console.
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
-          <p>${message}</p>
+          <p>message</p>
         </div>
       </section>
     `

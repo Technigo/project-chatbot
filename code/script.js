@@ -5,9 +5,11 @@ const chat = document.getElementById('chat')
 
 // A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
+  console.log(`MESSAGE: ${message}`, `SENDER: ${sender}`)
   // The if statement checks if the sender is the user and if that's the case it inserts
   // an HTML section inside the chat with the posted message from the user
   if (sender === 'user') {
+    console.log(sender)
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -19,6 +21,7 @@ const showMessage = (message, sender) => {
     // The else if statement checks if the sender is the bot and if that's the case it inserts
     // an HTML section inside the chat with the posted message from the bot
   } else if (sender === 'bot') {
+    console.log(sender)
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -38,7 +41,7 @@ const showMessage = (message, sender) => {
 const greetUser = () => {
   // Here we call the function showMessage, that we declared earlier with the argument:
   // "Hello there, what's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, what's your name?", 'bot')
+  showMessage("Hi, my name is Ida", 'user')
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 }
 
@@ -50,4 +53,4 @@ const greetUser = () => {
 // and pass along two arguments:
 // 1.) the function we want to delay, and 2.) the delay in milliseconds 
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000)
+setTimeout(greetUser, 2000)
