@@ -3,10 +3,12 @@ const chat = document.getElementById("chat");
 const nameInput = document.getElementById("name-input");
 const nameForm = document.getElementById("name-form");
 const inputWrapper = document.getElementById("input-wrapper");
+const sendBtn = document.getElementsByClassName("send-btn");
 
 // Roliga variabler
 let userName = "";
 let foodChoice = "";
+const foodButtons = inputWrapper.querySelectorAll(".send-btn");
 
 // Functions goes here 👇
 
@@ -23,7 +25,17 @@ function addButtons() {
     <button class="send-btn" id="pizza">Pizza</button>
     <button class="send-btn" id="pasta">Pasta</button>
     <button class="send-btn" id="salad">Salad</button>`;
+  console.log(foodButtons);
 }
+
+
+const chosePizzaType = () => {
+  if (userName == "") {
+    showMessage("Pizza, What type of pizza do you want?", "bot");
+  } else {
+    showMessage(`Cool, ${userName}! What size do you want?`, "bot");
+  }
+};
 
 // A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
