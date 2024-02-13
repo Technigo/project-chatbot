@@ -1,6 +1,15 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById("chat");
 
+// Name form
+const nameForm = document.getElementById("name-form");
+const nameInput = document.getElementById("name-input");
+
+// Destination form
+const destinationForm = document.getElementById("destination-form");
+
+const BOT_DELAY = 1000;
+
 // Functions goes here 👇
 
 // A function that will add a chat bubble in the correct place based on who the sender is
@@ -45,7 +54,32 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 };
 
+const showVacationOptions = (name) => {
+  showMessage(`Hello ${name}, where would you like to travel?`, "bot");
+
+  nameForm.className = "hidden";
+  destinationForm.className = "";
+};
+
+const handleNameInput = (event) => {
+  event.preventDefault();
+
+  // Handle user input
+  const name = nameInput.value;
+  showMessage(name, "user");
+  nameInput.value = "";
+
+  // Handle next question from bot
+  setTimeout(() => showVacationOptions(name), BOT_DELAY);
+};
+
+const handleDestinationInput = (event) => {
+  event.preventDefault();
+};
+
 // Eventlisteners goes here 👇
+nameForm.addEventListener("submit", handleNameInput);
+destinationForm.addEventListener("submit", handleDestinationInput);
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
@@ -53,4 +87,4 @@ const greetUser = () => {
 // and pass along two arguments:
 // 1.) the function we want to delay, and 2.) the delay in milliseconds
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000);
+setTimeout(greetUser, BOT_DELAY);
