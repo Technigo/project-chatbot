@@ -8,6 +8,7 @@ const showMessage = (message, sender) => {
   // The if statement checks if the sender is the user and if that's the case it inserts
   // an HTML section inside the chat with the posted message from the user
   if (sender === 'user') {
+    console.log ("Message:" + message)
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -38,7 +39,7 @@ const showMessage = (message, sender) => {
 const greetUser = () => {
   // Here we call the function showMessage, that we declared earlier with the argument:
   // "Hello there, what's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, what's your name?", 'bot')
+  showMessage("Hello there, what's your name?", 'user')
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 }
 
