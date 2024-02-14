@@ -2,6 +2,7 @@
 const chat = document.getElementById("chat");
 const input = document.getElementById("name-input");
 const form = document.getElementById("name-form");
+let values = {};
 // Functions goes here 👇
 
 // A function that will add a chat bubble in the correct place based on who the sender is
@@ -37,6 +38,13 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 };
 
+function getInput() {
+  const value = input.value;
+  showMessage(value, "user");
+  input.value = "";
+  return value;
+}
+
 // A function to start the conversation
 const greetUser = () => {
   showMessage("Hello there, what´s your name?", "bot");
@@ -47,9 +55,8 @@ const handleNameInput = (event) => {
   event.preventDefault();
   // Store the value in a variable so we can access it after we
   // clear it from the input
-  const name = input.value;
-  showMessage(name, "user");
-  input.value = "";
+  const name = getInput();
+  values["name"] = name;
   showMessage(`Welcome ${name}`, "bot");
   //tar bort så att inte boten frågar igen om namn
   event.target.removeEventListener("submit", handleNameInput);
@@ -65,12 +72,20 @@ function askName() {
 // to use it in the next question from the bot.
 // const askNextQuestion = () => {
 // };
+
 const handleAgeInput = (event) => {
   event.preventDefault();
-  const age = input.value;
-  showMessage(`${age}`, "user");
-  input.value = "";
-  setTimeout(askGender, 1000);
+  const age = getInput();
+  values["age"] = age;
+  event.target.removeEventListener("submit", handleAgeInput);
+  // Kontrollera om age är en siffra och inte är en tom sträng
+  if (!isNaN(age) && age.trim() !== "") {
+    setTimeout(askGender, 1000);
+    // Visa ett felmeddelande om åldern inte är en siffra
+  } else {
+    showMessage("Please enter a valid age (numeric value).", "bot");
+    askAge();
+  }
 };
 function askAge() {
   showMessage(`how old are you?`, "bot");
@@ -79,13 +94,33 @@ function askAge() {
 
 const handleGenderInput = (event) => {
   event.preventDefault();
-  const gender = input.value;
-  showMessage(`${gender}`, "user");
-  input.value = "";
+  const gender = getInput();
+  values["gender"] = gender;
+  event.target.removeEventListener("submit", handleGenderInput);
+  askHairColor();
 };
 function askGender() {
   showMessage(`what's your gender?`, "bot");
   form.addEventListener("submit", handleGenderInput);
+}
+const hairInput = (event) => {
+  event.preventDefault();
+  const hair = getInput();
+  values["hair"] = hair;
+  event.target.removeEventListener("submit", hairInput);
+  printFinal();
+};
+function askHairColor() {
+  showMessage(`what's your hair color?`, "bot");
+  form.addEventListener("submit", hairInput);
+}
+
+function printFinal() {
+  showMessage(
+    `your name is ${values["name"]}. you'ar ${values["age"]} years old. your gender is ${values["gender"]} and your hair color is ${values["hair"]}`,
+    "bot"
+  );
+  console.log(values);
 }
 
 // Händelselyssnare för inmatningsformuläret för ålder
