@@ -8,6 +8,9 @@ const sendBtn = document.getElementsByClassName("send-btn");
 // Global variables
 let userName = "";
 let foodChoice = "";
+let dishSelection = "";
+let selectedDish = "";
+let dishSize = "";
 
 // Functions goes here 👇
 const handleNameInput = (event) => {
@@ -27,7 +30,7 @@ const chooseFood = () => {
     `Hello ${userName}! What would you like to eat today? Make your choice:`,
     "bot"
   );
-  addButtons();
+  addFoodButtons();
   const foodButton = document.querySelectorAll(".send-btn");
   console.log(foodButton);
   foodButton.forEach((foodButton) => {
@@ -41,11 +44,48 @@ const chooseFood = () => {
 };
 
 const chooseDish = () => {
-  showMessage(`You've chosen ${foodChoice}, a great choice!`, "bot");
+  showMessage(
+    `You've chosen ${foodChoice}, a great choice! Please chose what type of ${foodChoice} you'd like.`,
+    "bot"
+  );
   addDishMenu();
+  const dishMenu = document.querySelectorAll(".curtain");
+  dishMenu.forEach((dishMenu) => {
+    dishMenu.addEventListener("change", () => {
+      selectedDish = dishMenu.options[dishMenu.selectedIndex].text;
+      console.log(selectedDish);
+    });
+  });
+  const dishForm = document.getElementById("dish-form");
+  dishForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (selectedDish) {
+      showMessage(`I'd like ${selectedDish}, please.`, "user");
+      setTimeout(foodSize, 1000);
+    } else {
+      showMessage("Please choose a dish.", "bot");
+    }
+  });
 };
 
-function addButtons() {
+const foodSize = () => {
+  showMessage(
+    `${selectedDish}, always an excellent choice! Will that be for an adult or a child?`,
+    "bot"
+  );
+  addSizeButtons();
+  const sizeButton = document.querySelectorAll(".send-btn");
+  console.log(sizeButton);
+  sizeButton.forEach((sizeButton) => {
+    sizeButton.addEventListener("click", (event) => {
+      dishSize = event.target.id;
+      console.log(dishSize);
+      showMessage(`${dishSize}, please.`, "user");
+    });
+  });
+};
+
+function addFoodButtons() {
   inputWrapper.innerHTML = `
     <button class="send-btn" id="pizza">Pizza</button>
     <button class="send-btn" id="pasta">Pasta</button>
@@ -53,34 +93,89 @@ function addButtons() {
 }
 
 function addDishMenu() {
-  if (foodChoice === "pizza") {
+  switch (foodChoice) {
+    case "pizza":
+      inputWrapper.innerHTML = `
+      <form id="dish-form">
+        <select class="curtain" id="pizza-select">
+          <option value="choose" selected disabled>--Please choose a pizza--</option>
+          <option value="margherita">Margherita</option>
+          <option value="vesuvius">Vesuvius</option>
+          <option value="kebab">Kebab</option>
+        </select> 
+        <button class="send-btn" id="send-btn" type="submit">Confirm</button>
+      </form>`;
+      break;
+    case "pasta":
+      inputWrapper.innerHTML = `
+      <form id="dish-form">
+        <select class="curtain" id="pasta-select">
+          <option value="choose" selected disabled>--Please choose a pasta dish--</option>
+          <option value="carbonara">Carbonara</option>
+          <option value="spaghetti bolognese">Spaghetti Bolognese</option>
+          <option value="frutti di mare">Frutti di Mare</option>
+        </select> 
+        <button class="send-btn" id="send-btn" type="submit">Confirm</button>
+      </form>`;
+      break;
+    case "salad":
+      inputWrapper.innerHTML = `
+      <form id="dish-form">
+        <select class="curtain" id="salad-select">
+          <option value="choose" selected disabled>--Please choose a salad--</option>
+          <option value="caesar salad">Caesar Salad</option>
+          <option value="tabbouleh">Tabbouleh</option>
+          <option value="salad caprese">Salad Caprese</option>
+        </select> 
+        <button class="send-btn" id="send-btn" type="submit">Confirm</button>
+      </form>`;
+      break;
+  }
+}
+
+/*if (foodChoice === "pizza") {
     inputWrapper.innerHTML = `
-    <select class="curtain" id="pizza-select">
-      <option value="choose" disabled>--Please choose a pizza--</option>
-      <option value="margherita">Margherita</option>
-      <option value="vesuvius">Vesuvius</option>
-      <option value="kebab">Kebab</option>
-    </select> 
+    <form id="dish-form">
+      <select class="curtain" id="pizza-select">
+        <option value="choose" selected disabled>--Please choose a pizza--</option>
+        <option value="margherita">Margherita</option>
+        <option value="vesuvius">Vesuvius</option>
+        <option value="kebab">Kebab</option>
+      </select> 
+      <button class="send-btn" id="send-btn" type="submit">Confirm</button>
+     </form>
   `;
   } else if (foodChoice === "pasta") {
     inputWrapper.innerHTML = `
-    <select class="curtain" id="pasta-select">
-      <option value="choose" disabled>--Please choose a pasta dish--</option>
-      <option value="carbonara">Carbonara</option>
-      <option value="spaghetti bolognese">Spaghetti Bolognese</option>
-      <option value="frutti di mare">Frutti di Mare</option>
-    </select> 
+    <form id="dish-form">
+      <select class="curtain" id="pasta-select">
+        <option value="choose" selected disabled>--Please choose a pasta dish--</option>
+        <option value="carbonara">Carbonara</option>
+        <option value="spaghetti bolognese">Spaghetti Bolognese</option>
+        <option value="frutti di mare">Frutti di Mare</option>
+      </select> 
+      <button class="send-btn" id="send-btn" type="submit">Confirm</button>
+    </form>
   `;
   } else if (foodChoice === "salad") {
     inputWrapper.innerHTML = `
-    <select class="curtain" id="salad-select">
-      <option value="choose" disabled>--Please choose a salad--</option>
-      <option value="caesar salad">Caesar Salad</option>
-      <option value="tabbouleh">Tabbouleh</option>
-      <option value="salad caprese">Salad Caprese</option>
-    </select> 
+    <form id="dish-form">
+      <select class="curtain" id="salad-select">
+        <option value="choose" selected disabled>--Please choose a salad--</option>
+        <option value="caesar salad">Caesar Salad</option>
+        <option value="tabbouleh">Tabbouleh</option>
+        <option value="salad caprese">Salad Caprese</option>
+      </select> 
+      <button class="send-btn" id="send-btn" type="submit">Confirm</button>
+    </form>
   `;
   }
+}*/
+
+function addSizeButtons() {
+  inputWrapper.innerHTML = `
+    <button class="send-btn" id="Small">Small</button>
+    <button class="send-btn" id="Large">Large</button>`;
 }
 
 /*
