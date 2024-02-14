@@ -3,6 +3,7 @@ const chat = document.getElementById('chat')
 const submitButton = document.getElementById('send-btn')
 const nameInput = document.getElementById('name-input')
 const nameForm = document.getElementById('name-form')
+const inputWrapper = document.getElementById('input-wrapper')
 
 // Functions goes here 👇
 
@@ -66,13 +67,14 @@ setTimeout(greetUser, 1000)
     const name = nameInput.value
     showMessage(`I'm ${name}`, "user")
     nameInput.value = ""
+    setTimeout(() => firstChoice(name), 1000);
+    nameForm.remove();
       
     // After 1 second, show the next question by invoking the next function.
     // passing the name into it to have access to the user's name if we want
     // to use it in the next question from the bot.
 
-    //setTimeout(() => showOrderOptions(name), 1000);
-    //nameForm.remove();
+
   }
 
   submitButton.onclick = handleNameInput
@@ -80,7 +82,12 @@ setTimeout(greetUser, 1000)
   let choice
 
   const firstChoice = (name) => {
-    showMessage (`So ${name} what would you like to order?`)
+    showMessage (`So ${name} what would you like to order?`, "bot")
+    inputWrapper.innerHTML = `<form id ="order-option">
+    <div class="categories">
+    <button class="order-btn" id="coffee-btn" type="submit">Coffee</button>
+    <button class="order-btn" id="bread-btn" type="submit">Bread</button>
+    <button class="order-btn" id="pastry-btn" type="submit">Pastry</button></div></form>`
   }
 
   const showOrderOptions = () => {
