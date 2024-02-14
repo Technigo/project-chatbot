@@ -2,8 +2,13 @@ let currentQuestion = ""
 const chat = document.getElementById("chat")
 const inputWrapper = document.getElementById("input-wrapper")
 let choice = ""
+//const botAudio = document.getElementById('botAudio');
+//const userAudio = document.getElementById('userAudio');
 
 // Moved the greeting function here and added the form which we removed from HTML👇🏻
+/* function playAudioEffect(){
+  botAudio.play();
+} */
 
 const greetUser = () => {
   showMessage(
@@ -12,6 +17,7 @@ const greetUser = () => {
     What's your name?`,
     `bot`
   )
+  //playAudioEffect();
   inputWrapper.innerHTML = `<form id="name-form">
     <input
       placeholder="--------------------------------------------------------------"
@@ -27,6 +33,8 @@ const greetUser = () => {
 }
 // Moved the message function here 👇🏻
 
+
+
 const showMessage = (message, sender) => {
   if (sender === "user") {
     console.log("message is:", message)
@@ -39,10 +47,12 @@ const showMessage = (message, sender) => {
         <img src="assets/child-2707415_1280.png" alt="User" />  
       </section>
     `
+   
+   
+
   } else if (sender === "bot") {
     console.log("message is:", message)
     console.log("sender is:", sender)
-
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/jaws-4659701_1280.png" alt="Bot" />
@@ -51,6 +61,7 @@ const showMessage = (message, sender) => {
         </div>
       </section>
     `
+    //playAudioEffect();
   }
 
   // This little thing makes the chat scroll to the last message when there are too many to
@@ -84,6 +95,7 @@ const firstChoice = (name) => {
   you like to have ?`,
     `bot`
   )
+  //playAudioEffect();
 
   // added the 3 buttons for choice
 
