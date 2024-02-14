@@ -3,6 +3,7 @@ bubbleAudio.src = "./assets/bubble-sound.wav";
 
 const robotAudio = new Audio();
 robotAudio.src = "./assets/robot-sound.wav";
+robotAudio.volume = 0.2;
 
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById("chat");
@@ -23,7 +24,7 @@ const showMessage = (message, sender) => {
     `;
   } else if (sender === "bot") {
     robotAudio.play();
-
+    robotAudio.volume = 0.2;
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -51,7 +52,7 @@ const handleNameInput = (event) => {
   const name = nameInput.value;
   showMessage(name, "user");
   nameInput.value = "";
-  setTimeout(() => showFoodOptions(name), 1000);
+  setTimeout(() => showMainFood(name), 1000);
 };
 
 nameBtn.addEventListener("click", handleNameInput);
@@ -59,123 +60,137 @@ nameBtn.addEventListener("click", () => {
   bubbleAudio.play();
 });
 
-//Main Food Options
-const showFoodOptions = (name) => {
+//
+//
+//
+//Main Options
+const showMainFood = (name) => {
   //part1 Show the conversation bubble
-  showMessage(`Hi, ${name}`, "bot");
+  showMessage(`Hi, ${name}. What would you like to order?`, "bot");
 
-  //part2 Show the food options
+  //part2 Show the main options
   inputWrapper.innerHTML = `
-	<button id="pizzaBtn" value="pizza" onclick="bubbleAudio.play()" >Pizza</button>
-	<button id="pastaBtn" value="pasta" onclick="bubbleAudio.play()">Pasta</button>
-	<button id="saladBtn" value="salad" onclick="bubbleAudio.play()">Salad</button>
+	<button id="pizzaBtn" value="Pizza" onclick="bubbleAudio.play()" >Pizza</button>
+	<button id="pastaBtn" value="Pasta" onclick="bubbleAudio.play()">Pasta</button>
+	<button id="saladBtn" value="Salad" onclick="bubbleAudio.play()">Salad</button>
 	`;
 
   const pizzaBtn = document.getElementById("pizzaBtn");
   const pastaBtn = document.getElementById("pastaBtn");
   const saladBtn = document.getElementById("saladBtn");
 
-  pizzaBtn.addEventListener("click", handleFoodOptions);
-  pastaBtn.addEventListener("click", handleFoodOptions);
-  saladBtn.addEventListener("click", handleFoodOptions);
+  pizzaBtn.addEventListener("click", showUserMainChoice);
+  pastaBtn.addEventListener("click", showUserMainChoice);
+  saladBtn.addEventListener("click", showUserMainChoice);
+
+  pizzaBtn.addEventListener("click", (event) =>
+    setTimeout(() => showSubOptions(event), 1000)
+  );
+  pastaBtn.addEventListener("click", (event) =>
+    setTimeout(() => showSubOptions(event), 1000)
+  );
+  saladBtn.addEventListener("click", (event) =>
+    setTimeout(() => showSubOptions(event), 1000)
+  );
 };
 
-//Sub Food Options
-const handleFoodOptions = (event) => {
-  event.preventDefault();
+//
+//
+//
+//Show user's main choice
+const showUserMainChoice = (event) => {
+  showMessage(`${event.target.value}`, `user`);
+};
 
-  //part1 Define the sub menu
-  const pizzaMenu = () => {
+//
+//
+//
+//Show bot's reply and sub options
+const showSubOptions = (event) => {
+  if (event.target.value === "Pizza") {
     inputWrapper.innerHTML = `
                 <select id="select" onchange="bubbleAudio.play()">
                     <option value="" disabled selected>--SELECT ONE ITEM--</option>
-                    <option value="margherita" name="pizza-Margherita" id="margherita">Margherita</option>
-                    <option value="funghi" name="pizza-Funghi" id="funghi">Funghi</option>
-                    <option value="pepperoni" name="pizza-Pepperoni" id="pepperoni">Pepperoni</option>
+                    <option value="Margherita" name="pizza-Margherita" id="margherita">Margherita</option>
+                    <option value="Funghi" name="pizza-Funghi" id="funghi">Funghi</option>
+                    <option value="Pepperoni" name="pizza-Pepperoni" id="pepperoni">Pepperoni</option>
                 </select>
             `;
-  };
-
-  const pastaMenu = () => {
+  } else if (event.target.value === "Pasta") {
+    inputWrapper.innerHTML = `
+            <select id="select" onchange="bubbleAudio.play()">
+            <option value="" disabled selected>--SELECT ONE ITEM--</option>
+            <option value="Spaghetti Carbonara" name="Spaghetti-Carbonara" id="carbonara">Spaghetti Carbonara</option>
+            <option value="Fussili Pesto" name="Fussili-Pesto" id="pesto">Fussili Pesto</option>
+            <option value="Spaghetti-Bolognese" name="Spaghetti-Bolognese" id="bolognese">Spaghetti Bolognese</option>
+          </select>`;
+  } else {
     inputWrapper.innerHTML = `
         <select id="select" onchange="bubbleAudio.play()">
         <option value="" disabled selected>--SELECT ONE ITEM--</option>
-        <option value="carbonara" name="Spaghetti-Carbonara" id="carbonara">Spaghetti Carbonara</option>
-        <option value="pesto" name="Fussili-Pesto" id="pesto">Fussili Pesto</option>
-        <option value="bolognese" name="Spaghetti-Bolognese" id="bolognese">Spaghetti Bolognese</option>
+        <option value="Ceaser Salad" name="Ceaser-Salad" id="ceaser">Ceaser Salad</option>
+        <option value="Chef Salad" name="Chef-Salad" id="chef">Chef Salad</option>
+        <option value="Greek Salad" name="Greek-Salad" id="greek">Greek Salad</option>
     </select>
 	`;
-  };
-
-  const saladMenu = () => {
-    inputWrapper.innerHTML = `
-        <select id="select" onchange="bubbleAudio.play()">
-        <option value="" disabled selected>--SELECT ONE ITEM--</option>
-        <option value="ceaser" name="Ceaser-Salad" id="ceaser">Ceaser Salad</option>
-        <option value="chef" name="Chef-Salad" id="chef">Chef Salad</option>
-        <option value="greek" name="Greek-Salad" id="greek">Greek Salad</option>
-    </select>
-	`;
-  };
-
-  //part2 Check which button did user click
-  const userMainOption = event.target.value;
-  let mainFood;
-
-  switch (userMainOption) {
-    case "pizza":
-      mainFood = "pizza";
-      setTimeout(pizzaMenu, 1000);
-      break;
-
-    case "pasta":
-      mainFood = "pasta";
-      setTimeout(pastaMenu, 1000);
-      break;
-
-    case "salad":
-      mainFood = "salad";
-      setTimeout(saladMenu, 1000);
-      break;
-
-    default:
-      showMessage(`Something seems to be wrong!`, "bot");
-      break;
   }
 
-  console.log(mainFood);
+  showMessage(
+    `You ordered ${event.target.value}! Choose one from our menu.`,
+    `bot`
+  );
 
-  //part3 Show the conversation bubble
-  showMessage(`${mainFood}`, `user`);
-  const confirmMainFood = () => {
-    showMessage(`You ordered ${mainFood}! Choose one from our menu.`, `bot`);
-  };
-  setTimeout(confirmMainFood, 1000);
+  const subOption = document.getElementById("select");
+
+  subOption.addEventListener("change", showUserSubChoice);
+  subOption.addEventListener("change", (event) =>
+    setTimeout(() => showSizeOptions(event), 1000)
+  );
 };
 
-//
-//
-//From selecting sub food to
-//asking for the size of the menu + showing the size option
-const subFood = document.getElementById("select");
+const showUserSubChoice = (event) => {
+  showMessage(`${event.target.value}`, `user`);
+};
 
-console.log(select.value);
+const showSizeOptions = (event) => {
+  showMessage(
+    `You ordered ${event.target.value}! Which size would you like to have?`,
+    `bot`
+  );
 
+  inputWrapper.innerHTML = `
+  <button id="bigBtn" value="Big" onclick="bubbleAudio.play()">Big</button>
+  <button id="smallBtn" value="Small" onclick="bubbleAudio.play()">Small</button>
+  `;
+
+  const bigBtn = document.getElementById("bigBtn");
+  const smallBtn = document.getElementById("smallBtn");
+
+  bigBtn.addEventListener("click", userConfirm);
+  smallBtn.addEventListener("click", userConfirm);
+};
 //
 //
 //
 //Choosing the size of the food
 //+bot's responce
 //+ cofirmation button
-const userConfirm = () => {
+const userConfirm = (event) => {
   //part1 show what the user chose in the conversation bubble
-  showMessage(`size-value`, `user`);
+  showMessage(`${event.target.value}`, `user`);
 
   //part2 the bot replys and show yes/no buttons
+  let price;
+  if (event.target.value === "Big") {
+    price = 15;
+  } else {
+    price = 10;
+  }
+
   setTimeout(() => {
     showMessage(
-      `One ? sized meal will be prepared for you! That will be €. Are you sure you want to order this?`,
-      `user`
+      `One ${event.target.value} sized meal will be prepared for you! That will be ${price}€. Are you sure you want to order this?`,
+      `bot`
     );
   }, 1000);
 
@@ -203,7 +218,7 @@ const handleConfirm = (event) => {
       showMessage(`Yes!`, `user`);
       setTimeout(() => {
         showMessage(
-          `Thank you for your order! Your meal will be delivered in 40mins`,
+          `Thank you for your order! Your meal will be delivered in 40mins.`,
           `bot`
         );
       }, 1000);
