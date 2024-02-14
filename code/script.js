@@ -48,12 +48,6 @@ nameForm.addEventListener("submit", handInput);
 
 
 // Eventlisteners goes here 👇
-const nameInputEvent = () => {
-let userName = nameInput.value;
-button.onsubmit = () =>{
-console.log (userName);
-showMessage(`${userName}`, 'user')}
-}
 
  
 const handInput = (input) => {
@@ -61,6 +55,33 @@ input.preventDefault();
 let userName = nameInput.value;
 showMessage(`${userName}`, "user");
 nameInput.value = ""; };
+
+
+
+
+
+
+/*
+MATH PROBLEM
+
+let a = Math.floor (Math.random() * 10) + 1;
+let b = Math.floor(Math.random() * 10) + 1;
+
+const mathTask = () => {
+let answer = (
+  prompt (`What is ${a}*${b}?`)
+)
+  if (answer == a*b){
+  alert(`That's correct`)
+  } else{
+  alert(`Nope, try again`)
+  }
+}
+
+mathTask ()
+*/
+
+
 
 
 // Here we invoke the first function to get the chatbot to ask the first question when
