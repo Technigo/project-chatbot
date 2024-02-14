@@ -1,7 +1,11 @@
 // Global variables
 let userName = ""
 let mainFoodChoice = ""
+let foodSubtype = ""
+let partySize = "10"
+let orderValue = 0
 
+// ------------------------------------------------
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
 const inputWrapper = document.getElementById("input-wrapper") // Select the input wrapper
@@ -19,13 +23,28 @@ const foodDiv = document.createElement("div")
 
 
 //subtypeFood
+const subtypeDiv = document.createElement("div")
+
+// PIZZA
 const italianButton = document.createElement("button")
 const hawaiiButton = document.createElement("button")
 const veganButton = document.createElement("button")
-const pizzaDiv = document.createElement("div")
 
 
+// PASTA
+const carbonaraButton = document.createElement("button")
+const bolognaiseButton = document.createElement("button")
+const lasagneButton = document.createElement("button")
 
+// SALAD
+
+// Party
+const partyLabel = document.createElement("label")
+const partyInput = document.createElement("input")
+const partyButton = document.createElement("button")
+const partyForm = document.createElement("form")
+
+// ------------------------------------------------
 // Functions goes here 👇
 
 // A function that will add a chat bubble in the correct place based on who the sender is
@@ -67,74 +86,139 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 }
 
-// function to save name and send to showMessage
+// function to save name and send to showMessage, and move on
 const submitName = (event) => {
-  event.preventDefault()
+  event.preventDefault() // prevents submit from clearing and starting over??
   userName = nameInput.value
   nameInput.value = ""
   showMessage(userName, "user")
-  setTimeout(() => chooseFood(userName), 1000) // Go to next step, chooseFood
+  setTimeout(() => chooseFood(), 1000) // Go to next step, chooseFood
 }
 
-const chooseFood = (username) => {
-  showMessage(`What would you like to eat ${username}?`, "bot")
+// function to ask for food choice and send to displayFood
+const chooseFood = () => {
+  showMessage(`What kind of food would you like us to serve, ${userName}?`, "bot")
   displayFood();
 }
 
+// Function to show food choices
 const displayFood = () => {
   // Display buttons
-  foodDiv.append(pizzaButton, pastaButton, saladButton)
-  pizzaButton.textContent = "Pizza"
+  pizzaButton.textContent = "Pizza" // Adds text in button
   pastaButton.textContent = "Pasta"
   saladButton.textContent = "Salad"
 
-  // Replace name form with food buttons
-  inputWrapper.replaceChild(foodDiv, nameForm) 
+  foodDiv.append(pizzaButton, pastaButton, saladButton) // Places buttons in foodDiv
+  inputWrapper.replaceChild(foodDiv, nameForm) // Replaces the nameForm with the new foodDiv
+  console.log("Showing food buttons")
 }
 
 // User clicks a button with event listener
 // One of following select functions will continue
 
+// IF PIZZA
 const selectPizza = () => {
-  mainFoodChoice = "pizza"
+  mainFoodChoice = "Pizza"
+  console.log("Main food: ", mainFoodChoice)
   showMessage(`${mainFoodChoice}`, "user")
-  setTimeout(() => showMessage(`You chose ${mainFoodChoice}`, "bot"), 1000)
-  setTimeout(() => displayPizzaSubtypes(), 1000) // Go to next step
+  setTimeout(() => {
+    showMessage(`Ok! What kind of ${mainFoodChoice}?`, "bot")
+    displayPizzaSubtypes() // Go to next step
+  }, 1000)
 }
 
 const displayPizzaSubtypes = () => {
   // Display buttons
-  pizzaDiv.append(italianButton, hawaiiButton, veganButton)
   italianButton.textContent = "Italian Pizza"
   hawaiiButton.textContent = "Hawaii Pizza"
   veganButton.textContent = "Vegan Pizza"
 
-  // Replace Food buttons with Pizza buttons
-  inputWrapper.replaceChild(pizzaDiv, foodDiv)
+  subtypeDiv.append(italianButton, hawaiiButton, veganButton)
+  inputWrapper.replaceChild(subtypeDiv, foodDiv)
+  console.log("Showing pizza buttons")
 }
 
+// IF PASTA
 const selectPasta = () => {
   mainFoodChoice = "Pasta"
+  console.log("Main food: ", mainFoodChoice)
   showMessage(`${mainFoodChoice}`, "user")
-  setTimeout(() => showMessage(`You chose ${mainFoodChoice}`, "bot"), 1000)
-  displayPastaSubtypes()
+  setTimeout(() => {
+    showMessage(`Ok! What kind of ${mainFoodChoice}?`, "bot")
+    displayPastaSubtypes() // Go to next step
+  }, 1000)
 }
+const displayPastaSubtypes = () => {
+  // Display buttons
+  carbonaraButton.textContent = "Pasta Carbonara"
+  bolognaiseButton.textContent = "Spaghetti Bolognaise"
+  lasagneButton.textContent = "Vegetarian Lasagne"
 
-// displayPastaSubtypes
-
+  subtypeDiv.append(carbonaraButton, bolognaiseButton, lasagneButton)
+  inputWrapper.replaceChild(subtypeDiv, foodDiv)
+  console.log("Showing pasta buttons")
+}
+// IF SALAD
 const selectSalad = () => {
   mainFoodChoice = "Salad"
+  console.log("Main food: ", mainFoodChoice)
   showMessage(`${mainFoodChoice}`, "user")
-  setTimeout(() => showMessage(`You chose ${mainFoodChoice}`, "bot"), 1000)
-  displaySaladSubtypes()
+  setTimeout(() => {
+    showMessage(`Ok! What kind of ${mainFoodChoice}?`, "bot")
+    displaySaladSubtypes() // Go to next step
+  }, 1000)
 }
 
 // displaySaladSubtypes
 
-const selectParty = () => {
-console.log(`Ask for party size with input type range`)
+// save Subtype and send to showMessage, and move on
+const submitSubtype = (subtype) => {
+  foodSubtype = subtype
+  console.log("Subtype:", foodSubtype)
+  showMessage(foodSubtype, "user")
+  setTimeout(() => {
+    showMessage(`Good choice! Our ${foodSubtype} is submlime.`, "bot")
+    selectParty() // Go to next step
+  }, 1000)
 }
 
+// Get party size to calculate prize
+const selectParty = () => {
+  console.log(`Party!🥳`)
+  setTimeout(() => {
+    showMessage(`How many people are in your party? 🥳`, "bot")
+    displayPartyInput() // Go to next step
+  }, 1000)
+}
+
+const displayPartyInput = () => {
+  // Display buttons
+  partyInput.type = "range"
+  partyInput.id = "party-input"
+  partyInput.value = "10"
+  partyInput.max = "50"
+  partyLabel.textContent = `Party size: ${partySize}`
+  partyLabel.htmlFor = "party-input"
+  partyButton.type = "submit"
+  partyButton.textContent = "Send"
+
+  partyForm.append(partyLabel, partyInput, partyButton)
+  inputWrapper.replaceChild(partyForm, subtypeDiv)
+  console.log("Showing party input and waiting...")
+}
+
+const submitPartysize = (event) => {
+  event.preventDefault()
+  console.log("Partysize:", partySize)
+  showMessage(partySize, "user")
+  calculateOrderValue()
+}
+
+const calculateOrderValue = () => {
+  console.log(`Calculate order value for ${partySize} people...`)
+}
+
+// ------------------------------------------------
 // Eventlisteners goes here 👇
 
 // Here we invoke the first function to get the chatbot to ask the first question when
@@ -146,23 +230,65 @@ console.log(`Ask for party size with input type range`)
 setTimeout(greetUser, 1000)
 
 // Name
-nameButton.addEventListener("click", submitName) // Event listener for submit button
+nameButton.addEventListener("click", submitName) // Event listener for submit button in form
 
 // Food
 pizzaButton.addEventListener("click", selectPizza) // 
 pastaButton.addEventListener("click", selectPasta) // 
 saladButton.addEventListener("click", selectSalad) // 
 
-//Pizza
-italianButton.addEventListener("click", () => selectParty()) // 
-// hawaiiButton.addEventListener("click", ) // 
-// veganButton.addEventListener("click", ) // 
+// Pizza
+italianButton.addEventListener("click", () => submitSubtype(italianButton.textContent)) // 
+hawaiiButton.addEventListener("click", () => submitSubtype(hawaiiButton.textContent)) // 
+veganButton.addEventListener("click", () => submitSubtype(veganButton.textContent)) // 
+
+// Pasta
+carbonaraButton.addEventListener("click", () => submitSubtype(carbonaraButton.textContent)) // 
+bolognaiseButton.addEventListener("click", () => submitSubtype(bolognaiseButton.textContent)) // 
+lasagneButton.addEventListener("click", () => submitSubtype(lasagneButton.textContent)) // 
+
+// Salad
+//
+//
+//
+
+// Party
+partyInput.addEventListener("input", () => {
+  partySize = partyInput.value // Update variable partySize
+  partyLabel.textContent = `Party size: ${partySize}` // Update input label
+})
+partyButton.addEventListener("click", submitPartysize)
+
+// ---------------------------------
+/* OVERVIEW OF FUNCTIONS / FLOW
+-->  greetUser 
+Show greeting and ask for userName
+
+submitName 
+--> save name and send to showMessage,
+calls next step
+
+--> chooseFood 
+ask for food choice, 
+calls next step
+
+--> displayFood 
+changes to buttons with food alternatives
+
+--> selectPizza || selectPasta || selectSalad 
+logs mainFoodChoice and sends to showMessage
+call next step display
+
+--> displayPizzaSubtypes || displayPastaSubtypes || displaySaladSubtypes
+change to buttons with subtypes correspondning to main choice,
+
+--> selectSubtype
+Logs subtype choice and sends to showMessage,
+calls next step
+
+--> selectParty
 
 
-// greetUser
-// submitName
-// chooseFood
-// displayFood
-// selectPizza || selectPasta || selectSalad
-// displayPizzaSubtypes || displayPastaSubtypes || displaySaladSubtypes
+*/
+
 
