@@ -1,5 +1,11 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
+const nameInput = document.getElementById("name-input")
+const submitButton = document.getElementById("submit-button")
+const inputWrapper = document.getElementById("input-wrapper")
+const coldWeather = document.getElementById("coldWeather")
+const warmWeather = document.getElementById("warmWeather")
+const hotWeather = document.getElementById("hotWeather")
 
 // Functions goes here 👇
 
@@ -54,21 +60,44 @@ const greetUser = () => {
 // and pass along two arguments:
 // 1.) the function we want to delay, and 2.) the delay in milliseconds 
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 2000)
+setTimeout(greetUser, 1500)
 
 // Eventlisteners goes here 👇
 
+let nameUser =""
+
 const handleNameInput = (event) => {
   event.preventDefault()
-  const name = nameInput.value
-  showMessage(name, "user")
+  nameUser = nameInput.value
+  showMessage(nameUser, 'user')
   nameInput.value = ""
+  setTimeout(() => weatherType(), 1000)
 }
 
-const nameInput = document.getElementById("name-input")
-const submitButton = document.getElementById("submit-button")
+//Remember put the setTimeout into the function before the one that should be called afterwards. 
 
 submitButton.addEventListener("click", handleNameInput)
 
-setTimeout(() => somekindofFuntionwhichisnext(name), 1000)
+
+const weatherType = () => {
+  showMessage(`Hi and welcome ${nameUser}, what type of weather do you like?`, 'bot')
+  inputWrapper.innerHTML = `
+  <button id="coldWeather" type="button">Cold Weather</button>
+  <button id="warmWeather" type="button">Warm Weather</button>
+  <button id="hotWeather" type="button">Hot Weather</button>`
+}
+console.log(weatherType)
+
+const weatherInput = () => {
+  if (weatherType === 'coldWeather')
+  showMessage(weatherType, 'user')
+  else if (weatherType === 'warmWeather')
+  showMessage(weatherType, 'user')
+  else if (weatherType === 'hotWeather')
+  showMessage(weatherType, 'user')
+}
+
+coldWeather.addEventListener("click", weatherInput)
+warmWeather.addEventListener("click", weatherInput)
+hotWeather.addEventListener("click", weatherInput)
 
