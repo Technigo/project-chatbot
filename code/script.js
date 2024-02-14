@@ -51,12 +51,12 @@ const partyButton = document.createElement("button")
 const partyForm = document.createElement("form")
 
 //user confirm
-/*const confirmDiv = document.getElementById("button-form")
-const yesButton = document.getElementById("button")
-const noButton = document.getElementById("button")*/
-const confirmDiv = document.createElement("div")
-const yesButton = document.createElement("button")
-const noButton = document.createElement("button")
+/*const confirmDiv = document.getElementById("button-form")*/
+const yesButton = document.getElementById("yes")
+const noButton = document.getElementById("no")
+// const confirmDiv = document.createElement("div")
+// const yesButton = document.createElement("button")
+// const noButton = document.createElement("button")
 
 
 // ------------------------------------------------
@@ -201,8 +201,8 @@ const submitSubtype = (subtype) => {
   showMessage(foodSubtype, "user")
   setTimeout(() => {
     showMessage(`Good choice! Our ${foodSubtype} is submlime.`, "bot")
-    selectParty()// Go to next step
   }, 1000)
+  selectParty()// Go to next step
 }
 
 // Get party size to calculate prize
@@ -210,9 +210,8 @@ const selectParty = () => {
   console.log(`Party!🥳`)
   setTimeout(() => {
     showMessage(`How many people are in your party? 🥳`, "bot")
-      // Go to next step
+    displayPartyInput() // Go to next step
   }, 1000)
-    displayPartyInput()
 }
 
 
@@ -256,29 +255,44 @@ const cost = () => {
     orderValue = partySize * oneSaladPrice
     showMessage(`You have ordered ${partySize} ${foodSubtype}, here is your bill: ${orderValue} €. Is that ok?`, "bot")
   }
+
+  userConfirm()
 }
 //////////!!!!!! button doesn't work!!!/////
 const userConfirm = () => {
-  yesButton.textConten = "yes"
+  /*yesButton.textConten = "yes"
   noButton.textContent = "no"
 
-  confirmDiv.append(yesButton, noButton)
-  
+  confirmDiv.append(yesButton, noButton)*/
+  inputWrapper.innerHTML=
+  `<div id="button-form">
+    <button id="yes" type="Submit">Yes</button>
+    <button id="no" type="Submib">No</button>
+  </div>`
 
-  /*inputWrapper.innerHTML=`<div id="button-form">
-  <input type="submit" value="Submit Form" />
-  <button id="yes" type="Submit">Yes</button>
-  <button id="no" type="Submib">No</button>
-  </div>`*/
-  
-}
-  if(confirmPrice === "yes"){
+  document.getElementById("yes").addEventListener("click", () =>  {
     confirmPrice = "Yes"
     showMessage(`Yes`, "user")
-    }else if (confirmPrice === "No"){
+  })
+  document.getElementById("no").addEventListener("click", () => {
     confirmPrice = "No"
+    showMessage(`No`, "user")
+  })
+}
+
+/*const finalConfirm = (answer) => {
+
+  if (answer === "yes") {
+    confirmPrice = "Yes"
+    showMessage(`Yes`, "user")
+    console.log(answer)
+    } else {
+      confirmPrice = "No"
       showMessage(`No`, "user")
+      console.log(answer)
+  // finalConfirm()
   }
+}*/
 
 
 
@@ -330,8 +344,8 @@ partyInput.addEventListener("input", () => {
 partyButton.addEventListener("click", submitPartysize)
 
 // Confirm price
-yesButton.addEventListener("click", userConfirm)
-noButton.addEventListener("click", userConfirm)
+// yesButton.addEventListener("click", () => finalConfirm("yes"))
+// noButton.addEventListener("click", () => finalConfirm("no"))
 
 
 // ---------------------------------
