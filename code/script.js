@@ -1,5 +1,7 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById("chat");
+const sendBtn = document.getElementById("send-btn")
+const nameInput = document.getElementById('name-input');
 
 // Functions goes here 👇
 
@@ -45,6 +47,27 @@ const greetUser = () => {
 };
 
 // Eventlisteners goes here 👇
+//Users name shows as a message
+
+const handleNameInput = (event) => {
+  event.preventDefault();
+  // Store the value in a variable so we can access it after we
+  // clear it from the input
+  const name = nameInput.value;
+  showMessage(`I'm ${name}!`, "user");
+  nameInput.value = "";
+  setTimeout(() => firstChoice(name), 100);
+  nameForm.remove();
+};
+
+sendBtn.onclick(handleNameInput) 
+
+  // After 1 second, show the next question by invoking the next function.
+  // passing the name into it to have access to the user's name if we want
+  // to use it in the next question from the bot.
+  setTimeout(() => showFoodOptions(name), 1000);
+;
+
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
@@ -53,3 +76,4 @@ const greetUser = () => {
 // 1.) the function we want to delay, and 2.) the delay in milliseconds
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000);
+
