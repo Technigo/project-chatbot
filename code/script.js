@@ -5,19 +5,44 @@ const nameForm = document.getElementById("name-form");
 const inputWrapper = document.getElementById("input-wrapper");
 const sendBtn = document.getElementsByClassName("send-btn");
 
-// Roliga variabler
+// Global variables
 let userName = "";
 let foodChoice = "";
-const foodButtons = inputWrapper.querySelectorAll(".send-btn");
 
 // Functions goes here 👇
+const handleNameInput = (event) => {
+  event.preventDefault();
+  userName = nameInput.value;
+  nameInput.value = "";
+  if (userName) {
+    showMessage(userName, "user");
+    setTimeout(chooseFood, 1000);
+  } else {
+    showMessage("I'm not sure that's a name. Please try again.", "bot");
+  }
+};
 
 const chooseFood = () => {
   showMessage(
-    `Hello ${userName}! What would you like to eat today? Make your choice`,
+    `Hello ${userName}! What would you like to eat today? Make your choice:`,
     "bot"
   );
   addButtons();
+  const foodButton = document.querySelectorAll(".send-btn");
+  console.log(foodButton);
+  foodButton.forEach((foodButton) => {
+    foodButton.addEventListener("click", (event) => {
+      foodChoice = event.target.id;
+      console.log(foodChoice);
+      showMessage(`I'd like ${foodChoice}, please.`, "user");
+      setTimeout(chooseDish, 1000);
+    });
+  });
+};
+
+const chooseDish = () => {
+  showMessage(`You've chosen ${foodChoice}, a great choice!`, "bot");
+  addDishMenu();
 };
 
 function addButtons() {
@@ -25,17 +50,47 @@ function addButtons() {
     <button class="send-btn" id="pizza">Pizza</button>
     <button class="send-btn" id="pasta">Pasta</button>
     <button class="send-btn" id="salad">Salad</button>`;
-  console.log(foodButtons);
 }
 
+function addDishMenu() {
+  if (foodChoice === "pizza") {
+    inputWrapper.innerHTML = `
+    <select class="curtain" id="pizza-select">
+      <option value="choose" disabled>--Please choose a pizza--</option>
+      <option value="margherita">Margherita</option>
+      <option value="vesuvius">Vesuvius</option>
+      <option value="kebab">Kebab</option>
+    </select> 
+  `;
+  } else if (foodChoice === "pasta") {
+    inputWrapper.innerHTML = `
+    <select class="curtain" id="pasta-select">
+      <option value="choose" disabled>--Please choose a pasta dish--</option>
+      <option value="carbonara">Carbonara</option>
+      <option value="spaghetti bolognese">Spaghetti Bolognese</option>
+      <option value="frutti di mare">Frutti di Mare</option>
+    </select> 
+  `;
+  } else if (foodChoice === "salad") {
+    inputWrapper.innerHTML = `
+    <select class="curtain" id="salad-select">
+      <option value="choose" disabled>--Please choose a salad--</option>
+      <option value="caesar salad">Caesar Salad</option>
+      <option value="tabbouleh">Tabbouleh</option>
+      <option value="salad caprese">Salad Caprese</option>
+    </select> 
+  `;
+  }
+}
 
+/*
 const chosePizzaType = () => {
   if (userName == "") {
     showMessage("Pizza, What type of pizza do you want?", "bot");
   } else {
     showMessage(`Cool, ${userName}! What size do you want?`, "bot");
   }
-};
+};*/
 
 // A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -86,6 +141,7 @@ const greetUser = () => {
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000);
 
+/*
 nameInput.addEventListener("change", (e) => {
   userName = e.target.value;
 });
@@ -95,4 +151,6 @@ nameForm.addEventListener("submit", (e) => {
   showMessage(`${userName}`, "user");
   nameInput.value = "";
   setTimeout(chooseFood, 1000);
-});
+});*/
+
+nameForm.addEventListener("submit", handleNameInput);
