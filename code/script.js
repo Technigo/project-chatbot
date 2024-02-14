@@ -29,6 +29,7 @@ const showMessage = (message, sender) => {
     `
   }
 
+
   // This little thing makes the chat scroll to the last message when there are too many to
   // be shown in the chat box
   chat.scrollTop = chat.scrollHeight
@@ -44,6 +45,7 @@ const greetUser = () => {
 
 // Eventlisteners goes here 👇
 
+
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
 // To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
@@ -51,3 +53,5 @@ const greetUser = () => {
 // 1.) the function we want to delay, and 2.) the delay in milliseconds 
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000)
+
+
