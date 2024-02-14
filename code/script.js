@@ -48,7 +48,8 @@ const greetUser = () => {
 };
 
 // a function to get the users name and showing the name written by the user in the chat.
-const handleNameInput = () => {
+const handleNameInput = (event) => {
+  event.preventDefault();
   const name = nameInput.value;
   showMessage(name, "user");
   nameInput.value = "";
@@ -65,26 +66,13 @@ const handleNameInput = () => {
   
 };
 
-// Eventlisteners goes here 👇
-
-// When clicking on the "send button" preventing the website to reload and calling the "handleNameInput function"
-sendButton.addEventListener("click", (event) => {
-  // preventa att sidan laddas om
-  event.preventDefault();
-  handleNameInput();
-});
-
 // Second question: What kind of semla would you like?
 const whatkindofSemla = () => {
   // Hide input field using display none
   nameInput.style.display = "none";
   sendButton.style.display = "none";
-  nameForm.style.display = "none";
-  // SKapa knappar till fråga nummer 2
-  // Hämta form id
-  // skapa tre radio buttons
-  // <label for=""></label>
-  // <input type="radio" name="" id="">
+
+  // Create radiobuttons
   nameForm.innerHTML += `
   
   <input type="radio" name="semla_choice" id="regular" value="regular"/><label>Regular</label>
@@ -93,7 +81,68 @@ const whatkindofSemla = () => {
 
   `
 
+  // We store all radio btns in a variabel.
+  const radioButtons = document.querySelectorAll('input[name="semla_choice"]')
+  let radioValue = "";
+  //let botReply = "";
+  //let flavourChoices = [];
+  /*
+  radioButtons variabel contains all the radio buttons. 
+  radioButton[0]
+  radioButton[1]
+  radioButton[2]
+  */
+
+  console.log(radioButtons)
+
+  // Loop through all buttons and add event listener to each button
+  radioButtons.forEach(radioButton => { 
+    
+    radioButton.addEventListener('click', event => {
+     
+      radioValue = radioButton.value;
+      
+    })
+   
+  })
+  // radioValue == regular
+
+  // my choice -> regular
+  // bot - Nice choice, you choose ${radioValue} semla. 
+  // action - use select to display three options (vanlig, vanilj, choklad)
+console.log(radioValue)
+
+  /**
+   * Bot should give us three different answers depending on the radioValue
+   */
+  
+  // if (radioValue === "regular") {
+  //   botReply = `Nice choice! You chose ${radioValue}`
+  //   flavourChoices = ['vanlig', 'vanilj', 'choklad']
+  // } else if(radioValue === "gluten") {
+  //   botReply = `Nice choice! You chose ${radioValue}`
+  //   flavourChoices = ['jordgubbar', 'lakrits', 'choklad']
+  // }
+
+
+  // if (condition) {
+  //   //  block of code to be executed if the condition is true
+  // } else {
+  //   //  block of code to be executed if the condition is false
+  // }
+
+
+
+  
 };
+
+
+
+// Eventlisteners goes here 👇
+
+// Add listener to the form
+nameForm.addEventListener('submit', handleNameInput)
+
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
