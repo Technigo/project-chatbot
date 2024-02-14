@@ -13,86 +13,17 @@ let selectedDish = "";
 let dishSize = "";
 
 // Functions goes here 👇
-const handleNameInput = (event) => {
-  event.preventDefault();
-  userName = nameInput.value;
-  nameInput.value = "";
-  if (userName) {
-    showMessage(userName, "user");
-    setTimeout(chooseFood, 1000);
-  } else {
-    showMessage("I'm not sure that's a name. Please try again.", "bot");
-  }
-};
-
-const chooseFood = () => {
-  showMessage(
-    `Hello ${userName}! What would you like to eat today? Make your choice:`,
-    "bot"
-  );
-  addFoodButtons();
-  const foodButton = document.querySelectorAll(".send-btn");
-  console.log(foodButton);
-  foodButton.forEach((foodButton) => {
-    foodButton.addEventListener("click", (event) => {
-      foodChoice = event.target.id;
-      console.log(foodChoice);
-      showMessage(`I'd like ${foodChoice}, please.`, "user");
-      setTimeout(chooseDish, 1000);
-    });
-  });
-};
-
-const chooseDish = () => {
-  showMessage(
-    `You've chosen ${foodChoice}, a great choice! Please chose what type of ${foodChoice} you'd like.`,
-    "bot"
-  );
-  addDishMenu();
-  const dishMenu = document.querySelectorAll(".curtain");
-  dishMenu.forEach((dishMenu) => {
-    dishMenu.addEventListener("change", () => {
-      selectedDish = dishMenu.options[dishMenu.selectedIndex].text;
-      console.log(selectedDish);
-    });
-  });
-  const dishForm = document.getElementById("dish-form");
-  dishForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    if (selectedDish) {
-      showMessage(`I'd like ${selectedDish}, please.`, "user");
-      setTimeout(foodSize, 1000);
-    } else {
-      showMessage("Please choose a dish.", "bot");
-    }
-  });
-};
-
-const foodSize = () => {
-  showMessage(
-    `${selectedDish}, always an excellent choice! Will that be for an adult or a child?`,
-    "bot"
-  );
-  addSizeButtons();
-  const sizeButton = document.querySelectorAll(".send-btn");
-  console.log(sizeButton);
-  sizeButton.forEach((sizeButton) => {
-    sizeButton.addEventListener("click", (event) => {
-      dishSize = event.target.id;
-      console.log(dishSize);
-      showMessage(`${dishSize}, please.`, "user");
-    });
-  });
-};
-
-function addFoodButtons() {
+// This function inserts the food option buttons into the html
+const addFoodButtons = () => {
   inputWrapper.innerHTML = `
     <button class="send-btn" id="pizza">Pizza</button>
     <button class="send-btn" id="pasta">Pasta</button>
     <button class="send-btn" id="salad">Salad</button>`;
-}
+};
 
-function addDishMenu() {
+// This function insterts the <select> menus into the html
+// Which menu depends on which food option was chosen
+const addDishMenu = () => {
   switch (foodChoice) {
     case "pizza":
       inputWrapper.innerHTML = `
@@ -131,8 +62,9 @@ function addDishMenu() {
       </form>`;
       break;
   }
-}
+};
 
+// Same as above, but with if instead of switch
 /*if (foodChoice === "pizza") {
     inputWrapper.innerHTML = `
     <form id="dish-form">
@@ -172,20 +104,98 @@ function addDishMenu() {
   }
 }*/
 
-function addSizeButtons() {
+// This function  inserts the portion size option buttons into the html
+const addSizeButtons = () => {
   inputWrapper.innerHTML = `
     <button class="send-btn" id="Small">Small</button>
     <button class="send-btn" id="Large">Large</button>`;
-}
+};
 
-/*
-const chosePizzaType = () => {
-  if (userName == "") {
-    showMessage("Pizza, What type of pizza do you want?", "bot");
+// This function gives us the name of the user
+const handleNameInput = (event) => {
+  event.preventDefault();
+  userName = nameInput.value;
+  nameInput.value = "";
+  // Check if the user has entered a name before moving on
+  if (userName) {
+    showMessage(userName, "user");
+    setTimeout(chooseFood, 1000);
   } else {
-    showMessage(`Cool, ${userName}! What size do you want?`, "bot");
+    showMessage("I'm not sure that's a name. Please try again.", "bot");
   }
-};*/
+};
+
+// The user is asked to choose between different food types by clicking buttons
+const chooseFood = () => {
+  showMessage(
+    `Hello ${userName}! What would you like to eat today? Make your choice:`,
+    "bot"
+  );
+  // Food choice buttons are added to the html
+  addFoodButtons();
+  // Depending on which button is clicked, the id of the clicked button is added to the foodChoice variable
+  const foodButton = document.querySelectorAll(".send-btn");
+  console.log(foodButton);
+  foodButton.forEach((foodButton) => {
+    foodButton.addEventListener("click", (event) => {
+      foodChoice = event.target.id;
+      console.log(foodChoice);
+      showMessage(`I'd like ${foodChoice}, please.`, "user");
+      // We then move on to choosing a dish
+      setTimeout(chooseDish, 1000);
+    });
+  });
+};
+
+// The user is asked to choose a dish within the selected foodChoice category by using a <select> menu
+const chooseDish = () => {
+  showMessage(
+    `You've chosen ${foodChoice}, a great choice! Please chose what type of ${foodChoice} you'd like.`,
+    "bot"
+  );
+  // The <select> menu is added to the html
+  addDishMenu();
+  // By changing the option in the <select> menu, the text within the option is added to the selectedDish variable
+  const dishMenu = document.querySelectorAll(".curtain");
+  dishMenu.forEach((dishMenu) => {
+    dishMenu.addEventListener("change", () => {
+      selectedDish = dishMenu.options[dishMenu.selectedIndex].text;
+      console.log(selectedDish);
+    });
+  });
+  // By pressing the Confirm button, the selectedDish is confirmed
+  const dishForm = document.getElementById("dish-form");
+  dishForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    // Check if the user has selected a dish before moving on
+    if (selectedDish) {
+      showMessage(`I'd like ${selectedDish}, please.`, "user");
+      setTimeout(foodSize, 1000);
+    } else {
+      showMessage("Please choose a dish.", "bot");
+    }
+  });
+};
+
+// The user is asked to choose the portion size
+const foodSize = () => {
+  showMessage(
+    `${selectedDish}, always an excellent choice! What size would you like?`,
+    "bot"
+  );
+  // Portion size buttons are added into the html
+  addSizeButtons();
+  // Depending on which button is clicked, the id of the clicked button is added to the dishSize variable
+  const sizeButton = document.querySelectorAll(".send-btn");
+  console.log(sizeButton);
+  sizeButton.forEach((sizeButton) => {
+    sizeButton.addEventListener("click", (event) => {
+      dishSize = event.target.id;
+      console.log(dishSize);
+      showMessage(`${dishSize}, please.`, "user");
+    });
+  });
+};
 
 // A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
