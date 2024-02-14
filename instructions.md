@@ -12,11 +12,11 @@ This is where the chat messages will be rendered when you add a message as eithe
 
 ```html
 <div class="input-wrapper" id="input-wrapper">
-  <form id="name-form">
-    <label for="name-input">Name</label>
-    <input id="name-input" type="text" />
-    <button class="send-btn" type="submit">Send</button>
-  </form>
+   <form id="name-form">
+      <label for="name-input">Name</label>
+      <input id="name-input" type="text" />
+      <button class="send-btn" type="submit">Send</button>
+   </form>
 </div>
 ```
 
@@ -106,17 +106,17 @@ In the starter code, the first event is asking for the user's name. The starter 
 
 ```jsx
 const handleNameInput = (event) => {
-  event.preventDefault();
-  // Store the value in a variable so we can access it after we
-  // clear it from the input
-  const name = nameInput.value;
-  showMessage(name, "user");
-  nameInput.value = "";
+   event.preventDefault();
+   // Store the value in a variable so we can access it after we
+   // clear it from the input
+   const name = nameInput.value;
+   showMessage(name, "user");
+   nameInput.value = "";
 
-  // After 1 second, show the next question by invoking the next function.
-  // passing the name into it to have access to the user's name if we want
-  // to use it in the next question from the bot.
-  setTimeout(() => showFoodOptions(name), 1000);
+   // After 1 second, show the next question by invoking the next function.
+   // passing the name into it to have access to the user's name if we want
+   // to use it in the next question from the bot.
+   setTimeout(() => showFoodOptions(name), 1000);
 };
 ```
 
@@ -144,16 +144,19 @@ So you’ve completed all the steps above? Great job! Make sure you've committed
 
 ### Intermediate Stretch Goals
 
-- Work on your CSS skills, and change the styling.
-- How is the user answering the questions? Choose the form elements that you think fit the purpose best.
+-  Work on your CSS skills, and change the styling.
+-  How is the user answering the questions? Choose the form elements that you think fit the purpose best.
 
 ### Advanced Stretch Goals
-- Add sound effects to the chat.
-- Refactor the code to learn more about different approaches with functions
-  - Hint:
-  In the examples above, we have made it where each function knows which is the next function to load (so in `handleNameInput`, it calls `showFoodOptions` as it knows this is the next step in the flow). This is ok, and is just one of many approaches you could choose to take here.
 
-  Another option is to make a more generic `askNextQuestion` function which keeps track of the current question and then invokes other functions based on what is next. This is a better approach as the project grows and you potentially have many steps, but it can be more complicated to start with as it means you have to think abstractly from the beginning.
+-  Add sound effects to the chat.
+-  Refactor the code to learn more about different approaches with functions
 
-  A good idea is to get everything working with the more explicit approach of one answer handler calling the next question function, before refactoring your code to abstract things and make it easier to add more questions.
-- Use setTimeout() to show the user that the bot is processing/loading/typing if you choose to use setTimeout() for all the bot's answers
+   -  Hint:
+      In the examples above, we have made it where each function knows which is the next function to load (so in `handleNameInput`, it calls `showFoodOptions` as it knows this is the next step in the flow). This is ok, and is just one of many approaches you could choose to take here.
+
+   Another option is to make a more generic `askNextQuestion` function which keeps track of the current question and then invokes other functions based on what is next. This is a better approach as the project grows and you potentially have many steps, but it can be more complicated to start with as it means you have to think abstractly from the beginning.
+
+   A good idea is to get everything working with the more explicit approach of one answer handler calling the next question function, before refactoring your code to abstract things and make it easier to add more questions.
+
+-  Use setTimeout() to show the user that the bot is processing/loading/typing if you choose to use setTimeout() for all the bot's answers
