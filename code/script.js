@@ -4,6 +4,7 @@ const submitButton = document.getElementById('send-btn')
 const nameInput = document.getElementById('name-input')
 const nameForm = document.getElementById('name-form')
 const inputWrapper = document.getElementById('input-wrapper')
+const orderOption = document.getElementById('order-option')
 
 // Functions goes here 👇
 
@@ -68,7 +69,7 @@ setTimeout(greetUser, 1000)
     showMessage(`I'm ${name}`, "user")
     nameInput.value = ""
     setTimeout(() => firstChoice(name), 1000);
-    nameForm.remove();
+    nameForm.remove()
       
     // After 1 second, show the next question by invoking the next function.
     // passing the name into it to have access to the user's name if we want
@@ -85,14 +86,54 @@ setTimeout(greetUser, 1000)
     showMessage (`So ${name} what would you like to order?`, "bot")
     inputWrapper.innerHTML = `<form id ="order-option">
     <div class="categories">
-    <button class="order-btn" id="coffee-btn" type="submit">Coffee</button>
-    <button class="order-btn" id="bread-btn" type="submit">Bread</button>
-    <button class="order-btn" id="pastry-btn" type="submit">Pastry</button></div></form>`
+    <button class="order-btn" id="coffee" type="submit">Coffee</button>
+    <button class="order-btn" id="bread" type="submit">Bread</button>
+    <button class="order-btn" id="pastry" type="submit">Pastry</button></div></form>`
   }
 
-  const showOrderOptions = () => {
-    
-  }
+ document.getElementById("coffee").addEventListener("click", (firstChoice) => {
+  choice = "coffee"
+  console.log(choice)
+  showMessage("I would like a coffee, please!", "user")
+  setTimeout(() => secondChoice(choice), 1000)
+  orderOption.remove()
+ })
+ 
+ document.getElementById("bread").addEventListener("click", (firstChoice) => {
+  choice = "bread"
+  console.log(choice)
+  showMessage("I would like some bread, please!", "user")
+  setTimeout(() => secondChoice(choice), 1000)
+  orderOption.remove()
+ })
+ document.getElementById("pastry").addEventListener("click", (firstChoice) => {
+  choice = "pastry"
+  console.log(choice)
+  showMessage("I would like a pastry, please!", "user")
+  setTimeout(() => secondChoice(choice), 1000)
+  orderOption.remove()
+ })
 
-  
 
+ const secondChoice = (choice) => {
+    showMessage (`One ${choice} coming up, what kind of ${choice} would you like?`, "bot")
+    if (choice = "coffee") {
+    inputWrapper.innerHTML = `<form id ="coffee-option">
+    <div class="sub-categories">
+    <button class="order-btn" id="filter" type="submit">Filter Coffee</button>
+    <button class="order-btn" id="espresso" type="submit">Espresso</button>
+    <button class="order-btn" id="flat" type="submit">Flat White</button></div></form>`
+ } else if (choice = "bread") {
+  inputWrapper.innerHTML = `<form id ="bread-option">
+    <div class="sub-categories">
+    <button class="order-btn" id="baguette" type="submit">Baguette</button>
+    <button class="order-btn" id="sourdough" type="submit">Sourdough</button>
+    <button class="order-btn" id="rye" type="submit">Rye Bread</button></div></form>`
+ } else if (choice = "pastry") {
+  inputWrapper.innerHTML = `<form id ="pastry-option">
+    <div class="sub-categories">
+    <button class="order-btn" id="semla" type="submit">Semla</button>
+    <button class="order-btn" id="cinnamon" type="submit">Cinnamon Bun</button>
+    <button class="order-btn" id="brownie" type="submit">Brownie</button></div></form>`
+ }
+}
