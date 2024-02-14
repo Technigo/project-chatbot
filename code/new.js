@@ -9,7 +9,7 @@ const submitButton = document.getElementById('send-btn')
 const nameInput = document.getElementById('name-input')
 const nameForm = document.getElementById('name-form')
 const inputWrapper = document.getElementById('input-wrapper')
-const orderOption = document.getElementById('order-option')
+//const orderOption = document.getElementById('order-option')
 
 // Functions goes here 👇
 
@@ -96,7 +96,7 @@ setTimeout(greetUser, 1000)
     <button class="order-btn" id="pastry" type="submit">Pastry</button></div></form>`
   }
 
-  //getting elements from the whole inputwrapper instead
+//getting elements from the whole inputwrapper instead of each btn separately
   inputWrapper.addEventListener("click", (event) => {
     event.preventDefault()
     if (event.target.classList.contains("order-btn")) {
@@ -105,52 +105,43 @@ setTimeout(greetUser, 1000)
     inputWrapper.remove()
     setTimeout(() => secondChoice(choice), 1000)
     }
+    console.log(choice)
     })
 
+// start subchoice
 
- /*document.getElementById("coffee").addEventListener("click", (firstChoice) => {
-  choice = "coffee"
-  console.log(choice)
-  showMessage("I would like a coffee, please!", "user")
-  setTimeout(() => secondChoice(choice), 1000)
-  orderOption.remove()
- })
- 
- document.getElementById("bread").addEventListener("click", (firstChoice) => {
-  choice = "bread"
-  console.log(choice)
-  showMessage("I would like some bread, please!", "user")
-  setTimeout(() => secondChoice(choice), 1000)
-  orderOption.remove()
- })
- document.getElementById("pastry").addEventListener("click", (firstChoice) => {
-  choice = "pastry"
-  console.log(choice)
-  showMessage("I would like a pastry, please!", "user")
-  setTimeout(() => secondChoice(choice), 1000)
-  orderOption.remove()
- })
-
-
- const secondChoice = (choice) => {
+ const secondChoice = (subChoice) => {
     showMessage (`One ${choice} coming up, what kind of ${choice} would you like?`, "bot")
     if (choice = "coffee") {
     inputWrapper.innerHTML = `<form id ="coffee-option">
     <div class="sub-categories">
-    <button class="order-btn" id="filter" type="submit">Filter Coffee</button>
-    <button class="order-btn" id="espresso" type="submit">Espresso</button>
-    <button class="order-btn" id="flat" type="submit">Flat White</button></div></form>`
+    <button class="sub-btn" id="filter" type="submit">Filter Coffee</button>
+    <button class="sub-btn" id="espresso" type="submit">Espresso</button>
+    <button class="sub-btn" id="flat" type="submit">Flat White</button></div></form>`
  } else if (choice = "bread") {
   inputWrapper.innerHTML = `<form id ="bread-option">
     <div class="sub-categories">
-    <button class="order-btn" id="baguette" type="submit">Baguette</button>
-    <button class="order-btn" id="sourdough" type="submit">Sourdough</button>
-    <button class="order-btn" id="rye" type="submit">Rye Bread</button></div></form>`
+    <button class="sub-btn" id="baguette" type="submit">Baguette</button>
+    <button class="sub-btn" id="sourdough" type="submit">Sourdough</button>
+    <button class="sub-btn" id="rye" type="submit">Rye Bread</button></div></form>`
  } else if (choice = "pastry") {
   inputWrapper.innerHTML = `<form id ="pastry-option">
     <div class="sub-categories">
-    <button class="order-btn" id="semla" type="submit">Semla</button>
-    <button class="order-btn" id="cinnamon" type="submit">Cinnamon Bun</button>
-    <button class="order-btn" id="brownie" type="submit">Brownie</button></div></form>`
+    <button class="sub-btn" id="semla" type="submit">Semla</button>
+    <button class="sub-btn" id="cinnamon" type="submit">Cinnamon Bun</button>
+    <button class="sub-btn" id="brownie" type="submit">Brownie</button></div></form>`
  }
-}*/
+}
+
+/*
+//getting elements from the whole inputwrapper instead of each btn separately
+inputWrapper.addEventListener("click", (event) => {
+    event.preventDefault()
+    if (event.target.classList.contains("sub-btn")) {
+    const choice = event.target.id;
+    showMessage(`I would like ${choice}, please!`, "user")
+    inputWrapper.remove()
+    setTimeout(() => secondChoice(choice), 1000)
+    }
+    console.log(choice)
+    })*/
