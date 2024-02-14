@@ -1,5 +1,6 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById("chat");
+const nameForm = document.getElementById("name-form")
 
 const nameInput = document.getElementById("name-input");
 const sendButton = document.getElementById("send-btn");
@@ -57,7 +58,11 @@ const handleNameInput = () => {
       `Hello ${name}, what kind of semla would you like to order?`,
       "bot"
     );
-  }, 2000);
+  }, 1000);
+
+
+  setTimeout(whatkindofSemla, 1000)
+  
 };
 
 // Eventlisteners goes here 👇
@@ -69,10 +74,31 @@ sendButton.addEventListener("click", (event) => {
   handleNameInput();
 });
 
+// Second question: What kind of semla would you like?
+const whatkindofSemla = () => {
+  // Hide input field using display none
+  nameInput.style.display = "none";
+  sendButton.style.display = "none";
+  nameForm.style.display = "none";
+  // SKapa knappar till fråga nummer 2
+  // Hämta form id
+  // skapa tre radio buttons
+  // <label for=""></label>
+  // <input type="radio" name="" id="">
+  nameForm.innerHTML += `
+  
+  <input type="radio" name="semla_choice" id="regular" value="regular"/><label>Regular</label>
+  <input type="radio" name="semla_choice" id="gluten" value="gluten"/><label>Gluten</label>
+  <input type="radio" name="semla_choice" id="lactose" value="lactose"/><label>Lactose</label>
+
+  `
+
+};
+
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
 // To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
 // and pass along two arguments:
 // 1.) the function we want to delay, and 2.) the delay in milliseconds
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 2000);
+setTimeout(greetUser, 1000);
