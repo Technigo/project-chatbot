@@ -3,7 +3,11 @@ let userName = ""
 let mainFoodChoice = ""
 let foodSubtype = ""
 let partySize = "10"
-let orderValue = 0
+let orderValue 
+let onePizzaPrice = 15
+let oneSaladPrice = 18
+let onePastaPrice = 12
+let confirmPrice = ""
 
 // ------------------------------------------------
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
@@ -37,12 +41,21 @@ const bolognaiseButton = document.createElement("button")
 const lasagneButton = document.createElement("button")
 
 // SALAD
-
+const caesarButton = document.createElement("button")
+const capreseButton = document.createElement("button")
+const greekButton = document.createElement("button")
 // Party
 const partyLabel = document.createElement("label")
 const partyInput = document.createElement("input")
 const partyButton = document.createElement("button")
 const partyForm = document.createElement("form")
+
+//user confirm
+const confirmDiv = document.getElementById("button-form")
+const yesButton = document.getElementById("button")
+const noButton = document.getElementById("button")
+
+
 
 // ------------------------------------------------
 // Functions goes here 👇
@@ -170,15 +183,23 @@ const selectSalad = () => {
 }
 
 // displaySaladSubtypes
+const displaySaladSubtypes = () => {
+  caesarButton.textContent = "Caesar Salad"
+  capreseButton.textContent = "Caprese Salad"
+  greekButton.textContent = "Greek Salad"
 
-// save Subtype and send to showMessage, and move on
+  subtypeDiv.append(caesarButton, capreseButton,greekButton)
+  inputWrapper.replaceChild(subtypeDiv, foodDiv)
+}
+
+// save Subtype and send to showMessage, and move on (foodSubtype = subtype? can we just use subtype?)
 const submitSubtype = (subtype) => {
   foodSubtype = subtype
-  console.log("Subtype:", foodSubtype)
+  console.log("Subtype:", foodSubtype, typeof (foodSubtype))
   showMessage(foodSubtype, "user")
   setTimeout(() => {
     showMessage(`Good choice! Our ${foodSubtype} is submlime.`, "bot")
-    selectParty() // Go to next step
+    selectParty()// Go to next step
   }, 1000)
 }
 
@@ -187,9 +208,11 @@ const selectParty = () => {
   console.log(`Party!🥳`)
   setTimeout(() => {
     showMessage(`How many people are in your party? 🥳`, "bot")
-    displayPartyInput() // Go to next step
+      // Go to next step
   }, 1000)
+    displayPartyInput()
 }
+
 
 const displayPartyInput = () => {
   // Display buttons
@@ -216,7 +239,44 @@ const submitPartysize = (event) => {
 
 const calculateOrderValue = () => {
   console.log(`Calculate order value for ${partySize} people...`)
+  setTimeout(() => {cost()},2000)
 }
+
+const cost = () => {
+  inputWrapper.removeChild(partyForm)
+  if (mainFoodChoice === "Pizza"){
+    orderValue = partySize * onePizzaPrice
+    showMessage(`You have ordered ${partySize} ${foodSubtype}, here is your bill: ${orderValue} €. Is that ok?`, "bot")
+  } else if (mainFoodChoice === "Pasta"){
+    orderValue = partySize *onePastaPrice
+    showMessage(`You have ordered ${partySize} ${foodSubtype}, here is your bill: ${orderValue} €. Is that ok?`, "bot")
+  }else if(mainFoodChoice === "Salad"){
+    orderValue = partySize * oneSaladPrice
+    showMessage(`You have ordered ${partySize} ${foodSubtype}, here is your bill: ${orderValue} €. Is that ok?`, "bot")
+  }
+}
+
+const userConfirm = () => {
+  inputWrapper.innerHTML=`<div id="button-form">
+  <button id="yes" type="Submit">Yes</button>
+  <button id="no" type="Submib">No</button>
+  </div>`
+
+  if(confirmPrice === "yes"){
+    confirmPrice = "Yes"
+    showMessage(`Yes`, "user")
+    }else if (confirmPrice === "No"){
+    confirmPrice = "No"
+      showMessage(`No`, "user")
+  }
+}
+
+
+
+  
+
+
+
 
 // ------------------------------------------------
 // Eventlisteners goes here 👇
@@ -248,9 +308,9 @@ bolognaiseButton.addEventListener("click", () => submitSubtype(bolognaiseButton.
 lasagneButton.addEventListener("click", () => submitSubtype(lasagneButton.textContent)) // 
 
 // Salad
-//
-//
-//
+caesarButton.addEventListener("click", () => submitSubtype(caesarButton.textContent))
+capreseButton.addEventListener("click", () => submitSubtype(capreseButton.textContent))
+greekButton.addEventListener("click", () => submitSubtype(capreseButton.textContent))
 
 // Party
 partyInput.addEventListener("input", () => {
@@ -258,6 +318,11 @@ partyInput.addEventListener("input", () => {
   partyLabel.textContent = `Party size: ${partySize}` // Update input label
 })
 partyButton.addEventListener("click", submitPartysize)
+
+// Confirm price
+yesButton.addEventListener("click", userConfirm)
+noButton.addEventListener("click", userConfirm)
+
 
 // ---------------------------------
 /* OVERVIEW OF FUNCTIONS / FLOW
