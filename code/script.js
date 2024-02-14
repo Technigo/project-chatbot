@@ -51,10 +51,12 @@ const partyButton = document.createElement("button")
 const partyForm = document.createElement("form")
 
 //user confirm
-const confirmDiv = document.getElementById("button-form")
+/*const confirmDiv = document.getElementById("button-form")
 const yesButton = document.getElementById("button")
-const noButton = document.getElementById("button")
-
+const noButton = document.getElementById("button")*/
+const confirmDiv = document.createElement("div")
+const yesButton = document.createElement("button")
+const noButton = document.createElement("button")
 
 
 // ------------------------------------------------
@@ -255,13 +257,21 @@ const cost = () => {
     showMessage(`You have ordered ${partySize} ${foodSubtype}, here is your bill: ${orderValue} €. Is that ok?`, "bot")
   }
 }
-
+//////////!!!!!! button doesn't work!!!/////
 const userConfirm = () => {
-  inputWrapper.innerHTML=`<div id="button-form">
+  yesButton.textConten = "yes"
+  noButton.textContent = "no"
+
+  confirmDiv.append(yesButton, noButton)
+  
+
+  /*inputWrapper.innerHTML=`<div id="button-form">
+  <input type="submit" value="Submit Form" />
   <button id="yes" type="Submit">Yes</button>
   <button id="no" type="Submib">No</button>
-  </div>`
-
+  </div>`*/
+  
+}
   if(confirmPrice === "yes"){
     confirmPrice = "Yes"
     showMessage(`Yes`, "user")
@@ -269,7 +279,7 @@ const userConfirm = () => {
     confirmPrice = "No"
       showMessage(`No`, "user")
   }
-}
+
 
 
 
