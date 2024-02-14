@@ -5,12 +5,14 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: "Raleway", sans-serif;
+  background-image: url(assets/ocean-bkg.jpg);
+  background-attachment: fixed;
+  background-position: center;
 }
 
 h1 {
-  font-weight: bold;
+  font-family: "Abril Fatface", serif;
   font-size: 28px;
   line-height: 34px;
   color: #fff;
@@ -18,7 +20,7 @@ h1 {
 }
 
 h2 {
-  font-weight: bold;
+  font-family: "Abril Fatface", serif;
   font-size: 24px;
   line-height: 34px;
   color: #fff;
@@ -41,8 +43,8 @@ input {
   color: #0026ff;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 600;
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
   line-height: 26px;
   flex: 1;
   width: 100%;
@@ -123,7 +125,7 @@ main {
 
 label {
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Raleway", sans-serif;
   font-weight: 500;
   color: #0026ff;
   margin-right: 20px;
@@ -138,7 +140,7 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: "Raleway", sans-serif;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
