@@ -16,7 +16,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user2.png" alt="User" />  
       </section>
     `
     // The else if statement checks if the sender is the bot and if that's the case it inserts
@@ -24,7 +24,7 @@ const showMessage = (message, sender) => {
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bot2.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -60,23 +60,28 @@ setTimeout(greetUser, 1000)
 
   
   const handleNameInput = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     // Store the value in a variable so we can access it after we
     // clear it from the input
-    const name = nameInput.value;
-    showMessage(`I'm ${name}`, "user");
-    nameInput.value = "";
-
-  
+    const name = nameInput.value
+    showMessage(`I'm ${name}`, "user")
+    nameInput.value = ""
+      
     // After 1 second, show the next question by invoking the next function.
     // passing the name into it to have access to the user's name if we want
     // to use it in the next question from the bot.
 
     //setTimeout(() => showOrderOptions(name), 1000);
     //nameForm.remove();
-  };
+  }
 
-  submitButton.onclick = handleNameInput;
+  submitButton.onclick = handleNameInput
+
+  let choice
+
+  const firstChoice = (name) => {
+    showMessage (`So ${name} what would you like to order?`)
+  }
 
   const showOrderOptions = () => {
     
