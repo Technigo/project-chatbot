@@ -8,9 +8,9 @@ const sendBtn = document.getElementsByClassName("send-btn");
 // Global variables
 let userName = "";
 let foodChoice = "";
-let dishSelection = "";
 let selectedDish = "";
 let dishSize = "";
+let price = "";
 
 // Functions goes here 👇
 // This function inserts the food option buttons into the html
@@ -101,8 +101,7 @@ const addDishMenu = () => {
       <button class="send-btn" id="send-btn" type="submit">Confirm</button>
     </form>
   `;
-  }
-}*/
+  }*/
 
 // This function  inserts the portion size option buttons into the html
 const addSizeButtons = () => {
@@ -193,8 +192,42 @@ const foodSize = () => {
       dishSize = event.target.id;
       console.log(dishSize);
       showMessage(`${dishSize}, please.`, "user");
+      setTimeout(checkOut, 1000);
+      switch (dishSize) {
+        case "Small":
+          price = 10;
+          break;
+        case "Large":
+          price = 15;
+          break;
+      }
     });
   });
+};
+
+const checkOut = () => {
+  showMessage(
+    `One ${dishSize} ${selectedDish} will be prepared for you. That will be €${price}. 
+  Are you sure you want to order this?`,
+    "bot"
+  );
+  inputWrapper.innerHTML = `
+    <button class="send-btn" id="Yes">Yes</button>
+    <button class="send-btn" id="No">No</button>`;
+  document.querySelector("#Yes").addEventListener("click", () => {
+    showMessage("Yes", "user");
+    orderConfirmation();
+  });
+  document.querySelector("#No").addEventListener("click", () => {
+    showMessage("No", "user");
+    orderConfirmation();
+  });
+};
+
+const orderConfirmation = () => {
+  showMessage(`Thank you! See you again!`, "bot");
+  //This inputwrapper "" get rid of the buttons.
+  inputWrapper.innerHTML = "";
 };
 
 // A function that will add a chat bubble in the correct place based on who the sender is
@@ -245,17 +278,5 @@ const greetUser = () => {
 // 1.) the function we want to delay, and 2.) the delay in milliseconds
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000);
-
-/*
-nameInput.addEventListener("change", (e) => {
-  userName = e.target.value;
-});
-
-nameForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  showMessage(`${userName}`, "user");
-  nameInput.value = "";
-  setTimeout(chooseFood, 1000);
-});*/
 
 nameForm.addEventListener("submit", handleNameInput);
