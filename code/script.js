@@ -19,11 +19,12 @@ const showMessage = (message, sender) => {
     // The else if statement checks if the sender is the bot and if that's the case it inserts
     // an HTML section inside the chat with the posted message from the bot
   } else if (sender === 'bot') {
+    console.log("Message from the bot:", message)
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
-          <p>${message}</p>
+          <p>message</p>
         </div>
       </section>
     `
@@ -38,7 +39,7 @@ const showMessage = (message, sender) => {
 const greetUser = () => {
   // Here we call the function showMessage, that we declared earlier with the argument:
   // "Hello there, what's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, what's your name?", 'bot')
+  showMessage("Hello there, what's your name?", 'user')
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 }
 
@@ -50,4 +51,4 @@ const greetUser = () => {
 // and pass along two arguments:
 // 1.) the function we want to delay, and 2.) the delay in milliseconds 
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000)
+setTimeout(greetUser, 800)
