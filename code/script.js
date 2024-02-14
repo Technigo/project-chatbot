@@ -1,23 +1,8 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
 
-const customer = document.getElementById('name-input')
-// const sendButton = document.getElementsByClassName('send-btn')
-
+const nameInput = document.getElementById('name-input')
 const sendButton = document.getElementById('send-btn')
-
-customer.value = "";
-
-
-
- 
-  sendButton.addEventListener('click', (event) => {
-    event.preventDefault()
-    console.log("test")
-    console.log(customer.value)
-
-    customer.value = "";
-  })
 
 
 
@@ -29,7 +14,6 @@ const showMessage = (message, sender) => {
   // The if statement checks if the sender is the user and if that's the case it inserts
   // an HTML section inside the chat with the posted message from the user
   if (sender === 'user') {
-    console.log(sender)
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -41,7 +25,6 @@ const showMessage = (message, sender) => {
     // The else if statement checks if the sender is the bot and if that's the case it inserts
     // an HTML section inside the chat with the posted message from the bot
   } else if (sender === 'bot') {
-    console.log(sender)
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -51,6 +34,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
+
 
   // This little thing makes the chat scroll to the last message when there are too many to
   // be shown in the chat box
@@ -67,8 +51,29 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 }
 
+// a function to get the users name and showing the name written by the user in the chat. 
+const handleNameInput = () => {
+
+  const name = nameInput.value;
+  showMessage(name, "user");
+  nameInput.value = "";
+}
+
+// Calling function handleNameInput
+// handleNameInput()
+// const handleNameInput = () => {
+//   showMessage(`Hello ${name}, what kind of semla would you like to order?`, 'bot')
+// }
+
 
 // Eventlisteners goes here 👇
+
+// When clicking on the "send button" preventing the website to reload and calling the "handleNameInput function"
+sendButton.addEventListener('click', (event) => {
+  // preventa att sidan laddas om
+  event.preventDefault()
+  handleNameInput()
+})
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
