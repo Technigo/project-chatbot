@@ -1,5 +1,8 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
+const submitButton = document.getElementById('send-btn')
+const nameInput = document.getElementById('name-input')
+const nameForm = document.getElementById('name-form')
 
 // Functions goes here 👇
 
@@ -54,4 +57,30 @@ const greetUser = () => {
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000)
 
+
+  
+  const handleNameInput = (event) => {
+    event.preventDefault();
+    // Store the value in a variable so we can access it after we
+    // clear it from the input
+    const name = nameInput.value;
+    showMessage(`I'm ${name}`, "user");
+    nameInput.value = "";
+
+  
+    // After 1 second, show the next question by invoking the next function.
+    // passing the name into it to have access to the user's name if we want
+    // to use it in the next question from the bot.
+
+    //setTimeout(() => showOrderOptions(name), 1000);
+    //nameForm.remove();
+  };
+
+  submitButton.onclick = handleNameInput;
+
+  const showOrderOptions = () => {
+    
+  }
+
+  
 
