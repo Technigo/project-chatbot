@@ -67,9 +67,13 @@ const handleNameInput = (event) => {
 
   const nameInput = document.getElementById("name-input")
   const name = nameInput.value
-  showMessage(`I'm ${name}!`, "user")
-  nameInput.value = ""
-  setTimeout(() => firstChoice(name), 500)
+  if(/^[a-zA-z]/.test(name)){
+    showMessage(`I'm ${name}!`, "user")
+    nameInput.value = ""
+    setTimeout(() => firstChoice(name), 500)
+  } else {
+    showMessage(`Please fill in a valid name with letters.`,"bot")
+  }
 }
 
 // second message from bot
