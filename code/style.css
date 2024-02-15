@@ -6,15 +6,17 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: #0D3B66;
 }
 
 h1 {
   font-weight: bold;
   font-size: 28px;
   line-height: 34px;
-  color: #fff;
+  color: #EE964B;
   text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 h2 {
@@ -31,14 +33,16 @@ p {
   font-weight: 600;
   line-height: 28px;
   margin: 0;
+  
 }
+
 
 input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #f8eee7;
+  color: #0D3B66;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -49,8 +53,8 @@ input {
 }
 
 main {
-  margin: 0 auto;
-  width: 100%;
+  margin: auto;
+  width: 90%;
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
@@ -62,13 +66,19 @@ main {
   flex-direction: column;
 }
 
+@media (max-height: 650px){
+  main {
+    height: 450px;
+  }
+}
+
 .chat {
   flex: 1;
   display: flex;
   justify-content: flex-start;
   overflow: scroll;
   flex-direction: column;
-  padding-bottom: 16px;
+  padding-bottom: 70px;
 }
 
 .bot-msg {
@@ -90,13 +100,21 @@ main {
   height: 60px;
 }
 
+#endBot {
+  width: 60%;
+  height: 90%;
+  margin: auto;
+
+
+}
+
 .bubble {
-  background: #e5e9ff;
+  background: #f8f0e5;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #0D3B66;
   max-width: 40%;
 }
 
@@ -113,24 +131,70 @@ main {
 .input-wrapper {
   display: flex;
   justify-content: center;
+  padding-top: 15px;
 }
 
 .input-wrapper form {
   width: 100%;
   display: flex;
   align-items: center;
+
 }
 
 label {
   font-size: 16px;
   font-family: 'Montserrat';
-  font-weight: 500;
-  color: #0026ff;
+  font-weight: 600;
+  color: #0D3B66;
   margin-right: 20px;
 }
 
+@media (max-width: 600px){
+  .choice-btn {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 4px;
+  grid-column: span 2;
+  }
+
+  .chat-btn{
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 4px;
+  grid-column: span 2;
+  }
+  .input-wrapper{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  
+  
+  }
+  #name-form {
+    grid-column: span 4;
+    width: 100%;
+  }
+   #answerForm {
+    grid-column: span 4;
+    width: 100%;
+  }
+  .bubble {
+    max-width: 60%;
+  }
+
+  p{
+  font-size: 14px;
+  }
+
+  #input-wrapper {
+  cover: 100%;
+}
+
+  
+}
+
+
 button {
-  background-color: #0026ff;
+  background-color: #F95738;
   color: white;
   border: none;
   border-radius: 4px;
@@ -142,6 +206,8 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  
+ 
 }
 
 button:hover {
