@@ -10,6 +10,7 @@ let animalChoice = "";
 let selectedType = "";
 let gender = "";
 let animalName = "";
+let confirmApp = "";
 
 // Functions goes here 👇
 // This function inserts the animal option buttons into the html
@@ -68,45 +69,6 @@ const addTypeMenu = () => {
       break;
   }
 };
-
-// Same as above, but with if instead of switch
-/*if (foodChoice === "pizza") {
-    inputWrapper.innerHTML = `
-    <form id="dish-form">
-      <select class="curtain" id="pizza-select">
-        <option value="choose" selected disabled>--Please choose a pizza--</option>
-        <option value="margherita">Margherita</option>
-        <option value="vesuvius">Vesuvius</option>
-        <option value="kebab">Kebab</option>
-      </select> 
-      <button class="send-btn" id="send-btn" type="submit">Confirm</button>
-     </form>
-  `;
-  } else if (foodChoice === "pasta") {
-    inputWrapper.innerHTML = `
-    <form id="dish-form">
-      <select class="curtain" id="pasta-select">
-        <option value="choose" selected disabled>--Please choose a pasta dish--</option>
-        <option value="carbonara">Carbonara</option>
-        <option value="spaghetti bolognese">Spaghetti Bolognese</option>
-        <option value="frutti di mare">Frutti di Mare</option>
-      </select> 
-      <button class="send-btn" id="send-btn" type="submit">Confirm</button>
-    </form>
-  `;
-  } else if (foodChoice === "salad") {
-    inputWrapper.innerHTML = `
-    <form id="dish-form">
-      <select class="curtain" id="salad-select">
-        <option value="choose" selected disabled>--Please choose a salad--</option>
-        <option value="caesar salad">Caesar Salad</option>
-        <option value="tabbouleh">Tabbouleh</option>
-        <option value="salad caprese">Salad Caprese</option>
-      </select> 
-      <button class="send-btn" id="send-btn" type="submit">Confirm</button>
-    </form>
-  `;
-  }*/
 
 // This function inserts the gender option buttons into the html
 const addGenderButtons = () => {
@@ -239,21 +201,23 @@ const contactInfo = () => {
     const userEmail = document.getElementById("email").value;
     showMessage(`${telNo}, ${userEmail}`, "user");
     event.preventDefault();
-    setTimeout(confirmApplication, 1000);
+    setTimeout(handleApplication, 1000);
   });
 };
 
 // The user is asked to confirm their application by clicking buttons
-const confirmApplication = () => {
+const handleApplication = () => {
   showMessage(`Great! Would you like to confirm your application?`, "bot");
   inputWrapper.innerHTML = `
     <button class="send-btn" id="Yes">Yes</button>
     <button class="send-btn" id="No">No</button>`;
   document.querySelector("#Yes").addEventListener("click", () => {
+    confirmApp = "yes";
     showMessage("Yes", "user");
     setTimeout(appConfirmation, 1000);
   });
   document.querySelector("#No").addEventListener("click", () => {
+    confirmApp = "no";
     showMessage("No", "user");
     setTimeout(appConfirmation, 1000);
   });
@@ -261,10 +225,17 @@ const confirmApplication = () => {
 
 // The user is asked to confirm their application
 const appConfirmation = () => {
-  showMessage(
-    `Thank you! We will contact you as soon as we have processed your application.`,
-    "bot"
-  );
+  if (confirmApp === "yes") {
+    showMessage(
+      `Thank you! We will contact you as soon as we have processed your application.`,
+      "bot"
+    );
+  } else if (confirmApp === "no") {
+    showMessage(
+      "That's ok. Our furry friends will still be here waiting for their forever home.",
+      "bot"
+    );
+  }
   //This inputwrapper "" get rid of the buttons.
   inputWrapper.innerHTML = "";
 };
@@ -279,7 +250,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/dog-icon.png" alt="User" />  
       </section>
     `;
     // The else if statement checks if the sender is the bot and if that's the case it inserts
@@ -287,7 +258,7 @@ const showMessage = (message, sender) => {
   } else if (sender === "bot") {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/cat-icon.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
