@@ -2,6 +2,7 @@
 const chat = document.getElementById('chat')
 const nameForm = document.getElementById('name-form')
 const nameInput = document.getElementById('name-input')
+const selectElement = document.createElement('select');
 
 // Functions goes here 👇
 
@@ -49,46 +50,73 @@ const greetUser = () => {
 }
 
 
-//Function to handle user responses
-const handleUserResponse = (message) => {
-  showMessage(message, 'user');
-};
-
-
-
-//Function to greet the user and ask if the would like to order
-const showFoodOptions = (userName) => {
-  showMessage(`Nicet to meet you, ${userName}! Would you like to order something`, 'bot')
-};
-
 //Function to handle name input
 const handleNameInput = (event) => {
   event.preventDefault();
 
   const name = nameInput.value;
-  handleUserResponse(name);
+  showMessage(name, 'user');
   nameInput.value = "";
   //After handling name input, proceed to ask if they want to order
-  setTimeout(() => showFoodOptions(name), 1000);
+  setTimeout(() => greetAndAskOrder(name), 1000);
+};
 
+
+//Function to greet the user and ask if the would like to order
+const greetAndAskOrder = (userName) => {
+  showMessage(`Nice to meet you, ${userName}! Would you like to order something?`, 'bot')
+};
+
+//Function to handle user responses
+const handleUserResponse = (message, sender) => {
+  showMessage(message, sender);
+
+if (sender === 'user' && message.toLowerCase() === 'yes') {
+ // showMessage("That´s great! Here are your options:", 'bot')
+  showFoodOptions();
 }
-
+};
 //Function to handle form submission
 const handleFormSubmit = (event) => {
   event.preventDefault();
+  
   const messageInput = event.target.querySelector('input[type="text"]');
   const message = messageInput.value;
-  handleUserResponse(message);
+  if (message) {
+    handleUserResponse(message, 'user');
+  }
   messageInput.value = "";
+  if (event.target.id === 'name-form') {
+    setTimeout(() => greetAndAskOrder(message), 1000);
+  }
 }
+  
 
 //Function to show food options
+const showFoodOptions = () => {
+ showMessage("That´s great! Here are your options:", 'bot')
+
+ //Array of food options
+ const foodOptions = ['Pizza', 'Sushi', 'Tacos'];
+
+
+//create the HTML for the dropdown list
+let dropdownHTML = '<select id="food-options">';
+foodOptions.forEach(option => {
+  dropdownHTML += `<option value="${option}">${option}</option>`;
+});
+dropdownHTML += '</select>'
+
+//append the dropdown HTML to the chat
+chat.innerHTML += dropdownHTML;
+}
+
 
 
 
 // Eventlisteners goes here 👇
 
-nameForm.addEventListener('submit', handleNameInput);
+nameForm.addEventListener('submit', handleFormSubmit);
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()

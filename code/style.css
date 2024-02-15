@@ -148,3 +148,20 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+/*Style the dropdown content */
+.dropdown {
+margin-top: 10px;
+}
+
+.dropdown select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #0026ff;
+  border-radius: 4px;
+  background-color: #0026ff;
+}
+
+.dropdown option {
+  font-size: 16px;
+}
