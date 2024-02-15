@@ -46,7 +46,7 @@ const startScreen = () => {
   //Add event listener to the button
   startButton.addEventListener("click", () =>{
     // Show the main element when the button es clicked
-    displayMain.style.display = "block"
+    displayMain.style.display = "flex"
     // Remove the button from the document
     startButton.remove();
   })
@@ -54,7 +54,7 @@ const startScreen = () => {
   document.body.appendChild(startButton)
 }
 startScreen()
-showMessage()
+showMessage("Wellcome to this amazing chat bot! What's your name?", bot)
 
 // 2 A function to start the conversation
 
