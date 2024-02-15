@@ -1,7 +1,7 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById("chat");
-const sendBtn = document.getElementById("send-btn")
-const nameInput = document.getElementById('name-input');
+const nameInput = document.getElementById("name-input");
+const inputWrapper = document.getElementById("input-wrapper");
 
 // Functions goes here 👇
 
@@ -10,7 +10,7 @@ const showMessage = (message, sender) => {
   // The if statement checks if the sender is the user and if that's the case it inserts
   // an HTML section inside the chat with the posted message from the user
   if (sender === "user") {
-    console.log("Message from user:", message)
+    console.log("user");
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -22,7 +22,7 @@ const showMessage = (message, sender) => {
     // The else if statement checks if the sender is the bot and if that's the case it inserts
     // an HTML section inside the chat with the posted message from the bot
   } else if (sender === "bot") {
-    console.log("Message from bot:", message)
+    console.log("bot");
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -46,28 +46,34 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 };
 
-// Eventlisteners goes here 👇
-//Users name shows as a message
-
 const handleNameInput = (event) => {
   event.preventDefault();
-  // Store the value in a variable so we can access it after we
-  // clear it from the input
   const name = nameInput.value;
-  showMessage(`I'm ${name}!`, "user");
+  showMessage(name, "user");
   nameInput.value = "";
-  setTimeout(() => firstChoice(name), 100);
-  nameForm.remove();
+  setTimeout(() => showFoodOptions(name), 1000);
 };
 
-sendBtn.onclick(handleNameInput) 
+const showFoodOptions = (name) => {
+  showMessage(`Hello ${name}! What are you craving today?`, "bot");
+  inputWrapper.innerHTML = `<div id="button-form">
+  <button id="Pizza">Pizza</button>
+  <button id="Pasta">Pasta</button>
+  <button id="Salad">Salad</button></div>`;
+  const pizzaBtn = document.getElementById("Pizza");
+  pizzaBtn.onclick = () => foodClick("Pizza");
+  const pastaBtn = document.getElementById("Pasta");
+  pastaBtn.onclick = () => foodClick("Pasta");
+  const saladBtn = document.getElementById("Salad");
+  saladBtn.onclick = () => foodClick("Salad");
+};
 
-  // After 1 second, show the next question by invoking the next function.
-  // passing the name into it to have access to the user's name if we want
-  // to use it in the next question from the bot.
-  setTimeout(() => showFoodOptions(name), 1000);
-;
+const foodClick = (foodCategory) => {
+  showMessage(foodCategory, "user");
+};
+// Eventlisteners goes here 👇
 
+addEventListener("submit", handleNameInput);
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
@@ -76,4 +82,3 @@ sendBtn.onclick(handleNameInput)
 // 1.) the function we want to delay, and 2.) the delay in milliseconds
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000);
-
