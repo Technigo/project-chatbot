@@ -3,60 +3,65 @@ const chat = document.getElementById("chat");
 const nameInput = document.getElementById("name-input");
 const nameForm = document.getElementById("name-form");
 const inputWrapper = document.getElementById("input-wrapper");
-const sendBtn = document.getElementsByClassName("send-btn");
 
 // Global variables
 let userName = "";
-let foodChoice = "";
-let selectedDish = "";
-let dishSize = "";
-let price = "";
+let animalChoice = "";
+let selectedType = "";
+let gender = "";
+let animalName = "";
 
 // Functions goes here 👇
 // This function inserts the food option buttons into the html
-const addFoodButtons = () => {
+const addAnimalButtons = () => {
   inputWrapper.innerHTML = `
-    <button class="send-btn" id="pizza">Pizza</button>
-    <button class="send-btn" id="pasta">Pasta</button>
-    <button class="send-btn" id="salad">Salad</button>`;
+    <button class="send-btn" id="cat">Cat</button>
+    <button class="send-btn" id="dog">Dog</button>
+    <button class="send-btn" id="horse">Horse</button>`;
 };
 
 // This function insterts the <select> menus into the html
 // Which menu depends on which food option was chosen
-const addDishMenu = () => {
-  switch (foodChoice) {
-    case "pizza":
+const addTypeMenu = () => {
+  switch (animalChoice) {
+    case "cat":
       inputWrapper.innerHTML = `
-      <form id="dish-form">
-        <select class="curtain" id="pizza-select">
-          <option value="choose" selected disabled>--Please choose a pizza--</option>
-          <option value="margherita">Margherita</option>
-          <option value="vesuvius">Vesuvius</option>
-          <option value="kebab">Kebab</option>
+      <form id="animal-type">
+        <select class="curtain" id="cat-select">
+          <option value="choose" selected disabled>--Please choose a type of cat--</option>
+          <option value="Persian">Persian</option>
+          <option value="Siamese">Siamese</option>
+          <option value="Maine Coon">Maine Coon</option>
+          <option value="Bengal">Bengal</option>
+          <option value="Scottish Fold">Scottish Fold</option>
         </select> 
         <button class="send-btn" id="send-btn" type="submit">Confirm</button>
       </form>`;
       break;
-    case "pasta":
+    case "dog":
       inputWrapper.innerHTML = `
-      <form id="dish-form">
-        <select class="curtain" id="pasta-select">
-          <option value="choose" selected disabled>--Please choose a pasta dish--</option>
-          <option value="carbonara">Carbonara</option>
-          <option value="spaghetti bolognese">Spaghetti Bolognese</option>
-          <option value="frutti di mare">Frutti di Mare</option>
+      <form id="animal-type">
+        <select class="curtain" id="dog-select">
+          <option value="choose" selected disabled>--Please choose a tyoe of dog--</option>
+          <option value="Dachshund">Dachshund</option>
+          <option value="Golden retriever">Golden retriever</option>
+          <option value="Poodle">Poodle</option>
+          <option value="Pomeranian">Pomeranian</option>
+          <option value="Great Dane">Great Dane</option>
         </select> 
         <button class="send-btn" id="send-btn" type="submit">Confirm</button>
       </form>`;
       break;
-    case "salad":
+    case "horse":
       inputWrapper.innerHTML = `
-      <form id="dish-form">
-        <select class="curtain" id="salad-select">
-          <option value="choose" selected disabled>--Please choose a salad--</option>
-          <option value="caesar salad">Caesar Salad</option>
-          <option value="tabbouleh">Tabbouleh</option>
-          <option value="salad caprese">Salad Caprese</option>
+      <form id="animal-type">
+        <select class="curtain" id="horse-select">
+          <option value="choose" selected disabled>--Please choose a type of horse--</option>
+          <option value="Shetland pony">Shetland pony</option>
+          <option value="Thoroughbred">Thoroughbred</option>
+          <option value="Andalusian">Andalusian</option>
+          <option value="Connemara">Connemara</option>
+          <option value="Ardennais">Ardennais</option>
         </select> 
         <button class="send-btn" id="send-btn" type="submit">Confirm</button>
       </form>`;
@@ -104,10 +109,23 @@ const addDishMenu = () => {
   }*/
 
 // This function  inserts the portion size option buttons into the html
-const addSizeButtons = () => {
+const addGenderButtons = () => {
   inputWrapper.innerHTML = `
-    <button class="send-btn" id="Small">Small</button>
-    <button class="send-btn" id="Large">Large</button>`;
+    <button class="send-btn" id="male">Male</button>
+    <button class="send-btn" id="female">Female</button>`;
+};
+
+const addContactForm = () => {
+  inputWrapper.innerHTML = `
+  <form id="contact-form">
+    <label>Phone number:
+      <input type="tel" name="tel" placeholder="Please enter your email" required/>
+    </label>
+    <label>Your Email:
+      <input type="email" name="email" placeholder="Email" required/>
+    </label>
+    <button class="send-btn" id="send-btn" type="submit">Confirm</button>
+  </form>`;
 };
 
 // This function gives us the name of the user
@@ -118,87 +136,87 @@ const handleNameInput = (event) => {
   // Check if the user has entered a name before moving on
   if (userName) {
     showMessage(userName, "user");
-    setTimeout(chooseFood, 1000);
+    setTimeout(chooseAnimal, 1000);
   } else {
     showMessage("I'm not sure that's a name. Please try again.", "bot");
   }
 };
 
 // The user is asked to choose between different food types by clicking buttons
-const chooseFood = () => {
+const chooseAnimal = () => {
   showMessage(
-    `Hello ${userName}! What would you like to eat today? Make your choice:`,
+    `Happy to meet you, ${userName}! What type of animal are you interested in adopting?`,
     "bot"
   );
   // Food choice buttons are added to the html
-  addFoodButtons();
+  addAnimalButtons();
   // Depending on which button is clicked, the id of the clicked button is added to the foodChoice variable
-  const foodButton = document.querySelectorAll(".send-btn");
-  console.log(foodButton);
-  foodButton.forEach((foodButton) => {
-    foodButton.addEventListener("click", (event) => {
-      foodChoice = event.target.id;
-      console.log(foodChoice);
-      showMessage(`I'd like ${foodChoice}, please.`, "user");
+  const animalButton = document.querySelectorAll(".send-btn");
+  console.log(animalButton);
+  animalButton.forEach((animalButton) => {
+    animalButton.addEventListener("click", (event) => {
+      animalChoice = event.target.id;
+      console.log(animalChoice);
+      showMessage(`I'd like a ${animalChoice}.`, "user");
       // We then move on to choosing a dish
-      setTimeout(chooseDish, 1000);
+      setTimeout(chooseType, 1000);
     });
   });
 };
 
 // The user is asked to choose a dish within the selected foodChoice category by using a <select> menu
-const chooseDish = () => {
+const chooseType = () => {
   showMessage(
-    `You've chosen ${foodChoice}, a great choice! Please chose what type of ${foodChoice} you'd like.`,
+    `Oh, a ${animalChoice}, a great choice! And what type of ${animalChoice} would you prefer?`,
     "bot"
   );
   // The <select> menu is added to the html
-  addDishMenu();
+  addTypeMenu();
   // By changing the option in the <select> menu, the text within the option is added to the selectedDish variable
-  const dishMenu = document.querySelectorAll(".curtain");
-  dishMenu.forEach((dishMenu) => {
-    dishMenu.addEventListener("change", () => {
-      selectedDish = dishMenu.options[dishMenu.selectedIndex].text;
-      console.log(selectedDish);
+  const typeMenu = document.querySelectorAll(".curtain");
+  typeMenu.forEach((typeMenu) => {
+    typeMenu.addEventListener("change", () => {
+      selectedType = typeMenu.options[typeMenu.selectedIndex].text;
+      console.log(selectedType);
     });
   });
   // By pressing the Confirm button, the selectedDish is confirmed
-  const dishForm = document.getElementById("dish-form");
-  dishForm.addEventListener("submit", (event) => {
+  const animalTypeForm = document.getElementById("animal-type");
+  animalTypeForm.addEventListener("submit", (event) => {
     event.preventDefault();
     // Check if the user has selected a dish before moving on
-    if (selectedDish) {
-      showMessage(`I'd like ${selectedDish}, please.`, "user");
-      setTimeout(foodSize, 1000);
+    if (selectedType) {
+      showMessage(`${selectedType}, please.`, "user");
+      setTimeout(genderChoice, 1000);
     } else {
-      showMessage("Please choose a dish.", "bot");
+      showMessage(`Please select a type of ${animalChoice}.`, "bot");
     }
   });
 };
 
 // The user is asked to choose the portion size
-const foodSize = () => {
+const genderChoice = () => {
   showMessage(
-    `${selectedDish}, always an excellent choice! What size would you like?`,
+    `Oh, a ${selectedType}, lovely! What gender would you like?`,
     "bot"
   );
   // Portion size buttons are added into the html
-  addSizeButtons();
+  addGenderButtons();
   // Depending on which button is clicked, the id of the clicked button is added to the dishSize variable
-  const sizeButton = document.querySelectorAll(".send-btn");
-  console.log(sizeButton);
-  sizeButton.forEach((sizeButton) => {
-    sizeButton.addEventListener("click", (event) => {
-      dishSize = event.target.id;
-      console.log(dishSize);
-      showMessage(`${dishSize}, please.`, "user");
+  const genderButton = document.querySelectorAll(".send-btn");
+  console.log(genderButton);
+  genderButton.forEach((genderButton) => {
+    genderButton.addEventListener("click", (event) => {
+      gender = event.target.id;
+      console.log(gender);
+      showMessage(`A ${gender}, please.`, "user");
       setTimeout(checkOut, 1000);
-      switch (dishSize) {
-        case "Small":
-          price = 10;
+      switch (gender) {
+        case "male":
+          animalName = "Snufkin";
           break;
-        case "Large":
-          price = 15;
+        case "female":
+          animalName = "Ophelia";
           break;
       }
     });
@@ -207,10 +225,20 @@ const foodSize = () => {
 
 const checkOut = () => {
   showMessage(
-    `One ${dishSize} ${selectedDish} will be prepared for you. That will be €${price}. 
-  Are you sure you want to order this?`,
+    `A ${gender} ${selectedType}, you say. We have just the right ${animalChoice} for you! ${animalName} is just what you're looking for. 
+  Please enter your contact information.`,
     "bot"
   );
+  addContactForm();
+  const contactForm = document.getElementById("contact-form");
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    confirmApplication();
+  });
+};
+
+const confirmApplication = () => {
+  showMessage(`Thank you! Would you like to confirm your application?`, "bot");
   inputWrapper.innerHTML = `
     <button class="send-btn" id="Yes">Yes</button>
     <button class="send-btn" id="No">No</button>`;
@@ -225,7 +253,10 @@ const checkOut = () => {
 };
 
 const orderConfirmation = () => {
-  showMessage(`Thank you! See you again!`, "bot");
+  showMessage(
+    `Thank you! We will contact you as soon as we have processed your application.`,
+    "bot"
+  );
   //This inputwrapper "" get rid of the buttons.
   inputWrapper.innerHTML = "";
 };
@@ -265,7 +296,7 @@ const showMessage = (message, sender) => {
 const greetUser = () => {
   // Here we call the function showMessage, that we declared earlier with the argument:
   // "Hello there, what's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, what's your name?", "bot");
+  showMessage("Hello! What's your name?", "bot");
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 };
 
