@@ -1,9 +1,10 @@
 let currentQuestion = ""
 const chat = document.getElementById("chat")
 const inputWrapper = document.getElementById("input-wrapper")
-let choice = ""
-//const botAudio = document.getElementById('botAudio');
-//const userAudio = document.getElementById('userAudio');
+let choice
+const audio = document.getElementById("botAudio")
+const audioUser = document.getElementById("userAudio")
+let style
 
 // Moved the greeting function here and added the form which we removed from HTML👇🏻
 /* function playAudioEffect(){
@@ -17,7 +18,7 @@ const greetUser = () => {
     What's your name?`,
     `bot`
   )
-  //playAudioEffect();
+  audio.play()
   inputWrapper.innerHTML = `<form id="name-form">
     <input
       placeholder="--------------------------------------------------------------"
@@ -33,8 +34,6 @@ const greetUser = () => {
 }
 // Moved the message function here 👇🏻
 
-
-
 const showMessage = (message, sender) => {
   if (sender === "user") {
     console.log("message is:", message)
@@ -47,9 +46,7 @@ const showMessage = (message, sender) => {
         <img src="assets/child-2707415_1280.png" alt="User" />  
       </section>
     `
-   
-   
-
+    audioUser.play()
   } else if (sender === "bot") {
     console.log("message is:", message)
     console.log("sender is:", sender)
@@ -61,6 +58,7 @@ const showMessage = (message, sender) => {
         </div>
       </section>
     `
+    audio.play()
     //playAudioEffect();
   }
 
@@ -87,7 +85,7 @@ const handleNameInput = (event) => {
 
 // second message from bot
 
-const firstChoice = (name) => {
+const firstChoice = (name, choice) => {
   currentQuestion = "choice"
   showMessage(
     `Nice to meet you ${name}!👋
@@ -112,17 +110,17 @@ const firstChoice = (name) => {
     // second message from user
 
     showMessage("I would like a short cut!", "user")
-    setTimeout(() => askNextQuestion(choice), 1500)
+    setTimeout(() => askNextQuestion(name, choice), 1500)
   })
   document.getElementById("medium").addEventListener("click", () => {
     choice = "Medium"
     showMessage("I would like a medium cut!", "user")
-    setTimeout(() => askNextQuestion(choice), 1500)
+    setTimeout(() => askNextQuestion(name, choice), 1500)
   })
   document.getElementById("long").addEventListener("click", () => {
     choice = "Long"
     showMessage(`I would like a ${choice} cut!`, "user")
-    setTimeout(() => askNextQuestion(choice), 1500)
+    setTimeout(() => askNextQuestion(name, choice), 1500)
   })
 }
 
@@ -143,21 +141,20 @@ const styleSelect = (choice) => {
   document
     .getElementById("style-choice")
     .addEventListener("change", (event) => {
-      const style = event.target.value
+      style = event.target.value
       showMessage(`I would like a ${style} cut!`, "user")
 
-      // I passed the choice argument in the following function because was undefined👇🏻
-
-      setTimeout(() => askNextQuestion(style, choice), 2000)
+      setTimeout(() => askNextQuestion(choice, style), 2000)
     })
 }
 
 // Function to handle gender selection
 
-const genderSelect = (style, choice) => {
+const genderSelect = () => {
   currentQuestion = "gender"
+  // can't pass the choice in this function , it's undefined.👇🏻
   showMessage(
-    `Great choice! You will get your desired ${style} ${choice} styling! Will that be for a girl or a boy?`,
+    `Great choice! You will get your desired  ${choice} ${style} styling! Will that be for a girl or a boy?`,
     "bot"
   )
 
@@ -173,12 +170,12 @@ const genderSelect = (style, choice) => {
     gender = "Boy"
 
     showMessage("Boy", "user")
-    setTimeout(() => askNextQuestion(gender, style, choice), 2500)
+    setTimeout(() => askNextQuestion(choice, style), 2500)
   })
   document.getElementById("girl").addEventListener("click", () => {
     gender = "Girl"
     showMessage("Girl", "user")
-    setTimeout(() => askNextQuestion(gender, style, choice), 2500)
+    setTimeout(() => askNextQuestion(choice, style), 2500)
   })
 }
 
@@ -238,16 +235,16 @@ const resetConversation = () => {
 setTimeout(greetUser, 2000)
 
 // Created this nextquestion function to handle the following question but i can't pass the arguments, it comes always undefined.
-const askNextQuestion = (name, style, choice, lastConfirmation, gender) => {
+const askNextQuestion = (name, choice, style, gender, lastConfirmation) => {
   switch (currentQuestion) {
     case "firstInput":
-      firstChoice(name)
+      firstChoice(name, choice)
       break
     case "choice":
       styleSelect(choice)
       break
     case "style":
-      genderSelect(style)
+      genderSelect(choice, style)
       break
     case "gender":
       confirmation(style, gender, choice)
