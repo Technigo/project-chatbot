@@ -1,9 +1,14 @@
 const BOT_DELAY = 1000;
 
+//Variables
+let customerName,
+  destinationType,
+  destination,
+  tripDuration,
+  numberOfPassengers;
+
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById("chat");
-
-//Forms
 const nameForm = document.getElementById("name-form");
 const nameInput = document.getElementById("name-input");
 const destinationTypeForm = document.getElementById("destination-type-form");
@@ -14,6 +19,8 @@ const destinationBeachOptionsForm = document.getElementById(
   "destination-beach-options-form"
 );
 const durationForm = document.getElementById("duration-form");
+const passengersForm = document.getElementById("passengers-form");
+const confirmationForm = document.getElementById("confirmation-form");
 
 // Functions goes here 👇
 const showMessage = (message, sender) => {
@@ -59,13 +66,13 @@ const greetUser = () => {
 const showVacationOptions = (type) => {
   if (type === "Mountain") {
     showMessage(
-      "Great! You have chosen Mountain destination, here are some options:",
+      "Great! You have selected Mountain destination; Here are some options:",
       "bot"
     );
     destinationMountainOptionsForm.className = "";
   } else {
     showMessage(
-      "Fantastic! You have chosen Beach destination, here are some options:",
+      "Fantastic! You have selected Beach destination; Here are some options:",
       "bot"
     );
     destinationBeachOptionsForm.className = "";
@@ -73,57 +80,110 @@ const showVacationOptions = (type) => {
 };
 
 const showVacationTypes = (name) => {
-  showMessage(`Hello ${name}, where would you like to travel?`, "bot");
+  showMessage(`Hello ${name}, Where would you like to travel?`, "bot");
 
-  nameForm.className = "hidden";
   destinationTypeForm.className = "";
 };
 
 const showVacationDuration = (destination) => {
   showMessage(
-    `You have chosen ${destination}. How long are planning to stay?`,
+    `You have selected ${destination}. How long are planning to stay?`,
     "bot"
   );
 
   durationForm.className = "";
 };
 
-// Handlers
+const showNumberOfPassengers = (duration) => {
+  if (duration === "Week") {
+    showMessage("Amazing a long trip! How many passengers?", "bot");
+  } else {
+    showMessage("A weekend to explore. How many passengers?", "bot");
+  }
 
+  passengersForm.className = "";
+};
+
+const showConfirmation = () => {
+  showMessage(
+    `${customerName}, you have selected one ${tripDuration} in ${destination} as ${numberOfPassengers}. That will be 2000 SEK. Is that ok with you?`,
+    "bot"
+  );
+
+  confirmationForm.className = "";
+};
+
+// Handlers
 const handleNameInput = (event) => {
   event.preventDefault();
 
   // Handle user input
-  const name = nameInput.value;
-  showMessage(name, "user");
+  customerName = nameInput.value;
+  showMessage(customerName, "user");
   nameInput.value = "";
+  nameForm.className = "hidden";
 
   // Handle next question from bot
-  setTimeout(() => showVacationTypes(name), BOT_DELAY);
+  setTimeout(() => showVacationTypes(customerName), BOT_DELAY);
 };
 
 const handleDestinationTypeInput = (event) => {
   event.preventDefault();
 
   // Get value of button clicked
+  destinationType = event.submitter.value;
   destinationTypeForm.className = "hidden";
-  showMessage(event.submitter.value, "user");
+  showMessage(destinationType, "user");
 
-  setTimeout(() => showVacationOptions(event.submitter.value), BOT_DELAY);
+  setTimeout(() => showVacationOptions(destinationType), BOT_DELAY);
 };
 
 const handleSelectedDestination = (event) => {
-  showMessage(event.target.value, "user");
+  destination = event.target.value;
+  showMessage(destination, "user");
 
   destinationMountainOptionsForm.className = "hidden";
   destinationBeachOptionsForm.className = "hidden";
 
-  setTimeout(() => showVacationDuration(event.target.value), BOT_DELAY);
+  setTimeout(() => showVacationDuration(destination), BOT_DELAY);
 };
 
 const handleSelectDuration = (event) => {
-  showMessage(event.target.value, "user");
+  tripDuration = event.target.value;
+
+  showMessage(tripDuration, "user");
   durationForm.className = "hidden";
+
+  setTimeout(() => showNumberOfPassengers(tripDuration), BOT_DELAY);
+};
+
+const handleSelectPassengers = (event) => {
+  event.preventDefault();
+
+  numberOfPassengers = event.submitter.value;
+
+  passengersForm.className = "hidden";
+  showMessage(numberOfPassengers, "user");
+
+  setTimeout(() => showConfirmation(), BOT_DELAY);
+};
+
+const handleConfirmation = (event) => {
+  event.preventDefault();
+
+  confirmationForm.className = "hidden";
+  showMessage(event.submitter.value, "user");
+
+  if (event.submitter.value === "Yes") {
+    setTimeout(() =>
+      showMessage("Perfect! Thank you for booking with us", "bot", BOT_DELAY)
+    );
+  } else {
+    setTimeout(
+      () => showMessage("No worries, come back anytime 👋🏽", "bot"),
+      BOT_DELAY
+    );
+  }
 };
 
 // Eventlisteners goes here 👇
@@ -137,7 +197,8 @@ destinationBeachOptionsForm.addEventListener(
   "change",
   handleSelectedDestination
 );
-
 durationForm.addEventListener("change", handleSelectDuration);
+passengersForm.addEventListener("submit", handleSelectPassengers);
+confirmationForm.addEventListener("submit", handleConfirmation);
 
 setTimeout(greetUser, BOT_DELAY);

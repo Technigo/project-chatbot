@@ -14,7 +14,7 @@ h1 {
   font-weight: bold;
   font-size: 28px;
   line-height: 34px;
-  color: #fff;
+  color: #fa6977;
   text-align: center;
 }
 
@@ -39,7 +39,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #fa6977;
   padding: 16px;
   font-size: 16px;
   font-family: "Montserrat";
@@ -97,7 +97,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #fa6977;
   max-width: 40%;
 }
 
@@ -126,12 +126,12 @@ label {
   font-size: 16px;
   font-family: "Montserrat";
   font-weight: 500;
-  color: #0026ff;
+  color: #e0d896
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #fa6977;
   color: white;
   border: none;
   border-radius: 4px;
@@ -157,3 +157,18 @@ button:hover {
 #destination-form {
   justify-content: center;
 }
+
+#destination-type-form,
+#passengers-form,
+#confirmation-form {
+  justify-content: center;
+}
+
+select {
+  width: 100%;
+  border: navajowhite;
+  background: rgba(20,20,20,0.1);
+  padding: 8px;
+  font-size: 16px;
+}
+
