@@ -1,4 +1,4 @@
-// DOM selectors (variables that point to selected DOM elements) goes here 👇
+// DOM selectors
 const chat = document.getElementById("chat");
 const userName = document.getElementById("name-input");
 const sendBtn = document.getElementById("send-btn");
@@ -11,26 +11,13 @@ const menu = {
 };
 const priceList = {
   adult: "99kr",
-  child: "79kr"
-}
+  child: "79kr",
+};
+
 
 // Functions goes here 👇
 
 // A function that will add a chat bubble in the correct place based on who the sender is.
-const processUserOption = (message, functionName) => {
-  showMessage(message, "user");
-  inputField.innerHTML = "";
-  showMessage(`<div class="loader" id="loader">
-  <span></span>
-  <span></span>
-  <span></span>
-  </div>`, "bot")
-  setTimeout(()=>{
-    chat.lastElementChild.remove();
-    functionName(message);}, 1000)
-}
-
-
 const showMessage = (message, sender) => {
   // The if statement checks if the sender is the user and if that's the case it inserts
   // an HTML section inside the chat with the posted message from the user
@@ -60,6 +47,28 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 };
 
+// A function that will process the option user selects. It does:
+// 1. Show what option the user selects
+// 2. Clear the input field to prevent user from inputing
+// 3. Show the loading Message
+// 4. Call a Timeout function that adds delay to the next function call and clear out the chat bubble as soon as the time has passed
+const processUserOption = (message, functionName) => {
+  showMessage(message, "user");
+  inputField.innerHTML = "";
+  showMessage(
+    `<div class="loader" id="loader">
+  <span></span>
+  <span></span>
+  <span></span>
+  </div>`,
+    "bot"
+  );
+  setTimeout(() => {
+    chat.lastElementChild.remove();
+    functionName(message);
+  }, 1000);
+};
+
 // A function to start the conversation
 const greetUser = () => {
   // Here we call the function showMessage, that we declared earlier with the argument:
@@ -68,27 +77,21 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 };
 
-// Eventlisteners goes here 👇
 
-// Here we invoke the first function to get the chatbot to ask the first question when
-// the website is loaded. Normally we invoke functions like this: greeting()
-// To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
-// and pass along two arguments:
-// 1.) the function we want to delay, and 2.) the delay in milliseconds
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 500);
-
+// A function that shows the final order status which has one IF/ELSE statement
 const showOrderStatus = (confirmation) => {
-  if (confirmation === "yes"){
+  if (confirmation === "yes") {
     showMessage("Thank you for your order! See you soon.", "bot");
-  }else {
+  } else {
     showMessage("Your order is cancelled. Come back anytime!", "bot");
   }
 };
 
+
+// A function that displays the price based on the age range the user inputs
 const checkPrice = (age) => {
   showMessage(
-    `One ${age} sized dish will be prepared for you. That'll be${priceList[age]}. Are you sure you want to order this?`,
+    `One ${age} sized dish will be prepared for you. That'll be ${priceList[age]}. Are you sure you want to order this?`,
     "bot"
   );
   inputField.innerHTML = `
@@ -98,31 +101,36 @@ const checkPrice = (age) => {
   document.getElementById("yes").addEventListener("click", () => {
     processUserOption("yes", showOrderStatus);
   });
-  
+
   document.getElementById("no").addEventListener("click", () => {
     processUserOption("no", showOrderStatus);
   });
 };
 
+// A function that asks for the age and call the next step as the function
 const checkAge = (type) => {
-  showMessage(`One ${type} coming up! Will that be for an adult or a child?`,
-  "bot")
+  showMessage(
+    `One ${type} coming up! Will that be for an adult or a child?`,
+    "bot"
+  );
   inputField.innerHTML = `
   <button id="adult">Adult</button>
   <button id="child">Child</button>
 `;
   document.getElementById("adult").addEventListener("click", () => {
-    processUserOption("adult", checkPrice)
+    processUserOption("adult", checkPrice);
   });
   document.getElementById("child").addEventListener("click", () => {
-    processUserOption("child", checkPrice)
+    processUserOption("child", checkPrice);
   });
 };
 
-//TODO: set a param so it accepts the input of food option then 
+// A function that asks for the subtypes and call the next step as the function
 const showSubtypes = (type) => {
   showMessage(
-    `Oh so you're in the mood for ${type}? Great choice. Select something from the menu!`, "bot")
+    `Oh so you're in the mood for ${type}? Great choice. Select something from the menu!`,
+    "bot"
+  );
   inputField.innerHTML = `<form>
   <select id='subtype' class='select-bar'required>
   <option id='select' selected disabled>Select a ${type}:</option>
@@ -132,12 +140,13 @@ const showSubtypes = (type) => {
   </select></form>`;
 
   document.getElementById("subtype").addEventListener("change", (event) => {
-    console.log(event.target.value)
+    console.log(event.target.value);
     const subtype = event.target.value;
     processUserOption(subtype, checkAge);
   });
 };
 
+// A function that asks for the food options and call the next step as the function
 const showFoodOptions = (name) => {
   showMessage(
     `Hello ${name}! What types of food would you like to order?`,
@@ -152,17 +161,15 @@ const showFoodOptions = (name) => {
   const allBtns = document.getElementsByTagName("button");
   for (btn of allBtns) {
     btn.addEventListener("click", (event) => {
-      console.log(event.target.value)
+      console.log(event.target.value);
       const foodOption = event.target.value;
       processUserOption(foodOption, showSubtypes);
     });
-  };
-}
+  }
+};
 
 
-  //TODO: Replace the string with the button value as a placeholder 
-
-
+// A function that store the name input and call the next step as a function
 const handleNameInput = (event) => {
   event.preventDefault();
   // Store the value in a variable so we can access it after we
@@ -171,9 +178,8 @@ const handleNameInput = (event) => {
   processUserOption(name, showFoodOptions);
 };
 
-// After 1 second, show the next question by invoking the next function.
-// passing the name into it to have access to the user's name if we want
-// to use it in the next question from the bot.
-// setTimeout(() => showFoodOptions(name), 1000);
 
+// Add some delay to greet the user and call the greet user func
+setTimeout(greetUser, 500);
+// Event Listner for the send button
 sendBtn.addEventListener("click", handleNameInput);
