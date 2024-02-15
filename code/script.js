@@ -4,7 +4,7 @@ const nameForm = document.getElementById("name-form");
 const nameInput = document.getElementById("name-input");
 const sendButton = document.getElementById("send-btn");
 const nameFormChildren = nameForm.querySelectorAll("*");
-
+const inputWrapper = document.getElementById("input-wrapper");
 // Functions goes here 👇
 
 // A function that will add a chat bubble in the correct place based on who the sender is
@@ -65,7 +65,7 @@ const handleNameInput = (event) => {
 };
 
 // Second question: What kind of semla would you like?
-const whatkindofSemla = () => {
+const whatkindofSemla = (event) => {
   // Hide input field using display none
   nameFormChildren.forEach((child) => {
     // Här körs loopen. DDär har du tillgång till child, inte utanför loopen.
@@ -89,18 +89,54 @@ const whatkindofSemla = () => {
     radioButton.addEventListener("click", (event) => {
       if (radioButton.value === "regular") {
         showMessage(
-          `Nice choice! You chose a ${radioButton.value} semla`,
+          `Nice choice! You chose a ${radioButton.value} semla.\n Please chose what flavour you want`,
           "bot"
         );
       } else {
         showMessage(
-          `Nice choice! You chose a ${radioButton.value} free semla`,
+          `Nice choice! You chose a ${radioButton.value} free semla.\n Please chose what flavour you want`,
           "bot"
         );
+      
       }
     });
   });
+  
+  //Tillfälligt test!// vill att klick på radiobutton öppnar nästa funktion nedanför men lyckades inte med det så satt en set timeout på 4 sekunder för att man ska hinna välja ett alternativ innan nästa funktion startar...
+ setTimeout(() => subtypesSelection(), 4000);
+
 };
+
+
+//TEST SUBKATEGORIER//
+
+// knappar till olika subalternativ //
+const subtypesSelection = () => {
+  inputWrapper.innerHTML = `
+  <button id="blueberry" type="submit" class="choice-btn">Blueberry</button>
+  <button id="vanilla" type="submit" class="choice-btn">Vanilla</button>
+  <button id="chocolate" type="submit" class="choice-btn">Chocolate</button>
+`
+  // addeventlistner som genererar botmeddelande med vald smak på semla vid klick //
+  document.getElementById("blueberry").addEventListener("click", blueberryChoice);  
+  document.getElementById("vanilla").addEventListener("click", vanillaChoice);
+  document.getElementById("chocolate").addEventListener("click", chocolateChoice)
+  ;}
+
+const blueberryChoice = () => {
+  showMessage("Yummy, blueberry is a great choice!", "bot");
+};
+
+const vanillaChoice = () => {
+  showMessage("yummy vanilla!", "bot");
+};
+
+const chocolateChoice = () => {
+  showMessage("Chocolate can never go wrong!", "bot");
+};
+
+
+
 
 // Eventlisteners goes here 👇
 
