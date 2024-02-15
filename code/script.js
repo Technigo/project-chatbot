@@ -2,6 +2,8 @@
 const chat = document.getElementById("chat");
 const helpButton = document.getElementById("helpButton");
 const nameForm = document.getElementById("name-form")
+const sendButton = document.getElementById("sendButton")
+const nameInput = document.getElementById("name-input")
 
 /*  const button = document.getElementById('myButton');
 button.addEventListener('click', function() {
@@ -61,18 +63,28 @@ const greetUser = () => {
 
 const getUserName = () => {
   nameForm.innerHTML += `<input id="name-input" type="text" />
-  <button class="send-btn" type="submit">Send
+  <button class="send-btn" id="sendButton" type="button">Send
   </button>`
 }
+//userName = nameForm.value
 
 
 
+const returnUserName = () => {
+  showMessage("My name is", "user")
+}
 
+/*const returnUserName = (event) => {
+  event.preventDefault();
+  const userName = document.getElementById("name-input").value;
+  showMessage(`My name is ${userName}`, "user");
+};
+*/
+// Eventlisteners goes here 👇
 helpButton.addEventListener("click", greetUser);
 helpButton.addEventListener("click", getUserName);
-// Eventlisteners goes here 👇
+sendButton.addEventListener("click", returnUserName);
 
-//invoked the helpbutton, the message shows but disappears again. need to make it stay
 helpButton();
 
 //helpButton.addEventListener("click", () => greetUser());
