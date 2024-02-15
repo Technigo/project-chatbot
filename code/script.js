@@ -101,3 +101,4 @@ coldWeather.addEventListener("click", weatherInput)
 warmWeather.addEventListener("click", weatherInput)
 hotWeather.addEventListener("click", weatherInput)
 
+//If we create new HTML elements in JS we can't declare them at the top of the file. Do this when working next time to fix the null error! we need to add them inside the function
