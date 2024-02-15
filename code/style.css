@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Kavoon&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kavoon&display=swap");
 
 * {
   box-sizing: border-box;
 }
 
-
-body { 
+body {
   padding: 0;
   font-family: "Montserrat", sans-serif;
   background: rgb(119, 189, 40);
@@ -36,6 +35,18 @@ p {
   margin: 0;
 }
 
+::placeholder {
+  font-size: 12px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
 input {
   box-sizing: border-box;
   border: none;
@@ -63,9 +74,8 @@ input {
   font-weight: 600;
   line-height: 26px;
   flex: 1;
-width: 100%;
+  width: 100%;
 }
-
 
 main {
   margin: 0 auto;
@@ -175,8 +185,15 @@ button:hover {
     height: 600px;
   }
   h1 {
-    
     font-size: 40px;
-    
+  }
+
+  ::placeholder {
+    font-size: 16px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: row;
   }
 }

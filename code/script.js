@@ -29,7 +29,7 @@ const addTypeMenu = () => {
       inputWrapper.innerHTML = `
       <form id="animal-type">
         <select class="curtain" id="cat-select">
-          <option value="choose" selected disabled>--Please choose a type of cat--</option>
+          <option value="choose" selected disabled>--Please select--</option>
           <option value="Persian">Persian</option>
           <option value="Siamese">Siamese</option>
           <option value="Maine Coon">Maine Coon</option>
@@ -43,7 +43,7 @@ const addTypeMenu = () => {
       inputWrapper.innerHTML = `
       <form id="animal-type">
         <select class="curtain" id="dog-select">
-          <option value="choose" selected disabled>--Please choose a tyoe of dog--</option>
+          <option value="choose" selected disabled>--Please select--</option>
           <option value="Dachshund">Dachshund</option>
           <option value="Golden retriever">Golden retriever</option>
           <option value="Poodle">Poodle</option>
@@ -57,7 +57,7 @@ const addTypeMenu = () => {
       inputWrapper.innerHTML = `
       <form id="animal-type">
         <select class="curtain" id="horse-select">
-          <option value="choose" selected disabled>--Please choose a type of horse--</option>
+          <option value="choose" selected disabled>--Please select--</option>
           <option value="Shetland pony">Shetland pony</option>
           <option value="Thoroughbred">Thoroughbred</option>
           <option value="Andalusian">Andalusian</option>
@@ -81,11 +81,11 @@ const addGenderButtons = () => {
 const addContactForm = () => {
   inputWrapper.innerHTML = `
   <form id="contact-form">
-    <label>Phone number:
-      <input type="tel" name="tel" id="tel" placeholder="Please enter your email" required/>
+    <label>
+      <input type="tel" name="tel" id="tel" placeholder="Phone" required/>
     </label>
-    <label>Your Email:
-      <input type="email" name="email" id="email" placeholder="Email" required/>
+    <label>
+      <input type="email" name="email" id="email" placeholder="E-mail" required/>
     </label>
     <button class="send-btn" id="send-btn" type="submit">Confirm</button>
   </form>`;
