@@ -87,7 +87,7 @@ submitButton.onclick = handleNameInput
 let choice
 
 const firstChoice = (name) => {
-  showMessage (`So ${name} what would you like to order?`, "bot")
+  showMessage(`So ${name} what would you like to order?`, "bot")
   inputWrapper.innerHTML = `<form id ="order-option">
   <div class="categories">
   <button class="order-btn" id="coffee" type="submit">Coffee</button>
@@ -95,56 +95,56 @@ const firstChoice = (name) => {
   <button class="order-btn" id="pastry" type="submit">Pastry</button></div></form>`
   const orderOption = document.getElementById('order-option')
   document.getElementById("coffee").addEventListener("click", (firstChoice) => {
- //added prevent default
- firstChoice.preventDefault()
-  choice = "coffee"
-  console.log(choice)
-  showMessage("I would like a coffee, please!", "user")
-  setTimeout(() => secondChoice(choice), 1000)
-  orderOption.remove()
- })
- document.getElementById("bread").addEventListener("click", (firstChoice) => {
- //added prevent default
-  firstChoice.preventDefault()
-  choice = "bread"
-  console.log(choice)
-  showMessage("I would like some bread, please!", "user")
-  setTimeout(() => secondChoice(choice), 1000)
-  orderOption.remove()
- })
- document.getElementById("pastry").addEventListener("click", (firstChoice) => {
- //added prevent default
-  firstChoice.preventDefault()
-  choice = "pastry"
-  console.log(choice)
-  showMessage("I would like a pastry, please!", "user")
-  setTimeout(() => secondChoice(choice), 1000)
-  orderOption.remove()
- })
+    //added prevent default
+    firstChoice.preventDefault()
+    choice = "coffee"
+    console.log(choice)
+    showMessage("I would like a coffee, please!", "user")
+    setTimeout(() => secondChoice(choice), 1000)
+    orderOption.remove()
+  })
+  document.getElementById("bread").addEventListener("click", (firstChoice) => {
+    //added prevent default
+    firstChoice.preventDefault()
+    choice = "bread"
+    console.log(choice)
+    showMessage("I would like some bread, please!", "user")
+    setTimeout(() => secondChoice(choice), 1000)
+    orderOption.remove()
+  })
+  document.getElementById("pastry").addEventListener("click", (firstChoice) => {
+    //added prevent default
+    firstChoice.preventDefault()
+    choice = "pastry"
+    console.log(choice)
+    showMessage("I would like a pastry, please!", "user")
+    setTimeout(() => secondChoice(choice), 1000)
+    orderOption.remove()
+  })
 }
 // Shall we change the function names into ex. "getSecondChoice" / "handleSecondChoice"
 // The functions both shows the question, and recieves the reply.. gud vad flummigt att jag skriver på engelska
 //topp vi fixar det sen :D
 //yes though about that too! hahaha ja 
 const secondChoice = (choice) => {
-    showMessage (`One ${choice} coming up, what kind of ${choice} would you like?`, "bot")
-    if (choice = "coffee") {
+  showMessage(`One ${choice} coming up, what kind of ${choice} would you like?`, "bot")
+  if (choice === "coffee") {
     inputWrapper.innerHTML += `<form id ="coffee-option">
     <div class="sub-categories">
     <button class="order-btn" id="filter" type="submit">Filter Coffee</button>
     <button class="order-btn" id="espresso" type="submit">Espresso</button>
     <button class="order-btn" id="flat" type="submit">Flat White</button></div></form>`
- } else if (choice = "bread") {
+  } else if (choice === "bread") {
     inputWrapper.innerHTML += `<form id ="bread-option">
     <div class="sub-categories">
     <button class="order-btn" id="baguette" type="submit">Baguette</button>
     <button class="order-btn" id="sourdough" type="submit">Sourdough</button>
     <button class="order-btn" id="rye" type="submit">Rye Bread</button></div></form>`
- } else if (choice = "pastry") {
+  } else if (choice === "pastry") {
     inputWrapper.innerHTML += `<form id ="pastry-option">
     <div class="sub-categories">
     <button class="order-btn" id="semla" type="submit">Semla</button>
     <button class="order-btn" id="cinnamon" type="submit">Cinnamon Bun</button>
     <button class="order-btn" id="brownie" type="submit">Brownie</button></div></form>`
- }
+  }
 }
