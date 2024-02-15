@@ -1,9 +1,10 @@
 const chat = document.getElementById("chat")
 const inputWrapper = document.getElementById("input-wrapper")
 let choice = ""
+const audio = document.getElementById("botAudio")
+const audioUser = document.getElementById("userAudio")
 
 // Moved the greeting function here and added the form which we removed from HTML👇🏻
-
 const greetUser = () => {
   showMessage(
     `Hi, I'm Sharky 😊
@@ -11,6 +12,7 @@ const greetUser = () => {
     What's your name?`,
     `bot`
   )
+
   inputWrapper.innerHTML = `<form id="name-form">
     <input
       placeholder="--------------------------------------------------------------"
@@ -38,6 +40,8 @@ const showMessage = (message, sender) => {
         <img src="assets/child-2707415_1280.png" alt="User" />  
       </section>
     `
+    // added the audio that you linked for bot 👇🏻
+    audioUser.play()
   } else if (sender === "bot") {
     console.log("message is:", message)
     console.log("sender is:", sender)
@@ -50,6 +54,8 @@ const showMessage = (message, sender) => {
         </div>
       </section>
     `
+    // added the audio that you linked for bot 👇🏻
+    audio.play()
   }
 
   // This little thing makes the chat scroll to the last message when there are too many to
@@ -67,12 +73,12 @@ const handleNameInput = (event) => {
 
   const nameInput = document.getElementById("name-input")
   const name = nameInput.value
-  if(/^[a-zA-z]/.test(name)){
+  if (/^[a-zA-z]/.test(name)) {
     showMessage(`I'm ${name}!`, "user")
     nameInput.value = ""
     setTimeout(() => firstChoice(name), 500)
   } else {
-    showMessage(`Please fill in a valid name with letters.`,"bot")
+    showMessage(`Please fill in a valid name with letters.`, "bot")
   }
 }
 
