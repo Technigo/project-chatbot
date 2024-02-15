@@ -2,6 +2,11 @@
 const chat = document.getElementById(`chat`);
 const nameInput = document.getElementById(`name-input`);
 const inputWrapper = document.getElementById(`input-wrapper`);
+const sendButton = document.querySelector(`.send-btn`);
+const nameForm = document.getElementById(`name-form`);
+
+let username = "";
+let question1 = "";
 
 // A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -47,21 +52,61 @@ const greetUser = () => {
 };
 
 //user types in name
-const nameOutput = () => {
-  const name = nameInput.value;
-  showMessage(`Hi, my name is ${name}`, `user`);
-  username = name;
-  nameInput.value = ``; //Clearing the input field
-  inputWrapper.innerHTML = ``;
+const saveUsername = (event) => {
+  event.preventDefault();
+  username = nameInput.value;
+  showMessage(`Hi ${username}!`, `bot`);
+  nameInput.value = "";
+  creatureNature();
 };
-nameOutput(nameInput);
 
-//bot welcomes the user and asks first question, 2 options of buttons to chose from
-const creatureNature = (a, b) => {
+//bot asks first question, 2 options (introvert vs extrovert) to chose from (atm user has to type in answer)
+const creatureNature = () => {
   showMessage(
-    `Hi ${username}. Now let's check out some of your personality traits to find out what sea creature suits you. Are you mor of an introvert or an extrovert?`,
+    `Now let's check out some of your personality traits to find out what sea creature suits you. Are you more of an introvert or an extrovert?`,
     "bot"
   );
+
+  // Create new form for question 1
+  inputWrapper.innerHTML = `
+    <form id="first-form">
+          <label for="first-input">Introvert vs Extrovert</label>
+          <input id="first-input" type="text" />
+          <button class="first-btn" type="submit">Send</button>
+        </form>
+  `;
+
+  // Make something happen - put in the function for question 1
+  question1 = document.getElementById("first-input").value;
+  document
+    .querySelector(".first-btn")
+    .addEventListener(
+      "click",
+      console.log(document.getElementById("first-input").value)
+    );
+};
+
+//bot asks second question, 2 options (introvert vs extrovert) to chose from (atm user has to type in answer)
+const preferedTime = () => {
+  showMessage(`Tell me, are you more of a night owl or an early bird?`, "bot");
+
+  // Create new form for question 2
+  inputWrapper.innerHTML = `
+<form id="first-form">
+      <label for="second-input">Night Owl vs Early Bird</label>
+      <input id="second-input" type="text" />
+      <button class="second-btn" type="submit">Send</button>
+    </form>
+`;
+
+  // Make something happen - put in the function for question 2
+  question2 = document.getElementById("second-input").value;
+  document
+    .querySelector(".second-btn")
+    .addEventListener(
+      "click",
+      console.log(document.getElementById("second-input").value)
+    );
 };
 
 // Eventlisteners
@@ -73,3 +118,5 @@ const creatureNature = (a, b) => {
 // 1.) the function we want to delay, and 2.) the delay in milliseconds
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000);
+
+sendButton.addEventListener("click", saveUsername);

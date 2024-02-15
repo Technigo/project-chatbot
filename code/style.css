@@ -13,9 +13,9 @@ body {
 
 h1 {
   font-family: "Abril Fatface", serif;
-  font-size: 28px;
+  font-size: 40px;
   line-height: 34px;
-  color: #fff;
+  color: white;
   text-align: center;
 }
 
@@ -90,6 +90,7 @@ main {
 .user-msg img {
   width: 60px;
   height: 60px;
+  border-radius: 50px;
 }
 
 .bubble {
