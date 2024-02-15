@@ -122,7 +122,10 @@ const firstChoice = (name) => {
   orderOption.remove()
  })
 }
-
+// Shall we change the function names into ex. "getSecondChoice" / "handleSecondChoice"
+// The functions both shows the question, and recieves the reply.. gud vad flummigt att jag skriver på engelska
+//topp vi fixar det sen :D
+//yes though about that too! hahaha ja 
 const secondChoice = (choice) => {
     showMessage (`One ${choice} coming up, what kind of ${choice} would you like?`, "bot")
     if (choice = "coffee") {
