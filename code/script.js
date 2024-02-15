@@ -1,7 +1,6 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById("chat");
 const nameForm = document.getElementById("name-form")
-
 const nameInput = document.getElementById("name-input");
 const sendButton = document.getElementById("send-btn");
 
