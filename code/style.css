@@ -53,6 +53,22 @@ input {
   width: 100%;
 }
 
+.curtain {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  background: #b4f2c5;
+  color: #075f29;
+  padding: 16px;
+  font-size: 16px;
+  font-family: "Montserrat";
+  font-weight: 600;
+  line-height: 26px;
+  flex: 1;
+width: 100%;
+}
+
+
 main {
   margin: 0 auto;
   width: 100%;
