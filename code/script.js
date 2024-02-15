@@ -1,5 +1,3 @@
-// TEST updating only branch
-
 // Global variables
 let userName = ""
 let mainFoodChoice = ""
