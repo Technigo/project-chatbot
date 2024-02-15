@@ -1,6 +1,8 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
-const displayMain = document.querySelector("main")
+const displayMain = document.querySelector("main") //for start button pourposes
+const nameForm = document.getElementById('name-form');
+const nameInput = document.getElementById('name-input');
 
 // Functions goes here 👇
 
@@ -28,7 +30,7 @@ const showMessage = (message, sender) => {
     `
   }
 
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+  // This makes the chat scroll to the last message when there are too many to be shown 
   chat.scrollTop = chat.scrollHeight
 }
 
@@ -36,46 +38,53 @@ const showMessage = (message, sender) => {
 
 // 1 Start screen, hide chat section, just h1 and start button.
 const startScreen = () => {  
-  //Hidde main element
   displayMain.style.display = "none"
-
-  //Create a button
-  const startButton = document.createElement("button")
+  
+  const startButton = document.createElement("button") //Create a button
   startButton.textContent = "START"
   startButton.classList.add ("start-button")
-  //Add event listener to the button
-  startButton.addEventListener("click", () =>{
-    // Show the main element when the button es clicked
-    displayMain.style.display = "flex"
+  
+  startButton.addEventListener("click", () =>{ //Add event listener to the button
+    displayMain.style.display = "flex" // Show the main element when the button es clicked
     // Remove the button from the document
-    startButton.remove();
+    startButton.remove()
   })
   // Append the button to the document body
   document.body.appendChild(startButton)
 }
 startScreen()
-showMessage("Wellcome to this amazing chat bot! What's your name?", bot)
 
 // 2 A function to start the conversation
+const greetUser = () => {
+  showMessage("Wellcome to this amazing chat bot! What's your name?", "bot")
+  }
 
-// 3 Function to handle user responses
+setTimeout(greetUser, 1800)
 
-// 4 Function to greet the user and ask if the would like to order
-
+// 4 Function to greet the user and ask if he would like to order
 // 5 Function to handle name input
-
 // 6 Function to handle form submission
+nameForm.addEventListener('submit', (event) => {
+  event.preventDefault(); // Prevent the default form submission behavior
+  const userName = nameInput.value
+  showMessage(userName, 'user') // Show user input in the chat as a user message
+  
+  setTimeout(() => {
+    showMessage(`Wellcome ${userName}!`, "bot")
+  }, 1800)
+
+  setTimeout(() => {
+    showMessage(`Live is short, don't lose more time. What do you want to order?`, "bot")
+  }, 2500)
+
+  
+})
+
 
 // 7 Eventlisteners goes here 👇
 
 
-// Here we invoke the first function to get the chatbot to ask the first question when the website is loaded. Normally we invoke functions like this: greeting()
-// To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
-// and pass along two arguments:
-// 1.) the function we want to delay, and 2.) the delay in milliseconds 
 
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000)
 
 /* const greetUser = () => {
   // Here we call the function showMessage, that we declared earlier with the argument:
