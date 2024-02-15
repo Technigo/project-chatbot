@@ -9,30 +9,26 @@ const menu = {
   pasta: ["Spaghetti Bolognaise", "Lasagne", "Fettuccine Alfredo"],
   salad: ["Caesar salad", "Greek salad", "Caprese salad"],
 };
-/*
-let questionNumber = 1;
-
-const botReply = (msg) => {
-	showMessage(msg, "bot");
-};
-
-const userReply = (msg) => {
-	showMessage(msg, "user");
-}; 
-*/
+const priceList = {
+  adult: "99kr",
+  child: "79kr"
+}
 
 // Functions goes here 👇
 
 // A function that will add a chat bubble in the correct place based on who the sender is.
-// const repeatSteps = (message) => {
-//   showMessage(message, "user");
-//   inputField.innerHTML = "";
-//   showMessage(`<div class="loader" id="loader">
-//   <span></span>
-//   <span></span>
-//   <span></span>
-//   </div>`, "bot")
-// }
+const processUserOption = (message, functionName) => {
+  showMessage(message, "user");
+  inputField.innerHTML = "";
+  showMessage(`<div class="loader" id="loader">
+  <span></span>
+  <span></span>
+  <span></span>
+  </div>`, "bot")
+  setTimeout(()=>{
+    chat.lastElementChild.remove();
+    functionName(message);}, 1000)
+}
 
 
 const showMessage = (message, sender) => {
@@ -82,90 +78,49 @@ const greetUser = () => {
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 500);
 
-const orderConfirmation = () => {
-  inputField.innerHTML = `
-  <button id="yes" value="yes">Yes</button>
-  <button id="no" value="no">No</button>
-`;
-  document.getElementById("yes").addEventListener("click", () => {
-    inputField.innerHTML = "";
-    showMessage("yes", "user");
-    showMessage(`<div class="loader" id="loader">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>`, "bot")
-    setTimeout(() => {
-      chat.lastElementChild.remove()
-      showMessage("Thank you for your order! See you soon.", "bot");
-    }, 1000);
-  });
-  document.getElementById("no").addEventListener("click", () => {
-    inputField.innerHTML = "";
-    showMessage("no", "user");
-    showMessage(`<div class="loader" id="loader">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>`, "bot")
-    setTimeout(() => {
-      chat.lastElementChild.remove()
-      showMessage("Your order is cancelled. Come back anytime!", "bot");
-    }, 1000);
-  });
-};
-
-const price = (age) => {
-  showMessage(age, "user");
-  inputField.innerHTML = ""
-  showMessage(`<div class="loader" id="loader">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>`, "bot")
-  if (age == "adult") {
-    setTimeout(() => {
-      chat.lastElementChild.remove()
-      showMessage(
-        `One ${age} sized dish will be prepared for you. That'll be 99kr. Are you sure you want to order this?`,
-        "bot"
-      );
-      orderConfirmation();
-    }, 1000);
-  } else {
-    setTimeout(() => {
-      chat.lastElementChild.remove()
-      showMessage(
-        `One ${age} sized dish will be prepared for you. That'll be 79kr. Are you sure you want to order this?`,
-        "bot"
-      );
-      orderConfirmation();
-    }, 1000);
+const showOrderStatus = (confirmation) => {
+  if (confirmation === "yes"){
+    showMessage("Thank you for your order! See you soon.", "bot");
+  }else {
+    showMessage("Your order is cancelled. Come back anytime!", "bot");
   }
 };
 
-const ageCheck = (type) => {
-  // showMessage(type, "user");
-  chat.lastElementChild.remove()
+const checkPrice = (age) => {
+  showMessage(
+    `One ${age} sized dish will be prepared for you. That'll be${priceList[age]}. Are you sure you want to order this?`,
+    "bot"
+  );
+  inputField.innerHTML = `
+  <button id="yes" value="yes">Yes</button>
+  <button id="no" value="no">No</button>
+  `;
+  document.getElementById("yes").addEventListener("click", () => {
+    processUserOption("yes", showOrderStatus);
+  });
+  
+  document.getElementById("no").addEventListener("click", () => {
+    processUserOption("no", showOrderStatus);
+  });
+};
 
+const checkAge = (type) => {
   showMessage(`One ${type} coming up! Will that be for an adult or a child?`,
   "bot")
-        
   inputField.innerHTML = `
   <button id="adult">Adult</button>
   <button id="child">Child</button>
 `;
   document.getElementById("adult").addEventListener("click", () => {
-    price("adult");
+    processUserOption("adult", checkPrice)
   });
   document.getElementById("child").addEventListener("click", () => {
-    price("child");
+    processUserOption("child", checkPrice)
   });
 };
 
 //TODO: set a param so it accepts the input of food option then 
 const showSubtypes = (type) => {
-  chat.lastElementChild.remove()
   showMessage(
     `Oh so you're in the mood for ${type}? Great choice. Select something from the menu!`, "bot")
   inputField.innerHTML = `<form>
@@ -177,21 +132,13 @@ const showSubtypes = (type) => {
   </select></form>`;
 
   document.getElementById("subtype").addEventListener("change", (event) => {
-  console.log(event.target.value)
-  const selectedtype = event.target.value;
-  showMessage(selectedtype, "user")
-  inputField.innerHTML = ""
-  showMessage(`<div class="loader" id="loader">
-  <span></span>
-  <span></span>
-  <span></span>
-  </div>`, "bot")
-  setTimeout(() => ageCheck(selectedtype), 1000);
+    console.log(event.target.value)
+    const subtype = event.target.value;
+    processUserOption(subtype, checkAge);
   });
 };
 
 const showFoodOptions = (name) => {
-  chat.lastElementChild.remove()
   showMessage(
     `Hello ${name}! What types of food would you like to order?`,
     "bot"
@@ -206,14 +153,8 @@ const showFoodOptions = (name) => {
   for (btn of allBtns) {
     btn.addEventListener("click", (event) => {
       console.log(event.target.value)
-      showMessage(event.target.value, "user");
-      inputField.innerHTML = ""
-      showMessage(`<div class="loader" id="loader">
-      <span></span>
-      <span></span>
-      <span></span>
-      </div>`, "bot")
-      setTimeout(()=>showSubtypes(event.target.value), 1000)
+      const foodOption = event.target.value;
+      processUserOption(foodOption, showSubtypes);
     });
   };
 }
@@ -226,17 +167,8 @@ const handleNameInput = (event) => {
   event.preventDefault();
   // Store the value in a variable so we can access it after we
   // clear it from the input
-  console.log(event.target.value);
   const name = userName.value;
-  showMessage(name, "user");
-  // userName.value = "";
-  inputField.innerHTML = ""
-  showMessage(`<div class="loader" id="loader">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>`, "bot")
-  setTimeout(()=>{showFoodOptions(name)}, 1000);
+  processUserOption(name, showFoodOptions);
 };
 
 // After 1 second, show the next question by invoking the next function.
