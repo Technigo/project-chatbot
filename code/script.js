@@ -1,5 +1,7 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById("chat");
+const helpButton = document.getElementById("helpButton");
+const nameForm = document.getElementById("name-form")
 
 /*  const button = document.getElementById('myButton');
 button.addEventListener('click', function() {
@@ -52,11 +54,22 @@ const greetUser = () => {
    // "Hello there, what's your name?" for message, and the argument "bot" for sender
    showMessage("Welcome to PlantBot. My name is Palm! What's your name?", "bot");
    // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
+   helpButton.remove()
+
 };
 
-const helpButton = document.getElementById("helpButton");
+
+const getUserName = () => {
+  nameForm.innerHTML += `<input id="name-input" type="text" />
+  <button class="send-btn" type="submit">Send
+  </button>`
+}
+
+
+
 
 helpButton.addEventListener("click", greetUser);
+helpButton.addEventListener("click", getUserName);
 // Eventlisteners goes here 👇
 
 //invoked the helpbutton, the message shows but disappears again. need to make it stay
