@@ -35,14 +35,22 @@ const showMessage = (message, sender) => {
 }
 
 // A function to start the conversation
-const greetUser = () => {
+const greetUser = (userName) => {
   // Here we call the function showMessage, that we declared earlier with the argument:
   // "Hello there, what's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there, what's your name?", 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 }
-
 // Eventlisteners goes here 👇
+
+const userAnswer = (userName) => {
+  showMessage (`Hello ${userName} 'user'`)
+}
+const AskQuestion = () => {
+
+  showMessage(`Nice to meet you ${userName}! What is your favorite color?`, 'bot')
+
+}
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
