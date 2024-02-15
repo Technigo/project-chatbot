@@ -35,22 +35,36 @@ const showMessage = (message, sender) => {
 }
 
 // A function to start the conversation
-const greetUser = (userName) => {
+const greetUser = () => {
   // Here we call the function showMessage, that we declared earlier with the argument:
   // "Hello there, what's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there, what's your name?", 'bot')
+
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 }
+
+const askAboutFavouriteColor = (name) => {
+  showMessage("Oh wow what a lovely name, I really want to know more about you, what is your favourite color?", "bot");
+}
+
+const handleNameInput = (event) => {
+  event.preventDefault();
+  // Store the value in a variable so we can access it after we
+  // clear it from the input
+
+  const nameInput = document.getElementById("name-input");
+  const name = nameInput.value;
+  showMessage(name, "user");
+  nameInput.value = "";
+
+  // After 1 second, show the next question by invoking the next function.
+  // passing the name into it to have access to the user's name if we want
+  // to use it in the next question from the bot.
+  setTimeout(() => askAboutFavouriteColor(name), 1000);
+};
+
 // Eventlisteners goes here 👇
-
-const userAnswer = (userName) => {
-  showMessage (`Hello ${userName} 'user'`)
-}
-const AskQuestion = () => {
-
-  showMessage(`Nice to meet you ${userName}! What is your favorite color?`, 'bot')
-
-}
+document.getElementById("name-form").addEventListener("submit", handleNameInput);
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
