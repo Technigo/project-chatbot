@@ -13,8 +13,8 @@ const inputWrapper = document.getElementById("input-wrapper");
 
 // A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  if (sender === "user") {
-    chat.innerHTML += `
+	if (sender === "user") {
+		chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
           <p>${message}</p>
@@ -22,7 +22,8 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `;
-  } else if (sender === "bot") {
+
+  } else (sender === "bot") {
     robotAudio.play();
     robotAudio.volume = 0.2;
     chat.innerHTML += `
@@ -33,18 +34,20 @@ const showMessage = (message, sender) => {
         </div>
       </section>
     `;
-  }
+	}
 
-  // This little thing makes the chat scroll to the last message when there are too many to
-  // be shown in the chat box
-  chat.scrollTop = chat.scrollHeight;
+	// This little thing makes the chat scroll to the last message when there are too many to
+	// be shown in the chat box
+	chat.scrollTop = chat.scrollHeight;
+	/* This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box */
+	chat.scrollTop = chat.scrollHeight;
 };
 
-// A function to start the conversation
+//START OF THE ACTUAL CHAT
+// Asking for name
 const greetUser = () => {
-  showMessage("Hello there, what's your name?", "bot");
+	showMessage("Hello there, what's your name?", "bot");
 };
-
 setTimeout(greetUser, 1000);
 
 const handleNameInput = (event) => {
@@ -57,8 +60,9 @@ const handleNameInput = (event) => {
 
 nameBtn.addEventListener("click", handleNameInput);
 nameBtn.addEventListener("click", () => {
-  bubbleAudio.play();
+	bubbleAudio.play();
 });
+
 
 //
 //
@@ -75,9 +79,10 @@ const showMainFood = (name) => {
 	<button id="saladBtn" value="Salad" onclick="bubbleAudio.play()">Salad</button>
 	`;
 
-  const pizzaBtn = document.getElementById("pizzaBtn");
-  const pastaBtn = document.getElementById("pastaBtn");
-  const saladBtn = document.getElementById("saladBtn");
+	const pizzaBtn = document.getElementById("pizzaBtn");
+	const pastaBtn = document.getElementById("pastaBtn");
+	const saladBtn = document.getElementById("saladBtn");
+
 
   pizzaBtn.addEventListener("click", showUserMainChoice);
   pastaBtn.addEventListener("click", showUserMainChoice);
@@ -116,6 +121,7 @@ const showSubOptions = (event) => {
                     <option value="Pepperoni" name="pizza-Pepperoni" id="pepperoni">Pepperoni</option>
                 </select>
             `;
+
   } else if (event.target.value === "Pasta") {
     inputWrapper.innerHTML = `
             <select id="select" onchange="bubbleAudio.play()">
@@ -133,6 +139,7 @@ const showSubOptions = (event) => {
         <option value="Greek Salad" name="Greek-Salad" id="greek">Greek Salad</option>
     </select>
 	`;
+
   }
 
   showMessage(
@@ -175,6 +182,7 @@ const showSizeOptions = (event) => {
 //Choosing the size of the food
 //+bot's responce
 //+ cofirmation button
+
 const userConfirm = (event) => {
   //part1 show what the user chose in the conversation bubble
   showMessage(`${event.target.value}`, `user`);
@@ -195,22 +203,24 @@ const userConfirm = (event) => {
   }, 1000);
 
   inputWrapper.innerHTML = `
+  
 	<button id="yes" value="yes" onclick="bubbleAudio.play()">Yes</button>
 	<button id="no" value="no" onclick="bubbleAudio.play()">No</button>
 	`;
 
-  //part3 add event listner to the yes/no buttons
-  const yesBtn = document.getElementById("yes");
-  const noBtn = document.getElementById("no");
+	//part3 add event listner to the yes/no buttons
+	const yesBtn = document.getElementById("yes");
+	const noBtn = document.getElementById("no");
 
-  yesBtn.addEventListener("click", handleConfirm);
-  noBtn.addEventListener("click", handleConfirm);
+	yesBtn.addEventListener("click", handleConfirm);
+	noBtn.addEventListener("click", handleConfirm);
 };
 
 //
 //
 //create the functions for the yes/no buttons
 const handleConfirm = (event) => {
+
   const usersConfirmationChoice = event.target.value;
 
   switch (usersConfirmationChoice) {
