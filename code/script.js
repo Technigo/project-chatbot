@@ -43,7 +43,7 @@ const showMessage = (message, sender) => {
 
 // Start the conversation
 const greetUser = () => {
-    showMessage("Hey, I'm Math-ew, the mathbot. Welcome to my wonderful world of math. What's your name?", 'bot')
+    showMessage("Hey, I'm Mathew, the mathbot. Welcome to my wonderful world of math. What's your name?", 'bot')
 nameForm.addEventListener("submit", userNameInput);
 }
 
