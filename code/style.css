@@ -6,7 +6,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
-  background: #0026ff;
+  background: linear-gradient(#edd8ad, #edbfad);
+  height: 100vh;
 }
 
 h1 {

@@ -1,18 +1,21 @@
+const BOT_DELAY = 1000;
+
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById("chat");
 
-// Name form
+//Forms
 const nameForm = document.getElementById("name-form");
 const nameInput = document.getElementById("name-input");
-
-// Destination form
-const destinationForm = document.getElementById("destination-form");
-
-const BOT_DELAY = 1000;
+const destinationTypeForm = document.getElementById("destination-type-form");
+const destinationMountainOptionsForm = document.getElementById(
+  "destination-mountain-options-form"
+);
+const destinationBeachOptionsForm = document.getElementById(
+  "destination-beach-options-form"
+);
+const durationForm = document.getElementById("duration-form");
 
 // Functions goes here 👇
-
-// A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // The if statement checks if the sender is the user and if that's the case it inserts
   // an HTML section inside the chat with the posted message from the user
@@ -48,18 +51,44 @@ const showMessage = (message, sender) => {
 // A function to start the conversation
 const greetUser = () => {
   alert(`Are you ready for your next vacation? 🌴⛰️🌇`);
-  // Here we call the function showMessage, that we declared earlier with the argument:
-  // "Hello there, what's your name?" for message, and the argument "bot" for sender
   showMessage("Welcome! Let's begin with your name", "bot");
-  // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 };
 
-const showVacationOptions = (name) => {
+// Steps
+
+const showVacationOptions = (type) => {
+  if (type === "Mountain") {
+    showMessage(
+      "Great! You have chosen Mountain destination, here are some options:",
+      "bot"
+    );
+    destinationMountainOptionsForm.className = "";
+  } else {
+    showMessage(
+      "Fantastic! You have chosen Beach destination, here are some options:",
+      "bot"
+    );
+    destinationBeachOptionsForm.className = "";
+  }
+};
+
+const showVacationTypes = (name) => {
   showMessage(`Hello ${name}, where would you like to travel?`, "bot");
 
   nameForm.className = "hidden";
-  destinationForm.className = "";
+  destinationTypeForm.className = "";
 };
+
+const showVacationDuration = (destination) => {
+  showMessage(
+    `You have chosen ${destination}. How long are planning to stay?`,
+    "bot"
+  );
+
+  durationForm.className = "";
+};
+
+// Handlers
 
 const handleNameInput = (event) => {
   event.preventDefault();
@@ -70,21 +99,45 @@ const handleNameInput = (event) => {
   nameInput.value = "";
 
   // Handle next question from bot
-  setTimeout(() => showVacationOptions(name), BOT_DELAY);
+  setTimeout(() => showVacationTypes(name), BOT_DELAY);
 };
 
-const handleDestinationInput = (event) => {
+const handleDestinationTypeInput = (event) => {
   event.preventDefault();
+
+  // Get value of button clicked
+  destinationTypeForm.className = "hidden";
+  showMessage(event.submitter.value, "user");
+
+  setTimeout(() => showVacationOptions(event.submitter.value), BOT_DELAY);
+};
+
+const handleSelectedDestination = (event) => {
+  showMessage(event.target.value, "user");
+
+  destinationMountainOptionsForm.className = "hidden";
+  destinationBeachOptionsForm.className = "hidden";
+
+  setTimeout(() => showVacationDuration(event.target.value), BOT_DELAY);
+};
+
+const handleSelectDuration = (event) => {
+  showMessage(event.target.value, "user");
+  durationForm.className = "hidden";
 };
 
 // Eventlisteners goes here 👇
 nameForm.addEventListener("submit", handleNameInput);
-destinationForm.addEventListener("submit", handleDestinationInput);
+destinationTypeForm.addEventListener("submit", handleDestinationTypeInput);
+destinationMountainOptionsForm.addEventListener(
+  "change",
+  handleSelectedDestination
+);
+destinationBeachOptionsForm.addEventListener(
+  "change",
+  handleSelectedDestination
+);
 
-// Here we invoke the first function to get the chatbot to ask the first question when
-// the website is loaded. Normally we invoke functions like this: greeting()
-// To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
-// and pass along two arguments:
-// 1.) the function we want to delay, and 2.) the delay in milliseconds
-// This means the greeting function will be called one second after the website is loaded.
+durationForm.addEventListener("change", handleSelectDuration);
+
 setTimeout(greetUser, BOT_DELAY);
