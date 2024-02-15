@@ -70,7 +70,62 @@ const showFoodOptions = (name) => {
 
 const foodClick = (foodCategory) => {
   showMessage(foodCategory, "user");
+  setTimeout(() => showSubtype(foodCategory), 1000);
 };
+
+const showSubtype = (foodCategory) => {
+  showMessage(
+    `${foodCategory}, nice! What kind of ${foodCategory} would you like? `,
+    "bot"
+  );
+
+  if (foodCategory === "Pizza") {
+    inputWrapper.innerHTML = `<div id="button-form">
+  <button id="margerita">Margerita</button>
+  <button id="funghi">Funghi</button>
+  <button id="capricciosa">Capricciosa</button></div>`;
+    const margeritaBtn = document.getElementById("margerita");
+    margeritaBtn.onclick = () => subtypeClick("Margerita");
+    const funghiBtn = document.getElementById("funghi");
+    funghiBtn.onclick = () => subtypeClick("Funghi");
+    const capricciosaBtn = document.getElementById("capricciosa");
+    capricciosaBtn.onclick = () => subtypeClick("Capricciosa");
+  } else if (foodCategory === "Pasta") {
+    inputWrapper.innerHTML = `<div id="button-form">
+  <button id="carbonara">Carbonara</button>
+  <button id="lasagne">Lasagne</button>
+  <button id="ravioli">Ravioli</button></div>`;
+    const carbonaraBtn = document.getElementById("carbonara");
+    carbonaraBtn.onclick = () => subtypeClick("Carbonara");
+    const lasagneBtn = document.getElementById("lasagne");
+    lasagneBtn.onclick = () => subtypeClick("Lasagne");
+    const ravioliBtn = document.getElementById("ravioli");
+    ravioliBtn.onclick = () => subtypeClick("Ravioli");
+  } else if (foodCategory === "Salad") {
+    inputWrapper.innerHTML = `<div id="button-form">
+  <button id="salad-caprese">Salad Caprese</button>
+  <button id="greek-salad">Greek Salad</button>
+  <button id="caesar-salad">Caesar Salad</button></div>`;
+    const capreseBtn = document.getElementById("salad-caprese");
+    capreseBtn.onclick = () => subtypeClick("Salad-caprese");
+    const greekBtn = document.getElementById("greek-salad");
+    greekBtn.onclick = () => subtypeClick("Greek-salad");
+    const caesarBtn = document.getElementById("caesar-salad");
+    caesarBtn.onclick = () => subtypeClick("Caesar-salad");
+  }
+};
+const subtypeClick = (dish) => {
+  showMessage(dish, "user");
+  setTimeout(() => nextQuestion(dish), 1000);
+};
+
+// const foodClick = (foodCategory) => {
+//   showMessage(foodCategory, "user");
+//   setTimeout(() => foodSubtype(foodCategory), 1000);
+// };
+
+// setTimeout(() => foodSubtype(foodCategory), 1000);
+
 // Eventlisteners goes here 👇
 
 addEventListener("submit", handleNameInput);
