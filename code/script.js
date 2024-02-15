@@ -1,12 +1,11 @@
-// DOM selectors (variables that point to selected DOM elements) goes here 👇
+// DOM selectors 
 const chat = document.getElementById('chat')
-const displayMain = document.querySelector("main") //for start button pourposes
+const displayMain = document.querySelector("main") //for start button purposes
 const nameForm = document.getElementById('name-form');
 const nameInput = document.getElementById('name-input');
+const inputWrapper = document.getElementById('input-wrapper');
 
-// Functions goes here 👇
-
-// A function that will add a chat bubble in the correct place based on who the sender is
+// A MAIN FUNCTION that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // The if statement checks if the sender is the user and if that's the case it inserts an HTML section inside the chat with the posted message from the user
   if (sender === 'user') {
@@ -18,7 +17,7 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `
-    // The else if statement checks if the sender is the bot and if that's the case it inserts an HTML section inside the chat with the posted message from the bot
+  // The else if statement checks if the sender is the bot and if that's the case it inserts an HTML section inside the chat with the posted message from the bot
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
@@ -29,9 +28,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
-
-  // This makes the chat scroll to the last message when there are too many to be shown 
-  chat.scrollTop = chat.scrollHeight
+  chat.scrollTop = chat.scrollHeight // This makes the chat scroll to the last message when there are too many to be shown 
 }
 
 //FUNCTIONS START HERE////////////////////////////////////////////////////////////////////////
@@ -71,17 +68,83 @@ nameForm.addEventListener('submit', (event) => {
   
   setTimeout(() => {
     showMessage(`Wellcome ${userName}!`, "bot")
-  }, 1800)
+  }, 1500)
 
   setTimeout(() => {
-    showMessage(`Live is short, don't lose more time. What do you want to order?`, "bot")
+    showMessage(`Live is short ${userName}. What do you want to order?`, "bot")
   }, 2500)
 
-  
+  setTimeout(() => {
+    nameForm.style.display = "none"
+    
+    const mainDishOptions = document.createElement("div")
+    mainDishOptions.innerHTML = `
+    <button id="pizza">Pizza</button>
+    <button id="pasta">Pasta</button>
+    <button id="salad">Salad</button>
+    `
+    inputWrapper.style.display = "flex"
+    inputWrapper.style.justifyContent = "space-around" 
+    inputWrapper.appendChild(mainDishOptions)
+  }, 3000)
 })
 
+// Add event listeners to mainDishOption buttons
+document.addEventListener('click', (event) => {
+  if (event.target.matches('#pizza')) {
+    handleMainDishSelection('Pizza');
+  } else if (event.target.matches('#pasta')) {
+    handleMainDishSelection('Pasta');
+  } else if (event.target.matches('#salad')) {
+    handleMainDishSelection('Salad');
+  }
+});
 
-// 7 Eventlisteners goes here 👇
+// Function to handle the user's selection of a main dish option
+const handleMainDishSelection = (selectedOption) => {
+  showMessage(`${selectedOption}.`, 'user');
+  setTimeout(() => {
+    showMessage(`A delicious choice, witch ${selectedOption} do you want?`, 'bot');
+   
+  // Remove main dish option buttons from inputWrapper
+  const mainDishButtons = document.querySelectorAll('#pizza, #pasta, #salad');
+  mainDishButtons.forEach(button => button.remove());    
+// Generate subdish options based on the selected main dish
+let subDishOptions;
+switch (selectedOption) {
+  case 'Pizza':
+    subDishOptions = `
+      <button id="subDish1">Pepperoni</button>
+      <button id="subDish2">Vegetarian</button>
+      <button id="subDish3">Margherita</button>
+      <button id="subDish4">Hawaiian</button>
+    `;
+    break;
+  case 'Pasta':
+    subDishOptions = `
+      <button id="subDish1">Spaghetti Carbonara</button>
+      <button id="subDish2">Penne Arrabiata</button>
+      <button id="subDish3">Fettuccine Alfredo</button>
+      <button id="subDish4">Lasagna</button>
+    `;
+    break;
+  case 'Salad':
+    subDishOptions = `
+      <button id="subDish1">Caesar</button>
+      <button id="subDish2">Greek</button>
+      <button id="subDish3">Caprese</button>
+      <button id="subDish4">Cobb</button>
+    `;
+    break;
+}
+
+// Append subdish options to inputWrapper
+const subDishes = document.createElement("div");
+subDishes.innerHTML = subDishOptions;
+inputWrapper.appendChild(subDishes);
+}, 1500);
+chat.scrollTop = chat.scrollHeight
+};
 
 
 
