@@ -13,14 +13,30 @@ const subPizza = document.getElementById("sub-pizza");
 const subSalad = document.getElementById("sub-salad");
 const subKebab = document.getElementById("sub-kebab");
 
+//Sofie provar
+// const vesuvio = document.getElementById("vesuvio");
+// const fruttiDiMare = document.getElementById("frutti")
+// const funghi = document.getElementById("funghi")
+
 const subSelect = document.getElementsByClassName("sub-select");
+
+
+
+//MARTIN! Jag samlade alla kommentarer/instruktioner här för bättre läsvänlighet!
+// A function that will add a chat bubble in the correct place based on who the sender is
+
+// The if statement checks if the sender is the user and if that's the case it inserts
+// an HTML section inside the chat with the posted message from the user
+
+// The else if statement checks if the sender is the bot and if that's the case it inserts
+// an HTML section inside the chat with the posted message from the bot
+
+// chat.scrollTop = chat.scrollHeight; This little thing makes the chat scroll to the last message when there are too many to
+// be shown in the chat box
 
 // Functions goes here 👇
 
-// A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // The if statement checks if the sender is the user and if that's the case it inserts
-  // an HTML section inside the chat with the posted message from the user
   if (sender === "user") {
     chat.innerHTML += `
       <section class="user-msg">
@@ -30,8 +46,6 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `;
-    // The else if statement checks if the sender is the bot and if that's the case it inserts
-    // an HTML section inside the chat with the posted message from the bot
   } else if (sender === "bot") {
     chat.innerHTML += `
       <section class="bot-msg">
@@ -42,35 +56,41 @@ const showMessage = (message, sender) => {
       </section>
     `;
   }
-
-  // This little thing makes the chat scroll to the last message when there are too many to
-  // be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
 };
 
-// A function to start the conversation
+
+//HÄR BÖRJAR VÅR CHAT-BOT!
+// A function to start the conversation.
+// Here we call the function showMessage, that we declared earlier with the argument:
+// "Hello there, what's your name?" for message, and the argument "bot" for sender
+
 const greetUser = () => {
-  // Here we call the function showMessage, that we declared earlier with the argument:
-  // "Hello there, what's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there, what's your name?", "bot");
-  // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
-  console.log(greetUser);
 };
 
-const foodOptions = (name) => {
+//Store name for future use.
+//Clear name input
+const handleNameInput = (event) => {
+  event.preventDefault();
+  const name = nameInput.value;
+  console.log(name);
+  showMessage(name, "user");
+  nameInput.value = "";
+  chooseFoodOption(name);
+  console.log("name:", name);
+};
+
+const chooseFoodOption = (name) => {
   foodCategory.style.display = "flex";
   nameWrapper.style.display = "none";
   showMessage(
-    `
-  Hi ${name}! What would you like to order? `,
-    "bot"
-  );
+    `Hi ${name}! What would you like to order? `, "bot");
 };
 
 //Skapa stor CS för alla val ex if pizza....alt, els if sallad osv
-const subOptions = (category) => {
+const chooseSubOption = (category) => {
   foodCategory.style.display = "none";
-  console.log(showMessage);
 
   if (category == "pizza") {
     subPizza.style.display = "flex";
@@ -82,26 +102,31 @@ const subOptions = (category) => {
     subKebab.style.display = "flex";
     showMessage("Kebab", "user");
   }
-
   showMessage(
     `You chose ${category}. What kind of ${category} would you like?`,
     "bot"
   );
+  showMessage(`you chose ${subPizza}`);
+  console.log("first choice:", category)
+
 };
 
-//Store name for future use.
-//Clear name input
-const handleNameInput = (event) => {
-  event.preventDefault();
-  const name = nameInput.value;
-  console.log(name);
-  showMessage(name, "user");
-  nameInput.value = "";
-  foodOptions(name);
-};
+//Sofie provar... vad är det som blir fel?
+
+const finalFoodChoice = (chooseSubOption) => {
+   if (chooseSubOption == "Vesuvio") {
+     showMessage("Vesuvio", "user");
+   } else if (subPizza == "Frutti di mare") {
+    showMessage("Frutti di mare", "user");
+  } else {
+    showMessage("Funghi", "user");
+   }
+}
+
+
 
 /*
-const hungerCheck = () => {
+const userPortionSize = () => {
   showMessage ("How hungry are you?", "bot");
   
 }
@@ -113,23 +138,34 @@ sendButton.onclick = handleNameInput;
 // kebabButton.onclick = pizzaOptions("kebab");
 
 pizzaButton.addEventListener("click", function () {
-  subOptions("pizza");
+  chooseSubOption("pizza");
 });
 saladButton.addEventListener("click", function () {
-  subOptions("salad");
+  chooseSubOption("salad");
 });
 kebabButton.addEventListener("click", function () {
-  subOptions("kebab");
+  chooseSubOption("kebab");
 });
+
+//Sofie provar
+// vesuvio.addEventListener("click", function () {
+//   finalFoodChoice("vesuvio")
+// });
+// fruttiDiMare.addEventListener("click", function () {
+//   finalFoodChoice("Frutti di mare");
+// });
+// funghi.addEventListener("click", function () {
+//   finalFoodChoice("Funghi");
+// });
 
 
 //OnChange skulle kunna funka för att kolla vilken option på Select.
-subSelect.onchange(showMessage(`I chose ${subSelect.value}`, "user"));
+//subSelect.onchange(showMessage(`I chose ${subSelect.value}`, "user"));
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
 // To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
 // and pass along two arguments:
-// 1.) the function we want to delay, and 2.) the delay in milliseconds
+// 1.) the function we want to delay, and 2.) the delay in }}}{{\\{{milliseconds
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000);
