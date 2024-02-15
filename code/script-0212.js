@@ -243,4 +243,7 @@ const handleConfirm = (event) => {
       }, 1000);
       break;
   }
+
+  //make the yes/no button disappear after the user clicked
+  inputWrapper.innerHTML = "";
 };
