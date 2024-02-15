@@ -83,57 +83,16 @@ const whatkindofSemla = () => {
 
   // We store all radio btns in a variabel.
   const radioButtons = document.querySelectorAll('input[name="semla_choice"]')
-  let radioValue = "";
-  //let botReply = "";
-  //let flavourChoices = [];
-  /*
-  radioButtons variabel contains all the radio buttons. 
-  radioButton[0]
-  radioButton[1]
-  radioButton[2]
-  */
-
-  console.log(radioButtons)
 
   // Loop through all buttons and add event listener to each button
   radioButtons.forEach(radioButton => { 
-    
+  
     radioButton.addEventListener('click', event => {
      
-      radioValue = radioButton.value;
-      
+      showMessage(`Nice choice! You chose ${radioButton.value}`, "bot");
+           
     })
-   
-  })
-  // radioValue == regular
-
-  // my choice -> regular
-  // bot - Nice choice, you choose ${radioValue} semla. 
-  // action - use select to display three options (vanlig, vanilj, choklad)
-console.log(radioValue)
-
-  /**
-   * Bot should give us three different answers depending on the radioValue
-   */
-  
-  // if (radioValue === "regular") {
-  //   botReply = `Nice choice! You chose ${radioValue}`
-  //   flavourChoices = ['vanlig', 'vanilj', 'choklad']
-  // } else if(radioValue === "gluten") {
-  //   botReply = `Nice choice! You chose ${radioValue}`
-  //   flavourChoices = ['jordgubbar', 'lakrits', 'choklad']
-  // }
-
-
-  // if (condition) {
-  //   //  block of code to be executed if the condition is true
-  // } else {
-  //   //  block of code to be executed if the condition is false
-  // }
-
-
-
-  
+  })  
 };
 
 
