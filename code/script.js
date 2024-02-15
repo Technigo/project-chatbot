@@ -1,8 +1,9 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById("chat");
-const nameForm = document.getElementById("name-form")
+const nameForm = document.getElementById("name-form");
 const nameInput = document.getElementById("name-input");
 const sendButton = document.getElementById("send-btn");
+const nameFormChildren = nameForm.querySelectorAll("*");
 
 // Functions goes here 👇
 
@@ -60,47 +61,51 @@ const handleNameInput = (event) => {
     );
   }, 1000);
 
-
-  setTimeout(whatkindofSemla, 1000)
-  
+  setTimeout(whatkindofSemla, 1000);
 };
 
 // Second question: What kind of semla would you like?
 const whatkindofSemla = () => {
   // Hide input field using display none
-  nameInput.style.display = "none";
-  sendButton.style.display = "none";
+  nameFormChildren.forEach((child) => {
+    // Här körs loopen. DDär har du tillgång till child, inte utanför loopen.
+    child.style.display = "none";
+  });
 
   // Create radiobuttons
   nameForm.innerHTML += `
   
   <input type="radio" name="semla_choice" id="regular" value="regular"/><label>Regular</label>
-  <input type="radio" name="semla_choice" id="gluten" value="gluten"/><label>Gluten</label>
-  <input type="radio" name="semla_choice" id="lactose" value="lactose"/><label>Lactose</label>
+  <input type="radio" name="semla_choice" id="gluten" value="gluten"/><label>Gluten free</label>
+  <input type="radio" name="semla_choice" id="lactose" value="lactose"/><label>Lactose free</label>
 
-  `
+  `;
 
   // We store all radio btns in a variabel.
-  const radioButtons = document.querySelectorAll('input[name="semla_choice"]')
+  const radioButtons = document.querySelectorAll('input[name="semla_choice"]');
 
   // Loop through all buttons and add event listener to each button
-  radioButtons.forEach(radioButton => { 
-  
-    radioButton.addEventListener('click', event => {
-     
-      showMessage(`Nice choice! You chose ${radioButton.value}`, "bot");
-           
-    })
-  })  
+  radioButtons.forEach((radioButton) => {
+    radioButton.addEventListener("click", (event) => {
+      if (radioButton.value === "regular") {
+        showMessage(
+          `Nice choice! You chose a ${radioButton.value} semla`,
+          "bot"
+        );
+      } else {
+        showMessage(
+          `Nice choice! You chose a ${radioButton.value} free semla`,
+          "bot"
+        );
+      }
+    });
+  });
 };
-
-
 
 // Eventlisteners goes here 👇
 
 // Add listener to the form
-nameForm.addEventListener('submit', handleNameInput)
-
+nameForm.addEventListener("submit", handleNameInput);
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
