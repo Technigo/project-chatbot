@@ -4,7 +4,6 @@ const submitButton = document.getElementById('send-btn')
 const nameInput = document.getElementById('name-input')
 const nameForm = document.getElementById('name-form')
 const inputWrapper = document.getElementById('input-wrapper')
-const orderOption = document.getElementById('order-option')
 /*const coffeeButton = document.getElementById("coffee")
 const breadButton = document.getElementById("bread")
 const pastryButton = document.getElementById("pastry")
@@ -88,42 +87,43 @@ submitButton.onclick = handleNameInput
 let choice
 
 const firstChoice = (name) => {
-  showMessage(`So ${name} what would you like to order?`, "bot")
-  inputWrapper.innerHTML += `<form id="order-option">
-    <div class="categories">
-    <button class="order-btn" id="coffee" type="submit">Coffee</button>
-    <button class="order-btn" id="bread" type="submit">Bread</button>
-    <button class="order-btn" id="pastry" type="submit">Pastry</button></div></form>`
-}
-
-
-//When user choose coffee
-document.getElementById("coffee").addEventListener("click", (choice) => {
-  choice = "coffee";
-  console.log(choice);
+  showMessage (`So ${name} what would you like to order?`, "bot")
+  inputWrapper.innerHTML = `<form id ="order-option">
+  <div class="categories">
+  <button class="order-btn" id="coffee" type="submit">Coffee</button>
+  <button class="order-btn" id="bread" type="submit">Bread</button>
+  <button class="order-btn" id="pastry" type="submit">Pastry</button></div></form>`
+  const orderOption = document.getElementById('order-option')
+  document.getElementById("coffee").addEventListener("click", (firstChoice) => {
+ //added prevent default
+ firstChoice.preventDefault()
+  choice = "coffee"
+  console.log(choice)
   showMessage("I would like a coffee, please!", "user")
-  setTimeout(() => secondChoice(choice), 1500); // Pass choice to styleSelect
+  setTimeout(() => secondChoice(choice), 1000)
   orderOption.remove()
-})
-//When user choose bread
-document.getElementById("bread").addEventListener("click", (choice) => {
-  choice = "bread";
-  console.log(choice);
+ })
+ document.getElementById("bread").addEventListener("click", (firstChoice) => {
+ //added prevent default
+  firstChoice.preventDefault()
+  choice = "bread"
+  console.log(choice)
   showMessage("I would like some bread, please!", "user")
   setTimeout(() => secondChoice(choice), 1000)
   orderOption.remove()
-})
-//When user choose pastry
-document.getElementById("pastry").addEventListener("click", (choice) => {
-  choice = "pastry";
-  console.log(choice);
-  showMessage("I would like a pastry, please!", 'user')
+ })
+ document.getElementById("pastry").addEventListener("click", (firstChoice) => {
+ //added prevent default
+  firstChoice.preventDefault()
+  choice = "pastry"
+  console.log(choice)
+  showMessage("I would like a pastry, please!", "user")
   setTimeout(() => secondChoice(choice), 1000)
   orderOption.remove()
-})
+ })
+}
 
-
- const secondChoice = (choice) => {
+const secondChoice = (choice) => {
     showMessage (`One ${choice} coming up, what kind of ${choice} would you like?`, "bot")
     if (choice = "coffee") {
     inputWrapper.innerHTML += `<form id ="coffee-option">
@@ -132,13 +132,13 @@ document.getElementById("pastry").addEventListener("click", (choice) => {
     <button class="order-btn" id="espresso" type="submit">Espresso</button>
     <button class="order-btn" id="flat" type="submit">Flat White</button></div></form>`
  } else if (choice = "bread") {
-  inputWrapper.innerHTML += `<form id ="bread-option">
+    inputWrapper.innerHTML += `<form id ="bread-option">
     <div class="sub-categories">
     <button class="order-btn" id="baguette" type="submit">Baguette</button>
     <button class="order-btn" id="sourdough" type="submit">Sourdough</button>
     <button class="order-btn" id="rye" type="submit">Rye Bread</button></div></form>`
  } else if (choice = "pastry") {
-  inputWrapper.innerHTML += `<form id ="pastry-option">
+    inputWrapper.innerHTML += `<form id ="pastry-option">
     <div class="sub-categories">
     <button class="order-btn" id="semla" type="submit">Semla</button>
     <button class="order-btn" id="cinnamon" type="submit">Cinnamon Bun</button>

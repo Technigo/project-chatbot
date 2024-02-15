@@ -157,3 +157,11 @@ button:hover {
   display: flex;
   justify-content: space-around;
 }
+
+.sub-categories {
+  margin-left: 25%;
+  width: 50%;
+  position: center;
+  display: flex;
+  justify-content: space-around;
+}
