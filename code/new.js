@@ -89,7 +89,7 @@ setTimeout(greetUser, 1000)
 
   const firstChoice = (name) => {
     showMessage (`So ${name} what would you like to order?`, "bot")
-    inputWrapper.innerHTML = `<form id ="order-option">
+    inputWrapper.innerHTML += `<form id ="order-option">
     <div class="categories">
     <button class="order-btn" id="coffee" type="submit">Coffee</button>
     <button class="order-btn" id="bread" type="submit">Bread</button>
