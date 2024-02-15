@@ -116,15 +116,55 @@ const showSubtype = (foodCategory) => {
 };
 const subtypeClick = (dish) => {
   showMessage(dish, "user");
-  setTimeout(() => nextQuestion(dish), 1000);
+  setTimeout(() => confirmSubtype(dish), 1000);
 };
 
-// const foodClick = (foodCategory) => {
-//   showMessage(foodCategory, "user");
-//   setTimeout(() => foodSubtype(foodCategory), 1000);
+const confirmSubtype = (dish) => {
+  showMessage(`${dish}, nice!`, "bot");
+  setTimeout(() => askForAge(), 1000);
+}
+
+const askForAge = (userAge) => {
+showMessage(`Do you want the meal to be for an adult or a child?`, "bot");
+  inputWrapper.innerHTML = `<div id="button-form">
+  <button id="adult">Adult</button>
+  <button id="child">Child</button>
+  </div>`;
+  const adultBtn = document.getElementById("adult");
+  adultBtn.onclick = () => ageClick("Adult");
+  const childBtn = document.getElementById("child");
+  childBtn.onclick = () => ageClick("Child");
+};
+
+const ageClick = (userAge) => {
+  showMessage(userAge, "user");
+  setTimeout(() => askForConfirmation(userAge), 1000);
+};
+
+const askForConfirmation = (userAge) => {
+if (userAge === "Child") {
+  showMessage (`The cost for a childportion is 10€. Are you sure you want to order this?`, "bot")
+  const adultBtn = document.getElementById("adult");
+  adultBtn.onclick = () => ageClick("Adult");
+  const childBtn = document.getElementById("child");
+  childBtn.onclick = () => ageClick("Child");
+} else if (userAge === "Adult") {
+  showMessage (`The cost for an adultportion is 10€. Are you sure you want to order this?`, "bot")
+
+  
+}
+// inputWrapper.innerHTML = `<div id="button-form">
+//   <button id="adult">Adult</button>
+//   <button id="child">Child</button>
+//   </div>`;
+//   const adultBtn = document.getElementById("adult");
+//   adultBtn.onclick = () => ageClick("Adult");
+//   const childBtn = document.getElementById("child");
+//   childBtn.onclick = () => ageClick("Child");
 // };
 
-// setTimeout(() => foodSubtype(foodCategory), 1000);
+}
+
 
 // Eventlisteners goes here 👇
 
