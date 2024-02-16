@@ -87,7 +87,7 @@ const addContactForm = () => {
     <label>
       <input type="email" name="email" id="email" placeholder="E-mail" required/>
     </label>
-    <button class="send-btn" id="send-btn" type="submit">Confirm</button>
+    <button class="send-btn" id="send-btn" type="submit">Send</button>
   </form>`;
 };
 
