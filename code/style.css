@@ -5,15 +5,15 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: "Montserrat", sans-serif;
+  background: #86A69D;
 }
 
 h1 {
   font-weight: bold;
   font-size: 28px;
   line-height: 34px;
-  color: #fff;
+  color: #f5f5f5;
   text-align: center;
 }
 
@@ -21,7 +21,7 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: #f5f5f5;
   text-align: center;
   margin-bottom: 36px;
 }
@@ -37,11 +37,11 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #f5f5f5;
+  color: #455853;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -54,7 +54,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: #F2E8DF;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -66,9 +66,23 @@ main {
   flex: 1;
   display: flex;
   justify-content: flex-start;
-  overflow: scroll;
+  overflow-y: scroll;
   flex-direction: column;
-  padding-bottom: 16px;
+  padding-bottom: 80px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.chat::-webkit-scrollbar {
+  display: none;
+
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.chat {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .bot-msg {
@@ -84,24 +98,28 @@ main {
   flex-shrink: 0;
 }
 
-.bot-msg img,
+.bot-msg img {
+  width: 70px;
+  height: 117px;
+}
+
 .user-msg img {
   width: 60px;
   height: 60px;
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #f5f5f5;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #455853;
   max-width: 40%;
 }
 
 .bot-bubble {
-  border-radius: 0px 26px 26px 26px;
+  border-radius: 26px 26px 26px 0px;
   margin-left: 8px;
 }
 
@@ -119,32 +137,43 @@ main {
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 label {
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
-  color: #0026ff;
+  color: #668179;
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
-  color: white;
+  background-color: #668179;
+  color: #f5f5f5;
   border: none;
   border-radius: 4px;
   padding: 16px 20px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 button:hover {
-  opacity: 0.9;
-  transition: all 0.2s ease;
+
+  background-color: #F28585;
+  transition: background 0.2s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+.button-tea {
+  display: flex;
+  justify-content: center;
 }
