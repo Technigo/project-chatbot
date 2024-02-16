@@ -263,7 +263,11 @@ const restartConversation = () => {
 };
 
 const lastGoodbye = () => {
-	showMessage(`No, I'm good.`, `user`, 500);
-	showMessage(`Thank you for stopping by. See you next time!`, `bot`, 1000);
-	inputWrapper.innerHTML = "";
+	setTimeout(() => {
+		showMessage(`No, I'm good.`, `user`);
+	}, 500);
+	setTimeout(() => {
+		showMessage(`Thank you for stopping by. See you next time!`, `bot`);
+		inputWrapper.innerHTML = "";
+	}, 1500);
 };
