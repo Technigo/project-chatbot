@@ -117,7 +117,7 @@ const firstChoice = (name) => {
 let subChoice
 
 const handleSecondChoice = (choice) => {
-  showMessage(`One ${choice} coming up, what kind of ${choice} would you like?`, "bot")
+  showMessage(`Great choice, ${choice} coming up, what kind of ${choice} would you like?`, "bot")
   if (choice === "coffee") {
     form.innerHTML = `<div class="sub-categories">
     <button class="send-btn" id="filter" type="submit">Filter Coffee</button>
@@ -154,7 +154,7 @@ const handleSecondChoice = (choice) => {
     document.getElementById("baguette").addEventListener("click", (handleSecondChoice) => {
       handleSecondChoice.preventDefault()
       subChoice = "baguette"
-      showMessage("I would like a baguette, please!", "user")
+      showMessage("I would like a baguette, s'il vous plaît!", "user")
       setTimeout(() => handleThirdChoice(subChoice), 1000)
       
     })
@@ -210,40 +210,11 @@ const handleThirdChoice = (subChoice) => {
   document.getElementById("amount-btn").addEventListener("click", (event) => {
     event.preventDefault()
     const amount = amountInput.value
-    showMessage(`${amount}`, `user`)
+    showMessage(`${amount} ${subChoice}s, please!`, `user`)
     amountInput.value = ""
     })
 }
 
-const defaults = {
-  spread: 360,
-  ticks: 100,
-  gravity: 0,
-  decay: 0.94,
-  startVelocity: 30,
-};
-
-function shoot() {
-  confetti({
-    ...defaults,
-    particleCount: 30,
-    scalar: 1.2,
-    shapes: ["circle", "square"],
-    colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
-  });
-
-  confetti({
-    ...defaults,
-    particleCount: 20,
-    scalar: 2,
-    shapes: ["emoji"],
-    shapeOptions: {
-      emoji: {
-        value: ["🦄", "🌈"],
-      },
-    },
-  });
-}
 
 
 //Test
