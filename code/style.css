@@ -6,39 +6,66 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url('./assets/Background-Heart.jpg');
+  background-position: center;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 28px;
-  line-height: 34px;
+  font-size: 20px;
+  line-height: 28px;
   color: #fff;
   text-align: center;
 }
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
-  line-height: 34px;
+  font-size: 18px;
+  line-height: 24px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+h3 {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
   color: #fff;
   text-align: center;
   margin-bottom: 36px;
 }
 
 p {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 28px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
   margin: 0;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.welcome-header {
+  background-color: #fa5a4e;
+  margin: 2rem 2rem;
+  width: 90%;
+  max-width: 500px;
+  max-height: 200px;
+  border-radius: 30px;
+  padding: 2px;
+  padding-top: 8px;
 }
 
 input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #fff2f2;
+  color: #fa5a4e;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -50,12 +77,12 @@ input {
 
 main {
   margin: 0 auto;
-  width: 100%;
+  width: 90%;
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
-  padding: 20px 24px;
+  background: rgb(253, 230, 230, 0.8);
+  padding: 20px 5px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
@@ -70,6 +97,12 @@ main {
   flex-direction: column;
   padding-bottom: 16px;
 }
+
+/*scroll*/
+::-webkit-scrollbar {
+  display: none;
+}
+
 
 .bot-msg {
   display: flex;
@@ -86,18 +119,19 @@ main {
 
 .bot-msg img,
 .user-msg img {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #fff2f2;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
-  max-width: 40%;
+  color: #fa5a4e;
+  max-width: 50%;
+  opacity: 1;
 }
 
 .bot-bubble {
@@ -111,6 +145,8 @@ main {
 }
 
 .input-wrapper {
+  width: 95%;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
 }
@@ -119,25 +155,22 @@ main {
   width: 100%;
   display: flex;
   align-items: center;
+  border: none;
 }
 
-label {
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
+input {
+  outline-width: 0;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #fa5a4e;
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 16px 20px;
+  padding: 1rem;
   margin-right: 4px;
   font-size: 16px;
-  line-height: 26px;
+  line-height: 19px;
   font-family: 'Montserrat';
   font-weight: 500;
   cursor: pointer;
@@ -147,4 +180,48 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+.categories, .sub-categories {
+  margin-left: 25%;
+  padding-top: 2rem;
+  width: 50%;
+  position: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+canvas {
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+
+@media screen and (min-width: 768px){
+  h1 {
+    font-size: 28px;
+    line-height: 34px;
+  }
+  h2 {
+    font-size: 24px;
+    line-height: 34px;
+  }
+  h3 {
+    font-size: 20px;
+    line-height: 34px;
+  }
+  p {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 28px;
+  }
+  .bot-msg img,
+  .user-msg img {
+    width: 60px;
+    height: 60px;
+}
+  .sub-categories {
+    margin-left: 25%;
+    width: 50%;
+}
 }
