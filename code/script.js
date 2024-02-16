@@ -51,21 +51,13 @@ const partyButton = document.createElement("button")
 const partyForm = document.createElement("form")
 
 //user confirm
-/*const confirmDiv = document.getElementById("button-form")*/
 const yesButton = document.getElementById("yes")
 const noButton = document.getElementById("no")
-// const confirmDiv = document.createElement("div")
-// const yesButton = document.createElement("button")
-// const noButton = document.createElement("button")
 
-
-// ------------------------------------------------
 // Functions goes here 👇
 
 // A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // The if statement checks if the sender is the user and if that's the case it inserts
-  // an HTML section inside the chat with the posted message from the user
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
@@ -75,8 +67,6 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `
-    // The else if statement checks if the sender is the bot and if that's the case it inserts
-    // an HTML section inside the chat with the posted message from the bot
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
@@ -88,22 +78,17 @@ const showMessage = (message, sender) => {
     `
   }
 
-  // This little thing makes the chat scroll to the last message when there are too many to
-  // be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
 
 // A function to start the conversation
 const greetUser = () => {
-  // Here we call the function showMessage, that we declared earlier with the argument:
-  // "Hello there, what's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there, what's your name?", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 }
 
 // function to save name and send to showMessage, and move on
 const submitName = (event) => {
-  event.preventDefault() // prevents submit from clearing and starting over??
+  event.preventDefault() 
   userName = nameInput.value
   nameInput.value = ""
   showMessage(userName, "user")
@@ -125,16 +110,11 @@ const displayFood = () => {
 
   foodDiv.append(pizzaButton, pastaButton, saladButton) // Places buttons in foodDiv
   inputWrapper.replaceChild(foodDiv, nameForm) // Replaces the nameForm with the new foodDiv
-  console.log("Showing food buttons")
 }
-
-// User clicks a button with event listener
-// One of following select functions will continue
 
 // IF PIZZA
 const selectPizza = () => {
   mainFoodChoice = "Pizza"
-  console.log("Main food: ", mainFoodChoice)
   showMessage(`${mainFoodChoice}`, "user")
   setTimeout(() => {
     showMessage(`Ok! What kind of ${mainFoodChoice}?`, "bot")
@@ -150,13 +130,11 @@ const displayPizzaSubtypes = () => {
 
   subtypeDiv.append(italianButton, hawaiiButton, veganButton)
   inputWrapper.replaceChild(subtypeDiv, foodDiv)
-  console.log("Showing pizza buttons")
 }
 
 // IF PASTA
 const selectPasta = () => {
   mainFoodChoice = "Pasta"
-  console.log("Main food: ", mainFoodChoice)
   showMessage(`${mainFoodChoice}`, "user")
   setTimeout(() => {
     showMessage(`Ok! What kind of ${mainFoodChoice}?`, "bot")
@@ -176,7 +154,6 @@ const displayPastaSubtypes = () => {
 // IF SALAD
 const selectSalad = () => {
   mainFoodChoice = "Salad"
-  console.log("Main food: ", mainFoodChoice)
   showMessage(`${mainFoodChoice}`, "user")
   setTimeout(() => {
     showMessage(`Ok! What kind of ${mainFoodChoice}?`, "bot")
@@ -194,26 +171,23 @@ const displaySaladSubtypes = () => {
   inputWrapper.replaceChild(subtypeDiv, foodDiv)
 }
 
-// save Subtype and send to showMessage, and move on (foodSubtype = subtype? can we just use subtype?)
+// save Subtype and send to showMessage, and move on 
 const submitSubtype = (subtype) => {
   foodSubtype = subtype
-  console.log("Subtype:", foodSubtype, typeof (foodSubtype))
   showMessage(foodSubtype, "user")
   setTimeout(() => {
-    showMessage(`Good choice! Our ${foodSubtype} is submlime.`, "bot")
+    showMessage(`Good choice! Our ${foodSubtype} is sublime.`, "bot")
   }, 1000)
   selectParty()// Go to next step
 }
 
 // Get party size to calculate prize
 const selectParty = () => {
-  console.log(`Party!🥳`)
   setTimeout(() => {
     showMessage(`How many people are in your party? 🥳`, "bot")
     displayPartyInput() // Go to next step
   }, 1000)
 }
-
 
 const displayPartyInput = () => {
   // Display buttons
@@ -228,42 +202,28 @@ const displayPartyInput = () => {
 
   partyForm.append(partyLabel, partyInput, partyButton)
   inputWrapper.replaceChild(partyForm, subtypeDiv)
-  console.log("Showing party input and waiting...")
 }
 
 const submitPartysize = (event) => {
   event.preventDefault()
-  console.log("Partysize:", partySize)
   showMessage(partySize, "user")
   calculateOrderValue()
 }
 
 const calculateOrderValue = () => {
-  console.log(`Calculate order value for ${partySize} people...`)
-  setTimeout(() => {cost()},2000)
-}
-
-const cost = () => {
   inputWrapper.removeChild(partyForm)
   if (mainFoodChoice === "Pizza"){
     orderValue = partySize * onePizzaPrice
-    showMessage(`You have ordered ${partySize} ${foodSubtype}, here is your bill: ${orderValue} €. Is that ok?`, "bot")
   } else if (mainFoodChoice === "Pasta"){
     orderValue = partySize *onePastaPrice
-    showMessage(`You have ordered ${partySize} ${foodSubtype}, here is your bill: ${orderValue} €. Is that ok?`, "bot")
-  }else if(mainFoodChoice === "Salad"){
+  }else {
     orderValue = partySize * oneSaladPrice
-    showMessage(`You have ordered ${partySize} ${foodSubtype}, here is your bill: ${orderValue} €. Is that ok?`, "bot")
   }
-
-  userConfirm()
+  showMessage(`You have ordered ${partySize} ${foodSubtype}, here is your bill: ${orderValue} €. Is that ok?`, "bot")
+  setTimeout(userConfirm, 1000)
 }
-//////////!!!!!! button doesn't work!!!/////
-const userConfirm = () => {
-  /*yesButton.textConten = "yes"
-  noButton.textContent = "no"
 
-  confirmDiv.append(yesButton, noButton)*/
+const userConfirm = () => {
   inputWrapper.innerHTML=
   `<div id="button-form">
     <button id="yes" type="Submit">Yes</button>
@@ -273,44 +233,26 @@ const userConfirm = () => {
   document.getElementById("yes").addEventListener("click", () =>  {
     confirmPrice = "Yes"
     showMessage(`Yes`, "user")
+    showMessage(`Great! Your food is on the way!`, "bot")
+    inputWrapper.innerHTML=""
   })
+
   document.getElementById("no").addEventListener("click", () => {
     confirmPrice = "No"
     showMessage(`No`, "user")
+    showMessage(`Oh I am sorry for that! Let's see you again!`, "bot")
+    inputWrapper.innerHTML=""
   })
+  setTimeout(restartChat, 7000)
 }
 
-/*const finalConfirm = (answer) => {
-
-  if (answer === "yes") {
-    confirmPrice = "Yes"
-    showMessage(`Yes`, "user")
-    console.log(answer)
-    } else {
-      confirmPrice = "No"
-      showMessage(`No`, "user")
-      console.log(answer)
-  // finalConfirm()
-  }
-}*/
-
-
-
-
-  
-
-
-
+// Reload the chat
+const restartChat = () => {
+  location.reload()
+}
 
 // ------------------------------------------------
 // Eventlisteners goes here 👇
-
-// Here we invoke the first function to get the chatbot to ask the first question when
-// the website is loaded. Normally we invoke functions like this: greeting()
-// To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
-// and pass along two arguments:
-// 1.) the function we want to delay, and 2.) the delay in milliseconds 
-// This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000)
 
 // Name
@@ -343,41 +285,6 @@ partyInput.addEventListener("input", () => {
 })
 partyButton.addEventListener("click", submitPartysize)
 
-// Confirm price
-// yesButton.addEventListener("click", () => finalConfirm("yes"))
-// noButton.addEventListener("click", () => finalConfirm("no"))
 
-
-// ---------------------------------
-/* OVERVIEW OF FUNCTIONS / FLOW
--->  greetUser 
-Show greeting and ask for userName
-
-submitName 
---> save name and send to showMessage,
-calls next step
-
---> chooseFood 
-ask for food choice, 
-calls next step
-
---> displayFood 
-changes to buttons with food alternatives
-
---> selectPizza || selectPasta || selectSalad 
-logs mainFoodChoice and sends to showMessage
-call next step display
-
---> displayPizzaSubtypes || displayPastaSubtypes || displaySaladSubtypes
-change to buttons with subtypes correspondning to main choice,
-
---> selectSubtype
-Logs subtype choice and sends to showMessage,
-calls next step
-
---> selectParty
-
-
-*/
 
 
