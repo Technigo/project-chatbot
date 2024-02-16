@@ -180,7 +180,7 @@ const handleConfirmation = (event) => {
     );
   } else {
     setTimeout(
-      () => showMessage("No worries, come back anytime 👋🏽", "bot"),
+      () => showMessage("No worries, come back anytime", "bot"),
       BOT_DELAY
     );
   }
