@@ -5,11 +5,13 @@ const nameInput = document.getElementById("name-input");
 const nameFormChildren = nameForm.querySelectorAll("*");
 const inputWrapper = document.getElementById("input-wrapper");
 
+
 // Functions goes here 👇
 
 // A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   console.log(`MESSAGE: ${message}`, `SENDER: ${sender}`);
+
   // The if statement checks if the sender is the user and if that's the case it inserts
   // an HTML section inside the chat with the posted message from the user
   if (sender === "user") {
@@ -196,7 +198,6 @@ const coffeChoice = () => {
     setPrice(choice);
   })
 
-
   // Lyssna på alla input fält 
   // const coffeChoices = document.querySelectorAll('input[name="coffeChoice"]');
   // coffeChoices.forEach(choice => {
@@ -229,16 +230,26 @@ const orderConfirmation = () => {
   <button type="submit" id="yes" class="orderConfirmationBtn">Yes</button>
   <button type="submit" id="no" class="orderConfirmationBtn">No</button>`
 
-  document.getElementById('yes').addEventListener('click', () => {
+  const yesButton = document.getElementById('yes')
+  const noButton = document.getElementById('no')
+
+  const hideButtons = document.querySelectorAll(".orderConfirmationBtn");
+
+  yesButton.addEventListener('click', () => {
+
+    hideButtons.forEach((button) => {
+      button.style.display = "none";
+    });
     showMessage("We will prepare your order, thank you for using the Semel Bot", "bot")
    
   })
-  document.getElementById('no').addEventListener('click', () => {
+  noButton.addEventListener('click', () => {
+    hideButtons.forEach((button) => {
+      button.style.display = "none";
+    })
     showMessage("Ok, sorry to see you go.", "bot");
-   
   })
 }
-
 
 
 // Eventlisteners goes here 👇
