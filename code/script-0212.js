@@ -1,5 +1,6 @@
 const bubbleAudio = new Audio();
 bubbleAudio.src = "./assets/bubble-sound.wav";
+bubbleAudio.volume = 0.6;
 
 const robotAudio = new Audio();
 robotAudio.src = "./assets/robot-sound.wav";
@@ -36,9 +37,6 @@ const showMessage = (message, sender) => {
     `;
 	}
 
-	// This little thing makes the chat scroll to the last message when there are too many to
-	// be shown in the chat box
-	chat.scrollTop = chat.scrollHeight;
 	/* This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box */
 	chat.scrollTop = chat.scrollHeight;
 };
@@ -107,8 +105,7 @@ const showUserMainChoice = (event) => {
   showMessage(`${event.target.value}`, `user`);
 };
 
-//
-//
+
 //
 //Show bot's reply and sub options
 const showSubOptions = (event) => {
@@ -170,13 +167,14 @@ const showSizeOptions = (event) => {
   <button id="smallBtn" value="Small" onclick="bubbleAudio.play()">Small</button>
   `;
 
+
   const bigBtn = document.getElementById("bigBtn");
   const smallBtn = document.getElementById("smallBtn");
 
   bigBtn.addEventListener("click", userConfirm);
   smallBtn.addEventListener("click", userConfirm);
 };
-//
+
 //
 //
 //Choosing the size of the food
