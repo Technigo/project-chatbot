@@ -87,6 +87,7 @@ smallButton.addEventListener("click", chosedPlantSize)
 mediumButton.addEventListener("click", chosedPlantSize)
 largeButton.addEventListener("click", chosedPlantSize)
 }
+
 const chosedPlantSize = (event) => {
   const selectedSize = event.target.value
   userMessage(`I choose ${selectedSize}`)
@@ -94,32 +95,118 @@ const chosedPlantSize = (event) => {
   setTimeout(handlePlantSize, 1000, selectedSize)
 }
 
-
-
   const handlePlantSize = (selectedSize) => {
   if (selectedSize === "small") {
-    botMessage(`You want a ${selectedSize}`)
-  nameForm.innerHTML = `<select name="small-plants">
+    botMessage(`You want a ${selectedSize}, what plant do you want?`)
+  nameForm.innerHTML = `<select id="smallPlants" name="small-plants">
   <option disabled selected>Choose your plant</option>
   <option>Spiderplant</option>
   <option>Mini succulent</option>
   <option>Air plant</option>`
+  const smallPlants = document.getElementById("smallPlants")
+  smallPlants.addEventListener("change", selectedPlantType)
   } else if (selectedSize === "medium") {
-    botMessage(`You want a ${selectedSize}`)
-    nameForm.innerHTML = `<select name="medium-plants">
+    botMessage(`You want a ${selectedSize}, what plant do you want?`)
+    nameForm.innerHTML = `<select id="mediumPlants"  name="medium-plants">
   <option disabled selected>Choose your plant</option>
   <option>Money Tree</option>
   <option>Schefflera</option>
   <option>Peach Lily</option>`
+  const mediumPlants = document.getElementById("mediumPlants")
+  mediumPlants.addEventListener("change", selectedPlantType)
+
   } else {
-    botMessage(`You want a ${selectedSize}`)
-    nameForm.innerHTML = `<select name="large-plants">
+    botMessage(`You want a ${selectedSize}, what plant do you want?`)
+    nameForm.innerHTML = `<select id="largePlants" name="large-plants">
   <option disabled selected>Choose your plant</option>
   <option>Monstera</option>
   <option>Bird of Paradise</option>
   <option>Olive Tree</option>`
+  const largePlants = document.getElementById("largePlants")
+  largePlants.addEventListener("change", selectedPlantType)
+  }
+  }
+
+  const selectedPlantType = (event) => {
+  const selectedType = event.target.value
+  userMessage(`I choose ${selectedType}`)
+  nameForm.innerHTML = ""
+  setTimeout(handlePlantType, 1000, selectedType)
+}
+
+
+const handlePlantType = (selectedType) => {
+  if (selectedType === "Spiderplant") {
+    botMessage(`You want to order ${selectedType}. Is that correct?`)
+    confirmingOrder()
+  } else if (selectedType === "Mini succulent") {
+    botMessage(`You want to order ${selectedType}. Is that correct?`)
+    confirmingOrder()
+  }
+    else if (selectedType === "Air plant") {
+      botMessage(`You want to order ${selectedType}. Is that correct?`)
+      confirmingOrder()
+  }
+    else if (selectedType === "Money Tree") {
+        botMessage(`You want to order ${selectedType}. Is that correct?`)
+        confirmingOrder()
+  }
+    else if (selectedType === "Schefflera") {
+          botMessage(`You want to order ${selectedType}. Is that correct?`)
+          confirmingOrder()
+  }
+    else if (selectedType === "Peach Lilyt") {
+            botMessage(`You want to order ${selectedType}. Is that correct?`)
+            confirmingOrder()
+  }
+    else if (selectedType === "Money Tree") {
+              botMessage(`You want to order ${selectedType}. Is that correct?`)
+              confirmingOrder()
+  }
+    else if (selectedType === "Bird of Paradise") {
+        botMessage(`You want to order ${selectedType}. Is that correct?`)
+        confirmingOrder()
+  }
+    else {
+          botMessage(`You want to order ${selectedType}. Is that correct?`)
+          confirmingOrder()
   }
 }
+
+const confirmingOrder = () => {
+  nameForm.innerHTML = `
+    <button name="confirm-button" id="yesButton" value="yes" type="button">Yes</button>
+    <button name="confirm-button" id="noButton" value="no" type="button">No</button>
+    `
+const yesButton = document.getElementById("yesButton")
+const noButton = document.getElementById("noButton")
+
+yesButton.addEventListener("click", confirmMessage)
+noButton.addEventListener("click", confirmMessage)
+}
+
+const confirmMessage = (event) => {
+  nameForm.innerHTML = ""
+let userAnswer = event.target.value
+if (userAnswer === "yes"){
+userMessage(`Yes, I want to order!`)
+setTimeout(botMessage, 1000)
+botMessage(`Great, your plant is growing to you!`)
+} else {
+  userMessage(`Nope, I don't.`)
+  setTimeout(botMessage, 1000)
+  botMessage(`Ok, see you next time!`)
+}}
+
+/*const noMessage = () => {
+  userMessage(`Nope, I don't.`)
+  setTimeout(botMessage, 1000)
+  botMessage(`Ok, see you next time!`)
+  }*/
+
+
+
+
 // Eventlisteners goes here 👇
 helpButton.addEventListener("click", greetUser);
 
