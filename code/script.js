@@ -227,27 +227,26 @@ setTimeout(orderConfirmation, 1000)
 const orderConfirmation = () => {
 
   inputWrapper.innerHTML = `
-  <button type="submit" id="yes" class="orderConfirmationBtn">Yes</button>
-  <button type="submit" id="no" class="orderConfirmationBtn">No</button>`
+  <button type="submit" id="yes" class="orderConfirmationBtn">Confirm</button>
+  <button type="submit" id="no" class="orderConfirmationBtn">Exit</button>`
 
   const yesButton = document.getElementById('yes')
   const noButton = document.getElementById('no')
-
-  const hideButtons = document.querySelectorAll(".orderConfirmationBtn");
+  const sound = document.getElementById("submitSound")
+  console.log(sound);
 
   yesButton.addEventListener('click', () => {
-
-    hideButtons.forEach((button) => {
-      button.style.display = "none";
-    });
+    yesButton.style.display = "none";
+    noButton.style.display = "none";
     showMessage("We will prepare your order, thank you for using the Semel Bot", "bot")
-   
+    sound.play();
   })
   noButton.addEventListener('click', () => {
-    hideButtons.forEach((button) => {
-      button.style.display = "none";
-    })
+    yesButton.style.display = "none";
+    noButton.style.display = "none";
     showMessage("Ok, sorry to see you go.", "bot");
+    sound.play();
+    
   })
 }
 

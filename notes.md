@@ -6,27 +6,21 @@ bot - hello ${name} what type of semla would you like to order? (kalla på funkt
 
 user - choses alternative ✅
 
-
 my choice -> regular ✅
 
 bot - Nice choice, you choose regular semla. ✅
 
+bot - message + subtypechoises in buttons or rullgardin (vanlig, vanilj, choklad)✅
 
+user - chooses subalternative✅
 
+bot - message + subalternative + price
 
-bot - message + subtypechoises in buttons or rullgardin (vanlig, vanilj, choklad)
-
-user - chooses subalternative
-
-bot - message + subalternative + price 
-
-bot - for a discount of 15% would you like to participate in a short semla quiz? 
-
+bot - for a discount of 15% would you like to participate in a short semla quiz?
 
 TODO:
-Question to make checkboxes. 
+Question to make checkboxes.
 
-Select skulle kunna vara olika alternativ till topping: Nötter, topping, strössel 
-
+Select skulle kunna vara olika alternativ till topping: Nötter, topping, strössel
 
 Explanation about project
