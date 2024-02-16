@@ -1,16 +1,12 @@
-# Project Name
+# Chatbot
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weeks goal was it to build a simple chatbot to learn how to use functions, and manipulating the DOM. This was a pair project.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We sticked with the theme of the pizza project last week and went from there.
+Our challenge was to work on the same repository. Therefore, we worked with branches and merge them in the main branch when approved.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
-
-
-test test
+chatbot-yifan-nathalie.netlify.app

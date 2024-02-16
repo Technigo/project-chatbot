@@ -61,8 +61,6 @@ nameBtn.addEventListener("click", () => {
 });
 
 //
-//
-//
 //Main Options
 const showMainFood = (name) => {
 	//part1 Show the conversation bubble
@@ -94,8 +92,6 @@ const showMainFood = (name) => {
 	);
 };
 
-//
-//
 //
 //Show user's main choice
 const showUserMainChoice = (event) => {
@@ -189,19 +185,19 @@ const userConfirm = (event) => {
 			`One ${event.target.value} sized meal will be prepared for you! That will be ${price}€. Are you sure you want to order this?`,
 			`bot`
 		);
-	}, 1000);
 
-	inputWrapper.innerHTML = `
+		inputWrapper.innerHTML = `
 	<button id="yes" value="yes" onclick="bubbleAudio.play()">Yes</button>
 	<button id="no" value="no" onclick="bubbleAudio.play()">No</button>
 	`;
 
-	//part3 add event listner to the yes/no buttons
-	const yesBtn = document.getElementById("yes");
-	const noBtn = document.getElementById("no");
+		//part3 add event listner to the yes/no buttons
+		const yesBtn = document.getElementById("yes");
+		const noBtn = document.getElementById("no");
 
-	yesBtn.addEventListener("click", handleConfirm);
-	noBtn.addEventListener("click", handleConfirm);
+		yesBtn.addEventListener("click", handleConfirm);
+		noBtn.addEventListener("click", handleConfirm);
+	}, 1000);
 };
 
 //
@@ -220,8 +216,7 @@ const handleConfirm = (event) => {
 			}, 1000);
 			setTimeout(() => {
 				showMessage(`Would you like to order again?`, "bot");
-				displayRestartButton();
-			}, 2000);
+			}, 1000);
 			break;
 
 		case "no":
@@ -234,8 +229,7 @@ const handleConfirm = (event) => {
 			}, 1000);
 			setTimeout(() => {
 				showMessage(`Would you like to order again?`, "bot");
-				displayRestartButton();
-			}, 2000);
+			}, 1000);
 			break;
 
 		default:
@@ -247,7 +241,6 @@ const handleConfirm = (event) => {
 			}, 1000);
 			setTimeout(() => {
 				showMessage(`Would you like to order again?`, "bot");
-				displayRestartButton();
 			}, 2000);
 			break;
 	}
@@ -258,29 +251,19 @@ const handleConfirm = (event) => {
 		<button id="restartButton" onclick="bubbleAudio.play()">Order again</button>
 		<button id="exitButton" onclick="bubbleAudio.play()">No, thank you</button>
 		`;
-		document
-			.getElementById("restartButton")
-			.addEventListener("click", showMainFood);
-		document
-			.getElementById("exitButton")
-			.addEventListener("click", lastGoodbye);
-	}, 3000);
-
-	const lastGoodbye = () => {
-		setTimeout(() => {
-			showMessage(`No, I'm good.`, `sender`);
-		}, 500);
-		setTimeout(() => {
-			showMessage(`Thank you for stopping by. See you next time!`, `bot`);
-		}, 1000);
-		inputWrapper.innerHTML = "";
-	};
+		const exitBtn = document.getElementById("exitButton");
+		exitBtn.addEventListener("click", lastGoodbye);
+		const restartBtn = document.getElementById("restartButton");
+		restartBtn.addEventListener("click", restartConversation);
+	}, 1000);
 };
 
-const restartConversation = (restart) => {
-	currentQuestion = 0;
-	userAnswers = [];
-	chatHistoryElement.innerHTML = "";
+const restartConversation = () => {
+	location.reload();
+};
 
-	showMainFood(name);
+const lastGoodbye = () => {
+	showMessage(`No, I'm good.`, `user`, 500);
+	showMessage(`Thank you for stopping by. See you next time!`, `bot`, 1000);
+	inputWrapper.innerHTML = "";
 };
