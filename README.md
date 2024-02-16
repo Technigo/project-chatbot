@@ -4,8 +4,8 @@ Chatbot simple chatbot serving up some tea
 
 ## The problem
 
-built with html js and css.
-would add
+built with html, js and css.
+multiple improvements possible: validation of user name, and less repeating of similar functions.
 
 
 ## View it live
