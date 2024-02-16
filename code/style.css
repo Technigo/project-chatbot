@@ -160,7 +160,7 @@ button {
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 16px 20px;
+  padding: 1rem 0.5rem;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
@@ -168,6 +168,7 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  
 }
 
 button:hover {
@@ -185,8 +186,8 @@ button:hover {
 }
 
 .sub-categories {
-  margin-left: 25%;
-  width: 50%;
+  margin-left: 10%;
+  width: 80%;
   position: center;
   display: flex;
   justify-content: space-around;
@@ -214,5 +215,9 @@ button:hover {
   .user-msg img {
   width: 60px;
   height: 60px;
+}
+.sub-categories {
+  margin-left: 25%;
+  width: 50%;
 }
 }

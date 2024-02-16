@@ -2,8 +2,9 @@
 const chat = document.getElementById('chat')
 const submitButton = document.getElementById('send-btn')
 const nameInput = document.getElementById('name-input')
-const nameForm = document.getElementById('name-form')
+const form = document.getElementById('form')
 const inputWrapper = document.getElementById('input-wrapper')
+const sound = document.getElementById("click-sound")
 
 
 
@@ -14,6 +15,7 @@ const showMessage = (message, sender) => {
   // The if statement checks if the sender is the user and if that's the case it inserts
   // an HTML section inside the chat with the posted message from the user
   if (sender === 'user') {
+    sound.play()
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -70,7 +72,6 @@ const handleNameInput = (event) => {
   showMessage(`I'm ${name}`, 'user')
   nameInput.value = ""
   setTimeout(() => firstChoice(name), 1000);
-  nameForm.remove()
 
   // After 1 second, show the next question by invoking the next function.
   // passing the name into it to have access to the user's name if we want
@@ -85,38 +86,32 @@ let choice
 
 const firstChoice = (name) => {
   showMessage(`So ${name} what would you like to order?`, "bot")
-  inputWrapper.innerHTML = `<form id ="order-option">
+  form.innerHTML = `
   <div class="categories">
   <button class="order-btn" id="coffee" type="submit">Coffee</button>
   <button class="order-btn" id="bread" type="submit">Bread</button>
-  <button class="order-btn" id="pastry" type="submit">Pastry</button></div></form>`
-  const orderOption = document.getElementById('order-option')
+  <button class="order-btn" id="pastry" type="submit">Pastry</button></div>`
+
   document.getElementById("coffee").addEventListener("click", (handleFirstChoice) => {
-    //added prevent default
     handleFirstChoice.preventDefault()
     choice = "coffee"
-    console.log(choice)
     showMessage("I would like a coffee, please!", "user")
     setTimeout(() => handleSecondChoice(choice), 1000)
-    orderOption.remove()
+    
   })
   document.getElementById("bread").addEventListener("click", (handleFirstChoice) => {
-    //added prevent default
     handleFirstChoice.preventDefault()
     choice = "bread"
-    console.log(choice)
     showMessage("I would like some bread, please!", "user")
     setTimeout(() => handleSecondChoice(choice), 1000)
-    orderOption.remove()
+   
   })
   document.getElementById("pastry").addEventListener("click", (handleFirstChoice) => {
-    //added prevent default
     handleFirstChoice.preventDefault()
     choice = "pastry"
-    console.log(choice)
     showMessage("I would like a pastry, please!", "user")
     setTimeout(() => handleSecondChoice(choice), 1000)
-    orderOption.remove()
+    
   })
 }
 let subChoice
@@ -124,107 +119,110 @@ let subChoice
 const handleSecondChoice = (choice) => {
   showMessage(`One ${choice} coming up, what kind of ${choice} would you like?`, "bot")
   if (choice === "coffee") {
-    inputWrapper.innerHTML += `<form id ="sub-categories">
-    <div class="sub-categories">
-    <button class="order-btn" id="filter" type="submit">Filter Coffee</button>
-    <button class="order-btn" id="espresso" type="submit">Espresso</button>
-    <button class="order-btn" id="flat" type="submit">Flat White</button></div></form>`
-    const subCategories = document.getElementById('sub-categories')
+    form.innerHTML = `<div class="sub-categories">
+    <button class="send-btn" id="filter" type="submit">Filter Coffee</button>
+    <button class="send-btn" id="espresso" type="submit">Espresso</button>
+    <button class="send-btn" id="flat" type="submit">Flat White</button></div>`
+    
     document.getElementById("filter").addEventListener("click", (handleSecondChoice) => {
       handleSecondChoice.preventDefault()
       subChoice = "filter coffee"
-      console.log(subChoice)
       showMessage("I would like a filter coffee, please!", "user")
       setTimeout(() => handleThirdChoice(subChoice), 1000)
-      subCategories.remove()
+      
     })
     document.getElementById("espresso").addEventListener("click", (handleSecondChoice) => {
       handleSecondChoice.preventDefault()
       subChoice = "espresso"
-      console.log(subChoice)
       showMessage("I would like an espresso, please!", "user")
       setTimeout(() => handleThirdChoice(subChoice), 1000)
-      subCategories.remove()
+    
     })
     document.getElementById("flat").addEventListener("click", (handleSecondChoice) => {
       handleSecondChoice.preventDefault()
       subChoice = "flat white"
-      console.log(subChoice)
       showMessage("I would like a flat white, please!", "user")
       setTimeout(() => handleThirdChoice(subChoice), 1000)
-      subCategories.remove()
+    
     })
   } else if (choice === "bread") {
-    inputWrapper.innerHTML += `<form id ="sub-categories">
-    <div class="sub-categories">
-    <button class="order-btn" id="baguette" type="submit">Baguette</button>
-    <button class="order-btn" id="sourdough" type="submit">Sourdough</button>
-    <button class="order-btn" id="rye" type="submit">Rye Bread</button></div></form>`
-    const subCategories = document.getElementById('sub-categories')
+    form.innerHTML = `<div class="sub-categories">
+    <button class="send-btn" id="baguette" type="submit">Baguette</button>
+    <button class="send-btn" id="sourdough" type="submit">Sourdough</button>
+    <button class="send-btn" id="rye" type="submit">Rye Bread</button></div>`
+  
     document.getElementById("baguette").addEventListener("click", (handleSecondChoice) => {
       handleSecondChoice.preventDefault()
       subChoice = "baguette"
-      console.log(subChoice)
       showMessage("I would like a baguette, please!", "user")
       setTimeout(() => handleThirdChoice(subChoice), 1000)
-      subCategories.remove()
+      
     })
     document.getElementById("sourdough").addEventListener("click", (handleSecondChoice) => {
       handleSecondChoice.preventDefault()
       subChoice = "sourdough bread"
-      console.log(subChoice)
       showMessage("I would like sourdough bread, please!", "user")
       setTimeout(() => handleThirdChoice(subChoice), 1000)
-      subCategories.remove()
+      
     })
     document.getElementById("rye").addEventListener("click", (handleSecondChoice) => {
       handleSecondChoice.preventDefault()
       subChoice = "rye bread"
-      console.log(subChoice)
       showMessage("I would like a rye bread, please!", "user")
       setTimeout(() => handleThirdChoice(subChoice), 1000)
-      subCategories.remove()
+      
     })
   } else if (choice === "pastry") {
-    inputWrapper.innerHTML += `<form id ="sub-categories">
-    <div class="sub-categories">
-    <button class="order-btn" id="semla" type="submit">Semla</button>
-    <button class="order-btn" id="cinnamon" type="submit">Cinnamon Bun</button>
-    <button class="order-btn" id="brownie" type="submit">Brownie</button></div></form>`
-    const subCategories = document.getElementById('sub-categories')
+    form.innerHTML = `<div class="sub-categories">
+    <button class="send-btn" id="semla" type="submit">Semla</button>
+    <button class="send-btn" id="cinnamon" type="submit">Cinnamon Bun</button>
+    <button class="send-btn" id="brownie" type="submit">Brownie</button></div></form>`
+    
     document.getElementById("semla").addEventListener("click", (handleSecondChoice) => {
       handleSecondChoice.preventDefault()
       subChoice = "semla"
-      console.log(subChoice)
       showMessage("I would like a semla, please!", "user")
       setTimeout(() => handleThirdChoice(subChoice), 1000)
-      subCategories.remove()
+      
     })
     document.getElementById("cinnamon").addEventListener("click", (handleSecondChoice) => {
       handleSecondChoice.preventDefault()
       subChoice = "cinnamon bun"
-      console.log(subChoice)
       showMessage("I would like cinnamon bun, please!", "user")
       setTimeout(() => handleThirdChoice(subChoice), 1000)
-      subCategories.remove()
+     
     })
     document.getElementById("brownie").addEventListener("click", (handleSecondChoice) => {
       handleSecondChoice.preventDefault()
       subChoice = "brownie"
-      console.log(subChoice)
       showMessage("I would like a brownie, please!", "user")
       setTimeout(() => handleThirdChoice(subChoice), 1000)
-      subCategories.remove()
+      
     })
-  }
-}
+  }}
 
+  //Options for amount
 const handleThirdChoice = (subChoice) => {
   showMessage(`How many ${subChoice}s would you like?`, "bot")
-  inputWrapper.innerHTML += ` <form id="number-form">
-  <input id="number-input" type="text" />
-  <button class="send-btn" id="amount-btn" type="submit">Send</button></form>`
-  //härifrån buggar det
+  form.innerHTML = `<input id="amount-input" type="text" />
+  <button class="send-btn" id="amount-btn" type="submit">Send</button>`
+  const amountInput = document.getElementById("amount-input")
+  document.getElementById("amount-btn").addEventListener("click", (event) => {
+    event.preventDefault()
+    const amount = amountInput.value
+    showMessage(`${amount}`, `user`)
+    amountInput.value = ""
+    })
+}
+
+//Test
+ 
+
+     //showMessage(`You have ordered ${event.target.value} ${subChoice}s`,`bot`)
+    //showMessage(`Thank you`, `user`)
+
+  //härifrån buggar det (kod från 15/2)
+  /*
   const numberInput = document.getElementById("number-input")
  document.getElementById("amount-btn").addEventListener("click", () => {
   handleThirdChoice.preventDefault()
@@ -232,4 +230,7 @@ const handleThirdChoice = (subChoice) => {
   numberInput.value = ""
   showMessage(`I would like to order ${orderAmount} ${subChoice}s`, 'user')
   }
-)}
+)}*/
+
+
+/// setTimeout -> Nått event i slutet som firar att ordern är lagd
