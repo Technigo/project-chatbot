@@ -89,21 +89,34 @@ const whatkindofSemla = (event) => {
     radioButton.addEventListener("click", (event) => {
       if (radioButton.value === "regular") {
         showMessage(
-          `Nice choice! You chose a ${radioButton.value} semla.\n Please chose what flavour you want`,
-          "bot"
+          radioButton.value,
+          "user"
         );
+        setTimeout(() => {
+          showMessage(
+            `Nice choice! You chose a ${radioButton.value} semla.\n Please chose what flavour you want`,
+          "bot"
+          );
+        }, 1000);
       } else {
         showMessage(
-          `Nice choice! You chose a ${radioButton.value} free semla.\n Please chose what flavour you want`,
-          "bot"
+          radioButton.value,
+          "user"
         );
-      
+        setTimeout(() => {
+          showMessage(
+            `Nice choice! You chose a ${radioButton.value} free semla.\n Please chose what flavour you want`,
+          "bot"
+          );
+        }, 1000);
       }
+      setTimeout(subtypesSelection, 1000);
+      
     });
   });
   
   //Tillfälligt test!// vill att klick på radiobutton öppnar nästa funktion nedanför men lyckades inte med det så satt en set timeout på 4 sekunder för att man ska hinna välja ett alternativ innan nästa funktion startar...
- setTimeout(() => subtypesSelection(), 4000);
+//  setTimeout(() => subtypesSelection(), 4000);
 
 };
 
@@ -121,18 +134,38 @@ const subtypesSelection = () => {
   document.getElementById("blueberry").addEventListener("click", blueberryChoice);  
   document.getElementById("vanilla").addEventListener("click", vanillaChoice);
   document.getElementById("chocolate").addEventListener("click", chocolateChoice)
-  ;}
+
+}
 
 const blueberryChoice = () => {
-  showMessage("Yummy, blueberry is a great choice!", "bot");
+  showMessage("Blueberry", "user");
+  setTimeout(() => {
+    showMessage(
+      "Yummy, blueberry is a great choice!",
+    "bot"
+    );
+  }, 1000);
 };
 
 const vanillaChoice = () => {
-  showMessage("yummy vanilla!", "bot");
+  showMessage("Vanilla", "user");
+  setTimeout(() => {
+    showMessage(
+      "yummy vanilla!",
+    "bot"
+    );
+  }, 1000);
+ 
 };
 
 const chocolateChoice = () => {
-  showMessage("Chocolate can never go wrong!", "bot");
+  showMessage("Chocolate", "user");
+  setTimeout(() => {
+    showMessage(
+      "Chocolate can never go wrong!",
+    "bot"
+    );
+  }, 1000);
 };
 
 
