@@ -103,40 +103,46 @@ const firstChoice = (name, choice) => {
   <button id="long">Long</button></div>`
 
   // added event listener for the buttons on click to get the choice
-
+  
   document.getElementById("short").addEventListener("click", () => {
     choice = "Short"
 
     // second message from user
 
     showMessage("I would like a short cut!", "user")
-    setTimeout(() => askNextQuestion(name, choice), 1500)
+    setTimeout(() => {
+      askNextQuestion(name,choice,undefined,undefined,undefined);
+    }, 1500)
   })
   document.getElementById("medium").addEventListener("click", () => {
     choice = "Medium"
     showMessage("I would like a medium cut!", "user")
-    setTimeout(() => askNextQuestion(name, choice), 1500)
+    setTimeout(() => {
+      //add all variable which have been defined in orders so they can be passed to the next function
+      askNextQuestion(name,choice,undefined,undefined,undefined);
+    }, 1500)
   })
   document.getElementById("long").addEventListener("click", () => {
     choice = "Long"
     showMessage(`I would like a ${choice} cut!`, "user")
-    setTimeout(() => askNextQuestion(name, choice), 1500)
+    setTimeout(() => {
+      askNextQuestion(name,choice,undefined,undefined,undefined);
+    }, 1500)
   })
 }
 
 const styleSelect = (choice) => {
   currentQuestion = "style"
-  showMessage(
-    `All right, we will give you a ${choice} cut.
-    Please choose which type of style you want 💇`,
-    `bot`
-  )
-
   inputWrapper.innerHTML = `<select id="style-choice">
   <option id="default" value="select a style" selected>↓Select a style...</option>
   <option id="curly" value="curly">Curly</option>
   <option id="straight" value="straight">Straight</option>
   <option id="wavy" value="wavy">Wavy</option></select>`
+  showMessage(
+    `All right, we will give you a ${choice} cut.
+    Please choose which type of style you want 💇`,
+    `bot`
+  )
 
   document
     .getElementById("style-choice")
@@ -144,13 +150,15 @@ const styleSelect = (choice) => {
       style = event.target.value
       showMessage(`I would like a ${style} cut!`, "user")
 
-      setTimeout(() => askNextQuestion(choice, style), 2000)
+      // I passed the choice argument in the following function because was undefined👇🏻
+
+      setTimeout(() => askNextQuestion(name,choice,style,undefined,undefined), 2000)
     })
 }
 
 // Function to handle gender selection
 
-const genderSelect = () => {
+const genderSelect = (style, choice) => {
   currentQuestion = "gender"
   // can't pass the choice in this function , it's undefined.👇🏻
   showMessage(
@@ -170,12 +178,13 @@ const genderSelect = () => {
     gender = "Boy"
 
     showMessage("Boy", "user")
-    setTimeout(() => askNextQuestion(choice, style), 2500)
+    setTimeout(() => askNextQuestion(name, style, choice,undefined,gender), 2500)
   })
   document.getElementById("girl").addEventListener("click", () => {
     gender = "Girl"
     showMessage("Girl", "user")
-    setTimeout(() => askNextQuestion(choice, style), 2500)
+
+    setTimeout(() => askNextQuestion(name, style, choice,undefined,gender), 2500)
   })
 }
 
@@ -244,7 +253,8 @@ const askNextQuestion = (name, choice, style, gender, lastConfirmation) => {
       styleSelect(choice)
       break
     case "style":
-      genderSelect(choice, style)
+      // here variable should be style and choice. It was only style here so the choice cannnot be passed by.
+      genderSelect(style,choice)
       break
     case "gender":
       confirmation(style, gender, choice)
