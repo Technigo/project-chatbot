@@ -122,10 +122,10 @@ const subtypeClick = (dish) => {
 const confirmSubtype = (dish) => {
   showMessage(`${dish}, nice!`, "bot");
   setTimeout(() => askForAge(), 1000);
-}
+};
 
 const askForAge = (userAge) => {
-showMessage(`Do you want the meal to be for an adult or a child?`, "bot");
+  showMessage(`Do you want the meal to be for an adult or a child?`, "bot");
   inputWrapper.innerHTML = `<div id="button-form">
   <button id="adult">Adult</button>
   <button id="child">Child</button>
@@ -142,29 +142,31 @@ const ageClick = (userAge) => {
 };
 
 const askForConfirmation = (userAge) => {
-if (userAge === "Child") {
-  showMessage (`The cost for a childportion is 10€. Are you sure you want to order this?`, "bot")
-  const adultBtn = document.getElementById("adult");
-  adultBtn.onclick = () => ageClick("Adult");
-  const childBtn = document.getElementById("child");
-  childBtn.onclick = () => ageClick("Child");
-} else if (userAge === "Adult") {
-  showMessage (`The cost for an adultportion is 10€. Are you sure you want to order this?`, "bot")
-
-  
-}
-// inputWrapper.innerHTML = `<div id="button-form">
-//   <button id="adult">Adult</button>
-//   <button id="child">Child</button>
-//   </div>`;
-//   const adultBtn = document.getElementById("adult");
-//   adultBtn.onclick = () => ageClick("Adult");
-//   const childBtn = document.getElementById("child");
-//   childBtn.onclick = () => ageClick("Child");
-// };
-
-}
-
+  if (userAge === "Child") {
+    showMessage(
+      `The cost for a child portion is 10€. Are you sure you want to order this?`,
+      "bot"
+    );
+    const adultBtn = document.getElementById("adult");
+    adultBtn.onclick = () => ageClick("Adult");
+    const childBtn = document.getElementById("child");
+    childBtn.onclick = () => ageClick("Child");
+  } else if (userAge === "Adult") {
+    showMessage(
+      `The cost for an adult portion is 15€. Are you sure you want to order this?`,
+      "bot"
+    );
+  }
+  // inputWrapper.innerHTML = `<div id="button-form">
+  //   <button id="adult">Adult</button>
+  //   <button id="child">Child</button>
+  //   </div>`;
+  //   const adultBtn = document.getElementById("adult");
+  //   adultBtn.onclick = () => ageClick("Adult");
+  //   const childBtn = document.getElementById("child");
+  //   childBtn.onclick = () => ageClick("Child");
+  // };
+};
 
 // Eventlisteners goes here 👇
 
