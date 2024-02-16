@@ -14,11 +14,14 @@ const subSalad = document.getElementById("sub-salad");
 const subKebab = document.getElementById("sub-kebab");
 
 //Sofie provar
-// const vesuvio = document.getElementById("vesuvio");
-// const fruttiDiMare = document.getElementById("frutti")
-// const funghi = document.getElementById("funghi")
 
-const subSelect = document.getElementsByClassName("sub-select");
+const vesuvio = document.getElementById("vesuvio");
+const fruttiDiMare = document.getElementById("frutti")
+const funghi = document.getElementById("funghi")
+
+const subPizzaSelect = document.getElementById("test-pizza");
+const subSaladSelect = document.getElementById("test-salad");
+const subKebabSelect = document.getElementById("test-kebab");
 
 
 
@@ -111,17 +114,33 @@ const chooseSubOption = (category) => {
 
 };
 
+const portionSelect = () => {
+  // dölja subselect
+  
+  // visa Large XL knappar
+  // gåvidare till sammanfattningen
+  // spara portionsstorlek.
+
+}
+
 //Sofie provar... vad är det som blir fel?
 
-const finalFoodChoice = (chooseSubOption) => {
-   if (chooseSubOption == "Vesuvio") {
-     showMessage("Vesuvio", "user");
-   } else if (subPizza == "Frutti di mare") {
-    showMessage("Frutti di mare", "user");
-  } else {
-    showMessage("Funghi", "user");
-   }
-}
+ const finalFoodChoice = (chooseSubOption) => {
+  console.log(chooseSubOption);
+  const selectedDish = chooseSubOption;
+  showMessage(chooseSubOption, "user");
+  showMessage(`You chose ${chooseSubOption}. Large or X-large portion?`);
+  portionSelect();
+
+    if (chooseSubOption == "Vesuvio") {
+      showMessage("Vesuvio", "bot");
+    } else if (chooseSubOption == "Frutti di mare") {
+     showMessage("Frutti di mare", "bot");
+    } else {
+     showMessage("Funghi", "bot");
+    }
+
+ }
 
 
 
@@ -147,17 +166,22 @@ kebabButton.addEventListener("click", function () {
   chooseSubOption("kebab");
 });
 
-//Sofie provar
-// vesuvio.addEventListener("click", function () {
-//   finalFoodChoice("vesuvio")
-// });
-// fruttiDiMare.addEventListener("click", function () {
-//   finalFoodChoice("Frutti di mare");
-// });
-// funghi.addEventListener("click", function () {
-//   finalFoodChoice("Funghi");
-// });
+subPizzaSelect.addEventListener("change", function () {finalFoodChoice(subPizzaSelect.value);});
+subSaladSelect.addEventListener("change", function () {finalFoodChoice(subSaladSelect.value);});
+subKebabSelect.addEventListener("change", function () {finalFoodChoice(subKebabSelect.value);});
 
+//Sofie provar
+/*
+ vesuvio.addEventListener("click", function () {
+   finalFoodChoice("Vesuvio")
+ });
+ fruttiDiMare.addEventListener("click", function () {
+   finalFoodChoice("Frutti di mare");
+ });
+ funghi.addEventListener("click", function () {
+   finalFoodChoice("Funghi");
+ });
+*/
 
 //OnChange skulle kunna funka för att kolla vilken option på Select.
 //subSelect.onchange(showMessage(`I chose ${subSelect.value}`, "user"));

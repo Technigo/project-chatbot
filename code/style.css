@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   background: #0026ff;
 }
 
@@ -41,7 +41,7 @@ input {
   color: #0026ff;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -123,7 +123,7 @@ main {
 
 label {
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   color: #0026ff;
   margin-right: 20px;
@@ -138,7 +138,7 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -149,18 +149,35 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-#food-category{
+#food-category {
   display: none;
 }
 
-#sub-pizza{
+#sub-pizza {
   display: none;
 }
 
-#sub-salad{
+#sub-salad {
   display: none;
 }
 
-#sub-kebab{
+#sub-kebab {
   display: none;
+}
+
+#portion-select {
+  display: none;
+}
+
+.sub-select {
+  display: flex;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28px;
+  margin: 0;
+  border-color: #0026ff;
+  text-align: center;
+  width: 100%;
+  background-color: #e5e9ff;
+  color: #0026ff;
 }
