@@ -5,8 +5,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: "Montserrat", sans-serif;
+  background: #3ca394;
 }
 
 h1 {
@@ -37,11 +37,11 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #e59f71;
+  color: #ba5a31;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -91,12 +91,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #e59f71;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #ba5a31;
   max-width: 40%;
 }
 
@@ -121,16 +121,17 @@ main {
   align-items: center;
 }
 
-label {
+/*label {
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   color: #0026ff;
   margin-right: 20px;
 }
+*/
 
 button {
-  background-color: #0026ff;
+  background-color: #0c0c0c;
   color: white;
   border: none;
   border-radius: 4px;
@@ -138,7 +139,7 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;

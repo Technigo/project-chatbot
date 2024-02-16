@@ -149,7 +149,7 @@ So you’ve completed all the steps above? Great job! Make sure you've committed
 
 ### Advanced Stretch Goals
 - Add sound effects to the chat.
-- Refactor the code to learn more about different approaches with functions
+- Refqaz with functions
   - Hint:
   In the examples above, we have made it where each function knows which is the next function to load (so in `handleNameInput`, it calls `showFoodOptions` as it knows this is the next step in the flow). This is ok, and is just one of many approaches you could choose to take here.
 
