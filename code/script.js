@@ -68,7 +68,8 @@ const showFoodOptions = (name) => {
 // Message from user with the costumers choice of food
 const foodClick = (foodCategory) => {
   showMessage(foodCategory, "user");
-  setTimeout(() => showSubtype(foodCategory), 1000);
+  setTimeout(() => showSubtype(foodCategory), 600);
+  // inputWrapper.innerHTML = "";
 };
 
 // Bot answers by using the costumers prefered food and asks what kind of prefered food the customer want. Three buttons are shown to the user.
@@ -117,13 +118,14 @@ const showSubtype = (foodCategory) => {
 // Message from user with the costumers choice of food subtype
 const subtypeClick = (dish) => {
   showMessage(dish, "user");
-  setTimeout(() => confirmSubtype(dish), 1000);
+  setTimeout(() => confirmSubtype(dish), 600);
+  // inputWrapper.innerHTML = "";
 };
 
 // Message from bot with the costumers choice of food
 const confirmSubtype = (dish) => {
   showMessage(`${dish}, nice!`, "bot");
-  setTimeout(() => askForAge(), 1000);
+  setTimeout(() => askForAge(), 400);
 };
 
 // Bot asks if the costumer wants the dish for child or adult. Two buttons with options are shown.
@@ -142,7 +144,8 @@ const askForAge = (userAge) => {
 // Message from user with the costumers age
 const ageClick = (userAge) => {
   showMessage(userAge, "user");
-  setTimeout(() => askForConfirmation(userAge), 1000);
+  setTimeout(() => askForConfirmation(userAge), 600);
+  // inputWrapper.innerHTML = "";
 };
 
 // Message from bot with an age confirmation. Bot asks for confirmation by showing two buttons with options yes or no.
@@ -176,11 +179,11 @@ const askForConfirmation = (userAge) => {
   }
 };
 
-// NEXT STEP
 //Confirmation message from user
 const confirmationClick = (userConfirmation) => {
   showMessage(userConfirmation, "user");
-  setTimeout(() => confirmOrder(userConfirmation), 1000);
+  setTimeout(() => confirmOrder(userConfirmation), 600);
+  // inputWrapper.innerHTML = "";
 };
 //Confirmation message from bot
 
