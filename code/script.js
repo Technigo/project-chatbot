@@ -187,14 +187,12 @@ const confirmMessage = (event) => {
   let userAnswer = event.target.value;
   if (userAnswer === "yes") {
     userMessage(`Yes, I want to order!`);
-    //setTimeout(botMessage, 1000)
     setTimeout(() => {
       botMessage(`Great, your plant is growing to you!`);
     }, 1000);
     setTimeout(startOver, 5000);
   } else {
     userMessage(`Nope, I don't.`);
-    //setTimeout(botMessage, 1000)
     botMessage(`Ok, see you next time!`);
     setTimeout(startOver, 5000);
   }
@@ -209,11 +207,3 @@ const startOver = () => {
 
 // Eventlisteners goes here 👇
 helpButton.addEventListener("click", greetUser);
-
-// Here we invoke the first function to get the chatbot to ask the first question when
-// the website is loaded. Normally we invoke functions like this: greeting()
-// To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
-// and pass along two arguments:
-// 1.) the function we want to delay, and 2.) the delay in milliseconds
-// This means the greeting function will be called one second after the website is loaded.
-//setTimeout(greetUser, 1000);
