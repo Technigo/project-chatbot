@@ -1,8 +1,10 @@
 const bubbleAudio = new Audio();
 bubbleAudio.src = "./assets/bubble-sound.wav";
+bubbleAudio.volume = 0.6;
 
 const robotAudio = new Audio();
 robotAudio.src = "./assets/robot-sound.wav";
+robotAudio.volume = 0.3;
 
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById("chat");
@@ -34,9 +36,6 @@ const showMessage = (message, sender) => {
     `;
 	}
 
-	// This little thing makes the chat scroll to the last message when there are too many to
-	// be shown in the chat box
-	chat.scrollTop = chat.scrollHeight;
 	/* This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box */
 	chat.scrollTop = chat.scrollHeight;
 };
@@ -86,82 +85,61 @@ const showFoodOptions = (name) => {
 const handleFoodOptions = (event) => {
 	event.preventDefault();
 
-	//part1 Define the sub menu
-	const pizzaMenu = () => {
-		inputWrapper.innerHTML = `
-                <select id="select" onchange="bubbleAudio.play()">
-                    <option value="" disabled selected>--SELECT ONE ITEM--</option>
-                    <option value="margherita" name="pizza-Margherita" id="margherita">Margherita</option>
-                    <option value="funghi" name="pizza-Funghi" id="funghi">Funghi</option>
-                    <option value="pepperoni" name="pizza-Pepperoni" id="pepperoni">Pepperoni</option>
-                </select>
-            `;
-	};
-
-	const pastaMenu = () => {
-		inputWrapper.innerHTML = `
-        <select id="select" onchange="bubbleAudio.play()">
-        <option value="" disabled selected>--SELECT ONE ITEM--</option>
-        <option value="carbonara" name="Spaghetti-Carbonara" id="carbonara">Spaghetti Carbonara</option>
-        <option value="pesto" name="Fussili-Pesto" id="pesto">Fussili Pesto</option>
-        <option value="bolognese" name="Spaghetti-Bolognese" id="bolognese">Spaghetti Bolognese</option>
-    </select>
-	`;
-	};
-
-	const saladMenu = () => {
-		inputWrapper.innerHTML = `
-        <select id="select" onchange="bubbleAudio.play()">
-        <option value="" disabled selected>--SELECT ONE ITEM--</option>
-        <option value="ceaser" name="Ceaser-Salad" id="ceaser">Ceaser Salad</option>
-        <option value="chef" name="Chef-Salad" id="chef">Chef Salad</option>
-        <option value="greek" name="Greek-Salad" id="greek">Greek Salad</option>
-    </select>
-	`;
-	};
-
 	//part2 Check which button did user click
 	const userMainOption = event.target.value;
-	let mainFood;
 
-	switch (userMainOption) {
-		case "pizza":
-			mainFood = "pizza";
-			setTimeout(pizzaMenu, 1000);
-			break;
-
-		case "pasta":
-			mainFood = "pasta";
-			setTimeout(pastaMenu, 1000);
-			break;
-
-		case "salad":
-			mainFood = "salad";
-			setTimeout(saladMenu, 1000);
-			break;
-
-		default:
-			showMessage(`Something seems to be wrong!`, "bot");
-			break;
+	if (userMainOption === "pizza") {
+		mainFood = "pizza";
+		inputWrapper.innerHTML = `
+			<select id="select" onchange="bubbleAudio.play()">
+			<option value="" disabled selected>--SELECT ONE ITEM--</option>
+			<option value="margherita" name="pizza-Margherita" id="margherita">Margherita</option>
+			<option value="funghi" name="pizza-Funghi" id="funghi">Funghi</option>
+			<option value="pepperoni" name="pizza-Pepperoni" id="pepperoni">Pepperoni</option>
+			</select>
+			`;
+	} else if (userMainOption === "pizza") {
+		mainFood = "pasta";
+		inputWrapper.innerHTML = `
+				<select id="select" onchange="bubbleAudio.play()">
+				<option value="" disabled selected>--SELECT ONE ITEM--</option>
+				<option value="carbonara" name="Spaghetti-Carbonara" id="carbonara">Spaghetti Carbonara</option>
+				<option value="pesto" name="Fussili-Pesto" id="pesto">Fussili Pesto</option>
+				<option value="bolognese" name="Spaghetti-Bolognese" id="bolognese">Spaghetti Bolognese</option>
+			</select>
+			`;
+	} else {
+		mainFood = "salad";
+		inputWrapper.innerHTML = `
+				<select id="select" onchange="bubbleAudio.play()">
+				<option value="" disabled selected>--SELECT ONE ITEM--</option>
+				<option value="ceaser" name="Ceaser-Salad" id="ceaser">Ceaser Salad</option>
+				<option value="chef" name="Chef-Salad" id="chef">Chef Salad</option>
+				<option value="greek" name="Greek-Salad" id="greek">Greek Salad</option>
+			</select>
+			`;
 	}
 
 	console.log(mainFood);
 
-	//part3 Show the conversation bubble
+	//Show the conversation bubble
 	showMessage(`${mainFood}`, `user`);
 	const confirmMainFood = () => {
 		showMessage(`You ordered ${mainFood}! Choose one from our menu.`, `bot`);
 	};
 	setTimeout(confirmMainFood, 1000);
+
+	const subFood = document.getElementById("select");
+	subFood.addEventListener("change", () => {
+		showMessage();
+	});
+	console.log(subFood);
 };
 
 //
 //
 //From selecting sub food to
 //asking for the size of the menu + showing the size option
-const subFood = document.getElementById("select");
-
-console.log(select.value);
 
 //
 //
