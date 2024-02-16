@@ -157,9 +157,9 @@ const askForConfirmation = (userAge) => {
   <button id="no">No</button>
   </div>`;
     const yesBtn = document.getElementById("yes");
-    yesBtn.onclick = () => ageClick("Yes");
+    yesBtn.onclick = () => confirmationClick("Yes");
     const noBtn = document.getElementById("no");
-    noBtn.onclick = () => ageClick("No");
+    noBtn.onclick = () => confirmationClick("No");
   } else if (userAge === "Adult") {
     showMessage(
       `The cost for an adult portion is 15€. Are you sure you want to order this?`,
@@ -170,14 +170,34 @@ const askForConfirmation = (userAge) => {
   <button id="no">No</button>
   </div>`;
     const yesBtn = document.getElementById("yes");
-    yesBtn.onclick = () => ageClick("Yes");
+    yesBtn.onclick = () => confirmationClick("Yes");
     const noBtn = document.getElementById("no");
-    noBtn.onclick = () => ageClick("No");
+    noBtn.onclick = () => confirmationClick("No");
   }
 };
 
 // NEXT STEP
-//Confirmation button from bot
+//Confirmation message from user
+const confirmationClick = (userConfirmation) => {
+  showMessage(userConfirmation, "user");
+  setTimeout(() => confirmOrder(userConfirmation), 1000);
+};
+//Confirmation message from bot
+
+const confirmOrder = (userConfirmation) => {
+  if (userConfirmation === "Yes") {
+    showMessage(
+      `Thank you for your order, we will start preparing your dish!`,
+      "bot"
+    );
+  } else if (userConfirmation === "No") {
+    showMessage(
+      `Sorry to hear you didn't want to order from us. You are most welcome back whenever you feel like pizza, pasta or salad 🥰`,
+      "bot"
+    );
+  }
+  inputWrapper.innerHTML = "";
+};
 
 // Eventlisteners goes here 👇
 
