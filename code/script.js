@@ -16,14 +16,24 @@ const subKebab = document.getElementById("sub-kebab");
 //Sofie provar
 
 const vesuvio = document.getElementById("vesuvio");
-const fruttiDiMare = document.getElementById("frutti")
-const funghi = document.getElementById("funghi")
+const fruttiDiMare = document.getElementById("frutti");
+const funghi = document.getElementById("funghi");
 
 const subPizzaSelect = document.getElementById("test-pizza");
 const subSaladSelect = document.getElementById("test-salad");
 const subKebabSelect = document.getElementById("test-kebab");
 
+const userPortion = document.getElementById("user-portion");
 
+const largeButton = document.getElementById("large-button");
+const xLargeButton = document.getElementById("xl-button");
+
+const confirmation = document.getElementById("confirmation")
+const yesButton = document.getElementById("yes-button")
+const noButton = document.getElementById("no-button");
+
+let selectedDish;
+let portion;
 
 //MARTIN! Jag samlade alla kommentarer/instruktioner här för bättre läsvänlighet!
 // A function that will add a chat bubble in the correct place based on who the sender is
@@ -62,7 +72,6 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 };
 
-
 //HÄR BÖRJAR VÅR CHAT-BOT!
 // A function to start the conversation.
 // Here we call the function showMessage, that we declared earlier with the argument:
@@ -87,8 +96,7 @@ const handleNameInput = (event) => {
 const chooseFoodOption = (name) => {
   foodCategory.style.display = "flex";
   nameWrapper.style.display = "none";
-  showMessage(
-    `Hi ${name}! What would you like to order? `, "bot");
+  showMessage(`Hi ${name}! What would you like to order? `, "bot");
 };
 
 //Skapa stor CS för alla val ex if pizza....alt, els if sallad osv
@@ -110,46 +118,74 @@ const chooseSubOption = (category) => {
     "bot"
   );
   showMessage(`you chose ${subPizza}`);
-  console.log("first choice:", category)
+  console.log("first choice:", category);
+};
 
+const confirmOrder = () => {
+  //dölja portionsize
+  userPortion.style.display = "none"
+  // ja/nejknappar
+  confirmation.style.display = "flex"
+
+  //if-meddelande om val
+  //tack
+  //loop om fel
+}
+
+const summary = (portion) => {
+  console.log("summary");
+  let price;
+  if (portion == "Large") {
+    price = "£10";
+  } else {
+    price = "¥20000";
+  }
+  console.log(price);
+  showMessage(
+    `Your order:
+  One ${portion.toLowerCase()} ${selectedDish}.
+  That will be ${price}.
+  Is this correct?
+  `,
+    "bot"
+  );
+  confirmOrder();
 };
 
 const portionSelect = () => {
   // dölja subselect
-  
+  subPizza.style.display = "none";
+  subSalad.style.display = "none";
+  subKebab.style.display = "none";
   // visa Large XL knappar
+  userPortion.style.display = "flex";
+  largeButton.addEventListener("click", function () {
+    showMessage("Large", "user"),
+      (portion = largeButton.innerText),
+      console.log(portion),
+      summary(portion);
+  });
+
+  xLargeButton.addEventListener("click", function () {
+    showMessage("Extra Large", "user"),
+      (portion = xLargeButton.innerText),
+      console.log(portion),
+      summary(portion);
+  });
+
   // gåvidare till sammanfattningen
   // spara portionsstorlek.
-
-}
+};
 
 //Sofie provar... vad är det som blir fel?
 
- const finalFoodChoice = (chooseSubOption) => {
+const finalFoodChoice = (chooseSubOption) => {
   console.log(chooseSubOption);
-  const selectedDish = chooseSubOption;
+  selectedDish = chooseSubOption;
   showMessage(chooseSubOption, "user");
-  showMessage(`You chose ${chooseSubOption}. Large or X-large portion?`);
+  showMessage(`You chose ${chooseSubOption}. Large or X-large portion?`, "bot");
   portionSelect();
-
-    if (chooseSubOption == "Vesuvio") {
-      showMessage("Vesuvio", "bot");
-    } else if (chooseSubOption == "Frutti di mare") {
-     showMessage("Frutti di mare", "bot");
-    } else {
-     showMessage("Funghi", "bot");
-    }
-
- }
-
-
-
-/*
-const userPortionSize = () => {
-  showMessage ("How hungry are you?", "bot");
-  
-}
-*/
+};
 
 // Eventlisteners goes here 👇
 sendButton.onclick = handleNameInput;
@@ -166,9 +202,15 @@ kebabButton.addEventListener("click", function () {
   chooseSubOption("kebab");
 });
 
-subPizzaSelect.addEventListener("change", function () {finalFoodChoice(subPizzaSelect.value);});
-subSaladSelect.addEventListener("change", function () {finalFoodChoice(subSaladSelect.value);});
-subKebabSelect.addEventListener("change", function () {finalFoodChoice(subKebabSelect.value);});
+subPizzaSelect.addEventListener("change", function () {
+  finalFoodChoice(subPizzaSelect.value);
+});
+subSaladSelect.addEventListener("change", function () {
+  finalFoodChoice(subSaladSelect.value);
+});
+subKebabSelect.addEventListener("change", function () {
+  finalFoodChoice(subKebabSelect.value);
+});
 
 //Sofie provar
 /*

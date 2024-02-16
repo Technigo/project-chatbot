@@ -165,7 +165,11 @@ button:hover {
   display: none;
 }
 
-#portion-select {
+#user-portion {
+  display: none;
+}
+
+#confirmation{
   display: none;
 }
 
