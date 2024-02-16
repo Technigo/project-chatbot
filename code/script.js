@@ -1,10 +1,10 @@
 // DOM selectors
 const chat = document.getElementById('chat')
 const nameInput = document.getElementById('name-input')
-const form = document.getElementById('name-form')
-const submit = document.getElementById('submit')
-const main = document.getElementById('main')
-const inputWrapper = document.getElementById('input-wrapper')
+//const form = document.getElementById('name-form')
+//const submit = document.getElementById('submit')
+//const main = document.getElementById('main')
+//const inputWrapper = document.getElementById('input-wrapper')
 
 const showMessage = (message, sender) => {
   if (sender === 'user') {
@@ -17,7 +17,6 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
-    console.log(showMessage)
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -36,10 +35,29 @@ const greetUser = () => {
 }
 const nameForm = document.getElementById('name-form');
 
-
 // Eventlisteners goes here 👇
+const handleNameInput = (event) => {
+  event.preventDefault();
+  const name = nameInput.value;
+  showMessage(name, "user");
+  nameInput.value = "";
+  setTimeout(() => showFoodOptions(name), 1000);
+};
 
+nameForm.addEventListener('submit', handleNameInput); 
 
+const showFoodOptions = (name) => {
+  showMessage(`Hi ${name}, what type of pizza would you like?`, 'bot');
+ 
+ inputWrapper.innerHTML = `
+ <button id="margaritaBtn">Margarita</button>
+ <button id="pepperoniBtn">Pepperoni</button>
+ <button id="hawaiiBtn">Vegetarian</button>
+`;
+document.getElementById('margaritaBtn').addEventListener('click', () => selectPizza('Margarita'));
+document.getElementById('pepperoniBtn').addEventListener('click', () => selectPizza('Pepperoni'));
+document.getElementById('hawaiiBtn').addEventListener('click', () => selectPizza('Hawaii'));
+};
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
 // To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
