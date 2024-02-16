@@ -231,11 +231,10 @@ let choice = "";
 }
 
 
-
+//hej
 // Eventlisteners goes here 👇
 
 // Add listener to the form
 nameForm.addEventListener("submit", handleNameInput);
-
 // Greet the user
 setTimeout(greetUser, 1000);
