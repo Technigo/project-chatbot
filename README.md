@@ -14,4 +14,4 @@ If we had had more time we would have tried out the advanced stretch goals.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://chipper-starburst-234ce1.netlify.app/
