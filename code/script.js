@@ -2,7 +2,6 @@
 const chat = document.getElementById("chat");
 const nameForm = document.getElementById("name-form");
 const nameInput = document.getElementById("name-input");
-const sendButton = document.getElementById("send-btn");
 const nameFormChildren = nameForm.querySelectorAll("*");
 const inputWrapper = document.getElementById("input-wrapper");
 
@@ -65,6 +64,8 @@ const handleNameInput = (event) => {
   setTimeout(whatkindofSemla, 1000);
 };
 
+
+
 // Second question: What kind of semla would you like?
 const whatkindofSemla = () => {
   // Hide input field using display none
@@ -90,7 +91,7 @@ const whatkindofSemla = () => {
     radioButton.addEventListener("click", () => {
       if (radioButton.value === "regular") {
         showMessage(
-          radioButton.value,
+          `I choose ${radioButton.value}`,
           "user"
         );
         setTimeout(() => {
@@ -101,7 +102,7 @@ const whatkindofSemla = () => {
         }, 1000);
       } else {
         showMessage(
-          radioButton.value,
+          `I choose ${radioButton.value} free`,
           "user"
         );
         setTimeout(() => {
@@ -115,14 +116,8 @@ const whatkindofSemla = () => {
       
     });
   });
-  
-  //Tillfälligt test!// vill att klick på radiobutton öppnar nästa funktion nedanför men lyckades inte med det så satt en set timeout på 4 sekunder för att man ska hinna välja ett alternativ innan nästa funktion startar...
-//  setTimeout(() => subtypesSelection(), 4000);
 
 };
-
-
-//TEST SUBCHOICES//
 
 // Buttons for the subchoices //
 const subtypesSelection = () => {
@@ -131,7 +126,7 @@ const subtypesSelection = () => {
   <button id="vanilla" type="submit" class="choice-btn">Vanilla</button>
   <button id="chocolate" type="submit" class="choice-btn">Chocolate</button>
 `
-  // addeventlistner that generates a bot message with the chosen subchoice on click //
+  // addeventlistner that generates a bot message with the chosen subchoice by click //
   document.getElementById("blueberry").addEventListener("click", blueberryChoice);  
   document.getElementById("vanilla").addEventListener("click", vanillaChoice);
   document.getElementById("chocolate").addEventListener("click", chocolateChoice)
@@ -218,7 +213,9 @@ const setPrice = (choice) => {
 }
 setTimeout(orderConfirmation, 1000)
 } 
-  
+  ///dema hit///
+
+
 const orderConfirmation = () => {
 
 let choice = "";
@@ -234,18 +231,11 @@ let choice = "";
 }
 
 
-  
-
 
 // Eventlisteners goes here 👇
 
 // Add listener to the form
 nameForm.addEventListener("submit", handleNameInput);
 
-// Here we invoke the first function to get the chatbot to ask the first question when
-// the website is loaded. Normally we invoke functions like this: greeting()
-// To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
-// and pass along two arguments:
-// 1.) the function we want to delay, and 2.) the delay in milliseconds
-// This means the greeting function will be called one second after the website is loaded.
+// Greet the user
 setTimeout(greetUser, 1000);
