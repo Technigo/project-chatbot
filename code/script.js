@@ -3,8 +3,6 @@ const chat = document.getElementById("chat");
 const nameInput = document.getElementById("name-input");
 const inputWrapper = document.getElementById("input-wrapper");
 
-// Functions goes here 👇
-
 // A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // The if statement checks if the sender is the user and if that's the case it inserts
@@ -33,19 +31,17 @@ const showMessage = (message, sender) => {
     `;
   }
 
-  // This little thing makes the chat scroll to the last message when there are too many to
+  // This makes the chat scroll to the last message when there are too many to
   // be shown in the chat box
   chat.scrollTop = chat.scrollHeight;
 };
 
-// A function to start the conversation
+// A function to start the conversation and ask for the users name
 const greetUser = () => {
-  // Here we call the function showMessage, that we declared earlier with the argument:
-  // "Hello there, what's your name?" for message, and the argument "bot" for sender
   showMessage("Hello there, what's your name?", "bot");
-  // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 };
 
+// A function to promt the user to enter their name
 const handleNameInput = (event) => {
   event.preventDefault();
   const name = nameInput.value;
@@ -54,6 +50,7 @@ const handleNameInput = (event) => {
   setTimeout(() => showFoodOptions(name), 1000);
 };
 
+// The bot answers with the users name and asks what food the user wants to order with three different buttons with options
 const showFoodOptions = (name) => {
   showMessage(`Hello ${name}! What are you craving today?`, "bot");
   inputWrapper.innerHTML = `<div id="button-form">
@@ -68,11 +65,13 @@ const showFoodOptions = (name) => {
   saladBtn.onclick = () => foodClick("Salad");
 };
 
+// Message from user with the costumers choice of food
 const foodClick = (foodCategory) => {
   showMessage(foodCategory, "user");
   setTimeout(() => showSubtype(foodCategory), 1000);
 };
 
+// Bot answers by using the costumers prefered food and asks what kind of prefered food the customer want. Three buttons are shown to the user.
 const showSubtype = (foodCategory) => {
   showMessage(
     `${foodCategory}, nice! What kind of ${foodCategory} would you like? `,
@@ -114,16 +113,20 @@ const showSubtype = (foodCategory) => {
     caesarBtn.onclick = () => subtypeClick("Caesar-salad");
   }
 };
+
+// Message from user with the costumers choice of food subtype
 const subtypeClick = (dish) => {
   showMessage(dish, "user");
   setTimeout(() => confirmSubtype(dish), 1000);
 };
 
+// Message from bot with the costumers choice of food
 const confirmSubtype = (dish) => {
   showMessage(`${dish}, nice!`, "bot");
   setTimeout(() => askForAge(), 1000);
 };
 
+// Bot asks if the costumer wants the dish for child or adult. Two buttons with options are shown.
 const askForAge = (userAge) => {
   showMessage(`Do you want the meal to be for an adult or a child?`, "bot");
   inputWrapper.innerHTML = `<div id="button-form">
@@ -136,37 +139,45 @@ const askForAge = (userAge) => {
   childBtn.onclick = () => ageClick("Child");
 };
 
+// Message from user with the costumers age
 const ageClick = (userAge) => {
   showMessage(userAge, "user");
   setTimeout(() => askForConfirmation(userAge), 1000);
 };
 
+// Message from bot with an age confirmation. Bot asks for confirmation by showing two buttons with options yes or no.
 const askForConfirmation = (userAge) => {
   if (userAge === "Child") {
     showMessage(
       `The cost for a child portion is 10€. Are you sure you want to order this?`,
       "bot"
     );
-    const adultBtn = document.getElementById("adult");
-    adultBtn.onclick = () => ageClick("Adult");
-    const childBtn = document.getElementById("child");
-    childBtn.onclick = () => ageClick("Child");
+    inputWrapper.innerHTML = `<div id="button-form">
+  <button id="yes">Yes</button>
+  <button id="no">No</button>
+  </div>`;
+    const yesBtn = document.getElementById("yes");
+    yesBtn.onclick = () => ageClick("Yes");
+    const noBtn = document.getElementById("no");
+    noBtn.onclick = () => ageClick("No");
   } else if (userAge === "Adult") {
     showMessage(
       `The cost for an adult portion is 15€. Are you sure you want to order this?`,
       "bot"
     );
+    inputWrapper.innerHTML = `<div id="button-form">
+  <button id="yes">Yes</button>
+  <button id="no">No</button>
+  </div>`;
+    const yesBtn = document.getElementById("yes");
+    yesBtn.onclick = () => ageClick("Yes");
+    const noBtn = document.getElementById("no");
+    noBtn.onclick = () => ageClick("No");
   }
-  // inputWrapper.innerHTML = `<div id="button-form">
-  //   <button id="adult">Adult</button>
-  //   <button id="child">Child</button>
-  //   </div>`;
-  //   const adultBtn = document.getElementById("adult");
-  //   adultBtn.onclick = () => ageClick("Adult");
-  //   const childBtn = document.getElementById("child");
-  //   childBtn.onclick = () => ageClick("Child");
-  // };
 };
+
+// NEXT STEP
+//Confirmation button from bot
 
 // Eventlisteners goes here 👇
 
