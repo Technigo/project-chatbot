@@ -2,6 +2,8 @@
 const chat = document.getElementById("chat");
 const input = document.getElementById("name-input");
 const form = document.getElementById("name-form");
+const sendSound = new Audio("assets/send-message.mp3");
+const receiveSound = new Audio("assets/receiving.mp3");
 let values = {};
 // Functions goes here 👇
 
@@ -10,6 +12,7 @@ const showMessage = (message, sender) => {
   // The if statement checks if the sender is the user and if that's the case it inserts
   // an HTML section inside the chat with the posted message from the user
   if (sender === "user") {
+    sendSound.play();
     console.log("Message handled by user:", message);
     chat.innerHTML += `
       <section class="user-msg">
@@ -22,6 +25,7 @@ const showMessage = (message, sender) => {
     // The else if statement checks if the sender is the bot and if that's the case it inserts
     // an HTML section inside the chat with the posted message from the bot
   } else if (sender === "bot") {
+    receiveSound.play();
     console.log("Message handled by bot:", message);
     chat.innerHTML += `
       <section class="bot-msg">
@@ -48,6 +52,7 @@ function getInput() {
 // A function to start the conversation
 const greetUser = () => {
   showMessage("Hello there, what´s your name?", "bot");
+  receiveSound.play();
 };
 
 // Eventlisteners goes here 👇
@@ -57,10 +62,11 @@ const handleNameInput = (event) => {
   // clear it from the input
   const name = getInput();
   values["name"] = name;
-  showMessage(`Welcome ${name}`, "bot");
+  // showMessage(`Welcome ${name}!`, "bot");
+  setTimeout(showMessage, 1000, `Welcome ${name}!`, "bot");
   //tar bort så att inte boten frågar igen om namn
   event.target.removeEventListener("submit", handleNameInput);
-  setTimeout(askAge, 1000);
+  setTimeout(askAge, 2000);
 };
 //att den frågar om namnet o går vidare till nästa
 function askName() {
@@ -80,15 +86,16 @@ const handleAgeInput = (event) => {
   event.target.removeEventListener("submit", handleAgeInput);
   // Kontrollera om age är en siffra och inte är en tom sträng
   if (!isNaN(age) && age.trim() !== "") {
-    setTimeout(askGender, 1000);
+    setTimeout(askGender, 2000);
     // Visa ett felmeddelande om åldern inte är en siffra
   } else {
     showMessage("Please enter a valid age (numeric value).", "bot");
-    askAge();
+    setTimeout(askAge, 1000);
+    // När din chattbot är klar med att skriva
   }
 };
 function askAge() {
-  showMessage(`how old are you?`, "bot");
+  showMessage(`How old are you?`, "bot");
   form.addEventListener("submit", handleAgeInput);
 }
 
@@ -97,10 +104,10 @@ const handleGenderInput = (event) => {
   const gender = getInput();
   values["gender"] = gender;
   event.target.removeEventListener("submit", handleGenderInput);
-  askHairColor();
+  setTimeout(askHairColor, 2000);
 };
 function askGender() {
-  showMessage(`what's your gender?`, "bot");
+  showMessage(`What's your gender?`, "bot");
   form.addEventListener("submit", handleGenderInput);
 }
 const hairInput = (event) => {
@@ -108,22 +115,31 @@ const hairInput = (event) => {
   const hair = getInput();
   values["hair"] = hair;
   event.target.removeEventListener("submit", hairInput);
-  printFinal();
+  setTimeout(askSport, 2000);
 };
 function askHairColor() {
-  showMessage(`what's your hair color?`, "bot");
+  showMessage(`What's your hair color?`, "bot");
   form.addEventListener("submit", hairInput);
+}
+const sportInput = (event) => {
+  event.preventDefault();
+  const sport = getInput();
+  values["sport"] = sport;
+  event.target.removeEventListener("submit", sportInput);
+  setTimeout(printFinal, 2000);
+};
+function askSport() {
+  showMessage(`Do you practice any sports?`, "bot");
+  form.addEventListener("submit", sportInput);
 }
 
 function printFinal() {
   showMessage(
-    `your name is ${values["name"]}. you'ar ${values["age"]} years old. your gender is ${values["gender"]} and your hair color is ${values["hair"]}`,
+    `OK! This is what I know about you. your name is ${values["name"]}, you are ${values["age"]} years old, your gender is ${values["gender"]}, you have ${values["hair"]} hair and you practice ${values["sport"]}.`,
     "bot"
   );
   console.log(values);
 }
-
-// Händelselyssnare för inmatningsformuläret för ålder
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
