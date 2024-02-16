@@ -1,10 +1,13 @@
 let currentQuestion = ""
 const chat = document.getElementById("chat")
 const inputWrapper = document.getElementById("input-wrapper")
-let choice
 const audio = document.getElementById("botAudio")
 const audioUser = document.getElementById("userAudio")
+let name
+let choice
 let style
+let lastConfirmation
+let gender
 
 // Moved the greeting function here and added the form which we removed from HTML👇🏻
 /* function playAudioEffect(){
@@ -111,7 +114,7 @@ const firstChoice = (name, choice) => {
 
     showMessage("I would like a short cut!", "user")
     setTimeout(() => {
-      askNextQuestion(name,choice,undefined,undefined,undefined);
+      askNextQuestion(name,choice);
     }, 1500)
   })
   document.getElementById("medium").addEventListener("click", () => {
@@ -119,14 +122,14 @@ const firstChoice = (name, choice) => {
     showMessage("I would like a medium cut!", "user")
     setTimeout(() => {
       //add all variable which have been defined in orders so they can be passed to the next function
-      askNextQuestion(name,choice,undefined,undefined,undefined);
+      askNextQuestion(name,choice);
     }, 1500)
   })
   document.getElementById("long").addEventListener("click", () => {
     choice = "Long"
     showMessage(`I would like a ${choice} cut!`, "user")
     setTimeout(() => {
-      askNextQuestion(name,choice,undefined,undefined,undefined);
+      askNextQuestion(name,choice);
     }, 1500)
   })
 }
@@ -152,13 +155,13 @@ const styleSelect = (choice) => {
 
       // I passed the choice argument in the following function because was undefined👇🏻
 
-      setTimeout(() => askNextQuestion(name,choice,style,undefined,undefined), 2000)
+      setTimeout(() => askNextQuestion(name,choice,style), 2000)
     })
 }
 
 // Function to handle gender selection
 
-const genderSelect = (style, choice) => {
+const genderSelect = (choice, style) => {
   currentQuestion = "gender"
   // can't pass the choice in this function , it's undefined.👇🏻
   showMessage(
@@ -166,7 +169,6 @@ const genderSelect = (style, choice) => {
     "bot"
   )
 
-  let gender
   inputWrapper.innerHTML = `<div id="button-form">
   <button id="boy">👦🏻</button>
   <button id="girl">👧🏻</button>
@@ -178,17 +180,17 @@ const genderSelect = (style, choice) => {
     gender = "Boy"
 
     showMessage("Boy", "user")
-    setTimeout(() => askNextQuestion(name, style, choice,undefined,gender), 2500)
+    setTimeout(() => askNextQuestion(name,choice,style,gender), 2500)
   })
   document.getElementById("girl").addEventListener("click", () => {
     gender = "Girl"
     showMessage("Girl", "user")
 
-    setTimeout(() => askNextQuestion(name, style, choice,undefined,gender), 2500)
+    setTimeout(() => askNextQuestion(name,choice,style,gender), 2500)
   })
 }
 
-const confirmation = (gender, style, choice) => {
+const confirmation = (style,choice,gender) => {
   currentQuestion = "lastConfirmation"
   if (gender === "Boy") {
     showMessage(
@@ -212,13 +214,13 @@ const confirmation = (gender, style, choice) => {
     lastConfirmation = "YES"
 
     showMessage("YES", "user")
-    setTimeout(() => askNextQuestion(lastConfirmation), 2500)
+    setTimeout(() => askNextQuestion(name,choice,style,gender,lastConfirmation), 2500)
     document.getElementById("button-form").remove()
   })
   document.getElementById("NO").addEventListener("click", () => {
     lastConfirmation = "NO"
     showMessage("NO", "user")
-    setTimeout(() => askNextQuestion(lastConfirmation), 2500)
+    setTimeout(() => askNextQuestion(name,choice,style,gender,lastConfirmation), 2500)
     document.getElementById("button-form").remove()
   })
 }
@@ -257,7 +259,7 @@ const askNextQuestion = (name, choice, style, gender, lastConfirmation) => {
       genderSelect(style,choice)
       break
     case "gender":
-      confirmation(style, gender, choice)
+      confirmation(style,choice,gender)
       break
     case "lastConfirmation":
       lastMessage(lastConfirmation)
