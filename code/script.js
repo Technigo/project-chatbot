@@ -117,7 +117,7 @@ const firstChoice = (name) => {
 let subChoice
 
 const handleSecondChoice = (choice) => {
-  showMessage(`One ${choice} coming up, what kind of ${choice} would you like?`, "bot")
+  showMessage(`Great choice, ${choice} coming up, what kind of ${choice} would you like?`, "bot")
   if (choice === "coffee") {
     form.innerHTML = `<div class="sub-categories">
     <button class="send-btn" id="filter" type="submit">Filter Coffee</button>
@@ -154,7 +154,7 @@ const handleSecondChoice = (choice) => {
     document.getElementById("baguette").addEventListener("click", (handleSecondChoice) => {
       handleSecondChoice.preventDefault()
       subChoice = "baguette"
-      showMessage("I would like a baguette, please!", "user")
+      showMessage("I would like a baguette, s'il vous plaît!", "user")
       setTimeout(() => handleThirdChoice(subChoice), 1000)
       
     })
@@ -210,10 +210,12 @@ const handleThirdChoice = (subChoice) => {
   document.getElementById("amount-btn").addEventListener("click", (event) => {
     event.preventDefault()
     const amount = amountInput.value
-    showMessage(`${amount}`, `user`)
+    showMessage(`${amount} ${subChoice}s, please!`, `user`)
     amountInput.value = ""
     })
 }
+
+
 
 //Test
  
