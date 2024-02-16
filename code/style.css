@@ -51,6 +51,9 @@ input {
   line-height: 26px;
   flex: 1;
   width: 100%;
+}
+
+input:focus-visible {
   outline: 1px solid black;
 }
 
