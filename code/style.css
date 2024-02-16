@@ -33,9 +33,7 @@ p {
   font-weight: 600;
   line-height: 28px;
   margin: 0;
-  
 }
-
 
 input {
   box-sizing: border-box;
@@ -104,8 +102,6 @@ main {
   width: 60%;
   height: 90%;
   margin: auto;
-
-
 }
 
 .bubble {
@@ -138,7 +134,6 @@ main {
   width: 100%;
   display: flex;
   align-items: center;
-
 }
 
 label {
@@ -148,50 +143,6 @@ label {
   color: #0D3B66;
   margin-right: 20px;
 }
-
-@media (max-width: 600px){
-  .choice-btn {
-  padding-left: 10px;
-  padding-right: 10px;
-  margin: 4px;
-  grid-column: span 2;
-  }
-
-  .chat-btn{
-  padding-left: 10px;
-  padding-right: 10px;
-  margin: 4px;
-  grid-column: span 2;
-  }
-  .input-wrapper{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  
-  
-  }
-  #name-form {
-    grid-column: span 4;
-    width: 100%;
-  }
-   #answerForm {
-    grid-column: span 4;
-    width: 100%;
-  }
-  .bubble {
-    max-width: 60%;
-  }
-
-  p{
-  font-size: 14px;
-  }
-
-  #input-wrapper {
-  cover: 100%;
-}
-
-  
-}
-
 
 button {
   background-color: #F95738;
@@ -206,11 +157,54 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  
- 
 }
 
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+@media (max-width: 600px){
+  .choice-btn {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 4px;
+  grid-column: span 2;
+  }
+
+  .chat-btn {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 4px;
+  grid-column: span 2;
+  }
+
+  .input-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  #name-form {
+    grid-column: span 4;
+    width: 100%;
+  }
+
+   #answerForm {
+    grid-column: span 4;
+    width: 100%;
+  }
+
+  .bubble {
+    max-width: 60%;
+  }
+
+  p{
+  font-size: 14px;
+  }
+
+  #input-wrapper {
+  cover: 100%;
+  }
+}
+
+
