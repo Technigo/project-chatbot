@@ -4,7 +4,7 @@ const nameInput = document.getElementById('name-input')
 const form = document.getElementById('name-form')
 const submit = document.getElementById('submit')
 const main = document.getElementById('main')
-const inputWrapper = document.getElementById('inputWrapper')
+const inputWrapper = document.getElementById('input-wrapper')
 
 const showMessage = (message, sender) => {
   if (sender === 'user') {
@@ -31,7 +31,6 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-// A function to start the conversation
 const greetUser = () => {
   showMessage("Welcome to Pizzeria Penguin, what's your name?", 'bot')
 }
