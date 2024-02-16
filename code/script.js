@@ -5,6 +5,7 @@ const nameInput = document.getElementById("name-input");
 const sendButton = document.getElementById("send-btn");
 const nameFormChildren = nameForm.querySelectorAll("*");
 const inputWrapper = document.getElementById("input-wrapper");
+
 // Functions goes here 👇
 
 // A function that will add a chat bubble in the correct place based on who the sender is
@@ -18,7 +19,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user_bot.png" alt="User" />  
       </section>
     `;
     // The else if statement checks if the sender is the bot and if that's the case it inserts
@@ -26,7 +27,7 @@ const showMessage = (message, sender) => {
   } else if (sender === "bot") {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/semla_bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -47,7 +48,7 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 };
 
-// a function to get the users name and showing the name written by the user in the chat.
+// A function to get the users name and showing the name written by the user in the chat
 const handleNameInput = (event) => {
   event.preventDefault();
   const name = nameInput.value;
@@ -65,7 +66,7 @@ const handleNameInput = (event) => {
 };
 
 // Second question: What kind of semla would you like?
-const whatkindofSemla = (event) => {
+const whatkindofSemla = () => {
   // Hide input field using display none
   nameFormChildren.forEach((child) => {
     // Här körs loopen. DDär har du tillgång till child, inte utanför loopen.
@@ -81,12 +82,12 @@ const whatkindofSemla = (event) => {
 
   `;
 
-  // We store all radio btns in a variabel.
+  // We store all radio btns in a variabel
   const radioButtons = document.querySelectorAll('input[name="semla_choice"]');
 
   // Loop through all buttons and add event listener to each button
   radioButtons.forEach((radioButton) => {
-    radioButton.addEventListener("click", (event) => {
+    radioButton.addEventListener("click", () => {
       if (radioButton.value === "regular") {
         showMessage(
           radioButton.value,
@@ -121,16 +122,16 @@ const whatkindofSemla = (event) => {
 };
 
 
-//TEST SUBKATEGORIER//
+//TEST SUBCHOICES//
 
-// knappar till olika subalternativ //
+// Buttons for the subchoices //
 const subtypesSelection = () => {
   inputWrapper.innerHTML = `
   <button id="blueberry" type="submit" class="choice-btn">Blueberry</button>
   <button id="vanilla" type="submit" class="choice-btn">Vanilla</button>
   <button id="chocolate" type="submit" class="choice-btn">Chocolate</button>
 `
-  // addeventlistner som genererar botmeddelande med vald smak på semla vid klick //
+  // addeventlistner that generates a bot message with the chosen subchoice on click //
   document.getElementById("blueberry").addEventListener("click", blueberryChoice);  
   document.getElementById("vanilla").addEventListener("click", vanillaChoice);
   document.getElementById("chocolate").addEventListener("click", chocolateChoice)
@@ -141,34 +142,99 @@ const blueberryChoice = () => {
   showMessage("Blueberry", "user");
   setTimeout(() => {
     showMessage(
-      "Yummy, blueberry is a great choice!",
+      "Yummy, blueberry is a great choice!\nWould you like a coffee with that?",
     "bot"
     );
   }, 1000);
+  setTimeout(coffeChoice, 1000);
 };
 
 const vanillaChoice = () => {
   showMessage("Vanilla", "user");
   setTimeout(() => {
     showMessage(
-      "yummy vanilla!",
+      "yummy vanilla!\nWould you like a coffee with that?",
     "bot"
     );
   }, 1000);
- 
+  setTimeout(coffeChoice, 1000);
 };
 
 const chocolateChoice = () => {
   showMessage("Chocolate", "user");
   setTimeout(() => {
     showMessage(
-      "Chocolate can never go wrong!",
+      "Chocolate can never go wrong!\nWould you like a coffee with that?",
     "bot"
     );
   }, 1000);
+  setTimeout(coffeChoice, 1000);
 };
 
 
+//Coffee buttons 
+
+const coffeChoice = () => {
+ let choice = "";
+
+  inputWrapper.innerHTML = `
+  <button type="submit" id="yes" class="coffeChoiceBtn">Yes</button>
+  <button type="submit" id="no" class="coffeChoiceBtn">No</button>
+  `
+
+  document.getElementById('yes').addEventListener('click', () => {
+    showMessage("Yes, please!", "user");
+    choice = "Yes";
+    setPrice(choice);
+  })
+
+  document.getElementById('no').addEventListener('click', () => {
+    showMessage("No, thank you!", "user");
+    choice = "No";
+    setPrice(choice);
+  })
+
+
+  // Lyssna på alla input fält 
+  // const coffeChoices = document.querySelectorAll('input[name="coffeChoice"]');
+  // coffeChoices.forEach(choice => {
+  //   choice.addEventListener("change", () => {
+  //     if(choice.value === 'yes') {
+  //       console.log(choice.value);
+  //     } else {
+  //       console.log('test');
+  //     }
+  //   })
+  // })
+
+}
+
+const setPrice = (choice) => {
+  //console.log("Set price" + choice);
+  if  (choice === "Yes") { 
+  showMessage ("Great, the total price will be 10$!, do you want to confirm this order?", "bot");
+ }  else if (choice === "No") { 
+  showMessage ("Ok no coffee! the total price will be 6$, do you want to confirm this order?", "bot")
+}
+setTimeout(orderConfirmation, 1000)
+} 
+  
+const orderConfirmation = () => {
+
+let choice = "";
+
+  inputWrapper.innerHTML = `
+  <button type="submit" id="yes" class="orderConfirmationBtn">Yes</button>
+  <button type="submit" id="no" class="orderConfirmationBtn">No</button>`
+
+  document.getElementById('yes').addEventListener('click', () => {
+    showMessage("We will prepare your order, thank you for using the Semel Bot")
+    choice = "Yes";
+  })
+}
+
+
+  
 
 
 // Eventlisteners goes here 👇
