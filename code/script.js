@@ -32,10 +32,7 @@ const noButton = document.getElementById("no-button");
 
 let selectedDish;
 let portion;
-let noOrder = true;
 let name;
-
-//while loop to restart app if the user does not confirm order.
 
 //MARTIN! Jag samlade alla kommentarer/instruktioner här för bättre läsvänlighet!
 // A function that will add a chat bubble in the correct place based on who the sender is
