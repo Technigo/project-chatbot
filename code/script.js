@@ -28,12 +28,17 @@ const userPortion = document.getElementById("user-portion");
 const largeButton = document.getElementById("large-button");
 const xLargeButton = document.getElementById("xl-button");
 
-const confirmation = document.getElementById("confirmation")
-const yesButton = document.getElementById("yes-button")
+const confirmation = document.getElementById("confirmation");
+const yesButton = document.getElementById("yes-button");
 const noButton = document.getElementById("no-button");
 
 let selectedDish;
 let portion;
+let whileCorrect;
+
+while (whileCorrect) {
+  
+}
 
 //MARTIN! Jag samlade alla kommentarer/instruktioner här för bättre läsvänlighet!
 // A function that will add a chat bubble in the correct place based on who the sender is
@@ -121,13 +126,27 @@ const chooseSubOption = (category) => {
   console.log("first choice:", category);
 };
 
+const loopBreak = (correctOrder) => {
+ if (correctOrder == "Heck yes!") {
+  whileCorrect = true;
+ } else {
+  whileCorrect = false;
+ }
+}
+
 const confirmOrder = () => {
   //dölja portionsize
   userPortion.style.display = "none"
   // ja/nejknappar
   confirmation.style.display = "flex"
-
   //if-meddelande om val
+  yesButton.addEventListener("click", function () {
+    showMessage("You order is being prepared, thank you for choosing Robot Resturant!", "bot"),
+    showMessage("Your order will shortly be delivered by drone R2D2")
+      (correctOrder = yesButton.innerText),
+      console.log(correctOrder),
+      loopBreak(correctOrder);
+    });
   //tack
   //loop om fel
 }
@@ -211,6 +230,8 @@ subSaladSelect.addEventListener("change", function () {
 subKebabSelect.addEventListener("change", function () {
   finalFoodChoice(subKebabSelect.value);
 });
+
+
 
 //Sofie provar
 /*
