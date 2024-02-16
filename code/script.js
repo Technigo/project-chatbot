@@ -8,6 +8,7 @@ const showMessage = (message, sender) => {
   // The if statement checks if the sender is the user and if that's the case it inserts
   // an HTML section inside the chat with the posted message from the user
   if (sender === 'user') {
+    console.log("show user message: " + message);
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -19,6 +20,7 @@ const showMessage = (message, sender) => {
     // The else if statement checks if the sender is the bot and if that's the case it inserts
     // an HTML section inside the chat with the posted message from the bot
   } else if (sender === 'bot') {
+    console.log("show bot message: " + message);
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -41,7 +43,20 @@ const greetUser = () => {
   showMessage("Hello there, what's your name?", 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 }
+const nameForm = document.getElementById('name-form');
 
+const handleNameInput = (event) => {
+  event.preventDefault();
+  const name = nameInput.value;
+  showMessage(name, "user");
+  nameInput.value = "";
+  setTimeout(() => showFoodOptions(name), 1000);
+
+}
+const showFoodOptions = (name) => {
+  showMessage(`Hi ${name} , please select your food of choice` , 'bot');
+
+}
 // Eventlisteners goes here 👇
 
 // Here we invoke the first function to get the chatbot to ask the first question when
@@ -50,4 +65,4 @@ const greetUser = () => {
 // and pass along two arguments:
 // 1.) the function we want to delay, and 2.) the delay in milliseconds 
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000)
+setTimeout(greetUser, 500)
