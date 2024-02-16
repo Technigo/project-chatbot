@@ -13,8 +13,6 @@ const subPizza = document.getElementById("sub-pizza");
 const subSalad = document.getElementById("sub-salad");
 const subKebab = document.getElementById("sub-kebab");
 
-//Sofie provar
-
 const vesuvio = document.getElementById("vesuvio");
 const fruttiDiMare = document.getElementById("frutti");
 const funghi = document.getElementById("funghi");
@@ -34,11 +32,10 @@ const noButton = document.getElementById("no-button");
 
 let selectedDish;
 let portion;
-let whileCorrect;
+let noOrder = true;
+let name;
 
-while (whileCorrect) {
-  
-}
+//while loop to restart app if the user does not confirm order.
 
 //MARTIN! Jag samlade alla kommentarer/instruktioner här för bättre läsvänlighet!
 // A function that will add a chat bubble in the correct place based on who the sender is
@@ -57,22 +54,22 @@ while (whileCorrect) {
 const showMessage = (message, sender) => {
   if (sender === "user") {
     chat.innerHTML += `
-      <section class="user-msg">
-        <div class="bubble user-bubble">
-          <p>${message}</p>
-        </div>
-        <img src="assets/user.png" alt="User" />  
-      </section>
-    `;
+        <section class="user-msg">
+          <div class="bubble user-bubble">
+            <p>${message}</p>
+          </div>
+          <img src="assets/user.png" alt="User" />  
+        </section>
+      `;
   } else if (sender === "bot") {
     chat.innerHTML += `
-      <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
-        <div class="bubble bot-bubble">
-          <p>${message}</p>
-        </div>
-      </section>
-    `;
+        <section class="bot-msg">
+          <img src="assets/bot.png" alt="Bot" />
+          <div class="bubble bot-bubble">
+            <p>${message}</p>
+          </div>
+        </section>
+      `;
   }
   chat.scrollTop = chat.scrollHeight;
 };
@@ -83,6 +80,7 @@ const showMessage = (message, sender) => {
 // "Hello there, what's your name?" for message, and the argument "bot" for sender
 
 const greetUser = () => {
+  nameInput.style.disply = "flex";
   showMessage("Hello there, what's your name?", "bot");
 };
 
@@ -90,7 +88,7 @@ const greetUser = () => {
 //Clear name input
 const handleNameInput = (event) => {
   event.preventDefault();
-  const name = nameInput.value;
+  name = nameInput.value;
   console.log(name);
   showMessage(name, "user");
   nameInput.value = "";
@@ -126,30 +124,29 @@ const chooseSubOption = (category) => {
   console.log("first choice:", category);
 };
 
-const loopBreak = (correctOrder) => {
- if (correctOrder == "Heck yes!") {
-  whileCorrect = true;
- } else {
-  whileCorrect = false;
- }
-}
 
 const confirmOrder = () => {
   //dölja portionsize
-  userPortion.style.display = "none"
+  userPortion.style.display = "none";
   // ja/nejknappar
-  confirmation.style.display = "flex"
+  confirmation.style.display = "flex";
   //if-meddelande om val
   yesButton.addEventListener("click", function () {
-    showMessage("You order is being prepared, thank you for choosing Robot Resturant!", "bot"),
-    showMessage("Your order will shortly be delivered by drone R2D2")
-      (correctOrder = yesButton.innerText),
-      console.log(correctOrder),
-      loopBreak(correctOrder);
-    });
+    showMessage(
+      "You order is being prepared, thank you for choosing Robot Resturant!",
+      "bot"
+    ),
+      showMessage("Your order will shortly be delivered by drone R2D2", "bot"),
+      (confirmation.style.display = "none");
+  });
+  noButton.addEventListener("click", function () {
+    showMessage("Please choose something else.", "bot"),
+      (confirmation.style.display = "none"),
+      chooseFoodOption(name);
+  });
   //tack
   //loop om fel
-}
+};
 
 const summary = (portion) => {
   console.log("summary");
@@ -162,10 +159,10 @@ const summary = (portion) => {
   console.log(price);
   showMessage(
     `Your order:
-  One ${portion.toLowerCase()} ${selectedDish}.
-  That will be ${price}.
-  Is this correct?
-  `,
+    One ${portion.toLowerCase()} ${selectedDish}.
+    That will be ${price}.
+    Is this correct?
+    `,
     "bot"
   );
   confirmOrder();
@@ -196,8 +193,6 @@ const portionSelect = () => {
   // spara portionsstorlek.
 };
 
-//Sofie provar... vad är det som blir fel?
-
 const finalFoodChoice = (chooseSubOption) => {
   console.log(chooseSubOption);
   selectedDish = chooseSubOption;
@@ -208,8 +203,6 @@ const finalFoodChoice = (chooseSubOption) => {
 
 // Eventlisteners goes here 👇
 sendButton.onclick = handleNameInput;
-//pizzaButton.addEventListener("click", pizzaOptions("pizza"));
-// kebabButton.onclick = pizzaOptions("kebab");
 
 pizzaButton.addEventListener("click", function () {
   chooseSubOption("pizza");
@@ -231,28 +224,11 @@ subKebabSelect.addEventListener("change", function () {
   finalFoodChoice(subKebabSelect.value);
 });
 
-
-
-//Sofie provar
-/*
- vesuvio.addEventListener("click", function () {
-   finalFoodChoice("Vesuvio")
- });
- fruttiDiMare.addEventListener("click", function () {
-   finalFoodChoice("Frutti di mare");
- });
- funghi.addEventListener("click", function () {
-   finalFoodChoice("Funghi");
- });
-*/
-
-//OnChange skulle kunna funka för att kolla vilken option på Select.
-//subSelect.onchange(showMessage(`I chose ${subSelect.value}`, "user"));
-
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
 // To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
 // and pass along two arguments:
 // 1.) the function we want to delay, and 2.) the delay in }}}{{\\{{milliseconds
 // This means the greeting function will be called one second after the website is loaded.
+
 setTimeout(greetUser, 1000);
