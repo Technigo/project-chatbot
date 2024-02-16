@@ -1,14 +1,13 @@
-// DOM selectors (variables that point to selected DOM elements) goes here 👇
+// DOM selectors
 const chat = document.getElementById('chat')
+const nameInput = document.getElementById('name-input')
+const form = document.getElementById('name-form')
+const submit = document.getElementById('submit')
+const main = document.getElementById('main')
+const inputWrapper = document.getElementById('inputWrapper')
 
-// Functions goes here 👇
-
-// A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // The if statement checks if the sender is the user and if that's the case it inserts
-  // an HTML section inside the chat with the posted message from the user
   if (sender === 'user') {
-    console.log("show user message: " + message);
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -17,10 +16,8 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `
-    // The else if statement checks if the sender is the bot and if that's the case it inserts
-    // an HTML section inside the chat with the posted message from the bot
   } else if (sender === 'bot') {
-    console.log("show bot message: " + message);
+    console.log(showMessage)
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -31,33 +28,18 @@ const showMessage = (message, sender) => {
     `
   }
 
-  // This little thing makes the chat scroll to the last message when there are too many to
-  // be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
 
 // A function to start the conversation
 const greetUser = () => {
-  // Here we call the function showMessage, that we declared earlier with the argument:
-  // "Hello there, what's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, what's your name?", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
+  showMessage("Welcome to Pizzeria Penguin, what's your name?", 'bot')
 }
 const nameForm = document.getElementById('name-form');
 
-const handleNameInput = (event) => {
-  event.preventDefault();
-  const name = nameInput.value;
-  showMessage(name, "user");
-  nameInput.value = "";
-  setTimeout(() => showFoodOptions(name), 1000);
 
-}
-const showFoodOptions = (name) => {
-  showMessage(`Hi ${name} , please select your food of choice` , 'bot');
-
-}
 // Eventlisteners goes here 👇
+
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
