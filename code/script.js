@@ -68,11 +68,16 @@ const getUserName = () => {
 
 const returnUserName = (userName) => {
   console.log(userName.value)
-userMessage(`My name is ${userName.value}`)
+if (userName.value === "") {
+  botMessage(`Please, enter a name.`)
+  return
+} else {
+  userMessage(`My name is ${userName.value}`)}
 nameForm.innerHTML = ""
-setTimeout(() => {botMessage(`Nice to meet you, ${userName.value}, what plant size would you like?`);}, 1000)
+setTimeout(() => {botMessage(`Nice to meet you ${userName.value}, what plant size would you like?`);}, 1000)
 setTimeout(() => getPlantSize(userName), 2000)
 }
+
 
 const getPlantSize = () => {
 nameForm.innerHTML = `<button name="plant-button" class="small-button" id="smallButton" value="small" type="button">small</button>
@@ -190,12 +195,14 @@ const confirmMessage = (event) => {
 let userAnswer = event.target.value
 if (userAnswer === "yes"){
 userMessage(`Yes, I want to order!`)
-setTimeout(botMessage, 1000)
-botMessage(`Great, your plant is growing to you!`)
+//setTimeout(botMessage, 1000)
+setTimeout(() => {botMessage(`Great, your plant is growing to you!`);}, 1000)
+setTimeout(startOver, 5000)
 } else {
   userMessage(`Nope, I don't.`)
-  setTimeout(botMessage, 1000)
+  //setTimeout(botMessage, 1000)
   botMessage(`Ok, see you next time!`)
+  setTimeout(startOver, 5000)
 }}
 
 /*const noMessage = () => {
@@ -205,7 +212,11 @@ botMessage(`Great, your plant is growing to you!`)
   }*/
 
 
-
+const startOver = () => {
+chat.innerHTML = ""
+nameForm.innerHTML = `<button type="button" id="helpButton">Help!</button>`
+//helpButton.addEventListener("click", greetUser)
+}
 
 // Eventlisteners goes here 👇
 helpButton.addEventListener("click", greetUser);
