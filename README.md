@@ -1,12 +1,16 @@
-# Project Name
+# Food Ordering Chatbot
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+We have built a functional chatbot interface using JavaScript, HTML, and CSS. The chatbot can interact with users, ask questions, display messages, and respond with precision. The assignment was done in pairs/small groups.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We bulit a chain of messages, that passes information through arguments. A setTimeout function is then used to trigger the next message to appear on screen.
+The chatbot provides the user with food options in the form of buttons. Based on the users answer it is then provided with different subtype options. We did this using if-statements.
+
+To make the insert field transform into buttons, we used DOM-selectors and event listeners.
+
+We focused on trying to fully understand what the code means, making sure everybody follows before we went forward to then next task. 
+If we had more time we would have like to try implementing a drop down menu and a button to start the conversation. Focus more on styling and trying out animations and sound effects. 
 
 ## View it live
 
