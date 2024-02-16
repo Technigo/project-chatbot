@@ -50,18 +50,25 @@ const greetUser = () => {
 // A function to get the users name and showing the name written by the user in the chat
 const handleNameInput = (event) => {
   event.preventDefault();
+
   const name = nameInput.value;
-  showMessage(name, "user");
-  nameInput.value = "";
 
-  setTimeout(() => {
-    showMessage(
-      `Hello ${name}, what kind of semla would you like to order?`,
-      "bot"
-    );
-  }, 1000);
-
-  setTimeout(whatkindofSemla, 1000);
+  if(name === "") {
+    // Message to user: Please fill in your name
+    nameInput.placeholder = "Please fill in your name";
+  } else {
+    showMessage(name, "user");
+    nameInput.value = "";
+  
+    setTimeout(() => {
+      showMessage(
+        `Hello ${name}, what kind of semla would you like to order?`,
+        "bot"
+      );
+    }, 1000);
+  
+    setTimeout(whatkindofSemla, 1000);
+  }  
 };
 
 
@@ -205,7 +212,7 @@ const coffeChoice = () => {
 }
 
 const setPrice = (choice) => {
-  //console.log("Set price" + choice);
+
   if  (choice === "Yes") { 
   showMessage ("Great, the total price will be 10$!, do you want to confirm this order?", "bot");
  }  else if (choice === "No") { 
@@ -213,25 +220,27 @@ const setPrice = (choice) => {
 }
 setTimeout(orderConfirmation, 1000)
 } 
-  ///dema hit///
+
 
 
 const orderConfirmation = () => {
-
-let choice = "";
 
   inputWrapper.innerHTML = `
   <button type="submit" id="yes" class="orderConfirmationBtn">Yes</button>
   <button type="submit" id="no" class="orderConfirmationBtn">No</button>`
 
   document.getElementById('yes').addEventListener('click', () => {
-    showMessage("We will prepare your order, thank you for using the Semel Bot")
-    choice = "Yes";
+    showMessage("We will prepare your order, thank you for using the Semel Bot", "bot")
+   
+  })
+  document.getElementById('no').addEventListener('click', () => {
+    showMessage("Ok, sorry to see you go.", "bot");
+   
   })
 }
 
 
-//hej
+
 // Eventlisteners goes here 👇
 
 // Add listener to the form
