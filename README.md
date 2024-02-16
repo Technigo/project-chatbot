@@ -1,6 +1,6 @@
 # Valentine's Chatbot
 
-This weeks project was to make a chatbot with focus on DOM and functions.The user was supposed to place an order, the bot respond to the user input. We worked in theams of 2, this project was made by Alma Hellström and Izabel Lind Färnstrand. 
+This weeks project was to make a chatbot with focus on DOM and functions. The user was supposed to place an order, the bot respond to the user input. We worked in teams of 2, this project was made by Alma Herrström and Izabel Lind Färnstrand. 
 
 ## The problem
 
