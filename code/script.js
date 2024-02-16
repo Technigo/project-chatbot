@@ -11,13 +11,13 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user2.png" alt="User" />  
       </section>
     `;
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bot2.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -35,10 +35,10 @@ const greetUser = () => {
 
 const askAboutFavoriteColor = (name) => {
   showMessage(`Oh wow, what a lovely name, ${name}! I really want to know more about you. What is your favorite color?`, 'bot');
-
-  // Remove the previous event listener and add a new one for color input
+  
   nameForm.removeEventListener("submit", handleNameInput);
   nameForm.addEventListener("submit", handleColorInput);
+
 };
 
 const handleNameInput = (event) => {
@@ -64,23 +64,47 @@ const handleColorInput = (event) => {
 };
 
 const askAboutFavoriteHobby = (color) => {
+  
   showMessage(`Nice choice! ${color} is a fantastic color. Now, can you tell me your favorite hobby?`, 'bot');
 
-  // Remove the previous event listener and add a new one for hobby input
   nameForm.removeEventListener("submit", handleColorInput);
   nameForm.addEventListener("submit", handleHobbyInput);
 };
 
 const handleHobbyInput = (event) => {
   event.preventDefault();
-
+  
   const hobbyInput = document.getElementById("name-input");
   const userHobby = hobbyInput.value;
   showMessage(userHobby, 'user');
   hobbyInput.value = "";
 
-  // You can continue the conversation or perform any actions based on the hobby input
+  setTimeout(() => askAboutFavoriteSeason(userHobby), 1000);
 };
+ /* const askAboutFavouriteSeason = () => {
+
+showMessage (`That sounds fun, what is your favourite season?`, 'bot');
+
+nameForm.removeEventListener("submit", handleHobbyInput);
+nameForm.addEventListener("submit", handleSeasonInput);
+
+} 
+
+const handleSeasonInput = (event) => {
+  event.preventDefault()
+
+  const seasonInput = document.getElementById("name-input");
+  const userSeason = seasonInput.value;
+  showMessage(userSeason, 'user');
+  seasonInput.value = "";
+  
+ askAboutFavouriteSeason();
+} */
+
+
+
+  // Ask about favorite season after processing the hobby input
+  
 
 // Event listener for the initial form submission
 nameForm.addEventListener("submit", handleNameInput);
