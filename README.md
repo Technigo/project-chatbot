@@ -14,4 +14,4 @@ If we had more time we would have like to try implementing a drop down menu and 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://guileless-biscochitos-0d55cd.netlify.app/
