@@ -1,3 +1,9 @@
+:root {
+  --main-background-color: rgb(255, 252, 248);
+  --bubble-background-color: rgb(255, 218, 155);
+  --text-color: rgb(151, 47, 47);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -5,15 +11,18 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #7181df;
+  font-family: "Montserrat", sans-serif;
+  background-image: url("./assets/pizzeria.jpg");
+
+  background-repeat: no-repeat;
+  margin: 0 auto;
 }
 
 h1 {
   font-weight: bold;
   font-size: 28px;
   line-height: 34px;
-  color: #fff;
+  color: var(--main-background-color);
   text-align: center;
 }
 
@@ -21,7 +30,7 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
-  color: #fff;
+  color: var(--main-background-color);
   text-align: center;
   margin-bottom: 36px;
 }
@@ -37,11 +46,11 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: var(--bubble-background-color);
+  color: var(--text-color);
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -51,12 +60,12 @@ input {
 select {
   border: none;
   border-radius: 4px;
-  color: #0026ff;
+  color: var(--text-color);
   font-size: 20px;
   font-weight: 600;
   height: 60px;
-  font-family: 'Montserrat';
-  background: #e5e9ff;
+  font-family: "Montserrat";
+  background: var(--bubble-background-color);
   width: 100%;
   padding: 0 20px;
   cursor: pointer;
@@ -72,7 +81,7 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: var(--main-background-color);
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -109,12 +118,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: var(--bubble-background-color);
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: var(--text-color);
   max-width: 40%;
 }
 
@@ -141,22 +150,22 @@ main {
 
 label {
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
-  color: #0026ff;
+  color: var(--text-color);
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
-  color: white;
+  background-color: var(--text-color);
+  color: var(--bubble-background-color);
   border: none;
   border-radius: 4px;
   padding: 16px 20px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
