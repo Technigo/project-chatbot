@@ -10,10 +10,12 @@ body {
 }
 
 h1 {
-  font-weight: bold;
-  font-size: 28px;
-  line-height: 34px;
-  color: #f5f5f5;
+  font-family: "Fraunces", serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 60px;
+  line-height: 54px;
+  color: #ffcc9e;
   text-align: center;
 }
 
@@ -164,9 +166,9 @@ button {
 }
 
 button:hover {
-
-  background-color: #F28585;
-  transition: background 0.2s ease;
+  background-color: #ebba8f;
+  color: #182919;
+  transition: all 0.4s ease;
 }
 
 .hidden {

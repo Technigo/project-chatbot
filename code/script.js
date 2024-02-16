@@ -11,9 +11,10 @@ const boba = document.createElement("button");
 const none = document.createElement("button");
 const yes = document.createElement("button");
 const no = document.createElement("button");
+// Soundfiles
 let bump = new Audio("assets/message.mp3");
 let kettle = new Audio("assets/kettle.mp3");
-
+let welcome = new Audio("assets/positive.wav");
 //variables to be stored for usage in several functions
 let teaChoice = "";
 let topping = "";
@@ -56,14 +57,12 @@ const showMessage = (message, sender) => {
 
 // A function to start the conversation
 const greetUser = () => {
-
+  myPlay(welcome);
   showMessage("Hello there, what's your name?", "bot");
-
 };
 
 const handleInput = (event) => {
   event.preventDefault();
-
   // Store the value in a variable so we can access it after we
   // clear it from the input
   const userInput = document.getElementById("user-input").value;
@@ -140,15 +139,13 @@ const confirm = (choice) => {
     myPlay(kettle);
     showMessage(`Yes`, "user");
     showMessage(`Ok ${userName}! Your ${teaChoice} with ${topping} will be ready in 5 seconds`, "bot");
-
   }
   else {
     showMessage(`No`, "user");
     showMessage(`Ok ${userName}, maybe coffee is more your cup of tea?`, "bot");
-
   }
 
-  setTimeout(() => refresh(), 5000);
+  setTimeout(() => refresh(), 6000);
 };
 
 const refresh = () => {
@@ -159,7 +156,6 @@ function myPlay(pip) {
   audio = pip;
   audio.play();
 }
-
 
 
 setTimeout(greetUser, 1000);
@@ -174,3 +170,5 @@ boba.addEventListener("click", () => handleToppingChoice("Boba"));
 none.addEventListener("click", () => handleToppingChoice("no topping"));
 yes.addEventListener("click", () => confirm("Yes"));
 no.addEventListener("click", () => confirm("No"));
+
+
