@@ -27,6 +27,8 @@ const showMessage = (message, sender) => {
         </div>
       </section>
     `
+
+    const popUp = new Audio('video here')
   }
   chat.scrollTop = chat.scrollHeight // This makes the chat scroll to the last message when there are too many to be shown 
 }
@@ -104,7 +106,7 @@ document.addEventListener('click', (event) => {
 const handleMainDishSelection = (selectedOption) => {
   showMessage(`${selectedOption}.`, 'user');
   setTimeout(() => {
-    showMessage(`A delicious choice, witch ${selectedOption} do you want?`, 'bot');
+    showMessage(`A delicious choice, which ${selectedOption} do you want?`, 'bot');
    
   // Remove main dish option buttons from inputWrapper
   const mainDishButtons = document.querySelectorAll('#pizza, #pasta, #salad');
@@ -146,8 +148,16 @@ inputWrapper.appendChild(subDishes);
 chat.scrollTop = chat.scrollHeight
 };
 
-
-
+// Add event listeners to mainDishOption buttons
+document.addEventListener('click', (event) => {
+  if (event.target.matches('#pizza')) {
+    handleMainDishSelection('Pizza');
+  } else if (event.target.matches('#pasta')) {
+    handleMainDishSelection('Pasta');
+  } else if (event.target.matches('#salad')) {
+    handleMainDishSelection('Salad');
+  }
+});
 
 /* const greetUser = () => {
   // Here we call the function showMessage, that we declared earlier with the argument:
