@@ -31,6 +31,9 @@ let portion;
 let userName;
 let finalOrder;
 
+let pop = document.querySelector('#audio')
+
+
 // Functions goes here 👇
 
 const showMessage = (message, sender) => {
