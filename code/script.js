@@ -310,6 +310,8 @@ const holidayDestination = () => {
 let yesPermission
 let noPermission
 let startOverPermission
+let permissionType
+let permissionTypeText = ""
 
 const askPermission = () => {
   showMessage(`All right, ${nameUser}! According to your preferences:
@@ -320,15 +322,20 @@ const askPermission = () => {
     Do you want us to book this trip?
   `, 'bot')
   inputWrapper.innerHTML = `
-    <button id="yes" type="button">Yes!</button>
-    <button id="no" type="button">No.</button>
-    <button id="again" type="button">Start over.</button>`
+    <div id="permission-type">
+      <button id="yes" type="button">Yes!</button>
+      <button id="no" type="button">No.</button>
+      <button id="again" type="button">Start over.</button>
+    </div>`
   yesPermission = document.getElementById("yes")
   noPermission = document.getElementById("no")
   startOverPermission = document.getElementById("again")
+  permissionType = document.getElementById("permission-type")
+  permissionTypeText = permissionType.value
   yesPermission.addEventListener("click", () => handlePermissionInput(`Yes!`))
   noPermission.addEventListener("click", () => handlePermissionInput(`No.`))
   startOverPermission.addEventListener("click", () => handlePermissionInput(`Start over.`))
+
   console.log(nameUser)
   console.log(weatherTypeText)
   console.log(tripLengthText)
@@ -338,11 +345,28 @@ const askPermission = () => {
 
 console.log(askPermission)
 
-let permissionType
+
 
 const handlePermissionInput = (permissionType) => {
   showMessage(permissionType, 'user')
+  permissionTypeText = permissionType
+  setTimeout(() => confirmChoice(), 1000)
 }
+
+const confirmChoice = () => {
+  inputWrapper.innerHTML =""
+  if (permissionTypeText === "Yes!") {
+    showMessage(`Thank you for your booking. We are looking forward to seeing you again soon, ${nameUser}!`, 'bot')
+  }
+  else if (permissionTypeText === "No.") {
+    showMessage(`Sadly we can't book your trip this way. Please come back for your next holiday, ${nameUser}`, 'bot')
+  }
+  else if (permissionTypeText === "Start over.")
+    showMessage(`Your planning will start from the beginning, ${nameUser}`, 'bot')
+    //setTimeout(() => askWeatherType(), 1500)
+  console.log(permissionTypeText)
+  }
+
 
 //If we create new HTML elements in JS we can't declare them at the top of the file. Do this when working next time to fix the null error! we need to add them inside the function
 
