@@ -13,13 +13,9 @@ const subPizza = document.getElementById("sub-pizza");
 const subSalad = document.getElementById("sub-salad");
 const subKebab = document.getElementById("sub-kebab");
 
-const vesuvio = document.getElementById("vesuvio");
-const fruttiDiMare = document.getElementById("frutti");
-const funghi = document.getElementById("funghi");
-
-const subPizzaSelect = document.getElementById("test-pizza");
-const subSaladSelect = document.getElementById("test-salad");
-const subKebabSelect = document.getElementById("test-kebab");
+const subPizzaSelect = document.getElementById("pizza-selector");
+const subSaladSelect = document.getElementById("salad-selector");
+const subKebabSelect = document.getElementById("kebab-selector");
 
 const userPortion = document.getElementById("user-portion");
 
@@ -77,6 +73,7 @@ const showMessage = (message, sender) => {
 // "Hello there, what's your name?" for message, and the argument "bot" for sender
 
 const greetUser = () => {
+  console.log("Greet");
   nameInput.style.disply = "flex";
   showMessage("Hello there, what's your name?", "bot");
 };
@@ -121,48 +118,12 @@ const chooseSubOption = (category) => {
   console.log("first choice:", category);
 };
 
-
-const confirmOrder = () => {
-  //dölja portionsize
-  userPortion.style.display = "none";
-  // ja/nejknappar
-  confirmation.style.display = "flex";
-  //if-meddelande om val
-  yesButton.addEventListener("click", function () {
-    showMessage(
-      "You order is being prepared, thank you for choosing Robot Resturant!",
-      "bot"
-    ),
-      showMessage("Your order will shortly be delivered by drone R2D2", "bot"),
-      (confirmation.style.display = "none");
-  });
-  noButton.addEventListener("click", function () {
-    showMessage("Please choose something else.", "bot"),
-      (confirmation.style.display = "none"),
-      chooseFoodOption(name);
-  });
-  //tack
-  //loop om fel
-};
-
-const summary = (portion) => {
-  console.log("summary");
-  let price;
-  if (portion == "Large") {
-    price = "£10";
-  } else {
-    price = "¥20000";
-  }
-  console.log(price);
-  showMessage(
-    `Your order:
-    One ${portion.toLowerCase()} ${selectedDish}.
-    That will be ${price}.
-    Is this correct?
-    `,
-    "bot"
-  );
-  confirmOrder();
+const finalFoodChoice = (chooseSubOption) => {
+  console.log(chooseSubOption);
+  selectedDish = chooseSubOption;
+  showMessage(chooseSubOption, "user");
+  showMessage(`You chose ${chooseSubOption}. Large or X-large portion?`, "bot");
+  portionSelect();
 };
 
 const portionSelect = () => {
@@ -185,17 +146,49 @@ const portionSelect = () => {
       console.log(portion),
       summary(portion);
   });
-
-  // gåvidare till sammanfattningen
-  // spara portionsstorlek.
 };
 
-const finalFoodChoice = (chooseSubOption) => {
-  console.log(chooseSubOption);
-  selectedDish = chooseSubOption;
-  showMessage(chooseSubOption, "user");
-  showMessage(`You chose ${chooseSubOption}. Large or X-large portion?`, "bot");
-  portionSelect();
+const summary = (portion) => {
+  console.log("summary");
+  let price;
+  if (portion == "Large") {
+    price = "£10";
+  } else {
+    price = "¥20000";
+  }
+  console.log(price);
+  showMessage(
+    `Your order:
+    One ${portion.toLowerCase()} ${selectedDish}.
+    That will be ${price}.
+    Is this correct?
+    `,
+    "bot"
+  );
+  confirmOrder();
+};
+
+const confirmOrder = () => {
+  //dölja portionsize
+  userPortion.style.display = "none";
+  // ja/nejknappar
+  confirmation.style.display = "flex";
+  //if-meddelande om val
+  yesButton.addEventListener("click", function () {
+    showMessage(
+      "You order is being prepared, thank you for choosing Robot Resturant!",
+      "bot"
+    ),
+      showMessage("Your order will shortly be delivered by drone R2D2", "bot"),
+      (confirmation.style.display = "none");
+  });
+  noButton.addEventListener("click", function () {
+    showMessage("Please choose something else.", "bot"),
+      (confirmation.style.display = "none"),
+      chooseFoodOption(name);
+  });
+  //tack
+  //loop om fel
 };
 
 // Eventlisteners goes here 👇
