@@ -10,7 +10,6 @@
       rel="stylesheet" />
     <title>Chatbot</title>
   </head>
-
   <body>
     <h1>Welcome to my chatbot!</h1>
     <main>
@@ -18,23 +17,20 @@
       <div class="input-wrapper" id="input-wrapper">
         <form id="name-form">
           <label for="name-input">Name</label>
-          <div class="dropdown">
-            <select id="food-options">
-              <a href="#">Pizza</a>
-              <a href="#">Sushi</a>
-              <a href="#">Tacos</a>
-            </select>
-            </div>
           <input id="name-input" type="text" />
-          
+          <!--Add dropdown list-->
+          <label for="caring-needs">Caring Needs</label>
+          <select id="caring-needs">
+            <option value="plant-whisperer">Plant Whisperer 🌱</option>
+            <option value="forgetful-gardener">Forgetful Gardener 🤦</option>
+            <option value="serial-plant-killer">Serial Plant Killer 🥀</option>
+          </select>
           <button class="send-btn" type="submit">
             Send
           </button>
         </form>
-     
       </div>
-    </div>
-  </main>
+    </main>
 
     <script src="./script.js"></script>
   </body>
