@@ -3,9 +3,7 @@ const chat = document.getElementById('chat')
 const nameInput = document.getElementById("name-input")
 const submitButton = document.getElementById("submit-button")
 const inputWrapper = document.getElementById("input-wrapper")
-const coldWeather = document.getElementById("coldWeather")
-const warmWeather = document.getElementById("warmWeather")
-const hotWeather = document.getElementById("hotWeather")
+
 
 // Functions goes here 👇
 
@@ -71,34 +69,88 @@ const handleNameInput = (event) => {
   nameUser = nameInput.value
   showMessage(nameUser, 'user')
   nameInput.value = ""
-  setTimeout(() => weatherType(), 1000)
+  setTimeout(() => askWeatherType(), 1000)
 }
 
 //Remember put the setTimeout into the function before the one that should be called afterwards. 
 
 submitButton.addEventListener("click", handleNameInput)
 
+let coldWeather
+let warmWeather
+let hotWeather
 
-const weatherType = () => {
-  showMessage(`Hi and welcome ${nameUser}, what type of weather do you like?`, 'bot')
+const askWeatherType = () => {
+  showMessage(`Hi and welcome ${nameUser} to your personal Travel Advisor, what type of weather do you like?`, 'bot')
   inputWrapper.innerHTML = `
-  <button id="coldWeather" type="button">Cold Weather</button>
-  <button id="warmWeather" type="button">Warm Weather</button>
-  <button id="hotWeather" type="button">Hot Weather</button>`
-}
-console.log(weatherType)
-
-const weatherInput = () => {
-  if (weatherType === 'coldWeather')
-  showMessage(weatherType, 'user')
-  else if (weatherType === 'warmWeather')
-  showMessage(weatherType, 'user')
-  else if (weatherType === 'hotWeather')
-  showMessage(weatherType, 'user')
+    <button id="cold-weather" type="button">Cold Weather</button>
+    <button id="warm-weather" type="button">Warm Weather</button>
+    <button id="hot-weather" type="button">Hot Weather</button>`
+  coldWeather = document.getElementById("cold-weather")
+  warmWeather = document.getElementById("warm-weather")
+  hotWeather = document.getElementById("hot-weather")
+  coldWeather.addEventListener("click", () => handleWeatherInput(`Cold Weather`))
+  warmWeather.addEventListener("click", () => handleWeatherInput(`Warm Weather`))
+  hotWeather.addEventListener("click", () => handleWeatherInput(`Hot Weather`))
 }
 
-coldWeather.addEventListener("click", weatherInput)
-warmWeather.addEventListener("click", weatherInput)
-hotWeather.addEventListener("click", weatherInput)
+
+const handleWeatherInput = (weatherType) => {
+  showMessage(weatherType, 'user')
+  setTimeout(() => askTripLength(weatherType), 1000)
+}
+
+console.log(askWeatherType)
+
+let tripLengthText
+
+const askTripLength = (weatherType) => {
+  showMessage(`${weatherType} is a great choice! How long do you want your holidays to last?`, 'bot')
+  inputWrapper.innerHTML = `
+    <select id="trip-length">
+      <option value="" disabled selected hidden>Choose from the following options:</option>
+      <option value="three to four Days">Three to four Days</option>
+      <option value="one to two Weeks">One to two Weeks</option>
+      <option value="more than two Weeks">More than two Weeks</option>
+    </select>`
+  const tripLength = document.getElementById("trip-length")
+  tripLength.addEventListener("change", () => {
+    tripLengthText = tripLength.value
+    handleTripInput(tripLengthText)
+  })
+  console.log(tripLength)
+}
+
+console.log(askTripLength)
+
+const handleTripInput = (tripLengthText) => {
+  showMessage(tripLengthText, 'user')
+  setTimeout(() => askGroupType(tripLengthText), 1000)
+}
+
+console.log(handleTripInput)
+
+let soloGroupType
+let partnerGroupType
+let familyGroupType
+let groupGroupType
+
+const askGroupType = (tripLengthText) => {
+  showMessage(`Your trip will last ${tripLengthText}. What kind of Group will you be travelling with? I will travel...`, 'bot')
+  inputWrapper.innerHTML = `
+    <button id="solo" type="button">alone.</button>
+    <button id="partner" type="button">with a partner.</button>
+    <button id="family" type="button">with family.</button>
+    <button id="group" type="button">with a group.</button>`
+  soloGroupType = document.getElementById("solo")
+  partnerGroupType = document.getElementById("partner")
+  familyGroupType = document.getElementById("family")
+  groupGroupType = document.getElementById("group")
+  
+}
+
+console.log(askGroupType)
 
 //If we create new HTML elements in JS we can't declare them at the top of the file. Do this when working next time to fix the null error! we need to add them inside the function
+
+//Name Function as verbs so it explains what is does
