@@ -1,4 +1,4 @@
-// DOM selectors (variables that point to selected DOM elements) goes here 👇
+// DOM selectors
 const chat = document.getElementById("chat");
 const sendButton = document.getElementById("send-button");
 const nameInput = document.getElementById("name-input");
@@ -28,19 +28,8 @@ const noButton = document.getElementById("no-button");
 
 let selectedDish;
 let portion;
-let name;
-
-//MARTIN! Jag samlade alla kommentarer/instruktioner här för bättre läsvänlighet!
-// A function that will add a chat bubble in the correct place based on who the sender is
-
-// The if statement checks if the sender is the user and if that's the case it inserts
-// an HTML section inside the chat with the posted message from the user
-
-// The else if statement checks if the sender is the bot and if that's the case it inserts
-// an HTML section inside the chat with the posted message from the bot
-
-// chat.scrollTop = chat.scrollHeight; This little thing makes the chat scroll to the last message when there are too many to
-// be shown in the chat box
+let userName;
+let finalOrder;
 
 // Functions goes here 👇
 
@@ -67,36 +56,26 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 };
 
-//HÄR BÖRJAR VÅR CHAT-BOT!
-// A function to start the conversation.
-// Here we call the function showMessage, that we declared earlier with the argument:
-// "Hello there, what's your name?" for message, and the argument "bot" for sender
-
 const greetUser = () => {
-  console.log("Greet");
   nameInput.style.disply = "flex";
   showMessage("Hello there, what's your name?", "bot");
 };
 
-//Store name for future use.
-//Clear name input
+
 const handleNameInput = (event) => {
   event.preventDefault();
-  name = nameInput.value;
-  console.log(name);
-  showMessage(name, "user");
+  userName = nameInput.value;
+  showMessage(userName, "user");
   nameInput.value = "";
-  chooseFoodOption(name);
-  console.log("name:", name);
+  chooseFoodOption(userName);
 };
 
-const chooseFoodOption = (name) => {
+const chooseFoodOption = (userName) => {
   foodCategory.style.display = "flex";
   nameWrapper.style.display = "none";
-  showMessage(`Hi ${name}! What would you like to order? `, "bot");
+  showMessage(`Hi ${userName}! What would you like to order? `, "bot");
 };
 
-//Skapa stor CS för alla val ex if pizza....alt, els if sallad osv
 const chooseSubOption = (category) => {
   foodCategory.style.display = "none";
 
@@ -114,12 +93,9 @@ const chooseSubOption = (category) => {
     `You chose ${category}. What kind of ${category} would you like?`,
     "bot"
   );
-  showMessage(`you chose ${subPizza}`);
-  console.log("first choice:", category);
 };
 
 const finalFoodChoice = (chooseSubOption) => {
-  console.log(chooseSubOption);
   selectedDish = chooseSubOption;
   showMessage(chooseSubOption, "user");
   showMessage(`You chose ${chooseSubOption}. Large or X-large portion?`, "bot");
@@ -127,36 +103,35 @@ const finalFoodChoice = (chooseSubOption) => {
 };
 
 const portionSelect = () => {
-  // dölja subselect
   subPizza.style.display = "none";
   subSalad.style.display = "none";
   subKebab.style.display = "none";
-  // visa Large XL knappar
-  userPortion.style.display = "flex";
-  largeButton.addEventListener("click", function () {
-    showMessage("Large", "user"),
-      (portion = largeButton.innerText),
-      console.log(portion),
-      summary(portion);
-  });
 
-  xLargeButton.addEventListener("click", function () {
-    showMessage("Extra Large", "user"),
-      (portion = xLargeButton.innerText),
-      console.log(portion),
-      summary(portion);
-  });
+  userPortion.style.display = "flex";
+
+  largeButton.addEventListener("click", largePortion);
+  xLargeButton.addEventListener("click", extraLargePortion);
 };
 
+const largePortion = () => {
+  showMessage("Large", "user");
+  (portion = largeButton.innerText);
+  summary(portion);
+}
+
+const extraLargePortion = () => {
+  showMessage("Extra Large", "user");
+  (portion = xLargeButton.innerText);
+  summary(portion);
+}
+
 const summary = (portion) => {
-  console.log("summary");
   let price;
   if (portion == "Large") {
     price = "£10";
   } else {
     price = "¥20000";
   }
-  console.log(price);
   showMessage(
     `Your order:
     One ${portion.toLowerCase()} ${selectedDish}.
@@ -169,27 +144,44 @@ const summary = (portion) => {
 };
 
 const confirmOrder = () => {
-  //dölja portionsize
   userPortion.style.display = "none";
-  // ja/nejknappar
   confirmation.style.display = "flex";
-  //if-meddelande om val
-  yesButton.addEventListener("click", function () {
+  yesButton.addEventListener("click", yesWoo, false);
+  noButton.addEventListener("click", function () {
+    finalOrder = false,
+    showMessage("No!", "user"),
+    orderLogic(finalOrder);
+  });
+};
+
+const yesWoo = () => {
+  finalOrder = true;
+  showMessage("Heck yes!", "user");
+  orderLogic(finalOrder);
+}
+
+const orderLogic = () => {
+  if (finalOrder == true){
     showMessage(
       "You order is being prepared, thank you for choosing Robot Resturant!",
       "bot"
-    ),
-      showMessage("Your order will shortly be delivered by drone R2D2", "bot"),
-      (confirmation.style.display = "none");
-  });
-  noButton.addEventListener("click", function () {
-    showMessage("Please choose something else.", "bot"),
-      (confirmation.style.display = "none"),
-      chooseFoodOption(name);
-  });
-  //tack
-  //loop om fel
-};
+    ); 
+    (confirmation.style.display = "none");
+  }
+  else {
+    showMessage("Please choose something else.", "bot");
+    (confirmation.style.display = "none");
+    chooseFoodOption(userName);
+    clearListeners;
+
+  }
+}
+
+const clearListeners = () =>{
+  yesButton.removeEventListener("click", yesWoo, false);
+  largeButton.removeEventListener("click", largePortion);
+  xLargeButton.removeEventListener("click", extraLargePortion);
+}
 
 // Eventlisteners goes here 👇
 sendButton.onclick = handleNameInput;
@@ -214,11 +206,5 @@ subKebabSelect.addEventListener("change", function () {
   finalFoodChoice(subKebabSelect.value);
 });
 
-// Here we invoke the first function to get the chatbot to ask the first question when
-// the website is loaded. Normally we invoke functions like this: greeting()
-// To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
-// and pass along two arguments:
-// 1.) the function we want to delay, and 2.) the delay in }}}{{\\{{milliseconds
-// This means the greeting function will be called one second after the website is loaded.
 
 setTimeout(greetUser, 1000);
