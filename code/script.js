@@ -94,18 +94,21 @@ const askWeatherType = () => {
   hotWeather.addEventListener("click", () => handleWeatherInput(`Hot Weather`))
 }
 
+let weatherTypeText
 
 const handleWeatherInput = (weatherType) => {
   showMessage(weatherType, 'user')
+  weatherTypeText = weatherType.value
   setTimeout(() => askTripLength(weatherType), 1000)
 }
 
 console.log(askWeatherType)
+//console.log(weatherType)
 
 let tripLengthText
 
 const askTripLength = (weatherType) => {
-  showMessage(`${weatherType} is a great choice! How long do you want your holidays to last?`, 'bot')
+  showMessage(`${weatherType} is a great choice! How long do you want your holiday to last?`, 'bot')
   inputWrapper.innerHTML = `
     <select id="trip-length">
       <option value="" disabled selected hidden>Choose from the following options:</option>
@@ -146,10 +149,52 @@ const askGroupType = (tripLengthText) => {
   partnerGroupType = document.getElementById("partner")
   familyGroupType = document.getElementById("family")
   groupGroupType = document.getElementById("group")
-  
+  soloGroupType.addEventListener("click", () => handleGroupInput(`alone.`))
+  partnerGroupType.addEventListener("click", () => handleGroupInput(`with a partner.`))
+  familyGroupType.addEventListener("click", () => handleGroupInput(`with family.`))
+  groupGroupType.addEventListener("click", () => handleGroupInput(`with a group.`))
+}
+
+let groupType
+
+const handleGroupInput = (groupType) => {
+  showMessage(groupType, 'user')
+  setTimeout(() => askPermission(groupType), 1000)
 }
 
 console.log(askGroupType)
+
+let yesPermission
+let noPermission
+let startOverPermission
+
+const askPermission = () => {
+  showMessage(`All right, ${nameUser}! According to your preferences:
+    ${weatherTypeText}
+    A trip lenght of ${tripLengthText}.
+    And the fact that you are travelling ${groupType}.
+    We will book a trip to XYZ for you.
+    Do you want us to book this trip?
+  `)
+  inputWrapper.innerHTML = `
+    <button id="yes" type="button">Yes!</button>
+    <button id="no" type="button">No.</button>
+    <button id="again" type="button">Start over.</button>`
+    yesPermission = document.getElementById("yes")
+    noPermission = document.getElementById("no")
+    startOverPermission = document.getElementById("again")
+    yesPermission.addEventListener("click", () => handlePermissionInput(`Yes!`))
+    noPermission.addEventListener("click", () => handlePermissionInput(`No.`))
+    startOverPermission.addEventListener("click", () => handlePermissionInput(`Start over.`))
+}
+
+console.log(askPermission)
+
+let permissionType
+
+const handlePermissionInput = (permissionType) => {
+  showMessage(permissionType, 'user')
+}
 
 //If we create new HTML elements in JS we can't declare them at the top of the file. Do this when working next time to fix the null error! we need to add them inside the function
 
