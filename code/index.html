@@ -8,21 +8,65 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet" />
-    <title>Chatbot</title>
+    <title>Robot Restaurant</title>
   </head>
 
   <body>
-    <h1>Welcome to my chatbot!</h1>
+    <audio id="audio" src="assets/pop.mp3"></audio>
+    <h1>Welcome to Robot Restuarant!</h1>
+    <h2>Great greasy food!</h2>
     <main>
       <section class="chat" id="chat"></section>
       <div class="input-wrapper" id="input-wrapper">
         <form id="name-form">
           <label for="name-input">Name</label>
           <input id="name-input" type="text" />
-          <button class="send-btn" type="submit">
+          <button class="send-btn" id ="send-button" type="submit">
             Send
           </button>
         </form>
+      </div>
+
+      <div class="input-wrapper" id="food-category">
+        <button id="pizza-button">Pizza</button>
+        <button id="salad-button">Salad</button>
+        <button id="kebab-button">Kebab</button>
+      </div>
+
+      <div class="input-wrapper" id="sub-pizza">
+        <select class="sub-select" id="pizza-selector">
+          <option id="default" disabled selected>Choose your pizza.</option> 
+          <option id="vesuvio">Vesuvio</option>
+          <option id="frutti">Frutti di mare</option>
+          <option id="funghi">Funghi</option>
+        </select>
+      </div>
+
+      <div class="input-wrapper" id="sub-salad">
+        <select class="sub-select" id="salad-selector">
+          <option id="default" disabled selected>Choose your salad.</option> 
+          <option>Halloumi salad</option>
+          <option>Caesar salad</option>
+          <option>Shrimp salad</option>
+        </select>
+      </div>
+
+      <div class="input-wrapper" id="sub-kebab">
+        <select class="sub-select" id="kebab-selector">
+          <option id="default" disabled selected>Choose your kebab.</option> 
+          <option>Döner kebab</option>
+          <option>Swedish kebab</option>
+        </select>
+      </div>
+
+      <div class="input-wrapper" id="user-portion">
+        <button id="large-button">Large</button>
+        <button id="xl-button">EXTRA Large</button>
+      </div>
+
+      <div class ="input-wrapper" id="confirmation">
+        <button id="yes-button">Heck yes!</button>
+        <button id="no-button">No!</button>
       </div>
     </main>
 
