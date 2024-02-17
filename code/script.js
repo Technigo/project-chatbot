@@ -6,14 +6,14 @@ const sendButton = document.querySelector(`.send-btn`);
 const nameForm = document.getElementById(`name-form`);
 
 let username = "";
-/*let question1 = "";*/
+let answerArray = []; // oder über 3 Variablen lösen
 
 // A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   //the if statement checks if the sender is user and if that's the case outputs the message
   if (sender === "user") {
-    console.log(sender);
-    console.log(message);
+    // console.log(sender);
+    // console.log(message);
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -24,8 +24,8 @@ const showMessage = (message, sender) => {
     `;
   } else if (sender === "bot") {
     //the else if statement checks if the sender is bot and if that's the case outputs the message
-    console.log(message);
-    console.log(sender);
+    // console.log(message);
+    // console.log(sender);
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot-fish.jpg" alt="Bot" />
@@ -57,7 +57,6 @@ const saveUsername = (event) => {
   //store the value in a variable so we can acces it later
   username = nameInput.value;
   showMessage(`Hi, I'm ${username}!`, `user`);
-  nameInput.value = "";
   chooseIntroExtro();
 };
 
@@ -92,8 +91,9 @@ const chooseIntroExtro = () => {
 };
 
 //function to display selection
-const handleSelection1 = (option) => {
-  showMessage(`I'm more of an ${option}`, "user");
+const handleSelection1 = (answer1) => {
+  showMessage(`I'm more of an ${answer1}`, "user");
+  answerArray[0] = answer1;
   //handle option selection (e.g. move to the next question)
   chooseDayNight();
 };
@@ -114,15 +114,14 @@ const chooseDayNight = () => {
   const nightButton = document.getElementById(`night-btn`);
 
   //event listeners for buttons
-  dayButton.addEventListener("click", () => handleSelection2("I prefer days"));
-  nightButton.addEventListener("click", () =>
-    handleSelection2("I prefer nights")
-  );
+  dayButton.addEventListener("click", () => handleSelection2("days"));
+  nightButton.addEventListener("click", () => handleSelection2("nights"));
 };
 
 //function to display selection
-const handleSelection2 = (option) => {
-  showMessage(`${option}`, "user");
+const handleSelection2 = (answer2) => {
+  showMessage(`I prefer ${answer2}`, "user");
+  answerArray[1] = answer2;
   //handle option selection (e.g. move to the next question)
   chooseOutIn();
 };
@@ -147,33 +146,76 @@ const chooseOutIn = () => {
   const inButton = document.getElementById(`in-btn`);
 
   //event listeners for buttons
-  outButton.addEventListener("click", () =>
-    handleSelection3("I'm funky. I stand out")
-  );
-  inButton.addEventListener("click", () =>
-    handleSelection3("I'm shy, I blend in.")
-  );
+  outButton.addEventListener("click", () => handleSelection3("stand out"));
+  inButton.addEventListener("click", () => handleSelection3("blend in"));
 };
 
-const handleSelection3 = (option) => {
-  showMessage(`${option}`, "user");
+const handleSelection3 = (answer3) => {
+  showMessage(`I ${answer3}`, "user");
+  answerArray[2] = answer3;
+  console.log(answerArray);
   defineSeaCreature();
 };
 
 //function to define the sea creature based on users selections
 const defineSeaCreature = () => {
-  let seaCreature = "Based on your selections, I think you are a ";
+  const defineIntroExtro = answerArray[0];
+  const defineDayNight = answerArray[1];
+  const defineOutIn = answerArray[2];
+
+  let response = "";
+
+  // if (answerArray.toString() === "'introvert','days','stand out'") {
+  //   response = "Muster1";
+  // }
+
   //switch
-  if (
-    handleSelection1 === "introvert" &&
-    handleSelection2 === "I prefer nights" &&
-    handleSelection3 === "I'm shy, I blend in."
-  ) {
-    showMessage(seaCreature, "bot");
+  switch (defineIntroExtro) {
+    case "introvert":
+      switch (defineDayNight) {
+        case "days":
+          switch (defineOutIn) {
+            case "stand out":
+              response = "Peacock Mantis Shrimp";
+              break;
+            case "blend in":
+              response = "Mimic Octopus";
+              break;
+          }
+        case "nights":
+          switch (defineOutIn) {
+            case "stand out":
+              response = "Moray Eel";
+              break;
+            case "blend in":
+              response = "Ghostpipe Fish";
+              break;
+          }
+      }
+    case "extrovert":
+      switch (defineDayNight) {
+        case "days":
+          switch (defineOutIn) {
+            case "stand out":
+              response = "Clownfish";
+              break;
+            case "blend in":
+              response = "Dolphin";
+              break;
+          }
+        case "nights":
+          switch (defineOutIn) {
+            case "stand out":
+              response = "Mandarin Fish";
+              break;
+            case "blend in":
+              response = "Manta Ray";
+              break;
+          }
+      }
+    default:
+      break;
   }
-
-  //switch or if - else
-
   //response
-  /*showMessage(seaCreature, "bot")*/
+  showMessage(`Turns out you are most likely a ${response}`, "bot");
 };
