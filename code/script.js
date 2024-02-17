@@ -1,10 +1,10 @@
 // DOM selectors
 const chat = document.getElementById('chat')
 const nameInput = document.getElementById('name-input')
-//const form = document.getElementById('name-form')
-//const submit = document.getElementById('submit')
-//const main = document.getElementById('main')
-//const inputWrapper = document.getElementById('input-wrapper')
+const form = document.getElementById('name-form')
+const submit = document.getElementById('submit')
+const main = document.getElementById('main')
+const inputWrapper = document.getElementById('input-wrapper')
 
 const showMessage = (message, sender) => {
   if (sender === 'user') {
@@ -36,6 +36,7 @@ const greetUser = () => {
 const nameForm = document.getElementById('name-form');
 
 // Eventlisteners goes here 👇
+
 const handleNameInput = (event) => {
   event.preventDefault();
   const name = nameInput.value;
@@ -58,6 +59,26 @@ document.getElementById('margaritaBtn').addEventListener('click', () => selectPi
 document.getElementById('pepperoniBtn').addEventListener('click', () => selectPizza('Pepperoni'));
 document.getElementById('hawaiiBtn').addEventListener('click', () => selectPizza('Hawaii'));
 };
+
+  const selectPizza = (pizzaType) => {
+  showMessage(`I have chosen a ${pizzaType} pizza`, 'user');
+  showMessage(`${pizzaType}, excellent choice!`, 'bot');
+  setTimeout(() => askForDrink(), 1000);
+  };
+  const askForDrink = () => {
+  showMessage("Please select a drink:", 'bot');
+  inputWrapper.innerHTML = `
+   <select id="drink-select">
+     <option value="water">Water</option>
+     <option value="soda">Soda</option>
+     <option value="juice">Juice</option>
+   </select>
+   <button id="drinkBtn">Select</button>
+  `;
+  
+  document.getElementById('drinkBtn').addEventListener('click', () => selectDrink());
+  };  
+  
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
 // To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
