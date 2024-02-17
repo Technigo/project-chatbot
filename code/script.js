@@ -32,12 +32,14 @@ let userName;
 let finalOrder;
 
 let pop = document.querySelector('#audio')
+pop.volume = 0.5;
 
 
 // Functions goes here 👇
 
 const showMessage = (message, sender) => {
   if (sender === "user") {
+    pop.play();
     chat.innerHTML += `
         <section class="user-msg">
           <div class="bubble user-bubble">
@@ -47,6 +49,7 @@ const showMessage = (message, sender) => {
         </section>
       `;
   } else if (sender === "bot") {
+    pop.play();
     chat.innerHTML += `
         <section class="bot-msg">
           <img src="assets/bot.png" alt="Bot" />
