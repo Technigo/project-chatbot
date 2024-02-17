@@ -122,6 +122,7 @@ main {
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 label {
@@ -150,4 +151,14 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+#options {
+  display: flex;
+  justify-content: center;
+}
+
+.intro-btn,
+.extro-btn {
+  margin: 10px;
 }

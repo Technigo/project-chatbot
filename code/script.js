@@ -6,7 +6,7 @@ const sendButton = document.querySelector(`.send-btn`);
 const nameForm = document.getElementById(`name-form`);
 
 let username = "";
-let question1 = "";
+/*let question1 = "";*/
 
 // A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -45,78 +45,135 @@ const greetUser = () => {
     `Hello. I'm Finnly. Nice to meet you. Wanna find out what kind of sea creature you are?`,
     `bot`
   );
-  showMessage(
-    `Great! Let's get started. But first, let me get your name.`,
-    `bot`
-  );
+  showMessage(`Let's get started. But first, let me get your name.`, `bot`);
 };
+
+//invoke the first function to get the chatbot to ask the first question
+setTimeout(greetUser, 1000);
 
 //user types in name
 const saveUsername = (event) => {
   event.preventDefault();
+  //store the value in a variable so we can acces it later
   username = nameInput.value;
-  showMessage(`Hi ${username}!`, `bot`);
+  showMessage(`Hi, I'm ${username}!`, `user`);
   nameInput.value = "";
-  creatureNature();
+  chooseIntroExtro();
 };
 
-//bot asks first question, 2 options (introvert vs extrovert) to chose from (atm user has to type in answer)
-const creatureNature = () => {
+// Event listener
+nameForm.addEventListener("submit", saveUsername);
+
+//bot asks first question, 2 options (introvert vs extrovert) to chose from
+const chooseIntroExtro = () => {
   showMessage(
-    `Now let's check out some of your personality traits to find out what sea creature suits you. Are you more of an introvert or an extrovert?`,
+    `Nice to meet you ${username}. Let's find out wat sea creature is mostly like you.`,
     "bot"
   );
+  showMessage(`Are you more of an introvert or an extrovert?`, "bot");
 
-  // Create new form for question 1
+  //create new form with buttons for first question (intro/extro)
   inputWrapper.innerHTML = `
-    <form id="first-form">
-          <label for="first-input">Introvert vs Extrovert</label>
-          <input id="first-input" type="text" />
-          <button class="first-btn" type="submit">Send</button>
-        </form>
-  `;
+    <div id="options">
+      <button id="intro-btn">Introvert</button>
+      <button id="extro-btn">Extrovert</button>
+    </div>`;
 
-  // Make something happen - put in the function for question 1
-  question1 = document.getElementById("first-input").value;
-  document
-    .querySelector(".first-btn")
-    .addEventListener(
-      "click",
-      console.log(document.getElementById("first-input").value)
-    );
+  //get buttons, define variable
+  const introvertButton = document.getElementById(`intro-btn`);
+  const extrovertButton = document.getElementById(`extro-btn`);
+  //event listeners for buttons
+  introvertButton.addEventListener("click", () =>
+    handleSelection1("introvert")
+  );
+  extrovertButton.addEventListener("click", () =>
+    handleSelection1("extrovert")
+  );
 };
 
-//bot asks second question, 2 options (introvert vs extrovert) to chose from (atm user has to type in answer)
-const preferedTime = () => {
-  showMessage(`Tell me, are you more of a night owl or an early bird?`, "bot");
-
-  // Create new form for question 2
-  inputWrapper.innerHTML = `
-<form id="first-form">
-      <label for="second-input">Night Owl vs Early Bird</label>
-      <input id="second-input" type="text" />
-      <button class="second-btn" type="submit">Send</button>
-    </form>
-`;
-
-  // Make something happen - put in the function for question 2
-  question2 = document.getElementById("second-input").value;
-  document
-    .querySelector(".second-btn")
-    .addEventListener(
-      "click",
-      console.log(document.getElementById("second-input").value)
-    );
+//function to display selection
+const handleSelection1 = (option) => {
+  showMessage(`I'm more of an ${option}`, "user");
+  //handle option selection (e.g. move to the next question)
+  chooseDayNight();
 };
 
-// Eventlisteners
+//bot asks second question, 2 options (day vs night) to chose from
+const chooseDayNight = () => {
+  showMessage(`Amazing! Now, are you a night owl or a early bird?`, "bot");
 
-// Here we invoke the first function to get the chatbot to ask the first question when
-// the website is loaded. Normally we invoke functions like this: greeting()
-// To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
-// and pass along two arguments:
-// 1.) the function we want to delay, and 2.) the delay in milliseconds
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000);
+  //create new form with buttons for second question (day/night)
+  inputWrapper.innerHTML = `
+<div id="options">
+  <button id="day-btn">Earyl Bird</button>
+  <button id="night-btn">Night Owl</button>
+</div>`;
 
-sendButton.addEventListener("click", saveUsername);
+  //get buttons, define variable
+  const dayButton = document.getElementById(`day-btn`);
+  const nightButton = document.getElementById(`night-btn`);
+
+  //event listeners for buttons
+  dayButton.addEventListener("click", () => handleSelection2("I prefer days"));
+  nightButton.addEventListener("click", () =>
+    handleSelection2("I prefer nights")
+  );
+};
+
+//function to display selection
+const handleSelection2 = (option) => {
+  showMessage(`${option}`, "user");
+  //handle option selection (e.g. move to the next question)
+  chooseOutIn();
+};
+
+//bot asks third question, 2 options (Stand out vs Blend in) to chose from
+const chooseOutIn = () => {
+  showMessage(
+    `Interesting! I have one last question for you, before I assign you a sea creature.`,
+    "bot"
+  );
+  showMessage(`Do you rather stand out or blend in?`, "bot");
+
+  //create new form with buttons for third question (intro/extro)
+  inputWrapper.innerHTML = `
+    <div id="options">
+      <button id="out-btn">Stand Out</button>
+      <button id="in-btn">Blend In</button>
+    </div>`;
+
+  //get buttons, define variable
+  const outButton = document.getElementById(`out-btn`);
+  const inButton = document.getElementById(`in-btn`);
+
+  //event listeners for buttons
+  outButton.addEventListener("click", () =>
+    handleSelection3("I'm funky. I stand out")
+  );
+  inButton.addEventListener("click", () =>
+    handleSelection3("I'm shy, I blend in.")
+  );
+};
+
+const handleSelection3 = (option) => {
+  showMessage(`${option}`, "user");
+  defineSeaCreature();
+};
+
+//function to define the sea creature based on users selections
+const defineSeaCreature = () => {
+  let seaCreature = "Based on your selections, I think you are a ";
+  //switch
+  if (
+    handleSelection1 === "introvert" &&
+    handleSelection2 === "I prefer nights" &&
+    handleSelection3 === "I'm shy, I blend in."
+  ) {
+    showMessage(seaCreature, "bot");
+  }
+
+  //switch or if - else
+
+  //response
+  /*showMessage(seaCreature, "bot")*/
+};
