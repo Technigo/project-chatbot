@@ -5,20 +5,22 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: "Raleway", sans-serif;
+  background-image: url(assets/ocean-bkg.jpg);
+  background-attachment: fixed;
+  background-position: center;
 }
 
 h1 {
-  font-weight: bold;
-  font-size: 28px;
+  font-family: "Abril Fatface", serif;
+  font-size: 40px;
   line-height: 34px;
-  color: #fff;
+  color: #49225e;
   text-align: center;
 }
 
 h2 {
-  font-weight: bold;
+  font-family: "Abril Fatface", serif;
   font-size: 24px;
   line-height: 34px;
   color: #fff;
@@ -37,12 +39,12 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #d5c6d3;
+  color: #49225e;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 600;
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
   line-height: 26px;
   flex: 1;
   width: 100%;
@@ -88,15 +90,16 @@ main {
 .user-msg img {
   width: 60px;
   height: 60px;
+  border-radius: 50px;
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #d5c6d3;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #49225e;
   max-width: 40%;
 }
 
@@ -119,18 +122,19 @@ main {
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 label {
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Raleway", sans-serif;
   font-weight: 500;
-  color: #0026ff;
+  color: #49225e;
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #49225e;
   color: white;
   border: none;
   border-radius: 4px;
@@ -138,7 +142,7 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: "Raleway", sans-serif;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -147,4 +151,14 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+#options {
+  display: flex;
+  justify-content: center;
+}
+
+.intro-btn,
+.extro-btn {
+  margin: 10px;
 }

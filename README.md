@@ -1,13 +1,13 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+I have created a chatbot that will match you to a marine animal based on a few personality traits. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I tried to make the basic functions work first, creating buttons and eventhandlers. 
+Tools: everything I could find - google, teammates, friends. 
+I sketched out the whole idea first on paper and then made it work in code. 
+I would add sounds and maybe a picture per creature next. 
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://deluxe-sunshine-7a2b80-chatbot.netlify.app/
