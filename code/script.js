@@ -14,7 +14,6 @@ const priceList = {
   child: "79kr",
 };
 
-
 // Functions goes here 👇
 
 // A function that will add a chat bubble in the correct place based on who the sender is.
@@ -77,7 +76,6 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 };
 
-
 // A function that shows the final order status which has one IF/ELSE statement
 const showOrderStatus = (confirmation) => {
   if (confirmation === "yes") {
@@ -86,7 +84,6 @@ const showOrderStatus = (confirmation) => {
     showMessage("Your order is cancelled. Come back anytime!", "bot");
   }
 };
-
 
 // A function that displays the price based on the age range the user inputs
 const checkPrice = (age) => {
@@ -159,15 +156,13 @@ const showFoodOptions = (name) => {
 `;
 
   const allBtns = document.getElementsByTagName("button");
-  for (btn of allBtns) {
+  for (let btn of allBtns) {
     btn.addEventListener("click", (event) => {
-      console.log(event.target.value);
       const foodOption = event.target.value;
       processUserOption(foodOption, showSubtypes);
     });
   }
 };
-
 
 // A function that store the name input and call the next step as a function
 const handleNameInput = (event) => {
@@ -177,7 +172,6 @@ const handleNameInput = (event) => {
   const name = userName.value;
   processUserOption(name, showFoodOptions);
 };
-
 
 // Add some delay to greet the user and call the greet user func
 setTimeout(greetUser, 500);
