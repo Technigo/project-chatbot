@@ -88,7 +88,7 @@ const handleNameInput = (event) => {
 
 // second message from bot
 
-const firstChoice = (name, choice) => {
+const AskTypeHaircut = (name, choice) => {
   currentQuestion = "choice"
   showMessage(
     `Nice to meet you ${name}!👋
@@ -106,7 +106,7 @@ const firstChoice = (name, choice) => {
   <button id="long">Long</button></div>`
 
   // added event listener for the buttons on click to get the choice
-  
+
   document.getElementById("short").addEventListener("click", () => {
     choice = "Short"
 
@@ -114,7 +114,7 @@ const firstChoice = (name, choice) => {
 
     showMessage("I would like a short cut!", "user")
     setTimeout(() => {
-      askNextQuestion(name,choice);
+      askNextQuestion(name, choice)
     }, 1500)
   })
   document.getElementById("medium").addEventListener("click", () => {
@@ -122,19 +122,19 @@ const firstChoice = (name, choice) => {
     showMessage("I would like a medium cut!", "user")
     setTimeout(() => {
       //add all variable which have been defined in orders so they can be passed to the next function
-      askNextQuestion(name,choice);
+      askNextQuestion(name, choice)
     }, 1500)
   })
   document.getElementById("long").addEventListener("click", () => {
     choice = "Long"
     showMessage(`I would like a ${choice} cut!`, "user")
     setTimeout(() => {
-      askNextQuestion(name,choice);
+      askNextQuestion(name, choice)
     }, 1500)
   })
 }
 
-const styleSelect = (choice) => {
+const askTypeStyle = (choice) => {
   currentQuestion = "style"
   inputWrapper.innerHTML = `<select id="style-choice">
   <option id="default" value="select a style" selected>↓Select a style...</option>
@@ -155,13 +155,13 @@ const styleSelect = (choice) => {
 
       // I passed the choice argument in the following function because was undefined👇🏻
 
-      setTimeout(() => askNextQuestion(name,choice,style), 2000)
+      setTimeout(() => askNextQuestion(name, choice, style), 2000)
     })
 }
 
 // Function to handle gender selection
 
-const genderSelect = (choice, style) => {
+const askGender = (choice, style) => {
   currentQuestion = "gender"
   // can't pass the choice in this function , it's undefined.👇🏻
   showMessage(
@@ -180,17 +180,17 @@ const genderSelect = (choice, style) => {
     gender = "Boy"
 
     showMessage("Boy", "user")
-    setTimeout(() => askNextQuestion(name,choice,style,gender), 2500)
+    setTimeout(() => askNextQuestion(name, choice, style, gender), 2500)
   })
   document.getElementById("girl").addEventListener("click", () => {
     gender = "Girl"
     showMessage("Girl", "user")
 
-    setTimeout(() => askNextQuestion(name,choice,style,gender), 2500)
+    setTimeout(() => askNextQuestion(name, choice, style, gender), 2500)
   })
 }
 
-const confirmation = (style,choice,gender) => {
+const askConfirmation = (style, choice, gender) => {
   currentQuestion = "lastConfirmation"
   if (gender === "Boy") {
     showMessage(
@@ -214,18 +214,24 @@ const confirmation = (style,choice,gender) => {
     lastConfirmation = "YES"
 
     showMessage("YES", "user")
-    setTimeout(() => askNextQuestion(name,choice,style,gender,lastConfirmation), 2500)
+    setTimeout(
+      () => askNextQuestion(name, choice, style, gender, lastConfirmation),
+      2500
+    )
     document.getElementById("button-form").remove()
   })
   document.getElementById("NO").addEventListener("click", () => {
     lastConfirmation = "NO"
     showMessage("NO", "user")
-    setTimeout(() => askNextQuestion(name,choice,style,gender,lastConfirmation), 2500)
+    setTimeout(
+      () => askNextQuestion(name, choice, style, gender, lastConfirmation),
+      2500
+    )
     document.getElementById("button-form").remove()
   })
 }
 
-const lastMessage = (lastConfirmation) => {
+const endConversation = (lastConfirmation) => {
   if (lastConfirmation === "YES") {
     showMessage(
       `Thank you for your trust! See you soon!🌟
@@ -249,20 +255,20 @@ setTimeout(greetUser, 2000)
 const askNextQuestion = (name, choice, style, gender, lastConfirmation) => {
   switch (currentQuestion) {
     case "firstInput":
-      firstChoice(name, choice)
+      AskTypeHaircut(name, choice)
       break
     case "choice":
-      styleSelect(choice)
+      askTypeStyle(choice)
       break
     case "style":
       // here variable should be style and choice. It was only style here so the choice cannnot be passed by.
-      genderSelect(style,choice)
+      askGender(style, choice)
       break
     case "gender":
-      confirmation(style,choice,gender)
+      askConfirmation(style, choice, gender)
       break
     case "lastConfirmation":
-      lastMessage(lastConfirmation)
+      endConversation(lastConfirmation)
       break
     default:
       resetConversation()
