@@ -1,21 +1,11 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
+const inputWrapper = document.getElementById('input-wrapper')
 const nameInput = document.getElementById('name-input')
-const nameForm = document.getElementById('name-form')
-const carringNeedsSelect = document.getElementById('caring-needs')
 const sendButton = document.querySelector('send-btn')
+const nameForm = document.getElementById('name-form')
 
 
-let userName = '';
-let selectedType = "";
-
-const plantOptions = ['Fiddle Leaf Fig', 'Snake Plant', 'Monstera']
-
-//Define handleUserResponse as a global function
-const handleUserResponse = (message, sender) => {
-  console.log(`User response: ${message}`);
-  console.log(`Sender: ${sender}`);
-};
 
 // Functions goes here 👇
 
@@ -50,78 +40,110 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
+
+
 // A function to start the conversation
 const greetUser = () => {
   // Here we call the function showMessage, that we declared earlier with the argument:
   showMessage("What a great day to chat? I am Giny, the plant giver. Who are you?", 'bot')
 }
 
-//Function to greet the user and ask if the would like to order
-const greetAndAskOrder = (userName) => {
-  showMessage(`Nice to meet you, ${userName}! Lets see what what plants do I have in my magic pot.`, 'bot')
-  displayPlantOptions();
-};
-
 //Function to handle name input
 const handleNameInput = (event) => {
   event.preventDefault();
   //the default action is to send the form data to the server and reload the page. By calling event.preventDefault() within an event handler, you can stop the browser from performing its default action and allow you to handle the event in a custom manner.
+  const name = nameInput.value;
+  showMessage(name, 'user');
   userName = nameInput.value;
-  showMessage(userName, 'user');
   nameInput.value = '';
-  if (userName) {
-    setTimeout(() => {
-      greetAndAskOrder(userName)
-    }, 1200)
-    } else {
-      showMessage("My roots says that this is not a name. Please try again!", 'bot')
-    }
-    handleUserResponse(userName, 'user')
-};
+
+  setTimeout(() => {
+    displayPlantOptions(userName);
+  }, 1500);
+  inputWrapper.innerHTML ='';
+}
+
 
 //Function to display plant options
-const displayPlantOptions = () => {
-  nameForm.style.display = 'block';
+const displayPlantOptions = (userName) => {
+  showMessage(`Hi ${userName}, let's explore some plants together! Which plant would you like to have?`, 'bot');
+  inputWrapper.innerHTML = `
+    <button id='fiddle-leaf-fig'>Fiddle Leaf Fig</button>
+    <button id='snake-plant'>Snake Plant</button>
+    <button id='monstera'>Monstera</button>
+  `;
 
-  plantOptions.forEach(option => {
-    const button = document.createElement('button');
-    button.textContent = option;
-    button.value = option;
-    button.addEventListener('click', () => {
-      handleUserResponse(option, 'user');
-      handlePlantSelection(option);
+  document.getElementById('fiddle-leaf-fig').addEventListener('click', () => {
+    showMessage('Fiddle Leaf Fig', 'user');
+    setTimeout(() => {
+      handlePlantSelection('Fiddle Leaf Fig');
       askCaringNeeds();
-  });
-    nameForm.appendChild(button);
+    }, 1000);
   });
 
-  handleUserResponse('Displaying plant options', 'bot')
+  document.getElementById('snake-plant').addEventListener('click', () => {
+    showMessage('Snake Plant', 'user');
+    setTimeout(() => {
+      handlePlantSelection('Snake Plant');
+      askCaringNeeds();
+    }, 1000);
+  });
+    
+  document.getElementById('monstera').addEventListener('click', () => {
+    showMessage('Monstera', 'user');
+    setTimeout(() => {
+      handlePlantSelection('Monstera');
+      askCaringNeeds();
+    }, 1000);
+  });
 };
- 
+
+  
 //Function to handle plant selection
-carringNeedsSelect.style.display = 'none';
-plantOptions.display = 'none'
-
 const handlePlantSelection = (selectedOption) => {
-showMessage(`You selected ${selectedOption}.`, 'user')
+showMessage(`You selected ${selectedOption}.`, 'bot')
 selectedType = selectedOption;
+setTimeout(() => {
   showMessage(`Great choice! Now, let´s talk about the care needs of your ${selectedOption}.`,'bot')
-  askCaringNeeds();
+}, 1200)
 };
-
 
 //Function to ask about caring needs
+
 const askCaringNeeds = () => {
-  showMessage(`Would you decribe yourself in terms of plant care:`, 'bot');
+  setTimeout(() => {
+  showMessage(`How would you decribe yourself in terms of plant care:`, 'bot');
+
+  //create select element
+  const select = document.createElement('select')
+  select.id = 'caring-needs';
+
+  const options = [
+    { value: 'plant-whisperer', label: 'A Plant Whisperer 🌱' },
+    { value: 'forgetful-gardener', label: 'A Forgetful Gardener 🤦' },
+    { value: 'serial-plant-killer', label: 'A Serial Plant Killer 🥀' }
+  ];
+
+  options.forEach(option => {
+    const optionElement = document.createElement('option');
+    optionElement.value = option.value;
+    optionElement.textContent = option.label;
+    select.appendChild(optionElement);
+});
+
   
- carringNeedsSelect.addEventListener('change', () => {
-  const selectedCaringNeeds = carringNeedsSelect.value;
+ select.addEventListener('change', () => {
+  const selectedCaringNeeds = select.value;
     showMessage(`You describe yourself as ${selectedCaringNeeds}.`, 'user');
     setTimeout(() => {
     showMessage(`Based on your caring needs, let me sugest a plant for you.`, 'bot')
     giveRandoomPlant(selectedCaringNeeds);
-    }, 1400);
+    }, 1800);
   });
+
+  inputWrapper.innerHTML = '';
+  inputWrapper.appendChild(select);
+}, 1800)
 };
 
 // Function to randomly give a plant based on user choice from caring needs
@@ -146,20 +168,6 @@ const giveRandoomPlant = (selectedCaringNeeds) => {
 };
 
 
-
-//Function to handle form submission
-function handleFormSubmit(event) {
-  event.preventDefault();
-  const userInput = nameInput.value;
-  if (userInput !== '') {
-    showMessage(userInput, 'user')
-  } else {
-    showMessage("Please enrer a valit input!", 'bot');
-  }
-  nameInput.value = '';
-  }
-
-
 // Function to ask about caring package
 const askForCaringPackage = () => {
   showMessage(`Choose from the options below:`, 'bot');
@@ -178,29 +186,9 @@ const handleCaringPackageResponse = (response) => {
 
 
 // Eventlisteners goes here 👇
-document.addEventListener('DOMContentLoaded', () => {
-  const sendButton = document.querySelector('.send-btn');
-  sendButton.addEventListener('click', handleFormSubmit);
-});
+nameForm.addEventListener('submit', handleNameInput);
 
 
-// Event listener for carring needs options
-carringNeedsSelect.addEventListener('change', () => {
-const selectedCaringNeeds = carringNeedsSelect.value;
-  showMessage(`You describe yourself as ${selectedCaringNeeds}.`, 'user');
-  setTimeout(() => {
-    showMessage(`Based on your caring needs, let me suggest a plant for you.`, 'bot');
-    giveRandoomPlant(selectedCaringNeeds);
-  }, 1400);
-});
-
-// Event listener for caring package options
-document.body.addEventListener('click', (event) => {
-  const target = event.target;
-  if (target.tagName === 'BUTTON' && target.classList.contains('caring-package-option')) {
-    handleCaringPackageResponse(target.textContent);
-  }
-});
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
@@ -209,4 +197,5 @@ document.body.addEventListener('click', (event) => {
 // 1.) the function we want to delay, and 2.) the delay in milliseconds 
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 800);
-setTimeout(displayPlantOptions, 1800);
+
+
