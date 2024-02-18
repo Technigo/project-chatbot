@@ -198,10 +198,12 @@ const handleMainDishSelection = (selectedOption) => {
           const confirmYesButton = inputWrapper.querySelector('#confirm-yes');
           const confirmNoButton = inputWrapper.querySelector('#confirm-no');
           confirmYesButton.addEventListener('click', () => {
-            showMessage(`Order confirmed! Have a nice meal!`, 'bot');
+            showMessage(`Order confirmed! Have a nice meal and see you soon.`, 'bot');
+            confirmationButtons.remove()
           });
           confirmNoButton.addEventListener('click', () => {
-            showMessage(`Order canceled! See you again`, 'bot');
+            showMessage(`Order canceled! Refresh the page and order again, otherwise have a nice day`, 'bot');
+            confirmationButtons.remove()
           });
         });
       }, 1500);
