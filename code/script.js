@@ -18,7 +18,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user02.png" alt="User" />  
       </section>
     `
 
@@ -30,7 +30,7 @@ const showMessage = (message, sender) => {
     console.log(`${message}`)
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/bot02.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
