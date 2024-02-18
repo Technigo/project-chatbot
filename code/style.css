@@ -25,7 +25,7 @@ h1 {
   font-weight: bold;
   font-size: 28px;
   line-height: 34px;
-  color: #fff;
+  color:#7bae37 ;
   text-align: center;
 }
 
@@ -58,6 +58,7 @@ input {
   line-height: 26px;
   flex: 1;
   width: 100%;
+  margin-right: 12px;
 }
 
 main {
@@ -66,12 +67,13 @@ main {
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
-  background: #fff;
+  background: green;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 .chat {
@@ -81,7 +83,7 @@ main {
   overflow: scroll;
   flex-direction: column;
   padding-bottom: 16px;
-  opacity: 0.9;
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 .bot-msg {
@@ -143,7 +145,7 @@ label {
 }
 
 button {
-  background-color: #7bae37;
+  background-color: #A9BA9E;
   color: white;
   border: none;
   border-radius: 4px;
@@ -169,7 +171,7 @@ select {
   padding: 16px 20px;
   font-size: 16px;
   font-weight: 500;
-  background-color: #7bae37;
+  background-color: #A9BA9E;
   color:white;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -188,7 +190,7 @@ select::-ms-expand {
 select option {
   padding: 16px 20px;
   font-size: 16px;
-  background-color: #afafaf;
+  background-color:#A9BA9E;
   color:white;
 }
 

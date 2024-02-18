@@ -35,17 +35,15 @@ const showMessage = (message, sender) => {
     `
   }
 
-  // This little thing makes the chat scroll to the last message when there are too many to
-  // be shown in the chat box
+  // This little thing makes the chat scroll 
   chat.scrollTop = chat.scrollHeight
 }
-
 
 
 // A function to start the conversation
 const greetUser = () => {
   // Here we call the function showMessage, that we declared earlier with the argument:
-  showMessage("What a great day to chat? I am Genie, the plant giver. Who are you?", 'bot')
+  showMessage("What a great day to chat! I am Genie, the plant giver. Who are you?", 'bot')
 }
 
 //Function to handle name input
@@ -66,7 +64,7 @@ const handleNameInput = (event) => {
 
 //Function to display plant options
 const displayPlantOptions = (userName) => {
-  showMessage(`Hi ${userName}, let's explore some plants together! Which plant would you like to have?`, 'bot');
+  showMessage(`Hi ${userName}, let us explore some plants together! Which plant would you like to have?`, 'bot');
   inputWrapper.innerHTML = `
     <button id='fiddle-leaf-fig'>Fiddle Leaf Fig</button>
     <button id='snake-plant'>Snake Plant</button>
@@ -185,32 +183,29 @@ const plantConfirmation = (randomPlant) => {
  });
 
  document.getElementById('noButton').addEventListener('click', () => {
-  showMessage('Yes', 'user')
+  showMessage('No', 'user')
   setTimeout(() => answerUser('NO', randomPlant), 1200 )
  });
 
-
  //Function to handle user response to the confirmation
- const answerUser = (userResponse, suggestedPlants) => {
+ const answerUser = (userResponse, randomPlant) => {
   if (userResponse === 'YES') {
     setTimeout(() => {
     showMessage(`Thank you for confirming! Your ${randomPlant} is all set for a happy life! 🌟.`, 'bot');
     }, 1000);
-  } else {
-    showMessage ('Sorry to hear that. Have a nice day!', 'bot')
-  }
+  } else if (userResponse === 'NO') {
+    showMessage ('Sorry to hear that. Have a nice day! Reloading the page...', 'bot')
+    setTimeout(() => {
+      window.location.reload();
+      }, 2000);
+   }
   inputWrapper.innerHTML = '';
+ };
 };
-};
-
 
 // Eventlisteners goes here 👇
+//however some eventlistener where add along with the functions as it was the only wat that worked for me. 
 nameForm.addEventListener('submit', handleNameInput);
 
-// Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
-// To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
-// and pass along two arguments:
-// 1.) the function we want to delay, and 2.) the delay in milliseconds 
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000);
+setTimeout(greetUser, 1000)
