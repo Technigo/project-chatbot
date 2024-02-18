@@ -1,4 +1,5 @@
 // DOM selectors
+const myButton = document.getElementById("myButton")
 const chat = document.getElementById('chat')
 const nameInput = document.getElementById('name-input')
 const form = document.getElementById('name-form')
@@ -43,13 +44,13 @@ const handleNameInput = (event) => {
   const name = nameInput.value;
   showMessage(name, "user");
   nameInput.value = "";
-  setTimeout(() => showFoodOptions(name), 1000);
+  setTimeout(() => showFoodOptions(name), 1500);
 };
 
 nameForm.addEventListener('submit', handleNameInput); 
 // User choice of pizza
 const showFoodOptions = (name) => {
-  showMessage(`Hi ${name}, what type of pizza would you like to order?`, 'bot');
+  showMessage(`Hello ${name}, what type of pizza would you like to order today?`, 'bot');
 
  inputWrapper.innerHTML = `
  <button id="margaritaBtn">Margarita</button>
@@ -61,25 +62,34 @@ document.getElementById('pepperoniBtn').addEventListener('click', () => selectPi
 document.getElementById('hawaiiBtn').addEventListener('click', () => selectPizza('Hawaii'));
 };
 const selectPizza = (pizzaType) => {
-  showMessage(`I have chosen a ${pizzaType} pizza`, 'user');
+  showMessage(`${pizzaType} pizza`, 'user');
   showMessage(`${pizzaType}, excellent choice!`, 'bot');
-  setTimeout(() => askForDrink(), 1000);
+  setTimeout(() => askForDrink(), 1500);
   };
 // User choice of drink
 const askForDrink = () => {
   showMessage("Please select a drink:", 'bot');
   inputWrapper.innerHTML = `
-    <button id="cokeBtn">Coke</button>
-    <button id="fantaBtn">Fanta</button>
+    <select id="drink-select">
+      <option value="">Select a drink</option>
+      <option value="Coke">Coke</option>
+      <option value="Fanta">Fanta</option>
+      <option value="Sprite">Sprite</option>
+    </select>
+    <button id="drinkBtn">Select</button>
   `;
-  document.getElementById('cokeBtn').addEventListener('click', () => selectDrink('Coke'));
-  document.getElementById('fantaBtn').addEventListener('click', () => selectDrink('Fanta'));
+  document.getElementById('drinkBtn').addEventListener('click', selectDrink);
 };
 
-const selectDrink = (drinkType) => {
-  showMessage(`I have chosen ${drinkType}`, 'user');
-  showMessage(`${drinkType}, perfect choice!`, 'bot');
-  setTimeout(askForAge, 1000); // Anropa askForAge här
+const selectDrink = () => {
+  const drinkType = document.getElementById('drink-select').value;
+  if (drinkType) {
+    showMessage(`${drinkType}`, 'user');
+    showMessage(`${drinkType}, perfect choice!`, 'bot');
+    setTimeout(askForAge, 1500);
+  } else {
+    showMessage("You didn't select a drink.", 'bot');
+  }
 };
 
 // Age of user
@@ -92,11 +102,33 @@ const askForAge = () => {
   document.getElementById('childBtn').addEventListener('click', () => selectAge('Child'));
   document.getElementById('adultBtn').addEventListener('click', () => selectAge('Adult'));
 };
+  const selectAge = (ageType) => {
+    showMessage(`${ageType}`, 'user');
+    const totalPrice = ageType === 'Adult' ? '15€' : '10€';
+    showMessage(`Perfect, the total price for your order is ${totalPrice}. Would you like to proceed?`, 'bot');
+    showConfirmationOptions();
+  };
 
-const selectAge = (ageType) => {
-  showMessage(`I am a ${ageType}`, 'user');
-  showMessage(`${ageType}, great!`, 'bot');
+const showConfirmationOptions = () => {
+  inputWrapper.innerHTML = `
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
+  `;
+  document.getElementById('yesBtn').addEventListener('click', () => confirmOrder(true));
+  document.getElementById('noBtn').addEventListener('click', () => confirmOrder(false));
+};
 
+const confirmOrder = (isConfirmed) => {
+  if (isConfirmed) {
+    showMessage("Yes", "user");
+    showMessage("Thanks for your order, have a nice day!", "bot");
+ 
+  } else {
+    showMessage("No", "user");
+    showMessage("No problem, you are always welcome back!", "bot");
+
+  }
+  inputWrapper.innerHTML = '';
 };
   
 // Here we invoke the first function to get the chatbot to ask the first question when
@@ -105,4 +137,4 @@ const selectAge = (ageType) => {
 // and pass along two arguments:
 // 1.) the function we want to delay, and 2.) the delay in milliseconds 
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 500)
+setTimeout(greetUser, 1000)

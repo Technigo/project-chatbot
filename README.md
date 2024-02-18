@@ -1,12 +1,11 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Pizzeria Penguin, chatbot.
+Building a chatbot to order pizza.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I had the flu so this week was extra hard since I couldnt catch up as normal. Hopefully I made it somehow. Just went trough all material and took it step by step. Used the Java Script we learned. If I had more time, I would have studied more, more repetition to understand what I was doing, because I am not really at the moment. Keeping it basic to even be able to hand in anyting.
 
 ## View it live
 
