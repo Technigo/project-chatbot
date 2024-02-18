@@ -53,7 +53,7 @@ startScreen()
 
 // 2 A function to start the conversation
 const greetUser = () => {
-  showMessage("Wellcome to this amazing chat bot! What's your name?", "bot")
+  showMessage("Welcome to this amazing chat bot! What's your name?", "bot")
   }
 
 setTimeout(greetUser, 1800)
@@ -73,7 +73,7 @@ nameForm.addEventListener('submit', (event) => {
   }, 1500)
 
   setTimeout(() => {
-    showMessage(`Live is short. What do you want to order?`, "bot")
+    showMessage(`Life is short. What do you want to order?`, "bot")
   }, 2500)
 
   setTimeout(() => {
