@@ -1,10 +1,18 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
+const nameForm = document.getElementById("name-form")
+let nameInput = document.getElementById('name-input')
+const output = document.getElementById('output')
+//const buttonJavaScript = document.getElementById('javascript')
+//const buttonPython = document.getElementById('python')
+//const buttonJava = document.getElementById('java')
 
-// Functions goes here 👇
 
+
+
+// Functions goes here 👇 
 // A function that will add a chat bubble in the correct place based on who the sender is
-const showMessage = (message, sender) => {
+function showMessage(message, sender) {
   // The if statement checks if the sender is the user and if that's the case it inserts
   // an HTML section inside the chat with the posted message from the user
   if (sender === 'user') {
@@ -12,10 +20,10 @@ const showMessage = (message, sender) => {
       <section class="user-msg">
         <div class="bubble user-bubble">
           <p>${message}</p>
-        </div>
         <img src="assets/user.png" alt="User" />  
-      </section>
-    `
+        </div>
+      </section>`
+
     // The else if statement checks if the sender is the bot and if that's the case it inserts
     // an HTML section inside the chat with the posted message from the bot
   } else if (sender === 'bot') {
@@ -25,8 +33,7 @@ const showMessage = (message, sender) => {
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
-      </section>
-    `
+      </section>`
   }
 
   // This little thing makes the chat scroll to the last message when there are too many to
@@ -38,11 +45,29 @@ const showMessage = (message, sender) => {
 const greetUser = () => {
   // Here we call the function showMessage, that we declared earlier with the argument:
   // "Hello there, what's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, what's your name?", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
+  showMessage ("Hello there, what's your name?", 'bot')
+  } 
+
+
+//type name in name-input
+
+const handleNameInput = (event) => {
+  event.preventDefault()
+  const username = nameInput.value
+  showMessage(`Hi, I'm ${username}`, 'user')
+  let input = nameInput.value = ""
+  //setTimeout(()=> showMessage, 1000)
+ 
+//get "Hello 'name' in return 
+ return (showMessage(`Welcome to week  2, ${username}, nice to meet you. 
+ Please pick a programming language that'll make your brain melt 
+ and drip out your nose`, 'bot'))
 }
 
-// Eventlisteners goes here 👇
+
+// Eventlisteners goes here 
+nameForm.addEventListener("submit", handleNameInput)
+//output.addEventListener()
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
@@ -50,4 +75,6 @@ const greetUser = () => {
 // and pass along two arguments:
 // 1.) the function we want to delay, and 2.) the delay in milliseconds 
 // This means the greeting function will be called one second after the website is loaded.
+
 setTimeout(greetUser, 1000)
+//setTimeout(showMessage, 2000)
