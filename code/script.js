@@ -66,10 +66,17 @@ let nameUser =""
 
 const handleNameInput = (event) => {
   event.preventDefault()
-  nameUser = nameInput.value
-  showMessage(nameUser, 'user')
+  nameUser = nameInput.value.trim()
+  if (nameUser !== "") {
+    showMessage(nameUser, 'user')
+  }
+  else {
+    showMessage(`Please enter your name!`, 'bot')
+    handleNameInput()
+  }
   nameInput.value = ""
   setTimeout(() => askWeatherType(), 1000)
+  console.log(nameUser)
 }
 
 //Remember put the setTimeout into the function before the one that should be called afterwards. 
@@ -185,7 +192,7 @@ const holidayDestination = () => {
         return ("Norway")
       }
       else if (groupTypeText === "with a group.") {
-        return ("Netherlands")
+        return ("the Netherlands")
       }
     }
     else if (tripLengthText === "one to two Weeks") {
@@ -254,10 +261,10 @@ const holidayDestination = () => {
         return ("Madeira")
       }
       else if (groupTypeText === "with family.") {
-        return ("USA")
+        return ("the USA")
       }
       else if (groupTypeText === "with a group.") {
-        return ("USA")
+        return ("the USA")
       }
     }
   }
@@ -281,13 +288,13 @@ const holidayDestination = () => {
         return ("Morocco")
       }
       else if (groupTypeText === "with a partner.") {
-        return ("United Arab Emirates")
+        return ("the United Arab Emirates")
       }
       else if (groupTypeText === "with family.") {
         return ("Egypt")
       }
       else if (groupTypeText === "with a group.") {
-        return ("United Arab Emirates")
+        return ("the United Arab Emirates")
       }
     }
     else if (tripLengthText === "more than two Weeks") {
@@ -295,10 +302,10 @@ const holidayDestination = () => {
         return ("Thailand")
       }
       else if (groupTypeText === "with a partner.") {
-        return ("Seychelles")
+        return ("the Seychelles")
       }
       else if (groupTypeText === "with family.") {
-        return ("Maldives")
+        return ("the Maldives")
       }
       else if (groupTypeText === "with a group.") {
         return ("Puerto Rico")
@@ -361,10 +368,11 @@ const confirmChoice = () => {
   else if (permissionTypeText === "No.") {
     showMessage(`Sadly we can't book your trip this way. Please come back for your next holiday, ${nameUser}`, 'bot')
   }
-  else if (permissionTypeText === "Start over.")
+  else if (permissionTypeText === "Start over.") {
     showMessage(`Your planning will start from the beginning, ${nameUser}`, 'bot')
-    //setTimeout(() => askWeatherType(), 1500)
-  console.log(permissionTypeText)
+    setTimeout(() => askWeatherType(), 1500) 
+  }
+  console.log(permissionTypeText) 
   }
 
 
