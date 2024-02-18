@@ -13,6 +13,9 @@ body {
   background: linear-gradient(to right, #ff7e5f, #feb47b, #ffdb9d, #ffecb8);
   animation: gradientAnimation 1s ease infinite;
 }
+body, html{
+  overflow-x: hidden;
+}
 
 @keyframes gradientAnimation {
   0% {
@@ -102,14 +105,14 @@ main {
 .bot-msg {
   display: flex;
   margin: 16px 8px 0 0;
-  flex-shrink: 0;
+  /* flex-shrink: 0; */
 }
 
 .user-msg {
   display: flex;
   justify-content: flex-end;
   margin: 16px 0 0 8px;
-  flex-shrink: 0;
+  /* flex-shrink: 0; */
 }
 
 .bot-msg img,

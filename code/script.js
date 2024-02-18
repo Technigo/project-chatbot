@@ -183,9 +183,29 @@ const handleMainDishSelection = (selectedOption) => {
             showMessage(`Your order is:`, 'bot');
             showMessage(`${selectedSubDish} ${selectedOption} ${menuSize}`, 'user');
             showMessage(`Confirm your order`, 'bot');
+          // Remove select size options
+          selectSize.remove();
+
+          // Add confirmation buttons
+          const confirmationButtons = document.createElement("div");
+          confirmationButtons.innerHTML = `
+            <button id="confirm-yes">Yes</button>
+            <button id="confirm-no">No</button>
+          `;
+          inputWrapper.appendChild(confirmationButtons);
+
+          // Add event listeners to confirmation buttons
+          const confirmYesButton = inputWrapper.querySelector('#confirm-yes');
+          const confirmNoButton = inputWrapper.querySelector('#confirm-no');
+          confirmYesButton.addEventListener('click', () => {
+            showMessage(`Order confirmed! Have a nice meal!`, 'bot');
           });
-        }, 1500);
-      });
+          confirmNoButton.addEventListener('click', () => {
+            showMessage(`Order canceled! See you again`, 'bot');
+          });
+        });
+      }, 1500);
     });
-  }, 1500);
-}
+  });
+}, 1500);
+};
