@@ -1,11 +1,13 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
 const nameForm = document.getElementById("name-form")
+const nameFormChildren = nameForm.querySelectorAll("*"); // all children i formuläret
 let nameInput = document.getElementById('name-input')
 const output = document.getElementById('output')
-//const buttonJavaScript = document.getElementById('javascript')
-//const buttonPython = document.getElementById('python')
-//const buttonJava = document.getElementById('java')
+const selectbutton = document.getElementById('selectbutton')
+const buttonJavaScript = document.getElementById('javascript')
+const buttonPython = document.getElementById('python')
+const buttonJava = document.getElementById('java')
 
 
 
@@ -56,18 +58,75 @@ const handleNameInput = (event) => {
   const username = nameInput.value
   showMessage(`Hi, I'm ${username}`, 'user')
   let input = nameInput.value = ""
-  //setTimeout(()=> showMessage, 1000)
  
 //get "Hello 'name' in return 
- return (showMessage(`Welcome to week  2, ${username}, nice to meet you. 
- Please pick a programming language that'll make your brain melt 
- and drip out your nose`, 'bot'))
+// Set a timer
+//  showMessage(`Welcome to week 2, ${username}, nice to meet you. 
+//  Please pick a programming language that'll make your brain melt 
+//  and drip out your nose`, 'bot')
+
+ // callback func ()
+ setTimeout(() => {
+  showMessage(
+    `Welcome to week 2, ${username}, nice to meet you. 
+    Please pick a programming language that'll make your brain melt 
+    and drip out your nose`,
+    "bot"
+  );
+}, 1000);
+ setTimeout(clickButton, 1000)
+ }
+
+
+
+
+//when a button is clicked, a message shows accordingly
+const clickButton = () => {
+console.log('Test')
+
+nameFormChildren.forEach((child) => {
+  // Här körs loopen. DDär har du tillgång till child, inte utanför loopen.
+  child.style.display = "none";
+});
+
+
+// SKapa element 
+  nameForm.innerHTML += `
+  <button id="blueberry" type="submit" class="choice-btn">Blueberry</button>
+  <button id="vanilla" type="submit" class="choice-btn">Vanilla</button>
+  <button id="chocolate" type="submit" class="choice-btn">Chocolate</button>
+  `;
+
+  
+  document.getElementById("blueberry").addEventListener('click', nextFunction);
+
+
 }
+
+const nextFunction = (e) => {
+  e.preventDefault();
+
+  showMessage("Blueberry", "user");
+}
+
+
+
+{/* <input type="radio" name="test" id="clickButton" value="clickButton"/><label>Hej</label> */}
+
+
+  //if (click === buttonJavaScript){
+    //return (showMessage('Attaboy, you got another thing coming!'))
+  //} else if (click === buttonPython){
+    //return (showMessage("Ouff.. You're really brave!"))
+    //} else if (click === buttonJava){
+      //return (showMessage('You got it, tiger.'))}
+  //}
 
 
 // Eventlisteners goes here 
 nameForm.addEventListener("submit", handleNameInput)
-//output.addEventListener()
+
+//selectbutton.addEventListener("click", clickButton)
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
