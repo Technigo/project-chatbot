@@ -4,8 +4,11 @@ const sendButton = document.getElementById('send-btn')
 const nameInput = document.getElementById('name-input')
 const form = document.getElementById('name-form')
 
-// Functions goes here 👇
+// Global variables
+let currentQuestionNumber = 1
+let saveEvent = ""
 
+// Functions goes here 👇
 // A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   // The if statement checks if the sender is the user and if that's the case it inserts
@@ -32,6 +35,7 @@ const showMessage = (message, sender) => {
     `
   }
 
+
   // This little thing makes the chat scroll to the last message when there are too many to
   // be shown in the chat box
   chat.scrollTop = chat.scrollHeight
@@ -46,6 +50,10 @@ const greetUser = () => {
 }
 
 // Eventlisteners goes here 👇
+sendButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  currentQuestion();
+});
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
