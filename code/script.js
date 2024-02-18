@@ -21,6 +21,7 @@ const destinationBeachOptionsForm = document.getElementById(
 const durationForm = document.getElementById("duration-form");
 const passengersForm = document.getElementById("passengers-form");
 const confirmationForm = document.getElementById("confirmation-form");
+const clickSound = new Audio("./assets/glass.mp3");
 
 // Functions goes here 👇
 const showMessage = (message, sender) => {

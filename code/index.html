@@ -8,7 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <title>Chatbot</title>
+    <title>Vacation Planer</title>
   </head>
 
   <body>
@@ -19,14 +19,20 @@
         <form id="name-form">
           <label for="name-input">Name</label>
           <input id="name-input" type="text" />
-          <button class="send-btn" type="submit">Send</button>
+          <button class="send-btn" type="submit" onclick="clickSound.play()">
+            Send
+          </button>
         </form>
         <form id="destination-type-form" class="hidden">
-          <button value="Mountain" type="submit">⛰️</button>
-          <button value="Beach" type="submit">🏖️</button>
+          <button value="Mountain" type="submit" onclick="clickSound.play()">
+            ⛰️
+          </button>
+          <button value="Beach" type="submit" onclick="clickSound.play()">
+            🏖️
+          </button>
         </form>
         <form id="destination-mountain-options-form" class="hidden">
-          <select>
+          <select onchange="clickSound.play()">
             <option selected="true" disabled="disabled">
               ⛰️👇🏽 Choose a mountain destination
             </option>
@@ -36,7 +42,7 @@
           </select>
         </form>
         <form id="destination-beach-options-form" class="hidden">
-          <select>
+          <select onchange="clickSound.play()">
             <option selected="true" disabled="disabled">
               🏖️ 👇🏽 Choose a beach destination
             </option>
@@ -46,7 +52,7 @@
           </select>
         </form>
         <form id="duration-form" class="hidden">
-          <select>
+          <select onchange="clickSound.play()">
             <option selected="true" disabled="disabled">
               🗓️ Select how many days you are planning
             </option>
@@ -55,12 +61,20 @@
           </select>
         </form>
         <form id="passengers-form" class="hidden">
-          <button value="Individual" type="submit">👤</button>
-          <button value="Group" type="submit">👥 👥</button>
+          <button value="Individual" type="submit" onclick="clickSound.play()">
+            👤
+          </button>
+          <button value="Group" type="submit" onclick="clickSound.play()">
+            👥 👥
+          </button>
         </form>
         <form id="confirmation-form" class="hidden">
-          <button value="Yes" type="submit">✅</button>
-          <button value="No" type="submit">🚫</button>
+          <button value="Yes" type="submit" onclick="clickSound.play()">
+            ✅
+          </button>
+          <button value="No" type="submit" onclick="clickSound.play()">
+            🚫
+          </button>
         </form>
       </div>
     </main>
