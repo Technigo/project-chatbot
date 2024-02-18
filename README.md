@@ -9,3 +9,4 @@ I started by testing the code who was already in the script.js file. Than I star
 ## View it live
 
 How it looks like:
+https://linda-f-project-chatbot.netlify.app/
