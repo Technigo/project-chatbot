@@ -1,5 +1,8 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
+const sendButton = document.getElementById('send-btn')
+const nameInput = document.getElementById('name-input')
+const form = document.getElementById('name-form')
 
 // Functions goes here 👇
 

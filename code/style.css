@@ -6,15 +6,63 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-color: rgb(185, 202, 201);
+  width: 100%;
+
+
+}
+
+.hero {
+  background-image: url("assets/background-image.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+}
+
+main {
+  position: absolute;
+  top: 220px;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 700px;
+  min-height: 570px;
+  max-height: 800px;
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px 24px;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  width: 100%;
+  max-height: 200px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+
+
 }
 
 h1 {
   font-weight: bold;
-  font-size: 28px;
+  font-size: 44px;
   line-height: 34px;
   color: #fff;
   text-align: center;
+  line-height: 1.6;
 }
 
 h2 {
@@ -38,29 +86,16 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: black;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
   flex: 1;
-  width: 100%;
 }
 
-main {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 700px;
-  height: 600px;
-  border-radius: 30px;
-  background: #fff;
-  padding: 20px 24px;
-  padding-top: 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-}
+
 
 .chat {
   flex: 1;
@@ -96,7 +131,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: black;
   max-width: 40%;
 }
 
@@ -118,23 +153,14 @@ main {
 .input-wrapper form {
   width: 100%;
   display: flex;
-  align-items: center;
-}
-
-label {
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #e35235b7;
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 16px 20px;
+  padding: 16px 40px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
@@ -147,4 +173,62 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+.btn-wrapper {
+  display: flex;
+  margin: auto;
+
+}
+
+
+footer {
+  display: block;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: black;
+  border: none;
+  padding: 10px 0 10px 30px;
+  height: auto;
+
+
+}
+
+footer p {
+  font-size: 8pt;
+  line-height: 10pt;
+}
+
+@media (max-width: 720px) {
+  main {
+    top: 170px;
+    max-width: 650px;
+    min-height: 350px;
+    max-height: 400px;
+
+  }
+
+  h1 {
+    font-size: 28px;
+    line-height: 30px;
+  }
+
+  h2 {
+    font-size: 18px;
+    line-height: 20px;
+    margin-bottom: 20px;
+  }
+
+
+  button {
+    padding: 16px 10px;
+    font-size: 10pt;
+  }
+
+}
+
+.bubble {
+  padding: 12px 18px;
+  max-width: 50%;
 }
