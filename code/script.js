@@ -19,7 +19,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/userg.svg" alt="User" />  
       </section>
     `
     // The else if statement checks if the sender is the bot and if that's the case it inserts
@@ -27,7 +27,7 @@ const showMessage = (message, sender) => {
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/genie.svg" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -45,7 +45,7 @@ const showMessage = (message, sender) => {
 // A function to start the conversation
 const greetUser = () => {
   // Here we call the function showMessage, that we declared earlier with the argument:
-  showMessage("What a great day to chat? I am Giny, the plant giver. Who are you?", 'bot')
+  showMessage("What a great day to chat? I am Genie, the plant giver. Who are you?", 'bot')
 }
 
 //Function to handle name input
@@ -59,7 +59,7 @@ const handleNameInput = (event) => {
 
   setTimeout(() => {
     displayPlantOptions(userName);
-  }, 1500);
+  }, 1200);
   inputWrapper.innerHTML ='';
 }
 
@@ -105,20 +105,21 @@ showMessage(`You selected ${selectedOption}.`, 'bot')
 selectedType = selectedOption;
 setTimeout(() => {
   showMessage(`Great choice! Now, let´s talk about the care needs of your ${selectedOption}.`,'bot')
-}, 1200)
+}, 1000)
 };
 
 //Function to ask about caring needs
 
 const askCaringNeeds = () => {
   setTimeout(() => {
-  showMessage(`How would you decribe yourself in terms of plant care:`, 'bot');
+   showMessage(`How would you decribe yourself in terms of plant care:`, 'bot');
 
   //create select element
   const select = document.createElement('select')
   select.id = 'caring-needs';
 
   const options = [
+    { value: 'select-option', label: 'Select Option' },
     { value: 'plant-whisperer', label: 'A Plant Whisperer 🌱' },
     { value: 'forgetful-gardener', label: 'A Forgetful Gardener 🤦' },
     { value: 'serial-plant-killer', label: 'A Serial Plant Killer 🥀' }
@@ -137,17 +138,17 @@ const askCaringNeeds = () => {
     showMessage(`You describe yourself as ${selectedCaringNeeds}.`, 'user');
     setTimeout(() => {
     showMessage(`Based on your caring needs, let me sugest a plant for you.`, 'bot')
-    giveRandoomPlant(selectedCaringNeeds);
+    giveRandomPlant(selectedCaringNeeds);
     }, 1800);
   });
 
   inputWrapper.innerHTML = '';
   inputWrapper.appendChild(select);
-}, 1800)
+}, 2000)
 };
 
 // Function to randomly give a plant based on user choice from caring needs
-const giveRandoomPlant = (selectedCaringNeeds) => {
+const giveRandomPlant = (selectedCaringNeeds) => {
   let suggestedPlants = [];
   // Based on the user's caring needs, suggest appropriate plants
   switch (selectedCaringNeeds) {
@@ -163,32 +164,48 @@ const giveRandoomPlant = (selectedCaringNeeds) => {
     default:
       suggestedPlants = ['Spider Plant', 'ZZ Plant'];
   }
+
   const randomPlant = suggestedPlants[Math.floor(Math.random() * suggestedPlants.length)];
-  showMessage(`Based on your caring needs, I suggest you get a ${randomPlant}. Enjoy! 🌱`, 'bot');
+  setTimeout(() => {
+    showMessage(`I suggest you get a ${randomPlant}.🌱 Do you want to confirm?`, 'bot');
+    plantConfirmation(randomPlant);
+  }, 1300)
 };
 
+// Function to handle user confirmation
+const plantConfirmation = (randomPlant) => {
+ inputWrapper.innerHTML = `
+ <button id='yesButton'>YES</button>
+ <button id='noButton'>NO</button>
+ `;
 
-// Function to ask about caring package
-const askForCaringPackage = () => {
-  showMessage(`Choose from the options below:`, 'bot');
-  setTimeout(() => {
-    showMessage(`1. Deluxe Plant Spa Treatment 🌿\n2. Basic Plant TLC Package 🍃\n3. No, thanks, I'll wing it! 🦋`, 'bot');
-  }, 1000);
+ document.getElementById('yesButton').addEventListener('click', () => {
+  showMessage('Yes', 'user')
+  setTimeout(() => answerUser('YES', randomPlant), 1200 )
+ });
+
+ document.getElementById('noButton').addEventListener('click', () => {
+  showMessage('Yes', 'user')
+  setTimeout(() => answerUser('NO', randomPlant), 1200 )
+ });
+
+
+ //Function to handle user response to the confirmation
+ const answerUser = (userResponse, suggestedPlants) => {
+  if (userResponse === 'YES') {
+    setTimeout(() => {
+    showMessage(`Thank you for confirming! Your ${randomPlant} is all set for a happy life! 🌟.`, 'bot');
+    }, 1000);
+  } else {
+    showMessage ('Sorry to hear that. Have a nice day!', 'bot')
+  }
+  inputWrapper.innerHTML = '';
 };
-
-// Function to handle caring package response
-const handleCaringPackageResponse = (response) => {
-  showMessage(`You opted for option ${response}.`, 'user');
-  setTimeout(() => {
-    showMessage(`Thank you for confirming! Your ${selectedType} is all set for a happy life! 🌟`, 'bot');
-  }, 1000);
 };
 
 
 // Eventlisteners goes here 👇
 nameForm.addEventListener('submit', handleNameInput);
-
-
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
@@ -196,6 +213,4 @@ nameForm.addEventListener('submit', handleNameInput);
 // and pass along two arguments:
 // 1.) the function we want to delay, and 2.) the delay in milliseconds 
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 800);
-
-
+setTimeout(greetUser, 1000);

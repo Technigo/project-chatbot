@@ -6,7 +6,19 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background-image: url("assets/back.avif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.background-image {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: auto;
 }
 
 h1 {
@@ -38,7 +50,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #7bae37;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -69,6 +81,7 @@ main {
   overflow: scroll;
   flex-direction: column;
   padding-bottom: 16px;
+  opacity: 0.9;
 }
 
 .bot-msg {
@@ -96,7 +109,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #7bae37;
   max-width: 40%;
 }
 
@@ -125,12 +138,12 @@ label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  color: #7bae37;
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #7bae37;
   color: white;
   border: none;
   border-radius: 4px;
@@ -151,32 +164,36 @@ button:hover {
 
 /* Hide the default arrow icon */
 select {
-  -webkit-appearance:media-fullscreen-button;
-  -moz-appearance:button-arrow-down;
-  appearance: none;
+  border: none;
   border-radius: 4px;
   padding: 16px 20px;
   font-size: 16px;
   font-weight: 500;
-  background-color: #14764d;
-  border: 1px solid #ccc;
-  width: 200px;
+  background-color: #7bae37;
+  color:white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+select:focus {
+  outline: none;
+  border:none;
+}
+
+select::-ms-expand {
+  display: none;
 }
 
 /* Style the options */
 select option {
-  padding: 10px;
+  padding: 16px 20px;
   font-size: 16px;
-  background-color: #cdeac0;
+  background-color: #afafaf;
+  color:white;
 }
 
-/* Style the hover state of options */
-select option:hover {
-  background-color: #a9dcaa;
-}
-
-/* Style the selected option */
-select option:checked {
-  background-color: #6eb566;
-  color: #fff;
+/* Remove blue highlight when choosing an option */
+select::-moz-selection,
+select::selection {
+  background-color: none;
 }
