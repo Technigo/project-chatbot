@@ -127,6 +127,7 @@ label {
   font-weight: 500;
   color: #0026ff;
   margin-right: 20px;
+  display: none;
 }
 
 button {
@@ -147,4 +148,18 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+select {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px;
+  background: #e5e9ff;
+  color: #0026ff;
+  padding: 16px;
+  font-size: 16px;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  line-height: 26px;
+  width: 80%;
 }
