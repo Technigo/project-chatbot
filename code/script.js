@@ -153,7 +153,7 @@ const handleMainDishSelection = (selectedOption) => {
       const selectedSubDish = event.target.textContent
       showMessage(`${selectedSubDish}`, 'user');
       setTimeout(() => {
-        showMessage(`Which size do you want?`, "bot");
+        showMessage(`Choose your size:`, "bot");
 
         // Remove subdish option buttons
         subDishButtons.forEach(button => button.remove());
