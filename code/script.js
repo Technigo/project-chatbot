@@ -5,9 +5,13 @@ const nameFormChildren = nameForm.querySelectorAll("*"); // all children i formu
 let nameInput = document.getElementById('name-input')
 const output = document.getElementById('output')
 const selectbutton = document.getElementById('selectbutton')
-const buttonJavaScript = document.getElementById('javascript')
-const buttonPython = document.getElementById('python')
-const buttonJava = document.getElementById('java')
+
+//OK, so first I selected hard coded buttons from the HTML. Later Pernilla showed how to 
+//get them dynamic by implementing them in the JS file. 
+
+//const buttonJavaScript = document.getElementById('javascript')
+//const buttonPython = document.getElementById('python')
+//const buttonJava = document.getElementById('java')
 
 
 
@@ -61,17 +65,14 @@ const handleNameInput = (event) => {
  
 //get "Hello 'name' in return 
 // Set a timer
-//  showMessage(`Welcome to week 2, ${username}, nice to meet you. 
-//  Please pick a programming language that'll make your brain melt 
-//  and drip out your nose`, 'bot')
 
  // callback func ()
  setTimeout(() => {
   showMessage(
     `Welcome to week 2, ${username}, nice to meet you. 
     Please pick a programming language that'll make your brain melt 
-    and drip out your nose`,
-    "bot"
+    and drip out through your nose`,
+    'bot'
   );
 }, 1000);
  setTimeout(clickButton, 1000)
@@ -82,45 +83,48 @@ const handleNameInput = (event) => {
 
 //when a button is clicked, a message shows accordingly
 const clickButton = () => {
-console.log('Test')
+//console.log('Test')
 
 nameFormChildren.forEach((child) => {
-  // Här körs loopen. DDär har du tillgång till child, inte utanför loopen.
+  // Här körs loopen. Där har du tillgång till child, inte utanför loopen. (Pernilla)
   child.style.display = "none";
 });
 
 
-// SKapa element 
+// Skapa element (Pernillas scope)
   nameForm.innerHTML += `
-  <button id="blueberry" type="submit" class="choice-btn">Blueberry</button>
-  <button id="vanilla" type="submit" class="choice-btn">Vanilla</button>
-  <button id="chocolate" type="submit" class="choice-btn">Chocolate</button>
+  <button id="javaScript" type="submit" class="choice-btn">JavaScript</button>
+  <button id="python" type="submit" class="choice-btn">Python</button>
+  <button id="java" type="submit" class="choice-btn">Java</button>
   `;
 
-  
-  document.getElementById("blueberry").addEventListener('click', nextFunction);
-
-
+  document.getElementById("javaScript").addEventListener('click', nextFunction);
+  document.getElementById("python").addEventListener('click', nextFunction);
+  document.getElementById("java").addEventListener('click', nextFunction);
 }
+//Here, I want to create a return message for each button id. 
+//Following is my attempt to code this with conditionals:
+
+//if (click === buttonJavaScript){
+//return (showMessage(''))
+//} else if (click === buttonPython){
+//return (showMessage("Ouff.. You're really brave!"))
+//} else if (click === buttonJava){
+//return (showMessage('You got it, tiger.'))}
+
 
 const nextFunction = (e) => {
   e.preventDefault();
-
-  showMessage("Blueberry", "user");
+    showMessage("Attaboy, you got another thing coming!", 'bot'); 
 }
 
+//HERE AS A FINAL MESSAGE:
+//Something like: "prepare for a bumpy ride, friend! Bye bye"
 
 
-{/* <input type="radio" name="test" id="clickButton" value="clickButton"/><label>Hej</label> */}
+//Pernillas element, saved for another time:
+/* <input type="radio" name="test" id="clickButton" value="clickButton"/><label>Hej</label> */
 
-
-  //if (click === buttonJavaScript){
-    //return (showMessage('Attaboy, you got another thing coming!'))
-  //} else if (click === buttonPython){
-    //return (showMessage("Ouff.. You're really brave!"))
-    //} else if (click === buttonJava){
-      //return (showMessage('You got it, tiger.'))}
-  //}
 
 
 // Eventlisteners goes here 
