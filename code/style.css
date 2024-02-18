@@ -3,10 +3,27 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: linear-gradient(to right, #ff7e5f, #feb47b, #ffdb9d, #ffecb8);
+  animation: gradientAnimation 1s ease infinite;
+}
+body, html{
+  overflow-x: hidden;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 h1 {
@@ -33,12 +50,12 @@ p {
   margin: 0;
 }
 
-input {
+input, select {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #000000;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -62,6 +79,20 @@ main {
   flex-direction: column;
 }
 
+.start-button {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 34px;
+  max-width: 300px;
+  color: #ff7e5f;
+  text-align: center;
+  margin-bottom: 36px;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  background: #fff;
+  box-sizing: border-box;
+}
+
 .chat {
   flex: 1;
   display: flex;
@@ -74,14 +105,14 @@ main {
 .bot-msg {
   display: flex;
   margin: 16px 8px 0 0;
-  flex-shrink: 0;
+  /* flex-shrink: 0; */
 }
 
 .user-msg {
   display: flex;
   justify-content: flex-end;
   margin: 16px 0 0 8px;
-  flex-shrink: 0;
+  /* flex-shrink: 0; */
 }
 
 .bot-msg img,
@@ -96,7 +127,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #000000;
   max-width: 40%;
 }
 
@@ -108,6 +139,7 @@ main {
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  background-color: #ffdb9d;
 }
 
 .input-wrapper {
@@ -130,7 +162,7 @@ label {
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #ff7e5f;
   color: white;
   border: none;
   border-radius: 4px;
@@ -147,4 +179,69 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+::placeholder {
+  color: rgb(181, 180, 180);
+  opacity: 0,5;
+}
+/* ----------MEDIA QUERYS-----------------*/
+
+@media (max-width:670px){
+  body{
+    padding: 5px;
+  }
+
+  main{
+    padding: 15px;
+  }
+
+  .bot-msg img,
+  .user-msg img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .bot-msg {
+    display: flex;
+    margin: 8px 4px 0 0;
+  }
+  
+  .user-msg {
+    display: flex;
+    justify-content: flex-end;
+    margin: 8x 0 0 4px;
+  }
+
+  p {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+    margin: 0;
+  }
+
+  .bubble {
+    background: #e5e9ff;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 26px;
+    padding: 10px 20px;
+    color: #000000;
+    max-width: 40%;
+  }
+
+  button {
+    background-color: #ff7e5f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 16px 10px;
+    margin-right: 4px;
+    font-size: 10px;
+    line-height: 26px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
 }

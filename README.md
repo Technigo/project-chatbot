@@ -1,13 +1,13 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+A chatbot designed for ordering food.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The main problem was to apply a function for each of the subDishOptions which would lead to the order confirmation.
+This was our first week learning JS and the project was overwellming in many senses but it was a good exercice to grasp some of the basic concepts of JS. The DOM their selectors, creating functions, scope functions, eventListeners...
 
-## View it live
+With more time, I would had play more with the style and adding sounds, cleaning the code among many other things.
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+## View it live [here](https://our-chat-bot.netlify.app/)
+

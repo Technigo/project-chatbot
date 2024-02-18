@@ -1,12 +1,13 @@
-// DOM selectors (variables that point to selected DOM elements) goes here 👇
+// DOM selectors 
 const chat = document.getElementById('chat')
+const displayMain = document.querySelector("main") //for start button purposes
+const nameForm = document.getElementById('name-form');
+const nameInput = document.getElementById('name-input');
+const inputWrapper = document.getElementById('input-wrapper');
 
-// Functions goes here 👇
-
-// A function that will add a chat bubble in the correct place based on who the sender is
+// A MAIN FUNCTION that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // The if statement checks if the sender is the user and if that's the case it inserts
-  // an HTML section inside the chat with the posted message from the user
+  // The if statement checks if the sender is the user and if that's the case it inserts an HTML section inside the chat with the posted message from the user
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
@@ -16,8 +17,8 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `
-    // The else if statement checks if the sender is the bot and if that's the case it inserts
-    // an HTML section inside the chat with the posted message from the bot
+
+  // The else if statement checks if the sender is the bot and if that's the case it inserts an HTML section inside the chat with the posted message from the bot
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
@@ -28,26 +29,185 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
-
-  // This little thing makes the chat scroll to the last message when there are too many to
-  // be shown in the chat box
-  chat.scrollTop = chat.scrollHeight
+  chat.scrollTop = chat.scrollHeight // This makes the chat scroll to the last message when there are too many to be shown 
 }
 
-// A function to start the conversation
+//FUNCTIONS START HERE////////////////////////////////////////////////////////////////////////
+
+// 1 Start screen, hide chat section, just h1 and start button.
+const startScreen = () => {  
+  displayMain.style.display = "none" //hide chat
+  
+  const startButton = document.createElement("button") //Create a button
+  startButton.textContent = "START"
+  startButton.classList.add ("start-button")  
+
+  document.body.appendChild(startButton) // Append the button to the document body
+  
+  startButton.addEventListener("click", () =>{ //Add event listener to the button
+    displayMain.style.display = "flex" // Show the main element when the button es clicked
+    startButton.remove() // Remove the button from the document
+  })
+}
+startScreen()
+
+// 2 A function to start the conversation
 const greetUser = () => {
-  // Here we call the function showMessage, that we declared earlier with the argument:
-  // "Hello there, what's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, what's your name?", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
-}
+  showMessage("Welcome to this amazing chat bot! What's your name?", "bot")
+  }
 
-// Eventlisteners goes here 👇
+setTimeout(greetUser, 1800)
 
-// Here we invoke the first function to get the chatbot to ask the first question when
-// the website is loaded. Normally we invoke functions like this: greeting()
-// To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
-// and pass along two arguments:
-// 1.) the function we want to delay, and 2.) the delay in milliseconds 
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000)
+// 4 Function to greet the user and ask if he would like to order
+// 5 Function to handle name input
+// 6 Function to handle form submission
+nameForm.addEventListener('submit', (event) => {
+  event.preventDefault(); // Prevent the default form submission behavior
+  const userName = nameInput.value
+  if (nameInput.value.trim() === '') {
+    nameInput.placeholder = 'Type your name here'; // Change the placeholder to "Type your name here"
+  } else { showMessage(userName, 'user') // Show user input in the chat as a user message
+  
+  setTimeout(() => {
+    showMessage(`Wellcome ${userName}!`, "bot")
+  }, 1500)
+
+  setTimeout(() => {
+    showMessage(`Life is short. What do you want to order?`, "bot")
+  }, 2500)
+
+  setTimeout(() => {
+    nameForm.style.display = "none"
+    inputWrapper.style.display = "flex"
+    inputWrapper.style.justifyContent = "space-around" 
+    
+    const mainDishOptions = document.createElement("div")
+    mainDishOptions.innerHTML = `
+    <button id="pizza">Pizza</button>
+    <button id="pasta">Pasta</button>
+    <button id="salad">Salad</button>
+    `
+    inputWrapper.appendChild(mainDishOptions)
+  }, 3000)
+  }
+})
+
+// Add event listeners to mainDishOption buttons
+document.addEventListener('click', (event) => {
+  if (event.target.matches('#pizza')) {
+    handleMainDishSelection('Pizza');
+  } else if (event.target.matches('#pasta')) {
+    handleMainDishSelection('Pasta');
+  } else if (event.target.matches('#salad')) {
+    handleMainDishSelection('Salad');
+  }
+});
+
+// Function to handle the user's selection of a main dish option
+const handleMainDishSelection = (selectedOption) => {
+  showMessage(`${selectedOption}`, 'user')
+
+  setTimeout(() => {
+  showMessage(`A delicious choice, which ${selectedOption} do you want?`, 'bot')
+  // Remove main dish option buttons from inputWrapper
+  const mainDishButtons = document.querySelectorAll('#pizza, #pasta, #salad')
+  mainDishButtons.forEach(button => button.remove())
+  nameForm.remove()
+  // Generate subdish options based on the selected main dish
+  let subDishOptions;
+  switch (selectedOption) {
+    case 'Pizza':
+      subDishOptions = `
+        <button id="subDish1">Pepperoni</button>
+        <button id="subDish2">Vegetarian</button>
+        <button id="subDish3">Margherita</button>
+        <button id="subDish4">Hawaiian</button>
+      `;
+      break;
+    case 'Pasta':
+      subDishOptions = `
+        <button id="subDish1">Carbonara</button>
+        <button id="subDish2">Arrabiata</button>
+        <button id="subDish3">Alfredo</button>
+        <button id="subDish4">Lasagna</button>
+      `;
+      break;
+    case 'Salad':
+      subDishOptions = `
+        <button id="subDish1">Caesar</button>
+        <button id="subDish2">Greek</button>
+        <button id="subDish3">Caprese</button>
+        <button id="subDish4">Cobb</button>
+      `;
+      break;
+  }
+  // Append subdish options to inputWrapper
+  const subDishes = document.createElement("div");
+  subDishes.innerHTML = subDishOptions
+  inputWrapper.appendChild(subDishes)
+
+  const subDishButtons = document.querySelectorAll('#subDish1, #subDish2, #subDish3, #subDish4');
+  subDishButtons.forEach(button => {
+    // Add event listeners to subdish option buttons
+    button.addEventListener('click', function(event) {
+      const selectedSubDish = event.target.textContent
+      showMessage(`${selectedSubDish}`, 'user');
+      setTimeout(() => {
+        showMessage(`Choose your size:`, "bot");
+
+        // Remove subdish option buttons
+        subDishButtons.forEach(button => button.remove());
+
+        // Append select size options to inputWrapper
+        const selectSize = document.createElement("div");
+        selectSize.innerHTML = `
+          <select name="menuSize" id="menuSize" placeholder="👇">
+            <option value="child">Child Menu, 10€</option>
+            <option value="Medium">Medium size, 12€</option>
+            <option value="Adult">Adult size, 15€</option>
+          </select>
+          <button class="send-btn" type="submit">
+            Send
+          </button>
+        `;
+        inputWrapper.appendChild(selectSize);
+        selectSize.style.display = "contents"
+        selectSize.style.justifyContent = "center" 
+        selectSize.style.alignItems = "center" 
+
+          // Add event listener to the send button
+          const sendButton = selectSize.querySelector('.send-btn');
+          sendButton.addEventListener('click', () => {
+            const selectElement = document.getElementById('menuSize');
+            const menuSize = selectElement.selectedOptions[0].textContent;
+            showMessage(`Your order is:`, 'bot');
+            showMessage(`${selectedSubDish} ${selectedOption} ${menuSize}`, 'user');
+            showMessage(`Confirm your order`, 'bot');
+          // Remove select size options
+          selectSize.remove();
+
+          // Add confirmation buttons
+          const confirmationButtons = document.createElement("div");
+          confirmationButtons.innerHTML = `
+            <button id="confirm-yes">Yes</button>
+            <button id="confirm-no">No</button>
+          `;
+          inputWrapper.appendChild(confirmationButtons);
+
+          // Add event listeners to confirmation buttons
+          const confirmYesButton = inputWrapper.querySelector('#confirm-yes');
+          const confirmNoButton = inputWrapper.querySelector('#confirm-no');
+          confirmYesButton.addEventListener('click', () => {
+            showMessage(`Order confirmed! Have a nice meal and see you soon.`, 'bot');
+            confirmationButtons.remove()
+          });
+          confirmNoButton.addEventListener('click', () => {
+            showMessage(`Order canceled! Refresh the page and order again, otherwise have a nice day`, 'bot');
+            confirmationButtons.remove()
+          });
+        });
+      }, 1500);
+    });
+  });
+}, 1500);
+};
