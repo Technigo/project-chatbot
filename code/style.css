@@ -4,6 +4,9 @@
   box-sizing: border-box;
 }
 
+audio {
+  display: none;
+}
 body {
   height: 100vh;
   margin: 20px;
@@ -216,8 +219,6 @@ footer .inspiration {
   display: none;
 }
 
-
-
 @media screen and (max-width: 1170px) {
   h1 {
     transform: rotate(270deg);
@@ -247,4 +248,3 @@ footer .inspiration {
     flex-direction: column;
   }
 }
-
