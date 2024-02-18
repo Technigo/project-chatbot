@@ -5,15 +5,16 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: "Montserrat", sans-serif;
+  background-image: url(assets/mountains.jpg);
+  height: 100vh;
 }
 
 h1 {
   font-weight: bold;
   font-size: 28px;
   line-height: 34px;
-  color: #fff;
+  color: #fa6977;
   text-align: center;
 }
 
@@ -38,10 +39,11 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #fa6977;
   padding: 16px;
+  margin: 5px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -50,11 +52,12 @@ input {
 
 main {
   margin: 0 auto;
-  width: 100%;
+  width: 90%;
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
   background: #fff;
+  opacity: 0.95;
   padding: 20px 24px;
   padding-top: 0;
   box-sizing: border-box;
@@ -96,7 +99,7 @@ main {
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #fa6977;
   max-width: 40%;
 }
 
@@ -123,22 +126,23 @@ main {
 
 label {
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
-  color: #0026ff;
+  color: #e0d896
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #fa6977;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 44px;
   padding: 16px 20px;
   margin-right: 4px;
+  margin-left: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -147,4 +151,47 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#destination-form {
+  justify-content: center;
+}
+
+#destination-type-form,
+#passengers-form,
+#confirmation-form {
+  justify-content: center;
+}
+
+select {
+  width: 100%;
+  border: navajowhite;
+  background: #e5e9ff;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  color: #fa6977;
+  font-family: "Montserrat";
+}
+
+#name-form {
+  color: #fa6977;
+  font-family: "Montserrat";
+}
+
+@media screen and (max-width: 470px) {
+  .bubble {
+    max-width: 60%;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .send-btn {
+    display: flex;
+    flex-direction: column;
+  }
 }
