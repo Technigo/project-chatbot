@@ -6,24 +6,25 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: linear-gradient(to bottom, #9f484c, #681a1a); /* Changed to gradient background */
 }
 
 h1 {
   font-weight: bold;
-  font-size: 28px;
+  font-size: 40px; /* Changed from 28px to 40px */
   line-height: 34px;
   color: #fff;
   text-align: center;
+  margin-bottom: 25px;
 }
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 34px;
   color: #fff;
   text-align: center;
-  margin-bottom: 36px;
+  margin-bottom: 30px; 
 }
 
 p {
@@ -37,8 +38,8 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background: #ebebeb; /* Changed user textbox from #e5e9ff; */
+  color: #2e2e2e; /* Changed user text from #0026ff */
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -91,12 +92,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #ebebeb; /* Changed DateBot text from #e5e9ff; */
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #2e2e2e; /* Changed DateBot text from #0026ff */
   max-width: 40%;
 }
 
@@ -122,15 +123,15 @@ main {
 }
 
 label {
-  font-size: 16px;
+  font-size: 18px; /* Changed from 16px */
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  color: #2e2e2e; /* Changed from #0026ff, this label text is removed from html */
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #681a1a; /* Changed from #0026ff */
   color: white;
   border: none;
   border-radius: 4px;
