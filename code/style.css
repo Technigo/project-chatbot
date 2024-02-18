@@ -20,7 +20,6 @@ h1 {
   margin: 0;
   font-weight: bold;
   font-size: 200px;
-  /* line-height: 34px; */
   color: #000;
   text-align: center;
 }
@@ -54,6 +53,11 @@ input {
   line-height: 26px;
   flex: 1;
   width: 100%;
+}
+
+input[type="radio"] {
+  min-height: 15px;
+  min-width: 15px;
 }
 
 input:focus-visible {
@@ -219,6 +223,10 @@ footer .inspiration {
   display: none;
 }
 
+.copyright p, .logo p {
+  font-weight: 400;
+}
+
 @media screen and (max-width: 1170px) {
   h1 {
     transform: rotate(270deg);
@@ -236,15 +244,47 @@ footer .inspiration {
 }
 
 @media screen and (max-width: 700px) {
+  body {
+    margin: 10px
+  }
   h1 {
     transform: none;
+    font-size: 7rem;
   }
 
   .intro {
+    margin: 0;
     transform: none;
     width: 100%;
   }
   main {
     flex-direction: column;
+  }
+
+  .bot-bubble, .user-bubble {
+    max-width: 100%;
+  }
+
+  footer .inspiration {
+    display: none;
+  }
+
+  .copyright p, .logo p{
+    font-size: 0.7rem;
+  }
+
+  main .inspiration {
+    background-color: black;
+    min-height: 200px;
+    height: auto;
+    width: 100%;
+    background-image: url("./assets/semla.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 25% 75%;
+  }
+
+  .bubble p {
+    font-size: 0.8rem
   }
 }
