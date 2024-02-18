@@ -121,6 +121,11 @@ main {
   align-items: center;
 }
 
+.selectbutton {
+  display: flex;
+  justify-content: center;
+}
+
 label {
   font-size: 16px;
   font-family: 'Montserrat';
