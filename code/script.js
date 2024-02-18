@@ -17,6 +17,7 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `
+
   // The else if statement checks if the sender is the bot and if that's the case it inserts an HTML section inside the chat with the posted message from the bot
   } else if (sender === 'bot') {
     chat.innerHTML += `
@@ -110,7 +111,8 @@ const handleMainDishSelection = (selectedOption) => {
   showMessage(`A delicious choice, which ${selectedOption} do you want?`, 'bot')
   // Remove main dish option buttons from inputWrapper
   const mainDishButtons = document.querySelectorAll('#pizza, #pasta, #salad')
-  mainDishButtons.forEach(button => button.remove())   
+  mainDishButtons.forEach(button => button.remove())
+  nameForm.remove()
   // Generate subdish options based on the selected main dish
   let subDishOptions;
   switch (selectedOption) {
@@ -151,20 +153,39 @@ const handleMainDishSelection = (selectedOption) => {
       const selectedSubDish = event.target.textContent
       showMessage(`${selectedSubDish}`, 'user');
       setTimeout(() => {
-      showMessage(`Which size do you want?`, "bot")    
-    }, 1500)
-    subDishButtons.forEach(button => button.remove())
-   })
- })
-}, 1500)}
+        showMessage(`Which size do you want?`, "bot");
 
-/* const selectSize = document.createElement("div")
-  selectSize.innerHTML = `
-    <select name="cars" id="cars" placeholder="👇">
-      <option value="child">Child</option>
-      <option value="Medium">Medium</option>
-      <option value="Adult">Adult</option>
-    </select>
-    <input type="submit" value="Submit">`
+        // Remove subdish option buttons
+        subDishButtons.forEach(button => button.remove());
 
-  inputWrapper.appendChild(selectSize) */
+        // Append select size options to inputWrapper
+        const selectSize = document.createElement("div");
+        selectSize.innerHTML = `
+          <select name="menuSize" id="menuSize" placeholder="👇">
+            <option value="child">Child Menu, 10€</option>
+            <option value="Medium">Medium size, 12€</option>
+            <option value="Adult">Adult size, 15€</option>
+          </select>
+          <button class="send-btn" type="submit">
+            Send
+          </button>
+        `;
+        inputWrapper.appendChild(selectSize);
+        selectSize.style.display = "contents"
+        selectSize.style.justifyContent = "center" 
+        selectSize.style.alignItems = "center" 
+
+          // Add event listener to the send button
+          const sendButton = selectSize.querySelector('.send-btn');
+          sendButton.addEventListener('click', () => {
+            const selectElement = document.getElementById('menuSize');
+            const menuSize = selectElement.selectedOptions[0].textContent;
+            showMessage(`Your order is:`, 'bot');
+            showMessage(`${selectedSubDish} ${selectedOption} ${menuSize}`, 'user');
+            showMessage(`Confirm your order`, 'bot');
+          });
+        }, 1500);
+      });
+    });
+  }, 1500);
+}

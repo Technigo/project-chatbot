@@ -47,7 +47,7 @@ p {
   margin: 0;
 }
 
-input {
+input, select {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
@@ -136,6 +136,7 @@ main {
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  background-color: #ffdb9d;
 }
 
 .input-wrapper {
