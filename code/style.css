@@ -185,3 +185,63 @@ button:hover {
   color: rgb(181, 180, 180);
   opacity: 0,5;
 }
+/* ----------MEDIA QUERYS-----------------*/
+
+@media (max-width:670px){
+  body{
+    padding: 5px;
+  }
+
+  main{
+    padding: 15px;
+  }
+
+  .bot-msg img,
+  .user-msg img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .bot-msg {
+    display: flex;
+    margin: 8px 4px 0 0;
+  }
+  
+  .user-msg {
+    display: flex;
+    justify-content: flex-end;
+    margin: 8x 0 0 4px;
+  }
+
+  p {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+    margin: 0;
+  }
+
+  .bubble {
+    background: #e5e9ff;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 26px;
+    padding: 10px 20px;
+    color: #000000;
+    max-width: 40%;
+  }
+
+  button {
+    background-color: #ff7e5f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 16px 10px;
+    margin-right: 4px;
+    font-size: 10px;
+    line-height: 26px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+}
