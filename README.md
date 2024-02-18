@@ -13,3 +13,4 @@ If I had more time I would have added a typewriter effect to the chat. I didn't 
 ## View it live
 
 Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://65d211ffb996fd5de583099b--eloquent-syrniki-cf72c0.netlify.app/
