@@ -56,10 +56,10 @@ const processUserOption = (message, functionName) => {
   inputField.innerHTML = "";
   showMessage(
     `<div class="loader" id="loader">
-  <span></span>
-  <span></span>
-  <span></span>
-  </div>`,
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>`,
     "bot"
   );
   setTimeout(() => {
