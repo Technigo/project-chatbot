@@ -98,6 +98,7 @@ const handleNameInput = (event) => {
   nameInput.value = "";
   // Check if the user has entered a name before moving on
   if (userName) {
+    inputWrapper.innerHTML = "";
     showMessage(userName, "user");
     setTimeout(chooseAnimal, 1000);
   } else {
@@ -115,11 +116,10 @@ const chooseAnimal = () => {
   addAnimalButtons();
   // Depending on which button is clicked, the id of the clicked button is added to the animalChoice variable
   const animalButton = document.querySelectorAll(".send-btn");
-  console.log(animalButton);
   animalButton.forEach((animalButton) => {
     animalButton.addEventListener("click", (event) => {
       animalChoice = event.target.id;
-      console.log(animalChoice);
+      inputWrapper.innerHTML = "";
       showMessage(`I'd like a ${animalChoice}.`, "user");
       // We then move on to choosing a type of the chosen animal
       setTimeout(chooseType, 1000);
@@ -140,7 +140,6 @@ const chooseType = () => {
   typeMenu.forEach((typeMenu) => {
     typeMenu.addEventListener("change", () => {
       selectedType = typeMenu.options[typeMenu.selectedIndex].text;
-      console.log(selectedType);
     });
   });
   // By pressing the Confirm button, the selectedType is confirmed
@@ -149,6 +148,7 @@ const chooseType = () => {
     event.preventDefault();
     // Check if the user has selected a type before moving on
     if (selectedType) {
+      inputWrapper.innerHTML = "";
       showMessage(`${selectedType}, please.`, "user");
       setTimeout(genderChoice, 1000);
     } else {
@@ -167,11 +167,10 @@ const genderChoice = () => {
   addGenderButtons();
   // Depending on which button is clicked, the id of the clicked button is added to the gender variable
   const genderButton = document.querySelectorAll(".send-btn");
-  console.log(genderButton);
   genderButton.forEach((genderButton) => {
     genderButton.addEventListener("click", (event) => {
       gender = event.target.id;
-      console.log(gender);
+      inputWrapper.innerHTML = "";
       showMessage(`A ${gender}, please.`, "user");
       setTimeout(contactInfo, 1000);
       switch (gender) {
@@ -199,25 +198,28 @@ const contactInfo = () => {
   contactForm.addEventListener("submit", (event) => {
     const telNo = document.getElementById("tel").value;
     const userEmail = document.getElementById("email").value;
+    inputWrapper.innerHTML = "";
     showMessage(`${telNo}, ${userEmail}`, "user");
     event.preventDefault();
-    setTimeout(handleApplication, 1000);
+    setTimeout(confirmApplication, 1000);
   });
 };
 
 // The user is asked to confirm their application by clicking buttons
-const handleApplication = () => {
+const confirmApplication = () => {
   showMessage(`Great! Would you like to confirm your application?`, "bot");
   inputWrapper.innerHTML = `
     <button class="send-btn" id="Yes">Yes</button>
     <button class="send-btn" id="No">No</button>`;
   document.querySelector("#Yes").addEventListener("click", () => {
     confirmApp = "yes";
+    inputWrapper.innerHTML = "";
     showMessage("Yes", "user");
     setTimeout(appConfirmation, 1000);
   });
   document.querySelector("#No").addEventListener("click", () => {
     confirmApp = "no";
+    inputWrapper.innerHTML = "";
     showMessage("No", "user");
     setTimeout(appConfirmation, 1000);
   });
