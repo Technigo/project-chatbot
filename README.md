@@ -1,13 +1,9 @@
-# Project Name
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
-
+# project-chatbot
+Chatbot created during week 2: functions & scopes. This code is not finished!
 ## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The problem this week was that my teammates and I had problems with syncing our schedules. We never went further than the planning state and the result is 
+done with help from another classmate that jumped in to help me during the last hours. 
+We will take up on this and finish the project as soon as we can! 
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://soft-puppy-7282f0.netlify.app/
