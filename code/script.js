@@ -196,6 +196,7 @@ const displayPartyInput = () => {
   partyInput.id = "party-input";
   partyInput.value = "10";
   partyInput.max = "50";
+  partyInput.min = "1";
   partyLabel.textContent = `Party size: ${partySize}`;
   partyLabel.htmlFor = "party-input";
   partyButton.type = "submit";
