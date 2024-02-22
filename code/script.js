@@ -77,7 +77,7 @@ const greetUser = () => {
 };
 
 // A function that shows the final order status which has one IF/ELSE statement
-const showOrderStatus = (confirmation) => {
+const showOrderStatus = confirmation => {
   if (confirmation === "yes") {
     showMessage("Thank you for your order! See you soon.", "bot");
   } else {
@@ -86,7 +86,7 @@ const showOrderStatus = (confirmation) => {
 };
 
 // A function that displays the price based on the age range the user inputs
-const checkPrice = (age) => {
+const checkPrice = age => {
   showMessage(
     `One ${age} sized dish will be prepared for you. That'll be ${priceList[age]}. Are you sure you want to order this?`,
     "bot"
@@ -105,7 +105,7 @@ const checkPrice = (age) => {
 };
 
 // A function that asks for the age and call the next step as the function
-const checkAge = (type) => {
+const checkAge = type => {
   showMessage(
     `One ${type} coming up! Will that be for an adult or a child?`,
     "bot"
@@ -123,20 +123,22 @@ const checkAge = (type) => {
 };
 
 // A function that asks for the subtypes and call the next step as the function
-const showSubtypes = (type) => {
+const showSubtypes = type => {
   showMessage(
     `Oh so you're in the mood for ${type}? Great choice. Select something from the menu!`,
     "bot"
   );
-  inputField.innerHTML = `<form>
-  <select id='subtype' class='select-bar'required>
-  <option id='select' selected disabled>Select a ${type}:</option>
-  <option value='${menu[type][0]}'>${menu[type][0]}</option>
-  <option value='${menu[type][1]}' >${menu[type][1]}</option>
-  <option value='${menu[type][2]}'>${menu[type][2]}</option>
-  </select></form>`;
+  inputField.innerHTML = `
+  <form>
+    <select id='subtype' class='select-bar'required>
+      <option id='select' selected disabled>Select a ${type}:</option>
+      <option value='${menu[type][0]}'>${menu[type][0]}</option>
+      <option value='${menu[type][1]}' >${menu[type][1]}</option>
+      <option value='${menu[type][2]}'>${menu[type][2]}</option>
+    </select>
+  </form>`;
 
-  document.getElementById("subtype").addEventListener("change", (event) => {
+  document.getElementById("subtype").addEventListener("change", event => {
     console.log(event.target.value);
     const subtype = event.target.value;
     processUserOption(subtype, checkAge);
@@ -144,7 +146,7 @@ const showSubtypes = (type) => {
 };
 
 // A function that asks for the food options and call the next step as the function
-const showFoodOptions = (name) => {
+const showFoodOptions = name => {
   showMessage(
     `Hello ${name}! What types of food would you like to order?`,
     "bot"
@@ -152,12 +154,11 @@ const showFoodOptions = (name) => {
   inputField.innerHTML = `
   <button value="pizza">Pizza</button>
   <button value="pasta">Pasta</button>
-  <button value="salad">Salad</button>
-`;
+  <button value="salad">Salad</button>`;
 
   const allBtns = document.getElementsByTagName("button");
   for (let btn of allBtns) {
-    btn.addEventListener("click", (event) => {
+    btn.addEventListener("click", event => {
       const foodOption = event.target.value;
       processUserOption(foodOption, showSubtypes);
     });
@@ -165,7 +166,7 @@ const showFoodOptions = (name) => {
 };
 
 // A function that store the name input and call the next step as a function
-const handleNameInput = (event) => {
+const handleNameInput = event => {
   event.preventDefault();
   // Store the value in a variable so we can access it after we
   // clear it from the input
