@@ -1,6 +1,7 @@
 // DOM selectors (variables that point to selected DOM elements) go here 👇
 const chat = document.getElementById('chat');
 const nameForm = document.getElementById("name-form");
+const inputWrapper = document.getElementById("input-wrapper");
 
 // Functions go here 👇
 
@@ -79,9 +80,10 @@ const handleHobbyInput = (event) => {
   showMessage(userHobby, 'user');
   hobbyInput.value = "";
 
-  setTimeout(() => askAboutFavoriteSeason(userHobby), 1000);
+  setTimeout(() => handleSeasonInput(userHobby), 1000);
 };
- /* const askAboutFavouriteSeason = () => {
+
+ const askAboutFavouriteSeason = () => {
 
 showMessage (`That sounds fun, what is your favourite season?`, 'bot');
 
@@ -90,24 +92,56 @@ nameForm.addEventListener("submit", handleSeasonInput);
 
 } 
 
-const handleSeasonInput = (event) => {
-  event.preventDefault()
+const handleSeasonInput = () => {
+  showMessage(`That sounds fun, what is your favourite season?`,'bot')
+  setTimeout(()=>{
+  inputWrapper.innerHTML = `
+    <button id="summerBtn" class="Btns">Summer</button>
+    <button id="fallBtn" class="Btns">Fall</button>
+    <button id="winterBtn" class="Btns">Winter</button>
+    <button id="springBtn" class="Btns">Spring</button>
+  `;
 
-  const seasonInput = document.getElementById("name-input");
-  const userSeason = seasonInput.value;
-  showMessage(userSeason, 'user');
-  seasonInput.value = "";
-  
- askAboutFavouriteSeason();
-} */
+  document.getElementById('summerBtn').addEventListener('click', () => userAnsw('Summer'));
+  document.getElementById('fallBtn').addEventListener('click', () => userAnsw('Fall'));
+  document.getElementById('winterBtn').addEventListener('click', () => userAnsw('Winter'));
+  document.getElementById('springBtn').addEventListener('click', () => userAnsw('Spring'));
+}, 1000);
+}
 
-
-
-  // Ask about favorite season after processing the hobby input
-  
+const userAnsw =(userAnswer)=>{
+  if(userAnswer === 'Summer'){
+    showMessage(`I love summer!`,'user')
+    showMessage(`I agree, lovely weather`, 'bot')
+    setTimeout(()=> finish(), 1000);
+  } else if (userAnswer === 'Fall'){
+    showMessage(`Fall is the best`, 'user')
+    showMessage(`I agree, lovely weather`, 'bot')
+    setTimeout(()=> finish(), 1000);
+  } else if (userAnswer === 'Winter'){
+    showMessage(`Winter is lovely`, 'user')
+    showMessage(`I agree, lovely weather`, 'bot')
+    setTimeout(()=> finish(), 1000);
+}else if (userAnswer === 'Spring'){
+  showMessage(`Spring is my favorite`, 'user')
+  showMessage(`I agree, lovely weather`, 'bot')
+  setTimeout(()=> finish(), 1000);
+}
+}
 
 // Event listener for the initial form submission
 nameForm.addEventListener("submit", handleNameInput);
 
 // Initial greeting
 setTimeout(greetUser, 1000);
+
+const finish = (finish) => {
+  showMessage("Thats all I want to ask for now! Have a great day", 'bot');
+  showMessage("Bye", 'bot');
+    inputWrapper.innerHTML = `
+      <button id="bye" class="firtsBtns">Bye!</button>
+      `
+
+      document.getElementById('bye')
+      .addEventListener('click', () => finish('bye'));
+}
