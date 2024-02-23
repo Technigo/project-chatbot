@@ -5,8 +5,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background: #bdb2ff;
 }
 
 h1 {
@@ -38,7 +38,7 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #594d9e;
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -91,12 +91,12 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: #ede7b1;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
+  color: #9d4edd;
   max-width: 40%;
 }
 
@@ -125,12 +125,12 @@ label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  color: #9d4edd;
   margin-right: 20px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #9d4edd;
   color: white;
   border: none;
   border-radius: 4px;
