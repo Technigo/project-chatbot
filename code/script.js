@@ -56,12 +56,27 @@ const greetUser = () => {
 };
 
 const getUserName = () => {
-  nameForm.innerHTML = `<input id="name-input" type="text"/>
-  <button class="send-btn" id="sendButton" type="button">Send
+  nameForm.innerHTML = `
+  <input id="name-input" type="text"/>
+  <button 
+  class="send-btn" 
+  id="sendButton" 
+  type="button">
+  Send
   </button>`;
   const sendButton = document.getElementById("sendButton");
   const nameInput = document.getElementById("name-input");
   sendButton.addEventListener("click", () => returnUserName(nameInput));
+
+  //the requested change that prevent the form to submit and start over when the key enter is pressed during the name input.
+  nameInput.addEventListener(
+    "keydown",
+    (handleEnter = (event) => {
+      if (event.key === "Enter") {
+        returnUserName(nameInput);
+      }
+    })
+  );
 };
 
 const returnUserName = (userName) => {
@@ -73,17 +88,38 @@ const returnUserName = (userName) => {
   }
   nameForm.innerHTML = "";
   setTimeout(() => {
-    botMessage(
-      `Nice to meet you ${userName.value}, what plant size would you like?`
-    );
+    botMessage(`Nice to meet you ${userName.value}, what plant size would you like?`);
   }, 1000);
   setTimeout(() => getPlantSize(userName), 2000);
 };
 
 const getPlantSize = () => {
-  nameForm.innerHTML = `<button name="plant-button" class="small-button" id="smallButton" value="small" type="button">small</button>
-  <button name="plant-button" class="medium-button" id="mediumButton" value="medium" type="button">medium</button>
-  <button name="plant-button" class="large-button" id="largeButton" value="large" type="button">large</button>`;
+  //Formatted the code as Matilda wanted us to do.
+  nameForm.innerHTML = `
+  <button 
+  name="plant-button" 
+  class="small-button" 
+  id="smallButton" 
+  value="small" 
+  type="button">
+  small
+  </button>
+  <button 
+  name="plant-button" 
+  class="medium-button" 
+  id="mediumButton" 
+  value="medium" 
+  type="button">
+  medium
+  </button>
+  <button 
+  name="plant-button" 
+  class="large-button" 
+  id="largeButton" 
+  value="large" 
+  type="button">
+  large
+  </button>`;
 
   const smallButton = document.getElementById("smallButton");
   const mediumButton = document.getElementById("mediumButton");
@@ -104,29 +140,32 @@ const chosedPlantSize = (event) => {
 const handlePlantSize = (selectedSize) => {
   if (selectedSize === "small") {
     botMessage(`You want a ${selectedSize}, what plant do you want?`);
-    nameForm.innerHTML = `<select id="smallPlants" name="small-plants">
-  <option disabled selected>Choose your plant</option>
-  <option>Spiderplant</option>
-  <option>Mini succulent</option>
-  <option>Air plant</option>`;
+    nameForm.innerHTML = `
+    <select id="smallPlants" name="small-plants">
+      <option disabled selected>Choose your plant</option>
+      <option>Spiderplant</option>
+      <option>Mini succulent</option>
+      <option>Air plant</option>`;
     const smallPlants = document.getElementById("smallPlants");
     smallPlants.addEventListener("change", selectedPlantType);
   } else if (selectedSize === "medium") {
     botMessage(`You want a ${selectedSize}, what plant do you want?`);
-    nameForm.innerHTML = `<select id="mediumPlants"  name="medium-plants">
-  <option disabled selected>Choose your plant</option>
-  <option>Money Tree</option>
-  <option>Schefflera</option>
-  <option>Peach Lily</option>`;
+    nameForm.innerHTML = `
+    <select id="mediumPlants"  name="medium-plants">
+      <option disabled selected>Choose your plant</option>
+      <option>Money Tree</option>
+      <option>Schefflera</option>
+      <option>Peach Lily</option>`;
     const mediumPlants = document.getElementById("mediumPlants");
     mediumPlants.addEventListener("change", selectedPlantType);
   } else {
     botMessage(`You want a ${selectedSize}, what plant do you want?`);
-    nameForm.innerHTML = `<select id="largePlants" name="large-plants">
-  <option disabled selected>Choose your plant</option>
-  <option>Monstera</option>
-  <option>Bird of Paradise</option>
-  <option>Olive Tree</option>`;
+    nameForm.innerHTML = `
+    <select id="largePlants" name="large-plants">
+      <option disabled selected>Choose your plant</option>
+      <option>Monstera</option>
+      <option>Bird of Paradise</option>
+      <option>Olive Tree</option>`;
     const largePlants = document.getElementById("largePlants");
     largePlants.addEventListener("change", selectedPlantType);
   }
@@ -136,9 +175,20 @@ const selectedPlantType = (event) => {
   const selectedType = event.target.value;
   userMessage(`I choose ${selectedType}`);
   nameForm.innerHTML = "";
-  setTimeout(handlePlantType, 1000, selectedType);
+
+  //The new more correct way of writing instead of the code commented below
+  setTimeout(() => handlePlantType(selectedType), 1000);
+
+  //setTimeout(handlePlantType, 1000, selectedType);
 };
 
+// The new more DRY code instead for the code commented below.
+const handlePlantType = (selectedType) => {
+  botMessage(`You want to order ${selectedType}. Is that correct?`);
+  confirmingOrder();
+};
+
+/*
 const handlePlantType = (selectedType) => {
   if (selectedType === "Spiderplant") {
     botMessage(`You want to order ${selectedType}. Is that correct?`);
@@ -169,11 +219,24 @@ const handlePlantType = (selectedType) => {
     confirmingOrder();
   }
 };
+*/
 
 const confirmingOrder = () => {
   nameForm.innerHTML = `
-    <button name="confirm-button" id="yesButton" value="yes" type="button">Yes</button>
-    <button name="confirm-button" id="noButton" value="no" type="button">No</button>
+    <button 
+    name="confirm-button" 
+    id="yesButton" 
+    value="yes" 
+    type="button">
+    Yes
+    </button>
+    <button 
+    name="confirm-button" 
+    id="noButton" 
+    value="no" 
+    type="button">
+    No
+    </button>
     `;
   const yesButton = document.getElementById("yesButton");
   const noButton = document.getElementById("noButton");
