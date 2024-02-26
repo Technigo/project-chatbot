@@ -90,7 +90,7 @@ const submitName = event => {
   userName = nameInput.value;
   nameInput.value = "";
   showMessage(userName, "user");
-  setTimeout(() => chooseFood(), 1000); // Go to next step, chooseFood
+  setTimeout(chooseFood, 1000); // Go to next step, chooseFood
 };
 
 // function to ask for food choice and send to displayFood
@@ -196,7 +196,7 @@ const displayPartyInput = () => {
   partyInput.id = "party-input";
   partyInput.value = "10";
   partyInput.max = "50";
-  partyInput.min = "1";
+  partyInput.min = "0";
   partyLabel.textContent = `Party size: ${partySize}`;
   partyLabel.htmlFor = "party-input";
   partyButton.type = "submit";
@@ -225,10 +225,10 @@ const calculateOrderValue = () => {
     `You have ordered ${partySize} ${foodSubtype}, here is your bill: ${orderValue} €. Is that ok?`,
     "bot"
   );
-  setTimeout(userConfirm, 1000);
+  setTimeout(confirmOrder, 1000);
 };
 
-const userConfirm = () => {
+const confirmOrder = () => {
   inputWrapper.innerHTML = `<div id="button-form">
     <button id="yes" type="Submit">Yes</button>
     <button id="no" type="Submib">No</button>
