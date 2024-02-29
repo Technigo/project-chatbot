@@ -50,16 +50,17 @@ const currentQuestion = () => {
 }
 
 const handleNameInput = () => {
-  const name = nameInput.value.trim(); // Trim whitespace from input
+  const name = nameInput.value.trim(); 
   if (!name) {
-    showMessage(`Please enter your name.`, 'bot'); // Notify user to enter name
-    return; // Exit function early if name is empty
+    showMessage(`Please enter your name.`, 'bot'); 
+    return; 
   }
   showMessage(name, 'user');
   nameInput.value = '';
-  nameInput.disabled = true; // Disable the input field after name is entered
+  nameInput.disabled = true; 
   setTimeout(() => showCityOptions(name), 500);
 }
+
 
 // Function that changes layout to three buttons
 const showCityOptions = (name) => {
