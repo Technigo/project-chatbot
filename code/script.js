@@ -9,6 +9,8 @@ const form = document.getElementById('name-form')
 
 let currentQuestionNumber = 1
 let saveEvent = ""  // Saves a value outside the function
+let selectedDestination = "";
+let selectedClass = "";
 
 // Starts here
 const greeting = () => {
@@ -38,15 +40,11 @@ const currentQuestion = () => {
   else if (currentQuestionNumber === 4) {
     confirmQuestion();
   }
-  else if (currentQuestionNumber === 5) {
-    askForEmail();
-  }
-  else if (currentQuestionNumber === 6) {
+  if (currentQuestionNumber === 5) {
     sayThankYou();
+    return;
   }
-  else {
-    console.log('doesntWork')
-  }
+ 
   // Adds a number att current question
   currentQuestionNumber++
 }
@@ -162,14 +160,17 @@ const confirmQuestion = () => {
     </div>`
   console.log(form.innerHTML)
 
-  const confirmBtn = document.getElementById('confirm-btn')
+  const confirmBtn = document.getElementById('confirm-btn');
   confirmBtn.addEventListener('click', (event) => {
     event.preventDefault();
     const chosenConfirmation = confirmBtn.name;
-    showMessage(chosenConfirmation, 'user')
-    currentQuestion()
-    setTimeout(() => showMessage(`Please enter your email address to receive a quote`, 'bot'), 500)
-  })
+    showMessage(chosenConfirmation, 'user');
+    setTimeout(() => {
+      sayThankYou();
+      showMessage(`Thank you for using our service. We will send you more information regarding the dates and times of available flights, prices and payment methods.`, 'bot');
+    }, 500);
+  });
+  
   const declineBtn = document.getElementById('decline-btn')
   declineBtn.addEventListener('click', (event) => {
     event.preventDefault();
@@ -179,20 +180,9 @@ const confirmQuestion = () => {
     setTimeout(() => showMessage(`You have declined your trip. If you change your mind you know where to find me!`, 'bot'), 500)
   })
 }
-const askForEmail = () => {
-  form.innerHTML = `
-    <div class="email-input">
-      <label for="email">Please enter your email:</label>
-      <input type="email" id="email" name="email">
-      <button id="email-submit">Submit</button>
-    </div>
-  `;
-  const emailSubmitBtn = document.getElementById('email-submit');
-  emailSubmitBtn.addEventListener('click', () => {
-    const userEmail = document.getElementById('email').value;
-    setTimeout(() => sayThankYou("Thank you for using our service. We've sent more information to your email address.", 'bot'),2000);
-  });
-};
+const sayThankYou = () => {
+  form.innerHTML = '';
+}
 
 
 // This function will add a chat bubble in the correct place based on who the sender is
