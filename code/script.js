@@ -50,49 +50,54 @@ const currentQuestion = () => {
 }
 
 const handleNameInput = () => {
-  const name = nameInput.value;
-  showMessage(name, 'user')
-  nameInput.value = '';
-  setTimeout(() => showCityOptions(name), 500)
-
-  // Function that changes layout to three buttons
-  const showCityOptions = () => {
-    showMessage(`Hi ${name} , Where do you want to go? Have a look at our available destinations.`, 'bot')
-    form.innerHTML =
-      `<div class="btn-wrapper">
-      <button id="london-btn" name="London">LONDON</button>
-      <button id="paris-btn" name="Paris">PARIS</button>
-      <button id="rome-btn" name="Rome" >ROME</button>
-      </div>`
-
-    const londonBth = document.getElementById('london-btn')
-    londonBth.addEventListener('click', () => {
-      const chosenDestination = londonBth.name;
-      saveEvent = londonBth.name;
-      showMessage(chosenDestination, 'user')
-      currentQuestion()
-      setTimeout(() => showMessage(`You have chosen ${chosenDestination}. Are you flying in business or economy?`, 'bot'), 500)
-    })
-
-    const parisBth = document.getElementById('paris-btn')
-    parisBth.addEventListener('click', () => {
-      const chosenDestination = parisBth.name;
-      saveEvent = parisBth.name;
-
-      showMessage(chosenDestination, 'user')
-      currentQuestion()
-      setTimeout(() => showMessage(`You have chosen ${chosenDestination}. Are you flying in business or economy?`, 'bot'), 500)
-    })
-    const romeBth = document.getElementById('rome-btn')
-    romeBth.addEventListener('click', () => {
-      const chosenDestination = romeBth.name;
-      saveEvent = romeBth.name;
-      console.log("This is", romeBth.name)
-      showMessage(chosenDestination, 'user')
-      currentQuestion()
-      setTimeout(() => showMessage(`You have chosen ${chosenDestination}. Are you flying in business or economy?`, 'bot'), 500)
-    })
+  const name = nameInput.value.trim(); // Trim whitespace from input
+  if (!name) {
+    showMessage(`Please enter your name.`, 'bot'); // Notify user to enter name
+    return; // Exit function early if name is empty
   }
+  showMessage(name, 'user');
+  nameInput.value = '';
+  nameInput.disabled = true; // Disable the input field after name is entered
+  setTimeout(() => showCityOptions(name), 500);
+}
+
+// Function that changes layout to three buttons
+const showCityOptions = (name) => {
+  showMessage(`Hi ${name}, where do you want to go? Have a look at our available destinations.`, 'bot')
+  form.innerHTML =
+    `<div class="btn-wrapper">
+    <button id="london-btn" name="London">LONDON</button>
+    <button id="paris-btn" name="Paris">PARIS</button>
+    <button id="rome-btn" name="Rome" >ROME</button>
+    </div>`
+
+  const londonBth = document.getElementById('london-btn')
+  londonBth.addEventListener('click', () => {
+    const chosenDestination = londonBth.name;
+    saveEvent = londonBth.name;
+    showMessage(chosenDestination, 'user')
+    currentQuestion()
+    setTimeout(() => showMessage(`You have chosen ${chosenDestination}. Are you flying in business or economy?`, 'bot'), 500)
+  })
+
+  const parisBth = document.getElementById('paris-btn')
+  parisBth.addEventListener('click', () => {
+    const chosenDestination = parisBth.name;
+    saveEvent = parisBth.name;
+
+    showMessage(chosenDestination, 'user')
+    currentQuestion()
+    setTimeout(() => showMessage(`You have chosen ${chosenDestination}. Are you flying in business or economy?`, 'bot'), 500)
+  })
+  const romeBth = document.getElementById('rome-btn')
+  romeBth.addEventListener('click', () => {
+    const chosenDestination = romeBth.name;
+    saveEvent = romeBth.name;
+    console.log("This is", romeBth.name)
+    showMessage(chosenDestination, 'user')
+    currentQuestion()
+    setTimeout(() => showMessage(`You have chosen ${chosenDestination}. Are you flying in business or economy?`, 'bot'), 500)
+  })
 };
 
 const classQuestion = () => {
