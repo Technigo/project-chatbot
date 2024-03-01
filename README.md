@@ -15,5 +15,5 @@ We've used google as main tool for our doubts. We've encoutered some small probl
 
 ## View it live
 
-[Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.](https://sharkychatbot.netlify.app/)
+(https://sharkychatbot.netlify.app/)
 [vittoriamatteoli] [jingh999]
