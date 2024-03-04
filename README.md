@@ -10,4 +10,4 @@ If I had more time I would have added a typewriter effect to the chat. I didn't 
 
 ## View it live
 
-https://65e4a418772bb7aa05e95c2e--incandescent-medovik-162441.netlify.app/
+https://incandescent-medovik-162441.netlify.app/
