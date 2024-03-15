@@ -150,7 +150,6 @@ const displayPastaSubtypes = () => {
 
   subtypeDiv.append(carbonaraButton, bolognaiseButton, lasagneButton);
   inputWrapper.replaceChild(subtypeDiv, foodDiv);
-  console.log("Showing pasta buttons");
 };
 // IF SALAD
 const selectSalad = () => {
