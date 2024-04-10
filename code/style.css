@@ -10,23 +10,47 @@ html, body {
 }
 
 body {
-  background-image: url(https://img.freepik.com/free-photo/3d-wooden-table-looking-out-smoky-room_1048-12585.jpg?w=740&t=st=1693560853~exp=1693561453~hmac=8a44218a8e19cea63c12f2356ce43fd40c74be6d9e4f3c0a3293f749d620f908);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: #23074d;  
+  background: -webkit-linear-gradient(to right, #cc5333, #23074d);  
+  background: linear-gradient(to right, #cc5333, #23074d); 
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 
+main {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 700px;
+  height: 600px;
+  border-radius: 30px;
+  background: #ffffff;
+  padding: 20px 24px;
+  padding-top: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ------- TEXT ------- */
 
 h1 {
   font-weight: bold;
-  font-size: 28px;
+  font-size: 70px;
   line-height: 34px;
   color: #fff;
+  animation: glow 2s ease-in-out infinite alternate;
   text-align: center;
-  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 42px #23074d, 0 0 82px #23074d, 0 0 92px #23074d;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px #23074d;
+  }
+  to {
+    text-shadow: 0 0 30px #23074d, 0 0 10px #23074d;
+  }
 }
 
 h2 {
@@ -45,33 +69,7 @@ p {
   margin: 0;
 }
 
-input {
-  box-sizing: border-box;
-  border: none;
-  border-radius: 4px 0 0 4px;
-  background: #ffffff;
-  color: #ffbf00;
-  padding: 16px;
-  font-size: 16px;
-  font-family: 'Chonburi';
-  font-weight: 600;
-  line-height: 26px;
-  flex: 1;
-}
-
-main {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 700px;
-  height: 600px;
-  border-radius: 30px;
-  background: #ffffff;
-  padding: 20px 24px;
-  padding-top: 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-}
+/* ------- CHAT ------- */
 
 .chat {
   flex: 1;
@@ -99,7 +97,6 @@ main {
 .user-msg img {
   width: 60px;
   height: 60px;
-  border: solid 2px #ffbf00;
   border-radius: 20px;
 }
 
@@ -124,19 +121,38 @@ main {
   margin-right: 8px;
 }
 
+input {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  background: #ffffff;
+  color: #ffbf00;
+  padding: 16px;
+  font-size: 25px;
+  font-family: 'Chonburi';
+  font-weight: 600;
+  line-height: 26px;
+  flex: 1;
+}
+
 .input-wrapper {
   display: flex;
   justify-content: center;
-}
+} 
 
 .input-wrapper form {
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.input-wrapper button {
+  margin-left: 20px;
 }
 
 label {
-  font-size: 16px;
+  font-size: 18px;
   font-family: 'Chonburi';
   font-weight: 500;
   color: #ffbf00;
@@ -150,7 +166,7 @@ button {
   border-radius: 15px;
   padding: 16px 40px;
   margin-right: 10px;
-  font-size: 16px;
+  font-size: 25px;
   line-height: 26px;
   font-family: 'Chonburi';
   font-weight: 500;
@@ -165,6 +181,8 @@ button:hover {
 
 .start-button {
   margin: 70px;
+  max-width: 500px;
+  align-self: center;
 }
 
 select {

@@ -10,10 +10,11 @@ const body = document.getElementById("body");
 const fishBtn = document.getElementById("fishBtn");
 const fishPercentage = document.getElementById("fishPercentage");
 
-
+let correctAnswerCount = 0;
+let isCorrect; 
 
 // This function will add a chat bubble in the correct place based on who the sender is
-const showMessage = (message, sender) => {
+const showMessage = (message, sender, isCorrect) => {
   // the if statement checks if the sender is 'user' and if that's the case it inserts an html section inside the chat with the posted message
   if (sender === 'user') {
     console.log("The user said something")
@@ -22,7 +23,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="https://thenounproject.com/api/private/icons/2401070/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0" alt="User" />  
+        <img src="assets/user-avatar-glad.svg" alt="User" />  
       </section>
     `
     
@@ -31,12 +32,16 @@ const showMessage = (message, sender) => {
     console.log("The bot said something")
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="https://thenounproject.com/api/private/icons/6018841/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0" alt="Bot" />
+        <img src="assets/user-avatar-robot.svg" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
       </section>
     `
+  }
+  // counting the score
+  if (isCorrect) {
+    correctAnswerCount++;
   }
   // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
@@ -134,21 +139,20 @@ const firstAnswer = (firstAnswer) => {
     setTimeout(secondQuestion, 1000)
     
   } else if (firstAnswer === '1959'){
-    showMessage(`It's 1959!`, 'user')
+    showMessage(`It's 1959!`, 'user', true)
     showMessage(`1959! You're plastic fantastic! Did you know, a mint condition Barbie from that year can be worth up to 27,000 US $?`, 'bot')
     setTimeout(secondQuestion, 1000)
     
   } else if (firstAnswer === '1966'){
     showMessage(`It's 1966!`, 'user')
     showMessage(`Well not quite. The right answer is 1959. Did you know, a mint condition Barbie from that year can be worth up to 27,000 US $?`, 'bot')
-    setTimeout(secondQuestion, 1000)
+    setTimeout(secondQuestion, 3000)
     
   }
 }
 //SECOND QUESTION AS A OPTION ROLL DOWN MENU
 const secondQuestion = () => {
-  showMessage(`Let's move on!`,'bot')
-  showMessage(`What percentage of the Earth's wildlife is found in the ocean?`,'bot')
+  showMessage(`Let's move on to biology! What percentage of the Earth's wildlife is found in the ocean?`,'bot')
   
   inputWrapper.innerHTML = `
     <select id="fishPercentage">
@@ -175,30 +179,98 @@ const secondQuestion = () => {
 const secondAnswer = (fishPercentage) => {
   const selectedOption = fishPercentage.value; 
   if (selectedOption === "94") {
-    showMessage(`94% is a number I like.`,'user');
+    showMessage(`94% is a number I like.`,'user', true);
     showMessage(`DING DING DING! 94% is the correct answer. Makes you think, huh?`,'bot');
-    setTimeout(byeBye1, 1000);
+    setTimeout(thirdQuestion, 3000);
 
   } else {
     showMessage(`I didn't choose 94%...`,'user');
     showMessage(`Noo, 94% is the correct answer! But pretty cool right?`,'bot');
-    setTimeout(byeBye1, 3000);
+    setTimeout(thirdQuestion, 3000);
   }
 }
+
+const thirdQuestion = () => {
+  showMessage(`Over to sports! In which sport would you perform a "slam dunk"?`,`bot`)
+
+  inputWrapper.innerHTML = `
+      <button class="options" id="TennisBtn">Tennis</button>
+      <button class="options" id="BasketballBtn">Basketball</button>
+      <button class="options" id="SoccerBtn">Soccer</button>
+  `
+
+  document.getElementById('TennisBtn')
+  .addEventListener('click', (noSubmit) => {noSubmit.preventDefault(); thirdAnswer ('Tennis')})
+  setTimeout(thirdAnswer, 1000)
+
+  document.getElementById('BasketballBtn')
+  .addEventListener('click', (noSubmit) => {noSubmit.preventDefault(); thirdAnswer ('Basketball')})
+  setTimeout(thirdAnswer, 1000)
+
+  document.getElementById('SoccerBtn')
+  .addEventListener('click', (noSubmit) => {noSubmit.preventDefault(); thirdAnswer ('Soccer')})
+  setTimeout(thirdAnswer, 1000)
+}
+
+const thirdAnswer = (thirdAnswer) => {
+  if (thirdAnswer === 'Tennis'){
+    showMessage(`Tennis! I love tennis!`, 'user')
+    showMessage(`Love the enthusiasm, but the right answer was basketball. Did you know, basketball was originally played with soccer balls and peach baskets?!`, 'bot')
+    setTimeout(fourthQuestion, 3000)
+    
+  } else if (thirdAnswer === 'Basketball'){
+    showMessage(`It's Basketball!`, 'user', true)
+    showMessage(`CORRECT!!! Did you know, basketball was originally played with soccer balls and peach baskets?!`, 'bot')
+    setTimeout(fourthQuestion, 3000)
+    
+  } else if (thirdAnswer === 'Soccer'){
+    showMessage(`It's probably soccer?`, 'user')
+    showMessage(`Well not quite. The right answer is basketball. Did you know, basketball was originally played with soccer balls and peach baskets?!`, 'bot')
+    setTimeout(fourthQuestion, 3000)
+    
+  }
+}
+
+const fourthQuestion = () => {
+  showMessage(`Music time! Do you know your Beatles? Which of these is not the title of a famous album by The Beatles?`,`bot`)
+
+  inputWrapper.innerHTML = `
+    <select id="musicOption">
+      <option value="" selected disabled>Select your answer...</option>
+      <option value="AbbeyRoad">Abbey Road</option>
+      <option value="LetItBe">Let It Be</option>
+      <option value="DarkSideOfTheMoon">Dark Side Of The Moon</option>
+      <option value="StPeppersLonely">Sgt. Pepper's Lonely Hearts Club Band</option>
+    </select>
+    <button class="button" id="musicBtn">Send!</button>
+    `
+    const musicChoice = document.getElementById("musicOption");
+    const musicBtn = document.getElementById("musicBtn");
+    musicBtn.addEventListener("click", (noSubmit) => {
+      noSubmit.preventDefault(); 
+      fourthAnswer(musicChoice)})
+}
+
+const fourthAnswer = (musicChoice) => {
+  const selectedOption = musicChoice.value; 
+  if (selectedOption === "DarkSideOfTheMoon") {
+    showMessage(`Easy, it's Dark Side of the Moon.`,'user', true);
+    showMessage(`It sure is! Fun fact: The Beatles were originally called "The Quarrymen" before they became The Beatles in 1960.`,'bot');
+    setTimeout(thirdQuestion, 4000);
+
+  } else {
+    showMessage(`I don't really know the Beatles. I think is something other than Dark Side of the Moon. `,'user');
+    showMessage(`Ah, the correct answer is Dark Side of the Moon, it's a Pink Floyd album. Fun fact: The Beatles were originally called "The Quarrymen" before they became The Beatles in 1960.`,'bot');
+    setTimeout(byeBye1, 4000);
+  }
+
+}
 const byeBye1 = () => {
-  showMessage(`Time flies! Thank You for participating! Did you think I'd count your score? Well..I didn't.`, 'bot')
+  showMessage(`Time flies! Thank you for participating! You got ${correctAnswerCount} out of four questions! Well done!`, 'bot')
   inputWrapper.innerHTML = ``
-  setTimeout(byeBye2, 3000)
 }
 
-const byeBye2 = () => {
-  showMessage(`There were only two questions, you should be able to do it yourself! You dont need to be a computer for that.`,'bot')
-  setTimeout(byeBye3, 3000)
-}
 
-const byeBye3 = () => {
-  showMessage(`Sorry, that was rude. Maybe I'll learn to count in an upgrade. Bye now!`,'bot')
-}
 
 
 // Set up your eventlisteners here
