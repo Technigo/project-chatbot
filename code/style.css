@@ -10,9 +10,9 @@ html, body {
 }
 
 body {
-  background: #23074d;  
-  background: -webkit-linear-gradient(to right, #cc5333, #23074d);  
-  background: linear-gradient(to right, #cc5333, #23074d); 
+  background: #1575e5;  
+  background: -webkit-linear-gradient(to right, #a6cfff, #1575e5);  
+  background: linear-gradient(to right, #a6cfff, #1575e5); 
   display: flex;
   justify-content: center;
   flex-direction: column;
