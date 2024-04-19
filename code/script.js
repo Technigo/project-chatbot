@@ -191,7 +191,7 @@ const handleBudget = (budgetLevel, setting) => {
 
       setTimeout(() => {
         chat.innerHTML = "";
-        greetUser(); 
+        greetUser();
       }, 1000);
     }
   );
