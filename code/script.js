@@ -53,7 +53,11 @@ nameForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const userName = nameInput.value.trim();
   showMessage(`Hello! I am ${userName}.`, "user");
-  nameInput.value = "";
+
+  // Hide the name input field after submitting
+  nameForm.style.display = "none";
+
+  // Call the function to proceed with the pizza order
   setTimeout(() => questionAboutPizza(userName), 1000);
 });
 
@@ -63,16 +67,16 @@ const questionAboutPizza = (userName) => {
     `Welcome, what kind of pizza would you like to order, ${userName}?`
   );
   inputWrapper.innerHTML += `
-    <button id="margaritapizza" value="margarita-pizza">maragita</button>
-    <button id="chickenpizza" value="chicken-pizza">chicken pizza</button>
-    <button id="kebabpizza" value="kebab-pizza">kebab-pizza</button>
+    <button id="margaritapizza" value="margarita-pizza">Margherita</button>
+    <button id="chickenpizza" value="chicken-pizza">Chicken Pizza</button>
+    <button id="kebabpizza" value="kebab-pizza">Kebab Pizza</button>
   `;
-  const maragritaButton = document.getElementById("margaritapizza");
+  const margheritaButton = document.getElementById("margaritapizza");
   const chickenButton = document.getElementById("chickenpizza");
   const kebabButton = document.getElementById("kebabpizza");
 
   const moveToDrinks = () => {
-    maragritaButton.remove();
+    margheritaButton.remove();
     chickenButton.remove();
     kebabButton.remove();
     setTimeout(() => questionAboutDrinksChoice(), 1000);
@@ -89,7 +93,7 @@ const questionAboutPizza = (userName) => {
     });
   };
 
-  pizzaConfirmation(maragritaButton);
+  pizzaConfirmation(margheritaButton);
   pizzaConfirmation(chickenButton);
   pizzaConfirmation(kebabButton);
 };
@@ -99,10 +103,10 @@ const questionAboutDrinksChoice = () => {
   botResponse("What would you like to drink with your pizza?");
   inputWrapper.innerHTML += `
     <select name="drinks" id="drinks">
-      <option value="drinks" selected disabled>Select one option...</option>
+    <option value= "choose"> choose your drink of choice! </option>
+      <option value="fanta">Fanta</option>
       <option value="cola">Cola</option>
-      <option value="Fanta">Fanta</option>
-      <option value="Sprite">Sprite</option>
+      <option value="sprite">Sprite</option>
     </select>
   `;
   const drinks = document.getElementById("drinks");
@@ -115,20 +119,20 @@ const questionAboutDrinksChoice = () => {
 };
 
 const questionAboutSide = () => {
-  botResponse("What sides would you like to order with your Pizza");
+  botResponse("What sides would you like to order with your Pizza?");
   inputWrapper.innerHTML += `
-    <button id="fries" value="fries">fries</button>
-    <button id="salad" value="salad">salad</button>
-    <button id="sweet-potatoes" value="sweet potatoes">sweet potatoes</button>
+    <button id="fries" value="fries">Fries</button>
+    <button id="salad" value="salad">Salad</button>
+    <button id="sweet-potatoes" value="sweet potatoes">Sweet Potatoes</button>
   `;
   const friesButton = document.getElementById("fries");
   const saladButton = document.getElementById("salad");
-  const sweetpotatoesButton = document.getElementById("sweet-potatoes");
+  const sweetPotatoesButton = document.getElementById("sweet-potatoes");
 
   const moveToConfirmation = () => {
     friesButton.remove();
     saladButton.remove();
-    sweetpotatoesButton.remove();
+    sweetPotatoesButton.remove();
     setTimeout(() => questionAboutConfirmation(), 1000);
   };
 
@@ -142,7 +146,7 @@ const questionAboutSide = () => {
 
   sidesConfirmation(friesButton);
   sidesConfirmation(saladButton);
-  sidesConfirmation(sweetpotatoesButton);
+  sidesConfirmation(sweetPotatoesButton);
 };
 
 // Bot asks for final confirmation of the whole order
