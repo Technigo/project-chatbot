@@ -192,7 +192,7 @@ const handleBudget = (budgetLevel, setting) => {
       setTimeout(() => {
         chat.innerHTML = "";
         greetUser();
-      }, 1000);
+      }, 500);
     }
   );
 
@@ -200,4 +200,4 @@ const handleBudget = (budgetLevel, setting) => {
   inputWrapper.appendChild(restartButton);
 };
 
-setTimeout(greetUser, 1000);
+setTimeout(greetUser, 500);
