@@ -1,9 +1,4 @@
-// DOM selectors
-const chat = document.getElementById("chat");
-const inputWrapper = document.getElementById("input-wrapper");
-
-// Functions 👇 //
-// Function that generates a button with specific text and click handler //
+// Function that generates a button with specific text and click handler
 const createButton = (text, clickHandler) => {
   const button = document.createElement("button");
   button.textContent = text;
@@ -11,7 +6,18 @@ const createButton = (text, clickHandler) => {
   return button;
 };
 
-// Chat bubble //
+// DOM selectors
+const chat = document.getElementById("chat");
+const inputWrapper = document.getElementById("input-wrapper");
+
+// Function to display messages with delay
+const showMessageWithDelay = (message, sender, delay) => {
+  setTimeout(() => {
+    showMessage(message, sender);
+  }, delay);
+};
+
+// Chat bubble
 const showMessage = (message, sender) => {
   if (sender === "user") {
     console.log("Message sent by user:", message);
@@ -38,75 +44,74 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 };
 
-// Greeting //
+// Greeting
 const greetUser = () => {
-  showMessage(
+  showMessageWithDelay(
     "👋 Hey there! I'm DateBot, here to spark magic in your dates. Let's plan something unforgettable together! To whom am I speaking with? Please enter your name below.",
-    "bot"
+    "bot",
+    1000
   );
 
-  // Input field for name //
+  // Input field for name
   const nameInput = document.createElement("input");
   nameInput.setAttribute("type", "text");
   nameInput.setAttribute("id", "nameInput");
   nameInput.setAttribute("placeholder", "Enter your name");
   inputWrapper.appendChild(nameInput);
 
-  // Submit-button //
+  // Submit-button
   const submitButton = createButton("Submit", () => {
     const userName = document.getElementById("nameInput").value.trim();
     if (userName !== "") {
       askPreference(userName); // Pass userName to askPreference
     } else {
-      showMessage("Please enter your name.", "bot");
+      showMessageWithDelay("Please enter your name.", "bot", 1000);
     }
   });
 
   inputWrapper.appendChild(submitButton);
 };
 
-// Function that asks user to choose between personalized or random date suggestions //
-// Adds a button for each option. After selection, it proceeds accordingly //
+// Function that asks user to choose between personalized or random date suggestions
 const askPreference = (userName) => {
   const botMessage = `Nice to meet you, ${userName}! Let's plan something unforgettable together! ✨`;
-  showMessage(botMessage, "bot");
+  showMessageWithDelay(botMessage, "bot", 1000);
   inputWrapper.innerHTML = "";
   inputWrapper.appendChild(
     createButton("Personalized", () => {
-      showMessage("Personalized! ✨", "user");
+      showMessageWithDelay("Personalized! ✨", "user", 1000);
       askSetting("Personalized");
     })
   );
   inputWrapper.appendChild(createButton("Randomize", () => handleRandom()));
 };
 
-// Function that asks user to choose setting, indoor or outdoor //
-// Adds a button for each option. After selection, it proceeds accordingly //
+// Function that asks user to choose setting, indoor or outdoor
 const askSetting = (setting) => {
-  showMessage(
+  showMessageWithDelay(
     `Great! Let's plan a personalized date. Do you prefer an indoor or outdoor setting for your date? 🏠🌳`,
-    "bot"
+    "bot",
+    1000
   );
   inputWrapper.innerHTML = "";
   inputWrapper.appendChild(
     createButton("Indoor", () => {
-      showMessage("Indoor! ✨", "user");
+      showMessageWithDelay("Indoor! ✨", "user", 1000);
       askBudget("Indoor");
     })
   );
   inputWrapper.appendChild(
     createButton("Outdoor", () => {
-      showMessage("Outdoor! ✨", "user");
+      showMessageWithDelay("Outdoor! ✨", "user", 1000);
       askBudget("Outdoor");
     })
   );
 };
 
-// Function that asks user to choose budget option //
-// Adds a button for each option. After selection, it proceeds accordingly //
+// Function that asks user to choose budget option
 const askBudget = (setting) => {
   const botMessage = `Great! ${setting} it is. What's your budget range for the date?`;
-  showMessage(botMessage, "bot");
+  showMessageWithDelay(botMessage, "bot", 1000);
   inputWrapper.innerHTML = "";
   ["Low", "Moderate", "High"].forEach((budgetLevel) => {
     inputWrapper.appendChild(
@@ -115,7 +120,7 @@ const askBudget = (setting) => {
   });
 };
 
-// Date ideas array //
+// Date ideas array
 const dateIdeas = [
   {
     setting: "Outdoor",
@@ -149,7 +154,7 @@ const dateIdeas = [
   },
 ];
 
-// Function that presents the date idea based on user's choice of setting and budget level //
+// Function that presents the date idea based on user's choice of setting and budget level
 const getDateIdea = (setting, budgetLevel) => {
   const matchingIdeas = dateIdeas.filter(
     (idea) => idea.setting === setting && idea.budget === budgetLevel
@@ -158,41 +163,43 @@ const getDateIdea = (setting, budgetLevel) => {
   if (matchingIdeas.length > 0) {
     const randomIndex = Math.floor(Math.random() * matchingIdeas.length);
     const selectedIdea = matchingIdeas[randomIndex].idea;
-    showMessage(
+    showMessageWithDelay(
       `Based on your input <span style="color: #000000; font-weight: bold;">${selectedIdea}</span> would be the perfect date for you!`,
-      "bot"
+      "bot",
+      1000
     );
   }
 };
 
-// Function that randomizes a date idea from the date ideas array //
+// Function that randomizes a date idea from the date ideas array
 const handleRandom = () => {
-  showMessage("Randomize! ✨", "user");
+  showMessageWithDelay("Randomize! ✨", "user", 1000);
 
   const randomIndex = Math.floor(Math.random() * dateIdeas.length);
   const randomDateIdea = dateIdeas[randomIndex].idea;
-  showMessage(
+  showMessageWithDelay(
     `How about <span style="color: #000000; font-weight: bold;">${randomDateIdea}</span>?`,
-    "bot"
+    "bot",
+    2000
   );
 };
 
-// Function that handles the budget level selection //
+// Function that handles the budget level selection
 const handleBudget = (budgetLevel, setting) => {
-  showMessage(`${budgetLevel}! 💰`, "user");
+  showMessageWithDelay(`${budgetLevel}! 💰`, "user", 1000);
   getDateIdea(setting, budgetLevel);
 
   const restartButton = createButton(
     "Not happy with the result? Try again!",
     () => {
-      showMessage("Restarting... ⌛️", "user");
+      showMessageWithDelay("Restarting... ⌛️", "user", 1000);
 
       restartButton.remove();
 
       setTimeout(() => {
         chat.innerHTML = "";
         greetUser();
-      }, 500);
+      }, 1000);
     }
   );
 
@@ -200,4 +207,4 @@ const handleBudget = (budgetLevel, setting) => {
   inputWrapper.appendChild(restartButton);
 };
 
-setTimeout(greetUser, 500);
+greetUser();
