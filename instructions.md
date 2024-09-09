@@ -1,5 +1,36 @@
 ## Navigating this repository
 
+Music recommendation chatbot
+
+BOT: Welcome music lover, what’s your name?
+
+USER: Text input
+
+BOT: Nice to meet you, {userName}! What type of music are you in the mood for today?
+
+Options:
+
+- Moody
+- Calm
+- Energetic
+- Romantic
+
+USER: Selects one option.
+
+BOT: Pick a color
+
+Options:
+
+- Green
+- Blue
+- Red
+- Yellow
+
+USER: Selects one option.
+
+BOT: Then you should really listen to Artist - Song name. It’s the best song in the world!
+It should randomly select a song from an array with songs fitting the users selections.
+
 ### code/index.html
 
 In `code/index.html`, you'll find we've set up a small amount of code for you. The main things you'll need to focus on are:
@@ -11,7 +42,7 @@ In `code/index.html`, you'll find we've set up a small amount of code for you. T
 This is where the chat messages will be rendered when you add a message as either the bot or the user.
 
 ```html
-<div class="input-wrapper" id="input-wrapper">
+<div id="input-wrapper" class="input-wrapper">
   <form id="name-form">
     <label for="name-input">Name</label>
     <input id="name-input" type="text" />

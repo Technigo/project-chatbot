@@ -1,7 +1,23 @@
-// DOM selectors (variables that point to selected DOM elements) goes here 👇
+// DOM selectors
 const chat = document.getElementById("chat");
+const nameInput = document.getElementById("name-input");
+const sendButton = document.getElementById("send-button");
+const GLOBAL_DELAY = "350";
+
+let currentStep = 1;
 
 // Functions goes here 👇
+const handleNameInput = (event) => {
+  event.preventDefault();
+  // Store the value in a variable so we can access it after we clear it from the input
+  const name = nameInput.value;
+  showMessage(name, "user");
+  nameInput.value = "";
+
+  // After 1 second, show the next question by invoking the next function.
+  // TO-DO: Remember to change this to a new function later
+  setTimeout(() => showFoodOptions(name), GLOBAL_DELAY);
+};
 
 // A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
@@ -52,4 +68,17 @@ const greetUser = () => {
 // and pass along two arguments:
 // 1.) the function we want to delay, and 2.) the delay in milliseconds
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 500);
+setTimeout(greetUser, GLOBAL_DELAY);
+
+// Function for handling all sent messages
+const handleSendMessage = (event) => {
+  event.preventDefault();
+  setTimeout(() => handleNameInput(event), GLOBAL_DELAY);
+};
+
+// Event listener for name input
+nameInput.addEventListener("keypress", (event) => {
+  if (event.key === "Enter") handleSendMessage(event);
+});
+
+sendButton.addEventListener("click", handleSendMessage);
