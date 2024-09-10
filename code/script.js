@@ -9,23 +9,24 @@ const showMessage = (message, sender) => {
   // an HTML section inside the chat with the posted message from the user
   if (sender === 'user') {
     chat.innerHTML += `
-      <section class="user-msg">
+    <section class= "user-msg">
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
         <img src="assets/user.png" alt="User" />  
-      </section>
-    `
+      </section >
+  `
     // The else if statement checks if the sender is the bot and if that's the case it inserts
     // an HTML section inside the chat with the posted message from the bot
   } else if (sender === 'bot') {
+
     chat.innerHTML += `
-      <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
-        <div class="bubble bot-bubble">
-          <p>${message}</p>
-        </div>
-      </section>
+    <section class="bot-msg">
+          <img src="assets/bot.png" alt="Bot" />
+          <div class="bubble bot-bubble">
+            <p>${message}</p>
+          </div>
+        </section >
     `
   }
 
@@ -37,12 +38,40 @@ const showMessage = (message, sender) => {
 // A function to start the conversation
 const greetUser = () => {
   // Here we call the function showMessage, that we declared earlier with the argument:
-  // "Hello there, what's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, what's your name?", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
+  showMessage('Hello, welcome to the ticket shop of the Movie Theatre. What is your name?', 'bot')
 }
 
+
+
+//set up varible for DOM selectors
+const button = document.getElementById('send-btn')
+const nameInput = document.getElementById('name-input')
+
+// set up the functions
+const handleNameInput = (event) => {
+  event.preventDefault()
+  const name = nameInput.value //here, I will get the value (which is in this case the actual name)
+  showMessage(name, 'user')
+  nameInput.value = ""
+}
+//set up event listener
+button.addEventListener('click', handleNameInput)
+
+
+
+
+
+
+// After 1 second, show the next question by invoking the next function.
+// passing the name into it to have access to the user's name if we want
+// to use it in the next question from the bot.
+
+
+
 // Eventlisteners goes here 👇
+
+
+
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
@@ -50,4 +79,5 @@ const greetUser = () => {
 // and pass along two arguments:
 // 1.) the function we want to delay, and 2.) the delay in milliseconds 
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000)
+setTimeout(greetUser, 500)
+
