@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   background: #0026ff;
 }
 
@@ -41,23 +41,23 @@ input {
   color: #0026ff;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 600;
-  line-height: 26px;
+  line-height: 26px; /*make it airy*/
   flex: 1;
   width: 100%;
 }
 
 main {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 700px;
+  margin: 0 auto; /* vertical 0, horizontal auto, equally centered*/
+  width: 100%; /*responsive*/
+  max-width: 700px; /*responsive*/
   height: 600px;
   border-radius: 30px;
   background: #fff;
   padding: 20px 24px;
   padding-top: 0;
-  box-sizing: border-box;
+  box-sizing: border-box; /* everything fits in the box */
   display: flex;
   flex-direction: column;
 }
@@ -66,7 +66,7 @@ main {
   flex: 1;
   display: flex;
   justify-content: flex-start;
-  overflow: scroll;
+  overflow: scroll; /* essential */
   flex-direction: column;
   padding-bottom: 16px;
 }
@@ -79,7 +79,7 @@ main {
 
 .user-msg {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-end; /*moves the msg to the right side*/
   margin: 16px 0 0 8px;
   flex-shrink: 0;
 }
@@ -121,13 +121,13 @@ main {
   align-items: center;
 }
 
-label {
+/*label {
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   color: #0026ff;
   margin-right: 20px;
-}
+}*/
 
 button {
   background-color: #0026ff;
@@ -138,7 +138,7 @@ button {
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
