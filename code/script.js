@@ -1,5 +1,10 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById("chat");
+const nameInput = document.getElementById("name-input");
+const form = document.getElementById("name-form");
+const submit = document.getElementById("send");
+//const main = document.getElementById("main");
+const inputWrapper = document.getElementById("input-wrapper");
 
 // Functions goes here 👇
 
@@ -38,19 +43,51 @@ const showMessage = (message, sender) => {
 };
 
 // A function to start the conversation
-const greetUser = () => {
-  // Here we call the function showMessage, that we declared earlier with the argument:
-  // "Hello there, what's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, what's your name?", "bot");
-  // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
+const greeting = () => {
+  showMessage(`Welcome to the Holliday bot, what's your name?`, "bot");
+  // Just to check it out, change 'bot' to 'user' here 👆
+
+  //---- First intention ----//
+};
+const handleNameInput = (event) => {
+  // at submit this function will be invoked
+  event.preventDefault(); // prevents website refresh at submit
+
+  const name = nameInput.value; // input value will be stored in the const name
+  console.log(name);
+
+  showMessage(`${name}`, "user"); // users answer
+  nameInput.value = ""; // clearing name input setting it to an empty string
+
+  setTimeout(() => complimentOptions(name), 1000); // passing the arguments to complimentOptions function with 1s delay
 };
 
-// Eventlisteners goes here 👇
+//---- Second intention ----//
+const complimentOptions = (name) => {
+  showMessage(
+    `Nice to meet you ${name}! What's your mood for the next trip? `,
+    "bot"
+  ); //sends second message from bot
 
-// Here we invoke the first function to get the chatbot to ask the first question when
-// the website is loaded. Normally we invoke functions like this: greeting()
-// To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
-// and pass along two arguments:
-// 1.) the function we want to delay, and 2.) the delay in milliseconds
+  inputWrapper.innerHTML =
+    // add Yes No button
+    `<button id="yesBtn" type="submit">Yes</button>
+  <button id="noBtn" type="submit">No</button>`;
+
+  document.getElementById("yesBtn").addEventListener("click", () => {
+    showMessage("I would love to get a compliment", "user");
+  });
+
+  document.getElementById("noBtn").addEventListener("click", () => {
+    showMessage("No thank you, goodbye", "user");
+  });
+};
+
+//---interaction 3------//
+
+// Set up your eventlisteners here
+
+form.addEventListener("submit", handleNameInput);
+
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 200);
+setTimeout(greeting, 1000);
