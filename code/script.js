@@ -1,5 +1,6 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
-const chat = document.getElementById('chat')
+const chat = document.getElementById("chat")
+const nameInput= document.getElementById("name-input")
 
 // Functions goes here 👇
 
