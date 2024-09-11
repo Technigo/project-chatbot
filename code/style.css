@@ -1,150 +1,159 @@
+/* Global Styles */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
-}
-
-h1 {
-  font-weight: bold;
-  font-size: 28px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
-}
-
-h2 {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
-  margin-bottom: 36px;
-}
-
-p {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 28px;
-  margin: 0;
-}
-
-input {
-  box-sizing: border-box;
-  border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
-  padding: 16px;
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 600;
-  line-height: 26px;
-  flex: 1;
-  width: 100%;
-}
-
-main {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 700px;
-  height: 600px;
-  border-radius: 30px;
-  background: #fff;
-  padding: 20px 24px;
-  padding-top: 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-}
-
-.chat {
-  flex: 1;
-  display: flex;
-  justify-content: flex-start;
-  overflow: scroll;
-  flex-direction: column;
-  padding-bottom: 16px;
-}
-
-.bot-msg {
-  display: flex;
-  margin: 16px 8px 0 0;
-  flex-shrink: 0;
-}
-
-.user-msg {
-  display: flex;
-  justify-content: flex-end;
-  margin: 16px 0 0 8px;
-  flex-shrink: 0;
-}
-
-.bot-msg img,
-.user-msg img {
-  width: 60px;
-  height: 60px;
-}
-
-.bubble {
-  background: #e5e9ff;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 26px;
-  padding: 16px 24px;
-  color: #0026ff;
-  max-width: 40%;
-}
-
-.bot-bubble {
-  border-radius: 0px 26px 26px 26px;
-  margin-left: 8px;
-}
-
-.user-bubble {
-  border-radius: 26px 0 26px 26px;
-  margin-right: 8px;
-}
-
-.input-wrapper {
+  background-color: #1e1e1e;
+  height: 100vh;
   display: flex;
   justify-content: center;
-}
-
-.input-wrapper form {
-  width: 100%;
-  display: flex;
   align-items: center;
 }
 
-label {
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
+.layout {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  height: 90vh;
+  justify-content: space-between;
+  align-items: center;
 }
 
-button {
-  background-color: #0026ff;
+.left-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+header {
+  color: #ffffff;
+}
+
+h1 {
+  font-weight: 900;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-weight: 400;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.bot-image {
+  max-width: 80%;
+  height: auto;
+}
+
+.right-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #333;
+  border-radius: 15px;
+  height: 100%;
+  padding: 20px;
+  max-width: 600px;
+}
+
+.chat {
+  flex-grow: 1;
+  overflow-y: scroll;
+  padding: 10px;
+  background-color: #2c2c2c;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Bot Message */
+.bot-msg {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.bot-msg img {
+  width: 50px;
+  height: 50px;
+}
+
+.bot-msg .bubble {
+  background-color: #444;
   color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 16px 20px;
-  margin-right: 4px;
-  font-size: 16px;
-  line-height: 26px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: 10px;
+  max-width: 60%;
+  font-weight: 600;
 }
 
-button:hover {
-  opacity: 0.9;
-  transition: all 0.2s ease;
+/* User Message */
+.user-msg {
+  display: flex;
+  justify-content: flex-end; /* Moves user messages to the right */
+  align-items: flex-start;
+  margin-bottom: 10px;
 }
+
+.user-msg img {
+  width: 50px;
+  height: 50px;
+  order: 1; /* Ensures the image comes after the message on the right */
+  margin-left: 10px;
+}
+
+.user-msg .bubble {
+  background-color: #85c8ff;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 10px; /* Adds space between message and right edge */
+  max-width: 60%;
+  font-weight: 600;
+}
+
+form {
+  display: flex;
+  width: 100%;
+}
+
+input {
+  padding: 15px;
+  flex-grow: 1;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+/* Add this CSS for the inputWrapper and buttons */
+
+.input-wrapper {
+  display: flex;
+  justify-content: center; /* Center the buttons horizontally */
+  gap: 10px; /* Add space between the buttons */
+  margin-top: 10px; /* Space between message bubbles and buttons */
+}
+
+.input-wrapper button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #1e95c8;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-wrapper button:hover {
+  background-color: #3e6ab7; /* Slight hover effect */
+}
+
