@@ -1,5 +1,7 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
+const startBtn = document.getElementById('start-btn')
+const enterName = document.getElementById('input-wrapper')
 
 // Functions goes here 👇
 
@@ -25,7 +27,7 @@ const showMessage = (message, sender) => {
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
-          <p>message</p>
+          <p>${message}</p>
         </div>
       </section>
     `
@@ -37,22 +39,26 @@ const showMessage = (message, sender) => {
 }
 
 // A function to start the conversation
+
 const greetUser = () => {
-  // Here we call the function showMessage, that we declared earlier with the argument:
-  // "Hello there, what's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, what's your name?", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
+  showMessage("Hello there fellow Java Junkie! What's your name?", 'bot')
 }
+    // Here we call the function showMessage, that we declared earlier with the argument:
+    // "Hello there, what's your name?" for message, and the argument "bot" for sender
+    //showMessage("Hello there! Did you know , what's your name?", 'bot')
+    // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 
 // Eventlisteners goes here 👇
 
-// Here we invoke the first function to get the chatbot to ask the first question when
-// the website is loaded. Normally we invoke functions like this: greeting()
-// To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
-// and pass along two arguments:
-// 1.) the function we want to delay, and 2.) the delay in milliseconds 
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 500)
+const startChat = () => {
+  greetUser()
+}
 
-/*const greetName = () => {
-  showMessage("Welcome ${name}?", 'bot')*/
+startBtn.addEventListener("click", () => {
+  startChat()
+  startBtn.classList.add("hidden")
+  enterName.classList.remove("hidden")
+})
+
+//setTimeout(greetUser, 500)
+

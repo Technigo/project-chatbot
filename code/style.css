@@ -71,6 +71,15 @@ main {
   padding-bottom: 16px;
 }
 
+.startBtn {
+  display: flex;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+
 .bot-msg {
   display: flex;
   margin: 16px 8px 0 0;
