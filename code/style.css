@@ -8,7 +8,7 @@ body {
   margin: 0;
   padding: 0;
   /*font-family: "Montserrat", sans-serif;*/
-  font-family: "Great Vibes", cursive;
+  font-family: "Montserrat", sans-serif; /* Default font */
 
   background-image: url(assets/holiday.jpg);
   background-size: cover;
@@ -19,8 +19,10 @@ body {
 }
 
 h1 {
-  font-weight: bold;
-  font-size: 75px;
+  font-family: "Great Vibes", cursive;
+  font-weight: 595;
+
+  font-size: 90px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -29,14 +31,16 @@ h1 {
   line-height: 65px;
 }
 
-h2 {
-  font-weight: bold;
-  font-size: 24px;
+/*h2 {
+  /* font-weight: bold; * /
+
+  font-weight: 500;
+  font-size: 20px;
   line-height: 34px;
   color: #fff;
   text-align: center;
   margin-bottom: 36px;
-}
+}*/
 
 p {
   font-size: 18px;
@@ -72,7 +76,7 @@ select {
   font-size: 20px;
   font-weight: 600;
   height: 60px;
-  background: #ffe5e5;
+  background: #e7e8e6;
   width: 100%;
   padding: 0 20px;
   cursor: pointer;
