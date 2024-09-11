@@ -1,5 +1,7 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
+const nameInput = document.getElementById('name-input');
+const form = document.getElementById('name-form');
 
 // Functions goes here 👇
 
@@ -42,11 +44,9 @@ const showMessage = (message, sender) => {
 const greetUser = () => {
   // Here we call the function showMessage, that we declared earlier with the argument:
   // "Hello there, what's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there! I'm the Cookiebot, what's your name?", 'bot')
+  showMessage("Welcome! I'm the Cookiebot, what's your name?", 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 }
-
-// Eventlisteners goes here 👇
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
@@ -55,3 +55,35 @@ const greetUser = () => {
 // 1.) the function we want to delay, and 2.) the delay in milliseconds 
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000)
+
+// Eventlisteners goes here 👇
+
+const handleNameInput = event => {
+  event.preventDefault();
+
+  // Store the value in a variable so we can access it after we
+  // clear it from the input
+  const name = nameInput.value;
+  console.log(nameInput.value);
+  showMessage(name, "user");
+  nameInput.value = "";
+
+  // After 1 second, show the next question by invoking the next function.
+  // passing the name into it to have access to the user's name if we want
+  // to use it in the next question from the bot.
+
+  // const askCookie = () => {
+
+  //   showMessage(`Hello ${name}! What kind of cookie would you like to order?`, 'bot');
+  // }
+  // setTimeout(askCookie, 1000)
+
+  setTimeout(() =>
+    showMessage(
+      `Hello ${name}! What kind of cookie would you like to order?`, 'bot'
+    ),
+    1000);
+};
+
+form.addEventListener('submit', handleNameInput);
+
