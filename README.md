@@ -1,13 +1,12 @@
-# Project Name
+# Boredom Buddy Bot
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This chatbot engages users in a fun, interactive conversation by asking questions about their preferences, habits, and personality, with a feedback option at the end.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The challenge was to create an engaging chatbot using HTML, CSS, and JavaScript that interacts naturally with users through buttons. The project involved building a conversation flow that responded dynamically to user inputs.
+The hardest I struggled with was firstly the setup of the design, I already had an idea what I wanted to do for the bot but the input and button took way more out of me than I anticipated. Secondly was hard to actually get the functions running, eventhough everything was written out, I was firstly confused when to save the variable, in which function to replace the newly built function etc. Overall challenging but doable!
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Have a go with  Boredom Buddy Bot https://boredombot.netlify.app/
