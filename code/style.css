@@ -55,6 +55,11 @@ input {
   width: 100%;
 }
 
+input::placeholder {
+  font-size: 16px; /* Default size for larger screens * /
+  color: #999; /* Optional: Default color */
+}
+
 input:focus,
 select:focus {
   outline: none;
@@ -88,7 +93,7 @@ main {
   box-sizing: border-box; /* everything fits in the box */
   display: flex;
   flex-direction: column;
-  opacity: 80%;
+  opacity: 90%;
 }
 
 .chat {
@@ -179,7 +184,7 @@ button:hover {
 @media (max-width: 600px) {
   .bubble {
     max-width: 70%; /* Increase the width of bubbles on smaller screens */
-    font-size: 10px;
+    /* font-size: 10px; */
     /*padding: 12px 20px; Optional: Adjust padding to fit the larger bubble */
   }
 
@@ -187,6 +192,27 @@ button:hover {
   .user-msg img {
     width: 50px; /* Optional: Reduce the size of user/bot images */
     height: 50px;
+  }
+
+  p {
+    font-size: 14px; /* Smaller font size for paragraphs */
+    line-height: 20px; /* Adjust line height for readability */
+  }
+
+  button {
+    font-size: 14px; /* Smaller font size for buttons * /
+    padding: 12px 16px; /* Adjust padding for buttons */
+  }
+
+  main {
+    width: calc(
+      100% - 20px
+    ); /* Reduce width on smaller screens for more background visibility */
+    margin: 0 10px; /* Adjust margins to create space on the sides */
+  }
+
+  input::placeholder {
+    font-size: 14px; /* Smaller font size for smaller screens */
   }
 }
 
