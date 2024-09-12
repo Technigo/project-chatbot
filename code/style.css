@@ -157,3 +157,39 @@ input {
   background-color: #3e6ab7; /* Slight hover effect */
 }
 
+/* Media Query for devices with width under 550px */
+@media (max-width: 550px) {
+  .layout {
+    flex-direction: column; 
+    height: auto; 
+    justify-content: flex-start; 
+  }
+
+  .left-side {
+    display: none;
+  }
+
+  .right-side {
+    width: 100%;
+    max-width: 100%; 
+    margin-top: 20px; 
+  }
+
+  .chat {
+    height: 70vh; 
+    margin-top: 0;
+    z-index: 1; 
+  }
+
+  .input-wrapper {
+    flex-direction: column; 
+    gap: 5px; 
+  }
+
+  .input-wrapper button {
+    width: 100%; 
+    padding: 12px 10px; 
+    font-size: 14px; 
+  }
+}
+
