@@ -2,15 +2,21 @@
 const chat = document.getElementById('chat')
 const startBtn = document.getElementById('start-btn')
 const enterName = document.getElementById('input-wrapper')
+const nameInput = document.getElementById('name-input') // Get the user name
+const sendBtn = document.getElementById('send-btn')
 
-// Functions goes here 👇
+// Functions go here 👇
 
-// A function that will add a chat bubble in the correct place based on who the sender is
+//Start conversation
+
+const startChat = () => {
+  greetUser() // Missing closing bracket added below
+} // <-- Closing bracket for startChat function
+
 const showMessage = (message, sender) => {
-  // The if statement checks if the sender is the user and if that's the case it inserts
-  // an HTML section inside the chat with the posted message from the user
+  // Posted message from the user
   if (sender === 'user') {
-    console.log (`Sender is user`)
+    console.log(`Sender is user`)
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -19,10 +25,9 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `
-    // The else if statement checks if the sender is the bot and if that's the case it inserts
-    // an HTML section inside the chat with the posted message from the bot
+    // Posted message from the bot
   } else if (sender === 'bot') {
-    console.log (`Sender is bot`)
+    console.log(`Sender is bot`)
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -43,22 +48,28 @@ const showMessage = (message, sender) => {
 const greetUser = () => {
   showMessage("Hello there fellow Java Junkie! What's your name?", 'bot')
 }
-    // Here we call the function showMessage, that we declared earlier with the argument:
-    // "Hello there, what's your name?" for message, and the argument "bot" for sender
-    //showMessage("Hello there! Did you know , what's your name?", 'bot')
-    // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 
-// Eventlisteners goes here 👇
+// ****** Eventlisteners goes here 👇 *******
 
-const startChat = () => {
-  greetUser()
-}
-
+//Click Start conversation button
 startBtn.addEventListener("click", () => {
   startChat()
-  startBtn.classList.add("hidden")
-  enterName.classList.remove("hidden")
+  startBtn.classList.add("hidden") // Hide start button
+  enterName.classList.add("shown") // Show hidden input field
+})
+
+//Click Send button to triggers welcome userName message
+sendBtn.addEventListener("click", (event) => {
+  event.preventDefault() 
+  const userName = nameInput.value
+
+  if (userName) { 
+    showMessage(userName, 'user')
+    nameInput.value = '' // Clear input field
+    setTimeout(() => {
+      showMessage(`Nice to meet you, ${userName}. Please start your order by selecting your favorite coffee shop.`, 'bot')
+    }, 1000) // 
+  }
 })
 
 //setTimeout(greetUser, 500)
-

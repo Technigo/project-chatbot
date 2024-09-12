@@ -79,7 +79,9 @@ main {
 .hidden {
   display: none;
 }
-
+.shown {
+  display: block;
+}
 .bot-msg {
   display: flex;
   margin: 16px 8px 0 0;
