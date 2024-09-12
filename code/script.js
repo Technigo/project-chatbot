@@ -103,11 +103,23 @@ const askForCookieChoice = (name) => {
 // Event listener för formuläret
 const handleNameInput = (event) => {
   event.preventDefault();
-  const name = nameInput.value;
-  showMessage(name, "user");
-  nameInput.value = "";
+  const name = nameInput.value.trim(); // Tar bort extra mellanslag
 
-  setTimeout(() => askForCookieChoice(name), 1000);
+  if (name === "") {
+    showMessage(name, "user");
+    // Använd setTimeout för att visa botens meddelande efter 1 sekund (1000 millisekunder)
+    setTimeout(() => {
+      showMessage("Please type in your name", 'bot');
+      // Anropar funktionen igen för att fråga på nytt efter en viss fördröjning
+      form.addEventListener('submit', handleNameInput);
+    }, 1000);
+  } else {
+    showMessage(name, "user");
+    nameInput.value = ""; // Töm textfältet
+
+    // Fortsätt till nästa steg efter en fördröjning
+    setTimeout(() => askForCookieChoice(name), 1000);
+  }
 };
 
 form.addEventListener('submit', handleNameInput);
