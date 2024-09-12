@@ -195,24 +195,29 @@ button:hover {
   }
 
   p {
-    font-size: 14px; /* Smaller font size for paragraphs */
+    font-size: 15px; /* Smaller font size for paragraphs */
     line-height: 20px; /* Adjust line height for readability */
   }
 
   button {
-    font-size: 14px; /* Smaller font size for buttons * /
+    font-size: 14px; /* Smaller font size for buttons */
     padding: 12px 16px; /* Adjust padding for buttons */
   }
 
   main {
     width: calc(
-      100% - 20px
+      100% - 40px
     ); /* Reduce width on smaller screens for more background visibility */
-    margin: 0 10px; /* Adjust margins to create space on the sides */
+    margin: 0 20px; /* Adjust margins to create space on the sides */
   }
 
   input::placeholder {
     font-size: 14px; /* Smaller font size for smaller screens */
+  }
+
+  h1 {
+    font-size: 65px; /* Smaller font size for headings on smaller screens */
+    line-height: 40px; /* Adjust line height for readability */
   }
 }
 
