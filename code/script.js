@@ -20,9 +20,8 @@ const destinationsByMood = {
 // Functions go here 👇
 
 const botReply = (msg) => {
-  showMessage(msg, "bot");
+  setTimeout(() => showMessage(msg, "bot"), 700);
 };
-
 const userReply = (msg) => {
   showMessage(msg, "user");
 };
@@ -54,8 +53,10 @@ const showMessage = (message, sender) => {
 
 // A function to start the conversation
 const greeting = () => {
-  botReply(`Welcome! Let me help you choose a destination.`);
-  botReply(`What's your name?`);
+  botReply(
+    `Hey there👋 I'm your travel assistant, ready to help you pick the perfect destination.`
+  );
+  botReply(`Before we start, can I get your name?`);
 
   // Show the name input field
   inputWrapper.innerHTML = `
@@ -76,12 +77,12 @@ const handleNameInput = () => {
   if (userName) {
     userReply(userName);
     botReply(
-      `Nice to meet you, ${userName}! Let's start by choosing your mood.`
+      `Nice to meet you, ${userName}😊Let's figure out what kind of trip you're in the mood for.`
     );
 
     showMoodOptions(); // Proceed to mood selection
   } else {
-    botReply(`Please enter your name to continue.`);
+    botReply(`Oops, I didn't catch that! Please enter your name to continue.`);
   }
 };
 
@@ -111,7 +112,7 @@ const showMoodOptions = () => {
 // Proceed to the next question based on the selected mood
 const nextQuestion = (mood) => {
   botReply(
-    `Great choice! You're in the mood for ${mood}. Now, let's pick a destination.`
+    `${mood}, exciting 😍 Let's see which destinations match your mood...`
   );
 
   showDestinationOptions(mood); // Pass the mood to showDestinationOptions
@@ -154,6 +155,7 @@ const showMenu = (destination) => {
   document.getElementById("theEnd").addEventListener("click", () => {
     botReply("Alright, enjoy your relaxing trip!");
     inputWrapper.innerHTML = ``;
+    showStartOverButton(); // Show the "Start Over" button
   });
 
   document.getElementById("confirm").addEventListener("click", () => {
@@ -190,6 +192,40 @@ const showChoice = (choice) => {
 
   botReply(`${choice} sounds fun! Are you ready to start planning your trip?`);
 
+  // Add suggestions based on the selected activity
+  let suggestions = "";
+  if (choice === "Hiking") {
+    suggestions = `
+      Here are some hiking tips and guides:
+      <ul>
+        <li><a href="https://www.lonelyplanet.com/articles/best-hiking-trails" target="_blank">Best Hiking Trails</a></li>
+        <li><a href="https://www.rei.com/learn/expert-advice/hiking-beginner.html" target="_blank">Hiking for Beginners</a></li>
+        <li><a href="https://www.nationalgeographic.com/adventure/lists/hiking-top-us-trails/" target="_blank">Top US Hiking Trails</a></li>
+      </ul>
+    `;
+  } else if (choice === "Beach") {
+    suggestions = `
+      Here are some beach travel ideas:
+      <ul>
+        <li><a href="https://www.cntraveler.com/gallery/best-beaches-in-the-world" target="_blank">Best Beaches in the World</a></li>
+        <li><a href="https://www.travelandleisure.com/worlds-best-beach-destinations-7098215" target="_blank">World's Best Beach Destinations</a></li>
+        <li><a href="https://www.planetware.com/world/best-beaches-in-the-world-int-1-79.htm" target="_blank">Top Beach Destinations</a></li>
+      </ul>
+    `;
+  } else if (choice === "Sightseeing") {
+    suggestions = `
+      Here are some sightseeing guides:
+      <ul>
+        <li><a href="https://www.nationalgeographic.com/travel/destinations" target="_blank">Best Sightseeing Destinations</a></li>
+        <li><a href="https://www.theculturetrip.com/north-america/articles/50-bucket-list-sights-you-need-to-see-before-you-die/" target="_blank">Top Bucket List Sights</a></li>
+        <li><a href="https://www.lonelyplanet.com/best-in-travel" target="_blank">Best in Travel 2024</a></li>
+      </ul>
+    `;
+  }
+
+  // Display the suggestions before asking if they're ready
+  botReply(suggestions);
+
   inputWrapper.innerHTML = `
     <button id="ready">Ready</button>
   `;
@@ -202,11 +238,28 @@ const showChoice = (choice) => {
 // End of conversation
 const thankYou = () => {
   botReply(
-    `Enjoy your trip! Hope you have an amazing adventure, ${userName}! 👋🏼`
+    `Enjoy your trip! Hope you have an amazing adventure, ${userName} 👋🏼`
   );
-  inputWrapper.innerHTML = ``; // Clear input
+  inputWrapper.innerHTML = ``; // Clear input, removes the "ready" btn
+  showStartOverButton(); // Show the "Start Over" button
+};
+// Function to display "Start Over" button
+const showStartOverButton = () => {
+  inputWrapper.innerHTML = `
+    <button id="startOver">Start Over</button>
+  `;
+  document
+    .getElementById("startOver")
+    .addEventListener("click", () => startOver());
 };
 
+// Reset the conversation and start over
+const startOver = () => {
+  chat.innerHTML = ""; // Clear the chat
+  userName = ""; // Reset variables
+  questionNumber = 1;
+  greeting(); // Start the conversation again
+};
 // Event listeners for sending text input
 submit.addEventListener("click", () => nextQuestion(nameInput.value));
 nameInput.addEventListener("keypress", (event) => {
@@ -214,7 +267,7 @@ nameInput.addEventListener("keypress", (event) => {
 });
 
 // Start the conversation
-setTimeout(greeting, 1000);
+setTimeout(greeting, 500);
 
 // Prevent default form submission
 form.addEventListener("submit", (event) => {
