@@ -179,8 +179,8 @@ button:hover {
 @media (max-width: 600px) {
   .bubble {
     max-width: 70%; /* Increase the width of bubbles on smaller screens */
-    font-size: 18px; /* Optional: Increase font size for better readability * /
-    padding: 12px 20px; /* Optional: Adjust padding to fit the larger bubble */
+    font-size: 10px;
+    /*padding: 12px 20px; Optional: Adjust padding to fit the larger bubble */
   }
 
   .bot-msg img,
