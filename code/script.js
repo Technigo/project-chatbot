@@ -11,16 +11,16 @@ let userName = "";
 
 // Destinations mapped by mood
 const destinationsByMood = {
-  Adventure: ["Mount Everest", "Amazon Rainforest", "Sahara Desert"],
-  Relax: ["Maldives", "Bora Bora", "Bali"],
-  Cultural: ["Italy", "Greece", "Japan"],
-  Romantic: ["Paris", "Venice", "Santorini"],
+  Adventure: ["🏔️ Mount Everest", "🌳 Amazon Rainforest", "🏜️ Sahara Desert"],
+  Relaxation: ["🛳️ Maldives", "🌴 Bora Bora", "🏖️ Bali"],
+  Cultural: ["🍝 Italy", "🏺 Greece", "🍣 Japan"],
+  Romantic: ["🌹 Paris", "🌅 Venice", "🌺 Santorini"],
 };
 
 // Functions go here 👇
 
 const botReply = (msg) => {
-  setTimeout(() => showMessage(msg, "bot"), 700);
+  setTimeout(() => showMessage(msg, "bot"), 500);
 };
 const userReply = (msg) => {
   showMessage(msg, "user");
@@ -54,7 +54,7 @@ const showMessage = (message, sender) => {
 // A function to start the conversation
 const greeting = () => {
   botReply(
-    `Hey there👋 I'm your travel assistant, ready to help you pick the perfect destination.`
+    `Hi there! I'm your travel assistant, ready to help you pick the perfect destination.`
   );
   botReply(`Before we start, can I get your name?`);
 
@@ -77,7 +77,7 @@ const handleNameInput = () => {
   if (userName) {
     userReply(userName);
     botReply(
-      `Nice to meet you, ${userName}😊Let's figure out what kind of trip you're in the mood for.`
+      `Nice to meet you, ${userName}! Let's figure out what kind of trip you're in the mood for.`
     );
 
     showMoodOptions(); // Proceed to mood selection
@@ -86,75 +86,52 @@ const handleNameInput = () => {
   }
 };
 
-// Show mood options
-// const showMoodOptions = () => {
-//   inputWrapper.innerHTML = `
-
-//       <button id="adventureBtn">🌍 Adventure</button>
-//       <button id="relaxBtn">🌴 Relax</button>
-//       <button id="culturalBtn">🏛️ Cultural</button>
-//       <button id="romanticBtn">💖 Romantic</button>
-
-//   `;
-
-//   document
-//     .getElementById("adventureBtn")
-//     .addEventListener("click", () => nextQuestion("Adventure"));
-//   document
-//     .getElementById("relaxBtn")
-//     .addEventListener("click", () => nextQuestion("Relax"));
-//   document
-//     .getElementById("culturalBtn")
-//     .addEventListener("click", () => nextQuestion("Cultural"));
-//   document
-//     .getElementById("romanticBtn")
-//     .addEventListener("click", () => nextQuestion("Romantic"));
-// };
-
 const showMoodOptions = () => {
-  inputWrapper.innerHTML = `
-    <select id="moodSelect">
-      <option value="" selected disabled>👇 Select a mood...</option>
-      <option value="Adventure">🌍 Adventure</option>
-      <option value="Relax">🌴 Relax</option>
-      <option value="Cultural">🏛️ Cultural</option>
-      <option value="Romantic">💖 Romantic</option>
-    </select>
-  `;
+  // Wait for the bot's message to be displayed first
+  setTimeout(() => {
+    inputWrapper.innerHTML = `
+      <select id="moodSelect">
+        <option value="" selected disabled>👇 Select a mood...</option>
+        <option value="Adventure">🌍 Adventure</option>
+        <option value="Relax">🌴 Relax</option>
+        <option value="Cultural">🏛️ Cultural</option>
+        <option value="Romantic">💖 Romantic</option>
+      </select>
+    `;
 
-  document
-    .getElementById("moodSelect")
-    .addEventListener("change", (event) => nextQuestion(event.target.value));
+    document
+      .getElementById("moodSelect")
+      .addEventListener("change", (event) => nextQuestion(event.target.value));
+  }, 600); // 500ms delay
 };
 
 // Proceed to the next question based on the selected mood
 const nextQuestion = (mood) => {
-  botReply(
-    `${mood}, exciting 😍 Let's see which destinations match your mood...`
-  );
+  botReply(`${mood}, exciting! Let's see which destinations match your mood.`);
 
   showDestinationOptions(mood); // Pass the mood to showDestinationOptions
 };
 
-// Show destination options based on the selected mood
 const showDestinationOptions = (mood) => {
-  const destinations = destinationsByMood[mood]; // Get the destinations associated with the selected mood
+  const destinations = destinationsByMood[mood];
 
-  // Create the select dropdown based on the destinations array
-  inputWrapper.innerHTML = `
-    <select id="select">
-      <option value="" selected disabled>👇 Select a destination...</option>
-      ${destinations
-        .map(
-          (destination) =>
-            `<option value="${destination}">${destination}</option>`
-        )
-        .join("")}
-    </select>
-  `;
+  // Wait for the bot's message to be displayed first
+  setTimeout(() => {
+    inputWrapper.innerHTML = `
+      <select id="select">
+        <option value="" selected disabled>👇 Select a destination...</option>
+        ${destinations
+          .map(
+            (destination) =>
+              `<option value="${destination}">${destination}</option>`
+          )
+          .join("")}
+      </select>
+    `;
 
-  const select = document.getElementById("select");
-  select.addEventListener("change", () => showMenu(select.value));
+    const select = document.getElementById("select");
+    select.addEventListener("change", () => showMenu(select.value));
+  }, 600); // 500ms delay
 };
 
 // Ask about activities after selecting a destination
@@ -165,44 +142,24 @@ const showMenu = (destination) => {
     `Great choice! ${destination} sounds like an amazing place. Would you like to plan some activities while you're there?`
   );
 
-  inputWrapper.innerHTML = `
+  // Delay the appearance of the Yes/No buttons
+  setTimeout(() => {
+    inputWrapper.innerHTML = `
     <button id="theEnd">NO</button>
     <button id="confirm">YES</button>
   `;
 
-  document.getElementById("theEnd").addEventListener("click", () => {
-    botReply("Alright, enjoy your relaxing trip!");
-    inputWrapper.innerHTML = ``;
-    showStartOverButton(); // Show the "Start Over" button
-  });
+    document.getElementById("theEnd").addEventListener("click", () => {
+      botReply("Alright, enjoy your trip!");
+      inputWrapper.innerHTML = ``;
+      showStartOverButton(); // Show the "Start Over" button
+    });
 
-  document.getElementById("confirm").addEventListener("click", () => {
-    showActivities();
-  });
+    document.getElementById("confirm").addEventListener("click", () => {
+      showActivities();
+    });
+  }, 600); // Delay of 600ms
 };
-
-// Choose activities
-// const showActivities = () => {
-//   questionNumber++;
-
-//   botReply(`Awesome! What activities would you like to do while you're there?`);
-
-//   inputWrapper.innerHTML = `
-//     <button id="hikingBtn">Hiking</button>
-//     <button id="beachBtn">Beach</button>
-//     <button id="sightseeingBtn">Sightseeing</button>
-//   `;
-
-//   document
-//     .getElementById("hikingBtn")
-//     .addEventListener("click", () => showChoice("Hiking"));
-//   document
-//     .getElementById("beachBtn")
-//     .addEventListener("click", () => showChoice("Beach"));
-//   document
-//     .getElementById("sightseeingBtn")
-//     .addEventListener("click", () => showChoice("Sightseeing"));
-// };
 
 const showActivities = () => {
   questionNumber++;
@@ -210,25 +167,25 @@ const showActivities = () => {
   botReply(`Awesome! What activities would you like to do while you're there?`);
 
   // Create a dropdown menu for activities
-  inputWrapper.innerHTML = `
-    <select id="activitySelect">
-      <option value="" selected disabled>👇 Select an activity...</option>
-      <option value="Hiking">Hiking</option>
-      <option value="Beach">Beach</option>
-      <option value="Sightseeing">Sightseeing</option>
-    </select>
-    
-  `;
+  setTimeout(() => {
+    inputWrapper.innerHTML = `
+      <select id="activitySelect">
+        <option value="" selected disabled>👇 Select an activity...</option>
+        <option value="Hiking">🥾 Hiking</option>
+        <option value="Beach">🏖️ Beach</option>
+        <option value="Sightseeing">🗺️ Sightseeing</option>
+      </select>
+    `;
 
-  // Add event listener to the select element
-  document
-    .getElementById("activitySelect")
-    .addEventListener("change", (event) => {
-      const selectedActivity = event.target.value;
-      if (selectedActivity) {
-        showChoice(selectedActivity);
-      }
-    });
+    document
+      .getElementById("activitySelect")
+      .addEventListener("change", (event) => {
+        const selectedActivity = event.target.value;
+        if (selectedActivity) {
+          showChoice(selectedActivity);
+        }
+      });
+  }, 600); // 500ms delay
 };
 // Show the choice made by the user and prompt readiness
 const showChoice = (choice) => {
@@ -242,27 +199,27 @@ const showChoice = (choice) => {
     suggestions = `
       Here are some hiking tips and guides:
       <ul>
-        <li><a href="https://www.lonelyplanet.com/articles/best-hiking-trails" target="_blank">Best Hiking Trails</a></li>
-        <li><a href="https://www.rei.com/learn/expert-advice/hiking-beginner.html" target="_blank">Hiking for Beginners</a></li>
-        <li><a href="https://www.nationalgeographic.com/adventure/lists/hiking-top-us-trails/" target="_blank">Top US Hiking Trails</a></li>
+        <li><a href="random url" target="_blank">AllTrails - Discover Hiking</a></li>
+        <li><a href="random url" target="_blank">Hiking for Beginners</a></li>
+        <li><a href="random url" target="_blank">Top Hiking Trails</a></li>
       </ul>
     `;
   } else if (choice === "Beach") {
     suggestions = `
       Here are some beach travel ideas:
       <ul>
-        <li><a href="https://www.cntraveler.com/gallery/best-beaches-in-the-world" target="_blank">Best Beaches in the World</a></li>
-        <li><a href="https://www.travelandleisure.com/worlds-best-beach-destinations-7098215" target="_blank">World's Best Beach Destinations</a></li>
-        <li><a href="https://www.planetware.com/world/best-beaches-in-the-world-int-1-79.htm" target="_blank">Top Beach Destinations</a></li>
+        <li><a href="random url" target="_blank">TripAdvisor - Must-Visit Beaches</a></li>
+        <li><a href="random url" target="_blank">Condé Nast Traveler - Top Beaches</a></li>
+        <li><a href="random url" target="_blank">Top 5 Beaches</a></li>
       </ul>
     `;
   } else if (choice === "Sightseeing") {
     suggestions = `
       Here are some sightseeing guides:
       <ul>
-        <li><a href="https://www.nationalgeographic.com/travel/destinations" target="_blank">Best Sightseeing Destinations</a></li>
-        <li><a href="https://www.theculturetrip.com/north-america/articles/50-bucket-list-sights-you-need-to-see-before-you-die/" target="_blank">Top Bucket List Sights</a></li>
-        <li><a href="https://www.lonelyplanet.com/best-in-travel" target="_blank">Best in Travel 2024</a></li>
+        <li><a href="random url" target="_blank">Lonely Planet - Best Sightseeing Tours</a></li>
+        <li><a href="random url" target="_blank">BuzzFeed - Top Bucket List Sights</a></li>
+        <li><a href="random url" target="_blank">Rough Guides - Best in Travel 2024</a></li>
       </ul>
     `;
   }
@@ -270,31 +227,36 @@ const showChoice = (choice) => {
   // Display the suggestions before asking if they're ready
   botReply(suggestions);
 
-  inputWrapper.innerHTML = `
-    <button id="ready">Ready</button>
-  `;
+  // Delay the appearance of the "Ready" button
+  setTimeout(() => {
+    inputWrapper.innerHTML = `
+      <button id="ready">Ready</button>
+    `;
 
-  document.getElementById("ready").addEventListener("click", () => {
-    thankYou();
-  });
+    document.getElementById("ready").addEventListener("click", () => {
+      thankYou();
+    });
+  }, 600); // Delay of 500ms
 };
 
 // End of conversation
 const thankYou = () => {
   botReply(
-    `Enjoy your trip! Hope you have an amazing adventure, ${userName} 👋🏼`
+    `Wishing you an incredible trip ${userName}! Hope you have an amazing adventure.`
   );
   inputWrapper.innerHTML = ``; // Clear input, removes the "ready" btn
   showStartOverButton(); // Show the "Start Over" button
 };
 // Function to display "Start Over" button
 const showStartOverButton = () => {
-  inputWrapper.innerHTML = `
-    <button id="startOver">Start Over</button>
-  `;
-  document
-    .getElementById("startOver")
-    .addEventListener("click", () => startOver());
+  setTimeout(() => {
+    inputWrapper.innerHTML = `
+      <button id="startOver">Start Over</button>
+    `;
+    document
+      .getElementById("startOver")
+      .addEventListener("click", () => startOver());
+  }, 500); // Delay of 500ms
 };
 
 // Reset the conversation and start over
@@ -311,7 +273,8 @@ nameInput.addEventListener("keypress", (event) => {
 });
 
 // Start the conversation
-setTimeout(greeting, 500);
+// setTimeout(greeting, 500);
+greeting();
 
 // Prevent default form submission
 form.addEventListener("submit", (event) => {
