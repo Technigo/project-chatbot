@@ -60,7 +60,7 @@ const greeting = () => {
 
   // Show the name input field
   inputWrapper.innerHTML = `
-    <input id="name-input" type="text" placeholder="Enter your name here..." />
+    <input id="name-input" type="text" placeholder="Enter your name..." />
     <button id="submit-name">Submit</button>
   `;
 
@@ -87,26 +87,44 @@ const handleNameInput = () => {
 };
 
 // Show mood options
+// const showMoodOptions = () => {
+//   inputWrapper.innerHTML = `
+
+//       <button id="adventureBtn">🌍 Adventure</button>
+//       <button id="relaxBtn">🌴 Relax</button>
+//       <button id="culturalBtn">🏛️ Cultural</button>
+//       <button id="romanticBtn">💖 Romantic</button>
+
+//   `;
+
+//   document
+//     .getElementById("adventureBtn")
+//     .addEventListener("click", () => nextQuestion("Adventure"));
+//   document
+//     .getElementById("relaxBtn")
+//     .addEventListener("click", () => nextQuestion("Relax"));
+//   document
+//     .getElementById("culturalBtn")
+//     .addEventListener("click", () => nextQuestion("Cultural"));
+//   document
+//     .getElementById("romanticBtn")
+//     .addEventListener("click", () => nextQuestion("Romantic"));
+// };
+
 const showMoodOptions = () => {
   inputWrapper.innerHTML = `
-    <button id="adventureBtn">🌍 Adventure</button>
-    <button id="relaxBtn">🌴 Relax</button>
-    <button id="culturalBtn">🏛️ Cultural</button>
-    <button id="romanticBtn">💖 Romantic</button>
+    <select id="moodSelect">
+      <option value="" selected disabled>👇 Select a mood...</option>
+      <option value="Adventure">🌍 Adventure</option>
+      <option value="Relax">🌴 Relax</option>
+      <option value="Cultural">🏛️ Cultural</option>
+      <option value="Romantic">💖 Romantic</option>
+    </select>
   `;
 
   document
-    .getElementById("adventureBtn")
-    .addEventListener("click", () => nextQuestion("Adventure"));
-  document
-    .getElementById("relaxBtn")
-    .addEventListener("click", () => nextQuestion("Relax"));
-  document
-    .getElementById("culturalBtn")
-    .addEventListener("click", () => nextQuestion("Cultural"));
-  document
-    .getElementById("romanticBtn")
-    .addEventListener("click", () => nextQuestion("Romantic"));
+    .getElementById("moodSelect")
+    .addEventListener("change", (event) => nextQuestion(event.target.value));
 };
 
 // Proceed to the next question based on the selected mood
@@ -164,28 +182,54 @@ const showMenu = (destination) => {
 };
 
 // Choose activities
+// const showActivities = () => {
+//   questionNumber++;
+
+//   botReply(`Awesome! What activities would you like to do while you're there?`);
+
+//   inputWrapper.innerHTML = `
+//     <button id="hikingBtn">Hiking</button>
+//     <button id="beachBtn">Beach</button>
+//     <button id="sightseeingBtn">Sightseeing</button>
+//   `;
+
+//   document
+//     .getElementById("hikingBtn")
+//     .addEventListener("click", () => showChoice("Hiking"));
+//   document
+//     .getElementById("beachBtn")
+//     .addEventListener("click", () => showChoice("Beach"));
+//   document
+//     .getElementById("sightseeingBtn")
+//     .addEventListener("click", () => showChoice("Sightseeing"));
+// };
+
 const showActivities = () => {
   questionNumber++;
 
   botReply(`Awesome! What activities would you like to do while you're there?`);
 
+  // Create a dropdown menu for activities
   inputWrapper.innerHTML = `
-    <button id="hikingBtn">🥾 Hiking</button>
-    <button id="beachBtn">🏖 Beach</button>
-    <button id="sightseeingBtn">🗺 Sightseeing</button>
+    <select id="activitySelect">
+      <option value="" selected disabled>👇 Select an activity...</option>
+      <option value="Hiking">Hiking</option>
+      <option value="Beach">Beach</option>
+      <option value="Sightseeing">Sightseeing</option>
+    </select>
+    
   `;
 
+  // Add event listener to the select element
   document
-    .getElementById("hikingBtn")
-    .addEventListener("click", () => showChoice("Hiking"));
-  document
-    .getElementById("beachBtn")
-    .addEventListener("click", () => showChoice("Beach"));
-  document
-    .getElementById("sightseeingBtn")
-    .addEventListener("click", () => showChoice("Sightseeing"));
+    .getElementById("activitySelect")
+    .addEventListener("change", (event) => {
+      const selectedActivity = event.target.value;
+      if (selectedActivity) {
+        showChoice(selectedActivity);
+      }
+    });
 };
-
 // Show the choice made by the user and prompt readiness
 const showChoice = (choice) => {
   questionNumber++;

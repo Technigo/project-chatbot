@@ -1,6 +1,6 @@
-/* { 
-  outline: 1px solid red;  Debugging tool
-}*/
+/*{
+  outline: 1px solid red;
+} */
 
 * {
   margin: 0;
@@ -172,6 +172,10 @@ button:hover {
   transition: all 0.2s ease;
 }
 
+/*------------------------------------------------------------------*/
+
+/* Media Query for Small Screens */
+
 @media (max-width: 600px) {
   .bubble {
     max-width: 70%; /* Increase the width of bubbles on smaller screens */
@@ -185,3 +189,5 @@ button:hover {
     height: 50px;
   }
 }
+
+/*--------------------------------------------*/
