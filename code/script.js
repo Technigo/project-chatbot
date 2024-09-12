@@ -1,17 +1,119 @@
-// DOM selectors (variables that point to selected DOM elements) goes here 👇
-const chat = document.getElementById('chat')
+// DOM selectors
+
+const chat = document.getElementById('chat');
 const nameInput = document.getElementById('name-input');
 const form = document.getElementById('name-form');
 
-// Functions goes here 👇
+// Functions
 
-// A function that will add a chat bubble in the correct place based on who the sender is
+//Welcome them back
+const goodbyeMessage = (choice) => {
+  if (choice === 'Yes') {
+    showMessage(`Your order will be prepaired. Thank you for using the Cookiebot!`, 'bot');
+  } else {
+    showMessage(`No order has been placed. Hope we meet again soon!`, 'bot')
+
+  }
+}
+
+const handleConfirmationChoice = (choice) => {
+  showMessage(`${choice}`, 'user');
+  setTimeout(() => goodbyeMessage(choice), 1000);
+}
+
+
+const createConfirmationButtons = () => {
+  form.style.display = 'none'; // Dölj formuläret
+  form.innerHTML = `
+    <button type="button" id="yesButton" class="button-class">Yes</button>
+    <button type="button" id="noButton" class="button-class">No</button>
+  `;
+  form.style.display = 'block'; // Visa knapparna
+
+  // Lägg till event listeners för varje knapp
+  document.getElementById('yesButton').addEventListener('click', () => handleConfirmationChoice('Yes'));
+  document.getElementById('noButton').addEventListener('click', () => handleConfirmationChoice('No'));
+}
+
+
+const askForOrderConfirmation = (choice) => {
+  let totalPrice = '';
+  if (choice === 'Milk' || choice === 'Coffee') {
+    totalPrice = '$10';
+  } else {
+    totalPrice = '$5';
+  }
+  showMessage(`Wonderful! The total price will be ${totalPrice}, are you sure you'd like to place the order?`, 'bot')
+
+  createConfirmationButtons();
+};
+
+const handleDrinkChoice = (choice) => {
+  showMessage(`${choice} please`, 'user');
+
+  setTimeout(() => askForOrderConfirmation(choice), 1000);
+};
+
+const createDrinkButtons = () => {
+  form.style.display = 'none'; // Dölj formuläret
+  form.innerHTML = `
+    <button type="button" id="milk" class="button-class">🥛 Milk</button>
+    <button type="button" id="coffee" class="button-class">☕️ Coffee</button>
+    <button type="button" id="noDrink" class="button-class">No drink</button>
+  `;
+  form.style.display = 'block'; // Visa knapparna
+
+  // Lägg till event listeners för varje knapp
+  document.getElementById('milk').addEventListener('click', () => handleDrinkChoice('Milk'));
+  document.getElementById('coffee').addEventListener('click', () => handleDrinkChoice('Coffee'));
+  document.getElementById('noDrink').addEventListener('click', () => handleDrinkChoice('No drink'));
+};
+
+const askForDrinkChoice = (choice) => {
+  showMessage(`Mmm ${choice}, great choice, would you like a drink?`, 'bot')
+  createDrinkButtons();
+}
+
+const handleCookieChoice = (choice) => {
+  showMessage(`I choose ${choice}!`, 'user');
+
+  setTimeout(() => askForDrinkChoice(choice), 1000);
+};
+
+const createCookieButtons = () => {
+  form.style.display = 'none'; // Dölj formuläret
+  form.innerHTML = `
+    <button type="button" id="darkChocolate" class="button-class">🍪 Dark chocolate</button>
+    <button type="button" id="milkChocolate" class="button-class">🍪 Milk chocolate</button>
+    <button type="button" id="nutsChocolate" class="button-class">🍪 Nuts and white chocolate</button>
+  `;
+  form.style.display = 'block'; // Visa knapparna
+
+  // Lägg till event listeners för varje knapp
+  document.getElementById('darkChocolate').addEventListener('click', () => handleCookieChoice('Dark chocolate'));
+  document.getElementById('milkChocolate').addEventListener('click', () => handleCookieChoice('Milk chocolate'));
+  document.getElementById('nutsChocolate').addEventListener('click', () => handleCookieChoice('Nuts and white chocolate'));
+};
+
+const askForCookieChoice = (name) => {
+  showMessage(`Hello ${name}! What kind of cookie would you like to order?`, 'bot');
+  createCookieButtons();
+};
+
+// Event listener för formuläret
+const handleNameInput = (event) => {
+  event.preventDefault();
+  const name = nameInput.value;
+  showMessage(name, "user");
+  nameInput.value = "";
+
+  setTimeout(() => askForCookieChoice(name), 1000);
+};
+
+form.addEventListener('submit', handleNameInput);
+
 const showMessage = (message, sender) => {
-  // The if statement checks if the sender is the user and if that's the case it inserts
-  // an HTML section inside the chat with the posted message from the user
   if (sender === 'user') {
-    console.log(message, sender)
-
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -19,12 +121,8 @@ const showMessage = (message, sender) => {
         </div>
         <img src="assets/user.png" alt="User" />  
       </section>
-    `
-    // The else if statement checks if the sender is the bot and if that's the case it inserts
-    // an HTML section inside the chat with the posted message from the bot
+    `;
   } else if (sender === 'bot') {
-    console.log(message, sender)
-
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -32,58 +130,20 @@ const showMessage = (message, sender) => {
           <p>${message}</p>
         </div>
       </section>
-    `
+    `;
   }
-
-  // This little thing makes the chat scroll to the last message when there are too many to
-  // be shown in the chat box
-  chat.scrollTop = chat.scrollHeight
-}
-
-// A function to start the conversation
-const greetUser = () => {
-  // Here we call the function showMessage, that we declared earlier with the argument:
-  // "Hello there, what's your name?" for message, and the argument "bot" for sender
-  showMessage("Welcome! I'm the Cookiebot, what's your name?", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
-}
-
-// Here we invoke the first function to get the chatbot to ask the first question when
-// the website is loaded. Normally we invoke functions like this: greeting()
-// To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
-// and pass along two arguments:
-// 1.) the function we want to delay, and 2.) the delay in milliseconds 
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000)
-
-// Eventlisteners goes here 👇
-
-const handleNameInput = event => {
-  event.preventDefault();
-
-  // Store the value in a variable so we can access it after we
-  // clear it from the input
-  const name = nameInput.value;
-  console.log(nameInput.value);
-  showMessage(name, "user");
-  nameInput.value = "";
-
-  // After 1 second, show the next question by invoking the next function.
-  // passing the name into it to have access to the user's name if we want
-  // to use it in the next question from the bot.
-
-  // const askCookie = () => {
-
-  //   showMessage(`Hello ${name}! What kind of cookie would you like to order?`, 'bot');
-  // }
-  // setTimeout(askCookie, 1000)
-
-  setTimeout(() =>
-    showMessage(
-      `Hello ${name}! What kind of cookie would you like to order?`, 'bot'
-    ),
-    1000);
+  chat.scrollTop = chat.scrollHeight;
 };
 
-form.addEventListener('submit', handleNameInput);
+const greetUser = () => {
+  showMessage("Welcome! I'm the Cookiebot, what's your name?", 'bot');
+};
+
+
+
+// Starta med att hälsa användaren välkommen
+setTimeout(greetUser, 1000);
+
+
+
 
