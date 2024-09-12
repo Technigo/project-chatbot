@@ -1,8 +1,11 @@
+/* { 
+  outline: 1px solid red;  Debugging tool
+}*/
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* overflow-x: hidden; */
 }
 
 body {
@@ -16,13 +19,12 @@ body {
   background-attachment: fixed;
   background-position: center;
   max-height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 h1 {
   font-family: "Great Vibes", cursive;
   font-weight: 595;
-
   font-size: 90px;
   line-height: 34px;
   color: #fff;
@@ -47,7 +49,6 @@ input {
   color: #232222;
   padding: 16px;
   font-size: 16px;
-  /* font-family: "Montserrat"; */
   font-weight: 550;
   line-height: 26px; /*make it airy*/
   flex: 1;
@@ -88,7 +89,6 @@ main {
   display: flex;
   flex-direction: column;
   opacity: 80%;
-  /* overflow: hidden; */
 }
 
 .chat {
@@ -128,6 +128,7 @@ main {
   padding: 16px 24px;
   color: 232222;
   max-width: 40%; /*put a media for 320*/
+  word-wrap: break-word; /* Ensure long text breaks within the bubble */
 }
 
 .bot-bubble {
@@ -150,14 +151,6 @@ main {
   display: flex;
   align-items: center;
 }
-
-/*label {
-  font-size: 16px;
-  font-family: "Montserrat";
-  font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
-}*/
 
 button {
   background-color: #2791e3;
@@ -182,7 +175,7 @@ button:hover {
 @media (max-width: 600px) {
   .bubble {
     max-width: 70%; /* Increase the width of bubbles on smaller screens */
-    font-size: 18px; /* Optional: Increase font size for better readability */
+    font-size: 18px; /* Optional: Increase font size for better readability * /
     padding: 12px 20px; /* Optional: Adjust padding to fit the larger bubble */
   }
 
@@ -190,9 +183,5 @@ button:hover {
   .user-msg img {
     width: 50px; /* Optional: Reduce the size of user/bot images */
     height: 50px;
-  }
-
-  main {
-    padding: 10px; /* Optional: Reduce the padding around the main container */
   }
 }
