@@ -2,6 +2,7 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
 const nameInput = document.getElementById('name-input')
+console.log(nameInput.value, "name-input")
 const form = document.getElementById('name-form');
 
 // Functions goes here 👇
@@ -30,7 +31,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
-  // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
+  // This makes the chat scroll to the last message when there are too many to be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
 
@@ -39,41 +40,46 @@ const greetUser = () => {
   showMessage("Hello there, what's your name?", 'bot')
 
 }
-
+//funktion som heter handlenameinput, möjliggör att kunna skriva sitt namn. 
 const handleNameInput = (event) => {
+  console.log("event", event)
   //this default does something
   event.preventDefault();
-  //This stores the name for the session 
-  sessionStorage.setItem('username', name);
   //This connects with the html and collects the input value for name in form
   const name = nameInput.value;
   //This shows the message in the chatbubble 
   showMessage(name, "user");
   //This clears the input field... somehow?
   nameInput.value = "";
-
-  // After 1 second, show the next question by invoking the next function.
-  // passing the name into it to have access to the user's name if we want
-  // to use it in the next question from the bot.
-  setTimeout(() => showMovieGenreOptions(name), 1000);
+  setTimeout(() => movieOptions(name), 1000)
 };
 
-//this stores the username 
-const storedName = sessionStorage.getItem('username');
+//eventlisteners - handlenameinput kallas när knappen klickas 
+form.addEventListener("submit", handleNameInput);
 
-if (storedName) {
-  showMessage(storedName, 'user');
-  setTimeout(() => showMovieGenreOptions(storedName), 1000);
-  // Continue with the flow using the storedName
+//PART 2
+
+// kallar på funktionen movieoptions 
+const movieOptions = (name) => {
+  showMessage(`Hello there ${name}, what's do you want to watch today?`, 'bot')
+  form.removeEventListener("submit", handleNameInput);
+  form.addEventListener("submit", movieOptions);
 }
 
-//eventlistener to ensure the answer is submitted when button is clicked
-if (form) {
-  form.addEventListener('submit', handleNameInput);
-} else {
-  console.error('Form element not found');
-}
-// Here we invoke the first function to get the chatbot to ask the first question when the website is loaded. Normally we invoke functions like this:
+
+// const movieOptionInput = (event) => {
+//   console.log("movieOption", event)
+//   //this default does something
+//   event.preventDefault();
+//   //This connects with the html and collects the input value for name in form
+//   const name = nameInput.value;
+//   //This shows the message in the chatbubble 
+//   showMessage(name, "user");
+//   //This clears the input field... somehow?
+//   nameInput.value = "";
+//   setTimeout(() => movieOptions(name), 1000)
+// };
+
 
 setTimeout(greetUser, 1000)
 
