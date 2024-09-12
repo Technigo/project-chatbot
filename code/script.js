@@ -19,7 +19,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/ask.png" alt="User" />  
       </section>
     `
     // The else if statement checks if the sender is the bot and if that's the case it inserts
@@ -28,7 +28,7 @@ const showMessage = (message, sender) => {
     console.log('bot says:', message)
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/pink-8-ball.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -70,19 +70,19 @@ nameForm.addEventListener('submit', (event) => {
       showMessage(generateMagic8BallResponse(userName), 'bot');
     } else {
       // If not, prompt the user to ask a question
-      showMessage("Please ask your question in the form of a question (e.g., \"Will it rain tomorrow?\").", 'bot');
+      showMessage("I can only answer questions that end with a question mark. Please try again.", 'bot');
     }
   } else {
     // If not, save the name and respond with the greeting
     saveNameAndRespond(userName);
     hasAskedName = true;
   }
-
+  // This little thing makes the chat scroll to the last message when there are too many to
+  // be shown in the chat box
+  chat.scrollTop = chat.scrollHeight
 });
 
-// This little thing makes the chat scroll to the last message when there are too many to
-// be shown in the chat box
-chat.scrollTop = chat.scrollHeight
+
 
 
 // A function to start the conversation
@@ -100,21 +100,21 @@ const magic8BallResponses = [
   "It is certain.",
   "Without a doubt.",
   "Yes.",
-  "You may rely on it.",
+  "Absolutely.",
   "As I see it, yes.",
   "Most likely.",
-  "Outlook good.",
+  "It's possible.",
   "Signs point to yes.",
   "Yes, indeed.",
-  "Reply hazy, try again.",
-  "Ask again later.",
-  "Concentrate and ask again.",
+  "Probably not.",
+  "Maybe.",
+  "Time will tell.",
   "Cannot predict now.",
   "Don't count on it.",
   "No.",
   "Absolutely not.",
   "My sources say no.",
-  "Outlook not so good.",
+  "That's a tough one.",
   "Very doubtful."
 ];
 

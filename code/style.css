@@ -5,32 +5,56 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: "Josefin Sans", sans-serif;
+  background: #ac335c;
 }
 
 h1 {
-  font-weight: bold;
-  font-size: 28px;
-  line-height: 34px;
+  font-weight: 800;
+  font-family: "Baloo 2", sans-serif;
+  font-size: 24px;
+  line-height: 29px;
   color: #fff;
   text-align: center;
+  margin: 8px 1px 2px 1px;
 }
 
 h2 {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 34px;
+  font-weight: 800;
+  font-family: "Baloo 2", sans-serif;
+  font-size: 20px;
+  line-height: 25px;
   color: #fff;
   text-align: center;
-  margin-bottom: 36px;
+  margin: 2px 1px 8px 1px;
+}
+
+.info-text {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  color: #ffeefa;
+  margin: 0 auto;
+  text-align: center;
+  width: 80%;
+}
+
+span {
+  color: #fb9dd5;
+  font-weight: bold;
 }
 
 p {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 28px;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+  color: #841f32;
   margin: 0;
+  padding: 0;
+  text-align: left;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 95%;
 }
 
 input {
@@ -38,10 +62,10 @@ input {
   border: none;
   border-radius: 4px 0 0 4px;
   background: #e5e9ff;
-  color: #0026ff;
+  color: #d94f92;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Josefin Sans", sans-serif;
   font-weight: 600;
   line-height: 26px;
   flex: 1;
@@ -50,12 +74,14 @@ input {
 
 main {
   margin: 0 auto;
-  width: 100%;
+  width: 95%;
   max-width: 700px;
   height: 600px;
+  margin-top: 8px;
+  margin-bottom: 4px;
   border-radius: 30px;
   background: #fff;
-  padding: 20px 24px;
+  padding: 10px 12px;
   padding-top: 0;
   box-sizing: border-box;
   display: flex;
@@ -68,19 +94,19 @@ main {
   justify-content: flex-start;
   overflow: scroll;
   flex-direction: column;
-  padding-bottom: 16px;
+  padding: 16px 0;
 }
 
 .bot-msg {
   display: flex;
-  margin: 16px 8px 0 0;
+  margin: 4px 2px 0 0;
   flex-shrink: 0;
 }
 
 .user-msg {
   display: flex;
   justify-content: flex-end;
-  margin: 16px 0 0 8px;
+  margin: 4px 0 0 2px;
   flex-shrink: 0;
 }
 
@@ -88,31 +114,39 @@ main {
 .user-msg img {
   width: 60px;
   height: 60px;
+  border-radius: 100%;
 }
 
 .bubble {
-  background: #e5e9ff;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 26px;
-  padding: 16px 24px;
-  color: #0026ff;
-  max-width: 40%;
+  max-width: 45%;
+  margin-top: 14px;
+  margin-bottom: 4px;
 }
 
 .bot-bubble {
+  background:
+    #f1f2f1;
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  text-align: left;
 }
 
 .user-bubble {
+  background: #ffdef5;
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .input-wrapper {
   display: flex;
   justify-content: center;
+  margin-bottom: 4px;
 }
 
 .input-wrapper form {
@@ -121,24 +155,16 @@ main {
   align-items: center;
 }
 
-label {
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
-}
-
 button {
-  background-color: #0026ff;
+  background-color:
+    #e9c5dd;
   color: white;
   border: none;
   border-radius: 4px;
   padding: 16px 20px;
-  margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
-  font-family: 'Montserrat';
+  font-family: "Josefin Sans", sans-serif;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
