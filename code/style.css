@@ -6,18 +6,139 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: rgb(4, 38, 52);
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  background: url(./assets/hero-bubbles.jpg);
+  background-size: cover;
+  background-position: center;
+  min-height: 40vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-crab {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  padding: 0;
+}
+
+.container-crab img {
+  width: 70%;
+  padding-top: 5%;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 28px;
-  line-height: 34px;
-  color: #fff;
+  font-size: 40px;
+  /* line-height: 34px; */
+  color: yellow;
   text-align: center;
+  padding-top: 20%;
 }
 
-h2 {
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding-right: 5%;
+  padding-left: 5%;
+  padding-bottom: 0%;
+  padding-top: 2%;
+  border-bottom: 0;
+  min-height: 60vh;
+}
+
+.frontpage-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: yellow;
+  border-radius: 26px 26px 0 26px;
+  padding: 2%;
+  width: 70%;
+}
+
+.container-button {
+  display: flex;
+  justify-content: center;
+}
+
+.confirm-button {
+  background-color: rgb(4, 38, 52);
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+  min-width: 100px;
+  min-height: 50px;
+  border-radius: 10%;
+  cursor: pointer;
+  border: solid white;
+  overflow: hidden;
+  width: 30%;
+}
+
+.confirm-button:hover {
+  background-color: red;
+}
+
+.chat {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  overflow: scroll;
+  flex-direction: column;
+  padding-bottom: 16px;
+}
+
+.bubble {
+  background: yellow;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+  padding: 16px 24px;
+  color: #0c1546;
+  max-width: 40%;
+}
+
+.user-message {
+  display: flex;
+  justify-content: flex-end;
+  margin: 16px 0 0 8px;
+  flex-shrink: 0;
+}
+
+.bot-message {
+  display: flex;
+  margin: 16px 8px 0 0;
+  flex-shrink: 0;
+}
+
+.bot-bubble {
+  border-radius: 26px 26px 0px 26px;
+  margin-left: 8px;
+}
+
+.user-bubble {
+  border-radius: 26px 0 26px 26px;
+  margin-right: 8px;
+}
+
+.bot-image {
+  width: 80px;
+
+}
+
+/* h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 34px;
@@ -46,9 +167,9 @@ input {
   line-height: 26px;
   flex: 1;
   width: 100%;
-}
+} */
 
-main {
+/* main {
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
@@ -60,57 +181,18 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-}
+} */
 
-.chat {
-  flex: 1;
-  display: flex;
-  justify-content: flex-start;
-  overflow: scroll;
-  flex-direction: column;
-  padding-bottom: 16px;
-}
 
-.bot-msg {
-  display: flex;
-  margin: 16px 8px 0 0;
-  flex-shrink: 0;
-}
-
-.user-msg {
-  display: flex;
-  justify-content: flex-end;
-  margin: 16px 0 0 8px;
-  flex-shrink: 0;
-}
-
-.bot-msg img,
+/* .bot-msg img,
 .user-msg img {
   width: 60px;
   height: 60px;
-}
+} */
 
-.bubble {
-  background: #e5e9ff;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 26px;
-  padding: 16px 24px;
-  color: #0026ff;
-  max-width: 40%;
-}
 
-.bot-bubble {
-  border-radius: 0px 26px 26px 26px;
-  margin-left: 8px;
-}
 
-.user-bubble {
-  border-radius: 26px 0 26px 26px;
-  margin-right: 8px;
-}
-
-.input-wrapper {
+/* .input-wrapper {
   display: flex;
   justify-content: center;
 }
@@ -147,4 +229,4 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
-}
+} */
