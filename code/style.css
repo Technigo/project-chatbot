@@ -40,6 +40,7 @@ header h1 {
 img {
   height: auto;
   max-width: 30%;
+  border-radius: 10px;
 }
 
 h1 {
@@ -129,7 +130,7 @@ main {
   line-height: 26px;
   padding: 16px 24px;
   color: #0026ff;
-  max-width: 40%;
+  max-width: 60%;
 }
 
 .bot-bubble {

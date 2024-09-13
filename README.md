@@ -1,13 +1,11 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This is a basic food ordering chatbot system that demonstrates JavaScript interactivity. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The goal was to create a functional chatbot using logic from my JavaScript Pizzeria. Having practice with conditional statements from a previous project helped to make this a perfect template for working on new JavaScript skills. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://joycespizzeriachatbot.netlify.app/

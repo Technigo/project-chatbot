@@ -47,6 +47,28 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 }
 
+const clearButtons = () => {
+  inputWrapper.innerHTML = ''
+}
+
+//6. Confirm order
+const confirmOrder = (userConfirmation) => {
+  if (userConfirmation === "Yes") {
+    showMessage(`Yes, please!`, 'user')
+    setTimeout(() => {
+      showMessage(`You are in for a treat. One ${finalOrder} is on the way!`, 'bot')
+      clearButtons() //Clear the input field when conversation is over
+    }, 1000)
+  }
+  else { //the only other option is no
+    showMessage(`No, thank you.`, 'user')
+    setTimeout(() => {
+      showMessage(`No worries. If you change your mind, please come back again. Bye for now!`, 'bot')
+      clearButtons()
+    }, 1000)
+  }
+}
+
 //5. Get age
 const setPortionSize = (size) => {
   let portionSize = size
@@ -62,10 +84,14 @@ const setPortionSize = (size) => {
     showMessage(`One ${portionSize} size ${finalOrder} costs $${cost}. Would you like to confirm this order?`, 'bot')
     inputWrapper.innerHTML = `
       <button id="yes">Yes, please!</button>
-      <button id="no">No, thank you!</button>
+      <button id="no">No, thank you.</button>
     `
+    document.getElementById('yes').addEventListener("click", () => confirmOrder('Yes'))
+    document.getElementById('no').addEventListener("click", () => confirmOrder('No'))
+
   }, 1000)
 }
+
 
 //4. Set final order
 const setFinalOrder = (order) => {
@@ -77,8 +103,8 @@ const setFinalOrder = (order) => {
       <button id="child">🧒🏻 Child</button>
       <button id="adult">🧑🏻 Adult</button>
     `
-    document.getElementById('child').addEventListener("click", () => setPortionSize('🧒🏻 Child'));
-    document.getElementById('adult').addEventListener("click", () => setPortionSize('🧑🏻 Adult'));
+    document.getElementById('child').addEventListener("click", () => setPortionSize('child'));
+    document.getElementById('adult').addEventListener("click", () => setPortionSize('adult'));
   }, 1000);
 }
 
