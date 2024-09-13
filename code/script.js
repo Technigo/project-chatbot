@@ -1,12 +1,11 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
-const nameForm = document.getElementById('name-form')
 const nameInput = document.getElementById('name-input')
-const nameLabel = document.querySelector('label[for="name-input"]')
 const sendButton = document.getElementById('send-button')
 const inputWrapper = document.getElementById('input-wrapper')
 
 let userName = ""
+let finalOrder = ""
 // Functions goes here 👇
 
 // A function that will add a chat bubble in the correct place based on who the sender is
@@ -48,47 +47,82 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 }
 
+//5. Get age
+const setPortionSize = (size) => {
+  let portionSize = size
+  let cost
+  if (portionSize === "child") {
+    cost = "8.95"
+  }
+  else {
+    cost = "14.95"
+  }
+  showMessage(`${size}`, 'user')
+  setTimeout(() => {
+    showMessage(`One ${portionSize} size ${finalOrder} costs $${cost}. Would you like to confirm this order?`, 'bot')
+  }, 1000)
+}
+
+//4. Set final order
+const setFinalOrder = (order) => {
+  finalOrder = order;
+  showMessage(`${finalOrder}`, 'user');
+  setTimeout(() => {
+    showMessage(`Great choice! You have selected ${finalOrder}. Will this order be for a child or an adult?`, 'bot');
+    inputWrapper.innerHTML = `
+          <button id="child">🧒🏻 Child</button>
+          <button id="adult">🧑🏻 Adult</button>
+        `;
+    document.getElementById('child').addEventListener("click", () => setPortionSize('🧒🏻 Child'));
+    document.getElementById('adult').addEventListener("click", () => setPortionSize('🧑🏻 Adult'));
+  }, 1000);
+}
+
 //3. Take subfood order
 const getSubfood = (foodOrder) => {
   if (foodOrder === "pizza") {
+    showMessage("🍕 Pizza", 'user')
     setTimeout(() => {
-      showMessage("🍕 Pizza", 'user')
-      setTimeout(() => {
-        showMessage("What kind of pizza would you like?", 'bot')
-        inputWrapper.innerHTML = `
+      showMessage("What kind of pizza would you like?", 'bot')
+      inputWrapper.innerHTML = `
           <button id="pepporoni">🍖 Pepporoni</button>
           <button id="cheese">🧀 Cheese</button>
           <button id="margherita">🍅 Margherita</button>
-        `;
-      }, 1000) // Delay second message 1 second after the first message
-    }, 1000) // Delay the first message by 1 second
+        `
+      document.getElementById('pepporoni').addEventListener("click", () => setFinalOrder('🍖 Pepporoni Pizza'))
+      document.getElementById('cheese').addEventListener("click", () => setFinalOrder('🧀 Cheese Pizza'))
+      document.getElementById('margherita').addEventListener("click", () => setFinalOrder('🍅 Margherita Pizza'))
+    }, 1000)
   } else if (foodOrder === "pasta") {
+    showMessage("🍝 Pasta", 'user')
     setTimeout(() => {
-      showMessage("🍝 Pasta", 'user')
-      setTimeout(() => {
-        showMessage("What kind of pasta would you like?", 'bot')
-        inputWrapper.innerHTML = `
+      showMessage("What kind of pasta would you like?", 'bot')
+      inputWrapper.innerHTML = `
           <button id="spaghetti-bolognese">🍝 Spaghetti Bolognese</button>
           <button id="fettuccine-alfredo">🧈 Fettuccine Alfredo</button>
           <button id="lasagna">🍅 Lasagna</button>
-        `;
-      }, 1000)
+        `
+      document.getElementById('spaghetti-bolognese').addEventListener("click", () => setFinalOrder('🍝 Spaghetti Bolognese'))
+      document.getElementById('fettuccine-alfredo').addEventListener("click", () => setFinalOrder('🧈 Fettucine Alfredo'))
+      document.getElementById('lasagna').addEventListener("click", () => setFinalOrder('🍅 Lasagna'))
+        ;
     }, 1000)
   } else { //foodOrder has to be salad
+    showMessage("🥗 Salad", 'user')
     setTimeout(() => {
-      showMessage("🥗 Salad", 'user')
-      setTimeout(() => {
-        showMessage("What kind of salad would you like?", 'bot')
-        inputWrapper.innerHTML = `
+      showMessage("What kind of salad would you like?", 'bot')
+      inputWrapper.innerHTML = `
           <button id="caesar">🥬 Caesar</button>
           <button id="greek">🥒 Greek</button>
           <button id="caprese">🍅 Caprese</button>
-        `;
-      }, 1000)
+        `
+      document.getElementById('caesar').addEventListener("click", () => setFinalOrder('🥬 Caesar Salad'))
+      document.getElementById('greek').addEventListener("click", () => setFinalOrder('🥒 Greek Salad'))
+      document.getElementById('caprese').addEventListener("click", () => setFinalOrder('🍅 Caprese Salad'))
+        ;
     }, 1000)
   }
 }
-
 
 //2. Take user's order using buttons
 const getOrder = () => {
@@ -103,8 +137,6 @@ const getOrder = () => {
   document.getElementById('salad').addEventListener("click", () => getSubfood('salad'))
 }
 
-
-
 //1. Get user's name and trigger takeOrder function
 const getUserName = (event) => {
 
@@ -116,13 +148,9 @@ const getUserName = (event) => {
   setTimeout(getOrder, 1000)
 }
 
-
-
 // Eventlisteners goes here 👇
 // Event listener for the form submission
 sendButton.addEventListener("click", getUserName)
-
-
 
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
