@@ -212,22 +212,20 @@ const SelectMovieOption = (selectedAgeGroup, selectedGenre) => {
 }
 
 const handleSelectMovieOption = (event) => {
-  if (event.target.id === 'submit-movie') {
 
-    const selectedMovie = document.getElementById('movie-option').value;
-    //const selectedMovie = movieOptionElement.value;
+  const selectedMovie = document.getElementById('movie-option').value;
+  //const selectedMovie = movieOptionElement.value;
 
-    if (selectedMovie) {
-      inputWrapper.innerHTML = "";
+  if (selectedMovie) {
+    inputWrapper.innerHTML = "";
 
-      showMessage(`${selectedMovie}`, 'user');
-      // Delay the display of the message from the bot
-      setTimeout(() => {
-        chat.scrollTop = chat.scrollHeight;
-        showMessage(`You selected ${selectedMovie}. A fine choice! That will be: $5. Do you accept?`, 'bot');
-      }, 700); // Adjust the delay as needed
+    showMessage(`${selectedMovie}`, 'user');
+    // Delay the display of the message from the bot
+    setTimeout(() => {
+      chat.scrollTop = chat.scrollHeight;
+      showMessage(`You selected ${selectedMovie}. A fine choice! That will be: $5. Do you accept?`, 'bot');
+    }, 700); // Adjust the delay as needed
 
-    }
   }
 };
 
