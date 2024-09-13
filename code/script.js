@@ -3,7 +3,7 @@
 const chat = document.getElementById('chat')
 const nameInput = document.getElementById('name-input')
 const form = document.getElementById('name-form');
-const inputWrapper = document.getElementById('input-wrapper')
+const inputWrapper = document.getElementById('input-wrapper');
 
 
 // Functions goes here 👇
@@ -32,6 +32,7 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
+  chat.scrollTop = chat.scrollHeight;
 }
 
 // A function to start the conversation
@@ -60,12 +61,9 @@ form.addEventListener("submit", handleNameInput);
 //PART 2
 // kallar på funktionen movieoptions 
 const movieOptions = (name) => {
-  //bot asking what type of moviegenre the user want to watch 
   showMessage(`Hello there ${name}, what's do you want to watch today?`, 'bot')
   //removing the eventlistener about name 
   form.removeEventListener("submit", handleNameInput);
-  //adding eventlistener for movieoption when button is clicked
-
   // Hides the text-inputform and adds some more buttons, changed class to "genre-btn" and changed type to "button" to connect with event handleGenreClick
   form.innerHTML = `
         <button class="genre-btn" type="button">
@@ -86,14 +84,15 @@ const movieOptions = (name) => {
   const handleGenreClick = (event) => {
     event.preventDefault();
     if (event.target.classList.contains('genre-btn')) {
+      const selectedGenre = event.target.textContent.trim();
       form.innerHTML = "";
 
-      showMessage(`${event.target.textContent}`, 'user');
+      showMessage(`${selectedGenre}`, 'user');
       // Delay the display of the message from the bot and the options
       setTimeout(() => {
         chat.scrollTop = chat.scrollHeight
-        showMessage(`You chose ${event.target.textContent}. Excellent choice! Before we start selecting movies, are you a grownup or a child?`, 'bot');
-        ageOption();
+        showMessage(`You chose ${selectedGenre}. Excellent choice! Before we start selecting movies, are you a grownup or a child?`, 'bot');
+        ageOption(selectedGenre);
       }, 700);
     }
   }
@@ -102,7 +101,10 @@ const movieOptions = (name) => {
 };
 
 //PARTT 3: AGE
-const ageOption = () => {
+let selectedAgeGroup = "";
+
+const ageOption = (genre) => {
+  console.log('Received genre:', genre);
   form.innerHTML = `
         <button class="age-btn" type="button">
           Child
@@ -120,13 +122,14 @@ const ageOption = () => {
   const handleAgeClick = (event) => {
     event.preventDefault();
     if (event.target.classList.contains('age-btn')) {
+      const selectedAgeGroup = event.target.textContent.trim();
       form.innerHTML = "";
-      showMessage(`${event.target.textContent}`, 'user');
+      showMessage(`${selectedAgeGroup}`, 'user');
       // Delay the display of the message from the bot and the options
       setTimeout(() => {
         chat.scrollTop = chat.scrollHeight
-        showMessage(`Alrighty then! Here are some ${event.target.textContent}friendly options for you:`, 'bot');
-        SelectMovieOption();
+        showMessage(`Alrighty then! Here are some ${selectedAgeGroup} friendly options for you:`, 'bot');
+        SelectMovieOption(selectedAgeGroup, genre);
       }, 700);
 
     }
@@ -138,59 +141,112 @@ const ageOption = () => {
 }
 
 // PART 4
-// Function to display movie options based on age group
-const SelectMovieOption = (ageGroup) => {
+// Function to display movie options based on age and genre option
+
+const SelectMovieOption = (selectedAgeGroup, selectedGenre) => {
+  console.log('SelectMovieOption called with:', selectedAgeGroup, selectedGenre);
+
+
   let options = "";
+  console.log('Age Group:', selectedAgeGroup);
+  console.log('Genre:', selectedGenre);
 
-  if (ageGroup === "Child") {
+  if (selectedAgeGroup === "Child" && selectedGenre === "Action") {
     options = `
-      <option value="movie1">Movie 1</option>
-      <option value="movie2">Movie 2</option>
-      <option value="movie3">Movie 3</option>
+      <option>Spy Kids</option>
+      <option>Harry Potter</option>
+      <option>The Incredibles</option>
     `;
-  } else if (ageGroup === "Adult") {
+
+  } else if (selectedAgeGroup === "Child" && selectedGenre === "Drama") {
     options = `
-      <option value="movie4">Movie 4</option>
-      <option value="movie5">Movie 5</option>
-      <option value="movie6">Movie 6</option>
+      <option>Swim Team</option>
+      <option>Charlotte's Web</option>
+      <option>Inside Out</option>
+    `;
+  } else if (selectedAgeGroup === "Child" && selectedGenre === "Comedy") {
+    options = `
+      <option>Freaky Friday</option>
+      <option>Home Alone</option>
+      <option>Shrek</option>
+      `;
+  } else if (selectedAgeGroup === "Adult" && selectedGenre === "Action") {
+    options = `
+      <option>Deadpool</option>
+      <option>Kill Bill</option>
+      <option>Aliens</option>
+    `;
+  } else if (selectedAgeGroup === "Adult" && selectedGenre === "Drama") {
+    options = `
+      <option>The Godfather</option>
+      <option>Schindler's List</option>
+      <option>Clockwork Orange</option>
+    `;
+  } else if (selectedAgeGroup === "Adult" && selectedGenre === "Comedy") {
+    options = `
+      <option>The Hangover</option>
+      <option>Bridesmaids</option>
+      <option>Juno</option>
     `;
   }
+  inputWrapper.innerHTML = `
+    <select id="movie-option" name="movie-genre">
+      <option value="">Select a movie here: 👇</option>
+      ${options}
+    </select>
+    <button id="submit-movie" type="button">Submit</button>
+  `;
+  console.log('inputWrapper:', inputWrapper);
 
-  //PART 5
-  const SelectMovieOption = () => {
-    inputWrapper.innerHTML = `
-      <select id="movie-option" name="movie-genre">
-      <option value="movie">movie</option>
-      <option value="movie">movie</option>
-      <option value="movie">movie</option>
-      </select>
-      <button id="submit-genre" type="button">Submit</button>
-      `
-    inputWrapper.style.display = 'flex';
-    inputWrapper.style.width = '100%';
-    inputWrapper.style.boxSizing = 'border-box';
-    inputWrapper.style.padding = '10px';
-    document.getElementById('movie-option').style.width = '400px';
-    document.getElementById('movie-option').style.fontSize = '20px';
+  inputWrapper.style.display = 'flex';
+  inputWrapper.style.width = '100%';
+  inputWrapper.style.boxSizing = 'border-box';
+  inputWrapper.style.padding = '10px';
+  document.getElementById('movie-option').style.width = '400px';
+  document.getElementById('movie-option').style.fontSize = '20px';
+
+  // Log options for debugging
+  console.log('Options:', options);
+
+  const handleSelectMovieOption = (event) => {
+    if (event.target.id === 'submit-movie') {
+      const selectedMovie = document.getElementById('movie-option').value;
+      inputWrapper.innerHTML = "";
+      showMessage(`${options}`, 'user');
+      // Delay the display of the message from the bot
+      setTimeout(() => {
+        chat.scrollTop = chat.scrollHeight;
+        showMessage(`You selected ${options}, a fine choice! That will be: $5. Do you accept?`, 'bot');
+      }, 700); // Adjust the delay as needed
+    }
+  };
+
+  // Add the event listener to inputWrapper
+  inputWrapper.addEventListener('click', handleSelectMovieOption);
+
+}
 
 
-    // const handleAgeClick = (event) => {
-    //   event.preventDefault();
-    //   if (event.target.classList.contains('age-btn')) {
-    //     form.innerHTML = "";
-    //     showMessage(`${event.target.textContent}`, 'user');
-    //     // Delay the display of the message from the bot and the options
-    //     setTimeout(() => {
-    //       showMessage
-    //       showMessage(`Alrighty then! Here are some ${event.target.textContent}friendly options for you:`, 'bot');
-    //       ageOption();
-    //     }, 700);
-    //   }
-    // }
-    // form.addEventListener("click", handleAgeClick);
-  }
 
-  setTimeout(greetUser, 1000)
+//PART 5
+
+
+// const handleAgeClick = (event) => {
+//   event.preventDefault();
+//   if (event.target.classList.contains('age-btn')) {
+//     form.innerHTML = "";
+//     showMessage(`${event.target.textContent}`, 'user');
+//     // Delay the display of the message from the bot and the options
+//     setTimeout(() => {
+//       showMessage
+//       showMessage(`Alrighty then! Here are some ${event.target.textContent}friendly options for you:`, 'bot');
+//       ageOption();
+//     }, 700);
+//   }
+// }
+// form.addEventListener("click", handleAgeClick);
+
+setTimeout(greetUser, 1000)
 
 
 
