@@ -70,7 +70,7 @@ main {
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
-  height: calc(90vh - 5rem);
+  height: calc(90svh - 5rem);
   min-height: 20rem;
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;

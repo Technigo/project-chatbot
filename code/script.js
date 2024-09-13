@@ -69,7 +69,7 @@ const botMessage = (message) => {
       const typingIndicator = document.createElement("section");
       typingIndicator.classList.add("message", "message--bot");
       typingIndicator.innerHTML = `
-      <img src="assets/bot-avatar.png" alt="bot" />
+      <img src="assets/bot-avatar.png" alt="Harmoniqa" />
       <div class="bubble-container bubble-container--bot">
         <div class="bubble bubble--bot">
           <p><span class="dot"></span><span class="dot"></span><span class="dot"></span></p>
