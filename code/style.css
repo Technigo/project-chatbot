@@ -7,7 +7,14 @@ body {
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   background: linear-gradient(to top right, pink, blue);
+  height: 95%;
 
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .header-image-container {
@@ -25,8 +32,8 @@ header h1 {
 }
 
 .image {
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
   height: 100%;
 }
 
@@ -77,8 +84,7 @@ main {
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
-  /* height: 600px; */
-  height: 95vh;
+  height: 80vh;
   border-radius: 30px;
   background: #fff;
   padding: 20px 24px;
@@ -177,9 +183,13 @@ button:hover {
 
 /* For tablet and larger screens */
 @media (min-width: 767px) {
-  body {
-    display: flex;
+  .container {
     flex-direction: row;
+    min-height: 100%;
+  }
+
+  .header-image-container {
+    max-height: 95vh;
   }
 
   header h1 {
@@ -191,6 +201,7 @@ button:hover {
   }
 
   main {
-    min-height: 90%;
+    /* min-height: 90%; */
+    height: 95vh;
   }
 }

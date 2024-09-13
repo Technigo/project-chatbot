@@ -60,6 +60,10 @@ const setPortionSize = (size) => {
   showMessage(`${size}`, 'user')
   setTimeout(() => {
     showMessage(`One ${portionSize} size ${finalOrder} costs $${cost}. Would you like to confirm this order?`, 'bot')
+    inputWrapper.innerHTML = `
+      <button id="yes">Yes, please!</button>
+      <button id="no">No, thank you!</button>
+    `
   }, 1000)
 }
 
@@ -68,11 +72,11 @@ const setFinalOrder = (order) => {
   finalOrder = order;
   showMessage(`${finalOrder}`, 'user');
   setTimeout(() => {
-    showMessage(`Great choice! You have selected ${finalOrder}. Will this order be for a child or an adult?`, 'bot');
+    showMessage(`Great choice! You have selected ${finalOrder}. Will this order be for a child or an adult?`, 'bot')
     inputWrapper.innerHTML = `
-          <button id="child">🧒🏻 Child</button>
-          <button id="adult">🧑🏻 Adult</button>
-        `;
+      <button id="child">🧒🏻 Child</button>
+      <button id="adult">🧑🏻 Adult</button>
+    `
     document.getElementById('child').addEventListener("click", () => setPortionSize('🧒🏻 Child'));
     document.getElementById('adult').addEventListener("click", () => setPortionSize('🧑🏻 Adult'));
   }, 1000);
