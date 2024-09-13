@@ -104,6 +104,10 @@ main {
   flex-direction: column;
   padding-bottom: 16px;
 }
+#chat {
+  padding-bottom: 65px; /* makes bottom space so that the last message appears fully */
+  overflow-y: auto;
+}
 
 .bot-msg {
   display: flex;
@@ -218,6 +222,10 @@ button:hover {
   h1 {
     font-size: 65px; /* Smaller font size for headings on smaller screens */
     line-height: 40px; /* Adjust line height for readability */
+  }
+
+  select {
+    font-size: 15px; /* Smaller font size for smaller screens */
   }
 }
 

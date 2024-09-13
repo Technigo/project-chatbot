@@ -12,7 +12,7 @@ let userName = "";
 // Destinations mapped by mood
 const destinationsByMood = {
   Adventure: ["🏔️ Mount Everest", "🌳 Amazon Rainforest", "🏜️ Sahara Desert"],
-  Relaxation: ["🛳️ Maldives", "🌴 Bora Bora", "🏖️ Bali"],
+  Relax: ["🛳️ Maldives", "🌴 Bora Bora", "🏖️ Bali"],
   Cultural: ["🍝 Italy", "🏺 Greece", "🍣 Japan"],
   Romantic: ["🌹 Paris", "🌅 Venice", "🌺 Santorini"],
 };
