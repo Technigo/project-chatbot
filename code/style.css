@@ -43,7 +43,7 @@ body {
     rgba(100, 43, 115, 1) 0%,
     rgba(4, 0, 4, 1) 90%
   );
-  min-height: 100vh;
+  min-height: 100svh;
 
   @media (min-width: 768px) {
     justify-content: center;
