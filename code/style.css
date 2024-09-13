@@ -225,5 +225,7 @@ button:hover {
 
   body {
     background-attachment: scroll; /* Allow the background to scroll normally */
+    background-size: cover; /* Make sure the image covers the full screen */
+    min-height: 100vh; /* Ensure the image takes the full height */
   }
 }
