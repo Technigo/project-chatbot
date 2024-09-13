@@ -185,15 +185,22 @@ input {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-left: 1.25rem;
 }
 
 .bubble-container--bot {
-  margin-left: 1.25rem;
+  margin-left: 1rem;
+
+  @media (min-width: 768px) {
+    margin-right: 1.25rem;
+  }
 }
 
 .bubble-container--user {
-  margin-right: 1.25rem;
+  margin-right: 1rem;
+
+  @media (min-width: 768px) {
+    margin-right: 1.25rem;
+  }
 }
 
 .bubble {
