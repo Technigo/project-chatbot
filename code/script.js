@@ -1,4 +1,4 @@
-// DOM selectors (variables that point to selected DOM elements) goes here 👇
+// DOM selectors (variables that point to selected DOM elements) goes here
 const chat = document.getElementById("chat");
 const nameInput = document.getElementById("name-input");
 const form = document.getElementById("name-form");
@@ -10,6 +10,7 @@ let questionNumber = 1;
 let userName = "";
 
 // Destinations mapped by mood
+// Based on the mood selected by the user, the bot will suggest destinations
 const destinationsByMood = {
   Adventure: ["🏔️ Mount Everest", "🌳 Amazon Rainforest", "🏜️ Sahara Desert"],
   Relax: ["🛳️ Maldives", "🌴 Bora Bora", "🏖️ Bali"],
@@ -17,8 +18,8 @@ const destinationsByMood = {
   Romantic: ["🌹 Paris", "🌅 Venice", "🌺 Santorini"],
 };
 
-// Functions go here 👇
-
+// Function for bot to reply with a message after a delay
+// The delay is used to make the conversation feel more natural.
 const botReply = (msg) => {
   setTimeout(() => showMessage(msg, "bot"), 500);
 };

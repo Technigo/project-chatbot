@@ -56,8 +56,7 @@ input {
 }
 
 input::placeholder {
-  font-size: 16px; /* Default size for larger screens * /
-  color: #999; /* Optional: Default color */
+  font-size: 16px; /* Default size for larger screens */
 }
 
 input:focus,
@@ -181,26 +180,22 @@ button:hover {
   transition: all 0.2s ease;
 }
 
-/*------------------------------------------------------------------*/
-
 /* Media Query for Small Screens */
 
 @media (max-width: 600px) {
   .bubble {
     max-width: 70%; /* Increase the width of bubbles on smaller screens */
-    /* font-size: 10px; */
-    /*padding: 12px 20px; Optional: Adjust padding to fit the larger bubble */
   }
 
   .bot-msg img,
   .user-msg img {
-    width: 50px; /* Optional: Reduce the size of user/bot images */
+    width: 50px; /* Reduce the size of user/bot images */
     height: 50px;
   }
 
   p {
     font-size: 15px; /* Smaller font size for paragraphs */
-    line-height: 20px; /* Adjust line height for readability */
+    line-height: 20px;
   }
 
   button {
@@ -220,13 +215,15 @@ button:hover {
   }
 
   h1 {
-    font-size: 65px; /* Smaller font size for headings on smaller screens */
+    font-size: 70px; /* Smaller font size for headings on smaller screens */
     line-height: 40px; /* Adjust line height for readability */
   }
 
   select {
     font-size: 15px; /* Smaller font size for smaller screens */
   }
-}
 
-/*--------------------------------------------*/
+  body {
+    background-attachment: scroll; /* Allow the background to scroll normally */
+  }
+}
