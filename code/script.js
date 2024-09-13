@@ -384,9 +384,9 @@ const songs = {
           "https://open.spotify.com/embed/track/16j0oMDsmn2aeAewzF1NUi?utm_source=generator&theme=0",
       },
       {
-        title: "Vance Joy – Riptide",
+        title: "SYML – Girl (Acoustic)",
         spotifyUrl:
-          "https://open.spotify.com/embed/track/7yq4Qj7cqayVTp3FF9CWbm?utm_source=generator&theme=0",
+          "https://open.spotify.com/embed/track/4BrGYhbT975hwXXPBUqXNY?utm_source=generator&theme=0",
       },
       {
         title: "Cat Burns – Live More & Love More",
@@ -423,9 +423,9 @@ const songs = {
           "https://open.spotify.com/embed/track/25U7raB3ZSszayTYClh4hF?utm_source=generator&theme=0",
       },
       {
-        title: "Jason Mraz – I'm Yours",
+        title: "Ben Howard – Only Love",
         spotifyUrl:
-          "https://open.spotify.com/embed/track/1EzrEOXmMH3G43AXT1y7pA?utm_source=generator&theme=0",
+          "https://open.spotify.com/embed/track/2uhEKg8kIzpdvz4gyy6x8W?utm_source=generator&theme=0",
       },
     ],
   },
