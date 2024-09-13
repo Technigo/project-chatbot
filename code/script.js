@@ -52,6 +52,8 @@ const showMessage = (message, sender) => {
   `;
 
   getLatestMessage();
+
+  // Scroll the chat to the latest reply
   chat.scrollTop = chat.scrollHeight;
 };
 
@@ -157,6 +159,8 @@ const musicType = (userName) => {
       colorSelection("Calm");
       inputWrapper.innerHTML = ""; // Remove the input area after user replies
     });
+    // Scroll down the chat window after buttons have loaded
+    chat.scrollTop = chat.scrollHeight;
   });
 };
 
@@ -206,6 +210,9 @@ const colorSelection = (musicType) => {
       document
         .getElementById("button-yellow")
         .addEventListener("click", () => suggestSong("Yellow", selectedMusic));
+
+      // Scroll down the chat window after buttons have loaded
+      chat.scrollTop = chat.scrollHeight;
     }, GLOBAL_LONG_DELAY);
   });
 };
