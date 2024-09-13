@@ -1,20 +1,26 @@
-* {
+/* * {
   box-sizing: border-box;
-}
+} */
 
 body {
-  margin: 0;
+  margin: 2%;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: rgb(243, 199, 37);
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 28px;
+  /* font-size: 28px; */
   line-height: 34px;
   color: #fff;
   text-align: center;
+  font-family: "Gloria Hallelujah", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 
 h2 {
@@ -26,11 +32,48 @@ h2 {
   margin-bottom: 36px;
 }
 
+h4 {
+  font-weight: normal;
+  margin: 10px 0;
+  text-align: right;
+}
+
 p {
   font-size: 18px;
   font-weight: 600;
   line-height: 28px;
   margin: 0;
+}
+
+.welcome-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.cookie-message {
+  width: 50%;
+}
+
+.image-container {
+  display: flex;
+  /* Aktivera flexbox för att centrera bilden */
+  justify-content: center;
+  /* Centrera innehållet horisontellt */
+  align-items: center;
+  /* Centrera innehållet vertikalt */
+  height: auto;
+  /* Justera höjden som du vill */
+  margin-top: 10px;
+  /* Lägg till marginal om du vill ha lite utrymme mellan <h1> och bilden */
+}
+
+.monster-picture {
+  max-width: 100%;
+  /* Se till att bilden inte överstiger sin container */
+  max-height: 600px;
+
+
+
 }
 
 input {
@@ -48,11 +91,14 @@ input {
   width: 100%;
 }
 
+input[type="text"] {
+  outline: none;
+}
+
 main {
   margin: 0 auto;
-  width: 100%;
-  max-width: 700px;
-  height: 600px;
+  width: 50%;
+  height: 700px;
   border-radius: 30px;
   background: #fff;
   padding: 20px 24px;
@@ -60,6 +106,7 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 .chat {
@@ -84,28 +131,35 @@ main {
   flex-shrink: 0;
 }
 
-.bot-msg img,
+.bot-msg img {
+  width: 60px;
+  height: 60px;
+}
+
 .user-msg img {
   width: 60px;
   height: 60px;
 }
 
 .bubble {
-  background: #e5e9ff;
+  /* background: #e5e9ff; */
+  color: black;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #0026ff;
   max-width: 40%;
 }
 
 .bot-bubble {
+  /* background: rgb(223, 223, 223); */
+  background: #f5e9be;
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
 }
 
 .user-bubble {
+  background: #a2ebff;
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
 }
@@ -121,16 +175,8 @@ main {
   align-items: center;
 }
 
-/* label {
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
-} */
-
 button {
-  background-color: #0026ff;
+  background-color: #00c3f8;
   color: white;
   border: none;
   border-radius: 4px;
@@ -148,3 +194,75 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+footer {
+  border-top: 4px dotted white;
+  margin-top: 4%;
+  color: white;
+  padding-top: 2%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.monster-picture2 {
+  display: none;
+}
+
+/* For mobile phones */
+@media (max-width: 667px) {
+
+  .monster-picture {
+    display: none;
+
+  }
+
+  .monster-picture2 {
+    display: block;
+    width: 100%;
+  }
+
+  .welcome-container {
+    flex-direction: column;
+  }
+
+  main {
+    width: 100%;
+    padding: 12px 12px 20px 12px;
+    height: 500px;
+  }
+
+  .cookie-message {
+    width: 100%;
+  }
+
+  .button-container {
+    flex-direction: column;
+  }
+
+  button {
+    margin-right: 0;
+    margin-top: 2px;
+    padding: 10px 20px;
+  }
+
+  .send-btn {
+    border-radius: 4px;
+    padding: 16px 20px;
+  }
+
+  .bubble p {
+    font-size: 0.8rem;
+  }
+
+  h4 {
+    font-size: 0.7rem;
+  }
+}
+
+/* for surfpad */
+@media (min-width: 668px) and (max-width: 1024px) {}

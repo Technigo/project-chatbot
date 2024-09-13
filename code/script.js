@@ -9,7 +9,7 @@ const form = document.getElementById('name-form');
 // Welcome the user back again
 const goodbyeMessage = (choice) => {
   if (choice === 'Yes') { // If yes, message that order is prepaired
-    showMessage(`Your order will be prepaired. Thank you for using the Cookiebot!🍪`, 'bot');
+    showMessage(`Your order will be prepaired. Thank you for using the Cookiebot! 🍪`, 'bot');
   } else { // If no, massage that the order is canceled 
     showMessage(`No order has been placed. Hope we meet again soon!`, 'bot')
   }
@@ -18,6 +18,7 @@ const goodbyeMessage = (choice) => {
 // User bubble show confirmation choice
 const handleConfirmationChoice = (choice) => {
   showMessage(`${choice}`, 'user');
+  document.getElementById('buttonContainer').style.display = 'none'; // Hide buttons
   setTimeout(() => goodbyeMessage(choice), 1000);
 };
 
@@ -25,8 +26,10 @@ const handleConfirmationChoice = (choice) => {
 const createConfirmationButtons = () => {
   form.style.display = 'none'; // Hide form
   form.innerHTML = `
-    <button type="button" id="yesButton" class="button-class">Yes</button>
-    <button type="button" id="noButton" class="button-class">No</button>
+    <div class="button-container" id="buttonContainer">
+      <button type="button" id="yesButton" class="button-class">Yes</button>
+      <button type="button" id="noButton" class="button-class">No</button>
+    </div>
   `;
   form.style.display = 'block'; // Show buttons
 
@@ -51,6 +54,7 @@ const askForOrderConfirmation = (choice) => {
 // User bubble show drink choice and passes the choice to next function
 const handleDrinkChoice = (choice) => {
   showMessage(`${choice} please`, 'user');
+  document.getElementById('buttonContainer').style.display = 'none'; // Hide buttons
   setTimeout(() => askForOrderConfirmation(choice), 1000);
 };
 
@@ -58,9 +62,11 @@ const handleDrinkChoice = (choice) => {
 const createDrinkButtons = () => {
   form.style.display = 'none'; // Hide form
   form.innerHTML = `
-    <button type="button" id="milk" class="button-class">🥛 Milk</button>
-    <button type="button" id="coffee" class="button-class">☕️ Coffee</button>
-    <button type="button" id="noDrink" class="button-class">No drink</button>
+    <div class="button-container" id="buttonContainer">
+      <button type="button" id="milk" class="button-class">🥛 Milk</button>
+      <button type="button" id="coffee" class="button-class">☕️ Coffee</button>
+      <button type="button" id="noDrink" class="button-class">No drink</button>
+    </div>
   `;
   form.style.display = 'block'; // Show buttons
 
@@ -79,6 +85,7 @@ const askForDrinkChoice = (choice) => {
 // User bubble show cookie choice and passes the choice to next function
 const handleCookieChoice = (choice) => {
   showMessage(`I choose ${choice}!`, 'user');
+  document.getElementById('buttonContainer').style.display = 'none'; // Hide buttons
   setTimeout(() => askForDrinkChoice(choice), 1000);
 };
 
@@ -86,10 +93,12 @@ const handleCookieChoice = (choice) => {
 const createCookieButtons = () => {
   form.style.display = 'none'; // hide form
   form.innerHTML = `
-    <button type="button" id="darkChocolate" class="button-class">🍪 Dark chocolate</button>
-    <button type="button" id="milkChocolate" class="button-class">🍪 Milk chocolate</button>
-    <button type="button" id="nutsChocolate" class="button-class">🍪 Nuts and white chocolate</button>
-  `;
+    <div class="button-container" id="buttonContainer">
+      <button type="button" id="darkChocolate" class="button-class">🍪 Dark chocolate</button>
+      <button type="button" id="milkChocolate" class="button-class">🍪 Milk chocolate</button>
+      <button type="button" id="nutsChocolate" class="button-class">🍪 Nuts and white chocolate</button>
+    </div>
+    `;
   form.style.display = 'block'; // show buttons
 
   // Here I: 
@@ -103,7 +112,7 @@ const createCookieButtons = () => {
 
 // Asking for what kind of cookie
 const askForCookieChoice = (name) => {
-  showMessage(`Hello ${name}! What kind of cookie would you like to order?`, 'bot');
+  showMessage(`Welcome ${name}! What kind of cookie would you like to order?`, 'bot');
   createCookieButtons();
 };
 
@@ -116,12 +125,12 @@ const handleNameInput = (event) => {
   if (name === "") {
     showMessage(name, "user");
     setTimeout(() => { // Using setTimeout to delay the bot message
-      showMessage("Please type in your name", 'bot');
+      showMessage("Please type in your name...", 'bot');
       form.addEventListener('submit', handleNameInput); // Invoking the function again
     }, 1000);
   } else {
     showMessage(name, "user");
-    nameInput.value = ""; // Empty textfield  ----------------kanske inte nödvändig----
+    nameInput.value = ""; // Empty textfield
     setTimeout(() => askForCookieChoice(name), 1000); // Continue with the next question
   }
 };
@@ -137,25 +146,27 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/userlogomonster.png" alt="User" />  
       </section>
     `;
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/botpic2.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
       </section>
     `;
   }
-  chat.scrollTop = chat.scrollHeight;
+  setTimeout(() => {
+    chat.scrollTop = chat.scrollHeight;
+  }, 10);
 };
 
 // Greeting message
 const greetUser = () => {
-  showMessage("Welcome! I'm the Cookiebot, what's your name?", 'bot');
+  showMessage("Hello! I'm the Cookiebot, what's your name?", 'bot');
 };
 
 // Start by greeting the user Welcome!
