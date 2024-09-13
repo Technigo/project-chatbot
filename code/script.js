@@ -5,11 +5,8 @@ const nameInput = document.getElementById('name-input')
 const form = document.getElementById('name-form');
 const inputWrapper = document.getElementById('input-wrapper');
 
-
-// Functions goes here 👇
 // A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // The if statement checks if the sender is the user and if that's the case it inserts an HTML section inside the chat with the posted message from the user
   if (sender === 'user') {
     console.log("message from user")
     chat.innerHTML += `
@@ -20,7 +17,6 @@ const showMessage = (message, sender) => {
         <img src="assets/user.png" alt="User" />  
       </section>
     `
-    // The else if statement checks if the sender is the bot and if that's the case it inserts an HTML section inside the chat with the posted message from the bot
   } else if (sender === 'bot') {
     console.log("message from bot")
     chat.innerHTML += `
@@ -40,26 +36,24 @@ const greetUser = () => {
   showMessage("Hello there, what's your name?", 'bot')
 
 }
-//funktion som heter handlenameinput, möjliggör att kunna skriva sitt namn.
 //the name is stored for the entire session with the value "name"
 const handleNameInput = (event) => {
   console.log("event", event)
-  //this default prevents something
+  // Prevents the form from reloading the page when submitted  
   event.preventDefault();
-  //This connects with the html and collects the input value for "name"
+  //This collects the input value for "name"
   const name = nameInput.value;
-  //This shows the message in the chatbubble 
   showMessage(name, "user");
   //This clears the input field 
   nameInput.value = "";
   setTimeout(() => movieOptions(name), 1000)
 };
 
-//eventlisteners - handlenameinput kallas när knappen klickas 
+//eventlisteners - handlenameinput is called when btn "submit" is pressed 
 form.addEventListener("submit", handleNameInput);
 
 //PART 2
-// kallar på funktionen movieoptions 
+// calles the function movieOptions 
 const movieOptions = (name) => {
   showMessage(`Hello there ${name}, what's do you want to watch today?`, 'bot')
   //removing the eventlistener about name 
@@ -93,7 +87,7 @@ const movieOptions = (name) => {
         chat.scrollTop = chat.scrollHeight
         showMessage(`You chose ${selectedGenre}. Excellent choice! Before we start selecting movies, are you a grownup or a child?`, 'bot');
         ageOption(selectedGenre);
-      }, 700);
+      }, 1000);
     }
   }
 
@@ -130,7 +124,7 @@ const ageOption = (genre) => {
         chat.scrollTop = chat.scrollHeight
         showMessage(`Alrighty then! Here are some ${selectedAgeGroup} friendly options for you:`, 'bot');
         SelectMovieOption(selectedAgeGroup, genre);
-      }, 700);
+      }, 1000);
 
     }
     chat.scrollTop = chat.scrollHeight
@@ -212,46 +206,111 @@ const SelectMovieOption = (selectedAgeGroup, selectedGenre) => {
 }
 
 const handleSelectMovieOption = (event) => {
-
+  //targets the specific movie and not all three options that are stored in the value "options"
   const selectedMovie = document.getElementById('movie-option').value;
-  //const selectedMovie = movieOptionElement.value;
 
   if (selectedMovie) {
+    event.preventDefault();
     inputWrapper.innerHTML = "";
 
     showMessage(`${selectedMovie}`, 'user');
     // Delay the display of the message from the bot
     setTimeout(() => {
       chat.scrollTop = chat.scrollHeight;
-      showMessage(`You selected ${selectedMovie}. A fine choice! That will be: $5. Do you accept?`, 'bot');
-    }, 700); // Adjust the delay as needed
+      showMessage(`You selected ${selectedMovie}. A fine choice! That will be: $4. Would you like to rent this movie?`, 'bot');
+      confirmation(selectedMovie)
+    }, 1000);
+  }
+}
 
+
+const confirmation = () => {
+  form.innerHTML = `
+     <button class="yes-btn" type="button">
+      Yes, thank you!
+             </button>
+          <button class="no-btn" type="button">
+             No, I changed my mind.
+          </button>
+         `
+
+  // Style the form and add event listener
+  form.style.display = 'flex';
+  form.style.justifyContent = 'center';
+  form.style.alignItems = 'center';
+  form.style.gap = '30px';
+
+  form.addEventListener('click', handleConfirmationClick);
+};
+
+// Handle confirmation click
+const handleConfirmationClick = (event) => {
+  event.preventDefault();
+  const button = event.target;
+
+  if (button.classList.contains('yes-btn')) {
+    const selectedConfirmation = button.textContent.trim();
+    form.innerHTML = "";
+    showMessage(`${selectedConfirmation}`, 'user');
+
+    setTimeout(() => {
+      chat.scrollTop = chat.scrollHeight;
+      showMessage(`You clicked ${selectedConfirmation}. Grab your popcorn, ${selectedMovie} is on its way!`, 'bot');
+    }, 1000);
+  } else if (button.classList.contains('no-btn')) {
+    const selectedConfirmation = button.textContent.trim();
+    form.innerHTML = "";
+
+    setTimeout(() => {
+      chat.scrollTop = chat.scrollHeight;
+      showMessage(`${selectedConfirmation}`, 'user');
+      showMessage(`You clicked ${selectedConfirmation}, your order has been canceled. Have a great day!`, 'bot');
+    }, 1000);
   }
 };
 
 
 
+//PART 5 confirmation 
+//let handleConfirmationClick = "";
 
+// const confirmation = () => {
+//   form.innerHTML = `
+//         <button class="yes-btn" type="button">
+//           Yes, thank you!
+//         </button>
+//         <button class="no-btn" type="button">
+//           No, I changed my mind.
+//         </button>
+//       `
+//   form.style.display = 'flex';
+//   form.style.justifyContent = 'center';
+//   form.style.alignItems = 'center';
+//   form.style.gap = '30px';
 
-//PART 5
+//   const handleConfirmationClick = (event) => {
+//     event.preventDefault();
+//     if (event.target.classList.contains('yes-btn')) {
+//       const selectedConfirmation = event.target.textContent.trim();
+//       form.innerHTML = "";
+//       showMessage(`${selectedConfirmation} `'user');
+//       // Delay the display of the message from the bot and the options
+//       setTimeout(() => {
+//         chat.scrollTop = chat.scrollHeight
+//         showMessage(`You clicked ${selectedConfirmationType}! Grab your popcorn, ${selectedMovie} is on its way!`, 'bot');
+//       }, 1000);
+//     } else if (event.target.classlist.contains('no-btn')) {
+//       // Delay the display of the message from the bot and the options
+//       setTimeout(() => {
+//         chat.scrollTop = chat.scrollHeight
+//         showMessage(`${selectedConfirmation} `'user');
+//         showMessage(`You clicked ${selectedConfirmation}, your order has been clacelled. Have a greta day!`, 'bot')
 
+//       }
 
-// const handleAgeClick = (event) => {
-//   event.preventDefault();
-//   if (event.target.classList.contains('age-btn')) {
-//     form.innerHTML = "";
-//     showMessage(`${event.target.textContent}`, 'user');
-//     // Delay the display of the message from the bot and the options
-//     setTimeout(() => {
-//       showMessage
-//       showMessage(`Alrighty then! Here are some ${event.target.textContent}friendly options for you:`, 'bot');
-//       ageOption();
-//     }, 700);
 //   }
-// }
-// form.addEventListener("click", handleAgeClick);
+//     form.addEventListener("click", handleAgeClick);
 
-setTimeout(greetUser, 1000)
+//   }
 
-
-
+setTimeout(greetUser, 1000)  
