@@ -434,9 +434,24 @@ const suggestSong = (color, selectedMusic) => {
     songs[selectedMusic.toLowerCase()][color.toLowerCase()] ?? []
   );
 
-  botMessage(
-    `My personal recommendation to you is "${songSuggestion.title}". I think you're going to love it!`
-  ).then(() => {
+  let botResponse = "";
+
+  switch (color) {
+    case "Red":
+      botResponse = `${userName}, here’s my pick for you: "${songSuggestion.title}". I have a feeling this track will hit all the right notes for you!`;
+      break;
+    case "Green":
+      botResponse = `${userName}, I think you’re going to fall in love with "${songSuggestion.title}". It’s the perfect match for you!`;
+      break;
+    case "Blue":
+      botResponse = `${userName}, I’ve got the perfect song for you: "${songSuggestion.title}". I’m sure it’s going to be right up your alley!`;
+      break;
+    case "Yellow":
+      botResponse = `${userName}, I’ve picked "${songSuggestion.title}" just for you. I have a hunch this song will strike a chord with you!`;
+      break;
+  }
+
+  botMessage(botResponse).then(() => {
     // Embed the Spotify iframe after the suggestion
     setTimeout(() => {
       const spotifyEmbed = `
@@ -482,7 +497,11 @@ sendButton.addEventListener("click", handleNameInput);
 ************************** */
 
 const greetUser = () => {
-  botMessage("Welcome music lover, what’s your name?");
+  botMessage(
+    `Hey, I'm Harmoniqa. <br><br>
+    I can’t wait to help you find the perfect song!
+    But before we dive in, what’s your name?`
+  );
 };
 
 greetUser();
