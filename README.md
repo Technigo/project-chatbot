@@ -1,13 +1,13 @@
-# Project Name
+# Harmoniqa – Where mood meets melody
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The project was to create an interactive Chatbot that manipulates the DOM when the user replies by using functions, conditionals and event listeners.
 
 ## The problem
 
 Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
 
+For this project, I approached the problem by first understanding the structure and flow of the chatbot. I planned out the conversation steps and mapped out how the user would interact with the bot, starting with entering their name and progressing through mood and color choices to receive song suggestions.
+
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+[https://harmoniqa.netlify.app/](https://harmoniqa.netlify.app/)

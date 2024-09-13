@@ -16,26 +16,42 @@ let userName = "";
 HELPER FUNCTIONS 
 ******************** */
 
-// Function to show the message bubble for both the user and bot
-const showMessage = (message, sender) => {
-  const isUser = sender === "user";
-  const senderImage = isUser ? "user-avatar.png" : "bot-avatar.png";
-  const senderClass = isUser ? "message message--user" : "message message--bot";
-  const bubbleClass = isUser ? "user-bubble" : "bot-bubble";
-
-  chat.innerHTML += `
-    <section class="${senderClass}">
-      <img src="assets/${senderImage}" alt="${sender}" />
-      <div class="bubble ${bubbleClass}">
-        <p>${message}</p>
-      </div>
-    </section>
-  `;
-
+// Select latest message in chat. Add and then remove .is-loading to perform fade-in animation.
+const getLatestMessage = () => {
   // Select the last inserted .message element (the new one)
   const chatMessage = document.querySelectorAll(".message");
   const latestMessage = chatMessage[chatMessage.length - 1]; // Get the last bubble
 
+  latestMessage.classList.add("is-loading");
+  setTimeout(() => {
+    latestMessage.classList.remove("is-loading");
+  }, 500);
+};
+
+// Function to show the message bubble for both the user and bot
+const showMessage = (message, sender) => {
+  const isUser = sender === "user";
+  const senderImage = isUser ? "user-avatar.png" : "bot-avatar.png";
+  const bubbleContainerClass = isUser
+    ? "bubble-container bubble-container--user"
+    : "bubble-container bubble-container--bot";
+  const messageClass = isUser
+    ? "message message--user"
+    : "message message--bot";
+  const bubbleClass = isUser ? "bubble bubble--user" : "bubble bubble--bot";
+
+  chat.innerHTML += `
+    <section class="${messageClass}">
+      <img src="assets/${senderImage}" alt="${sender}" />
+      <div class="${bubbleContainerClass}">
+        <div class="${bubbleClass}">
+          <p>${message}</p>
+        </div>
+      </div>
+    </section>
+  `;
+
+  getLatestMessage();
   chat.scrollTop = chat.scrollHeight;
 };
 
@@ -54,13 +70,18 @@ const botMessage = (message) => {
       typingIndicator.classList.add("message", "message--bot");
       typingIndicator.innerHTML = `
       <img src="assets/bot-avatar.png" alt="bot" />
-      <div class="bubble bot-bubble">
-        <p><span class="dot"></span><span class="dot"></span><span class="dot"></span></p>
+      <div class="bubble-container bubble-container--bot">
+        <div class="bubble bubble--bot">
+          <p><span class="dot"></span><span class="dot"></span><span class="dot"></span></p>
+        </div>
       </div>
     `;
 
       // Append typing indicator to the chat
       chat.appendChild(typingIndicator);
+
+      // Run helper function for fading in the bot bubble
+      getLatestMessage();
 
       // Scroll to the bottom of the chat to show typing indicator
       chat.scrollTop = chat.scrollHeight;
@@ -143,15 +164,28 @@ let selectedMusic = "";
 
 // STEP 3: Ask for user to pick a color
 const colorSelection = (musicType) => {
+  let botResponse = "";
+
+  switch (musicType) {
+    case "Moody":
+      botResponse = `Dark and moody, huh? I can work with that. What color speaks to you today?`;
+      break;
+    case "Energetic":
+      botResponse = `Let's get the party started! Just pick your color for the day first.`;
+      break;
+    case "Calm":
+      botResponse = `A mellow fellow? I got you covered. What color resonates with you today?`;
+      break;
+  }
+
   // Show user selection in chat
   userMessage(musicType);
 
   selectedMusic = musicType; // Store the selected music type
-  botMessage(`Ohh, ${musicType}! How interesting... Now, pick a color:`).then(
-    () => {
-      // Wait for the botMessage to finish before showing buttons
-      setTimeout(() => {
-        inputWrapper.innerHTML = `
+  botMessage(botResponse).then(() => {
+    // Wait for the botMessage to finish before showing buttons
+    setTimeout(() => {
+      inputWrapper.innerHTML = `
       <div class="button-group">
       <button id="button-red">Red</button>
         <button id="button-green">Green</button>
@@ -160,23 +194,20 @@ const colorSelection = (musicType) => {
       </div>
       `;
 
-        document
-          .getElementById("button-red")
-          .addEventListener("click", () => suggestSong("Red", selectedMusic));
-        document
-          .getElementById("button-green")
-          .addEventListener("click", () => suggestSong("Green", selectedMusic));
-        document
-          .getElementById("button-blue")
-          .addEventListener("click", () => suggestSong("Blue", selectedMusic));
-        document
-          .getElementById("button-yellow")
-          .addEventListener("click", () =>
-            suggestSong("Yellow", selectedMusic)
-          );
-      }, GLOBAL_LONG_DELAY);
-    }
-  );
+      document
+        .getElementById("button-red")
+        .addEventListener("click", () => suggestSong("Red", selectedMusic));
+      document
+        .getElementById("button-green")
+        .addEventListener("click", () => suggestSong("Green", selectedMusic));
+      document
+        .getElementById("button-blue")
+        .addEventListener("click", () => suggestSong("Blue", selectedMusic));
+      document
+        .getElementById("button-yellow")
+        .addEventListener("click", () => suggestSong("Yellow", selectedMusic));
+    }, GLOBAL_LONG_DELAY);
+  });
 };
 
 // Create object with song suggestions based on music type + color
@@ -403,7 +434,9 @@ const suggestSong = (color, selectedMusic) => {
     songs[selectedMusic.toLowerCase()][color.toLowerCase()] ?? []
   );
 
-  botMessage(`How about listening to "${songSuggestion.title}"?`).then(() => {
+  botMessage(
+    `My personal recommendation to you is "${songSuggestion.title}". I think you're going to love it!`
+  ).then(() => {
     // Embed the Spotify iframe after the suggestion
     setTimeout(() => {
       const spotifyEmbed = `
@@ -417,7 +450,9 @@ const suggestSong = (color, selectedMusic) => {
       chat.innerHTML += `
           <section class="message message--bot">
             <img src="assets/bot-avatar.png" alt="bot" />
-            <div class="bubble bot-bubble">${spotifyEmbed}</div>
+            <div class="bubble-container bubble-container--bot">
+              <div class="bubble bubble--bot">${spotifyEmbed}</div>
+            </div>
           </section>
         `;
 

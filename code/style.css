@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "Sterion";
+  src: url("./assets/sterion-bold.woff2") format("woff2"),
+    url("./assets/sterion-bold.woff") format("woff"),
+    url("./assets/sterion-bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --primary: #6b00ae;
   --primary-dark: #36173e;
@@ -24,7 +33,9 @@
 
 body {
   display: flex;
-  align-items: flex-end;
+  flex-flow: column wrap;
+  justify-content: flex-end;
+  align-items: center;
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
@@ -36,15 +47,60 @@ body {
   min-height: 100vh;
 
   @media (min-width: 768px) {
-    align-items: center;
+    justify-content: center;
+  }
+}
+
+header {
+  display: flex;
+  align-items: center;
+  flex-grow: 2;
+}
+
+main {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 700px;
+  height: calc(90vh - 2.5rem);
+  min-height: 20rem;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  background: #fff;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  @media (min-width: 768px) {
+    height: calc(90vh - 2rem);
+    margin: 2rem auto;
+    border-radius: 2rem;
+  }
+}
+
+h1 {
+  font-family: "Sterion", sans-serif;
+  font-size: 1.75rem;
+  letter-spacing: 0.4rem;
+  color: #fff;
+  margin: 2rem 0;
+
+  @media (min-width: 768px) {
+    font-size: 2rem;
+    margin: 2rem 0 0;
   }
 }
 
 p {
-  font-size: 1.125rem;
+  font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.5;
   margin: 0;
+
+  @media (min-width: 768px) {
+    font-size: 1.125rem;
+  }
 }
 
 input {
@@ -69,27 +125,6 @@ input {
     outline: none;
     border-color: var(--primary);
     caret-color: var(--primary);
-  }
-}
-
-main {
-  margin: 1.25rem auto 0;
-  width: 100%;
-  max-width: 700px;
-  height: 90vh;
-  min-height: 20rem;
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 2rem;
-  background: #fff;
-  padding: 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-
-  @media (min-width: 768px) {
-    margin: 2rem auto;
-    border-radius: 2rem;
   }
 }
 
@@ -139,30 +174,44 @@ main {
   border-radius: 2.875rem;
 }
 
+.bubble-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-left: 1.25rem;
+}
+
+.bubble-container--bot {
+  margin-left: 1.25rem;
+}
+
+.bubble-container--user {
+  margin-right: 1.25rem;
+}
+
 .bubble {
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.3;
   padding: 1rem 1.25rem;
   width: 100%;
+  transition: all 0.4s ease-out;
 
   @media (min-width: 768px) {
-    max-width: 18rem;
+    max-width: 21rem;
   }
 }
 
-.bot-bubble {
+.bubble--bot {
   color: var(--primary);
   background: var(--primary-light);
   border-radius: 0px 1.25rem 1.25rem 1.25rem;
-  margin-left: 1.25rem;
 }
 
-.user-bubble {
+.bubble--user {
   color: var(--primary-light);
   background-color: var(--primary);
   border-radius: 1.25rem 0 1.25rem 1.25rem;
-  margin-right: 1.25rem;
 }
 
 .input-wrapper {
@@ -305,4 +354,21 @@ button:hover {
   44% {
     bottom: 0.125rem;
   }
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem); /* Slight slide from the bottom */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message.is-loading {
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out forwards; /* Apply fade-in to all messages */
 }
