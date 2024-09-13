@@ -204,29 +204,34 @@ const SelectMovieOption = (selectedAgeGroup, selectedGenre) => {
   document.getElementById('movie-option').style.width = '400px';
   document.getElementById('movie-option').style.fontSize = '20px';
 
+  inputWrapper.addEventListener('click', handleSelectMovieOption);
+
   // Log options for debugging
   console.log('Options:', options);
 
-  const handleSelectMovieOption = (event) => {
-    if (event.target.id === 'submit-movie') {
+}
 
-      const selectedMovie = document.getElementById('movie-option').value;
-      //const selectedMovie = movieOptionElement.value;
+const handleSelectMovieOption = (event) => {
+  if (event.target.id === 'submit-movie') {
 
+    const selectedMovie = document.getElementById('movie-option').value;
+    //const selectedMovie = movieOptionElement.value;
+
+    if (selectedMovie) {
       inputWrapper.innerHTML = "";
-      showMessage(`${options}`, 'user');
+
+      showMessage(`${selectedMovie}`, 'user');
       // Delay the display of the message from the bot
       setTimeout(() => {
         chat.scrollTop = chat.scrollHeight;
-        showMessage(`You selected ${options}. A fine choice! That will be: $5. Do you accept?`, 'bot');
+        showMessage(`You selected ${selectedMovie}. A fine choice! That will be: $5. Do you accept?`, 'bot');
       }, 700); // Adjust the delay as needed
+
     }
-  };
+  }
+};
 
-  // Add the event listener to inputWrapper
-  inputWrapper.addEventListener('click', handleSelectMovieOption);
 
-}
 
 
 
