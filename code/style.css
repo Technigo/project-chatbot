@@ -3,16 +3,41 @@
 }
 
 body {
-  margin: 0;
+  margin: 3%;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: linear-gradient(to top right, pink, blue);
+
+}
+
+.header-image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+header h1 {
+  font-size: 3vh;
+  text-align: center;
+  margin: 5px;
+}
+
+.image {
+  display: grid;
+  place-items: center;
+  height: 100%;
+}
+
+img {
+  height: auto;
+  max-width: 30%;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 28px;
-  line-height: 34px;
+  font-size: 8vh;
   color: #fff;
   text-align: center;
 }
@@ -52,7 +77,8 @@ main {
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
-  height: 600px;
+  /* height: 600px; */
+  height: 95vh;
   border-radius: 30px;
   background: #fff;
   padding: 20px 24px;
@@ -147,4 +173,24 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+/* For tablet and larger screens */
+@media (min-width: 767px) {
+  body {
+    display: flex;
+    flex-direction: row;
+  }
+
+  header h1 {
+    font-size: 5vw;
+  }
+
+  img {
+    max-width: 90%;
+  }
+
+  main {
+    min-height: 90%;
+  }
 }
