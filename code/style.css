@@ -26,6 +26,14 @@ h2 {
   margin-bottom: 36px;
 }
 
+h4 {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 34px;
+  color: #fff;
+  text-align: center;
+}
+
 p {
   font-size: 18px;
   font-weight: 600;
