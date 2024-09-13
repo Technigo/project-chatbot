@@ -1,4 +1,4 @@
-# Harmoniqa – Where mood meets melody
+# Harmoniqa – The soundtrack to your mood
 
 The project was to create an interactive Chatbot that manipulates the DOM when the user replies by using functions, conditionals and event listeners.
 
