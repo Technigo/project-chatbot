@@ -1,24 +1,21 @@
-const button = document.getElementById('submit-button')
-const main = document.getElementById('main')
-const header = document.getElementById('header')
-const chat = document.getElementById('chat')
+
+const chat = document.getElementById("chat")
+
 
 const showMessage = (message, sender) => {
-  if (sender === 'user') {
+  if (sender === "user") {
     chat.innerHTML += `
-            <section class="user-message">
-              <div class="bubble user-bubble">
-                <p>${message}</p>
-              </div>
-             
-            </section>
-            `
-  } else if (sender === 'bot') {
+        <section class="user-message">
+          <div class="bubble user-bubble">
+          <p>${message}</p>
+          </div>
+        </section>
+        `
+  } else if (sender === "bot") {
     chat.innerHTML += `
             <section class="bot-message">
               <div class="bubble bot-bubble">
                 <p>${message}</p>
-                 <img src="assets/crab.png" class="bot-image" alt="Bot"/img>
               </div>
             </section>
             `
@@ -26,14 +23,25 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
-showMessage(`Are you ready to start the order?`, 'bot')
+// 1. Greeting and first question with submit button 'ok' to start the chat
 
 
-const confirmButton = document.getElementById('confirm-button')
-confirmButton.addEventListener('click', () => {
-  showMessage('Wonderful! What is your name?', 'bot')
-  confirmButton.style.display = 'none'
+const greetUser = () => {
+  showMessage("Hello! Are you ready to start the order?", "bot")
+
+  //Insert of confirm button
+  main.innerHTML += `
+  <form id="box-confirm-button" class="box-confirm-button">
+        <button id="button" class="confirm-button" type="button">yes!</button>
+      </form>
+      `
+  const sendButton = document.getElementById("button")
+  //Event: when user clicks the button, 'ok' will be displayed in the chat
+
+  sendButton.addEventListener("click", () => {
+    console.log('hi')
+
+  })
 
 }
-)
-
+greetUser()

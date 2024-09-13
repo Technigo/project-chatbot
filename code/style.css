@@ -6,8 +6,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: rgb(4, 38, 52);
+  background-color: rgb(4, 38, 52);
   min-height: 100vh;
+  max-width: 100%;
 }
 
 header {
@@ -15,65 +16,55 @@ header {
   background: url(./assets/hero-bubbles.jpg);
   background-size: cover;
   background-position: center;
-  min-height: 40vh;
+  min-height: 20vh;
   width: 100%;
   justify-content: center;
   align-items: center;
 }
 
-.container-crab {
+/* .container-crab {
   display: flex;
   justify-content: center;
   align-items: flex-end;
   width: 100%;
   padding: 0;
-}
+} */
 
-.container-crab img {
+/* .container-crab img {
   width: 70%;
   padding-top: 5%;
-}
+} */
 
 h1 {
   font-weight: bold;
   font-size: 40px;
-  /* line-height: 34px; */
   color: yellow;
   text-align: center;
   padding-top: 20%;
 }
 
 main {
+  background: (4, 38, 52);
+  width: 100%;
+  max-width: 700px;
+  height: 500px;
+  margin: 0 auto;
+  border-radius: 30px;
+  padding: 20px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
-  padding-right: 5%;
-  padding-left: 5%;
-  padding-bottom: 0%;
-  padding-top: 2%;
-  border-bottom: 0;
-  min-height: 60vh;
 }
 
-.frontpage-wrapper {
+.box-confirm-button {
   display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  background-color: yellow;
-  border-radius: 26px 26px 0 26px;
-  padding: 2%;
-  width: 70%;
-}
-
-.container-button {
-  display: flex;
-  justify-content: center;
+  background-color:
+    white;
 }
 
 .confirm-button {
+
   background-color: rgb(4, 38, 52);
   color: white;
   font-weight: bold;
@@ -84,7 +75,7 @@ main {
   cursor: pointer;
   border: solid white;
   overflow: hidden;
-  width: 30%;
+  width: 100%;
 }
 
 .confirm-button:hover {
@@ -101,13 +92,12 @@ main {
 }
 
 .bubble {
-  background: yellow;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
   color: #0c1546;
-  max-width: 40%;
+  max-width: 70%;
 }
 
 .user-message {
@@ -117,116 +107,70 @@ main {
   flex-shrink: 0;
 }
 
-.bot-message {
-  display: flex;
-  margin: 16px 8px 0 0;
-  flex-shrink: 0;
-}
-
-.bot-bubble {
-  border-radius: 26px 26px 0px 26px;
-  margin-left: 8px;
+.user-message img,
+.bot-message img {
+  width: 60px;
+  height: 60px;
 }
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  background: red;
+}
+
+.bot-message {
+  display: flex;
+  margin: 16px 8px 0 0;
+  flex-shrink: 0;
+
+}
+
+.bot-bubble {
+  border-radius: 26px 26px 0px 26px;
+  margin-left: 8px;
+  background: yellow;
 }
 
 .bot-image {
   width: 80px;
-
 }
 
-/* h2 {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
-  margin-bottom: 36px;
-}
-
-p {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 28px;
-  margin: 0;
-}
-
-input {
+.input {
   box-sizing: border-box;
   border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  border-radius: 4px 00 4px;
+  background: white;
+  color: rgb(4, 38, 52);
   padding: 16px;
-  font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Moneserrat', sans-serif;
   font-weight: 600;
-  line-height: 26px;
-  flex: 1;
-  width: 100%;
-} */
+  font-size: 16 px;
+  line-height: 24px;
+  margin: none;
+}
 
-/* main {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 700px;
-  height: 600px;
-  border-radius: 30px;
-  background: #fff;
-  padding: 20px 24px;
-  padding-top: 0;
+.submit-button {
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-} */
+  background-color: rgb(4, 38, 52);
+  color: white;
+  border-radius: 4px;
+  padding: 16px;
+  font-family: 'Moneserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16 px;
+  line-height: 24px;
+  margin: none;
+  cursor: pointer;
+}
 
+.submit-button:hover {
+  background-color: red;
+}
 
-/* .bot-msg img,
-.user-msg img {
-  width: 60px;
-  height: 60px;
-} */
-
-
-
-/* .input-wrapper {
+.form {
   display: flex;
   justify-content: center;
-}
-
-.input-wrapper form {
-  width: 100%;
-  display: flex;
   align-items: center;
+  width: 100%;
 }
-
-label {
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
-}
-
-button {
-  background-color: #0026ff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 16px 20px;
-  margin-right: 4px;
-  font-size: 16px;
-  line-height: 26px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  opacity: 0.9;
-  transition: all 0.2s ease;
-} */
