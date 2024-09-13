@@ -295,19 +295,19 @@ const songs = {
       {
         title: "The Chainsmokers – Don't Let Me Down",
         spotifyUrl:
-          "https://open.spotify.com/embed/track/7BKLCZ1jbUBVqRi2FVlTVw?utm_source=generator&theme=0",
+          "https://open.spotify.com/embed/track/1i1fxkWeaMmKEB4T7zqbzK?utm_source=generator&theme=0",
       },
       {
         title: "David Guetta ft. Sia – Titanium",
         spotifyUrl:
-          "https://open.spotify.com/embed/track/4qAdoA7ahqZ4FslO7yaJ1k?utm_source=generator&theme=0",
+          "https://open.spotify.com/embed/track/0TDLuuLlV54CkRRUOahJb4?utm_source=generator&theme=0",
       },
     ],
     yellow: [
       {
         title: "Conan Gray – Never Ending Song",
         spotifyUrl:
-          "https://open.spotify.com/embed/track/7MQi9l8C6TMeOusglXR3zP?utm_source=generator&theme=0",
+          "https://open.spotify.com/embed/track/4V3KS34vOLFkh3tJSPLTXP?utm_source=generator&theme=0",
       },
       {
         title: "Pharrell Williams – Happy",
@@ -317,7 +317,7 @@ const songs = {
       {
         title: "Mystery Jets – Bubblegum",
         spotifyUrl:
-          "https://open.spotify.com/embed/track/4y3aUz8MNNfxlGRrbmNeZP?utm_source=generator&theme=0",
+          "https://open.spotify.com/embed/track/53p7or9OC8PGNnGrd9gLBv?utm_source=generator&theme=0",
       },
     ],
   },
@@ -326,68 +326,68 @@ const songs = {
       {
         title: "Norah Jones – Don't Know Why",
         spotifyUrl:
-          "https://open.spotify.com/embed/track/4iRBdAs1MviC0HhxBvWwt6?utm_source=generator&theme=0",
+          "https://open.spotify.com/embed/track/1zNXF2svmdlNxfS5XeNUgr?utm_source=generator&theme=0",
       },
       {
         title: "Sufjan Stevens – Mystery of Love",
         spotifyUrl:
-          "https://open.spotify.com/embed/track/1GBjdQGlf9dlG5X8pdbG3z?utm_source=generator&theme=0",
+          "https://open.spotify.com/embed/track/4HbeGjbt7u3pvwDk1vN7P0?utm_source=generator&theme=0",
       },
       {
         title: "Adele – Make You Feel My Love",
         spotifyUrl:
-          "https://open.spotify.com/embed/track/52O4mHw30MPxCDHglItR29?utm_source=generator&theme=0",
+          "https://open.spotify.com/embed/track/273QnyCvJB65rScHJ1nPZb?utm_source=generator&theme=0",
       },
     ],
     green: [
       {
         title: "José González – Heartbeats",
         spotifyUrl:
-          "https://open.spotify.com/embed/track/7xkWpi1tDBQvY8hgCwzb75?utm_source=generator&theme=0",
+          "https://open.spotify.com/embed/track/16j0oMDsmn2aeAewzF1NUi?utm_source=generator&theme=0",
       },
       {
         title: "Vance Joy – Riptide",
         spotifyUrl:
-          "https://open.spotify.com/embed/track/5Uq5Nq5pMv4Yh5I18qVjEq?utm_source=generator&theme=0",
+          "https://open.spotify.com/embed/track/7yq4Qj7cqayVTp3FF9CWbm?utm_source=generator&theme=0",
       },
       {
         title: "Cat Burns – Live More & Love More",
         spotifyUrl:
-          "https://open.spotify.com/embed/track/2UGKfQmwywpIHdoYBxcEOV?utm_source=generator&theme=0",
+          "https://open.spotify.com/embed/track/1Oj4FgVngNgBTvd0a9nI2k?utm_source=generator&theme=0",
       },
     ],
     blue: [
       {
         title: "John Mayer – Gravity",
         spotifyUrl:
-          "https://open.spotify.com/embed/track/7yyRTcZmCiyzzJlNzGC9Ol?utm_source=generator&theme=0",
+          "https://open.spotify.com/embed/track/3SktMqZmo3M9zbB7oKMIF7?utm_source=generator&theme=0",
       },
       {
         title: "LANY – Malibu Nights",
         spotifyUrl:
-          "https://open.spotify.com/embed/track/3pWkPpTPc9xZKIMc7TGQbu?utm_source=generator&theme=0",
+          "https://open.spotify.com/embed/track/0Eqg0CQ7bK3RQIMPw1A7pl?utm_source=generator&theme=0",
       },
       {
         title: "The Tallest Man on Earth – Rivers",
         spotifyUrl:
-          "https://open.spotify.com/embed/track/1jU1kOKUNVg7x58AqU9Hz8?utm_source=generator&theme=0",
+          "https://open.spotify.com/embed/track/1dBje6EOpDBLdoKGo94DEa?utm_source=generator&theme=0",
       },
     ],
     yellow: [
       {
         title: "Dagny – Landslide",
         spotifyUrl:
-          "https://open.spotify.com/embed/track/1R9jTRn6eJqBtQczIYfpzp?utm_source=generator&theme=0",
+          "https://open.spotify.com/embed/track/41fecZEX4sPrRxnjZQ6DGU?utm_source=generator&theme=0",
       },
       {
         title: "Israel Kamakawiwo'ole – Somewhere Over the Rainbow",
         spotifyUrl:
-          "https://open.spotify.com/embed/track/3S0OXQeoh0w6AY8WQVckRW?utm_source=generator&theme=0",
+          "https://open.spotify.com/embed/track/25U7raB3ZSszayTYClh4hF?utm_source=generator&theme=0",
       },
       {
         title: "Jason Mraz – I'm Yours",
         spotifyUrl:
-          "https://open.spotify.com/embed/track/3S0OXQeoh0w6AY8WQVckRW?utm_source=generator&theme=0",
+          "https://open.spotify.com/embed/track/1EzrEOXmMH3G43AXT1y7pA?utm_source=generator&theme=0",
       },
     ],
   },
