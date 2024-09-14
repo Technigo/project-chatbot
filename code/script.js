@@ -482,7 +482,7 @@ const suggestSong = (color, selectedMusic) => {
     }, GLOBAL_DELAY);
   });
 
-  inputWrapper.innerHTML = ""; // Clear the input area after suggestion
+  inputWrapper.remove(); // Remove the input area after song suggestion has loaded
 };
 
 /* **************************
