@@ -11,6 +11,8 @@ body {
   max-width: 100%;
 }
 
+/* header for mobile phones */
+
 header {
   display: flex;
   background: url(./assets/hero-bubbles.jpg);
@@ -23,19 +25,6 @@ header {
   padding: 3%;
 }
 
-/* .container-crab {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  width: 100%;
-  padding: 0;
-} */
-
-/* .container-crab img {
-  width: 70%;
-  padding-top: 5%;
-} */
-
 h1 {
   font-weight: bold;
   font-size: 30px;
@@ -44,11 +33,13 @@ h1 {
   padding-top: 10%;
 }
 
+/* main for mobile phones */
+
 main {
   background: (4, 38, 52);
   width: 100%;
   max-width: 700px;
-  min-height: 500px;
+  max-height: 500px;
   margin: 0 auto;
   border-radius: 30px;
   padding: 20px;
@@ -64,63 +55,13 @@ main {
   justify-content: center;
 }
 
-/* .box-confirm-button {
-  display: flex;
-  background-color:
-    white;
-} */
-
-.confirm-button {
-  background-color: rgb(4, 38, 52);
-  color: white;
-  font-weight: bold;
-  font-size: 30px;
-  width: 80%;
-  min-height: 50px;
-  border-radius: 10%;
-  cursor: pointer;
-  border: solid, white;
-  overflow: hidden;
-}
-
-.confirm-button:hover {
-  background-color: red;
-}
-
-.input-button {
-  background-color: rgb(4, 38, 52);
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  width: 60px;
-  height: 50px;
-  border-radius: 10%;
-  cursor: pointer;
-  border: solid, white;
-  overflow: hidden;
-  margin: 10px;
-}
-
-.input {
-  box-sizing: border-box;
-  border: none;
-  border-radius: 4px;
-  background: white;
-  color: rgb(4, 38, 52);
-  padding: 18px;
-  font-family: 'Moneserrat', sans-serif;
-  font-weight: 600;
-  font-size: 16 px;
-  line-height: 24px;
-  margin: none;
-  flex: 1;
-}
+/* everything belonging to the chat*/
 
 .chat {
   flex: 1;
   display: flex;
   justify-content: flex-start;
-  overflow: scroll;
+  overflow-y: scroll;
   flex-direction: column;
   padding-bottom: 16px;
 }
@@ -141,11 +82,11 @@ main {
   flex-shrink: 0;
 }
 
-.user-message img,
+/* .user-message img,
 .bot-message img {
   width: 60px;
   height: 60px;
-}
+} */
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
@@ -166,33 +107,87 @@ main {
   background: yellow;
 }
 
-.bot-image {
-  width: 80px;
-}
-
-
-
-.submit-button {
-  box-sizing: border-box;
-  background-color: rgb(4, 38, 52);
-  color: white;
-  border-radius: 4px;
-  padding: 16px;
-  font-family: 'Moneserrat', sans-serif;
-  font-weight: 400;
-  font-size: 16 px;
-  line-height: 24px;
-  margin: none;
-  cursor: pointer;
-}
-
-.submit-button:hover {
-  background-color: red;
-}
-
+/* In the following are the different forms listed:*/
 .form {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+/*The first button ("Yes!") to continue the conversation */
+
+.confirm-button {
+  background-color: rgb(4, 38, 52);
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+  width: 80%;
+  min-height: 50px;
+  border-radius: 10%;
+  cursor: pointer;
+  border: solid, white;
+  overflow: hidden;
+}
+
+.confirm-button:hover {
+  background-color: red;
+}
+
+/* Button to send in name */
+.input-button {
+  background-color: rgb(4, 38, 52);
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  width: 60px;
+  height: 50px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: solid, white;
+  overflow: hidden;
+  margin: 10px;
+}
+
+/* The input field to write the name */
+.input {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px;
+  background: white;
+  color: rgb(4, 38, 52);
+  padding: 18px;
+  font-family: 'Moneserrat', sans-serif;
+  font-weight: 600;
+  font-size: 18 px;
+  line-height: 24px;
+  margin: none;
+  flex: 1;
+}
+
+/* buttons to choose the food category */
+.foodtype-container,
+.dish-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.foodtype-button,
+.dish-button {
+  font-family: 'Monesserat', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
+  margin: 3px;
+}
+
+.foodtype-button:hover {
+  font-size: 20px;
+}
+
+.shellfish-container {
+  display: none;
 }
