@@ -8,6 +8,7 @@
 }
 
 :root {
+  --white: #fff;
   --primary: #6b00ae;
   --primary-dark: #36173e;
   --primary-medium: #d5d9f1;
@@ -17,6 +18,47 @@
   --blue: #0034ae;
   --yellow: #e0b300;
 }
+
+/* ************************
+  Animaions
+************************* */
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes typing {
+  0% {
+    bottom: 0.125rem;
+  }
+  28% {
+    bottom: 0.5rem;
+  }
+  44% {
+    bottom: 0.125rem;
+  }
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ************************
+  Helpers
+************************* */
 
 * {
   box-sizing: border-box;
@@ -30,6 +72,10 @@
   outline: var(--primary) solid 0.25rem;
   outline-offset: 0.25rem;
 }
+
+/* ************************
+  Animaions
+************************* */
 
 body {
   display: flex;
@@ -60,7 +106,7 @@ header {
   p {
     font-size: 1rem;
     font-weight: 400;
-    color: #fff;
+    color: var(--white);
     text-align: center;
     margin-top: 0.75rem;
   }
@@ -74,7 +120,7 @@ main {
   min-height: 20rem;
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
-  background: #fff;
+  background: var(--white);
   padding: 0;
   box-sizing: border-box;
   display: flex;
@@ -87,11 +133,15 @@ main {
   }
 }
 
+/* ************************
+  Typography
+************************* */
+
 h1 {
   font-family: "Sterion", sans-serif;
   font-size: 1.75rem;
   letter-spacing: 0.4rem;
-  color: #fff;
+  color: var(--white);
   margin: 0;
 
   @media (min-width: 768px) {
@@ -108,6 +158,36 @@ p {
   @media (min-width: 768px) {
     font-size: 1.125rem;
   }
+}
+
+/* ************************
+  Forms
+************************* */
+
+.input-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  background-color: var(--white);
+  animation: appear 0.875s ease-out;
+
+  @media (min-width: 768px) {
+    padding: 2rem;
+  }
+}
+
+.input-wrapper form {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+label {
+  font-size: 16px;
+  font-family: "Montserrat";
+  font-weight: 500;
+  color: var(--primary);
+  margin-right: 20px;
 }
 
 input {
@@ -135,6 +215,86 @@ input {
   }
 }
 
+/* ************************
+  Buttons
+************************* */
+
+button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  line-height: 1.4;
+  font-family: "Montserrat";
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--primary-dark);
+  transition: all 0.2s ease;
+}
+
+#button-red {
+  background-color: var(--red);
+}
+
+#button-green {
+  background-color: var(--green);
+}
+
+#button-blue {
+  background-color: var(--blue);
+}
+
+#button-yellow {
+  background-color: var(--yellow);
+}
+
+#button-red,
+#button-green,
+#button-blue,
+#button-yellow {
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+.send-button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.button-group {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.5rem;
+  animation: appear 0.875s ease-out;
+
+  @media (min-width: 768px) {
+    flex-flow: row;
+    gap: 0.75rem;
+  }
+
+  button {
+    flex: 1 1 48%;
+
+    @media (min-width: 768px) {
+      /* Equal width for all buttons inside .button-group */
+      flex: 1 1 100%;
+    }
+  }
+}
+
+/* ************************
+  Chat & Chat bubbles
+************************* */
+
 .chat {
   flex: 1;
   display: flex;
@@ -153,6 +313,11 @@ input {
   position: relative;
   transition: 0.4s ease-out;
   transition-property: top, opacity;
+}
+
+.message.is-loading {
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out forwards; /* Apply fade-in to all messages */
 }
 
 .message--bot {
@@ -228,113 +393,6 @@ input {
   border-radius: 1.25rem 0 1.25rem 1.25rem;
 }
 
-.input-wrapper {
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
-  background-color: #fff;
-  animation: appear 0.875s ease-out;
-
-  @media (min-width: 768px) {
-    padding: 2rem;
-  }
-}
-
-@keyframes appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.input-wrapper form {
-  width: 100%;
-  display: flex;
-  align-items: stretch;
-}
-
-label {
-  font-size: 16px;
-  font-family: "Montserrat";
-  font-weight: 500;
-  color: var(--primary);
-  margin-right: 20px;
-}
-
-button {
-  background-color: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 1rem 1.25rem;
-  font-size: 1rem;
-  line-height: 1.4;
-  font-family: "Montserrat";
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  background-color: var(--primary-dark);
-  transition: all 0.2s ease;
-}
-
-#button-red {
-  background-color: var(--red);
-}
-
-#button-green {
-  background-color: var(--green);
-}
-
-#button-blue {
-  background-color: var(--blue);
-}
-
-#button-yellow {
-  background-color: var(--yellow);
-}
-
-#button-red,
-#button-green,
-#button-blue,
-#button-yellow {
-  &:hover {
-    opacity: 0.85;
-  }
-}
-
-.send-button {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.button-group {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  width: 100%;
-  gap: 0.5rem;
-  animation: appear 0.875s ease-out;
-
-  @media (min-width: 768px) {
-    flex-flow: row;
-    gap: 0.75rem;
-  }
-
-  button {
-    flex: 1 1 48%;
-
-    @media (min-width: 768px) {
-      /* Equal width for all buttons inside .button-group */
-      flex: 1 1 100%;
-    }
-  }
-}
-
 /* Dot animation for typing indicator */
 .dot {
   position: relative;
@@ -356,33 +414,4 @@ button:hover {
 }
 .dot:nth-child(3) {
   animation-delay: 400ms;
-}
-
-@keyframes typing {
-  0% {
-    bottom: 0.125rem;
-  }
-  28% {
-    bottom: 0.5rem;
-  }
-  44% {
-    bottom: 0.125rem;
-  }
-}
-
-/* Fade-in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(0.5rem); /* Slight slide from the bottom */
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.message.is-loading {
-  opacity: 0;
-  animation: fadeIn 0.4s ease-out forwards; /* Apply fade-in to all messages */
 }
