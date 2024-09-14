@@ -1,76 +1,112 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --white:#fff;
+  --black:#000;
+  --green:#5faa6c;
+  --light-green:#7cad84;
+  --milk-green: #cbd6cd;
 }
 
 body {
-  margin: 0;
-  padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  height: 100vh;
+  background-color: var(--light-green);
+}
+
+/* Main layout */
+.layout {
+  display: flex;
+  height: 100%; /* Full viewport height */
+}
+
+/* Left side to take full half of the page */
+.left-side {
+  width: 40%; /* Take half of the page */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding-top: 25%;
+  background: url("./assets/background.jpg") no-repeat center center/cover; /* Background image full cover */
 }
 
 h1 {
-  font-weight: bold;
-  font-size: 28px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
+  font-weight: 800;
+  font-size: 2.25rem;
+  line-height: 3rem;
+  color: var(--green);
+  margin: 0 20px 10px 20px;
 }
 
 h2 {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 34px;
-  color: #fff;
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  color: var(--light-green);
+  padding: 0 10px;
+  margin-bottom: 10px;
+}
+
+span {
+  font-size: 3rem;
+}
+
+/* Right side to take the other half */
+.right-side {
+  width: 60%;;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 20px;
+}
+
+h3 {
+  font-weight: 800;
+  font-size: 2rem;
+  line-height: 2rem;
+  color: var(--white);
   text-align: center;
   margin-bottom: 36px;
 }
 
-p {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 28px;
-  margin: 0;
-}
-
-input {
-  box-sizing: border-box;
-  border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
-  padding: 16px;
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 600;
-  line-height: 26px;
-  flex: 1;
-  width: 100%;
-}
-
-main {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 700px;
-  height: 600px;
-  border-radius: 30px;
-  background: #fff;
-  padding: 20px 24px;
-  padding-top: 0;
-  box-sizing: border-box;
+.chatbox {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 80vh;
+  border-radius: 30px;
+  background-color: var(--white);
+  padding: 20px 24px;
 }
 
+/* Style of the chat-messages box */
 .chat {
-  flex: 1;
+  flex-grow: 1;
   display: flex;
   justify-content: flex-start;
-  overflow: scroll;
+  overflow-y: scroll;
+  max-height: 100%;
   flex-direction: column;
-  padding-bottom: 16px;
+  padding: 16px;
+  background-color: var(--light-green);
+  border-radius: 15px;
 }
 
+p {
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  color: var(--light-green);
+}
+
+/*bot message*/
 .bot-msg {
   display: flex;
   margin: 16px 8px 0 0;
@@ -91,14 +127,17 @@ main {
 }
 
 .bubble {
-  background: #e5e9ff;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 26px;
-  padding: 16px 24px;
-  color: #0026ff;
-  max-width: 40%;
+  background: var(--white);
+  padding: 16px;
+ /*  max-width: 100%; Allow chat bubbles to expand fully */
 }
+
+@media (min-width: 900px) {
+  .bubble {
+    max-width: 40%; 
+  }
+}
+
 
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
@@ -113,6 +152,7 @@ main {
 .input-wrapper {
   display: flex;
   justify-content: center;
+  margin-top: 10px;
 }
 
 .input-wrapper form {
@@ -121,25 +161,35 @@ main {
   align-items: center;
 }
 
-label {
-  font-size: 16px;
+input, button {
   font-family: 'Montserrat';
-  font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
+  font-weight: 600;
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  padding: 16px 20px;
+}
+
+input {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 10px 0 0 10px;
+  background: var(--milk-green);
+  color: var(--black);
+  flex: 1;
+  width: 100%;
+}
+
+input [type=text]:focus {
+  border: 3px solid var(--black);
 }
 
 button {
-  background-color: #0026ff;
-  color: white;
+  background-color: var(--green);
+  color: var(--white);
   border: none;
-  border-radius: 4px;
-  padding: 16px 20px;
+  border-radius: 0 4px 4px 0;
   margin-right: 4px;
-  font-size: 16px;
-  line-height: 26px;
-  font-family: 'Montserrat';
-  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -147,4 +197,38 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+/* Responsive Layout for Small Screen */
+@media (min-width: 650px) and (max-width: 768px) {
+  .left-side {
+    display: none;
+  }
+  
+  .right-side {
+    width: 100%;
+  }
+
+  .bubble {
+    max-width: 60%; 
+  }  
+}
+
+@media (max-width: 650px) {
+  .left-side {
+    display: none;
+  }
+  
+  .right-side {
+    width: 100%;
+  }  
+  
+  .bubble {
+    max-width: 100%; 
+  }
+
+  .input-wrapper {
+    flex-direction: column;
+    gap: 5px;
+  }
 }
