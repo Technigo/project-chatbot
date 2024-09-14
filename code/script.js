@@ -19,6 +19,7 @@ const showMessage = (message, sender) => {
     // The else if statement checks if the sender is the bot and if that's the case it inserts
     // an HTML section inside the chat with the posted message from the bot
   } else if (sender === 'bot') {
+    console.log(messag)
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -33,7 +34,6 @@ const showMessage = (message, sender) => {
   // be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
-
 // A function to start the conversation
 const greetUser = () => {
   // Here we call the function showMessage, that we declared earlier with the argument:
@@ -50,4 +50,4 @@ const greetUser = () => {
 // and pass along two arguments:
 // 1.) the function we want to delay, and 2.) the delay in milliseconds 
 // This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000)
+setTimeout(greetUser, 200)
