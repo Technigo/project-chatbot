@@ -182,7 +182,7 @@ button:hover {
 
 /* Media Query for Small Screens */
 
-@media (min-width: 600px) and (max-width: 900px) {
+@media (max-width: 600px) {
   .bubble {
     max-width: 70%; /* Increase the width of bubbles on smaller screens */
   }
