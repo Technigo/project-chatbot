@@ -19,6 +19,9 @@ const showMessage = (message, sender) => {
     // The else if statement checks if the sender is the bot and if that's the case it inserts
     // an HTML section inside the chat with the posted message from the bot
   } else if (sender === 'bot') {
+    // add a console.log here to see when it's being logged and not
+    console.log("Message is:", message);
+    console.log("Sender is:", sender);
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
