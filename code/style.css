@@ -1,66 +1,299 @@
+@font-face {
+  font-family: "Sterion";
+  src: url("./assets/sterion-bold.woff2") format("woff2"),
+    url("./assets/sterion-bold.woff") format("woff"),
+    url("./assets/sterion-bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --white: #fff;
+  --primary: #6b00ae;
+  --primary-dark: #36173e;
+  --primary-medium: #d5d9f1;
+  --primary-light: #e5e9ff;
+  --red: #b30052;
+  --green: #00ae63;
+  --blue: #0034ae;
+  --yellow: #e0b300;
+}
+
+/* ************************
+  Animaions
+************************* */
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes typing {
+  0% {
+    bottom: 0.125rem;
+  }
+  28% {
+    bottom: 0.5rem;
+  }
+  44% {
+    bottom: 0.125rem;
+  }
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ************************
+  Helpers
+************************* */
+
 * {
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: var(--primary) solid 0.25rem;
+  outline-offset: 0.25rem;
+}
+
+/* ************************
+  Animaions
+************************* */
+
 body {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: "Montserrat", sans-serif;
+  background-image: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(100, 43, 115, 1) 0%,
+    rgba(4, 0, 4, 1) 90%
+  );
+  min-height: 100svh;
+
+  @media (min-width: 768px) {
+    justify-content: center;
+  }
 }
 
-h1 {
-  font-weight: bold;
-  font-size: 28px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
-}
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 2;
+  padding: 2rem 0;
 
-h2 {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
-  margin-bottom: 36px;
-}
-
-p {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 28px;
-  margin: 0;
-}
-
-input {
-  box-sizing: border-box;
-  border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
-  padding: 16px;
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 600;
-  line-height: 26px;
-  flex: 1;
-  width: 100%;
+  p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--white);
+    text-align: center;
+    margin-top: 0.75rem;
+  }
 }
 
 main {
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
-  height: 600px;
-  border-radius: 30px;
-  background: #fff;
-  padding: 20px 24px;
-  padding-top: 0;
+  height: calc(90svh - 5rem);
+  min-height: 20rem;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  background: var(--white);
+  padding: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+
+  @media (min-width: 768px) {
+    margin: 0 auto 2rem;
+    border-radius: 2rem;
+  }
 }
+
+/* ************************
+  Typography
+************************* */
+
+h1 {
+  font-family: "Sterion", sans-serif;
+  font-size: 1.75rem;
+  letter-spacing: 0.4rem;
+  color: var(--white);
+  margin: 0;
+
+  @media (min-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+p {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0;
+
+  @media (min-width: 768px) {
+    font-size: 1.125rem;
+  }
+}
+
+/* ************************
+  Forms
+************************* */
+
+.input-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  background-color: var(--white);
+  animation: appear 0.875s ease-out;
+
+  @media (min-width: 768px) {
+    padding: 2rem;
+  }
+}
+
+.input-wrapper form {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+label {
+  font-size: 16px;
+  font-family: "Montserrat";
+  font-weight: 500;
+  color: var(--primary);
+  margin-right: 20px;
+}
+
+input {
+  box-sizing: border-box;
+  border: none;
+  border-left: 0.25rem solid transparent;
+  border-radius: 0.5rem 0 0 0.5rem;
+  background: var(--primary-light);
+  color: var(--primary);
+  padding: 1rem;
+  font-size: 1rem;
+  font-family: "Montserrat";
+  font-weight: 500;
+  line-height: 1.4;
+  flex: 1;
+  width: 100%;
+  transition: 0.25s ease-out;
+  transition-property: border, background;
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    border-color: var(--primary);
+    caret-color: var(--primary);
+  }
+}
+
+/* ************************
+  Buttons
+************************* */
+
+button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  line-height: 1.4;
+  font-family: "Montserrat";
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--primary-dark);
+  transition: all 0.2s ease;
+}
+
+#button-red {
+  background-color: var(--red);
+}
+
+#button-green {
+  background-color: var(--green);
+}
+
+#button-blue {
+  background-color: var(--blue);
+}
+
+#button-yellow {
+  background-color: var(--yellow);
+}
+
+#button-red,
+#button-green,
+#button-blue,
+#button-yellow {
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+.send-button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.button-group {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.5rem;
+  animation: appear 0.875s ease-out;
+
+  @media (min-width: 768px) {
+    flex-flow: row;
+    gap: 0.75rem;
+  }
+
+  button {
+    flex: 1 1 48%;
+
+    @media (min-width: 768px) {
+      /* Equal width for all buttons inside .button-group */
+      flex: 1 1 100%;
+    }
+  }
+}
+
+/* ************************
+  Chat & Chat bubbles
+************************* */
 
 .chat {
   flex: 1;
@@ -68,83 +301,117 @@ main {
   justify-content: flex-start;
   overflow: scroll;
   flex-direction: column;
-  padding-bottom: 16px;
+  padding: 1.5rem;
+
+  @media (min-width: 768px) {
+    padding: 2rem 2.5rem;
+  }
 }
 
-.bot-msg {
+.message {
   display: flex;
-  margin: 16px 8px 0 0;
+  position: relative;
+  transition: 0.4s ease-out;
+  transition-property: top, opacity;
+}
+
+.message.is-loading {
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out forwards; /* Apply fade-in to all messages */
+}
+
+.message--bot {
+  margin: 1.5rem 0 0 0;
   flex-shrink: 0;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
 }
 
-.user-msg {
-  display: flex;
+.message--user {
   justify-content: flex-end;
-  margin: 16px 0 0 8px;
+  margin: 1.5rem 0 0 0;
   flex-shrink: 0;
+
+  img {
+    order: 2;
+  }
 }
 
-.bot-msg img,
-.user-msg img {
-  width: 60px;
-  height: 60px;
+.message--bot img,
+.message--user img {
+  width: 2.875rem;
+  height: 2.875rem;
+  border-radius: 2.875rem;
+}
+
+.bubble-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bubble-container--bot {
+  margin-left: 1rem;
+
+  @media (min-width: 768px) {
+    margin-right: 1.25rem;
+  }
+}
+
+.bubble-container--user {
+  margin-right: 1rem;
+
+  @media (min-width: 768px) {
+    margin-right: 1.25rem;
+  }
 }
 
 .bubble {
-  background: #e5e9ff;
   font-weight: 600;
-  font-size: 16px;
-  line-height: 26px;
-  padding: 16px 24px;
-  color: #0026ff;
-  max-width: 40%;
-}
-
-.bot-bubble {
-  border-radius: 0px 26px 26px 26px;
-  margin-left: 8px;
-}
-
-.user-bubble {
-  border-radius: 26px 0 26px 26px;
-  margin-right: 8px;
-}
-
-.input-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.input-wrapper form {
+  font-size: 1rem;
+  line-height: 1.3;
+  padding: 1rem 1.25rem;
   width: 100%;
-  display: flex;
-  align-items: center;
+  transition: all 0.4s ease-out;
+
+  @media (min-width: 768px) {
+    max-width: 23rem;
+  }
 }
 
-label {
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
+.bubble--bot {
+  color: var(--primary);
+  background: var(--primary-light);
+  border-radius: 0px 1.25rem 1.25rem 1.25rem;
 }
 
-button {
-  background-color: #0026ff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 16px 20px;
-  margin-right: 4px;
-  font-size: 16px;
-  line-height: 26px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.bubble--user {
+  color: var(--primary-light);
+  background-color: var(--primary);
+  border-radius: 1.25rem 0 1.25rem 1.25rem;
 }
 
-button:hover {
-  opacity: 0.9;
-  transition: all 0.2s ease;
+/* Dot animation for typing indicator */
+.dot {
+  position: relative;
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 0.25rem;
+  background-color: var(--primary);
+  border-radius: 50%;
+  bottom: 0.125rem;
+  animation: typing 1.25s infinite ease-in-out;
+}
+
+.dot:nth-child(1) {
+  animation-delay: 200ms;
+}
+.dot:nth-child(2) {
+  animation-delay: 300ms;
+}
+.dot:nth-child(3) {
+  animation-delay: 400ms;
 }
