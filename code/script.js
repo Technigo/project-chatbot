@@ -38,7 +38,7 @@ const showMessage = (message, sender) => {
 const greetUser = () => {
   // Here we call the function showMessage, that we declared earlier with the argument:
   // "Hello there, what's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, what's your name?", 'bot')
+  showMessage("Hello and welcome to the café-bot, what's your name?", 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 }
 
@@ -51,3 +51,18 @@ const greetUser = () => {
 // 1.) the function we want to delay, and 2.) the delay in milliseconds 
 // This means the greeting function will be called one second after the website is loaded.
 setTimeout(greetUser, 1000)
+
+const button = document.getElementById("send-btn")
+
+const nameInput = document.getElementById("name-input")
+
+button.onclick = (event) => {
+  event.preventDefault()
+  const name = nameInput.value
+  showMessage(name, "user")
+  nameInput.value = ""
+}
+
+
+
+
