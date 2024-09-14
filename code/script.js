@@ -42,7 +42,7 @@ const showMessage = (message, sender) => {
 
 // A function to start the conversation
 const greetUser = () => {
-  showMessage("Hello, I can help you choose the perfect outfit based on the weather. What's your location?", 'bot')
+  showMessage("Hello, I can help you choose the perfect outfit based on the weather. What's your location?📍", 'bot')
 }
 
 // A function to handle the location input and continue the conversation

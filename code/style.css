@@ -5,24 +5,24 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  font-family: 'Open Sans', sans-serif;
+  background: linear-gradient(to bottom right, #f0f4f8, #d9e2ec);
+}
+
+h1,
+h2 {
+  font-weight: 700;
+  color: #102a43;
+  text-align: center;
 }
 
 h1 {
-  font-weight: bold;
-  font-size: 28px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
+  font-size: 32px;
+  margin-top: 20px;
 }
 
 h2 {
-  font-weight: bold;
   font-size: 24px;
-  line-height: 34px;
-  color: #fff;
-  text-align: center;
   margin-bottom: 36px;
 }
 
@@ -31,21 +31,19 @@ p {
   font-weight: 600;
   line-height: 28px;
   margin: 0;
+  color: #334e68;
 }
 
 input {
-  box-sizing: border-box;
-  border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  border: 1px solid #bcccdc;
+  border-radius: 8px 0 0 8px;
+  background: #fff;
+  color: #102a43;
   padding: 16px;
   font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 600;
-  line-height: 26px;
   flex: 1;
   width: 100%;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 main {
@@ -53,66 +51,70 @@ main {
   width: 100%;
   max-width: 700px;
   height: 600px;
-  border-radius: 30px;
+  border-radius: 16px;
   background: #fff;
   padding: 20px 24px;
-  padding-top: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .chat {
   flex: 1;
   display: flex;
-  justify-content: flex-start;
-  overflow: scroll;
   flex-direction: column;
+  overflow-y: auto;
   padding-bottom: 16px;
 }
 
-.bot-msg {
+.bot-msg,
+.user-msg {
   display: flex;
-  margin: 16px 8px 0 0;
-  flex-shrink: 0;
+  margin-top: 16px;
+}
+
+.bot-msg {
+  align-items: flex-start;
 }
 
 .user-msg {
-  display: flex;
+  align-items: flex-end;
   justify-content: flex-end;
-  margin: 16px 0 0 8px;
-  flex-shrink: 0;
 }
 
 .bot-msg img,
 .user-msg img {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
 .bubble {
-  background: #e5e9ff;
-  font-weight: 600;
+  background: #f0f4f8;
+  font-weight: 500;
   font-size: 16px;
-  line-height: 26px;
-  padding: 16px 24px;
-  color: #0026ff;
-  max-width: 40%;
+  line-height: 24px;
+  padding: 12px 20px;
+  color: #102a43;
+  max-width: 60%;
 }
 
 .bot-bubble {
-  border-radius: 0px 26px 26px 26px;
-  margin-left: 8px;
+  border-radius: 12px 12px 12px 0;
+  margin-left: 12px;
 }
 
 .user-bubble {
-  border-radius: 26px 0 26px 26px;
-  margin-right: 8px;
+  background: #d9e2ec;
+  border-radius: 12px 12px 0 12px;
+  margin-right: 12px;
 }
 
 .input-wrapper {
   display: flex;
   justify-content: center;
+  margin-top: 16px;
 }
 
 .input-wrapper form {
@@ -123,28 +125,121 @@ main {
 
 label {
   font-size: 16px;
-  font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
+  color: #102a43;
+  margin-right: 16px;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #3e7cb1;
   color: white;
   border: none;
-  border-radius: 4px;
-  padding: 16px 20px;
-  margin-right: 4px;
+  border-radius: 0 8px 8px 0;
+  padding: 16px 24px;
   font-size: 16px;
-  line-height: 26px;
-  font-family: 'Montserrat';
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  opacity: 0.9;
-  transition: all 0.2s ease;
+  background-color: #2a6f97;
+}
+
+button:focus,
+input:focus {
+  outline: none;
+  border-color: #3e7cb1;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.75em;
+  }
+
+  h2 {
+    font-size: 1.25em;
+  }
+
+  .bubble {
+    font-size: 0.95em;
+    padding: 0.65em 0.9em;
+  }
+
+  input,
+  button {
+    padding: 0.65em;
+    font-size: 0.95em;
+  }
+
+  .bot-msg img,
+  .user-msg img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    width: 95%;
+    margin: 0.5em auto;
+    padding: 1em;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.1em;
+  }
+
+  .bubble {
+    font-size: 0.9em;
+    padding: 0.5em 0.8em;
+  }
+
+  input,
+  button {
+    padding: 0.5em;
+    font-size: 0.9em;
+  }
+
+  .bot-msg img,
+  .user-msg img {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (min-width: 1200px) {
+  main {
+    max-width: 1200px;
+  }
+
+  h1 {
+    font-size: 2.5em;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  .bubble {
+    font-size: 1.1em;
+    padding: 1em 1.5em;
+  }
+
+  input,
+  button {
+    padding: 1em;
+    font-size: 1.1em;
+  }
+
+  .bot-msg img,
+  .user-msg img {
+    width: 60px;
+    height: 60px;
+  }
 }
