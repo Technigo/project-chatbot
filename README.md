@@ -1,13 +1,11 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The chatbot will act as a virtual travel guide that helps users plan their next trip or dream about their future adventures. It can suggest destinations, give travel tips, or simply chat about the joys of exploring the world.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I have only onclick button in this chatbot. If I have more time, I would like to try different input types such as dropdowns button with selection.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://travelchatbot.netlify.app
