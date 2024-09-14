@@ -16,10 +16,11 @@ header {
   background: url(./assets/hero-bubbles.jpg);
   background-size: cover;
   background-position: center;
-  min-height: 20vh;
+  max-height: 20vh;
   width: 100%;
   justify-content: center;
   align-items: center;
+  padding: 3%;
 }
 
 /* .container-crab {
@@ -37,17 +38,17 @@ header {
 
 h1 {
   font-weight: bold;
-  font-size: 40px;
+  font-size: 30px;
   color: yellow;
   text-align: center;
-  padding-top: 20%;
+  padding-top: 10%;
 }
 
 main {
   background: (4, 38, 52);
   width: 100%;
   max-width: 700px;
-  height: 500px;
+  min-height: 500px;
   margin: 0 auto;
   border-radius: 30px;
   padding: 20px;
@@ -57,29 +58,62 @@ main {
   justify-content: space-between;
 }
 
-.box-confirm-button {
+.form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* .box-confirm-button {
   display: flex;
   background-color:
     white;
-}
+} */
 
 .confirm-button {
-
   background-color: rgb(4, 38, 52);
   color: white;
   font-weight: bold;
   font-size: 30px;
-  min-width: 100px;
+  width: 80%;
   min-height: 50px;
   border-radius: 10%;
   cursor: pointer;
-  border: solid white;
+  border: solid, white;
   overflow: hidden;
-  width: 100%;
 }
 
 .confirm-button:hover {
   background-color: red;
+}
+
+.input-button {
+  background-color: rgb(4, 38, 52);
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  width: 60px;
+  height: 50px;
+  border-radius: 10%;
+  cursor: pointer;
+  border: solid, white;
+  overflow: hidden;
+  margin: 10px;
+}
+
+.input {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px;
+  background: white;
+  color: rgb(4, 38, 52);
+  padding: 18px;
+  font-family: 'Moneserrat', sans-serif;
+  font-weight: 600;
+  font-size: 16 px;
+  line-height: 24px;
+  margin: none;
+  flex: 1;
 }
 
 .chat {
@@ -136,19 +170,7 @@ main {
   width: 80px;
 }
 
-.input {
-  box-sizing: border-box;
-  border: none;
-  border-radius: 4px 00 4px;
-  background: white;
-  color: rgb(4, 38, 52);
-  padding: 16px;
-  font-family: 'Moneserrat', sans-serif;
-  font-weight: 600;
-  font-size: 16 px;
-  line-height: 24px;
-  margin: none;
-}
+
 
 .submit-button {
   box-sizing: border-box;
