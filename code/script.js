@@ -8,7 +8,7 @@ let currentQuestionNumber = 1; // Start with Question 1
 
 // Question data
 const Question1 = {
-  question: "Who released a single in 1999 called Genie In A Bottle?",
+  question: "Who released a single in 1999 called Genie In a Bottle?",
   options: ["Britney Spears", "Christina Aguilera", "Robyn", "Corona"],
   correctAnswer: "Christina Aguilera"
 };
@@ -68,11 +68,14 @@ const greetUser = () => {
       showMessage(userName, 'user');
       setTimeout(() => {
         showMessage(`Nice to meet you, ${userName}! Are you ready for a quiz?`, 'bot');
-        setTimeout(showYesNoButtons, 1000);
+        setTimeout(showYesNoButtons, 900);
       }, 700);
     }
   });
 };
+
+// Scroll down the chat window after buttons have loaded
+chat.scrollTop = chat.scrollHeight;
 
 // Show Yes/No buttons for quiz confirmation
 const showYesNoButtons = () => {
@@ -96,6 +99,9 @@ const showYesNoButtons = () => {
   });
 };
 
+// Scroll down the chat window after buttons have loaded
+chat.scrollTop = chat.scrollHeight;
+
 // Ask the current question and show answer options
 const askQuestion = () => {
   const currentQuestion = questions[currentQuestionNumber - 1];
@@ -106,10 +112,12 @@ const askQuestion = () => {
     // Show options as buttons. Each button has a unique id (option-0, option-1, option-2, option-3, for example for question nr 1-option 0 is Britney Spears, option1 is Christina Aguilera etc. ${currentQuestion.options[0]}, ${currentQuestion.options[1]}, etc., are placeholders that get replaced with the actual options for the current question.
 
     inputWrapper.innerHTML = `
+      <div class="option-buttons">
       <button id="option-0">${currentQuestion.options[0]}</button>
       <button id="option-1">${currentQuestion.options[1]}</button>
       <button id="option-2">${currentQuestion.options[2]}</button>
       <button id="option-3">${currentQuestion.options[3]}</button>
+      </div>
     `;
 
     // Add event listeners to the buttons
@@ -147,11 +155,11 @@ const checkAnswer = (selectedOption) => {
       showMessage("Quiz finished! Thanks for playing.", 'bot');
       inputWrapper.innerHTML = ''; // Clear buttons after the quiz ends
     }
-  }, 700); // Timeout
+  }, 900); // Timeout
 };
 
 // Start the conversation
-setTimeout(greetUser, 1000);
+setTimeout(greetUser, 900);
 
 
 

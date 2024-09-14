@@ -6,15 +6,18 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: purple;
+  background: rgb(105, 3, 105);
 }
 
 h1 {
   font-weight: bold;
-  font-size: 28px;
+  font-size: 35px;
   line-height: 34px;
   color: #fff;
   text-align: center;
+  padding-top: 20px;
+  margin: 0;
+  font-family: cursive;
 }
 
 h2 {
@@ -33,12 +36,13 @@ p {
   margin: 0;
 }
 
-input {
+input, 
+#name-input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #747dae;
+  background:  #e6d7ec;
+  color: rgb(105, 3, 105);
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -47,6 +51,8 @@ input {
   flex: 1;
   width: 100%;
 }
+
+
 
 main {
   margin: 0 auto;
@@ -92,12 +98,12 @@ main {
 }
 
 .bubble {
-  background: #ffe5fb;
+  background: #e6d7ec;
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: #9e11a5;
+  color: rgb(105, 3, 105);
   max-width: 40%;
 }
 
@@ -114,25 +120,26 @@ main {
 .input-wrapper {
   display: flex;
   justify-content: center;
-}
+  background: #e6d7ec;
+  overflow-x: hidden; 
+} 
 
-.input-wrapper form {
+ .input-wrapper form {
   width: 100%;
   display: flex;
   align-items: center;
-}
+} 
 
 label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #dadef5;
+  color: #e6d7ec;
   margin-right: 20px;
 }
 
 button {
-  background-color: purple;
-  color: white;
+  background-color: rgb(105, 3, 105);
   border: none;
   border-radius: 4px;
   padding: 16px 20px;
@@ -143,9 +150,35 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  color: white;
 }
 
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+.option-buttons {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  width: 100%;
+  gap: 10px;
+
+}
+
+/* Media query for screens smaller than 600px */
+@media (max-width: 768px) {
+  .option-buttons {
+    flex-direction: column; /* Stack buttons vertically */
+    margin: 15px;
+    padding: 10px; /* Adjust padding for smaller screens */
+}
+}
+
+
+@media (max-width: 768px) {
+  p {
+    font-size: 16px;
+}
 }
