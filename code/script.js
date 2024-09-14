@@ -18,7 +18,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/userbubble.png" alt="User" />  
       </section>
     `
     // The else if statement checks if the sender is the bot and if that's the case it inserts
@@ -26,7 +26,7 @@ const showMessage = (message, sender) => {
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="assets/botbubble.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
@@ -43,7 +43,7 @@ const showMessage = (message, sender) => {
 const greetUser = () => {
   // Here we call the function showMessage, that we declared earlier with the argument:
   // "Hello there, what's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, what's your name?", 'bot')
+  showMessage("Hey there, little buddy! I am ActivityBot 🤖 I am here to help you find a fun activity. First, let's get to know each other. What's your name?", 'bot')
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 }
 
@@ -153,21 +153,62 @@ const getSubfood = (foodOrder) => {
     }, 1000)
   }
 }
+//4. Comment on user's favorite animal and ask about weather
+const getWeather = (userAnimal) => {
 
-//2. Take user's order using buttons
-const getOrder = () => {
-  showMessage(`Nice to meet you, ${userName}! What would you like to order today?`, 'bot')
-  inputWrapper.innerHTML = `
-    <button id="pizza">🍕 Pizza</button>
-    <button id="pasta">🍝 Pasta</button>
-    <button id="salad">🥗 Salad</button>
-  `
-  document.getElementById('pizza').addEventListener("click", () => getSubfood('pizza'))
-  document.getElementById('pasta').addEventListener("click", () => getSubfood('pasta'))
-  document.getElementById('salad').addEventListener("click", () => getSubfood('salad'))
 }
 
-//1. Get user's name and trigger takeOrder function
+let colorValue = ""
+//Function to update button colors
+const updateButtonColors = (colorValue) => {
+  const buttons = document.querySelectorAll('button');
+  buttons.forEach(button => {
+    button.style.backgroundColor = colorValue;
+  });
+}
+
+//3. Find out user's favorite animal using buttons
+const getAnimal = (userColor, colorValue) => {
+  showMessage(`${userColor}`, 'user')
+  setTimeout(() => {
+    showMessage(`${userColor} is a great color! ${userColor} is my favorite color too. What is your favorite animal?`, 'bot')
+    inputWrapper.innerHTML = `
+      <button id="cat">😸 Cat</button>
+      <button id="dog">🐕 Dog</button>
+      <button id="bear">🐻 Bear</button>
+      <button id="pig">🐷 Pig</button>
+      <button id="monkey">🐒 Monkey</button>
+    `
+    updateButtonColors(colorValue)
+  }, 1000)
+
+  document.getElementById('cat').addEventListener("click", () => askWeather('Cats'))
+  document.getElementById('dog').addEventListener("click", () => askWeather('Dogs'))
+  document.getElementById('bear').addEventListener("click", () => askWeather('Bears'))
+  document.getElementById('pig').addEventListener("click", () => askWeather('Pigs'))
+  document.getElementById('monkey').addEventListener("click", () => askWeather('Monkeys'))
+}
+
+//2. Find out user's favorite color using buttons
+const getColor = () => {
+  showMessage(`Nice to meet you, ${userName}! What is your favorite color?`, 'bot')
+  inputWrapper.innerHTML = `
+    <button id="red">🔴 Red</button>
+    <button id="blue">🔵 Blue</button>
+    <button id="yellow">🟡 Yellow</button>
+    <button id="purple">🟣 Purple</button>
+    <button id="green">🟢 Green</button>
+    <button id="pink">🩷 Pink</button>
+  `
+  document.getElementById('red').addEventListener("click", () => getAnimal('Red', 'red'))
+  document.getElementById('blue').addEventListener("click", () => getAnimal('Blue', 'blue'))
+  document.getElementById('yellow').addEventListener("click", () => getAnimal('Yellow', 'yellow'))
+  document.getElementById('purple').addEventListener("click", () => getAnimal('Purple', 'purple'))
+  document.getElementById('green').addEventListener("click", () => getAnimal('Green', 'green'))
+  document.getElementById('pink').addEventListener("click", () => getAnimal('Pink', 'pink'))
+}
+
+//1. Get user's name and trigger color function
 const getUserName = (event) => {
 
   event.preventDefault() // Keeps chat history going
@@ -175,7 +216,7 @@ const getUserName = (event) => {
   showMessage(`${userName}`, 'user')
   nameInput.value = '' // Clear the input field
 
-  setTimeout(getOrder, 1000)
+  setTimeout(getColor, 1000)
 }
 
 // Eventlisteners goes here 👇

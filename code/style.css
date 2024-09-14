@@ -41,6 +41,7 @@ img {
   height: auto;
   max-width: 30%;
   border-radius: 10px;
+  object-fit: cover;
 }
 
 h1 {
@@ -180,6 +181,13 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+/* For mobile */
+@media (max-width: 700px) {
+  header h2 {
+    display: none;
+  }
 }
 
 /* For tablet and larger screens */
