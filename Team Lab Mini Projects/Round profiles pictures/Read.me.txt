@@ -1,7 +1,0 @@
-I chose to divide the pictures with "div" 
-to be seperated container.
-I choosed pictures from the internet and copied their adress.
-I had to adjust the size because they were either too small or too big.
-
-Then for the CSS.
-I use border radius and object fit then config their size.
