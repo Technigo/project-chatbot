@@ -1,53 +1,158 @@
-// DOM selectors (variables that point to selected DOM elements) goes here 👇
-const chat = document.getElementById('chat')
+document.addEventListener('DOMContentLoaded', () => {
+  // DOM selectors
+  const chat = document.getElementById('chat');
+  const nameInput = document.getElementById('name-input'); // The input field for the name
+  const sendButton = document.getElementById('send-btn'); // The send button
+  let userName = "";
+  let isAskingForDrink = false; // To track whether we're asking for a drink
+  let isAskingForFood = false; // To track whether we're asking for food
+  let isChoosingDish = false; // To track whether we're asking for a specific dish
 
-// Functions goes here 👇
+  // Declare global variables to store the chosen drink and food
+  let drink = ""; // Global variable to store drink choice
+  let food = "";  // Global variable to store food choice
 
-// A function that will add a chat bubble in the correct place based on who the sender is
-const showMessage = (message, sender) => {
-  // The if statement checks if the sender is the user and if that's the case it inserts
-  // an HTML section inside the chat with the posted message from the user
-  if (sender === 'user') {
-    chat.innerHTML += `
-      <section class="user-msg">
-        <div class="bubble user-bubble">
-          <p>${message}</p>
-        </div>
-        <img src="assets/user.png" alt="User" />  
-      </section>
-    `
-    // The else if statement checks if the sender is the bot and if that's the case it inserts
-    // an HTML section inside the chat with the posted message from the bot
-  } else if (sender === 'bot') {
-    chat.innerHTML += `
-      <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
-        <div class="bubble bot-bubble">
-          <p>${message}</p>
-        </div>
-      </section>
-    `
-  }
+  // A function to display a message
+  const showMessage = (message, sender) => {
+    if (sender === 'user') {
+      chat.innerHTML += `
+        <section class="user-msg">
+          <div class="bubble user-bubble">
+            <p>${message}</p>
+          </div>
+          <img src="assets/user.png" alt="User" />  
+        </section>
+      `;
+    } else if (sender === 'bot') {
+      chat.innerHTML += `
+        <section class="bot-msg">
+          <img src="assets/bot.png" alt="Bot" />
+          <div class="bubble bot-bubble">
+            <p>${message}</p>
+          </div>
+        </section>
+      `;
+    }
 
-  // This little thing makes the chat scroll to the last message when there are too many to
-  // be shown in the chat box
-  chat.scrollTop = chat.scrollHeight
-}
+    // Auto scroll to the latest message
+    chat.scrollTop = chat.scrollHeight;
+  };
 
-// A function to start the conversation
-const greetUser = () => {
-  // Here we call the function showMessage, that we declared earlier with the argument:
-  // "Hello there, what's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, what's your name?", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
-}
+  // Greet the user
+  const greetUser = () => {
+    showMessage("Welcome to J.Cafe! What's your name?", 'bot');
+  };
 
-// Eventlisteners goes here 👇
+  // Handle the name input
+  const handleNameInput = (input) => {
+    // Check if input is not empty
+    if (input) {
+      userName = input; // Save the user's name
+      showMessage(userName, 'user'); // Show the user's message
+      nameInput.value = ""; // Clear the input field
 
-// Here we invoke the first function to get the chatbot to ask the first question when
-// the website is loaded. Normally we invoke functions like this: greeting()
-// To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
-// and pass along two arguments:
-// 1.) the function we want to delay, and 2.) the delay in milliseconds 
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000)
+      // Bot responds after 1 second
+      setTimeout(() => {
+        showMessage(`Hi ${userName}🥰! What would you like to order?<br><br>1. Black Coffee <br>2. Latte <br>3. Tea <br>4. Soft Drink`, 'bot');
+        isAskingForDrink = true; // Now we are asking for a drink choice
+      }, 1000);
+    }
+  };
+
+  // Handle drink choice
+  const handleDrinkChoice = (choice) => {
+    if (choice === "1") {
+      drink = "Black Coffee";
+    } else if (choice === "2") {
+      drink = "Latte";
+    } else if (choice === "3") {
+      drink = "Tea";
+    } else if (choice === "4") {
+      drink = "Soft Drink";
+    } else {
+      // Handle invalid input but keep waiting for a valid choice
+      showMessage("Sorry, I didn't understand that. Please choose 1, 2, 3, or 4.", 'bot');
+      return; // Keep asking for a valid drink choice
+    }
+
+    // If the user chose a valid option, show the drink message and ask if they want food
+    showMessage(`You chose ${drink}.<br><br>Would you like to order some food as well, ${userName}?😋<br><br>1. Yes <br>2. No`, 'bot');
+
+    // Now waiting for food choice
+    isAskingForDrink = false; // Reset drink flag
+    isAskingForFood = true; // Now we're asking for food
+  };
+
+  // Handle food choice
+  const handleFoodChoice = (foodchoice) => {
+    if (foodchoice === "1") {
+      showMessage("Great! What would you like to eat?<br><br>1. Tacos <br>2. Cesar Salad <br>3. Tuna Sandwich <br>4. Pasta Carbonara", 'bot');
+
+      isAskingForFood = false; // Stop asking for Yes/No
+      isChoosingDish = true; // Now waiting for dish choice
+      return;
+    } else if (foodchoice === "2") {
+      showMessage("No problem, your drink will be deliverd in 15 min, enjoy!😍", 'bot');
+      isAskingForFood = false; // Stop asking for food
+      return; // Exit if user doesn't want to eat
+    } else {
+      showMessage("Sorry🙈, I didn't understand that. Please choose 1 or 2.", 'bot');
+      return; // Exit and wait for a valid choice
+    }
+  };
+
+  // Handle specific dish choice
+  const handleDishChoice = (dishChoice) => {
+    if (dishChoice === "1") {
+      food = "Tacos";
+    }
+    // User chooses Cesar Salad
+    else if (dishChoice === "2") {
+      food = "Cesar Salad";
+    }
+    // User chooses Tuna Sandwich
+    else if (dishChoice === "3") {
+      food = "Tuna Sandwich";
+    }
+    // User chooses Pasta Carbonara
+    else if (dishChoice === "4") {
+      food = "Pasta Carbonara";
+    }
+    // Handle invalid choice
+    else {
+      showMessage("Sorry🙈, I didn't understand that. Please choose 1, 2, 3, or 4.", 'bot');
+      return; // Wait for a valid dish choice
+    }
+
+    // Show summary of the user's order
+    showMessage(`You have chosen:<br> ${food} and ${drink}! What a fab combo😂!<br><br> Your order will be deliverd in 15 min, enjoy🥳`, 'bot');
+    isChoosingDish = false; // Stop asking for dishes after valid choice
+  };
+
+
+  const handleUserInput = (event) => {
+    event.preventDefault();
+    const input = nameInput.value; // Get input from user
+    nameInput.value = ""; // Clear input field
+
+    if (!isAskingForDrink && !isAskingForFood && !isChoosingDish) {
+      // Handle name input
+      handleNameInput(input);
+    } else if (isAskingForDrink) {
+      // Handle drink choice input
+      handleDrinkChoice(input);
+    } else if (isAskingForFood) {
+      // Handle yes/no food choice input
+      handleFoodChoice(input);
+    } else if (isChoosingDish) {
+      // Handle specific dish choice input
+      handleDishChoice(input);
+    }
+  };
+
+  // Attach event listener to the send button
+  sendButton.addEventListener('click', handleUserInput);
+
+  // Start the conversation after 1 second
+  setTimeout(greetUser, 1000); // Start with greeting
+});

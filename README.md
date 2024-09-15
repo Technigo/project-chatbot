@@ -1,13 +1,13 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The task was to create an interactive chatbot.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Initially, I had trouble getting the JavaScript file to function correctly in the HTML file. Another challenge was managing the flow of user interactions, specifically making sure that the bot stopped responding when the user chose "No" for ordering food. I used JavaScript techniques such as conditionals and functions to address these issues. If I had more time, I would refine the conversation logic and add more complex food ordering options.
+
+I struggled with adding line breaks in the chatbot's responses. I attempted different methods, but only the old <br> tag worked.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://jonas-chatbot.netlify.app/
