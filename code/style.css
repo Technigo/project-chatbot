@@ -6,20 +6,56 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: linear-gradient(to top right, pink, blue);
+  height: 100%;
+  overflow: hidden;
+}
+
+.container {
+  margin: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 97vh;
+}
+
+.header-image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+header h1 {
+  font-size: 3vh;
+  text-align: center;
+  margin: 5px;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+img {
+  height: auto;
+  max-width: 30%;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 28px;
-  line-height: 34px;
+  font-size: 8.8vh;
   color: #fff;
   text-align: center;
 }
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -27,9 +63,9 @@ h2 {
 }
 
 p {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
-  line-height: 28px;
+  line-height: 20px;
   margin: 0;
 }
 
@@ -40,19 +76,19 @@ input {
   background: #e5e9ff;
   color: #0026ff;
   padding: 16px;
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
   flex: 1;
-  width: 100%;
+  width: calc(100% - 40px);
 }
 
 main {
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
-  height: 600px;
+  height: 77vh;
   border-radius: 30px;
   background: #fff;
   padding: 20px 24px;
@@ -93,16 +129,17 @@ main {
 .bubble {
   background: #e5e9ff;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 26px;
   padding: 16px 24px;
   color: #0026ff;
-  max-width: 40%;
+  max-width: 60%;
 }
 
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  background-color: #cce5ff;
 }
 
 .user-bubble {
@@ -111,8 +148,12 @@ main {
 }
 
 .input-wrapper {
+  flex-shrink: 0;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 5px;
 }
 
 .input-wrapper form {
@@ -121,22 +162,24 @@ main {
   align-items: center;
 }
 
-label {
+.input-wrapper button {
+  flex: 1 1 45%;
+}
+
+.name-input {
   font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
+  flex: 0 0 60%;
 }
 
 button {
+  width: auto;
   background-color: #0026ff;
   color: white;
   border: none;
   border-radius: 4px;
   padding: 16px 20px;
   margin-right: 4px;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 26px;
   font-family: 'Montserrat';
   font-weight: 500;
@@ -147,4 +190,172 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+/* ===========================
+   Color Schemes 
+   =========================== */
+
+/* Red color scheme */
+body.red-scheme {
+  background: linear-gradient(to bottom, red, white);
+  color: white;
+}
+
+body.red-scheme button {
+  background-color: red;
+  color: white;
+}
+
+body.red-scheme .bubble {
+  background: #ffe6e6;
+  color: red;
+}
+
+body.red-scheme .bot-bubble {
+  background: #ffb3b3;
+}
+
+/* Blue color scheme */
+body.blue-scheme {
+  background: linear-gradient(to bottom, blue, white);
+  color: white;
+}
+
+body.blue-scheme button {
+  background-color: darkblue;
+  color: white;
+}
+
+body.blue-scheme .bubble {
+  background: #cce5ff;
+  color: darkblue;
+}
+
+body.blue-scheme .bot-bubble {
+  background: #99ccff;
+}
+
+/* Yellow color scheme */
+body.yellow-scheme {
+  background: linear-gradient(to bottom, yellow, white);
+  color: black;
+}
+
+body.yellow-scheme button {
+  background-color: gold;
+  color: black;
+}
+
+body.yellow-scheme .bubble {
+  background: #fffacd;
+  color: goldenrod;
+}
+
+body.yellow-scheme h1 {
+  color: black;
+}
+
+body.yellow-scheme h2 {
+  color: darkgoldenrod;
+}
+
+body.yellow-scheme .bot-bubble {
+  background: #ffff99;
+}
+
+/* Purple color scheme */
+body.purple-scheme {
+  background: linear-gradient(to bottom, purple, white);
+  color: white;
+}
+
+body.purple-scheme button {
+  background-color: indigo;
+  color: white;
+}
+
+body.purple-scheme .bubble {
+  background: #e6e6fa;
+  color: indigo;
+}
+
+body.purple-scheme .bot-bubble {
+  background: #d1b3ff;
+}
+
+/* Green color scheme */
+body.green-scheme {
+  background: linear-gradient(to bottom, green, white);
+  color: white;
+}
+
+body.green-scheme button {
+  background-color: darkgreen;
+  color: white;
+}
+
+body.green-scheme .bubble {
+  background: #ccffcc;
+  color: darkgreen;
+}
+
+body.green-scheme .bot-bubble {
+  background: #99ff99;
+}
+
+/* Pink color scheme */
+body.pink-scheme {
+  background: linear-gradient(to bottom, deeppink, white);
+  color: white;
+}
+
+body.pink-scheme button {
+  background-color: deeppink;
+  color: white;
+}
+
+body.pink-scheme .bubble {
+  background: #ffccff;
+  color: deeppink;
+}
+
+body.pink-scheme .bot-bubble {
+  background: #ffb3d9;
+}
+
+/* For mobile */
+@media (max-width: 700px) {
+  header h2 {
+    display: none;
+  }
+}
+
+/* For tablet and larger screens */
+@media (min-width: 701px) {
+  .container {
+    flex-direction: row;
+    min-height: 100%;
+  }
+
+  .header-image-container {
+    max-height: 95vh;
+  }
+
+  p {
+    line-height: 2vw;
+  }
+
+  header h1 {
+    font-size: 5vw;
+  }
+
+  img {
+    max-width: 90%;
+  }
+
+  main {
+    min-height: 90%;
+    height: 95vh;
+  }
 }
