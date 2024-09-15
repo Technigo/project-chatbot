@@ -6,6 +6,8 @@ const nameInput = document.getElementById("name-input")
 const nameForm = document.getElementById('name-form')
 const coffeeShopContainer = document.getElementById('coffeeShopContainer')
 
+//Variables that will be used in the confirmation
+
 let userName = ''
 let coffeeChoice = ''
 let sizeChoice = ''
