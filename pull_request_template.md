@@ -1,4 +1,3 @@
 ## Netlify link
 
-https://joycespizzeriachatbot.netlify.app/
-
+https://joyceschatbot.netlify.app/

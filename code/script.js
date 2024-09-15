@@ -1,16 +1,13 @@
-// DOM selectors (variables that point to selected DOM elements) goes here 👇
+// DOM selectors
 const chat = document.getElementById('chat')
 const nameInput = document.getElementById('name-input')
 const sendButton = document.getElementById('send-button')
 const inputWrapper = document.getElementById('input-wrapper')
 
 let userName = ""
-// Functions goes here 👇
 
 // A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // The if statement checks if the sender is the user and if that's the case it inserts
-  // an HTML section inside the chat with the posted message from the user
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
@@ -20,8 +17,6 @@ const showMessage = (message, sender) => {
         <img src="assets/userbubble.png" alt="User" />  
       </section>
     `
-    // The else if statement checks if the sender is the bot and if that's the case it inserts
-    // an HTML section inside the chat with the posted message from the bot
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
@@ -33,23 +28,19 @@ const showMessage = (message, sender) => {
     `
   }
 
-  // This little thing makes the chat scroll to the last message when there are too many to
-  // be shown in the chat box
   chat.scrollTop = chat.scrollHeight
 }
 
 // A function to start the conversation
 const greetUser = () => {
-  // Here we call the function showMessage, that we declared earlier with the argument:
-  // "Hello there, what's your name?" for message, and the argument "bot" for sender
   showMessage("Hey there, little buddy! I am ActivityBot 🤖 I am here to help you find a fun activity. First, let's get to know each other. What's your name?", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 }
 
 const clearButtons = () => {
   inputWrapper.innerHTML = ''
 }
 
+// Variables to be collected and used to determine activities
 let currentMood = ""
 let currentWeather = ""
 let currentTime = ""
@@ -60,11 +51,8 @@ const sayGoodbye = () => {
   clearButtons()
 }
 
-//7. Suggest activity based on user's answers to questions
+//7. Suggest activity based on user's answers to questions (variables for currentMood, currentWeather, and currentTime)
 const getActivity = (mood, weather, time) => {
-  console.log(currentMood)
-  console.log(currentWeather)
-  console.log(currentTime)
   if (mood === "calm" && weather === "rainy" && time === "short") {
     showMessage(`How about coloring or doing a simple puzzle?`, 'bot')
     inputWrapper.innerHTML = `
@@ -183,10 +171,9 @@ const getActivity = (mood, weather, time) => {
   }
 }
 
-
 //6. Comment on user's answer for weather and ask how much time they have for an activity
 const getTime = () => {
-  showMessage(`OK, good to know. How much time do you have to spare?`, 'bot')
+  showMessage(`Good to know. How much time do you have to spare?`, 'bot')
   inputWrapper.innerHTML = `
     <button id="short">Not much, less than 30 minutes.</button>
     <button id="long">Quite a lot, at least 30 minutes.</button>
@@ -226,19 +213,19 @@ const getWeather = () => {
 const getMood = (userAnimal) => {
   showMessage(`${userAnimal}`, 'user')
   setTimeout(() => {
-    showMessage(`Wow, we really have a lot in common! ${userAnimal} is also my favorite. Now, what kind of activity are you in the mood for today?`, 'bot')
+    showMessage(`Wow, we really have a lot in common! ${userAnimal} is also my favorite animal. Now, what kind of activity are you in the mood for today?`, 'bot')
     inputWrapper.innerHTML = `
     <button id="calm">🧘🏻 I'm in the mood for something calm.</button>
     <button id="active">⛰️ I have a lot of energy to burn off!</button>
     `
     document.getElementById('calm').addEventListener("click", () => {
       currentMood = "calm"
-      showMessage(`I'm in the mood for something calm.`, 'user')
+      showMessage(`🧘🏻 I'm in the mood for something calm.`, 'user')
       setTimeout(getWeather, 1000)
     })
     document.getElementById('active').addEventListener("click", () => {
       currentMood = "active"
-      showMessage(`I have a lot of energy to burn off!`, 'user')
+      showMessage(`⛰️ I have a lot of energy to burn off!`, 'user')
       setTimeout(getWeather, 1000)
     })
   }, 1000)
@@ -271,7 +258,6 @@ const changeColorScheme = (scheme) => {
   document.body.className = scheme
 }
 
-
 //2. Find out user's favorite color and change color scheme based on selection. 
 const getColor = () => {
   showMessage(`Nice to meet you, ${userName}! What is your favorite color?`, 'bot')
@@ -287,7 +273,6 @@ const getColor = () => {
     changeColorScheme('red-scheme')
     getAnimal('Red')
   })
-
   document.getElementById('blue').addEventListener("click", () => {
     changeColorScheme('blue-scheme')
     getAnimal('Blue')
@@ -312,24 +297,15 @@ const getColor = () => {
 
 //1. Get user's name and trigger color function
 const getUserName = (event) => {
-
   event.preventDefault() // Keeps chat history going
   userName = nameInput.value
   showMessage(`${userName}`, 'user')
   nameInput.value = '' // Clear the input field
-
   setTimeout(getColor, 1000)
 }
 
-// Eventlisteners goes here 👇
 // Event listener for the form submission
 sendButton.addEventListener("click", getUserName)
 
-// Here we invoke the first function to get the chatbot to ask the first question when
-// the website is loaded. Normally we invoke functions like this: greeting()
-// To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
-// and pass along two arguments:
-// 1.) the function we want to delay, and 2.) the delay in milliseconds
-// This means the greeting function will be called one second after the website is loaded.
-
+// First function to greet the user
 setTimeout(greetUser, 1000)
