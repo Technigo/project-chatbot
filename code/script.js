@@ -6,7 +6,7 @@ const userInput = document.getElementById("user-input")
 const nameForm = document.getElementById('name-form')
 const coffeeShopContainer = document.getElementById('coffeeShopContainer')
 
-//Variables that will be used in the confirmation
+//LET variables that will be used in the confirmation
 
 let userName = ''
 let coffeeChoice = ''
@@ -137,7 +137,7 @@ const handleSizeChoice = (size) => {
   document.getElementById("regularBtn").remove()
   document.getElementById("smallBtn").remove()
     
-  showMessage("Great choice! Your coffee is almost on the way.", 'bot')
+  showMessage("Great choice! Your coffee is almost on the way. Choose your nearest Coffee Joe Shop for pickup.", 'bot')
 
   setTimeout(handleCoffeeShopInput, 500) // Move on to Coffee shop question
 }
