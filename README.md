@@ -18,6 +18,8 @@ I used console.log extensively throughout the project to trace the flow of my co
 If I had more time:
 I would focus on cleaning up the structure of the code to make it shorter and more efficient. Right now, there is a lot of repeated code that I think could be simplified. For example, I believe there are opportunities to combine similar functions so that one function could handle multiple tasks instead of writing the same type of logic repeatedly.
 
+Fixing the Final Error: I encountered a TypeError: Cannot read properties of null (reading 'value') error when the user clicks "Yes" or "No" at the end of the flow. I couldn't solve this issue in the given time, but with more time, I would focus on fixing this error, possibly by ensuring that the selected movie value is properly stored and accessible when the confirmation step is triggered.
+
 ## View it live
 
 https://moviechatbot.netlify.app/
