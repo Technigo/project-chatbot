@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: rgb(105, 3, 105);
+  background: rgb(70, 82, 138);
 }
 
 h1 {
@@ -15,14 +15,14 @@ h1 {
   line-height: 34px;
   color: #fff;
   text-align: center;
-  padding-top: 20px;
+  padding-top: 25px;
   margin: 0;
   font-family: cursive;
 }
 
 h2 {
-  font-weight: bold;
-  font-size: 24px;
+  font-weight: 400;
+  font-size: 20px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -41,8 +41,8 @@ input,
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background:  #e6d7ec;
-  color: rgb(105, 3, 105);
+  background:  #fff;
+  color: rgb(70, 82, 138);
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -98,12 +98,12 @@ main {
 }
 
 .bubble {
-  background: #e6d7ec;
+  background: rgb(209, 215, 245);
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   padding: 16px 24px;
-  color: rgb(105, 3, 105);
+  color:  rgb(70, 82, 138);
   max-width: 40%;
 }
 
@@ -115,13 +115,16 @@ main {
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  background:  rgb(70, 82, 138);
+  color: #fff;
 }
 
 .input-wrapper {
   display: flex;
   justify-content: center;
-  background: #e6d7ec;
+  background: #fff;
   overflow-x: hidden; 
+  padding: 15px;
 } 
 
  .input-wrapper form {
@@ -134,15 +137,15 @@ label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #e6d7ec;
+  color: rgb(129, 133, 153);
   margin-right: 20px;
 }
 
 button {
-  background-color: rgb(105, 3, 105);
+  background-color:  rgb(70, 82, 138);
   border: none;
   border-radius: 4px;
-  padding: 16px 20px;
+  padding: 10px 10px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
@@ -154,31 +157,57 @@ button {
 }
 
 button:hover {
-  opacity: 0.9;
-  transition: all 0.2s ease;
+  animation: bubble 0.4s ease-out;
+}
+
+@keyframes bubble {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .option-buttons {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: space-between;
   width: 100%;
-  gap: 10px;
+  gap: 5px;
 
 }
 
-/* Media query for screens smaller than 600px */
+/* Media query for screens smaller than 768px */
 @media (max-width: 768px) {
   .option-buttons {
-    flex-direction: column; /* Stack buttons vertically */
+    /* flex-direction: column;  */
     margin: 15px;
-    padding: 10px; /* Adjust padding for smaller screens */
+    /* padding: 10px;  */
+    grid-template-columns: repeat(2, 1fr);
 }
 }
 
 
 @media (max-width: 768px) {
   p {
-    font-size: 16px;
+    font-size: 14px;
 }
 }
+
+@media (max-width: 768px) { 
+ #name-input,
+ .input-wrapper #name-input {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 300px) {
+  .option-buttons {
+    grid-template-columns: 1fr;
+  }
+}
+
