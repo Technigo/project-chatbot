@@ -2,7 +2,7 @@
 const chat = document.getElementById('chat')
 const startBtn = document.getElementById('start-btn')
 const enterName = document.getElementById('input-wrapper')
-const nameInput = document.getElementById("name-input")
+const userInput = document.getElementById("user-input")
 const nameForm = document.getElementById('name-form')
 const coffeeShopContainer = document.getElementById('coffeeShopContainer')
 
@@ -16,12 +16,12 @@ let coffeeShop = ''
 // Functions go here 👇
 
 // Handle user name input
-const handleNameInput = (event) => {
+const handleUserInput = (event) => {
   event.preventDefault()
 
-  userName = nameInput.value
+  userName = userInput.value
   showMessage(userName, "user")
-  nameInput.value = "" 
+  userInput.value = "" 
 
   setTimeout(() => selectCoffee(userName), 1000) //Move on to Select coffee
 }
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
   // Click Submit button to trigger welcome userName message
-  nameForm.addEventListener("submit", handleNameInput)
+  nameForm.addEventListener("submit", handleUserInput)
 });
 
 // Coffee choice
@@ -89,7 +89,7 @@ const selectCoffee = (userName) => {
   console.log("Select your drink")
   showMessage(`Nice to meet you, ${userName}. Please start your order by selecting your coffee. Here are your options: Pumpkin Spice Latte, Espresso, Cappuccino, or Americano.`, 'bot')
   
-  nameForm.removeEventListener("submit", handleNameInput) // Remove Event listener for Name
+  nameForm.removeEventListener("submit", handleUserInput) // Remove Event listener for Name
   nameForm.addEventListener("submit", handleCoffeeInput) // Add Event listener for Coffee choice
 }
 
@@ -97,7 +97,7 @@ const selectCoffee = (userName) => {
 
 const handleCoffeeInput = (event) => {
   event.preventDefault()
-  coffeeChoice = nameInput.value.toLowerCase()
+  coffeeChoice = userInput.value.toLowerCase()
 
   if (coffeeChoice === "pumpkin spice latte") {
     showMessage("Ah, pumpkin spice latte! Perfect choice", 'bot')
@@ -110,7 +110,7 @@ const handleCoffeeInput = (event) => {
   } else {
     showMessage(`${coffeeChoice} sounds great, but we don't have that option right now!`, 'bot')
   }
-  nameInput.value = ""
+  userInput.value = ""
 
   setTimeout(askForSize, 500) // Move on to Ask for size
 }
