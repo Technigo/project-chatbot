@@ -212,12 +212,6 @@ footer {
     font-size: 0.7rem;
   }
 
-  main {
-    width: 100%;
-    padding: 12px 12px 20px 12px;
-    height: 500px;
-  }
-
   .welcome-container {
     flex-direction: column;
   }
@@ -233,6 +227,12 @@ footer {
   .monster-picture2 {
     display: block;
     width: 100%;
+  }
+
+  main {
+    width: 100%;
+    padding: 12px 12px 20px 12px;
+    height: 500px;
   }
 
   .button-container {
