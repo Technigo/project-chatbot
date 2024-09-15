@@ -1,3 +1,21 @@
+img {
+  display: block;
+  max-width: 100%;
+}
+@media (max-width: 600px) {
+  #coffeeShopContainer {
+    flex-direction: column;  /* Buttons in columns */
+    align-items: center;
+  }
+}
+/* Responsive for tablet */
+@media (min-width: 601px) and (max-width: 1024px) {
+  #coffeeShopContainer {
+    flex-direction: row;  /*Buttons in a row*/
+    justify-content: space-evenly;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -71,16 +89,47 @@ main {
   padding-bottom: 16px;
 }
 
-.startBtn {
+.start-btn {
   display: flex;
   justify-content: center;
 }
 
+#coffeeShopContainer {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 10px; 
+}
+.Btns {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #0026ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
 .hidden {
   display: none;
 }
 .shown {
   display: block;
+}
+.size-btn {
+  display: inline-block; /*Make buttons visible*/
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #0026ff; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.size-btn:hover {
+  opacity: 0.9;
 }
 .bot-msg {
   display: flex;
