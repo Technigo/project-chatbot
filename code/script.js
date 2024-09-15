@@ -271,46 +271,4 @@ const handleConfirmationClick = (event) => {
 
 
 
-//PART 5 confirmation 
-//let handleConfirmationClick = "";
-
-// const confirmation = () => {
-//   form.innerHTML = `
-//         <button class="yes-btn" type="button">
-//           Yes, thank you!
-//         </button>
-//         <button class="no-btn" type="button">
-//           No, I changed my mind.
-//         </button>
-//       `
-//   form.style.display = 'flex';
-//   form.style.justifyContent = 'center';
-//   form.style.alignItems = 'center';
-//   form.style.gap = '30px';
-
-//   const handleConfirmationClick = (event) => {
-//     event.preventDefault();
-//     if (event.target.classList.contains('yes-btn')) {
-//       const selectedConfirmation = event.target.textContent.trim();
-//       form.innerHTML = "";
-//       showMessage(`${selectedConfirmation} `'user');
-//       // Delay the display of the message from the bot and the options
-//       setTimeout(() => {
-//         chat.scrollTop = chat.scrollHeight
-//         showMessage(`You clicked ${selectedConfirmationType}! Grab your popcorn, ${selectedMovie} is on its way!`, 'bot');
-//       }, 1000);
-//     } else if (event.target.classlist.contains('no-btn')) {
-//       // Delay the display of the message from the bot and the options
-//       setTimeout(() => {
-//         chat.scrollTop = chat.scrollHeight
-//         showMessage(`${selectedConfirmation} `'user');
-//         showMessage(`You clicked ${selectedConfirmation}, your order has been clacelled. Have a greta day!`, 'bot')
-
-//       }
-
-//   }
-//     form.addEventListener("click", handleAgeClick);
-
-//   }
-
 setTimeout(greetUser, 1000)  
