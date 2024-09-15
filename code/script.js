@@ -1,14 +1,11 @@
 
-// DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
 const nameInput = document.getElementById('name-input')
 const form = document.getElementById('name-form');
 const inputWrapper = document.getElementById('input-wrapper');
 
-// A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
   if (sender === 'user') {
-    console.log("message from user")
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -18,7 +15,6 @@ const showMessage = (message, sender) => {
       </section>
     `
   } else if (sender === 'bot') {
-    console.log("message from bot")
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -38,7 +34,6 @@ const greetUser = () => {
 }
 //the name is stored for the entire session with the value "name"
 const handleNameInput = (event) => {
-  console.log("event", event)
   // Prevents the form from reloading the page when submitted  
   event.preventDefault();
   //This collects the input value for "name"
@@ -98,7 +93,6 @@ const movieOptions = (name) => {
 let selectedAgeGroup = "";
 
 const ageOption = (genre) => {
-  console.log('Received genre:', genre);
   form.innerHTML = `
         <button class="age-btn" type="button">
           Child
@@ -107,7 +101,6 @@ const ageOption = (genre) => {
           Adult
         </button>
       `
-  //styles the buttons so that they are in the center
   form.style.display = 'flex';
   form.style.justifyContent = 'center';
   form.style.alignItems = 'center';
@@ -138,11 +131,8 @@ const ageOption = (genre) => {
 // Function to display movie options based on age and genre option
 
 const SelectMovieOption = (selectedAgeGroup, selectedGenre) => {
-  console.log('SelectMovieOption called with:', selectedAgeGroup, selectedGenre);
 
   let options = "";
-  console.log('Age Group:', selectedAgeGroup);
-  console.log('Genre:', selectedGenre);
 
   if (selectedAgeGroup === "Child" && selectedGenre === "Action") {
     options = `
@@ -189,20 +179,15 @@ const SelectMovieOption = (selectedAgeGroup, selectedGenre) => {
     </select>
     <button id="submit-movie" type="button">Submit</button>
   `;
-  console.log('inputWrapper:', inputWrapper);
 
   inputWrapper.style.display = 'flex';
   inputWrapper.style.width = '100%';
   inputWrapper.style.boxSizing = 'border-box';
   inputWrapper.style.padding = '10px';
   document.getElementById('movie-option').style.width = '400px';
-  document.getElementById('movie-option').style.fontSize = '20px';
+  document.getElementById('movie-option').style.fontSize = '16px';
 
   inputWrapper.addEventListener('click', handleSelectMovieOption);
-
-  // Log options for debugging
-  console.log('Options:', options);
-
 }
 
 const handleSelectMovieOption = (event) => {
@@ -217,58 +202,64 @@ const handleSelectMovieOption = (event) => {
     // Delay the display of the message from the bot
     setTimeout(() => {
       chat.scrollTop = chat.scrollHeight;
-      showMessage(`You selected ${selectedMovie}. A fine choice! That will be: $4. Would you like to rent this movie?`, 'bot');
+      showMessage(`You selected ${selectedMovie}. Excellent choice! That will be: $4. Would you like to rent this movie?`, 'bot');
       confirmation(selectedMovie)
     }, 1000);
   }
 }
 
-
-const confirmation = () => {
-  form.innerHTML = `
-     <button class="yes-btn" type="button">
-      Yes, thank you!
-             </button>
-          <button class="no-btn" type="button">
-             No, I changed my mind.
-          </button>
-         `
-
-  // Style the form and add event listener
-  form.style.display = 'flex';
-  form.style.justifyContent = 'center';
-  form.style.alignItems = 'center';
-  form.style.gap = '30px';
-
-  form.addEventListener('click', handleConfirmationClick);
-};
-
 // Handle confirmation click
-const handleConfirmationClick = (event) => {
+
+const handleConfirmationClick = (event, selectedMovie) => {
   event.preventDefault();
   const button = event.target;
 
-  if (button.classList.contains('yes-btn')) {
+  if (button.classList.contains("yes-btn")) {
     const selectedConfirmation = button.textContent.trim();
-    form.innerHTML = "";
-    showMessage(`${selectedConfirmation}`, 'user');
+    inputWrapper.innerHTML = "";
+    showMessage(`${selectedConfirmation}`, "user");
 
     setTimeout(() => {
       chat.scrollTop = chat.scrollHeight;
-      showMessage(`You clicked ${selectedConfirmation}. Grab your popcorn, ${selectedMovie} is on its way!`, 'bot');
+      showMessage(
+        `Grab your popcorn, ${selectedMovie} is on the way!🍿 Thank you for using the movie chatbot.`,
+        "bot"
+      );
     }, 1000);
-  } else if (button.classList.contains('no-btn')) {
+  } else {
     const selectedConfirmation = button.textContent.trim();
-    form.innerHTML = "";
+    inputWrapper.innerHTML = "";
 
     setTimeout(() => {
       chat.scrollTop = chat.scrollHeight;
-      showMessage(`${selectedConfirmation}`, 'user');
-      showMessage(`You clicked ${selectedConfirmation}, your order has been canceled. Have a great day!`, 'bot');
+      showMessage(`${selectedConfirmation}`, "user");
+      showMessage(
+        `Got it! Your order has been canceled. Have a great day!`,
+        "bot"
+      );
     }, 1000);
   }
 };
 
+const confirmation = (selectedMovie) => {
+  inputWrapper.innerHTML = `
+     <button class="yes-btn" type="button">
+      Yes!
+             </button>
+          <button class="no-btn" type="button">
+             No.
+          </button>
+         `;
+
+  inputWrapper.style.display = "flex";
+  inputWrapper.style.justifyContent = "center";
+  inputWrapper.style.alignItems = "center";
+  inputWrapper.style.gap = "30px";
+
+  inputWrapper.addEventListener("click", (event) =>
+    handleConfirmationClick(event, selectedMovie)
+  );
+};
 
 
 setTimeout(greetUser, 1000)  
