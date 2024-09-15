@@ -81,8 +81,11 @@ const showMessage = (message, sender) => {
       </section>
     `
   }
-  chat.scrollTop = chat.scrollHeight
-}
+  // Scroll only after new content has been added
+  setTimeout(() => {
+    chat.scrollTop = chat.scrollHeight;
+  }, 100);
+};
 
 // A function to start the conversation
 const greetUser = () => {
@@ -93,7 +96,6 @@ const greetUser = () => {
     <input id="name-input" placeholder="Enter name" />
     <button id="name-submit">Submit</button>
   `
-  
 
   document.getElementById('name-submit').addEventListener('click', () => {
     const userName = document.getElementById('name-input').value
@@ -107,7 +109,6 @@ const greetUser = () => {
   })
 }
 
-chat.scrollTop = chat.scrollHeight
 
 // Show Yes/No buttons for quiz confirmation
 const showYesNoButtons = () => {
@@ -131,8 +132,7 @@ const showYesNoButtons = () => {
   })
 }
 
-// Scroll down the chat window after buttons have loaded
-chat.scrollTop = chat.scrollHeight
+
 
 // Ask the current question and show answer options
 const askQuestion = () => {
@@ -151,8 +151,8 @@ const askQuestion = () => {
       <button id="option-3">${currentQuestion.options[3]}</button>
       </div>
     `  
-// Scroll down the chat window after buttons have loaded
-  chat.scrollTop = chat.scrollHeight
+// // Scroll down the chat window after buttons have loaded
+//   chat.scrollTop = chat.scrollHeight
 
 
     // Add event listeners to the buttons
@@ -180,6 +180,10 @@ const checkAnswer = (selectedOption) => {
   } else {
     showMessage(`Wrong! The correct answer is ${currentQuestion.correctAnswer}.`, 'bot')
   }
+
+//   // Ensure scrolling is handled after showing feedback
+// chat.scrollTop = chat.scrollHeight;
+
 }, 900)
 
 
