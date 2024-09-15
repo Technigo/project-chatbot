@@ -54,21 +54,135 @@ let currentMood = ""
 let currentWeather = ""
 let currentTime = ""
 
-// const getActivity = (mood, weather, time) => {
-//   if (mood === "calm" && weather === "sunny" && time === "short") {
-//     showMessage(`How about coloring or doing a simple puzzle?`, 'bot')
-//     inputWrapper.innerHTML = `
-//     <button id="coloring">🎨 Coloring sounds perfect!</button>
-//     <button id="puzzle">🧩 Doing a puzzle would be fun!</button>
-//     `
-//     document.getElementById('coloring').addEventListener("click", () => {
-//       showMessage(``, 'user')
-//       setTimeout()
-//     })
+//8. Sign off message
+const sayGoodbye = () => {
+  showMessage(`Go on then and have a great time! 🤩 Bye for now!`, 'bot')
+  clearButtons()
+}
 
-//   }
+//7. Suggest activity based on user's answers to questions
+const getActivity = (mood, weather, time) => {
+  console.log(currentMood)
+  console.log(currentWeather)
+  console.log(currentTime)
+  if (mood === "calm" && weather === "rainy" && time === "short") {
+    showMessage(`How about coloring or doing a simple puzzle?`, 'bot')
+    inputWrapper.innerHTML = `
+    <button id="coloring">🎨 Coloring sounds perfect!</button>
+    <button id="puzzle">🧩 Doing a puzzle would be fun!</button>
+    `
+    document.getElementById('coloring').addEventListener("click", () => {
+      showMessage(`🎨 Coloring sounds perfect!`, 'user')
+      setTimeout(sayGoodbye, 1000)
+    })
+    document.getElementById('puzzle').addEventListener("click", () => {
+      showMessage(`🧩 Doing a puzzle would be fun!`, 'user')
+      setTimeout(sayGoodbye, 1000)
+    })
+  } else if (mood === "calm" && weather === "rainy" && time === "long") {
+    showMessage(`How about painting or building something with LEGO?`, 'bot')
+    inputWrapper.innerHTML = `
+    <button id="painting">🎨 Painting sounds perfect!</button>
+    <button id="lego">🧩 Building with LEGO would be fun!</button>
+    `
+    document.getElementById('painting').addEventListener("click", () => {
+      showMessage(`🎨 Painting sounds perfect!`, 'user')
+      setTimeout(sayGoodbye, 1000)
+    })
+    document.getElementById('lego').addEventListener("click", () => {
+      showMessage(`🧩 Building with LEGO would be fun!`, 'user')
+      setTimeout(sayGoodbye, 1000)
+    })
+  } else if (mood === "calm" && weather === "sunny" && time === "short") {
+    showMessage(`How about cloud watching or collecting leaves and flowers?`, 'bot')
+    inputWrapper.innerHTML = `
+    <button id="cloud">☁️ Cloud watching sounds perfect!</button>
+    <button id="collecting">☘️ Collecting leaves and flowers would be fun!</button>
+    `
+    document.getElementById('cloud').addEventListener("click", () => {
+      showMessage(`☁️ Cloud watching sounds perfect!`, 'user')
+      setTimeout(sayGoodbye, 1000)
+    })
+    document.getElementById('collecting').addEventListener("click", () => {
+      showMessage(`☘️ Collecting leaves and flowers would be fun!`, 'user')
+      setTimeout(sayGoodbye, 1000)
+    })
+  } else if (mood === "calm" && weather === "sunny" && time === "long") {
+    showMessage(`How about taking a long nature walk or having a relaxing picnic outside?`, 'bot')
+    inputWrapper.innerHTML = `
+    <button id="nature">🌳 A nature walk sounds perfect!</button>
+    <button id="picnic">🧺 A picnic outside would be fun!</button>
+    `
+    document.getElementById('nature').addEventListener("click", () => {
+      showMessage(`🌳 A nature walk sounds perfect!`, 'user')
+      setTimeout(sayGoodbye, 1000)
+    })
+    document.getElementById('picnic').addEventListener("click", () => {
+      showMessage(`🧺 A picnic outside would be fun!`, 'user')
+      setTimeout(sayGoodbye, 1000)
+    })
+  } else if (mood === "active" && weather === "rainy" && time === "short") {
+    showMessage(`How about a mini dance party or a game of balloon volleyball?`, 'bot')
+    inputWrapper.innerHTML = `
+    <button id="dance">🪩 A dance party sounds perfect!</button>
+    <button id="balloon">🎈 Balloon volleyball would be fun!</button>
+    `
+    document.getElementById('dance').addEventListener("click", () => {
+      showMessage(`🪩 A dance party sounds perfect!`, 'user')
+      setTimeout(sayGoodbye, 1000)
+    })
+    document.getElementById('balloon').addEventListener("click", () => {
+      showMessage(`🎈 Balloon volleyball would be fun!`, 'user')
+      setTimeout(sayGoodbye, 1000)
+    })
+  } else if (mood === "active" && weather === "rainy" && time === "long") {
+    showMessage(`How about building a fort or setting up an obstacle course?`, 'bot')
+    inputWrapper.innerHTML = `
+    <button id="fort">🏰 Building a fort sounds perfect!</button>
+    <button id="obstacle">🪜 An obstacle course would be fun!</button>
+    `
+    document.getElementById('fort').addEventListener("click", () => {
+      showMessage(`🏰 Building a fort sounds perfect!`, 'user')
+      setTimeout(sayGoodbye, 1000)
+    })
+    document.getElementById('obstacle').addEventListener("click", () => {
+      showMessage(`🪜 An obstacle course would be fun!`, 'user')
+      setTimeout(sayGoodbye, 1000)
+    })
+  } else if (mood === "active" && weather === "sunny" && time === "short") {
+    showMessage(`How about outdoor jump rope or going for a bike ride?`, 'bot')
+    inputWrapper.innerHTML = `
+      <button id="jump">🪢 Jump rope sounds perfect!</button>
+      <button id="bike">🚲 A bike ride would be fun!</button>
+      `
+    document.getElementById('jump').addEventListener("click", () => {
+      showMessage(`🪢 Jump rope sounds perfect!`, 'user')
+      setTimeout(sayGoodbye, 1000)
+    })
+    document.getElementById('bike').addEventListener("click", () => {
+      showMessage(`🚲 A bike ride would be fun!`, 'user')
+      setTimeout(sayGoodbye, 1000)
+    })
+  } else if (mood === "active" && weather === "sunny" && time === "long") {
+    showMessage(`How about a trip to the playground or playing a ball game like soccer or basketball?`, 'bot')
+    inputWrapper.innerHTML = `
+      <button id="playground">🛝 A trip to the playground sounds perfect!</button>
+      <button id="ball">⚽ A ball game would be fun!</button>
+      `
+    document.getElementById('playground').addEventListener("click", () => {
+      showMessage(`🛝 A trip to the playground sounds perfect!`, 'user')
+      setTimeout(sayGoodbye, 1000)
+    })
+    document.getElementById('ball').addEventListener("click", () => {
+      showMessage(`⚽ A ball game would be fun!`, 'user')
+      setTimeout(sayGoodbye, 1000)
+    })
+  } else {
+    showMessage(`I am confused. Please refresh the page.`, 'bot')
+    clearButtons()
+  }
+}
 
-// }
 
 //6. Comment on user's answer for weather and ask how much time they have for an activity
 const getTime = () => {
@@ -80,12 +194,12 @@ const getTime = () => {
   document.getElementById('short').addEventListener("click", () => {
     currentTime = "short"
     showMessage(`Not much, less than 30 minutes.`, 'user')
-    setTimeout(() => getActivity(currentMood), 1000)
+    setTimeout(() => getActivity(currentMood, currentWeather, currentTime), 1000)
   })
   document.getElementById('long').addEventListener("click", () => {
     currentTime = "long"
     showMessage(`Quite a lot, at least 30 minutes.`, 'user')
-    setTimeout(() => getActivity(currentMood), 1000)
+    setTimeout(() => getActivity(currentMood, currentWeather, currentTime), 1000)
   })
 }
 
