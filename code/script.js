@@ -1,5 +1,8 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
+const nameInput = document.getElementById('name-input')
+const nameForm = document.getElementById('name-form')
+const inputWrapper = document.getElementById('input-wrapper')
 
 // Functions goes here 👇
 
@@ -43,6 +46,30 @@ const greetUser = () => {
   // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
 }
 
+const handleNameInput = () => {
+  // event.preventDefault()
+  // Store the value in a variable so we can access it after we
+  // clear it from the input
+  const name = nameInput.value
+  showMessage(name, "user")
+  nameInput.value = ""
+
+  // After 1 second, show the next question by invoking the next function.
+  // passing the name into it to have access to the user's name if we want
+  // to use it in the next question from the bot.
+  //showFoodOptions(name)
+  setTimeout( () => showFoodOptions(name), 1000);
+}
+
+const showFoodOptions = (name) =>  {
+  showMessage(`hello ${name}! what would you like to order?`,'bot')
+  inputWrapper.innerHTML = `
+    <button id="tacosButton">Tacos</button>
+    <button id="pizzaButton">Pizza</button>
+    <button id="pastaButton">Pasta</button>
+  `
+}
+
 // Eventlisteners goes here 👇
 
 // Here we invoke the first function to get the chatbot to ask the first question when
@@ -51,4 +78,7 @@ const greetUser = () => {
 // and pass along two arguments:
 // 1.) the function we want to delay, and 2.) the delay in milliseconds 
 // This means the greeting function will be called one second after the website is loaded.
+
+nameForm.addEventListener('submit', () => handleNameInput())
+
 setTimeout(greetUser, 200)
