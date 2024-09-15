@@ -12,4 +12,4 @@ If there had been more time I would have tried to get the chatbot to fetch real 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://rococo-stroopwafel-4da0eb.netlify.app/
