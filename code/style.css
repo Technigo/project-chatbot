@@ -11,7 +11,7 @@ body {
 
 h1 {
   font-weight: bold;
-  font-size: 28px;
+  font-size: 30px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -28,7 +28,7 @@ h2 {
 
 h4 {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 24px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -156,4 +156,38 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+/* Media Queries */
+/* Mobile */
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  h1 {
+    font-size: 20px;
+  }
+
+  h4 {
+    font-size: 14px;
+  }
+}
+
+/* Tablet  */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  h4 {
+    font-size: 18px;
+  }
+}
+
+/* Desktop  */
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  h4 {
+    font-size: 24px;
+  }
 }

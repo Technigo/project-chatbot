@@ -1,6 +1,5 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 document.addEventListener("DOMContentLoaded", () => {
-
   // The form element
   const form = document.getElementById("name-form");
   // The input where the name is typed
@@ -12,27 +11,25 @@ document.addEventListener("DOMContentLoaded", () => {
   // Functions goes here 👇
   const handleNameInput = (event) => {
     event.preventDefault();
-    // Store the value in a variable so we can access it after we
-    // clear it from the input
+    // Store the value in a variable so we can access it after we clear it from the input
     const name = nameInput.value;
     showMessage(name, "user");
     nameInput.value = "";
 
     // After 1 second, show the next question by invoking the next function.
-    // passing the name into it to have access to the user's name if we want
-    // to use it in the next question from the bot.
+    // passing the name into it to have access to the user's name if we want to use it in the next question from the bot.
     setTimeout(() => showFoodOptions(name), 1000);
   };
 
   const showFoodOptions = (name) => {
     if ((name === "Pizza") || (name === "pizza")) {
-      showMessage("You've ordered a Daily Surprise Pizza! It'll be ready for pick up in 15 minutes, pay upon arrival.<br> Adult size = 150SEK Child size = 100SEK 😋", "bot");
+      showMessage("You've ordered a Daily Surprise Pizza! It'll be ready for pick up in 15 minutes, pay upon arrival😋<br> Adult size = 150SEK Child size = 100SEK", "bot");
     } else if ((name === "Pasta") || (name === "pasta")) {
-      showMessage("You've ordered a Daily Surprise Pasta! It'll be ready for pick up in 15 minutes, pay upon arrival.<br> Adult size = 130SEK Child size = 80SEK 😋", "bot");
+      showMessage("You've ordered a Daily Surprise Pasta! It'll be ready for pick up in 15 minutes, pay upon arrival😋<br> Adult size = 130SEK Child size = 80SEK", "bot");
     } else if ((name === "Salad") || (name === "salad")) {
-      showMessage("You've ordered a Daily Surprise Salad! It'll be ready for pick up in 15 minutes, pay upon arrival.<br>Adult size = 120SEK Child size = 70SEK 😋", "bot");
+      showMessage("You've ordered a Daily Surprise Salad! It'll be ready for pick up in 15 minutes, pay upon arrival😋<br>Adult size = 120SEK Child size = 70SEK", "bot");
     } else {
-      showMessage(`Hello ${name}, what type of food would you like today?\nPlease write your option:\nPizza, \nPasta\n or Salad 🍽️`, "bot");
+      showMessage(`Hello ${name}, what type of food would you like today?<br>Please write your option: Pizza, Pasta or Salad 🍽️`, "bot");
     }
   }
 
@@ -40,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const showMessage = (message, sender) => {
     // The if statement checks if the sender is the user and if that's the case it inserts
     // an HTML section inside the chat with the posted message from the user
-    if (sender === 'user') {
+    if (sender === "user") {
       chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -51,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `
       // The else if statement checks if the sender is the bot and if that's the case it inserts
       // an HTML section inside the chat with the posted message from the bot
-    } else if (sender === 'bot') {
+    } else if (sender === "bot") {
       console.log(`Welcome to the chat`);
 
       chat.innerHTML += `
@@ -64,15 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
     `
     }
 
-    // This little thing makes the chat scroll to the last message when there are too many to
-    // be shown in the chat box
+    // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
     chat.scrollTop = chat.scrollHeight
   }
 
   // A function to start the conversation
   const greetUser = () => {
     // Here we call the function showMessage, that we declared earlier with the argument:
-    showMessage("Hello there, welcome to Elina's Pizzeria! What's your name?", "bot")
+    showMessage("Hello there!<br>Welcome to Elina's Daily Surprise Pizzeria!<br>What's your name?", "bot")
   }
 
   // Eventlisteners goes here 
