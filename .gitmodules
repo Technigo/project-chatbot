@@ -1,0 +1,6 @@
+[submodule "project-chatbot"]
+	path = project-chatbot
+	url = https://github.com/smily342/project-chatbot.git
+[submodule "chatbot/Chatbot/project-chatbot"]
+	path = chatbot/Chatbot/project-chatbot
+	url = https://github.com/smily342/project-chatbot.git
