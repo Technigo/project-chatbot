@@ -1,13 +1,14 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The second project of the Javascript sprint was to create a chat bot using functions, DOM selectors and conditionals. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I had a hard time getting started with this. I understand the overall logic but found it difficult to put everything in place. The most difficult part was to put together the ask question function and getting it to check correct answer. I needed a lot of help from chat gpt for that, also with the final score function. I also found it hard with the order of things and getting each step to work. 
+
+I also watched the videos about DOMs and functions again to try to understand the whole concept and putting it together but I must say that I still am somewhat confused and need to read more about this. 
+
+If I had more time I would add a function to restart the quiz. I would also add some sounds since it is a music quiz, that could be fun. 
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://musicmaven.netlify.app/

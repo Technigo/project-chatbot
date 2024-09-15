@@ -15,7 +15,7 @@ const Question1 = {
 }
 
 const Question2 = {
-  question: "Which song contains the lyrics 'It´s like ten thousand spoons when all you need is a knife'?",
+  question: "Which song has the lyrics: 'It´s like ten thousand spoons when all you need is a knife'?",
   options: ["Torn", "Ironic", "Killing me softly", "You learn"],
   correctAnswer: "Ironic"
 }
@@ -55,9 +55,6 @@ const Question8= {
   options: ["Jennifer Hudson", "Adam Lambert", "Kelly Clarkson", "Carrie Underwood"],
   correctAnswer: "Kelly Clarkson"
 }
-
-
-
 
 
 // Array of questions
