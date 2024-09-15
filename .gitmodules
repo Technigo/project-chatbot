@@ -1,0 +1,3 @@
+[submodule "project-chatbot"]
+	path = project-chatbot
+	url = https://github.com/smily342/project-chatbot.git
