@@ -11,11 +11,13 @@ const showMessage = (message, sender) => {
           <div class="bubble user-bubble">
           <p>${message}</p>
           </div>
+          <img src="./assets/user-chat.png" alt="user image" class="user-message-img"/>
         </section>
         `
   } else if (sender === "bot") {
     chat.innerHTML += `
             <section class="bot-message">
+               <img src="./assets/bot-chat.png" alt="user image" class="bot-message-img"/>
               <div class="bubble bot-bubble">
                 <p>${message}</p>
               </div>
@@ -25,45 +27,39 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight
 }
 
+// 5. Confirm order with yes/no
+// Confirm order shrimp
 
-//3. Order Food
-
-const orderFood = (username) => {
-  showMessage(`Great, ${username}! What would you like to eat?`, "bot")
-
-  // Food type choices
+const confirmOrder = (username) => {
   form.innerHTML += `
- <div class="foodtype-container" id="foodtype-container">
-        <button class="foodtype-button" id="fish-button" type="button">🐟 Fish</button>
-        <button class="foodtype-button" id="shellfish-button" type="button">🦀 Shellfish</button>
-        <button class="foodtype-button" id="mollusks-button" type="button">🦪 Mollusks</button>
-        <button class="foodtype-button" id="soup-button" type="button">🥣 Soups and Stews</button>
-      </div>
-`
-  // Selection of dish for foodtype fish
+  <div class="confirm-container" id="confirm-container">
+         <button class="confirm-button" id="yes-button" type="button">Yes</button>
+         <button class="confirm-button" id="no-button" type="button">No</button>
+       </div>
+  `
 
-  const foodtype = document.getElementById("foodtype-container")
   document
-    .getElementById("fish-button")
+    .getElementById("yes-button")
     .addEventListener("click", () => {
-      showMessage("You like to order fish. Please choose a dish!", "bot")
-      foodtype.style.display = "none"
-      chooseShellfish()
+      showMessage("yes", "user")
+      showMessage(`Thank you,  for your order, ${username}!`, "bot")
+      form.innerHTML = ""
     })
-
   document
-    .getElementById("shellfish-button")
+    .getElementById("no-button")
     .addEventListener("click", () => {
-      showMessage("You like to order shellfish. Please choose a dish!", "bot")
-      foodtype.style.display = "none"
-      chooseShellfish()
+      showMessage("no", "user")
+      showMessage("Maybe another time", "bot")
+      form.innerHTML = ""
     })
 }
 
 
+// 4. Select dish and display message 
+
 // Select fish dish
-const dishContainer = document.getElementById("dish-container")
-const choosefish = () => {
+
+const chooseFish = (username) => {
   form.innerHTML += `
   <div class="dish-container" id="dish-container">
          <button class="dish-button" id="salmon-button" type="button">Grilled Salmon</button>
@@ -73,24 +69,27 @@ const choosefish = () => {
   document
     .getElementById("salmon-button")
     .addEventListener("click", () => {
-      console.log("hi")
-      showMessage("You like to order Salmon. Great!", "bot")
-      dishContainer.style.display = "none"
+      showMessage("salmon", "user")
+      showMessage(`The Salmon for you. That will be $15. Are you sure you want to order this?`, "bot")
+      form.innerHTML = ""
+      confirmOrder(username)
     }
     )
 
   document
     .getElementById("fish-chips-button")
     .addEventListener("click", () => {
-      showMessage("You like to order Fish and Chips. Great!", "bot")
-      dishContainer.style.display = "none"
+      showMessage("fish and chips", "user")
+      showMessage(`${username}, you like to order Fish and Chips. Great! That will be $15. Are you sure you want to order this?`, "bot")
+      form.innerHTML = ""
+      confirmOrder(username)
     })
 }
 
 
 //  select shellfish dish
 
-const chooseShellfish = () => {
+const chooseShellfish = (username) => {
 
   form.innerHTML += `
    <div class="dish-container" id="dish-container">
@@ -102,76 +101,97 @@ const chooseShellfish = () => {
   document
     .getElementById("shrimp-button")
     .addEventListener("click", () => {
-      console.log("hi")
-      showMessage("You like to order Shrimp. Great!", "bot")
-      dishContainer.style.display = "none"
+      showMessage("shrimp", "user")
+      showMessage(`${username}You like to order Shrimp. Great choice! That will be $15. Are you sure you want to order this?`, "bot")
+      form.innerHTML = ""
+      confirmOrder(username)
     }
     )
 
   document
     .getElementById("lobster-button")
     .addEventListener("click", () => {
-      showMessage("You like to order Lobster. Great!", "bot")
-      dishContainer.style.display = "none"
+      showMessage("lobster", "user")
+      showMessage(`Great choice, ${username}! That will be $15. Are you sure you want to order this?`, "bot")
+      form.innerHTML = ""
+      confirmOrder(username)
+    })
+}
+
+const chooseMollusks = (username) => {
+
+  form.innerHTML += `
+   <div class="dish-container" id="dish-container">
+          <button class="dish-button" id="paella-button" type="button">Paella</button>
+          <button class="dish-button" id="calamari-button" type="button">Calamari</button>
+        </div>
+  `
+
+  document
+    .getElementById("paella-button")
+    .addEventListener("click", () => {
+      showMessage("paella", "user")
+      showMessage(`Great choice, ${username}! That will be $15. Are you sure you want to order this?`, "bot")
+      form.innerHTML = ""
+      confirmOrder(username)
+    }
+    )
+
+  document
+    .getElementById("calamari-button")
+    .addEventListener("click", () => {
+      showMessage("calamari", "user")
+      showMessage(`Great choice, ${username}! That will be $15. Are you sure you want to order this?`, "bot")
+      form.innerHTML = ""
+      confirmOrder(username)
     })
 }
 
 
+//3. Select Foodtype
 
-// Dish choices for food type fish
+const selectFoodtype = (username) => {
+  showMessage(`Nice to meet you, ${username}! What type of food would you like to eat?`, "bot")
 
-//  Event listener für dishes
+  // Buttons to select the food type
+  form.innerHTML += `
+ <div class="foodtype-container" id="foodtype-container">
+        <button class="foodtype-button" id="fish-button" type="button">🐟 Fish</button>
+        <button class="foodtype-button" id="shellfish-button" type="button">🦀 Shellfish</button>
+        <button class="foodtype-button" id="mollusks-button" type="button">🦪 Mollusks</button>
+      </div>
+`
+  //  Buttons to select the dishes & message
 
-// const salmonButton = document.getElementById("salmon-button")
-// const dishContainer = document.getElementById("dish-container")
-// const fishChipsButton = document.getElementById("fish-chips-button")
+  document
+    .getElementById("fish-button")
+    .addEventListener("click", () => {
+      showMessage("fish", "user")
+      showMessage("Great choice! Select something from the menu!", "bot")
+      form.innerHTML = ""
+      chooseFish(username)
+    })
 
-// salmonButton.addEventListener("click", () => {
-//   showMessage("Grilled Salmon! Great choice! Thank you for your order!", "bot")
-//   dishContainer.style.display = "none"
-// })
+  document
+    .getElementById("shellfish-button")
+    .addEventListener("click", () => {
+      showMessage("shellfish", "user")
+      showMessage("Great choice! Select something from the menu!", "bot")
+      form.innerHTML = ""
+      chooseShellfish(username)
+    })
 
-// fishChipsButton.addEventListener("click", () => {
-//   showMessage("Fish and Chips! Great choice! Thank you for your order!", "bot")
-//   dishContainer.style.display = "none"
-// })
+  document
+    .getElementById("mollusks-button")
+    .addEventListener("click", () => {
+      showMessage("mollusks", "user")
+      showMessage(`${username}, you like to order mullusks. Please choose a dish!`, "bot")
+      form.innerHTML = ""
+      chooseMollusks(username)
+    })
+}
 
-// }
-
-
-// Dish choices for food type shellfish
-
-
-// shellfishButton.addEventListener("click", () => {
-//   showMessage("You like to order shellfish. Please choose a dish!", "bot")
-//   foodtype.style.display = "none"
-
-//   form.innerHTML += `
-//  <div class="dish-container" id="dish-container">
-//         <button class="dish-button" id="shrimp-button" type="button">Shrimp</button>
-//         <button class="dish-button" id="lobster-button" type="button">Lobster</button>
-//       </div>
-// `
-// })
-
-//  Event listener für dishes
-
-// const shrimpButton = document.getElementById("shrimp-button")
-// const lobsterButton = document.getElementById("lobster-button")
-// shrimpButton.addEventListener("click", () => {
-//   showMessage("Shrimp! Great choice! Thank you for your order!", "bot")
-//   dishContainer.style.display = "none"
-// })
-
-// lobsterButton.addEventListener("click", () => {
-//   showMessage("Lobster! Great choice! Thank you for your oder!", "bot")
-//   dishContainer.style.display = "none"
-// })
-
-
-
-
-//2. Asking for the users name and storing the name
+//2. Asking for the users name, storing the name and display in chat
 
 const askName = () => {
   showMessage("Wonderful! What is your name?", "bot")
@@ -187,14 +207,18 @@ const askName = () => {
 
   inputButton.addEventListener("click", (event) => {
     event.preventDefault()
-    console.log("toll")
 
     const username = input.value
 
-    showMessage(username, "user")
-    input.style.display = "none"
-    inputButton.style.display = "none"
-    orderFood(username)
+    if (username) {
+      showMessage(username, "user")
+      input.style.display = "none"
+      form.innerHTML = ""
+      selectFoodtype(username)
+    }
+    else {
+      showMessage("Please enter your name.", "bot")
+    }
   }
   )
 }
@@ -206,6 +230,7 @@ const greetUser = () => {
   showMessage("Hello! Are you ready to start the order?", "bot")
 
   form.innerHTML += `
+  
         <button id="button" class="confirm-button" type="button">yes!</button>
       `
 
@@ -213,8 +238,8 @@ const greetUser = () => {
   //Event: when user clicks the button, 'ok' will be displayed in the chat and the button will be taken off the screene
 
   sendButton.addEventListener("click", () => {
-    sendButton.style.display = "none"
     showMessage("Yes!", "user")
+    form.innerHTML = ""
     askName()
   })
 

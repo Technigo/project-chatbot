@@ -33,13 +33,14 @@ h1 {
   padding-top: 10%;
 }
 
-/* main for mobile phones */
+/* main  */
 
 main {
-  background: (4, 38, 52);
+  background: rgb(5, 49, 68);
   width: 100%;
+  height: 80vh;
   max-width: 700px;
-  max-height: 500px;
+  max-height: 600px;
   margin: 0 auto;
   border-radius: 30px;
   padding: 20px;
@@ -70,9 +71,9 @@ main {
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
-  padding: 16px 24px;
+  padding: 4px 4px;
   color: #0c1546;
-  max-width: 70%;
+  max-width: 50%;
 }
 
 .user-message {
@@ -82,16 +83,17 @@ main {
   flex-shrink: 0;
 }
 
-/* .user-message img,
-.bot-message img {
-  width: 60px;
-  height: 60px;
-} */
+.user-message-img,
+.bot-message-img {
+  width: 50px;
+  height: 50px;
+  margin: 3px;
+}
 
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
-  background: red;
+  background: #79aab5;
 }
 
 .bot-message {
@@ -102,7 +104,7 @@ main {
 }
 
 .bot-bubble {
-  border-radius: 26px 26px 0px 26px;
+  border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
   background: yellow;
 }
@@ -131,7 +133,7 @@ main {
 }
 
 .confirm-button:hover {
-  background-color: red;
+  background-color: #79aab5;
 }
 
 /* Button to send in name */
@@ -141,7 +143,7 @@ main {
   font-weight: bold;
   font-size: 20px;
   width: 60px;
-  height: 50px;
+  height: 40px;
   border-radius: 10px;
   cursor: pointer;
   border: solid, white;
@@ -160,21 +162,23 @@ main {
   font-family: 'Moneserrat', sans-serif;
   font-weight: 600;
   font-size: 18 px;
-  line-height: 24px;
+  line-height: 10px;
   margin: none;
   flex: 1;
 }
 
 /* buttons to choose the food category */
 .foodtype-container,
-.dish-container {
+.dish-container,
+.confirm-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .foodtype-button,
-.dish-button {
+.dish-button,
+.confirm-button {
   font-family: 'Monesserat', sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -182,12 +186,32 @@ main {
   border: none;
   padding: 5px;
   margin: 3px;
+  width: 200px;
+  border: solid, white
 }
 
-.foodtype-button:hover {
+.foodtype-button:hover,
+.dish-button:hover,
+.confirm-button:hover {
   font-size: 20px;
+  background-color: #79aab5;
 }
 
-.shellfish-container {
-  display: none;
+/* Tablet and iPads */
+@media (min-width: 667px) {
+  h1 {
+    font-size: 50px;
+    ;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  h1 {
+    padding-top: 5%;
+  }
+
+  body {
+    background-image: url(./assets/background-bubbles.jpg)
+  }
 }
