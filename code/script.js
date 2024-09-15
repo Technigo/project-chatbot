@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Greet the user
   const greetUser = () => {
-    showMessage("Welcome to Jonas Cafe! What's your name?", 'bot');
+    showMessage("Welcome to J.Cafe! What's your name?", 'bot');
   };
 
   // Handle the name input
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Bot responds after 1 second
       setTimeout(() => {
-        showMessage(`Hi, ${userName}! What would you like to order today?<br><br>1. Black Coffee <br>2. Latte <br>3. Tea <br>4. Soft Drink`, 'bot');
+        showMessage(`Hi ${userName}🥰! What would you like to order?<br><br>1. Black Coffee <br>2. Latte <br>3. Tea <br>4. Soft Drink`, 'bot');
         isAskingForDrink = true; // Now we are asking for a drink choice
       }, 1000);
     }
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // If the user chose a valid option, show the drink message and ask if they want food
-    showMessage(`You chose ${drink}.<br><br>Would you like to order some food as well, ${userName}?<br><br>1. Yes <br>2. No`, 'bot');
+    showMessage(`You chose ${drink}.<br><br>Would you like to order some food as well, ${userName}?😋<br><br>1. Yes <br>2. No`, 'bot');
 
     // Now waiting for food choice
     isAskingForDrink = false; // Reset drink flag
@@ -92,11 +92,11 @@ document.addEventListener('DOMContentLoaded', () => {
       isChoosingDish = true; // Now waiting for dish choice
       return;
     } else if (foodchoice === "2") {
-      showMessage("No problem, enjoy your drink!😍", 'bot');
+      showMessage("No problem, your drink will be deliverd in 15 min, enjoy!😍", 'bot');
       isAskingForFood = false; // Stop asking for food
       return; // Exit if user doesn't want to eat
     } else {
-      showMessage("Sorry, I didn't understand that. Please choose 1 or 2.", 'bot');
+      showMessage("Sorry🙈, I didn't understand that. Please choose 1 or 2.", 'bot');
       return; // Exit and wait for a valid choice
     }
   };
@@ -120,16 +120,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // Handle invalid choice
     else {
-      showMessage("Sorry, I didn't understand that. Please choose 1, 2, 3, or 4.", 'bot');
+      showMessage("Sorry🙈, I didn't understand that. Please choose 1, 2, 3, or 4.", 'bot');
       return; // Wait for a valid dish choice
     }
 
     // Show summary of the user's order
-    showMessage(`You have chosen:<br> ${food} and ${drink}! What a fantastic combo😂!<br><br> Your order will be deliverd in 15 min, enjoy🥳`, 'bot');
+    showMessage(`You have chosen:<br> ${food} and ${drink}! What a fab combo😂!<br><br> Your order will be deliverd in 15 min, enjoy🥳`, 'bot');
     isChoosingDish = false; // Stop asking for dishes after valid choice
   };
 
-  // Example of how you might handle user input based on the phase of the conversation
+
   const handleUserInput = (event) => {
     event.preventDefault();
     const input = nameInput.value; // Get input from user
