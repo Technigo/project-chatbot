@@ -47,7 +47,7 @@ const greetUser = () => {
 }
 
 const handleNameInput = (event) => {
-   //event.preventDefault()
+  event.preventDefault()
   // Store the value in a variable so we can access it after we
   // clear it from the input
   const name = nameInput.value.trim()
@@ -64,6 +64,7 @@ const handleNameInput = (event) => {
  }
 } 
 // Eventlisteners goes here 👇
+//First menu option
 const showFoodOptions = (name) =>  {
   showMessage(`hello ${name}! what would you like to order?`,'bot')
   inputWrapper.innerHTML = `
@@ -71,12 +72,14 @@ const showFoodOptions = (name) =>  {
     <button id="pizzaButton">Pizza</button>
     <button id="pastaButton">Pasta</button>
   `
-
+//Here we listen for the event/click that selects the food 
   document.getElementById('tacosButton').addEventListener('click', () => handleFoodSelection('Tacos'))
   document.getElementById('pizzaButton').addEventListener('click', () => handleFoodSelection('Pizza'))
   document.getElementById('pastaButton').addEventListener('click', () => handleFoodSelection('Pasta'))
 }
 
+//Return message telling which food was selected 
+//Call the function askForDrink
 const handleFoodSelection = (food) => {
   showMessage(`I would like to have ${food}! thanks 🥰`, 'user')
   askForDrink()
@@ -87,22 +90,23 @@ const askForDrink = () => {
   inputWrapper.innerHTML = `
     <button id="yesButton">Yes</button>
     <button id="noButton">No</button>
-  `;
+  `
 
   document.getElementById('yesButton').addEventListener('click', () => handleDrinkSelection(true))
   document.getElementById('noButton').addEventListener('click', () => handleDrinkSelection(false))
-};
+}
 
 const handleDrinkSelection = (wantsDrink) => {
   if (wantsDrink) {
     showMessage("Yes, I would like a drink.", 'user')
     setTimeout(() => showDrinkOptions(), 1000)
   } else {
-    showMessage("No, thanks.", 'user');
+    showMessage("No, thanks.", 'user')
     setTimeout(() => askForDessert(), 1000)
   }
-};
+}
 
+//A dropdown is presented to select the type of drink.
 const showDrinkOptions = () => {
   showMessage("What drink would you like?", 'bot')
   inputWrapper.innerHTML = `
@@ -113,8 +117,8 @@ const showDrinkOptions = () => {
       <option value="Water">Water</option>
     </select>
     <button id="selectDrinkButton">Confirm</button>
-  `;
-
+  `
+//Conditional Checks: The bot uses if...else statements to handle different responses
   document.getElementById('selectDrinkButton').addEventListener('click', () => {
     const selectedDrink = document.getElementById('drinkSelect').value
     if (selectedDrink) {
@@ -123,19 +127,19 @@ const showDrinkOptions = () => {
     } else {
       showMessage("Please select a drink.", 'bot')
     }
-  });
-};
+  })
+}
 
 const askForDessert = () => {
   showMessage("Would you like some dessert?", 'bot')
   inputWrapper.innerHTML = `
     <button id="dessertYesButton">Yes</button>
     <button id="dessertNoButton">No</button>
-  `;
+  `
 
   document.getElementById('dessertYesButton').addEventListener('click', () => handleDessertSelection(true))
   document.getElementById('dessertNoButton').addEventListener('click', () => handleDessertSelection(false))
-};
+}
 
 const handleDessertSelection = (wantsDessert) => {
   if (wantsDessert) {
@@ -143,21 +147,22 @@ const handleDessertSelection = (wantsDessert) => {
     setTimeout(() => showFinalMessage(), 1000)
   } else {
     showMessage("No, I'm good.", 'user')
-    setTimeout(() => showFinalMessage(), 1000);
+    setTimeout(() => showFinalMessage(), 1000)
   }
 }
 
 const showFinalMessage = () => {
-  showMessage("Thank you for your order! It will be ready soon. Have a great day!", 'bot');
+  showMessage("Thank you for your order! It will be ready soon. Have a great day!", 'bot')
   inputWrapper.innerHTML = "" // Clear the input wrapper
-};
+}
+
+nameForm.addEventListener('submit', () => handleNameInput(event))
+
 // Here we invoke the first function to get the chatbot to ask the first question when
 // the website is loaded. Normally we invoke functions like this: greeting()
 // To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
 // and pass along two arguments:
 // 1.) the function we want to delay, and 2.) the delay in milliseconds 
 // This means the greeting function will be called one second after the website is loaded.
-
-nameForm.addEventListener('submit', () => handleNameInput(event))
 
 setTimeout(greetUser, 200)
