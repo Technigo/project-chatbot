@@ -51,145 +51,38 @@ const clearButtons = () => {
   inputWrapper.innerHTML = ''
 }
 
-//6. Confirm order
-const confirmOrder = (userConfirmation) => {
-  if (userConfirmation === "Yes") {
-    showMessage(`Yes, please!`, 'user')
-    setTimeout(() => {
-      showMessage(`You are in for a treat. One ${finalOrder} is on the way!`, 'bot')
-      clearButtons() //Clear the input field when conversation is over
-    }, 1000)
-  }
-  else { //the only other option is no
-    showMessage(`No, thank you.`, 'user')
-    setTimeout(() => {
-      showMessage(`No worries. If you change your mind, please come back again. Bye for now!`, 'bot')
-      clearButtons()
-    }, 1000)
-  }
-}
-
-//5. Get age
-const setPortionSize = (size) => {
-  let portionSize = size
-  let cost
-  if (portionSize === "child") {
-    cost = "8.95"
-  }
-  else {
-    cost = "14.95"
-  }
-  showMessage(`${size}`, 'user')
-  setTimeout(() => {
-    showMessage(`One ${portionSize} size ${finalOrder} costs $${cost}. Would you like to confirm this order?`, 'bot')
-    inputWrapper.innerHTML = `
-      <button id="yes">Yes, please!</button>
-      <button id="no">No, thank you.</button>
-    `
-    document.getElementById('yes').addEventListener("click", () => confirmOrder('Yes'))
-    document.getElementById('no').addEventListener("click", () => confirmOrder('No'))
-
-  }, 1000)
-}
-
-
-//4. Set final order
-const setFinalOrder = (order) => {
-  finalOrder = order;
-  showMessage(`${finalOrder}`, 'user');
-  setTimeout(() => {
-    showMessage(`Great choice! You have selected ${finalOrder}. Will this order be for a child or an adult?`, 'bot')
-    inputWrapper.innerHTML = `
-      <button id="child">🧒🏻 Child</button>
-      <button id="adult">🧑🏻 Adult</button>
-    `
-    document.getElementById('child').addEventListener("click", () => setPortionSize('child'));
-    document.getElementById('adult').addEventListener("click", () => setPortionSize('adult'));
-  }, 1000);
-}
-
-//3. Take subfood order
-const getSubfood = (foodOrder) => {
-  if (foodOrder === "pizza") {
-    showMessage("🍕 Pizza", 'user')
-    setTimeout(() => {
-      showMessage("What kind of pizza would you like?", 'bot')
-      inputWrapper.innerHTML = `
-          <button id="pepporoni">🍖 Pepporoni</button>
-          <button id="cheese">🧀 Cheese</button>
-          <button id="margherita">🍅 Margherita</button>
-        `
-      document.getElementById('pepporoni').addEventListener("click", () => setFinalOrder('🍖 Pepporoni Pizza'))
-      document.getElementById('cheese').addEventListener("click", () => setFinalOrder('🧀 Cheese Pizza'))
-      document.getElementById('margherita').addEventListener("click", () => setFinalOrder('🍅 Margherita Pizza'))
-    }, 1000)
-  } else if (foodOrder === "pasta") {
-    showMessage("🍝 Pasta", 'user')
-    setTimeout(() => {
-      showMessage("What kind of pasta would you like?", 'bot')
-      inputWrapper.innerHTML = `
-          <button id="spaghetti-bolognese">🍝 Spaghetti Bolognese</button>
-          <button id="fettuccine-alfredo">🧈 Fettuccine Alfredo</button>
-          <button id="lasagna">🍅 Lasagna</button>
-        `
-      document.getElementById('spaghetti-bolognese').addEventListener("click", () => setFinalOrder('🍝 Spaghetti Bolognese'))
-      document.getElementById('fettuccine-alfredo').addEventListener("click", () => setFinalOrder('🧈 Fettucine Alfredo'))
-      document.getElementById('lasagna').addEventListener("click", () => setFinalOrder('🍅 Lasagna'))
-        ;
-    }, 1000)
-  } else { //foodOrder has to be salad
-    showMessage("🥗 Salad", 'user')
-    setTimeout(() => {
-      showMessage("What kind of salad would you like?", 'bot')
-      inputWrapper.innerHTML = `
-          <button id="caesar">🥬 Caesar</button>
-          <button id="greek">🥒 Greek</button>
-          <button id="caprese">🍅 Caprese</button>
-        `
-      document.getElementById('caesar').addEventListener("click", () => setFinalOrder('🥬 Caesar Salad'))
-      document.getElementById('greek').addEventListener("click", () => setFinalOrder('🥒 Greek Salad'))
-      document.getElementById('caprese').addEventListener("click", () => setFinalOrder('🍅 Caprese Salad'))
-        ;
-    }, 1000)
-  }
-}
 //4. Comment on user's favorite animal and ask about weather
 const getWeather = (userAnimal) => {
 
 }
 
-let colorValue = ""
-//Function to update button colors
-const updateButtonColors = (colorValue) => {
-  const buttons = document.querySelectorAll('button');
-  buttons.forEach(button => {
-    button.style.backgroundColor = colorValue;
-  });
+
+// Change color scheme
+const changeColorScheme = (scheme) => {
+  document.body.className = scheme
 }
+
 
 //3. Find out user's favorite animal using buttons
 const getAnimal = (userColor, colorValue) => {
   showMessage(`${userColor}`, 'user')
   setTimeout(() => {
-    showMessage(`${userColor} is a great color! ${userColor} is my favorite color too. What is your favorite animal?`, 'bot')
+    showMessage(`How cool! ${userColor} is my favorite color too! What is your favorite animal?`, 'bot')
     inputWrapper.innerHTML = `
       <button id="cat">😸 Cat</button>
       <button id="dog">🐕 Dog</button>
       <button id="bear">🐻 Bear</button>
-      <button id="pig">🐷 Pig</button>
       <button id="monkey">🐒 Monkey</button>
-    `
-    updateButtonColors(colorValue)
+      `
   }, 1000)
 
   document.getElementById('cat').addEventListener("click", () => askWeather('Cats'))
   document.getElementById('dog').addEventListener("click", () => askWeather('Dogs'))
   document.getElementById('bear').addEventListener("click", () => askWeather('Bears'))
-  document.getElementById('pig').addEventListener("click", () => askWeather('Pigs'))
   document.getElementById('monkey').addEventListener("click", () => askWeather('Monkeys'))
 }
 
-//2. Find out user's favorite color using buttons
+//2. Find out user's favorite color and change color scheme based on selection. 
 const getColor = () => {
   showMessage(`Nice to meet you, ${userName}! What is your favorite color?`, 'bot')
   inputWrapper.innerHTML = `
@@ -200,12 +93,31 @@ const getColor = () => {
     <button id="green">🟢 Green</button>
     <button id="pink">🩷 Pink</button>
   `
-  document.getElementById('red').addEventListener("click", () => getAnimal('Red', 'red'))
-  document.getElementById('blue').addEventListener("click", () => getAnimal('Blue', 'blue'))
-  document.getElementById('yellow').addEventListener("click", () => getAnimal('Yellow', 'yellow'))
-  document.getElementById('purple').addEventListener("click", () => getAnimal('Purple', 'purple'))
-  document.getElementById('green').addEventListener("click", () => getAnimal('Green', 'green'))
-  document.getElementById('pink').addEventListener("click", () => getAnimal('Pink', 'pink'))
+  document.getElementById('red').addEventListener("click", () => {
+    changeColorScheme('red-scheme')
+    getAnimal('Red')
+  })
+
+  document.getElementById('blue').addEventListener("click", () => {
+    changeColorScheme('blue-scheme')
+    getAnimal('Blue')
+  })
+  document.getElementById('yellow').addEventListener("click", () => {
+    changeColorScheme('yellow-scheme')
+    getAnimal('Yellow')
+  })
+  document.getElementById('purple').addEventListener("click", () => {
+    changeColorScheme('purple-scheme')
+    getAnimal('Purple')
+  })
+  document.getElementById('green').addEventListener("click", () => {
+    changeColorScheme('green-scheme')
+    getAnimal('Green')
+  })
+  document.getElementById('pink').addEventListener("click", () => {
+    changeColorScheme('pink-scheme')
+    getAnimal('Pink')
+  })
 }
 
 //1. Get user's name and trigger color function

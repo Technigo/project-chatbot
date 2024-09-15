@@ -8,7 +8,6 @@ body {
   font-family: 'Montserrat', sans-serif;
   background: linear-gradient(to top right, pink, blue);
   height: 95%;
-
 }
 
 .container {
@@ -61,9 +60,9 @@ h2 {
 }
 
 p {
-  font-size: 18px;
+  font-size: clamp(12px, 2vw, 18px);
   font-weight: 600;
-  line-height: 28px;
+  line-height: 3vw;
   margin: 0;
 }
 
@@ -74,12 +73,12 @@ input {
   background: #e5e9ff;
   color: #0026ff;
   padding: 16px;
-  font-size: 16px;
+  font-size: clamp(12px, 2vw, 18px);
   font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
   flex: 1;
-  width: 100%;
+  width: calc(100% - 40px);
 }
 
 main {
@@ -147,6 +146,8 @@ main {
 .input-wrapper {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 3px;
 }
 
 .input-wrapper form {
@@ -155,12 +156,8 @@ main {
   align-items: center;
 }
 
-label {
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
+.input-wrapper button {
+  flex: 1 1 45%;
 }
 
 button {
@@ -170,7 +167,8 @@ button {
   border-radius: 4px;
   padding: 16px 20px;
   margin-right: 4px;
-  font-size: 16px;
+
+  font-size: clamp(12px, 2vw, 18px);
   line-height: 26px;
   font-family: 'Montserrat';
   font-weight: 500;
@@ -181,6 +179,111 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+
+/* Red color scheme */
+body.red-scheme {
+  background: linear-gradient(to bottom, red, white);
+  color: white;
+}
+
+body.red-scheme button {
+  background-color: red;
+  color: white;
+}
+
+body.red-scheme .bubble {
+  background: #ffcccc;
+  color: red;
+}
+
+/* Blue color scheme */
+body.blue-scheme {
+  background: linear-gradient(to bottom, blue, white);
+  color: white;
+}
+
+body.blue-scheme button {
+  background-color: darkblue;
+  color: white;
+}
+
+body.blue-scheme .bubble {
+  background: #cce5ff;
+  color: darkblue;
+}
+
+/* Yellow color scheme */
+body.yellow-scheme {
+  background: linear-gradient(to bottom, yellow, white);
+  color: black;
+}
+
+body.yellow-scheme button {
+  background-color: gold;
+  color: black;
+}
+
+body.yellow-scheme .bubble {
+  background: #fffacd;
+  color: goldenrod;
+}
+
+body.yellow-scheme h1 {
+  color: black;
+}
+
+body.yellow-scheme h2 {
+  color: darkgoldenrod;
+}
+
+/* Purple color scheme */
+body.purple-scheme {
+  background: linear-gradient(to bottom, purple, white);
+  color: white;
+}
+
+body.purple-scheme button {
+  background-color: indigo;
+  color: white;
+}
+
+body.purple-scheme .bubble {
+  background: #e6e6fa;
+  color: indigo;
+}
+
+/* Green color scheme */
+body.green-scheme {
+  background: linear-gradient(to bottom, green, white);
+  color: white;
+}
+
+body.green-scheme button {
+  background-color: darkgreen;
+  color: white;
+}
+
+body.green-scheme .bubble {
+  background: #ccffcc;
+  color: darkgreen;
+}
+
+/* Pink color scheme */
+body.pink-scheme {
+  background: linear-gradient(to bottom, deeppink, white);
+  color: white;
+}
+
+body.pink-scheme button {
+  background-color: deeppink;
+  color: white;
+}
+
+body.pink-scheme .bubble {
+  background: #ffccff;
+  color: deeppink;
 }
 
 /* For mobile */
