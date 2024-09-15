@@ -188,6 +188,7 @@ const showActivities = () => {
       });
   }, 600); // 500ms delay
 };
+
 // Show the choice made by the user and prompt readiness
 const showChoice = (choice) => {
   questionNumber++;
@@ -248,36 +249,19 @@ const thankYou = () => {
   inputWrapper.innerHTML = ``; // Clear input, removes the "ready" btn
   showStartOverButton(); // Show the "Start Over" button
 };
-// Function to display "Start Over" button
+
+// Show the "Start Over" button after the conversation ends
 const showStartOverButton = () => {
   setTimeout(() => {
     inputWrapper.innerHTML = `
-      <button id="startOver">Start Over</button>
-    `;
+    <button id="start-over">Start Over</button>
+  `;
+
     document
-      .getElementById("startOver")
-      .addEventListener("click", () => startOver());
-  }, 500); // Delay of 500ms
+      .getElementById("start-over")
+      .addEventListener("click", () => location.reload());
+  }, 600); // 500ms delay
 };
 
-// Reset the conversation and start over
-const startOver = () => {
-  chat.innerHTML = ""; // Clear the chat
-  userName = ""; // Reset variables
-  questionNumber = 1;
-  greeting(); // Start the conversation again
-};
-// Event listeners for sending text input
-submit.addEventListener("click", () => nextQuestion(nameInput.value));
-nameInput.addEventListener("keypress", (event) => {
-  if (event.key === "Enter" && nameInput.value) nextQuestion(nameInput.value);
-});
-
-// Start the conversation
-// setTimeout(greeting, 500);
+// Initiate the conversation
 greeting();
-
-// Prevent default form submission
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-});
