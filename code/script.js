@@ -150,9 +150,7 @@ const askQuestion = () => {
       <button id="option-2">${currentQuestion.options[2]}</button>
       <button id="option-3">${currentQuestion.options[3]}</button>
       </div>
-    `
-
-    
+    `  
 // Scroll down the chat window after buttons have loaded
 chat.scrollTop = chat.scrollHeight
 
@@ -173,6 +171,7 @@ chat.scrollTop = chat.scrollHeight
 
 // Check the user's answer and move to the next question
 const checkAnswer = (selectedOption) => {
+  setTimeout(() => {
   const currentQuestion = questions[currentQuestionNumber - 1]
 
   if (selectedOption === currentQuestion.correctAnswer) {
@@ -181,6 +180,8 @@ const checkAnswer = (selectedOption) => {
   } else {
     showMessage(`Wrong! The correct answer is ${currentQuestion.correctAnswer}.`, 'bot')
   }
+}, 900)
+
 
   // After answering, move to the next question if there are more questions
   setTimeout(() => {
@@ -198,8 +199,10 @@ const checkAnswer = (selectedOption) => {
 
 // Function to display the final score
 const showFinalScore = () => {
+  setTimeout(() => {
   showMessage(`Quiz finished! You got ${score} out of ${questions.length} correct. Thanks for playing!`, 'bot')
   inputWrapper.innerHTML = '' // Clear buttons after the quiz ends
+}, 900) // Timeout
 }
 
 // Start the conversation

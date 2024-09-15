@@ -7,7 +7,7 @@ body {
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   background: rgb(70, 82, 138);
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -50,16 +50,16 @@ input,
   font-weight: 600;
   line-height: 26px;
   flex: 1;
-  width: 100%;
+  max-width: 100%;
 }
 
 
 
 main {
   margin: 0 auto;
-  width: 100%;
-  max-width: 600px;
-  height: 500px;
+  /* width: 100%; */
+  max-width: 700px;
+  height: 600px;
   border-radius: 30px;
   background: #fff;
   padding: 20px 24px;
@@ -67,15 +67,17 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden; 
 }
 
 .chat {
   flex: 1;
   display: flex;
   justify-content: flex-start;
-  overflow: scroll;
+  /* overflow: scroll; */
   flex-direction: column;
   padding-bottom: 16px;
+  overflow-x: hidden;
 }
 
 .bot-msg {
@@ -128,12 +130,10 @@ main {
 } 
 
  .input-wrapper form {
-  width: 100%;
+  max-width: 100%;
   display: flex;
   align-items: center;
   overflow-x: hidden; 
-  max-width: 600px;
-  height: 500px;
 } 
 
 label {
@@ -148,7 +148,7 @@ button {
   background-color:  rgb(70, 82, 138);
   border: none;
   border-radius: 4px;
-  padding: 15px 15px;
+  padding: 20px 20px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
@@ -184,6 +184,14 @@ button:hover {
 
 }
 
+/* Media query for screens smaller than 1200px */
+@media (max-width: 1200px) {
+  .option-buttons {
+    margin: 15px;
+    grid-template-columns: repeat(4, 1fr);
+}
+}
+
 /* Media query for screens smaller than 768px */
 @media (max-width: 768px) {
   .option-buttons {
@@ -191,7 +199,6 @@ button:hover {
     grid-template-columns: repeat(2, 1fr);
 }
 }
-
 
 @media (max-width: 768px) {
   p {
@@ -207,7 +214,8 @@ button:hover {
   }
 }
 
-@media (max-width: 300px) {
+
+@media (max-width: 480px) {
   .option-buttons {
     grid-template-columns: 1fr;
   }
