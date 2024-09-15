@@ -16,7 +16,7 @@ const showMessage = (message, sender) => {
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="user.png" alt="User" />  
       </section>
     `
     // The else if statement checks if the sender is the bot and if that's the case it inserts
@@ -27,7 +27,7 @@ const showMessage = (message, sender) => {
     console.log("Sender is:", sender);
     chat.innerHTML += `
       <section class="bot-msg">
-        <img src="assets/bot.png" alt="Bot" />
+        <img src="bot.png" alt="Bot" />
         <div class="bubble bot-bubble">
           <p>${message}</p>
         </div>
