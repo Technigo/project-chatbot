@@ -139,6 +139,7 @@ main {
 .bot-bubble {
   border-radius: 0px 26px 26px 26px;
   margin-left: 8px;
+  background-color: #cce5ff;
 }
 
 .user-bubble {
@@ -207,8 +208,12 @@ body.red-scheme button {
 }
 
 body.red-scheme .bubble {
-  background: #ffcccc;
+  background: #ffe6e6;
   color: red;
+}
+
+body.red-scheme .bot-bubble {
+  background: #ffb3b3;
 }
 
 /* Blue color scheme */
@@ -225,6 +230,10 @@ body.blue-scheme button {
 body.blue-scheme .bubble {
   background: #cce5ff;
   color: darkblue;
+}
+
+body.blue-scheme .bot-bubble {
+  background: #99ccff;
 }
 
 /* Yellow color scheme */
@@ -251,6 +260,10 @@ body.yellow-scheme h2 {
   color: darkgoldenrod;
 }
 
+body.yellow-scheme .bot-bubble {
+  background: #ffff99;
+}
+
 /* Purple color scheme */
 body.purple-scheme {
   background: linear-gradient(to bottom, purple, white);
@@ -265,6 +278,10 @@ body.purple-scheme button {
 body.purple-scheme .bubble {
   background: #e6e6fa;
   color: indigo;
+}
+
+body.purple-scheme .bot-bubble {
+  background: #d1b3ff;
 }
 
 /* Green color scheme */
@@ -283,6 +300,10 @@ body.green-scheme .bubble {
   color: darkgreen;
 }
 
+body.green-scheme .bot-bubble {
+  background: #99ff99;
+}
+
 /* Pink color scheme */
 body.pink-scheme {
   background: linear-gradient(to bottom, deeppink, white);
@@ -297,6 +318,10 @@ body.pink-scheme button {
 body.pink-scheme .bubble {
   background: #ffccff;
   color: deeppink;
+}
+
+body.pink-scheme .bot-bubble {
+  background: #ffb3d9;
 }
 
 /* For mobile */
