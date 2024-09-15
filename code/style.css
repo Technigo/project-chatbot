@@ -10,14 +10,14 @@ body {
 }
 
 h1 {
-  font-weight: bold;
+  font-weight: bolder;
   font-size: 35px;
   line-height: 34px;
   color: #fff;
   text-align: center;
   padding-top: 25px;
   margin: 0;
-  font-family: cursive;
+  font-family: 'Poppins' 
 }
 
 h2 {
@@ -131,6 +131,7 @@ main {
   width: 100%;
   display: flex;
   align-items: center;
+  overflow-x: hidden; 
 } 
 
 label {

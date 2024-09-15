@@ -93,6 +93,7 @@ const greetUser = () => {
     <input id="name-input" placeholder="Enter name" />
     <button id="name-submit">Submit</button>
   `
+  
 
   document.getElementById('name-submit').addEventListener('click', () => {
     const userName = document.getElementById('name-input').value
@@ -105,6 +106,8 @@ const greetUser = () => {
     }
   })
 }
+
+chat.scrollTop = chat.scrollHeight
 
 // Show Yes/No buttons for quiz confirmation
 const showYesNoButtons = () => {
