@@ -74,7 +74,6 @@ main {
   flex: 1;
   display: flex;
   justify-content: flex-start;
-  /* overflow: scroll; */
   flex-direction: column;
   padding-bottom: 16px;
   overflow-x: hidden;
@@ -126,7 +125,7 @@ main {
   justify-content: center;
   background: #fff;
   overflow-x: hidden; 
-  padding: 15px;
+  padding: 10px;
 } 
 
  .input-wrapper form {
@@ -179,7 +178,7 @@ button:hover {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-content: space-between;
-  width: 100%;
+  max-width: 100%;
   gap: 5px;
 
 }

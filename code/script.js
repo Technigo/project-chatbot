@@ -152,7 +152,7 @@ const askQuestion = () => {
       </div>
     `  
 // Scroll down the chat window after buttons have loaded
-chat.scrollTop = chat.scrollHeight
+  chat.scrollTop = chat.scrollHeight
 
 
     // Add event listeners to the buttons
