@@ -118,7 +118,7 @@ const showDrinkOptions = () => {
     </select>
     <button id="selectDrinkButton">Confirm</button>
   `
-//Conditional Checks: The bot uses if...else statements to handle different responses
+  //Conditional Checks: The bot uses if...else statements to handle different responses
   document.getElementById('selectDrinkButton').addEventListener('click', () => {
     const selectedDrink = document.getElementById('drinkSelect').value
     if (selectedDrink) {
@@ -136,14 +136,13 @@ const askForDessert = () => {
     <button id="dessertYesButton">Yes</button>
     <button id="dessertNoButton">No</button>
   `
-
   document.getElementById('dessertYesButton').addEventListener('click', () => handleDessertSelection(true))
   document.getElementById('dessertNoButton').addEventListener('click', () => handleDessertSelection(false))
 }
 
 const handleDessertSelection = (wantsDessert) => {
   if (wantsDessert) {
-    showMessage("Yes, I would love some dessert!", 'user')
+    showMessage("Yes, I would love some dessert! 🍰", 'user')
     setTimeout(() => showFinalMessage(), 1000)
   } else {
     showMessage("No, I'm good.", 'user')
