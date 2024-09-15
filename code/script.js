@@ -159,10 +159,10 @@ const showMessage = (message, sender) => {
       </section>
     `;
   }
+  // Chat sound every time showMessage is used
   const chatSound = document.getElementById('chatSound');
   if (chatSound) {
-    // Försök att starta ljudet och fånga eventuella fel
-    chatSound.currentTime = 0; // Återställ till början av ljudfilen
+    chatSound.currentTime = 0; // to be able to also have chat sound on bot
     chatSound.play().catch(error => {
       console.error("Your browser do not support the video tag", error);
     });
