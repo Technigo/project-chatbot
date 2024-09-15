@@ -132,7 +132,7 @@ const askForSize = () => {
 // Handle coffee size input
 const handleSizeChoice = (size) => {
   sizeChoice = size
-  showMessage(`You selected ${size} size!`, 'user')
+  showMessage(`I select ${size} size!`, 'user')
     
   document.getElementById("regularBtn").remove()
   document.getElementById("smallBtn").remove()
