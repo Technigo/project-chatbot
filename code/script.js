@@ -5,7 +5,6 @@ const sendButton = document.getElementById('send-button')
 const inputWrapper = document.getElementById('input-wrapper')
 
 let userName = ""
-let finalOrder = ""
 // Functions goes here 👇
 
 // A function that will add a chat bubble in the correct place based on who the sender is
@@ -51,36 +50,113 @@ const clearButtons = () => {
   inputWrapper.innerHTML = ''
 }
 
-//4. Comment on user's favorite animal and ask about weather
-const getWeather = (userAnimal) => {
+let currentMood = ""
+let currentWeather = ""
+let currentTime = ""
 
+// const getActivity = (mood, weather, time) => {
+//   if (mood === "calm" && weather === "sunny" && time === "short") {
+//     showMessage(`How about coloring or doing a simple puzzle?`, 'bot')
+//     inputWrapper.innerHTML = `
+//     <button id="coloring">🎨 Coloring sounds perfect!</button>
+//     <button id="puzzle">🧩 Doing a puzzle would be fun!</button>
+//     `
+//     document.getElementById('coloring').addEventListener("click", () => {
+//       showMessage(``, 'user')
+//       setTimeout()
+//     })
+
+//   }
+
+// }
+
+//6. Comment on user's answer for weather and ask how much time they have for an activity
+const getTime = () => {
+  showMessage(`OK, good to know. How much time do you have to spare?`, 'bot')
+  inputWrapper.innerHTML = `
+    <button id="short">Not much, less than 30 minutes.</button>
+    <button id="long">Quite a lot, at least 30 minutes.</button>
+    `
+  document.getElementById('short').addEventListener("click", () => {
+    currentTime = "short"
+    showMessage(`Not much, less than 30 minutes.`, 'user')
+    setTimeout(() => getActivity(currentMood), 1000)
+  })
+  document.getElementById('long').addEventListener("click", () => {
+    currentTime = "long"
+    showMessage(`Quite a lot, at least 30 minutes.`, 'user')
+    setTimeout(() => getActivity(currentMood), 1000)
+  })
 }
 
+//5. Comment on user's mood and ask about the weather
+const getWeather = () => {
+  showMessage(`OK, we will think of something that best suits your mood. What is the weather like?`, 'bot')
+  inputWrapper.innerHTML = `
+    <button id="sunny">☀️ Perfect weather to be outdoors!</button>
+    <button id="rainy">⛈️ Not so nice outside, I'd rather be indoors.</button>
+    `
+  document.getElementById('sunny').addEventListener("click", () => {
+    currentWeather = "sunny"
+    showMessage(`☀️ Perfect weather to be outdoors!`, 'user')
+    setTimeout(getTime, 1000)
+  })
+  document.getElementById('rainy').addEventListener("click", () => {
+    currentWeather = "rainy"
+    showMessage(`⛈️ Not so nice outside, I'd rather be indoors.`, 'user')
+    setTimeout(getTime, 1000)
+  })
+}
+
+//4. Comment on user's favorite animal and ask about mood
+const getMood = (userAnimal) => {
+  showMessage(`${userAnimal}`, 'user')
+  setTimeout(() => {
+    showMessage(`Wow, we really have a lot in common! ${userAnimal} is also my favorite. Now, what kind of activity are you in the mood for today?`, 'bot')
+    inputWrapper.innerHTML = `
+    <button id="calm">🧘🏻 I'm in the mood for something calm.</button>
+    <button id="active">⛰️ I have a lot of energy to burn off!</button>
+    `
+    document.getElementById('calm').addEventListener("click", () => {
+      currentMood = "calm"
+      showMessage(`I'm in the mood for something calm.`, 'user')
+      setTimeout(getWeather, 1000)
+    })
+    document.getElementById('active').addEventListener("click", () => {
+      currentMood = "active"
+      showMessage(`I have a lot of energy to burn off!`, 'user')
+      setTimeout(getWeather, 1000)
+    })
+  }, 1000)
+}
+
+//3. Find out user's favorite animal using buttons
+const getAnimal = (userColor, colorValue) => {
+  showMessage(`${userColor}`, 'user')
+  setTimeout(() => {
+    showMessage(`How cool! ${userColor} just so happens to be my favorite color too! What is your favorite animal?`, 'bot')
+    inputWrapper.innerHTML = `
+      <button id="cat">😸 Cat</button>
+      <button id="dog">🐕 Dog</button>
+      <button id="bear">🐻 Bear</button>
+      <button id="monkey">🐒 Monkey</button>
+      <button id="pig">🐷 Pig</button>
+      <button id="lion">🦁 Lion</button>
+      `
+    document.getElementById('cat').addEventListener("click", () => getMood('Cat'))
+    document.getElementById('dog').addEventListener("click", () => getMood('Dog'))
+    document.getElementById('bear').addEventListener("click", () => getMood('Bear'))
+    document.getElementById('monkey').addEventListener("click", () => getMood('Monkey'))
+    document.getElementById('pig').addEventListener("click", () => getMood('Pig'))
+    document.getElementById('lion').addEventListener("click", () => getMood('Lion'))
+  }, 1000)
+}
 
 // Change color scheme
 const changeColorScheme = (scheme) => {
   document.body.className = scheme
 }
 
-
-//3. Find out user's favorite animal using buttons
-const getAnimal = (userColor, colorValue) => {
-  showMessage(`${userColor}`, 'user')
-  setTimeout(() => {
-    showMessage(`How cool! ${userColor} is my favorite color too! What is your favorite animal?`, 'bot')
-    inputWrapper.innerHTML = `
-      <button id="cat">😸 Cat</button>
-      <button id="dog">🐕 Dog</button>
-      <button id="bear">🐻 Bear</button>
-      <button id="monkey">🐒 Monkey</button>
-      `
-  }, 1000)
-
-  document.getElementById('cat').addEventListener("click", () => askWeather('Cats'))
-  document.getElementById('dog').addEventListener("click", () => askWeather('Dogs'))
-  document.getElementById('bear').addEventListener("click", () => askWeather('Bears'))
-  document.getElementById('monkey').addEventListener("click", () => askWeather('Monkeys'))
-}
 
 //2. Find out user's favorite color and change color scheme based on selection. 
 const getColor = () => {

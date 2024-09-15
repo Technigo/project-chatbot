@@ -3,17 +3,20 @@
 }
 
 body {
-  margin: 3%;
+  margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   background: linear-gradient(to top right, pink, blue);
-  height: 95%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .container {
+  margin: 3%;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  justify-content: space-between;
+  height: 97vh;
 }
 
 .header-image-container {
@@ -45,14 +48,14 @@ img {
 
 h1 {
   font-weight: bold;
-  font-size: 8vh;
+  font-size: 8.8vh;
   color: #fff;
   text-align: center;
 }
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -60,9 +63,9 @@ h2 {
 }
 
 p {
-  font-size: clamp(12px, 2vw, 18px);
+  font-size: 14px;
   font-weight: 600;
-  line-height: 3vw;
+  line-height: 20px;
   margin: 0;
 }
 
@@ -73,7 +76,7 @@ input {
   background: #e5e9ff;
   color: #0026ff;
   padding: 16px;
-  font-size: clamp(12px, 2vw, 18px);
+  font-size: 14px;
   font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
@@ -85,7 +88,7 @@ main {
   margin: 0 auto;
   width: 100%;
   max-width: 700px;
-  height: 80vh;
+  height: 77vh;
   border-radius: 30px;
   background: #fff;
   padding: 20px 24px;
@@ -126,7 +129,7 @@ main {
 .bubble {
   background: #e5e9ff;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 26px;
   padding: 16px 24px;
   color: #0026ff;
@@ -144,10 +147,12 @@ main {
 }
 
 .input-wrapper {
+  flex-shrink: 0;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 3px;
+  width: 100%;
+  gap: 5px;
 }
 
 .input-wrapper form {
@@ -160,15 +165,20 @@ main {
   flex: 1 1 45%;
 }
 
+.name-input {
+  font-size: 16px;
+  flex: 0 0 60%;
+}
+
 button {
+  width: auto;
   background-color: #0026ff;
   color: white;
   border: none;
   border-radius: 4px;
   padding: 16px 20px;
   margin-right: 4px;
-
-  font-size: clamp(12px, 2vw, 18px);
+  font-size: 12px;
   line-height: 26px;
   font-family: 'Montserrat';
   font-weight: 500;
@@ -181,6 +191,9 @@ button:hover {
   transition: all 0.2s ease;
 }
 
+/* ===========================
+   Color Schemes 
+   =========================== */
 
 /* Red color scheme */
 body.red-scheme {
@@ -294,7 +307,7 @@ body.pink-scheme .bubble {
 }
 
 /* For tablet and larger screens */
-@media (min-width: 767px) {
+@media (min-width: 701px) {
   .container {
     flex-direction: row;
     min-height: 100%;
@@ -302,6 +315,10 @@ body.pink-scheme .bubble {
 
   .header-image-container {
     max-height: 95vh;
+  }
+
+  p {
+    line-height: 2vw;
   }
 
   header h1 {
@@ -313,7 +330,7 @@ body.pink-scheme .bubble {
   }
 
   main {
-    /* min-height: 90%; */
+    min-height: 90%;
     height: 95vh;
   }
 }
