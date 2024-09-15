@@ -1,12 +1,14 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The project was to create a chatbot that interacts with the user using DOM, functions and event listeners
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I tackled the project by creating a scenario for how the conversation would flow and then trying to set up functions for each step of the conversation.
+
+If there had been more time I would have tried to get the chatbot to fetch real weather data. The chatbot does not show a message for invalid input when typing in something else than the suggested occasions, which I would add if I had more time for the project, alternatively using buttons for the options as well.
+
+
 
 ## View it live
 

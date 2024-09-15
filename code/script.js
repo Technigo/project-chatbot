@@ -1,7 +1,7 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
-const locationForm = document.getElementById('location-form') // Form to capture the user's input
-const locationInput = document.getElementById('location-input') // Input field for user's location
+const locationForm = document.getElementById('location-form')
+const locationInput = document.getElementById('location-input')
 
 
 // Functions goes here 👇
@@ -38,6 +38,9 @@ const showMessage = (message, sender) => {
   // This little thing makes the chat scroll to the last message when there are too many to
   // be shown in the chat box
   chat.scrollTop = chat.scrollHeight
+
+  // Clear the input field after submission
+  locationInput.value = ''
 }
 
 // A function to start the conversation
@@ -45,41 +48,33 @@ const greetUser = () => {
   showMessage("Hello, I can help you choose the perfect outfit based on the weather. What's your location?📍", 'bot')
 }
 
-// A function to handle the location input and continue the conversation
+// A function for the location input
 const handleLocationInput = (event) => {
-  event.preventDefault() // Prevent form from submitting and refreshing the page
+  event.preventDefault() // Prevent from refreshing the page
+  const userLocation = locationInput.value
 
-  const userLocation = locationInput.value // Get the user's input from the input field
-
-  if (userLocation) { // Check if user entered a location
-    // Show user's location as their message
+  if (userLocation) {
     showMessage(userLocation, 'user')
 
-    // Clear the input field after submission
-    locationInput.value = ''
 
-    // Remove the event listener for location input after we've handled it
+    // Remove the event listener for location input after being hanlded
     locationForm.removeEventListener('submit', handleLocationInput);
 
-    // Simulate a bot response with a weather-related message after 1 second
+    // Checking weather...
     setTimeout(() => {
       showMessage(`Checking the weather for ${userLocation}...`, 'bot')
 
-      // Simulate checking the weather 
       setTimeout(() => {
         const weather = "sunny☀️ and between 18-20 degrees"
         showMessage(`It looks like it's going to be ${weather} today in ${userLocation}.`, 'bot')
-
-        setTimeout(showClothingOptions, 1000) // Wait 1 second and show clothing options
-      }, 2000) // Wait 2 seconds before showing the weather message
-    }, 1000) // Wait 1 second before showing the "checking weather" message
+        setTimeout(showClothingOptions, 1000)
+      }, 2000)
+    }, 1000)
   }
 }
 
-
-// Function to create buttons for casual or formal clothing choice
+// Function to create buttons for choosing casual or formal clothing
 const showClothingOptions = () => {
-  // Remove existing event listener for invalid input to avoid duplicates
   locationForm.removeEventListener('submit', handleInvalidInput);
 
   chat.innerHTML += `
@@ -98,10 +93,9 @@ const showClothingOptions = () => {
     const choice = event.target.getAttribute('data-choice');
 
     if (choice) {
-      // Show the user's choice
-      showMessage(`I want ${choice} clothing.`, 'user');
+      showMessage(`I prefer ${choice} clothing.`, 'user');
 
-      // Remove event listeners to prevent multiple triggers
+      // Remove event listeners 
       const buttons = document.querySelectorAll('.clothing-choice');
       buttons.forEach(button => {
         button.removeEventListener('click', handleClothingChoice);
@@ -110,57 +104,50 @@ const showClothingOptions = () => {
       // Remove event listener for invalid input after a valid choice
       locationForm.removeEventListener('submit', handleInvalidInput);
 
-      // Ask about the occasion after a short delay
+      // Ask about the occasion 
       setTimeout(() => {
         askForOccasion(choice);
       }, 1000);
     }
   }
 
-  // Add event listeners to the buttons to handle the user's choice
+  // Function to ask about the occasion
+  const askForOccasion = (clothingChoice) => {
+    showMessage("Are you dressing for a specific occasion or activity (e.g., work, party, exercise)?", 'bot');
+
+    const occasionInputHandler = (event) => handleOccasionInput(event, clothingChoice, occasionInputHandler);
+    locationForm.addEventListener('submit', occasionInputHandler);
+  }
+
+  // Eevent listeners to the buttons to handle the user's choice
   const buttons = document.querySelectorAll('.clothing-choice');
   buttons.forEach(button => {
     button.addEventListener('click', handleClothingChoice);
   });
 
-  // Add event listener to handle invalid input during this phase
+  // Event listener to handle invalid input
   locationForm.addEventListener('submit', handleInvalidInput);
 
-  chat.scrollTop = chat.scrollHeight
 }
 
 // Function to handle invalid input (user typing text instead of clicking buttons)
 const handleInvalidInput = (event) => {
   event.preventDefault();
 
-  const userInput = locationInput.value.trim();
+  const userInput = locationInput.value;
 
   if (userInput) {
-    // Show user's message
     showMessage(userInput, 'user');
-
-    // Show bot's response
     showMessage("That's not a valid answer. Please refresh the chat and try again.", 'bot');
 
-    // Clear the input field
-    locationInput.value = '';
   }
 };
-
-// Function to ask about the occasion
-const askForOccasion = (clothingChoice) => {
-  showMessage("Are you dressing for a specific occasion or activity (e.g., work, party, exercise)?", 'bot');
-
-  // Add event listener to handle user's occasion input
-  const occasionInputHandler = (event) => handleOccasionInput(event, clothingChoice, occasionInputHandler);
-  locationForm.addEventListener('submit', occasionInputHandler);
-}
 
 // Function to handle the occasion input
 const handleOccasionInput = (event, clothingChoice, occasionInputHandler) => {
   event.preventDefault();
 
-  const occasion = locationInput.value.trim();
+  const occasion = locationInput.value;
   if (occasion) {
     showMessage(occasion, 'user');
     locationInput.value = '';
@@ -169,13 +156,13 @@ const handleOccasionInput = (event, clothingChoice, occasionInputHandler) => {
     locationForm.removeEventListener('submit', occasionInputHandler);
 
     setTimeout(() => {
-      provideOutfitSuggestion(clothingChoice, occasion);
+      OutfitSuggestion(clothingChoice, occasion);
     }, 1000);
   }
 }
 
-// Function to provide the final outfit suggestion
-const provideOutfitSuggestion = (clothingChoice, occasion) => {
+// Function for outfit suggestion
+const OutfitSuggestion = (clothingChoice, occasion) => {
   let suggestion = '';
 
   if (clothingChoice === 'casual') {
@@ -202,20 +189,11 @@ const provideOutfitSuggestion = (clothingChoice, occasion) => {
 
   showMessage(suggestion, 'bot');
 
-  // End the conversation or reset as needed
+  // End the conversation
   setTimeout(() => {
     showMessage("Let me know if you need anything else!", 'bot');
   }, 2000);
 }
-
-// Event listeners goes here 👇
-
-// Here we invoke the first function to get the chatbot to ask the first question when
-// the website is loaded. Normally we invoke functions like this: greeting()
-// To add a little delay to it, we can wrap it in a setTimeout (a built-in JavaScript function):
-// and pass along two arguments:
-// 1.) the function we want to delay, and 2.) the delay in milliseconds 
-// This means the greeting function will be called one second after the website is loaded.
 
 setTimeout(greetUser, 1000)
 
