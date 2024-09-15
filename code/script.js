@@ -122,15 +122,15 @@ const askForCookieChoice = (name) => {
 const handleNameInput = (event) => {
   event.preventDefault();
   const name = nameInput.value.trim(); // Trim is getting rid of spaces
-  if (name === "") {
-    showMessage(name, "user");
+  if (name === '') {
+    showMessage(name, 'user');
     setTimeout(() => { // Using setTimeout to delay the bot message
-      showMessage("Please type in your name...", 'bot');
+      showMessage(`Please type in your name...`, 'bot');
       form.addEventListener('submit', handleNameInput); // Invoking the function again
     }, 1000);
   } else {
-    showMessage(name, "user");
-    nameInput.value = ""; // Empty textfield
+    showMessage(name, 'user');
+    nameInput.value = ''; // Empty textfield
     setTimeout(() => askForCookieChoice(name), 1000); // Continue with the next question
   }
 };
@@ -159,6 +159,14 @@ const showMessage = (message, sender) => {
       </section>
     `;
   }
+  const chatSound = document.getElementById('chatSound');
+  if (chatSound) {
+    // Försök att starta ljudet och fånga eventuella fel
+    chatSound.currentTime = 0; // Återställ till början av ljudfilen
+    chatSound.play().catch(error => {
+      console.error("Your browser do not support the video tag", error);
+    });
+  }
   setTimeout(() => {
     chat.scrollTop = chat.scrollHeight;
   }, 10);
@@ -166,7 +174,7 @@ const showMessage = (message, sender) => {
 
 // Greeting message
 const greetUser = () => {
-  showMessage("Hello! I'm the Cookiebot, what's your name?", 'bot');
+  showMessage(`Hello! I'm the Cookiebot, what's your name?`, 'bot');
 };
 
 // Start by greeting the user Welcome!

@@ -15,8 +15,13 @@
   <title>Cookiebot</title>
 </head>
 
+<!-- Chat sound -->
+<audio id="chatSound" src="assets/chatsound.wav" preload="auto"></audio>
+
 <body>
   <div class="welcome-container">
+
+    <!-- Brand and picture -->
     <div class="cookie-message">
       <h1>Life is better with cookies!</h1>
       <div class="image-container">
@@ -25,7 +30,7 @@
       </div>
     </div>
 
-
+    <!-- Chat -->
     <main>
       <section class="chat" id="chat"></section>
       <div class="input-wrapper" id="input-wrapper">
@@ -39,6 +44,7 @@
     </main>
   </div>
 
+  <!-- personal info -->
   <footer>
     <div class="personal-info-items">
       <h4><i class="fa-brands fa-github"></i> EmelieNyberg</h4>
@@ -47,7 +53,9 @@
     </div>
   </footer>
 
+  <!-- JavaScript -->
   <script src="./script.js"></script>
+
 </body>
 
 </html>
