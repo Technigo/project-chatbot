@@ -15,7 +15,7 @@ let coffeeShop = ''
 // Functions go here 👇
 
 // Handle user name input
-//Please see README file 
+//Please see README file, if I had more time #1 
 const handleUserInput = (event) => {
   event.preventDefault()
 
@@ -72,7 +72,7 @@ const greetUser = () => {
 // ****** Event listeners go here 👇 *******
 document.addEventListener("DOMContentLoaded", () => {
   // This line waits for the entire HTML document to fully load before running the enclosed JavaScript code....
-  //Please see README file
+  //Please see README file, if I had more time #2
 
   // Click Start conversation button
   startBtn.addEventListener("click", () => {
@@ -90,7 +90,7 @@ const selectCoffee = () => {
   console.log("Select your drink")
   showMessage(`Nice to meet you, ${userName}. Please start your order by selecting your coffee. Here are your options: Pumpkin Spice Latte, Espresso, Cappuccino, or Americano.`, 'bot')
   
-  nameForm.removeEventListener("submit", handleUserInput) // Remove Event listener for Name 
+  nameForm.removeEventListener("submit", handleUserInput) // Remove Event listener for Name (but it doesn't work, Please see README file, if I had more time #3) 
   nameForm.addEventListener("submit", handleCoffeeInput) // Add Event listener for Coffee choice
 }
 
