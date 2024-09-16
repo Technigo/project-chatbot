@@ -3,6 +3,7 @@
 const chat = document.getElementById('chat');
 const nameInput = document.getElementById('name-input');
 const form = document.getElementById('name-form');
+const chatSound = document.getElementById('chatSound');
 
 // Functions
 
@@ -160,7 +161,6 @@ const showMessage = (message, sender) => {
     `;
   }
   // Chat sound every time showMessage is used
-  const chatSound = document.getElementById('chatSound');
   if (chatSound) {
     chatSound.currentTime = 0; // to be able to also have chat sound on bot
     chatSound.play().catch(error => {
