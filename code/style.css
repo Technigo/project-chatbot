@@ -111,7 +111,7 @@ main {
   cursor: pointer;
   text-align: center;
 }
-.hidden { /*Hide Start conversation button */
+.hidden { /*Hide Start conversation button and input field after Confirmation message*/
   display: none;
 }
 

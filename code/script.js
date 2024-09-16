@@ -167,13 +167,18 @@ const handleCoffeeShopInput = () => {
 
 const userAnswer = (selectedCoffeeShop) => {
   coffeeShop = selectedCoffeeShop
+  showMessage(`It's Coffee JoE in ${coffeeShop}`, 'user');  
   showMessage(`You have selected ${coffeeShop}. Great choice!`, 'bot')
   coffeeShopContainer.innerHTML = ""
-  setTimeout(showSummary, 1000) // Move on to summary
+  setTimeout(showSummary, 2000) // Move on to summary
 }
 
 // Handle summary 
 
 const showSummary = () => {
   showMessage(`Thank you, ${userName}, for your order of ${coffeeChoice} (${sizeChoice} size), which you will pick up at Coffee JoE in ${coffeeShop}.`, 'bot')
+
+  //Remove input field after Confirmation
+
+  document.getElementById('name-form').remove()
 }
