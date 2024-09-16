@@ -111,6 +111,9 @@ const handleCoffeeInput = (event) => {
   } else {
     showMessage(`${coffeeChoice} sounds great, but we don't have that option right now!`, 'bot')
   }
+  
+  showMessage(`I would like to order a ${coffeeChoice}, please.`, 'user');  
+
   userInput.value = ""
 
   setTimeout(askForSize, 500) // Move on to Ask for size
