@@ -7,7 +7,6 @@ body {
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   background: rgb(70, 82, 138);
-  max-height: 100%;
   overflow-x: hidden;
 }
 
@@ -58,7 +57,7 @@ input,
 
 main {
   margin: 0 auto;
-  width: 100%;
+  /* width: 100%; */
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
@@ -72,15 +71,10 @@ main {
 }
 
 .chat {
-  flex: 1;
-  display: flex;
+  flex-grow: 1;
   justify-content: flex-start;
   flex-direction: column;
   padding-bottom: 16px;
-  overflow: scroll;
-}
-
-#chat {
   overflow-y: auto;
 }
 
@@ -108,7 +102,7 @@ main {
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
-  padding: 16px 24px;
+  padding: 20px;
   color:  rgb(70, 82, 138);
   max-width: 40%;
 }
@@ -127,23 +121,27 @@ main {
 
 .input-wrapper {
   display: flex;
+  max-width: 100%;
   justify-content: center;
   background: #fff;
+  overflow-x: hidden; 
+  padding: 10px;
 } 
 
  .input-wrapper form {
   max-width: 100%;
   display: flex;
   align-items: center;
+  overflow-x: hidden; 
 } 
 
-label {
+/* label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
   color: rgb(129, 133, 153);
   margin-right: 20px;
-}
+} */
 
 button {
   background-color:  rgb(70, 82, 138);
@@ -219,6 +217,21 @@ button:hover {
 @media (max-width: 480px) {
   .option-buttons {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Media query for mobile (screens less than 768px) */
+@media (max-width: 768px) {
+  main {
+    height: auto; /* Let height adjust dynamically */
+  }
+
+  .chat {
+    flex: 4; /* Chat section takes more space on mobile */
+  }
+
+  .input-wrapper {
+    flex: 1; /* Buttons take up less space */
   }
 }
 
