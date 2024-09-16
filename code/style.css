@@ -100,7 +100,7 @@ main {
   justify-content: center; 
   gap: 10px; 
 }
-.Btns {
+.btns {
   display: inline-block;
   padding: 10px 20px;
   margin: 10px;
@@ -111,12 +111,10 @@ main {
   cursor: pointer;
   text-align: center;
 }
-.hidden {
+.hidden { /*Hide Start conversation button */
   display: none;
 }
-.shown {
-  display: block;
-}
+
 .size-btn {
   display: inline-block; /*Make buttons visible*/
   padding: 10px 20px;

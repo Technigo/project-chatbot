@@ -1,12 +1,11 @@
 // DOM selectors (variables that point to selected DOM elements) goes here 👇
 const chat = document.getElementById('chat')
 const startBtn = document.getElementById('start-btn')
-const enterName = document.getElementById('input-wrapper')
 const userInput = document.getElementById("user-input")
 const nameForm = document.getElementById('name-form')
 const coffeeShopContainer = document.getElementById('coffeeShopContainer')
 
-//LET variables that will be used in the confirmation
+//Global LET variables that will be used in the confirmation
 
 let userName = ''
 let coffeeChoice = ''
@@ -16,6 +15,7 @@ let coffeeShop = ''
 // Functions go here 👇
 
 // Handle user name input
+//Please see README file 
 const handleUserInput = (event) => {
   event.preventDefault()
 
@@ -23,7 +23,7 @@ const handleUserInput = (event) => {
   showMessage(userName, "user")
   userInput.value = "" 
 
-  setTimeout(() => selectCoffee(userName), 1000) //Move on to Select coffee
+  setTimeout(selectCoffee, 1000) // Move on to Select coffee
 }
 
 //Start conversation
@@ -72,6 +72,7 @@ const greetUser = () => {
 // ****** Event listeners go here 👇 *******
 document.addEventListener("DOMContentLoaded", () => {
   // This line waits for the entire HTML document to fully load before running the enclosed JavaScript code....
+  //Please see README file
 
   // Click Start conversation button
   startBtn.addEventListener("click", () => {
@@ -85,11 +86,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Coffee choice
 
-const selectCoffee = (userName) => {
+const selectCoffee = () => {
   console.log("Select your drink")
   showMessage(`Nice to meet you, ${userName}. Please start your order by selecting your coffee. Here are your options: Pumpkin Spice Latte, Espresso, Cappuccino, or Americano.`, 'bot')
   
-  nameForm.removeEventListener("submit", handleUserInput) // Remove Event listener for Name
+  nameForm.removeEventListener("submit", handleUserInput) // Remove Event listener for Name 
   nameForm.addEventListener("submit", handleCoffeeInput) // Add Event listener for Coffee choice
 }
 
@@ -147,10 +148,10 @@ const handleSizeChoice = (size) => {
 const handleCoffeeShopInput = () => {
   setTimeout(() => {
     coffeeShopContainer.innerHTML = `
-      <button id="stockholmBtn" class="Btns">Stockholm</button>
-      <button id="gothenburgBtn" class="Btns">Gothenburg</button>
-      <button id="kirunaBtn" class="Btns">Kiruna</button>
-      <button id="falunBtn" class="Btns">Falun</button>
+      <button id="stockholmBtn" class="btns">Stockholm</button>
+      <button id="gothenburgBtn" class="btns">Gothenburg</button>
+      <button id="kirunaBtn" class="btns">Kiruna</button>
+      <button id="falunBtn" class="btns">Falun</button>
     `
 
     // Handle Coffee shop input 
