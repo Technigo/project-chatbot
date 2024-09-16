@@ -36,7 +36,7 @@ const greetUser = () => {
 let numberOfFormSubmits = 0; // initializing the logic to trigger new messages in the form
 
 // Function to handle the form submission
-function handleSubmit(event) {
+const handleSubmit = (event) => {
   event.preventDefault();
   numberOfFormSubmits++;
 
@@ -82,7 +82,7 @@ function handleSubmit(event) {
   }
 }
 
-function updateFormForFoodSelection() {
+const updateFormForFoodSelection = () => {
   form.innerHTML = `
     <label for="food">Select your food:</label>
     <select id="food" name="food" required>
@@ -95,7 +95,7 @@ function updateFormForFoodSelection() {
   `;
 }
 
-function updateFormForDrinkSelection() {
+const updateFormForDrinkSelection = () => {
   form.innerHTML = `
     <label for="drink">Select your drink:</label>
     <select id="drink" name="drink" required>
@@ -108,14 +108,14 @@ function updateFormForDrinkSelection() {
   `;
 }
 
-function updateFormForOrderConfirmation() {
+const updateFormForOrderConfirmation = () => {
   form.innerHTML = `
     <button type="button" id="confirmation" onclick="orderConfirmation('Yes')">Yes</button>
     <button type="button" id="confirmation" onclick="orderConfirmation('No')">No</button>
   `;
 }
 
-function orderConfirmation(confirmation) {
+const orderConfirmation = (confirmation) => {
   showMessage(confirmation, "user");
 
   if (confirmation === "Yes") {
@@ -138,7 +138,7 @@ function orderConfirmation(confirmation) {
   }
 }
 
-function clearForm() {
+const clearForm = () => {
   form.innerHTML = "";
 }
 
