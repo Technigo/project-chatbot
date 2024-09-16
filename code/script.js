@@ -151,9 +151,6 @@ const askQuestion = () => {
       <button id="option-3">${currentQuestion.options[3]}</button>
       </div>
     `  
-// // Scroll down the chat window after buttons have loaded
-//   chat.scrollTop = chat.scrollHeight
-
 
     // Add event listeners to the buttons
     currentQuestion.options.forEach((option, index) => {
@@ -180,10 +177,6 @@ const checkAnswer = (selectedOption) => {
   } else {
     showMessage(`Wrong! The correct answer is ${currentQuestion.correctAnswer}.`, 'bot')
   }
-
-//   // Ensure scrolling is handled after showing feedback
-// chat.scrollTop = chat.scrollHeight;
-
 }, 900)
 
 

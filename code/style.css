@@ -7,6 +7,7 @@ body {
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   background: rgb(70, 82, 138);
+  max-height: 100%;
   overflow-x: hidden;
 }
 
@@ -57,7 +58,7 @@ input,
 
 main {
   margin: 0 auto;
-  /* width: 100%; */
+  width: 100%;
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
@@ -76,7 +77,11 @@ main {
   justify-content: flex-start;
   flex-direction: column;
   padding-bottom: 16px;
-  overflow-x: hidden;
+  overflow: scroll;
+}
+
+#chat {
+  overflow-y: auto;
 }
 
 .bot-msg {
@@ -103,7 +108,7 @@ main {
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
-  padding: 20px;
+  padding: 16px 24px;
   color:  rgb(70, 82, 138);
   max-width: 40%;
 }
@@ -124,15 +129,12 @@ main {
   display: flex;
   justify-content: center;
   background: #fff;
-  overflow-x: hidden; 
-  padding: 10px;
 } 
 
  .input-wrapper form {
   max-width: 100%;
   display: flex;
   align-items: center;
-  overflow-x: hidden; 
 } 
 
 label {
