@@ -144,7 +144,7 @@ const handleSizeChoice = (size) => {
 }
 
 // Coffee Shop
-
+// Please see README file, if I had more time #4) 
 const handleCoffeeShopInput = () => {
   setTimeout(() => {
     coffeeShopContainer.innerHTML = `
@@ -169,7 +169,8 @@ const userAnswer = (selectedCoffeeShop) => {
   setTimeout(showSummary, 1000) // Move on to summary
 }
 
+// Handle summary 
+
 const showSummary = () => {
   showMessage(`Thank you, ${userName}, for your order of ${coffeeChoice} (${sizeChoice} size), which you will pick up at Coffee JoE in ${coffeeShop}.`, 'bot')
 }
-

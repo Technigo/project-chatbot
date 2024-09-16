@@ -206,3 +206,9 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  color: white;
+}
