@@ -1,20 +1,22 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
+  margin: 2%;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: rgb(243, 199, 37);
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
 }
 
 h1 {
   font-weight: bold;
-  font-size: 28px;
+  /* font-size: 28px; */
   line-height: 34px;
   color: #fff;
   text-align: center;
+  font-family: "Gloria Hallelujah", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 
 h2 {
@@ -26,6 +28,12 @@ h2 {
   margin-bottom: 36px;
 }
 
+h4 {
+  font-weight: normal;
+  margin: 10px 0;
+  text-align: right;
+}
+
 p {
   font-size: 18px;
   font-weight: 600;
@@ -33,26 +41,42 @@ p {
   margin: 0;
 }
 
-input {
-  box-sizing: border-box;
-  border: none;
-  border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
-  padding: 16px;
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: 600;
-  line-height: 26px;
-  flex: 1;
-  width: 100%;
+.welcome-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.cookie-message {
+  width: 50%;
+}
+
+.image-container {
+  display: flex;
+  /* Aktivera flexbox för att centrera bilden */
+  justify-content: center;
+  /* Centrera innehållet horisontellt */
+  align-items: center;
+  /* Centrera innehållet vertikalt */
+  height: auto;
+  /* Justera höjden som du vill */
+  margin-top: 10px;
+  /* Lägg till marginal om du vill ha lite utrymme mellan <h1> och bilden */
+}
+
+.monster-picture {
+  max-width: 100%;
+  /* Se till att bilden inte överstiger sin container */
+  max-height: 600px;
+}
+
+.monster-picture2 {
+  display: none;
 }
 
 main {
   margin: 0 auto;
-  width: 100%;
-  max-width: 700px;
-  height: 600px;
+  width: 50%;
+  height: 700px;
   border-radius: 30px;
   background: #fff;
   padding: 20px 24px;
@@ -60,6 +84,7 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 .chat {
@@ -69,45 +94,6 @@ main {
   overflow: scroll;
   flex-direction: column;
   padding-bottom: 16px;
-}
-
-.bot-msg {
-  display: flex;
-  margin: 16px 8px 0 0;
-  flex-shrink: 0;
-}
-
-.user-msg {
-  display: flex;
-  justify-content: flex-end;
-  margin: 16px 0 0 8px;
-  flex-shrink: 0;
-}
-
-.bot-msg img,
-.user-msg img {
-  width: 60px;
-  height: 60px;
-}
-
-.bubble {
-  background: #e5e9ff;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 26px;
-  padding: 16px 24px;
-  color: #0026ff;
-  max-width: 40%;
-}
-
-.bot-bubble {
-  border-radius: 0px 26px 26px 26px;
-  margin-left: 8px;
-}
-
-.user-bubble {
-  border-radius: 26px 0 26px 26px;
-  margin-right: 8px;
 }
 
 .input-wrapper {
@@ -121,16 +107,26 @@ main {
   align-items: center;
 }
 
-label {
+input {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  background: #e5e9ff;
+  padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
-  font-weight: 500;
-  color: #0026ff;
-  margin-right: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  flex: 1;
+  width: 100%;
+}
+
+input[type="text"] {
+  outline: none;
 }
 
 button {
-  background-color: #0026ff;
+  background-color: #00c3f8;
   color: white;
   border: none;
   border-radius: 4px;
@@ -147,4 +143,149 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.bot-msg {
+  display: flex;
+  margin: 16px 8px 0 0;
+  flex-shrink: 0;
+}
+
+.user-msg {
+  display: flex;
+  justify-content: flex-end;
+  margin: 16px 0 0 8px;
+  flex-shrink: 0;
+}
+
+.bot-msg img {
+  width: 60px;
+  height: 60px;
+}
+
+.user-msg img {
+  width: 60px;
+  height: 60px;
+}
+
+.bubble {
+  /* background: #e5e9ff; */
+  color: black;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+  padding: 16px 24px;
+  max-width: 40%;
+}
+
+.bot-bubble {
+  /* background: rgb(223, 223, 223); */
+  background: #f5e9be;
+  border-radius: 0px 26px 26px 26px;
+  margin-left: 8px;
+}
+
+.user-bubble {
+  background: #a2ebff;
+  border-radius: 26px 0 26px 26px;
+  margin-right: 8px;
+}
+
+footer {
+  border-top: 4px dotted white;
+  margin-top: 4%;
+  color: white;
+  padding-top: 2%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+/* For mobile phones */
+@media (max-width: 667px) {
+
+  h4 {
+    font-size: 0.7rem;
+  }
+
+  .welcome-container {
+    flex-direction: column;
+  }
+
+  .cookie-message {
+    width: 100%;
+  }
+
+  .monster-picture {
+    display: none;
+  }
+
+  .monster-picture2 {
+    display: block;
+    width: 100%;
+  }
+
+  main {
+    width: 100%;
+    padding: 0 12px 20px 12px;
+    height: 500px;
+  }
+
+  .button-container {
+    flex-direction: column;
+  }
+
+  button {
+    margin-right: 0;
+    margin-top: 2px;
+    padding: 10px 20px;
+  }
+
+  .send-btn {
+    border-radius: 4px;
+    padding: 16px 20px;
+  }
+
+  .bubble p {
+    font-size: 0.8rem;
+  }
+}
+
+/* for tablet */
+@media (min-width: 668px) and (max-width: 1024px) {
+
+  body {
+    margin: 5% 2%;
+  }
+
+  h1 {
+    width: 170%;
+    margin: 4% 0 4% 4%;
+  }
+
+  .welcome-container {
+    flex-direction: column;
+  }
+
+  .cookie-message {
+    width: 100%;
+    display: flex;
+  }
+
+  .monster-picture {
+    display: none;
+  }
+
+  .monster-picture2 {
+    display: block;
+    width: 50%;
+  }
+
+  main {
+    width: 75%;
+  }
 }
