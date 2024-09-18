@@ -6,20 +6,24 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #0026ff;
+  background: rgb(70, 82, 138);
+  overflow-x: hidden;
 }
 
 h1 {
-  font-weight: bold;
-  font-size: 28px;
+  font-weight: bolder;
+  font-size: 35px;
   line-height: 34px;
   color: #fff;
   text-align: center;
+  padding-top: 25px;
+  margin: 0;
+  font-family: 'Poppins' 
 }
 
 h2 {
-  font-weight: bold;
-  font-size: 24px;
+  font-weight: 400;
+  font-size: 20px;
   line-height: 34px;
   color: #fff;
   text-align: center;
@@ -33,24 +37,27 @@ p {
   margin: 0;
 }
 
-input {
+input, 
+#name-input {
   box-sizing: border-box;
   border: none;
   border-radius: 4px 0 0 4px;
-  background: #e5e9ff;
-  color: #0026ff;
+  background:  #fff;
+  color: rgb(70, 82, 138);
   padding: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 600;
   line-height: 26px;
   flex: 1;
-  width: 100%;
+  max-width: 100%;
 }
+
+
 
 main {
   margin: 0 auto;
-  width: 100%;
+  /* width: 100%; */
   max-width: 700px;
   height: 600px;
   border-radius: 30px;
@@ -60,15 +67,15 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden; 
 }
 
 .chat {
-  flex: 1;
-  display: flex;
+  flex-grow: 1;
   justify-content: flex-start;
-  overflow: scroll;
   flex-direction: column;
   padding-bottom: 16px;
+  overflow-y: auto;
 }
 
 .bot-msg {
@@ -86,17 +93,17 @@ main {
 
 .bot-msg img,
 .user-msg img {
-  width: 60px;
-  height: 60px;
+  width: 75px;
+  height: 75px;
 }
 
 .bubble {
-  background: #e5e9ff;
+  background: rgb(209, 215, 245);
   font-weight: 600;
   font-size: 16px;
   line-height: 26px;
-  padding: 16px 24px;
-  color: #0026ff;
+  padding: 20px;
+  color:  rgb(70, 82, 138);
   max-width: 40%;
 }
 
@@ -108,33 +115,38 @@ main {
 .user-bubble {
   border-radius: 26px 0 26px 26px;
   margin-right: 8px;
+  background:  rgb(70, 82, 138);
+  color: #fff;
 }
 
 .input-wrapper {
   display: flex;
+  max-width: 100%;
   justify-content: center;
-}
+  background: #fff;
+  padding: 10px;
+} 
 
-.input-wrapper form {
-  width: 100%;
+ .input-wrapper form {
+  max-width: 100%;
   display: flex;
   align-items: center;
-}
+  overflow-x: hidden; 
+} 
 
-label {
+/* label {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: 500;
-  color: #0026ff;
+  color: rgb(129, 133, 153);
   margin-right: 20px;
-}
+} */
 
 button {
-  background-color: #0026ff;
-  color: white;
+  background-color:  rgb(70, 82, 138);
   border: none;
   border-radius: 4px;
-  padding: 16px 20px;
+  padding: 20px 20px;
   margin-right: 4px;
   font-size: 16px;
   line-height: 26px;
@@ -142,9 +154,83 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  color: white;
 }
 
 button:hover {
-  opacity: 0.9;
-  transition: all 0.2s ease;
+  animation: bubble 0.4s ease-out;
 }
+
+@keyframes bubble {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.option-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: space-between;
+  max-width: 100%;
+  gap: 5px;
+
+}
+
+/* Media query for screens smaller than 1200px */
+@media (max-width: 1200px) {
+  .option-buttons {
+    margin: 15px;
+    grid-template-columns: repeat(4, 1fr);
+}
+}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 768px) {
+  .option-buttons {
+    margin: 15px;
+    grid-template-columns: repeat(2, 1fr);
+}
+}
+
+@media (max-width: 768px) {
+  p {
+    font-size: 14px;
+    align-items: center;
+}
+}
+
+@media (max-width: 768px) { 
+ #name-input,
+ .input-wrapper #name-input {
+    font-size: 14px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .option-buttons {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Media query for mobile (screens less than 768px) */
+@media (max-width: 768px) {
+  main {
+    height: auto; /* Let height adjust dynamically */
+  }
+
+  .chat {
+    flex: 4; /* Chat section takes more space on mobile */
+  }
+
+  .input-wrapper {
+    flex: 1; /* Buttons take up less space */
+  }
+}
+
