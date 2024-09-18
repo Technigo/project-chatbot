@@ -6,6 +6,7 @@ img {
   #coffeeShopContainer {
     flex-direction: column;  /* Buttons in columns */
     align-items: center;
+
   }
 }
 /* Responsive for tablet */
@@ -89,18 +90,11 @@ main {
   padding-bottom: 16px;
 }
 
-.start-btn {
+.start-button {
   display: flex;
   justify-content: center;
 }
-
-#coffeeShopContainer {
-  display: flex;
-  flex-wrap: wrap; 
-  justify-content: center; 
-  gap: 10px; 
-}
-.btns {
+.buttons {
   display: inline-block;
   padding: 10px 20px;
   margin: 10px;
@@ -111,11 +105,11 @@ main {
   cursor: pointer;
   text-align: center;
 }
-.hidden { /*Hide Start conversation button and input field after Confirmation message*/
+.hidden { /*Hide Start conversation button */
   display: none;
 }
 
-.size-btn {
+.size-button {
   display: inline-block; /*Make buttons visible*/
   padding: 10px 20px;
   margin: 10px;
@@ -126,7 +120,7 @@ main {
   cursor: pointer;
 }
 
-.size-btn:hover {
+.size-button:hover {
   opacity: 0.9;
 }
 .bot-msg {
