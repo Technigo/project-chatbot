@@ -12,9 +12,6 @@ const inputWrapper = document.getElementById('input-wrapper')
 const userInput = document.getElementById("user-input")
 const nameForm = document.getElementById('name-form')
 
-
-// Functions go here 👇
-
 // 10. Handle summary 
 
 const showSummary = () => {
@@ -27,15 +24,15 @@ const showSummary = () => {
 // 9. Handle Coffeeshop input
 const userAnswer = (selectCoffeeShop) => {
   coffeeShop = selectCoffeeShop
-  showMessage(` Coffee JoE in ${coffeeShop}`, 'user')
-  showMessage(`You have selected ${coffeeShop}`, 'bot')
+  showMessage(` Coffee JoE in ${coffeeShop}.`, 'user')
+  showMessage(`You have selected ${coffeeShop}.`, 'bot')
 
-  //Delete Coffeeshop buttons 
-  document.getElementById("stockholm").remove();
-  document.getElementById("gothenburg").remove();
-  document.getElementById("kiruna").remove();
-  document.getElementById("falun").remove();
-  setTimeout(showSummary, 2000); // Move on to Summary
+  //Remove Coffeeshop buttons 
+  document.getElementById("stockholm").remove()
+  document.getElementById("gothenburg").remove()
+  document.getElementById("kiruna").remove()
+  document.getElementById("falun").remove()
+  setTimeout(showSummary, 3000) // Move on to Summary
 }
 
 // 8. Select Coffee Shop
@@ -59,21 +56,22 @@ const handleCoffeeShopInput = () => {
 // 7. Handle coffee size input
 const handleSizeChoice = (size) => {
   sizeChoice = size
-  showMessage(`I select ${size} size!`, 'user')
-    
+  showMessage(`${size} size!`, 'user')
+
   document.getElementById("regularButton").remove()
   document.getElementById("smallButton").remove()
     
   showMessage("Great choice! Your coffee is almost on the way.", 'bot')
 
-  setTimeout(handleCoffeeShopInput, 500) // Move on to Coffee shop question
+  setTimeout(handleCoffeeShopInput, 3000) // Move on to Coffee shop question
 }
 
 // 6. Coffee size
 const askForSize = () => {
   inputWrapper.classList.add("hidden")
   showMessage("What size would you like?", 'bot')
-  // Add two buttons
+  
+  // Add two Size buttons
   chat.innerHTML += `
     <section class="bot-msg">
       <button id="regularButton" class="selection-button">Regular</button>
@@ -90,16 +88,16 @@ const handleCoffeeInput = (selectedCoffee) => {
   coffeeChoice = selectedCoffee // Update the global variable
   if (coffeeChoice === "Pumpkin Spice Latte") {
     showMessage(`${coffeeChoice}, please.`, 'user')
-    showMessage("Ah, Pumpkin Spice Latte! Perfect choice", 'bot')
+    showMessage("Ah, Pumpkin Spice Latte, perfect choice!", 'bot')
   } else if (coffeeChoice === "Espresso") {
     showMessage(`${coffeeChoice}, please.`, 'user')
-    showMessage("An Espresso coming up! Excellent choice", 'bot')
+    showMessage("An Espresso coming up! Excellent choice.", 'bot')
   } else if (coffeeChoice === "Cappuccino") {
     showMessage(`${coffeeChoice}, please.`, 'user')
-    showMessage("Cappuccino it is! Creamy and delicious", 'bot')
+    showMessage("Creamy Cappuccino it is!", 'bot')
   } else if (coffeeChoice === "Americano") {
     showMessage(`${coffeeChoice}, please.`, 'user')
-    showMessage("A classic Americano for you", 'bot')
+    showMessage("A classic Americano for you!", 'bot')
   } else {
     showMessage(`${coffeeChoice}, please.`, 'user')
     showMessage(`${coffeeChoice} sounds great, but we don't have that option right now!`, 'bot')
@@ -110,31 +108,37 @@ const handleCoffeeInput = (selectedCoffee) => {
   document.getElementById("cappuccino").remove()
   document.getElementById("americano").remove()
   document.getElementById("espresso").remove()
-  
-  //showMessage(`I would like to order a ${coffeeChoice}, please.`, 'user')  
 
-  setTimeout(askForSize, 1000) // Move on to Ask for size
+  setTimeout(askForSize, 2000) // Move on to Ask for size
 }
 
 // 4. Select Coffee
 
 const selectCoffee = () => {
   inputWrapper.classList.add("hidden")
-  showMessage(`Nice to meet you, ${userName}. Please start your order by selecting your coffee. Here are your options:`, 'bot')
+
+  showMessage(`Nice to meet you, ${userName}.`, 'bot')
+  
+  setTimeout(() => {
+    showMessage(`Please start your order by selecting your coffee. Here are your options:`, 'bot')
+    
     chat.innerHTML += `
       <section class="bot-msg">
         <button id="pumpkin" class="selection-button">Pumpkin Spice Latte</button>
         <button id="cappuccino" class="selection-button">Cappuccino</button>
         <button id="americano" class="selection-button">Americano</button>
         <button id="espresso" class="selection-button">Espresso</button>
-        </section>
+      </section>
     `
-  document.getElementById("pumpkin").addEventListener("click", () => handleCoffeeInput("Pumpkin Spice Latte"))
-  document.getElementById("cappuccino").addEventListener("click", () => handleCoffeeInput("Cappuccino"))
-  document.getElementById("americano").addEventListener("click", () => handleCoffeeInput("Americano"))
-  document.getElementById("espresso").addEventListener("click", () => handleCoffeeInput("Espresso"))
-  
-  nameForm.removeEventListener("submit", handleUserInput) // Remove Event listener for Name
+    
+    document.getElementById("pumpkin").addEventListener("click", () => handleCoffeeInput("Pumpkin Spice Latte"))
+    document.getElementById("cappuccino").addEventListener("click", () => handleCoffeeInput("Cappuccino"))
+    document.getElementById("americano").addEventListener("click", () => handleCoffeeInput("Americano"))
+    document.getElementById("espresso").addEventListener("click", () => handleCoffeeInput("Espresso"))
+
+    nameForm.removeEventListener("submit", handleUserInput) // Remove Event listener for Name
+
+  }, 1500) //Move on to Handle Coffee choice input
 }
 
 // 3. Handle user name input
@@ -174,10 +178,10 @@ const showMessage = (message, sender) => {
     `
   }
 
-  // Scroll to the last message when chat is too long
-  // requestAnimationFrame to avoid scrolling to see buttons in chat
+  // Scroll to the last message when chat is too long.
+  // requestAnimationFrame to avoid scrolling to see selection-buttons in the chat
   requestAnimationFrame(() => {
-    chat.scrollTop = chat.scrollHeight;
+    chat.scrollTop = chat.scrollHeight
   })
 }
 startButton.addEventListener("click", () => {
@@ -188,7 +192,7 @@ startButton.addEventListener("click", () => {
 // 2. Greet user
 
 const greetUser = () => {
-  showMessage("Hello there fellow Java Junkie! What's your name?", 'bot')
+  showMessage("Hello fellow Java Junkie! What's your name?", 'bot')
 }
 
 //1. Click Start Conversation button

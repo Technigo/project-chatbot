@@ -24,16 +24,20 @@ img {
   .user-msg img {
     display: none;
   }
-  .bubble {
-    max-width: 90%;
-    line-height: 26px;
-    padding: 12px 20px;
+   .bot-msg .bubble {
+    max-width: 90%; /* Make the bot bubble wider*/
+    margin-right: auto; /* Move the bot bubble closer to user bubble*/
+    margin-left: 10px;
+  }
+  .user-msg .bubble {
+    max-width: 80%;
+    margin-left: auto; 
   }
   label[for="user-input"] {
     display: none;
   }
   .bot-msg .selection-button {
-    flex: 1 1 120px;
+    flex: 1 1 20px;
     width: auto;
     height: 50px;
     text-align: center;
@@ -150,7 +154,8 @@ main {
 .selection-button {
   display: inline-block; /*Make buttons visible*/
   padding: 10px 20px;
-  margin: 10px;
+  margin: 1px;
+  gap: 1px;
   background-color: #0026ff;
   color: white;
   border: none;
@@ -169,7 +174,6 @@ main {
   flex-wrap: wrap;
   max-width: 100%;
 }
-
 .user-msg {
   display: flex;
   justify-content: flex-end;
