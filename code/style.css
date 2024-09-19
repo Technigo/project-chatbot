@@ -2,18 +2,59 @@ img {
   display: block;
   max-width: 100%;
 }
+/* Responsive settings for mobile*/
 @media (max-width: 600px) {
-  #coffeeShopContainer {
-    flex-direction: column;  /* Buttons in columns */
-    align-items: center;
-
+  .selection-button {
+    width: 100%;
+    margin: 5px 0;
+    }
+  }
+  main {
+    padding: 10px; 
+    max-width: 100%; 
+  }
+  body {
+    font-size: 16px;
+  }
+  .start-button {
+    width: 100%; 
+    padding: 15px; 
+  }
+  .chat {
+    width: 100%;
+    min-height: 200px; 
+    max-height: 400px;
+  }
+  .bot-msg img,
+  .user-msg img {
+    display: none;
+  }
+  .bubble {
+    max-width: 90%;
+    font-size: 16px;
+    line-height: 26px;
+    padding: 12px 20px;
+  }
+  label[for="user-input"] {
+    display: none;
   }
 }
-/* Responsive for tablet */
-@media (min-width: 601px) and (max-width: 1024px) {
-  #coffeeShopContainer {
-    flex-direction: row;  /*Buttons in a row*/
-    justify-content: space-evenly;
+/* Responsive settings for tablet */
+  @media (min-width: 601px) and (max-width: 1024px) {
+    .selection-button {
+      width: 50%
+    }
+    main {
+      max-width: 90%;
+    }
+    body {
+      font-size: 17px;
+    }
+  }
+/* Responsive settings for desktop */
+@media (min-width: 1025px) {
+  .selection-button {
+    width: auto;
   }
 }
 
@@ -116,8 +157,13 @@ main {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  width: auto; /*Adapt buttons to device widht */
 }
-
+.coffee-selection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 .size-button:hover {
   opacity: 0.9;
 }
@@ -147,7 +193,8 @@ main {
   line-height: 26px;
   padding: 16px 24px;
   color: #0026ff;
-  max-width: 40%;
+  max-width: 60%;
+  word-wrap: break-word
 }
 
 .bot-bubble {
