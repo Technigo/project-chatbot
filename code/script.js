@@ -1,13 +1,12 @@
-// DOM selectors (variables that point to selected DOM elements) goes here 👇
-const chat = document.getElementById('chat')
+// DOM selectors 👇
+const chat = document.getElementById("chat");
+const userInput = document.getElementById("name-input");
+const form = document.getElementById("form");
 
-// Functions goes here 👇
-
-// A function that will add a chat bubble in the correct place based on who the sender is
-const showMessage = (message, sender) => {
-  // The if statement checks if the sender is the user and if that's the case it inserts
-  // an HTML section inside the chat with the posted message from the user
-  if (sender === 'user') {
+// Function that will add a chat bubble in the correct place based on who the sender is
+const showMessage = (message, sender, isLoading = false) => {
+  const messageClass = isLoading ? "loading-message" : "";
+  if (sender === "user") {
     chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
@@ -15,39 +14,135 @@ const showMessage = (message, sender) => {
         </div>
         <img src="assets/user.png" alt="User" />  
       </section>
-    `
-    // The else if statement checks if the sender is the bot and if that's the case it inserts
-    // an HTML section inside the chat with the posted message from the bot
-  } else if (sender === 'bot') {
+    `;
+  } else if (sender === "bot") {
     chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
-        <div class="bubble bot-bubble">
+        <div class="bubble bot-bubble ${messageClass}">
           <p>${message}</p>
         </div>
       </section>
-    `
+    `;
   }
+  chat.scrollTop = chat.scrollHeight;
+};
 
-  // This little thing makes the chat scroll to the last message when there are too many to
-  // be shown in the chat box
-  chat.scrollTop = chat.scrollHeight
-}
-
-// A function to start the conversation
+// Function to start the conversation
 const greetUser = () => {
-  // Here we call the function showMessage, that we declared earlier with the argument:
-  // "Hello there, what's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, what's your name?", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
+  showMessage("Hey you, what's your name?", "bot");
+};
+
+let numberOfFormSubmits = 0; // initializing the logic to trigger new messages in the form
+
+// Function to handle the form submission
+const handleSubmit = (event) => {
+  event.preventDefault();
+  numberOfFormSubmits++;
+
+  switch (numberOfFormSubmits) {
+    case 1: // Name input
+      const name = userInput.value;
+      showMessage(name, "user");
+      showMessage(`Nice to meet you, ${name}`, "bot");
+      userInput.value = "";
+
+      setTimeout(() => {
+        showMessage(
+          "What would you like to eat? Pizza, Burger, or Salad?",
+          "bot"
+        );
+        updateFormForFoodSelection();
+      }, 1000);
+      break;
+
+    case 2: // Food selection
+      const selectedFood = document.getElementById("food").value;
+      showMessage(selectedFood, "user");
+      showMessage(`${selectedFood} coming up!`, "bot");
+
+      setTimeout(() => {
+        showMessage("What would you like to drink?", "bot");
+        updateFormForDrinkSelection();
+      }, 1000);
+      break;
+
+    case 3: // Drink selection and order confirmation
+      const selectedDrink = document.getElementById("drink").value;
+      showMessage(selectedDrink, "user");
+      showMessage(`${selectedDrink} is a great choice!`, "bot");
+
+      setTimeout(() => {
+        showMessage("Are you sure you want to order?", "bot");
+        updateFormForOrderConfirmation(); // This function also triggers confirmation message
+      }, 1000);
+      break;
+
+    // add more questions here
+  }
 }
 
-// Eventlisteners goes here 👇
+const updateFormForFoodSelection = () => {
+  form.innerHTML = `
+    <label for="food">Select your food:</label>
+    <select id="food" name="food" required>
+      <option value="" disabled selected>Choose your food</option>
+      <option value="Salad">Salad</option>
+      <option value="Burger">Burger</option>
+      <option value="Pasta">Pasta</option>
+    </select>
+    <button id="btn" class="send-btn" type="submit">Send</button>
+  `;
+}
 
-// Here we invoke the first function to get the chatbot to ask the first question when
-// the website is loaded. Normally we invoke functions like this: greeting()
-// To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
-// and pass along two arguments:
-// 1.) the function we want to delay, and 2.) the delay in milliseconds 
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000)
+const updateFormForDrinkSelection = () => {
+  form.innerHTML = `
+    <label for="drink">Select your drink:</label>
+    <select id="drink" name="drink" required>
+      <option value="" disabled selected>Choose your drink</option>
+      <option value="Coca Cola">Coca Cola</option>
+      <option value="Water">Water</option>
+      <option value="Wine">Wine</option>
+    </select>
+    <button id="btn" class="send-btn" type="submit">Send</button>
+  `;
+}
+
+const updateFormForOrderConfirmation = () => {
+  form.innerHTML = `
+    <button type="button" id="confirmation" onclick="orderConfirmation('Yes')">Yes</button>
+    <button type="button" id="confirmation" onclick="orderConfirmation('No')">No</button>
+  `;
+}
+
+const orderConfirmation = (confirmation) => {
+  showMessage(confirmation, "user");
+
+  if (confirmation === "Yes") {
+    showMessage("Preparing your order", "bot", true);
+
+    setTimeout(() => {
+      const loadingMessage = document.querySelector(".loading-message");
+      if (loadingMessage) {
+        loadingMessage.classList.remove("loading-message");
+        loadingMessage.querySelector("p").textContent =
+          "Thanks for ordering! The food will be ready soon 🍽️";
+      }
+      clearForm();
+    }, 3000);
+  } else {
+    setTimeout(() => {
+      showMessage("Please come back another time!", "bot");
+      clearForm();
+    }, 1000);
+  }
+}
+
+const clearForm = () => {
+  form.innerHTML = "";
+}
+
+// Eventlisteners👇
+form.addEventListener("submit", (event) => handleSubmit(event));
+
+setTimeout(greetUser, 1000);
