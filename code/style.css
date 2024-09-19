@@ -1,3 +1,66 @@
+img {
+  display: block;
+  max-width: 100%;
+}
+/* Responsive settings for mobile*/
+@media (max-width: 600px) {
+  main {
+    padding: 10px; 
+    max-width: 100%; 
+  }
+  body {
+    font-size: 16px;
+  }
+  .start-button {
+    width: 100%; 
+    padding: 15px; 
+  }
+  .chat {
+    width: 100%;
+    min-height: 200px; 
+    max-height: 400px;
+  }
+  .bot-msg img,
+  .user-msg img {
+    display: none;
+  }
+   .bot-msg .bubble {
+    max-width: 90%; /* Make the bot bubble wider*/
+    margin-right: auto; /* Move the bot bubble closer to user bubble*/
+    margin-left: 10px;
+  }
+  .user-msg .bubble {
+    max-width: 80%;
+    margin-left: auto; 
+  }
+  label[for="user-input"] {
+    display: none;
+  }
+  .bot-msg .selection-button {
+    flex: 1 1 20px;
+    width: auto;
+    height: 50px;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
+/* Responsive settings for tablet */
+  @media (min-width: 601px) and (max-width: 1024px) {
+    .bot-msg .selection-button {
+      flex: 1 1 120px;
+      width: auto;
+      height: 50px;
+      text-align: center;
+      white-space: nowrap;
+    }
+    main {
+      max-width: 90%;
+    }
+    body {
+      font-size: 17px;
+    }
+  }
+
 * {
   box-sizing: border-box;
 }
@@ -71,12 +134,46 @@ main {
   padding-bottom: 16px;
 }
 
+.start-button {
+  display: flex;
+  justify-content: center;
+}
+
+#name-form {
+  display: none;
+}
+#name-form.show {
+  display: flex; /* Show name input field*/
+  align-items: center
+}
+
+.hidden { /*Hide Start conversation button */
+  display: none;
+}
+
+.selection-button {
+  display: inline-block; /*Make buttons visible*/
+  padding: 10px 20px;
+  margin: 1px;
+  gap: 1px;
+  background-color: #0026ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto; /*Adapt buttons to device widht */
+}
+
+.size-button:hover {
+  opacity: 0.9;
+}
 .bot-msg {
   display: flex;
   margin: 16px 8px 0 0;
   flex-shrink: 0;
+  flex-wrap: wrap;
+  max-width: 100%;
 }
-
 .user-msg {
   display: flex;
   justify-content: flex-end;
@@ -97,7 +194,8 @@ main {
   line-height: 26px;
   padding: 16px 24px;
   color: #0026ff;
-  max-width: 40%;
+  max-width: 60%;
+  word-wrap: break-word
 }
 
 .bot-bubble {
@@ -147,4 +245,10 @@ button {
 button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  color: white;
 }
