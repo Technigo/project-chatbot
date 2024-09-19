@@ -4,11 +4,6 @@ img {
 }
 /* Responsive settings for mobile*/
 @media (max-width: 600px) {
-  .selection-button {
-    width: 100%;
-    margin: 5px 0;
-    }
-  }
   main {
     padding: 10px; 
     max-width: 100%; 
@@ -31,18 +26,28 @@ img {
   }
   .bubble {
     max-width: 90%;
-    font-size: 16px;
     line-height: 26px;
     padding: 12px 20px;
   }
   label[for="user-input"] {
     display: none;
   }
+  .bot-msg .selection-button {
+    flex: 1 1 120px;
+    width: auto;
+    height: 50px;
+    text-align: center;
+    white-space: nowrap;
+  }
 }
 /* Responsive settings for tablet */
   @media (min-width: 601px) and (max-width: 1024px) {
-    .selection-button {
-      width: 50%
+    .bot-msg .selection-button {
+      flex: 1 1 120px;
+      width: auto;
+      height: 50px;
+      text-align: center;
+      white-space: nowrap;
     }
     main {
       max-width: 90%;
@@ -51,12 +56,6 @@ img {
       font-size: 17px;
     }
   }
-/* Responsive settings for desktop */
-@media (min-width: 1025px) {
-  .selection-button {
-    width: auto;
-  }
-}
 
 * {
   box-sizing: border-box;
@@ -152,18 +151,14 @@ main {
   display: inline-block; /*Make buttons visible*/
   padding: 10px 20px;
   margin: 10px;
-  background-color: #0026ff; 
+  background-color: #0026ff;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   width: auto; /*Adapt buttons to device widht */
 }
-.coffee-selection {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
+
 .size-button:hover {
   opacity: 0.9;
 }
@@ -171,6 +166,8 @@ main {
   display: flex;
   margin: 16px 8px 0 0;
   flex-shrink: 0;
+  flex-wrap: wrap;
+  max-width: 100%;
 }
 
 .user-msg {

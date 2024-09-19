@@ -123,10 +123,10 @@ const selectCoffee = () => {
   showMessage(`Nice to meet you, ${userName}. Please start your order by selecting your coffee. Here are your options:`, 'bot')
     chat.innerHTML += `
       <section class="bot-msg">
-        <button id="pumpkin" class="coffee-button">Pumpkin Spice Latte</button>
-        <button id="cappuccino" class="coffee-button">Cappuccino</button>
-        <button id="americano" class="coffee-button">Americano</button>
-        <button id="espresso" class="coffee-button">Espresso</button>
+        <button id="pumpkin" class="selection-button">Pumpkin Spice Latte</button>
+        <button id="cappuccino" class="selection-button">Cappuccino</button>
+        <button id="americano" class="selection-button">Americano</button>
+        <button id="espresso" class="selection-button">Espresso</button>
         </section>
     `
   document.getElementById("pumpkin").addEventListener("click", () => handleCoffeeInput("Pumpkin Spice Latte"))
@@ -175,7 +175,7 @@ const showMessage = (message, sender) => {
   }
 
   // Scroll to the last message when chat is too long
-  //requestAnimationFrame 
+  // requestAnimationFrame to avoid scrolling to see buttons in chat
   requestAnimationFrame(() => {
     chat.scrollTop = chat.scrollHeight;
   })
