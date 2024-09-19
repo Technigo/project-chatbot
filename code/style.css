@@ -94,22 +94,20 @@ main {
   display: flex;
   justify-content: center;
 }
-.buttons {
-  display: inline-block;
-  padding: 10px 20px;
-  margin: 10px;
-  background-color: #0026ff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: center;
+
+#name-form {
+  display: none;
 }
+#name-form.show {
+  display: flex; /* Show name input field*/
+  align-items: center
+}
+
 .hidden { /*Hide Start conversation button */
   display: none;
 }
 
-.size-button {
+.selection-button {
   display: inline-block; /*Make buttons visible*/
   padding: 10px 20px;
   margin: 10px;

@@ -1,7 +1,7 @@
 //Global LET variables that will be used in the confirmation
 
 let userName = ''
-let coffeeChoice = ''
+let selectedCoffee = ''
 let sizeChoice = ''
 let coffeeShop = ''
 
@@ -35,7 +35,7 @@ const userAnswer = (selectCoffeeShop) => {
   document.getElementById("gothenburg").remove();
   document.getElementById("kiruna").remove();
   document.getElementById("falun").remove();
-  setTimeout(showSummary, 1000); // Move on to Summary
+  setTimeout(showSummary, 2000); // Move on to Summary
 }
 
 // 8. Select Coffee Shop
@@ -43,11 +43,13 @@ const handleCoffeeShopInput = () => {
   inputWrapper.classList.add("hidden")
   showMessage("Where would you like to pick up your coffee?", 'bot')
   chat.innerHTML += `
-    <button id="stockholm" class="buttons">Stockholm</button>
-    <button id="gothenburg" class="buttons">Gothenburg</button>
-    <button id="kiruna" class="buttons">Kiruna</button>
-    <button id="falun" class="buttons">Falun</button>
-    `
+  <section class="bot-msg">
+    <button id="stockholm" class="selection-button">Stockholm</button>
+    <button id="gothenburg" class="selection-button">Gothenburg</button>
+    <button id="kiruna" class="selection-button">Kiruna</button>
+    <button id="falun" class="selection-button">Falun</button>
+  </section>
+  `
   document.getElementById('stockholm').addEventListener("click", () => userAnswer('Stockholm'))
   document.getElementById('gothenburg').addEventListener("click", () => userAnswer('Gothenburg'))
   document.getElementById('kiruna').addEventListener("click", () => userAnswer('Kiruna'))
@@ -74,17 +76,18 @@ const askForSize = () => {
   // Add two buttons
   chat.innerHTML += `
     <section class="bot-msg">
-      <button id="regularButton" class="size-button">Regular</button>
-      <button id="smallButton" class="size-button">Small</button>
+      <button id="regularButton" class="selection-button">Regular</button>
+      <button id="smallButton" class="selection-button">Small</button>
     </section>
   `
+
   document.getElementById("regularButton").addEventListener("click", () => handleSizeChoice("Regular"))
   document.getElementById("smallButton").addEventListener("click", () => handleSizeChoice("Small"))
 }
 // 5. Handle Coffee choice input
 
-const handleCoffeeInput = (coffeeChoice) => {
-  coffeeChoice = coffeeChoice // Update the global variable
+const handleCoffeeInput = (selectedCoffee) => {
+  coffeeChoice = selectedCoffee // Update the global variable
   if (coffeeChoice === "Pumpkin Spice Latte") {
     showMessage(`${coffeeChoice}, please.`, 'user')
     showMessage("Ah, Pumpkin Spice Latte! Perfect choice", 'bot')
@@ -102,10 +105,15 @@ const handleCoffeeInput = (coffeeChoice) => {
     showMessage(`${coffeeChoice} sounds great, but we don't have that option right now!`, 'bot')
     return 
   }
+
+  document.getElementById("pumpkin").remove()
+  document.getElementById("cappuccino").remove()
+  document.getElementById("americano").remove()
+  document.getElementById("espresso").remove()
   
   //showMessage(`I would like to order a ${coffeeChoice}, please.`, 'user')  
 
-  setTimeout(askForSize, 500) // Move on to Ask for size
+  setTimeout(askForSize, 1000) // Move on to Ask for size
 }
 
 // 4. Select Coffee
@@ -167,9 +175,11 @@ const showMessage = (message, sender) => {
   }
 
   // Scroll to the last message when chat is too long
-  chat.scrollTop = chat.scrollHeight
+  //requestAnimationFrame 
+  requestAnimationFrame(() => {
+    chat.scrollTop = chat.scrollHeight;
+  })
 }
-
 startButton.addEventListener("click", () => {
   startChat()
   document.getElementById('name-form').addEventListener("submit", handleUserInput)
@@ -184,5 +194,6 @@ const greetUser = () => {
 //1. Click Start Conversation button
 const startChat = () => {
   greetUser()
-  startButton.classList.add("hidden") // Hide start button when clicked
+  startButton.classList.add("hidden") // Hide Start conversation button when clicked
+  document.getElementById('name-form').classList.add('show') // Show name input field
 }
