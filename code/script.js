@@ -5,8 +5,6 @@ const chat = document.getElementById('chat')
 
 // A function that will add a chat bubble in the correct place based on who the sender is
 const showMessage = (message, sender) => {
-  // The if statement checks if the sender is the user and if that's the case it inserts
-  // an HTML section inside the chat with the posted message from the user
   if (sender === 'user') {
     chat.innerHTML += `
       <section class="user-msg">
@@ -15,9 +13,7 @@ const showMessage = (message, sender) => {
         </div>
         <img src="assets/user.png" alt="User" />  
       </section>
-    `
-    // The else if statement checks if the sender is the bot and if that's the case it inserts
-    // an HTML section inside the chat with the posted message from the bot
+    `;
   } else if (sender === 'bot') {
     chat.innerHTML += `
       <section class="bot-msg">
@@ -26,28 +22,98 @@ const showMessage = (message, sender) => {
           <p>${message}</p>
         </div>
       </section>
-    `
+    `;
   }
 
-  // This little thing makes the chat scroll to the last message when there are too many to
-  // be shown in the chat box
-  chat.scrollTop = chat.scrollHeight
-}
+  // Scroll to the last message when too many messages are in the chat box
+  chat.scrollTop = chat.scrollHeight;
+};
 
-// A function to start the conversation
+// Function to start the conversation
 const greetUser = () => {
-  // Here we call the function showMessage, that we declared earlier with the argument:
-  // "Hello there, what's your name?" for message, and the argument "bot" for sender
-  showMessage("Hello there, what's your name?", 'bot')
-  // Just to check it out, change 'bot' to 'user' here 👆 and see what happens
-}
+  showMessage("Hello there, what's your name?", 'bot');
 
-// Eventlisteners goes here 👇
+  const inputWrapper = document.getElementById('input-wrapper');
+  inputWrapper.innerHTML = `
+    <form id="name-form">
+      <input id="name-input" type="text" placeholder="Enter your name" required />
+      <button class="send-btn" type="submit">Submit</button>
+    </form>
+  `;
 
-// Here we invoke the first function to get the chatbot to ask the first question when
-// the website is loaded. Normally we invoke functions like this: greeting()
-// To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
-// and pass along two arguments:
-// 1.) the function we want to delay, and 2.) the delay in milliseconds 
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greetUser, 1000)
+  document.getElementById('name-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const userName = document.getElementById('name-input').value;
+
+    if (userName) {
+      showMessage(userName, 'user');
+      setTimeout(() => {
+        showMessage(`Nice to meet you, ${userName}! Do you prefer a beach or a mountain trip?`, 'bot');
+        askForTripType(); // Ask for the trip type next
+      }, 1000);
+    }
+  });
+};
+
+// Function to ask for trip type
+const askForTripType = () => {
+  const inputWrapper = document.getElementById('input-wrapper');
+  inputWrapper.innerHTML = `
+    <form id="trip-form">
+      <label for="trip-type">Choose your trip type:</label>
+      <select id="trip-type" required>
+        <option value="">Select...</option>
+        <option value="beach">Beach</option>
+        <option value="mountain">Mountain</option>
+      </select>
+      <button class="send-btn" type="submit">Submit</button>
+    </form>
+  `;
+
+  document.getElementById('trip-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const tripType = document.getElementById('trip-type').value;
+
+    if (tripType === "beach") {
+      showMessage("Beach", 'user');
+      showMessage("I recommend visiting the Maldives for an amazing beach experience!", 'bot');
+      askForPreferences(); // Continue with the next question
+    } else if (tripType === "mountain") {
+      showMessage("Mountain", 'user');
+      showMessage("I recommend exploring the Swiss Alps for breathtaking mountain views!", 'bot');
+      askForPreferences(); // Continue with the next question
+    } else {
+      showMessage("Please select a valid option.", 'bot');
+    }
+  });
+};
+
+// Function to ask about travel preferences (updated with "With my partner" option)
+const askForPreferences = () => {
+  const inputWrapper = document.getElementById('input-wrapper');
+  inputWrapper.innerHTML = `
+    <p>Do you like to travel alone, with friends, or with your partner?</p>
+    <button id="alone-btn">Alone</button>
+    <button id="friends-btn">With friends</button>
+    <button id="partner-btn">With my partner</button>
+  `;
+
+  document.getElementById('alone-btn').addEventListener('click', () => {
+    showMessage("Alone", 'user');
+    showMessage("Solo trips can be really peaceful! How about a quiet place in the mountains?", 'bot');
+  });
+
+  document.getElementById('friends-btn').addEventListener('click', () => {
+    showMessage("With friends", 'user');
+    showMessage("Trips with friends are so much fun! A beach resort could be perfect.", 'bot');
+  });
+
+  document.getElementById('partner-btn').addEventListener('click', () => {
+    showMessage("With my partner", 'user');
+    showMessage("Paris is the city of love! I recommend a romantic trip to Paris!", 'bot');
+  });
+};
+
+// Start the conversation with a delay
+setTimeout(greetUser, 1000);

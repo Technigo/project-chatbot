@@ -148,3 +148,63 @@ button:hover {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+
+/* Ajout de styles responsives */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .chat {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .bubble {
+    font-size: 14px;
+    padding: 10px 16px;
+    max-width: 60%; /* Les bulles prennent plus de place sur les petits écrans */
+  }
+
+  .bot-msg img,
+  .user-msg img {
+    width: 40px;
+    height: 40px;
+  }
+
+  input {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  button {
+    padding: 12px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1200px) {
+  main {
+    max-width: 1600px;
+  }
+
+  .bubble {
+    font-size: 18px;
+    padding: 20px;
+    max-width: 30%; /* Sur les grands écrans, les bulles prennent moins de place */
+  }
+
+  input {
+    padding: 18px;
+    font-size: 18px;
+  }
+
+  button {
+    padding: 18px;
+    font-size: 18px;
+  }
+}
