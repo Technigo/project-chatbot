@@ -1,56 +1,122 @@
-// DOM selectors (variables that point to selected DOM elements) goes here 👇
+// DOM selectors👇
 document.addEventListener("DOMContentLoaded", () => {
-  // The form element
   const form = document.getElementById("name-form");
-  // The input where the name is typed
   const nameInput = document.getElementById("name-input");
-  // The chat container where messages are shown
   const chat = document.getElementById("chat");
   let inputWrapper = document.getElementById("inputWrapper");
 
-  // Functions goes here 👇
+  // Function to handle the name input
   const handleNameInput = (event) => {
     event.preventDefault();
-    // Store the value in a variable so we can access it after we clear it from the input
     const name = nameInput.value;
     showMessage(name, "user");
     nameInput.value = "";
-
-    // After 1 second, show the next question by invoking the next function.
-    // passing the name into it to have access to the user's name if we want to use it in the next question from the bot.
-    setTimeout(() => showFoodOptions(name), 1000);
+    setTimeout(() => askForFood(name), 1000); // Ask for food choice
   };
 
-  const showFoodOptions = (name) => {
-    if ((name === "Pizza") || (name === "pizza")) {
-      showMessage("You've ordered a Daily Surprise Pizza! It'll be ready for pick up in 15 minutes, pay upon arrival😋<br> Adult size = 150SEK Child size = 100SEK", "bot");
-    } else if ((name === "Pasta") || (name === "pasta")) {
-      showMessage("You've ordered a Daily Surprise Pasta! It'll be ready for pick up in 15 minutes, pay upon arrival😋<br> Adult size = 130SEK Child size = 80SEK", "bot");
-    } else if ((name === "Salad") || (name === "salad")) {
-      showMessage("You've ordered a Daily Surprise Salad! It'll be ready for pick up in 15 minutes, pay upon arrival😋<br>Adult size = 120SEK Child size = 70SEK", "bot");
-    } else {
-      showMessage(`Hello ${name}, what type of food would you like today?<br>Please write your option: Pizza, Pasta or Salad 🍽️`, "bot");
-    }
-  }
+  // Function to ask for food options with buttons
+  const askForFood = (name) => {
+    showMessage(`Nice to meet you ${name}, what would you like to order today?`, "bot");
 
-  // A function that will add a chat bubble in the correct place based on who the sender is
+    inputWrapper.innerHTML = `
+      <button id="pizzaBtn">Pizza</button>
+      <button id="pastaBtn">Pasta</button>
+      <button id="saladBtn">Salad</button>
+    `;
+
+    document.getElementById("pizzaBtn").addEventListener("click", () => handleFoodChoice("Pizza"));
+    document.getElementById("pastaBtn").addEventListener("click", () => handleFoodChoice("Pasta"));
+    document.getElementById("saladBtn").addEventListener("click", () => handleFoodChoice("Salad"));
+  };
+
+  // Function to handle the food choice and show specific options based on food type
+  const handleFoodChoice = (food) => {
+    showMessage(`You've selected ${food}. Please choose an option:`, "bot");
+
+    let options = "";
+    if (food === "Pizza") {
+      options = `
+        <select id="foodOptions">
+          <option value="Margherita">Margherita</option>
+          <option value="Pepperoni">Pepperoni</option>
+          <option value="Vegetarian">Vegetarian</option>
+        </select>
+      `;
+    } else if (food === "Pasta") {
+      options = `
+        <select id="foodOptions">
+          <option value="Carbonara">Carbonara</option>
+          <option value="Bolognese">Bolognese</option>
+          <option value="Alfredo">Alfredo</option>
+        </select>
+      `;
+    } else if (food === "Salad") {
+      options = `
+        <select id="foodOptions">
+          <option value="Caesar Salad">Caesar Salad</option>
+          <option value="Greek Salad">Greek Salad</option>
+          <option value="Goat Cheese Salad">Goat Cheese Salad</option>
+        </select>
+      `;
+    }
+
+    inputWrapper.innerHTML = `${options} <button id="selectOptionBtn">Select</button>`;
+
+    document.getElementById("selectOptionBtn").addEventListener("click", () => {
+      const selectedFoodOption = document.getElementById("foodOptions").value;
+      showMessage(`You've chosen ${selectedFoodOption}.`, "user");
+      setTimeout(() => askForSize(selectedFoodOption, food), 1000); // Pass food type and option to ask for size
+    });
+  };
+
+  // Function to ask for the size of the selected food
+  const askForSize = (selectedFoodOption, foodType) => {
+    showMessage(`What size would you like for your ${selectedFoodOption}?`, "bot");
+
+    inputWrapper.innerHTML = `
+      <button id="adultSizeBtn">Adult Size</button>
+      <button id="childSizeBtn">Child Size</button>
+    `;
+
+    document.getElementById("adultSizeBtn").addEventListener("click", () => handleFoodSize(selectedFoodOption, foodType, "Adult"));
+    document.getElementById("childSizeBtn").addEventListener("click", () => handleFoodSize(selectedFoodOption, foodType, "Child"));
+  };
+
+  // Function to handle the size selection and confirm the order
+  const handleFoodSize = (selectedFoodOption, foodType, size) => {
+    showMessage(`You've selected ${size} size for your ${selectedFoodOption}.`, "user");
+    setTimeout(() => confirmOrder(selectedFoodOption, foodType, size), 1000);
+  };
+
+  // Function to confirm the order and show the final message
+  const confirmOrder = (selectedFoodOption, foodType, size) => {
+    let price = 0;
+
+    if (foodType === "Pizza") {
+      price = size === "Adult" ? 150 : 100;
+    } else if (foodType === "Pasta") {
+      price = size === "Adult" ? 130 : 80;
+    } else if (foodType === "Salad") {
+      price = size === "Adult" ? 120 : 70;
+    }
+
+    showMessage(`Thank you! Your ${size} ${selectedFoodOption} will be ready in 15 minutes. The price is ${price} SEK. Please pay upon arrival! 😋`, "bot");
+
+    inputWrapper.innerHTML = ""; // Clear inputWrapper for no further input
+  };
+
+  // Function to show messages in the chat
   const showMessage = (message, sender) => {
-    // The if statement checks if the sender is the user and if that's the case it inserts
-    // an HTML section inside the chat with the posted message from the user
     if (sender === "user") {
       chat.innerHTML += `
       <section class="user-msg">
         <div class="bubble user-bubble">
           <p>${message}</p>
         </div>
-        <img src="assets/user.png" alt="User" />  
+        <img src="assets/user.png" alt="User" />
       </section>
-    `
-      // The else if statement checks if the sender is the bot and if that's the case it inserts
-      // an HTML section inside the chat with the posted message from the bot
+      `;
     } else if (sender === "bot") {
-      console.log(`Welcome to the chat`);
-
       chat.innerHTML += `
       <section class="bot-msg">
         <img src="assets/bot.png" alt="Bot" />
@@ -58,27 +124,20 @@ document.addEventListener("DOMContentLoaded", () => {
           <p>${message}</p>
         </div>
       </section>
-    `
+      `;
     }
 
-    // This little thing makes the chat scroll to the last message when there are too many to be shown in the chat box
-    chat.scrollTop = chat.scrollHeight
-  }
+    chat.scrollTop = chat.scrollHeight;
+  };
 
-  // A function to start the conversation
+  // Function to start the conversation
   const greetUser = () => {
-    // Here we call the function showMessage, that we declared earlier with the argument:
-    showMessage("Hello there!<br>Welcome to Elina's Daily Surprise Pizzeria!<br>What's your name?", "bot")
-  }
+    showMessage("Hello there!<br>Welcome to Elina's Pizzeria!<br>What's your name?", "bot");
+  };
 
-  // Eventlisteners goes here 
+  // Event listeners go here
   form.addEventListener("submit", handleNameInput);
 
-  // Here we invoke the first function to get the chatbot to ask the first question when
-  // the website is loaded. Normally we invoke functions like this: greeting()
-  // To add a little delay to it, we can wrap it in a setTimeout (a built in JavaScript function):
-  // and pass along two arguments:
-  // 1.) the function we want to delay, and 2.) the delay in milliseconds 
-  // This means the greeting function will be called one second after the website is loaded.
-  setTimeout(greetUser, 1000)
+  // Start the bot with a delay when the page loads
+  setTimeout(greetUser, 1000);
 });
