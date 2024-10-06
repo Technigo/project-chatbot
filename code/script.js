@@ -49,14 +49,14 @@ const greetUser = () => {
     if (userName) {
       showMessage(userName, 'user');
       setTimeout(() => {
-        showMessage(`Nice to meet you, ${userName}! Do you prefer a beach or a mountain trip?`, 'bot');
+        showMessage(`Nice to meet you, ${userName}! I'm a travel bot, let's plan a nice trip. Will you be traveling solo, with friends, or as a couple?`, 'bot');
         askForTripType(); // Ask for the trip type next
       }, 1000);
     }
   });
 };
 
-// Function to ask for trip type
+// Function to ask for trip type (Solo, friends or couple)
 const askForTripType = () => {
   const inputWrapper = document.getElementById('input-wrapper');
   inputWrapper.innerHTML = `
@@ -64,8 +64,9 @@ const askForTripType = () => {
       <label for="trip-type">Choose your trip type:</label>
       <select id="trip-type" required>
         <option value="">Select...</option>
-        <option value="beach">Beach</option>
-        <option value="mountain">Mountain</option>
+        <option value="Solo">Solo</option>
+        <option value="Friends">Friends</option>
+        <option value="Couple">Couple</option>
       </select>
       <button class="send-btn" type="submit">Submit</button>
     </form>
@@ -75,44 +76,110 @@ const askForTripType = () => {
     event.preventDefault();
     const tripType = document.getElementById('trip-type').value;
 
-    if (tripType === "beach") {
-      showMessage("Beach", 'user');
-      showMessage("I recommend visiting the Maldives for an amazing beach experience!", 'bot');
-      askForPreferences(); // Continue with the next question
-    } else if (tripType === "mountain") {
-      showMessage("Mountain", 'user');
-      showMessage("I recommend exploring the Swiss Alps for breathtaking mountain views!", 'bot');
-      askForPreferences(); // Continue with the next question
+    if (tripType === "Solo") {
+      showMessage("Solo", 'user');
+      suggestSoloDestinations(); // Suggest solo destinations
+    } else if (tripType === "Friends") {
+      showMessage("With Friends", 'user');
+      suggestFriendsDestinations(); // Suggest friends destinations
+    } else if (tripType === "Couple") {
+      showMessage("As a Couple", 'user');
+      suggestCoupleDestinations(); // Suggest couple destinations
     } else {
       showMessage("Please select a valid option.", 'bot');
     }
   });
 };
 
-// Function to ask about travel preferences (updated with "With my partner" option)
-const askForPreferences = () => {
+// Function to suggest solo destinations and let the user choose
+const suggestSoloDestinations = () => {
+  showMessage("How about a trip to Japan or New Zealand?", 'bot');
+  
   const inputWrapper = document.getElementById('input-wrapper');
   inputWrapper.innerHTML = `
-    <p>Do you like to travel alone, with friends, or with your partner?</p>
-    <button id="alone-btn">Alone</button>
-    <button id="friends-btn">With friends</button>
-    <button id="partner-btn">With my partner</button>
+    <button id="japan-btn">Japan</button>
+    <button id="nz-btn">New Zealand</button>
   `;
 
-  document.getElementById('alone-btn').addEventListener('click', () => {
-    showMessage("Alone", 'user');
-    showMessage("Solo trips can be really peaceful! How about a quiet place in the mountains?", 'bot');
+  // Event listeners for the destination choice
+  document.getElementById('japan-btn').addEventListener('click', () => {
+    confirmChoice("Japan");
   });
 
-  document.getElementById('friends-btn').addEventListener('click', () => {
-    showMessage("With friends", 'user');
-    showMessage("Trips with friends are so much fun! A beach resort could be perfect.", 'bot');
+  document.getElementById('nz-btn').addEventListener('click', () => {
+    confirmChoice("New Zealand");
+  });
+};
+
+// Function to suggest destinations for friends and let the user choose
+const suggestFriendsDestinations = () => {
+  showMessage("How about a fun trip to Thailand or Spain?", 'bot');
+  
+  const inputWrapper = document.getElementById('input-wrapper');
+  inputWrapper.innerHTML = `
+    <button id="thailand-btn">Thailand</button>
+    <button id="spain-btn">Spain</button>
+  `;
+
+  // Event listeners for the destination choice
+  document.getElementById('thailand-btn').addEventListener('click', () => {
+    confirmChoice("Thailand");
   });
 
-  document.getElementById('partner-btn').addEventListener('click', () => {
-    showMessage("With my partner", 'user');
-    showMessage("Paris is the city of love! I recommend a romantic trip to Paris!", 'bot');
+  document.getElementById('spain-btn').addEventListener('click', () => {
+    confirmChoice("Spain");
   });
+};
+
+// Function to suggest destinations for couples and let the user choose
+const suggestCoupleDestinations = () => {
+  showMessage("How about a romantic trip to Italy or Greece?", 'bot');
+  
+  const inputWrapper = document.getElementById('input-wrapper');
+  inputWrapper.innerHTML = `
+    <button id="italy-btn">Italy</button>
+    <button id="greece-btn">Greece</button>
+  `;
+
+  // Event listeners for the destination choice
+  document.getElementById('italy-btn').addEventListener('click', () => {
+    confirmChoice("Italy");
+  });
+
+  document.getElementById('greece-btn').addEventListener('click', () => {
+    confirmChoice("Greece");
+  });
+};
+
+// Function to confirm the user's choice and provide a validation step
+const confirmChoice = (destination) => {
+  showMessage(`You selected ${destination}. Do you want to confirm this choice?`, 'bot');
+
+  const inputWrapper = document.getElementById('input-wrapper');
+  inputWrapper.innerHTML = `
+    <button id="confirm-btn">Confirm</button>
+    <button id="change-btn">Change destination</button>
+  `;
+
+  document.getElementById('confirm-btn').addEventListener('click', () => {
+    showMessage(`Confirmed! You will travel to ${destination}.`, 'user');
+    setTimeout(() => endConversation(), 1000);
+  });
+
+  document.getElementById('change-btn').addEventListener('click', () => {
+    if (destination === "Japan" || destination === "New Zealand") {
+      suggestSoloDestinations();
+    } else if (destination === "Thailand" || destination === "Spain") {
+      suggestFriendsDestinations();
+    } else if (destination === "Italy" || destination === "Greece") {
+      suggestCoupleDestinations();
+    }
+  });
+};
+
+// Function to end the conversation
+const endConversation = () => {
+  showMessage("Awesome choice! I'll send the tickets to your mail right away. Thank you for trusting me!", 'bot');
 };
 
 // Start the conversation with a delay
