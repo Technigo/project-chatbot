@@ -1,0 +1,329 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Imagen de fondo y secciones */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  color: rgb(239, 77, 77);
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  top: 5px;
+  left: 30px;
+  color: rgb(245, 139, 139);
+  padding: 10px 10;
+  z-index: 1000;
+}
+
+/* Estilo para la barra de navegación */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+}
+
+.nav-links li {
+  display: inline-block;
+  margin-left: 220px;
+}
+
+.nav-links a {
+  color: whitesmoke;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #f0c040;
+}
+
+
+
+
+
+/* Sección de bienvenida (Hero Section) */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  padding: 5px 5px;
+  position: relative;
+  /* Para que el texto se posicione en relación a este contenedor */
+}
+
+.hero img {
+  max-width: 100%;
+  height: 1200px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  padding-top: 50px;
+  /* Ajusta este valor para mayor espacio desde arriba */
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 24px;
+  max-width: 600px;
+}
+
+.overlay-text {
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 34px;
+  color: rgb(230, 57, 57);
+  text-align: center;
+  margin-bottom: 20px;
+  position: absolute;
+  /* Posiciona el texto sobre la imagen */
+  top: 80%;
+  /* Ajusta este valor para cambiar la posición vertical del texto */
+  left: 50%;
+  transform: translateX(-50%);
+  /* Para centrar el texto horizontalmente */
+  z-index: 1;
+  /* Asegura que el texto esté sobre la imagen */
+
+}
+
+/* Adaptar a pantallas más pequeñas */
+@media (max-width: 768px) {
+  nav {
+    padding: 0 20px;
+  }
+
+  nav .nav-links li {
+    margin-left: 10px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+}
+
+
+h1 {
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 34px;
+  color: red;
+  text-align: center;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 34px;
+  color: #f38a8a;
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+p {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28px;
+  margin: 0;
+}
+
+form {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+input {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  background: #e5e9ff;
+  color: #0026ff;
+  padding: 16px;
+  font-size: 16px;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  line-height: 26px;
+  flex: 1;
+  width: 100%;
+}
+
+main {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 700px;
+  height: 400px;
+  border-radius: 30px;
+  background: rgb(236, 232, 232);
+  padding: 20px 24px;
+  padding-top: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chat {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  overflow: scroll;
+  flex-direction: column;
+  padding-bottom: 16px;
+}
+
+.bot-msg {
+  display: flex;
+  margin: 16px 8px 0 0;
+  flex-shrink: 0;
+}
+
+.user-msg {
+  display: flex;
+  justify-content: flex-end;
+  margin: 16px 0 0 8px;
+  flex-shrink: 0;
+}
+
+.bot-msg img,
+.user-msg img {
+  width: 60px;
+  height: 60px;
+}
+
+.bubble {
+  background: #e5e9ff;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+  padding: 16px 24px;
+  color: #0026ff;
+  max-width: 40%;
+}
+
+.bot-bubble {
+  border-radius: 0px 26px 26px 26px;
+  margin-left: 8px;
+}
+
+.user-bubble {
+  border-radius: 26px 0 26px 26px;
+  margin-right: 8px;
+}
+
+.input-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.input-wrapper form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+label {
+  font-size: 16px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  color: #0026ff;
+  margin-right: 20px;
+}
+
+button {
+  background-color: #0026ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 20px;
+  margin-right: 4px;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+  transition: all 0.2s ease;
+}
+
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  background-color: white;
+  /* Color del fondo del footer */
+  margin-top: 30px;
+  /* Espacio de 30px entre el footer y el box anterior */
+}
+
+.social-links {
+  display: flex;
+  gap: 20px;
+  /* Espacio entre los iconos de redes sociales */
+  margin-bottom: 20px;
+  /* Espacio entre las redes sociales y los enlaces legales */
+}
+
+.social-links a img {
+  width: 20px;
+  /* Tamaño de los iconos de redes sociales */
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.social-links a img:hover {
+  transform: scale(1.1);
+  /* Efecto de agrandado al pasar el mouse */
+}
+
+.legal-links {
+  display: flex;
+  gap: 15px;
+  /* Espacio entre los enlaces legales */
+}
+
+.legal-links a {
+  font-size: 14px;
+  color: #333;
+  /* Color de los enlaces */
+  text-decoration: none;
+}
+
+.legal-links a:hover {
+  text-decoration: underline;
+  /* Subrayado al pasar el mouse */
+}
