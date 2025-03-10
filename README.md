@@ -1,13 +1,11 @@
-# Project Name
+# Project Chatbot
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+A simple chatbot that interacts with the user and guides them through a fun, personalized conversation.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The problem was approached by breaking down the interaction flow into distinct steps: greeting the user, capturing inputs, and generating responses based on the input. Vanilla JavaScript was used for DOM manipulation and event handling, such as form submission. The UI was dynamically updated. Given more time, additional conversation options and design improvements would be implemented to enhance user experience.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://holiday-bot.netlify.app/
